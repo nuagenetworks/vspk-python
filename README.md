@@ -1,2 +1,2 @@
 # vspk-python
-vspk, in Python
+master branch is private. Use version branches.
