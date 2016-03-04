@@ -1,0 +1,3 @@
+bambou==2.0.0
+tabulate
+colorama
