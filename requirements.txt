@@ -1,3 +1,3 @@
-bambou==2.0.0
+git+https://github.com/nuagenetworks/bambou.git@v2.0
 tabulate
 colorama
