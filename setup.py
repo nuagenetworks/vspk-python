@@ -55,7 +55,6 @@ setup(
     packages=packages,
     description='VSD Python SDK for API',
     long_description=open('README.md').read(),
-    install_requires=[line for line in open('requirements.txt')],
     license='BSD-3',
     include_package_data=True,
     data_files=resources,
