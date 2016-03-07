@@ -57,8 +57,8 @@ setup(
     long_description=open('README.md').read(),
     license='BSD-3',
     include_package_data=True,
-    install_requires=['tabulate', 'colorama', 'bambou'],
-    dependency_links=['git+https://github.com/nuagenetworks/bambou.git@v2.0#egg=bambou'],
+    install_requires=['tabulate', 'colorama', 'bambou==2.0.0'],
+    dependency_links=['https://github.com/nuagenetworks/bambou/archive/v2.0.zip#egg=bambou-2.0.0'],
     data_files=resources,
     entry_points={
         'console_scripts': [
