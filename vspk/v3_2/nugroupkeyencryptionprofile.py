@@ -129,7 +129,6 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
         self._sek_payload_encryption_bc_algorithm = None
         self._sek_payload_encryption_key_length = None
         self._sek_payload_signing_algorithm = None
-        self._associated_enterprise_id = None
         self._description = None
         self._entity_scope = None
         self._external_id = None
@@ -154,7 +153,6 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
         self.expose_attribute(local_name="sek_payload_encryption_bc_algorithm", remote_name="SEKPayloadEncryptionBCAlgorithm", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sek_payload_encryption_key_length", remote_name="SEKPayloadEncryptionKeyLength", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sek_payload_signing_algorithm", remote_name="SEKPayloadSigningAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'SHA1withRSA', u'SHA224withRSA', u'SHA256withRSA', u'SHA384withRSA', u'SHA512withRSA'])
-        self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -347,33 +345,6 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
                 
         """
         self._sek_payload_signing_algorithm = value
-
-    
-    @property
-    def associated_enterprise_id(self):
-        """ Get associated_enterprise_id value.
-
-            Notes:
-                The ID of the associated Enterprise
-
-                
-                This attribute is named `associatedEnterpriseID` in VSD API.
-                
-        """
-        return self._associated_enterprise_id
-
-    @associated_enterprise_id.setter
-    def associated_enterprise_id(self, value):
-        """ Set associated_enterprise_id value.
-
-            Notes:
-                The ID of the associated Enterprise
-
-                
-                This attribute is named `associatedEnterpriseID` in VSD API.
-                
-        """
-        self._associated_enterprise_id = value
 
     
     @property

@@ -203,6 +203,7 @@ class NUVM(NURESTObject):
         self._l2_domain_ids = None
         self._last_updated_by = None
         self._name = None
+        self._orchestration_id = None
         self._reason_type = None
         self._resync_info = None
         self._site_identifier = None
@@ -227,6 +228,7 @@ class NUVM(NURESTObject):
         self.expose_attribute(local_name="l2_domain_ids", remote_name="l2DomainIDs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="orchestration_id", remote_name="orchestrationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="reason_type", remote_name="reasonType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BLOCKED_LAST', u'BLOCKED_UNKNOWN', u'CRASHED_LAST', u'CRASHED_UNKNOWN', u'NOSTATE_LAST', u'NOSTATE_UNKNOWN', u'PAUSED_DUMP', u'PAUSED_FROM_SNAPSHOT', u'PAUSED_IOERROR', u'PAUSED_LAST', u'PAUSED_MIGRATION', u'PAUSED_SAVE', u'PAUSED_SHUTTING_DOWN', u'PAUSED_UNKNOWN', u'PAUSED_USER', u'PAUSED_WATCHDOG', u'RUNNING_BOOTED', u'RUNNING_FROM_SNAPSHOT', u'RUNNING_LAST', u'RUNNING_MIGRATED', u'RUNNING_MIGRATION_CANCELED', u'RUNNING_RESTORED', u'RUNNING_SAVE_CANCELED', u'RUNNING_UNKNOWN', u'RUNNING_UNPAUSED', u'SHUTDOWN_LAST', u'SHUTDOWN_UNKNOWN', u'SHUTDOWN_USER', u'SHUTOFF_CRASHED', u'SHUTOFF_DESTROYED', u'SHUTOFF_FAILED', u'SHUTOFF_FROM_SNAPSHOT', u'SHUTOFF_LAST', u'SHUTOFF_MIGRATED', u'SHUTOFF_SAVED', u'SHUTOFF_SHUTDOWN', u'SHUTOFF_UNKNOWN', u'UNKNOWN'])
         self.expose_attribute(local_name="resync_info", remote_name="resyncInfo", attribute_type=dict, is_required=False, is_unique=False)
         self.expose_attribute(local_name="site_identifier", remote_name="siteIdentifier", attribute_type=str, is_required=False, is_unique=False)
@@ -660,6 +662,33 @@ class NUVM(NURESTObject):
                 
         """
         self._name = value
+
+    
+    @property
+    def orchestration_id(self):
+        """ Get orchestration_id value.
+
+            Notes:
+                Orchestration ID.
+
+                
+                This attribute is named `orchestrationID` in VSD API.
+                
+        """
+        return self._orchestration_id
+
+    @orchestration_id.setter
+    def orchestration_id(self, value):
+        """ Set orchestration_id value.
+
+            Notes:
+                Orchestration ID.
+
+                
+                This attribute is named `orchestrationID` in VSD API.
+                
+        """
+        self._orchestration_id = value
 
     
     @property

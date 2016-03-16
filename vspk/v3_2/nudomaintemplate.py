@@ -129,7 +129,6 @@ class NUDomainTemplate(NURESTObject):
 
         # Read/Write Attributes
         
-        self._associated_bgp_profile_id = None
         self._associated_multicast_channel_map_id = None
         self._description = None
         self._encryption = None
@@ -140,7 +139,6 @@ class NUDomainTemplate(NURESTObject):
         self._name = None
         self._policy_change_status = None
         
-        self.expose_attribute(local_name="associated_bgp_profile_id", remote_name="associatedBGPProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
@@ -206,33 +204,6 @@ class NUDomainTemplate(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
-    
-    @property
-    def associated_bgp_profile_id(self):
-        """ Get associated_bgp_profile_id value.
-
-            Notes:
-                The ID of the associated BGP profile
-
-                
-                This attribute is named `associatedBGPProfileID` in VSD API.
-                
-        """
-        return self._associated_bgp_profile_id
-
-    @associated_bgp_profile_id.setter
-    def associated_bgp_profile_id(self, value):
-        """ Set associated_bgp_profile_id value.
-
-            Notes:
-                The ID of the associated BGP profile
-
-                
-                This attribute is named `associatedBGPProfileID` in VSD API.
-                
-        """
-        self._associated_bgp_profile_id = value
-
     
     @property
     def associated_multicast_channel_map_id(self):
@@ -439,7 +410,7 @@ class NUDomainTemplate(NURESTObject):
         """ Get policy_change_status value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `policyChangeStatus` in VSD API.
@@ -452,7 +423,7 @@ class NUDomainTemplate(NURESTObject):
         """ Set policy_change_status value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `policyChangeStatus` in VSD API.

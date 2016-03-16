@@ -198,7 +198,6 @@ class NUEnterprise(NURESTObject):
 
         # Read/Write Attributes
         
-        self._bgp_enabled = None
         self._dhcp_lease_interval = None
         self._ldap_authorization_enabled = None
         self._ldap_enabled = None
@@ -224,7 +223,6 @@ class NUEnterprise(NURESTObject):
         self._receive_multi_cast_list_id = None
         self._send_multi_cast_list_id = None
         
-        self.expose_attribute(local_name="bgp_enabled", remote_name="BGPEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_lease_interval", remote_name="DHCPLeaseInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ldap_authorization_enabled", remote_name="LDAPAuthorizationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ldap_enabled", remote_name="LDAPEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -362,33 +360,6 @@ class NUEnterprise(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
-    
-    @property
-    def bgp_enabled(self):
-        """ Get bgp_enabled value.
-
-            Notes:
-                Read only flag to display if BGP is enabled for this enterprise
-
-                
-                This attribute is named `BGPEnabled` in VSD API.
-                
-        """
-        return self._bgp_enabled
-
-    @bgp_enabled.setter
-    def bgp_enabled(self, value):
-        """ Set bgp_enabled value.
-
-            Notes:
-                Read only flag to display if BGP is enabled for this enterprise
-
-                
-                This attribute is named `BGPEnabled` in VSD API.
-                
-        """
-        self._bgp_enabled = value
-
     
     @property
     def dhcp_lease_interval(self):

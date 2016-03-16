@@ -155,6 +155,7 @@ class NUVRS(NURESTObject):
         self._hypervisor_identifier = None
         self._hypervisor_name = None
         self._hypervisor_type = None
+        self._is_resilient = None
         self._last_event_name = None
         self._last_event_object = None
         self._last_event_timestamp = None
@@ -195,6 +196,7 @@ class NUVRS(NURESTObject):
         self.expose_attribute(local_name="hypervisor_identifier", remote_name="hypervisorIdentifier", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="hypervisor_name", remote_name="hypervisorName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="hypervisor_type", remote_name="hypervisorType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="is_resilient", remote_name="isResilient", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_event_name", remote_name="lastEventName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_event_object", remote_name="lastEventObject", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_event_timestamp", remote_name="lastEventTimestamp", attribute_type=int, is_required=False, is_unique=False)
@@ -700,6 +702,33 @@ class NUVRS(NURESTObject):
                 
         """
         self._hypervisor_type = value
+
+    
+    @property
+    def is_resilient(self):
+        """ Get is_resilient value.
+
+            Notes:
+                Flag to indicate that the VRS is part of a redundant group.
+
+                
+                This attribute is named `isResilient` in VSD API.
+                
+        """
+        return self._is_resilient
+
+    @is_resilient.setter
+    def is_resilient(self, value):
+        """ Set is_resilient value.
+
+            Notes:
+                Flag to indicate that the VRS is part of a redundant group.
+
+                
+                This attribute is named `isResilient` in VSD API.
+                
+        """
+        self._is_resilient = value
 
     
     @property

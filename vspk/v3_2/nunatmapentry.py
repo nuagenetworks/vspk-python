@@ -78,7 +78,7 @@ class NUNATMapEntry(NURESTObject):
         self._private_ip = None
         self._public_ip = None
         
-        self.expose_attribute(local_name="associated_patnat_pool_id", remote_name="associatedPATNATPoolID", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="associated_patnat_pool_id", remote_name="associatedPATNATPoolID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -104,7 +104,7 @@ class NUNATMapEntry(NURESTObject):
         """ Get associated_patnat_pool_id value.
 
             Notes:
-                Read Only - Indicates which PATNATPool this entry belongs to
+                Indicates which PATNATPool this entry belongs to
 
                 
                 This attribute is named `associatedPATNATPoolID` in VSD API.
@@ -117,7 +117,7 @@ class NUNATMapEntry(NURESTObject):
         """ Set associated_patnat_pool_id value.
 
             Notes:
-                Read Only - Indicates which PATNATPool this entry belongs to
+                Indicates which PATNATPool this entry belongs to
 
                 
                 This attribute is named `associatedPATNATPoolID` in VSD API.

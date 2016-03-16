@@ -236,13 +236,11 @@ class NUDomain(NURESTObject):
 
         # Read/Write Attributes
         
-        self._bgp_enabled = None
         self._dhcp_behavior = None
         self._dhcp_server_address = None
         self._ecmp_count = None
         self._pat_enabled = None
         self._application_deployment_policy = None
-        self._associated_bgp_profile_id = None
         self._associated_multicast_channel_map_id = None
         self._back_haul_route_distinguisher = None
         self._back_haul_route_target = None
@@ -274,13 +272,11 @@ class NUDomain(NURESTObject):
         self._underlay_enabled = None
         self._uplink_preference = None
         
-        self.expose_attribute(local_name="bgp_enabled", remote_name="BGPEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_behavior", remote_name="DHCPBehavior", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONSUME', u'FLOOD', u'RELAY'])
         self.expose_attribute(local_name="dhcp_server_address", remote_name="DHCPServerAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ecmp_count", remote_name="ECMPCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="pat_enabled", remote_name="PATEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="application_deployment_policy", remote_name="applicationDeploymentPolicy", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'ZONE'])
-        self.expose_attribute(local_name="associated_bgp_profile_id", remote_name="associatedBGPProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_route_distinguisher", remote_name="backHaulRouteDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_route_target", remote_name="backHaulRouteTarget", attribute_type=str, is_required=False, is_unique=False)
@@ -420,33 +416,6 @@ class NUDomain(NURESTObject):
     # Properties
     
     @property
-    def bgp_enabled(self):
-        """ Get bgp_enabled value.
-
-            Notes:
-                Read only flag to display if BGP is enabled for this domain
-
-                
-                This attribute is named `BGPEnabled` in VSD API.
-                
-        """
-        return self._bgp_enabled
-
-    @bgp_enabled.setter
-    def bgp_enabled(self, value):
-        """ Set bgp_enabled value.
-
-            Notes:
-                Read only flag to display if BGP is enabled for this domain
-
-                
-                This attribute is named `BGPEnabled` in VSD API.
-                
-        """
-        self._bgp_enabled = value
-
-    
-    @property
     def dhcp_behavior(self):
         """ Get dhcp_behavior value.
 
@@ -579,33 +548,6 @@ class NUDomain(NURESTObject):
                 
         """
         self._application_deployment_policy = value
-
-    
-    @property
-    def associated_bgp_profile_id(self):
-        """ Get associated_bgp_profile_id value.
-
-            Notes:
-                
-
-                
-                This attribute is named `associatedBGPProfileID` in VSD API.
-                
-        """
-        return self._associated_bgp_profile_id
-
-    @associated_bgp_profile_id.setter
-    def associated_bgp_profile_id(self, value):
-        """ Set associated_bgp_profile_id value.
-
-            Notes:
-                
-
-                
-                This attribute is named `associatedBGPProfileID` in VSD API.
-                
-        """
-        self._associated_bgp_profile_id = value
 
     
     @property
@@ -1137,7 +1079,7 @@ class NUDomain(NURESTObject):
         """ Get policy_change_status value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `policyChangeStatus` in VSD API.
@@ -1150,7 +1092,7 @@ class NUDomain(NURESTObject):
         """ Set policy_change_status value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `policyChangeStatus` in VSD API.

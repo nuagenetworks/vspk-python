@@ -129,7 +129,6 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         
         self._ntp_server_key = None
         self._ntp_server_key_id = None
-        self._controller_less_duration = None
         self._datapath_sync_timeout = None
         self._dead_timer = None
         self._description = None
@@ -155,7 +154,6 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         
         self.expose_attribute(local_name="ntp_server_key", remote_name="NTPServerKey", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ntp_server_key_id", remote_name="NTPServerKeyID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="controller_less_duration", remote_name="controllerLessDuration", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_sync_timeout", remote_name="datapathSyncTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dead_timer", remote_name="deadTimer", attribute_type=str, is_required=False, is_unique=False, choices=[u'FIVE_HOURS', u'FOUR_HOURS', u'NONE', u'ONE_HOUR', u'SIX_HOURS', u'TEN_MINUTES', u'THIRTY_MINUTES', u'THREE_HOURS', u'TWO_HOURS'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
@@ -245,33 +243,6 @@ class NUInfrastructureGatewayProfile(NURESTObject):
                 
         """
         self._ntp_server_key_id = value
-
-    
-    @property
-    def controller_less_duration(self):
-        """ Get controller_less_duration value.
-
-            Notes:
-                Duration for a controller-less operation (in ISO-duration format).
-
-                
-                This attribute is named `controllerLessDuration` in VSD API.
-                
-        """
-        return self._controller_less_duration
-
-    @controller_less_duration.setter
-    def controller_less_duration(self, value):
-        """ Set controller_less_duration value.
-
-            Notes:
-                Duration for a controller-less operation (in ISO-duration format).
-
-                
-                This attribute is named `controllerLessDuration` in VSD API.
-                
-        """
-        self._controller_less_duration = value
 
     
     @property
