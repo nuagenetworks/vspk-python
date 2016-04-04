@@ -25,42 +25,61 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-from setuptools import setup
-import os
+from bambou import NURESTSession
+from bambou.exceptions import InternalConsitencyError
+from .nume import NUMe
 
-packages = ['vspk', 'vspk.cli']
-resources = []
-api_version_path = "./vspk"
 
-for version_folder in os.listdir(api_version_path):
+class NUVSDSession(NURESTSession):
+    """ VSD User Session
 
-    if os.path.isfile("%s/%s" % (api_version_path, version_folder)):
-        continue
+        Session can be started and stopped whenever its needed
+    """
 
-    if version_folder == "cli":
-        continue
+    def __init__(self, username, enterprise, api_url, password=None, certificate=None):
+        """ Initializes a new sesssion
 
-    packages.append("vspk.%s" % version_folder)
-    packages.append("vspk.%s.fetchers" % version_folder)
+            Args:
+                username (string): the username
+                password (string): the password
+                enterprise (string): the enterprise
+                api_url (string): the url to the api
 
-    if os.path.exists('vspk/%s/resources' % version_folder):
-        resources.append(('vspk/%s/resources' % version_folder, ['vspk/%s/resources/attrs_defaults.ini' % version_folder]))
+            Example:
+                >>> session =  NUvsdSession(username="csproot", password="csproot", enterprise="csp", api_url="https://VSD:8443")
+                >>> session.start()
 
-setup(
-    name='vspk',
-    version="4.0.1",
-    url='http://nuagenetworks.net/',
-    author='nuage networks',
-    author_email='opensource@nuagenetworks.net',
-    packages=packages,
-    description='VSD Python SDK for API',
-    long_description=open('README.md').read(),
-    license='BSD-3',
-    include_package_data=True,
-    install_requires=[line for line in open('requirements.txt')],
-    data_files=resources,
-    entry_points={
-        'console_scripts': [
-            'vsd = vspk.cli.cli:main']
-    }
-)
+        """
+
+        if certificate is None and password is None:
+            raise InternalConsitencyError('NUvsdSession needs either a password or a certificate')
+
+        super(NUVSDSession, self).__init__(username=username, password=password, enterprise=enterprise, api_url=api_url, api_prefix="nuage/api", version=str(self.version), certificate=certificate)
+
+    @property
+    def version(self):
+        """ Returns the current VSD version
+
+        """
+        return 4.0
+
+    @property
+    def me(self):
+        """ Returns the root object
+
+        """
+        return self.root_object
+
+    @classmethod
+    def create_root_object(self):
+        """ Returns a new instance
+
+        """
+        return NUMe()
+
+    
+    ## Custom methods
+    @property
+    def user(self):
+        return self.root_object
+    

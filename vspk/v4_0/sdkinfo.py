@@ -25,42 +25,63 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-from setuptools import setup
-import os
+from nuvsdsession import NUVSDSession
+from .nume import NUMe
 
-packages = ['vspk', 'vspk.cli']
-resources = []
-api_version_path = "./vspk"
+class SDKInfo (object):
 
-for version_folder in os.listdir(api_version_path):
+    @classmethod
+    def api_version(cls):
+        """
+            Returns the api version
+        """
+        return 4.0
 
-    if os.path.isfile("%s/%s" % (api_version_path, version_folder)):
-        continue
+    @classmethod
+    def api_prefix(cls):
+        """
+            Returns the api prefix
+        """
+        return "nuage/api"
 
-    if version_folder == "cli":
-        continue
+    @classmethod
+    def product_accronym(cls):
+        """
+            Returns the product accronym
+        """
+        return "VSD"
 
-    packages.append("vspk.%s" % version_folder)
-    packages.append("vspk.%s.fetchers" % version_folder)
+    @classmethod
+    def product_name(cls):
+        """
+            Returns the product name
+        """
+        return "VSD"
 
-    if os.path.exists('vspk/%s/resources' % version_folder):
-        resources.append(('vspk/%s/resources' % version_folder, ['vspk/%s/resources/attrs_defaults.ini' % version_folder]))
+    @classmethod
+    def class_prefix(cls):
+        """
+            Returns the api prefix
+        """
+        return "NU"
 
-setup(
-    name='vspk',
-    version="4.0.1",
-    url='http://nuagenetworks.net/',
-    author='nuage networks',
-    author_email='opensource@nuagenetworks.net',
-    packages=packages,
-    description='VSD Python SDK for API',
-    long_description=open('README.md').read(),
-    license='BSD-3',
-    include_package_data=True,
-    install_requires=[line for line in open('requirements.txt')],
-    data_files=resources,
-    entry_points={
-        'console_scripts': [
-            'vsd = vspk.cli.cli:main']
-    }
-)
+    @classmethod
+    def name(cls):
+        """
+            Returns the sdk name
+        """
+        return "vspk"
+
+    @classmethod
+    def root_object_class(cls):
+        """
+            Returns the root object class
+        """
+        return NUMe
+
+    @classmethod
+    def session_class(cls):
+        """
+            Returns the session object class
+        """
+        return NUVSDSession
