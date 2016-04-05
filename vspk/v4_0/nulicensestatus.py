@@ -29,8 +29,8 @@
 from bambou import NURESTObject
 
 
-class NULicensestatus(NURESTObject):
-    """ Represents a Licensestatus in the VSD
+class NULicenseStatus(NURESTObject):
+    """ Represents a LicenseStatus in the VSD
 
         Notes:
             None
@@ -42,7 +42,7 @@ class NULicensestatus(NURESTObject):
     
 
     def __init__(self, **kwargs):
-        """ Initializes a Licensestatus instance
+        """ Initializes a LicenseStatus instance
 
             Notes:
                 You can specify all parameters while calling this methods.
@@ -50,11 +50,11 @@ class NULicensestatus(NURESTObject):
                 object from a Python dictionary
 
             Examples:
-                >>> licensestatus = NULicensestatus(id=u'xxxx-xxx-xxx-xxx', name=u'Licensestatus')
-                >>> licensestatus = NULicensestatus(data=my_dict)
+                >>> licensestatus = NULicenseStatus(id=u'xxxx-xxx-xxx-xxx', name=u'LicenseStatus')
+                >>> licensestatus = NULicenseStatus(data=my_dict)
         """
 
-        super(NULicensestatus, self).__init__()
+        super(NULicenseStatus, self).__init__()
 
         # Read/Write Attributes
         

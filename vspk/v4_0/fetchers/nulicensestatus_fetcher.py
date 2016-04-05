@@ -28,11 +28,11 @@
 from bambou import NURESTFetcher
 
 
-class NULicensestatusFetcher(NURESTFetcher):
-    """ Represents a NULicensestatus fetcher
+class NULicenseStatusFetcher(NURESTFetcher):
+    """ Represents a NULicenseStatus fetcher
 
         Notes:
-            This fetcher enables to fetch NULicensestatus objects.
+            This fetcher enables to fetch NULicenseStatus objects.
 
         See:
             bambou.NURESTFetcher
@@ -40,13 +40,13 @@ class NULicensestatusFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NULicensestatus class that is managed.
+        """ Return NULicenseStatus class that is managed.
 
             Returns:
-                .NULicensestatus: the managed class
+                .NULicenseStatus: the managed class
         """
 
-        from .. import NULicensestatus
-        return NULicensestatus
+        from .. import NULicenseStatus
+        return NULicenseStatus
 
     

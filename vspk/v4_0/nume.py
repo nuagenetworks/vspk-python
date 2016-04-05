@@ -120,6 +120,9 @@ from .fetchers import NUL2DomainsFetcher
 from .fetchers import NULicensesFetcher
 
 
+from .fetchers import NULicenseStatusFetcher
+
+
 from .fetchers import NUMetadatasFetcher
 
 
@@ -384,6 +387,9 @@ class NUMe(NURESTRootObject):
         
         
         self.licenses = NULicensesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.license_status = NULicenseStatusFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
