@@ -53,6 +53,9 @@ from .fetchers import NUPortsFetcher
 
 from .fetchers import NUWANServicesFetcher
 
+
+from .fetchers import NUVsgRedundantPortsFetcher
+
 from bambou import NURESTObject
 
 
@@ -130,6 +133,7 @@ class NURedundancyGroup(NURESTObject):
         self._gateway_peer1_id = None
         self._gateway_peer1_name = None
         self._gateway_peer2_autodiscovered_gateway_id = None
+        self._gateway_peer2_id = None
         self._gateway_peer2_name = None
         self._last_updated_by = None
         self._name = None
@@ -146,6 +150,7 @@ class NURedundancyGroup(NURESTObject):
         self.expose_attribute(local_name="gateway_peer1_id", remote_name="gatewayPeer1ID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_name", remote_name="gatewayPeer1Name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer2_autodiscovered_gateway_id", remote_name="gatewayPeer2AutodiscoveredGatewayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_peer2_id", remote_name="gatewayPeer2ID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer2_name", remote_name="gatewayPeer2Name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
@@ -183,6 +188,9 @@ class NURedundancyGroup(NURESTObject):
         
         
         self.wan_services = NUWANServicesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.vsg_redundant_ports = NUVsgRedundantPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -399,6 +407,33 @@ class NURedundancyGroup(NURESTObject):
                 
         """
         self._gateway_peer2_autodiscovered_gateway_id = value
+
+    
+    @property
+    def gateway_peer2_id(self):
+        """ Get gateway_peer2_id value.
+
+            Notes:
+                The gateway configuration owner in this Redundant Group. when Redundant Group is deleted this gateway will recieve vport associations 
+
+                
+                This attribute is named `gatewayPeer2ID` in VSD API.
+                
+        """
+        return self._gateway_peer2_id
+
+    @gateway_peer2_id.setter
+    def gateway_peer2_id(self, value):
+        """ Set gateway_peer2_id value.
+
+            Notes:
+                The gateway configuration owner in this Redundant Group. when Redundant Group is deleted this gateway will recieve vport associations 
+
+                
+                This attribute is named `gatewayPeer2ID` in VSD API.
+                
+        """
+        self._gateway_peer2_id = value
 
     
     @property
