@@ -65,28 +65,128 @@ class NUAggregateMetadata(NURESTObject):
 
         # Read/Write Attributes
         
-        self._blob = None
+        self._name = None
         self._description = None
+        self._metadata_tag_ids = None
+        self._network_notification_disabled = None
+        self._blob = None
+        self._global_metadata = None
         self._entity_scope = None
         self._external_id = None
-        self._global_metadata = None
-        self._metadata_tag_ids = None
-        self._name = None
-        self._network_notification_disabled = None
         
-        self.expose_attribute(local_name="blob", remote_name="blob", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="metadata_tag_ids", remote_name="metadataTagIDs", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="network_notification_disabled", remote_name="networkNotificationDisabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="blob", remote_name="blob", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="global_metadata", remote_name="global", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="global_metadata", remote_name="global", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="metadata_tag_ids", remote_name="metadataTagIDs", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="network_notification_disabled", remote_name="networkNotificationDisabled", attribute_type=bool, is_required=False, is_unique=False)
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the Metadata.
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the Metadata.
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                Description of the Metadata.
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                Description of the Metadata.
+
+                
+        """
+        self._description = value
+
+    
+    @property
+    def metadata_tag_ids(self):
+        """ Get metadata_tag_ids value.
+
+            Notes:
+                Metadata tag IDs associated with this metadata. You can filter metadata based on this attribute for example  X-Nuage-Filter: '2d6fb627-603b-421c-b63a-eb0a6d712761' IN metadataTagIDs 
+
+                
+                This attribute is named `metadataTagIDs` in VSD API.
+                
+        """
+        return self._metadata_tag_ids
+
+    @metadata_tag_ids.setter
+    def metadata_tag_ids(self, value):
+        """ Set metadata_tag_ids value.
+
+            Notes:
+                Metadata tag IDs associated with this metadata. You can filter metadata based on this attribute for example  X-Nuage-Filter: '2d6fb627-603b-421c-b63a-eb0a6d712761' IN metadataTagIDs 
+
+                
+                This attribute is named `metadataTagIDs` in VSD API.
+                
+        """
+        self._metadata_tag_ids = value
+
+    
+    @property
+    def network_notification_disabled(self):
+        """ Get network_notification_disabled value.
+
+            Notes:
+                Specifies metadata changes need to be notified to controller,by default it is notified
+
+                
+                This attribute is named `networkNotificationDisabled` in VSD API.
+                
+        """
+        return self._network_notification_disabled
+
+    @network_notification_disabled.setter
+    def network_notification_disabled(self, value):
+        """ Set network_notification_disabled value.
+
+            Notes:
+                Specifies metadata changes need to be notified to controller,by default it is notified
+
+                
+                This attribute is named `networkNotificationDisabled` in VSD API.
+                
+        """
+        self._network_notification_disabled = value
+
     
     @property
     def blob(self):
@@ -112,26 +212,30 @@ class NUAggregateMetadata(NURESTObject):
 
     
     @property
-    def description(self):
-        """ Get description value.
+    def global_metadata(self):
+        """ Get global_metadata value.
 
             Notes:
-                Description of the Metadata.
+                Specifies whether the metadata is global or local
 
                 
+                This attribute is named `global` in VSD API.
+                
         """
-        return self._description
+        return self._global_metadata
 
-    @description.setter
-    def description(self, value):
-        """ Set description value.
+    @global_metadata.setter
+    def global_metadata(self, value):
+        """ Set global_metadata value.
 
             Notes:
-                Description of the Metadata.
+                Specifies whether the metadata is global or local
 
                 
+                This attribute is named `global` in VSD API.
+                
         """
-        self._description = value
+        self._global_metadata = value
 
     
     @property
@@ -186,110 +290,6 @@ class NUAggregateMetadata(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def global_metadata(self):
-        """ Get global_metadata value.
-
-            Notes:
-                Specifies whether the metadata is global or local
-
-                
-                This attribute is named `global` in VSD API.
-                
-        """
-        return self._global_metadata
-
-    @global_metadata.setter
-    def global_metadata(self, value):
-        """ Set global_metadata value.
-
-            Notes:
-                Specifies whether the metadata is global or local
-
-                
-                This attribute is named `global` in VSD API.
-                
-        """
-        self._global_metadata = value
-
-    
-    @property
-    def metadata_tag_ids(self):
-        """ Get metadata_tag_ids value.
-
-            Notes:
-                Metadata tag IDs associated with this metadata. You can filter metadata based on this attribute for example  X-Nuage-Filter: '2d6fb627-603b-421c-b63a-eb0a6d712761' IN metadataTagIDs 
-
-                
-                This attribute is named `metadataTagIDs` in VSD API.
-                
-        """
-        return self._metadata_tag_ids
-
-    @metadata_tag_ids.setter
-    def metadata_tag_ids(self, value):
-        """ Set metadata_tag_ids value.
-
-            Notes:
-                Metadata tag IDs associated with this metadata. You can filter metadata based on this attribute for example  X-Nuage-Filter: '2d6fb627-603b-421c-b63a-eb0a6d712761' IN metadataTagIDs 
-
-                
-                This attribute is named `metadataTagIDs` in VSD API.
-                
-        """
-        self._metadata_tag_ids = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the Metadata.
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the Metadata.
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def network_notification_disabled(self):
-        """ Get network_notification_disabled value.
-
-            Notes:
-                Specifies metadata changes need to be notified to controller,by default it is notified
-
-                
-                This attribute is named `networkNotificationDisabled` in VSD API.
-                
-        """
-        return self._network_notification_disabled
-
-    @network_notification_disabled.setter
-    def network_notification_disabled(self, value):
-        """ Set network_notification_disabled value.
-
-            Notes:
-                Specifies metadata changes need to be notified to controller,by default it is notified
-
-                
-                This attribute is named `networkNotificationDisabled` in VSD API.
-                
-        """
-        self._network_notification_disabled = value
 
     
 

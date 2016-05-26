@@ -27,13 +27,13 @@
 
 
 
+from .fetchers import NUMetadatasFetcher
+
+
 from .fetchers import NUGlobalMetadatasFetcher
 
 
 from .fetchers import NUJobsFetcher
-
-
-from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUStatisticsFetcher
@@ -56,7 +56,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_APPD_FLOW_FORWARDING_POLICY = "APPD_FLOW_FORWARDING_POLICY"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_MIRROR_DESTINATION = "MIRROR_DESTINATION"
+    CONST_NETWORK_TYPE_NETWORK_MACRO_GROUP = "NETWORK_MACRO_GROUP"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_KEYSERVER_MEMBER = "KEYSERVER_MEMBER"
     
@@ -72,7 +72,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SYSTEM_CONFIG_RESP = "SYSTEM_CONFIG_RESP"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_ENTERPRISE_SECURED_DATA = "ENTERPRISE_SECURED_DATA"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INFRASTRUCTURE_PORT_PROFILE = "INFRASTRUCTURE_PORT_PROFILE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_APPLICATION = "APPLICATION"
     
@@ -90,19 +90,19 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_DC_CONFIG = "DC_CONFIG"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSPORT_STATIC_CONFIG = "NSPORT_STATIC_CONFIG"
+    CONST_LOCATION_TYPE_ANY = "ANY"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_ENTERPRISE_PROFILE = "ENTERPRISE_PROFILE"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_FLOATING_IP_ACL_TEMPLATE_ENTRY = "FLOATING_IP_ACL_TEMPLATE_ENTRY"
+    CONST_NETWORK_TYPE_ANY = "ANY"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_SECURITY_PROFILE_RESPONSE = "GATEWAY_SECURITY_PROFILE_RESPONSE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_VCENTER_CLUSTER = "VMWARE_VCENTER_CLUSTER"
     
-    CONST_LOCATION_TYPE_POLICYGROUP = "POLICYGROUP"
-    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_CERTIFICATE = "CERTIFICATE"
+    
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SERVICE_GATEWAY_RESPONSE = "SERVICE_GATEWAY_RESPONSE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NETWORK_POLICY_GROUP = "NETWORK_POLICY_GROUP"
     
@@ -134,11 +134,9 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_MC_CHANNEL_MAP = "MC_CHANNEL_MAP"
     
-    CONST_NETWORK_TYPE_NETWORK_MACRO_GROUP = "NETWORK_MACRO_GROUP"
-    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_APPD_TIER = "APPD_TIER"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_PORT_TEMPLATE = "PORT_TEMPLATE"
+    CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_FLOATINGIP_ACL = "FLOATINGIP_ACL"
     
@@ -156,15 +154,11 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INGRESS_ACL_TEMPLATE_ENTRY = "INGRESS_ACL_TEMPLATE_ENTRY"
     
-    CONST_LOCATION_TYPE_ZONE = "ZONE"
-    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_KEYSERVER_MONITOR = "KEYSERVER_MONITOR"
-    
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VPORT_TAG_BASE = "VPORT_TAG_BASE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSGATEWAY_TEMPLATE = "NSGATEWAY_TEMPLATE"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_CONFIG_RESP = "GATEWAY_CONFIG_RESP"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_SECURITY_PROFILE_REQUEST = "GATEWAY_SECURITY_PROFILE_REQUEST"
     
     CONST_POLICY_STATE_DRAFT = "DRAFT"
     
@@ -174,7 +168,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_BACK_HAUL_SERVICE_RESP = "BACK_HAUL_SERVICE_RESP"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_SECURITY_PROFILE_REQUEST = "GATEWAY_SECURITY_PROFILE_REQUEST"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_CONFIG_RESP = "GATEWAY_CONFIG_RESP"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SUBNET_POOL_ENTRY = "SUBNET_POOL_ENTRY"
     
@@ -202,15 +196,13 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VSP = "VSP"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NEXT_HOP_RESP = "NEXT_HOP_RESP"
+    CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_DOMAIN = "DOMAIN"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_TEMPLATE = "GATEWAY_TEMPLATE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INGRESS_ADV_FWD = "INGRESS_ADV_FWD"
-    
-    CONST_NETWORK_TYPE_INTERNET_POLICYGROUP = "INTERNET_POLICYGROUP"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_VCENTER_HYPERVISOR = "VMWARE_VCENTER_HYPERVISOR"
     
@@ -246,13 +238,13 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_L2DOMAIN_TEMPLATE = "L2DOMAIN_TEMPLATE"
     
-    CONST_LOCATION_TYPE_ANY = "ANY"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSPORT_STATIC_CONFIG = "NSPORT_STATIC_CONFIG"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_METADATA = "METADATA"
     
-    CONST_NETWORK_TYPE_ANY = "ANY"
+    CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_POLICY_GROUP_TEMPLATE = "POLICY_GROUP_TEMPLATE"
+    CONST_LOCATION_TYPE_POLICYGROUP = "POLICYGROUP"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_DOMAIN_CONFIG_RESP = "DOMAIN_CONFIG_RESP"
     
@@ -266,7 +258,11 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_BGPPEER = "BGPPEER"
     
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_POLICY_GROUP_TEMPLATE = "POLICY_GROUP_TEMPLATE"
+    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_RTRD_SEQUENCENO = "RTRD_SEQUENCENO"
+    
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_FLOATING_IP_ACL_TEMPLATE_ENTRY = "FLOATING_IP_ACL_TEMPLATE_ENTRY"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_IP_BINDING = "IP_BINDING"
     
@@ -276,7 +272,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_APPD_SERVICE = "APPD_SERVICE"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VIRTUAL_MACHINE_REPORT = "VIRTUAL_MACHINE_REPORT"
+    CONST_LOCATION_TYPE_VPORTTAG = "VPORTTAG"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_RATE_LIMITER = "RATE_LIMITER"
     
@@ -288,7 +284,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SITE_RES = "SITE_RES"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_KEYSERVER_NOTIFICATION = "KEYSERVER_NOTIFICATION"
+    CONST_LOCATION_TYPE_SUBNET = "SUBNET"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_DOMAIN_FLOATING_IP_ACL_TEMPLATE_ENTRY = "DOMAIN_FLOATING_IP_ACL_TEMPLATE_ENTRY"
     
@@ -308,6 +304,10 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_EXPORTIMPORT = "EXPORTIMPORT"
     
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VIRTUAL_MACHINE_REPORT = "VIRTUAL_MACHINE_REPORT"
+    
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_MIRROR_DESTINATION = "MIRROR_DESTINATION"
+    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INGRESS_ADV_FWD_TEMPLATE_ENTRY = "INGRESS_ADV_FWD_TEMPLATE_ENTRY"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_VCENTER_VRS_CONFIG = "VMWARE_VCENTER_VRS_CONFIG"
@@ -321,8 +321,6 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSPORT_TEMPLATE = "NSPORT_TEMPLATE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GEO_VM_REQ = "GEO_VM_REQ"
-    
-    CONST_LOCATION_TYPE_VPORTTAG = "VPORTTAG"
     
     CONST_ACTION_DROP = "DROP"
     
@@ -346,8 +344,6 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SUBNET_ENTRY = "SUBNET_ENTRY"
     
-    CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
-    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_DSCP_FORWARDING_CLASS_TABLE = "DSCP_FORWARDING_CLASS_TABLE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_KEYSERVER_MONITOR_SEK = "KEYSERVER_MONITOR_SEK"
@@ -364,15 +360,13 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_ZONE_TEMPLATE = "ZONE_TEMPLATE"
     
-    CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
-    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SYSTEM_CONFIG = "SYSTEM_CONFIG"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_STATIC_ROUTE_RESP = "STATIC_ROUTE_RESP"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_HEALTH_REQ = "HEALTH_REQ"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SITE_REQ = "SITE_REQ"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_KEYSERVER_NOTIFICATION = "KEYSERVER_NOTIFICATION"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_IKEV2_GATEWAY = "IKEV2_GATEWAY"
     
@@ -388,7 +382,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_MC_LIST = "MC_LIST"
     
-    CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_JOB = "JOB"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_RTRD_ENTITY = "RTRD_ENTITY"
     
@@ -412,7 +406,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GEO_VM_EVENT = "GEO_VM_EVENT"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INGRESS_EXT_SERVICE_ENTRY = "INGRESS_EXT_SERVICE_ENTRY"
+    CONST_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_PATNATPOOL = "PATNATPOOL"
     
@@ -423,8 +417,6 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_STATSSERVER = "STATSSERVER"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NODE_EXECUTION_ERROR = "NODE_EXECUTION_ERROR"
-    
-    CONST_NETWORK_TYPE_PUBLIC_NETWORK = "PUBLIC_NETWORK"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INFRASTRUCTURE_GATEWAY_PROFILE = "INFRASTRUCTURE_GATEWAY_PROFILE"
     
@@ -446,11 +438,13 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_BOOTSTRAP = "BOOTSTRAP"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SERVICE_GATEWAY_RESPONSE = "SERVICE_GATEWAY_RESPONSE"
+    CONST_NETWORK_TYPE_INTERNET_POLICYGROUP = "INTERNET_POLICYGROUP"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSREDUNDANT_GW_GRP = "NSREDUNDANT_GW_GRP"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VPORTTAG = "VPORTTAG"
+    
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SITE = "SITE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SHAPING_POLICY = "SHAPING_POLICY"
     
@@ -466,19 +460,17 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_L2DOMAIN = "L2DOMAIN"
     
-    CONST_LOCATION_TYPE_SUBNET = "SUBNET"
+    CONST_LOCATION_TYPE_ZONE = "ZONE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_APPD_FLOW_SECURITY_POLICY = "APPD_FLOW_SECURITY_POLICY"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_JOB = "JOB"
+    CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_SERVICE_CONFIG_RESP = "GATEWAY_SERVICE_CONFIG_RESP"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_CHILD_ENTITY_POLICY_CHANGE = "CHILD_ENTITY_POLICY_CHANGE"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SITE = "SITE"
-    
-    CONST_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
+    CONST_NETWORK_TYPE_PUBLIC_NETWORK = "PUBLIC_NETWORK"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_IKEV2_ENCRYPTION_PROFILE = "IKEV2_ENCRYPTION_PROFILE"
     
@@ -492,13 +484,13 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_PERMITTED_ACTION = "PERMITTED_ACTION"
     
-    CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
-    
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_CONFIG = "GATEWAY_CONFIG"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_ENTERPRISE_SECURED_DATA = "ENTERPRISE_SECURED_DATA"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_STATS_POLICY = "STATS_POLICY"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SERVICES_GATEWAY_RESPONSE = "SERVICES_GATEWAY_RESPONSE"
+    
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_QOS_PRIMITIVE = "QOS_PRIMITIVE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INGRESS_ACL_ENTRY = "INGRESS_ACL_ENTRY"
     
@@ -506,15 +498,19 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_STATS_TCA = "STATS_TCA"
     
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_PORT_TEMPLATE = "PORT_TEMPLATE"
+    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_APPD_FLOW = "APPD_FLOW"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INFRASTRUCTURE_PORT_PROFILE = "INFRASTRUCTURE_PORT_PROFILE"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VPORT_TAG_BASE = "VPORT_TAG_BASE"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_WAN_SERVICE = "WAN_SERVICE"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_CONFIG = "GATEWAY_CONFIG"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_ALARM = "ALARM"
     
     CONST_NETWORK_TYPE_ZONE = "ZONE"
+    
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_WAN_SERVICE = "WAN_SERVICE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSGATEWAY_CONFIG = "NSGATEWAY_CONFIG"
     
@@ -546,6 +542,8 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_KEYSERVER_MONITOR_ENCRYPTED_SEED = "KEYSERVER_MONITOR_ENCRYPTED_SEED"
     
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SITE_REQ = "SITE_REQ"
+    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_STATISTICS = "STATISTICS"
     
     CONST_POLICY_STATE_LIVE = "LIVE"
@@ -566,7 +564,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_UNSUPPORTED = "UNSUPPORTED"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_QOS_PRIMITIVE = "QOS_PRIMITIVE"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INGRESS_EXT_SERVICE_ENTRY = "INGRESS_EXT_SERVICE_ENTRY"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_POLICY_DECISION = "POLICY_DECISION"
     
@@ -575,6 +573,8 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_STATIC_ROUTE = "STATIC_ROUTE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VPORT_MIRROR = "VPORT_MIRROR"
+    
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NEXT_HOP_RESP = "NEXT_HOP_RESP"
     
     
 
@@ -595,64 +595,69 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
 
         # Read/Write Attributes
         
-        self._dscp = None
         self._fc_override = None
+        self._dscp = None
+        self._name = None
+        self._last_updated_by = None
         self._action = None
         self._address_override = None
+        self._redirect_vport_tag_id = None
+        self._description = None
+        self._destination_port = None
+        self._network_id = None
+        self._network_type = None
+        self._flow_logging_enabled = None
+        self._entity_scope = None
+        self._location_id = None
+        self._location_type = None
+        self._policy_state = None
+        self._source_port = None
+        self._uplink_preference = None
+        self._priority = None
+        self._protocol = None
         self._associated_application_id = None
         self._associated_application_object_id = None
         self._associated_application_object_type = None
         self._associated_live_entity_id = None
-        self._description = None
-        self._destination_port = None
-        self._entity_scope = None
-        self._ether_type = None
-        self._external_id = None
-        self._flow_logging_enabled = None
-        self._last_updated_by = None
-        self._location_id = None
-        self._location_type = None
-        self._network_id = None
-        self._network_type = None
-        self._policy_state = None
-        self._priority = None
-        self._protocol = None
-        self._redirect_vport_tag_id = None
-        self._source_port = None
         self._stats_id = None
         self._stats_logging_enabled = None
-        self._uplink_preference = None
+        self._ether_type = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="fc_override", remote_name="FCOverride", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
+        self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'DROP', u'FORWARD', u'REDIRECT'])
         self.expose_attribute(local_name="address_override", remote_name="addressOverride", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="redirect_vport_tag_id", remote_name="redirectVPortTagID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'INTERNET_POLICYGROUP', u'NETWORK_MACRO_GROUP', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'ZONE'])
+        self.expose_attribute(local_name="flow_logging_enabled", remote_name="flowLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'POLICYGROUP', u'REDIRECTIONTARGET', u'SUBNET', u'VPORTTAG', u'ZONE'])
+        self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
+        self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
+        self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="associated_application_id", remote_name="associatedApplicationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_application_object_id", remote_name="associatedApplicationObjectID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_application_object_type", remote_name="associatedApplicationObjectType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACLENTRY_LOCATION', u'ADDRESS_RANGE', u'ADDRESS_RANGE_STATE', u'ALARM', u'APPD_APPLICATION', u'APPD_EXTERNAL_APP_SERVICE', u'APPD_FLOW', u'APPD_FLOW_FORWARDING_POLICY', u'APPD_FLOW_SECURITY_POLICY', u'APPD_SERVICE', u'APPD_TIER', u'APPLICATION', u'AUTO_DISC_GATEWAY', u'BACK_HAUL_SERVICE_RESP', u'BGPPEER', u'BOOTSTRAP', u'BOOTSTRAP_ACTIVATION', u'BRIDGEINTERFACE', u'CERTIFICATE', u'CHILD_ENTITY_POLICY_CHANGE', u'CLOUD_MGMT_SYSTEM', u'CUSTOMER_VRF_SEQUENCENO', u'DC_CONFIG', u'DHCP_ALLOC_MESSAGE', u'DHCP_CONFIG_RESP', u'DHCP_OPTION', u'DISKSTATS', u'DOMAIN', u'DOMAIN_CONFIG', u'DOMAIN_CONFIG_RESP', u'DOMAIN_FLOATING_IP_ACL_TEMPLATE', u'DOMAIN_FLOATING_IP_ACL_TEMPLATE_ENTRY', u'DOMAIN_TEMPLATE', u'DSCP_FORWARDING_CLASS_MAPPING', u'DSCP_FORWARDING_CLASS_TABLE', u'EGRESS_ACL', u'EGRESS_ACL_ENTRY', u'EGRESS_ACL_TEMPLATE', u'EGRESS_ACL_TEMPLATE_ENTRY', u'EGRESS_QOS_MR', u'EGRESS_QOS_PRIMITIVE', u'EGRESS_QOS_QUEUE_MR', u'ENDPOINT', u'ENTERPRISE', u'ENTERPRISE_CONFIG', u'ENTERPRISE_CONFIG_RESP', u'ENTERPRISE_NETWORK', u'ENTERPRISE_PERMISSION', u'ENTERPRISE_PROFILE', u'ENTERPRISE_SECURED_DATA', u'ENTERPRISE_SECURITY', u'ENTITY_METADATA_BINDING', u'ESI_SEQUENCENO', u'EVENT_LOG', u'EVPN_BGP_COMMUNITY_TAG_ENTRY', u'EVPN_BGP_COMMUNITY_TAG_SEQ_NO', u'EXPORTIMPORT', u'EXTERNAL_SERVICE', u'FLOATING_IP_ACL_TEMPLATE', u'FLOATING_IP_ACL_TEMPLATE_ENTRY', u'FLOATINGIP', u'FLOATINGIP_ACL', u'FLOATINGIP_ACL_ENTRY', u'GATEWAY', u'GATEWAY_CONFIG', u'GATEWAY_CONFIG_RESP', u'GATEWAY_SECURED_DATA', u'GATEWAY_SECURITY', u'GATEWAY_SECURITY_PROFILE_REQUEST', u'GATEWAY_SECURITY_PROFILE_RESPONSE', u'GATEWAY_SECURITY_REQUEST', u'GATEWAY_SECURITY_RESPONSE', u'GATEWAY_SERVICE_CONFIG', u'GATEWAY_SERVICE_CONFIG_RESP', u'GATEWAY_TEMPLATE', u'GATEWAY_VPORT_CONFIG', u'GATEWAY_VPORT_CONFIG_RESP', u'GEO_VM_EVENT', u'GEO_VM_REQ', u'GEO_VM_RES', u'GROUP', u'GROUPKEY_ENCRYPTION_PROFILE', u'HEALTH_REQ', u'HOSTINTERFACE', u'HSC', u'IKEV2_ENCRYPTION_PROFILE', u'IKEV2_GATEWAY', u'INFRASTRUCTURE_CONFIG', u'INFRASTRUCTURE_GATEWAY_PROFILE', u'INFRASTRUCTURE_PORT_PROFILE', u'INFRASTRUCTURE_VSC_PROFILE', u'INGRESS_ACL', u'INGRESS_ACL_ENTRY', u'INGRESS_ACL_TEMPLATE', u'INGRESS_ACL_TEMPLATE_ENTRY', u'INGRESS_ADV_FWD', u'INGRESS_ADV_FWD_ENTRY', u'INGRESS_ADV_FWD_TEMPLATE', u'INGRESS_ADV_FWD_TEMPLATE_ENTRY', u'INGRESS_EXT_SERVICE', u'INGRESS_EXT_SERVICE_ENTRY', u'INGRESS_EXT_SERVICE_TEMPLATE', u'INGRESS_EXT_SERVICE_TEMPLATE_ENTRY', u'IP_BINDING', u'JOB', u'KEYSERVER_MEMBER', u'KEYSERVER_MONITOR', u'KEYSERVER_MONITOR_ENCRYPTED_SEED', u'KEYSERVER_MONITOR_SEED', u'KEYSERVER_MONITOR_SEK', u'KEYSERVER_NOTIFICATION', u'L2DOMAIN', u'L2DOMAIN_SHARED', u'L2DOMAIN_TEMPLATE', u'LDAP_CONFIG', u'LIBVIRT_INTERFACE', u'LICENSE', u'LOCATION', u'MC_CHANNEL_MAP', u'MC_LIST', u'MC_RANGE', u'METADATA', u'METADATA_TAG', u'MIRROR_DESTINATION', u'MONITORING_PORT', u'MULTI_NIC_VPORT', u'NATMAPENTRY', u'NETWORK_ELEMENT', u'NETWORK_LAYOUT', u'NETWORK_MACRO_GROUP', u'NETWORK_POLICY_GROUP', u'NEXT_HOP_RESP', u'NODE_EXECUTION_ERROR', u'NS_REDUNDANT_PORT', u'NSG_NOTIFICATION', u'NSGATEWAY', u'NSGATEWAY_CONFIG', u'NSGATEWAY_TEMPLATE', u'NSPORT', u'NSPORT_STATIC_CONFIG', u'NSPORT_TEMPLATE', u'NSREDUNDANT_GW_GRP', u'PATCONFIG_CONFIG_RESP', u'PATNATPOOL', u'PERMISSION', u'PERMITTED_ACTION', u'POLICING_POLICY', u'POLICY_DECISION', u'POLICY_GROUP', u'POLICY_GROUP_TEMPLATE', u'PORT', u'PORT_MR', u'PORT_TEMPLATE', u'PUBLIC_NETWORK', u'QOS_PRIMITIVE', u'RATE_LIMITER', u'RD_SEQUENCENO', u'REDUNDANT_GW_GRP', u'RESYNC', u'RTRD_ENTITY', u'RTRD_SEQUENCENO', u'SERVICE_GATEWAY_RESPONSE', u'SERVICE_VRF_SEQUENCENO', u'SERVICES_GATEWAY_RESPONSE', u'SHAPING_POLICY', u'SHARED_RESOURCE', u'SITE', u'SITE_REQ', u'SITE_RES', u'STATIC_ROUTE', u'STATIC_ROUTE_RESP', u'STATISTICS', u'STATS_COLLECTOR', u'STATS_POLICY', u'STATS_TCA', u'STATSSERVER', u'SUBNET', u'SUBNET_ENTRY', u'SUBNET_MAC_ENTRY', u'SUBNET_POOL_ENTRY', u'SUBNET_TEMPLATE', u'SYSTEM_CONFIG', u'SYSTEM_CONFIG_REQ', u'SYSTEM_CONFIG_RESP', u'SYSTEM_MONITORING', u'UNSUPPORTED', u'UPLINK_RD', u'USER', u'VIRTUAL_IP', u'VIRTUAL_MACHINE', u'VIRTUAL_MACHINE_REPORT', u'VLAN', u'VLAN_TEMPLATE', u'VM_DESCRIPTION', u'VM_INTERFACE', u'VMWARE_RELOAD_CONFIG', u'VMWARE_VCENTER', u'VMWARE_VCENTER_CLUSTER', u'VMWARE_VCENTER_DATACENTER', u'VMWARE_VCENTER_EAM_CONFIG', u'VMWARE_VCENTER_HYPERVISOR', u'VMWARE_VCENTER_VRS_BASE_CONFIG', u'VMWARE_VCENTER_VRS_CONFIG', u'VMWARE_VRS_ADDRESS_RANGE', u'VNID_SEQUENCENO', u'VPN_CONNECT', u'VPORT', u'VPORT_GATEWAY_RESPONSE', u'VPORT_MEDIATION_REQUEST', u'VPORT_MIRROR', u'VPORT_TAG_BASE', u'VPORTTAG', u'VPORTTAGTEMPLATE', u'VPRN_LABEL_SEQUENCENO', u'VRS', u'VSC', u'VSD', u'VSD_COMPONENT', u'VSG_REDUNDANT_PORT', u'VSP', u'WAN_SERVICE', u'ZONE', u'ZONE_TEMPLATE'])
         self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="ether_type", remote_name="etherType", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="flow_logging_enabled", remote_name="flowLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'POLICYGROUP', u'REDIRECTIONTARGET', u'SUBNET', u'VPORTTAG', u'ZONE'])
-        self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'INTERNET_POLICYGROUP', u'NETWORK_MACRO_GROUP', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'ZONE'])
-        self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
-        self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="redirect_vport_tag_id", remote_name="redirectVPortTagID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="stats_id", remote_name="statsID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_logging_enabled", remote_name="statsLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
+        self.expose_attribute(local_name="ether_type", remote_name="etherType", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -661,15 +666,39 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def fc_override(self):
+        """ Get fc_override value.
+
+            Notes:
+                Value of the Service Class to be overridden in the packet when the match conditions are satisfied Possible values are NONE, A, B, C, D, E, F, G, H, .
+
+                
+                This attribute is named `FCOverride` in VSD API.
+                
+        """
+        return self._fc_override
+
+    @fc_override.setter
+    def fc_override(self, value):
+        """ Set fc_override value.
+
+            Notes:
+                Value of the Service Class to be overridden in the packet when the match conditions are satisfied Possible values are NONE, A, B, C, D, E, F, G, H, .
+
+                
+                This attribute is named `FCOverride` in VSD API.
+                
+        """
+        self._fc_override = value
+
     
     @property
     def dscp(self):
@@ -699,30 +728,53 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
 
     
     @property
-    def fc_override(self):
-        """ Get fc_override value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                Value of the Service Class to be overridden in the packet when the match conditions are satisfied Possible values are NONE, A, B, C, D, E, F, G, H, .
+                Name of the entity.
 
-                
-                This attribute is named `FCOverride` in VSD API.
                 
         """
-        return self._fc_override
+        return self._name
 
-    @fc_override.setter
-    def fc_override(self, value):
-        """ Set fc_override value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                Value of the Service Class to be overridden in the packet when the match conditions are satisfied Possible values are NONE, A, B, C, D, E, F, G, H, .
+                Name of the entity.
 
                 
-                This attribute is named `FCOverride` in VSD API.
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        self._fc_override = value
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
 
     
     @property
@@ -773,6 +825,372 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
                 
         """
         self._address_override = value
+
+    
+    @property
+    def redirect_vport_tag_id(self):
+        """ Get redirect_vport_tag_id value.
+
+            Notes:
+                VPort tag to which traffic will be redirected to, when ACL entry match criteria succeeds
+
+                
+                This attribute is named `redirectVPortTagID` in VSD API.
+                
+        """
+        return self._redirect_vport_tag_id
+
+    @redirect_vport_tag_id.setter
+    def redirect_vport_tag_id(self, value):
+        """ Set redirect_vport_tag_id value.
+
+            Notes:
+                VPort tag to which traffic will be redirected to, when ACL entry match criteria succeeds
+
+                
+                This attribute is named `redirectVPortTagID` in VSD API.
+                
+        """
+        self._redirect_vport_tag_id = value
+
+    
+    @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                Description of the ACL entry
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                Description of the ACL entry
+
+                
+        """
+        self._description = value
+
+    
+    @property
+    def destination_port(self):
+        """ Get destination_port value.
+
+            Notes:
+                The destination port to be matched if protocol is UDP or TCP. Value should be either * or single port number or a port range
+
+                
+                This attribute is named `destinationPort` in VSD API.
+                
+        """
+        return self._destination_port
+
+    @destination_port.setter
+    def destination_port(self, value):
+        """ Set destination_port value.
+
+            Notes:
+                The destination port to be matched if protocol is UDP or TCP. Value should be either * or single port number or a port range
+
+                
+                This attribute is named `destinationPort` in VSD API.
+                
+        """
+        self._destination_port = value
+
+    
+    @property
+    def network_id(self):
+        """ Get network_id value.
+
+            Notes:
+                The destination network entity that is referenced(subnet/zone/macro)
+
+                
+                This attribute is named `networkID` in VSD API.
+                
+        """
+        return self._network_id
+
+    @network_id.setter
+    def network_id(self, value):
+        """ Set network_id value.
+
+            Notes:
+                The destination network entity that is referenced(subnet/zone/macro)
+
+                
+                This attribute is named `networkID` in VSD API.
+                
+        """
+        self._network_id = value
+
+    
+    @property
+    def network_type(self):
+        """ Get network_type value.
+
+            Notes:
+                Type of the source network.
+
+                
+                This attribute is named `networkType` in VSD API.
+                
+        """
+        return self._network_type
+
+    @network_type.setter
+    def network_type(self, value):
+        """ Set network_type value.
+
+            Notes:
+                Type of the source network.
+
+                
+                This attribute is named `networkType` in VSD API.
+                
+        """
+        self._network_type = value
+
+    
+    @property
+    def flow_logging_enabled(self):
+        """ Get flow_logging_enabled value.
+
+            Notes:
+                Is flow logging enabled for this particular template
+
+                
+                This attribute is named `flowLoggingEnabled` in VSD API.
+                
+        """
+        return self._flow_logging_enabled
+
+    @flow_logging_enabled.setter
+    def flow_logging_enabled(self, value):
+        """ Set flow_logging_enabled value.
+
+            Notes:
+                Is flow logging enabled for this particular template
+
+                
+                This attribute is named `flowLoggingEnabled` in VSD API.
+                
+        """
+        self._flow_logging_enabled = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def location_id(self):
+        """ Get location_id value.
+
+            Notes:
+                The ID of the location entity (Subnet/Zone/VportTag)
+
+                
+                This attribute is named `locationID` in VSD API.
+                
+        """
+        return self._location_id
+
+    @location_id.setter
+    def location_id(self, value):
+        """ Set location_id value.
+
+            Notes:
+                The ID of the location entity (Subnet/Zone/VportTag)
+
+                
+                This attribute is named `locationID` in VSD API.
+                
+        """
+        self._location_id = value
+
+    
+    @property
+    def location_type(self):
+        """ Get location_type value.
+
+            Notes:
+                Type of the location entity.
+
+                
+                This attribute is named `locationType` in VSD API.
+                
+        """
+        return self._location_type
+
+    @location_type.setter
+    def location_type(self, value):
+        """ Set location_type value.
+
+            Notes:
+                Type of the location entity.
+
+                
+                This attribute is named `locationType` in VSD API.
+                
+        """
+        self._location_type = value
+
+    
+    @property
+    def policy_state(self):
+        """ Get policy_state value.
+
+            Notes:
+                State of the policy.  Possible values are DRAFT, LIVE, .
+
+                
+                This attribute is named `policyState` in VSD API.
+                
+        """
+        return self._policy_state
+
+    @policy_state.setter
+    def policy_state(self, value):
+        """ Set policy_state value.
+
+            Notes:
+                State of the policy.  Possible values are DRAFT, LIVE, .
+
+                
+                This attribute is named `policyState` in VSD API.
+                
+        """
+        self._policy_state = value
+
+    
+    @property
+    def source_port(self):
+        """ Get source_port value.
+
+            Notes:
+                Source port to be matched if protocol is UDP or TCP. Value can be either * or single port number or a port range
+
+                
+                This attribute is named `sourcePort` in VSD API.
+                
+        """
+        return self._source_port
+
+    @source_port.setter
+    def source_port(self, value):
+        """ Set source_port value.
+
+            Notes:
+                Source port to be matched if protocol is UDP or TCP. Value can be either * or single port number or a port range
+
+                
+                This attribute is named `sourcePort` in VSD API.
+                
+        """
+        self._source_port = value
+
+    
+    @property
+    def uplink_preference(self):
+        """ Get uplink_preference value.
+
+            Notes:
+                Indicates the preferencial path selection for network traffic for this ACL - Default is Primary 1 and Secondary 2 when the attribute is applicable.
+
+                
+                This attribute is named `uplinkPreference` in VSD API.
+                
+        """
+        return self._uplink_preference
+
+    @uplink_preference.setter
+    def uplink_preference(self, value):
+        """ Set uplink_preference value.
+
+            Notes:
+                Indicates the preferencial path selection for network traffic for this ACL - Default is Primary 1 and Secondary 2 when the attribute is applicable.
+
+                
+                This attribute is named `uplinkPreference` in VSD API.
+                
+        """
+        self._uplink_preference = value
+
+    
+    @property
+    def priority(self):
+        """ Get priority value.
+
+            Notes:
+                The priority of the ACL entry that determines the order of entries
+
+                
+        """
+        return self._priority
+
+    @priority.setter
+    def priority(self, value):
+        """ Set priority value.
+
+            Notes:
+                The priority of the ACL entry that determines the order of entries
+
+                
+        """
+        self._priority = value
+
+    
+    @property
+    def protocol(self):
+        """ Get protocol value.
+
+            Notes:
+                Protocol number that must be matched
+
+                
+        """
+        return self._protocol
+
+    @protocol.setter
+    def protocol(self, value):
+        """ Set protocol value.
+
+            Notes:
+                Protocol number that must be matched
+
+                
+        """
+        self._protocol = value
 
     
     @property
@@ -884,426 +1302,6 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
 
     
     @property
-    def description(self):
-        """ Get description value.
-
-            Notes:
-                Description of the ACL entry
-
-                
-        """
-        return self._description
-
-    @description.setter
-    def description(self, value):
-        """ Set description value.
-
-            Notes:
-                Description of the ACL entry
-
-                
-        """
-        self._description = value
-
-    
-    @property
-    def destination_port(self):
-        """ Get destination_port value.
-
-            Notes:
-                The destination port to be matched if protocol is UDP or TCP. Value should be either * or single port number or a port range
-
-                
-                This attribute is named `destinationPort` in VSD API.
-                
-        """
-        return self._destination_port
-
-    @destination_port.setter
-    def destination_port(self, value):
-        """ Set destination_port value.
-
-            Notes:
-                The destination port to be matched if protocol is UDP or TCP. Value should be either * or single port number or a port range
-
-                
-                This attribute is named `destinationPort` in VSD API.
-                
-        """
-        self._destination_port = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def ether_type(self):
-        """ Get ether_type value.
-
-            Notes:
-                Ether type of the packet to be matched. etherType can be * or a valid hexadecimal value
-
-                
-                This attribute is named `etherType` in VSD API.
-                
-        """
-        return self._ether_type
-
-    @ether_type.setter
-    def ether_type(self, value):
-        """ Set ether_type value.
-
-            Notes:
-                Ether type of the packet to be matched. etherType can be * or a valid hexadecimal value
-
-                
-                This attribute is named `etherType` in VSD API.
-                
-        """
-        self._ether_type = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def flow_logging_enabled(self):
-        """ Get flow_logging_enabled value.
-
-            Notes:
-                Is flow logging enabled for this particular template
-
-                
-                This attribute is named `flowLoggingEnabled` in VSD API.
-                
-        """
-        return self._flow_logging_enabled
-
-    @flow_logging_enabled.setter
-    def flow_logging_enabled(self, value):
-        """ Set flow_logging_enabled value.
-
-            Notes:
-                Is flow logging enabled for this particular template
-
-                
-                This attribute is named `flowLoggingEnabled` in VSD API.
-                
-        """
-        self._flow_logging_enabled = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def location_id(self):
-        """ Get location_id value.
-
-            Notes:
-                The ID of the location entity (Subnet/Zone/VportTag)
-
-                
-                This attribute is named `locationID` in VSD API.
-                
-        """
-        return self._location_id
-
-    @location_id.setter
-    def location_id(self, value):
-        """ Set location_id value.
-
-            Notes:
-                The ID of the location entity (Subnet/Zone/VportTag)
-
-                
-                This attribute is named `locationID` in VSD API.
-                
-        """
-        self._location_id = value
-
-    
-    @property
-    def location_type(self):
-        """ Get location_type value.
-
-            Notes:
-                Type of the location entity.
-
-                
-                This attribute is named `locationType` in VSD API.
-                
-        """
-        return self._location_type
-
-    @location_type.setter
-    def location_type(self, value):
-        """ Set location_type value.
-
-            Notes:
-                Type of the location entity.
-
-                
-                This attribute is named `locationType` in VSD API.
-                
-        """
-        self._location_type = value
-
-    
-    @property
-    def network_id(self):
-        """ Get network_id value.
-
-            Notes:
-                The destination network entity that is referenced(subnet/zone/macro)
-
-                
-                This attribute is named `networkID` in VSD API.
-                
-        """
-        return self._network_id
-
-    @network_id.setter
-    def network_id(self, value):
-        """ Set network_id value.
-
-            Notes:
-                The destination network entity that is referenced(subnet/zone/macro)
-
-                
-                This attribute is named `networkID` in VSD API.
-                
-        """
-        self._network_id = value
-
-    
-    @property
-    def network_type(self):
-        """ Get network_type value.
-
-            Notes:
-                Type of the source network.
-
-                
-                This attribute is named `networkType` in VSD API.
-                
-        """
-        return self._network_type
-
-    @network_type.setter
-    def network_type(self, value):
-        """ Set network_type value.
-
-            Notes:
-                Type of the source network.
-
-                
-                This attribute is named `networkType` in VSD API.
-                
-        """
-        self._network_type = value
-
-    
-    @property
-    def policy_state(self):
-        """ Get policy_state value.
-
-            Notes:
-                State of the policy.  Possible values are DRAFT, LIVE, .
-
-                
-                This attribute is named `policyState` in VSD API.
-                
-        """
-        return self._policy_state
-
-    @policy_state.setter
-    def policy_state(self, value):
-        """ Set policy_state value.
-
-            Notes:
-                State of the policy.  Possible values are DRAFT, LIVE, .
-
-                
-                This attribute is named `policyState` in VSD API.
-                
-        """
-        self._policy_state = value
-
-    
-    @property
-    def priority(self):
-        """ Get priority value.
-
-            Notes:
-                The priority of the ACL entry that determines the order of entries
-
-                
-        """
-        return self._priority
-
-    @priority.setter
-    def priority(self, value):
-        """ Set priority value.
-
-            Notes:
-                The priority of the ACL entry that determines the order of entries
-
-                
-        """
-        self._priority = value
-
-    
-    @property
-    def protocol(self):
-        """ Get protocol value.
-
-            Notes:
-                Protocol number that must be matched
-
-                
-        """
-        return self._protocol
-
-    @protocol.setter
-    def protocol(self, value):
-        """ Set protocol value.
-
-            Notes:
-                Protocol number that must be matched
-
-                
-        """
-        self._protocol = value
-
-    
-    @property
-    def redirect_vport_tag_id(self):
-        """ Get redirect_vport_tag_id value.
-
-            Notes:
-                VPort tag to which traffic will be redirected to, when ACL entry match criteria succeeds
-
-                
-                This attribute is named `redirectVPortTagID` in VSD API.
-                
-        """
-        return self._redirect_vport_tag_id
-
-    @redirect_vport_tag_id.setter
-    def redirect_vport_tag_id(self, value):
-        """ Set redirect_vport_tag_id value.
-
-            Notes:
-                VPort tag to which traffic will be redirected to, when ACL entry match criteria succeeds
-
-                
-                This attribute is named `redirectVPortTagID` in VSD API.
-                
-        """
-        self._redirect_vport_tag_id = value
-
-    
-    @property
-    def source_port(self):
-        """ Get source_port value.
-
-            Notes:
-                Source port to be matched if protocol is UDP or TCP. Value can be either * or single port number or a port range
-
-                
-                This attribute is named `sourcePort` in VSD API.
-                
-        """
-        return self._source_port
-
-    @source_port.setter
-    def source_port(self, value):
-        """ Set source_port value.
-
-            Notes:
-                Source port to be matched if protocol is UDP or TCP. Value can be either * or single port number or a port range
-
-                
-                This attribute is named `sourcePort` in VSD API.
-                
-        """
-        self._source_port = value
-
-    
-    @property
     def stats_id(self):
         """ Get stats_id value.
 
@@ -1358,30 +1356,57 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
 
     
     @property
-    def uplink_preference(self):
-        """ Get uplink_preference value.
+    def ether_type(self):
+        """ Get ether_type value.
 
             Notes:
-                Indicates the preferencial path selection for network traffic for this ACL - Default is Primary 1 and Secondary 2 when the attribute is applicable.
+                Ether type of the packet to be matched. etherType can be * or a valid hexadecimal value
 
                 
-                This attribute is named `uplinkPreference` in VSD API.
+                This attribute is named `etherType` in VSD API.
                 
         """
-        return self._uplink_preference
+        return self._ether_type
 
-    @uplink_preference.setter
-    def uplink_preference(self, value):
-        """ Set uplink_preference value.
+    @ether_type.setter
+    def ether_type(self, value):
+        """ Set ether_type value.
 
             Notes:
-                Indicates the preferencial path selection for network traffic for this ACL - Default is Primary 1 and Secondary 2 when the attribute is applicable.
+                Ether type of the packet to be matched. etherType can be * or a valid hexadecimal value
 
                 
-                This attribute is named `uplinkPreference` in VSD API.
+                This attribute is named `etherType` in VSD API.
                 
         """
-        self._uplink_preference = value
+        self._ether_type = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

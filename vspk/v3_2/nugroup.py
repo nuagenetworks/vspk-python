@@ -27,16 +27,16 @@
 
 
 
-from .fetchers import NUEventLogsFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUMetadatasFetcher
-
-
 from .fetchers import NUUsersFetcher
+
+
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -103,47 +103,124 @@ class NUGroup(NURESTObject):
 
         # Read/Write Attributes
         
+        self._name = None
+        self._management_mode = None
+        self._last_updated_by = None
         self._account_restrictions = None
         self._description = None
-        self._entity_scope = None
-        self._external_id = None
-        self._last_updated_by = None
-        self._management_mode = None
-        self._name = None
-        self._private = None
         self._restriction_date = None
+        self._entity_scope = None
         self._role = None
+        self._private = None
+        self._external_id = None
         
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="management_mode", remote_name="managementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'CMS', u'DEFAULT'])
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="account_restrictions", remote_name="accountRestrictions", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="management_mode", remote_name="managementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'CMS', u'DEFAULT'])
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="private", remote_name="private", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="restriction_date", remote_name="restrictionDate", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=[u'CMS', u'CSPOPERATOR', u'CSPROOT', u'JMS', u'ORGADMIN', u'ORGAPPDESIGNER', u'ORGNETWORKDESIGNER', u'ORGUSER', u'SYSTEM', u'UNKNOWN', u'USER'])
+        self.expose_attribute(local_name="private", remote_name="private", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.users = NUUsersFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        
+        
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                A unique name of the group
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                A unique name of the group
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def management_mode(self):
+        """ Get management_mode value.
+
+            Notes:
+                Management mode of the user object - allows for override of external authorization and syncup
+
+                
+                This attribute is named `managementMode` in VSD API.
+                
+        """
+        return self._management_mode
+
+    @management_mode.setter
+    def management_mode(self, value):
+        """ Set management_mode value.
+
+            Notes:
+                Management mode of the user object - allows for override of external authorization and syncup
+
+                
+                This attribute is named `managementMode` in VSD API.
+                
+        """
+        self._management_mode = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
     
     @property
     def account_restrictions(self):
@@ -196,160 +273,6 @@ class NUGroup(NURESTObject):
 
     
     @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def management_mode(self):
-        """ Get management_mode value.
-
-            Notes:
-                Management mode of the user object - allows for override of external authorization and syncup
-
-                
-                This attribute is named `managementMode` in VSD API.
-                
-        """
-        return self._management_mode
-
-    @management_mode.setter
-    def management_mode(self, value):
-        """ Set management_mode value.
-
-            Notes:
-                Management mode of the user object - allows for override of external authorization and syncup
-
-                
-                This attribute is named `managementMode` in VSD API.
-                
-        """
-        self._management_mode = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                A unique name of the group
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                A unique name of the group
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def private(self):
-        """ Get private value.
-
-            Notes:
-                A private group is visible only by the owner of the group. Public groups are visible by all users in the enterprise
-
-                
-        """
-        return self._private
-
-    @private.setter
-    def private(self, value):
-        """ Set private value.
-
-            Notes:
-                A private group is visible only by the owner of the group. Public groups are visible by all users in the enterprise
-
-                
-        """
-        self._private = value
-
-    
-    @property
     def restriction_date(self):
         """ Get restriction_date value.
 
@@ -377,6 +300,33 @@ class NUGroup(NURESTObject):
 
     
     @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
     def role(self):
         """ Get role value.
 
@@ -397,6 +347,56 @@ class NUGroup(NURESTObject):
                 
         """
         self._role = value
+
+    
+    @property
+    def private(self):
+        """ Get private value.
+
+            Notes:
+                A private group is visible only by the owner of the group. Public groups are visible by all users in the enterprise
+
+                
+        """
+        return self._private
+
+    @private.setter
+    def private(self, value):
+        """ Set private value.
+
+            Notes:
+                A private group is visible only by the owner of the group. Public groups are visible by all users in the enterprise
+
+                
+        """
+        self._private = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

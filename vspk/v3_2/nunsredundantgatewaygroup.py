@@ -27,22 +27,22 @@
 
 
 
+from .fetchers import NUMetadatasFetcher
+
+
 from .fetchers import NUAlarmsFetcher
 
 
-from .fetchers import NUEventLogsFetcher
-
-
 from .fetchers import NUGlobalMetadatasFetcher
-
-
-from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUNSGatewaysFetcher
 
 
 from .fetchers import NURedundantPortsFetcher
+
+
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -62,35 +62,35 @@ class NUNSRedundantGatewayGroup(NURESTObject):
     
     CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
     
-    CONST_PERMITTED_ACTION_READ = "READ"
+    CONST_PERSONALITY_VSA = "VSA"
     
-    CONST_PERMITTED_ACTION_USE = "USE"
+    CONST_PERMITTED_ACTION_ALL = "ALL"
     
     CONST_PERSONALITY_VSG = "VSG"
     
-    CONST_PERSONALITY_VSA = "VSA"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_PERMITTED_ACTION_READ = "READ"
     
     CONST_PERSONALITY_OTHER = "OTHER"
     
     CONST_PERSONALITY_NSG = "NSG"
     
-    CONST_PERMITTED_ACTION_ALL = "ALL"
+    CONST_REDUNDANT_GATEWAY_STATUS_SUCCESS = "SUCCESS"
     
     CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
     
     CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
     
-    CONST_REDUNDANT_GATEWAY_STATUS_SUCCESS = "SUCCESS"
+    CONST_PERMITTED_ACTION_USE = "USE"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_PERSONALITY_VRSG = "VRSG"
     
     CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
     
     CONST_PERSONALITY_DC7X50 = "DC7X50"
     
-    CONST_PERSONALITY_VRSG = "VRSG"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_REDUNDANT_GATEWAY_STATUS_FAILED = "FAILED"
     
@@ -113,11 +113,8 @@ class NUNSRedundantGatewayGroup(NURESTObject):
 
         # Read/Write Attributes
         
-        self._consecutive_failures_count = None
-        self._description = None
-        self._enterprise_id = None
-        self._entity_scope = None
-        self._external_id = None
+        self._name = None
+        self._last_updated_by = None
         self._gateway_peer1_autodiscovered_gateway_id = None
         self._gateway_peer1_id = None
         self._gateway_peer1_name = None
@@ -125,18 +122,18 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         self._gateway_peer2_name = None
         self._heartbeat_interval = None
         self._heartbeat_vlanid = None
-        self._last_updated_by = None
-        self._name = None
-        self._permitted_action = None
-        self._personality = None
         self._redundancy_port_ids = None
         self._redundant_gateway_status = None
+        self._permitted_action = None
+        self._personality = None
+        self._description = None
+        self._enterprise_id = None
+        self._entity_scope = None
+        self._consecutive_failures_count = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="consecutive_failures_count", remote_name="consecutiveFailuresCount", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_autodiscovered_gateway_id", remote_name="gatewayPeer1AutodiscoveredGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_id", remote_name="gatewayPeer1ID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_name", remote_name="gatewayPeer1Name", attribute_type=str, is_required=False, is_unique=False)
@@ -144,27 +141,27 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         self.expose_attribute(local_name="gateway_peer2_name", remote_name="gatewayPeer2Name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="heartbeat_interval", remote_name="heartbeatInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="heartbeat_vlanid", remote_name="heartbeatVLANID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'OTHER', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="redundancy_port_ids", remote_name="redundancyPortIDs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redundant_gateway_status", remote_name="redundantGatewayStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAILED', u'SUCCESS'])
+        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'OTHER', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="consecutive_failures_count", remote_name="consecutiveFailuresCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ns_gateways = NUNSGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -172,140 +169,62 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         
         self.redundant_ports = NURedundantPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
+        
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
 
         self._compute_args(**kwargs)
 
     # Properties
     
     @property
-    def consecutive_failures_count(self):
-        """ Get consecutive_failures_count value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                Consecutive failure count.
+                Name of the Redundancy Group 
 
-                
-                This attribute is named `consecutiveFailuresCount` in VSD API.
                 
         """
-        return self._consecutive_failures_count
+        return self._name
 
-    @consecutive_failures_count.setter
-    def consecutive_failures_count(self, value):
-        """ Set consecutive_failures_count value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                Consecutive failure count.
+                Name of the Redundancy Group 
 
                 
-                This attribute is named `consecutiveFailuresCount` in VSD API.
-                
         """
-        self._consecutive_failures_count = value
+        self._name = value
 
     
     @property
-    def description(self):
-        """ Get description value.
+    def last_updated_by(self):
+        """ Get last_updated_by value.
 
             Notes:
-                 Description of the Redundancy Group
+                ID of the user who last updated the object.
 
                 
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
         """
-        return self._description
+        return self._last_updated_by
 
-    @description.setter
-    def description(self, value):
-        """ Set description value.
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
 
             Notes:
-                 Description of the Redundancy Group
+                ID of the user who last updated the object.
 
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        self._description = value
-
-    
-    @property
-    def enterprise_id(self):
-        """ Get enterprise_id value.
-
-            Notes:
-                The enterprise associated with this Redundant Group. This is a read only attribute
-
-                
-                This attribute is named `enterpriseID` in VSD API.
-                
-        """
-        return self._enterprise_id
-
-    @enterprise_id.setter
-    def enterprise_id(self, value):
-        """ Set enterprise_id value.
-
-            Notes:
-                The enterprise associated with this Redundant Group. This is a read only attribute
-
-                
-                This attribute is named `enterpriseID` in VSD API.
-                
-        """
-        self._enterprise_id = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
+        self._last_updated_by = value
 
     
     @property
@@ -498,53 +417,57 @@ class NUNSRedundantGatewayGroup(NURESTObject):
 
     
     @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
+    def redundancy_port_ids(self):
+        """ Get redundancy_port_ids value.
 
             Notes:
-                ID of the user who last updated the object.
+                Collections resilient port ids associated with this redundant group.
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `redundancyPortIDs` in VSD API.
                 
         """
-        return self._last_updated_by
+        return self._redundancy_port_ids
 
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
+    @redundancy_port_ids.setter
+    def redundancy_port_ids(self, value):
+        """ Set redundancy_port_ids value.
 
             Notes:
-                ID of the user who last updated the object.
+                Collections resilient port ids associated with this redundant group.
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `redundancyPortIDs` in VSD API.
                 
         """
-        self._last_updated_by = value
+        self._redundancy_port_ids = value
 
     
     @property
-    def name(self):
-        """ Get name value.
+    def redundant_gateway_status(self):
+        """ Get redundant_gateway_status value.
 
             Notes:
-                Name of the Redundancy Group 
+                The status of  Redundant Group.
 
                 
+                This attribute is named `redundantGatewayStatus` in VSD API.
+                
         """
-        return self._name
+        return self._redundant_gateway_status
 
-    @name.setter
-    def name(self, value):
-        """ Set name value.
+    @redundant_gateway_status.setter
+    def redundant_gateway_status(self, value):
+        """ Set redundant_gateway_status value.
 
             Notes:
-                Name of the Redundancy Group 
+                The status of  Redundant Group.
 
                 
+                This attribute is named `redundantGatewayStatus` in VSD API.
+                
         """
-        self._name = value
+        self._redundant_gateway_status = value
 
     
     @property
@@ -598,57 +521,134 @@ class NUNSRedundantGatewayGroup(NURESTObject):
 
     
     @property
-    def redundancy_port_ids(self):
-        """ Get redundancy_port_ids value.
+    def description(self):
+        """ Get description value.
 
             Notes:
-                Collections resilient port ids associated with this redundant group.
+                 Description of the Redundancy Group
 
-                
-                This attribute is named `redundancyPortIDs` in VSD API.
                 
         """
-        return self._redundancy_port_ids
+        return self._description
 
-    @redundancy_port_ids.setter
-    def redundancy_port_ids(self, value):
-        """ Set redundancy_port_ids value.
+    @description.setter
+    def description(self, value):
+        """ Set description value.
 
             Notes:
-                Collections resilient port ids associated with this redundant group.
+                 Description of the Redundancy Group
 
                 
-                This attribute is named `redundancyPortIDs` in VSD API.
-                
         """
-        self._redundancy_port_ids = value
+        self._description = value
 
     
     @property
-    def redundant_gateway_status(self):
-        """ Get redundant_gateway_status value.
+    def enterprise_id(self):
+        """ Get enterprise_id value.
 
             Notes:
-                The status of  Redundant Group.
+                The enterprise associated with this Redundant Group. This is a read only attribute
 
                 
-                This attribute is named `redundantGatewayStatus` in VSD API.
+                This attribute is named `enterpriseID` in VSD API.
                 
         """
-        return self._redundant_gateway_status
+        return self._enterprise_id
 
-    @redundant_gateway_status.setter
-    def redundant_gateway_status(self, value):
-        """ Set redundant_gateway_status value.
+    @enterprise_id.setter
+    def enterprise_id(self, value):
+        """ Set enterprise_id value.
 
             Notes:
-                The status of  Redundant Group.
+                The enterprise associated with this Redundant Group. This is a read only attribute
 
                 
-                This attribute is named `redundantGatewayStatus` in VSD API.
+                This attribute is named `enterpriseID` in VSD API.
                 
         """
-        self._redundant_gateway_status = value
+        self._enterprise_id = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def consecutive_failures_count(self):
+        """ Get consecutive_failures_count value.
+
+            Notes:
+                Consecutive failure count.
+
+                
+                This attribute is named `consecutiveFailuresCount` in VSD API.
+                
+        """
+        return self._consecutive_failures_count
+
+    @consecutive_failures_count.setter
+    def consecutive_failures_count(self, value):
+        """ Set consecutive_failures_count value.
+
+            Notes:
+                Consecutive failure count.
+
+                
+                This attribute is named `consecutiveFailuresCount` in VSD API.
+                
+        """
+        self._consecutive_failures_count = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

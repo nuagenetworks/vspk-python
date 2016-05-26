@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -71,39 +71,116 @@ class NUInfrastructureVscProfile(NURESTObject):
 
         # Read/Write Attributes
         
+        self._name = None
+        self._last_updated_by = None
+        self._second_controller = None
         self._description = None
+        self._first_controller = None
         self._enterprise_id = None
         self._entity_scope = None
-        self._external_id = None
-        self._first_controller = None
-        self._last_updated_by = None
-        self._name = None
         self._probe_interval = None
-        self._second_controller = None
+        self._external_id = None
         
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="second_controller", remote_name="secondController", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="first_controller", remote_name="firstController", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="first_controller", remote_name="firstController", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="probe_interval", remote_name="probeInterval", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="second_controller", remote_name="secondController", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the Infrastructure Profile
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the Infrastructure Profile
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def second_controller(self):
+        """ Get second_controller value.
+
+            Notes:
+                Second VSC Controller :  IP Address of the secondary VSC system NSG instances associated to this profile will be reaching for.
+
+                
+                This attribute is named `secondController` in VSD API.
+                
+        """
+        return self._second_controller
+
+    @second_controller.setter
+    def second_controller(self, value):
+        """ Set second_controller value.
+
+            Notes:
+                Second VSC Controller :  IP Address of the secondary VSC system NSG instances associated to this profile will be reaching for.
+
+                
+                This attribute is named `secondController` in VSD API.
+                
+        """
+        self._second_controller = value
+
     
     @property
     def description(self):
@@ -126,6 +203,33 @@ class NUInfrastructureVscProfile(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def first_controller(self):
+        """ Get first_controller value.
+
+            Notes:
+                First VSC Controller :  IP Address of the first VSC system NSG instances associated to this profile will be reaching for.
+
+                
+                This attribute is named `firstController` in VSD API.
+                
+        """
+        return self._first_controller
+
+    @first_controller.setter
+    def first_controller(self, value):
+        """ Set first_controller value.
+
+            Notes:
+                First VSC Controller :  IP Address of the first VSC system NSG instances associated to this profile will be reaching for.
+
+                
+                This attribute is named `firstController` in VSD API.
+                
+        """
+        self._first_controller = value
 
     
     @property
@@ -183,110 +287,6 @@ class NUInfrastructureVscProfile(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def first_controller(self):
-        """ Get first_controller value.
-
-            Notes:
-                First VSC Controller :  IP Address of the first VSC system NSG instances associated to this profile will be reaching for.
-
-                
-                This attribute is named `firstController` in VSD API.
-                
-        """
-        return self._first_controller
-
-    @first_controller.setter
-    def first_controller(self, value):
-        """ Set first_controller value.
-
-            Notes:
-                First VSC Controller :  IP Address of the first VSC system NSG instances associated to this profile will be reaching for.
-
-                
-                This attribute is named `firstController` in VSD API.
-                
-        """
-        self._first_controller = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the Infrastructure Profile
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the Infrastructure Profile
-
-                
-        """
-        self._name = value
-
-    
-    @property
     def probe_interval(self):
         """ Get probe_interval value.
 
@@ -314,30 +314,30 @@ class NUInfrastructureVscProfile(NURESTObject):
 
     
     @property
-    def second_controller(self):
-        """ Get second_controller value.
+    def external_id(self):
+        """ Get external_id value.
 
             Notes:
-                Second VSC Controller :  IP Address of the secondary VSC system NSG instances associated to this profile will be reaching for.
+                External object ID. Used for integration with third party systems
 
                 
-                This attribute is named `secondController` in VSD API.
+                This attribute is named `externalID` in VSD API.
                 
         """
-        return self._second_controller
+        return self._external_id
 
-    @second_controller.setter
-    def second_controller(self, value):
-        """ Set second_controller value.
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
 
             Notes:
-                Second VSC Controller :  IP Address of the secondary VSC system NSG instances associated to this profile will be reaching for.
+                External object ID. Used for integration with third party systems
 
                 
-                This attribute is named `secondController` in VSD API.
+                This attribute is named `externalID` in VSD API.
                 
         """
-        self._second_controller = value
+        self._external_id = value
 
     
 

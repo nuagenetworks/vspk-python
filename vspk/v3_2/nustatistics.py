@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -64,31 +64,54 @@ class NUStatistics(NURESTObject):
 
         # Read/Write Attributes
         
+        self._version = None
         self._end_time = None
-        self._number_of_data_points = None
         self._start_time = None
         self._stats_data = None
-        self._version = None
+        self._number_of_data_points = None
         
+        self.expose_attribute(local_name="version", remote_name="version", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="end_time", remote_name="endTime", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="number_of_data_points", remote_name="numberOfDataPoints", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="start_time", remote_name="startTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_data", remote_name="statsData", attribute_type=dict, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="version", remote_name="version", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="number_of_data_points", remote_name="numberOfDataPoints", attribute_type=int, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def version(self):
+        """ Get version value.
+
+            Notes:
+                Version of this Sequence number.
+
+                
+        """
+        return self._version
+
+    @version.setter
+    def version(self, value):
+        """ Set version value.
+
+            Notes:
+                Version of this Sequence number.
+
+                
+        """
+        self._version = value
+
     
     @property
     def end_time(self):
@@ -115,33 +138,6 @@ class NUStatistics(NURESTObject):
                 
         """
         self._end_time = value
-
-    
-    @property
-    def number_of_data_points(self):
-        """ Get number_of_data_points value.
-
-            Notes:
-                Number of data points between start time and end time
-
-                
-                This attribute is named `numberOfDataPoints` in VSD API.
-                
-        """
-        return self._number_of_data_points
-
-    @number_of_data_points.setter
-    def number_of_data_points(self, value):
-        """ Set number_of_data_points value.
-
-            Notes:
-                Number of data points between start time and end time
-
-                
-                This attribute is named `numberOfDataPoints` in VSD API.
-                
-        """
-        self._number_of_data_points = value
 
     
     @property
@@ -199,26 +195,30 @@ class NUStatistics(NURESTObject):
 
     
     @property
-    def version(self):
-        """ Get version value.
+    def number_of_data_points(self):
+        """ Get number_of_data_points value.
 
             Notes:
-                Version of this Sequence number.
+                Number of data points between start time and end time
 
                 
+                This attribute is named `numberOfDataPoints` in VSD API.
+                
         """
-        return self._version
+        return self._number_of_data_points
 
-    @version.setter
-    def version(self, value):
-        """ Set version value.
+    @number_of_data_points.setter
+    def number_of_data_points(self, value):
+        """ Set number_of_data_points value.
 
             Notes:
-                Version of this Sequence number.
+                Number of data points between start time and end time
 
                 
+                This attribute is named `numberOfDataPoints` in VSD API.
+                
         """
-        self._version = value
+        self._number_of_data_points = value
 
     
 

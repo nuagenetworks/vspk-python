@@ -27,13 +27,13 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUKeyServerMonitorEncryptedSeedsFetcher
 
 
-from .fetchers import NUMetadatasFetcher
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -55,7 +55,7 @@ class NUKeyServerMonitorSeed(NURESTObject):
     
     CONST_SEED_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA512 = "HMAC_SHA512"
     
-    CONST_SEED_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA256 = "HMAC_SHA256"
+    CONST_SEED_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA1 = "HMAC_SHA1"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
@@ -63,15 +63,15 @@ class NUKeyServerMonitorSeed(NURESTObject):
     
     CONST_SEED_TRAFFIC_ENCRYPTION_ALGORITHM_AES_256_CBC = "AES_256_CBC"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_SEED_TRAFFIC_ENCRYPTION_ALGORITHM_AES_128_CBC = "AES_128_CBC"
     
     CONST_SEED_TRAFFIC_ENCRYPTION_ALGORITHM_AES_192_CBC = "AES_192_CBC"
     
     CONST_SEED_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_MD5 = "HMAC_MD5"
     
-    CONST_SEED_TRAFFIC_ENCRYPTION_ALGORITHM_AES_128_CBC = "AES_128_CBC"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_SEED_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA1 = "HMAC_SHA1"
+    CONST_SEED_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA256 = "HMAC_SHA256"
     
     
 
@@ -92,123 +92,42 @@ class NUKeyServerMonitorSeed(NURESTObject):
 
         # Read/Write Attributes
         
-        self._creation_time = None
-        self._entity_scope = None
-        self._external_id = None
         self._last_updated_by = None
-        self._lifetime = None
         self._seed_traffic_authentication_algorithm = None
         self._seed_traffic_encryption_algorithm = None
         self._seed_traffic_encryption_key_lifetime = None
+        self._lifetime = None
+        self._entity_scope = None
+        self._creation_time = None
         self._start_time = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="creation_time", remote_name="creationTime", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="lifetime", remote_name="lifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_traffic_authentication_algorithm", remote_name="seedTrafficAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_MD5', u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA384', u'HMAC_SHA512'])
         self.expose_attribute(local_name="seed_traffic_encryption_algorithm", remote_name="seedTrafficEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES_128_CBC', u'AES_192_CBC', u'AES_256_CBC', u'TRIPLE_DES_CBC'])
         self.expose_attribute(local_name="seed_traffic_encryption_key_lifetime", remote_name="seedTrafficEncryptionKeyLifetime", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="lifetime", remote_name="lifetime", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="creation_time", remote_name="creationTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="start_time", remote_name="startTime", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.key_server_monitor_encrypted_seeds = NUKeyServerMonitorEncryptedSeedsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
-    
-    @property
-    def creation_time(self):
-        """ Get creation_time value.
-
-            Notes:
-                The time this entry was created (milliseconds since epoch)
-
-                
-                This attribute is named `creationTime` in VSD API.
-                
-        """
-        return self._creation_time
-
-    @creation_time.setter
-    def creation_time(self, value):
-        """ Set creation_time value.
-
-            Notes:
-                The time this entry was created (milliseconds since epoch)
-
-                
-                This attribute is named `creationTime` in VSD API.
-                
-        """
-        self._creation_time = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
     
     @property
     def last_updated_by(self):
@@ -235,29 +154,6 @@ class NUKeyServerMonitorSeed(NURESTObject):
                 
         """
         self._last_updated_by = value
-
-    
-    @property
-    def lifetime(self):
-        """ Get lifetime value.
-
-            Notes:
-                The lifetime of this entry (seconds)
-
-                
-        """
-        return self._lifetime
-
-    @lifetime.setter
-    def lifetime(self, value):
-        """ Set lifetime value.
-
-            Notes:
-                The lifetime of this entry (seconds)
-
-                
-        """
-        self._lifetime = value
 
     
     @property
@@ -342,6 +238,83 @@ class NUKeyServerMonitorSeed(NURESTObject):
 
     
     @property
+    def lifetime(self):
+        """ Get lifetime value.
+
+            Notes:
+                The lifetime of this entry (seconds)
+
+                
+        """
+        return self._lifetime
+
+    @lifetime.setter
+    def lifetime(self, value):
+        """ Set lifetime value.
+
+            Notes:
+                The lifetime of this entry (seconds)
+
+                
+        """
+        self._lifetime = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def creation_time(self):
+        """ Get creation_time value.
+
+            Notes:
+                The time this entry was created (milliseconds since epoch)
+
+                
+                This attribute is named `creationTime` in VSD API.
+                
+        """
+        return self._creation_time
+
+    @creation_time.setter
+    def creation_time(self, value):
+        """ Set creation_time value.
+
+            Notes:
+                The time this entry was created (milliseconds since epoch)
+
+                
+                This attribute is named `creationTime` in VSD API.
+                
+        """
+        self._creation_time = value
+
+    
+    @property
     def start_time(self):
         """ Get start_time value.
 
@@ -366,6 +339,33 @@ class NUKeyServerMonitorSeed(NURESTObject):
                 
         """
         self._start_time = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

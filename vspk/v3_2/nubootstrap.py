@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -81,26 +81,26 @@ class NUBootstrap(NURESTObject):
 
         # Read/Write Attributes
         
-        self._entity_scope = None
-        self._external_id = None
-        self._installer_id = None
         self._last_updated_by = None
+        self._installer_id = None
+        self._entity_scope = None
         self._status = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="installer_id", remote_name="installerID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="installer_id", remote_name="installerID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -108,57 +108,30 @@ class NUBootstrap(NURESTObject):
     # Properties
     
     @property
-    def entity_scope(self):
-        """ Get entity_scope value.
+    def last_updated_by(self):
+        """ Get last_updated_by value.
 
             Notes:
-                Specify if scope of entity is Data center or Enterprise level
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `entityScope` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        return self._entity_scope
+        return self._last_updated_by
 
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
 
             Notes:
-                Specify if scope of entity is Data center or Enterprise level
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
+        self._last_updated_by = value
 
     
     @property
@@ -189,30 +162,30 @@ class NUBootstrap(NURESTObject):
 
     
     @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
+    def entity_scope(self):
+        """ Get entity_scope value.
 
             Notes:
-                ID of the user who last updated the object.
+                Specify if scope of entity is Data center or Enterprise level
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `entityScope` in VSD API.
                 
         """
-        return self._last_updated_by
+        return self._entity_scope
 
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
 
             Notes:
-                ID of the user who last updated the object.
+                Specify if scope of entity is Data center or Enterprise level
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `entityScope` in VSD API.
                 
         """
-        self._last_updated_by = value
+        self._entity_scope = value
 
     
     @property
@@ -236,6 +209,33 @@ class NUBootstrap(NURESTObject):
                 
         """
         self._status = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

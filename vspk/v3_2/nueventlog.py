@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -79,10 +79,10 @@ class NUEventLog(NURESTObject):
         self._entity_parent_type = None
         self._entity_scope = None
         self._entity_type = None
+        self._user = None
         self._event_received_time = None
         self._external_id = None
         self._type = None
-        self._user = None
         
         self.expose_attribute(local_name="diff", remote_name="diff", attribute_type=dict, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise", remote_name="enterprise", attribute_type=str, is_required=False, is_unique=False)
@@ -92,19 +92,19 @@ class NUEventLog(NURESTObject):
         self.expose_attribute(local_name="entity_parent_type", remote_name="entityParentType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="entity_type", remote_name="entityType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="user", remote_name="user", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="event_received_time", remote_name="eventReceivedTime", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="user", remote_name="user", attribute_type=str, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -316,6 +316,29 @@ class NUEventLog(NURESTObject):
 
     
     @property
+    def user(self):
+        """ Get user value.
+
+            Notes:
+                The authenticated user who triggered this event.
+
+                
+        """
+        return self._user
+
+    @user.setter
+    def user(self, value):
+        """ Set user value.
+
+            Notes:
+                The authenticated user who triggered this event.
+
+                
+        """
+        self._user = value
+
+    
+    @property
     def event_received_time(self):
         """ Get event_received_time value.
 
@@ -390,29 +413,6 @@ class NUEventLog(NURESTObject):
                 
         """
         self._type = value
-
-    
-    @property
-    def user(self):
-        """ Get user value.
-
-            Notes:
-                The authenticated user who triggered this event.
-
-                
-        """
-        return self._user
-
-    @user.setter
-    def user(self, value):
-        """ Set user value.
-
-            Notes:
-                The authenticated user who triggered this event.
-
-                
-        """
-        self._user = value
 
     
 

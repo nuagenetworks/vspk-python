@@ -27,7 +27,7 @@
 
 
 
-from .fetchers import NUEventLogsFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
@@ -36,7 +36,7 @@ from .fetchers import NUGlobalMetadatasFetcher
 from .fetchers import NUJobsFetcher
 
 
-from .fetchers import NUMetadatasFetcher
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -82,28 +82,28 @@ class NUPolicyGroupTemplate(NURESTObject):
         # Read/Write Attributes
         
         self._evpn_community_tag = None
+        self._name = None
+        self._last_updated_by = None
         self._description = None
         self._entity_scope = None
         self._external = None
         self._external_id = None
-        self._last_updated_by = None
-        self._name = None
         self._type = None
         
         self.expose_attribute(local_name="evpn_community_tag", remote_name="EVPNCommunityTag", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external", remote_name="external", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'HARDWARE', u'SOFTWARE'])
         
 
         # Fetchers
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -112,7 +112,7 @@ class NUPolicyGroupTemplate(NURESTObject):
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -144,6 +144,56 @@ class NUPolicyGroupTemplate(NURESTObject):
                 
         """
         self._evpn_community_tag = value
+
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the policy group
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the policy group
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
 
     
     @property
@@ -244,56 +294,6 @@ class NUPolicyGroupTemplate(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the policy group
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the policy group
-
-                
-        """
-        self._name = value
 
     
     @property

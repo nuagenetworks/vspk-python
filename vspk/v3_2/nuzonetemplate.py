@@ -27,19 +27,19 @@
 
 
 
-from .fetchers import NUEventLogsFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
-
-
-from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUQOSsFetcher
 
 
 from .fetchers import NUSubnetTemplatesFetcher
+
+
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -97,50 +97,50 @@ class NUZoneTemplate(NURESTObject):
         # Read/Write Attributes
         
         self._ip_type = None
+        self._name = None
+        self._last_updated_by = None
         self._address = None
-        self._associated_multicast_channel_map_id = None
         self._description = None
+        self._netmask = None
         self._encryption = None
         self._entity_scope = None
-        self._external_id = None
-        self._last_updated_by = None
-        self._multicast = None
-        self._name = None
-        self._netmask = None
-        self._number_of_hosts_in_subnets = None
+        self._associated_multicast_channel_map_id = None
         self._public_zone = None
+        self._multicast = None
+        self._number_of_hosts_in_subnets = None
+        self._external_id = None
         
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="number_of_hosts_in_subnets", remote_name="numberOfHostsInSubnets", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="public_zone", remote_name="publicZone", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="number_of_hosts_in_subnets", remote_name="numberOfHostsInSubnets", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.qoss = NUQOSsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.subnet_templates = NUSubnetTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -175,6 +175,56 @@ class NUZoneTemplate(NURESTObject):
 
     
     @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the current entity(Zone or zone template or subnet etc..) Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the current entity(Zone or zone template or subnet etc..) Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
     def address(self):
         """ Get address value.
 
@@ -198,33 +248,6 @@ class NUZoneTemplate(NURESTObject):
 
     
     @property
-    def associated_multicast_channel_map_id(self):
-        """ Get associated_multicast_channel_map_id value.
-
-            Notes:
-                The ID of the Multi Cast Channel Map  this zone/zone template is associated with. This has to be set when  enableMultiCast is set to ENABLED
-
-                
-                This attribute is named `associatedMulticastChannelMapID` in VSD API.
-                
-        """
-        return self._associated_multicast_channel_map_id
-
-    @associated_multicast_channel_map_id.setter
-    def associated_multicast_channel_map_id(self, value):
-        """ Set associated_multicast_channel_map_id value.
-
-            Notes:
-                The ID of the Multi Cast Channel Map  this zone/zone template is associated with. This has to be set when  enableMultiCast is set to ENABLED
-
-                
-                This attribute is named `associatedMulticastChannelMapID` in VSD API.
-                
-        """
-        self._associated_multicast_channel_map_id = value
-
-    
-    @property
     def description(self):
         """ Get description value.
 
@@ -245,6 +268,29 @@ class NUZoneTemplate(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def netmask(self):
+        """ Get netmask value.
+
+            Notes:
+                Netmask of the subnet defined
+
+                
+        """
+        return self._netmask
+
+    @netmask.setter
+    def netmask(self, value):
+        """ Set netmask value.
+
+            Notes:
+                Netmask of the subnet defined
+
+                
+        """
+        self._netmask = value
 
     
     @property
@@ -298,57 +344,57 @@ class NUZoneTemplate(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
+    def associated_multicast_channel_map_id(self):
+        """ Get associated_multicast_channel_map_id value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                The ID of the Multi Cast Channel Map  this zone/zone template is associated with. This has to be set when  enableMultiCast is set to ENABLED
 
                 
-                This attribute is named `externalID` in VSD API.
+                This attribute is named `associatedMulticastChannelMapID` in VSD API.
                 
         """
-        return self._external_id
+        return self._associated_multicast_channel_map_id
 
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
+    @associated_multicast_channel_map_id.setter
+    def associated_multicast_channel_map_id(self, value):
+        """ Set associated_multicast_channel_map_id value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                The ID of the Multi Cast Channel Map  this zone/zone template is associated with. This has to be set when  enableMultiCast is set to ENABLED
 
                 
-                This attribute is named `externalID` in VSD API.
+                This attribute is named `associatedMulticastChannelMapID` in VSD API.
                 
         """
-        self._external_id = value
+        self._associated_multicast_channel_map_id = value
 
     
     @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
+    def public_zone(self):
+        """ Get public_zone value.
 
             Notes:
-                ID of the user who last updated the object.
+                Identifies if the zone is a public zone, in which case any subnets associated with this zone are actually connected to the public subnet of the data center
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `publicZone` in VSD API.
                 
         """
-        return self._last_updated_by
+        return self._public_zone
 
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
+    @public_zone.setter
+    def public_zone(self, value):
+        """ Set public_zone value.
 
             Notes:
-                ID of the user who last updated the object.
+                Identifies if the zone is a public zone, in which case any subnets associated with this zone are actually connected to the public subnet of the data center
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `publicZone` in VSD API.
                 
         """
-        self._last_updated_by = value
+        self._public_zone = value
 
     
     @property
@@ -372,52 +418,6 @@ class NUZoneTemplate(NURESTObject):
                 
         """
         self._multicast = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the current entity(Zone or zone template or subnet etc..) Valid characters are alphabets, numbers, space and hyphen( - ).
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the current entity(Zone or zone template or subnet etc..) Valid characters are alphabets, numbers, space and hyphen( - ).
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def netmask(self):
-        """ Get netmask value.
-
-            Notes:
-                Netmask of the subnet defined
-
-                
-        """
-        return self._netmask
-
-    @netmask.setter
-    def netmask(self, value):
-        """ Set netmask value.
-
-            Notes:
-                Netmask of the subnet defined
-
-                
-        """
-        self._netmask = value
 
     
     @property
@@ -448,30 +448,30 @@ class NUZoneTemplate(NURESTObject):
 
     
     @property
-    def public_zone(self):
-        """ Get public_zone value.
+    def external_id(self):
+        """ Get external_id value.
 
             Notes:
-                Identifies if the zone is a public zone, in which case any subnets associated with this zone are actually connected to the public subnet of the data center
+                External object ID. Used for integration with third party systems
 
                 
-                This attribute is named `publicZone` in VSD API.
+                This attribute is named `externalID` in VSD API.
                 
         """
-        return self._public_zone
+        return self._external_id
 
-    @public_zone.setter
-    def public_zone(self, value):
-        """ Set public_zone value.
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
 
             Notes:
-                Identifies if the zone is a public zone, in which case any subnets associated with this zone are actually connected to the public subnet of the data center
+                External object ID. Used for integration with third party systems
 
                 
-                This attribute is named `publicZone` in VSD API.
+                This attribute is named `externalID` in VSD API.
                 
         """
-        self._public_zone = value
+        self._external_id = value
 
     
 

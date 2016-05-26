@@ -27,19 +27,16 @@
 
 
 
+from .fetchers import NUPATNATPoolsFetcher
+
+
+from .fetchers import NUPermissionsFetcher
+
+
+from .fetchers import NUMetadatasFetcher
+
+
 from .fetchers import NUAlarmsFetcher
-
-
-from .fetchers import NUBootstrapsFetcher
-
-
-from .fetchers import NUBootstrapActivationsFetcher
-
-
-from .fetchers import NUEnterprisePermissionsFetcher
-
-
-from .fetchers import NUEventLogsFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
@@ -48,22 +45,25 @@ from .fetchers import NUGlobalMetadatasFetcher
 from .fetchers import NUInfrastructureConfigsFetcher
 
 
+from .fetchers import NUEnterprisePermissionsFetcher
+
+
 from .fetchers import NUJobsFetcher
 
 
 from .fetchers import NULocationsFetcher
 
 
-from .fetchers import NUMetadatasFetcher
+from .fetchers import NUBootstrapsFetcher
+
+
+from .fetchers import NUBootstrapActivationsFetcher
 
 
 from .fetchers import NUNSPortsFetcher
 
 
-from .fetchers import NUPATNATPoolsFetcher
-
-
-from .fetchers import NUPermissionsFetcher
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -87,6 +87,8 @@ class NUNSGateway(NURESTObject):
     
     CONST_BOOTSTRAP_STATUS_ACTIVE = "ACTIVE"
     
+    CONST_CONFIGURATION_RELOAD_STATE_PENDING = "PENDING"
+    
     CONST_PERSONALITY_OTHER = "OTHER"
     
     CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_ACK = "NOTIFICATION_APP_REQ_ACK"
@@ -107,15 +109,13 @@ class NUNSGateway(NURESTObject):
     
     CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_SENT = "NOTIFICATION_APP_REQ_SENT"
     
-    CONST_PERSONALITY_VSG = "VSG"
-    
     CONST_CONFIGURATION_STATUS_UNKNOWN = "UNKNOWN"
     
     CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
     
     CONST_PERSONALITY_VSA = "VSA"
     
-    CONST_CONFIGURATION_RELOAD_STATE_PENDING = "PENDING"
+    CONST_PERSONALITY_VSG = "VSG"
     
     CONST_PERMITTED_ACTION_READ = "READ"
     
@@ -155,68 +155,65 @@ class NUNSGateway(NURESTObject):
         # Read/Write Attributes
         
         self._nat_traversal_enabled = None
-        self._associated_gateway_security_id = None
-        self._associated_gateway_security_profile_id = None
-        self._auto_disc_gateway_id = None
-        self._bootstrap_id = None
-        self._bootstrap_status = None
-        self._configuration_reload_state = None
-        self._configuration_status = None
-        self._datapath_id = None
-        self._description = None
-        self._enterprise_id = None
-        self._entity_scope = None
-        self._external_id = None
-        self._last_updated_by = None
-        self._location_id = None
         self._name = None
+        self._last_updated_by = None
+        self._datapath_id = None
+        self._redundancy_group_id = None
+        self._template_id = None
         self._pending = None
         self._permitted_action = None
         self._personality = None
-        self._redundancy_group_id = None
+        self._description = None
+        self._enterprise_id = None
+        self._entity_scope = None
+        self._location_id = None
+        self._configuration_reload_state = None
+        self._configuration_status = None
+        self._bootstrap_id = None
+        self._bootstrap_status = None
+        self._associated_gateway_security_id = None
+        self._associated_gateway_security_profile_id = None
+        self._auto_disc_gateway_id = None
+        self._external_id = None
         self._system_id = None
-        self._template_id = None
         
         self.expose_attribute(local_name="nat_traversal_enabled", remote_name="NATTraversalEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_gateway_security_id", remote_name="associatedGatewaySecurityID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_gateway_security_profile_id", remote_name="associatedGatewaySecurityProfileID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="auto_disc_gateway_id", remote_name="autoDiscGatewayID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="bootstrap_id", remote_name="bootstrapID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT'])
-        self.expose_attribute(local_name="configuration_reload_state", remote_name="configurationReloadState", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'PENDING', u'SENT', u'UNKNOWN'])
-        self.expose_attribute(local_name="configuration_status", remote_name="configurationStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAILURE', u'SUCCESS', u'UNKNOWN'])
-        self.expose_attribute(local_name="datapath_id", remote_name="datapathID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="datapath_id", remote_name="datapathID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="redundancy_group_id", remote_name="redundancyGroupID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="pending", remote_name="pending", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'OTHER', u'VRSG', u'VSA', u'VSG'])
-        self.expose_attribute(local_name="redundancy_group_id", remote_name="redundancyGroupID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="configuration_reload_state", remote_name="configurationReloadState", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'PENDING', u'SENT', u'UNKNOWN'])
+        self.expose_attribute(local_name="configuration_status", remote_name="configurationStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAILURE', u'SUCCESS', u'UNKNOWN'])
+        self.expose_attribute(local_name="bootstrap_id", remote_name="bootstrapID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT'])
+        self.expose_attribute(local_name="associated_gateway_security_id", remote_name="associatedGatewaySecurityID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_gateway_security_profile_id", remote_name="associatedGatewaySecurityProfileID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="auto_disc_gateway_id", remote_name="autoDiscGatewayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="system_id", remote_name="systemID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=True, is_unique=False)
         
 
         # Fetchers
         
         
+        self.patnat_pools = NUPATNATPoolsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.bootstraps = NUBootstrapsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.bootstrap_activations = NUBootstrapActivationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -225,22 +222,25 @@ class NUNSGateway(NURESTObject):
         self.infrastructure_configs = NUInfrastructureConfigsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.locations = NULocationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.bootstraps = NUBootstrapsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.bootstrap_activations = NUBootstrapActivationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ns_ports = NUNSPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.patnat_pools = NUPATNATPoolsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -272,6 +272,422 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._nat_traversal_enabled = value
+
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the Gateway
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the Gateway
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def datapath_id(self):
+        """ Get datapath_id value.
+
+            Notes:
+                Identifier of the Gateway, based on the systemId
+
+                
+                This attribute is named `datapathID` in VSD API.
+                
+        """
+        return self._datapath_id
+
+    @datapath_id.setter
+    def datapath_id(self, value):
+        """ Set datapath_id value.
+
+            Notes:
+                Identifier of the Gateway, based on the systemId
+
+                
+                This attribute is named `datapathID` in VSD API.
+                
+        """
+        self._datapath_id = value
+
+    
+    @property
+    def redundancy_group_id(self):
+        """ Get redundancy_group_id value.
+
+            Notes:
+                The Redundancy Gateway Group associated with this Gateway Instance. This is a read only attribute
+
+                
+                This attribute is named `redundancyGroupID` in VSD API.
+                
+        """
+        return self._redundancy_group_id
+
+    @redundancy_group_id.setter
+    def redundancy_group_id(self, value):
+        """ Set redundancy_group_id value.
+
+            Notes:
+                The Redundancy Gateway Group associated with this Gateway Instance. This is a read only attribute
+
+                
+                This attribute is named `redundancyGroupID` in VSD API.
+                
+        """
+        self._redundancy_group_id = value
+
+    
+    @property
+    def template_id(self):
+        """ Get template_id value.
+
+            Notes:
+                The ID of the template that this Gateway was created from. This should be set when instantiating a Gateway
+
+                
+                This attribute is named `templateID` in VSD API.
+                
+        """
+        return self._template_id
+
+    @template_id.setter
+    def template_id(self, value):
+        """ Set template_id value.
+
+            Notes:
+                The ID of the template that this Gateway was created from. This should be set when instantiating a Gateway
+
+                
+                This attribute is named `templateID` in VSD API.
+                
+        """
+        self._template_id = value
+
+    
+    @property
+    def pending(self):
+        """ Get pending value.
+
+            Notes:
+                Indicates that this gateway is pending state or state. When in pending state it cannot be modified from REST.
+
+                
+        """
+        return self._pending
+
+    @pending.setter
+    def pending(self, value):
+        """ Set pending value.
+
+            Notes:
+                Indicates that this gateway is pending state or state. When in pending state it cannot be modified from REST.
+
+                
+        """
+        self._pending = value
+
+    
+    @property
+    def permitted_action(self):
+        """ Get permitted_action value.
+
+            Notes:
+                The permitted  action to USE/EXTEND  this Gateway.
+
+                
+                This attribute is named `permittedAction` in VSD API.
+                
+        """
+        return self._permitted_action
+
+    @permitted_action.setter
+    def permitted_action(self, value):
+        """ Set permitted_action value.
+
+            Notes:
+                The permitted  action to USE/EXTEND  this Gateway.
+
+                
+                This attribute is named `permittedAction` in VSD API.
+                
+        """
+        self._permitted_action = value
+
+    
+    @property
+    def personality(self):
+        """ Get personality value.
+
+            Notes:
+                Personality of the Gateway - NSG, cannot be changed after creation.
+
+                
+        """
+        return self._personality
+
+    @personality.setter
+    def personality(self, value):
+        """ Set personality value.
+
+            Notes:
+                Personality of the Gateway - NSG, cannot be changed after creation.
+
+                
+        """
+        self._personality = value
+
+    
+    @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                A description of the Gateway
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                A description of the Gateway
+
+                
+        """
+        self._description = value
+
+    
+    @property
+    def enterprise_id(self):
+        """ Get enterprise_id value.
+
+            Notes:
+                The enterprise associated with this Gateway. This is a read only attribute
+
+                
+                This attribute is named `enterpriseID` in VSD API.
+                
+        """
+        return self._enterprise_id
+
+    @enterprise_id.setter
+    def enterprise_id(self, value):
+        """ Set enterprise_id value.
+
+            Notes:
+                The enterprise associated with this Gateway. This is a read only attribute
+
+                
+                This attribute is named `enterpriseID` in VSD API.
+                
+        """
+        self._enterprise_id = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def location_id(self):
+        """ Get location_id value.
+
+            Notes:
+                The NSGateway's Location. NOTE: this is a read only property, it can only be set through the location object
+
+                
+                This attribute is named `locationID` in VSD API.
+                
+        """
+        return self._location_id
+
+    @location_id.setter
+    def location_id(self, value):
+        """ Set location_id value.
+
+            Notes:
+                The NSGateway's Location. NOTE: this is a read only property, it can only be set through the location object
+
+                
+                This attribute is named `locationID` in VSD API.
+                
+        """
+        self._location_id = value
+
+    
+    @property
+    def configuration_reload_state(self):
+        """ Get configuration_reload_state value.
+
+            Notes:
+                
+
+                
+                This attribute is named `configurationReloadState` in VSD API.
+                
+        """
+        return self._configuration_reload_state
+
+    @configuration_reload_state.setter
+    def configuration_reload_state(self, value):
+        """ Set configuration_reload_state value.
+
+            Notes:
+                
+
+                
+                This attribute is named `configurationReloadState` in VSD API.
+                
+        """
+        self._configuration_reload_state = value
+
+    
+    @property
+    def configuration_status(self):
+        """ Get configuration_status value.
+
+            Notes:
+                
+
+                
+                This attribute is named `configurationStatus` in VSD API.
+                
+        """
+        return self._configuration_status
+
+    @configuration_status.setter
+    def configuration_status(self, value):
+        """ Set configuration_status value.
+
+            Notes:
+                
+
+                
+                This attribute is named `configurationStatus` in VSD API.
+                
+        """
+        self._configuration_status = value
+
+    
+    @property
+    def bootstrap_id(self):
+        """ Get bootstrap_id value.
+
+            Notes:
+                The bootstrap details associated with this NSGateway. NOTE: this is a read only property, it can only be set during creation of an NSG
+
+                
+                This attribute is named `bootstrapID` in VSD API.
+                
+        """
+        return self._bootstrap_id
+
+    @bootstrap_id.setter
+    def bootstrap_id(self, value):
+        """ Set bootstrap_id value.
+
+            Notes:
+                The bootstrap details associated with this NSGateway. NOTE: this is a read only property, it can only be set during creation of an NSG
+
+                
+                This attribute is named `bootstrapID` in VSD API.
+                
+        """
+        self._bootstrap_id = value
+
+    
+    @property
+    def bootstrap_status(self):
+        """ Get bootstrap_status value.
+
+            Notes:
+                The bootstrap status of this NSGateway. NOTE: this is a read only property
+
+                
+                This attribute is named `bootstrapStatus` in VSD API.
+                
+        """
+        return self._bootstrap_status
+
+    @bootstrap_status.setter
+    def bootstrap_status(self, value):
+        """ Set bootstrap_status value.
+
+            Notes:
+                The bootstrap status of this NSGateway. NOTE: this is a read only property
+
+                
+                This attribute is named `bootstrapStatus` in VSD API.
+                
+        """
+        self._bootstrap_status = value
 
     
     @property
@@ -356,218 +772,6 @@ class NUNSGateway(NURESTObject):
 
     
     @property
-    def bootstrap_id(self):
-        """ Get bootstrap_id value.
-
-            Notes:
-                The bootstrap details associated with this NSGateway. NOTE: this is a read only property, it can only be set during creation of an NSG
-
-                
-                This attribute is named `bootstrapID` in VSD API.
-                
-        """
-        return self._bootstrap_id
-
-    @bootstrap_id.setter
-    def bootstrap_id(self, value):
-        """ Set bootstrap_id value.
-
-            Notes:
-                The bootstrap details associated with this NSGateway. NOTE: this is a read only property, it can only be set during creation of an NSG
-
-                
-                This attribute is named `bootstrapID` in VSD API.
-                
-        """
-        self._bootstrap_id = value
-
-    
-    @property
-    def bootstrap_status(self):
-        """ Get bootstrap_status value.
-
-            Notes:
-                The bootstrap status of this NSGateway. NOTE: this is a read only property
-
-                
-                This attribute is named `bootstrapStatus` in VSD API.
-                
-        """
-        return self._bootstrap_status
-
-    @bootstrap_status.setter
-    def bootstrap_status(self, value):
-        """ Set bootstrap_status value.
-
-            Notes:
-                The bootstrap status of this NSGateway. NOTE: this is a read only property
-
-                
-                This attribute is named `bootstrapStatus` in VSD API.
-                
-        """
-        self._bootstrap_status = value
-
-    
-    @property
-    def configuration_reload_state(self):
-        """ Get configuration_reload_state value.
-
-            Notes:
-                
-
-                
-                This attribute is named `configurationReloadState` in VSD API.
-                
-        """
-        return self._configuration_reload_state
-
-    @configuration_reload_state.setter
-    def configuration_reload_state(self, value):
-        """ Set configuration_reload_state value.
-
-            Notes:
-                
-
-                
-                This attribute is named `configurationReloadState` in VSD API.
-                
-        """
-        self._configuration_reload_state = value
-
-    
-    @property
-    def configuration_status(self):
-        """ Get configuration_status value.
-
-            Notes:
-                
-
-                
-                This attribute is named `configurationStatus` in VSD API.
-                
-        """
-        return self._configuration_status
-
-    @configuration_status.setter
-    def configuration_status(self, value):
-        """ Set configuration_status value.
-
-            Notes:
-                
-
-                
-                This attribute is named `configurationStatus` in VSD API.
-                
-        """
-        self._configuration_status = value
-
-    
-    @property
-    def datapath_id(self):
-        """ Get datapath_id value.
-
-            Notes:
-                Identifier of the Gateway, based on the systemId
-
-                
-                This attribute is named `datapathID` in VSD API.
-                
-        """
-        return self._datapath_id
-
-    @datapath_id.setter
-    def datapath_id(self, value):
-        """ Set datapath_id value.
-
-            Notes:
-                Identifier of the Gateway, based on the systemId
-
-                
-                This attribute is named `datapathID` in VSD API.
-                
-        """
-        self._datapath_id = value
-
-    
-    @property
-    def description(self):
-        """ Get description value.
-
-            Notes:
-                A description of the Gateway
-
-                
-        """
-        return self._description
-
-    @description.setter
-    def description(self, value):
-        """ Set description value.
-
-            Notes:
-                A description of the Gateway
-
-                
-        """
-        self._description = value
-
-    
-    @property
-    def enterprise_id(self):
-        """ Get enterprise_id value.
-
-            Notes:
-                The enterprise associated with this Gateway. This is a read only attribute
-
-                
-                This attribute is named `enterpriseID` in VSD API.
-                
-        """
-        return self._enterprise_id
-
-    @enterprise_id.setter
-    def enterprise_id(self, value):
-        """ Set enterprise_id value.
-
-            Notes:
-                The enterprise associated with this Gateway. This is a read only attribute
-
-                
-                This attribute is named `enterpriseID` in VSD API.
-                
-        """
-        self._enterprise_id = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
     def external_id(self):
         """ Get external_id value.
 
@@ -595,183 +799,6 @@ class NUNSGateway(NURESTObject):
 
     
     @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def location_id(self):
-        """ Get location_id value.
-
-            Notes:
-                The NSGateway's Location. NOTE: this is a read only property, it can only be set through the location object
-
-                
-                This attribute is named `locationID` in VSD API.
-                
-        """
-        return self._location_id
-
-    @location_id.setter
-    def location_id(self, value):
-        """ Set location_id value.
-
-            Notes:
-                The NSGateway's Location. NOTE: this is a read only property, it can only be set through the location object
-
-                
-                This attribute is named `locationID` in VSD API.
-                
-        """
-        self._location_id = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the Gateway
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the Gateway
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def pending(self):
-        """ Get pending value.
-
-            Notes:
-                Indicates that this gateway is pending state or state. When in pending state it cannot be modified from REST.
-
-                
-        """
-        return self._pending
-
-    @pending.setter
-    def pending(self, value):
-        """ Set pending value.
-
-            Notes:
-                Indicates that this gateway is pending state or state. When in pending state it cannot be modified from REST.
-
-                
-        """
-        self._pending = value
-
-    
-    @property
-    def permitted_action(self):
-        """ Get permitted_action value.
-
-            Notes:
-                The permitted  action to USE/EXTEND  this Gateway.
-
-                
-                This attribute is named `permittedAction` in VSD API.
-                
-        """
-        return self._permitted_action
-
-    @permitted_action.setter
-    def permitted_action(self, value):
-        """ Set permitted_action value.
-
-            Notes:
-                The permitted  action to USE/EXTEND  this Gateway.
-
-                
-                This attribute is named `permittedAction` in VSD API.
-                
-        """
-        self._permitted_action = value
-
-    
-    @property
-    def personality(self):
-        """ Get personality value.
-
-            Notes:
-                Personality of the Gateway - NSG, cannot be changed after creation.
-
-                
-        """
-        return self._personality
-
-    @personality.setter
-    def personality(self, value):
-        """ Set personality value.
-
-            Notes:
-                Personality of the Gateway - NSG, cannot be changed after creation.
-
-                
-        """
-        self._personality = value
-
-    
-    @property
-    def redundancy_group_id(self):
-        """ Get redundancy_group_id value.
-
-            Notes:
-                The Redundancy Gateway Group associated with this Gateway Instance. This is a read only attribute
-
-                
-                This attribute is named `redundancyGroupID` in VSD API.
-                
-        """
-        return self._redundancy_group_id
-
-    @redundancy_group_id.setter
-    def redundancy_group_id(self, value):
-        """ Set redundancy_group_id value.
-
-            Notes:
-                The Redundancy Gateway Group associated with this Gateway Instance. This is a read only attribute
-
-                
-                This attribute is named `redundancyGroupID` in VSD API.
-                
-        """
-        self._redundancy_group_id = value
-
-    
-    @property
     def system_id(self):
         """ Get system_id value.
 
@@ -796,33 +823,6 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._system_id = value
-
-    
-    @property
-    def template_id(self):
-        """ Get template_id value.
-
-            Notes:
-                The ID of the template that this Gateway was created from. This should be set when instantiating a Gateway
-
-                
-                This attribute is named `templateID` in VSD API.
-                
-        """
-        return self._template_id
-
-    @template_id.setter
-    def template_id(self, value):
-        """ Set template_id value.
-
-            Notes:
-                The ID of the template that this Gateway was created from. This should be set when instantiating a Gateway
-
-                
-                This attribute is named `templateID` in VSD API.
-                
-        """
-        self._template_id = value
 
     
 

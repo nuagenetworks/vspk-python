@@ -27,16 +27,16 @@
 
 
 
+from .fetchers import NUMetadatasFetcher
+
+
 from .fetchers import NUAlarmsFetcher
-
-
-from .fetchers import NUEventLogsFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUMetadatasFetcher
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -54,11 +54,9 @@ class NUTCA(NURESTObject):
     
     ## Constants
     
+    CONST_SCOPE_GLOBAL = "GLOBAL"
+    
     CONST_METRIC_PACKETS_IN_DROPPED = "PACKETS_IN_DROPPED"
-    
-    CONST_METRIC_PACKETS_OUT_DROPPED = "PACKETS_OUT_DROPPED"
-    
-    CONST_METRIC_BYTES_IN = "BYTES_IN"
     
     CONST_TYPE_BREACH = "BREACH"
     
@@ -70,11 +68,9 @@ class NUTCA(NURESTObject):
     
     CONST_METRIC_PACKETS_DROPPED_BY_RATE_LIMIT = "PACKETS_DROPPED_BY_RATE_LIMIT"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_METRIC_BYTES_IN = "BYTES_IN"
     
     CONST_METRIC_INGRESS_PACKET_COUNT = "INGRESS_PACKET_COUNT"
-    
-    CONST_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_METRIC_EGRESS_BYTE_COUNT = "EGRESS_BYTE_COUNT"
     
@@ -82,15 +78,19 @@ class NUTCA(NURESTObject):
     
     CONST_METRIC_INGRESS_BYTE_COUNT = "INGRESS_BYTE_COUNT"
     
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_METRIC_PACKETS_OUT_DROPPED = "PACKETS_OUT_DROPPED"
+    
     CONST_METRIC_PACKETS_IN = "PACKETS_IN"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_METRIC_PACKETS_OUT = "PACKETS_OUT"
     
     CONST_METRIC_EGRESS_PACKET_COUNT = "EGRESS_PACKET_COUNT"
     
     CONST_METRIC_PACKETS_IN_ERROR = "PACKETS_IN_ERROR"
-    
-    CONST_METRIC_PACKETS_OUT = "PACKETS_OUT"
     
     
 
@@ -112,43 +112,43 @@ class NUTCA(NURESTObject):
         # Read/Write Attributes
         
         self._url_end_point = None
+        self._name = None
+        self._last_updated_by = None
+        self._scope = None
+        self._period = None
         self._description = None
+        self._metric = None
+        self._threshold = None
         self._entity_scope = None
         self._external_id = None
-        self._last_updated_by = None
-        self._metric = None
-        self._name = None
-        self._period = None
-        self._scope = None
-        self._threshold = None
         self._type = None
         
         self.expose_attribute(local_name="url_end_point", remote_name="URLEndPoint", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="scope", remote_name="scope", attribute_type=str, is_required=True, is_unique=False, choices=[u'GLOBAL', u'LOCAL'])
+        self.expose_attribute(local_name="period", remote_name="period", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="metric", remote_name="metric", attribute_type=str, is_required=True, is_unique=False, choices=[u'BYTES_IN', u'BYTES_OUT', u'EGRESS_BYTE_COUNT', u'EGRESS_PACKET_COUNT', u'INGRESS_BYTE_COUNT', u'INGRESS_PACKET_COUNT', u'PACKETS_DROPPED_BY_RATE_LIMIT', u'PACKETS_IN', u'PACKETS_IN_DROPPED', u'PACKETS_IN_ERROR', u'PACKETS_OUT', u'PACKETS_OUT_DROPPED', u'PACKETS_OUT_ERROR'])
+        self.expose_attribute(local_name="threshold", remote_name="threshold", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="metric", remote_name="metric", attribute_type=str, is_required=True, is_unique=False, choices=[u'BYTES_IN', u'BYTES_OUT', u'EGRESS_BYTE_COUNT', u'EGRESS_PACKET_COUNT', u'INGRESS_BYTE_COUNT', u'INGRESS_PACKET_COUNT', u'PACKETS_DROPPED_BY_RATE_LIMIT', u'PACKETS_IN', u'PACKETS_IN_DROPPED', u'PACKETS_IN_ERROR', u'PACKETS_OUT', u'PACKETS_OUT_DROPPED', u'PACKETS_OUT_ERROR'])
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="period", remote_name="period", attribute_type=int, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="scope", remote_name="scope", attribute_type=str, is_required=True, is_unique=False, choices=[u'GLOBAL', u'LOCAL'])
-        self.expose_attribute(local_name="threshold", remote_name="threshold", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'BREACH', u'ROLLING_AVERAGE'])
         
 
         # Fetchers
         
         
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -183,6 +183,102 @@ class NUTCA(NURESTObject):
 
     
     @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                The name of the TCA
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                The name of the TCA
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def scope(self):
+        """ Get scope value.
+
+            Notes:
+                GLOBAL or LOCAL scope. Global refers to aggregate values across subnets, zones or domains. Local refers to traffic from/to individual VMs.
+
+                
+        """
+        return self._scope
+
+    @scope.setter
+    def scope(self, value):
+        """ Set scope value.
+
+            Notes:
+                GLOBAL or LOCAL scope. Global refers to aggregate values across subnets, zones or domains. Local refers to traffic from/to individual VMs.
+
+                
+        """
+        self._scope = value
+
+    
+    @property
+    def period(self):
+        """ Get period value.
+
+            Notes:
+                The averaging period
+
+                
+        """
+        return self._period
+
+    @period.setter
+    def period(self, value):
+        """ Set period value.
+
+            Notes:
+                The averaging period
+
+                
+        """
+        self._period = value
+
+    
+    @property
     def description(self):
         """ Get description value.
 
@@ -203,6 +299,52 @@ class NUTCA(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def metric(self):
+        """ Get metric value.
+
+            Notes:
+                The metric associated with the TCA.
+
+                
+        """
+        return self._metric
+
+    @metric.setter
+    def metric(self, value):
+        """ Set metric value.
+
+            Notes:
+                The metric associated with the TCA.
+
+                
+        """
+        self._metric = value
+
+    
+    @property
+    def threshold(self):
+        """ Get threshold value.
+
+            Notes:
+                The threshold that must be exceeded before an alarm is issued
+
+                
+        """
+        return self._threshold
+
+    @threshold.setter
+    def threshold(self, value):
+        """ Set threshold value.
+
+            Notes:
+                The threshold that must be exceeded before an alarm is issued
+
+                
+        """
+        self._threshold = value
 
     
     @property
@@ -257,148 +399,6 @@ class NUTCA(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def metric(self):
-        """ Get metric value.
-
-            Notes:
-                The metric associated with the TCA.
-
-                
-        """
-        return self._metric
-
-    @metric.setter
-    def metric(self, value):
-        """ Set metric value.
-
-            Notes:
-                The metric associated with the TCA.
-
-                
-        """
-        self._metric = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                The name of the TCA
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                The name of the TCA
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def period(self):
-        """ Get period value.
-
-            Notes:
-                The averaging period
-
-                
-        """
-        return self._period
-
-    @period.setter
-    def period(self, value):
-        """ Set period value.
-
-            Notes:
-                The averaging period
-
-                
-        """
-        self._period = value
-
-    
-    @property
-    def scope(self):
-        """ Get scope value.
-
-            Notes:
-                GLOBAL or LOCAL scope. Global refers to aggregate values across subnets, zones or domains. Local refers to traffic from/to individual VMs.
-
-                
-        """
-        return self._scope
-
-    @scope.setter
-    def scope(self, value):
-        """ Set scope value.
-
-            Notes:
-                GLOBAL or LOCAL scope. Global refers to aggregate values across subnets, zones or domains. Local refers to traffic from/to individual VMs.
-
-                
-        """
-        self._scope = value
-
-    
-    @property
-    def threshold(self):
-        """ Get threshold value.
-
-            Notes:
-                The threshold that must be exceeded before an alarm is issued
-
-                
-        """
-        return self._threshold
-
-    @threshold.setter
-    def threshold(self, value):
-        """ Set threshold value.
-
-            Notes:
-                The threshold that must be exceeded before an alarm is issued
-
-                
-        """
-        self._threshold = value
 
     
     @property

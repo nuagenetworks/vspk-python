@@ -27,7 +27,7 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUKeyServerMonitorEncryptedSeedsFetcher
@@ -42,7 +42,7 @@ from .fetchers import NUKeyServerMonitorSeedsFetcher
 from .fetchers import NUKeyServerMonitorSEKsFetcher
 
 
-from .fetchers import NUMetadatasFetcher
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -83,33 +83,33 @@ class NUKeyServerMonitor(NURESTObject):
 
         # Read/Write Attributes
         
-        self._enterprise_secured_data_record_count = None
-        self._entity_scope = None
-        self._external_id = None
+        self._last_update_time = None
+        self._last_updated_by = None
         self._gateway_secured_data_record_count = None
         self._keyserver_monitor_encrypted_sek_count = None
         self._keyserver_monitor_encrypted_seed_count = None
         self._keyserver_monitor_sek_count = None
         self._keyserver_monitor_seed_count = None
-        self._last_update_time = None
-        self._last_updated_by = None
+        self._enterprise_secured_data_record_count = None
+        self._entity_scope = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="enterprise_secured_data_record_count", remote_name="enterpriseSecuredDataRecordCount", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="last_update_time", remote_name="lastUpdateTime", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_secured_data_record_count", remote_name="gatewaySecuredDataRecordCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="keyserver_monitor_encrypted_sek_count", remote_name="keyserverMonitorEncryptedSEKCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="keyserver_monitor_encrypted_seed_count", remote_name="keyserverMonitorEncryptedSeedCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="keyserver_monitor_sek_count", remote_name="keyserverMonitorSEKCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="keyserver_monitor_seed_count", remote_name="keyserverMonitorSeedCount", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_update_time", remote_name="lastUpdateTime", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enterprise_secured_data_record_count", remote_name="enterpriseSecuredDataRecordCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.key_server_monitor_encrypted_seeds = NUKeyServerMonitorEncryptedSeedsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -124,7 +124,7 @@ class NUKeyServerMonitor(NURESTObject):
         self.key_server_monitor_seks = NUKeyServerMonitorSEKsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -132,84 +132,57 @@ class NUKeyServerMonitor(NURESTObject):
     # Properties
     
     @property
-    def enterprise_secured_data_record_count(self):
-        """ Get enterprise_secured_data_record_count value.
+    def last_update_time(self):
+        """ Get last_update_time value.
 
             Notes:
-                Total number of Enterprise Secured Data records
+                The time the latest SEK or Seed was created/removed (milliseconds since epoch)
 
                 
-                This attribute is named `enterpriseSecuredDataRecordCount` in VSD API.
+                This attribute is named `lastUpdateTime` in VSD API.
                 
         """
-        return self._enterprise_secured_data_record_count
+        return self._last_update_time
 
-    @enterprise_secured_data_record_count.setter
-    def enterprise_secured_data_record_count(self, value):
-        """ Set enterprise_secured_data_record_count value.
+    @last_update_time.setter
+    def last_update_time(self, value):
+        """ Set last_update_time value.
 
             Notes:
-                Total number of Enterprise Secured Data records
+                The time the latest SEK or Seed was created/removed (milliseconds since epoch)
 
                 
-                This attribute is named `enterpriseSecuredDataRecordCount` in VSD API.
+                This attribute is named `lastUpdateTime` in VSD API.
                 
         """
-        self._enterprise_secured_data_record_count = value
+        self._last_update_time = value
 
     
     @property
-    def entity_scope(self):
-        """ Get entity_scope value.
+    def last_updated_by(self):
+        """ Get last_updated_by value.
 
             Notes:
-                Specify if scope of entity is Data center or Enterprise level
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `entityScope` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        return self._entity_scope
+        return self._last_updated_by
 
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
 
             Notes:
-                Specify if scope of entity is Data center or Enterprise level
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
+        self._last_updated_by = value
 
     
     @property
@@ -348,57 +321,84 @@ class NUKeyServerMonitor(NURESTObject):
 
     
     @property
-    def last_update_time(self):
-        """ Get last_update_time value.
+    def enterprise_secured_data_record_count(self):
+        """ Get enterprise_secured_data_record_count value.
 
             Notes:
-                The time the latest SEK or Seed was created/removed (milliseconds since epoch)
+                Total number of Enterprise Secured Data records
 
                 
-                This attribute is named `lastUpdateTime` in VSD API.
+                This attribute is named `enterpriseSecuredDataRecordCount` in VSD API.
                 
         """
-        return self._last_update_time
+        return self._enterprise_secured_data_record_count
 
-    @last_update_time.setter
-    def last_update_time(self, value):
-        """ Set last_update_time value.
+    @enterprise_secured_data_record_count.setter
+    def enterprise_secured_data_record_count(self, value):
+        """ Set enterprise_secured_data_record_count value.
 
             Notes:
-                The time the latest SEK or Seed was created/removed (milliseconds since epoch)
+                Total number of Enterprise Secured Data records
 
                 
-                This attribute is named `lastUpdateTime` in VSD API.
+                This attribute is named `enterpriseSecuredDataRecordCount` in VSD API.
                 
         """
-        self._last_update_time = value
+        self._enterprise_secured_data_record_count = value
 
     
     @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
+    def entity_scope(self):
+        """ Get entity_scope value.
 
             Notes:
-                ID of the user who last updated the object.
+                Specify if scope of entity is Data center or Enterprise level
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `entityScope` in VSD API.
                 
         """
-        return self._last_updated_by
+        return self._entity_scope
 
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
 
             Notes:
-                ID of the user who last updated the object.
+                Specify if scope of entity is Data center or Enterprise level
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `entityScope` in VSD API.
                 
         """
-        self._last_updated_by = value
+        self._entity_scope = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

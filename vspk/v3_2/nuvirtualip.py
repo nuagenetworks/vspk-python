@@ -27,13 +27,13 @@
 
 
 
-from .fetchers import NUEventLogsFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUMetadatasFetcher
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -75,32 +75,32 @@ class NUVirtualIP(NURESTObject):
         # Read/Write Attributes
         
         self._mac = None
-        self._associated_floating_ip_id = None
-        self._entity_scope = None
-        self._external_id = None
         self._last_updated_by = None
-        self._subnet_id = None
         self._virtual_ip = None
+        self._entity_scope = None
+        self._associated_floating_ip_id = None
+        self._subnet_id = None
+        self._external_id = None
         
         self.expose_attribute(local_name="mac", remote_name="MAC", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_floating_ip_id", remote_name="associatedFloatingIPID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="subnet_id", remote_name="subnetID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="virtual_ip", remote_name="virtualIP", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="associated_floating_ip_id", remote_name="associatedFloatingIPID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="subnet_id", remote_name="subnetID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -135,30 +135,57 @@ class NUVirtualIP(NURESTObject):
 
     
     @property
-    def associated_floating_ip_id(self):
-        """ Get associated_floating_ip_id value.
+    def last_updated_by(self):
+        """ Get last_updated_by value.
 
             Notes:
-                Id of Floating IP address associated to this virtual ip
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `associatedFloatingIPID` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        return self._associated_floating_ip_id
+        return self._last_updated_by
 
-    @associated_floating_ip_id.setter
-    def associated_floating_ip_id(self, value):
-        """ Set associated_floating_ip_id value.
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
 
             Notes:
-                Id of Floating IP address associated to this virtual ip
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `associatedFloatingIPID` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        self._associated_floating_ip_id = value
+        self._last_updated_by = value
+
+    
+    @property
+    def virtual_ip(self):
+        """ Get virtual_ip value.
+
+            Notes:
+                Virtual IP address
+
+                
+                This attribute is named `virtualIP` in VSD API.
+                
+        """
+        return self._virtual_ip
+
+    @virtual_ip.setter
+    def virtual_ip(self, value):
+        """ Set virtual_ip value.
+
+            Notes:
+                Virtual IP address
+
+                
+                This attribute is named `virtualIP` in VSD API.
+                
+        """
+        self._virtual_ip = value
 
     
     @property
@@ -189,57 +216,30 @@ class NUVirtualIP(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
+    def associated_floating_ip_id(self):
+        """ Get associated_floating_ip_id value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                Id of Floating IP address associated to this virtual ip
 
                 
-                This attribute is named `externalID` in VSD API.
+                This attribute is named `associatedFloatingIPID` in VSD API.
                 
         """
-        return self._external_id
+        return self._associated_floating_ip_id
 
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
+    @associated_floating_ip_id.setter
+    def associated_floating_ip_id(self, value):
+        """ Set associated_floating_ip_id value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                Id of Floating IP address associated to this virtual ip
 
                 
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `associatedFloatingIPID` in VSD API.
                 
         """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
+        self._associated_floating_ip_id = value
 
     
     @property
@@ -270,30 +270,30 @@ class NUVirtualIP(NURESTObject):
 
     
     @property
-    def virtual_ip(self):
-        """ Get virtual_ip value.
+    def external_id(self):
+        """ Get external_id value.
 
             Notes:
-                Virtual IP address
+                External object ID. Used for integration with third party systems
 
                 
-                This attribute is named `virtualIP` in VSD API.
+                This attribute is named `externalID` in VSD API.
                 
         """
-        return self._virtual_ip
+        return self._external_id
 
-    @virtual_ip.setter
-    def virtual_ip(self, value):
-        """ Set virtual_ip value.
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
 
             Notes:
-                Virtual IP address
+                External object ID. Used for integration with third party systems
 
                 
-                This attribute is named `virtualIP` in VSD API.
+                This attribute is named `externalID` in VSD API.
                 
         """
-        self._virtual_ip = value
+        self._external_id = value
 
     
 

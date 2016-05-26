@@ -27,16 +27,16 @@
 
 
 
-from .fetchers import NUEnterprisePermissionsFetcher
-
-
-from .fetchers import NUGlobalMetadatasFetcher
+from .fetchers import NUNATMapEntriesFetcher
 
 
 from .fetchers import NUMetadatasFetcher
 
 
-from .fetchers import NUNATMapEntriesFetcher
+from .fetchers import NUGlobalMetadatasFetcher
+
+
+from .fetchers import NUEnterprisePermissionsFetcher
 
 from bambou import NURESTObject
 
@@ -54,13 +54,11 @@ class NUPATNATPool(NURESTObject):
     
     ## Constants
     
+    CONST_PERMITTED_ACTION_USE = "USE"
+    
     CONST_PERMITTED_ACTION_READ = "READ"
     
-    CONST_ASSOCIATED_GATEWAY_TYPE_NSGATEWAY = "NSGATEWAY"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
+    CONST_ASSOCIATED_GATEWAY_TYPE_GATEWAY = "GATEWAY"
     
     CONST_PERMITTED_ACTION_ALL = "ALL"
     
@@ -68,13 +66,15 @@ class NUPATNATPool(NURESTObject):
     
     CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
     
-    CONST_PERMITTED_ACTION_USE = "USE"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_ASSOCIATED_GATEWAY_TYPE_GATEWAY = "GATEWAY"
+    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
+    
+    CONST_ASSOCIATED_GATEWAY_TYPE_NSGATEWAY = "NSGATEWAY"
     
     CONST_ASSOCIATED_GATEWAY_TYPE_IKEV2_GATEWAY = "IKEV2_GATEWAY"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ASSOCIATED_GATEWAY_TYPE_AUTO_DISC_GATEWAY = "AUTO_DISC_GATEWAY"
     
@@ -97,47 +97,97 @@ class NUPATNATPool(NURESTObject):
 
         # Read/Write Attributes
         
+        self._name = None
+        self._last_updated_by = None
         self._address_range = None
-        self._associated_gateway_id = None
-        self._associated_gateway_type = None
         self._default_patip = None
+        self._permitted_action = None
         self._description = None
         self._entity_scope = None
+        self._associated_gateway_id = None
+        self._associated_gateway_type = None
         self._external_id = None
-        self._last_updated_by = None
-        self._name = None
-        self._permitted_action = None
         
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address_range", remote_name="addressRange", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="associated_gateway_id", remote_name="associatedGatewayId", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_gateway_type", remote_name="associatedGatewayType", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTO_DISC_GATEWAY', u'GATEWAY', u'IKEV2_GATEWAY', u'NSGATEWAY'])
         self.expose_attribute(local_name="default_patip", remote_name="defaultPATIP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="associated_gateway_id", remote_name="associatedGatewayId", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_gateway_type", remote_name="associatedGatewayType", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTO_DISC_GATEWAY', u'GATEWAY', u'IKEV2_GATEWAY', u'NSGATEWAY'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         
 
         # Fetchers
         
         
-        self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.nat_map_entries = NUNATMapEntriesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.nat_map_entries = NUNATMapEntriesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the PATNATPool
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the PATNATPool
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
     
     @property
     def address_range(self):
@@ -164,6 +214,110 @@ class NUPATNATPool(NURESTObject):
                 
         """
         self._address_range = value
+
+    
+    @property
+    def default_patip(self):
+        """ Get default_patip value.
+
+            Notes:
+                Default PAT IP Address, must belong to the pool above
+
+                
+                This attribute is named `defaultPATIP` in VSD API.
+                
+        """
+        return self._default_patip
+
+    @default_patip.setter
+    def default_patip(self, value):
+        """ Set default_patip value.
+
+            Notes:
+                Default PAT IP Address, must belong to the pool above
+
+                
+                This attribute is named `defaultPATIP` in VSD API.
+                
+        """
+        self._default_patip = value
+
+    
+    @property
+    def permitted_action(self):
+        """ Get permitted_action value.
+
+            Notes:
+                The permitted  action to USE/EXTEND  this Gateway.
+
+                
+                This attribute is named `permittedAction` in VSD API.
+                
+        """
+        return self._permitted_action
+
+    @permitted_action.setter
+    def permitted_action(self, value):
+        """ Set permitted_action value.
+
+            Notes:
+                The permitted  action to USE/EXTEND  this Gateway.
+
+                
+                This attribute is named `permittedAction` in VSD API.
+                
+        """
+        self._permitted_action = value
+
+    
+    @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                A description of the PATNATPool
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                A description of the PATNATPool
+
+                
+        """
+        self._description = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
 
     
     @property
@@ -221,83 +375,6 @@ class NUPATNATPool(NURESTObject):
 
     
     @property
-    def default_patip(self):
-        """ Get default_patip value.
-
-            Notes:
-                Default PAT IP Address, must belong to the pool above
-
-                
-                This attribute is named `defaultPATIP` in VSD API.
-                
-        """
-        return self._default_patip
-
-    @default_patip.setter
-    def default_patip(self, value):
-        """ Set default_patip value.
-
-            Notes:
-                Default PAT IP Address, must belong to the pool above
-
-                
-                This attribute is named `defaultPATIP` in VSD API.
-                
-        """
-        self._default_patip = value
-
-    
-    @property
-    def description(self):
-        """ Get description value.
-
-            Notes:
-                A description of the PATNATPool
-
-                
-        """
-        return self._description
-
-    @description.setter
-    def description(self, value):
-        """ Set description value.
-
-            Notes:
-                A description of the PATNATPool
-
-                
-        """
-        self._description = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
     def external_id(self):
         """ Get external_id value.
 
@@ -322,83 +399,6 @@ class NUPATNATPool(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the PATNATPool
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the PATNATPool
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def permitted_action(self):
-        """ Get permitted_action value.
-
-            Notes:
-                The permitted  action to USE/EXTEND  this Gateway.
-
-                
-                This attribute is named `permittedAction` in VSD API.
-                
-        """
-        return self._permitted_action
-
-    @permitted_action.setter
-    def permitted_action(self, value):
-        """ Set permitted_action value.
-
-            Notes:
-                The permitted  action to USE/EXTEND  this Gateway.
-
-                
-                This attribute is named `permittedAction` in VSD API.
-                
-        """
-        self._permitted_action = value
 
     
 

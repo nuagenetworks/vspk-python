@@ -27,13 +27,13 @@
 
 
 
-from .fetchers import NUEventLogsFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUMetadatasFetcher
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -74,40 +74,90 @@ class NUDHCPOption(NURESTObject):
 
         # Read/Write Attributes
         
+        self._value = None
+        self._last_updated_by = None
         self._actual_type = None
         self._actual_values = None
+        self._length = None
         self._entity_scope = None
         self._external_id = None
-        self._last_updated_by = None
-        self._length = None
         self._type = None
-        self._value = None
         
+        self.expose_attribute(local_name="value", remote_name="value", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="actual_type", remote_name="actualType", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="actual_values", remote_name="actualValues", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="length", remote_name="length", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="length", remote_name="length", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="value", remote_name="value", attribute_type=str, is_required=True, is_unique=False)
         
 
         # Fetchers
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def value(self):
+        """ Get value value.
+
+            Notes:
+                DHCP option value. Value should be a hexadecimal value(ie. Hex value 0xac40 would be passed as 'ac40')
+
+                
+        """
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        """ Set value value.
+
+            Notes:
+                DHCP option value. Value should be a hexadecimal value(ie. Hex value 0xac40 would be passed as 'ac40')
+
+                
+        """
+        self._value = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
     
     @property
     def actual_type(self):
@@ -161,6 +211,29 @@ class NUDHCPOption(NURESTObject):
                 
         """
         self._actual_values = value
+
+    
+    @property
+    def length(self):
+        """ Get length value.
+
+            Notes:
+                DHCP option length. Length should be a hexadecimal value(ie. Hex value 0x04 would be passed as '04')
+
+                
+        """
+        return self._length
+
+    @length.setter
+    def length(self, value):
+        """ Set length value.
+
+            Notes:
+                DHCP option length. Length should be a hexadecimal value(ie. Hex value 0x04 would be passed as '04')
+
+                
+        """
+        self._length = value
 
     
     @property
@@ -218,56 +291,6 @@ class NUDHCPOption(NURESTObject):
 
     
     @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def length(self):
-        """ Get length value.
-
-            Notes:
-                DHCP option length. Length should be a hexadecimal value(ie. Hex value 0x04 would be passed as '04')
-
-                
-        """
-        return self._length
-
-    @length.setter
-    def length(self, value):
-        """ Set length value.
-
-            Notes:
-                DHCP option length. Length should be a hexadecimal value(ie. Hex value 0x04 would be passed as '04')
-
-                
-        """
-        self._length = value
-
-    
-    @property
     def type(self):
         """ Get type value.
 
@@ -288,29 +311,6 @@ class NUDHCPOption(NURESTObject):
                 
         """
         self._type = value
-
-    
-    @property
-    def value(self):
-        """ Get value value.
-
-            Notes:
-                DHCP option value. Value should be a hexadecimal value(ie. Hex value 0xac40 would be passed as 'ac40')
-
-                
-        """
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        """ Set value value.
-
-            Notes:
-                DHCP option value. Value should be a hexadecimal value(ie. Hex value 0xac40 would be passed as 'ac40')
-
-                
-        """
-        self._value = value
 
     
 

@@ -27,10 +27,13 @@
 
 
 
-from .fetchers import NUEventLogsFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
+
+
+from .fetchers import NUVMsFetcher
 
 
 from .fetchers import NUIngressACLEntryTemplatesFetcher
@@ -39,10 +42,7 @@ from .fetchers import NUIngressACLEntryTemplatesFetcher
 from .fetchers import NUJobsFetcher
 
 
-from .fetchers import NUMetadatasFetcher
-
-
-from .fetchers import NUVMsFetcher
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -93,44 +93,47 @@ class NUIngressACLTemplate(NURESTObject):
 
         # Read/Write Attributes
         
+        self._name = None
+        self._last_updated_by = None
         self._active = None
-        self._allow_l2_address_spoof = None
-        self._assoc_acl_template_id = None
-        self._associated_live_entity_id = None
         self._default_allow_ip = None
         self._default_allow_non_ip = None
         self._description = None
+        self._allow_l2_address_spoof = None
         self._entity_scope = None
-        self._external_id = None
-        self._last_updated_by = None
-        self._name = None
         self._policy_state = None
         self._priority = None
         self._priority_type = None
+        self._assoc_acl_template_id = None
+        self._associated_live_entity_id = None
+        self._external_id = None
         
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="active", remote_name="active", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="allow_l2_address_spoof", remote_name="allowL2AddressSpoof", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="assoc_acl_template_id", remote_name="assocAclTemplateId", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="default_allow_ip", remote_name="defaultAllowIP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="default_allow_non_ip", remote_name="defaultAllowNonIP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="allow_l2_address_spoof", remote_name="allowL2AddressSpoof", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="priority_type", remote_name="priorityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BOTTOM', u'NONE', u'TOP'])
+        self.expose_attribute(local_name="assoc_acl_template_id", remote_name="assocAclTemplateId", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.vms = NUVMsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ingress_acl_entry_templates = NUIngressACLEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -139,15 +142,62 @@ class NUIngressACLTemplate(NURESTObject):
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.vms = NUVMsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                The name of the entity
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                The name of the entity
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
     
     @property
     def active(self):
@@ -170,87 +220,6 @@ class NUIngressACLTemplate(NURESTObject):
                 
         """
         self._active = value
-
-    
-    @property
-    def allow_l2_address_spoof(self):
-        """ Get allow_l2_address_spoof value.
-
-            Notes:
-                If enabled, it will disable the default anti-spoof ACL for this domain that essentially prevents any VM to send packets that do not originate from that particular VM
-
-                
-                This attribute is named `allowL2AddressSpoof` in VSD API.
-                
-        """
-        return self._allow_l2_address_spoof
-
-    @allow_l2_address_spoof.setter
-    def allow_l2_address_spoof(self, value):
-        """ Set allow_l2_address_spoof value.
-
-            Notes:
-                If enabled, it will disable the default anti-spoof ACL for this domain that essentially prevents any VM to send packets that do not originate from that particular VM
-
-                
-                This attribute is named `allowL2AddressSpoof` in VSD API.
-                
-        """
-        self._allow_l2_address_spoof = value
-
-    
-    @property
-    def assoc_acl_template_id(self):
-        """ Get assoc_acl_template_id value.
-
-            Notes:
-                ID of the ACL template associated with this ACL template
-
-                
-                This attribute is named `assocAclTemplateId` in VSD API.
-                
-        """
-        return self._assoc_acl_template_id
-
-    @assoc_acl_template_id.setter
-    def assoc_acl_template_id(self, value):
-        """ Set assoc_acl_template_id value.
-
-            Notes:
-                ID of the ACL template associated with this ACL template
-
-                
-                This attribute is named `assocAclTemplateId` in VSD API.
-                
-        """
-        self._assoc_acl_template_id = value
-
-    
-    @property
-    def associated_live_entity_id(self):
-        """ Get associated_live_entity_id value.
-
-            Notes:
-                In the draft mode, the ACL entry refers to this LiveEntity. In non-drafted mode, this is null.
-
-                
-                This attribute is named `associatedLiveEntityID` in VSD API.
-                
-        """
-        return self._associated_live_entity_id
-
-    @associated_live_entity_id.setter
-    def associated_live_entity_id(self, value):
-        """ Set associated_live_entity_id value.
-
-            Notes:
-                In the draft mode, the ACL entry refers to this LiveEntity. In non-drafted mode, this is null.
-
-                
-                This attribute is named `associatedLiveEntityID` in VSD API.
-                
-        """
-        self._associated_live_entity_id = value
 
     
     @property
@@ -331,6 +300,33 @@ class NUIngressACLTemplate(NURESTObject):
 
     
     @property
+    def allow_l2_address_spoof(self):
+        """ Get allow_l2_address_spoof value.
+
+            Notes:
+                If enabled, it will disable the default anti-spoof ACL for this domain that essentially prevents any VM to send packets that do not originate from that particular VM
+
+                
+                This attribute is named `allowL2AddressSpoof` in VSD API.
+                
+        """
+        return self._allow_l2_address_spoof
+
+    @allow_l2_address_spoof.setter
+    def allow_l2_address_spoof(self, value):
+        """ Set allow_l2_address_spoof value.
+
+            Notes:
+                If enabled, it will disable the default anti-spoof ACL for this domain that essentially prevents any VM to send packets that do not originate from that particular VM
+
+                
+                This attribute is named `allowL2AddressSpoof` in VSD API.
+                
+        """
+        self._allow_l2_address_spoof = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -355,83 +351,6 @@ class NUIngressACLTemplate(NURESTObject):
                 
         """
         self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                The name of the entity
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                The name of the entity
-
-                
-        """
-        self._name = value
 
     
     @property
@@ -509,6 +428,87 @@ class NUIngressACLTemplate(NURESTObject):
                 
         """
         self._priority_type = value
+
+    
+    @property
+    def assoc_acl_template_id(self):
+        """ Get assoc_acl_template_id value.
+
+            Notes:
+                ID of the ACL template associated with this ACL template
+
+                
+                This attribute is named `assocAclTemplateId` in VSD API.
+                
+        """
+        return self._assoc_acl_template_id
+
+    @assoc_acl_template_id.setter
+    def assoc_acl_template_id(self, value):
+        """ Set assoc_acl_template_id value.
+
+            Notes:
+                ID of the ACL template associated with this ACL template
+
+                
+                This attribute is named `assocAclTemplateId` in VSD API.
+                
+        """
+        self._assoc_acl_template_id = value
+
+    
+    @property
+    def associated_live_entity_id(self):
+        """ Get associated_live_entity_id value.
+
+            Notes:
+                In the draft mode, the ACL entry refers to this LiveEntity. In non-drafted mode, this is null.
+
+                
+                This attribute is named `associatedLiveEntityID` in VSD API.
+                
+        """
+        return self._associated_live_entity_id
+
+    @associated_live_entity_id.setter
+    def associated_live_entity_id(self, value):
+        """ Set associated_live_entity_id value.
+
+            Notes:
+                In the draft mode, the ACL entry refers to this LiveEntity. In non-drafted mode, this is null.
+
+                
+                This attribute is named `associatedLiveEntityID` in VSD API.
+                
+        """
+        self._associated_live_entity_id = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

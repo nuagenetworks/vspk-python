@@ -27,13 +27,13 @@
 
 
 
-from .fetchers import NUEventLogsFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUMetadatasFetcher
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -79,40 +79,40 @@ class NUApplicationService(NURESTObject):
         # Read/Write Attributes
         
         self._dscp = None
+        self._name = None
+        self._last_updated_by = None
         self._description = None
         self._destination_port = None
         self._direction = None
         self._entity_scope = None
+        self._source_port = None
+        self._protocol = None
         self._ether_type = None
         self._external_id = None
-        self._last_updated_by = None
-        self._name = None
-        self._protocol = None
-        self._source_port = None
         
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="direction", remote_name="direction", attribute_type=str, is_required=True, is_unique=False, choices=[u'REFLEXIVE', u'UNIDIRECTIONAL'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="ether_type", remote_name="etherType", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=True, is_unique=False)
         
 
         # Fetchers
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -144,6 +144,56 @@ class NUApplicationService(NURESTObject):
                 
         """
         self._dscp = value
+
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the application service.
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the application service.
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
 
     
     @property
@@ -247,6 +297,56 @@ class NUApplicationService(NURESTObject):
 
     
     @property
+    def source_port(self):
+        """ Get source_port value.
+
+            Notes:
+                Source port to be matched if protocol is UDP or TCP. Value can be either * or single port number or a port range.
+
+                
+                This attribute is named `sourcePort` in VSD API.
+                
+        """
+        return self._source_port
+
+    @source_port.setter
+    def source_port(self, value):
+        """ Set source_port value.
+
+            Notes:
+                Source port to be matched if protocol is UDP or TCP. Value can be either * or single port number or a port range.
+
+                
+                This attribute is named `sourcePort` in VSD API.
+                
+        """
+        self._source_port = value
+
+    
+    @property
+    def protocol(self):
+        """ Get protocol value.
+
+            Notes:
+                Protocol that must be matched.  Needs to be 6 (TCP) or 17 (UDP)
+
+                
+        """
+        return self._protocol
+
+    @protocol.setter
+    def protocol(self, value):
+        """ Set protocol value.
+
+            Notes:
+                Protocol that must be matched.  Needs to be 6 (TCP) or 17 (UDP)
+
+                
+        """
+        self._protocol = value
+
+    
+    @property
     def ether_type(self):
         """ Get ether_type value.
 
@@ -298,106 +398,6 @@ class NUApplicationService(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the application service.
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the application service.
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def protocol(self):
-        """ Get protocol value.
-
-            Notes:
-                Protocol that must be matched.  Needs to be 6 (TCP) or 17 (UDP)
-
-                
-        """
-        return self._protocol
-
-    @protocol.setter
-    def protocol(self, value):
-        """ Set protocol value.
-
-            Notes:
-                Protocol that must be matched.  Needs to be 6 (TCP) or 17 (UDP)
-
-                
-        """
-        self._protocol = value
-
-    
-    @property
-    def source_port(self):
-        """ Get source_port value.
-
-            Notes:
-                Source port to be matched if protocol is UDP or TCP. Value can be either * or single port number or a port range.
-
-                
-                This attribute is named `sourcePort` in VSD API.
-                
-        """
-        return self._source_port
-
-    @source_port.setter
-    def source_port(self, value):
-        """ Set source_port value.
-
-            Notes:
-                Source port to be matched if protocol is UDP or TCP. Value can be either * or single port number or a port range.
-
-                
-                This attribute is named `sourcePort` in VSD API.
-                
-        """
-        self._source_port = value
 
     
 

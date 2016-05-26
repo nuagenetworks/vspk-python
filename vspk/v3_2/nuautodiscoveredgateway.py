@@ -27,22 +27,22 @@
 
 
 
-from .fetchers import NUEventLogsFetcher
-
-
-from .fetchers import NUGlobalMetadatasFetcher
+from .fetchers import NUWANServicesFetcher
 
 
 from .fetchers import NUMetadatasFetcher
 
 
-from .fetchers import NUNSPortsFetcher
+from .fetchers import NUGlobalMetadatasFetcher
 
 
 from .fetchers import NUPortsFetcher
 
 
-from .fetchers import NUWANServicesFetcher
+from .fetchers import NUNSPortsFetcher
+
+
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -72,11 +72,11 @@ class NUAutoDiscoveredGateway(NURESTObject):
     
     CONST_PERSONALITY_NSG = "NSG"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_PERSONALITY_VRSG = "VRSG"
     
     CONST_PERSONALITY_DC7X50 = "DC7X50"
     
-    CONST_PERSONALITY_VRSG = "VRSG"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
 
@@ -97,50 +97,50 @@ class NUAutoDiscoveredGateway(NURESTObject):
 
         # Read/Write Attributes
         
-        self._controllers = None
-        self._description = None
-        self._entity_scope = None
-        self._external_id = None
-        self._gateway_id = None
-        self._last_updated_by = None
         self._name = None
+        self._last_updated_by = None
+        self._gateway_id = None
         self._peer = None
         self._personality = None
-        self._system_id = None
+        self._description = None
+        self._entity_scope = None
+        self._controllers = None
         self._vtep = None
+        self._external_id = None
+        self._system_id = None
         
-        self.expose_attribute(local_name="controllers", remote_name="controllers", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="gateway_id", remote_name="gatewayID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_id", remote_name="gatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peer", remote_name="peer", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=True, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'OTHER', u'VRSG', u'VSA', u'VSG'])
-        self.expose_attribute(local_name="system_id", remote_name="systemID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="controllers", remote_name="controllers", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vtep", remote_name="vtep", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="system_id", remote_name="systemID", attribute_type=str, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.wan_services = NUWANServicesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.ns_ports = NUNSPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ports = NUPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.wan_services = NUWANServicesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.ns_ports = NUNSPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -148,26 +148,126 @@ class NUAutoDiscoveredGateway(NURESTObject):
     # Properties
     
     @property
-    def controllers(self):
-        """ Get controllers value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                Controllers to which this gateway instance is associated with.
+                Name of the Gateway
 
                 
         """
-        return self._controllers
+        return self._name
 
-    @controllers.setter
-    def controllers(self, value):
-        """ Set controllers value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                Controllers to which this gateway instance is associated with.
+                Name of the Gateway
 
                 
         """
-        self._controllers = value
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def gateway_id(self):
+        """ Get gateway_id value.
+
+            Notes:
+                The Gateway associated with this  Auto Discovered Gateway  . This is a read only attribute
+
+                
+                This attribute is named `gatewayID` in VSD API.
+                
+        """
+        return self._gateway_id
+
+    @gateway_id.setter
+    def gateway_id(self, value):
+        """ Set gateway_id value.
+
+            Notes:
+                The Gateway associated with this  Auto Discovered Gateway  . This is a read only attribute
+
+                
+                This attribute is named `gatewayID` in VSD API.
+                
+        """
+        self._gateway_id = value
+
+    
+    @property
+    def peer(self):
+        """ Get peer value.
+
+            Notes:
+                The System ID of the peer gateway associated with this Gateway instance when it is discovered by the network manager (VSD) as being redundant.
+
+                
+        """
+        return self._peer
+
+    @peer.setter
+    def peer(self, value):
+        """ Set peer value.
+
+            Notes:
+                The System ID of the peer gateway associated with this Gateway instance when it is discovered by the network manager (VSD) as being redundant.
+
+                
+        """
+        self._peer = value
+
+    
+    @property
+    def personality(self):
+        """ Get personality value.
+
+            Notes:
+                Personality of the Gateway - VSG,VRSG,NONE,OTHER, cannot be changed after creation.
+
+                
+        """
+        return self._personality
+
+    @personality.setter
+    def personality(self, value):
+        """ Set personality value.
+
+            Notes:
+                Personality of the Gateway - VSG,VRSG,NONE,OTHER, cannot be changed after creation.
+
+                
+        """
+        self._personality = value
 
     
     @property
@@ -221,6 +321,52 @@ class NUAutoDiscoveredGateway(NURESTObject):
 
     
     @property
+    def controllers(self):
+        """ Get controllers value.
+
+            Notes:
+                Controllers to which this gateway instance is associated with.
+
+                
+        """
+        return self._controllers
+
+    @controllers.setter
+    def controllers(self, value):
+        """ Set controllers value.
+
+            Notes:
+                Controllers to which this gateway instance is associated with.
+
+                
+        """
+        self._controllers = value
+
+    
+    @property
+    def vtep(self):
+        """ Get vtep value.
+
+            Notes:
+                Represent the system ID or the Virtual IP of a service used by a Gateway (VSG for now) to establish a tunnel with a remote VSG or hypervisor.  The format of this field is consistent with an IP address.
+
+                
+        """
+        return self._vtep
+
+    @vtep.setter
+    def vtep(self, value):
+        """ Set vtep value.
+
+            Notes:
+                Represent the system ID or the Virtual IP of a service used by a Gateway (VSG for now) to establish a tunnel with a remote VSG or hypervisor.  The format of this field is consistent with an IP address.
+
+                
+        """
+        self._vtep = value
+
+    
+    @property
     def external_id(self):
         """ Get external_id value.
 
@@ -248,129 +394,6 @@ class NUAutoDiscoveredGateway(NURESTObject):
 
     
     @property
-    def gateway_id(self):
-        """ Get gateway_id value.
-
-            Notes:
-                The Gateway associated with this  Auto Discovered Gateway  . This is a read only attribute
-
-                
-                This attribute is named `gatewayID` in VSD API.
-                
-        """
-        return self._gateway_id
-
-    @gateway_id.setter
-    def gateway_id(self, value):
-        """ Set gateway_id value.
-
-            Notes:
-                The Gateway associated with this  Auto Discovered Gateway  . This is a read only attribute
-
-                
-                This attribute is named `gatewayID` in VSD API.
-                
-        """
-        self._gateway_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the Gateway
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the Gateway
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def peer(self):
-        """ Get peer value.
-
-            Notes:
-                The System ID of the peer gateway associated with this Gateway instance when it is discovered by the network manager (VSD) as being redundant.
-
-                
-        """
-        return self._peer
-
-    @peer.setter
-    def peer(self, value):
-        """ Set peer value.
-
-            Notes:
-                The System ID of the peer gateway associated with this Gateway instance when it is discovered by the network manager (VSD) as being redundant.
-
-                
-        """
-        self._peer = value
-
-    
-    @property
-    def personality(self):
-        """ Get personality value.
-
-            Notes:
-                Personality of the Gateway - VSG,VRSG,NONE,OTHER, cannot be changed after creation.
-
-                
-        """
-        return self._personality
-
-    @personality.setter
-    def personality(self, value):
-        """ Set personality value.
-
-            Notes:
-                Personality of the Gateway - VSG,VRSG,NONE,OTHER, cannot be changed after creation.
-
-                
-        """
-        self._personality = value
-
-    
-    @property
     def system_id(self):
         """ Get system_id value.
 
@@ -395,29 +418,6 @@ class NUAutoDiscoveredGateway(NURESTObject):
                 
         """
         self._system_id = value
-
-    
-    @property
-    def vtep(self):
-        """ Get vtep value.
-
-            Notes:
-                Represent the system ID or the Virtual IP of a service used by a Gateway (VSG for now) to establish a tunnel with a remote VSG or hypervisor.  The format of this field is consistent with an IP address.
-
-                
-        """
-        return self._vtep
-
-    @vtep.setter
-    def vtep(self, value):
-        """ Set vtep value.
-
-            Notes:
-                Represent the system ID or the Virtual IP of a service used by a Gateway (VSG for now) to establish a tunnel with a remote VSG or hypervisor.  The format of this field is consistent with an IP address.
-
-                
-        """
-        self._vtep = value
 
     
 

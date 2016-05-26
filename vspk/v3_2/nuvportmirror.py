@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -78,39 +78,39 @@ class NUVPortMirror(NURESTObject):
         # Read/Write Attributes
         
         self._vport_name = None
-        self._attached_network_type = None
-        self._domain_name = None
-        self._enterpise_name = None
-        self._entity_scope = None
-        self._external_id = None
         self._last_updated_by = None
+        self._network_name = None
         self._mirror_destination_id = None
         self._mirror_destination_name = None
         self._mirror_direction = None
-        self._network_name = None
+        self._enterpise_name = None
+        self._entity_scope = None
+        self._domain_name = None
         self._vport_id = None
+        self._attached_network_type = None
+        self._external_id = None
         
         self.expose_attribute(local_name="vport_name", remote_name="VPortName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="attached_network_type", remote_name="attachedNetworkType", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="enterpise_name", remote_name="enterpiseName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="network_name", remote_name="networkName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mirror_destination_id", remote_name="mirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mirror_destination_name", remote_name="mirrorDestinationName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mirror_direction", remote_name="mirrorDirection", attribute_type=str, is_required=False, is_unique=False, choices=[u'BOTH', u'EGRESS', u'INGRESS'])
-        self.expose_attribute(local_name="network_name", remote_name="networkName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enterpise_name", remote_name="enterpiseName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vport_id", remote_name="vportId", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="attached_network_type", remote_name="attachedNetworkType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -145,141 +145,6 @@ class NUVPortMirror(NURESTObject):
 
     
     @property
-    def attached_network_type(self):
-        """ Get attached_network_type value.
-
-            Notes:
-                Type of the network attached - L2/L3
-
-                
-                This attribute is named `attachedNetworkType` in VSD API.
-                
-        """
-        return self._attached_network_type
-
-    @attached_network_type.setter
-    def attached_network_type(self, value):
-        """ Set attached_network_type value.
-
-            Notes:
-                Type of the network attached - L2/L3
-
-                
-                This attribute is named `attachedNetworkType` in VSD API.
-                
-        """
-        self._attached_network_type = value
-
-    
-    @property
-    def domain_name(self):
-        """ Get domain_name value.
-
-            Notes:
-                Domain name of the vport associated with the mirror destination
-
-                
-                This attribute is named `domainName` in VSD API.
-                
-        """
-        return self._domain_name
-
-    @domain_name.setter
-    def domain_name(self, value):
-        """ Set domain_name value.
-
-            Notes:
-                Domain name of the vport associated with the mirror destination
-
-                
-                This attribute is named `domainName` in VSD API.
-                
-        """
-        self._domain_name = value
-
-    
-    @property
-    def enterpise_name(self):
-        """ Get enterpise_name value.
-
-            Notes:
-                Enterprise to which the vport associated with the mirror destination belongs to.
-
-                
-                This attribute is named `enterpiseName` in VSD API.
-                
-        """
-        return self._enterpise_name
-
-    @enterpise_name.setter
-    def enterpise_name(self, value):
-        """ Set enterpise_name value.
-
-            Notes:
-                Enterprise to which the vport associated with the mirror destination belongs to.
-
-                
-                This attribute is named `enterpiseName` in VSD API.
-                
-        """
-        self._enterpise_name = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
     def last_updated_by(self):
         """ Get last_updated_by value.
 
@@ -304,6 +169,33 @@ class NUVPortMirror(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def network_name(self):
+        """ Get network_name value.
+
+            Notes:
+                Name of the network to which the vport belongs to
+
+                
+                This attribute is named `networkName` in VSD API.
+                
+        """
+        return self._network_name
+
+    @network_name.setter
+    def network_name(self, value):
+        """ Set network_name value.
+
+            Notes:
+                Name of the network to which the vport belongs to
+
+                
+                This attribute is named `networkName` in VSD API.
+                
+        """
+        self._network_name = value
 
     
     @property
@@ -388,30 +280,84 @@ class NUVPortMirror(NURESTObject):
 
     
     @property
-    def network_name(self):
-        """ Get network_name value.
+    def enterpise_name(self):
+        """ Get enterpise_name value.
 
             Notes:
-                Name of the network to which the vport belongs to
+                Enterprise to which the vport associated with the mirror destination belongs to.
 
                 
-                This attribute is named `networkName` in VSD API.
+                This attribute is named `enterpiseName` in VSD API.
                 
         """
-        return self._network_name
+        return self._enterpise_name
 
-    @network_name.setter
-    def network_name(self, value):
-        """ Set network_name value.
+    @enterpise_name.setter
+    def enterpise_name(self, value):
+        """ Set enterpise_name value.
 
             Notes:
-                Name of the network to which the vport belongs to
+                Enterprise to which the vport associated with the mirror destination belongs to.
 
                 
-                This attribute is named `networkName` in VSD API.
+                This attribute is named `enterpiseName` in VSD API.
                 
         """
-        self._network_name = value
+        self._enterpise_name = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def domain_name(self):
+        """ Get domain_name value.
+
+            Notes:
+                Domain name of the vport associated with the mirror destination
+
+                
+                This attribute is named `domainName` in VSD API.
+                
+        """
+        return self._domain_name
+
+    @domain_name.setter
+    def domain_name(self, value):
+        """ Set domain_name value.
+
+            Notes:
+                Domain name of the vport associated with the mirror destination
+
+                
+                This attribute is named `domainName` in VSD API.
+                
+        """
+        self._domain_name = value
 
     
     @property
@@ -439,6 +385,60 @@ class NUVPortMirror(NURESTObject):
                 
         """
         self._vport_id = value
+
+    
+    @property
+    def attached_network_type(self):
+        """ Get attached_network_type value.
+
+            Notes:
+                Type of the network attached - L2/L3
+
+                
+                This attribute is named `attachedNetworkType` in VSD API.
+                
+        """
+        return self._attached_network_type
+
+    @attached_network_type.setter
+    def attached_network_type(self, value):
+        """ Set attached_network_type value.
+
+            Notes:
+                Type of the network attached - L2/L3
+
+                
+                This attribute is named `attachedNetworkType` in VSD API.
+                
+        """
+        self._attached_network_type = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

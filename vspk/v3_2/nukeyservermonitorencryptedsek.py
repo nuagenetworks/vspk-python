@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -72,31 +72,31 @@ class NUKeyServerMonitorEncryptedSEK(NURESTObject):
         # Read/Write Attributes
         
         self._nsg_certificate_serial_number = None
-        self._associated_key_server_monitor_sek_creation_time = None
-        self._associated_key_server_monitor_sekid = None
-        self._entity_scope = None
-        self._external_id = None
+        self._last_updated_by = None
         self._gateway_secured_data_id = None
         self._key_server_certificate_serial_number = None
-        self._last_updated_by = None
+        self._entity_scope = None
+        self._associated_key_server_monitor_sek_creation_time = None
+        self._associated_key_server_monitor_sekid = None
+        self._external_id = None
         
         self.expose_attribute(local_name="nsg_certificate_serial_number", remote_name="NSGCertificateSerialNumber", attribute_type=float, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_key_server_monitor_sek_creation_time", remote_name="associatedKeyServerMonitorSEKCreationTime", attribute_type=float, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_key_server_monitor_sekid", remote_name="associatedKeyServerMonitorSEKID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_secured_data_id", remote_name="gatewaySecuredDataID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="key_server_certificate_serial_number", remote_name="keyServerCertificateSerialNumber", attribute_type=float, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="associated_key_server_monitor_sek_creation_time", remote_name="associatedKeyServerMonitorSEKCreationTime", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_key_server_monitor_sekid", remote_name="associatedKeyServerMonitorSEKID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -131,111 +131,30 @@ class NUKeyServerMonitorEncryptedSEK(NURESTObject):
 
     
     @property
-    def associated_key_server_monitor_sek_creation_time(self):
-        """ Get associated_key_server_monitor_sek_creation_time value.
+    def last_updated_by(self):
+        """ Get last_updated_by value.
 
             Notes:
-                The ID of the associated KeyServer Monitor Seed ID
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `associatedKeyServerMonitorSEKCreationTime` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        return self._associated_key_server_monitor_sek_creation_time
+        return self._last_updated_by
 
-    @associated_key_server_monitor_sek_creation_time.setter
-    def associated_key_server_monitor_sek_creation_time(self, value):
-        """ Set associated_key_server_monitor_sek_creation_time value.
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
 
             Notes:
-                The ID of the associated KeyServer Monitor Seed ID
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `associatedKeyServerMonitorSEKCreationTime` in VSD API.
-                
-        """
-        self._associated_key_server_monitor_sek_creation_time = value
-
-    
-    @property
-    def associated_key_server_monitor_sekid(self):
-        """ Get associated_key_server_monitor_sekid value.
-
-            Notes:
-                The ID of the associated KeyServer Monitor SEK ID
-
-                
-                This attribute is named `associatedKeyServerMonitorSEKID` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        return self._associated_key_server_monitor_sekid
-
-    @associated_key_server_monitor_sekid.setter
-    def associated_key_server_monitor_sekid(self, value):
-        """ Set associated_key_server_monitor_sekid value.
-
-            Notes:
-                The ID of the associated KeyServer Monitor SEK ID
-
-                
-                This attribute is named `associatedKeyServerMonitorSEKID` in VSD API.
-                
-        """
-        self._associated_key_server_monitor_sekid = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
+        self._last_updated_by = value
 
     
     @property
@@ -293,30 +212,111 @@ class NUKeyServerMonitorEncryptedSEK(NURESTObject):
 
     
     @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
+    def entity_scope(self):
+        """ Get entity_scope value.
 
             Notes:
-                ID of the user who last updated the object.
+                Specify if scope of entity is Data center or Enterprise level
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `entityScope` in VSD API.
                 
         """
-        return self._last_updated_by
+        return self._entity_scope
 
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
 
             Notes:
-                ID of the user who last updated the object.
+                Specify if scope of entity is Data center or Enterprise level
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `entityScope` in VSD API.
                 
         """
-        self._last_updated_by = value
+        self._entity_scope = value
+
+    
+    @property
+    def associated_key_server_monitor_sek_creation_time(self):
+        """ Get associated_key_server_monitor_sek_creation_time value.
+
+            Notes:
+                The ID of the associated KeyServer Monitor Seed ID
+
+                
+                This attribute is named `associatedKeyServerMonitorSEKCreationTime` in VSD API.
+                
+        """
+        return self._associated_key_server_monitor_sek_creation_time
+
+    @associated_key_server_monitor_sek_creation_time.setter
+    def associated_key_server_monitor_sek_creation_time(self, value):
+        """ Set associated_key_server_monitor_sek_creation_time value.
+
+            Notes:
+                The ID of the associated KeyServer Monitor Seed ID
+
+                
+                This attribute is named `associatedKeyServerMonitorSEKCreationTime` in VSD API.
+                
+        """
+        self._associated_key_server_monitor_sek_creation_time = value
+
+    
+    @property
+    def associated_key_server_monitor_sekid(self):
+        """ Get associated_key_server_monitor_sekid value.
+
+            Notes:
+                The ID of the associated KeyServer Monitor SEK ID
+
+                
+                This attribute is named `associatedKeyServerMonitorSEKID` in VSD API.
+                
+        """
+        return self._associated_key_server_monitor_sekid
+
+    @associated_key_server_monitor_sekid.setter
+    def associated_key_server_monitor_sekid(self, value):
+        """ Set associated_key_server_monitor_sekid value.
+
+            Notes:
+                The ID of the associated KeyServer Monitor SEK ID
+
+                
+                This attribute is named `associatedKeyServerMonitorSEKID` in VSD API.
+                
+        """
+        self._associated_key_server_monitor_sekid = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

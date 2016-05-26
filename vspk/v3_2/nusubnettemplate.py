@@ -30,19 +30,19 @@
 from .fetchers import NUAddressRangesFetcher
 
 
-from .fetchers import NUEventLogsFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
-
-
-from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUQOSsFetcher
 
 
 from .fetchers import NUSubnetsFetcher
+
+
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -100,34 +100,34 @@ class NUSubnetTemplate(NURESTObject):
         # Read/Write Attributes
         
         self._ip_type = None
+        self._name = None
+        self._last_updated_by = None
+        self._gateway = None
         self._address = None
-        self._associated_multicast_channel_map_id = None
         self._description = None
+        self._netmask = None
         self._encryption = None
         self._entity_scope = None
-        self._external_id = None
-        self._gateway = None
-        self._last_updated_by = None
-        self._multicast = None
-        self._name = None
-        self._netmask = None
-        self._proxy_arp = None
         self._split_subnet = None
+        self._proxy_arp = None
+        self._associated_multicast_channel_map_id = None
+        self._multicast = None
+        self._external_id = None
         
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="proxy_arp", remote_name="proxyARP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="split_subnet", remote_name="splitSubnet", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="proxy_arp", remote_name="proxyARP", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
@@ -136,19 +136,19 @@ class NUSubnetTemplate(NURESTObject):
         self.address_ranges = NUAddressRangesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.qoss = NUQOSsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.subnets = NUSubnetsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -183,6 +183,79 @@ class NUSubnetTemplate(NURESTObject):
 
     
     @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the current entity(Zone or zone template or subnet etc..) Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the current entity(Zone or zone template or subnet etc..) Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def gateway(self):
+        """ Get gateway value.
+
+            Notes:
+                The IP address of the gateway of this subnet
+
+                
+        """
+        return self._gateway
+
+    @gateway.setter
+    def gateway(self, value):
+        """ Set gateway value.
+
+            Notes:
+                The IP address of the gateway of this subnet
+
+                
+        """
+        self._gateway = value
+
+    
+    @property
     def address(self):
         """ Get address value.
 
@@ -206,33 +279,6 @@ class NUSubnetTemplate(NURESTObject):
 
     
     @property
-    def associated_multicast_channel_map_id(self):
-        """ Get associated_multicast_channel_map_id value.
-
-            Notes:
-                The ID of the Multi Cast Channel Map  this Subnet/Subnet Template is associated with. This has to be set when enableMultiCast is set to ENABLED
-
-                
-                This attribute is named `associatedMulticastChannelMapID` in VSD API.
-                
-        """
-        return self._associated_multicast_channel_map_id
-
-    @associated_multicast_channel_map_id.setter
-    def associated_multicast_channel_map_id(self, value):
-        """ Set associated_multicast_channel_map_id value.
-
-            Notes:
-                The ID of the Multi Cast Channel Map  this Subnet/Subnet Template is associated with. This has to be set when enableMultiCast is set to ENABLED
-
-                
-                This attribute is named `associatedMulticastChannelMapID` in VSD API.
-                
-        """
-        self._associated_multicast_channel_map_id = value
-
-    
-    @property
     def description(self):
         """ Get description value.
 
@@ -253,6 +299,29 @@ class NUSubnetTemplate(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def netmask(self):
+        """ Get netmask value.
+
+            Notes:
+                Netmask of the subnet defined
+
+                
+        """
+        return self._netmask
+
+    @netmask.setter
+    def netmask(self, value):
+        """ Set netmask value.
+
+            Notes:
+                Netmask of the subnet defined
+
+                
+        """
+        self._netmask = value
 
     
     @property
@@ -306,149 +375,30 @@ class NUSubnetTemplate(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
+    def split_subnet(self):
+        """ Get split_subnet value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                Need to add correct description
 
                 
-                This attribute is named `externalID` in VSD API.
+                This attribute is named `splitSubnet` in VSD API.
                 
         """
-        return self._external_id
+        return self._split_subnet
 
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
+    @split_subnet.setter
+    def split_subnet(self, value):
+        """ Set split_subnet value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                Need to add correct description
 
                 
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def gateway(self):
-        """ Get gateway value.
-
-            Notes:
-                The IP address of the gateway of this subnet
-
+                This attribute is named `splitSubnet` in VSD API.
                 
         """
-        return self._gateway
-
-    @gateway.setter
-    def gateway(self, value):
-        """ Set gateway value.
-
-            Notes:
-                The IP address of the gateway of this subnet
-
-                
-        """
-        self._gateway = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def multicast(self):
-        """ Get multicast value.
-
-            Notes:
-                Indicates multicast policy on Subnet/Subnet Template.
-
-                
-        """
-        return self._multicast
-
-    @multicast.setter
-    def multicast(self, value):
-        """ Set multicast value.
-
-            Notes:
-                Indicates multicast policy on Subnet/Subnet Template.
-
-                
-        """
-        self._multicast = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the current entity(Zone or zone template or subnet etc..) Valid characters are alphabets, numbers, space and hyphen( - ).
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the current entity(Zone or zone template or subnet etc..) Valid characters are alphabets, numbers, space and hyphen( - ).
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def netmask(self):
-        """ Get netmask value.
-
-            Notes:
-                Netmask of the subnet defined
-
-                
-        """
-        return self._netmask
-
-    @netmask.setter
-    def netmask(self, value):
-        """ Set netmask value.
-
-            Notes:
-                Netmask of the subnet defined
-
-                
-        """
-        self._netmask = value
+        self._split_subnet = value
 
     
     @property
@@ -479,30 +429,80 @@ class NUSubnetTemplate(NURESTObject):
 
     
     @property
-    def split_subnet(self):
-        """ Get split_subnet value.
+    def associated_multicast_channel_map_id(self):
+        """ Get associated_multicast_channel_map_id value.
 
             Notes:
-                Need to add correct description
+                The ID of the Multi Cast Channel Map  this Subnet/Subnet Template is associated with. This has to be set when enableMultiCast is set to ENABLED
 
                 
-                This attribute is named `splitSubnet` in VSD API.
+                This attribute is named `associatedMulticastChannelMapID` in VSD API.
                 
         """
-        return self._split_subnet
+        return self._associated_multicast_channel_map_id
 
-    @split_subnet.setter
-    def split_subnet(self, value):
-        """ Set split_subnet value.
+    @associated_multicast_channel_map_id.setter
+    def associated_multicast_channel_map_id(self, value):
+        """ Set associated_multicast_channel_map_id value.
 
             Notes:
-                Need to add correct description
+                The ID of the Multi Cast Channel Map  this Subnet/Subnet Template is associated with. This has to be set when enableMultiCast is set to ENABLED
 
                 
-                This attribute is named `splitSubnet` in VSD API.
+                This attribute is named `associatedMulticastChannelMapID` in VSD API.
                 
         """
-        self._split_subnet = value
+        self._associated_multicast_channel_map_id = value
+
+    
+    @property
+    def multicast(self):
+        """ Get multicast value.
+
+            Notes:
+                Indicates multicast policy on Subnet/Subnet Template.
+
+                
+        """
+        return self._multicast
+
+    @multicast.setter
+    def multicast(self, value):
+        """ Set multicast value.
+
+            Notes:
+                Indicates multicast policy on Subnet/Subnet Template.
+
+                
+        """
+        self._multicast = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

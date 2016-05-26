@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -129,62 +129,62 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         
         self._ntp_server_key = None
         self._ntp_server_key_id = None
+        self._name = None
+        self._last_updated_by = None
         self._datapath_sync_timeout = None
         self._dead_timer = None
-        self._description = None
-        self._enterprise_id = None
-        self._entity_scope = None
-        self._external_id = None
-        self._flow_eviction_threshold = None
-        self._last_updated_by = None
-        self._metadata_upgrade_path = None
-        self._name = None
-        self._proxy_dns_name = None
         self._remote_log_dir_path = None
         self._remote_log_mode = None
         self._remote_log_password = None
         self._remote_log_server_address = None
         self._remote_log_server_port = None
         self._remote_log_username = None
+        self._description = None
+        self._metadata_upgrade_path = None
+        self._flow_eviction_threshold = None
+        self._enterprise_id = None
+        self._entity_scope = None
+        self._upgrade_action = None
+        self._proxy_dns_name = None
+        self._use_two_factor = None
         self._stats_collector_port = None
+        self._external_id = None
         self._system_sync_scheduler = None
         self._system_sync_window = None
-        self._upgrade_action = None
-        self._use_two_factor = None
         
         self.expose_attribute(local_name="ntp_server_key", remote_name="NTPServerKey", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ntp_server_key_id", remote_name="NTPServerKeyID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_sync_timeout", remote_name="datapathSyncTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dead_timer", remote_name="deadTimer", attribute_type=str, is_required=False, is_unique=False, choices=[u'FIVE_HOURS', u'FOUR_HOURS', u'NONE', u'ONE_HOUR', u'SIX_HOURS', u'TEN_MINUTES', u'THIRTY_MINUTES', u'THREE_HOURS', u'TWO_HOURS'])
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="flow_eviction_threshold", remote_name="flowEvictionThreshold", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="metadata_upgrade_path", remote_name="metadataUpgradePath", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="proxy_dns_name", remote_name="proxyDNSName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="remote_log_dir_path", remote_name="remoteLogDirPath", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="remote_log_mode", remote_name="remoteLogMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'RSYSLOG', u'SCP', u'SFTP'])
         self.expose_attribute(local_name="remote_log_password", remote_name="remoteLogPassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="remote_log_server_address", remote_name="remoteLogServerAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="remote_log_server_port", remote_name="remoteLogServerPort", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="remote_log_username", remote_name="remoteLogUsername", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="metadata_upgrade_path", remote_name="metadataUpgradePath", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_eviction_threshold", remote_name="flowEvictionThreshold", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="upgrade_action", remote_name="upgradeAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'DOWNLOAD_AND_UPGRADE_AT_WINDOW', u'DOWNLOAD_AND_UPGRADE_NOW', u'DOWNLOAD_ONLY', u'NONE', u'UPGRADE_AT_BOOTSTRAPPING', u'UPGRADE_NOW'])
+        self.expose_attribute(local_name="proxy_dns_name", remote_name="proxyDNSName", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="use_two_factor", remote_name="useTwoFactor", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_collector_port", remote_name="statsCollectorPort", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="system_sync_scheduler", remote_name="systemSyncScheduler", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="system_sync_window", remote_name="systemSyncWindow", attribute_type=str, is_required=False, is_unique=False, choices=[u'FIVE_HOURS', u'FOUR_HOURS', u'NONE', u'ONE_HOUR', u'SIX_HOURS', u'TEN_MINUTES', u'THIRTY_MINUTES', u'THREE_HOURS', u'TWO_HOURS'])
-        self.expose_attribute(local_name="upgrade_action", remote_name="upgradeAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'DOWNLOAD_AND_UPGRADE_AT_WINDOW', u'DOWNLOAD_AND_UPGRADE_NOW', u'DOWNLOAD_ONLY', u'NONE', u'UPGRADE_AT_BOOTSTRAPPING', u'UPGRADE_NOW'])
-        self.expose_attribute(local_name="use_two_factor", remote_name="useTwoFactor", attribute_type=bool, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -246,6 +246,56 @@ class NUInfrastructureGatewayProfile(NURESTObject):
 
     
     @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the Infrastructure Profile
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the Infrastructure Profile
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
     def datapath_sync_timeout(self):
         """ Get datapath_sync_timeout value.
 
@@ -297,241 +347,6 @@ class NUInfrastructureGatewayProfile(NURESTObject):
                 
         """
         self._dead_timer = value
-
-    
-    @property
-    def description(self):
-        """ Get description value.
-
-            Notes:
-                A description of the Profile instance created.
-
-                
-        """
-        return self._description
-
-    @description.setter
-    def description(self, value):
-        """ Set description value.
-
-            Notes:
-                A description of the Profile instance created.
-
-                
-        """
-        self._description = value
-
-    
-    @property
-    def enterprise_id(self):
-        """ Get enterprise_id value.
-
-            Notes:
-                Enterprise/Organisation associated with this Profile instance.
-
-                
-                This attribute is named `enterpriseID` in VSD API.
-                
-        """
-        return self._enterprise_id
-
-    @enterprise_id.setter
-    def enterprise_id(self, value):
-        """ Set enterprise_id value.
-
-            Notes:
-                Enterprise/Organisation associated with this Profile instance.
-
-                
-                This attribute is named `enterpriseID` in VSD API.
-                
-        """
-        self._enterprise_id = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def flow_eviction_threshold(self):
-        """ Get flow_eviction_threshold value.
-
-            Notes:
-                Number of flows at which eviction from kernel flow table will be triggered (default: 2500)
-
-                
-                This attribute is named `flowEvictionThreshold` in VSD API.
-                
-        """
-        return self._flow_eviction_threshold
-
-    @flow_eviction_threshold.setter
-    def flow_eviction_threshold(self, value):
-        """ Set flow_eviction_threshold value.
-
-            Notes:
-                Number of flows at which eviction from kernel flow table will be triggered (default: 2500)
-
-                
-                This attribute is named `flowEvictionThreshold` in VSD API.
-                
-        """
-        self._flow_eviction_threshold = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def metadata_upgrade_path(self):
-        """ Get metadata_upgrade_path value.
-
-            Notes:
-                Path/URL to retrieve the NSG Upgrade information meta data files.  From that meta data, the NSG will be able to retrieve the upgrade package files and perform some validations.  It is expected that the meta data file is in JSON format.  RFC 2616 states that there are no 'official' maximum length for a URL but different browsers and servers have limits.  Our friendly Internet Explorer has a maximum of 'around' 2048 characters, we shall use this as a limit here.
-
-                
-                This attribute is named `metadataUpgradePath` in VSD API.
-                
-        """
-        return self._metadata_upgrade_path
-
-    @metadata_upgrade_path.setter
-    def metadata_upgrade_path(self, value):
-        """ Set metadata_upgrade_path value.
-
-            Notes:
-                Path/URL to retrieve the NSG Upgrade information meta data files.  From that meta data, the NSG will be able to retrieve the upgrade package files and perform some validations.  It is expected that the meta data file is in JSON format.  RFC 2616 states that there are no 'official' maximum length for a URL but different browsers and servers have limits.  Our friendly Internet Explorer has a maximum of 'around' 2048 characters, we shall use this as a limit here.
-
-                
-                This attribute is named `metadataUpgradePath` in VSD API.
-                
-        """
-        self._metadata_upgrade_path = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the Infrastructure Profile
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the Infrastructure Profile
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def proxy_dns_name(self):
-        """ Get proxy_dns_name value.
-
-            Notes:
-                Proxy DNS Name :  DNS Name of the system acting as a proxy between the NSG instances and the VSD.
-
-                
-                This attribute is named `proxyDNSName` in VSD API.
-                
-        """
-        return self._proxy_dns_name
-
-    @proxy_dns_name.setter
-    def proxy_dns_name(self, value):
-        """ Set proxy_dns_name value.
-
-            Notes:
-                Proxy DNS Name :  DNS Name of the system acting as a proxy between the NSG instances and the VSD.
-
-                
-                This attribute is named `proxyDNSName` in VSD API.
-                
-        """
-        self._proxy_dns_name = value
 
     
     @property
@@ -697,6 +512,218 @@ class NUInfrastructureGatewayProfile(NURESTObject):
 
     
     @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                A description of the Profile instance created.
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                A description of the Profile instance created.
+
+                
+        """
+        self._description = value
+
+    
+    @property
+    def metadata_upgrade_path(self):
+        """ Get metadata_upgrade_path value.
+
+            Notes:
+                Path/URL to retrieve the NSG Upgrade information meta data files.  From that meta data, the NSG will be able to retrieve the upgrade package files and perform some validations.  It is expected that the meta data file is in JSON format.  RFC 2616 states that there are no 'official' maximum length for a URL but different browsers and servers have limits.  Our friendly Internet Explorer has a maximum of 'around' 2048 characters, we shall use this as a limit here.
+
+                
+                This attribute is named `metadataUpgradePath` in VSD API.
+                
+        """
+        return self._metadata_upgrade_path
+
+    @metadata_upgrade_path.setter
+    def metadata_upgrade_path(self, value):
+        """ Set metadata_upgrade_path value.
+
+            Notes:
+                Path/URL to retrieve the NSG Upgrade information meta data files.  From that meta data, the NSG will be able to retrieve the upgrade package files and perform some validations.  It is expected that the meta data file is in JSON format.  RFC 2616 states that there are no 'official' maximum length for a URL but different browsers and servers have limits.  Our friendly Internet Explorer has a maximum of 'around' 2048 characters, we shall use this as a limit here.
+
+                
+                This attribute is named `metadataUpgradePath` in VSD API.
+                
+        """
+        self._metadata_upgrade_path = value
+
+    
+    @property
+    def flow_eviction_threshold(self):
+        """ Get flow_eviction_threshold value.
+
+            Notes:
+                Number of flows at which eviction from kernel flow table will be triggered (default: 2500)
+
+                
+                This attribute is named `flowEvictionThreshold` in VSD API.
+                
+        """
+        return self._flow_eviction_threshold
+
+    @flow_eviction_threshold.setter
+    def flow_eviction_threshold(self, value):
+        """ Set flow_eviction_threshold value.
+
+            Notes:
+                Number of flows at which eviction from kernel flow table will be triggered (default: 2500)
+
+                
+                This attribute is named `flowEvictionThreshold` in VSD API.
+                
+        """
+        self._flow_eviction_threshold = value
+
+    
+    @property
+    def enterprise_id(self):
+        """ Get enterprise_id value.
+
+            Notes:
+                Enterprise/Organisation associated with this Profile instance.
+
+                
+                This attribute is named `enterpriseID` in VSD API.
+                
+        """
+        return self._enterprise_id
+
+    @enterprise_id.setter
+    def enterprise_id(self, value):
+        """ Set enterprise_id value.
+
+            Notes:
+                Enterprise/Organisation associated with this Profile instance.
+
+                
+                This attribute is named `enterpriseID` in VSD API.
+                
+        """
+        self._enterprise_id = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def upgrade_action(self):
+        """ Get upgrade_action value.
+
+            Notes:
+                Upgrade action for NSG associated with this Infrastructure Gateway Profile instance.
+
+                
+                This attribute is named `upgradeAction` in VSD API.
+                
+        """
+        return self._upgrade_action
+
+    @upgrade_action.setter
+    def upgrade_action(self, value):
+        """ Set upgrade_action value.
+
+            Notes:
+                Upgrade action for NSG associated with this Infrastructure Gateway Profile instance.
+
+                
+                This attribute is named `upgradeAction` in VSD API.
+                
+        """
+        self._upgrade_action = value
+
+    
+    @property
+    def proxy_dns_name(self):
+        """ Get proxy_dns_name value.
+
+            Notes:
+                Proxy DNS Name :  DNS Name of the system acting as a proxy between the NSG instances and the VSD.
+
+                
+                This attribute is named `proxyDNSName` in VSD API.
+                
+        """
+        return self._proxy_dns_name
+
+    @proxy_dns_name.setter
+    def proxy_dns_name(self, value):
+        """ Set proxy_dns_name value.
+
+            Notes:
+                Proxy DNS Name :  DNS Name of the system acting as a proxy between the NSG instances and the VSD.
+
+                
+                This attribute is named `proxyDNSName` in VSD API.
+                
+        """
+        self._proxy_dns_name = value
+
+    
+    @property
+    def use_two_factor(self):
+        """ Get use_two_factor value.
+
+            Notes:
+                Use Two Factor :  When set to true, the use of two independent authentication factors will be used to secure the installed NSG.  When set to false, there is an assumption that the NSG is being installed in a secure environment and the installer is also trusted.  The defaut value is true, using 2-factor.
+
+                
+                This attribute is named `useTwoFactor` in VSD API.
+                
+        """
+        return self._use_two_factor
+
+    @use_two_factor.setter
+    def use_two_factor(self, value):
+        """ Set use_two_factor value.
+
+            Notes:
+                Use Two Factor :  When set to true, the use of two independent authentication factors will be used to secure the installed NSG.  When set to false, there is an assumption that the NSG is being installed in a secure environment and the installer is also trusted.  The defaut value is true, using 2-factor.
+
+                
+                This attribute is named `useTwoFactor` in VSD API.
+                
+        """
+        self._use_two_factor = value
+
+    
+    @property
     def stats_collector_port(self):
         """ Get stats_collector_port value.
 
@@ -721,6 +748,33 @@ class NUInfrastructureGatewayProfile(NURESTObject):
                 
         """
         self._stats_collector_port = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
     @property
@@ -775,60 +829,6 @@ class NUInfrastructureGatewayProfile(NURESTObject):
                 
         """
         self._system_sync_window = value
-
-    
-    @property
-    def upgrade_action(self):
-        """ Get upgrade_action value.
-
-            Notes:
-                Upgrade action for NSG associated with this Infrastructure Gateway Profile instance.
-
-                
-                This attribute is named `upgradeAction` in VSD API.
-                
-        """
-        return self._upgrade_action
-
-    @upgrade_action.setter
-    def upgrade_action(self, value):
-        """ Set upgrade_action value.
-
-            Notes:
-                Upgrade action for NSG associated with this Infrastructure Gateway Profile instance.
-
-                
-                This attribute is named `upgradeAction` in VSD API.
-                
-        """
-        self._upgrade_action = value
-
-    
-    @property
-    def use_two_factor(self):
-        """ Get use_two_factor value.
-
-            Notes:
-                Use Two Factor :  When set to true, the use of two independent authentication factors will be used to secure the installed NSG.  When set to false, there is an assumption that the NSG is being installed in a secure environment and the installer is also trusted.  The defaut value is true, using 2-factor.
-
-                
-                This attribute is named `useTwoFactor` in VSD API.
-                
-        """
-        return self._use_two_factor
-
-    @use_two_factor.setter
-    def use_two_factor(self, value):
-        """ Set use_two_factor value.
-
-            Notes:
-                Use Two Factor :  When set to true, the use of two independent authentication factors will be used to secure the installed NSG.  When set to false, there is an assumption that the NSG is being installed in a secure environment and the installer is also trusted.  The defaut value is true, using 2-factor.
-
-                
-                This attribute is named `useTwoFactor` in VSD API.
-                
-        """
-        self._use_two_factor = value
 
     
 

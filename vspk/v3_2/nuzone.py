@@ -27,25 +27,31 @@
 
 
 
-from .fetchers import NUDHCPOptionsFetcher
-
-
-from .fetchers import NUEventLogsFetcher
-
-
-from .fetchers import NUGlobalMetadatasFetcher
-
-
-from .fetchers import NUGroupsFetcher
-
-
-from .fetchers import NUMetadatasFetcher
+from .fetchers import NUTCAsFetcher
 
 
 from .fetchers import NUPermissionsFetcher
 
 
+from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUDHCPOptionsFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
+
+
+from .fetchers import NUVMsFetcher
+
+
+from .fetchers import NUVMInterfacesFetcher
+
+
 from .fetchers import NUQOSsFetcher
+
+
+from .fetchers import NUGroupsFetcher
 
 
 from .fetchers import NUStatisticsFetcher
@@ -57,13 +63,7 @@ from .fetchers import NUStatisticsPoliciesFetcher
 from .fetchers import NUSubnetsFetcher
 
 
-from .fetchers import NUTCAsFetcher
-
-
-from .fetchers import NUVMsFetcher
-
-
-from .fetchers import NUVMInterfacesFetcher
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -243,7 +243,7 @@ class NUZone(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_ENTITY_METADATA_BINDING = "ENTITY_METADATA_BINDING"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_REDUNDANT_GW_GRP = "REDUNDANT_GW_GRP"
+    CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_L2DOMAIN_TEMPLATE = "L2DOMAIN_TEMPLATE"
     
@@ -269,7 +269,7 @@ class NUZone(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VPORT = "VPORT"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_APPD_SERVICE = "APPD_SERVICE"
+    CONST_ENCRYPTION_INHERITED = "INHERITED"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VIRTUAL_MACHINE_REPORT = "VIRTUAL_MACHINE_REPORT"
     
@@ -313,7 +313,7 @@ class NUZone(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INFRASTRUCTURE_VSC_PROFILE = "INFRASTRUCTURE_VSC_PROFILE"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_VCENTER_DATACENTER = "VMWARE_VCENTER_DATACENTER"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_APPD_SERVICE = "APPD_SERVICE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSPORT_TEMPLATE = "NSPORT_TEMPLATE"
     
@@ -433,8 +433,6 @@ class NUZone(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSREDUNDANT_GW_GRP = "NSREDUNDANT_GW_GRP"
     
-    CONST_ENCRYPTION_INHERITED = "INHERITED"
-    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VPORTTAG = "VPORTTAG"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SHAPING_POLICY = "SHAPING_POLICY"
@@ -477,7 +475,7 @@ class NUZone(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_STATS_POLICY = "STATS_POLICY"
     
-    CONST_MAINTENANCE_MODE_ENABLED_INHERITED = "ENABLED_INHERITED"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_METADATA_TAG = "METADATA_TAG"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SERVICES_GATEWAY_RESPONSE = "SERVICES_GATEWAY_RESPONSE"
     
@@ -525,8 +523,6 @@ class NUZone(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_KEYSERVER_MONITOR_ENCRYPTED_SEED = "KEYSERVER_MONITOR_ENCRYPTED_SEED"
     
-    CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
-    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_STATISTICS = "STATISTICS"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY = "GATEWAY"
@@ -541,7 +537,7 @@ class NUZone(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VLAN_TEMPLATE = "VLAN_TEMPLATE"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_METADATA_TAG = "METADATA_TAG"
+    CONST_MAINTENANCE_MODE_ENABLED_INHERITED = "ENABLED_INHERITED"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_UNSUPPORTED = "UNSUPPORTED"
     
@@ -549,9 +545,13 @@ class NUZone(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_POLICY_DECISION = "POLICY_DECISION"
     
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_REDUNDANT_GW_GRP = "REDUNDANT_GW_GRP"
+    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VPORTTAGTEMPLATE = "VPORTTAGTEMPLATE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_STATIC_ROUTE = "STATIC_ROUTE"
+    
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_VCENTER_DATACENTER = "VMWARE_VCENTER_DATACENTER"
     
     
 
@@ -573,68 +573,74 @@ class NUZone(NURESTObject):
         # Read/Write Attributes
         
         self._ip_type = None
+        self._maintenance_mode = None
+        self._name = None
+        self._last_updated_by = None
         self._address = None
+        self._template_id = None
+        self._description = None
+        self._netmask = None
+        self._encryption = None
+        self._entity_scope = None
+        self._policy_group_id = None
         self._associated_application_id = None
         self._associated_application_object_id = None
         self._associated_application_object_type = None
         self._associated_multicast_channel_map_id = None
-        self._description = None
-        self._encryption = None
-        self._entity_scope = None
-        self._external_id = None
-        self._last_updated_by = None
-        self._maintenance_mode = None
-        self._multicast = None
-        self._name = None
-        self._netmask = None
-        self._number_of_hosts_in_subnets = None
-        self._policy_group_id = None
         self._public_zone = None
-        self._template_id = None
+        self._multicast = None
+        self._number_of_hosts_in_subnets = None
+        self._external_id = None
         
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="policy_group_id", remote_name="policyGroupID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_application_id", remote_name="associatedApplicationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_application_object_id", remote_name="associatedApplicationObjectID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_application_object_type", remote_name="associatedApplicationObjectType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACLENTRY_LOCATION', u'ADDRESS_RANGE', u'ADDRESS_RANGE_STATE', u'ALARM', u'APPD_APPLICATION', u'APPD_EXTERNAL_APP_SERVICE', u'APPD_FLOW', u'APPD_FLOW_FORWARDING_POLICY', u'APPD_FLOW_SECURITY_POLICY', u'APPD_SERVICE', u'APPD_TIER', u'APPLICATION', u'AUTO_DISC_GATEWAY', u'BACK_HAUL_SERVICE_RESP', u'BGPPEER', u'BOOTSTRAP', u'BOOTSTRAP_ACTIVATION', u'BRIDGEINTERFACE', u'CERTIFICATE', u'CHILD_ENTITY_POLICY_CHANGE', u'CLOUD_MGMT_SYSTEM', u'CUSTOMER_VRF_SEQUENCENO', u'DC_CONFIG', u'DHCP_ALLOC_MESSAGE', u'DHCP_CONFIG_RESP', u'DHCP_OPTION', u'DISKSTATS', u'DOMAIN', u'DOMAIN_CONFIG', u'DOMAIN_CONFIG_RESP', u'DOMAIN_FLOATING_IP_ACL_TEMPLATE', u'DOMAIN_FLOATING_IP_ACL_TEMPLATE_ENTRY', u'DOMAIN_TEMPLATE', u'DSCP_FORWARDING_CLASS_MAPPING', u'DSCP_FORWARDING_CLASS_TABLE', u'EGRESS_ACL', u'EGRESS_ACL_ENTRY', u'EGRESS_ACL_TEMPLATE', u'EGRESS_ACL_TEMPLATE_ENTRY', u'EGRESS_QOS_MR', u'EGRESS_QOS_PRIMITIVE', u'EGRESS_QOS_QUEUE_MR', u'ENDPOINT', u'ENTERPRISE', u'ENTERPRISE_CONFIG', u'ENTERPRISE_CONFIG_RESP', u'ENTERPRISE_NETWORK', u'ENTERPRISE_PERMISSION', u'ENTERPRISE_PROFILE', u'ENTERPRISE_SECURED_DATA', u'ENTERPRISE_SECURITY', u'ENTITY_METADATA_BINDING', u'ESI_SEQUENCENO', u'EVENT_LOG', u'EVPN_BGP_COMMUNITY_TAG_ENTRY', u'EVPN_BGP_COMMUNITY_TAG_SEQ_NO', u'EXPORTIMPORT', u'EXTERNAL_SERVICE', u'FLOATING_IP_ACL_TEMPLATE', u'FLOATING_IP_ACL_TEMPLATE_ENTRY', u'FLOATINGIP', u'FLOATINGIP_ACL', u'FLOATINGIP_ACL_ENTRY', u'GATEWAY', u'GATEWAY_CONFIG', u'GATEWAY_CONFIG_RESP', u'GATEWAY_SECURED_DATA', u'GATEWAY_SECURITY', u'GATEWAY_SECURITY_PROFILE_REQUEST', u'GATEWAY_SECURITY_PROFILE_RESPONSE', u'GATEWAY_SECURITY_REQUEST', u'GATEWAY_SECURITY_RESPONSE', u'GATEWAY_SERVICE_CONFIG', u'GATEWAY_SERVICE_CONFIG_RESP', u'GATEWAY_TEMPLATE', u'GATEWAY_VPORT_CONFIG', u'GATEWAY_VPORT_CONFIG_RESP', u'GEO_VM_EVENT', u'GEO_VM_REQ', u'GEO_VM_RES', u'GROUP', u'GROUPKEY_ENCRYPTION_PROFILE', u'HEALTH_REQ', u'HOSTINTERFACE', u'HSC', u'IKEV2_ENCRYPTION_PROFILE', u'IKEV2_GATEWAY', u'INFRASTRUCTURE_CONFIG', u'INFRASTRUCTURE_GATEWAY_PROFILE', u'INFRASTRUCTURE_PORT_PROFILE', u'INFRASTRUCTURE_VSC_PROFILE', u'INGRESS_ACL', u'INGRESS_ACL_ENTRY', u'INGRESS_ACL_TEMPLATE', u'INGRESS_ACL_TEMPLATE_ENTRY', u'INGRESS_ADV_FWD', u'INGRESS_ADV_FWD_ENTRY', u'INGRESS_ADV_FWD_TEMPLATE', u'INGRESS_ADV_FWD_TEMPLATE_ENTRY', u'INGRESS_EXT_SERVICE', u'INGRESS_EXT_SERVICE_ENTRY', u'INGRESS_EXT_SERVICE_TEMPLATE', u'INGRESS_EXT_SERVICE_TEMPLATE_ENTRY', u'IP_BINDING', u'JOB', u'KEYSERVER_MEMBER', u'KEYSERVER_MONITOR', u'KEYSERVER_MONITOR_ENCRYPTED_SEED', u'KEYSERVER_MONITOR_SEED', u'KEYSERVER_MONITOR_SEK', u'KEYSERVER_NOTIFICATION', u'L2DOMAIN', u'L2DOMAIN_SHARED', u'L2DOMAIN_TEMPLATE', u'LDAP_CONFIG', u'LIBVIRT_INTERFACE', u'LICENSE', u'LOCATION', u'MC_CHANNEL_MAP', u'MC_LIST', u'MC_RANGE', u'METADATA', u'METADATA_TAG', u'MIRROR_DESTINATION', u'MONITORING_PORT', u'MULTI_NIC_VPORT', u'NATMAPENTRY', u'NETWORK_ELEMENT', u'NETWORK_LAYOUT', u'NETWORK_MACRO_GROUP', u'NETWORK_POLICY_GROUP', u'NEXT_HOP_RESP', u'NODE_EXECUTION_ERROR', u'NS_REDUNDANT_PORT', u'NSG_NOTIFICATION', u'NSGATEWAY', u'NSGATEWAY_CONFIG', u'NSGATEWAY_TEMPLATE', u'NSPORT', u'NSPORT_STATIC_CONFIG', u'NSPORT_TEMPLATE', u'NSREDUNDANT_GW_GRP', u'PATCONFIG_CONFIG_RESP', u'PATNATPOOL', u'PERMISSION', u'PERMITTED_ACTION', u'POLICING_POLICY', u'POLICY_DECISION', u'POLICY_GROUP', u'POLICY_GROUP_TEMPLATE', u'PORT', u'PORT_MR', u'PORT_TEMPLATE', u'PUBLIC_NETWORK', u'QOS_PRIMITIVE', u'RATE_LIMITER', u'RD_SEQUENCENO', u'REDUNDANT_GW_GRP', u'RESYNC', u'RTRD_ENTITY', u'RTRD_SEQUENCENO', u'SERVICE_GATEWAY_RESPONSE', u'SERVICE_VRF_SEQUENCENO', u'SERVICES_GATEWAY_RESPONSE', u'SHAPING_POLICY', u'SHARED_RESOURCE', u'SITE', u'SITE_REQ', u'SITE_RES', u'STATIC_ROUTE', u'STATIC_ROUTE_RESP', u'STATISTICS', u'STATS_COLLECTOR', u'STATS_POLICY', u'STATS_TCA', u'STATSSERVER', u'SUBNET', u'SUBNET_ENTRY', u'SUBNET_MAC_ENTRY', u'SUBNET_POOL_ENTRY', u'SUBNET_TEMPLATE', u'SYSTEM_CONFIG', u'SYSTEM_CONFIG_REQ', u'SYSTEM_CONFIG_RESP', u'SYSTEM_MONITORING', u'UNSUPPORTED', u'UPLINK_RD', u'USER', u'VIRTUAL_IP', u'VIRTUAL_MACHINE', u'VIRTUAL_MACHINE_REPORT', u'VLAN', u'VLAN_TEMPLATE', u'VM_DESCRIPTION', u'VM_INTERFACE', u'VMWARE_RELOAD_CONFIG', u'VMWARE_VCENTER', u'VMWARE_VCENTER_CLUSTER', u'VMWARE_VCENTER_DATACENTER', u'VMWARE_VCENTER_EAM_CONFIG', u'VMWARE_VCENTER_HYPERVISOR', u'VMWARE_VCENTER_VRS_BASE_CONFIG', u'VMWARE_VCENTER_VRS_CONFIG', u'VMWARE_VRS_ADDRESS_RANGE', u'VNID_SEQUENCENO', u'VPN_CONNECT', u'VPORT', u'VPORT_GATEWAY_RESPONSE', u'VPORT_MEDIATION_REQUEST', u'VPORT_MIRROR', u'VPORT_TAG_BASE', u'VPORTTAG', u'VPORTTAGTEMPLATE', u'VPRN_LABEL_SEQUENCENO', u'VRS', u'VSC', u'VSD', u'VSD_COMPONENT', u'VSG_REDUNDANT_PORT', u'VSP', u'WAN_SERVICE', u'ZONE', u'ZONE_TEMPLATE'])
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
-        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="number_of_hosts_in_subnets", remote_name="numberOfHostsInSubnets", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="policy_group_id", remote_name="policyGroupID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="public_zone", remote_name="publicZone", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="number_of_hosts_in_subnets", remote_name="numberOfHostsInSubnets", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.dhcp_options = NUDHCPOptionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.tcas = NUTCAsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.dhcp_options = NUDHCPOptionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.vms = NUVMsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.vm_interfaces = NUVMInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.qoss = NUQOSsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -646,13 +652,7 @@ class NUZone(NURESTObject):
         self.subnets = NUSubnetsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.tcas = NUTCAsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.vms = NUVMsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.vm_interfaces = NUVMInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -687,6 +687,83 @@ class NUZone(NURESTObject):
 
     
     @property
+    def maintenance_mode(self):
+        """ Get maintenance_mode value.
+
+            Notes:
+                Indicates if the Zone is accepting VM activation requests.
+
+                
+                This attribute is named `maintenanceMode` in VSD API.
+                
+        """
+        return self._maintenance_mode
+
+    @maintenance_mode.setter
+    def maintenance_mode(self, value):
+        """ Set maintenance_mode value.
+
+            Notes:
+                Indicates if the Zone is accepting VM activation requests.
+
+                
+                This attribute is named `maintenanceMode` in VSD API.
+                
+        """
+        self._maintenance_mode = value
+
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the current entity(Zone or zone template or subnet etc..) Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the current entity(Zone or zone template or subnet etc..) Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
     def address(self):
         """ Get address value.
 
@@ -707,6 +784,156 @@ class NUZone(NURESTObject):
                 
         """
         self._address = value
+
+    
+    @property
+    def template_id(self):
+        """ Get template_id value.
+
+            Notes:
+                The ID of the template that this zone was derived from
+
+                
+                This attribute is named `templateID` in VSD API.
+                
+        """
+        return self._template_id
+
+    @template_id.setter
+    def template_id(self, value):
+        """ Set template_id value.
+
+            Notes:
+                The ID of the template that this zone was derived from
+
+                
+                This attribute is named `templateID` in VSD API.
+                
+        """
+        self._template_id = value
+
+    
+    @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                A description of the zone
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                A description of the zone
+
+                
+        """
+        self._description = value
+
+    
+    @property
+    def netmask(self):
+        """ Get netmask value.
+
+            Notes:
+                Netmask of the subnet defined
+
+                
+        """
+        return self._netmask
+
+    @netmask.setter
+    def netmask(self, value):
+        """ Set netmask value.
+
+            Notes:
+                Netmask of the subnet defined
+
+                
+        """
+        self._netmask = value
+
+    
+    @property
+    def encryption(self):
+        """ Get encryption value.
+
+            Notes:
+                Determines whether or not IPSEC is enabled.
+
+                
+        """
+        return self._encryption
+
+    @encryption.setter
+    def encryption(self, value):
+        """ Set encryption value.
+
+            Notes:
+                Determines whether or not IPSEC is enabled.
+
+                
+        """
+        self._encryption = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def policy_group_id(self):
+        """ Get policy_group_id value.
+
+            Notes:
+                PG ID for the subnet. This is unique per domain and will be in the range 1-4095
+
+                
+                This attribute is named `policyGroupID` in VSD API.
+                
+        """
+        return self._policy_group_id
+
+    @policy_group_id.setter
+    def policy_group_id(self, value):
+        """ Set policy_group_id value.
+
+            Notes:
+                PG ID for the subnet. This is unique per domain and will be in the range 1-4095
+
+                
+                This attribute is named `policyGroupID` in VSD API.
+                
+        """
+        self._policy_group_id = value
 
     
     @property
@@ -818,157 +1045,30 @@ class NUZone(NURESTObject):
 
     
     @property
-    def description(self):
-        """ Get description value.
+    def public_zone(self):
+        """ Get public_zone value.
 
             Notes:
-                A description of the zone
+                If a zone is marked as public, then it is lined to the public network associated with this data center
 
                 
+                This attribute is named `publicZone` in VSD API.
+                
         """
-        return self._description
+        return self._public_zone
 
-    @description.setter
-    def description(self, value):
-        """ Set description value.
+    @public_zone.setter
+    def public_zone(self, value):
+        """ Set public_zone value.
 
             Notes:
-                A description of the zone
+                If a zone is marked as public, then it is lined to the public network associated with this data center
 
+                
+                This attribute is named `publicZone` in VSD API.
                 
         """
-        self._description = value
-
-    
-    @property
-    def encryption(self):
-        """ Get encryption value.
-
-            Notes:
-                Determines whether or not IPSEC is enabled.
-
-                
-        """
-        return self._encryption
-
-    @encryption.setter
-    def encryption(self, value):
-        """ Set encryption value.
-
-            Notes:
-                Determines whether or not IPSEC is enabled.
-
-                
-        """
-        self._encryption = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def maintenance_mode(self):
-        """ Get maintenance_mode value.
-
-            Notes:
-                Indicates if the Zone is accepting VM activation requests.
-
-                
-                This attribute is named `maintenanceMode` in VSD API.
-                
-        """
-        return self._maintenance_mode
-
-    @maintenance_mode.setter
-    def maintenance_mode(self, value):
-        """ Set maintenance_mode value.
-
-            Notes:
-                Indicates if the Zone is accepting VM activation requests.
-
-                
-                This attribute is named `maintenanceMode` in VSD API.
-                
-        """
-        self._maintenance_mode = value
+        self._public_zone = value
 
     
     @property
@@ -992,52 +1092,6 @@ class NUZone(NURESTObject):
                 
         """
         self._multicast = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the current entity(Zone or zone template or subnet etc..) Valid characters are alphabets, numbers, space and hyphen( - ).
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the current entity(Zone or zone template or subnet etc..) Valid characters are alphabets, numbers, space and hyphen( - ).
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def netmask(self):
-        """ Get netmask value.
-
-            Notes:
-                Netmask of the subnet defined
-
-                
-        """
-        return self._netmask
-
-    @netmask.setter
-    def netmask(self, value):
-        """ Set netmask value.
-
-            Notes:
-                Netmask of the subnet defined
-
-                
-        """
-        self._netmask = value
 
     
     @property
@@ -1068,84 +1122,30 @@ class NUZone(NURESTObject):
 
     
     @property
-    def policy_group_id(self):
-        """ Get policy_group_id value.
+    def external_id(self):
+        """ Get external_id value.
 
             Notes:
-                PG ID for the subnet. This is unique per domain and will be in the range 1-4095
+                External object ID. Used for integration with third party systems
 
                 
-                This attribute is named `policyGroupID` in VSD API.
+                This attribute is named `externalID` in VSD API.
                 
         """
-        return self._policy_group_id
+        return self._external_id
 
-    @policy_group_id.setter
-    def policy_group_id(self, value):
-        """ Set policy_group_id value.
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
 
             Notes:
-                PG ID for the subnet. This is unique per domain and will be in the range 1-4095
+                External object ID. Used for integration with third party systems
 
                 
-                This attribute is named `policyGroupID` in VSD API.
-                
-        """
-        self._policy_group_id = value
-
-    
-    @property
-    def public_zone(self):
-        """ Get public_zone value.
-
-            Notes:
-                If a zone is marked as public, then it is lined to the public network associated with this data center
-
-                
-                This attribute is named `publicZone` in VSD API.
+                This attribute is named `externalID` in VSD API.
                 
         """
-        return self._public_zone
-
-    @public_zone.setter
-    def public_zone(self, value):
-        """ Set public_zone value.
-
-            Notes:
-                If a zone is marked as public, then it is lined to the public network associated with this data center
-
-                
-                This attribute is named `publicZone` in VSD API.
-                
-        """
-        self._public_zone = value
-
-    
-    @property
-    def template_id(self):
-        """ Get template_id value.
-
-            Notes:
-                The ID of the template that this zone was derived from
-
-                
-                This attribute is named `templateID` in VSD API.
-                
-        """
-        return self._template_id
-
-    @template_id.setter
-    def template_id(self, value):
-        """ Set template_id value.
-
-            Notes:
-                The ID of the template that this zone was derived from
-
-                
-                This attribute is named `templateID` in VSD API.
-                
-        """
-        self._template_id = value
+        self._external_id = value
 
     
 

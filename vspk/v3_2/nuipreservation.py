@@ -27,13 +27,13 @@
 
 
 
-from .fetchers import NUEventLogsFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUMetadatasFetcher
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -74,63 +74,36 @@ class NUIPReservation(NURESTObject):
 
         # Read/Write Attributes
         
-        self._ip_address = None
         self._mac = None
-        self._dynamic_allocation_enabled = None
+        self._ip_address = None
+        self._last_updated_by = None
         self._entity_scope = None
         self._external_id = None
-        self._last_updated_by = None
+        self._dynamic_allocation_enabled = None
         
-        self.expose_attribute(local_name="ip_address", remote_name="IPAddress", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="mac", remote_name="MAC", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="dynamic_allocation_enabled", remote_name="dynamicAllocationEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ip_address", remote_name="IPAddress", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="dynamic_allocation_enabled", remote_name="dynamicAllocationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
-    
-    @property
-    def ip_address(self):
-        """ Get ip_address value.
-
-            Notes:
-                Static IP Address
-
-                
-                This attribute is named `IPAddress` in VSD API.
-                
-        """
-        return self._ip_address
-
-    @ip_address.setter
-    def ip_address(self, value):
-        """ Set ip_address value.
-
-            Notes:
-                Static IP Address
-
-                
-                This attribute is named `IPAddress` in VSD API.
-                
-        """
-        self._ip_address = value
-
     
     @property
     def mac(self):
@@ -160,30 +133,57 @@ class NUIPReservation(NURESTObject):
 
     
     @property
-    def dynamic_allocation_enabled(self):
-        """ Get dynamic_allocation_enabled value.
+    def ip_address(self):
+        """ Get ip_address value.
 
             Notes:
-                Binding is static or dynamic
+                Static IP Address
 
                 
-                This attribute is named `dynamicAllocationEnabled` in VSD API.
+                This attribute is named `IPAddress` in VSD API.
                 
         """
-        return self._dynamic_allocation_enabled
+        return self._ip_address
 
-    @dynamic_allocation_enabled.setter
-    def dynamic_allocation_enabled(self, value):
-        """ Set dynamic_allocation_enabled value.
+    @ip_address.setter
+    def ip_address(self, value):
+        """ Set ip_address value.
 
             Notes:
-                Binding is static or dynamic
+                Static IP Address
 
                 
-                This attribute is named `dynamicAllocationEnabled` in VSD API.
+                This attribute is named `IPAddress` in VSD API.
                 
         """
-        self._dynamic_allocation_enabled = value
+        self._ip_address = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
 
     
     @property
@@ -241,30 +241,30 @@ class NUIPReservation(NURESTObject):
 
     
     @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
+    def dynamic_allocation_enabled(self):
+        """ Get dynamic_allocation_enabled value.
 
             Notes:
-                ID of the user who last updated the object.
+                Binding is static or dynamic
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `dynamicAllocationEnabled` in VSD API.
                 
         """
-        return self._last_updated_by
+        return self._dynamic_allocation_enabled
 
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
+    @dynamic_allocation_enabled.setter
+    def dynamic_allocation_enabled(self, value):
+        """ Set dynamic_allocation_enabled value.
 
             Notes:
-                ID of the user who last updated the object.
+                Binding is static or dynamic
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `dynamicAllocationEnabled` in VSD API.
                 
         """
-        self._last_updated_by = value
+        self._dynamic_allocation_enabled = value
 
     
 

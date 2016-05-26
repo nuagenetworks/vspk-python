@@ -27,19 +27,25 @@
 
 
 
+from .fetchers import NUL2DomainsFetcher
+
+
 from .fetchers import NUAddressRangesFetcher
+
+
+from .fetchers import NURedirectionTargetTemplatesFetcher
+
+
+from .fetchers import NUPermissionsFetcher
+
+
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUEgressACLTemplatesFetcher
 
 
-from .fetchers import NUEventLogsFetcher
-
-
 from .fetchers import NUGlobalMetadatasFetcher
-
-
-from .fetchers import NUGroupsFetcher
 
 
 from .fetchers import NUIngressACLTemplatesFetcher
@@ -54,22 +60,16 @@ from .fetchers import NUIngressExternalServiceTemplatesFetcher
 from .fetchers import NUJobsFetcher
 
 
-from .fetchers import NUL2DomainsFetcher
-
-
-from .fetchers import NUMetadatasFetcher
-
-
-from .fetchers import NUPermissionsFetcher
-
-
 from .fetchers import NUPolicyGroupTemplatesFetcher
 
 
 from .fetchers import NUQOSsFetcher
 
 
-from .fetchers import NURedirectionTargetTemplatesFetcher
+from .fetchers import NUGroupsFetcher
+
+
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -132,51 +132,57 @@ class NUL2DomainTemplate(NURESTObject):
         
         self._dhcp_managed = None
         self._ip_type = None
+        self._name = None
+        self._last_updated_by = None
+        self._gateway = None
         self._address = None
-        self._associated_multicast_channel_map_id = None
         self._description = None
+        self._netmask = None
         self._encryption = None
         self._entity_scope = None
-        self._external_id = None
-        self._gateway = None
-        self._last_updated_by = None
-        self._multicast = None
-        self._name = None
-        self._netmask = None
         self._policy_change_status = None
+        self._associated_multicast_channel_map_id = None
+        self._multicast = None
+        self._external_id = None
         
         self.expose_attribute(local_name="dhcp_managed", remote_name="DHCPManaged", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'DISCARDED', u'STARTED'])
+        self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
+        self.l2_domains = NUL2DomainsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.address_ranges = NUAddressRangesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.redirection_target_templates = NURedirectionTargetTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.egress_acl_templates = NUEgressACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ingress_acl_templates = NUIngressACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -191,22 +197,16 @@ class NUL2DomainTemplate(NURESTObject):
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.l2_domains = NUL2DomainsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.policy_group_templates = NUPolicyGroupTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.qoss = NUQOSsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.redirection_target_templates = NURedirectionTargetTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -268,6 +268,79 @@ class NUL2DomainTemplate(NURESTObject):
 
     
     @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the L2Domain / L2Domain template,has to be unique within a Enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the L2Domain / L2Domain template,has to be unique within a Enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def gateway(self):
+        """ Get gateway value.
+
+            Notes:
+                The IP address of the gateway of this l2 domain
+
+                
+        """
+        return self._gateway
+
+    @gateway.setter
+    def gateway(self, value):
+        """ Set gateway value.
+
+            Notes:
+                The IP address of the gateway of this l2 domain
+
+                
+        """
+        self._gateway = value
+
+    
+    @property
     def address(self):
         """ Get address value.
 
@@ -291,33 +364,6 @@ class NUL2DomainTemplate(NURESTObject):
 
     
     @property
-    def associated_multicast_channel_map_id(self):
-        """ Get associated_multicast_channel_map_id value.
-
-            Notes:
-                The ID of the Multi Cast Channel Map this L2Domain / L2Domain template template is associated with. This has to be set when  enableMultiCast is set to ENABLED
-
-                
-                This attribute is named `associatedMulticastChannelMapID` in VSD API.
-                
-        """
-        return self._associated_multicast_channel_map_id
-
-    @associated_multicast_channel_map_id.setter
-    def associated_multicast_channel_map_id(self, value):
-        """ Set associated_multicast_channel_map_id value.
-
-            Notes:
-                The ID of the Multi Cast Channel Map this L2Domain / L2Domain template template is associated with. This has to be set when  enableMultiCast is set to ENABLED
-
-                
-                This attribute is named `associatedMulticastChannelMapID` in VSD API.
-                
-        """
-        self._associated_multicast_channel_map_id = value
-
-    
-    @property
     def description(self):
         """ Get description value.
 
@@ -338,6 +384,29 @@ class NUL2DomainTemplate(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def netmask(self):
+        """ Get netmask value.
+
+            Notes:
+                Netmask of the L2Domain / L2Domain template defined
+
+                
+        """
+        return self._netmask
+
+    @netmask.setter
+    def netmask(self, value):
+        """ Set netmask value.
+
+            Notes:
+                Netmask of the L2Domain / L2Domain template defined
+
+                
+        """
+        self._netmask = value
 
     
     @property
@@ -391,80 +460,57 @@ class NUL2DomainTemplate(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
+    def policy_change_status(self):
+        """ Get policy_change_status value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                
 
                 
-                This attribute is named `externalID` in VSD API.
+                This attribute is named `policyChangeStatus` in VSD API.
                 
         """
-        return self._external_id
+        return self._policy_change_status
 
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
+    @policy_change_status.setter
+    def policy_change_status(self, value):
+        """ Set policy_change_status value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                
 
                 
-                This attribute is named `externalID` in VSD API.
+                This attribute is named `policyChangeStatus` in VSD API.
                 
         """
-        self._external_id = value
+        self._policy_change_status = value
 
     
     @property
-    def gateway(self):
-        """ Get gateway value.
+    def associated_multicast_channel_map_id(self):
+        """ Get associated_multicast_channel_map_id value.
 
             Notes:
-                The IP address of the gateway of this l2 domain
+                The ID of the Multi Cast Channel Map this L2Domain / L2Domain template template is associated with. This has to be set when  enableMultiCast is set to ENABLED
 
                 
+                This attribute is named `associatedMulticastChannelMapID` in VSD API.
+                
         """
-        return self._gateway
+        return self._associated_multicast_channel_map_id
 
-    @gateway.setter
-    def gateway(self, value):
-        """ Set gateway value.
+    @associated_multicast_channel_map_id.setter
+    def associated_multicast_channel_map_id(self, value):
+        """ Set associated_multicast_channel_map_id value.
 
             Notes:
-                The IP address of the gateway of this l2 domain
+                The ID of the Multi Cast Channel Map this L2Domain / L2Domain template template is associated with. This has to be set when  enableMultiCast is set to ENABLED
 
+                
+                This attribute is named `associatedMulticastChannelMapID` in VSD API.
                 
         """
-        self._gateway = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
+        self._associated_multicast_channel_map_id = value
 
     
     @property
@@ -491,76 +537,30 @@ class NUL2DomainTemplate(NURESTObject):
 
     
     @property
-    def name(self):
-        """ Get name value.
+    def external_id(self):
+        """ Get external_id value.
 
             Notes:
-                Name of the L2Domain / L2Domain template,has to be unique within a Enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
+                External object ID. Used for integration with third party systems
 
                 
+                This attribute is named `externalID` in VSD API.
+                
         """
-        return self._name
+        return self._external_id
 
-    @name.setter
-    def name(self, value):
-        """ Set name value.
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
 
             Notes:
-                Name of the L2Domain / L2Domain template,has to be unique within a Enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
+                External object ID. Used for integration with third party systems
 
+                
+                This attribute is named `externalID` in VSD API.
                 
         """
-        self._name = value
-
-    
-    @property
-    def netmask(self):
-        """ Get netmask value.
-
-            Notes:
-                Netmask of the L2Domain / L2Domain template defined
-
-                
-        """
-        return self._netmask
-
-    @netmask.setter
-    def netmask(self, value):
-        """ Set netmask value.
-
-            Notes:
-                Netmask of the L2Domain / L2Domain template defined
-
-                
-        """
-        self._netmask = value
-
-    
-    @property
-    def policy_change_status(self):
-        """ Get policy_change_status value.
-
-            Notes:
-                
-
-                
-                This attribute is named `policyChangeStatus` in VSD API.
-                
-        """
-        return self._policy_change_status
-
-    @policy_change_status.setter
-    def policy_change_status(self, value):
-        """ Set policy_change_status value.
-
-            Notes:
-                
-
-                
-                This attribute is named `policyChangeStatus` in VSD API.
-                
-        """
-        self._policy_change_status = value
+        self._external_id = value
 
     
 

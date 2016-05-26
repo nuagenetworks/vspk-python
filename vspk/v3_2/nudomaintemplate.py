@@ -27,19 +27,19 @@
 
 
 
-from .fetchers import NUDomainsFetcher
+from .fetchers import NURedirectionTargetTemplatesFetcher
+
+
+from .fetchers import NUPermissionsFetcher
+
+
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUEgressACLTemplatesFetcher
 
 
-from .fetchers import NUEventLogsFetcher
-
-
 from .fetchers import NUGlobalMetadatasFetcher
-
-
-from .fetchers import NUGroupsFetcher
 
 
 from .fetchers import NUIngressACLTemplatesFetcher
@@ -54,25 +54,25 @@ from .fetchers import NUIngressExternalServiceTemplatesFetcher
 from .fetchers import NUJobsFetcher
 
 
-from .fetchers import NUMetadatasFetcher
-
-
-from .fetchers import NUPermissionsFetcher
-
-
 from .fetchers import NUPolicyGroupTemplatesFetcher
+
+
+from .fetchers import NUDomainsFetcher
+
+
+from .fetchers import NUZoneTemplatesFetcher
 
 
 from .fetchers import NUQOSsFetcher
 
 
-from .fetchers import NURedirectionTargetTemplatesFetcher
+from .fetchers import NUGroupsFetcher
 
 
 from .fetchers import NUSubnetTemplatesFetcher
 
 
-from .fetchers import NUZoneTemplatesFetcher
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -129,43 +129,43 @@ class NUDomainTemplate(NURESTObject):
 
         # Read/Write Attributes
         
-        self._associated_multicast_channel_map_id = None
+        self._name = None
+        self._last_updated_by = None
         self._description = None
         self._encryption = None
         self._entity_scope = None
-        self._external_id = None
-        self._last_updated_by = None
-        self._multicast = None
-        self._name = None
         self._policy_change_status = None
+        self._associated_multicast_channel_map_id = None
+        self._multicast = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'DISCARDED', u'STARTED'])
+        self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.domains = NUDomainsFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        self.redirection_target_templates = NURedirectionTargetTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.egress_acl_templates = NUEgressACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ingress_acl_templates = NUIngressACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -180,25 +180,25 @@ class NUDomainTemplate(NURESTObject):
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.policy_group_templates = NUPolicyGroupTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.domains = NUDomainsFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        
+        
+        self.zone_templates = NUZoneTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.qoss = NUQOSsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.redirection_target_templates = NURedirectionTargetTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.subnet_templates = NUSubnetTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.zone_templates = NUZoneTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -206,30 +206,53 @@ class NUDomainTemplate(NURESTObject):
     # Properties
     
     @property
-    def associated_multicast_channel_map_id(self):
-        """ Get associated_multicast_channel_map_id value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                The ID of the Multi Cast Channel Map  this domain template is associated with. This has to be set when enableMultiCast is set to ENABLED
+                The name of the domain template, that is unique within an enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
 
-                
-                This attribute is named `associatedMulticastChannelMapID` in VSD API.
                 
         """
-        return self._associated_multicast_channel_map_id
+        return self._name
 
-    @associated_multicast_channel_map_id.setter
-    def associated_multicast_channel_map_id(self, value):
-        """ Set associated_multicast_channel_map_id value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                The ID of the Multi Cast Channel Map  this domain template is associated with. This has to be set when enableMultiCast is set to ENABLED
+                The name of the domain template, that is unique within an enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
 
                 
-                This attribute is named `associatedMulticastChannelMapID` in VSD API.
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        self._associated_multicast_channel_map_id = value
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
 
     
     @property
@@ -306,57 +329,57 @@ class NUDomainTemplate(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
+    def policy_change_status(self):
+        """ Get policy_change_status value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                None
 
                 
-                This attribute is named `externalID` in VSD API.
+                This attribute is named `policyChangeStatus` in VSD API.
                 
         """
-        return self._external_id
+        return self._policy_change_status
 
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
+    @policy_change_status.setter
+    def policy_change_status(self, value):
+        """ Set policy_change_status value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                None
 
                 
-                This attribute is named `externalID` in VSD API.
+                This attribute is named `policyChangeStatus` in VSD API.
                 
         """
-        self._external_id = value
+        self._policy_change_status = value
 
     
     @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
+    def associated_multicast_channel_map_id(self):
+        """ Get associated_multicast_channel_map_id value.
 
             Notes:
-                ID of the user who last updated the object.
+                The ID of the Multi Cast Channel Map  this domain template is associated with. This has to be set when enableMultiCast is set to ENABLED
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `associatedMulticastChannelMapID` in VSD API.
                 
         """
-        return self._last_updated_by
+        return self._associated_multicast_channel_map_id
 
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
+    @associated_multicast_channel_map_id.setter
+    def associated_multicast_channel_map_id(self, value):
+        """ Set associated_multicast_channel_map_id value.
 
             Notes:
-                ID of the user who last updated the object.
+                The ID of the Multi Cast Channel Map  this domain template is associated with. This has to be set when enableMultiCast is set to ENABLED
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `associatedMulticastChannelMapID` in VSD API.
                 
         """
-        self._last_updated_by = value
+        self._associated_multicast_channel_map_id = value
 
     
     @property
@@ -383,53 +406,30 @@ class NUDomainTemplate(NURESTObject):
 
     
     @property
-    def name(self):
-        """ Get name value.
+    def external_id(self):
+        """ Get external_id value.
 
             Notes:
-                The name of the domain template, that is unique within an enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
+                External object ID. Used for integration with third party systems
 
                 
+                This attribute is named `externalID` in VSD API.
+                
         """
-        return self._name
+        return self._external_id
 
-    @name.setter
-    def name(self, value):
-        """ Set name value.
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
 
             Notes:
-                The name of the domain template, that is unique within an enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
+                External object ID. Used for integration with third party systems
 
+                
+                This attribute is named `externalID` in VSD API.
                 
         """
-        self._name = value
-
-    
-    @property
-    def policy_change_status(self):
-        """ Get policy_change_status value.
-
-            Notes:
-                None
-
-                
-                This attribute is named `policyChangeStatus` in VSD API.
-                
-        """
-        return self._policy_change_status
-
-    @policy_change_status.setter
-    def policy_change_status(self, value):
-        """ Set policy_change_status value.
-
-            Notes:
-                None
-
-                
-                This attribute is named `policyChangeStatus` in VSD API.
-                
-        """
-        self._policy_change_status = value
+        self._external_id = value
 
     
 

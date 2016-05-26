@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -77,31 +77,58 @@ class NUBGPPeer(NURESTObject):
 
         # Read/Write Attributes
         
+        self._last_state_change = None
         self._address = None
         self._entity_scope = None
-        self._external_id = None
-        self._last_state_change = None
         self._status = None
+        self._external_id = None
         
+        self.expose_attribute(local_name="last_state_change", remote_name="lastStateChange", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_state_change", remote_name="lastStateChange", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def last_state_change(self):
+        """ Get last_state_change value.
+
+            Notes:
+                Last state change timestamp.
+
+                
+                This attribute is named `lastStateChange` in VSD API.
+                
+        """
+        return self._last_state_change
+
+    @last_state_change.setter
+    def last_state_change(self, value):
+        """ Set last_state_change value.
+
+            Notes:
+                Last state change timestamp.
+
+                
+                This attribute is named `lastStateChange` in VSD API.
+                
+        """
+        self._last_state_change = value
+
     
     @property
     def address(self):
@@ -154,6 +181,29 @@ class NUBGPPeer(NURESTObject):
 
     
     @property
+    def status(self):
+        """ Get status value.
+
+            Notes:
+                Current connection status of the BGP peer.
+
+                
+        """
+        return self._status
+
+    @status.setter
+    def status(self, value):
+        """ Set status value.
+
+            Notes:
+                Current connection status of the BGP peer.
+
+                
+        """
+        self._status = value
+
+    
+    @property
     def external_id(self):
         """ Get external_id value.
 
@@ -178,56 +228,6 @@ class NUBGPPeer(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def last_state_change(self):
-        """ Get last_state_change value.
-
-            Notes:
-                Last state change timestamp.
-
-                
-                This attribute is named `lastStateChange` in VSD API.
-                
-        """
-        return self._last_state_change
-
-    @last_state_change.setter
-    def last_state_change(self, value):
-        """ Set last_state_change value.
-
-            Notes:
-                Last state change timestamp.
-
-                
-                This attribute is named `lastStateChange` in VSD API.
-                
-        """
-        self._last_state_change = value
-
-    
-    @property
-    def status(self):
-        """ Get status value.
-
-            Notes:
-                Current connection status of the BGP peer.
-
-                
-        """
-        return self._status
-
-    @status.setter
-    def status(self, value):
-        """ Set status value.
-
-            Notes:
-                Current connection status of the BGP peer.
-
-                
-        """
-        self._status = value
 
     
 

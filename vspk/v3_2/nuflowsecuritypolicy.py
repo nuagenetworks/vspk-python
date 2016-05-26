@@ -27,13 +27,13 @@
 
 
 
-from .fetchers import NUEventLogsFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUMetadatasFetcher
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -127,7 +127,7 @@ class NUFlowSecurityPolicy(NURESTObject):
     
     CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_CUSTOMER_VRF_SEQUENCENO = "CUSTOMER_VRF_SEQUENCENO"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_APPD_FLOW_SECURITY_POLICY = "APPD_FLOW_SECURITY_POLICY"
     
     CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_RTRD_SEQUENCENO = "RTRD_SEQUENCENO"
     
@@ -145,11 +145,11 @@ class NUFlowSecurityPolicy(NURESTObject):
     
     CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_STATS_POLICY = "STATS_POLICY"
     
-    CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_IKEV2_ENCRYPTION_PROFILE = "IKEV2_ENCRYPTION_PROFILE"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_NSREDUNDANT_GW_GRP = "NSREDUNDANT_GW_GRP"
     
-    CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_INGRESS_ACL_TEMPLATE = "INGRESS_ACL_TEMPLATE"
+    CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_IKEV2_ENCRYPTION_PROFILE = "IKEV2_ENCRYPTION_PROFILE"
     
     CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_VMWARE_VCENTER_DATACENTER = "VMWARE_VCENTER_DATACENTER"
     
@@ -281,7 +281,7 @@ class NUFlowSecurityPolicy(NURESTObject):
     
     CONST_ACTION_DROP = "DROP"
     
-    CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_APPD_FLOW_SECURITY_POLICY = "APPD_FLOW_SECURITY_POLICY"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_VMWARE_VCENTER_EAM_CONFIG = "VMWARE_VCENTER_EAM_CONFIG"
     
@@ -445,6 +445,8 @@ class NUFlowSecurityPolicy(NURESTObject):
     
     CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_MONITORING_PORT = "MONITORING_PORT"
     
+    CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_INGRESS_ACL_TEMPLATE = "INGRESS_ACL_TEMPLATE"
+    
     CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_VMWARE_VCENTER_VRS_BASE_CONFIG = "VMWARE_VCENTER_VRS_BASE_CONFIG"
     
     CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_VPRN_LABEL_SEQUENCENO = "VPRN_LABEL_SEQUENCENO"
@@ -468,8 +470,6 @@ class NUFlowSecurityPolicy(NURESTObject):
     CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_POLICING_POLICY = "POLICING_POLICY"
     
     CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_EGRESS_QOS_QUEUE_MR = "EGRESS_QOS_QUEUE_MR"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_GATEWAY = "GATEWAY"
     
@@ -527,38 +527,38 @@ class NUFlowSecurityPolicy(NURESTObject):
         # Read/Write Attributes
         
         self._action = None
+        self._destination_address_overwrite = None
+        self._flow_id = None
+        self._entity_scope = None
+        self._source_address_overwrite = None
+        self._priority = None
         self._associated_application_service_id = None
         self._associated_network_object_id = None
         self._associated_network_object_type = None
-        self._destination_address_overwrite = None
-        self._entity_scope = None
         self._external_id = None
-        self._flow_id = None
-        self._priority = None
-        self._source_address_overwrite = None
         
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=False, is_unique=False, choices=[u'DROP', u'FORWARD', u'REDIRECT'])
+        self.expose_attribute(local_name="destination_address_overwrite", remote_name="destinationAddressOverwrite", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_id", remote_name="flowID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="source_address_overwrite", remote_name="sourceAddressOverwrite", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_application_service_id", remote_name="associatedApplicationServiceID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_network_object_id", remote_name="associatedNetworkObjectID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_network_object_type", remote_name="associatedNetworkObjectType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACLENTRY_LOCATION', u'ADDRESS_RANGE', u'ADDRESS_RANGE_STATE', u'ALARM', u'APPD_APPLICATION', u'APPD_EXTERNAL_APP_SERVICE', u'APPD_FLOW', u'APPD_FLOW_FORWARDING_POLICY', u'APPD_FLOW_SECURITY_POLICY', u'APPD_SERVICE', u'APPD_TIER', u'APPLICATION', u'AUTO_DISC_GATEWAY', u'BACK_HAUL_SERVICE_RESP', u'BGPPEER', u'BOOTSTRAP', u'BOOTSTRAP_ACTIVATION', u'BRIDGEINTERFACE', u'CERTIFICATE', u'CHILD_ENTITY_POLICY_CHANGE', u'CLOUD_MGMT_SYSTEM', u'CUSTOMER_VRF_SEQUENCENO', u'DC_CONFIG', u'DHCP_ALLOC_MESSAGE', u'DHCP_CONFIG_RESP', u'DHCP_OPTION', u'DISKSTATS', u'DOMAIN', u'DOMAIN_CONFIG', u'DOMAIN_CONFIG_RESP', u'DOMAIN_FLOATING_IP_ACL_TEMPLATE', u'DOMAIN_FLOATING_IP_ACL_TEMPLATE_ENTRY', u'DOMAIN_TEMPLATE', u'DSCP_FORWARDING_CLASS_MAPPING', u'DSCP_FORWARDING_CLASS_TABLE', u'EGRESS_ACL', u'EGRESS_ACL_ENTRY', u'EGRESS_ACL_TEMPLATE', u'EGRESS_ACL_TEMPLATE_ENTRY', u'EGRESS_QOS_MR', u'EGRESS_QOS_PRIMITIVE', u'EGRESS_QOS_QUEUE_MR', u'ENDPOINT', u'ENTERPRISE', u'ENTERPRISE_CONFIG', u'ENTERPRISE_CONFIG_RESP', u'ENTERPRISE_NETWORK', u'ENTERPRISE_PERMISSION', u'ENTERPRISE_PROFILE', u'ENTERPRISE_SECURED_DATA', u'ENTERPRISE_SECURITY', u'ENTITY_METADATA_BINDING', u'ESI_SEQUENCENO', u'EVENT_LOG', u'EVPN_BGP_COMMUNITY_TAG_ENTRY', u'EVPN_BGP_COMMUNITY_TAG_SEQ_NO', u'EXPORTIMPORT', u'EXTERNAL_SERVICE', u'FLOATING_IP_ACL_TEMPLATE', u'FLOATING_IP_ACL_TEMPLATE_ENTRY', u'FLOATINGIP', u'FLOATINGIP_ACL', u'FLOATINGIP_ACL_ENTRY', u'GATEWAY', u'GATEWAY_CONFIG', u'GATEWAY_CONFIG_RESP', u'GATEWAY_SECURED_DATA', u'GATEWAY_SECURITY', u'GATEWAY_SECURITY_PROFILE_REQUEST', u'GATEWAY_SECURITY_PROFILE_RESPONSE', u'GATEWAY_SECURITY_REQUEST', u'GATEWAY_SECURITY_RESPONSE', u'GATEWAY_SERVICE_CONFIG', u'GATEWAY_SERVICE_CONFIG_RESP', u'GATEWAY_TEMPLATE', u'GATEWAY_VPORT_CONFIG', u'GATEWAY_VPORT_CONFIG_RESP', u'GEO_VM_EVENT', u'GEO_VM_REQ', u'GEO_VM_RES', u'GROUP', u'GROUPKEY_ENCRYPTION_PROFILE', u'HEALTH_REQ', u'HOSTINTERFACE', u'HSC', u'IKEV2_ENCRYPTION_PROFILE', u'IKEV2_GATEWAY', u'INFRASTRUCTURE_CONFIG', u'INFRASTRUCTURE_GATEWAY_PROFILE', u'INFRASTRUCTURE_PORT_PROFILE', u'INFRASTRUCTURE_VSC_PROFILE', u'INGRESS_ACL', u'INGRESS_ACL_ENTRY', u'INGRESS_ACL_TEMPLATE', u'INGRESS_ACL_TEMPLATE_ENTRY', u'INGRESS_ADV_FWD', u'INGRESS_ADV_FWD_ENTRY', u'INGRESS_ADV_FWD_TEMPLATE', u'INGRESS_ADV_FWD_TEMPLATE_ENTRY', u'INGRESS_EXT_SERVICE', u'INGRESS_EXT_SERVICE_ENTRY', u'INGRESS_EXT_SERVICE_TEMPLATE', u'INGRESS_EXT_SERVICE_TEMPLATE_ENTRY', u'IP_BINDING', u'JOB', u'KEYSERVER_MEMBER', u'KEYSERVER_MONITOR', u'KEYSERVER_MONITOR_ENCRYPTED_SEED', u'KEYSERVER_MONITOR_SEED', u'KEYSERVER_MONITOR_SEK', u'KEYSERVER_NOTIFICATION', u'L2DOMAIN', u'L2DOMAIN_SHARED', u'L2DOMAIN_TEMPLATE', u'LDAP_CONFIG', u'LIBVIRT_INTERFACE', u'LICENSE', u'LOCATION', u'MC_CHANNEL_MAP', u'MC_LIST', u'MC_RANGE', u'METADATA', u'METADATA_TAG', u'MIRROR_DESTINATION', u'MONITORING_PORT', u'MULTI_NIC_VPORT', u'NATMAPENTRY', u'NETWORK_ELEMENT', u'NETWORK_LAYOUT', u'NETWORK_MACRO_GROUP', u'NETWORK_POLICY_GROUP', u'NEXT_HOP_RESP', u'NODE_EXECUTION_ERROR', u'NS_REDUNDANT_PORT', u'NSG_NOTIFICATION', u'NSGATEWAY', u'NSGATEWAY_CONFIG', u'NSGATEWAY_TEMPLATE', u'NSPORT', u'NSPORT_STATIC_CONFIG', u'NSPORT_TEMPLATE', u'NSREDUNDANT_GW_GRP', u'PATCONFIG_CONFIG_RESP', u'PATNATPOOL', u'PERMISSION', u'PERMITTED_ACTION', u'POLICING_POLICY', u'POLICY_DECISION', u'POLICY_GROUP', u'POLICY_GROUP_TEMPLATE', u'PORT', u'PORT_MR', u'PORT_TEMPLATE', u'PUBLIC_NETWORK', u'QOS_PRIMITIVE', u'RATE_LIMITER', u'RD_SEQUENCENO', u'REDUNDANT_GW_GRP', u'RESYNC', u'RTRD_ENTITY', u'RTRD_SEQUENCENO', u'SERVICE_GATEWAY_RESPONSE', u'SERVICE_VRF_SEQUENCENO', u'SERVICES_GATEWAY_RESPONSE', u'SHAPING_POLICY', u'SHARED_RESOURCE', u'SITE', u'SITE_REQ', u'SITE_RES', u'STATIC_ROUTE', u'STATIC_ROUTE_RESP', u'STATISTICS', u'STATS_COLLECTOR', u'STATS_POLICY', u'STATS_TCA', u'STATSSERVER', u'SUBNET', u'SUBNET_ENTRY', u'SUBNET_MAC_ENTRY', u'SUBNET_POOL_ENTRY', u'SUBNET_TEMPLATE', u'SYSTEM_CONFIG', u'SYSTEM_CONFIG_REQ', u'SYSTEM_CONFIG_RESP', u'SYSTEM_MONITORING', u'UNSUPPORTED', u'UPLINK_RD', u'USER', u'VIRTUAL_IP', u'VIRTUAL_MACHINE', u'VIRTUAL_MACHINE_REPORT', u'VLAN', u'VLAN_TEMPLATE', u'VM_DESCRIPTION', u'VM_INTERFACE', u'VMWARE_RELOAD_CONFIG', u'VMWARE_VCENTER', u'VMWARE_VCENTER_CLUSTER', u'VMWARE_VCENTER_DATACENTER', u'VMWARE_VCENTER_EAM_CONFIG', u'VMWARE_VCENTER_HYPERVISOR', u'VMWARE_VCENTER_VRS_BASE_CONFIG', u'VMWARE_VCENTER_VRS_CONFIG', u'VMWARE_VRS_ADDRESS_RANGE', u'VNID_SEQUENCENO', u'VPN_CONNECT', u'VPORT', u'VPORT_GATEWAY_RESPONSE', u'VPORT_MEDIATION_REQUEST', u'VPORT_MIRROR', u'VPORT_TAG_BASE', u'VPORTTAG', u'VPORTTAGTEMPLATE', u'VPRN_LABEL_SEQUENCENO', u'VRS', u'VSC', u'VSD', u'VSD_COMPONENT', u'VSG_REDUNDANT_PORT', u'VSP', u'WAN_SERVICE', u'ZONE', u'ZONE_TEMPLATE'])
-        self.expose_attribute(local_name="destination_address_overwrite", remote_name="destinationAddressOverwrite", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="flow_id", remote_name="flowID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="source_address_overwrite", remote_name="sourceAddressOverwrite", attribute_type=str, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -586,6 +586,137 @@ class NUFlowSecurityPolicy(NURESTObject):
                 
         """
         self._action = value
+
+    
+    @property
+    def destination_address_overwrite(self):
+        """ Get destination_address_overwrite value.
+
+            Notes:
+                The destination address overwrite. Needs to be in CIDR format x.x.x.x/n
+
+                
+                This attribute is named `destinationAddressOverwrite` in VSD API.
+                
+        """
+        return self._destination_address_overwrite
+
+    @destination_address_overwrite.setter
+    def destination_address_overwrite(self, value):
+        """ Set destination_address_overwrite value.
+
+            Notes:
+                The destination address overwrite. Needs to be in CIDR format x.x.x.x/n
+
+                
+                This attribute is named `destinationAddressOverwrite` in VSD API.
+                
+        """
+        self._destination_address_overwrite = value
+
+    
+    @property
+    def flow_id(self):
+        """ Get flow_id value.
+
+            Notes:
+                The associated service id.
+
+                
+                This attribute is named `flowID` in VSD API.
+                
+        """
+        return self._flow_id
+
+    @flow_id.setter
+    def flow_id(self, value):
+        """ Set flow_id value.
+
+            Notes:
+                The associated service id.
+
+                
+                This attribute is named `flowID` in VSD API.
+                
+        """
+        self._flow_id = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def source_address_overwrite(self):
+        """ Get source_address_overwrite value.
+
+            Notes:
+                The source address overwrite. Needs to be in CIDR format x.x.x.x/n
+
+                
+                This attribute is named `sourceAddressOverwrite` in VSD API.
+                
+        """
+        return self._source_address_overwrite
+
+    @source_address_overwrite.setter
+    def source_address_overwrite(self, value):
+        """ Set source_address_overwrite value.
+
+            Notes:
+                The source address overwrite. Needs to be in CIDR format x.x.x.x/n
+
+                
+                This attribute is named `sourceAddressOverwrite` in VSD API.
+                
+        """
+        self._source_address_overwrite = value
+
+    
+    @property
+    def priority(self):
+        """ Get priority value.
+
+            Notes:
+                The priority of the flow security policy that determines the order of entries.
+
+                
+        """
+        return self._priority
+
+    @priority.setter
+    def priority(self, value):
+        """ Set priority value.
+
+            Notes:
+                The priority of the flow security policy that determines the order of entries.
+
+                
+        """
+        self._priority = value
 
     
     @property
@@ -670,60 +801,6 @@ class NUFlowSecurityPolicy(NURESTObject):
 
     
     @property
-    def destination_address_overwrite(self):
-        """ Get destination_address_overwrite value.
-
-            Notes:
-                The destination address overwrite. Needs to be in CIDR format x.x.x.x/n
-
-                
-                This attribute is named `destinationAddressOverwrite` in VSD API.
-                
-        """
-        return self._destination_address_overwrite
-
-    @destination_address_overwrite.setter
-    def destination_address_overwrite(self, value):
-        """ Set destination_address_overwrite value.
-
-            Notes:
-                The destination address overwrite. Needs to be in CIDR format x.x.x.x/n
-
-                
-                This attribute is named `destinationAddressOverwrite` in VSD API.
-                
-        """
-        self._destination_address_overwrite = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
     def external_id(self):
         """ Get external_id value.
 
@@ -748,83 +825,6 @@ class NUFlowSecurityPolicy(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def flow_id(self):
-        """ Get flow_id value.
-
-            Notes:
-                The associated service id.
-
-                
-                This attribute is named `flowID` in VSD API.
-                
-        """
-        return self._flow_id
-
-    @flow_id.setter
-    def flow_id(self, value):
-        """ Set flow_id value.
-
-            Notes:
-                The associated service id.
-
-                
-                This attribute is named `flowID` in VSD API.
-                
-        """
-        self._flow_id = value
-
-    
-    @property
-    def priority(self):
-        """ Get priority value.
-
-            Notes:
-                The priority of the flow security policy that determines the order of entries.
-
-                
-        """
-        return self._priority
-
-    @priority.setter
-    def priority(self, value):
-        """ Set priority value.
-
-            Notes:
-                The priority of the flow security policy that determines the order of entries.
-
-                
-        """
-        self._priority = value
-
-    
-    @property
-    def source_address_overwrite(self):
-        """ Get source_address_overwrite value.
-
-            Notes:
-                The source address overwrite. Needs to be in CIDR format x.x.x.x/n
-
-                
-                This attribute is named `sourceAddressOverwrite` in VSD API.
-                
-        """
-        return self._source_address_overwrite
-
-    @source_address_overwrite.setter
-    def source_address_overwrite(self, value):
-        """ Set source_address_overwrite value.
-
-            Notes:
-                The source address overwrite. Needs to be in CIDR format x.x.x.x/n
-
-                
-                This attribute is named `sourceAddressOverwrite` in VSD API.
-                
-        """
-        self._source_address_overwrite = value
 
     
 

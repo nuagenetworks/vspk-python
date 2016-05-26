@@ -27,22 +27,22 @@
 
 
 
+from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
+
+
 from .fetchers import NUEnterprisesFetcher
+
+
+from .fetchers import NUMultiCastListsFetcher
 
 
 from .fetchers import NUEventLogsFetcher
 
 
 from .fetchers import NUExternalServicesFetcher
-
-
-from .fetchers import NUGlobalMetadatasFetcher
-
-
-from .fetchers import NUMetadatasFetcher
-
-
-from .fetchers import NUMultiCastListsFetcher
 
 from bambou import NURESTObject
 
@@ -106,55 +106,55 @@ class NUEnterpriseProfile(NURESTObject):
         # Read/Write Attributes
         
         self._dhcp_lease_interval = None
+        self._name = None
+        self._last_updated_by = None
+        self._receive_multi_cast_list_id = None
+        self._send_multi_cast_list_id = None
+        self._description = None
         self._allow_advanced_qos_configuration = None
         self._allow_gateway_management = None
         self._allow_trusted_forwarding_class = None
         self._allowed_forwarding_classes = None
-        self._description = None
+        self._floating_ips_quota = None
         self._encryption_management_mode = None
         self._entity_scope = None
         self._external_id = None
-        self._floating_ips_quota = None
-        self._last_updated_by = None
-        self._name = None
-        self._receive_multi_cast_list_id = None
-        self._send_multi_cast_list_id = None
         
         self.expose_attribute(local_name="dhcp_lease_interval", remote_name="DHCPLeaseInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="receive_multi_cast_list_id", remote_name="receiveMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="send_multi_cast_list_id", remote_name="sendMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_advanced_qos_configuration", remote_name="allowAdvancedQOSConfiguration", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_gateway_management", remote_name="allowGatewayManagement", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_trusted_forwarding_class", remote_name="allowTrustedForwardingClass", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_forwarding_classes", remote_name="allowedForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="floating_ips_quota", remote_name="floatingIPsQuota", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption_management_mode", remote_name="encryptionManagementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'MANAGED'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="floating_ips_quota", remote_name="floatingIPsQuota", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="receive_multi_cast_list_id", remote_name="receiveMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="send_multi_cast_list_id", remote_name="sendMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.enterprises = NUEnterprisesFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        
+        
+        self.multi_cast_lists = NUMultiCastListsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.external_services = NUExternalServicesFetcher.fetcher_with_object(parent_object=self, relationship="member")
-        
-        
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.multi_cast_lists = NUMultiCastListsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -186,6 +186,133 @@ class NUEnterpriseProfile(NURESTObject):
                 
         """
         self._dhcp_lease_interval = value
+
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                The unique name of the enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                The unique name of the enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def receive_multi_cast_list_id(self):
+        """ Get receive_multi_cast_list_id value.
+
+            Notes:
+                Readonly ID of the auto generated receive multicast list associated with this enterprise profile
+
+                
+                This attribute is named `receiveMultiCastListID` in VSD API.
+                
+        """
+        return self._receive_multi_cast_list_id
+
+    @receive_multi_cast_list_id.setter
+    def receive_multi_cast_list_id(self, value):
+        """ Set receive_multi_cast_list_id value.
+
+            Notes:
+                Readonly ID of the auto generated receive multicast list associated with this enterprise profile
+
+                
+                This attribute is named `receiveMultiCastListID` in VSD API.
+                
+        """
+        self._receive_multi_cast_list_id = value
+
+    
+    @property
+    def send_multi_cast_list_id(self):
+        """ Get send_multi_cast_list_id value.
+
+            Notes:
+                Readonly ID of the auto generated send multicast list associated with this enterprise profile
+
+                
+                This attribute is named `sendMultiCastListID` in VSD API.
+                
+        """
+        return self._send_multi_cast_list_id
+
+    @send_multi_cast_list_id.setter
+    def send_multi_cast_list_id(self, value):
+        """ Set send_multi_cast_list_id value.
+
+            Notes:
+                Readonly ID of the auto generated send multicast list associated with this enterprise profile
+
+                
+                This attribute is named `sendMultiCastListID` in VSD API.
+                
+        """
+        self._send_multi_cast_list_id = value
+
+    
+    @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                A description of the enterprise/organisation profile.
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                A description of the enterprise/organisation profile.
+
+                
+        """
+        self._description = value
 
     
     @property
@@ -297,26 +424,30 @@ class NUEnterpriseProfile(NURESTObject):
 
     
     @property
-    def description(self):
-        """ Get description value.
+    def floating_ips_quota(self):
+        """ Get floating_ips_quota value.
 
             Notes:
-                A description of the enterprise/organisation profile.
+                Quota set for the number of floating IPs to be used by an enterprise.
 
                 
+                This attribute is named `floatingIPsQuota` in VSD API.
+                
         """
-        return self._description
+        return self._floating_ips_quota
 
-    @description.setter
-    def description(self, value):
-        """ Set description value.
+    @floating_ips_quota.setter
+    def floating_ips_quota(self, value):
+        """ Set floating_ips_quota value.
 
             Notes:
-                A description of the enterprise/organisation profile.
+                Quota set for the number of floating IPs to be used by an enterprise.
 
                 
+                This attribute is named `floatingIPsQuota` in VSD API.
+                
         """
-        self._description = value
+        self._floating_ips_quota = value
 
     
     @property
@@ -398,137 +529,6 @@ class NUEnterpriseProfile(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def floating_ips_quota(self):
-        """ Get floating_ips_quota value.
-
-            Notes:
-                Quota set for the number of floating IPs to be used by an enterprise.
-
-                
-                This attribute is named `floatingIPsQuota` in VSD API.
-                
-        """
-        return self._floating_ips_quota
-
-    @floating_ips_quota.setter
-    def floating_ips_quota(self, value):
-        """ Set floating_ips_quota value.
-
-            Notes:
-                Quota set for the number of floating IPs to be used by an enterprise.
-
-                
-                This attribute is named `floatingIPsQuota` in VSD API.
-                
-        """
-        self._floating_ips_quota = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                The unique name of the enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                The unique name of the enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def receive_multi_cast_list_id(self):
-        """ Get receive_multi_cast_list_id value.
-
-            Notes:
-                Readonly ID of the auto generated receive multicast list associated with this enterprise profile
-
-                
-                This attribute is named `receiveMultiCastListID` in VSD API.
-                
-        """
-        return self._receive_multi_cast_list_id
-
-    @receive_multi_cast_list_id.setter
-    def receive_multi_cast_list_id(self, value):
-        """ Set receive_multi_cast_list_id value.
-
-            Notes:
-                Readonly ID of the auto generated receive multicast list associated with this enterprise profile
-
-                
-                This attribute is named `receiveMultiCastListID` in VSD API.
-                
-        """
-        self._receive_multi_cast_list_id = value
-
-    
-    @property
-    def send_multi_cast_list_id(self):
-        """ Get send_multi_cast_list_id value.
-
-            Notes:
-                Readonly ID of the auto generated send multicast list associated with this enterprise profile
-
-                
-                This attribute is named `sendMultiCastListID` in VSD API.
-                
-        """
-        return self._send_multi_cast_list_id
-
-    @send_multi_cast_list_id.setter
-    def send_multi_cast_list_id(self, value):
-        """ Set send_multi_cast_list_id value.
-
-            Notes:
-                Readonly ID of the auto generated send multicast list associated with this enterprise profile
-
-                
-                This attribute is named `sendMultiCastListID` in VSD API.
-                
-        """
-        self._send_multi_cast_list_id = value
 
     
 

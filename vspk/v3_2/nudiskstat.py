@@ -83,103 +83,26 @@ class NUDiskStat(NURESTObject):
 
         # Read/Write Attributes
         
-        self._available = None
-        self._entity_scope = None
-        self._external_id = None
         self._name = None
         self._size = None
         self._unit = None
+        self._entity_scope = None
         self._used = None
+        self._available = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="available", remote_name="available", attribute_type=float, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="size", remote_name="size", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="unit", remote_name="unit", attribute_type=str, is_required=False, is_unique=False, choices=[u'Bytes', u'EB', u'GB', u'KB', u'MB', u'PB', u'TB', u'YB', u'ZB'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="used", remote_name="used", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="available", remote_name="available", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         self._compute_args(**kwargs)
 
     # Properties
-    
-    @property
-    def available(self):
-        """ Get available value.
-
-            Notes:
-                Available disk space.
-
-                
-        """
-        return self._available
-
-    @available.setter
-    def available(self, value):
-        """ Set available value.
-
-            Notes:
-                Available disk space.
-
-                
-        """
-        self._available = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
     
     @property
     def name(self):
@@ -251,6 +174,33 @@ class NUDiskStat(NURESTObject):
 
     
     @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
     def used(self):
         """ Get used value.
 
@@ -271,6 +221,56 @@ class NUDiskStat(NURESTObject):
                 
         """
         self._used = value
+
+    
+    @property
+    def available(self):
+        """ Get available value.
+
+            Notes:
+                Available disk space.
+
+                
+        """
+        return self._available
+
+    @available.setter
+    def available(self, value):
+        """ Set available value.
+
+            Notes:
+                Available disk space.
+
+                
+        """
+        self._available = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

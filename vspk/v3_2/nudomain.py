@@ -27,16 +27,16 @@
 
 
 
-from .fetchers import NUBridgeInterfacesFetcher
+from .fetchers import NUTCAsFetcher
 
 
-from .fetchers import NUDHCPOptionsFetcher
+from .fetchers import NURedirectionTargetsFetcher
 
 
-from .fetchers import NUDomainsFetcher
+from .fetchers import NUPermissionsFetcher
 
 
-from .fetchers import NUDomainTemplatesFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUEgressACLEntryTemplatesFetcher
@@ -45,10 +45,7 @@ from .fetchers import NUEgressACLEntryTemplatesFetcher
 from .fetchers import NUEgressACLTemplatesFetcher
 
 
-from .fetchers import NUEventLogsFetcher
-
-
-from .fetchers import NUExternalAppServicesFetcher
+from .fetchers import NUDHCPOptionsFetcher
 
 
 from .fetchers import NUFloatingIpsFetcher
@@ -57,10 +54,10 @@ from .fetchers import NUFloatingIpsFetcher
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUGroupsFetcher
+from .fetchers import NUVMsFetcher
 
 
-from .fetchers import NUHostInterfacesFetcher
+from .fetchers import NUVMInterfacesFetcher
 
 
 from .fetchers import NUIngressACLEntryTemplatesFetcher
@@ -78,19 +75,37 @@ from .fetchers import NUIngressExternalServiceTemplatesFetcher
 from .fetchers import NUJobsFetcher
 
 
-from .fetchers import NUMetadatasFetcher
-
-
-from .fetchers import NUPermissionsFetcher
-
-
 from .fetchers import NUPolicyGroupsFetcher
+
+
+from .fetchers import NUDomainsFetcher
+
+
+from .fetchers import NUDomainTemplatesFetcher
+
+
+from .fetchers import NUZonesFetcher
 
 
 from .fetchers import NUQOSsFetcher
 
 
-from .fetchers import NURedirectionTargetsFetcher
+from .fetchers import NUHostInterfacesFetcher
+
+
+from .fetchers import NUUplinkRDsFetcher
+
+
+from .fetchers import NUVPNConnectionsFetcher
+
+
+from .fetchers import NUVPortsFetcher
+
+
+from .fetchers import NUBridgeInterfacesFetcher
+
+
+from .fetchers import NUGroupsFetcher
 
 
 from .fetchers import NUStaticRoutesFetcher
@@ -105,25 +120,10 @@ from .fetchers import NUStatisticsPoliciesFetcher
 from .fetchers import NUSubnetsFetcher
 
 
-from .fetchers import NUTCAsFetcher
+from .fetchers import NUEventLogsFetcher
 
 
-from .fetchers import NUUplinkRDsFetcher
-
-
-from .fetchers import NUVMsFetcher
-
-
-from .fetchers import NUVMInterfacesFetcher
-
-
-from .fetchers import NUVPNConnectionsFetcher
-
-
-from .fetchers import NUVPortsFetcher
-
-
-from .fetchers import NUZonesFetcher
+from .fetchers import NUExternalAppServicesFetcher
 
 from bambou import NURESTObject
 
@@ -141,7 +141,7 @@ class NUDomain(NURESTObject):
     
     ## Constants
     
-    CONST_DHCP_BEHAVIOR_CONSUME = "CONSUME"
+    CONST_PAT_ENABLED_DISABLED = "DISABLED"
     
     CONST_PERMITTED_ACTION_ALL = "ALL"
     
@@ -151,7 +151,7 @@ class NUDomain(NURESTObject):
     
     CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
     
-    CONST_PAT_ENABLED_DISABLED = "DISABLED"
+    CONST_DHCP_BEHAVIOR_CONSUME = "CONSUME"
     
     CONST_APPLICATION_DEPLOYMENT_POLICY_NONE = "NONE"
     
@@ -236,92 +236,92 @@ class NUDomain(NURESTObject):
 
         # Read/Write Attributes
         
+        self._pat_enabled = None
+        self._ecmp_count = None
         self._dhcp_behavior = None
         self._dhcp_server_address = None
-        self._ecmp_count = None
-        self._pat_enabled = None
-        self._application_deployment_policy = None
-        self._associated_multicast_channel_map_id = None
+        self._label_id = None
         self._back_haul_route_distinguisher = None
         self._back_haul_route_target = None
         self._back_haul_vnid = None
-        self._customer_id = None
-        self._description = None
-        self._dhcp_server_addresses = None
-        self._encryption = None
-        self._entity_scope = None
-        self._export_route_target = None
-        self._external_id = None
-        self._global_routing_enabled = None
-        self._import_route_target = None
-        self._label_id = None
+        self._maintenance_mode = None
+        self._name = None
         self._last_updated_by = None
         self._leaking_enabled = None
-        self._maintenance_mode = None
-        self._multicast = None
-        self._name = None
+        self._secondary_dhcp_server_address = None
+        self._template_id = None
         self._permitted_action = None
+        self._service_id = None
+        self._description = None
+        self._dhcp_server_addresses = None
+        self._global_routing_enabled = None
+        self._import_route_target = None
+        self._encryption = None
+        self._underlay_enabled = None
+        self._entity_scope = None
         self._policy_change_status = None
         self._route_distinguisher = None
         self._route_target = None
-        self._secondary_dhcp_server_address = None
-        self._service_id = None
-        self._stretched = None
-        self._template_id = None
-        self._tunnel_type = None
-        self._underlay_enabled = None
         self._uplink_preference = None
+        self._application_deployment_policy = None
+        self._associated_multicast_channel_map_id = None
+        self._stretched = None
+        self._multicast = None
+        self._tunnel_type = None
+        self._customer_id = None
+        self._export_route_target = None
+        self._external_id = None
         
+        self.expose_attribute(local_name="pat_enabled", remote_name="PATEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="ecmp_count", remote_name="ECMPCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_behavior", remote_name="DHCPBehavior", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONSUME', u'FLOOD', u'RELAY'])
         self.expose_attribute(local_name="dhcp_server_address", remote_name="DHCPServerAddress", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="ecmp_count", remote_name="ECMPCount", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="pat_enabled", remote_name="PATEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="application_deployment_policy", remote_name="applicationDeploymentPolicy", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'ZONE'])
-        self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="label_id", remote_name="labelID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_route_distinguisher", remote_name="backHaulRouteDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_route_target", remote_name="backHaulRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_vnid", remote_name="backHaulVNID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dhcp_server_addresses", remote_name="dhcpServerAddresses", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="export_route_target", remote_name="exportRouteTarget", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="global_routing_enabled", remote_name="globalRoutingEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="import_route_target", remote_name="importRouteTarget", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="label_id", remote_name="labelID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="leaking_enabled", remote_name="leakingEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
-        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="secondary_dhcp_server_address", remote_name="secondaryDHCPServerAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
+        self.expose_attribute(local_name="service_id", remote_name="serviceID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="dhcp_server_addresses", remote_name="dhcpServerAddresses", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="global_routing_enabled", remote_name="globalRoutingEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="import_route_target", remote_name="importRouteTarget", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="underlay_enabled", remote_name="underlayEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'DISCARDED', u'STARTED'])
         self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="route_target", remote_name="routeTarget", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="secondary_dhcp_server_address", remote_name="secondaryDHCPServerAddress", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="service_id", remote_name="serviceID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="stretched", remote_name="stretched", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="tunnel_type", remote_name="tunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VXLAN'])
-        self.expose_attribute(local_name="underlay_enabled", remote_name="underlayEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
+        self.expose_attribute(local_name="application_deployment_policy", remote_name="applicationDeploymentPolicy", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'ZONE'])
+        self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="stretched", remote_name="stretched", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="tunnel_type", remote_name="tunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VXLAN'])
+        self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="export_route_target", remote_name="exportRouteTarget", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.bridge_interfaces = NUBridgeInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.tcas = NUTCAsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.dhcp_options = NUDHCPOptionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.redirection_targets = NURedirectionTargetsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.domains = NUDomainsFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.domain_templates = NUDomainTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.egress_acl_entry_templates = NUEgressACLEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -330,10 +330,7 @@ class NUDomain(NURESTObject):
         self.egress_acl_templates = NUEgressACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.external_app_services = NUExternalAppServicesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.dhcp_options = NUDHCPOptionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.floating_ips = NUFloatingIpsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -342,10 +339,10 @@ class NUDomain(NURESTObject):
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.vms = NUVMsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.host_interfaces = NUHostInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.vm_interfaces = NUVMInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ingress_acl_entry_templates = NUIngressACLEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -363,19 +360,37 @@ class NUDomain(NURESTObject):
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.policy_groups = NUPolicyGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.domains = NUDomainsFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        
+        
+        self.domain_templates = NUDomainTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.zones = NUZonesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.qoss = NUQOSsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.redirection_targets = NURedirectionTargetsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.host_interfaces = NUHostInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.uplink_rds = NUUplinkRDsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.vpn_connections = NUVPNConnectionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.vports = NUVPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.bridge_interfaces = NUBridgeInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.static_routes = NUStaticRoutesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -390,30 +405,69 @@ class NUDomain(NURESTObject):
         self.subnets = NUSubnetsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.tcas = NUTCAsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.uplink_rds = NUUplinkRDsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.vms = NUVMsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.vm_interfaces = NUVMInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.vpn_connections = NUVPNConnectionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.vports = NUVPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.zones = NUZonesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.external_app_services = NUExternalAppServicesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def pat_enabled(self):
+        """ Get pat_enabled value.
+
+            Notes:
+                Indicates whether PAT is enabled for the subnets in this domain - ENABLED/DISABLED Possible values are INHERITED, ENABLED, DISABLED, .
+
+                
+                This attribute is named `PATEnabled` in VSD API.
+                
+        """
+        return self._pat_enabled
+
+    @pat_enabled.setter
+    def pat_enabled(self, value):
+        """ Set pat_enabled value.
+
+            Notes:
+                Indicates whether PAT is enabled for the subnets in this domain - ENABLED/DISABLED Possible values are INHERITED, ENABLED, DISABLED, .
+
+                
+                This attribute is named `PATEnabled` in VSD API.
+                
+        """
+        self._pat_enabled = value
+
+    
+    @property
+    def ecmp_count(self):
+        """ Get ecmp_count value.
+
+            Notes:
+                Domain specific Equal-cost multi-path routing count, ECMPCount = 1 means no ECMP
+
+                
+                This attribute is named `ECMPCount` in VSD API.
+                
+        """
+        return self._ecmp_count
+
+    @ecmp_count.setter
+    def ecmp_count(self, value):
+        """ Set ecmp_count value.
+
+            Notes:
+                Domain specific Equal-cost multi-path routing count, ECMPCount = 1 means no ECMP
+
+                
+                This attribute is named `ECMPCount` in VSD API.
+                
+        """
+        self._ecmp_count = value
+
     
     @property
     def dhcp_behavior(self):
@@ -470,111 +524,30 @@ class NUDomain(NURESTObject):
 
     
     @property
-    def ecmp_count(self):
-        """ Get ecmp_count value.
+    def label_id(self):
+        """ Get label_id value.
 
             Notes:
-                Domain specific Equal-cost multi-path routing count, ECMPCount = 1 means no ECMP
+                The label associated with the dVRS. This is a read only attribute
 
                 
-                This attribute is named `ECMPCount` in VSD API.
+                This attribute is named `labelID` in VSD API.
                 
         """
-        return self._ecmp_count
+        return self._label_id
 
-    @ecmp_count.setter
-    def ecmp_count(self, value):
-        """ Set ecmp_count value.
+    @label_id.setter
+    def label_id(self, value):
+        """ Set label_id value.
 
             Notes:
-                Domain specific Equal-cost multi-path routing count, ECMPCount = 1 means no ECMP
+                The label associated with the dVRS. This is a read only attribute
 
                 
-                This attribute is named `ECMPCount` in VSD API.
-                
-        """
-        self._ecmp_count = value
-
-    
-    @property
-    def pat_enabled(self):
-        """ Get pat_enabled value.
-
-            Notes:
-                Indicates whether PAT is enabled for the subnets in this domain - ENABLED/DISABLED Possible values are INHERITED, ENABLED, DISABLED, .
-
-                
-                This attribute is named `PATEnabled` in VSD API.
+                This attribute is named `labelID` in VSD API.
                 
         """
-        return self._pat_enabled
-
-    @pat_enabled.setter
-    def pat_enabled(self, value):
-        """ Set pat_enabled value.
-
-            Notes:
-                Indicates whether PAT is enabled for the subnets in this domain - ENABLED/DISABLED Possible values are INHERITED, ENABLED, DISABLED, .
-
-                
-                This attribute is named `PATEnabled` in VSD API.
-                
-        """
-        self._pat_enabled = value
-
-    
-    @property
-    def application_deployment_policy(self):
-        """ Get application_deployment_policy value.
-
-            Notes:
-                Application deployment policy.
-
-                
-                This attribute is named `applicationDeploymentPolicy` in VSD API.
-                
-        """
-        return self._application_deployment_policy
-
-    @application_deployment_policy.setter
-    def application_deployment_policy(self, value):
-        """ Set application_deployment_policy value.
-
-            Notes:
-                Application deployment policy.
-
-                
-                This attribute is named `applicationDeploymentPolicy` in VSD API.
-                
-        """
-        self._application_deployment_policy = value
-
-    
-    @property
-    def associated_multicast_channel_map_id(self):
-        """ Get associated_multicast_channel_map_id value.
-
-            Notes:
-                The ID of the Multi Cast Channel Map  this domain is associated with. This has to be set when  enableMultiCast is set to ENABLED
-
-                
-                This attribute is named `associatedMulticastChannelMapID` in VSD API.
-                
-        """
-        return self._associated_multicast_channel_map_id
-
-    @associated_multicast_channel_map_id.setter
-    def associated_multicast_channel_map_id(self, value):
-        """ Set associated_multicast_channel_map_id value.
-
-            Notes:
-                The ID of the Multi Cast Channel Map  this domain is associated with. This has to be set when  enableMultiCast is set to ENABLED
-
-                
-                This attribute is named `associatedMulticastChannelMapID` in VSD API.
-                
-        """
-        self._associated_multicast_channel_map_id = value
+        self._label_id = value
 
     
     @property
@@ -659,265 +632,53 @@ class NUDomain(NURESTObject):
 
     
     @property
-    def customer_id(self):
-        """ Get customer_id value.
+    def maintenance_mode(self):
+        """ Get maintenance_mode value.
 
             Notes:
-                The customerID that is created in the VSC and identifies this dVRS. This is auto-generated by VSD
+                maintenanceMode is an enum that indicates if the Domain is accepting VM activation requests. Possible values are DISABLED, ENABLED and ENABLED_INHERITED Possible values are .
 
                 
-                This attribute is named `customerID` in VSD API.
+                This attribute is named `maintenanceMode` in VSD API.
                 
         """
-        return self._customer_id
+        return self._maintenance_mode
 
-    @customer_id.setter
-    def customer_id(self, value):
-        """ Set customer_id value.
+    @maintenance_mode.setter
+    def maintenance_mode(self, value):
+        """ Set maintenance_mode value.
 
             Notes:
-                The customerID that is created in the VSC and identifies this dVRS. This is auto-generated by VSD
+                maintenanceMode is an enum that indicates if the Domain is accepting VM activation requests. Possible values are DISABLED, ENABLED and ENABLED_INHERITED Possible values are .
 
                 
-                This attribute is named `customerID` in VSD API.
+                This attribute is named `maintenanceMode` in VSD API.
                 
         """
-        self._customer_id = value
+        self._maintenance_mode = value
 
     
     @property
-    def description(self):
-        """ Get description value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                A description string of the domain that is provided by the user
+                The name of the domain. Valid characters are  alphabets, numbers, space and hyphen( - ).
 
                 
         """
-        return self._description
+        return self._name
 
-    @description.setter
-    def description(self, value):
-        """ Set description value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                A description string of the domain that is provided by the user
+                The name of the domain. Valid characters are  alphabets, numbers, space and hyphen( - ).
 
                 
         """
-        self._description = value
-
-    
-    @property
-    def dhcp_server_addresses(self):
-        """ Get dhcp_server_addresses value.
-
-            Notes:
-                when DHCPBehaviorType is RELAY, then DHCP Server IP Address needs to be set
-
-                
-                This attribute is named `dhcpServerAddresses` in VSD API.
-                
-        """
-        return self._dhcp_server_addresses
-
-    @dhcp_server_addresses.setter
-    def dhcp_server_addresses(self, value):
-        """ Set dhcp_server_addresses value.
-
-            Notes:
-                when DHCPBehaviorType is RELAY, then DHCP Server IP Address needs to be set
-
-                
-                This attribute is named `dhcpServerAddresses` in VSD API.
-                
-        """
-        self._dhcp_server_addresses = value
-
-    
-    @property
-    def encryption(self):
-        """ Get encryption value.
-
-            Notes:
-                Determines whether IPSEC is enabled Possible values are ENABLED, DISABLED, .
-
-                
-        """
-        return self._encryption
-
-    @encryption.setter
-    def encryption(self, value):
-        """ Set encryption value.
-
-            Notes:
-                Determines whether IPSEC is enabled Possible values are ENABLED, DISABLED, .
-
-                
-        """
-        self._encryption = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def export_route_target(self):
-        """ Get export_route_target value.
-
-            Notes:
-                Route target associated with the dVRS. It is an optional parameterthat can be provided by the user or auto-managed by VSDSystem generates this identifier automatically, if not provided
-
-                
-                This attribute is named `exportRouteTarget` in VSD API.
-                
-        """
-        return self._export_route_target
-
-    @export_route_target.setter
-    def export_route_target(self, value):
-        """ Set export_route_target value.
-
-            Notes:
-                Route target associated with the dVRS. It is an optional parameterthat can be provided by the user or auto-managed by VSDSystem generates this identifier automatically, if not provided
-
-                
-                This attribute is named `exportRouteTarget` in VSD API.
-                
-        """
-        self._export_route_target = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def global_routing_enabled(self):
-        """ Get global_routing_enabled value.
-
-            Notes:
-                Indicates if this domain is a globally routable domain or not - boolean true/false
-
-                
-                This attribute is named `globalRoutingEnabled` in VSD API.
-                
-        """
-        return self._global_routing_enabled
-
-    @global_routing_enabled.setter
-    def global_routing_enabled(self, value):
-        """ Set global_routing_enabled value.
-
-            Notes:
-                Indicates if this domain is a globally routable domain or not - boolean true/false
-
-                
-                This attribute is named `globalRoutingEnabled` in VSD API.
-                
-        """
-        self._global_routing_enabled = value
-
-    
-    @property
-    def import_route_target(self):
-        """ Get import_route_target value.
-
-            Notes:
-                Route distinguisher associated with the dVRS. It is an optional parameter that can be provided by the user or auto-managed by VSD. System generates this identifier automatically, if not provided
-
-                
-                This attribute is named `importRouteTarget` in VSD API.
-                
-        """
-        return self._import_route_target
-
-    @import_route_target.setter
-    def import_route_target(self, value):
-        """ Set import_route_target value.
-
-            Notes:
-                Route distinguisher associated with the dVRS. It is an optional parameter that can be provided by the user or auto-managed by VSD. System generates this identifier automatically, if not provided
-
-                
-                This attribute is named `importRouteTarget` in VSD API.
-                
-        """
-        self._import_route_target = value
-
-    
-    @property
-    def label_id(self):
-        """ Get label_id value.
-
-            Notes:
-                The label associated with the dVRS. This is a read only attribute
-
-                
-                This attribute is named `labelID` in VSD API.
-                
-        """
-        return self._label_id
-
-    @label_id.setter
-    def label_id(self, value):
-        """ Set label_id value.
-
-            Notes:
-                The label associated with the dVRS. This is a read only attribute
-
-                
-                This attribute is named `labelID` in VSD API.
-                
-        """
-        self._label_id = value
+        self._name = value
 
     
     @property
@@ -975,76 +736,57 @@ class NUDomain(NURESTObject):
 
     
     @property
-    def maintenance_mode(self):
-        """ Get maintenance_mode value.
+    def secondary_dhcp_server_address(self):
+        """ Get secondary_dhcp_server_address value.
 
             Notes:
-                maintenanceMode is an enum that indicates if the Domain is accepting VM activation requests. Possible values are DISABLED, ENABLED and ENABLED_INHERITED Possible values are .
+                when DHCPBehaviorType is RELAY, then DHCP Server IP Address needs to be set
 
                 
-                This attribute is named `maintenanceMode` in VSD API.
+                This attribute is named `secondaryDHCPServerAddress` in VSD API.
                 
         """
-        return self._maintenance_mode
+        return self._secondary_dhcp_server_address
 
-    @maintenance_mode.setter
-    def maintenance_mode(self, value):
-        """ Set maintenance_mode value.
+    @secondary_dhcp_server_address.setter
+    def secondary_dhcp_server_address(self, value):
+        """ Set secondary_dhcp_server_address value.
 
             Notes:
-                maintenanceMode is an enum that indicates if the Domain is accepting VM activation requests. Possible values are DISABLED, ENABLED and ENABLED_INHERITED Possible values are .
+                when DHCPBehaviorType is RELAY, then DHCP Server IP Address needs to be set
 
                 
-                This attribute is named `maintenanceMode` in VSD API.
+                This attribute is named `secondaryDHCPServerAddress` in VSD API.
                 
         """
-        self._maintenance_mode = value
+        self._secondary_dhcp_server_address = value
 
     
     @property
-    def multicast(self):
-        """ Get multicast value.
+    def template_id(self):
+        """ Get template_id value.
 
             Notes:
-                multicast is enum that indicates multicast policy on domain. Possible values are ENABLED ,DISABLED  and INHERITED Possible values are INHERITED, ENABLED, DISABLED, .
+                The ID of the template that this domain was created from. This should be set when instantiating a domain
 
                 
+                This attribute is named `templateID` in VSD API.
+                
         """
-        return self._multicast
+        return self._template_id
 
-    @multicast.setter
-    def multicast(self, value):
-        """ Set multicast value.
+    @template_id.setter
+    def template_id(self, value):
+        """ Set template_id value.
 
             Notes:
-                multicast is enum that indicates multicast policy on domain. Possible values are ENABLED ,DISABLED  and INHERITED Possible values are INHERITED, ENABLED, DISABLED, .
+                The ID of the template that this domain was created from. This should be set when instantiating a domain
 
                 
-        """
-        self._multicast = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                The name of the domain. Valid characters are  alphabets, numbers, space and hyphen( - ).
-
+                This attribute is named `templateID` in VSD API.
                 
         """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                The name of the domain. Valid characters are  alphabets, numbers, space and hyphen( - ).
-
-                
-        """
-        self._name = value
+        self._template_id = value
 
     
     @property
@@ -1072,6 +814,214 @@ class NUDomain(NURESTObject):
                 
         """
         self._permitted_action = value
+
+    
+    @property
+    def service_id(self):
+        """ Get service_id value.
+
+            Notes:
+                The serviceID of the Virtual Router created in VSC and is associated with this object. This is auto-generated by VSD
+
+                
+                This attribute is named `serviceID` in VSD API.
+                
+        """
+        return self._service_id
+
+    @service_id.setter
+    def service_id(self, value):
+        """ Set service_id value.
+
+            Notes:
+                The serviceID of the Virtual Router created in VSC and is associated with this object. This is auto-generated by VSD
+
+                
+                This attribute is named `serviceID` in VSD API.
+                
+        """
+        self._service_id = value
+
+    
+    @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                A description string of the domain that is provided by the user
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                A description string of the domain that is provided by the user
+
+                
+        """
+        self._description = value
+
+    
+    @property
+    def dhcp_server_addresses(self):
+        """ Get dhcp_server_addresses value.
+
+            Notes:
+                when DHCPBehaviorType is RELAY, then DHCP Server IP Address needs to be set
+
+                
+                This attribute is named `dhcpServerAddresses` in VSD API.
+                
+        """
+        return self._dhcp_server_addresses
+
+    @dhcp_server_addresses.setter
+    def dhcp_server_addresses(self, value):
+        """ Set dhcp_server_addresses value.
+
+            Notes:
+                when DHCPBehaviorType is RELAY, then DHCP Server IP Address needs to be set
+
+                
+                This attribute is named `dhcpServerAddresses` in VSD API.
+                
+        """
+        self._dhcp_server_addresses = value
+
+    
+    @property
+    def global_routing_enabled(self):
+        """ Get global_routing_enabled value.
+
+            Notes:
+                Indicates if this domain is a globally routable domain or not - boolean true/false
+
+                
+                This attribute is named `globalRoutingEnabled` in VSD API.
+                
+        """
+        return self._global_routing_enabled
+
+    @global_routing_enabled.setter
+    def global_routing_enabled(self, value):
+        """ Set global_routing_enabled value.
+
+            Notes:
+                Indicates if this domain is a globally routable domain or not - boolean true/false
+
+                
+                This attribute is named `globalRoutingEnabled` in VSD API.
+                
+        """
+        self._global_routing_enabled = value
+
+    
+    @property
+    def import_route_target(self):
+        """ Get import_route_target value.
+
+            Notes:
+                Route distinguisher associated with the dVRS. It is an optional parameter that can be provided by the user or auto-managed by VSD. System generates this identifier automatically, if not provided
+
+                
+                This attribute is named `importRouteTarget` in VSD API.
+                
+        """
+        return self._import_route_target
+
+    @import_route_target.setter
+    def import_route_target(self, value):
+        """ Set import_route_target value.
+
+            Notes:
+                Route distinguisher associated with the dVRS. It is an optional parameter that can be provided by the user or auto-managed by VSD. System generates this identifier automatically, if not provided
+
+                
+                This attribute is named `importRouteTarget` in VSD API.
+                
+        """
+        self._import_route_target = value
+
+    
+    @property
+    def encryption(self):
+        """ Get encryption value.
+
+            Notes:
+                Determines whether IPSEC is enabled Possible values are ENABLED, DISABLED, .
+
+                
+        """
+        return self._encryption
+
+    @encryption.setter
+    def encryption(self, value):
+        """ Set encryption value.
+
+            Notes:
+                Determines whether IPSEC is enabled Possible values are ENABLED, DISABLED, .
+
+                
+        """
+        self._encryption = value
+
+    
+    @property
+    def underlay_enabled(self):
+        """ Get underlay_enabled value.
+
+            Notes:
+                Indicates whether UNDERLAY is enabled for the subnets in this domain
+
+                
+                This attribute is named `underlayEnabled` in VSD API.
+                
+        """
+        return self._underlay_enabled
+
+    @underlay_enabled.setter
+    def underlay_enabled(self, value):
+        """ Set underlay_enabled value.
+
+            Notes:
+                Indicates whether UNDERLAY is enabled for the subnets in this domain
+
+                
+                This attribute is named `underlayEnabled` in VSD API.
+                
+        """
+        self._underlay_enabled = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
 
     
     @property
@@ -1156,57 +1106,84 @@ class NUDomain(NURESTObject):
 
     
     @property
-    def secondary_dhcp_server_address(self):
-        """ Get secondary_dhcp_server_address value.
+    def uplink_preference(self):
+        """ Get uplink_preference value.
 
             Notes:
-                when DHCPBehaviorType is RELAY, then DHCP Server IP Address needs to be set
+                Indicates the preferencial path selection for network traffic in this domain - Default is Primary 1 and Secondary 2. Possible values are PRIMARY_SECONDARY, SECONDARY_PRIMARY, PRIMARY, SECONDARY, SYMMETRIC, .
 
                 
-                This attribute is named `secondaryDHCPServerAddress` in VSD API.
+                This attribute is named `uplinkPreference` in VSD API.
                 
         """
-        return self._secondary_dhcp_server_address
+        return self._uplink_preference
 
-    @secondary_dhcp_server_address.setter
-    def secondary_dhcp_server_address(self, value):
-        """ Set secondary_dhcp_server_address value.
+    @uplink_preference.setter
+    def uplink_preference(self, value):
+        """ Set uplink_preference value.
 
             Notes:
-                when DHCPBehaviorType is RELAY, then DHCP Server IP Address needs to be set
+                Indicates the preferencial path selection for network traffic in this domain - Default is Primary 1 and Secondary 2. Possible values are PRIMARY_SECONDARY, SECONDARY_PRIMARY, PRIMARY, SECONDARY, SYMMETRIC, .
 
                 
-                This attribute is named `secondaryDHCPServerAddress` in VSD API.
+                This attribute is named `uplinkPreference` in VSD API.
                 
         """
-        self._secondary_dhcp_server_address = value
+        self._uplink_preference = value
 
     
     @property
-    def service_id(self):
-        """ Get service_id value.
+    def application_deployment_policy(self):
+        """ Get application_deployment_policy value.
 
             Notes:
-                The serviceID of the Virtual Router created in VSC and is associated with this object. This is auto-generated by VSD
+                Application deployment policy.
 
                 
-                This attribute is named `serviceID` in VSD API.
+                This attribute is named `applicationDeploymentPolicy` in VSD API.
                 
         """
-        return self._service_id
+        return self._application_deployment_policy
 
-    @service_id.setter
-    def service_id(self, value):
-        """ Set service_id value.
+    @application_deployment_policy.setter
+    def application_deployment_policy(self, value):
+        """ Set application_deployment_policy value.
 
             Notes:
-                The serviceID of the Virtual Router created in VSC and is associated with this object. This is auto-generated by VSD
+                Application deployment policy.
 
                 
-                This attribute is named `serviceID` in VSD API.
+                This attribute is named `applicationDeploymentPolicy` in VSD API.
                 
         """
-        self._service_id = value
+        self._application_deployment_policy = value
+
+    
+    @property
+    def associated_multicast_channel_map_id(self):
+        """ Get associated_multicast_channel_map_id value.
+
+            Notes:
+                The ID of the Multi Cast Channel Map  this domain is associated with. This has to be set when  enableMultiCast is set to ENABLED
+
+                
+                This attribute is named `associatedMulticastChannelMapID` in VSD API.
+                
+        """
+        return self._associated_multicast_channel_map_id
+
+    @associated_multicast_channel_map_id.setter
+    def associated_multicast_channel_map_id(self, value):
+        """ Set associated_multicast_channel_map_id value.
+
+            Notes:
+                The ID of the Multi Cast Channel Map  this domain is associated with. This has to be set when  enableMultiCast is set to ENABLED
+
+                
+                This attribute is named `associatedMulticastChannelMapID` in VSD API.
+                
+        """
+        self._associated_multicast_channel_map_id = value
 
     
     @property
@@ -1233,30 +1210,26 @@ class NUDomain(NURESTObject):
 
     
     @property
-    def template_id(self):
-        """ Get template_id value.
+    def multicast(self):
+        """ Get multicast value.
 
             Notes:
-                The ID of the template that this domain was created from. This should be set when instantiating a domain
+                multicast is enum that indicates multicast policy on domain. Possible values are ENABLED ,DISABLED  and INHERITED Possible values are INHERITED, ENABLED, DISABLED, .
 
-                
-                This attribute is named `templateID` in VSD API.
                 
         """
-        return self._template_id
+        return self._multicast
 
-    @template_id.setter
-    def template_id(self, value):
-        """ Set template_id value.
+    @multicast.setter
+    def multicast(self, value):
+        """ Set multicast value.
 
             Notes:
-                The ID of the template that this domain was created from. This should be set when instantiating a domain
+                multicast is enum that indicates multicast policy on domain. Possible values are ENABLED ,DISABLED  and INHERITED Possible values are INHERITED, ENABLED, DISABLED, .
 
                 
-                This attribute is named `templateID` in VSD API.
-                
         """
-        self._template_id = value
+        self._multicast = value
 
     
     @property
@@ -1287,57 +1260,84 @@ class NUDomain(NURESTObject):
 
     
     @property
-    def underlay_enabled(self):
-        """ Get underlay_enabled value.
+    def customer_id(self):
+        """ Get customer_id value.
 
             Notes:
-                Indicates whether UNDERLAY is enabled for the subnets in this domain
+                The customerID that is created in the VSC and identifies this dVRS. This is auto-generated by VSD
 
                 
-                This attribute is named `underlayEnabled` in VSD API.
+                This attribute is named `customerID` in VSD API.
                 
         """
-        return self._underlay_enabled
+        return self._customer_id
 
-    @underlay_enabled.setter
-    def underlay_enabled(self, value):
-        """ Set underlay_enabled value.
+    @customer_id.setter
+    def customer_id(self, value):
+        """ Set customer_id value.
 
             Notes:
-                Indicates whether UNDERLAY is enabled for the subnets in this domain
+                The customerID that is created in the VSC and identifies this dVRS. This is auto-generated by VSD
 
                 
-                This attribute is named `underlayEnabled` in VSD API.
+                This attribute is named `customerID` in VSD API.
                 
         """
-        self._underlay_enabled = value
+        self._customer_id = value
 
     
     @property
-    def uplink_preference(self):
-        """ Get uplink_preference value.
+    def export_route_target(self):
+        """ Get export_route_target value.
 
             Notes:
-                Indicates the preferencial path selection for network traffic in this domain - Default is Primary 1 and Secondary 2. Possible values are PRIMARY_SECONDARY, SECONDARY_PRIMARY, PRIMARY, SECONDARY, SYMMETRIC, .
+                Route target associated with the dVRS. It is an optional parameterthat can be provided by the user or auto-managed by VSDSystem generates this identifier automatically, if not provided
 
                 
-                This attribute is named `uplinkPreference` in VSD API.
+                This attribute is named `exportRouteTarget` in VSD API.
                 
         """
-        return self._uplink_preference
+        return self._export_route_target
 
-    @uplink_preference.setter
-    def uplink_preference(self, value):
-        """ Set uplink_preference value.
+    @export_route_target.setter
+    def export_route_target(self, value):
+        """ Set export_route_target value.
 
             Notes:
-                Indicates the preferencial path selection for network traffic in this domain - Default is Primary 1 and Secondary 2. Possible values are PRIMARY_SECONDARY, SECONDARY_PRIMARY, PRIMARY, SECONDARY, SYMMETRIC, .
+                Route target associated with the dVRS. It is an optional parameterthat can be provided by the user or auto-managed by VSDSystem generates this identifier automatically, if not provided
 
                 
-                This attribute is named `uplinkPreference` in VSD API.
+                This attribute is named `exportRouteTarget` in VSD API.
                 
         """
-        self._uplink_preference = value
+        self._export_route_target = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

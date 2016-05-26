@@ -27,7 +27,7 @@
 
 
 
-from .fetchers import NUEventLogsFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
@@ -36,10 +36,10 @@ from .fetchers import NUGlobalMetadatasFetcher
 from .fetchers import NUJobsFetcher
 
 
-from .fetchers import NUMetadatasFetcher
-
-
 from .fetchers import NUVPortsFetcher
+
+
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -85,32 +85,32 @@ class NUPolicyGroup(NURESTObject):
         # Read/Write Attributes
         
         self._evpn_community_tag = None
+        self._name = None
+        self._last_updated_by = None
+        self._template_id = None
         self._description = None
         self._entity_scope = None
+        self._policy_group_id = None
         self._external = None
         self._external_id = None
-        self._last_updated_by = None
-        self._name = None
-        self._policy_group_id = None
-        self._template_id = None
         self._type = None
         
         self.expose_attribute(local_name="evpn_community_tag", remote_name="EVPNCommunityTag", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="policy_group_id", remote_name="policyGroupID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external", remote_name="external", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="policy_group_id", remote_name="policyGroupID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'HARDWARE', u'SOFTWARE'])
         
 
         # Fetchers
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -119,10 +119,10 @@ class NUPolicyGroup(NURESTObject):
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.vports = NUVPortsFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        
+        
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -154,6 +154,83 @@ class NUPolicyGroup(NURESTObject):
                 
         """
         self._evpn_community_tag = value
+
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the policy group
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the policy group
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def template_id(self):
+        """ Get template_id value.
+
+            Notes:
+                Determines which template ID this policy group belongs to.
+
+                
+                This attribute is named `templateID` in VSD API.
+                
+        """
+        return self._template_id
+
+    @template_id.setter
+    def template_id(self, value):
+        """ Set template_id value.
+
+            Notes:
+                Determines which template ID this policy group belongs to.
+
+                
+                This attribute is named `templateID` in VSD API.
+                
+        """
+        self._template_id = value
 
     
     @property
@@ -207,6 +284,33 @@ class NUPolicyGroup(NURESTObject):
 
     
     @property
+    def policy_group_id(self):
+        """ Get policy_group_id value.
+
+            Notes:
+                PG ID for the subnet. This is unique per domain and will be in the range 1-4095
+
+                
+                This attribute is named `policyGroupID` in VSD API.
+                
+        """
+        return self._policy_group_id
+
+    @policy_group_id.setter
+    def policy_group_id(self, value):
+        """ Set policy_group_id value.
+
+            Notes:
+                PG ID for the subnet. This is unique per domain and will be in the range 1-4095
+
+                
+                This attribute is named `policyGroupID` in VSD API.
+                
+        """
+        self._policy_group_id = value
+
+    
+    @property
     def external(self):
         """ Get external value.
 
@@ -254,110 +358,6 @@ class NUPolicyGroup(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the policy group
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the policy group
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def policy_group_id(self):
-        """ Get policy_group_id value.
-
-            Notes:
-                PG ID for the subnet. This is unique per domain and will be in the range 1-4095
-
-                
-                This attribute is named `policyGroupID` in VSD API.
-                
-        """
-        return self._policy_group_id
-
-    @policy_group_id.setter
-    def policy_group_id(self, value):
-        """ Set policy_group_id value.
-
-            Notes:
-                PG ID for the subnet. This is unique per domain and will be in the range 1-4095
-
-                
-                This attribute is named `policyGroupID` in VSD API.
-                
-        """
-        self._policy_group_id = value
-
-    
-    @property
-    def template_id(self):
-        """ Get template_id value.
-
-            Notes:
-                Determines which template ID this policy group belongs to.
-
-                
-                This attribute is named `templateID` in VSD API.
-                
-        """
-        return self._template_id
-
-    @template_id.setter
-    def template_id(self, value):
-        """ Set template_id value.
-
-            Notes:
-                Determines which template ID this policy group belongs to.
-
-                
-                This attribute is named `templateID` in VSD API.
-                
-        """
-        self._template_id = value
 
     
     @property

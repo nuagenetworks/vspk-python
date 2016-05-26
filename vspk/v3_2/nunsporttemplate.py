@@ -27,13 +27,13 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUVLANTemplatesFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -79,40 +79,40 @@ class NUNSPortTemplate(NURESTObject):
         # Read/Write Attributes
         
         self._vlan_range = None
+        self._name = None
+        self._last_updated_by = None
+        self._description = None
+        self._physical_name = None
+        self._infrastructure_profile_id = None
+        self._entity_scope = None
+        self._port_type = None
         self._associated_egress_qos_policy_id = None
         self._associated_vsc_profile_id = None
-        self._description = None
-        self._entity_scope = None
         self._external_id = None
-        self._infrastructure_profile_id = None
-        self._last_updated_by = None
-        self._name = None
-        self._physical_name = None
-        self._port_type = None
         
         self.expose_attribute(local_name="vlan_range", remote_name="VLANRange", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="infrastructure_profile_id", remote_name="infrastructureProfileID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'NETWORK'])
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vsc_profile_id", remote_name="associatedVSCProfileID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="infrastructure_profile_id", remote_name="infrastructureProfileID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'NETWORK'])
         
 
         # Fetchers
-        
-        
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.vlan_templates = NUVLANTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -144,6 +144,187 @@ class NUNSPortTemplate(NURESTObject):
                 
         """
         self._vlan_range = value
+
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the Port
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the Port
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                A description of the Port
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                A description of the Port
+
+                
+        """
+        self._description = value
+
+    
+    @property
+    def physical_name(self):
+        """ Get physical_name value.
+
+            Notes:
+                Identifier of the Port
+
+                
+                This attribute is named `physicalName` in VSD API.
+                
+        """
+        return self._physical_name
+
+    @physical_name.setter
+    def physical_name(self, value):
+        """ Set physical_name value.
+
+            Notes:
+                Identifier of the Port
+
+                
+                This attribute is named `physicalName` in VSD API.
+                
+        """
+        self._physical_name = value
+
+    
+    @property
+    def infrastructure_profile_id(self):
+        """ Get infrastructure_profile_id value.
+
+            Notes:
+                The ID of the infrastructure profile this instance is associated with.
+
+                
+                This attribute is named `infrastructureProfileID` in VSD API.
+                
+        """
+        return self._infrastructure_profile_id
+
+    @infrastructure_profile_id.setter
+    def infrastructure_profile_id(self, value):
+        """ Set infrastructure_profile_id value.
+
+            Notes:
+                The ID of the infrastructure profile this instance is associated with.
+
+                
+                This attribute is named `infrastructureProfileID` in VSD API.
+                
+        """
+        self._infrastructure_profile_id = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def port_type(self):
+        """ Get port_type value.
+
+            Notes:
+                Type of the Port.
+
+                
+                This attribute is named `portType` in VSD API.
+                
+        """
+        return self._port_type
+
+    @port_type.setter
+    def port_type(self, value):
+        """ Set port_type value.
+
+            Notes:
+                Type of the Port.
+
+                
+                This attribute is named `portType` in VSD API.
+                
+        """
+        self._port_type = value
 
     
     @property
@@ -201,56 +382,6 @@ class NUNSPortTemplate(NURESTObject):
 
     
     @property
-    def description(self):
-        """ Get description value.
-
-            Notes:
-                A description of the Port
-
-                
-        """
-        return self._description
-
-    @description.setter
-    def description(self, value):
-        """ Set description value.
-
-            Notes:
-                A description of the Port
-
-                
-        """
-        self._description = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
     def external_id(self):
         """ Get external_id value.
 
@@ -275,137 +406,6 @@ class NUNSPortTemplate(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def infrastructure_profile_id(self):
-        """ Get infrastructure_profile_id value.
-
-            Notes:
-                The ID of the infrastructure profile this instance is associated with.
-
-                
-                This attribute is named `infrastructureProfileID` in VSD API.
-                
-        """
-        return self._infrastructure_profile_id
-
-    @infrastructure_profile_id.setter
-    def infrastructure_profile_id(self, value):
-        """ Set infrastructure_profile_id value.
-
-            Notes:
-                The ID of the infrastructure profile this instance is associated with.
-
-                
-                This attribute is named `infrastructureProfileID` in VSD API.
-                
-        """
-        self._infrastructure_profile_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the Port
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the Port
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def physical_name(self):
-        """ Get physical_name value.
-
-            Notes:
-                Identifier of the Port
-
-                
-                This attribute is named `physicalName` in VSD API.
-                
-        """
-        return self._physical_name
-
-    @physical_name.setter
-    def physical_name(self, value):
-        """ Set physical_name value.
-
-            Notes:
-                Identifier of the Port
-
-                
-                This attribute is named `physicalName` in VSD API.
-                
-        """
-        self._physical_name = value
-
-    
-    @property
-    def port_type(self):
-        """ Get port_type value.
-
-            Notes:
-                Type of the Port.
-
-                
-                This attribute is named `portType` in VSD API.
-                
-        """
-        return self._port_type
-
-    @port_type.setter
-    def port_type(self, value):
-        """ Set port_type value.
-
-            Notes:
-                Type of the Port.
-
-                
-                This attribute is named `portType` in VSD API.
-                
-        """
-        self._port_type = value
 
     
 

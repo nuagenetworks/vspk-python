@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -50,7 +50,7 @@ class NUInfrastructurePortProfile(NURESTObject):
     
     CONST_DUPLEX_HALF = "HALF"
     
-    CONST_SPEED_BASET10 = "BASET10"
+    CONST_SPEED_BASETX100 = "BASETX100"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
@@ -74,7 +74,7 @@ class NUInfrastructurePortProfile(NURESTObject):
     
     CONST_SPEED_AUTONEGOTIATE = "AUTONEGOTIATE"
     
-    CONST_SPEED_BASETX100 = "BASETX100"
+    CONST_SPEED_BASET10 = "BASET10"
     
     
 
@@ -95,41 +95,91 @@ class NUInfrastructurePortProfile(NURESTObject):
 
         # Read/Write Attributes
         
+        self._name = None
+        self._last_updated_by = None
         self._description = None
-        self._duplex = None
         self._enterprise_id = None
         self._entity_scope = None
-        self._external_id = None
-        self._last_updated_by = None
-        self._mtu = None
-        self._name = None
         self._speed = None
         self._uplink_tag = None
+        self._mtu = None
+        self._duplex = None
+        self._external_id = None
         
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="duplex", remote_name="duplex", attribute_type=str, is_required=False, is_unique=False, choices=[u'FULL', u'HALF', u'SIMPLEX'])
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="mtu", remote_name="mtu", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="speed", remote_name="speed", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTONEGOTIATE', u'BASET10', u'BASET1000', u'BASETX100', u'BASEX10G'])
         self.expose_attribute(local_name="uplink_tag", remote_name="uplinkTag", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'SECONDARY', u'TERTIARY', u'UNKNOWN'])
+        self.expose_attribute(local_name="mtu", remote_name="mtu", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="duplex", remote_name="duplex", attribute_type=str, is_required=False, is_unique=False, choices=[u'FULL', u'HALF', u'SIMPLEX'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the Infrastructure Profile
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the Infrastructure Profile
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
     
     @property
     def description(self):
@@ -152,29 +202,6 @@ class NUInfrastructurePortProfile(NURESTObject):
                 
         """
         self._description = value
-
-    
-    @property
-    def duplex(self):
-        """ Get duplex value.
-
-            Notes:
-                Port Duplex :  Supported values are FULL where both parties can communicate to the other simultaneously and HALF where each party can only communicate to each other in one direction at a time.
-
-                
-        """
-        return self._duplex
-
-    @duplex.setter
-    def duplex(self, value):
-        """ Set duplex value.
-
-            Notes:
-                Port Duplex :  Supported values are FULL where both parties can communicate to the other simultaneously and HALF where each party can only communicate to each other in one direction at a time.
-
-                
-        """
-        self._duplex = value
 
     
     @property
@@ -232,106 +259,6 @@ class NUInfrastructurePortProfile(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def mtu(self):
-        """ Get mtu value.
-
-            Notes:
-                Port MTU (Maximum Transmission Unit) :  The size in octets of the largest protocol data unit (PDU) that the layer can pass on.  The default value is normally 1500 octets for Ethernet v2 and can go up to 9198 for Jumbo Frames.
-
-                
-        """
-        return self._mtu
-
-    @mtu.setter
-    def mtu(self, value):
-        """ Set mtu value.
-
-            Notes:
-                Port MTU (Maximum Transmission Unit) :  The size in octets of the largest protocol data unit (PDU) that the layer can pass on.  The default value is normally 1500 octets for Ethernet v2 and can go up to 9198 for Jumbo Frames.
-
-                
-        """
-        self._mtu = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the Infrastructure Profile
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the Infrastructure Profile
-
-                
-        """
-        self._name = value
-
-    
-    @property
     def speed(self):
         """ Get speed value.
 
@@ -379,6 +306,79 @@ class NUInfrastructurePortProfile(NURESTObject):
                 
         """
         self._uplink_tag = value
+
+    
+    @property
+    def mtu(self):
+        """ Get mtu value.
+
+            Notes:
+                Port MTU (Maximum Transmission Unit) :  The size in octets of the largest protocol data unit (PDU) that the layer can pass on.  The default value is normally 1500 octets for Ethernet v2 and can go up to 9198 for Jumbo Frames.
+
+                
+        """
+        return self._mtu
+
+    @mtu.setter
+    def mtu(self, value):
+        """ Set mtu value.
+
+            Notes:
+                Port MTU (Maximum Transmission Unit) :  The size in octets of the largest protocol data unit (PDU) that the layer can pass on.  The default value is normally 1500 octets for Ethernet v2 and can go up to 9198 for Jumbo Frames.
+
+                
+        """
+        self._mtu = value
+
+    
+    @property
+    def duplex(self):
+        """ Get duplex value.
+
+            Notes:
+                Port Duplex :  Supported values are FULL where both parties can communicate to the other simultaneously and HALF where each party can only communicate to each other in one direction at a time.
+
+                
+        """
+        return self._duplex
+
+    @duplex.setter
+    def duplex(self, value):
+        """ Set duplex value.
+
+            Notes:
+                Port Duplex :  Supported values are FULL where both parties can communicate to the other simultaneously and HALF where each party can only communicate to each other in one direction at a time.
+
+                
+        """
+        self._duplex = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 
