@@ -27,13 +27,13 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUVLANTemplatesFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -79,36 +79,36 @@ class NUPortTemplate(NURESTObject):
         # Read/Write Attributes
         
         self._vlan_range = None
-        self._associated_egress_qos_policy_id = None
-        self._description = None
-        self._entity_scope = None
-        self._external_id = None
-        self._last_updated_by = None
         self._name = None
+        self._last_updated_by = None
+        self._description = None
         self._physical_name = None
+        self._entity_scope = None
         self._port_type = None
+        self._associated_egress_qos_policy_id = None
+        self._external_id = None
         
         self.expose_attribute(local_name="vlan_range", remote_name="VLANRange", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'NETWORK'])
+        self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
-        
-        
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.vlan_templates = NUVLANTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -143,107 +143,26 @@ class NUPortTemplate(NURESTObject):
 
     
     @property
-    def associated_egress_qos_policy_id(self):
-        """ Get associated_egress_qos_policy_id value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                ID of the Egress QOS Policy associated with this Vlan.
-
-                
-                This attribute is named `associatedEgressQOSPolicyID` in VSD API.
-                
-        """
-        return self._associated_egress_qos_policy_id
-
-    @associated_egress_qos_policy_id.setter
-    def associated_egress_qos_policy_id(self, value):
-        """ Set associated_egress_qos_policy_id value.
-
-            Notes:
-                ID of the Egress QOS Policy associated with this Vlan.
-
-                
-                This attribute is named `associatedEgressQOSPolicyID` in VSD API.
-                
-        """
-        self._associated_egress_qos_policy_id = value
-
-    
-    @property
-    def description(self):
-        """ Get description value.
-
-            Notes:
-                A description of the Port
+                Name of the Port
 
                 
         """
-        return self._description
+        return self._name
 
-    @description.setter
-    def description(self, value):
-        """ Set description value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                A description of the Port
+                Name of the Port
 
                 
         """
-        self._description = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
+        self._name = value
 
     
     @property
@@ -274,26 +193,26 @@ class NUPortTemplate(NURESTObject):
 
     
     @property
-    def name(self):
-        """ Get name value.
+    def description(self):
+        """ Get description value.
 
             Notes:
-                Name of the Port
+                A description of the Port
 
                 
         """
-        return self._name
+        return self._description
 
-    @name.setter
-    def name(self, value):
-        """ Set name value.
+    @description.setter
+    def description(self, value):
+        """ Set description value.
 
             Notes:
-                Name of the Port
+                A description of the Port
 
                 
         """
-        self._name = value
+        self._description = value
 
     
     @property
@@ -324,6 +243,33 @@ class NUPortTemplate(NURESTObject):
 
     
     @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
     def port_type(self):
         """ Get port_type value.
 
@@ -348,6 +294,60 @@ class NUPortTemplate(NURESTObject):
                 
         """
         self._port_type = value
+
+    
+    @property
+    def associated_egress_qos_policy_id(self):
+        """ Get associated_egress_qos_policy_id value.
+
+            Notes:
+                ID of the Egress QOS Policy associated with this Vlan.
+
+                
+                This attribute is named `associatedEgressQOSPolicyID` in VSD API.
+                
+        """
+        return self._associated_egress_qos_policy_id
+
+    @associated_egress_qos_policy_id.setter
+    def associated_egress_qos_policy_id(self, value):
+        """ Set associated_egress_qos_policy_id value.
+
+            Notes:
+                ID of the Egress QOS Policy associated with this Vlan.
+
+                
+                This attribute is named `associatedEgressQOSPolicyID` in VSD API.
+                
+        """
+        self._associated_egress_qos_policy_id = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

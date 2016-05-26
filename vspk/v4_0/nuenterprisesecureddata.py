@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -71,37 +71,87 @@ class NUEnterpriseSecuredData(NURESTObject):
 
         # Read/Write Attributes
         
+        self._hash = None
+        self._last_updated_by = None
         self._data = None
+        self._sek_id = None
+        self._keyserver_cert_serial_number = None
+        self._signed_hash = None
         self._entity_scope = None
         self._external_id = None
-        self._hash = None
-        self._keyserver_cert_serial_number = None
-        self._last_updated_by = None
-        self._sek_id = None
-        self._signed_hash = None
         
+        self.expose_attribute(local_name="hash", remote_name="hash", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data", remote_name="data", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="sek_id", remote_name="sekId", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="keyserver_cert_serial_number", remote_name="keyserverCertSerialNumber", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="signed_hash", remote_name="signedHash", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="hash", remote_name="hash", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="keyserver_cert_serial_number", remote_name="keyserverCertSerialNumber", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="sek_id", remote_name="sekId", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="signed_hash", remote_name="signedHash", attribute_type=str, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def hash(self):
+        """ Get hash value.
+
+            Notes:
+                authentication hash
+
+                
+        """
+        return self._hash
+
+    @hash.setter
+    def hash(self, value):
+        """ Set hash value.
+
+            Notes:
+                authentication hash
+
+                
+        """
+        self._hash = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
     
     @property
     def data(self):
@@ -124,6 +174,87 @@ class NUEnterpriseSecuredData(NURESTObject):
                 
         """
         self._data = value
+
+    
+    @property
+    def sek_id(self):
+        """ Get sek_id value.
+
+            Notes:
+                Seed Encryption Key id that encrypted this data
+
+                
+                This attribute is named `sekId` in VSD API.
+                
+        """
+        return self._sek_id
+
+    @sek_id.setter
+    def sek_id(self, value):
+        """ Set sek_id value.
+
+            Notes:
+                Seed Encryption Key id that encrypted this data
+
+                
+                This attribute is named `sekId` in VSD API.
+                
+        """
+        self._sek_id = value
+
+    
+    @property
+    def keyserver_cert_serial_number(self):
+        """ Get keyserver_cert_serial_number value.
+
+            Notes:
+                Serial Number of the certificate needed to verify the encrypted data
+
+                
+                This attribute is named `keyserverCertSerialNumber` in VSD API.
+                
+        """
+        return self._keyserver_cert_serial_number
+
+    @keyserver_cert_serial_number.setter
+    def keyserver_cert_serial_number(self, value):
+        """ Set keyserver_cert_serial_number value.
+
+            Notes:
+                Serial Number of the certificate needed to verify the encrypted data
+
+                
+                This attribute is named `keyserverCertSerialNumber` in VSD API.
+                
+        """
+        self._keyserver_cert_serial_number = value
+
+    
+    @property
+    def signed_hash(self):
+        """ Get signed_hash value.
+
+            Notes:
+                private key signed hash
+
+                
+                This attribute is named `signedHash` in VSD API.
+                
+        """
+        return self._signed_hash
+
+    @signed_hash.setter
+    def signed_hash(self, value):
+        """ Set signed_hash value.
+
+            Notes:
+                private key signed hash
+
+                
+                This attribute is named `signedHash` in VSD API.
+                
+        """
+        self._signed_hash = value
 
     
     @property
@@ -178,137 +309,6 @@ class NUEnterpriseSecuredData(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def hash(self):
-        """ Get hash value.
-
-            Notes:
-                authentication hash
-
-                
-        """
-        return self._hash
-
-    @hash.setter
-    def hash(self, value):
-        """ Set hash value.
-
-            Notes:
-                authentication hash
-
-                
-        """
-        self._hash = value
-
-    
-    @property
-    def keyserver_cert_serial_number(self):
-        """ Get keyserver_cert_serial_number value.
-
-            Notes:
-                Serial Number of the certificate needed to verify the encrypted data
-
-                
-                This attribute is named `keyserverCertSerialNumber` in VSD API.
-                
-        """
-        return self._keyserver_cert_serial_number
-
-    @keyserver_cert_serial_number.setter
-    def keyserver_cert_serial_number(self, value):
-        """ Set keyserver_cert_serial_number value.
-
-            Notes:
-                Serial Number of the certificate needed to verify the encrypted data
-
-                
-                This attribute is named `keyserverCertSerialNumber` in VSD API.
-                
-        """
-        self._keyserver_cert_serial_number = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def sek_id(self):
-        """ Get sek_id value.
-
-            Notes:
-                Seed Encryption Key id that encrypted this data
-
-                
-                This attribute is named `sekId` in VSD API.
-                
-        """
-        return self._sek_id
-
-    @sek_id.setter
-    def sek_id(self, value):
-        """ Set sek_id value.
-
-            Notes:
-                Seed Encryption Key id that encrypted this data
-
-                
-                This attribute is named `sekId` in VSD API.
-                
-        """
-        self._sek_id = value
-
-    
-    @property
-    def signed_hash(self):
-        """ Get signed_hash value.
-
-            Notes:
-                private key signed hash
-
-                
-                This attribute is named `signedHash` in VSD API.
-                
-        """
-        return self._signed_hash
-
-    @signed_hash.setter
-    def signed_hash(self, value):
-        """ Set signed_hash value.
-
-            Notes:
-                private key signed hash
-
-                
-                This attribute is named `signedHash` in VSD API.
-                
-        """
-        self._signed_hash = value
 
     
 

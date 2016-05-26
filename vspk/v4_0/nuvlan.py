@@ -27,31 +27,31 @@
 
 
 
-from .fetchers import NUAlarmsFetcher
+from .fetchers import NUPATNATPoolsFetcher
+
+
+from .fetchers import NUPermissionsFetcher
+
+
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUBGPNeighborsFetcher
+
+
+from .fetchers import NUIKEGatewayConnectionsFetcher
+
+
+from .fetchers import NUAlarmsFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 
 from .fetchers import NUEnterprisePermissionsFetcher
 
 
 from .fetchers import NUEventLogsFetcher
-
-
-from .fetchers import NUGlobalMetadatasFetcher
-
-
-from .fetchers import NUIKEGatewayConnectionsFetcher
-
-
-from .fetchers import NUMetadatasFetcher
-
-
-from .fetchers import NUPATNATPoolsFetcher
-
-
-from .fetchers import NUPermissionsFetcher
 
 from bambou import NURESTObject
 
@@ -69,11 +69,9 @@ class NUVLAN(NURESTObject):
     
     ## Constants
     
-    CONST_PERMITTED_ACTION_READ = "READ"
-    
     CONST_PERMITTED_ACTION_USE = "USE"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_PERMITTED_ACTION_READ = "READ"
     
     CONST_STATUS_READY = "READY"
     
@@ -90,6 +88,8 @@ class NUVLAN(NURESTObject):
     CONST_STATUS_INITIALIZED = "INITIALIZED"
     
     CONST_STATUS_MISMATCH = "MISMATCH"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_STATUS_ORPHAN = "ORPHAN"
     
@@ -112,63 +112,42 @@ class NUVLAN(NURESTObject):
 
         # Read/Write Attributes
         
-        self._associated_bgp_profile_id = None
-        self._associated_egress_qos_policy_id = None
-        self._description = None
-        self._entity_scope = None
-        self._external_id = None
-        self._gateway_id = None
+        self._value = None
         self._last_updated_by = None
-        self._permitted_action = None
+        self._gateway_id = None
         self._readonly = None
-        self._restricted = None
-        self._status = None
         self._template_id = None
+        self._permitted_action = None
+        self._description = None
+        self._restricted = None
+        self._entity_scope = None
+        self._vport_id = None
         self._use_user_mnemonic = None
         self._user_mnemonic = None
-        self._value = None
-        self._vport_id = None
+        self._associated_bgp_profile_id = None
+        self._associated_egress_qos_policy_id = None
+        self._status = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="associated_bgp_profile_id", remote_name="associatedBGPProfileID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="gateway_id", remote_name="gatewayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="value", remote_name="value", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
+        self.expose_attribute(local_name="gateway_id", remote_name="gatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="readonly", remote_name="readonly", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="restricted", remote_name="restricted", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'INITIALIZED', u'MISMATCH', u'ORPHAN', u'READY'])
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="restricted", remote_name="restricted", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="vport_id", remote_name="vportID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_user_mnemonic", remote_name="useUserMnemonic", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="value", remote_name="value", attribute_type=int, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="vport_id", remote_name="vportID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_bgp_profile_id", remote_name="associatedBGPProfileID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'INITIALIZED', u'MISMATCH', u'ORPHAN', u'READY'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
-        
-        
-        self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.bgp_neighbors = NUBGPNeighborsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.ike_gateway_connections = NUIKEGatewayConnectionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.patnat_pools = NUPATNATPoolsFetcher.fetcher_with_object(parent_object=self, relationship="member")
@@ -176,167 +155,53 @@ class NUVLAN(NURESTObject):
         
         self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.bgp_neighbors = NUBGPNeighborsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ike_gateway_connections = NUIKEGatewayConnectionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
 
         self._compute_args(**kwargs)
 
     # Properties
     
     @property
-    def associated_bgp_profile_id(self):
-        """ Get associated_bgp_profile_id value.
+    def value(self):
+        """ Get value value.
 
             Notes:
-                The ID of the associated BGP profile
-
-                
-                This attribute is named `associatedBGPProfileID` in VSD API.
-                
-        """
-        return self._associated_bgp_profile_id
-
-    @associated_bgp_profile_id.setter
-    def associated_bgp_profile_id(self, value):
-        """ Set associated_bgp_profile_id value.
-
-            Notes:
-                The ID of the associated BGP profile
-
-                
-                This attribute is named `associatedBGPProfileID` in VSD API.
-                
-        """
-        self._associated_bgp_profile_id = value
-
-    
-    @property
-    def associated_egress_qos_policy_id(self):
-        """ Get associated_egress_qos_policy_id value.
-
-            Notes:
-                ID of the Egress QOS Policy associated with this VLAN.
-
-                
-                This attribute is named `associatedEgressQOSPolicyID` in VSD API.
-                
-        """
-        return self._associated_egress_qos_policy_id
-
-    @associated_egress_qos_policy_id.setter
-    def associated_egress_qos_policy_id(self, value):
-        """ Set associated_egress_qos_policy_id value.
-
-            Notes:
-                ID of the Egress QOS Policy associated with this VLAN.
-
-                
-                This attribute is named `associatedEgressQOSPolicyID` in VSD API.
-                
-        """
-        self._associated_egress_qos_policy_id = value
-
-    
-    @property
-    def description(self):
-        """ Get description value.
-
-            Notes:
-                A description of the Port
+                value of VLAN
 
                 
         """
-        return self._description
+        return self._value
 
-    @description.setter
-    def description(self, value):
-        """ Set description value.
+    @value.setter
+    def value(self, value):
+        """ Set value value.
 
             Notes:
-                A description of the Port
+                value of VLAN
 
                 
         """
-        self._description = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def gateway_id(self):
-        """ Get gateway_id value.
-
-            Notes:
-                The Gateway associated with this  VLAN  . This is a read only attribute
-
-                
-                This attribute is named `gatewayID` in VSD API.
-                
-        """
-        return self._gateway_id
-
-    @gateway_id.setter
-    def gateway_id(self, value):
-        """ Set gateway_id value.
-
-            Notes:
-                The Gateway associated with this  VLAN  . This is a read only attribute
-
-                
-                This attribute is named `gatewayID` in VSD API.
-                
-        """
-        self._gateway_id = value
+        self._value = value
 
     
     @property
@@ -367,30 +232,30 @@ class NUVLAN(NURESTObject):
 
     
     @property
-    def permitted_action(self):
-        """ Get permitted_action value.
+    def gateway_id(self):
+        """ Get gateway_id value.
 
             Notes:
-                The permitted  action to USE/EXTEND  this Gateway.
+                The Gateway associated with this  VLAN  . This is a read only attribute
 
                 
-                This attribute is named `permittedAction` in VSD API.
+                This attribute is named `gatewayID` in VSD API.
                 
         """
-        return self._permitted_action
+        return self._gateway_id
 
-    @permitted_action.setter
-    def permitted_action(self, value):
-        """ Set permitted_action value.
+    @gateway_id.setter
+    def gateway_id(self, value):
+        """ Set gateway_id value.
 
             Notes:
-                The permitted  action to USE/EXTEND  this Gateway.
+                The Gateway associated with this  VLAN  . This is a read only attribute
 
                 
-                This attribute is named `permittedAction` in VSD API.
+                This attribute is named `gatewayID` in VSD API.
                 
         """
-        self._permitted_action = value
+        self._gateway_id = value
 
     
     @property
@@ -414,52 +279,6 @@ class NUVLAN(NURESTObject):
                 
         """
         self._readonly = value
-
-    
-    @property
-    def restricted(self):
-        """ Get restricted value.
-
-            Notes:
-                Determines whether this entity can be used in associations with other properties.
-
-                
-        """
-        return self._restricted
-
-    @restricted.setter
-    def restricted(self, value):
-        """ Set restricted value.
-
-            Notes:
-                Determines whether this entity can be used in associations with other properties.
-
-                
-        """
-        self._restricted = value
-
-    
-    @property
-    def status(self):
-        """ Get status value.
-
-            Notes:
-                Status of the VLAN.
-
-                
-        """
-        return self._status
-
-    @status.setter
-    def status(self, value):
-        """ Set status value.
-
-            Notes:
-                Status of the VLAN.
-
-                
-        """
-        self._status = value
 
     
     @property
@@ -487,6 +306,133 @@ class NUVLAN(NURESTObject):
                 
         """
         self._template_id = value
+
+    
+    @property
+    def permitted_action(self):
+        """ Get permitted_action value.
+
+            Notes:
+                The permitted  action to USE/EXTEND  this Gateway.
+
+                
+                This attribute is named `permittedAction` in VSD API.
+                
+        """
+        return self._permitted_action
+
+    @permitted_action.setter
+    def permitted_action(self, value):
+        """ Set permitted_action value.
+
+            Notes:
+                The permitted  action to USE/EXTEND  this Gateway.
+
+                
+                This attribute is named `permittedAction` in VSD API.
+                
+        """
+        self._permitted_action = value
+
+    
+    @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                A description of the Port
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                A description of the Port
+
+                
+        """
+        self._description = value
+
+    
+    @property
+    def restricted(self):
+        """ Get restricted value.
+
+            Notes:
+                Determines whether this entity can be used in associations with other properties.
+
+                
+        """
+        return self._restricted
+
+    @restricted.setter
+    def restricted(self, value):
+        """ Set restricted value.
+
+            Notes:
+                Determines whether this entity can be used in associations with other properties.
+
+                
+        """
+        self._restricted = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def vport_id(self):
+        """ Get vport_id value.
+
+            Notes:
+                The Vport associated with this  VLAN  . This is a read only attribute
+
+                
+                This attribute is named `vportID` in VSD API.
+                
+        """
+        return self._vport_id
+
+    @vport_id.setter
+    def vport_id(self, value):
+        """ Set vport_id value.
+
+            Notes:
+                The Vport associated with this  VLAN  . This is a read only attribute
+
+                
+                This attribute is named `vportID` in VSD API.
+                
+        """
+        self._vport_id = value
 
     
     @property
@@ -544,53 +490,107 @@ class NUVLAN(NURESTObject):
 
     
     @property
-    def value(self):
-        """ Get value value.
+    def associated_bgp_profile_id(self):
+        """ Get associated_bgp_profile_id value.
 
             Notes:
-                value of VLAN
+                The ID of the associated BGP profile
 
                 
+                This attribute is named `associatedBGPProfileID` in VSD API.
+                
         """
-        return self._value
+        return self._associated_bgp_profile_id
 
-    @value.setter
-    def value(self, value):
-        """ Set value value.
+    @associated_bgp_profile_id.setter
+    def associated_bgp_profile_id(self, value):
+        """ Set associated_bgp_profile_id value.
 
             Notes:
-                value of VLAN
+                The ID of the associated BGP profile
 
                 
+                This attribute is named `associatedBGPProfileID` in VSD API.
+                
         """
-        self._value = value
+        self._associated_bgp_profile_id = value
 
     
     @property
-    def vport_id(self):
-        """ Get vport_id value.
+    def associated_egress_qos_policy_id(self):
+        """ Get associated_egress_qos_policy_id value.
 
             Notes:
-                The Vport associated with this  VLAN  . This is a read only attribute
+                ID of the Egress QOS Policy associated with this VLAN.
 
                 
-                This attribute is named `vportID` in VSD API.
+                This attribute is named `associatedEgressQOSPolicyID` in VSD API.
                 
         """
-        return self._vport_id
+        return self._associated_egress_qos_policy_id
 
-    @vport_id.setter
-    def vport_id(self, value):
-        """ Set vport_id value.
+    @associated_egress_qos_policy_id.setter
+    def associated_egress_qos_policy_id(self, value):
+        """ Set associated_egress_qos_policy_id value.
 
             Notes:
-                The Vport associated with this  VLAN  . This is a read only attribute
+                ID of the Egress QOS Policy associated with this VLAN.
 
                 
-                This attribute is named `vportID` in VSD API.
+                This attribute is named `associatedEgressQOSPolicyID` in VSD API.
                 
         """
-        self._vport_id = value
+        self._associated_egress_qos_policy_id = value
+
+    
+    @property
+    def status(self):
+        """ Get status value.
+
+            Notes:
+                Status of the VLAN.
+
+                
+        """
+        return self._status
+
+    @status.setter
+    def status(self, value):
+        """ Set status value.
+
+            Notes:
+                Status of the VLAN.
+
+                
+        """
+        self._status = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

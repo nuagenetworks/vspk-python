@@ -58,18 +58,45 @@ class NUAutoDiscoverHypervisorFromCluster(NURESTObject):
 
         # Read/Write Attributes
         
+        self._network_list = None
         self._assoc_cluster_id = None
         self._hypervisor_ip = None
-        self._network_list = None
         
+        self.expose_attribute(local_name="network_list", remote_name="networkList", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_cluster_id", remote_name="assocClusterId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="hypervisor_ip", remote_name="hypervisorIP", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="network_list", remote_name="networkList", attribute_type=list, is_required=False, is_unique=False)
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def network_list(self):
+        """ Get network_list value.
+
+            Notes:
+                The available network list
+
+                
+                This attribute is named `networkList` in VSD API.
+                
+        """
+        return self._network_list
+
+    @network_list.setter
+    def network_list(self, value):
+        """ Set network_list value.
+
+            Notes:
+                The available network list
+
+                
+                This attribute is named `networkList` in VSD API.
+                
+        """
+        self._network_list = value
+
     
     @property
     def assoc_cluster_id(self):
@@ -123,33 +150,6 @@ class NUAutoDiscoverHypervisorFromCluster(NURESTObject):
                 
         """
         self._hypervisor_ip = value
-
-    
-    @property
-    def network_list(self):
-        """ Get network_list value.
-
-            Notes:
-                The available network list
-
-                
-                This attribute is named `networkList` in VSD API.
-                
-        """
-        return self._network_list
-
-    @network_list.setter
-    def network_list(self, value):
-        """ Set network_list value.
-
-            Notes:
-                The available network list
-
-                
-                This attribute is named `networkList` in VSD API.
-                
-        """
-        self._network_list = value
 
     
 

@@ -30,22 +30,22 @@
 from .fetchers import NUAddressRangesFetcher
 
 
+from .fetchers import NUMetadatasFetcher
+
+
 from .fetchers import NUDHCPOptionsFetcher
-
-
-from .fetchers import NUEnterprisePermissionsFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUMetadatasFetcher
-
-
-from .fetchers import NUStaticRoutesFetcher
+from .fetchers import NUEnterprisePermissionsFetcher
 
 
 from .fetchers import NUVPNConnectionsFetcher
+
+
+from .fetchers import NUStaticRoutesFetcher
 
 from bambou import NURESTObject
 
@@ -106,61 +106,61 @@ class NUSharedNetworkResource(NURESTObject):
 
         # Read/Write Attributes
         
-        self._dhcp_managed = None
         self._ecmp_count = None
-        self._access_restriction_enabled = None
-        self._address = None
-        self._associated_pat_mapper_id = None
+        self._dhcp_managed = None
         self._back_haul_route_distinguisher = None
         self._back_haul_route_target = None
         self._back_haul_vnid = None
+        self._name = None
+        self._last_updated_by = None
+        self._gateway = None
+        self._access_restriction_enabled = None
+        self._address = None
+        self._permitted_action_type = None
         self._description = None
+        self._netmask = None
+        self._shared_resource_parent_id = None
+        self._vn_id = None
+        self._underlay = None
+        self._entity_scope = None
         self._domain_route_distinguisher = None
         self._domain_route_target = None
-        self._dynamic_pat_allocation_enabled = None
-        self._entity_scope = None
-        self._external_id = None
-        self._gateway = None
-        self._last_updated_by = None
-        self._name = None
-        self._netmask = None
-        self._permitted_action_type = None
-        self._shared_resource_parent_id = None
-        self._type = None
-        self._underlay = None
         self._uplink_gw_vlan_attachment_id = None
         self._uplink_interface_ip = None
         self._uplink_interface_mac = None
         self._uplink_vport_name = None
-        self._vn_id = None
+        self._associated_pat_mapper_id = None
+        self._external_id = None
+        self._dynamic_pat_allocation_enabled = None
+        self._type = None
         
-        self.expose_attribute(local_name="dhcp_managed", remote_name="DHCPManaged", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ecmp_count", remote_name="ECMPCount", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="access_restriction_enabled", remote_name="accessRestrictionEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="associated_pat_mapper_id", remote_name="associatedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="dhcp_managed", remote_name="DHCPManaged", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_route_distinguisher", remote_name="backHaulRouteDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_route_target", remote_name="backHaulRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_vnid", remote_name="backHaulVNID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="access_restriction_enabled", remote_name="accessRestrictionEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="permitted_action_type", remote_name="permittedActionType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="shared_resource_parent_id", remote_name="sharedResourceParentID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vn_id", remote_name="vnID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="underlay", remote_name="underlay", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="domain_route_distinguisher", remote_name="domainRouteDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="domain_route_target", remote_name="domainRouteTarget", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dynamic_pat_allocation_enabled", remote_name="dynamicPATAllocationEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="permitted_action_type", remote_name="permittedActionType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
-        self.expose_attribute(local_name="shared_resource_parent_id", remote_name="sharedResourceParentID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'FLOATING', u'L2DOMAIN', u'PUBLIC', u'UPLINK_SUBNET'])
-        self.expose_attribute(local_name="underlay", remote_name="underlay", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_gw_vlan_attachment_id", remote_name="uplinkGWVlanAttachmentID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_interface_ip", remote_name="uplinkInterfaceIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_interface_mac", remote_name="uplinkInterfaceMAC", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_vport_name", remote_name="uplinkVPortName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="vn_id", remote_name="vnID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_pat_mapper_id", remote_name="associatedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="dynamic_pat_allocation_enabled", remote_name="dynamicPATAllocationEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'FLOATING', u'L2DOMAIN', u'PUBLIC', u'UPLINK_SUBNET'])
         
 
         # Fetchers
@@ -169,54 +169,27 @@ class NUSharedNetworkResource(NURESTObject):
         self.address_ranges = NUAddressRangesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.dhcp_options = NUDHCPOptionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.static_routes = NUStaticRoutesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.vpn_connections = NUVPNConnectionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.static_routes = NUStaticRoutesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
-    
-    @property
-    def dhcp_managed(self):
-        """ Get dhcp_managed value.
-
-            Notes:
-                true if DHCP is enabled else it is false. This value is always true for network resource of type PUBLIC or FLOATING.
-
-                
-                This attribute is named `DHCPManaged` in VSD API.
-                
-        """
-        return self._dhcp_managed
-
-    @dhcp_managed.setter
-    def dhcp_managed(self, value):
-        """ Set dhcp_managed value.
-
-            Notes:
-                true if DHCP is enabled else it is false. This value is always true for network resource of type PUBLIC or FLOATING.
-
-                
-                This attribute is named `DHCPManaged` in VSD API.
-                
-        """
-        self._dhcp_managed = value
-
     
     @property
     def ecmp_count(self):
@@ -246,80 +219,30 @@ class NUSharedNetworkResource(NURESTObject):
 
     
     @property
-    def access_restriction_enabled(self):
-        """ Get access_restriction_enabled value.
+    def dhcp_managed(self):
+        """ Get dhcp_managed value.
 
             Notes:
-                Boolean indicates that this shared network resource is avaiable to everyone by default or not
+                true if DHCP is enabled else it is false. This value is always true for network resource of type PUBLIC or FLOATING.
 
                 
-                This attribute is named `accessRestrictionEnabled` in VSD API.
+                This attribute is named `DHCPManaged` in VSD API.
                 
         """
-        return self._access_restriction_enabled
+        return self._dhcp_managed
 
-    @access_restriction_enabled.setter
-    def access_restriction_enabled(self, value):
-        """ Set access_restriction_enabled value.
+    @dhcp_managed.setter
+    def dhcp_managed(self, value):
+        """ Set dhcp_managed value.
 
             Notes:
-                Boolean indicates that this shared network resource is avaiable to everyone by default or not
+                true if DHCP is enabled else it is false. This value is always true for network resource of type PUBLIC or FLOATING.
 
                 
-                This attribute is named `accessRestrictionEnabled` in VSD API.
-                
-        """
-        self._access_restriction_enabled = value
-
-    
-    @property
-    def address(self):
-        """ Get address value.
-
-            Notes:
-                Address configured on the shared resource
-
+                This attribute is named `DHCPManaged` in VSD API.
                 
         """
-        return self._address
-
-    @address.setter
-    def address(self, value):
-        """ Set address value.
-
-            Notes:
-                Address configured on the shared resource
-
-                
-        """
-        self._address = value
-
-    
-    @property
-    def associated_pat_mapper_id(self):
-        """ Get associated_pat_mapper_id value.
-
-            Notes:
-                The ID of the PatMapper entity to which this pool is associated to.
-
-                
-                This attribute is named `associatedPATMapperID` in VSD API.
-                
-        """
-        return self._associated_pat_mapper_id
-
-    @associated_pat_mapper_id.setter
-    def associated_pat_mapper_id(self, value):
-        """ Set associated_pat_mapper_id value.
-
-            Notes:
-                The ID of the PatMapper entity to which this pool is associated to.
-
-                
-                This attribute is named `associatedPATMapperID` in VSD API.
-                
-        """
-        self._associated_pat_mapper_id = value
+        self._dhcp_managed = value
 
     
     @property
@@ -404,6 +327,156 @@ class NUSharedNetworkResource(NURESTObject):
 
     
     @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the shared resource. Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the shared resource. Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def gateway(self):
+        """ Get gateway value.
+
+            Notes:
+                Gatemask configured on the shared resource
+
+                
+        """
+        return self._gateway
+
+    @gateway.setter
+    def gateway(self, value):
+        """ Set gateway value.
+
+            Notes:
+                Gatemask configured on the shared resource
+
+                
+        """
+        self._gateway = value
+
+    
+    @property
+    def access_restriction_enabled(self):
+        """ Get access_restriction_enabled value.
+
+            Notes:
+                Boolean indicates that this shared network resource is avaiable to everyone by default or not
+
+                
+                This attribute is named `accessRestrictionEnabled` in VSD API.
+                
+        """
+        return self._access_restriction_enabled
+
+    @access_restriction_enabled.setter
+    def access_restriction_enabled(self, value):
+        """ Set access_restriction_enabled value.
+
+            Notes:
+                Boolean indicates that this shared network resource is avaiable to everyone by default or not
+
+                
+                This attribute is named `accessRestrictionEnabled` in VSD API.
+                
+        """
+        self._access_restriction_enabled = value
+
+    
+    @property
+    def address(self):
+        """ Get address value.
+
+            Notes:
+                Address configured on the shared resource
+
+                
+        """
+        return self._address
+
+    @address.setter
+    def address(self, value):
+        """ Set address value.
+
+            Notes:
+                Address configured on the shared resource
+
+                
+        """
+        self._address = value
+
+    
+    @property
+    def permitted_action_type(self):
+        """ Get permitted_action_type value.
+
+            Notes:
+                Permitted action on this shared network resource
+
+                
+                This attribute is named `permittedActionType` in VSD API.
+                
+        """
+        return self._permitted_action_type
+
+    @permitted_action_type.setter
+    def permitted_action_type(self, value):
+        """ Set permitted_action_type value.
+
+            Notes:
+                Permitted action on this shared network resource
+
+                
+                This attribute is named `permittedActionType` in VSD API.
+                
+        """
+        self._permitted_action_type = value
+
+    
+    @property
     def description(self):
         """ Get description value.
 
@@ -424,6 +497,133 @@ class NUSharedNetworkResource(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def netmask(self):
+        """ Get netmask value.
+
+            Notes:
+                Netmask configured on the shared resource
+
+                
+        """
+        return self._netmask
+
+    @netmask.setter
+    def netmask(self, value):
+        """ Set netmask value.
+
+            Notes:
+                Netmask configured on the shared resource
+
+                
+        """
+        self._netmask = value
+
+    
+    @property
+    def shared_resource_parent_id(self):
+        """ Get shared_resource_parent_id value.
+
+            Notes:
+                Parent ID of the floating IP subnet to which this FIP subnet must be attached. If empty it will be created in a new domain.
+
+                
+                This attribute is named `sharedResourceParentID` in VSD API.
+                
+        """
+        return self._shared_resource_parent_id
+
+    @shared_resource_parent_id.setter
+    def shared_resource_parent_id(self, value):
+        """ Set shared_resource_parent_id value.
+
+            Notes:
+                Parent ID of the floating IP subnet to which this FIP subnet must be attached. If empty it will be created in a new domain.
+
+                
+                This attribute is named `sharedResourceParentID` in VSD API.
+                
+        """
+        self._shared_resource_parent_id = value
+
+    
+    @property
+    def vn_id(self):
+        """ Get vn_id value.
+
+            Notes:
+                VNID of the Shared Resource
+
+                
+                This attribute is named `vnID` in VSD API.
+                
+        """
+        return self._vn_id
+
+    @vn_id.setter
+    def vn_id(self, value):
+        """ Set vn_id value.
+
+            Notes:
+                VNID of the Shared Resource
+
+                
+                This attribute is named `vnID` in VSD API.
+                
+        """
+        self._vn_id = value
+
+    
+    @property
+    def underlay(self):
+        """ Get underlay value.
+
+            Notes:
+                Indicates whether this shared subnet is in underlay or not.
+
+                
+        """
+        return self._underlay
+
+    @underlay.setter
+    def underlay(self, value):
+        """ Set underlay value.
+
+            Notes:
+                Indicates whether this shared subnet is in underlay or not.
+
+                
+        """
+        self._underlay = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
 
     
     @property
@@ -478,283 +678,6 @@ class NUSharedNetworkResource(NURESTObject):
                 
         """
         self._domain_route_target = value
-
-    
-    @property
-    def dynamic_pat_allocation_enabled(self):
-        """ Get dynamic_pat_allocation_enabled value.
-
-            Notes:
-                Indicates if PAT Mapping is enabled for the SharedNetworkResource or not.
-
-                
-                This attribute is named `dynamicPATAllocationEnabled` in VSD API.
-                
-        """
-        return self._dynamic_pat_allocation_enabled
-
-    @dynamic_pat_allocation_enabled.setter
-    def dynamic_pat_allocation_enabled(self, value):
-        """ Set dynamic_pat_allocation_enabled value.
-
-            Notes:
-                Indicates if PAT Mapping is enabled for the SharedNetworkResource or not.
-
-                
-                This attribute is named `dynamicPATAllocationEnabled` in VSD API.
-                
-        """
-        self._dynamic_pat_allocation_enabled = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def gateway(self):
-        """ Get gateway value.
-
-            Notes:
-                Gatemask configured on the shared resource
-
-                
-        """
-        return self._gateway
-
-    @gateway.setter
-    def gateway(self, value):
-        """ Set gateway value.
-
-            Notes:
-                Gatemask configured on the shared resource
-
-                
-        """
-        self._gateway = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the shared resource. Valid characters are alphabets, numbers, space and hyphen( - ).
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the shared resource. Valid characters are alphabets, numbers, space and hyphen( - ).
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def netmask(self):
-        """ Get netmask value.
-
-            Notes:
-                Netmask configured on the shared resource
-
-                
-        """
-        return self._netmask
-
-    @netmask.setter
-    def netmask(self, value):
-        """ Set netmask value.
-
-            Notes:
-                Netmask configured on the shared resource
-
-                
-        """
-        self._netmask = value
-
-    
-    @property
-    def permitted_action_type(self):
-        """ Get permitted_action_type value.
-
-            Notes:
-                Permitted action on this shared network resource
-
-                
-                This attribute is named `permittedActionType` in VSD API.
-                
-        """
-        return self._permitted_action_type
-
-    @permitted_action_type.setter
-    def permitted_action_type(self, value):
-        """ Set permitted_action_type value.
-
-            Notes:
-                Permitted action on this shared network resource
-
-                
-                This attribute is named `permittedActionType` in VSD API.
-                
-        """
-        self._permitted_action_type = value
-
-    
-    @property
-    def shared_resource_parent_id(self):
-        """ Get shared_resource_parent_id value.
-
-            Notes:
-                Parent ID of the floating IP subnet to which this FIP subnet must be attached. If empty it will be created in a new domain.
-
-                
-                This attribute is named `sharedResourceParentID` in VSD API.
-                
-        """
-        return self._shared_resource_parent_id
-
-    @shared_resource_parent_id.setter
-    def shared_resource_parent_id(self, value):
-        """ Set shared_resource_parent_id value.
-
-            Notes:
-                Parent ID of the floating IP subnet to which this FIP subnet must be attached. If empty it will be created in a new domain.
-
-                
-                This attribute is named `sharedResourceParentID` in VSD API.
-                
-        """
-        self._shared_resource_parent_id = value
-
-    
-    @property
-    def type(self):
-        """ Get type value.
-
-            Notes:
-                Type of the shared resource.
-
-                
-        """
-        return self._type
-
-    @type.setter
-    def type(self, value):
-        """ Set type value.
-
-            Notes:
-                Type of the shared resource.
-
-                
-        """
-        self._type = value
-
-    
-    @property
-    def underlay(self):
-        """ Get underlay value.
-
-            Notes:
-                Indicates whether this shared subnet is in underlay or not.
-
-                
-        """
-        return self._underlay
-
-    @underlay.setter
-    def underlay(self, value):
-        """ Set underlay value.
-
-            Notes:
-                Indicates whether this shared subnet is in underlay or not.
-
-                
-        """
-        self._underlay = value
 
     
     @property
@@ -866,30 +789,107 @@ class NUSharedNetworkResource(NURESTObject):
 
     
     @property
-    def vn_id(self):
-        """ Get vn_id value.
+    def associated_pat_mapper_id(self):
+        """ Get associated_pat_mapper_id value.
 
             Notes:
-                VNID of the Shared Resource
+                The ID of the PatMapper entity to which this pool is associated to.
 
                 
-                This attribute is named `vnID` in VSD API.
+                This attribute is named `associatedPATMapperID` in VSD API.
                 
         """
-        return self._vn_id
+        return self._associated_pat_mapper_id
 
-    @vn_id.setter
-    def vn_id(self, value):
-        """ Set vn_id value.
+    @associated_pat_mapper_id.setter
+    def associated_pat_mapper_id(self, value):
+        """ Set associated_pat_mapper_id value.
 
             Notes:
-                VNID of the Shared Resource
+                The ID of the PatMapper entity to which this pool is associated to.
 
                 
-                This attribute is named `vnID` in VSD API.
+                This attribute is named `associatedPATMapperID` in VSD API.
                 
         """
-        self._vn_id = value
+        self._associated_pat_mapper_id = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
+
+    
+    @property
+    def dynamic_pat_allocation_enabled(self):
+        """ Get dynamic_pat_allocation_enabled value.
+
+            Notes:
+                Indicates if PAT Mapping is enabled for the SharedNetworkResource or not.
+
+                
+                This attribute is named `dynamicPATAllocationEnabled` in VSD API.
+                
+        """
+        return self._dynamic_pat_allocation_enabled
+
+    @dynamic_pat_allocation_enabled.setter
+    def dynamic_pat_allocation_enabled(self, value):
+        """ Set dynamic_pat_allocation_enabled value.
+
+            Notes:
+                Indicates if PAT Mapping is enabled for the SharedNetworkResource or not.
+
+                
+                This attribute is named `dynamicPATAllocationEnabled` in VSD API.
+                
+        """
+        self._dynamic_pat_allocation_enabled = value
+
+    
+    @property
+    def type(self):
+        """ Get type value.
+
+            Notes:
+                Type of the shared resource.
+
+                
+        """
+        return self._type
+
+    @type.setter
+    def type(self, value):
+        """ Set type value.
+
+            Notes:
+                Type of the shared resource.
+
+                
+        """
+        self._type = value
 
     
 

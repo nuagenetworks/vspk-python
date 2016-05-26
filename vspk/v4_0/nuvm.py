@@ -27,25 +27,25 @@
 
 
 
-from .fetchers import NUAlarmsFetcher
-
-
-from .fetchers import NUEventLogsFetcher
-
-
-from .fetchers import NUGlobalMetadatasFetcher
+from .fetchers import NUVMResyncsFetcher
 
 
 from .fetchers import NUMetadatasFetcher
 
 
-from .fetchers import NUVMResyncsFetcher
+from .fetchers import NUAlarmsFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 
 from .fetchers import NUVMInterfacesFetcher
 
 
 from .fetchers import NUVRSsFetcher
+
+
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -75,11 +75,11 @@ class NUVM(NURESTObject):
     
     CONST_STATUS_DELETE_PENDING = "DELETE_PENDING"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_REASON_TYPE_RUNNING_UNKNOWN = "RUNNING_UNKNOWN"
     
     CONST_STATUS_RUNNING = "RUNNING"
     
-    CONST_REASON_TYPE_RUNNING_MIGRATION_CANCELED = "RUNNING_MIGRATION_CANCELED"
+    CONST_REASON_TYPE_RUNNING_LAST = "RUNNING_LAST"
     
     CONST_REASON_TYPE_RUNNING_UNPAUSED = "RUNNING_UNPAUSED"
     
@@ -91,9 +91,9 @@ class NUVM(NURESTObject):
     
     CONST_REASON_TYPE_UNKNOWN = "UNKNOWN"
     
-    CONST_STATUS_SHUTOFF = "SHUTOFF"
-    
     CONST_STATUS_UNREACHABLE = "UNREACHABLE"
+    
+    CONST_STATUS_BLOCKED = "BLOCKED"
     
     CONST_REASON_TYPE_SHUTOFF_DESTROYED = "SHUTOFF_DESTROYED"
     
@@ -115,7 +115,7 @@ class NUVM(NURESTObject):
     
     CONST_REASON_TYPE_SHUTOFF_LAST = "SHUTOFF_LAST"
     
-    CONST_REASON_TYPE_RUNNING_UNKNOWN = "RUNNING_UNKNOWN"
+    CONST_STATUS_SHUTOFF = "SHUTOFF"
     
     CONST_REASON_TYPE_SHUTOFF_SHUTDOWN = "SHUTOFF_SHUTDOWN"
     
@@ -143,9 +143,9 @@ class NUVM(NURESTObject):
     
     CONST_REASON_TYPE_SHUTDOWN_USER = "SHUTDOWN_USER"
     
-    CONST_REASON_TYPE_RUNNING_LAST = "RUNNING_LAST"
+    CONST_REASON_TYPE_RUNNING_MIGRATION_CANCELED = "RUNNING_MIGRATION_CANCELED"
     
-    CONST_STATUS_BLOCKED = "BLOCKED"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_STATUS_PAUSED = "PAUSED"
     
@@ -153,11 +153,11 @@ class NUVM(NURESTObject):
     
     CONST_REASON_TYPE_BLOCKED_UNKNOWN = "BLOCKED_UNKNOWN"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_REASON_TYPE_NOSTATE_LAST = "NOSTATE_LAST"
     
     CONST_REASON_TYPE_RUNNING_RESTORED = "RUNNING_RESTORED"
     
-    CONST_REASON_TYPE_NOSTATE_LAST = "NOSTATE_LAST"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_REASON_TYPE_SHUTOFF_CRASHED = "SHUTOFF_CRASHED"
     
@@ -188,71 +188,68 @@ class NUVM(NURESTObject):
 
         # Read/Write Attributes
         
-        self._uuid = None
+        self._l2_domain_ids = None
         self._vrsid = None
-        self._app_name = None
+        self._uuid = None
+        self._name = None
+        self._last_updated_by = None
+        self._reason_type = None
         self._delete_expiry = None
         self._delete_mode = None
-        self._domain_ids = None
+        self._resync_info = None
+        self._site_identifier = None
+        self._interfaces = None
         self._enterprise_id = None
         self._enterprise_name = None
         self._entity_scope = None
-        self._external_id = None
-        self._hypervisor_ip = None
-        self._interfaces = None
-        self._l2_domain_ids = None
-        self._last_updated_by = None
-        self._name = None
-        self._reason_type = None
-        self._resync_info = None
-        self._site_identifier = None
-        self._status = None
-        self._subnet_ids = None
+        self._domain_ids = None
+        self._zone_ids = None
+        self._app_name = None
         self._user_id = None
         self._user_name = None
-        self._zone_ids = None
+        self._status = None
+        self._subnet_ids = None
+        self._external_id = None
+        self._hypervisor_ip = None
         
-        self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="l2_domain_ids", remote_name="l2DomainIDs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrsid", remote_name="VRSID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="app_name", remote_name="appName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="reason_type", remote_name="reasonType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BLOCKED_LAST', u'BLOCKED_UNKNOWN', u'CRASHED_LAST', u'CRASHED_UNKNOWN', u'NOSTATE_LAST', u'NOSTATE_UNKNOWN', u'PAUSED_DUMP', u'PAUSED_FROM_SNAPSHOT', u'PAUSED_IOERROR', u'PAUSED_LAST', u'PAUSED_MIGRATION', u'PAUSED_SAVE', u'PAUSED_SHUTTING_DOWN', u'PAUSED_UNKNOWN', u'PAUSED_USER', u'PAUSED_WATCHDOG', u'RUNNING_BOOTED', u'RUNNING_FROM_SNAPSHOT', u'RUNNING_LAST', u'RUNNING_MIGRATED', u'RUNNING_MIGRATION_CANCELED', u'RUNNING_RESTORED', u'RUNNING_SAVE_CANCELED', u'RUNNING_UNKNOWN', u'RUNNING_UNPAUSED', u'SHUTDOWN_LAST', u'SHUTDOWN_UNKNOWN', u'SHUTDOWN_USER', u'SHUTOFF_CRASHED', u'SHUTOFF_DESTROYED', u'SHUTOFF_FAILED', u'SHUTOFF_FROM_SNAPSHOT', u'SHUTOFF_LAST', u'SHUTOFF_MIGRATED', u'SHUTOFF_SAVED', u'SHUTOFF_SHUTDOWN', u'SHUTOFF_UNKNOWN', u'UNKNOWN'])
         self.expose_attribute(local_name="delete_expiry", remote_name="deleteExpiry", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="delete_mode", remote_name="deleteMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'TIMER'])
-        self.expose_attribute(local_name="domain_ids", remote_name="domainIDs", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="resync_info", remote_name="resyncInfo", attribute_type=dict, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="site_identifier", remote_name="siteIdentifier", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="interfaces", remote_name="interfaces", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="hypervisor_ip", remote_name="hypervisorIP", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="interfaces", remote_name="interfaces", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="l2_domain_ids", remote_name="l2DomainIDs", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="reason_type", remote_name="reasonType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BLOCKED_LAST', u'BLOCKED_UNKNOWN', u'CRASHED_LAST', u'CRASHED_UNKNOWN', u'NOSTATE_LAST', u'NOSTATE_UNKNOWN', u'PAUSED_DUMP', u'PAUSED_FROM_SNAPSHOT', u'PAUSED_IOERROR', u'PAUSED_LAST', u'PAUSED_MIGRATION', u'PAUSED_SAVE', u'PAUSED_SHUTTING_DOWN', u'PAUSED_UNKNOWN', u'PAUSED_USER', u'PAUSED_WATCHDOG', u'RUNNING_BOOTED', u'RUNNING_FROM_SNAPSHOT', u'RUNNING_LAST', u'RUNNING_MIGRATED', u'RUNNING_MIGRATION_CANCELED', u'RUNNING_RESTORED', u'RUNNING_SAVE_CANCELED', u'RUNNING_UNKNOWN', u'RUNNING_UNPAUSED', u'SHUTDOWN_LAST', u'SHUTDOWN_UNKNOWN', u'SHUTDOWN_USER', u'SHUTOFF_CRASHED', u'SHUTOFF_DESTROYED', u'SHUTOFF_FAILED', u'SHUTOFF_FROM_SNAPSHOT', u'SHUTOFF_LAST', u'SHUTOFF_MIGRATED', u'SHUTOFF_SAVED', u'SHUTOFF_SHUTDOWN', u'SHUTOFF_UNKNOWN', u'UNKNOWN'])
-        self.expose_attribute(local_name="resync_info", remote_name="resyncInfo", attribute_type=dict, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="site_identifier", remote_name="siteIdentifier", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'BLOCKED', u'CRASHED', u'DELETE_PENDING', u'INIT', u'LAST', u'NOSTATE', u'PAUSED', u'RUNNING', u'SHUTDOWN', u'SHUTOFF', u'UNKNOWN', u'UNREACHABLE'])
-        self.expose_attribute(local_name="subnet_ids", remote_name="subnetIDs", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="domain_ids", remote_name="domainIDs", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="zone_ids", remote_name="zoneIDs", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="app_name", remote_name="appName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_id", remote_name="userID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_name", remote_name="userName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="zone_ids", remote_name="zoneIDs", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'BLOCKED', u'CRASHED', u'DELETE_PENDING', u'INIT', u'LAST', u'NOSTATE', u'PAUSED', u'RUNNING', u'SHUTDOWN', u'SHUTOFF', u'UNKNOWN', u'UNREACHABLE'])
+        self.expose_attribute(local_name="subnet_ids", remote_name="subnetIDs", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="hypervisor_ip", remote_name="hypervisorIP", attribute_type=str, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
-        self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.vm_resyncs = NUVMResyncsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.vm_resyncs = NUVMResyncsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.vm_interfaces = NUVMInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -260,36 +257,39 @@ class NUVM(NURESTObject):
         
         self.vrss = NUVRSsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
+        
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
 
         self._compute_args(**kwargs)
 
     # Properties
     
     @property
-    def uuid(self):
-        """ Get uuid value.
+    def l2_domain_ids(self):
+        """ Get l2_domain_ids value.
 
             Notes:
-                UUID of the VM
+                Array of IDs of the l2 domain that the VM is connected to
 
                 
-                This attribute is named `UUID` in VSD API.
+                This attribute is named `l2DomainIDs` in VSD API.
                 
         """
-        return self._uuid
+        return self._l2_domain_ids
 
-    @uuid.setter
-    def uuid(self, value):
-        """ Set uuid value.
+    @l2_domain_ids.setter
+    def l2_domain_ids(self, value):
+        """ Set l2_domain_ids value.
 
             Notes:
-                UUID of the VM
+                Array of IDs of the l2 domain that the VM is connected to
 
                 
-                This attribute is named `UUID` in VSD API.
+                This attribute is named `l2DomainIDs` in VSD API.
                 
         """
-        self._uuid = value
+        self._l2_domain_ids = value
 
     
     @property
@@ -320,30 +320,107 @@ class NUVM(NURESTObject):
 
     
     @property
-    def app_name(self):
-        """ Get app_name value.
+    def uuid(self):
+        """ Get uuid value.
 
             Notes:
-                Application name that this VM belongs to
+                UUID of the VM
 
                 
-                This attribute is named `appName` in VSD API.
+                This attribute is named `UUID` in VSD API.
                 
         """
-        return self._app_name
+        return self._uuid
 
-    @app_name.setter
-    def app_name(self, value):
-        """ Set app_name value.
+    @uuid.setter
+    def uuid(self, value):
+        """ Set uuid value.
 
             Notes:
-                Application name that this VM belongs to
+                UUID of the VM
 
                 
-                This attribute is named `appName` in VSD API.
+                This attribute is named `UUID` in VSD API.
                 
         """
-        self._app_name = value
+        self._uuid = value
+
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the VM
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the VM
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def reason_type(self):
+        """ Get reason_type value.
+
+            Notes:
+                Reason of the event associated with the VM.
+
+                
+                This attribute is named `reasonType` in VSD API.
+                
+        """
+        return self._reason_type
+
+    @reason_type.setter
+    def reason_type(self, value):
+        """ Set reason_type value.
+
+            Notes:
+                Reason of the event associated with the VM.
+
+                
+                This attribute is named `reasonType` in VSD API.
+                
+        """
+        self._reason_type = value
 
     
     @property
@@ -401,30 +478,80 @@ class NUVM(NURESTObject):
 
     
     @property
-    def domain_ids(self):
-        """ Get domain_ids value.
+    def resync_info(self):
+        """ Get resync_info value.
 
             Notes:
-                Array of IDs of the domain that the VM is connected to
+                Information of the status of the resync operation of a VM
 
                 
-                This attribute is named `domainIDs` in VSD API.
+                This attribute is named `resyncInfo` in VSD API.
                 
         """
-        return self._domain_ids
+        return self._resync_info
 
-    @domain_ids.setter
-    def domain_ids(self, value):
-        """ Set domain_ids value.
+    @resync_info.setter
+    def resync_info(self, value):
+        """ Set resync_info value.
 
             Notes:
-                Array of IDs of the domain that the VM is connected to
+                Information of the status of the resync operation of a VM
 
                 
-                This attribute is named `domainIDs` in VSD API.
+                This attribute is named `resyncInfo` in VSD API.
                 
         """
-        self._domain_ids = value
+        self._resync_info = value
+
+    
+    @property
+    def site_identifier(self):
+        """ Get site_identifier value.
+
+            Notes:
+                This property specifies the site the VM belongs to, for Geo-redundancy.
+
+                
+                This attribute is named `siteIdentifier` in VSD API.
+                
+        """
+        return self._site_identifier
+
+    @site_identifier.setter
+    def site_identifier(self, value):
+        """ Set site_identifier value.
+
+            Notes:
+                This property specifies the site the VM belongs to, for Geo-redundancy.
+
+                
+                This attribute is named `siteIdentifier` in VSD API.
+                
+        """
+        self._site_identifier = value
+
+    
+    @property
+    def interfaces(self):
+        """ Get interfaces value.
+
+            Notes:
+                List of VM interfaces associated with the VM
+
+                
+        """
+        return self._interfaces
+
+    @interfaces.setter
+    def interfaces(self, value):
+        """ Set interfaces value.
+
+            Notes:
+                List of VM interfaces associated with the VM
+
+                
+        """
+        self._interfaces = value
 
     
     @property
@@ -509,288 +636,84 @@ class NUVM(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
+    def domain_ids(self):
+        """ Get domain_ids value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                Array of IDs of the domain that the VM is connected to
 
                 
-                This attribute is named `externalID` in VSD API.
+                This attribute is named `domainIDs` in VSD API.
                 
         """
-        return self._external_id
+        return self._domain_ids
 
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
+    @domain_ids.setter
+    def domain_ids(self, value):
+        """ Set domain_ids value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                Array of IDs of the domain that the VM is connected to
 
                 
-                This attribute is named `externalID` in VSD API.
+                This attribute is named `domainIDs` in VSD API.
                 
         """
-        self._external_id = value
+        self._domain_ids = value
 
     
     @property
-    def hypervisor_ip(self):
-        """ Get hypervisor_ip value.
+    def zone_ids(self):
+        """ Get zone_ids value.
 
             Notes:
-                IP address of the hypervisor that this VM is currently running in
+                Array of IDs of the zone that this VM is attached to
 
                 
-                This attribute is named `hypervisorIP` in VSD API.
+                This attribute is named `zoneIDs` in VSD API.
                 
         """
-        return self._hypervisor_ip
+        return self._zone_ids
 
-    @hypervisor_ip.setter
-    def hypervisor_ip(self, value):
-        """ Set hypervisor_ip value.
+    @zone_ids.setter
+    def zone_ids(self, value):
+        """ Set zone_ids value.
 
             Notes:
-                IP address of the hypervisor that this VM is currently running in
+                Array of IDs of the zone that this VM is attached to
 
                 
-                This attribute is named `hypervisorIP` in VSD API.
+                This attribute is named `zoneIDs` in VSD API.
                 
         """
-        self._hypervisor_ip = value
+        self._zone_ids = value
 
     
     @property
-    def interfaces(self):
-        """ Get interfaces value.
+    def app_name(self):
+        """ Get app_name value.
 
             Notes:
-                List of VM interfaces associated with the VM
+                Application name that this VM belongs to
 
                 
+                This attribute is named `appName` in VSD API.
+                
         """
-        return self._interfaces
+        return self._app_name
 
-    @interfaces.setter
-    def interfaces(self, value):
-        """ Set interfaces value.
+    @app_name.setter
+    def app_name(self, value):
+        """ Set app_name value.
 
             Notes:
-                List of VM interfaces associated with the VM
+                Application name that this VM belongs to
 
+                
+                This attribute is named `appName` in VSD API.
                 
         """
-        self._interfaces = value
-
-    
-    @property
-    def l2_domain_ids(self):
-        """ Get l2_domain_ids value.
-
-            Notes:
-                Array of IDs of the l2 domain that the VM is connected to
-
-                
-                This attribute is named `l2DomainIDs` in VSD API.
-                
-        """
-        return self._l2_domain_ids
-
-    @l2_domain_ids.setter
-    def l2_domain_ids(self, value):
-        """ Set l2_domain_ids value.
-
-            Notes:
-                Array of IDs of the l2 domain that the VM is connected to
-
-                
-                This attribute is named `l2DomainIDs` in VSD API.
-                
-        """
-        self._l2_domain_ids = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the VM
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the VM
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def reason_type(self):
-        """ Get reason_type value.
-
-            Notes:
-                Reason of the event associated with the VM.
-
-                
-                This attribute is named `reasonType` in VSD API.
-                
-        """
-        return self._reason_type
-
-    @reason_type.setter
-    def reason_type(self, value):
-        """ Set reason_type value.
-
-            Notes:
-                Reason of the event associated with the VM.
-
-                
-                This attribute is named `reasonType` in VSD API.
-                
-        """
-        self._reason_type = value
-
-    
-    @property
-    def resync_info(self):
-        """ Get resync_info value.
-
-            Notes:
-                Information of the status of the resync operation of a VM
-
-                
-                This attribute is named `resyncInfo` in VSD API.
-                
-        """
-        return self._resync_info
-
-    @resync_info.setter
-    def resync_info(self, value):
-        """ Set resync_info value.
-
-            Notes:
-                Information of the status of the resync operation of a VM
-
-                
-                This attribute is named `resyncInfo` in VSD API.
-                
-        """
-        self._resync_info = value
-
-    
-    @property
-    def site_identifier(self):
-        """ Get site_identifier value.
-
-            Notes:
-                This property specifies the site the VM belongs to, for Geo-redundancy.
-
-                
-                This attribute is named `siteIdentifier` in VSD API.
-                
-        """
-        return self._site_identifier
-
-    @site_identifier.setter
-    def site_identifier(self, value):
-        """ Set site_identifier value.
-
-            Notes:
-                This property specifies the site the VM belongs to, for Geo-redundancy.
-
-                
-                This attribute is named `siteIdentifier` in VSD API.
-                
-        """
-        self._site_identifier = value
-
-    
-    @property
-    def status(self):
-        """ Get status value.
-
-            Notes:
-                Status of the VM.
-
-                
-        """
-        return self._status
-
-    @status.setter
-    def status(self, value):
-        """ Set status value.
-
-            Notes:
-                Status of the VM.
-
-                
-        """
-        self._status = value
-
-    
-    @property
-    def subnet_ids(self):
-        """ Get subnet_ids value.
-
-            Notes:
-                Array of IDs of the subnets that the VM is connected to
-
-                
-                This attribute is named `subnetIDs` in VSD API.
-                
-        """
-        return self._subnet_ids
-
-    @subnet_ids.setter
-    def subnet_ids(self, value):
-        """ Set subnet_ids value.
-
-            Notes:
-                Array of IDs of the subnets that the VM is connected to
-
-                
-                This attribute is named `subnetIDs` in VSD API.
-                
-        """
-        self._subnet_ids = value
+        self._app_name = value
 
     
     @property
@@ -848,30 +771,107 @@ class NUVM(NURESTObject):
 
     
     @property
-    def zone_ids(self):
-        """ Get zone_ids value.
+    def status(self):
+        """ Get status value.
 
             Notes:
-                Array of IDs of the zone that this VM is attached to
+                Status of the VM.
 
-                
-                This attribute is named `zoneIDs` in VSD API.
                 
         """
-        return self._zone_ids
+        return self._status
 
-    @zone_ids.setter
-    def zone_ids(self, value):
-        """ Set zone_ids value.
+    @status.setter
+    def status(self, value):
+        """ Set status value.
 
             Notes:
-                Array of IDs of the zone that this VM is attached to
+                Status of the VM.
 
                 
-                This attribute is named `zoneIDs` in VSD API.
+        """
+        self._status = value
+
+    
+    @property
+    def subnet_ids(self):
+        """ Get subnet_ids value.
+
+            Notes:
+                Array of IDs of the subnets that the VM is connected to
+
+                
+                This attribute is named `subnetIDs` in VSD API.
                 
         """
-        self._zone_ids = value
+        return self._subnet_ids
+
+    @subnet_ids.setter
+    def subnet_ids(self, value):
+        """ Set subnet_ids value.
+
+            Notes:
+                Array of IDs of the subnets that the VM is connected to
+
+                
+                This attribute is named `subnetIDs` in VSD API.
+                
+        """
+        self._subnet_ids = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
+
+    
+    @property
+    def hypervisor_ip(self):
+        """ Get hypervisor_ip value.
+
+            Notes:
+                IP address of the hypervisor that this VM is currently running in
+
+                
+                This attribute is named `hypervisorIP` in VSD API.
+                
+        """
+        return self._hypervisor_ip
+
+    @hypervisor_ip.setter
+    def hypervisor_ip(self, value):
+        """ Set hypervisor_ip value.
+
+            Notes:
+                IP address of the hypervisor that this VM is currently running in
+
+                
+                This attribute is named `hypervisorIP` in VSD API.
+                
+        """
+        self._hypervisor_ip = value
 
     
 

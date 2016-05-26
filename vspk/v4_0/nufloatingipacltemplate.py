@@ -27,13 +27,13 @@
 
 
 
+from .fetchers import NUMetadatasFetcher
+
+
 from .fetchers import NUFloatingIPACLTemplateEntriesFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
-
-
-from .fetchers import NUMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -84,34 +84,37 @@ class NUFloatingIPACLTemplate(NURESTObject):
 
         # Read/Write Attributes
         
+        self._name = None
+        self._last_updated_by = None
         self._active = None
-        self._associated_live_entity_id = None
         self._default_allow_ip = None
         self._default_allow_non_ip = None
         self._description = None
         self._entity_scope = None
-        self._external_id = None
-        self._last_updated_by = None
-        self._name = None
         self._policy_state = None
         self._priority = None
         self._priority_type = None
+        self._associated_live_entity_id = None
+        self._external_id = None
         
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="active", remote_name="active", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="default_allow_ip", remote_name="defaultAllowIP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="default_allow_non_ip", remote_name="defaultAllowNonIP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="priority_type", remote_name="priorityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BOTTOM', u'NONE', u'TOP'])
+        self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.floating_ipacl_template_entries = NUFloatingIPACLTemplateEntriesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -119,13 +122,60 @@ class NUFloatingIPACLTemplate(NURESTObject):
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
-        
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                The name of the entity
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                The name of the entity
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
     
     @property
     def active(self):
@@ -148,33 +198,6 @@ class NUFloatingIPACLTemplate(NURESTObject):
                 
         """
         self._active = value
-
-    
-    @property
-    def associated_live_entity_id(self):
-        """ Get associated_live_entity_id value.
-
-            Notes:
-                ID of the associated live entity
-
-                
-                This attribute is named `associatedLiveEntityID` in VSD API.
-                
-        """
-        return self._associated_live_entity_id
-
-    @associated_live_entity_id.setter
-    def associated_live_entity_id(self, value):
-        """ Set associated_live_entity_id value.
-
-            Notes:
-                ID of the associated live entity
-
-                
-                This attribute is named `associatedLiveEntityID` in VSD API.
-                
-        """
-        self._associated_live_entity_id = value
 
     
     @property
@@ -282,83 +305,6 @@ class NUFloatingIPACLTemplate(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                The name of the entity
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                The name of the entity
-
-                
-        """
-        self._name = value
-
-    
-    @property
     def policy_state(self):
         """ Get policy_state value.
 
@@ -433,6 +379,60 @@ class NUFloatingIPACLTemplate(NURESTObject):
                 
         """
         self._priority_type = value
+
+    
+    @property
+    def associated_live_entity_id(self):
+        """ Get associated_live_entity_id value.
+
+            Notes:
+                ID of the associated live entity
+
+                
+                This attribute is named `associatedLiveEntityID` in VSD API.
+                
+        """
+        return self._associated_live_entity_id
+
+    @associated_live_entity_id.setter
+    def associated_live_entity_id(self, value):
+        """ Set associated_live_entity_id value.
+
+            Notes:
+                ID of the associated live entity
+
+                
+                This attribute is named `associatedLiveEntityID` in VSD API.
+                
+        """
+        self._associated_live_entity_id = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -81,47 +81,124 @@ class NUAlarm(NURESTObject):
 
         # Read/Write Attributes
         
+        self._name = None
+        self._target_object = None
+        self._last_updated_by = None
         self._acknowledged = None
+        self._reason = None
         self._description = None
+        self._severity = None
+        self._timestamp = None
         self._enterprise_id = None
         self._entity_scope = None
         self._error_condition = None
-        self._external_id = None
-        self._last_updated_by = None
-        self._name = None
         self._number_of_occurances = None
-        self._reason = None
-        self._severity = None
-        self._target_object = None
-        self._timestamp = None
+        self._external_id = None
         
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="target_object", remote_name="targetObject", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="acknowledged", remote_name="acknowledged", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="reason", remote_name="reason", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="severity", remote_name="severity", attribute_type=str, is_required=False, is_unique=False, choices=[u'CRITICAL', u'INFO', u'MAJOR', u'MINOR', u'WARNING'])
+        self.expose_attribute(local_name="timestamp", remote_name="timestamp", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="error_condition", remote_name="errorCondition", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="number_of_occurances", remote_name="numberOfOccurances", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="reason", remote_name="reason", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="severity", remote_name="severity", attribute_type=str, is_required=False, is_unique=False, choices=[u'CRITICAL', u'INFO', u'MAJOR', u'MINOR', u'WARNING'])
-        self.expose_attribute(local_name="target_object", remote_name="targetObject", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="timestamp", remote_name="timestamp", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                The alarm name.  Each type of alarm will generate its own name
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                The alarm name.  Each type of alarm will generate its own name
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def target_object(self):
+        """ Get target_object value.
+
+            Notes:
+                Identifies affected Entity.  Example: Alarm generated by TCA for Domain domain1(Packets towards a VM, Breach)
+
+                
+                This attribute is named `targetObject` in VSD API.
+                
+        """
+        return self._target_object
+
+    @target_object.setter
+    def target_object(self, value):
+        """ Set target_object value.
+
+            Notes:
+                Identifies affected Entity.  Example: Alarm generated by TCA for Domain domain1(Packets towards a VM, Breach)
+
+                
+                This attribute is named `targetObject` in VSD API.
+                
+        """
+        self._target_object = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
     
     @property
     def acknowledged(self):
@@ -147,6 +224,29 @@ class NUAlarm(NURESTObject):
 
     
     @property
+    def reason(self):
+        """ Get reason value.
+
+            Notes:
+                Provides a description of the alarm
+
+                
+        """
+        return self._reason
+
+    @reason.setter
+    def reason(self, value):
+        """ Set reason value.
+
+            Notes:
+                Provides a description of the alarm
+
+                
+        """
+        self._reason = value
+
+    
+    @property
     def description(self):
         """ Get description value.
 
@@ -167,6 +267,52 @@ class NUAlarm(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def severity(self):
+        """ Get severity value.
+
+            Notes:
+                Severity of the alarm.
+
+                
+        """
+        return self._severity
+
+    @severity.setter
+    def severity(self, value):
+        """ Set severity value.
+
+            Notes:
+                Severity of the alarm.
+
+                
+        """
+        self._severity = value
+
+    
+    @property
+    def timestamp(self):
+        """ Get timestamp value.
+
+            Notes:
+                Indicates the time that the alarm was triggered
+
+                
+        """
+        return self._timestamp
+
+    @timestamp.setter
+    def timestamp(self, value):
+        """ Set timestamp value.
+
+            Notes:
+                Indicates the time that the alarm was triggered
+
+                
+        """
+        self._timestamp = value
 
     
     @property
@@ -251,83 +397,6 @@ class NUAlarm(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                The alarm name.  Each type of alarm will generate its own name
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                The alarm name.  Each type of alarm will generate its own name
-
-                
-        """
-        self._name = value
-
-    
-    @property
     def number_of_occurances(self):
         """ Get number_of_occurances value.
 
@@ -355,99 +424,30 @@ class NUAlarm(NURESTObject):
 
     
     @property
-    def reason(self):
-        """ Get reason value.
+    def external_id(self):
+        """ Get external_id value.
 
             Notes:
-                Provides a description of the alarm
+                External object ID. Used for integration with third party systems
 
                 
+                This attribute is named `externalID` in VSD API.
+                
         """
-        return self._reason
+        return self._external_id
 
-    @reason.setter
-    def reason(self, value):
-        """ Set reason value.
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
 
             Notes:
-                Provides a description of the alarm
+                External object ID. Used for integration with third party systems
 
+                
+                This attribute is named `externalID` in VSD API.
                 
         """
-        self._reason = value
-
-    
-    @property
-    def severity(self):
-        """ Get severity value.
-
-            Notes:
-                Severity of the alarm.
-
-                
-        """
-        return self._severity
-
-    @severity.setter
-    def severity(self, value):
-        """ Set severity value.
-
-            Notes:
-                Severity of the alarm.
-
-                
-        """
-        self._severity = value
-
-    
-    @property
-    def target_object(self):
-        """ Get target_object value.
-
-            Notes:
-                Identifies affected Entity.  Example: Alarm generated by TCA for Domain domain1(Packets towards a VM, Breach)
-
-                
-                This attribute is named `targetObject` in VSD API.
-                
-        """
-        return self._target_object
-
-    @target_object.setter
-    def target_object(self, value):
-        """ Set target_object value.
-
-            Notes:
-                Identifies affected Entity.  Example: Alarm generated by TCA for Domain domain1(Packets towards a VM, Breach)
-
-                
-                This attribute is named `targetObject` in VSD API.
-                
-        """
-        self._target_object = value
-
-    
-    @property
-    def timestamp(self):
-        """ Get timestamp value.
-
-            Notes:
-                Indicates the time that the alarm was triggered
-
-                
-        """
-        return self._timestamp
-
-    @timestamp.setter
-    def timestamp(self, value):
-        """ Set timestamp value.
-
-            Notes:
-                Indicates the time that the alarm was triggered
-
-                
-        """
-        self._timestamp = value
+        self._external_id = value
 
     
 

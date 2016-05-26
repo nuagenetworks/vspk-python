@@ -27,13 +27,13 @@
 
 
 
-from .fetchers import NUEventLogsFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUMetadatasFetcher
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -82,86 +82,367 @@ class NULicense(NURESTObject):
 
         # Read/Write Attributes
         
-        self._allowed_cpes_count = None
-        self._allowed_nics_count = None
-        self._allowed_vms_count = None
-        self._allowed_vrsgs_count = None
-        self._allowed_vrss_count = None
-        self._city = None
-        self._company = None
-        self._country = None
-        self._customer_key = None
-        self._email = None
-        self._encryption_mode = None
-        self._entity_scope = None
-        self._expiration_date = None
-        self._external_id = None
-        self._is_cluster_license = None
+        self._major_release = None
         self._last_updated_by = None
+        self._phone = None
         self._license = None
         self._license_encryption = None
         self._license_entities = None
         self._license_id = None
         self._license_type = None
-        self._major_release = None
         self._minor_release = None
-        self._phone = None
+        self._zip = None
+        self._city = None
+        self._allowed_cpes_count = None
+        self._allowed_nics_count = None
+        self._allowed_vms_count = None
+        self._allowed_vrsgs_count = None
+        self._allowed_vrss_count = None
+        self._email = None
+        self._encryption_mode = None
+        self._unique_license_identifier = None
+        self._entity_scope = None
+        self._company = None
+        self._country = None
         self._product_version = None
         self._provider = None
+        self._is_cluster_license = None
+        self._user_name = None
         self._state = None
         self._street = None
-        self._unique_license_identifier = None
-        self._user_name = None
-        self._zip = None
+        self._customer_key = None
+        self._expiration_date = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="allowed_cpes_count", remote_name="allowedCPEsCount", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="allowed_nics_count", remote_name="allowedNICsCount", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="allowed_vms_count", remote_name="allowedVMsCount", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="allowed_vrsgs_count", remote_name="allowedVRSGsCount", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="allowed_vrss_count", remote_name="allowedVRSsCount", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="city", remote_name="city", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="company", remote_name="company", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="country", remote_name="country", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="customer_key", remote_name="customerKey", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="email", remote_name="email", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="encryption_mode", remote_name="encryptionMode", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="expiration_date", remote_name="expirationDate", attribute_type=float, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="is_cluster_license", remote_name="isClusterLicense", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="major_release", remote_name="majorRelease", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="phone", remote_name="phone", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="license", remote_name="license", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="license_encryption", remote_name="licenseEncryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENCRYPTION_DISABLED', u'ENCRYPTION_ENABLED'])
         self.expose_attribute(local_name="license_entities", remote_name="licenseEntities", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="license_id", remote_name="licenseID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="license_type", remote_name="licenseType", attribute_type=str, is_required=False, is_unique=False, choices=[u'CLUSTERED', u'STANDARD'])
-        self.expose_attribute(local_name="major_release", remote_name="majorRelease", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="minor_release", remote_name="minorRelease", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="phone", remote_name="phone", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="zip", remote_name="zip", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="city", remote_name="city", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="allowed_cpes_count", remote_name="allowedCPEsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="allowed_nics_count", remote_name="allowedNICsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="allowed_vms_count", remote_name="allowedVMsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="allowed_vrsgs_count", remote_name="allowedVRSGsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="allowed_vrss_count", remote_name="allowedVRSsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="email", remote_name="email", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="encryption_mode", remote_name="encryptionMode", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="unique_license_identifier", remote_name="uniqueLicenseIdentifier", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="company", remote_name="company", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="country", remote_name="country", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="product_version", remote_name="productVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="provider", remote_name="provider", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="is_cluster_license", remote_name="isClusterLicense", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="user_name", remote_name="userName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="state", remote_name="state", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="street", remote_name="street", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="unique_license_identifier", remote_name="uniqueLicenseIdentifier", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="user_name", remote_name="userName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="zip", remote_name="zip", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="customer_key", remote_name="customerKey", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="expiration_date", remote_name="expirationDate", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def major_release(self):
+        """ Get major_release value.
+
+            Notes:
+                Major software release associated with this license
+
+                
+                This attribute is named `majorRelease` in VSD API.
+                
+        """
+        return self._major_release
+
+    @major_release.setter
+    def major_release(self, value):
+        """ Set major_release value.
+
+            Notes:
+                Major software release associated with this license
+
+                
+                This attribute is named `majorRelease` in VSD API.
+                
+        """
+        self._major_release = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def phone(self):
+        """ Get phone value.
+
+            Notes:
+                Phone number of the owner associated with the license file
+
+                
+        """
+        return self._phone
+
+    @phone.setter
+    def phone(self, value):
+        """ Set phone value.
+
+            Notes:
+                Phone number of the owner associated with the license file
+
+                
+        """
+        self._phone = value
+
+    
+    @property
+    def license(self):
+        """ Get license value.
+
+            Notes:
+                Base 64 value of the license
+
+                
+        """
+        return self._license
+
+    @license.setter
+    def license(self, value):
+        """ Set license value.
+
+            Notes:
+                Base 64 value of the license
+
+                
+        """
+        self._license = value
+
+    
+    @property
+    def license_encryption(self):
+        """ Get license_encryption value.
+
+            Notes:
+                License encryption
+
+                
+                This attribute is named `licenseEncryption` in VSD API.
+                
+        """
+        return self._license_encryption
+
+    @license_encryption.setter
+    def license_encryption(self, value):
+        """ Set license_encryption value.
+
+            Notes:
+                License encryption
+
+                
+                This attribute is named `licenseEncryption` in VSD API.
+                
+        """
+        self._license_encryption = value
+
+    
+    @property
+    def license_entities(self):
+        """ Get license_entities value.
+
+            Notes:
+                Indicates non enforceable entities associated with the license. 
+
+                
+                This attribute is named `licenseEntities` in VSD API.
+                
+        """
+        return self._license_entities
+
+    @license_entities.setter
+    def license_entities(self, value):
+        """ Set license_entities value.
+
+            Notes:
+                Indicates non enforceable entities associated with the license. 
+
+                
+                This attribute is named `licenseEntities` in VSD API.
+                
+        """
+        self._license_entities = value
+
+    
+    @property
+    def license_id(self):
+        """ Get license_id value.
+
+            Notes:
+                Unique identifier of the license file
+
+                
+                This attribute is named `licenseID` in VSD API.
+                
+        """
+        return self._license_id
+
+    @license_id.setter
+    def license_id(self, value):
+        """ Set license_id value.
+
+            Notes:
+                Unique identifier of the license file
+
+                
+                This attribute is named `licenseID` in VSD API.
+                
+        """
+        self._license_id = value
+
+    
+    @property
+    def license_type(self):
+        """ Get license_type value.
+
+            Notes:
+                
+
+                
+                This attribute is named `licenseType` in VSD API.
+                
+        """
+        return self._license_type
+
+    @license_type.setter
+    def license_type(self, value):
+        """ Set license_type value.
+
+            Notes:
+                
+
+                
+                This attribute is named `licenseType` in VSD API.
+                
+        """
+        self._license_type = value
+
+    
+    @property
+    def minor_release(self):
+        """ Get minor_release value.
+
+            Notes:
+                Minor software release for which this license has been issued
+
+                
+                This attribute is named `minorRelease` in VSD API.
+                
+        """
+        return self._minor_release
+
+    @minor_release.setter
+    def minor_release(self, value):
+        """ Set minor_release value.
+
+            Notes:
+                Minor software release for which this license has been issued
+
+                
+                This attribute is named `minorRelease` in VSD API.
+                
+        """
+        self._minor_release = value
+
+    
+    @property
+    def zip(self):
+        """ Get zip value.
+
+            Notes:
+                Zipcode of the owner associated with the license file
+
+                
+        """
+        return self._zip
+
+    @zip.setter
+    def zip(self, value):
+        """ Set zip value.
+
+            Notes:
+                Zipcode of the owner associated with the license file
+
+                
+        """
+        self._zip = value
+
+    
+    @property
+    def city(self):
+        """ Get city value.
+
+            Notes:
+                City of the owner associated with the license file
+
+                
+        """
+        return self._city
+
+    @city.setter
+    def city(self, value):
+        """ Set city value.
+
+            Notes:
+                City of the owner associated with the license file
+
+                
+        """
+        self._city = value
+
     
     @property
     def allowed_cpes_count(self):
@@ -299,102 +580,6 @@ class NULicense(NURESTObject):
 
     
     @property
-    def city(self):
-        """ Get city value.
-
-            Notes:
-                City of the owner associated with the license file
-
-                
-        """
-        return self._city
-
-    @city.setter
-    def city(self, value):
-        """ Set city value.
-
-            Notes:
-                City of the owner associated with the license file
-
-                
-        """
-        self._city = value
-
-    
-    @property
-    def company(self):
-        """ Get company value.
-
-            Notes:
-                Company of the owner associated with the license file
-
-                
-        """
-        return self._company
-
-    @company.setter
-    def company(self, value):
-        """ Set company value.
-
-            Notes:
-                Company of the owner associated with the license file
-
-                
-        """
-        self._company = value
-
-    
-    @property
-    def country(self):
-        """ Get country value.
-
-            Notes:
-                Country of the owner associated with the license file
-
-                
-        """
-        return self._country
-
-    @country.setter
-    def country(self, value):
-        """ Set country value.
-
-            Notes:
-                Country of the owner associated with the license file
-
-                
-        """
-        self._country = value
-
-    
-    @property
-    def customer_key(self):
-        """ Get customer_key value.
-
-            Notes:
-                Customer key associated with the licese
-
-                
-                This attribute is named `customerKey` in VSD API.
-                
-        """
-        return self._customer_key
-
-    @customer_key.setter
-    def customer_key(self, value):
-        """ Set customer_key value.
-
-            Notes:
-                Customer key associated with the licese
-
-                
-                This attribute is named `customerKey` in VSD API.
-                
-        """
-        self._customer_key = value
-
-    
-    @property
     def email(self):
         """ Get email value.
 
@@ -445,6 +630,33 @@ class NULicense(NURESTObject):
 
     
     @property
+    def unique_license_identifier(self):
+        """ Get unique_license_identifier value.
+
+            Notes:
+                Indicates combined string of first 16 and last 16 characters of the license string to be shown in the API
+
+                
+                This attribute is named `uniqueLicenseIdentifier` in VSD API.
+                
+        """
+        return self._unique_license_identifier
+
+    @unique_license_identifier.setter
+    def unique_license_identifier(self, value):
+        """ Set unique_license_identifier value.
+
+            Notes:
+                Indicates combined string of first 16 and last 16 characters of the license string to be shown in the API
+
+                
+                This attribute is named `uniqueLicenseIdentifier` in VSD API.
+                
+        """
+        self._unique_license_identifier = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -469,6 +681,229 @@ class NULicense(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def company(self):
+        """ Get company value.
+
+            Notes:
+                Company of the owner associated with the license file
+
+                
+        """
+        return self._company
+
+    @company.setter
+    def company(self, value):
+        """ Set company value.
+
+            Notes:
+                Company of the owner associated with the license file
+
+                
+        """
+        self._company = value
+
+    
+    @property
+    def country(self):
+        """ Get country value.
+
+            Notes:
+                Country of the owner associated with the license file
+
+                
+        """
+        return self._country
+
+    @country.setter
+    def country(self, value):
+        """ Set country value.
+
+            Notes:
+                Country of the owner associated with the license file
+
+                
+        """
+        self._country = value
+
+    
+    @property
+    def product_version(self):
+        """ Get product_version value.
+
+            Notes:
+                Version of the product that this license applies to
+
+                
+                This attribute is named `productVersion` in VSD API.
+                
+        """
+        return self._product_version
+
+    @product_version.setter
+    def product_version(self, value):
+        """ Set product_version value.
+
+            Notes:
+                Version of the product that this license applies to
+
+                
+                This attribute is named `productVersion` in VSD API.
+                
+        """
+        self._product_version = value
+
+    
+    @property
+    def provider(self):
+        """ Get provider value.
+
+            Notes:
+                Provider of the license file
+
+                
+        """
+        return self._provider
+
+    @provider.setter
+    def provider(self, value):
+        """ Set provider value.
+
+            Notes:
+                Provider of the license file
+
+                
+        """
+        self._provider = value
+
+    
+    @property
+    def is_cluster_license(self):
+        """ Get is_cluster_license value.
+
+            Notes:
+                Indicates if the license is associated with standlone or cluster setup of VSD
+
+                
+                This attribute is named `isClusterLicense` in VSD API.
+                
+        """
+        return self._is_cluster_license
+
+    @is_cluster_license.setter
+    def is_cluster_license(self, value):
+        """ Set is_cluster_license value.
+
+            Notes:
+                Indicates if the license is associated with standlone or cluster setup of VSD
+
+                
+                This attribute is named `isClusterLicense` in VSD API.
+                
+        """
+        self._is_cluster_license = value
+
+    
+    @property
+    def user_name(self):
+        """ Get user_name value.
+
+            Notes:
+                The name of the user associated with the license
+
+                
+                This attribute is named `userName` in VSD API.
+                
+        """
+        return self._user_name
+
+    @user_name.setter
+    def user_name(self, value):
+        """ Set user_name value.
+
+            Notes:
+                The name of the user associated with the license
+
+                
+                This attribute is named `userName` in VSD API.
+                
+        """
+        self._user_name = value
+
+    
+    @property
+    def state(self):
+        """ Get state value.
+
+            Notes:
+                State of the owner associated with the license file
+
+                
+        """
+        return self._state
+
+    @state.setter
+    def state(self, value):
+        """ Set state value.
+
+            Notes:
+                State of the owner associated with the license file
+
+                
+        """
+        self._state = value
+
+    
+    @property
+    def street(self):
+        """ Get street value.
+
+            Notes:
+                Address of the owner associated with the license file
+
+                
+        """
+        return self._street
+
+    @street.setter
+    def street(self, value):
+        """ Set street value.
+
+            Notes:
+                Address of the owner associated with the license file
+
+                
+        """
+        self._street = value
+
+    
+    @property
+    def customer_key(self):
+        """ Get customer_key value.
+
+            Notes:
+                Customer key associated with the licese
+
+                
+                This attribute is named `customerKey` in VSD API.
+                
+        """
+        return self._customer_key
+
+    @customer_key.setter
+    def customer_key(self, value):
+        """ Set customer_key value.
+
+            Notes:
+                Customer key associated with the licese
+
+                
+                This attribute is named `customerKey` in VSD API.
+                
+        """
+        self._customer_key = value
 
     
     @property
@@ -523,441 +958,6 @@ class NULicense(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def is_cluster_license(self):
-        """ Get is_cluster_license value.
-
-            Notes:
-                Indicates if the license is associated with standlone or cluster setup of VSD
-
-                
-                This attribute is named `isClusterLicense` in VSD API.
-                
-        """
-        return self._is_cluster_license
-
-    @is_cluster_license.setter
-    def is_cluster_license(self, value):
-        """ Set is_cluster_license value.
-
-            Notes:
-                Indicates if the license is associated with standlone or cluster setup of VSD
-
-                
-                This attribute is named `isClusterLicense` in VSD API.
-                
-        """
-        self._is_cluster_license = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def license(self):
-        """ Get license value.
-
-            Notes:
-                Base 64 value of the license
-
-                
-        """
-        return self._license
-
-    @license.setter
-    def license(self, value):
-        """ Set license value.
-
-            Notes:
-                Base 64 value of the license
-
-                
-        """
-        self._license = value
-
-    
-    @property
-    def license_encryption(self):
-        """ Get license_encryption value.
-
-            Notes:
-                License encryption
-
-                
-                This attribute is named `licenseEncryption` in VSD API.
-                
-        """
-        return self._license_encryption
-
-    @license_encryption.setter
-    def license_encryption(self, value):
-        """ Set license_encryption value.
-
-            Notes:
-                License encryption
-
-                
-                This attribute is named `licenseEncryption` in VSD API.
-                
-        """
-        self._license_encryption = value
-
-    
-    @property
-    def license_entities(self):
-        """ Get license_entities value.
-
-            Notes:
-                Indicates non enforceable entities associated with the license. 
-
-                
-                This attribute is named `licenseEntities` in VSD API.
-                
-        """
-        return self._license_entities
-
-    @license_entities.setter
-    def license_entities(self, value):
-        """ Set license_entities value.
-
-            Notes:
-                Indicates non enforceable entities associated with the license. 
-
-                
-                This attribute is named `licenseEntities` in VSD API.
-                
-        """
-        self._license_entities = value
-
-    
-    @property
-    def license_id(self):
-        """ Get license_id value.
-
-            Notes:
-                Unique identifier of the license file
-
-                
-                This attribute is named `licenseID` in VSD API.
-                
-        """
-        return self._license_id
-
-    @license_id.setter
-    def license_id(self, value):
-        """ Set license_id value.
-
-            Notes:
-                Unique identifier of the license file
-
-                
-                This attribute is named `licenseID` in VSD API.
-                
-        """
-        self._license_id = value
-
-    
-    @property
-    def license_type(self):
-        """ Get license_type value.
-
-            Notes:
-                
-
-                
-                This attribute is named `licenseType` in VSD API.
-                
-        """
-        return self._license_type
-
-    @license_type.setter
-    def license_type(self, value):
-        """ Set license_type value.
-
-            Notes:
-                
-
-                
-                This attribute is named `licenseType` in VSD API.
-                
-        """
-        self._license_type = value
-
-    
-    @property
-    def major_release(self):
-        """ Get major_release value.
-
-            Notes:
-                Major software release associated with this license
-
-                
-                This attribute is named `majorRelease` in VSD API.
-                
-        """
-        return self._major_release
-
-    @major_release.setter
-    def major_release(self, value):
-        """ Set major_release value.
-
-            Notes:
-                Major software release associated with this license
-
-                
-                This attribute is named `majorRelease` in VSD API.
-                
-        """
-        self._major_release = value
-
-    
-    @property
-    def minor_release(self):
-        """ Get minor_release value.
-
-            Notes:
-                Minor software release for which this license has been issued
-
-                
-                This attribute is named `minorRelease` in VSD API.
-                
-        """
-        return self._minor_release
-
-    @minor_release.setter
-    def minor_release(self, value):
-        """ Set minor_release value.
-
-            Notes:
-                Minor software release for which this license has been issued
-
-                
-                This attribute is named `minorRelease` in VSD API.
-                
-        """
-        self._minor_release = value
-
-    
-    @property
-    def phone(self):
-        """ Get phone value.
-
-            Notes:
-                Phone number of the owner associated with the license file
-
-                
-        """
-        return self._phone
-
-    @phone.setter
-    def phone(self, value):
-        """ Set phone value.
-
-            Notes:
-                Phone number of the owner associated with the license file
-
-                
-        """
-        self._phone = value
-
-    
-    @property
-    def product_version(self):
-        """ Get product_version value.
-
-            Notes:
-                Version of the product that this license applies to
-
-                
-                This attribute is named `productVersion` in VSD API.
-                
-        """
-        return self._product_version
-
-    @product_version.setter
-    def product_version(self, value):
-        """ Set product_version value.
-
-            Notes:
-                Version of the product that this license applies to
-
-                
-                This attribute is named `productVersion` in VSD API.
-                
-        """
-        self._product_version = value
-
-    
-    @property
-    def provider(self):
-        """ Get provider value.
-
-            Notes:
-                Provider of the license file
-
-                
-        """
-        return self._provider
-
-    @provider.setter
-    def provider(self, value):
-        """ Set provider value.
-
-            Notes:
-                Provider of the license file
-
-                
-        """
-        self._provider = value
-
-    
-    @property
-    def state(self):
-        """ Get state value.
-
-            Notes:
-                State of the owner associated with the license file
-
-                
-        """
-        return self._state
-
-    @state.setter
-    def state(self, value):
-        """ Set state value.
-
-            Notes:
-                State of the owner associated with the license file
-
-                
-        """
-        self._state = value
-
-    
-    @property
-    def street(self):
-        """ Get street value.
-
-            Notes:
-                Address of the owner associated with the license file
-
-                
-        """
-        return self._street
-
-    @street.setter
-    def street(self, value):
-        """ Set street value.
-
-            Notes:
-                Address of the owner associated with the license file
-
-                
-        """
-        self._street = value
-
-    
-    @property
-    def unique_license_identifier(self):
-        """ Get unique_license_identifier value.
-
-            Notes:
-                Indicates combined string of first 16 and last 16 characters of the license string to be shown in the API
-
-                
-                This attribute is named `uniqueLicenseIdentifier` in VSD API.
-                
-        """
-        return self._unique_license_identifier
-
-    @unique_license_identifier.setter
-    def unique_license_identifier(self, value):
-        """ Set unique_license_identifier value.
-
-            Notes:
-                Indicates combined string of first 16 and last 16 characters of the license string to be shown in the API
-
-                
-                This attribute is named `uniqueLicenseIdentifier` in VSD API.
-                
-        """
-        self._unique_license_identifier = value
-
-    
-    @property
-    def user_name(self):
-        """ Get user_name value.
-
-            Notes:
-                The name of the user associated with the license
-
-                
-                This attribute is named `userName` in VSD API.
-                
-        """
-        return self._user_name
-
-    @user_name.setter
-    def user_name(self, value):
-        """ Set user_name value.
-
-            Notes:
-                The name of the user associated with the license
-
-                
-                This attribute is named `userName` in VSD API.
-                
-        """
-        self._user_name = value
-
-    
-    @property
-    def zip(self):
-        """ Get zip value.
-
-            Notes:
-                Zipcode of the owner associated with the license file
-
-                
-        """
-        return self._zip
-
-    @zip.setter
-    def zip(self, value):
-        """ Set zip value.
-
-            Notes:
-                Zipcode of the owner associated with the license file
-
-                
-        """
-        self._zip = value
 
     
 

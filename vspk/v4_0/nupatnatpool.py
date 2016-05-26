@@ -27,19 +27,19 @@
 
 
 
+from .fetchers import NUNATMapEntriesFetcher
+
+
 from .fetchers import NUAddressMapsFetcher
-
-
-from .fetchers import NUEnterprisePermissionsFetcher
-
-
-from .fetchers import NUGlobalMetadatasFetcher
 
 
 from .fetchers import NUMetadatasFetcher
 
 
-from .fetchers import NUNATMapEntriesFetcher
+from .fetchers import NUGlobalMetadatasFetcher
+
+
+from .fetchers import NUEnterprisePermissionsFetcher
 
 from bambou import NURESTObject
 
@@ -57,17 +57,17 @@ class NUPATNATPool(NURESTObject):
     
     ## Constants
     
+    CONST_PERMITTED_ACTION_USE = "USE"
+    
+    CONST_ASSOCIATED_GATEWAY_ID_AUTO_DISC_GATEWAY = "AUTO_DISC_GATEWAY"
+    
     CONST_PERMITTED_ACTION_READ = "READ"
-    
-    CONST_ASSOCIATED_GATEWAY_TYPE_NSGATEWAY = "NSGATEWAY"
-    
-    CONST_ASSOCIATED_GATEWAY_ID_GATEWAY = "GATEWAY"
-    
-    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
     
     CONST_ASSOCIATED_GATEWAY_ID_IKEV2_GATEWAY = "IKEV2_GATEWAY"
     
-    CONST_ASSOCIATED_GATEWAY_ID_AUTO_DISC_GATEWAY = "AUTO_DISC_GATEWAY"
+    CONST_ASSOCIATED_GATEWAY_TYPE_GATEWAY = "GATEWAY"
+    
+    CONST_PERMITTED_ACTION_ALL = "ALL"
     
     CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
     
@@ -77,13 +77,13 @@ class NUPATNATPool(NURESTObject):
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_ASSOCIATED_GATEWAY_TYPE_GATEWAY = "GATEWAY"
+    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
     
-    CONST_PERMITTED_ACTION_USE = "USE"
-    
-    CONST_PERMITTED_ACTION_ALL = "ALL"
+    CONST_ASSOCIATED_GATEWAY_ID_GATEWAY = "GATEWAY"
     
     CONST_ASSOCIATED_GATEWAY_ID_NSGATEWAY = "NSGATEWAY"
+    
+    CONST_ASSOCIATED_GATEWAY_TYPE_NSGATEWAY = "NSGATEWAY"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
@@ -108,62 +108,112 @@ class NUPATNATPool(NURESTObject):
 
         # Read/Write Attributes
         
+        self._name = None
+        self._last_updated_by = None
         self._address_range = None
-        self._associated_gateway_id = None
-        self._associated_gateway_type = None
         self._default_patip = None
+        self._permitted_action = None
         self._description = None
-        self._dynamic_source_enabled = None
         self._end_address_range = None
         self._end_source_address = None
         self._entity_scope = None
-        self._external_id = None
-        self._last_updated_by = None
-        self._name = None
-        self._permitted_action = None
+        self._translation_timeout = None
+        self._associated_gateway_id = None
+        self._associated_gateway_type = None
         self._start_address_range = None
         self._start_source_address = None
-        self._translation_timeout = None
+        self._external_id = None
+        self._dynamic_source_enabled = None
         
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address_range", remote_name="addressRange", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_gateway_id", remote_name="associatedGatewayId", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTO_DISC_GATEWAY', u'GATEWAY', u'IKEV2_GATEWAY', u'NSGATEWAY'])
-        self.expose_attribute(local_name="associated_gateway_type", remote_name="associatedGatewayType", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTO_DISC_GATEWAY', u'GATEWAY', u'IKE_GATEWAY', u'NSGATEWAY'])
         self.expose_attribute(local_name="default_patip", remote_name="defaultPATIP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dynamic_source_enabled", remote_name="dynamicSourceEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="end_address_range", remote_name="endAddressRange", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="end_source_address", remote_name="endSourceAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
+        self.expose_attribute(local_name="translation_timeout", remote_name="translationTimeout", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_gateway_id", remote_name="associatedGatewayId", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTO_DISC_GATEWAY', u'GATEWAY', u'IKEV2_GATEWAY', u'NSGATEWAY'])
+        self.expose_attribute(local_name="associated_gateway_type", remote_name="associatedGatewayType", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTO_DISC_GATEWAY', u'GATEWAY', u'IKE_GATEWAY', u'NSGATEWAY'])
         self.expose_attribute(local_name="start_address_range", remote_name="startAddressRange", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="start_source_address", remote_name="startSourceAddress", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="translation_timeout", remote_name="translationTimeout", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="dynamic_source_enabled", remote_name="dynamicSourceEnabled", attribute_type=bool, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
+        self.nat_map_entries = NUNATMapEntriesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.address_maps = NUAddressMapsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.nat_map_entries = NUNATMapEntriesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the PATNATPool
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the PATNATPool
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
     
     @property
     def address_range(self):
@@ -190,60 +240,6 @@ class NUPATNATPool(NURESTObject):
                 
         """
         self._address_range = value
-
-    
-    @property
-    def associated_gateway_id(self):
-        """ Get associated_gateway_id value.
-
-            Notes:
-                
-
-                
-                This attribute is named `associatedGatewayId` in VSD API.
-                
-        """
-        return self._associated_gateway_id
-
-    @associated_gateway_id.setter
-    def associated_gateway_id(self, value):
-        """ Set associated_gateway_id value.
-
-            Notes:
-                
-
-                
-                This attribute is named `associatedGatewayId` in VSD API.
-                
-        """
-        self._associated_gateway_id = value
-
-    
-    @property
-    def associated_gateway_type(self):
-        """ Get associated_gateway_type value.
-
-            Notes:
-                
-
-                
-                This attribute is named `associatedGatewayType` in VSD API.
-                
-        """
-        return self._associated_gateway_type
-
-    @associated_gateway_type.setter
-    def associated_gateway_type(self, value):
-        """ Set associated_gateway_type value.
-
-            Notes:
-                
-
-                
-                This attribute is named `associatedGatewayType` in VSD API.
-                
-        """
-        self._associated_gateway_type = value
 
     
     @property
@@ -274,6 +270,33 @@ class NUPATNATPool(NURESTObject):
 
     
     @property
+    def permitted_action(self):
+        """ Get permitted_action value.
+
+            Notes:
+                The permitted  action to USE/EXTEND  this Gateway.
+
+                
+                This attribute is named `permittedAction` in VSD API.
+                
+        """
+        return self._permitted_action
+
+    @permitted_action.setter
+    def permitted_action(self, value):
+        """ Set permitted_action value.
+
+            Notes:
+                The permitted  action to USE/EXTEND  this Gateway.
+
+                
+                This attribute is named `permittedAction` in VSD API.
+                
+        """
+        self._permitted_action = value
+
+    
+    @property
     def description(self):
         """ Get description value.
 
@@ -294,33 +317,6 @@ class NUPATNATPool(NURESTObject):
                 
         """
         self._description = value
-
-    
-    @property
-    def dynamic_source_enabled(self):
-        """ Get dynamic_source_enabled value.
-
-            Notes:
-                Set to True if the address translation pool at the address translation pool definition level
-
-                
-                This attribute is named `dynamicSourceEnabled` in VSD API.
-                
-        """
-        return self._dynamic_source_enabled
-
-    @dynamic_source_enabled.setter
-    def dynamic_source_enabled(self, value):
-        """ Set dynamic_source_enabled value.
-
-            Notes:
-                Set to True if the address translation pool at the address translation pool definition level
-
-                
-                This attribute is named `dynamicSourceEnabled` in VSD API.
-                
-        """
-        self._dynamic_source_enabled = value
 
     
     @property
@@ -405,107 +401,84 @@ class NUPATNATPool(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
+    def translation_timeout(self):
+        """ Get translation_timeout value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                Used to clear out the dynamic address translations and free up the IP addresses for re-assignment.  Units are in second
 
                 
-                This attribute is named `externalID` in VSD API.
+                This attribute is named `translationTimeout` in VSD API.
                 
         """
-        return self._external_id
+        return self._translation_timeout
 
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
+    @translation_timeout.setter
+    def translation_timeout(self, value):
+        """ Set translation_timeout value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                Used to clear out the dynamic address translations and free up the IP addresses for re-assignment.  Units are in second
 
                 
-                This attribute is named `externalID` in VSD API.
+                This attribute is named `translationTimeout` in VSD API.
                 
         """
-        self._external_id = value
+        self._translation_timeout = value
 
     
     @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
+    def associated_gateway_id(self):
+        """ Get associated_gateway_id value.
 
             Notes:
-                ID of the user who last updated the object.
+                
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `associatedGatewayId` in VSD API.
                 
         """
-        return self._last_updated_by
+        return self._associated_gateway_id
 
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
+    @associated_gateway_id.setter
+    def associated_gateway_id(self, value):
+        """ Set associated_gateway_id value.
 
             Notes:
-                ID of the user who last updated the object.
+                
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `associatedGatewayId` in VSD API.
                 
         """
-        self._last_updated_by = value
+        self._associated_gateway_id = value
 
     
     @property
-    def name(self):
-        """ Get name value.
+    def associated_gateway_type(self):
+        """ Get associated_gateway_type value.
 
             Notes:
-                Name of the PATNATPool
+                
 
                 
+                This attribute is named `associatedGatewayType` in VSD API.
+                
         """
-        return self._name
+        return self._associated_gateway_type
 
-    @name.setter
-    def name(self, value):
-        """ Set name value.
+    @associated_gateway_type.setter
+    def associated_gateway_type(self, value):
+        """ Set associated_gateway_type value.
 
             Notes:
-                Name of the PATNATPool
+                
 
+                
+                This attribute is named `associatedGatewayType` in VSD API.
                 
         """
-        self._name = value
-
-    
-    @property
-    def permitted_action(self):
-        """ Get permitted_action value.
-
-            Notes:
-                The permitted  action to USE/EXTEND  this Gateway.
-
-                
-                This attribute is named `permittedAction` in VSD API.
-                
-        """
-        return self._permitted_action
-
-    @permitted_action.setter
-    def permitted_action(self, value):
-        """ Set permitted_action value.
-
-            Notes:
-                The permitted  action to USE/EXTEND  this Gateway.
-
-                
-                This attribute is named `permittedAction` in VSD API.
-                
-        """
-        self._permitted_action = value
+        self._associated_gateway_type = value
 
     
     @property
@@ -563,30 +536,57 @@ class NUPATNATPool(NURESTObject):
 
     
     @property
-    def translation_timeout(self):
-        """ Get translation_timeout value.
+    def external_id(self):
+        """ Get external_id value.
 
             Notes:
-                Used to clear out the dynamic address translations and free up the IP addresses for re-assignment.  Units are in second
+                External object ID. Used for integration with third party systems
 
                 
-                This attribute is named `translationTimeout` in VSD API.
+                This attribute is named `externalID` in VSD API.
                 
         """
-        return self._translation_timeout
+        return self._external_id
 
-    @translation_timeout.setter
-    def translation_timeout(self, value):
-        """ Set translation_timeout value.
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
 
             Notes:
-                Used to clear out the dynamic address translations and free up the IP addresses for re-assignment.  Units are in second
+                External object ID. Used for integration with third party systems
 
                 
-                This attribute is named `translationTimeout` in VSD API.
+                This attribute is named `externalID` in VSD API.
                 
         """
-        self._translation_timeout = value
+        self._external_id = value
+
+    
+    @property
+    def dynamic_source_enabled(self):
+        """ Get dynamic_source_enabled value.
+
+            Notes:
+                Set to True if the address translation pool at the address translation pool definition level
+
+                
+                This attribute is named `dynamicSourceEnabled` in VSD API.
+                
+        """
+        return self._dynamic_source_enabled
+
+    @dynamic_source_enabled.setter
+    def dynamic_source_enabled(self, value):
+        """ Set dynamic_source_enabled value.
+
+            Notes:
+                Set to True if the address translation pool at the address translation pool definition level
+
+                
+                This attribute is named `dynamicSourceEnabled` in VSD API.
+                
+        """
+        self._dynamic_source_enabled = value
 
     
 

@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -54,7 +54,7 @@ class NUIKEGatewayProfile(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_INFRASTRUCTURE_PORT_PROFILE = "INFRASTRUCTURE_PORT_PROFILE"
     
-    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_GATEWAY_VPORT_CONFIG = "GATEWAY_VPORT_CONFIG"
+    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_EGRESS_QOS_PRIMITIVE = "EGRESS_QOS_PRIMITIVE"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_NSG_NOTIFICATION = "NSG_NOTIFICATION"
     
@@ -66,7 +66,7 @@ class NUIKEGatewayProfile(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_EVENT_LOG = "EVENT_LOG"
     
-    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_EGRESS_ACL_TEMPLATE_ENTRY = "EGRESS_ACL_TEMPLATE_ENTRY"
+    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_FLOATINGIP_ACL_ENTRY = "FLOATINGIP_ACL_ENTRY"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_BRIDGEINTERFACE = "BRIDGEINTERFACE"
     
@@ -96,7 +96,7 @@ class NUIKEGatewayProfile(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_ESI_SEQUENCENO = "ESI_SEQUENCENO"
     
-    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_EGRESS_QOS_PRIMITIVE = "EGRESS_QOS_PRIMITIVE"
+    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_GATEWAY_VPORT_CONFIG = "GATEWAY_VPORT_CONFIG"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_APPD_EXTERNAL_APP_SERVICE = "APPD_EXTERNAL_APP_SERVICE"
     
@@ -136,7 +136,7 @@ class NUIKEGatewayProfile(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_DHCP_OPTION = "DHCP_OPTION"
     
-    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_FLOATINGIP_ACL_ENTRY = "FLOATINGIP_ACL_ENTRY"
+    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_EGRESS_ACL_TEMPLATE_ENTRY = "EGRESS_ACL_TEMPLATE_ENTRY"
     
     CONST_IKE_GATEWAY_IDENTIFIER_TYPE_ID_RFC822_ADDR = "ID_RFC822_ADDR"
     
@@ -150,7 +150,7 @@ class NUIKEGatewayProfile(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_DOMAIN_CONFIG_RESP = "DOMAIN_CONFIG_RESP"
     
-    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_ENTERPRISE_CONFIG_RESP = "ENTERPRISE_CONFIG_RESP"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_NS_REDUNDANT_PORT = "NS_REDUNDANT_PORT"
     
@@ -158,7 +158,7 @@ class NUIKEGatewayProfile(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_SITE_REQ = "SITE_REQ"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_ENTERPRISE_CONFIG_RESP = "ENTERPRISE_CONFIG_RESP"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_L2DOMAIN_TEMPLATE = "L2DOMAIN_TEMPLATE"
     
@@ -185,6 +185,8 @@ class NUIKEGatewayProfile(NURESTObject):
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_L2DOMAIN_SHARED = "L2DOMAIN_SHARED"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_DOMAIN_CONFIG = "DOMAIN_CONFIG"
+    
+    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_MIRROR_DESTINATION = "MIRROR_DESTINATION"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_VMWARE_VCENTER_EAM_CONFIG = "VMWARE_VCENTER_EAM_CONFIG"
     
@@ -274,8 +276,6 @@ class NUIKEGatewayProfile(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_ROUTING_POLICY = "ROUTING_POLICY"
     
-    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_INGRESS_ACL_TEMPLATE = "INGRESS_ACL_TEMPLATE"
-    
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_GATEWAY_VPORT_CONFIG_RESP = "GATEWAY_VPORT_CONFIG_RESP"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_CLOUD_MGMT_SYSTEM = "CLOUD_MGMT_SYSTEM"
@@ -300,7 +300,7 @@ class NUIKEGatewayProfile(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_PORT_VLAN_CONFIG = "PORT_VLAN_CONFIG"
     
-    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_SHARED_RESOURCE = "SHARED_RESOURCE"
+    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_LOCATION = "LOCATION"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_BGP_PROFILE = "BGP_PROFILE"
     
@@ -316,8 +316,6 @@ class NUIKEGatewayProfile(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_ADDRESS_RANGE = "ADDRESS_RANGE"
     
-    CONST_SERVICE_CLASS_C = "C"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_PUBLIC_NETWORK = "PUBLIC_NETWORK"
@@ -328,7 +326,7 @@ class NUIKEGatewayProfile(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_NSPORT_VLAN_CONFIG = "NSPORT_VLAN_CONFIG"
     
-    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_SYSTEM_CONFIG_RESP = "SYSTEM_CONFIG_RESP"
+    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_SHARED_RESOURCE = "SHARED_RESOURCE"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_SYSTEM_CONFIG = "SYSTEM_CONFIG"
     
@@ -344,11 +342,11 @@ class NUIKEGatewayProfile(NURESTObject):
     
     CONST_SERVICE_CLASS_A = "A"
     
-    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_MC_LIST = "MC_LIST"
+    CONST_SERVICE_CLASS_B = "B"
     
-    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_LOCATION = "LOCATION"
+    CONST_SERVICE_CLASS_C = "C"
     
-    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_MIRROR_DESTINATION = "MIRROR_DESTINATION"
+    CONST_SERVICE_CLASS_D = "D"
     
     CONST_SERVICE_CLASS_E = "E"
     
@@ -404,7 +402,7 @@ class NUIKEGatewayProfile(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_QOS_PRIMITIVE = "QOS_PRIMITIVE"
     
-    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_AUTO_DISC_GATEWAY = "AUTO_DISC_GATEWAY"
+    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_INGRESS_ACL_TEMPLATE = "INGRESS_ACL_TEMPLATE"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_INGRESS_EXT_SERVICE_ENTRY = "INGRESS_EXT_SERVICE_ENTRY"
     
@@ -416,9 +414,13 @@ class NUIKEGatewayProfile(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_INFRASTRUCTURE_VSC_PROFILE = "INFRASTRUCTURE_VSC_PROFILE"
     
+    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_SYSTEM_CONFIG_RESP = "SYSTEM_CONFIG_RESP"
+    
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_FLOATINGIP = "FLOATINGIP"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_VPORT_TAG_BASE = "VPORT_TAG_BASE"
+    
+    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_MC_LIST = "MC_LIST"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_VMWARE_RELOAD_CONFIG = "VMWARE_RELOAD_CONFIG"
     
@@ -440,15 +442,13 @@ class NUIKEGatewayProfile(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_SERVICES_GATEWAY_RESPONSE = "SERVICES_GATEWAY_RESPONSE"
     
-    CONST_SERVICE_CLASS_B = "B"
-    
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_GATEWAY_CONFIG = "GATEWAY_CONFIG"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_GEO_VM_REQ = "GEO_VM_REQ"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_GEO_VM_RES = "GEO_VM_RES"
     
-    CONST_SERVICE_CLASS_D = "D"
+    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_ENTERPRISE_SECURITY = "ENTERPRISE_SECURITY"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_VPRN_LABEL_SEQUENCENO = "VPRN_LABEL_SEQUENCENO"
     
@@ -460,7 +460,7 @@ class NUIKEGatewayProfile(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_VMWARE_VCENTER = "VMWARE_VCENTER"
     
-    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_ENTERPRISE_SECURITY = "ENTERPRISE_SECURITY"
+    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_AUTO_DISC_GATEWAY = "AUTO_DISC_GATEWAY"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_APPD_FLOW_FORWARDING_POLICY = "APPD_FLOW_FORWARDING_POLICY"
     
@@ -514,7 +514,7 @@ class NUIKEGatewayProfile(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_GEO_VM_EVENT = "GEO_VM_EVENT"
     
-    CONST_SERVICE_CLASS_NONE = "NONE"
+    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_SUBNET_TEMPLATE = "SUBNET_TEMPLATE"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_EGRESS_ACL = "EGRESS_ACL"
     
@@ -552,7 +552,7 @@ class NUIKEGatewayProfile(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_VNID_SEQUENCENO = "VNID_SEQUENCENO"
     
-    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_SUBNET_TEMPLATE = "SUBNET_TEMPLATE"
+    CONST_SERVICE_CLASS_NONE = "NONE"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_INGRESS_ACL_ENTRY = "INGRESS_ACL_ENTRY"
     
@@ -583,42 +583,42 @@ class NUIKEGatewayProfile(NURESTObject):
         
         self._ike_gateway_identifier = None
         self._ike_gateway_identifier_type = None
+        self._name = None
+        self._last_updated_by = None
+        self._service_class = None
+        self._description = None
         self._anti_replay_check = None
+        self._entity_scope = None
         self._associated_enterprise_id = None
         self._associated_ike_authentication_id = None
         self._associated_ike_authentication_type = None
         self._associated_ike_encryption_profile_id = None
         self._associated_ike_gateway_id = None
-        self._description = None
-        self._entity_scope = None
         self._external_id = None
-        self._last_updated_by = None
-        self._name = None
-        self._service_class = None
         
         self.expose_attribute(local_name="ike_gateway_identifier", remote_name="IKEGatewayIdentifier", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ike_gateway_identifier_type", remote_name="IKEGatewayIdentifierType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ID_DER_ASN1_DN', u'ID_FQDN', u'ID_IPV4_ADDR', u'ID_KEY_ID', u'ID_RFC822_ADDR'])
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="service_class", remote_name="serviceClass", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="anti_replay_check", remote_name="antiReplayCheck", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ike_authentication_id", remote_name="associatedIKEAuthenticationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ike_authentication_type", remote_name="associatedIKEAuthenticationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACLENTRY_LOCATION', u'ADDRESS_RANGE', u'ADDRESS_RANGE_STATE', u'ALARM', u'APPD_APPLICATION', u'APPD_EXTERNAL_APP_SERVICE', u'APPD_FLOW', u'APPD_FLOW_FORWARDING_POLICY', u'APPD_FLOW_SECURITY_POLICY', u'APPD_SERVICE', u'APPD_TIER', u'APPLICATION', u'AUTO_DISC_GATEWAY', u'BACK_HAUL_SERVICE_RESP', u'BGP_DAMPENING_MED_RESPONSE', u'BGP_NEIGHBOR', u'BGP_NEIGHBOR_MED_RESPONSE', u'BGP_PROFILE', u'BGP_PROFILE_MED_RESPONSE', u'BGPPEER', u'BOOTSTRAP', u'BOOTSTRAP_ACTIVATION', u'BRIDGEINTERFACE', u'CERTIFICATE', u'CHILD_ENTITY_POLICY_CHANGE', u'CLOUD_MGMT_SYSTEM', u'CUSTOMER_VRF_SEQUENCENO', u'DC_CONFIG', u'DHCP_ALLOC_MESSAGE', u'DHCP_CONFIG_RESP', u'DHCP_OPTION', u'DISKSTATS', u'DOMAIN', u'DOMAIN_CONFIG', u'DOMAIN_CONFIG_RESP', u'DOMAIN_FLOATING_IP_ACL_TEMPLATE', u'DOMAIN_FLOATING_IP_ACL_TEMPLATE_ENTRY', u'DOMAIN_TEMPLATE', u'DSCP_FORWARDING_CLASS_MAPPING', u'DSCP_FORWARDING_CLASS_TABLE', u'EGRESS_ACL', u'EGRESS_ACL_ENTRY', u'EGRESS_ACL_TEMPLATE', u'EGRESS_ACL_TEMPLATE_ENTRY', u'EGRESS_QOS_MR', u'EGRESS_QOS_PRIMITIVE', u'EGRESS_QOS_QUEUE_MR', u'ENDPOINT', u'ENTERPRISE', u'ENTERPRISE_CONFIG', u'ENTERPRISE_CONFIG_RESP', u'ENTERPRISE_NETWORK', u'ENTERPRISE_PERMISSION', u'ENTERPRISE_PROFILE', u'ENTERPRISE_SECURED_DATA', u'ENTERPRISE_SECURITY', u'ENTITY_METADATA_BINDING', u'ESI_SEQUENCENO', u'EVENT_LOG', u'EVPN_BGP_COMMUNITY_TAG_ENTRY', u'EVPN_BGP_COMMUNITY_TAG_SEQ_NO', u'EXPORTIMPORT', u'EXTERNAL_SERVICE', u'FLOATING_IP_ACL_TEMPLATE', u'FLOATING_IP_ACL_TEMPLATE_ENTRY', u'FLOATINGIP', u'FLOATINGIP_ACL', u'FLOATINGIP_ACL_ENTRY', u'GATEWAY', u'GATEWAY_CONFIG', u'GATEWAY_CONFIG_RESP', u'GATEWAY_SECURED_DATA', u'GATEWAY_SECURITY', u'GATEWAY_SECURITY_PROFILE_REQUEST', u'GATEWAY_SECURITY_PROFILE_RESPONSE', u'GATEWAY_SECURITY_REQUEST', u'GATEWAY_SECURITY_RESPONSE', u'GATEWAY_SERVICE_CONFIG', u'GATEWAY_SERVICE_CONFIG_RESP', u'GATEWAY_TEMPLATE', u'GATEWAY_VPORT_CONFIG', u'GATEWAY_VPORT_CONFIG_RESP', u'GEO_VM_EVENT', u'GEO_VM_REQ', u'GEO_VM_RES', u'GROUP', u'GROUPKEY_ENCRYPTION_PROFILE', u'HEALTH_REQ', u'HOSTINTERFACE', u'HSC', u'IKE_CERTIFICATE', u'IKE_ENCRYPTION_PROFILE', u'IKE_GATEWAY', u'IKE_GATEWAY_CONFIG', u'IKE_GATEWAY_CONNECTION', u'IKE_GATEWAY_PROFILE', u'IKE_PSK', u'IKE_SUBNET', u'INFRASTRUCTURE_CONFIG', u'INFRASTRUCTURE_GATEWAY_PROFILE', u'INFRASTRUCTURE_PORT_PROFILE', u'INFRASTRUCTURE_VSC_PROFILE', u'INGRESS_ACL', u'INGRESS_ACL_ENTRY', u'INGRESS_ACL_TEMPLATE', u'INGRESS_ACL_TEMPLATE_ENTRY', u'INGRESS_ADV_FWD', u'INGRESS_ADV_FWD_ENTRY', u'INGRESS_ADV_FWD_TEMPLATE', u'INGRESS_ADV_FWD_TEMPLATE_ENTRY', u'INGRESS_EXT_SERVICE', u'INGRESS_EXT_SERVICE_ENTRY', u'INGRESS_EXT_SERVICE_TEMPLATE', u'INGRESS_EXT_SERVICE_TEMPLATE_ENTRY', u'IP_BINDING', u'JOB', u'KEYSERVER_MEMBER', u'KEYSERVER_MONITOR', u'KEYSERVER_MONITOR_ENCRYPTED_SEED', u'KEYSERVER_MONITOR_SEED', u'KEYSERVER_MONITOR_SEK', u'KEYSERVER_NOTIFICATION', u'L2DOMAIN', u'L2DOMAIN_SHARED', u'L2DOMAIN_TEMPLATE', u'LDAP_CONFIG', u'LIBVIRT_INTERFACE', u'LICENSE', u'LOCATION', u'MC_CHANNEL_MAP', u'MC_LIST', u'MC_RANGE', u'METADATA', u'METADATA_TAG', u'MIRROR_DESTINATION', u'MONITORING_PORT', u'MULTI_NIC_VPORT', u'NATMAPENTRY', u'NETWORK_ELEMENT', u'NETWORK_LAYOUT', u'NETWORK_MACRO_GROUP', u'NETWORK_POLICY_GROUP', u'NEXT_HOP_RESP', u'NODE_EXECUTION_ERROR', u'NS_REDUNDANT_PORT', u'NSG_NOTIFICATION', u'NSGATEWAY', u'NSGATEWAY_CONFIG', u'NSGATEWAY_TEMPLATE', u'NSPORT', u'NSPORT_STATIC_CONFIG', u'NSPORT_TEMPLATE', u'NSPORT_VLAN_CONFIG', u'NSREDUNDANT_GW_GRP', u'PATCONFIG_CONFIG_RESP', u'PATNATPOOL', u'PERMISSION', u'PERMITTED_ACTION', u'POLICING_POLICY', u'POLICY_DECISION', u'POLICY_GROUP', u'POLICY_GROUP_TEMPLATE', u'PORT', u'PORT_MR', u'PORT_PUSH', u'PORT_TEMPLATE', u'PORT_VLAN_CONFIG', u'PORT_VLAN_CONFIG_RESPONSE', u'PUBLIC_NETWORK', u'QOS_PRIMITIVE', u'RATE_LIMITER', u'RD_SEQUENCENO', u'REDUNDANT_GW_GRP', u'RESYNC', u'ROUTING_POL_MED_RESPONSE', u'ROUTING_POLICY', u'RTRD_ENTITY', u'RTRD_SEQUENCENO', u'SERVICE_GATEWAY_RESPONSE', u'SERVICE_VRF_SEQUENCENO', u'SERVICES_GATEWAY_RESPONSE', u'SHAPING_POLICY', u'SHARED_RESOURCE', u'SITE', u'SITE_REQ', u'SITE_RES', u'STATIC_ROUTE', u'STATIC_ROUTE_RESP', u'STATISTICS', u'STATS_COLLECTOR', u'STATS_POLICY', u'STATS_TCA', u'STATSSERVER', u'SUBNET', u'SUBNET_ENTRY', u'SUBNET_MAC_ENTRY', u'SUBNET_POOL_ENTRY', u'SUBNET_TEMPLATE', u'SYSTEM_CONFIG', u'SYSTEM_CONFIG_REQ', u'SYSTEM_CONFIG_RESP', u'SYSTEM_MONITORING', u'UNSUPPORTED', u'UPLINK_RD', u'USER', u'VIRTUAL_IP', u'VIRTUAL_MACHINE', u'VIRTUAL_MACHINE_REPORT', u'VLAN', u'VLAN_CONFIG_RESPONSE', u'VLAN_TEMPLATE', u'VM_DESCRIPTION', u'VM_INTERFACE', u'VMWARE_RELOAD_CONFIG', u'VMWARE_VCENTER', u'VMWARE_VCENTER_CLUSTER', u'VMWARE_VCENTER_DATACENTER', u'VMWARE_VCENTER_EAM_CONFIG', u'VMWARE_VCENTER_HYPERVISOR', u'VMWARE_VCENTER_VRS_BASE_CONFIG', u'VMWARE_VCENTER_VRS_CONFIG', u'VMWARE_VRS_ADDRESS_RANGE', u'VNID_SEQUENCENO', u'VPN_CONNECT', u'VPORT', u'VPORT_GATEWAY_RESPONSE', u'VPORT_MEDIATION_REQUEST', u'VPORT_MIRROR', u'VPORT_TAG_BASE', u'VPORTTAG', u'VPORTTAGTEMPLATE', u'VPRN_LABEL_SEQUENCENO', u'VRS', u'VSC', u'VSD', u'VSD_COMPONENT', u'VSG_REDUNDANT_PORT', u'VSP', u'WAN_SERVICE', u'ZONE', u'ZONE_TEMPLATE'])
         self.expose_attribute(local_name="associated_ike_encryption_profile_id", remote_name="associatedIKEEncryptionProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ike_gateway_id", remote_name="associatedIKEGatewayID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="service_class", remote_name="serviceClass", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -680,6 +680,106 @@ class NUIKEGatewayProfile(NURESTObject):
 
     
     @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the IKEv2 Gateway Profile
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the IKEv2 Gateway Profile
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def service_class(self):
+        """ Get service_class value.
+
+            Notes:
+                Class of service to be used.  Service classes in order of priority are A, B, C, D, E, F, G, and H.
+
+                
+                This attribute is named `serviceClass` in VSD API.
+                
+        """
+        return self._service_class
+
+    @service_class.setter
+    def service_class(self, value):
+        """ Set service_class value.
+
+            Notes:
+                Class of service to be used.  Service classes in order of priority are A, B, C, D, E, F, G, and H.
+
+                
+                This attribute is named `serviceClass` in VSD API.
+                
+        """
+        self._service_class = value
+
+    
+    @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                Description of the IKEv2 Gateway Profile
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                Description of the IKEv2 Gateway Profile
+
+                
+        """
+        self._description = value
+
+    
+    @property
     def anti_replay_check(self):
         """ Get anti_replay_check value.
 
@@ -704,6 +804,33 @@ class NUIKEGatewayProfile(NURESTObject):
                 
         """
         self._anti_replay_check = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
 
     
     @property
@@ -842,56 +969,6 @@ class NUIKEGatewayProfile(NURESTObject):
 
     
     @property
-    def description(self):
-        """ Get description value.
-
-            Notes:
-                Description of the IKEv2 Gateway Profile
-
-                
-        """
-        return self._description
-
-    @description.setter
-    def description(self, value):
-        """ Set description value.
-
-            Notes:
-                Description of the IKEv2 Gateway Profile
-
-                
-        """
-        self._description = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
     def external_id(self):
         """ Get external_id value.
 
@@ -916,83 +993,6 @@ class NUIKEGatewayProfile(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the IKEv2 Gateway Profile
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the IKEv2 Gateway Profile
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def service_class(self):
-        """ Get service_class value.
-
-            Notes:
-                Class of service to be used.  Service classes in order of priority are A, B, C, D, E, F, G, and H.
-
-                
-                This attribute is named `serviceClass` in VSD API.
-                
-        """
-        return self._service_class
-
-    @service_class.setter
-    def service_class(self, value):
-        """ Set service_class value.
-
-            Notes:
-                Class of service to be used.  Service classes in order of priority are A, B, C, D, E, F, G, and H.
-
-                
-                This attribute is named `serviceClass` in VSD API.
-                
-        """
-        self._service_class = value
 
     
 

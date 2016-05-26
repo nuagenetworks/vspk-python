@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -71,8 +71,7 @@ class NUBGPProfile(NURESTObject):
 
         # Read/Write Attributes
         
-        self._associated_export_routing_policy_id = None
-        self._associated_import_routing_policy_id = None
+        self._name = None
         self._dampening_half_life = None
         self._dampening_max_suppress = None
         self._dampening_name = None
@@ -80,11 +79,11 @@ class NUBGPProfile(NURESTObject):
         self._dampening_suppress = None
         self._description = None
         self._entity_scope = None
+        self._associated_export_routing_policy_id = None
+        self._associated_import_routing_policy_id = None
         self._external_id = None
-        self._name = None
         
-        self.expose_attribute(local_name="associated_export_routing_policy_id", remote_name="associatedExportRoutingPolicyID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_import_routing_policy_id", remote_name="associatedImportRoutingPolicyID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="dampening_half_life", remote_name="dampeningHalfLife", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dampening_max_suppress", remote_name="dampeningMaxSuppress", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dampening_name", remote_name="dampeningName", attribute_type=str, is_required=False, is_unique=False)
@@ -92,17 +91,18 @@ class NUBGPProfile(NURESTObject):
         self.expose_attribute(local_name="dampening_suppress", remote_name="dampeningSuppress", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="associated_export_routing_policy_id", remote_name="associatedExportRoutingPolicyID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_import_routing_policy_id", remote_name="associatedImportRoutingPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -110,57 +110,26 @@ class NUBGPProfile(NURESTObject):
     # Properties
     
     @property
-    def associated_export_routing_policy_id(self):
-        """ Get associated_export_routing_policy_id value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                export BGP policy ID
+                Per enterprise unique name
 
-                
-                This attribute is named `associatedExportRoutingPolicyID` in VSD API.
                 
         """
-        return self._associated_export_routing_policy_id
+        return self._name
 
-    @associated_export_routing_policy_id.setter
-    def associated_export_routing_policy_id(self, value):
-        """ Set associated_export_routing_policy_id value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                export BGP policy ID
+                Per enterprise unique name
 
-                
-                This attribute is named `associatedExportRoutingPolicyID` in VSD API.
                 
         """
-        self._associated_export_routing_policy_id = value
-
-    
-    @property
-    def associated_import_routing_policy_id(self):
-        """ Get associated_import_routing_policy_id value.
-
-            Notes:
-                import BGP policy ID
-
-                
-                This attribute is named `associatedImportRoutingPolicyID` in VSD API.
-                
-        """
-        return self._associated_import_routing_policy_id
-
-    @associated_import_routing_policy_id.setter
-    def associated_import_routing_policy_id(self, value):
-        """ Set associated_import_routing_policy_id value.
-
-            Notes:
-                import BGP policy ID
-
-                
-                This attribute is named `associatedImportRoutingPolicyID` in VSD API.
-                
-        """
-        self._associated_import_routing_policy_id = value
+        self._name = value
 
     
     @property
@@ -349,6 +318,60 @@ class NUBGPProfile(NURESTObject):
 
     
     @property
+    def associated_export_routing_policy_id(self):
+        """ Get associated_export_routing_policy_id value.
+
+            Notes:
+                export BGP policy ID
+
+                
+                This attribute is named `associatedExportRoutingPolicyID` in VSD API.
+                
+        """
+        return self._associated_export_routing_policy_id
+
+    @associated_export_routing_policy_id.setter
+    def associated_export_routing_policy_id(self, value):
+        """ Set associated_export_routing_policy_id value.
+
+            Notes:
+                export BGP policy ID
+
+                
+                This attribute is named `associatedExportRoutingPolicyID` in VSD API.
+                
+        """
+        self._associated_export_routing_policy_id = value
+
+    
+    @property
+    def associated_import_routing_policy_id(self):
+        """ Get associated_import_routing_policy_id value.
+
+            Notes:
+                import BGP policy ID
+
+                
+                This attribute is named `associatedImportRoutingPolicyID` in VSD API.
+                
+        """
+        return self._associated_import_routing_policy_id
+
+    @associated_import_routing_policy_id.setter
+    def associated_import_routing_policy_id(self, value):
+        """ Set associated_import_routing_policy_id value.
+
+            Notes:
+                import BGP policy ID
+
+                
+                This attribute is named `associatedImportRoutingPolicyID` in VSD API.
+                
+        """
+        self._associated_import_routing_policy_id = value
+
+    
+    @property
     def external_id(self):
         """ Get external_id value.
 
@@ -373,29 +396,6 @@ class NUBGPProfile(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Per enterprise unique name
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Per enterprise unique name
-
-                
-        """
-        self._name = value
 
     
 

@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -129,12 +129,8 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
         self._sek_payload_encryption_bc_algorithm = None
         self._sek_payload_encryption_key_length = None
         self._sek_payload_signing_algorithm = None
-        self._associated_enterprise_id = None
-        self._description = None
-        self._entity_scope = None
-        self._external_id = None
-        self._last_updated_by = None
         self._name = None
+        self._last_updated_by = None
         self._seed_generation_interval = None
         self._seed_lifetime = None
         self._seed_payload_authentication_algorithm = None
@@ -144,9 +140,13 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
         self._seed_payload_encryption_bc_algorithm = None
         self._seed_payload_encryption_key_length = None
         self._seed_payload_signing_algorithm = None
+        self._description = None
+        self._entity_scope = None
         self._traffic_authentication_algorithm = None
         self._traffic_encryption_algorithm = None
         self._traffic_encryption_key_lifetime = None
+        self._associated_enterprise_id = None
+        self._external_id = None
         
         self.expose_attribute(local_name="sek_generation_interval", remote_name="SEKGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sek_lifetime", remote_name="SEKLifetime", attribute_type=int, is_required=False, is_unique=False)
@@ -154,12 +154,8 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
         self.expose_attribute(local_name="sek_payload_encryption_bc_algorithm", remote_name="SEKPayloadEncryptionBCAlgorithm", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sek_payload_encryption_key_length", remote_name="SEKPayloadEncryptionKeyLength", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sek_payload_signing_algorithm", remote_name="SEKPayloadSigningAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'SHA1withRSA', u'SHA224withRSA', u'SHA256withRSA', u'SHA384withRSA', u'SHA512withRSA'])
-        self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_generation_interval", remote_name="seedGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_lifetime", remote_name="seedLifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_payload_authentication_algorithm", remote_name="seedPayloadAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA512'])
@@ -169,18 +165,22 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
         self.expose_attribute(local_name="seed_payload_encryption_bc_algorithm", remote_name="seedPayloadEncryptionBCAlgorithm", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_payload_encryption_key_length", remote_name="seedPayloadEncryptionKeyLength", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_payload_signing_algorithm", remote_name="seedPayloadSigningAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'SHA1withRSA', u'SHA224withRSA', u'SHA256withRSA', u'SHA384withRSA', u'SHA512withRSA'])
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="traffic_authentication_algorithm", remote_name="trafficAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_MD5', u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA384', u'HMAC_SHA512'])
         self.expose_attribute(local_name="traffic_encryption_algorithm", remote_name="trafficEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES_128_CBC', u'AES_192_CBC', u'AES_256_CBC', u'TRIPLE_DES_CBC'])
         self.expose_attribute(local_name="traffic_encryption_key_lifetime", remote_name="trafficEncryptionKeyLifetime", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -350,107 +350,26 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
 
     
     @property
-    def associated_enterprise_id(self):
-        """ Get associated_enterprise_id value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                The ID of the associated Enterprise
-
-                
-                This attribute is named `associatedEnterpriseID` in VSD API.
-                
-        """
-        return self._associated_enterprise_id
-
-    @associated_enterprise_id.setter
-    def associated_enterprise_id(self, value):
-        """ Set associated_enterprise_id value.
-
-            Notes:
-                The ID of the associated Enterprise
-
-                
-                This attribute is named `associatedEnterpriseID` in VSD API.
-                
-        """
-        self._associated_enterprise_id = value
-
-    
-    @property
-    def description(self):
-        """ Get description value.
-
-            Notes:
-                A description of the Profile instance created.
+                Name of the Encryption Profile
 
                 
         """
-        return self._description
+        return self._name
 
-    @description.setter
-    def description(self, value):
-        """ Set description value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                A description of the Profile instance created.
+                Name of the Encryption Profile
 
                 
         """
-        self._description = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
+        self._name = value
 
     
     @property
@@ -478,29 +397,6 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
                 
         """
         self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the Encryption Profile
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the Encryption Profile
-
-                
-        """
-        self._name = value
 
     
     @property
@@ -747,6 +643,56 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
 
     
     @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                A description of the Profile instance created.
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                A description of the Profile instance created.
+
+                
+        """
+        self._description = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
     def traffic_authentication_algorithm(self):
         """ Get traffic_authentication_algorithm value.
 
@@ -825,6 +771,60 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
                 
         """
         self._traffic_encryption_key_lifetime = value
+
+    
+    @property
+    def associated_enterprise_id(self):
+        """ Get associated_enterprise_id value.
+
+            Notes:
+                The ID of the associated Enterprise
+
+                
+                This attribute is named `associatedEnterpriseID` in VSD API.
+                
+        """
+        return self._associated_enterprise_id
+
+    @associated_enterprise_id.setter
+    def associated_enterprise_id(self, value):
+        """ Set associated_enterprise_id value.
+
+            Notes:
+                The ID of the associated Enterprise
+
+                
+                This attribute is named `associatedEnterpriseID` in VSD API.
+                
+        """
+        self._associated_enterprise_id = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

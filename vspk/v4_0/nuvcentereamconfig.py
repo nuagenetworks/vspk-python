@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -74,31 +74,31 @@ class NUVCenterEAMConfig(NURESTObject):
         self._eam_server_ip = None
         self._eam_server_port_number = None
         self._eam_server_port_type = None
+        self._last_updated_by = None
+        self._vib_url = None
         self._entity_scope = None
+        self._ovf_url = None
         self._extension_key = None
         self._external_id = None
-        self._last_updated_by = None
-        self._ovf_url = None
-        self._vib_url = None
         
         self.expose_attribute(local_name="eam_server_ip", remote_name="eamServerIP", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="eam_server_port_number", remote_name="eamServerPortNumber", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="eam_server_port_type", remote_name="eamServerPortType", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vib_url", remote_name="vibURL", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="ovf_url", remote_name="ovfURL", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="extension_key", remote_name="extensionKey", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="ovf_url", remote_name="ovfURL", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="vib_url", remote_name="vibURL", attribute_type=str, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -187,6 +187,60 @@ class NUVCenterEAMConfig(NURESTObject):
 
     
     @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def vib_url(self):
+        """ Get vib_url value.
+
+            Notes:
+                The url for the optional vib
+
+                
+                This attribute is named `vibURL` in VSD API.
+                
+        """
+        return self._vib_url
+
+    @vib_url.setter
+    def vib_url(self, value):
+        """ Set vib_url value.
+
+            Notes:
+                The url for the optional vib
+
+                
+                This attribute is named `vibURL` in VSD API.
+                
+        """
+        self._vib_url = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -211,6 +265,33 @@ class NUVCenterEAMConfig(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def ovf_url(self):
+        """ Get ovf_url value.
+
+            Notes:
+                The url for the ovf
+
+                
+                This attribute is named `ovfURL` in VSD API.
+                
+        """
+        return self._ovf_url
+
+    @ovf_url.setter
+    def ovf_url(self, value):
+        """ Set ovf_url value.
+
+            Notes:
+                The url for the ovf
+
+                
+                This attribute is named `ovfURL` in VSD API.
+                
+        """
+        self._ovf_url = value
 
     
     @property
@@ -265,87 +346,6 @@ class NUVCenterEAMConfig(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def ovf_url(self):
-        """ Get ovf_url value.
-
-            Notes:
-                The url for the ovf
-
-                
-                This attribute is named `ovfURL` in VSD API.
-                
-        """
-        return self._ovf_url
-
-    @ovf_url.setter
-    def ovf_url(self, value):
-        """ Set ovf_url value.
-
-            Notes:
-                The url for the ovf
-
-                
-                This attribute is named `ovfURL` in VSD API.
-                
-        """
-        self._ovf_url = value
-
-    
-    @property
-    def vib_url(self):
-        """ Get vib_url value.
-
-            Notes:
-                The url for the optional vib
-
-                
-                This attribute is named `vibURL` in VSD API.
-                
-        """
-        return self._vib_url
-
-    @vib_url.setter
-    def vib_url(self, value):
-        """ Set vib_url value.
-
-            Notes:
-                The url for the optional vib
-
-                
-                This attribute is named `vibURL` in VSD API.
-                
-        """
-        self._vib_url = value
 
     
 

@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -50,7 +50,7 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_APPD_FLOW_FORWARDING_POLICY = "APPD_FLOW_FORWARDING_POLICY"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_BGP_NEIGHBOR_MED_RESPONSE = "BGP_NEIGHBOR_MED_RESPONSE"
+    CONST_NETWORK_TYPE_NETWORK_MACRO_GROUP = "NETWORK_MACRO_GROUP"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_KEYSERVER_MEMBER = "KEYSERVER_MEMBER"
     
@@ -84,7 +84,7 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_DC_CONFIG = "DC_CONFIG"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSPORT_STATIC_CONFIG = "NSPORT_STATIC_CONFIG"
+    CONST_LOCATION_TYPE_ANY = "ANY"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_ENTERPRISE_PROFILE = "ENTERPRISE_PROFILE"
     
@@ -94,7 +94,7 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_VCENTER_CLUSTER = "VMWARE_VCENTER_CLUSTER"
     
-    CONST_LOCATION_TYPE_POLICYGROUP = "POLICYGROUP"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_RTRD_SEQUENCENO = "RTRD_SEQUENCENO"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_CERTIFICATE = "CERTIFICATE"
     
@@ -130,8 +130,6 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_MC_CHANNEL_MAP = "MC_CHANNEL_MAP"
     
-    CONST_NETWORK_TYPE_NETWORK_MACRO_GROUP = "NETWORK_MACRO_GROUP"
-    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_ENTERPRISE_SECURED_DATA = "ENTERPRISE_SECURED_DATA"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_PORT_TEMPLATE = "PORT_TEMPLATE"
@@ -152,15 +150,11 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GROUP = "GROUP"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_BGP_DAMPENING_MED_RESPONSE = "BGP_DAMPENING_MED_RESPONSE"
-    
-    CONST_SOURCE_TYPE_POLICYGROUP = "POLICYGROUP"
-    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_KEYSERVER_MONITOR = "KEYSERVER_MONITOR"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSGATEWAY_TEMPLATE = "NSGATEWAY_TEMPLATE"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_CONFIG_RESP = "GATEWAY_CONFIG_RESP"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_SECURITY_PROFILE_REQUEST = "GATEWAY_SECURITY_PROFILE_REQUEST"
     
     CONST_POLICY_STATE_DRAFT = "DRAFT"
     
@@ -168,25 +162,23 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_BACK_HAUL_SERVICE_RESP = "BACK_HAUL_SERVICE_RESP"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_SECURITY_PROFILE_REQUEST = "GATEWAY_SECURITY_PROFILE_REQUEST"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_CONFIG_RESP = "GATEWAY_CONFIG_RESP"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SUBNET_POOL_ENTRY = "SUBNET_POOL_ENTRY"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_IKE_GATEWAY_CONNECTION = "IKE_GATEWAY_CONNECTION"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VM_DESCRIPTION = "VM_DESCRIPTION"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VM_INTERFACE = "VM_INTERFACE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_EGRESS_QOS_QUEUE_MR = "EGRESS_QOS_QUEUE_MR"
     
-    CONST_DESTINATION_TYPE_NETWORKPOLICYGROUP = "NETWORKPOLICYGROUP"
-    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VLAN = "VLAN"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_ADDRESS_RANGE = "ADDRESS_RANGE"
+    
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_ESI_SEQUENCENO = "ESI_SEQUENCENO"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_EGRESS_ACL_TEMPLATE = "EGRESS_ACL_TEMPLATE"
     
@@ -200,15 +192,13 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VSP = "VSP"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NEXT_HOP_RESP = "NEXT_HOP_RESP"
+    CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_DOMAIN = "DOMAIN"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_TEMPLATE = "GATEWAY_TEMPLATE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INGRESS_ADV_FWD = "INGRESS_ADV_FWD"
-    
-    CONST_NETWORK_TYPE_INTERNET_POLICYGROUP = "INTERNET_POLICYGROUP"
     
     CONST_DESTINATION_TYPE_NETWORK = "NETWORK"
     
@@ -222,13 +212,15 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_VCENTER = "VMWARE_VCENTER"
     
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_ROUTING_POLICY = "ROUTING_POLICY"
+    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_SECURITY = "GATEWAY_SECURITY"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SYSTEM_CONFIG_REQ = "SYSTEM_CONFIG_REQ"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_MULTI_NIC_VPORT = "MULTI_NIC_VPORT"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_VRS_ADDRESS_RANGE = "VMWARE_VRS_ADDRESS_RANGE"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_VPORT_CONFIG_RESP = "GATEWAY_VPORT_CONFIG_RESP"
     
     CONST_NETWORK_TYPE_ENDPOINT_DOMAIN = "ENDPOINT_DOMAIN"
     
@@ -244,13 +236,13 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_L2DOMAIN_TEMPLATE = "L2DOMAIN_TEMPLATE"
     
-    CONST_LOCATION_TYPE_ANY = "ANY"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSPORT_STATIC_CONFIG = "NSPORT_STATIC_CONFIG"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_METADATA = "METADATA"
     
     CONST_NETWORK_TYPE_ANY = "ANY"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_POLICY_GROUP_TEMPLATE = "POLICY_GROUP_TEMPLATE"
+    CONST_LOCATION_TYPE_POLICYGROUP = "POLICYGROUP"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_DOMAIN_CONFIG_RESP = "DOMAIN_CONFIG_RESP"
     
@@ -268,21 +260,19 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_BGPPEER = "BGPPEER"
     
-    CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_POLICY_GROUP_TEMPLATE = "POLICY_GROUP_TEMPLATE"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_RTRD_SEQUENCENO = "RTRD_SEQUENCENO"
+    CONST_NETWORK_TYPE_INTERNET_POLICYGROUP = "INTERNET_POLICYGROUP"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_IP_BINDING = "IP_BINDING"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_HSC = "HSC"
     
-    CONST_DESTINATION_TYPE_POLICYGROUP = "POLICYGROUP"
-    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_IKE_CERTIFICATE = "IKE_CERTIFICATE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_APPD_SERVICE = "APPD_SERVICE"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VIRTUAL_MACHINE_REPORT = "VIRTUAL_MACHINE_REPORT"
+    CONST_LOCATION_TYPE_VPORTTAG = "VPORTTAG"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_RATE_LIMITER = "RATE_LIMITER"
     
@@ -296,13 +286,15 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SITE_RES = "SITE_RES"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_KEYSERVER_NOTIFICATION = "KEYSERVER_NOTIFICATION"
+    CONST_LOCATION_TYPE_SUBNET = "SUBNET"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_DOMAIN_FLOATING_IP_ACL_TEMPLATE_ENTRY = "DOMAIN_FLOATING_IP_ACL_TEMPLATE_ENTRY"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_ENTERPRISE_CONFIG_RESP = "ENTERPRISE_CONFIG_RESP"
     
     CONST_LOCATION_TYPE_REDIRECTIONTARGET = "REDIRECTIONTARGET"
+    
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_BGP_NEIGHBOR_MED_RESPONSE = "BGP_NEIGHBOR_MED_RESPONSE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_EVPN_BGP_COMMUNITY_TAG_ENTRY = "EVPN_BGP_COMMUNITY_TAG_ENTRY"
     
@@ -316,13 +308,15 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_EXPORTIMPORT = "EXPORTIMPORT"
     
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VIRTUAL_MACHINE_REPORT = "VIRTUAL_MACHINE_REPORT"
+    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_MIRROR_DESTINATION = "MIRROR_DESTINATION"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VPORT = "VPORT"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INGRESS_ADV_FWD_TEMPLATE_ENTRY = "INGRESS_ADV_FWD_TEMPLATE_ENTRY"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_VCENTER_VRS_CONFIG = "VMWARE_VCENTER_VRS_CONFIG"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SERVICE_GATEWAY_RESPONSE = "SERVICE_GATEWAY_RESPONSE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SUBNET_TEMPLATE = "SUBNET_TEMPLATE"
     
@@ -335,8 +329,6 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GEO_VM_REQ = "GEO_VM_REQ"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VPORT_MEDIATION_REQUEST = "VPORT_MEDIATION_REQUEST"
-    
-    CONST_LOCATION_TYPE_VPORTTAG = "VPORTTAG"
     
     CONST_ACTION_DROP = "DROP"
     
@@ -386,9 +378,7 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_HEALTH_REQ = "HEALTH_REQ"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SITE_REQ = "SITE_REQ"
-    
-    CONST_LOCATION_TYPE_ZONE = "ZONE"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_KEYSERVER_NOTIFICATION = "KEYSERVER_NOTIFICATION"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_EGRESS_ACL_ENTRY = "EGRESS_ACL_ENTRY"
     
@@ -401,6 +391,8 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_FLOATINGIP_ACL_ENTRY = "FLOATINGIP_ACL_ENTRY"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_MC_LIST = "MC_LIST"
+    
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SITE = "SITE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_SECURITY_REQUEST = "GATEWAY_SECURITY_REQUEST"
     
@@ -434,8 +426,6 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NODE_EXECUTION_ERROR = "NODE_EXECUTION_ERROR"
     
-    CONST_NETWORK_TYPE_PUBLIC_NETWORK = "PUBLIC_NETWORK"
-    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INFRASTRUCTURE_GATEWAY_PROFILE = "INFRASTRUCTURE_GATEWAY_PROFILE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SUBNET = "SUBNET"
@@ -452,13 +442,15 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_BOOTSTRAP = "BOOTSTRAP"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SERVICE_GATEWAY_RESPONSE = "SERVICE_GATEWAY_RESPONSE"
+    CONST_DESTINATION_TYPE_NETWORKPOLICYGROUP = "NETWORKPOLICYGROUP"
+    
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VNID_SEQUENCENO = "VNID_SEQUENCENO"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSREDUNDANT_GW_GRP = "NSREDUNDANT_GW_GRP"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VPORTTAG = "VPORTTAG"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_ROUTING_POLICY = "ROUTING_POLICY"
+    CONST_DESTINATION_TYPE_POLICYGROUP = "POLICYGROUP"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_RD_SEQUENCENO = "RD_SEQUENCENO"
     
@@ -472,7 +464,7 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_L2DOMAIN = "L2DOMAIN"
     
-    CONST_LOCATION_TYPE_SUBNET = "SUBNET"
+    CONST_LOCATION_TYPE_ZONE = "ZONE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_APPD_FLOW_SECURITY_POLICY = "APPD_FLOW_SECURITY_POLICY"
     
@@ -482,7 +474,7 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_CHILD_ENTITY_POLICY_CHANGE = "CHILD_ENTITY_POLICY_CHANGE"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SITE = "SITE"
+    CONST_NETWORK_TYPE_PUBLIC_NETWORK = "PUBLIC_NETWORK"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_BGP_NEIGHBOR = "BGP_NEIGHBOR"
     
@@ -532,7 +524,7 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_RELOAD_CONFIG = "VMWARE_RELOAD_CONFIG"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_VPORT_CONFIG_RESP = "GATEWAY_VPORT_CONFIG_RESP"
+    CONST_SOURCE_TYPE_POLICYGROUP = "POLICYGROUP"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NATMAPENTRY = "NATMAPENTRY"
     
@@ -550,6 +542,8 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VPN_CONNECT = "VPN_CONNECT"
     
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_IKE_GATEWAY_CONNECTION = "IKE_GATEWAY_CONNECTION"
+    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_LOCATION = "LOCATION"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_BGP_PROFILE = "BGP_PROFILE"
@@ -562,6 +556,10 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_KEYSERVER_MONITOR_ENCRYPTED_SEED = "KEYSERVER_MONITOR_ENCRYPTED_SEED"
     
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_VRS_ADDRESS_RANGE = "VMWARE_VRS_ADDRESS_RANGE"
+    
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SITE_REQ = "SITE_REQ"
+    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_STATISTICS = "STATISTICS"
     
     CONST_POLICY_STATE_LIVE = "LIVE"
@@ -570,11 +568,11 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_PATCONFIG_CONFIG_RESP = "PATCONFIG_CONFIG_RESP"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VNID_SEQUENCENO = "VNID_SEQUENCENO"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_VCENTER_VRS_CONFIG = "VMWARE_VCENTER_VRS_CONFIG"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_ENTERPRISE_SECURITY = "ENTERPRISE_SECURITY"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_ESI_SEQUENCENO = "ESI_SEQUENCENO"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_BGP_DAMPENING_MED_RESPONSE = "BGP_DAMPENING_MED_RESPONSE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VLAN_TEMPLATE = "VLAN_TEMPLATE"
     
@@ -589,6 +587,8 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VPORTTAGTEMPLATE = "VPORTTAGTEMPLATE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_STATIC_ROUTE = "STATIC_ROUTE"
+    
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NEXT_HOP_RESP = "NEXT_HOP_RESP"
     
     
 
@@ -609,124 +609,97 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
 
         # Read/Write Attributes
         
-        self._dscp = None
         self._icmp_code = None
         self._icmp_type = None
+        self._dscp = None
+        self._last_updated_by = None
         self._action = None
         self._action_details = None
         self._address_override = None
-        self._associated_application_id = None
-        self._associated_application_object_id = None
-        self._associated_application_object_type = None
-        self._associated_live_entity_id = None
+        self._reflexive = None
         self._description = None
         self._dest_pg_id = None
         self._dest_pg_type = None
         self._destination_port = None
         self._destination_type = None
         self._destination_value = None
-        self._entity_scope = None
-        self._ether_type = None
-        self._external_id = None
-        self._flow_logging_enabled = None
-        self._last_updated_by = None
-        self._location_id = None
-        self._location_type = None
-        self._mirror_destination_id = None
         self._network_id = None
         self._network_type = None
+        self._mirror_destination_id = None
+        self._flow_logging_enabled = None
+        self._entity_scope = None
+        self._location_id = None
+        self._location_type = None
         self._policy_state = None
-        self._priority = None
-        self._protocol = None
-        self._reflexive = None
         self._source_pg_id = None
         self._source_pg_type = None
         self._source_port = None
         self._source_type = None
         self._source_value = None
+        self._priority = None
+        self._protocol = None
+        self._associated_application_id = None
+        self._associated_application_object_id = None
+        self._associated_application_object_type = None
+        self._associated_live_entity_id = None
         self._stateful = None
         self._stats_id = None
         self._stats_logging_enabled = None
+        self._ether_type = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="icmp_code", remote_name="ICMPCode", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="icmp_type", remote_name="ICMPType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=False, is_unique=False, choices=[u'DROP', u'FORWARD', u'REDIRECT'])
         self.expose_attribute(local_name="action_details", remote_name="actionDetails", attribute_type=dict, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address_override", remote_name="addressOverride", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_application_id", remote_name="associatedApplicationID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_application_object_id", remote_name="associatedApplicationObjectID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_application_object_type", remote_name="associatedApplicationObjectType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACLENTRY_LOCATION', u'ADDRESS_RANGE', u'ADDRESS_RANGE_STATE', u'ALARM', u'APPD_APPLICATION', u'APPD_EXTERNAL_APP_SERVICE', u'APPD_FLOW', u'APPD_FLOW_FORWARDING_POLICY', u'APPD_FLOW_SECURITY_POLICY', u'APPD_SERVICE', u'APPD_TIER', u'APPLICATION', u'AUTO_DISC_GATEWAY', u'BACK_HAUL_SERVICE_RESP', u'BGP_DAMPENING_MED_RESPONSE', u'BGP_NEIGHBOR', u'BGP_NEIGHBOR_MED_RESPONSE', u'BGP_PROFILE', u'BGP_PROFILE_MED_RESPONSE', u'BGPPEER', u'BOOTSTRAP', u'BOOTSTRAP_ACTIVATION', u'BRIDGEINTERFACE', u'CERTIFICATE', u'CHILD_ENTITY_POLICY_CHANGE', u'CLOUD_MGMT_SYSTEM', u'CUSTOMER_VRF_SEQUENCENO', u'DC_CONFIG', u'DHCP_ALLOC_MESSAGE', u'DHCP_CONFIG_RESP', u'DHCP_OPTION', u'DISKSTATS', u'DOMAIN', u'DOMAIN_CONFIG', u'DOMAIN_CONFIG_RESP', u'DOMAIN_FLOATING_IP_ACL_TEMPLATE', u'DOMAIN_FLOATING_IP_ACL_TEMPLATE_ENTRY', u'DOMAIN_TEMPLATE', u'DSCP_FORWARDING_CLASS_MAPPING', u'DSCP_FORWARDING_CLASS_TABLE', u'EGRESS_ACL', u'EGRESS_ACL_ENTRY', u'EGRESS_ACL_TEMPLATE', u'EGRESS_ACL_TEMPLATE_ENTRY', u'EGRESS_QOS_MR', u'EGRESS_QOS_PRIMITIVE', u'EGRESS_QOS_QUEUE_MR', u'ENDPOINT', u'ENTERPRISE', u'ENTERPRISE_CONFIG', u'ENTERPRISE_CONFIG_RESP', u'ENTERPRISE_NETWORK', u'ENTERPRISE_PERMISSION', u'ENTERPRISE_PROFILE', u'ENTERPRISE_SECURED_DATA', u'ENTERPRISE_SECURITY', u'ENTITY_METADATA_BINDING', u'ESI_SEQUENCENO', u'EVENT_LOG', u'EVPN_BGP_COMMUNITY_TAG_ENTRY', u'EVPN_BGP_COMMUNITY_TAG_SEQ_NO', u'EXPORTIMPORT', u'EXTERNAL_SERVICE', u'FLOATING_IP_ACL_TEMPLATE', u'FLOATING_IP_ACL_TEMPLATE_ENTRY', u'FLOATINGIP', u'FLOATINGIP_ACL', u'FLOATINGIP_ACL_ENTRY', u'GATEWAY', u'GATEWAY_CONFIG', u'GATEWAY_CONFIG_RESP', u'GATEWAY_SECURED_DATA', u'GATEWAY_SECURITY', u'GATEWAY_SECURITY_PROFILE_REQUEST', u'GATEWAY_SECURITY_PROFILE_RESPONSE', u'GATEWAY_SECURITY_REQUEST', u'GATEWAY_SECURITY_RESPONSE', u'GATEWAY_SERVICE_CONFIG', u'GATEWAY_SERVICE_CONFIG_RESP', u'GATEWAY_TEMPLATE', u'GATEWAY_VPORT_CONFIG', u'GATEWAY_VPORT_CONFIG_RESP', u'GEO_VM_EVENT', u'GEO_VM_REQ', u'GEO_VM_RES', u'GROUP', u'GROUPKEY_ENCRYPTION_PROFILE', u'HEALTH_REQ', u'HOSTINTERFACE', u'HSC', u'IKE_CERTIFICATE', u'IKE_ENCRYPTION_PROFILE', u'IKE_GATEWAY', u'IKE_GATEWAY_CONFIG', u'IKE_GATEWAY_CONNECTION', u'IKE_GATEWAY_PROFILE', u'IKE_PSK', u'IKE_SUBNET', u'INFRASTRUCTURE_CONFIG', u'INFRASTRUCTURE_GATEWAY_PROFILE', u'INFRASTRUCTURE_PORT_PROFILE', u'INFRASTRUCTURE_VSC_PROFILE', u'INGRESS_ACL', u'INGRESS_ACL_ENTRY', u'INGRESS_ACL_TEMPLATE', u'INGRESS_ACL_TEMPLATE_ENTRY', u'INGRESS_ADV_FWD', u'INGRESS_ADV_FWD_ENTRY', u'INGRESS_ADV_FWD_TEMPLATE', u'INGRESS_ADV_FWD_TEMPLATE_ENTRY', u'INGRESS_EXT_SERVICE', u'INGRESS_EXT_SERVICE_ENTRY', u'INGRESS_EXT_SERVICE_TEMPLATE', u'INGRESS_EXT_SERVICE_TEMPLATE_ENTRY', u'IP_BINDING', u'JOB', u'KEYSERVER_MEMBER', u'KEYSERVER_MONITOR', u'KEYSERVER_MONITOR_ENCRYPTED_SEED', u'KEYSERVER_MONITOR_SEED', u'KEYSERVER_MONITOR_SEK', u'KEYSERVER_NOTIFICATION', u'L2DOMAIN', u'L2DOMAIN_SHARED', u'L2DOMAIN_TEMPLATE', u'LDAP_CONFIG', u'LIBVIRT_INTERFACE', u'LICENSE', u'LOCATION', u'MC_CHANNEL_MAP', u'MC_LIST', u'MC_RANGE', u'METADATA', u'METADATA_TAG', u'MIRROR_DESTINATION', u'MONITORING_PORT', u'MULTI_NIC_VPORT', u'NATMAPENTRY', u'NETWORK_ELEMENT', u'NETWORK_LAYOUT', u'NETWORK_MACRO_GROUP', u'NETWORK_POLICY_GROUP', u'NEXT_HOP_RESP', u'NODE_EXECUTION_ERROR', u'NS_REDUNDANT_PORT', u'NSG_NOTIFICATION', u'NSGATEWAY', u'NSGATEWAY_CONFIG', u'NSGATEWAY_TEMPLATE', u'NSPORT', u'NSPORT_STATIC_CONFIG', u'NSPORT_TEMPLATE', u'NSPORT_VLAN_CONFIG', u'NSREDUNDANT_GW_GRP', u'PATCONFIG_CONFIG_RESP', u'PATNATPOOL', u'PERMISSION', u'PERMITTED_ACTION', u'POLICING_POLICY', u'POLICY_DECISION', u'POLICY_GROUP', u'POLICY_GROUP_TEMPLATE', u'PORT', u'PORT_MR', u'PORT_PUSH', u'PORT_TEMPLATE', u'PORT_VLAN_CONFIG', u'PORT_VLAN_CONFIG_RESPONSE', u'PUBLIC_NETWORK', u'QOS_PRIMITIVE', u'RATE_LIMITER', u'RD_SEQUENCENO', u'REDUNDANT_GW_GRP', u'RESYNC', u'ROUTING_POL_MED_RESPONSE', u'ROUTING_POLICY', u'RTRD_ENTITY', u'RTRD_SEQUENCENO', u'SERVICE_GATEWAY_RESPONSE', u'SERVICE_VRF_SEQUENCENO', u'SERVICES_GATEWAY_RESPONSE', u'SHAPING_POLICY', u'SHARED_RESOURCE', u'SITE', u'SITE_REQ', u'SITE_RES', u'STATIC_ROUTE', u'STATIC_ROUTE_RESP', u'STATISTICS', u'STATS_COLLECTOR', u'STATS_POLICY', u'STATS_TCA', u'STATSSERVER', u'SUBNET', u'SUBNET_ENTRY', u'SUBNET_MAC_ENTRY', u'SUBNET_POOL_ENTRY', u'SUBNET_TEMPLATE', u'SYSTEM_CONFIG', u'SYSTEM_CONFIG_REQ', u'SYSTEM_CONFIG_RESP', u'SYSTEM_MONITORING', u'UNSUPPORTED', u'UPLINK_RD', u'USER', u'VIRTUAL_IP', u'VIRTUAL_MACHINE', u'VIRTUAL_MACHINE_REPORT', u'VLAN', u'VLAN_CONFIG_RESPONSE', u'VLAN_TEMPLATE', u'VM_DESCRIPTION', u'VM_INTERFACE', u'VMWARE_RELOAD_CONFIG', u'VMWARE_VCENTER', u'VMWARE_VCENTER_CLUSTER', u'VMWARE_VCENTER_DATACENTER', u'VMWARE_VCENTER_EAM_CONFIG', u'VMWARE_VCENTER_HYPERVISOR', u'VMWARE_VCENTER_VRS_BASE_CONFIG', u'VMWARE_VCENTER_VRS_CONFIG', u'VMWARE_VRS_ADDRESS_RANGE', u'VNID_SEQUENCENO', u'VPN_CONNECT', u'VPORT', u'VPORT_GATEWAY_RESPONSE', u'VPORT_MEDIATION_REQUEST', u'VPORT_MIRROR', u'VPORT_TAG_BASE', u'VPORTTAG', u'VPORTTAGTEMPLATE', u'VPRN_LABEL_SEQUENCENO', u'VRS', u'VSC', u'VSD', u'VSD_COMPONENT', u'VSG_REDUNDANT_PORT', u'VSP', u'WAN_SERVICE', u'ZONE', u'ZONE_TEMPLATE'])
-        self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="reflexive", remote_name="reflexive", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dest_pg_id", remote_name="destPgId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dest_pg_type", remote_name="destPgType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_type", remote_name="destinationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'NETWORK', u'NETWORKPOLICYGROUP', u'POLICYGROUP'])
         self.expose_attribute(local_name="destination_value", remote_name="destinationValue", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="ether_type", remote_name="etherType", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="flow_logging_enabled", remote_name="flowLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'POLICYGROUP', u'REDIRECTIONTARGET', u'SUBNET', u'VPORTTAG', u'ZONE'])
-        self.expose_attribute(local_name="mirror_destination_id", remote_name="mirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'INTERNET_POLICYGROUP', u'NETWORK_MACRO_GROUP', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'ZONE'])
+        self.expose_attribute(local_name="mirror_destination_id", remote_name="mirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_logging_enabled", remote_name="flowLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'POLICYGROUP', u'REDIRECTIONTARGET', u'SUBNET', u'VPORTTAG', u'ZONE'])
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
-        self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="reflexive", remote_name="reflexive", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_pg_id", remote_name="sourcePgId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_pg_type", remote_name="sourcePgType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_type", remote_name="sourceType", attribute_type=str, is_required=False, is_unique=False, choices=[u'NETWORK', u'NETWORKPOLICYGROUP', u'POLICYGROUP'])
         self.expose_attribute(local_name="source_value", remote_name="sourceValue", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_application_id", remote_name="associatedApplicationID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_application_object_id", remote_name="associatedApplicationObjectID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_application_object_type", remote_name="associatedApplicationObjectType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACLENTRY_LOCATION', u'ADDRESS_RANGE', u'ADDRESS_RANGE_STATE', u'ALARM', u'APPD_APPLICATION', u'APPD_EXTERNAL_APP_SERVICE', u'APPD_FLOW', u'APPD_FLOW_FORWARDING_POLICY', u'APPD_FLOW_SECURITY_POLICY', u'APPD_SERVICE', u'APPD_TIER', u'APPLICATION', u'AUTO_DISC_GATEWAY', u'BACK_HAUL_SERVICE_RESP', u'BGP_DAMPENING_MED_RESPONSE', u'BGP_NEIGHBOR', u'BGP_NEIGHBOR_MED_RESPONSE', u'BGP_PROFILE', u'BGP_PROFILE_MED_RESPONSE', u'BGPPEER', u'BOOTSTRAP', u'BOOTSTRAP_ACTIVATION', u'BRIDGEINTERFACE', u'CERTIFICATE', u'CHILD_ENTITY_POLICY_CHANGE', u'CLOUD_MGMT_SYSTEM', u'CUSTOMER_VRF_SEQUENCENO', u'DC_CONFIG', u'DHCP_ALLOC_MESSAGE', u'DHCP_CONFIG_RESP', u'DHCP_OPTION', u'DISKSTATS', u'DOMAIN', u'DOMAIN_CONFIG', u'DOMAIN_CONFIG_RESP', u'DOMAIN_FLOATING_IP_ACL_TEMPLATE', u'DOMAIN_FLOATING_IP_ACL_TEMPLATE_ENTRY', u'DOMAIN_TEMPLATE', u'DSCP_FORWARDING_CLASS_MAPPING', u'DSCP_FORWARDING_CLASS_TABLE', u'EGRESS_ACL', u'EGRESS_ACL_ENTRY', u'EGRESS_ACL_TEMPLATE', u'EGRESS_ACL_TEMPLATE_ENTRY', u'EGRESS_QOS_MR', u'EGRESS_QOS_PRIMITIVE', u'EGRESS_QOS_QUEUE_MR', u'ENDPOINT', u'ENTERPRISE', u'ENTERPRISE_CONFIG', u'ENTERPRISE_CONFIG_RESP', u'ENTERPRISE_NETWORK', u'ENTERPRISE_PERMISSION', u'ENTERPRISE_PROFILE', u'ENTERPRISE_SECURED_DATA', u'ENTERPRISE_SECURITY', u'ENTITY_METADATA_BINDING', u'ESI_SEQUENCENO', u'EVENT_LOG', u'EVPN_BGP_COMMUNITY_TAG_ENTRY', u'EVPN_BGP_COMMUNITY_TAG_SEQ_NO', u'EXPORTIMPORT', u'EXTERNAL_SERVICE', u'FLOATING_IP_ACL_TEMPLATE', u'FLOATING_IP_ACL_TEMPLATE_ENTRY', u'FLOATINGIP', u'FLOATINGIP_ACL', u'FLOATINGIP_ACL_ENTRY', u'GATEWAY', u'GATEWAY_CONFIG', u'GATEWAY_CONFIG_RESP', u'GATEWAY_SECURED_DATA', u'GATEWAY_SECURITY', u'GATEWAY_SECURITY_PROFILE_REQUEST', u'GATEWAY_SECURITY_PROFILE_RESPONSE', u'GATEWAY_SECURITY_REQUEST', u'GATEWAY_SECURITY_RESPONSE', u'GATEWAY_SERVICE_CONFIG', u'GATEWAY_SERVICE_CONFIG_RESP', u'GATEWAY_TEMPLATE', u'GATEWAY_VPORT_CONFIG', u'GATEWAY_VPORT_CONFIG_RESP', u'GEO_VM_EVENT', u'GEO_VM_REQ', u'GEO_VM_RES', u'GROUP', u'GROUPKEY_ENCRYPTION_PROFILE', u'HEALTH_REQ', u'HOSTINTERFACE', u'HSC', u'IKE_CERTIFICATE', u'IKE_ENCRYPTION_PROFILE', u'IKE_GATEWAY', u'IKE_GATEWAY_CONFIG', u'IKE_GATEWAY_CONNECTION', u'IKE_GATEWAY_PROFILE', u'IKE_PSK', u'IKE_SUBNET', u'INFRASTRUCTURE_CONFIG', u'INFRASTRUCTURE_GATEWAY_PROFILE', u'INFRASTRUCTURE_PORT_PROFILE', u'INFRASTRUCTURE_VSC_PROFILE', u'INGRESS_ACL', u'INGRESS_ACL_ENTRY', u'INGRESS_ACL_TEMPLATE', u'INGRESS_ACL_TEMPLATE_ENTRY', u'INGRESS_ADV_FWD', u'INGRESS_ADV_FWD_ENTRY', u'INGRESS_ADV_FWD_TEMPLATE', u'INGRESS_ADV_FWD_TEMPLATE_ENTRY', u'INGRESS_EXT_SERVICE', u'INGRESS_EXT_SERVICE_ENTRY', u'INGRESS_EXT_SERVICE_TEMPLATE', u'INGRESS_EXT_SERVICE_TEMPLATE_ENTRY', u'IP_BINDING', u'JOB', u'KEYSERVER_MEMBER', u'KEYSERVER_MONITOR', u'KEYSERVER_MONITOR_ENCRYPTED_SEED', u'KEYSERVER_MONITOR_SEED', u'KEYSERVER_MONITOR_SEK', u'KEYSERVER_NOTIFICATION', u'L2DOMAIN', u'L2DOMAIN_SHARED', u'L2DOMAIN_TEMPLATE', u'LDAP_CONFIG', u'LIBVIRT_INTERFACE', u'LICENSE', u'LOCATION', u'MC_CHANNEL_MAP', u'MC_LIST', u'MC_RANGE', u'METADATA', u'METADATA_TAG', u'MIRROR_DESTINATION', u'MONITORING_PORT', u'MULTI_NIC_VPORT', u'NATMAPENTRY', u'NETWORK_ELEMENT', u'NETWORK_LAYOUT', u'NETWORK_MACRO_GROUP', u'NETWORK_POLICY_GROUP', u'NEXT_HOP_RESP', u'NODE_EXECUTION_ERROR', u'NS_REDUNDANT_PORT', u'NSG_NOTIFICATION', u'NSGATEWAY', u'NSGATEWAY_CONFIG', u'NSGATEWAY_TEMPLATE', u'NSPORT', u'NSPORT_STATIC_CONFIG', u'NSPORT_TEMPLATE', u'NSPORT_VLAN_CONFIG', u'NSREDUNDANT_GW_GRP', u'PATCONFIG_CONFIG_RESP', u'PATNATPOOL', u'PERMISSION', u'PERMITTED_ACTION', u'POLICING_POLICY', u'POLICY_DECISION', u'POLICY_GROUP', u'POLICY_GROUP_TEMPLATE', u'PORT', u'PORT_MR', u'PORT_PUSH', u'PORT_TEMPLATE', u'PORT_VLAN_CONFIG', u'PORT_VLAN_CONFIG_RESPONSE', u'PUBLIC_NETWORK', u'QOS_PRIMITIVE', u'RATE_LIMITER', u'RD_SEQUENCENO', u'REDUNDANT_GW_GRP', u'RESYNC', u'ROUTING_POL_MED_RESPONSE', u'ROUTING_POLICY', u'RTRD_ENTITY', u'RTRD_SEQUENCENO', u'SERVICE_GATEWAY_RESPONSE', u'SERVICE_VRF_SEQUENCENO', u'SERVICES_GATEWAY_RESPONSE', u'SHAPING_POLICY', u'SHARED_RESOURCE', u'SITE', u'SITE_REQ', u'SITE_RES', u'STATIC_ROUTE', u'STATIC_ROUTE_RESP', u'STATISTICS', u'STATS_COLLECTOR', u'STATS_POLICY', u'STATS_TCA', u'STATSSERVER', u'SUBNET', u'SUBNET_ENTRY', u'SUBNET_MAC_ENTRY', u'SUBNET_POOL_ENTRY', u'SUBNET_TEMPLATE', u'SYSTEM_CONFIG', u'SYSTEM_CONFIG_REQ', u'SYSTEM_CONFIG_RESP', u'SYSTEM_MONITORING', u'UNSUPPORTED', u'UPLINK_RD', u'USER', u'VIRTUAL_IP', u'VIRTUAL_MACHINE', u'VIRTUAL_MACHINE_REPORT', u'VLAN', u'VLAN_CONFIG_RESPONSE', u'VLAN_TEMPLATE', u'VM_DESCRIPTION', u'VM_INTERFACE', u'VMWARE_RELOAD_CONFIG', u'VMWARE_VCENTER', u'VMWARE_VCENTER_CLUSTER', u'VMWARE_VCENTER_DATACENTER', u'VMWARE_VCENTER_EAM_CONFIG', u'VMWARE_VCENTER_HYPERVISOR', u'VMWARE_VCENTER_VRS_BASE_CONFIG', u'VMWARE_VCENTER_VRS_CONFIG', u'VMWARE_VRS_ADDRESS_RANGE', u'VNID_SEQUENCENO', u'VPN_CONNECT', u'VPORT', u'VPORT_GATEWAY_RESPONSE', u'VPORT_MEDIATION_REQUEST', u'VPORT_MIRROR', u'VPORT_TAG_BASE', u'VPORTTAG', u'VPORTTAGTEMPLATE', u'VPRN_LABEL_SEQUENCENO', u'VRS', u'VSC', u'VSD', u'VSD_COMPONENT', u'VSG_REDUNDANT_PORT', u'VSP', u'WAN_SERVICE', u'ZONE', u'ZONE_TEMPLATE'])
+        self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stateful", remote_name="stateful", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_id", remote_name="statsID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_logging_enabled", remote_name="statsLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ether_type", remote_name="etherType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
-    
-    @property
-    def dscp(self):
-        """ Get dscp value.
-
-            Notes:
-                DSCP match condition to be set in the rule. It is either * or from 0-63
-
-                
-                This attribute is named `DSCP` in VSD API.
-                
-        """
-        return self._dscp
-
-    @dscp.setter
-    def dscp(self, value):
-        """ Set dscp value.
-
-            Notes:
-                DSCP match condition to be set in the rule. It is either * or from 0-63
-
-                
-                This attribute is named `DSCP` in VSD API.
-                
-        """
-        self._dscp = value
-
     
     @property
     def icmp_code(self):
@@ -780,6 +753,60 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
                 
         """
         self._icmp_type = value
+
+    
+    @property
+    def dscp(self):
+        """ Get dscp value.
+
+            Notes:
+                DSCP match condition to be set in the rule. It is either * or from 0-63
+
+                
+                This attribute is named `DSCP` in VSD API.
+                
+        """
+        return self._dscp
+
+    @dscp.setter
+    def dscp(self, value):
+        """ Set dscp value.
+
+            Notes:
+                DSCP match condition to be set in the rule. It is either * or from 0-63
+
+                
+                This attribute is named `DSCP` in VSD API.
+                
+        """
+        self._dscp = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
 
     
     @property
@@ -860,111 +887,26 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
 
     
     @property
-    def associated_application_id(self):
-        """ Get associated_application_id value.
+    def reflexive(self):
+        """ Get reflexive value.
 
             Notes:
-                The associated application ID
+                True means that this ACL entry is reflexive, so there will be a corresponding rule that will be created by OVS in the network. False means that there is no corresponding rule created by OVS in the network.
 
-                
-                This attribute is named `associatedApplicationID` in VSD API.
                 
         """
-        return self._associated_application_id
+        return self._reflexive
 
-    @associated_application_id.setter
-    def associated_application_id(self, value):
-        """ Set associated_application_id value.
+    @reflexive.setter
+    def reflexive(self, value):
+        """ Set reflexive value.
 
             Notes:
-                The associated application ID
+                True means that this ACL entry is reflexive, so there will be a corresponding rule that will be created by OVS in the network. False means that there is no corresponding rule created by OVS in the network.
 
-                
-                This attribute is named `associatedApplicationID` in VSD API.
                 
         """
-        self._associated_application_id = value
-
-    
-    @property
-    def associated_application_object_id(self):
-        """ Get associated_application_object_id value.
-
-            Notes:
-                The associated application object ID
-
-                
-                This attribute is named `associatedApplicationObjectID` in VSD API.
-                
-        """
-        return self._associated_application_object_id
-
-    @associated_application_object_id.setter
-    def associated_application_object_id(self, value):
-        """ Set associated_application_object_id value.
-
-            Notes:
-                The associated application object ID
-
-                
-                This attribute is named `associatedApplicationObjectID` in VSD API.
-                
-        """
-        self._associated_application_object_id = value
-
-    
-    @property
-    def associated_application_object_type(self):
-        """ Get associated_application_object_type value.
-
-            Notes:
-                The associated application object type
-
-                
-                This attribute is named `associatedApplicationObjectType` in VSD API.
-                
-        """
-        return self._associated_application_object_type
-
-    @associated_application_object_type.setter
-    def associated_application_object_type(self, value):
-        """ Set associated_application_object_type value.
-
-            Notes:
-                The associated application object type
-
-                
-                This attribute is named `associatedApplicationObjectType` in VSD API.
-                
-        """
-        self._associated_application_object_type = value
-
-    
-    @property
-    def associated_live_entity_id(self):
-        """ Get associated_live_entity_id value.
-
-            Notes:
-                ID of the associated live entity
-
-                
-                This attribute is named `associatedLiveEntityID` in VSD API.
-                
-        """
-        return self._associated_live_entity_id
-
-    @associated_live_entity_id.setter
-    def associated_live_entity_id(self, value):
-        """ Set associated_live_entity_id value.
-
-            Notes:
-                ID of the associated live entity
-
-                
-                This attribute is named `associatedLiveEntityID` in VSD API.
-                
-        """
-        self._associated_live_entity_id = value
+        self._reflexive = value
 
     
     @property
@@ -1126,84 +1068,84 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
 
     
     @property
-    def entity_scope(self):
-        """ Get entity_scope value.
+    def network_id(self):
+        """ Get network_id value.
 
             Notes:
-                Specify if scope of entity is Data center or Enterprise level
+                The destination network entity that is referenced(subnet/zone/macro)
 
                 
-                This attribute is named `entityScope` in VSD API.
+                This attribute is named `networkID` in VSD API.
                 
         """
-        return self._entity_scope
+        return self._network_id
 
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
+    @network_id.setter
+    def network_id(self, value):
+        """ Set network_id value.
 
             Notes:
-                Specify if scope of entity is Data center or Enterprise level
+                The destination network entity that is referenced(subnet/zone/macro)
 
                 
-                This attribute is named `entityScope` in VSD API.
+                This attribute is named `networkID` in VSD API.
                 
         """
-        self._entity_scope = value
+        self._network_id = value
 
     
     @property
-    def ether_type(self):
-        """ Get ether_type value.
+    def network_type(self):
+        """ Get network_type value.
 
             Notes:
-                Ether type of the packet to be matched. etherType can be * or a valid hexadecimal value
+                Type of the source network -    VM_SUBNET or VM_ZONE or VM_DOMAIN or SUBNET or ZONE or ENTERPRISE_NETWORK or PUBLIC_NETWORK or ANY
 
                 
-                This attribute is named `etherType` in VSD API.
+                This attribute is named `networkType` in VSD API.
                 
         """
-        return self._ether_type
+        return self._network_type
 
-    @ether_type.setter
-    def ether_type(self, value):
-        """ Set ether_type value.
+    @network_type.setter
+    def network_type(self, value):
+        """ Set network_type value.
 
             Notes:
-                Ether type of the packet to be matched. etherType can be * or a valid hexadecimal value
+                Type of the source network -    VM_SUBNET or VM_ZONE or VM_DOMAIN or SUBNET or ZONE or ENTERPRISE_NETWORK or PUBLIC_NETWORK or ANY
 
                 
-                This attribute is named `etherType` in VSD API.
+                This attribute is named `networkType` in VSD API.
                 
         """
-        self._ether_type = value
+        self._network_type = value
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
+    def mirror_destination_id(self):
+        """ Get mirror_destination_id value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                This is the ID of the mirrorDestination entity associated with this entity
 
                 
-                This attribute is named `externalID` in VSD API.
+                This attribute is named `mirrorDestinationID` in VSD API.
                 
         """
-        return self._external_id
+        return self._mirror_destination_id
 
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
+    @mirror_destination_id.setter
+    def mirror_destination_id(self, value):
+        """ Set mirror_destination_id value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                This is the ID of the mirrorDestination entity associated with this entity
 
                 
-                This attribute is named `externalID` in VSD API.
+                This attribute is named `mirrorDestinationID` in VSD API.
                 
         """
-        self._external_id = value
+        self._mirror_destination_id = value
 
     
     @property
@@ -1234,30 +1176,30 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
 
     
     @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
+    def entity_scope(self):
+        """ Get entity_scope value.
 
             Notes:
-                ID of the user who last updated the object.
+                Specify if scope of entity is Data center or Enterprise level
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `entityScope` in VSD API.
                 
         """
-        return self._last_updated_by
+        return self._entity_scope
 
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
 
             Notes:
-                ID of the user who last updated the object.
+                Specify if scope of entity is Data center or Enterprise level
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `entityScope` in VSD API.
                 
         """
-        self._last_updated_by = value
+        self._entity_scope = value
 
     
     @property
@@ -1315,87 +1257,6 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
 
     
     @property
-    def mirror_destination_id(self):
-        """ Get mirror_destination_id value.
-
-            Notes:
-                This is the ID of the mirrorDestination entity associated with this entity
-
-                
-                This attribute is named `mirrorDestinationID` in VSD API.
-                
-        """
-        return self._mirror_destination_id
-
-    @mirror_destination_id.setter
-    def mirror_destination_id(self, value):
-        """ Set mirror_destination_id value.
-
-            Notes:
-                This is the ID of the mirrorDestination entity associated with this entity
-
-                
-                This attribute is named `mirrorDestinationID` in VSD API.
-                
-        """
-        self._mirror_destination_id = value
-
-    
-    @property
-    def network_id(self):
-        """ Get network_id value.
-
-            Notes:
-                The destination network entity that is referenced(subnet/zone/macro)
-
-                
-                This attribute is named `networkID` in VSD API.
-                
-        """
-        return self._network_id
-
-    @network_id.setter
-    def network_id(self, value):
-        """ Set network_id value.
-
-            Notes:
-                The destination network entity that is referenced(subnet/zone/macro)
-
-                
-                This attribute is named `networkID` in VSD API.
-                
-        """
-        self._network_id = value
-
-    
-    @property
-    def network_type(self):
-        """ Get network_type value.
-
-            Notes:
-                Type of the source network -    VM_SUBNET or VM_ZONE or VM_DOMAIN or SUBNET or ZONE or ENTERPRISE_NETWORK or PUBLIC_NETWORK or ANY
-
-                
-                This attribute is named `networkType` in VSD API.
-                
-        """
-        return self._network_type
-
-    @network_type.setter
-    def network_type(self, value):
-        """ Set network_type value.
-
-            Notes:
-                Type of the source network -    VM_SUBNET or VM_ZONE or VM_DOMAIN or SUBNET or ZONE or ENTERPRISE_NETWORK or PUBLIC_NETWORK or ANY
-
-                
-                This attribute is named `networkType` in VSD API.
-                
-        """
-        self._network_type = value
-
-    
-    @property
     def policy_state(self):
         """ Get policy_state value.
 
@@ -1420,75 +1281,6 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
                 
         """
         self._policy_state = value
-
-    
-    @property
-    def priority(self):
-        """ Get priority value.
-
-            Notes:
-                The priority of the ACL entry that determines the order of entries
-
-                
-        """
-        return self._priority
-
-    @priority.setter
-    def priority(self, value):
-        """ Set priority value.
-
-            Notes:
-                The priority of the ACL entry that determines the order of entries
-
-                
-        """
-        self._priority = value
-
-    
-    @property
-    def protocol(self):
-        """ Get protocol value.
-
-            Notes:
-                Protocol number that must be matched
-
-                
-        """
-        return self._protocol
-
-    @protocol.setter
-    def protocol(self, value):
-        """ Set protocol value.
-
-            Notes:
-                Protocol number that must be matched
-
-                
-        """
-        self._protocol = value
-
-    
-    @property
-    def reflexive(self):
-        """ Get reflexive value.
-
-            Notes:
-                True means that this ACL entry is reflexive, so there will be a corresponding rule that will be created by OVS in the network. False means that there is no corresponding rule created by OVS in the network.
-
-                
-        """
-        return self._reflexive
-
-    @reflexive.setter
-    def reflexive(self, value):
-        """ Set reflexive value.
-
-            Notes:
-                True means that this ACL entry is reflexive, so there will be a corresponding rule that will be created by OVS in the network. False means that there is no corresponding rule created by OVS in the network.
-
-                
-        """
-        self._reflexive = value
 
     
     @property
@@ -1627,6 +1419,160 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
 
     
     @property
+    def priority(self):
+        """ Get priority value.
+
+            Notes:
+                The priority of the ACL entry that determines the order of entries
+
+                
+        """
+        return self._priority
+
+    @priority.setter
+    def priority(self, value):
+        """ Set priority value.
+
+            Notes:
+                The priority of the ACL entry that determines the order of entries
+
+                
+        """
+        self._priority = value
+
+    
+    @property
+    def protocol(self):
+        """ Get protocol value.
+
+            Notes:
+                Protocol number that must be matched
+
+                
+        """
+        return self._protocol
+
+    @protocol.setter
+    def protocol(self, value):
+        """ Set protocol value.
+
+            Notes:
+                Protocol number that must be matched
+
+                
+        """
+        self._protocol = value
+
+    
+    @property
+    def associated_application_id(self):
+        """ Get associated_application_id value.
+
+            Notes:
+                The associated application ID
+
+                
+                This attribute is named `associatedApplicationID` in VSD API.
+                
+        """
+        return self._associated_application_id
+
+    @associated_application_id.setter
+    def associated_application_id(self, value):
+        """ Set associated_application_id value.
+
+            Notes:
+                The associated application ID
+
+                
+                This attribute is named `associatedApplicationID` in VSD API.
+                
+        """
+        self._associated_application_id = value
+
+    
+    @property
+    def associated_application_object_id(self):
+        """ Get associated_application_object_id value.
+
+            Notes:
+                The associated application object ID
+
+                
+                This attribute is named `associatedApplicationObjectID` in VSD API.
+                
+        """
+        return self._associated_application_object_id
+
+    @associated_application_object_id.setter
+    def associated_application_object_id(self, value):
+        """ Set associated_application_object_id value.
+
+            Notes:
+                The associated application object ID
+
+                
+                This attribute is named `associatedApplicationObjectID` in VSD API.
+                
+        """
+        self._associated_application_object_id = value
+
+    
+    @property
+    def associated_application_object_type(self):
+        """ Get associated_application_object_type value.
+
+            Notes:
+                The associated application object type
+
+                
+                This attribute is named `associatedApplicationObjectType` in VSD API.
+                
+        """
+        return self._associated_application_object_type
+
+    @associated_application_object_type.setter
+    def associated_application_object_type(self, value):
+        """ Set associated_application_object_type value.
+
+            Notes:
+                The associated application object type
+
+                
+                This attribute is named `associatedApplicationObjectType` in VSD API.
+                
+        """
+        self._associated_application_object_type = value
+
+    
+    @property
+    def associated_live_entity_id(self):
+        """ Get associated_live_entity_id value.
+
+            Notes:
+                ID of the associated live entity
+
+                
+                This attribute is named `associatedLiveEntityID` in VSD API.
+                
+        """
+        return self._associated_live_entity_id
+
+    @associated_live_entity_id.setter
+    def associated_live_entity_id(self, value):
+        """ Set associated_live_entity_id value.
+
+            Notes:
+                ID of the associated live entity
+
+                
+                This attribute is named `associatedLiveEntityID` in VSD API.
+                
+        """
+        self._associated_live_entity_id = value
+
+    
+    @property
     def stateful(self):
         """ Get stateful value.
 
@@ -1701,6 +1647,60 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
                 
         """
         self._stats_logging_enabled = value
+
+    
+    @property
+    def ether_type(self):
+        """ Get ether_type value.
+
+            Notes:
+                Ether type of the packet to be matched. etherType can be * or a valid hexadecimal value
+
+                
+                This attribute is named `etherType` in VSD API.
+                
+        """
+        return self._ether_type
+
+    @ether_type.setter
+    def ether_type(self, value):
+        """ Set ether_type value.
+
+            Notes:
+                Ether type of the packet to be matched. etherType can be * or a valid hexadecimal value
+
+                
+                This attribute is named `etherType` in VSD API.
+                
+        """
+        self._ether_type = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

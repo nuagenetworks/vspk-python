@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -71,26 +71,26 @@ class NUIKESubnet(NURESTObject):
 
         # Read/Write Attributes
         
-        self._associated_ike_gateway_id = None
-        self._entity_scope = None
-        self._external_id = None
         self._last_updated_by = None
+        self._entity_scope = None
         self._prefix = None
+        self._associated_ike_gateway_id = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="associated_ike_gateway_id", remote_name="associatedIKEGatewayID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="prefix", remote_name="prefix", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_ike_gateway_id", remote_name="associatedIKEGatewayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -98,30 +98,30 @@ class NUIKESubnet(NURESTObject):
     # Properties
     
     @property
-    def associated_ike_gateway_id(self):
-        """ Get associated_ike_gateway_id value.
+    def last_updated_by(self):
+        """ Get last_updated_by value.
 
             Notes:
-                The ID of the associated IKEGateway
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `associatedIKEGatewayID` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        return self._associated_ike_gateway_id
+        return self._last_updated_by
 
-    @associated_ike_gateway_id.setter
-    def associated_ike_gateway_id(self, value):
-        """ Set associated_ike_gateway_id value.
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
 
             Notes:
-                The ID of the associated IKEGateway
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `associatedIKEGatewayID` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        self._associated_ike_gateway_id = value
+        self._last_updated_by = value
 
     
     @property
@@ -152,6 +152,56 @@ class NUIKESubnet(NURESTObject):
 
     
     @property
+    def prefix(self):
+        """ Get prefix value.
+
+            Notes:
+                The subnet prefix (eg: 10.0.0.0/24)
+
+                
+        """
+        return self._prefix
+
+    @prefix.setter
+    def prefix(self, value):
+        """ Set prefix value.
+
+            Notes:
+                The subnet prefix (eg: 10.0.0.0/24)
+
+                
+        """
+        self._prefix = value
+
+    
+    @property
+    def associated_ike_gateway_id(self):
+        """ Get associated_ike_gateway_id value.
+
+            Notes:
+                The ID of the associated IKEGateway
+
+                
+                This attribute is named `associatedIKEGatewayID` in VSD API.
+                
+        """
+        return self._associated_ike_gateway_id
+
+    @associated_ike_gateway_id.setter
+    def associated_ike_gateway_id(self, value):
+        """ Set associated_ike_gateway_id value.
+
+            Notes:
+                The ID of the associated IKEGateway
+
+                
+                This attribute is named `associatedIKEGatewayID` in VSD API.
+                
+        """
+        self._associated_ike_gateway_id = value
+
+    
+    @property
     def external_id(self):
         """ Get external_id value.
 
@@ -176,56 +226,6 @@ class NUIKESubnet(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def prefix(self):
-        """ Get prefix value.
-
-            Notes:
-                The subnet prefix (eg: 10.0.0.0/24)
-
-                
-        """
-        return self._prefix
-
-    @prefix.setter
-    def prefix(self, value):
-        """ Set prefix value.
-
-            Notes:
-                The subnet prefix (eg: 10.0.0.0/24)
-
-                
-        """
-        self._prefix = value
 
     
 

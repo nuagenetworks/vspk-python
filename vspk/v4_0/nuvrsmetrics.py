@@ -62,21 +62,21 @@ class NUVrsMetrics(NURESTObject):
         self._cpu_utilization = None
         self._vrs_process = None
         self._vrsvsc_status = None
+        self._receiving_metrics = None
+        self._memory_utilization = None
+        self._jesxmon_process = None
         self._agent_name = None
         self._assoc_vcenter_hypervisor_id = None
-        self._jesxmon_process = None
-        self._memory_utilization = None
-        self._receiving_metrics = None
         
         self.expose_attribute(local_name="al_ubr0_status", remote_name="ALUbr0Status", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cpu_utilization", remote_name="CPUUtilization", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_process", remote_name="VRSProcess", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrsvsc_status", remote_name="VRSVSCStatus", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="receiving_metrics", remote_name="receivingMetrics", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="memory_utilization", remote_name="memoryUtilization", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="jesxmon_process", remote_name="jesxmonProcess", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="agent_name", remote_name="agentName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_vcenter_hypervisor_id", remote_name="assocVCenterHypervisorID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="jesxmon_process", remote_name="jesxmonProcess", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="memory_utilization", remote_name="memoryUtilization", attribute_type=float, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="receiving_metrics", remote_name="receivingMetrics", attribute_type=bool, is_required=False, is_unique=False)
         
 
         self._compute_args(**kwargs)
@@ -192,6 +192,87 @@ class NUVrsMetrics(NURESTObject):
 
     
     @property
+    def receiving_metrics(self):
+        """ Get receiving_metrics value.
+
+            Notes:
+                Is the VRS VM Sending Metrics to the hypervisor on VCIN
+
+                
+                This attribute is named `receivingMetrics` in VSD API.
+                
+        """
+        return self._receiving_metrics
+
+    @receiving_metrics.setter
+    def receiving_metrics(self, value):
+        """ Set receiving_metrics value.
+
+            Notes:
+                Is the VRS VM Sending Metrics to the hypervisor on VCIN
+
+                
+                This attribute is named `receivingMetrics` in VSD API.
+                
+        """
+        self._receiving_metrics = value
+
+    
+    @property
+    def memory_utilization(self):
+        """ Get memory_utilization value.
+
+            Notes:
+                Memory Utilization
+
+                
+                This attribute is named `memoryUtilization` in VSD API.
+                
+        """
+        return self._memory_utilization
+
+    @memory_utilization.setter
+    def memory_utilization(self, value):
+        """ Set memory_utilization value.
+
+            Notes:
+                Memory Utilization
+
+                
+                This attribute is named `memoryUtilization` in VSD API.
+                
+        """
+        self._memory_utilization = value
+
+    
+    @property
+    def jesxmon_process(self):
+        """ Get jesxmon_process value.
+
+            Notes:
+                jesxmon process status
+
+                
+                This attribute is named `jesxmonProcess` in VSD API.
+                
+        """
+        return self._jesxmon_process
+
+    @jesxmon_process.setter
+    def jesxmon_process(self, value):
+        """ Set jesxmon_process value.
+
+            Notes:
+                jesxmon process status
+
+                
+                This attribute is named `jesxmonProcess` in VSD API.
+                
+        """
+        self._jesxmon_process = value
+
+    
+    @property
     def agent_name(self):
         """ Get agent_name value.
 
@@ -243,87 +324,6 @@ class NUVrsMetrics(NURESTObject):
                 
         """
         self._assoc_vcenter_hypervisor_id = value
-
-    
-    @property
-    def jesxmon_process(self):
-        """ Get jesxmon_process value.
-
-            Notes:
-                jesxmon process status
-
-                
-                This attribute is named `jesxmonProcess` in VSD API.
-                
-        """
-        return self._jesxmon_process
-
-    @jesxmon_process.setter
-    def jesxmon_process(self, value):
-        """ Set jesxmon_process value.
-
-            Notes:
-                jesxmon process status
-
-                
-                This attribute is named `jesxmonProcess` in VSD API.
-                
-        """
-        self._jesxmon_process = value
-
-    
-    @property
-    def memory_utilization(self):
-        """ Get memory_utilization value.
-
-            Notes:
-                Memory Utilization
-
-                
-                This attribute is named `memoryUtilization` in VSD API.
-                
-        """
-        return self._memory_utilization
-
-    @memory_utilization.setter
-    def memory_utilization(self, value):
-        """ Set memory_utilization value.
-
-            Notes:
-                Memory Utilization
-
-                
-                This attribute is named `memoryUtilization` in VSD API.
-                
-        """
-        self._memory_utilization = value
-
-    
-    @property
-    def receiving_metrics(self):
-        """ Get receiving_metrics value.
-
-            Notes:
-                Is the VRS VM Sending Metrics to the hypervisor on VCIN
-
-                
-                This attribute is named `receivingMetrics` in VSD API.
-                
-        """
-        return self._receiving_metrics
-
-    @receiving_metrics.setter
-    def receiving_metrics(self, value):
-        """ Set receiving_metrics value.
-
-            Notes:
-                Is the VRS VM Sending Metrics to the hypervisor on VCIN
-
-                
-                This attribute is named `receivingMetrics` in VSD API.
-                
-        """
-        self._receiving_metrics = value
 
     
 

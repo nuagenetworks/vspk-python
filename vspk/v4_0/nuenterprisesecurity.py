@@ -27,13 +27,13 @@
 
 
 
-from .fetchers import NUEnterpriseSecuredDatasFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUMetadatasFetcher
+from .fetchers import NUEnterpriseSecuredDatasFetcher
 
 from bambou import NURESTObject
 
@@ -74,36 +74,113 @@ class NUEnterpriseSecurity(NURESTObject):
 
         # Read/Write Attributes
         
+        self._last_updated_by = None
+        self._gateway_security_revision = None
+        self._revision = None
         self._enterprise_id = None
         self._entity_scope = None
         self._external_id = None
-        self._gateway_security_revision = None
-        self._last_updated_by = None
-        self._revision = None
         
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_security_revision", remote_name="gatewaySecurityRevision", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="revision", remote_name="revision", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="gateway_security_revision", remote_name="gatewaySecurityRevision", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="revision", remote_name="revision", attribute_type=int, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
-        self.enterprise_secured_datas = NUEnterpriseSecuredDatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.enterprise_secured_datas = NUEnterpriseSecuredDatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def gateway_security_revision(self):
+        """ Get gateway_security_revision value.
+
+            Notes:
+                change revision number for the gateway security data
+
+                
+                This attribute is named `gatewaySecurityRevision` in VSD API.
+                
+        """
+        return self._gateway_security_revision
+
+    @gateway_security_revision.setter
+    def gateway_security_revision(self, value):
+        """ Set gateway_security_revision value.
+
+            Notes:
+                change revision number for the gateway security data
+
+                
+                This attribute is named `gatewaySecurityRevision` in VSD API.
+                
+        """
+        self._gateway_security_revision = value
+
+    
+    @property
+    def revision(self):
+        """ Get revision value.
+
+            Notes:
+                revision number for the enterprise security data
+
+                
+        """
+        return self._revision
+
+    @revision.setter
+    def revision(self, value):
+        """ Set revision value.
+
+            Notes:
+                revision number for the enterprise security data
+
+                
+        """
+        self._revision = value
+
     
     @property
     def enterprise_id(self):
@@ -184,83 +261,6 @@ class NUEnterpriseSecurity(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def gateway_security_revision(self):
-        """ Get gateway_security_revision value.
-
-            Notes:
-                change revision number for the gateway security data
-
-                
-                This attribute is named `gatewaySecurityRevision` in VSD API.
-                
-        """
-        return self._gateway_security_revision
-
-    @gateway_security_revision.setter
-    def gateway_security_revision(self, value):
-        """ Set gateway_security_revision value.
-
-            Notes:
-                change revision number for the gateway security data
-
-                
-                This attribute is named `gatewaySecurityRevision` in VSD API.
-                
-        """
-        self._gateway_security_revision = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def revision(self):
-        """ Get revision value.
-
-            Notes:
-                revision number for the enterprise security data
-
-                
-        """
-        return self._revision
-
-    @revision.setter
-    def revision(self, value):
-        """ Set revision value.
-
-            Notes:
-                revision number for the enterprise security data
-
-                
-        """
-        self._revision = value
 
     
 

@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -71,170 +71,43 @@ class NULocation(NURESTObject):
 
         # Read/Write Attributes
         
-        self._address = None
-        self._country = None
-        self._entity_scope = None
-        self._external_id = None
-        self._ignore_geocode = None
         self._last_updated_by = None
         self._latitude = None
+        self._address = None
+        self._ignore_geocode = None
+        self._time_zone_id = None
+        self._entity_scope = None
         self._locality = None
         self._longitude = None
+        self._country = None
         self._state = None
-        self._time_zone_id = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="country", remote_name="country", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="ignore_geocode", remote_name="ignoreGeocode", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="latitude", remote_name="latitude", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ignore_geocode", remote_name="ignoreGeocode", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="time_zone_id", remote_name="timeZoneID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="locality", remote_name="locality", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="longitude", remote_name="longitude", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="country", remote_name="country", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="state", remote_name="state", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="time_zone_id", remote_name="timeZoneID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
-    
-    @property
-    def address(self):
-        """ Get address value.
-
-            Notes:
-                Formatted address including property number, street name, suite or office number, ...
-
-                
-        """
-        return self._address
-
-    @address.setter
-    def address(self, value):
-        """ Set address value.
-
-            Notes:
-                Formatted address including property number, street name, suite or office number, ...
-
-                
-        """
-        self._address = value
-
-    
-    @property
-    def country(self):
-        """ Get country value.
-
-            Notes:
-                Country
-
-                
-        """
-        return self._country
-
-    @country.setter
-    def country(self, value):
-        """ Set country value.
-
-            Notes:
-                Country
-
-                
-        """
-        self._country = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def ignore_geocode(self):
-        """ Get ignore_geocode value.
-
-            Notes:
-                Request BSS to perform a geocode on the address - If no value passed, requestGeocode will be set to true
-
-                
-                This attribute is named `ignoreGeocode` in VSD API.
-                
-        """
-        return self._ignore_geocode
-
-    @ignore_geocode.setter
-    def ignore_geocode(self, value):
-        """ Set ignore_geocode value.
-
-            Notes:
-                Request BSS to perform a geocode on the address - If no value passed, requestGeocode will be set to true
-
-                
-                This attribute is named `ignoreGeocode` in VSD API.
-                
-        """
-        self._ignore_geocode = value
-
     
     @property
     def last_updated_by(self):
@@ -287,6 +160,110 @@ class NULocation(NURESTObject):
 
     
     @property
+    def address(self):
+        """ Get address value.
+
+            Notes:
+                Formatted address including property number, street name, suite or office number, ...
+
+                
+        """
+        return self._address
+
+    @address.setter
+    def address(self, value):
+        """ Set address value.
+
+            Notes:
+                Formatted address including property number, street name, suite or office number, ...
+
+                
+        """
+        self._address = value
+
+    
+    @property
+    def ignore_geocode(self):
+        """ Get ignore_geocode value.
+
+            Notes:
+                Request BSS to perform a geocode on the address - If no value passed, requestGeocode will be set to true
+
+                
+                This attribute is named `ignoreGeocode` in VSD API.
+                
+        """
+        return self._ignore_geocode
+
+    @ignore_geocode.setter
+    def ignore_geocode(self, value):
+        """ Set ignore_geocode value.
+
+            Notes:
+                Request BSS to perform a geocode on the address - If no value passed, requestGeocode will be set to true
+
+                
+                This attribute is named `ignoreGeocode` in VSD API.
+                
+        """
+        self._ignore_geocode = value
+
+    
+    @property
+    def time_zone_id(self):
+        """ Get time_zone_id value.
+
+            Notes:
+                Time zone in which the Gateway is located.  This can be in the form of a UTC/GMT offset, continent/city location, or country/region.  The available time zones can be found in /usr/share/zoneinfo on a Linux machine or retrieved with TimeZone.getAvailableIDs() in Java.  Refer to the IANA (Internet Assigned Numbers Authority) for a list of time zones.  URL :  http://www.iana.org/time-zones  Default value is UTC (translating to Etc/Zulu)
+
+                
+                This attribute is named `timeZoneID` in VSD API.
+                
+        """
+        return self._time_zone_id
+
+    @time_zone_id.setter
+    def time_zone_id(self, value):
+        """ Set time_zone_id value.
+
+            Notes:
+                Time zone in which the Gateway is located.  This can be in the form of a UTC/GMT offset, continent/city location, or country/region.  The available time zones can be found in /usr/share/zoneinfo on a Linux machine or retrieved with TimeZone.getAvailableIDs() in Java.  Refer to the IANA (Internet Assigned Numbers Authority) for a list of time zones.  URL :  http://www.iana.org/time-zones  Default value is UTC (translating to Etc/Zulu)
+
+                
+                This attribute is named `timeZoneID` in VSD API.
+                
+        """
+        self._time_zone_id = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
     def locality(self):
         """ Get locality value.
 
@@ -333,6 +310,29 @@ class NULocation(NURESTObject):
 
     
     @property
+    def country(self):
+        """ Get country value.
+
+            Notes:
+                Country
+
+                
+        """
+        return self._country
+
+    @country.setter
+    def country(self, value):
+        """ Set country value.
+
+            Notes:
+                Country
+
+                
+        """
+        self._country = value
+
+    
+    @property
     def state(self):
         """ Get state value.
 
@@ -356,30 +356,30 @@ class NULocation(NURESTObject):
 
     
     @property
-    def time_zone_id(self):
-        """ Get time_zone_id value.
+    def external_id(self):
+        """ Get external_id value.
 
             Notes:
-                Time zone in which the Gateway is located.  This can be in the form of a UTC/GMT offset, continent/city location, or country/region.  The available time zones can be found in /usr/share/zoneinfo on a Linux machine or retrieved with TimeZone.getAvailableIDs() in Java.  Refer to the IANA (Internet Assigned Numbers Authority) for a list of time zones.  URL :  http://www.iana.org/time-zones  Default value is UTC (translating to Etc/Zulu)
+                External object ID. Used for integration with third party systems
 
                 
-                This attribute is named `timeZoneID` in VSD API.
+                This attribute is named `externalID` in VSD API.
                 
         """
-        return self._time_zone_id
+        return self._external_id
 
-    @time_zone_id.setter
-    def time_zone_id(self, value):
-        """ Set time_zone_id value.
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
 
             Notes:
-                Time zone in which the Gateway is located.  This can be in the form of a UTC/GMT offset, continent/city location, or country/region.  The available time zones can be found in /usr/share/zoneinfo on a Linux machine or retrieved with TimeZone.getAvailableIDs() in Java.  Refer to the IANA (Internet Assigned Numbers Authority) for a list of time zones.  URL :  http://www.iana.org/time-zones  Default value is UTC (translating to Etc/Zulu)
+                External object ID. Used for integration with third party systems
 
                 
-                This attribute is named `timeZoneID` in VSD API.
+                This attribute is named `externalID` in VSD API.
                 
         """
-        self._time_zone_id = value
+        self._external_id = value
 
     
 

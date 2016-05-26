@@ -27,19 +27,19 @@
 
 
 
-from .fetchers import NUEventLogsFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
 
 
+from .fetchers import NUVMsFetcher
+
+
 from .fetchers import NUGroupsFetcher
 
 
-from .fetchers import NUMetadatasFetcher
-
-
-from .fetchers import NUVMsFetcher
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -90,51 +90,51 @@ class NUUser(NURESTObject):
 
         # Read/Write Attributes
         
-        self._avatar_data = None
-        self._avatar_type = None
+        self._management_mode = None
+        self._password = None
+        self._last_name = None
+        self._last_updated_by = None
+        self._first_name = None
         self._disabled = None
         self._email = None
         self._entity_scope = None
-        self._external_id = None
-        self._first_name = None
-        self._last_name = None
-        self._last_updated_by = None
-        self._management_mode = None
         self._mobile_number = None
-        self._password = None
         self._user_name = None
+        self._avatar_data = None
+        self._avatar_type = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="avatar_data", remote_name="avatarData", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="avatar_type", remote_name="avatarType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BASE64', u'COMPUTEDURL', u'URL'])
+        self.expose_attribute(local_name="management_mode", remote_name="managementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'CMS', u'DEFAULT'])
+        self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_name", remote_name="lastName", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="first_name", remote_name="firstName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="disabled", remote_name="disabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="email", remote_name="email", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="first_name", remote_name="firstName", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="last_name", remote_name="lastName", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="management_mode", remote_name="managementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'CMS', u'DEFAULT'])
         self.expose_attribute(local_name="mobile_number", remote_name="mobileNumber", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="user_name", remote_name="userName", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="avatar_data", remote_name="avatarData", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="avatar_type", remote_name="avatarType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BASE64', u'COMPUTEDURL', u'URL'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.vms = NUVMsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.vms = NUVMsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -142,57 +142,134 @@ class NUUser(NURESTObject):
     # Properties
     
     @property
-    def avatar_data(self):
-        """ Get avatar_data value.
+    def management_mode(self):
+        """ Get management_mode value.
 
             Notes:
-                URL to the avatar data associated with the enterprise. If the avatarType is URL then value of avatarData should an URL of the image. If the avatarType BASE64 then avatarData should be BASE64 encoded value of the image
+                Management mode of the user object - allows for override of external authorization and syncup
 
                 
-                This attribute is named `avatarData` in VSD API.
+                This attribute is named `managementMode` in VSD API.
                 
         """
-        return self._avatar_data
+        return self._management_mode
 
-    @avatar_data.setter
-    def avatar_data(self, value):
-        """ Set avatar_data value.
+    @management_mode.setter
+    def management_mode(self, value):
+        """ Set management_mode value.
 
             Notes:
-                URL to the avatar data associated with the enterprise. If the avatarType is URL then value of avatarData should an URL of the image. If the avatarType BASE64 then avatarData should be BASE64 encoded value of the image
+                Management mode of the user object - allows for override of external authorization and syncup
 
                 
-                This attribute is named `avatarData` in VSD API.
+                This attribute is named `managementMode` in VSD API.
                 
         """
-        self._avatar_data = value
+        self._management_mode = value
 
     
     @property
-    def avatar_type(self):
-        """ Get avatar_type value.
+    def password(self):
+        """ Get password value.
 
             Notes:
-                Avatar type.
+                User password stored as a hash (SHA-1 encrpted)
 
-                
-                This attribute is named `avatarType` in VSD API.
                 
         """
-        return self._avatar_type
+        return self._password
 
-    @avatar_type.setter
-    def avatar_type(self, value):
-        """ Set avatar_type value.
+    @password.setter
+    def password(self, value):
+        """ Set password value.
 
             Notes:
-                Avatar type.
+                User password stored as a hash (SHA-1 encrpted)
 
                 
-                This attribute is named `avatarType` in VSD API.
+        """
+        self._password = value
+
+    
+    @property
+    def last_name(self):
+        """ Get last_name value.
+
+            Notes:
+                Last name of the user
+
+                
+                This attribute is named `lastName` in VSD API.
                 
         """
-        self._avatar_type = value
+        return self._last_name
+
+    @last_name.setter
+    def last_name(self, value):
+        """ Set last_name value.
+
+            Notes:
+                Last name of the user
+
+                
+                This attribute is named `lastName` in VSD API.
+                
+        """
+        self._last_name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def first_name(self):
+        """ Get first_name value.
+
+            Notes:
+                First name of the user
+
+                
+                This attribute is named `firstName` in VSD API.
+                
+        """
+        return self._first_name
+
+    @first_name.setter
+    def first_name(self, value):
+        """ Set first_name value.
+
+            Notes:
+                First name of the user
+
+                
+                This attribute is named `firstName` in VSD API.
+                
+        """
+        self._first_name = value
 
     
     @property
@@ -269,141 +346,6 @@ class NUUser(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def first_name(self):
-        """ Get first_name value.
-
-            Notes:
-                First name of the user
-
-                
-                This attribute is named `firstName` in VSD API.
-                
-        """
-        return self._first_name
-
-    @first_name.setter
-    def first_name(self, value):
-        """ Set first_name value.
-
-            Notes:
-                First name of the user
-
-                
-                This attribute is named `firstName` in VSD API.
-                
-        """
-        self._first_name = value
-
-    
-    @property
-    def last_name(self):
-        """ Get last_name value.
-
-            Notes:
-                Last name of the user
-
-                
-                This attribute is named `lastName` in VSD API.
-                
-        """
-        return self._last_name
-
-    @last_name.setter
-    def last_name(self, value):
-        """ Set last_name value.
-
-            Notes:
-                Last name of the user
-
-                
-                This attribute is named `lastName` in VSD API.
-                
-        """
-        self._last_name = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def management_mode(self):
-        """ Get management_mode value.
-
-            Notes:
-                Management mode of the user object - allows for override of external authorization and syncup
-
-                
-                This attribute is named `managementMode` in VSD API.
-                
-        """
-        return self._management_mode
-
-    @management_mode.setter
-    def management_mode(self, value):
-        """ Set management_mode value.
-
-            Notes:
-                Management mode of the user object - allows for override of external authorization and syncup
-
-                
-                This attribute is named `managementMode` in VSD API.
-                
-        """
-        self._management_mode = value
-
-    
-    @property
     def mobile_number(self):
         """ Get mobile_number value.
 
@@ -431,29 +373,6 @@ class NUUser(NURESTObject):
 
     
     @property
-    def password(self):
-        """ Get password value.
-
-            Notes:
-                User password stored as a hash (SHA-1 encrpted)
-
-                
-        """
-        return self._password
-
-    @password.setter
-    def password(self, value):
-        """ Set password value.
-
-            Notes:
-                User password stored as a hash (SHA-1 encrpted)
-
-                
-        """
-        self._password = value
-
-    
-    @property
     def user_name(self):
         """ Get user_name value.
 
@@ -478,6 +397,87 @@ class NUUser(NURESTObject):
                 
         """
         self._user_name = value
+
+    
+    @property
+    def avatar_data(self):
+        """ Get avatar_data value.
+
+            Notes:
+                URL to the avatar data associated with the enterprise. If the avatarType is URL then value of avatarData should an URL of the image. If the avatarType BASE64 then avatarData should be BASE64 encoded value of the image
+
+                
+                This attribute is named `avatarData` in VSD API.
+                
+        """
+        return self._avatar_data
+
+    @avatar_data.setter
+    def avatar_data(self, value):
+        """ Set avatar_data value.
+
+            Notes:
+                URL to the avatar data associated with the enterprise. If the avatarType is URL then value of avatarData should an URL of the image. If the avatarType BASE64 then avatarData should be BASE64 encoded value of the image
+
+                
+                This attribute is named `avatarData` in VSD API.
+                
+        """
+        self._avatar_data = value
+
+    
+    @property
+    def avatar_type(self):
+        """ Get avatar_type value.
+
+            Notes:
+                Avatar type.
+
+                
+                This attribute is named `avatarType` in VSD API.
+                
+        """
+        return self._avatar_type
+
+    @avatar_type.setter
+    def avatar_type(self, value):
+        """ Set avatar_type value.
+
+            Notes:
+                Avatar type.
+
+                
+                This attribute is named `avatarType` in VSD API.
+                
+        """
+        self._avatar_type = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

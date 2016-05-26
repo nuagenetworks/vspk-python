@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -71,28 +71,28 @@ class NUVPNConnection(NURESTObject):
 
         # Read/Write Attributes
         
-        self._associated_wan_service_id = None
+        self._name = None
+        self._last_updated_by = None
         self._description = None
         self._entity_scope = None
+        self._associated_wan_service_id = None
         self._external_id = None
-        self._last_updated_by = None
-        self._name = None
         
-        self.expose_attribute(local_name="associated_wan_service_id", remote_name="associatedWANServiceID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="associated_wan_service_id", remote_name="associatedWANServiceID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -100,30 +100,53 @@ class NUVPNConnection(NURESTObject):
     # Properties
     
     @property
-    def associated_wan_service_id(self):
-        """ Get associated_wan_service_id value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                Assosciated WAN Service
+                Name of the VPNConnect
 
-                
-                This attribute is named `associatedWANServiceID` in VSD API.
                 
         """
-        return self._associated_wan_service_id
+        return self._name
 
-    @associated_wan_service_id.setter
-    def associated_wan_service_id(self, value):
-        """ Set associated_wan_service_id value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                Assosciated WAN Service
+                Name of the VPNConnect
 
                 
-                This attribute is named `associatedWANServiceID` in VSD API.
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        self._associated_wan_service_id = value
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
 
     
     @property
@@ -177,6 +200,33 @@ class NUVPNConnection(NURESTObject):
 
     
     @property
+    def associated_wan_service_id(self):
+        """ Get associated_wan_service_id value.
+
+            Notes:
+                Assosciated WAN Service
+
+                
+                This attribute is named `associatedWANServiceID` in VSD API.
+                
+        """
+        return self._associated_wan_service_id
+
+    @associated_wan_service_id.setter
+    def associated_wan_service_id(self, value):
+        """ Set associated_wan_service_id value.
+
+            Notes:
+                Assosciated WAN Service
+
+                
+                This attribute is named `associatedWANServiceID` in VSD API.
+                
+        """
+        self._associated_wan_service_id = value
+
+    
+    @property
     def external_id(self):
         """ Get external_id value.
 
@@ -201,56 +251,6 @@ class NUVPNConnection(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the VPNConnect
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the VPNConnect
-
-                
-        """
-        self._name = value
 
     
 

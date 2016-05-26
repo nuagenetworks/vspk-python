@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 
 from .fetchers import NUQOSsFetcher
@@ -74,38 +74,38 @@ class NUPolicyDecision(NURESTObject):
 
         # Read/Write Attributes
         
+        self._last_updated_by = None
         self._egress_acls = None
         self._egress_qos = None
-        self._entity_scope = None
-        self._external_id = None
         self._fip_acls = None
         self._ingress_acls = None
         self._ingress_adv_fwd = None
         self._ingress_external_service_acls = None
-        self._last_updated_by = None
+        self._entity_scope = None
         self._qos = None
         self._stats = None
+        self._external_id = None
         
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="egress_acls", remote_name="egressACLs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="egress_qos", remote_name="egressQos", attribute_type=dict, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="fip_acls", remote_name="fipACLs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ingress_acls", remote_name="ingressACLs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ingress_adv_fwd", remote_name="ingressAdvFwd", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ingress_external_service_acls", remote_name="ingressExternalServiceACLs", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="qos", remote_name="qos", attribute_type=dict, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats", remote_name="stats", attribute_type=dict, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.qoss = NUQOSsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -114,6 +114,33 @@ class NUPolicyDecision(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
     
     @property
     def egress_acls(self):
@@ -167,60 +194,6 @@ class NUPolicyDecision(NURESTObject):
                 
         """
         self._egress_qos = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
 
     
     @property
@@ -332,30 +305,30 @@ class NUPolicyDecision(NURESTObject):
 
     
     @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
+    def entity_scope(self):
+        """ Get entity_scope value.
 
             Notes:
-                ID of the user who last updated the object.
+                Specify if scope of entity is Data center or Enterprise level
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `entityScope` in VSD API.
                 
         """
-        return self._last_updated_by
+        return self._entity_scope
 
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
 
             Notes:
-                ID of the user who last updated the object.
+                Specify if scope of entity is Data center or Enterprise level
 
                 
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `entityScope` in VSD API.
                 
         """
-        self._last_updated_by = value
+        self._entity_scope = value
 
     
     @property
@@ -402,6 +375,33 @@ class NUPolicyDecision(NURESTObject):
                 
         """
         self._stats = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -71,31 +71,108 @@ class NUGatewaySecurityProfile(NURESTObject):
 
         # Read/Write Attributes
         
+        self._last_updated_by = None
+        self._gateway_id = None
+        self._revision = None
         self._entity_scope = None
         self._external_id = None
-        self._gateway_id = None
-        self._last_updated_by = None
-        self._revision = None
         
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_id", remote_name="gatewayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="revision", remote_name="revision", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="gateway_id", remote_name="gatewayID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="revision", remote_name="revision", attribute_type=int, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def gateway_id(self):
+        """ Get gateway_id value.
+
+            Notes:
+                The gateway associated with this object. This is a read only attribute
+
+                
+                This attribute is named `gatewayID` in VSD API.
+                
+        """
+        return self._gateway_id
+
+    @gateway_id.setter
+    def gateway_id(self, value):
+        """ Set gateway_id value.
+
+            Notes:
+                The gateway associated with this object. This is a read only attribute
+
+                
+                This attribute is named `gatewayID` in VSD API.
+                
+        """
+        self._gateway_id = value
+
+    
+    @property
+    def revision(self):
+        """ Get revision value.
+
+            Notes:
+                revision number for the gateway security profile data
+
+                
+        """
+        return self._revision
+
+    @revision.setter
+    def revision(self, value):
+        """ Set revision value.
+
+            Notes:
+                revision number for the gateway security profile data
+
+                
+        """
+        self._revision = value
+
     
     @property
     def entity_scope(self):
@@ -149,83 +226,6 @@ class NUGatewaySecurityProfile(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def gateway_id(self):
-        """ Get gateway_id value.
-
-            Notes:
-                The gateway associated with this object. This is a read only attribute
-
-                
-                This attribute is named `gatewayID` in VSD API.
-                
-        """
-        return self._gateway_id
-
-    @gateway_id.setter
-    def gateway_id(self, value):
-        """ Set gateway_id value.
-
-            Notes:
-                The gateway associated with this object. This is a read only attribute
-
-                
-                This attribute is named `gatewayID` in VSD API.
-                
-        """
-        self._gateway_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def revision(self):
-        """ Get revision value.
-
-            Notes:
-                revision number for the gateway security profile data
-
-                
-        """
-        return self._revision
-
-    @revision.setter
-    def revision(self, value):
-        """ Set revision value.
-
-            Notes:
-                revision number for the gateway security profile data
-
-                
-        """
-        self._revision = value
 
     
 

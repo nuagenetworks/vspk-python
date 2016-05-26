@@ -27,7 +27,10 @@
 
 
 
-from .fetchers import NUEventLogsFetcher
+from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUVirtualIPsFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
@@ -36,13 +39,10 @@ from .fetchers import NUGlobalMetadatasFetcher
 from .fetchers import NUJobsFetcher
 
 
-from .fetchers import NUMetadatasFetcher
-
-
-from .fetchers import NUVirtualIPsFetcher
-
-
 from .fetchers import NUVPortsFetcher
+
+
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -94,40 +94,31 @@ class NURedirectionTarget(NURESTObject):
         # Read/Write Attributes
         
         self._esi = None
-        self._description = None
-        self._end_point_type = None
-        self._entity_scope = None
-        self._external_id = None
-        self._last_updated_by = None
         self._name = None
+        self._last_updated_by = None
         self._redundancy_enabled = None
         self._template_id = None
-        self._trigger_type = None
+        self._description = None
         self._virtual_network_id = None
+        self._end_point_type = None
+        self._entity_scope = None
+        self._trigger_type = None
+        self._external_id = None
         
         self.expose_attribute(local_name="esi", remote_name="ESI", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="end_point_type", remote_name="endPointType", attribute_type=str, is_required=True, is_unique=False, choices=[u'L3', u'NONE', u'VIRTUAL_WIRE'])
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redundancy_enabled", remote_name="redundancyEnabled", attribute_type=bool, is_required=True, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="trigger_type", remote_name="triggerType", attribute_type=str, is_required=False, is_unique=False, choices=[u'GARP', u'NONE'])
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="virtual_network_id", remote_name="virtualNetworkID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="end_point_type", remote_name="endPointType", attribute_type=str, is_required=True, is_unique=False, choices=[u'L3', u'NONE', u'VIRTUAL_WIRE'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="trigger_type", remote_name="triggerType", attribute_type=str, is_required=False, is_unique=False, choices=[u'GARP', u'NONE'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
-        
-        
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -136,7 +127,16 @@ class NURedirectionTarget(NURESTObject):
         self.virtual_ips = NUVirtualIPsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.vports = NUVPortsFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        
+        
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -171,107 +171,26 @@ class NURedirectionTarget(NURESTObject):
 
     
     @property
-    def description(self):
-        """ Get description value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                Description of this redirection target
+                Name of this redirection target
 
                 
         """
-        return self._description
+        return self._name
 
-    @description.setter
-    def description(self, value):
-        """ Set description value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                Description of this redirection target
+                Name of this redirection target
 
                 
         """
-        self._description = value
-
-    
-    @property
-    def end_point_type(self):
-        """ Get end_point_type value.
-
-            Notes:
-                EndpointType defines the type of header rewrite and forwarding performed by VRS when the endpoint is used as a PBR destination. NONE type is deprecated. Possible values are NONE, L3, VIRTUAL_WIRE, .
-
-                
-                This attribute is named `endPointType` in VSD API.
-                
-        """
-        return self._end_point_type
-
-    @end_point_type.setter
-    def end_point_type(self, value):
-        """ Set end_point_type value.
-
-            Notes:
-                EndpointType defines the type of header rewrite and forwarding performed by VRS when the endpoint is used as a PBR destination. NONE type is deprecated. Possible values are NONE, L3, VIRTUAL_WIRE, .
-
-                
-                This attribute is named `endPointType` in VSD API.
-                
-        """
-        self._end_point_type = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
+        self._name = value
 
     
     @property
@@ -299,29 +218,6 @@ class NURedirectionTarget(NURESTObject):
                 
         """
         self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of this redirection target
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of this redirection target
-
-                
-        """
-        self._name = value
 
     
     @property
@@ -379,30 +275,26 @@ class NURedirectionTarget(NURESTObject):
 
     
     @property
-    def trigger_type(self):
-        """ Get trigger_type value.
+    def description(self):
+        """ Get description value.
 
             Notes:
-                Trigger type, THIS IS READ ONLY. Possible values are NONE, GARP, .
+                Description of this redirection target
 
-                
-                This attribute is named `triggerType` in VSD API.
                 
         """
-        return self._trigger_type
+        return self._description
 
-    @trigger_type.setter
-    def trigger_type(self, value):
-        """ Set trigger_type value.
+    @description.setter
+    def description(self, value):
+        """ Set description value.
 
             Notes:
-                Trigger type, THIS IS READ ONLY. Possible values are NONE, GARP, .
+                Description of this redirection target
 
                 
-                This attribute is named `triggerType` in VSD API.
-                
         """
-        self._trigger_type = value
+        self._description = value
 
     
     @property
@@ -430,6 +322,114 @@ class NURedirectionTarget(NURESTObject):
                 
         """
         self._virtual_network_id = value
+
+    
+    @property
+    def end_point_type(self):
+        """ Get end_point_type value.
+
+            Notes:
+                EndpointType defines the type of header rewrite and forwarding performed by VRS when the endpoint is used as a PBR destination. NONE type is deprecated. Possible values are NONE, L3, VIRTUAL_WIRE, .
+
+                
+                This attribute is named `endPointType` in VSD API.
+                
+        """
+        return self._end_point_type
+
+    @end_point_type.setter
+    def end_point_type(self, value):
+        """ Set end_point_type value.
+
+            Notes:
+                EndpointType defines the type of header rewrite and forwarding performed by VRS when the endpoint is used as a PBR destination. NONE type is deprecated. Possible values are NONE, L3, VIRTUAL_WIRE, .
+
+                
+                This attribute is named `endPointType` in VSD API.
+                
+        """
+        self._end_point_type = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def trigger_type(self):
+        """ Get trigger_type value.
+
+            Notes:
+                Trigger type, THIS IS READ ONLY. Possible values are NONE, GARP, .
+
+                
+                This attribute is named `triggerType` in VSD API.
+                
+        """
+        return self._trigger_type
+
+    @trigger_type.setter
+    def trigger_type(self, value):
+        """ Set trigger_type value.
+
+            Notes:
+                Trigger type, THIS IS READ ONLY. Possible values are NONE, GARP, .
+
+                
+                This attribute is named `triggerType` in VSD API.
+                
+        """
+        self._trigger_type = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

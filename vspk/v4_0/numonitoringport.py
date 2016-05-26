@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -83,41 +83,91 @@ class NUMonitoringPort(NURESTObject):
 
         # Read/Write Attributes
         
+        self._name = None
+        self._last_state_change = None
         self._access = None
         self._description = None
-        self._entity_scope = None
-        self._external_id = None
-        self._last_state_change = None
-        self._name = None
         self._resiliency_state = None
         self._resilient = None
-        self._state = None
+        self._entity_scope = None
         self._uplink = None
+        self._state = None
+        self._external_id = None
         
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_state_change", remote_name="lastStateChange", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="access", remote_name="access", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_state_change", remote_name="lastStateChange", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="resiliency_state", remote_name="resiliencyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'backup', u'master', u'none'])
         self.expose_attribute(local_name="resilient", remote_name="resilient", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="state", remote_name="state", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="uplink", remote_name="uplink", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="state", remote_name="state", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name for the port.
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name for the port.
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_state_change(self):
+        """ Get last_state_change value.
+
+            Notes:
+                Last port state change timestamp.
+
+                
+                This attribute is named `lastStateChange` in VSD API.
+                
+        """
+        return self._last_state_change
+
+    @last_state_change.setter
+    def last_state_change(self, value):
+        """ Set last_state_change value.
+
+            Notes:
+                Last port state change timestamp.
+
+                
+                This attribute is named `lastStateChange` in VSD API.
+                
+        """
+        self._last_state_change = value
+
     
     @property
     def access(self):
@@ -163,110 +213,6 @@ class NUMonitoringPort(NURESTObject):
                 
         """
         self._description = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def last_state_change(self):
-        """ Get last_state_change value.
-
-            Notes:
-                Last port state change timestamp.
-
-                
-                This attribute is named `lastStateChange` in VSD API.
-                
-        """
-        return self._last_state_change
-
-    @last_state_change.setter
-    def last_state_change(self, value):
-        """ Set last_state_change value.
-
-            Notes:
-                Last port state change timestamp.
-
-                
-                This attribute is named `lastStateChange` in VSD API.
-                
-        """
-        self._last_state_change = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name for the port.
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name for the port.
-
-                
-        """
-        self._name = value
 
     
     @property
@@ -320,26 +266,30 @@ class NUMonitoringPort(NURESTObject):
 
     
     @property
-    def state(self):
-        """ Get state value.
+    def entity_scope(self):
+        """ Get entity_scope value.
 
             Notes:
-                The current state of the port.
+                Specify if scope of entity is Data center or Enterprise level
 
                 
+                This attribute is named `entityScope` in VSD API.
+                
         """
-        return self._state
+        return self._entity_scope
 
-    @state.setter
-    def state(self, value):
-        """ Set state value.
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
 
             Notes:
-                The current state of the port.
+                Specify if scope of entity is Data center or Enterprise level
 
                 
+                This attribute is named `entityScope` in VSD API.
+                
         """
-        self._state = value
+        self._entity_scope = value
 
     
     @property
@@ -363,6 +313,56 @@ class NUMonitoringPort(NURESTObject):
                 
         """
         self._uplink = value
+
+    
+    @property
+    def state(self):
+        """ Get state value.
+
+            Notes:
+                The current state of the port.
+
+                
+        """
+        return self._state
+
+    @state.setter
+    def state(self, value):
+        """ Set state value.
+
+            Notes:
+                The current state of the port.
+
+                
+        """
+        self._state = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

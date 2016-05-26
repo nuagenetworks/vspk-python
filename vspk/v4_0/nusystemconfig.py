@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -136,27 +136,16 @@ class NUSystemConfig(NURESTObject):
         # Read/Write Attributes
         
         self._acl_allow_origin = None
-        self._ad_gateway_purge_time = None
-        self._api_key_renewal_interval = None
-        self._api_key_validity = None
-        self._as_number = None
-        self._dhcp_option_size = None
         self._ecmp_count = None
-        self._evpnbgp_community_tag_as_number = None
-        self._evpnbgp_community_tag_lower_limit = None
-        self._evpnbgp_community_tag_upper_limit = None
         self._ldap_sync_interval = None
         self._ldap_trust_store_certifcate = None
         self._ldap_trust_store_password = None
-        self._lru_cache_size_per_subnet = None
+        self._ad_gateway_purge_time = None
         self._rd_lower_limit = None
         self._rd_public_network_lower_limit = None
         self._rd_public_network_upper_limit = None
         self._rd_upper_limit = None
-        self._rt_lower_limit = None
-        self._rt_public_network_lower_limit = None
-        self._rt_public_network_upper_limit = None
-        self._rt_upper_limit = None
+        self._dhcp_option_size = None
         self._vm_cache_size = None
         self._vm_purge_time = None
         self._vm_resync_deletion_wait_time = None
@@ -167,31 +156,42 @@ class NUSystemConfig(NURESTObject):
         self._vnid_public_network_lower_limit = None
         self._vnid_public_network_upper_limit = None
         self._vnid_upper_limit = None
+        self._api_key_renewal_interval = None
+        self._api_key_validity = None
         self._vport_init_stateful_timer = None
+        self._lru_cache_size_per_subnet = None
         self._vsc_on_same_version_as_vsd = None
         self._vsd_read_only_mode = None
         self._vsd_upgrade_is_complete = None
-        self._alarms_max_per_object = None
-        self._allow_enterprise_avatar_on_nsg = None
-        self._avatar_base_path = None
-        self._avatar_base_url = None
-        self._customer_id_upper_limit = None
-        self._customer_key = None
-        self._domain_tunnel_type = None
-        self._dynamic_wan_service_diff_time = None
+        self._as_number = None
+        self._rt_lower_limit = None
+        self._rt_public_network_lower_limit = None
+        self._rt_public_network_upper_limit = None
+        self._rt_upper_limit = None
+        self._evpnbgp_community_tag_as_number = None
+        self._evpnbgp_community_tag_lower_limit = None
+        self._evpnbgp_community_tag_upper_limit = None
+        self._page_max_size = None
+        self._page_size = None
+        self._last_updated_by = None
+        self._max_failed_logins = None
+        self._max_response = None
+        self._service_id_upper_limit = None
+        self._key_server_monitor_enabled = None
+        self._key_server_vsd_data_synchronization_interval = None
+        self._offset_customer_id = None
+        self._offset_service_id = None
         self._ejbca_nsg_certificate_profile = None
         self._ejbca_nsg_end_entity_profile = None
         self._ejbca_ocsp_responder_cn = None
         self._ejbca_ocsp_responder_uri = None
         self._ejbca_vsp_root_ca = None
+        self._alarms_max_per_object = None
+        self._allow_enterprise_avatar_on_nsg = None
+        self._inactive_timeout = None
         self._entity_scope = None
-        self._esi_id = None
-        self._event_log_cleanup_interval = None
-        self._event_log_entry_max_age = None
-        self._event_processor_interval = None
-        self._event_processor_max_events_count = None
-        self._event_processor_timeout = None
-        self._external_id = None
+        self._domain_tunnel_type = None
+        self._post_processor_threads_count = None
         self._group_key_default_sek_generation_interval = None
         self._group_key_default_sek_lifetime = None
         self._group_key_default_sek_payload_encryption_algorithm = None
@@ -211,21 +211,10 @@ class NUSystemConfig(NURESTObject):
         self._group_key_minimum_seed_generation_interval = None
         self._group_key_minimum_seed_lifetime = None
         self._group_key_minimum_traffic_encryption_key_lifetime = None
-        self._inactive_timeout = None
-        self._key_server_monitor_enabled = None
-        self._key_server_vsd_data_synchronization_interval = None
-        self._last_updated_by = None
-        self._max_failed_logins = None
-        self._max_response = None
         self._nsg_bootstrap_endpoint = None
         self._nsg_config_endpoint = None
         self._nsg_local_ui_url = None
-        self._offset_customer_id = None
-        self._offset_service_id = None
-        self._page_max_size = None
-        self._page_size = None
-        self._post_processor_threads_count = None
-        self._service_id_upper_limit = None
+        self._esi_id = None
         self._stack_trace_enabled = None
         self._stateful_acl_non_tcp_timeout = None
         self._stateful_acltcp_timeout = None
@@ -239,6 +228,20 @@ class NUSystemConfig(NURESTObject):
         self._stats_tsdb_server_address = None
         self._subnet_resync_interval = None
         self._subnet_resync_outstanding_interval = None
+        self._customer_id_upper_limit = None
+        self._customer_key = None
+        self._avatar_base_path = None
+        self._avatar_base_url = None
+        self._event_log_cleanup_interval = None
+        self._event_log_entry_max_age = None
+        self._event_processor_interval = None
+        self._event_processor_max_events_count = None
+        self._event_processor_timeout = None
+        self._two_factor_code_expiry = None
+        self._two_factor_code_length = None
+        self._two_factor_code_seed_length = None
+        self._external_id = None
+        self._dynamic_wan_service_diff_time = None
         self._syslog_destination_host = None
         self._syslog_destination_port = None
         self._sysmon_cleanup_task_interval = None
@@ -246,32 +249,18 @@ class NUSystemConfig(NURESTObject):
         self._sysmon_probe_response_timeout = None
         self._system_avatar_data = None
         self._system_avatar_type = None
-        self._two_factor_code_expiry = None
-        self._two_factor_code_length = None
-        self._two_factor_code_seed_length = None
         
         self.expose_attribute(local_name="acl_allow_origin", remote_name="ACLAllowOrigin", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="ad_gateway_purge_time", remote_name="ADGatewayPurgeTime", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="api_key_renewal_interval", remote_name="APIKeyRenewalInterval", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="api_key_validity", remote_name="APIKeyValidity", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="as_number", remote_name="ASNumber", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dhcp_option_size", remote_name="DHCPOptionSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ecmp_count", remote_name="ECMPCount", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="evpnbgp_community_tag_as_number", remote_name="EVPNBGPCommunityTagASNumber", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="evpnbgp_community_tag_lower_limit", remote_name="EVPNBGPCommunityTagLowerLimit", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="evpnbgp_community_tag_upper_limit", remote_name="EVPNBGPCommunityTagUpperLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ldap_sync_interval", remote_name="LDAPSyncInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ldap_trust_store_certifcate", remote_name="LDAPTrustStoreCertifcate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ldap_trust_store_password", remote_name="LDAPTrustStorePassword", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="lru_cache_size_per_subnet", remote_name="LRUCacheSizePerSubnet", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ad_gateway_purge_time", remote_name="ADGatewayPurgeTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rd_lower_limit", remote_name="RDLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rd_public_network_lower_limit", remote_name="RDPublicNetworkLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rd_public_network_upper_limit", remote_name="RDPublicNetworkUpperLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rd_upper_limit", remote_name="RDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="rt_lower_limit", remote_name="RTLowerLimit", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="rt_public_network_lower_limit", remote_name="RTPublicNetworkLowerLimit", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="rt_public_network_upper_limit", remote_name="RTPublicNetworkUpperLimit", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="rt_upper_limit", remote_name="RTUpperLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="dhcp_option_size", remote_name="DHCPOptionSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vm_cache_size", remote_name="VMCacheSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vm_purge_time", remote_name="VMPurgeTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vm_resync_deletion_wait_time", remote_name="VMResyncDeletionWaitTime", attribute_type=int, is_required=False, is_unique=False)
@@ -282,31 +271,42 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="vnid_public_network_lower_limit", remote_name="VNIDPublicNetworkLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vnid_public_network_upper_limit", remote_name="VNIDPublicNetworkUpperLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vnid_upper_limit", remote_name="VNIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="api_key_renewal_interval", remote_name="APIKeyRenewalInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="api_key_validity", remote_name="APIKeyValidity", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vport_init_stateful_timer", remote_name="VPortInitStatefulTimer", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="lru_cache_size_per_subnet", remote_name="LRUCacheSizePerSubnet", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsc_on_same_version_as_vsd", remote_name="VSCOnSameVersionAsVSD", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsd_read_only_mode", remote_name="VSDReadOnlyMode", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsd_upgrade_is_complete", remote_name="VSDUpgradeIsComplete", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="alarms_max_per_object", remote_name="alarmsMaxPerObject", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="allow_enterprise_avatar_on_nsg", remote_name="allowEnterpriseAvatarOnNSG", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="avatar_base_path", remote_name="avatarBasePath", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="avatar_base_url", remote_name="avatarBaseURL", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="customer_id_upper_limit", remote_name="customerIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="customer_key", remote_name="customerKey", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="domain_tunnel_type", remote_name="domainTunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VXLAN'])
-        self.expose_attribute(local_name="dynamic_wan_service_diff_time", remote_name="dynamicWANServiceDiffTime", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="as_number", remote_name="ASNumber", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="rt_lower_limit", remote_name="RTLowerLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="rt_public_network_lower_limit", remote_name="RTPublicNetworkLowerLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="rt_public_network_upper_limit", remote_name="RTPublicNetworkUpperLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="rt_upper_limit", remote_name="RTUpperLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="evpnbgp_community_tag_as_number", remote_name="EVPNBGPCommunityTagASNumber", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="evpnbgp_community_tag_lower_limit", remote_name="EVPNBGPCommunityTagLowerLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="evpnbgp_community_tag_upper_limit", remote_name="EVPNBGPCommunityTagUpperLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="page_max_size", remote_name="pageMaxSize", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="page_size", remote_name="pageSize", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="max_failed_logins", remote_name="maxFailedLogins", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="max_response", remote_name="maxResponse", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="service_id_upper_limit", remote_name="serviceIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="key_server_monitor_enabled", remote_name="keyServerMonitorEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="key_server_vsd_data_synchronization_interval", remote_name="keyServerVSDDataSynchronizationInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="offset_customer_id", remote_name="offsetCustomerID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="offset_service_id", remote_name="offsetServiceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ejbca_nsg_certificate_profile", remote_name="ejbcaNSGCertificateProfile", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ejbca_nsg_end_entity_profile", remote_name="ejbcaNSGEndEntityProfile", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ejbca_ocsp_responder_cn", remote_name="ejbcaOCSPResponderCN", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ejbca_ocsp_responder_uri", remote_name="ejbcaOCSPResponderURI", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ejbca_vsp_root_ca", remote_name="ejbcaVspRootCa", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="alarms_max_per_object", remote_name="alarmsMaxPerObject", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="allow_enterprise_avatar_on_nsg", remote_name="allowEnterpriseAvatarOnNSG", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="inactive_timeout", remote_name="inactiveTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="esi_id", remote_name="esiID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="event_log_cleanup_interval", remote_name="eventLogCleanupInterval", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="event_log_entry_max_age", remote_name="eventLogEntryMaxAge", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="event_processor_interval", remote_name="eventProcessorInterval", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="event_processor_max_events_count", remote_name="eventProcessorMaxEventsCount", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="event_processor_timeout", remote_name="eventProcessorTimeout", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="domain_tunnel_type", remote_name="domainTunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VXLAN'])
+        self.expose_attribute(local_name="post_processor_threads_count", remote_name="postProcessorThreadsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_generation_interval", remote_name="groupKeyDefaultSEKGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_lifetime", remote_name="groupKeyDefaultSEKLifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_payload_encryption_algorithm", remote_name="groupKeyDefaultSEKPayloadEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'RSA_1024'])
@@ -326,21 +326,10 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="group_key_minimum_seed_generation_interval", remote_name="groupKeyMinimumSeedGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_minimum_seed_lifetime", remote_name="groupKeyMinimumSeedLifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_minimum_traffic_encryption_key_lifetime", remote_name="groupKeyMinimumTrafficEncryptionKeyLifetime", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="inactive_timeout", remote_name="inactiveTimeout", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="key_server_monitor_enabled", remote_name="keyServerMonitorEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="key_server_vsd_data_synchronization_interval", remote_name="keyServerVSDDataSynchronizationInterval", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="max_failed_logins", remote_name="maxFailedLogins", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="max_response", remote_name="maxResponse", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_bootstrap_endpoint", remote_name="nsgBootstrapEndpoint", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_config_endpoint", remote_name="nsgConfigEndpoint", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_local_ui_url", remote_name="nsgLocalUiUrl", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="offset_customer_id", remote_name="offsetCustomerID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="offset_service_id", remote_name="offsetServiceID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="page_max_size", remote_name="pageMaxSize", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="page_size", remote_name="pageSize", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="post_processor_threads_count", remote_name="postProcessorThreadsCount", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="service_id_upper_limit", remote_name="serviceIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="esi_id", remote_name="esiID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stack_trace_enabled", remote_name="stackTraceEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stateful_acl_non_tcp_timeout", remote_name="statefulACLNonTCPTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stateful_acltcp_timeout", remote_name="statefulACLTCPTimeout", attribute_type=int, is_required=False, is_unique=False)
@@ -354,6 +343,20 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="stats_tsdb_server_address", remote_name="statsTSDBServerAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="subnet_resync_interval", remote_name="subnetResyncInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="subnet_resync_outstanding_interval", remote_name="subnetResyncOutstandingInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="customer_id_upper_limit", remote_name="customerIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="customer_key", remote_name="customerKey", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="avatar_base_path", remote_name="avatarBasePath", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="avatar_base_url", remote_name="avatarBaseURL", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="event_log_cleanup_interval", remote_name="eventLogCleanupInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="event_log_entry_max_age", remote_name="eventLogEntryMaxAge", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="event_processor_interval", remote_name="eventProcessorInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="event_processor_max_events_count", remote_name="eventProcessorMaxEventsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="event_processor_timeout", remote_name="eventProcessorTimeout", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="two_factor_code_expiry", remote_name="twoFactorCodeExpiry", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="two_factor_code_length", remote_name="twoFactorCodeLength", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="two_factor_code_seed_length", remote_name="twoFactorCodeSeedLength", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="dynamic_wan_service_diff_time", remote_name="dynamicWANServiceDiffTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="syslog_destination_host", remote_name="syslogDestinationHost", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="syslog_destination_port", remote_name="syslogDestinationPort", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sysmon_cleanup_task_interval", remote_name="sysmonCleanupTaskInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -361,18 +364,15 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="sysmon_probe_response_timeout", remote_name="sysmonProbeResponseTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="system_avatar_data", remote_name="systemAvatarData", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="system_avatar_type", remote_name="systemAvatarType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BASE64', u'COMPUTEDURL', u'URL'])
-        self.expose_attribute(local_name="two_factor_code_expiry", remote_name="twoFactorCodeExpiry", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="two_factor_code_length", remote_name="twoFactorCodeLength", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="two_factor_code_seed_length", remote_name="twoFactorCodeSeedLength", attribute_type=int, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -407,141 +407,6 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
-    def ad_gateway_purge_time(self):
-        """ Get ad_gateway_purge_time value.
-
-            Notes:
-                Timers in sec for undefined vms to be deleted(min =7200, max = 86400).
-
-                
-                This attribute is named `ADGatewayPurgeTime` in VSD API.
-                
-        """
-        return self._ad_gateway_purge_time
-
-    @ad_gateway_purge_time.setter
-    def ad_gateway_purge_time(self, value):
-        """ Set ad_gateway_purge_time value.
-
-            Notes:
-                Timers in sec for undefined vms to be deleted(min =7200, max = 86400).
-
-                
-                This attribute is named `ADGatewayPurgeTime` in VSD API.
-                
-        """
-        self._ad_gateway_purge_time = value
-
-    
-    @property
-    def api_key_renewal_interval(self):
-        """ Get api_key_renewal_interval value.
-
-            Notes:
-                Defines the interval in seconds, before the expiry time, that can used to renew the apiKey by making me API call. Minimum value is 1 min and maximum is 5 min.
-
-                
-                This attribute is named `APIKeyRenewalInterval` in VSD API.
-                
-        """
-        return self._api_key_renewal_interval
-
-    @api_key_renewal_interval.setter
-    def api_key_renewal_interval(self, value):
-        """ Set api_key_renewal_interval value.
-
-            Notes:
-                Defines the interval in seconds, before the expiry time, that can used to renew the apiKey by making me API call. Minimum value is 1 min and maximum is 5 min.
-
-                
-                This attribute is named `APIKeyRenewalInterval` in VSD API.
-                
-        """
-        self._api_key_renewal_interval = value
-
-    
-    @property
-    def api_key_validity(self):
-        """ Get api_key_validity value.
-
-            Notes:
-                Defines the apiKey validity duration in seconds. Default is 24 hours and minimum value is 10 min.
-
-                
-                This attribute is named `APIKeyValidity` in VSD API.
-                
-        """
-        return self._api_key_validity
-
-    @api_key_validity.setter
-    def api_key_validity(self, value):
-        """ Set api_key_validity value.
-
-            Notes:
-                Defines the apiKey validity duration in seconds. Default is 24 hours and minimum value is 10 min.
-
-                
-                This attribute is named `APIKeyValidity` in VSD API.
-                
-        """
-        self._api_key_validity = value
-
-    
-    @property
-    def as_number(self):
-        """ Get as_number value.
-
-            Notes:
-                 Autonomous System Number,Used for RT/RD auto-generation
-
-                
-                This attribute is named `ASNumber` in VSD API.
-                
-        """
-        return self._as_number
-
-    @as_number.setter
-    def as_number(self, value):
-        """ Set as_number value.
-
-            Notes:
-                 Autonomous System Number,Used for RT/RD auto-generation
-
-                
-                This attribute is named `ASNumber` in VSD API.
-                
-        """
-        self._as_number = value
-
-    
-    @property
-    def dhcp_option_size(self):
-        """ Get dhcp_option_size value.
-
-            Notes:
-                Defines total DHCP options that can be set on a domain.
-
-                
-                This attribute is named `DHCPOptionSize` in VSD API.
-                
-        """
-        return self._dhcp_option_size
-
-    @dhcp_option_size.setter
-    def dhcp_option_size(self, value):
-        """ Set dhcp_option_size value.
-
-            Notes:
-                Defines total DHCP options that can be set on a domain.
-
-                
-                This attribute is named `DHCPOptionSize` in VSD API.
-                
-        """
-        self._dhcp_option_size = value
-
-    
-    @property
     def ecmp_count(self):
         """ Get ecmp_count value.
 
@@ -566,87 +431,6 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._ecmp_count = value
-
-    
-    @property
-    def evpnbgp_community_tag_as_number(self):
-        """ Get evpnbgp_community_tag_as_number value.
-
-            Notes:
-                Autonomous System Number,Used for EVPNBGPCommunityTag auto-generation
-
-                
-                This attribute is named `EVPNBGPCommunityTagASNumber` in VSD API.
-                
-        """
-        return self._evpnbgp_community_tag_as_number
-
-    @evpnbgp_community_tag_as_number.setter
-    def evpnbgp_community_tag_as_number(self, value):
-        """ Set evpnbgp_community_tag_as_number value.
-
-            Notes:
-                Autonomous System Number,Used for EVPNBGPCommunityTag auto-generation
-
-                
-                This attribute is named `EVPNBGPCommunityTagASNumber` in VSD API.
-                
-        """
-        self._evpnbgp_community_tag_as_number = value
-
-    
-    @property
-    def evpnbgp_community_tag_lower_limit(self):
-        """ Get evpnbgp_community_tag_lower_limit value.
-
-            Notes:
-                EVPNBGPCommunityTag lower limit
-
-                
-                This attribute is named `EVPNBGPCommunityTagLowerLimit` in VSD API.
-                
-        """
-        return self._evpnbgp_community_tag_lower_limit
-
-    @evpnbgp_community_tag_lower_limit.setter
-    def evpnbgp_community_tag_lower_limit(self, value):
-        """ Set evpnbgp_community_tag_lower_limit value.
-
-            Notes:
-                EVPNBGPCommunityTag lower limit
-
-                
-                This attribute is named `EVPNBGPCommunityTagLowerLimit` in VSD API.
-                
-        """
-        self._evpnbgp_community_tag_lower_limit = value
-
-    
-    @property
-    def evpnbgp_community_tag_upper_limit(self):
-        """ Get evpnbgp_community_tag_upper_limit value.
-
-            Notes:
-                EVPNBGPCommunityTag upper limit
-
-                
-                This attribute is named `EVPNBGPCommunityTagUpperLimit` in VSD API.
-                
-        """
-        return self._evpnbgp_community_tag_upper_limit
-
-    @evpnbgp_community_tag_upper_limit.setter
-    def evpnbgp_community_tag_upper_limit(self, value):
-        """ Set evpnbgp_community_tag_upper_limit value.
-
-            Notes:
-                EVPNBGPCommunityTag upper limit
-
-                
-                This attribute is named `EVPNBGPCommunityTagUpperLimit` in VSD API.
-                
-        """
-        self._evpnbgp_community_tag_upper_limit = value
 
     
     @property
@@ -731,30 +515,30 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
-    def lru_cache_size_per_subnet(self):
-        """ Get lru_cache_size_per_subnet value.
+    def ad_gateway_purge_time(self):
+        """ Get ad_gateway_purge_time value.
 
             Notes:
-                LRU Map size per subnet (to hold the deleted vm's ip addresses).
+                Timers in sec for undefined vms to be deleted(min =7200, max = 86400).
 
                 
-                This attribute is named `LRUCacheSizePerSubnet` in VSD API.
+                This attribute is named `ADGatewayPurgeTime` in VSD API.
                 
         """
-        return self._lru_cache_size_per_subnet
+        return self._ad_gateway_purge_time
 
-    @lru_cache_size_per_subnet.setter
-    def lru_cache_size_per_subnet(self, value):
-        """ Set lru_cache_size_per_subnet value.
+    @ad_gateway_purge_time.setter
+    def ad_gateway_purge_time(self, value):
+        """ Set ad_gateway_purge_time value.
 
             Notes:
-                LRU Map size per subnet (to hold the deleted vm's ip addresses).
+                Timers in sec for undefined vms to be deleted(min =7200, max = 86400).
 
                 
-                This attribute is named `LRUCacheSizePerSubnet` in VSD API.
+                This attribute is named `ADGatewayPurgeTime` in VSD API.
                 
         """
-        self._lru_cache_size_per_subnet = value
+        self._ad_gateway_purge_time = value
 
     
     @property
@@ -866,111 +650,30 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
-    def rt_lower_limit(self):
-        """ Get rt_lower_limit value.
+    def dhcp_option_size(self):
+        """ Get dhcp_option_size value.
 
             Notes:
-                route target lower limit
+                Defines total DHCP options that can be set on a domain.
 
                 
-                This attribute is named `RTLowerLimit` in VSD API.
+                This attribute is named `DHCPOptionSize` in VSD API.
                 
         """
-        return self._rt_lower_limit
+        return self._dhcp_option_size
 
-    @rt_lower_limit.setter
-    def rt_lower_limit(self, value):
-        """ Set rt_lower_limit value.
+    @dhcp_option_size.setter
+    def dhcp_option_size(self, value):
+        """ Set dhcp_option_size value.
 
             Notes:
-                route target lower limit
+                Defines total DHCP options that can be set on a domain.
 
                 
-                This attribute is named `RTLowerLimit` in VSD API.
-                
-        """
-        self._rt_lower_limit = value
-
-    
-    @property
-    def rt_public_network_lower_limit(self):
-        """ Get rt_public_network_lower_limit value.
-
-            Notes:
-                route target public network lower limit
-
-                
-                This attribute is named `RTPublicNetworkLowerLimit` in VSD API.
+                This attribute is named `DHCPOptionSize` in VSD API.
                 
         """
-        return self._rt_public_network_lower_limit
-
-    @rt_public_network_lower_limit.setter
-    def rt_public_network_lower_limit(self, value):
-        """ Set rt_public_network_lower_limit value.
-
-            Notes:
-                route target public network lower limit
-
-                
-                This attribute is named `RTPublicNetworkLowerLimit` in VSD API.
-                
-        """
-        self._rt_public_network_lower_limit = value
-
-    
-    @property
-    def rt_public_network_upper_limit(self):
-        """ Get rt_public_network_upper_limit value.
-
-            Notes:
-                route target public network upper limit
-
-                
-                This attribute is named `RTPublicNetworkUpperLimit` in VSD API.
-                
-        """
-        return self._rt_public_network_upper_limit
-
-    @rt_public_network_upper_limit.setter
-    def rt_public_network_upper_limit(self, value):
-        """ Set rt_public_network_upper_limit value.
-
-            Notes:
-                route target public network upper limit
-
-                
-                This attribute is named `RTPublicNetworkUpperLimit` in VSD API.
-                
-        """
-        self._rt_public_network_upper_limit = value
-
-    
-    @property
-    def rt_upper_limit(self):
-        """ Get rt_upper_limit value.
-
-            Notes:
-                route target upper limit
-
-                
-                This attribute is named `RTUpperLimit` in VSD API.
-                
-        """
-        return self._rt_upper_limit
-
-    @rt_upper_limit.setter
-    def rt_upper_limit(self, value):
-        """ Set rt_upper_limit value.
-
-            Notes:
-                route target upper limit
-
-                
-                This attribute is named `RTUpperLimit` in VSD API.
-                
-        """
-        self._rt_upper_limit = value
+        self._dhcp_option_size = value
 
     
     @property
@@ -1244,6 +947,60 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def api_key_renewal_interval(self):
+        """ Get api_key_renewal_interval value.
+
+            Notes:
+                Defines the interval in seconds, before the expiry time, that can used to renew the apiKey by making me API call. Minimum value is 1 min and maximum is 5 min.
+
+                
+                This attribute is named `APIKeyRenewalInterval` in VSD API.
+                
+        """
+        return self._api_key_renewal_interval
+
+    @api_key_renewal_interval.setter
+    def api_key_renewal_interval(self, value):
+        """ Set api_key_renewal_interval value.
+
+            Notes:
+                Defines the interval in seconds, before the expiry time, that can used to renew the apiKey by making me API call. Minimum value is 1 min and maximum is 5 min.
+
+                
+                This attribute is named `APIKeyRenewalInterval` in VSD API.
+                
+        """
+        self._api_key_renewal_interval = value
+
+    
+    @property
+    def api_key_validity(self):
+        """ Get api_key_validity value.
+
+            Notes:
+                Defines the apiKey validity duration in seconds. Default is 24 hours and minimum value is 10 min.
+
+                
+                This attribute is named `APIKeyValidity` in VSD API.
+                
+        """
+        return self._api_key_validity
+
+    @api_key_validity.setter
+    def api_key_validity(self, value):
+        """ Set api_key_validity value.
+
+            Notes:
+                Defines the apiKey validity duration in seconds. Default is 24 hours and minimum value is 10 min.
+
+                
+                This attribute is named `APIKeyValidity` in VSD API.
+                
+        """
+        self._api_key_validity = value
+
+    
+    @property
     def vport_init_stateful_timer(self):
         """ Get vport_init_stateful_timer value.
 
@@ -1268,6 +1025,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._vport_init_stateful_timer = value
+
+    
+    @property
+    def lru_cache_size_per_subnet(self):
+        """ Get lru_cache_size_per_subnet value.
+
+            Notes:
+                LRU Map size per subnet (to hold the deleted vm's ip addresses).
+
+                
+                This attribute is named `LRUCacheSizePerSubnet` in VSD API.
+                
+        """
+        return self._lru_cache_size_per_subnet
+
+    @lru_cache_size_per_subnet.setter
+    def lru_cache_size_per_subnet(self, value):
+        """ Set lru_cache_size_per_subnet value.
+
+            Notes:
+                LRU Map size per subnet (to hold the deleted vm's ip addresses).
+
+                
+                This attribute is named `LRUCacheSizePerSubnet` in VSD API.
+                
+        """
+        self._lru_cache_size_per_subnet = value
 
     
     @property
@@ -1352,219 +1136,489 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
-    def alarms_max_per_object(self):
-        """ Get alarms_max_per_object value.
+    def as_number(self):
+        """ Get as_number value.
 
             Notes:
-                Maximum alarms per object for example max distinct alarms for specific VM (min = 5, max =20)
+                 Autonomous System Number,Used for RT/RD auto-generation
 
                 
-                This attribute is named `alarmsMaxPerObject` in VSD API.
+                This attribute is named `ASNumber` in VSD API.
                 
         """
-        return self._alarms_max_per_object
+        return self._as_number
 
-    @alarms_max_per_object.setter
-    def alarms_max_per_object(self, value):
-        """ Set alarms_max_per_object value.
+    @as_number.setter
+    def as_number(self, value):
+        """ Set as_number value.
 
             Notes:
-                Maximum alarms per object for example max distinct alarms for specific VM (min = 5, max =20)
+                 Autonomous System Number,Used for RT/RD auto-generation
 
                 
-                This attribute is named `alarmsMaxPerObject` in VSD API.
+                This attribute is named `ASNumber` in VSD API.
                 
         """
-        self._alarms_max_per_object = value
+        self._as_number = value
 
     
     @property
-    def allow_enterprise_avatar_on_nsg(self):
-        """ Get allow_enterprise_avatar_on_nsg value.
+    def rt_lower_limit(self):
+        """ Get rt_lower_limit value.
 
             Notes:
-                Allow Enterprise Avatar to be populated on NSG Portal
+                route target lower limit
 
                 
-                This attribute is named `allowEnterpriseAvatarOnNSG` in VSD API.
+                This attribute is named `RTLowerLimit` in VSD API.
                 
         """
-        return self._allow_enterprise_avatar_on_nsg
+        return self._rt_lower_limit
 
-    @allow_enterprise_avatar_on_nsg.setter
-    def allow_enterprise_avatar_on_nsg(self, value):
-        """ Set allow_enterprise_avatar_on_nsg value.
+    @rt_lower_limit.setter
+    def rt_lower_limit(self, value):
+        """ Set rt_lower_limit value.
 
             Notes:
-                Allow Enterprise Avatar to be populated on NSG Portal
+                route target lower limit
 
                 
-                This attribute is named `allowEnterpriseAvatarOnNSG` in VSD API.
+                This attribute is named `RTLowerLimit` in VSD API.
                 
         """
-        self._allow_enterprise_avatar_on_nsg = value
+        self._rt_lower_limit = value
 
     
     @property
-    def avatar_base_path(self):
-        """ Get avatar_base_path value.
+    def rt_public_network_lower_limit(self):
+        """ Get rt_public_network_lower_limit value.
 
             Notes:
-                Defines location where image files needs to be copied. Above URL should be configured to read the file from this location.
+                route target public network lower limit
 
                 
-                This attribute is named `avatarBasePath` in VSD API.
+                This attribute is named `RTPublicNetworkLowerLimit` in VSD API.
                 
         """
-        return self._avatar_base_path
+        return self._rt_public_network_lower_limit
 
-    @avatar_base_path.setter
-    def avatar_base_path(self, value):
-        """ Set avatar_base_path value.
+    @rt_public_network_lower_limit.setter
+    def rt_public_network_lower_limit(self, value):
+        """ Set rt_public_network_lower_limit value.
 
             Notes:
-                Defines location where image files needs to be copied. Above URL should be configured to read the file from this location.
+                route target public network lower limit
 
                 
-                This attribute is named `avatarBasePath` in VSD API.
+                This attribute is named `RTPublicNetworkLowerLimit` in VSD API.
                 
         """
-        self._avatar_base_path = value
+        self._rt_public_network_lower_limit = value
 
     
     @property
-    def avatar_base_url(self):
-        """ Get avatar_base_url value.
+    def rt_public_network_upper_limit(self):
+        """ Get rt_public_network_upper_limit value.
 
             Notes:
-                Defines the url to read the avatar image files
+                route target public network upper limit
 
                 
-                This attribute is named `avatarBaseURL` in VSD API.
+                This attribute is named `RTPublicNetworkUpperLimit` in VSD API.
                 
         """
-        return self._avatar_base_url
+        return self._rt_public_network_upper_limit
 
-    @avatar_base_url.setter
-    def avatar_base_url(self, value):
-        """ Set avatar_base_url value.
+    @rt_public_network_upper_limit.setter
+    def rt_public_network_upper_limit(self, value):
+        """ Set rt_public_network_upper_limit value.
 
             Notes:
-                Defines the url to read the avatar image files
+                route target public network upper limit
 
                 
-                This attribute is named `avatarBaseURL` in VSD API.
+                This attribute is named `RTPublicNetworkUpperLimit` in VSD API.
                 
         """
-        self._avatar_base_url = value
+        self._rt_public_network_upper_limit = value
 
     
     @property
-    def customer_id_upper_limit(self):
-        """ Get customer_id_upper_limit value.
+    def rt_upper_limit(self):
+        """ Get rt_upper_limit value.
 
             Notes:
-                Customer id upper limit, system wide value
+                route target upper limit
 
                 
-                This attribute is named `customerIDUpperLimit` in VSD API.
+                This attribute is named `RTUpperLimit` in VSD API.
                 
         """
-        return self._customer_id_upper_limit
+        return self._rt_upper_limit
 
-    @customer_id_upper_limit.setter
-    def customer_id_upper_limit(self, value):
-        """ Set customer_id_upper_limit value.
+    @rt_upper_limit.setter
+    def rt_upper_limit(self, value):
+        """ Set rt_upper_limit value.
 
             Notes:
-                Customer id upper limit, system wide value
+                route target upper limit
 
                 
-                This attribute is named `customerIDUpperLimit` in VSD API.
+                This attribute is named `RTUpperLimit` in VSD API.
                 
         """
-        self._customer_id_upper_limit = value
+        self._rt_upper_limit = value
 
     
     @property
-    def customer_key(self):
-        """ Get customer_key value.
+    def evpnbgp_community_tag_as_number(self):
+        """ Get evpnbgp_community_tag_as_number value.
 
             Notes:
-                Customer key associated with the licese
+                Autonomous System Number,Used for EVPNBGPCommunityTag auto-generation
 
                 
-                This attribute is named `customerKey` in VSD API.
+                This attribute is named `EVPNBGPCommunityTagASNumber` in VSD API.
                 
         """
-        return self._customer_key
+        return self._evpnbgp_community_tag_as_number
 
-    @customer_key.setter
-    def customer_key(self, value):
-        """ Set customer_key value.
+    @evpnbgp_community_tag_as_number.setter
+    def evpnbgp_community_tag_as_number(self, value):
+        """ Set evpnbgp_community_tag_as_number value.
 
             Notes:
-                Customer key associated with the licese
+                Autonomous System Number,Used for EVPNBGPCommunityTag auto-generation
 
                 
-                This attribute is named `customerKey` in VSD API.
+                This attribute is named `EVPNBGPCommunityTagASNumber` in VSD API.
                 
         """
-        self._customer_key = value
+        self._evpnbgp_community_tag_as_number = value
 
     
     @property
-    def domain_tunnel_type(self):
-        """ Get domain_tunnel_type value.
+    def evpnbgp_community_tag_lower_limit(self):
+        """ Get evpnbgp_community_tag_lower_limit value.
 
             Notes:
-                Default Domain Tunnel Type .Possible values are VXLAN,GRE Possible values are DC_DEFAULT, GRE, VXLAN, .
+                EVPNBGPCommunityTag lower limit
 
                 
-                This attribute is named `domainTunnelType` in VSD API.
+                This attribute is named `EVPNBGPCommunityTagLowerLimit` in VSD API.
                 
         """
-        return self._domain_tunnel_type
+        return self._evpnbgp_community_tag_lower_limit
 
-    @domain_tunnel_type.setter
-    def domain_tunnel_type(self, value):
-        """ Set domain_tunnel_type value.
+    @evpnbgp_community_tag_lower_limit.setter
+    def evpnbgp_community_tag_lower_limit(self, value):
+        """ Set evpnbgp_community_tag_lower_limit value.
 
             Notes:
-                Default Domain Tunnel Type .Possible values are VXLAN,GRE Possible values are DC_DEFAULT, GRE, VXLAN, .
+                EVPNBGPCommunityTag lower limit
 
                 
-                This attribute is named `domainTunnelType` in VSD API.
+                This attribute is named `EVPNBGPCommunityTagLowerLimit` in VSD API.
                 
         """
-        self._domain_tunnel_type = value
+        self._evpnbgp_community_tag_lower_limit = value
 
     
     @property
-    def dynamic_wan_service_diff_time(self):
-        """ Get dynamic_wan_service_diff_time value.
+    def evpnbgp_community_tag_upper_limit(self):
+        """ Get evpnbgp_community_tag_upper_limit value.
 
             Notes:
-                Timers in sec for  dynamic WAN Services to be considered not seen by 7X50.
+                EVPNBGPCommunityTag upper limit
 
                 
-                This attribute is named `dynamicWANServiceDiffTime` in VSD API.
+                This attribute is named `EVPNBGPCommunityTagUpperLimit` in VSD API.
                 
         """
-        return self._dynamic_wan_service_diff_time
+        return self._evpnbgp_community_tag_upper_limit
 
-    @dynamic_wan_service_diff_time.setter
-    def dynamic_wan_service_diff_time(self, value):
-        """ Set dynamic_wan_service_diff_time value.
+    @evpnbgp_community_tag_upper_limit.setter
+    def evpnbgp_community_tag_upper_limit(self, value):
+        """ Set evpnbgp_community_tag_upper_limit value.
 
             Notes:
-                Timers in sec for  dynamic WAN Services to be considered not seen by 7X50.
+                EVPNBGPCommunityTag upper limit
 
                 
-                This attribute is named `dynamicWANServiceDiffTime` in VSD API.
+                This attribute is named `EVPNBGPCommunityTagUpperLimit` in VSD API.
                 
         """
-        self._dynamic_wan_service_diff_time = value
+        self._evpnbgp_community_tag_upper_limit = value
+
+    
+    @property
+    def page_max_size(self):
+        """ Get page_max_size value.
+
+            Notes:
+                Defines upper bound for the page size. Configured or input page size should be less than this max page size.
+
+                
+                This attribute is named `pageMaxSize` in VSD API.
+                
+        """
+        return self._page_max_size
+
+    @page_max_size.setter
+    def page_max_size(self, value):
+        """ Set page_max_size value.
+
+            Notes:
+                Defines upper bound for the page size. Configured or input page size should be less than this max page size.
+
+                
+                This attribute is named `pageMaxSize` in VSD API.
+                
+        """
+        self._page_max_size = value
+
+    
+    @property
+    def page_size(self):
+        """ Get page_size value.
+
+            Notes:
+                Defines the page size for the results returned by the REST call.
+
+                
+                This attribute is named `pageSize` in VSD API.
+                
+        """
+        return self._page_size
+
+    @page_size.setter
+    def page_size(self, value):
+        """ Set page_size value.
+
+            Notes:
+                Defines the page size for the results returned by the REST call.
+
+                
+                This attribute is named `pageSize` in VSD API.
+                
+        """
+        self._page_size = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def max_failed_logins(self):
+        """ Get max_failed_logins value.
+
+            Notes:
+                Maximum failed login attempts before the account is locked (min = 5, max = 10). 0 = not enforced (unlimited attempts). This is not enforced if LDAP is used for authorization
+
+                
+                This attribute is named `maxFailedLogins` in VSD API.
+                
+        """
+        return self._max_failed_logins
+
+    @max_failed_logins.setter
+    def max_failed_logins(self, value):
+        """ Set max_failed_logins value.
+
+            Notes:
+                Maximum failed login attempts before the account is locked (min = 5, max = 10). 0 = not enforced (unlimited attempts). This is not enforced if LDAP is used for authorization
+
+                
+                This attribute is named `maxFailedLogins` in VSD API.
+                
+        """
+        self._max_failed_logins = value
+
+    
+    @property
+    def max_response(self):
+        """ Get max_response value.
+
+            Notes:
+                Defines maximum results returned by the REST call (allowed max=5000).
+
+                
+                This attribute is named `maxResponse` in VSD API.
+                
+        """
+        return self._max_response
+
+    @max_response.setter
+    def max_response(self, value):
+        """ Set max_response value.
+
+            Notes:
+                Defines maximum results returned by the REST call (allowed max=5000).
+
+                
+                This attribute is named `maxResponse` in VSD API.
+                
+        """
+        self._max_response = value
+
+    
+    @property
+    def service_id_upper_limit(self):
+        """ Get service_id_upper_limit value.
+
+            Notes:
+                Service id upper limit system wide value
+
+                
+                This attribute is named `serviceIDUpperLimit` in VSD API.
+                
+        """
+        return self._service_id_upper_limit
+
+    @service_id_upper_limit.setter
+    def service_id_upper_limit(self, value):
+        """ Set service_id_upper_limit value.
+
+            Notes:
+                Service id upper limit system wide value
+
+                
+                This attribute is named `serviceIDUpperLimit` in VSD API.
+                
+        """
+        self._service_id_upper_limit = value
+
+    
+    @property
+    def key_server_monitor_enabled(self):
+        """ Get key_server_monitor_enabled value.
+
+            Notes:
+                Enable the keyserver debug monitor (ie. ksmon command)
+
+                
+                This attribute is named `keyServerMonitorEnabled` in VSD API.
+                
+        """
+        return self._key_server_monitor_enabled
+
+    @key_server_monitor_enabled.setter
+    def key_server_monitor_enabled(self, value):
+        """ Set key_server_monitor_enabled value.
+
+            Notes:
+                Enable the keyserver debug monitor (ie. ksmon command)
+
+                
+                This attribute is named `keyServerMonitorEnabled` in VSD API.
+                
+        """
+        self._key_server_monitor_enabled = value
+
+    
+    @property
+    def key_server_vsd_data_synchronization_interval(self):
+        """ Get key_server_vsd_data_synchronization_interval value.
+
+            Notes:
+                KeyServer time in seconds between full resyncs of VSD data (just in case of missed events)
+
+                
+                This attribute is named `keyServerVSDDataSynchronizationInterval` in VSD API.
+                
+        """
+        return self._key_server_vsd_data_synchronization_interval
+
+    @key_server_vsd_data_synchronization_interval.setter
+    def key_server_vsd_data_synchronization_interval(self, value):
+        """ Set key_server_vsd_data_synchronization_interval value.
+
+            Notes:
+                KeyServer time in seconds between full resyncs of VSD data (just in case of missed events)
+
+                
+                This attribute is named `keyServerVSDDataSynchronizationInterval` in VSD API.
+                
+        """
+        self._key_server_vsd_data_synchronization_interval = value
+
+    
+    @property
+    def offset_customer_id(self):
+        """ Get offset_customer_id value.
+
+            Notes:
+                Customer id offset, this value has to be set before jboss starts , after that any change of value is ignored (minexclusive = 0, max = 20000) system wide value
+
+                
+                This attribute is named `offsetCustomerID` in VSD API.
+                
+        """
+        return self._offset_customer_id
+
+    @offset_customer_id.setter
+    def offset_customer_id(self, value):
+        """ Set offset_customer_id value.
+
+            Notes:
+                Customer id offset, this value has to be set before jboss starts , after that any change of value is ignored (minexclusive = 0, max = 20000) system wide value
+
+                
+                This attribute is named `offsetCustomerID` in VSD API.
+                
+        """
+        self._offset_customer_id = value
+
+    
+    @property
+    def offset_service_id(self):
+        """ Get offset_service_id value.
+
+            Notes:
+                Service id offset, this value has to be set before jboss starts during install time, after that any change of value is ignored (minexclusive = 0, max = 40000) system wide value
+
+                
+                This attribute is named `offsetServiceID` in VSD API.
+                
+        """
+        return self._offset_service_id
+
+    @offset_service_id.setter
+    def offset_service_id(self, value):
+        """ Set offset_service_id value.
+
+            Notes:
+                Service id offset, this value has to be set before jboss starts during install time, after that any change of value is ignored (minexclusive = 0, max = 40000) system wide value
+
+                
+                This attribute is named `offsetServiceID` in VSD API.
+                
+        """
+        self._offset_service_id = value
 
     
     @property
@@ -1703,6 +1757,87 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def alarms_max_per_object(self):
+        """ Get alarms_max_per_object value.
+
+            Notes:
+                Maximum alarms per object for example max distinct alarms for specific VM (min = 5, max =20)
+
+                
+                This attribute is named `alarmsMaxPerObject` in VSD API.
+                
+        """
+        return self._alarms_max_per_object
+
+    @alarms_max_per_object.setter
+    def alarms_max_per_object(self, value):
+        """ Set alarms_max_per_object value.
+
+            Notes:
+                Maximum alarms per object for example max distinct alarms for specific VM (min = 5, max =20)
+
+                
+                This attribute is named `alarmsMaxPerObject` in VSD API.
+                
+        """
+        self._alarms_max_per_object = value
+
+    
+    @property
+    def allow_enterprise_avatar_on_nsg(self):
+        """ Get allow_enterprise_avatar_on_nsg value.
+
+            Notes:
+                Allow Enterprise Avatar to be populated on NSG Portal
+
+                
+                This attribute is named `allowEnterpriseAvatarOnNSG` in VSD API.
+                
+        """
+        return self._allow_enterprise_avatar_on_nsg
+
+    @allow_enterprise_avatar_on_nsg.setter
+    def allow_enterprise_avatar_on_nsg(self, value):
+        """ Set allow_enterprise_avatar_on_nsg value.
+
+            Notes:
+                Allow Enterprise Avatar to be populated on NSG Portal
+
+                
+                This attribute is named `allowEnterpriseAvatarOnNSG` in VSD API.
+                
+        """
+        self._allow_enterprise_avatar_on_nsg = value
+
+    
+    @property
+    def inactive_timeout(self):
+        """ Get inactive_timeout value.
+
+            Notes:
+                Defines the inactive timeout for the client. If the client is inactive for more than timeout, server clears off all the cache/information regarding the client. This value should be greater than event processor max timeout
+
+                
+                This attribute is named `inactiveTimeout` in VSD API.
+                
+        """
+        return self._inactive_timeout
+
+    @inactive_timeout.setter
+    def inactive_timeout(self, value):
+        """ Set inactive_timeout value.
+
+            Notes:
+                Defines the inactive timeout for the client. If the client is inactive for more than timeout, server clears off all the cache/information regarding the client. This value should be greater than event processor max timeout
+
+                
+                This attribute is named `inactiveTimeout` in VSD API.
+                
+        """
+        self._inactive_timeout = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -1730,192 +1865,57 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
-    def esi_id(self):
-        """ Get esi_id value.
+    def domain_tunnel_type(self):
+        """ Get domain_tunnel_type value.
 
             Notes:
-                ESI ID offset
+                Default Domain Tunnel Type .Possible values are VXLAN,GRE Possible values are DC_DEFAULT, GRE, VXLAN, .
 
                 
-                This attribute is named `esiID` in VSD API.
+                This attribute is named `domainTunnelType` in VSD API.
                 
         """
-        return self._esi_id
+        return self._domain_tunnel_type
 
-    @esi_id.setter
-    def esi_id(self, value):
-        """ Set esi_id value.
+    @domain_tunnel_type.setter
+    def domain_tunnel_type(self, value):
+        """ Set domain_tunnel_type value.
 
             Notes:
-                ESI ID offset
+                Default Domain Tunnel Type .Possible values are VXLAN,GRE Possible values are DC_DEFAULT, GRE, VXLAN, .
 
                 
-                This attribute is named `esiID` in VSD API.
+                This attribute is named `domainTunnelType` in VSD API.
                 
         """
-        self._esi_id = value
+        self._domain_tunnel_type = value
 
     
     @property
-    def event_log_cleanup_interval(self):
-        """ Get event_log_cleanup_interval value.
+    def post_processor_threads_count(self):
+        """ Get post_processor_threads_count value.
 
             Notes:
-                Cleanup task run interval in seconds.
+                Post processor thread count.
 
                 
-                This attribute is named `eventLogCleanupInterval` in VSD API.
+                This attribute is named `postProcessorThreadsCount` in VSD API.
                 
         """
-        return self._event_log_cleanup_interval
+        return self._post_processor_threads_count
 
-    @event_log_cleanup_interval.setter
-    def event_log_cleanup_interval(self, value):
-        """ Set event_log_cleanup_interval value.
+    @post_processor_threads_count.setter
+    def post_processor_threads_count(self, value):
+        """ Set post_processor_threads_count value.
 
             Notes:
-                Cleanup task run interval in seconds.
+                Post processor thread count.
 
                 
-                This attribute is named `eventLogCleanupInterval` in VSD API.
-                
-        """
-        self._event_log_cleanup_interval = value
-
-    
-    @property
-    def event_log_entry_max_age(self):
-        """ Get event_log_entry_max_age value.
-
-            Notes:
-                Maximum age in days for cleanup of the eventlog entries. On every periodic interval run, any eventlog entries older than this max age will be deleted.
-
-                
-                This attribute is named `eventLogEntryMaxAge` in VSD API.
+                This attribute is named `postProcessorThreadsCount` in VSD API.
                 
         """
-        return self._event_log_entry_max_age
-
-    @event_log_entry_max_age.setter
-    def event_log_entry_max_age(self, value):
-        """ Set event_log_entry_max_age value.
-
-            Notes:
-                Maximum age in days for cleanup of the eventlog entries. On every periodic interval run, any eventlog entries older than this max age will be deleted.
-
-                
-                This attribute is named `eventLogEntryMaxAge` in VSD API.
-                
-        """
-        self._event_log_entry_max_age = value
-
-    
-    @property
-    def event_processor_interval(self):
-        """ Get event_processor_interval value.
-
-            Notes:
-                Defines time interval in milliseconds when events collected for a client should be processed.
-
-                
-                This attribute is named `eventProcessorInterval` in VSD API.
-                
-        """
-        return self._event_processor_interval
-
-    @event_processor_interval.setter
-    def event_processor_interval(self, value):
-        """ Set event_processor_interval value.
-
-            Notes:
-                Defines time interval in milliseconds when events collected for a client should be processed.
-
-                
-                This attribute is named `eventProcessorInterval` in VSD API.
-                
-        """
-        self._event_processor_interval = value
-
-    
-    @property
-    def event_processor_max_events_count(self):
-        """ Get event_processor_max_events_count value.
-
-            Notes:
-                Defines the maximum number of events to be collected in case of events burst.
-
-                
-                This attribute is named `eventProcessorMaxEventsCount` in VSD API.
-                
-        """
-        return self._event_processor_max_events_count
-
-    @event_processor_max_events_count.setter
-    def event_processor_max_events_count(self, value):
-        """ Set event_processor_max_events_count value.
-
-            Notes:
-                Defines the maximum number of events to be collected in case of events burst.
-
-                
-                This attribute is named `eventProcessorMaxEventsCount` in VSD API.
-                
-        """
-        self._event_processor_max_events_count = value
-
-    
-    @property
-    def event_processor_timeout(self):
-        """ Get event_processor_timeout value.
-
-            Notes:
-                Defines the maximum time period in milliseconds for the Rest server to wait before sending the events from the system.
-
-                
-                This attribute is named `eventProcessorTimeout` in VSD API.
-                
-        """
-        return self._event_processor_timeout
-
-    @event_processor_timeout.setter
-    def event_processor_timeout(self, value):
-        """ Set event_processor_timeout value.
-
-            Notes:
-                Defines the maximum time period in milliseconds for the Rest server to wait before sending the events from the system.
-
-                
-                This attribute is named `eventProcessorTimeout` in VSD API.
-                
-        """
-        self._event_processor_timeout = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
+        self._post_processor_threads_count = value
 
     
     @property
@@ -2432,168 +2432,6 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
-    def inactive_timeout(self):
-        """ Get inactive_timeout value.
-
-            Notes:
-                Defines the inactive timeout for the client. If the client is inactive for more than timeout, server clears off all the cache/information regarding the client. This value should be greater than event processor max timeout
-
-                
-                This attribute is named `inactiveTimeout` in VSD API.
-                
-        """
-        return self._inactive_timeout
-
-    @inactive_timeout.setter
-    def inactive_timeout(self, value):
-        """ Set inactive_timeout value.
-
-            Notes:
-                Defines the inactive timeout for the client. If the client is inactive for more than timeout, server clears off all the cache/information regarding the client. This value should be greater than event processor max timeout
-
-                
-                This attribute is named `inactiveTimeout` in VSD API.
-                
-        """
-        self._inactive_timeout = value
-
-    
-    @property
-    def key_server_monitor_enabled(self):
-        """ Get key_server_monitor_enabled value.
-
-            Notes:
-                Enable the keyserver debug monitor (ie. ksmon command)
-
-                
-                This attribute is named `keyServerMonitorEnabled` in VSD API.
-                
-        """
-        return self._key_server_monitor_enabled
-
-    @key_server_monitor_enabled.setter
-    def key_server_monitor_enabled(self, value):
-        """ Set key_server_monitor_enabled value.
-
-            Notes:
-                Enable the keyserver debug monitor (ie. ksmon command)
-
-                
-                This attribute is named `keyServerMonitorEnabled` in VSD API.
-                
-        """
-        self._key_server_monitor_enabled = value
-
-    
-    @property
-    def key_server_vsd_data_synchronization_interval(self):
-        """ Get key_server_vsd_data_synchronization_interval value.
-
-            Notes:
-                KeyServer time in seconds between full resyncs of VSD data (just in case of missed events)
-
-                
-                This attribute is named `keyServerVSDDataSynchronizationInterval` in VSD API.
-                
-        """
-        return self._key_server_vsd_data_synchronization_interval
-
-    @key_server_vsd_data_synchronization_interval.setter
-    def key_server_vsd_data_synchronization_interval(self, value):
-        """ Set key_server_vsd_data_synchronization_interval value.
-
-            Notes:
-                KeyServer time in seconds between full resyncs of VSD data (just in case of missed events)
-
-                
-                This attribute is named `keyServerVSDDataSynchronizationInterval` in VSD API.
-                
-        """
-        self._key_server_vsd_data_synchronization_interval = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def max_failed_logins(self):
-        """ Get max_failed_logins value.
-
-            Notes:
-                Maximum failed login attempts before the account is locked (min = 5, max = 10). 0 = not enforced (unlimited attempts). This is not enforced if LDAP is used for authorization
-
-                
-                This attribute is named `maxFailedLogins` in VSD API.
-                
-        """
-        return self._max_failed_logins
-
-    @max_failed_logins.setter
-    def max_failed_logins(self, value):
-        """ Set max_failed_logins value.
-
-            Notes:
-                Maximum failed login attempts before the account is locked (min = 5, max = 10). 0 = not enforced (unlimited attempts). This is not enforced if LDAP is used for authorization
-
-                
-                This attribute is named `maxFailedLogins` in VSD API.
-                
-        """
-        self._max_failed_logins = value
-
-    
-    @property
-    def max_response(self):
-        """ Get max_response value.
-
-            Notes:
-                Defines maximum results returned by the REST call (allowed max=5000).
-
-                
-                This attribute is named `maxResponse` in VSD API.
-                
-        """
-        return self._max_response
-
-    @max_response.setter
-    def max_response(self, value):
-        """ Set max_response value.
-
-            Notes:
-                Defines maximum results returned by the REST call (allowed max=5000).
-
-                
-                This attribute is named `maxResponse` in VSD API.
-                
-        """
-        self._max_response = value
-
-    
-    @property
     def nsg_bootstrap_endpoint(self):
         """ Get nsg_bootstrap_endpoint value.
 
@@ -2675,165 +2513,30 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
-    def offset_customer_id(self):
-        """ Get offset_customer_id value.
+    def esi_id(self):
+        """ Get esi_id value.
 
             Notes:
-                Customer id offset, this value has to be set before jboss starts , after that any change of value is ignored (minexclusive = 0, max = 20000) system wide value
+                ESI ID offset
 
                 
-                This attribute is named `offsetCustomerID` in VSD API.
+                This attribute is named `esiID` in VSD API.
                 
         """
-        return self._offset_customer_id
+        return self._esi_id
 
-    @offset_customer_id.setter
-    def offset_customer_id(self, value):
-        """ Set offset_customer_id value.
+    @esi_id.setter
+    def esi_id(self, value):
+        """ Set esi_id value.
 
             Notes:
-                Customer id offset, this value has to be set before jboss starts , after that any change of value is ignored (minexclusive = 0, max = 20000) system wide value
+                ESI ID offset
 
                 
-                This attribute is named `offsetCustomerID` in VSD API.
-                
-        """
-        self._offset_customer_id = value
-
-    
-    @property
-    def offset_service_id(self):
-        """ Get offset_service_id value.
-
-            Notes:
-                Service id offset, this value has to be set before jboss starts during install time, after that any change of value is ignored (minexclusive = 0, max = 40000) system wide value
-
-                
-                This attribute is named `offsetServiceID` in VSD API.
+                This attribute is named `esiID` in VSD API.
                 
         """
-        return self._offset_service_id
-
-    @offset_service_id.setter
-    def offset_service_id(self, value):
-        """ Set offset_service_id value.
-
-            Notes:
-                Service id offset, this value has to be set before jboss starts during install time, after that any change of value is ignored (minexclusive = 0, max = 40000) system wide value
-
-                
-                This attribute is named `offsetServiceID` in VSD API.
-                
-        """
-        self._offset_service_id = value
-
-    
-    @property
-    def page_max_size(self):
-        """ Get page_max_size value.
-
-            Notes:
-                Defines upper bound for the page size. Configured or input page size should be less than this max page size.
-
-                
-                This attribute is named `pageMaxSize` in VSD API.
-                
-        """
-        return self._page_max_size
-
-    @page_max_size.setter
-    def page_max_size(self, value):
-        """ Set page_max_size value.
-
-            Notes:
-                Defines upper bound for the page size. Configured or input page size should be less than this max page size.
-
-                
-                This attribute is named `pageMaxSize` in VSD API.
-                
-        """
-        self._page_max_size = value
-
-    
-    @property
-    def page_size(self):
-        """ Get page_size value.
-
-            Notes:
-                Defines the page size for the results returned by the REST call.
-
-                
-                This attribute is named `pageSize` in VSD API.
-                
-        """
-        return self._page_size
-
-    @page_size.setter
-    def page_size(self, value):
-        """ Set page_size value.
-
-            Notes:
-                Defines the page size for the results returned by the REST call.
-
-                
-                This attribute is named `pageSize` in VSD API.
-                
-        """
-        self._page_size = value
-
-    
-    @property
-    def post_processor_threads_count(self):
-        """ Get post_processor_threads_count value.
-
-            Notes:
-                Post processor thread count.
-
-                
-                This attribute is named `postProcessorThreadsCount` in VSD API.
-                
-        """
-        return self._post_processor_threads_count
-
-    @post_processor_threads_count.setter
-    def post_processor_threads_count(self, value):
-        """ Set post_processor_threads_count value.
-
-            Notes:
-                Post processor thread count.
-
-                
-                This attribute is named `postProcessorThreadsCount` in VSD API.
-                
-        """
-        self._post_processor_threads_count = value
-
-    
-    @property
-    def service_id_upper_limit(self):
-        """ Get service_id_upper_limit value.
-
-            Notes:
-                Service id upper limit system wide value
-
-                
-                This attribute is named `serviceIDUpperLimit` in VSD API.
-                
-        """
-        return self._service_id_upper_limit
-
-    @service_id_upper_limit.setter
-    def service_id_upper_limit(self, value):
-        """ Set service_id_upper_limit value.
-
-            Notes:
-                Service id upper limit system wide value
-
-                
-                This attribute is named `serviceIDUpperLimit` in VSD API.
-                
-        """
-        self._service_id_upper_limit = value
+        self._esi_id = value
 
     
     @property
@@ -3188,6 +2891,384 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def customer_id_upper_limit(self):
+        """ Get customer_id_upper_limit value.
+
+            Notes:
+                Customer id upper limit, system wide value
+
+                
+                This attribute is named `customerIDUpperLimit` in VSD API.
+                
+        """
+        return self._customer_id_upper_limit
+
+    @customer_id_upper_limit.setter
+    def customer_id_upper_limit(self, value):
+        """ Set customer_id_upper_limit value.
+
+            Notes:
+                Customer id upper limit, system wide value
+
+                
+                This attribute is named `customerIDUpperLimit` in VSD API.
+                
+        """
+        self._customer_id_upper_limit = value
+
+    
+    @property
+    def customer_key(self):
+        """ Get customer_key value.
+
+            Notes:
+                Customer key associated with the licese
+
+                
+                This attribute is named `customerKey` in VSD API.
+                
+        """
+        return self._customer_key
+
+    @customer_key.setter
+    def customer_key(self, value):
+        """ Set customer_key value.
+
+            Notes:
+                Customer key associated with the licese
+
+                
+                This attribute is named `customerKey` in VSD API.
+                
+        """
+        self._customer_key = value
+
+    
+    @property
+    def avatar_base_path(self):
+        """ Get avatar_base_path value.
+
+            Notes:
+                Defines location where image files needs to be copied. Above URL should be configured to read the file from this location.
+
+                
+                This attribute is named `avatarBasePath` in VSD API.
+                
+        """
+        return self._avatar_base_path
+
+    @avatar_base_path.setter
+    def avatar_base_path(self, value):
+        """ Set avatar_base_path value.
+
+            Notes:
+                Defines location where image files needs to be copied. Above URL should be configured to read the file from this location.
+
+                
+                This attribute is named `avatarBasePath` in VSD API.
+                
+        """
+        self._avatar_base_path = value
+
+    
+    @property
+    def avatar_base_url(self):
+        """ Get avatar_base_url value.
+
+            Notes:
+                Defines the url to read the avatar image files
+
+                
+                This attribute is named `avatarBaseURL` in VSD API.
+                
+        """
+        return self._avatar_base_url
+
+    @avatar_base_url.setter
+    def avatar_base_url(self, value):
+        """ Set avatar_base_url value.
+
+            Notes:
+                Defines the url to read the avatar image files
+
+                
+                This attribute is named `avatarBaseURL` in VSD API.
+                
+        """
+        self._avatar_base_url = value
+
+    
+    @property
+    def event_log_cleanup_interval(self):
+        """ Get event_log_cleanup_interval value.
+
+            Notes:
+                Cleanup task run interval in seconds.
+
+                
+                This attribute is named `eventLogCleanupInterval` in VSD API.
+                
+        """
+        return self._event_log_cleanup_interval
+
+    @event_log_cleanup_interval.setter
+    def event_log_cleanup_interval(self, value):
+        """ Set event_log_cleanup_interval value.
+
+            Notes:
+                Cleanup task run interval in seconds.
+
+                
+                This attribute is named `eventLogCleanupInterval` in VSD API.
+                
+        """
+        self._event_log_cleanup_interval = value
+
+    
+    @property
+    def event_log_entry_max_age(self):
+        """ Get event_log_entry_max_age value.
+
+            Notes:
+                Maximum age in days for cleanup of the eventlog entries. On every periodic interval run, any eventlog entries older than this max age will be deleted.
+
+                
+                This attribute is named `eventLogEntryMaxAge` in VSD API.
+                
+        """
+        return self._event_log_entry_max_age
+
+    @event_log_entry_max_age.setter
+    def event_log_entry_max_age(self, value):
+        """ Set event_log_entry_max_age value.
+
+            Notes:
+                Maximum age in days for cleanup of the eventlog entries. On every periodic interval run, any eventlog entries older than this max age will be deleted.
+
+                
+                This attribute is named `eventLogEntryMaxAge` in VSD API.
+                
+        """
+        self._event_log_entry_max_age = value
+
+    
+    @property
+    def event_processor_interval(self):
+        """ Get event_processor_interval value.
+
+            Notes:
+                Defines time interval in milliseconds when events collected for a client should be processed.
+
+                
+                This attribute is named `eventProcessorInterval` in VSD API.
+                
+        """
+        return self._event_processor_interval
+
+    @event_processor_interval.setter
+    def event_processor_interval(self, value):
+        """ Set event_processor_interval value.
+
+            Notes:
+                Defines time interval in milliseconds when events collected for a client should be processed.
+
+                
+                This attribute is named `eventProcessorInterval` in VSD API.
+                
+        """
+        self._event_processor_interval = value
+
+    
+    @property
+    def event_processor_max_events_count(self):
+        """ Get event_processor_max_events_count value.
+
+            Notes:
+                Defines the maximum number of events to be collected in case of events burst.
+
+                
+                This attribute is named `eventProcessorMaxEventsCount` in VSD API.
+                
+        """
+        return self._event_processor_max_events_count
+
+    @event_processor_max_events_count.setter
+    def event_processor_max_events_count(self, value):
+        """ Set event_processor_max_events_count value.
+
+            Notes:
+                Defines the maximum number of events to be collected in case of events burst.
+
+                
+                This attribute is named `eventProcessorMaxEventsCount` in VSD API.
+                
+        """
+        self._event_processor_max_events_count = value
+
+    
+    @property
+    def event_processor_timeout(self):
+        """ Get event_processor_timeout value.
+
+            Notes:
+                Defines the maximum time period in milliseconds for the Rest server to wait before sending the events from the system.
+
+                
+                This attribute is named `eventProcessorTimeout` in VSD API.
+                
+        """
+        return self._event_processor_timeout
+
+    @event_processor_timeout.setter
+    def event_processor_timeout(self, value):
+        """ Set event_processor_timeout value.
+
+            Notes:
+                Defines the maximum time period in milliseconds for the Rest server to wait before sending the events from the system.
+
+                
+                This attribute is named `eventProcessorTimeout` in VSD API.
+                
+        """
+        self._event_processor_timeout = value
+
+    
+    @property
+    def two_factor_code_expiry(self):
+        """ Get two_factor_code_expiry value.
+
+            Notes:
+                Two Factor Code Expiry in Seconds
+
+                
+                This attribute is named `twoFactorCodeExpiry` in VSD API.
+                
+        """
+        return self._two_factor_code_expiry
+
+    @two_factor_code_expiry.setter
+    def two_factor_code_expiry(self, value):
+        """ Set two_factor_code_expiry value.
+
+            Notes:
+                Two Factor Code Expiry in Seconds
+
+                
+                This attribute is named `twoFactorCodeExpiry` in VSD API.
+                
+        """
+        self._two_factor_code_expiry = value
+
+    
+    @property
+    def two_factor_code_length(self):
+        """ Get two_factor_code_length value.
+
+            Notes:
+                Two Factor Code Length
+
+                
+                This attribute is named `twoFactorCodeLength` in VSD API.
+                
+        """
+        return self._two_factor_code_length
+
+    @two_factor_code_length.setter
+    def two_factor_code_length(self, value):
+        """ Set two_factor_code_length value.
+
+            Notes:
+                Two Factor Code Length
+
+                
+                This attribute is named `twoFactorCodeLength` in VSD API.
+                
+        """
+        self._two_factor_code_length = value
+
+    
+    @property
+    def two_factor_code_seed_length(self):
+        """ Get two_factor_code_seed_length value.
+
+            Notes:
+                Two Factor Seed length in bytes
+
+                
+                This attribute is named `twoFactorCodeSeedLength` in VSD API.
+                
+        """
+        return self._two_factor_code_seed_length
+
+    @two_factor_code_seed_length.setter
+    def two_factor_code_seed_length(self, value):
+        """ Set two_factor_code_seed_length value.
+
+            Notes:
+                Two Factor Seed length in bytes
+
+                
+                This attribute is named `twoFactorCodeSeedLength` in VSD API.
+                
+        """
+        self._two_factor_code_seed_length = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
+
+    
+    @property
+    def dynamic_wan_service_diff_time(self):
+        """ Get dynamic_wan_service_diff_time value.
+
+            Notes:
+                Timers in sec for  dynamic WAN Services to be considered not seen by 7X50.
+
+                
+                This attribute is named `dynamicWANServiceDiffTime` in VSD API.
+                
+        """
+        return self._dynamic_wan_service_diff_time
+
+    @dynamic_wan_service_diff_time.setter
+    def dynamic_wan_service_diff_time(self, value):
+        """ Set dynamic_wan_service_diff_time value.
+
+            Notes:
+                Timers in sec for  dynamic WAN Services to be considered not seen by 7X50.
+
+                
+                This attribute is named `dynamicWANServiceDiffTime` in VSD API.
+                
+        """
+        self._dynamic_wan_service_diff_time = value
+
+    
+    @property
     def syslog_destination_host(self):
         """ Get syslog_destination_host value.
 
@@ -3374,87 +3455,6 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._system_avatar_type = value
-
-    
-    @property
-    def two_factor_code_expiry(self):
-        """ Get two_factor_code_expiry value.
-
-            Notes:
-                Two Factor Code Expiry in Seconds
-
-                
-                This attribute is named `twoFactorCodeExpiry` in VSD API.
-                
-        """
-        return self._two_factor_code_expiry
-
-    @two_factor_code_expiry.setter
-    def two_factor_code_expiry(self, value):
-        """ Set two_factor_code_expiry value.
-
-            Notes:
-                Two Factor Code Expiry in Seconds
-
-                
-                This attribute is named `twoFactorCodeExpiry` in VSD API.
-                
-        """
-        self._two_factor_code_expiry = value
-
-    
-    @property
-    def two_factor_code_length(self):
-        """ Get two_factor_code_length value.
-
-            Notes:
-                Two Factor Code Length
-
-                
-                This attribute is named `twoFactorCodeLength` in VSD API.
-                
-        """
-        return self._two_factor_code_length
-
-    @two_factor_code_length.setter
-    def two_factor_code_length(self, value):
-        """ Set two_factor_code_length value.
-
-            Notes:
-                Two Factor Code Length
-
-                
-                This attribute is named `twoFactorCodeLength` in VSD API.
-                
-        """
-        self._two_factor_code_length = value
-
-    
-    @property
-    def two_factor_code_seed_length(self):
-        """ Get two_factor_code_seed_length value.
-
-            Notes:
-                Two Factor Seed length in bytes
-
-                
-                This attribute is named `twoFactorCodeSeedLength` in VSD API.
-                
-        """
-        return self._two_factor_code_seed_length
-
-    @two_factor_code_seed_length.setter
-    def two_factor_code_seed_length(self, value):
-        """ Set two_factor_code_seed_length value.
-
-            Notes:
-                Two Factor Seed length in bytes
-
-                
-                This attribute is named `twoFactorCodeSeedLength` in VSD API.
-                
-        """
-        self._two_factor_code_seed_length = value
 
     
 

@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 
 from .fetchers import NUSubnetsFetcher
@@ -67,7 +67,7 @@ class NUIKEGatewayConnection(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_EVENT_LOG = "EVENT_LOG"
     
-    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_EGRESS_ACL_TEMPLATE_ENTRY = "EGRESS_ACL_TEMPLATE_ENTRY"
+    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_FLOATINGIP_ACL_ENTRY = "FLOATINGIP_ACL_ENTRY"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_BRIDGEINTERFACE = "BRIDGEINTERFACE"
     
@@ -139,7 +139,7 @@ class NUIKEGatewayConnection(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_DHCP_OPTION = "DHCP_OPTION"
     
-    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_FLOATINGIP_ACL_ENTRY = "FLOATINGIP_ACL_ENTRY"
+    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_EGRESS_ACL_TEMPLATE_ENTRY = "EGRESS_ACL_TEMPLATE_ENTRY"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_NETWORK_MACRO_GROUP = "NETWORK_MACRO_GROUP"
     
@@ -151,7 +151,7 @@ class NUIKEGatewayConnection(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_DOMAIN_CONFIG_RESP = "DOMAIN_CONFIG_RESP"
     
-    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_ENTERPRISE_CONFIG_RESP = "ENTERPRISE_CONFIG_RESP"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_NS_REDUNDANT_PORT = "NS_REDUNDANT_PORT"
     
@@ -159,7 +159,7 @@ class NUIKEGatewayConnection(NURESTObject):
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_SITE_REQ = "SITE_REQ"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_ENTERPRISE_CONFIG_RESP = "ENTERPRISE_CONFIG_RESP"
     
     CONST_ASSOCIATED_IKE_AUTHENTICATION_TYPE_L2DOMAIN_TEMPLATE = "L2DOMAIN_TEMPLATE"
     
@@ -573,47 +573,47 @@ class NUIKEGatewayConnection(NURESTObject):
         self._nsg_identifier = None
         self._nsg_identifier_type = None
         self._nsg_role = None
+        self._name = None
+        self._last_updated_by = None
+        self._sequence = None
         self._allow_any_subnet = None
+        self._unencrypted_psk = None
+        self._entity_scope = None
+        self._port_vlan_name = None
+        self._priority = None
         self._associated_ike_authentication_id = None
         self._associated_ike_authentication_type = None
         self._associated_ike_encryption_profile_id = None
         self._associated_ike_gateway_profile_id = None
         self._associated_vlanid = None
-        self._entity_scope = None
         self._external_id = None
-        self._last_updated_by = None
-        self._name = None
-        self._port_vlan_name = None
-        self._priority = None
-        self._sequence = None
-        self._unencrypted_psk = None
         
         self.expose_attribute(local_name="nsg_identifier", remote_name="NSGIdentifier", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_identifier_type", remote_name="NSGIdentifierType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ID_DER_ASN1_DN', u'ID_FQDN', u'ID_IPV4_ADDR', u'ID_KEY_ID', u'ID_RFC822_ADDR'])
         self.expose_attribute(local_name="nsg_role", remote_name="NSGRole", attribute_type=str, is_required=False, is_unique=False, choices=[u'INITIATOR', u'RESPONDER'])
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="sequence", remote_name="sequence", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_any_subnet", remote_name="allowAnySubnet", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="unencrypted_psk", remote_name="unencryptedPSK", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="port_vlan_name", remote_name="portVLANName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ike_authentication_id", remote_name="associatedIKEAuthenticationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ike_authentication_type", remote_name="associatedIKEAuthenticationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACLENTRY_LOCATION', u'ADDRESS_RANGE', u'ADDRESS_RANGE_STATE', u'ALARM', u'APPD_APPLICATION', u'APPD_EXTERNAL_APP_SERVICE', u'APPD_FLOW', u'APPD_FLOW_FORWARDING_POLICY', u'APPD_FLOW_SECURITY_POLICY', u'APPD_SERVICE', u'APPD_TIER', u'APPLICATION', u'AUTO_DISC_GATEWAY', u'BACK_HAUL_SERVICE_RESP', u'BGP_DAMPENING_MED_RESPONSE', u'BGP_NEIGHBOR', u'BGP_NEIGHBOR_MED_RESPONSE', u'BGP_PROFILE', u'BGP_PROFILE_MED_RESPONSE', u'BGPPEER', u'BOOTSTRAP', u'BOOTSTRAP_ACTIVATION', u'BRIDGEINTERFACE', u'CERTIFICATE', u'CHILD_ENTITY_POLICY_CHANGE', u'CLOUD_MGMT_SYSTEM', u'CUSTOMER_VRF_SEQUENCENO', u'DC_CONFIG', u'DHCP_ALLOC_MESSAGE', u'DHCP_CONFIG_RESP', u'DHCP_OPTION', u'DISKSTATS', u'DOMAIN', u'DOMAIN_CONFIG', u'DOMAIN_CONFIG_RESP', u'DOMAIN_FLOATING_IP_ACL_TEMPLATE', u'DOMAIN_FLOATING_IP_ACL_TEMPLATE_ENTRY', u'DOMAIN_TEMPLATE', u'DSCP_FORWARDING_CLASS_MAPPING', u'DSCP_FORWARDING_CLASS_TABLE', u'EGRESS_ACL', u'EGRESS_ACL_ENTRY', u'EGRESS_ACL_TEMPLATE', u'EGRESS_ACL_TEMPLATE_ENTRY', u'EGRESS_QOS_MR', u'EGRESS_QOS_PRIMITIVE', u'EGRESS_QOS_QUEUE_MR', u'ENDPOINT', u'ENTERPRISE', u'ENTERPRISE_CONFIG', u'ENTERPRISE_CONFIG_RESP', u'ENTERPRISE_NETWORK', u'ENTERPRISE_PERMISSION', u'ENTERPRISE_PROFILE', u'ENTERPRISE_SECURED_DATA', u'ENTERPRISE_SECURITY', u'ENTITY_METADATA_BINDING', u'ESI_SEQUENCENO', u'EVENT_LOG', u'EVPN_BGP_COMMUNITY_TAG_ENTRY', u'EVPN_BGP_COMMUNITY_TAG_SEQ_NO', u'EXPORTIMPORT', u'EXTERNAL_SERVICE', u'FLOATING_IP_ACL_TEMPLATE', u'FLOATING_IP_ACL_TEMPLATE_ENTRY', u'FLOATINGIP', u'FLOATINGIP_ACL', u'FLOATINGIP_ACL_ENTRY', u'GATEWAY', u'GATEWAY_CONFIG', u'GATEWAY_CONFIG_RESP', u'GATEWAY_SECURED_DATA', u'GATEWAY_SECURITY', u'GATEWAY_SECURITY_PROFILE_REQUEST', u'GATEWAY_SECURITY_PROFILE_RESPONSE', u'GATEWAY_SECURITY_REQUEST', u'GATEWAY_SECURITY_RESPONSE', u'GATEWAY_SERVICE_CONFIG', u'GATEWAY_SERVICE_CONFIG_RESP', u'GATEWAY_TEMPLATE', u'GATEWAY_VPORT_CONFIG', u'GATEWAY_VPORT_CONFIG_RESP', u'GEO_VM_EVENT', u'GEO_VM_REQ', u'GEO_VM_RES', u'GROUP', u'GROUPKEY_ENCRYPTION_PROFILE', u'HEALTH_REQ', u'HOSTINTERFACE', u'HSC', u'IKE_CERTIFICATE', u'IKE_ENCRYPTION_PROFILE', u'IKE_GATEWAY', u'IKE_GATEWAY_CONFIG', u'IKE_GATEWAY_CONNECTION', u'IKE_GATEWAY_PROFILE', u'IKE_PSK', u'IKE_SUBNET', u'INFRASTRUCTURE_CONFIG', u'INFRASTRUCTURE_GATEWAY_PROFILE', u'INFRASTRUCTURE_PORT_PROFILE', u'INFRASTRUCTURE_VSC_PROFILE', u'INGRESS_ACL', u'INGRESS_ACL_ENTRY', u'INGRESS_ACL_TEMPLATE', u'INGRESS_ACL_TEMPLATE_ENTRY', u'INGRESS_ADV_FWD', u'INGRESS_ADV_FWD_ENTRY', u'INGRESS_ADV_FWD_TEMPLATE', u'INGRESS_ADV_FWD_TEMPLATE_ENTRY', u'INGRESS_EXT_SERVICE', u'INGRESS_EXT_SERVICE_ENTRY', u'INGRESS_EXT_SERVICE_TEMPLATE', u'INGRESS_EXT_SERVICE_TEMPLATE_ENTRY', u'IP_BINDING', u'JOB', u'KEYSERVER_MEMBER', u'KEYSERVER_MONITOR', u'KEYSERVER_MONITOR_ENCRYPTED_SEED', u'KEYSERVER_MONITOR_SEED', u'KEYSERVER_MONITOR_SEK', u'KEYSERVER_NOTIFICATION', u'L2DOMAIN', u'L2DOMAIN_SHARED', u'L2DOMAIN_TEMPLATE', u'LDAP_CONFIG', u'LIBVIRT_INTERFACE', u'LICENSE', u'LOCATION', u'MC_CHANNEL_MAP', u'MC_LIST', u'MC_RANGE', u'METADATA', u'METADATA_TAG', u'MIRROR_DESTINATION', u'MONITORING_PORT', u'MULTI_NIC_VPORT', u'NATMAPENTRY', u'NETWORK_ELEMENT', u'NETWORK_LAYOUT', u'NETWORK_MACRO_GROUP', u'NETWORK_POLICY_GROUP', u'NEXT_HOP_RESP', u'NODE_EXECUTION_ERROR', u'NS_REDUNDANT_PORT', u'NSG_NOTIFICATION', u'NSGATEWAY', u'NSGATEWAY_CONFIG', u'NSGATEWAY_TEMPLATE', u'NSPORT', u'NSPORT_STATIC_CONFIG', u'NSPORT_TEMPLATE', u'NSPORT_VLAN_CONFIG', u'NSREDUNDANT_GW_GRP', u'PATCONFIG_CONFIG_RESP', u'PATNATPOOL', u'PERMISSION', u'PERMITTED_ACTION', u'POLICING_POLICY', u'POLICY_DECISION', u'POLICY_GROUP', u'POLICY_GROUP_TEMPLATE', u'PORT', u'PORT_MR', u'PORT_PUSH', u'PORT_TEMPLATE', u'PORT_VLAN_CONFIG', u'PORT_VLAN_CONFIG_RESPONSE', u'PUBLIC_NETWORK', u'QOS_PRIMITIVE', u'RATE_LIMITER', u'RD_SEQUENCENO', u'REDUNDANT_GW_GRP', u'RESYNC', u'ROUTING_POL_MED_RESPONSE', u'ROUTING_POLICY', u'RTRD_ENTITY', u'RTRD_SEQUENCENO', u'SERVICE_GATEWAY_RESPONSE', u'SERVICE_VRF_SEQUENCENO', u'SERVICES_GATEWAY_RESPONSE', u'SHAPING_POLICY', u'SHARED_RESOURCE', u'SITE', u'SITE_REQ', u'SITE_RES', u'STATIC_ROUTE', u'STATIC_ROUTE_RESP', u'STATISTICS', u'STATS_COLLECTOR', u'STATS_POLICY', u'STATS_TCA', u'STATSSERVER', u'SUBNET', u'SUBNET_ENTRY', u'SUBNET_MAC_ENTRY', u'SUBNET_POOL_ENTRY', u'SUBNET_TEMPLATE', u'SYSTEM_CONFIG', u'SYSTEM_CONFIG_REQ', u'SYSTEM_CONFIG_RESP', u'SYSTEM_MONITORING', u'UNSUPPORTED', u'UPLINK_RD', u'USER', u'VIRTUAL_IP', u'VIRTUAL_MACHINE', u'VIRTUAL_MACHINE_REPORT', u'VLAN', u'VLAN_CONFIG_RESPONSE', u'VLAN_TEMPLATE', u'VM_DESCRIPTION', u'VM_INTERFACE', u'VMWARE_RELOAD_CONFIG', u'VMWARE_VCENTER', u'VMWARE_VCENTER_CLUSTER', u'VMWARE_VCENTER_DATACENTER', u'VMWARE_VCENTER_EAM_CONFIG', u'VMWARE_VCENTER_HYPERVISOR', u'VMWARE_VCENTER_VRS_BASE_CONFIG', u'VMWARE_VCENTER_VRS_CONFIG', u'VMWARE_VRS_ADDRESS_RANGE', u'VNID_SEQUENCENO', u'VPN_CONNECT', u'VPORT', u'VPORT_GATEWAY_RESPONSE', u'VPORT_MEDIATION_REQUEST', u'VPORT_MIRROR', u'VPORT_TAG_BASE', u'VPORTTAG', u'VPORTTAGTEMPLATE', u'VPRN_LABEL_SEQUENCENO', u'VRS', u'VSC', u'VSD', u'VSD_COMPONENT', u'VSG_REDUNDANT_PORT', u'VSP', u'WAN_SERVICE', u'ZONE', u'ZONE_TEMPLATE'])
         self.expose_attribute(local_name="associated_ike_encryption_profile_id", remote_name="associatedIKEEncryptionProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ike_gateway_profile_id", remote_name="associatedIKEGatewayProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vlanid", remote_name="associatedVLANID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="port_vlan_name", remote_name="portVLANName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="sequence", remote_name="sequence", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="unencrypted_psk", remote_name="unencryptedPSK", attribute_type=str, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.subnets = NUSubnetsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -705,6 +705,79 @@ class NUIKEGatewayConnection(NURESTObject):
 
     
     @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Optional Name of the connection
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Optional Name of the connection
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def sequence(self):
+        """ Get sequence value.
+
+            Notes:
+                
+
+                
+        """
+        return self._sequence
+
+    @sequence.setter
+    def sequence(self, value):
+        """ Set sequence value.
+
+            Notes:
+                
+
+                
+        """
+        self._sequence = value
+
+    
+    @property
     def allow_any_subnet(self):
         """ Get allow_any_subnet value.
 
@@ -729,6 +802,110 @@ class NUIKEGatewayConnection(NURESTObject):
                 
         """
         self._allow_any_subnet = value
+
+    
+    @property
+    def unencrypted_psk(self):
+        """ Get unencrypted_psk value.
+
+            Notes:
+                Unencrypted PSK
+
+                
+                This attribute is named `unencryptedPSK` in VSD API.
+                
+        """
+        return self._unencrypted_psk
+
+    @unencrypted_psk.setter
+    def unencrypted_psk(self, value):
+        """ Set unencrypted_psk value.
+
+            Notes:
+                Unencrypted PSK
+
+                
+                This attribute is named `unencryptedPSK` in VSD API.
+                
+        """
+        self._unencrypted_psk = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def port_vlan_name(self):
+        """ Get port_vlan_name value.
+
+            Notes:
+                The Name of the Port and Vlan the IKEv2 Connection is on
+
+                
+                This attribute is named `portVLANName` in VSD API.
+                
+        """
+        return self._port_vlan_name
+
+    @port_vlan_name.setter
+    def port_vlan_name(self, value):
+        """ Set port_vlan_name value.
+
+            Notes:
+                The Name of the Port and Vlan the IKEv2 Connection is on
+
+                
+                This attribute is named `portVLANName` in VSD API.
+                
+        """
+        self._port_vlan_name = value
+
+    
+    @property
+    def priority(self):
+        """ Get priority value.
+
+            Notes:
+                Priority of the IKEv2 Gateway Connection
+
+                
+        """
+        return self._priority
+
+    @priority.setter
+    def priority(self, value):
+        """ Set priority value.
+
+            Notes:
+                Priority of the IKEv2 Gateway Connection
+
+                
+        """
+        self._priority = value
 
     
     @property
@@ -867,33 +1044,6 @@ class NUIKEGatewayConnection(NURESTObject):
 
     
     @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
     def external_id(self):
         """ Get external_id value.
 
@@ -918,156 +1068,6 @@ class NUIKEGatewayConnection(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Optional Name of the connection
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Optional Name of the connection
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def port_vlan_name(self):
-        """ Get port_vlan_name value.
-
-            Notes:
-                The Name of the Port and Vlan the IKEv2 Connection is on
-
-                
-                This attribute is named `portVLANName` in VSD API.
-                
-        """
-        return self._port_vlan_name
-
-    @port_vlan_name.setter
-    def port_vlan_name(self, value):
-        """ Set port_vlan_name value.
-
-            Notes:
-                The Name of the Port and Vlan the IKEv2 Connection is on
-
-                
-                This attribute is named `portVLANName` in VSD API.
-                
-        """
-        self._port_vlan_name = value
-
-    
-    @property
-    def priority(self):
-        """ Get priority value.
-
-            Notes:
-                Priority of the IKEv2 Gateway Connection
-
-                
-        """
-        return self._priority
-
-    @priority.setter
-    def priority(self, value):
-        """ Set priority value.
-
-            Notes:
-                Priority of the IKEv2 Gateway Connection
-
-                
-        """
-        self._priority = value
-
-    
-    @property
-    def sequence(self):
-        """ Get sequence value.
-
-            Notes:
-                
-
-                
-        """
-        return self._sequence
-
-    @sequence.setter
-    def sequence(self, value):
-        """ Set sequence value.
-
-            Notes:
-                
-
-                
-        """
-        self._sequence = value
-
-    
-    @property
-    def unencrypted_psk(self):
-        """ Get unencrypted_psk value.
-
-            Notes:
-                Unencrypted PSK
-
-                
-                This attribute is named `unencryptedPSK` in VSD API.
-                
-        """
-        return self._unencrypted_psk
-
-    @unencrypted_psk.setter
-    def unencrypted_psk(self, value):
-        """ Set unencrypted_psk value.
-
-            Notes:
-                Unencrypted PSK
-
-                
-                This attribute is named `unencryptedPSK` in VSD API.
-                
-        """
-        self._unencrypted_psk = value
 
     
 

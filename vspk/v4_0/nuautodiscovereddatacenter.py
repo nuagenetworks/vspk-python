@@ -58,13 +58,13 @@ class NUAutodiscovereddatacenter(NURESTObject):
 
         # Read/Write Attributes
         
-        self._assoc_vcenter_id = None
-        self._managed_object_id = None
         self._name = None
+        self._managed_object_id = None
+        self._assoc_vcenter_id = None
         
-        self.expose_attribute(local_name="assoc_vcenter_id", remote_name="assocVCenterId", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="managed_object_id", remote_name="managedObjectID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="managed_object_id", remote_name="managedObjectID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="assoc_vcenter_id", remote_name="assocVCenterId", attribute_type=str, is_required=False, is_unique=False)
         
 
         self._compute_args(**kwargs)
@@ -72,30 +72,26 @@ class NUAutodiscovereddatacenter(NURESTObject):
     # Properties
     
     @property
-    def assoc_vcenter_id(self):
-        """ Get assoc_vcenter_id value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                The ID of the vcenter to which this host is attached
+                Name of the shared resource. Valid characters are alphabets, numbers, space and hyphen( - ).
 
-                
-                This attribute is named `assocVCenterId` in VSD API.
                 
         """
-        return self._assoc_vcenter_id
+        return self._name
 
-    @assoc_vcenter_id.setter
-    def assoc_vcenter_id(self, value):
-        """ Set assoc_vcenter_id value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                The ID of the vcenter to which this host is attached
+                Name of the shared resource. Valid characters are alphabets, numbers, space and hyphen( - ).
 
                 
-                This attribute is named `assocVCenterId` in VSD API.
-                
         """
-        self._assoc_vcenter_id = value
+        self._name = value
 
     
     @property
@@ -126,26 +122,30 @@ class NUAutodiscovereddatacenter(NURESTObject):
 
     
     @property
-    def name(self):
-        """ Get name value.
+    def assoc_vcenter_id(self):
+        """ Get assoc_vcenter_id value.
 
             Notes:
-                Name of the shared resource. Valid characters are alphabets, numbers, space and hyphen( - ).
+                The ID of the vcenter to which this host is attached
 
                 
+                This attribute is named `assocVCenterId` in VSD API.
+                
         """
-        return self._name
+        return self._assoc_vcenter_id
 
-    @name.setter
-    def name(self, value):
-        """ Set name value.
+    @assoc_vcenter_id.setter
+    def assoc_vcenter_id(self, value):
+        """ Set assoc_vcenter_id value.
 
             Notes:
-                Name of the shared resource. Valid characters are alphabets, numbers, space and hyphen( - ).
+                The ID of the vcenter to which this host is attached
 
                 
+                This attribute is named `assocVCenterId` in VSD API.
+                
         """
-        self._name = value
+        self._assoc_vcenter_id = value
 
     
 

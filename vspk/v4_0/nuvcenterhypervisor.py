@@ -27,13 +27,13 @@
 
 
 
+from .fetchers import NUMetadatasFetcher
+
+
 from .fetchers import NUGlobalMetadatasFetcher
 
 
 from .fetchers import NUJobsFetcher
-
-
-from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUVRSAddressRangesFetcher
@@ -77,11 +77,13 @@ class NUVCenterHypervisor(NURESTObject):
 
         # Read/Write Attributes
         
+        self._vcenter_ip = None
+        self._vcenter_password = None
+        self._vcenter_user = None
         self._vrs_metrics_id = None
-        self._allow_data_dhcp = None
-        self._allow_mgmt_dhcp = None
-        self._available_networks = None
-        self._customized_script_url = None
+        self._v_require_nuage_metadata = None
+        self._name = None
+        self._last_updated_by = None
         self._data_dns1 = None
         self._data_dns2 = None
         self._data_gateway = None
@@ -89,25 +91,58 @@ class NUVCenterHypervisor(NURESTObject):
         self._data_netmask = None
         self._data_network_portgroup = None
         self._datapath_sync_timeout = None
+        self._scope = None
+        self._secondary_nuage_controller = None
+        self._separate_data_network = None
+        self._personality = None
         self._description = None
-        self._dhcp_relay_server = None
-        self._entity_scope = None
-        self._external_id = None
-        self._flow_eviction_threshold = None
-        self._hypervisor_ip = None
-        self._hypervisor_password = None
-        self._hypervisor_user = None
-        self._last_updated_by = None
         self._metadata_server_ip = None
         self._metadata_server_listen_port = None
         self._metadata_server_port = None
         self._metadata_service_enabled = None
+        self._network_uplink_interface = None
+        self._network_uplink_interface_gateway = None
+        self._network_uplink_interface_ip = None
+        self._network_uplink_interface_netmask = None
+        self._nfs_log_server = None
+        self._nfs_mount_path = None
         self._mgmt_dns1 = None
         self._mgmt_dns2 = None
         self._mgmt_gateway = None
         self._mgmt_ip_address = None
         self._mgmt_netmask = None
         self._mgmt_network_portgroup = None
+        self._dhcp_relay_server = None
+        self._site_id = None
+        self._allow_data_dhcp = None
+        self._allow_mgmt_dhcp = None
+        self._flow_eviction_threshold = None
+        self._vm_network_portgroup = None
+        self._entity_scope = None
+        self._toolbox_deployment_mode = None
+        self._toolbox_group = None
+        self._toolbox_ip = None
+        self._toolbox_password = None
+        self._toolbox_user_name = None
+        self._portgroup_metadata = None
+        self._nova_client_version = None
+        self._nova_metadata_service_auth_url = None
+        self._nova_metadata_service_endpoint = None
+        self._nova_metadata_service_password = None
+        self._nova_metadata_service_tenant = None
+        self._nova_metadata_service_username = None
+        self._nova_metadata_shared_secret = None
+        self._nova_region_name = None
+        self._primary_nuage_controller = None
+        self._vrs_id = None
+        self._vrs_metrics_id = None
+        self._vrs_password = None
+        self._vrs_user_name = None
+        self._static_route = None
+        self._static_route_gateway = None
+        self._static_route_netmask = None
+        self._ntp_server1 = None
+        self._ntp_server2 = None
         self._mtu = None
         self._multi_vmssupport = None
         self._multicast_receive_interface = None
@@ -118,53 +153,20 @@ class NUVCenterHypervisor(NURESTObject):
         self._multicast_send_interface_ip = None
         self._multicast_send_interface_netmask = None
         self._multicast_source_portgroup = None
-        self._name = None
-        self._network_uplink_interface = None
-        self._network_uplink_interface_gateway = None
-        self._network_uplink_interface_ip = None
-        self._network_uplink_interface_netmask = None
-        self._nfs_log_server = None
-        self._nfs_mount_path = None
-        self._nova_client_version = None
-        self._nova_metadata_service_auth_url = None
-        self._nova_metadata_service_endpoint = None
-        self._nova_metadata_service_password = None
-        self._nova_metadata_service_tenant = None
-        self._nova_metadata_service_username = None
-        self._nova_metadata_shared_secret = None
-        self._nova_region_name = None
-        self._ntp_server1 = None
-        self._ntp_server2 = None
-        self._personality = None
-        self._portgroup_metadata = None
-        self._primary_nuage_controller = None
-        self._scope = None
-        self._secondary_nuage_controller = None
-        self._separate_data_network = None
-        self._site_id = None
-        self._static_route = None
-        self._static_route_gateway = None
-        self._static_route_netmask = None
-        self._toolbox_deployment_mode = None
-        self._toolbox_group = None
-        self._toolbox_ip = None
-        self._toolbox_password = None
-        self._toolbox_user_name = None
-        self._vcenter_ip = None
-        self._vcenter_password = None
-        self._vcenter_user = None
-        self._v_require_nuage_metadata = None
-        self._vm_network_portgroup = None
-        self._vrs_id = None
-        self._vrs_metrics_id = None
-        self._vrs_password = None
-        self._vrs_user_name = None
+        self._customized_script_url = None
+        self._available_networks = None
+        self._external_id = None
+        self._hypervisor_ip = None
+        self._hypervisor_password = None
+        self._hypervisor_user = None
         
+        self.expose_attribute(local_name="vcenter_ip", remote_name="vCenterIP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vcenter_password", remote_name="vCenterPassword", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vcenter_user", remote_name="vCenterUser", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_metrics_id", remote_name="VRSMetricsID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="allow_data_dhcp", remote_name="allowDataDHCP", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="allow_mgmt_dhcp", remote_name="allowMgmtDHCP", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="available_networks", remote_name="availableNetworks", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="customized_script_url", remote_name="customizedScriptURL", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="v_require_nuage_metadata", remote_name="vRequireNuageMetadata", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data_dns1", remote_name="dataDNS1", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data_dns2", remote_name="dataDNS2", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data_gateway", remote_name="dataGateway", attribute_type=str, is_required=False, is_unique=False)
@@ -172,25 +174,58 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="data_netmask", remote_name="dataNetmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data_network_portgroup", remote_name="dataNetworkPortgroup", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="datapath_sync_timeout", remote_name="datapathSyncTimeout", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="scope", remote_name="scope", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="secondary_nuage_controller", remote_name="secondaryNuageController", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="separate_data_network", remote_name="separateDataNetwork", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="dhcp_relay_server", remote_name="dhcpRelayServer", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="flow_eviction_threshold", remote_name="flowEvictionThreshold", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="hypervisor_ip", remote_name="hypervisorIP", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="hypervisor_password", remote_name="hypervisorPassword", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="hypervisor_user", remote_name="hypervisorUser", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_server_ip", remote_name="metadataServerIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_server_listen_port", remote_name="metadataServerListenPort", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_server_port", remote_name="metadataServerPort", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_service_enabled", remote_name="metadataServiceEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="network_uplink_interface", remote_name="networkUplinkInterface", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="network_uplink_interface_gateway", remote_name="networkUplinkInterfaceGateway", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="network_uplink_interface_ip", remote_name="networkUplinkInterfaceIp", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="network_uplink_interface_netmask", remote_name="networkUplinkInterfaceNetmask", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nfs_log_server", remote_name="nfsLogServer", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nfs_mount_path", remote_name="nfsMountPath", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mgmt_dns1", remote_name="mgmtDNS1", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mgmt_dns2", remote_name="mgmtDNS2", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mgmt_gateway", remote_name="mgmtGateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mgmt_ip_address", remote_name="mgmtIPAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mgmt_netmask", remote_name="mgmtNetmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mgmt_network_portgroup", remote_name="mgmtNetworkPortgroup", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="dhcp_relay_server", remote_name="dhcpRelayServer", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="site_id", remote_name="siteId", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="allow_data_dhcp", remote_name="allowDataDHCP", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="allow_mgmt_dhcp", remote_name="allowMgmtDHCP", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_eviction_threshold", remote_name="flowEvictionThreshold", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vm_network_portgroup", remote_name="vmNetworkPortgroup", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="toolbox_deployment_mode", remote_name="toolboxDeploymentMode", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="toolbox_group", remote_name="toolboxGroup", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="toolbox_ip", remote_name="toolboxIP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="toolbox_password", remote_name="toolboxPassword", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="toolbox_user_name", remote_name="toolboxUserName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="portgroup_metadata", remote_name="portgroupMetadata", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nova_client_version", remote_name="novaClientVersion", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nova_metadata_service_auth_url", remote_name="novaMetadataServiceAuthUrl", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nova_metadata_service_endpoint", remote_name="novaMetadataServiceEndpoint", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nova_metadata_service_password", remote_name="novaMetadataServicePassword", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nova_metadata_service_tenant", remote_name="novaMetadataServiceTenant", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nova_metadata_service_username", remote_name="novaMetadataServiceUsername", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nova_metadata_shared_secret", remote_name="novaMetadataSharedSecret", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nova_region_name", remote_name="novaRegionName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="primary_nuage_controller", remote_name="primaryNuageController", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrs_id", remote_name="vrsId", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrs_metrics_id", remote_name="vrsMetricsID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrs_password", remote_name="vrsPassword", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrs_user_name", remote_name="vrsUserName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="static_route", remote_name="staticRoute", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="static_route_gateway", remote_name="staticRouteGateway", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="static_route_netmask", remote_name="staticRouteNetmask", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ntp_server1", remote_name="ntpServer1", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ntp_server2", remote_name="ntpServer2", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mtu", remote_name="mtu", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multi_vmssupport", remote_name="multiVMSsupport", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast_receive_interface", remote_name="multicastReceiveInterface", attribute_type=str, is_required=False, is_unique=False)
@@ -201,50 +236,18 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="multicast_send_interface_ip", remote_name="multicastSendInterfaceIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast_send_interface_netmask", remote_name="multicastSendInterfaceNetmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast_source_portgroup", remote_name="multicastSourcePortgroup", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="network_uplink_interface", remote_name="networkUplinkInterface", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="network_uplink_interface_gateway", remote_name="networkUplinkInterfaceGateway", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="network_uplink_interface_ip", remote_name="networkUplinkInterfaceIp", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="network_uplink_interface_netmask", remote_name="networkUplinkInterfaceNetmask", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="nfs_log_server", remote_name="nfsLogServer", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="nfs_mount_path", remote_name="nfsMountPath", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="nova_client_version", remote_name="novaClientVersion", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="nova_metadata_service_auth_url", remote_name="novaMetadataServiceAuthUrl", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="nova_metadata_service_endpoint", remote_name="novaMetadataServiceEndpoint", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="nova_metadata_service_password", remote_name="novaMetadataServicePassword", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="nova_metadata_service_tenant", remote_name="novaMetadataServiceTenant", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="nova_metadata_service_username", remote_name="novaMetadataServiceUsername", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="nova_metadata_shared_secret", remote_name="novaMetadataSharedSecret", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="nova_region_name", remote_name="novaRegionName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="ntp_server1", remote_name="ntpServer1", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="ntp_server2", remote_name="ntpServer2", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="portgroup_metadata", remote_name="portgroupMetadata", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="primary_nuage_controller", remote_name="primaryNuageController", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="scope", remote_name="scope", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="secondary_nuage_controller", remote_name="secondaryNuageController", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="separate_data_network", remote_name="separateDataNetwork", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="site_id", remote_name="siteId", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="static_route", remote_name="staticRoute", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="static_route_gateway", remote_name="staticRouteGateway", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="static_route_netmask", remote_name="staticRouteNetmask", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="toolbox_deployment_mode", remote_name="toolboxDeploymentMode", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="toolbox_group", remote_name="toolboxGroup", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="toolbox_ip", remote_name="toolboxIP", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="toolbox_password", remote_name="toolboxPassword", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="toolbox_user_name", remote_name="toolboxUserName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="vcenter_ip", remote_name="vCenterIP", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="vcenter_password", remote_name="vCenterPassword", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="vcenter_user", remote_name="vCenterUser", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="v_require_nuage_metadata", remote_name="vRequireNuageMetadata", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="vm_network_portgroup", remote_name="vmNetworkPortgroup", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="vrs_id", remote_name="vrsId", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="vrs_metrics_id", remote_name="vrsMetricsID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="vrs_password", remote_name="vrsPassword", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="vrs_user_name", remote_name="vrsUserName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="customized_script_url", remote_name="customizedScriptURL", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="available_networks", remote_name="availableNetworks", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="hypervisor_ip", remote_name="hypervisorIP", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="hypervisor_password", remote_name="hypervisorPassword", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="hypervisor_user", remote_name="hypervisorUser", attribute_type=str, is_required=True, is_unique=False)
         
 
         # Fetchers
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -253,15 +256,93 @@ class NUVCenterHypervisor(NURESTObject):
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.vrs_address_ranges = NUVRSAddressRangesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def vcenter_ip(self):
+        """ Get vcenter_ip value.
+
+            Notes:
+                IP Address of the VCenter.
+
+                
+                This attribute is named `vCenterIP` in VSD API.
+                
+        """
+        return self._vcenter_ip
+
+    @vcenter_ip.setter
+    def vcenter_ip(self, value):
+        """ Set vcenter_ip value.
+
+            Notes:
+                IP Address of the VCenter.
+
+                
+                This attribute is named `vCenterIP` in VSD API.
+                
+        """
+        self._vcenter_ip = value
+
+    
+    @property
+    def vcenter_password(self):
+        """ Get vcenter_password value.
+
+            Notes:
+                Password for VCenter.
+
+                
+                This attribute is named `vCenterPassword` in VSD API.
+                
+        """
+        return self._vcenter_password
+
+    @vcenter_password.setter
+    def vcenter_password(self, value):
+        """ Set vcenter_password value.
+
+            Notes:
+                Password for VCenter.
+
+                
+                This attribute is named `vCenterPassword` in VSD API.
+                
+        """
+        self._vcenter_password = value
+
+    
+    @property
+    def vcenter_user(self):
+        """ Get vcenter_user value.
+
+            Notes:
+                Username for VCenter.
+
+                
+                This attribute is named `vCenterUser` in VSD API.
+                
+        """
+        return self._vcenter_user
+
+    @vcenter_user.setter
+    def vcenter_user(self, value):
+        """ Set vcenter_user value.
+
+            Notes:
+                Username for VCenter.
+
+                
+                This attribute is named `vCenterUser` in VSD API.
+                
+        """
+        self._vcenter_user = value
+
     
     @property
     def vrs_metrics_id(self):
@@ -291,111 +372,80 @@ class NUVCenterHypervisor(NURESTObject):
 
     
     @property
-    def allow_data_dhcp(self):
-        """ Get allow_data_dhcp value.
+    def v_require_nuage_metadata(self):
+        """ Get v_require_nuage_metadata value.
 
             Notes:
-                Whether to get the Data IP for the VRS VM from DHCP or statically
+                Whether split-activation or not (Openstack/CloudStack)
 
                 
-                This attribute is named `allowDataDHCP` in VSD API.
+                This attribute is named `vRequireNuageMetadata` in VSD API.
                 
         """
-        return self._allow_data_dhcp
+        return self._v_require_nuage_metadata
 
-    @allow_data_dhcp.setter
-    def allow_data_dhcp(self, value):
-        """ Set allow_data_dhcp value.
+    @v_require_nuage_metadata.setter
+    def v_require_nuage_metadata(self, value):
+        """ Set v_require_nuage_metadata value.
 
             Notes:
-                Whether to get the Data IP for the VRS VM from DHCP or statically
+                Whether split-activation or not (Openstack/CloudStack)
 
                 
-                This attribute is named `allowDataDHCP` in VSD API.
+                This attribute is named `vRequireNuageMetadata` in VSD API.
                 
         """
-        self._allow_data_dhcp = value
+        self._v_require_nuage_metadata = value
 
     
     @property
-    def allow_mgmt_dhcp(self):
-        """ Get allow_mgmt_dhcp value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                Whether to get the management IP for the VRS VM from DHCP or statically
+                Name of the Hypervisor
 
-                
-                This attribute is named `allowMgmtDHCP` in VSD API.
                 
         """
-        return self._allow_mgmt_dhcp
+        return self._name
 
-    @allow_mgmt_dhcp.setter
-    def allow_mgmt_dhcp(self, value):
-        """ Set allow_mgmt_dhcp value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                Whether to get the management IP for the VRS VM from DHCP or statically
+                Name of the Hypervisor
 
                 
-                This attribute is named `allowMgmtDHCP` in VSD API.
-                
         """
-        self._allow_mgmt_dhcp = value
+        self._name = value
 
     
     @property
-    def available_networks(self):
-        """ Get available_networks value.
+    def last_updated_by(self):
+        """ Get last_updated_by value.
 
             Notes:
-                List of the available network list for the hypervisor.
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `availableNetworks` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        return self._available_networks
+        return self._last_updated_by
 
-    @available_networks.setter
-    def available_networks(self, value):
-        """ Set available_networks value.
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
 
             Notes:
-                List of the available network list for the hypervisor.
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `availableNetworks` in VSD API.
-                
-        """
-        self._available_networks = value
-
-    
-    @property
-    def customized_script_url(self):
-        """ Get customized_script_url value.
-
-            Notes:
-                To provide a URL to install a custom app on VRS
-
-                
-                This attribute is named `customizedScriptURL` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        return self._customized_script_url
-
-    @customized_script_url.setter
-    def customized_script_url(self, value):
-        """ Set customized_script_url value.
-
-            Notes:
-                To provide a URL to install a custom app on VRS
-
-                
-                This attribute is named `customizedScriptURL` in VSD API.
-                
-        """
-        self._customized_script_url = value
+        self._last_updated_by = value
 
     
     @property
@@ -588,6 +638,106 @@ class NUVCenterHypervisor(NURESTObject):
 
     
     @property
+    def scope(self):
+        """ Get scope value.
+
+            Notes:
+                Cluster in scope or not in scope.
+
+                
+        """
+        return self._scope
+
+    @scope.setter
+    def scope(self, value):
+        """ Set scope value.
+
+            Notes:
+                Cluster in scope or not in scope.
+
+                
+        """
+        self._scope = value
+
+    
+    @property
+    def secondary_nuage_controller(self):
+        """ Get secondary_nuage_controller value.
+
+            Notes:
+                IP address of the secondary Controller (VSC)
+
+                
+                This attribute is named `secondaryNuageController` in VSD API.
+                
+        """
+        return self._secondary_nuage_controller
+
+    @secondary_nuage_controller.setter
+    def secondary_nuage_controller(self, value):
+        """ Set secondary_nuage_controller value.
+
+            Notes:
+                IP address of the secondary Controller (VSC)
+
+                
+                This attribute is named `secondaryNuageController` in VSD API.
+                
+        """
+        self._secondary_nuage_controller = value
+
+    
+    @property
+    def separate_data_network(self):
+        """ Get separate_data_network value.
+
+            Notes:
+                Whether Data will use the management network or not
+
+                
+                This attribute is named `separateDataNetwork` in VSD API.
+                
+        """
+        return self._separate_data_network
+
+    @separate_data_network.setter
+    def separate_data_network(self, value):
+        """ Set separate_data_network value.
+
+            Notes:
+                Whether Data will use the management network or not
+
+                
+                This attribute is named `separateDataNetwork` in VSD API.
+                
+        """
+        self._separate_data_network = value
+
+    
+    @property
+    def personality(self):
+        """ Get personality value.
+
+            Notes:
+                VRS/VRS-G
+
+                
+        """
+        return self._personality
+
+    @personality.setter
+    def personality(self, value):
+        """ Set personality value.
+
+            Notes:
+                VRS/VRS-G
+
+                
+        """
+        self._personality = value
+
+    
+    @property
     def description(self):
         """ Get description value.
 
@@ -608,222 +758,6 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._description = value
-
-    
-    @property
-    def dhcp_relay_server(self):
-        """ Get dhcp_relay_server value.
-
-            Notes:
-                To provide IP address of the interface from which you will connect to the DHCP relay server
-
-                
-                This attribute is named `dhcpRelayServer` in VSD API.
-                
-        """
-        return self._dhcp_relay_server
-
-    @dhcp_relay_server.setter
-    def dhcp_relay_server(self, value):
-        """ Set dhcp_relay_server value.
-
-            Notes:
-                To provide IP address of the interface from which you will connect to the DHCP relay server
-
-                
-                This attribute is named `dhcpRelayServer` in VSD API.
-                
-        """
-        self._dhcp_relay_server = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def flow_eviction_threshold(self):
-        """ Get flow_eviction_threshold value.
-
-            Notes:
-                Flow Eviction Threshold
-
-                
-                This attribute is named `flowEvictionThreshold` in VSD API.
-                
-        """
-        return self._flow_eviction_threshold
-
-    @flow_eviction_threshold.setter
-    def flow_eviction_threshold(self, value):
-        """ Set flow_eviction_threshold value.
-
-            Notes:
-                Flow Eviction Threshold
-
-                
-                This attribute is named `flowEvictionThreshold` in VSD API.
-                
-        """
-        self._flow_eviction_threshold = value
-
-    
-    @property
-    def hypervisor_ip(self):
-        """ Get hypervisor_ip value.
-
-            Notes:
-                IP Address of the Hypervisor
-
-                
-                This attribute is named `hypervisorIP` in VSD API.
-                
-        """
-        return self._hypervisor_ip
-
-    @hypervisor_ip.setter
-    def hypervisor_ip(self, value):
-        """ Set hypervisor_ip value.
-
-            Notes:
-                IP Address of the Hypervisor
-
-                
-                This attribute is named `hypervisorIP` in VSD API.
-                
-        """
-        self._hypervisor_ip = value
-
-    
-    @property
-    def hypervisor_password(self):
-        """ Get hypervisor_password value.
-
-            Notes:
-                Hypervisor username
-
-                
-                This attribute is named `hypervisorPassword` in VSD API.
-                
-        """
-        return self._hypervisor_password
-
-    @hypervisor_password.setter
-    def hypervisor_password(self, value):
-        """ Set hypervisor_password value.
-
-            Notes:
-                Hypervisor username
-
-                
-                This attribute is named `hypervisorPassword` in VSD API.
-                
-        """
-        self._hypervisor_password = value
-
-    
-    @property
-    def hypervisor_user(self):
-        """ Get hypervisor_user value.
-
-            Notes:
-                Hypervisor username
-
-                
-                This attribute is named `hypervisorUser` in VSD API.
-                
-        """
-        return self._hypervisor_user
-
-    @hypervisor_user.setter
-    def hypervisor_user(self, value):
-        """ Set hypervisor_user value.
-
-            Notes:
-                Hypervisor username
-
-                
-                This attribute is named `hypervisorUser` in VSD API.
-                
-        """
-        self._hypervisor_user = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
 
     
     @property
@@ -932,6 +866,168 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._metadata_service_enabled = value
+
+    
+    @property
+    def network_uplink_interface(self):
+        """ Get network_uplink_interface value.
+
+            Notes:
+                Network Upling Interface to support PAT/NAT with no tunnels on VRS-VM
+
+                
+                This attribute is named `networkUplinkInterface` in VSD API.
+                
+        """
+        return self._network_uplink_interface
+
+    @network_uplink_interface.setter
+    def network_uplink_interface(self, value):
+        """ Set network_uplink_interface value.
+
+            Notes:
+                Network Upling Interface to support PAT/NAT with no tunnels on VRS-VM
+
+                
+                This attribute is named `networkUplinkInterface` in VSD API.
+                
+        """
+        self._network_uplink_interface = value
+
+    
+    @property
+    def network_uplink_interface_gateway(self):
+        """ Get network_uplink_interface_gateway value.
+
+            Notes:
+                Network Uplink Interface Gateway
+
+                
+                This attribute is named `networkUplinkInterfaceGateway` in VSD API.
+                
+        """
+        return self._network_uplink_interface_gateway
+
+    @network_uplink_interface_gateway.setter
+    def network_uplink_interface_gateway(self, value):
+        """ Set network_uplink_interface_gateway value.
+
+            Notes:
+                Network Uplink Interface Gateway
+
+                
+                This attribute is named `networkUplinkInterfaceGateway` in VSD API.
+                
+        """
+        self._network_uplink_interface_gateway = value
+
+    
+    @property
+    def network_uplink_interface_ip(self):
+        """ Get network_uplink_interface_ip value.
+
+            Notes:
+                Ip Address to support PAT/NAT with no tunnels on VRS-VM
+
+                
+                This attribute is named `networkUplinkInterfaceIp` in VSD API.
+                
+        """
+        return self._network_uplink_interface_ip
+
+    @network_uplink_interface_ip.setter
+    def network_uplink_interface_ip(self, value):
+        """ Set network_uplink_interface_ip value.
+
+            Notes:
+                Ip Address to support PAT/NAT with no tunnels on VRS-VM
+
+                
+                This attribute is named `networkUplinkInterfaceIp` in VSD API.
+                
+        """
+        self._network_uplink_interface_ip = value
+
+    
+    @property
+    def network_uplink_interface_netmask(self):
+        """ Get network_uplink_interface_netmask value.
+
+            Notes:
+                Network Uplink Interface Netmask
+
+                
+                This attribute is named `networkUplinkInterfaceNetmask` in VSD API.
+                
+        """
+        return self._network_uplink_interface_netmask
+
+    @network_uplink_interface_netmask.setter
+    def network_uplink_interface_netmask(self, value):
+        """ Set network_uplink_interface_netmask value.
+
+            Notes:
+                Network Uplink Interface Netmask
+
+                
+                This attribute is named `networkUplinkInterfaceNetmask` in VSD API.
+                
+        """
+        self._network_uplink_interface_netmask = value
+
+    
+    @property
+    def nfs_log_server(self):
+        """ Get nfs_log_server value.
+
+            Notes:
+                IP address of NFS server to send the VRS log
+
+                
+                This attribute is named `nfsLogServer` in VSD API.
+                
+        """
+        return self._nfs_log_server
+
+    @nfs_log_server.setter
+    def nfs_log_server(self, value):
+        """ Set nfs_log_server value.
+
+            Notes:
+                IP address of NFS server to send the VRS log
+
+                
+                This attribute is named `nfsLogServer` in VSD API.
+                
+        """
+        self._nfs_log_server = value
+
+    
+    @property
+    def nfs_mount_path(self):
+        """ Get nfs_mount_path value.
+
+            Notes:
+                Location to mount the NFS server
+
+                
+                This attribute is named `nfsMountPath` in VSD API.
+                
+        """
+        return self._nfs_mount_path
+
+    @nfs_mount_path.setter
+    def nfs_mount_path(self, value):
+        """ Set nfs_mount_path value.
+
+            Notes:
+                Location to mount the NFS server
+
+                
+                This attribute is named `nfsMountPath` in VSD API.
+                
+        """
+        self._nfs_mount_path = value
 
     
     @property
@@ -1094,6 +1190,843 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._mgmt_network_portgroup = value
+
+    
+    @property
+    def dhcp_relay_server(self):
+        """ Get dhcp_relay_server value.
+
+            Notes:
+                To provide IP address of the interface from which you will connect to the DHCP relay server
+
+                
+                This attribute is named `dhcpRelayServer` in VSD API.
+                
+        """
+        return self._dhcp_relay_server
+
+    @dhcp_relay_server.setter
+    def dhcp_relay_server(self, value):
+        """ Set dhcp_relay_server value.
+
+            Notes:
+                To provide IP address of the interface from which you will connect to the DHCP relay server
+
+                
+                This attribute is named `dhcpRelayServer` in VSD API.
+                
+        """
+        self._dhcp_relay_server = value
+
+    
+    @property
+    def site_id(self):
+        """ Get site_id value.
+
+            Notes:
+                Site ID field for object profiles to support VSD Geo-redundancy
+
+                
+                This attribute is named `siteId` in VSD API.
+                
+        """
+        return self._site_id
+
+    @site_id.setter
+    def site_id(self, value):
+        """ Set site_id value.
+
+            Notes:
+                Site ID field for object profiles to support VSD Geo-redundancy
+
+                
+                This attribute is named `siteId` in VSD API.
+                
+        """
+        self._site_id = value
+
+    
+    @property
+    def allow_data_dhcp(self):
+        """ Get allow_data_dhcp value.
+
+            Notes:
+                Whether to get the Data IP for the VRS VM from DHCP or statically
+
+                
+                This attribute is named `allowDataDHCP` in VSD API.
+                
+        """
+        return self._allow_data_dhcp
+
+    @allow_data_dhcp.setter
+    def allow_data_dhcp(self, value):
+        """ Set allow_data_dhcp value.
+
+            Notes:
+                Whether to get the Data IP for the VRS VM from DHCP or statically
+
+                
+                This attribute is named `allowDataDHCP` in VSD API.
+                
+        """
+        self._allow_data_dhcp = value
+
+    
+    @property
+    def allow_mgmt_dhcp(self):
+        """ Get allow_mgmt_dhcp value.
+
+            Notes:
+                Whether to get the management IP for the VRS VM from DHCP or statically
+
+                
+                This attribute is named `allowMgmtDHCP` in VSD API.
+                
+        """
+        return self._allow_mgmt_dhcp
+
+    @allow_mgmt_dhcp.setter
+    def allow_mgmt_dhcp(self, value):
+        """ Set allow_mgmt_dhcp value.
+
+            Notes:
+                Whether to get the management IP for the VRS VM from DHCP or statically
+
+                
+                This attribute is named `allowMgmtDHCP` in VSD API.
+                
+        """
+        self._allow_mgmt_dhcp = value
+
+    
+    @property
+    def flow_eviction_threshold(self):
+        """ Get flow_eviction_threshold value.
+
+            Notes:
+                Flow Eviction Threshold
+
+                
+                This attribute is named `flowEvictionThreshold` in VSD API.
+                
+        """
+        return self._flow_eviction_threshold
+
+    @flow_eviction_threshold.setter
+    def flow_eviction_threshold(self, value):
+        """ Set flow_eviction_threshold value.
+
+            Notes:
+                Flow Eviction Threshold
+
+                
+                This attribute is named `flowEvictionThreshold` in VSD API.
+                
+        """
+        self._flow_eviction_threshold = value
+
+    
+    @property
+    def vm_network_portgroup(self):
+        """ Get vm_network_portgroup value.
+
+            Notes:
+                VM Network Port Group Name
+
+                
+                This attribute is named `vmNetworkPortgroup` in VSD API.
+                
+        """
+        return self._vm_network_portgroup
+
+    @vm_network_portgroup.setter
+    def vm_network_portgroup(self, value):
+        """ Set vm_network_portgroup value.
+
+            Notes:
+                VM Network Port Group Name
+
+                
+                This attribute is named `vmNetworkPortgroup` in VSD API.
+                
+        """
+        self._vm_network_portgroup = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def toolbox_deployment_mode(self):
+        """ Get toolbox_deployment_mode value.
+
+            Notes:
+                Flag to specify if VRS is deployed using tool box.
+
+                
+                This attribute is named `toolboxDeploymentMode` in VSD API.
+                
+        """
+        return self._toolbox_deployment_mode
+
+    @toolbox_deployment_mode.setter
+    def toolbox_deployment_mode(self, value):
+        """ Set toolbox_deployment_mode value.
+
+            Notes:
+                Flag to specify if VRS is deployed using tool box.
+
+                
+                This attribute is named `toolboxDeploymentMode` in VSD API.
+                
+        """
+        self._toolbox_deployment_mode = value
+
+    
+    @property
+    def toolbox_group(self):
+        """ Get toolbox_group value.
+
+            Notes:
+                Deployment Toolbox Group.
+
+                
+                This attribute is named `toolboxGroup` in VSD API.
+                
+        """
+        return self._toolbox_group
+
+    @toolbox_group.setter
+    def toolbox_group(self, value):
+        """ Set toolbox_group value.
+
+            Notes:
+                Deployment Toolbox Group.
+
+                
+                This attribute is named `toolboxGroup` in VSD API.
+                
+        """
+        self._toolbox_group = value
+
+    
+    @property
+    def toolbox_ip(self):
+        """ Get toolbox_ip value.
+
+            Notes:
+                Deployment Toolbox IP.
+
+                
+                This attribute is named `toolboxIP` in VSD API.
+                
+        """
+        return self._toolbox_ip
+
+    @toolbox_ip.setter
+    def toolbox_ip(self, value):
+        """ Set toolbox_ip value.
+
+            Notes:
+                Deployment Toolbox IP.
+
+                
+                This attribute is named `toolboxIP` in VSD API.
+                
+        """
+        self._toolbox_ip = value
+
+    
+    @property
+    def toolbox_password(self):
+        """ Get toolbox_password value.
+
+            Notes:
+                Deployment Toolbox password.
+
+                
+                This attribute is named `toolboxPassword` in VSD API.
+                
+        """
+        return self._toolbox_password
+
+    @toolbox_password.setter
+    def toolbox_password(self, value):
+        """ Set toolbox_password value.
+
+            Notes:
+                Deployment Toolbox password.
+
+                
+                This attribute is named `toolboxPassword` in VSD API.
+                
+        """
+        self._toolbox_password = value
+
+    
+    @property
+    def toolbox_user_name(self):
+        """ Get toolbox_user_name value.
+
+            Notes:
+                Deployment Toolbox username.
+
+                
+                This attribute is named `toolboxUserName` in VSD API.
+                
+        """
+        return self._toolbox_user_name
+
+    @toolbox_user_name.setter
+    def toolbox_user_name(self, value):
+        """ Set toolbox_user_name value.
+
+            Notes:
+                Deployment Toolbox username.
+
+                
+                This attribute is named `toolboxUserName` in VSD API.
+                
+        """
+        self._toolbox_user_name = value
+
+    
+    @property
+    def portgroup_metadata(self):
+        """ Get portgroup_metadata value.
+
+            Notes:
+                Port Group Meta data
+
+                
+                This attribute is named `portgroupMetadata` in VSD API.
+                
+        """
+        return self._portgroup_metadata
+
+    @portgroup_metadata.setter
+    def portgroup_metadata(self, value):
+        """ Set portgroup_metadata value.
+
+            Notes:
+                Port Group Meta data
+
+                
+                This attribute is named `portgroupMetadata` in VSD API.
+                
+        """
+        self._portgroup_metadata = value
+
+    
+    @property
+    def nova_client_version(self):
+        """ Get nova_client_version value.
+
+            Notes:
+                Nova client Version 
+
+                
+                This attribute is named `novaClientVersion` in VSD API.
+                
+        """
+        return self._nova_client_version
+
+    @nova_client_version.setter
+    def nova_client_version(self, value):
+        """ Set nova_client_version value.
+
+            Notes:
+                Nova client Version 
+
+                
+                This attribute is named `novaClientVersion` in VSD API.
+                
+        """
+        self._nova_client_version = value
+
+    
+    @property
+    def nova_metadata_service_auth_url(self):
+        """ Get nova_metadata_service_auth_url value.
+
+            Notes:
+                Nova metadata service auth url
+
+                
+                This attribute is named `novaMetadataServiceAuthUrl` in VSD API.
+                
+        """
+        return self._nova_metadata_service_auth_url
+
+    @nova_metadata_service_auth_url.setter
+    def nova_metadata_service_auth_url(self, value):
+        """ Set nova_metadata_service_auth_url value.
+
+            Notes:
+                Nova metadata service auth url
+
+                
+                This attribute is named `novaMetadataServiceAuthUrl` in VSD API.
+                
+        """
+        self._nova_metadata_service_auth_url = value
+
+    
+    @property
+    def nova_metadata_service_endpoint(self):
+        """ Get nova_metadata_service_endpoint value.
+
+            Notes:
+                Nova metadata service endpoint
+
+                
+                This attribute is named `novaMetadataServiceEndpoint` in VSD API.
+                
+        """
+        return self._nova_metadata_service_endpoint
+
+    @nova_metadata_service_endpoint.setter
+    def nova_metadata_service_endpoint(self, value):
+        """ Set nova_metadata_service_endpoint value.
+
+            Notes:
+                Nova metadata service endpoint
+
+                
+                This attribute is named `novaMetadataServiceEndpoint` in VSD API.
+                
+        """
+        self._nova_metadata_service_endpoint = value
+
+    
+    @property
+    def nova_metadata_service_password(self):
+        """ Get nova_metadata_service_password value.
+
+            Notes:
+                Nova metadata service password
+
+                
+                This attribute is named `novaMetadataServicePassword` in VSD API.
+                
+        """
+        return self._nova_metadata_service_password
+
+    @nova_metadata_service_password.setter
+    def nova_metadata_service_password(self, value):
+        """ Set nova_metadata_service_password value.
+
+            Notes:
+                Nova metadata service password
+
+                
+                This attribute is named `novaMetadataServicePassword` in VSD API.
+                
+        """
+        self._nova_metadata_service_password = value
+
+    
+    @property
+    def nova_metadata_service_tenant(self):
+        """ Get nova_metadata_service_tenant value.
+
+            Notes:
+                Nova metadata service tenant
+
+                
+                This attribute is named `novaMetadataServiceTenant` in VSD API.
+                
+        """
+        return self._nova_metadata_service_tenant
+
+    @nova_metadata_service_tenant.setter
+    def nova_metadata_service_tenant(self, value):
+        """ Set nova_metadata_service_tenant value.
+
+            Notes:
+                Nova metadata service tenant
+
+                
+                This attribute is named `novaMetadataServiceTenant` in VSD API.
+                
+        """
+        self._nova_metadata_service_tenant = value
+
+    
+    @property
+    def nova_metadata_service_username(self):
+        """ Get nova_metadata_service_username value.
+
+            Notes:
+                Nova metadata service username
+
+                
+                This attribute is named `novaMetadataServiceUsername` in VSD API.
+                
+        """
+        return self._nova_metadata_service_username
+
+    @nova_metadata_service_username.setter
+    def nova_metadata_service_username(self, value):
+        """ Set nova_metadata_service_username value.
+
+            Notes:
+                Nova metadata service username
+
+                
+                This attribute is named `novaMetadataServiceUsername` in VSD API.
+                
+        """
+        self._nova_metadata_service_username = value
+
+    
+    @property
+    def nova_metadata_shared_secret(self):
+        """ Get nova_metadata_shared_secret value.
+
+            Notes:
+                Nova metadata shared secret
+
+                
+                This attribute is named `novaMetadataSharedSecret` in VSD API.
+                
+        """
+        return self._nova_metadata_shared_secret
+
+    @nova_metadata_shared_secret.setter
+    def nova_metadata_shared_secret(self, value):
+        """ Set nova_metadata_shared_secret value.
+
+            Notes:
+                Nova metadata shared secret
+
+                
+                This attribute is named `novaMetadataSharedSecret` in VSD API.
+                
+        """
+        self._nova_metadata_shared_secret = value
+
+    
+    @property
+    def nova_region_name(self):
+        """ Get nova_region_name value.
+
+            Notes:
+                Nova region name
+
+                
+                This attribute is named `novaRegionName` in VSD API.
+                
+        """
+        return self._nova_region_name
+
+    @nova_region_name.setter
+    def nova_region_name(self, value):
+        """ Set nova_region_name value.
+
+            Notes:
+                Nova region name
+
+                
+                This attribute is named `novaRegionName` in VSD API.
+                
+        """
+        self._nova_region_name = value
+
+    
+    @property
+    def primary_nuage_controller(self):
+        """ Get primary_nuage_controller value.
+
+            Notes:
+                IP address of the primary Controller (VSC)
+
+                
+                This attribute is named `primaryNuageController` in VSD API.
+                
+        """
+        return self._primary_nuage_controller
+
+    @primary_nuage_controller.setter
+    def primary_nuage_controller(self, value):
+        """ Set primary_nuage_controller value.
+
+            Notes:
+                IP address of the primary Controller (VSC)
+
+                
+                This attribute is named `primaryNuageController` in VSD API.
+                
+        """
+        self._primary_nuage_controller = value
+
+    
+    @property
+    def vrs_id(self):
+        """ Get vrs_id value.
+
+            Notes:
+                VCenter Name or Id used by toolbox to identify the VRS virtual machine
+
+                
+                This attribute is named `vrsId` in VSD API.
+                
+        """
+        return self._vrs_id
+
+    @vrs_id.setter
+    def vrs_id(self, value):
+        """ Set vrs_id value.
+
+            Notes:
+                VCenter Name or Id used by toolbox to identify the VRS virtual machine
+
+                
+                This attribute is named `vrsId` in VSD API.
+                
+        """
+        self._vrs_id = value
+
+    
+    @property
+    def vrs_metrics_id(self):
+        """ Get vrs_metrics_id value.
+
+            Notes:
+                ID of the vrsMetrics Entity
+
+                
+                This attribute is named `vrsMetricsID` in VSD API.
+                
+        """
+        return self._vrs_metrics_id
+
+    @vrs_metrics_id.setter
+    def vrs_metrics_id(self, value):
+        """ Set vrs_metrics_id value.
+
+            Notes:
+                ID of the vrsMetrics Entity
+
+                
+                This attribute is named `vrsMetricsID` in VSD API.
+                
+        """
+        self._vrs_metrics_id = value
+
+    
+    @property
+    def vrs_password(self):
+        """ Get vrs_password value.
+
+            Notes:
+                VRS password to be used by toolbox to communicate with VRS
+
+                
+                This attribute is named `vrsPassword` in VSD API.
+                
+        """
+        return self._vrs_password
+
+    @vrs_password.setter
+    def vrs_password(self, value):
+        """ Set vrs_password value.
+
+            Notes:
+                VRS password to be used by toolbox to communicate with VRS
+
+                
+                This attribute is named `vrsPassword` in VSD API.
+                
+        """
+        self._vrs_password = value
+
+    
+    @property
+    def vrs_user_name(self):
+        """ Get vrs_user_name value.
+
+            Notes:
+                VRS user name to be used by toolbox to communicate with VRS
+
+                
+                This attribute is named `vrsUserName` in VSD API.
+                
+        """
+        return self._vrs_user_name
+
+    @vrs_user_name.setter
+    def vrs_user_name(self, value):
+        """ Set vrs_user_name value.
+
+            Notes:
+                VRS user name to be used by toolbox to communicate with VRS
+
+                
+                This attribute is named `vrsUserName` in VSD API.
+                
+        """
+        self._vrs_user_name = value
+
+    
+    @property
+    def static_route(self):
+        """ Get static_route value.
+
+            Notes:
+                static route to be configured in the VRS
+
+                
+                This attribute is named `staticRoute` in VSD API.
+                
+        """
+        return self._static_route
+
+    @static_route.setter
+    def static_route(self, value):
+        """ Set static_route value.
+
+            Notes:
+                static route to be configured in the VRS
+
+                
+                This attribute is named `staticRoute` in VSD API.
+                
+        """
+        self._static_route = value
+
+    
+    @property
+    def static_route_gateway(self):
+        """ Get static_route_gateway value.
+
+            Notes:
+                Gateway for the static route given above
+
+                
+                This attribute is named `staticRouteGateway` in VSD API.
+                
+        """
+        return self._static_route_gateway
+
+    @static_route_gateway.setter
+    def static_route_gateway(self, value):
+        """ Set static_route_gateway value.
+
+            Notes:
+                Gateway for the static route given above
+
+                
+                This attribute is named `staticRouteGateway` in VSD API.
+                
+        """
+        self._static_route_gateway = value
+
+    
+    @property
+    def static_route_netmask(self):
+        """ Get static_route_netmask value.
+
+            Notes:
+                Nova region name
+
+                
+                This attribute is named `staticRouteNetmask` in VSD API.
+                
+        """
+        return self._static_route_netmask
+
+    @static_route_netmask.setter
+    def static_route_netmask(self, value):
+        """ Set static_route_netmask value.
+
+            Notes:
+                Nova region name
+
+                
+                This attribute is named `staticRouteNetmask` in VSD API.
+                
+        """
+        self._static_route_netmask = value
+
+    
+    @property
+    def ntp_server1(self):
+        """ Get ntp_server1 value.
+
+            Notes:
+                IP of the NTP server 1
+
+                
+                This attribute is named `ntpServer1` in VSD API.
+                
+        """
+        return self._ntp_server1
+
+    @ntp_server1.setter
+    def ntp_server1(self, value):
+        """ Set ntp_server1 value.
+
+            Notes:
+                IP of the NTP server 1
+
+                
+                This attribute is named `ntpServer1` in VSD API.
+                
+        """
+        self._ntp_server1 = value
+
+    
+    @property
+    def ntp_server2(self):
+        """ Get ntp_server2 value.
+
+            Notes:
+                IP of the NTP server 1
+
+                
+                This attribute is named `ntpServer2` in VSD API.
+                
+        """
+        return self._ntp_server2
+
+    @ntp_server2.setter
+    def ntp_server2(self, value):
+        """ Set ntp_server2 value.
+
+            Notes:
+                IP of the NTP server 1
+
+                
+                This attribute is named `ntpServer2` in VSD API.
+                
+        """
+        self._ntp_server2 = value
 
     
     @property
@@ -1363,1098 +2296,165 @@ class NUVCenterHypervisor(NURESTObject):
 
     
     @property
-    def name(self):
-        """ Get name value.
+    def customized_script_url(self):
+        """ Get customized_script_url value.
 
             Notes:
-                Name of the Hypervisor
+                To provide a URL to install a custom app on VRS
 
                 
+                This attribute is named `customizedScriptURL` in VSD API.
+                
         """
-        return self._name
+        return self._customized_script_url
 
-    @name.setter
-    def name(self, value):
-        """ Set name value.
+    @customized_script_url.setter
+    def customized_script_url(self, value):
+        """ Set customized_script_url value.
 
             Notes:
-                Name of the Hypervisor
+                To provide a URL to install a custom app on VRS
 
+                
+                This attribute is named `customizedScriptURL` in VSD API.
                 
         """
-        self._name = value
-
-    
-    @property
-    def network_uplink_interface(self):
-        """ Get network_uplink_interface value.
-
-            Notes:
-                Network Upling Interface to support PAT/NAT with no tunnels on VRS-VM
-
-                
-                This attribute is named `networkUplinkInterface` in VSD API.
-                
-        """
-        return self._network_uplink_interface
-
-    @network_uplink_interface.setter
-    def network_uplink_interface(self, value):
-        """ Set network_uplink_interface value.
-
-            Notes:
-                Network Upling Interface to support PAT/NAT with no tunnels on VRS-VM
-
-                
-                This attribute is named `networkUplinkInterface` in VSD API.
-                
-        """
-        self._network_uplink_interface = value
+        self._customized_script_url = value
 
     
     @property
-    def network_uplink_interface_gateway(self):
-        """ Get network_uplink_interface_gateway value.
+    def available_networks(self):
+        """ Get available_networks value.
 
             Notes:
-                Network Uplink Interface Gateway
+                List of the available network list for the hypervisor.
 
                 
-                This attribute is named `networkUplinkInterfaceGateway` in VSD API.
+                This attribute is named `availableNetworks` in VSD API.
                 
         """
-        return self._network_uplink_interface_gateway
+        return self._available_networks
 
-    @network_uplink_interface_gateway.setter
-    def network_uplink_interface_gateway(self, value):
-        """ Set network_uplink_interface_gateway value.
+    @available_networks.setter
+    def available_networks(self, value):
+        """ Set available_networks value.
 
             Notes:
-                Network Uplink Interface Gateway
+                List of the available network list for the hypervisor.
 
                 
-                This attribute is named `networkUplinkInterfaceGateway` in VSD API.
-                
-        """
-        self._network_uplink_interface_gateway = value
-
-    
-    @property
-    def network_uplink_interface_ip(self):
-        """ Get network_uplink_interface_ip value.
-
-            Notes:
-                Ip Address to support PAT/NAT with no tunnels on VRS-VM
-
-                
-                This attribute is named `networkUplinkInterfaceIp` in VSD API.
+                This attribute is named `availableNetworks` in VSD API.
                 
         """
-        return self._network_uplink_interface_ip
-
-    @network_uplink_interface_ip.setter
-    def network_uplink_interface_ip(self, value):
-        """ Set network_uplink_interface_ip value.
-
-            Notes:
-                Ip Address to support PAT/NAT with no tunnels on VRS-VM
-
-                
-                This attribute is named `networkUplinkInterfaceIp` in VSD API.
-                
-        """
-        self._network_uplink_interface_ip = value
+        self._available_networks = value
 
     
     @property
-    def network_uplink_interface_netmask(self):
-        """ Get network_uplink_interface_netmask value.
+    def external_id(self):
+        """ Get external_id value.
 
             Notes:
-                Network Uplink Interface Netmask
+                External object ID. Used for integration with third party systems
 
                 
-                This attribute is named `networkUplinkInterfaceNetmask` in VSD API.
+                This attribute is named `externalID` in VSD API.
                 
         """
-        return self._network_uplink_interface_netmask
+        return self._external_id
 
-    @network_uplink_interface_netmask.setter
-    def network_uplink_interface_netmask(self, value):
-        """ Set network_uplink_interface_netmask value.
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
 
             Notes:
-                Network Uplink Interface Netmask
+                External object ID. Used for integration with third party systems
 
                 
-                This attribute is named `networkUplinkInterfaceNetmask` in VSD API.
-                
-        """
-        self._network_uplink_interface_netmask = value
-
-    
-    @property
-    def nfs_log_server(self):
-        """ Get nfs_log_server value.
-
-            Notes:
-                IP address of NFS server to send the VRS log
-
-                
-                This attribute is named `nfsLogServer` in VSD API.
+                This attribute is named `externalID` in VSD API.
                 
         """
-        return self._nfs_log_server
-
-    @nfs_log_server.setter
-    def nfs_log_server(self, value):
-        """ Set nfs_log_server value.
-
-            Notes:
-                IP address of NFS server to send the VRS log
-
-                
-                This attribute is named `nfsLogServer` in VSD API.
-                
-        """
-        self._nfs_log_server = value
+        self._external_id = value
 
     
     @property
-    def nfs_mount_path(self):
-        """ Get nfs_mount_path value.
+    def hypervisor_ip(self):
+        """ Get hypervisor_ip value.
 
             Notes:
-                Location to mount the NFS server
+                IP Address of the Hypervisor
 
                 
-                This attribute is named `nfsMountPath` in VSD API.
+                This attribute is named `hypervisorIP` in VSD API.
                 
         """
-        return self._nfs_mount_path
+        return self._hypervisor_ip
 
-    @nfs_mount_path.setter
-    def nfs_mount_path(self, value):
-        """ Set nfs_mount_path value.
+    @hypervisor_ip.setter
+    def hypervisor_ip(self, value):
+        """ Set hypervisor_ip value.
 
             Notes:
-                Location to mount the NFS server
+                IP Address of the Hypervisor
 
                 
-                This attribute is named `nfsMountPath` in VSD API.
-                
-        """
-        self._nfs_mount_path = value
-
-    
-    @property
-    def nova_client_version(self):
-        """ Get nova_client_version value.
-
-            Notes:
-                Nova client Version 
-
-                
-                This attribute is named `novaClientVersion` in VSD API.
+                This attribute is named `hypervisorIP` in VSD API.
                 
         """
-        return self._nova_client_version
-
-    @nova_client_version.setter
-    def nova_client_version(self, value):
-        """ Set nova_client_version value.
-
-            Notes:
-                Nova client Version 
-
-                
-                This attribute is named `novaClientVersion` in VSD API.
-                
-        """
-        self._nova_client_version = value
+        self._hypervisor_ip = value
 
     
     @property
-    def nova_metadata_service_auth_url(self):
-        """ Get nova_metadata_service_auth_url value.
+    def hypervisor_password(self):
+        """ Get hypervisor_password value.
 
             Notes:
-                Nova metadata service auth url
+                Hypervisor username
 
                 
-                This attribute is named `novaMetadataServiceAuthUrl` in VSD API.
+                This attribute is named `hypervisorPassword` in VSD API.
                 
         """
-        return self._nova_metadata_service_auth_url
+        return self._hypervisor_password
 
-    @nova_metadata_service_auth_url.setter
-    def nova_metadata_service_auth_url(self, value):
-        """ Set nova_metadata_service_auth_url value.
+    @hypervisor_password.setter
+    def hypervisor_password(self, value):
+        """ Set hypervisor_password value.
 
             Notes:
-                Nova metadata service auth url
+                Hypervisor username
 
                 
-                This attribute is named `novaMetadataServiceAuthUrl` in VSD API.
-                
-        """
-        self._nova_metadata_service_auth_url = value
-
-    
-    @property
-    def nova_metadata_service_endpoint(self):
-        """ Get nova_metadata_service_endpoint value.
-
-            Notes:
-                Nova metadata service endpoint
-
-                
-                This attribute is named `novaMetadataServiceEndpoint` in VSD API.
+                This attribute is named `hypervisorPassword` in VSD API.
                 
         """
-        return self._nova_metadata_service_endpoint
-
-    @nova_metadata_service_endpoint.setter
-    def nova_metadata_service_endpoint(self, value):
-        """ Set nova_metadata_service_endpoint value.
-
-            Notes:
-                Nova metadata service endpoint
-
-                
-                This attribute is named `novaMetadataServiceEndpoint` in VSD API.
-                
-        """
-        self._nova_metadata_service_endpoint = value
+        self._hypervisor_password = value
 
     
     @property
-    def nova_metadata_service_password(self):
-        """ Get nova_metadata_service_password value.
+    def hypervisor_user(self):
+        """ Get hypervisor_user value.
 
             Notes:
-                Nova metadata service password
+                Hypervisor username
 
                 
-                This attribute is named `novaMetadataServicePassword` in VSD API.
+                This attribute is named `hypervisorUser` in VSD API.
                 
         """
-        return self._nova_metadata_service_password
+        return self._hypervisor_user
 
-    @nova_metadata_service_password.setter
-    def nova_metadata_service_password(self, value):
-        """ Set nova_metadata_service_password value.
+    @hypervisor_user.setter
+    def hypervisor_user(self, value):
+        """ Set hypervisor_user value.
 
             Notes:
-                Nova metadata service password
+                Hypervisor username
 
                 
-                This attribute is named `novaMetadataServicePassword` in VSD API.
-                
-        """
-        self._nova_metadata_service_password = value
-
-    
-    @property
-    def nova_metadata_service_tenant(self):
-        """ Get nova_metadata_service_tenant value.
-
-            Notes:
-                Nova metadata service tenant
-
-                
-                This attribute is named `novaMetadataServiceTenant` in VSD API.
+                This attribute is named `hypervisorUser` in VSD API.
                 
         """
-        return self._nova_metadata_service_tenant
-
-    @nova_metadata_service_tenant.setter
-    def nova_metadata_service_tenant(self, value):
-        """ Set nova_metadata_service_tenant value.
-
-            Notes:
-                Nova metadata service tenant
-
-                
-                This attribute is named `novaMetadataServiceTenant` in VSD API.
-                
-        """
-        self._nova_metadata_service_tenant = value
-
-    
-    @property
-    def nova_metadata_service_username(self):
-        """ Get nova_metadata_service_username value.
-
-            Notes:
-                Nova metadata service username
-
-                
-                This attribute is named `novaMetadataServiceUsername` in VSD API.
-                
-        """
-        return self._nova_metadata_service_username
-
-    @nova_metadata_service_username.setter
-    def nova_metadata_service_username(self, value):
-        """ Set nova_metadata_service_username value.
-
-            Notes:
-                Nova metadata service username
-
-                
-                This attribute is named `novaMetadataServiceUsername` in VSD API.
-                
-        """
-        self._nova_metadata_service_username = value
-
-    
-    @property
-    def nova_metadata_shared_secret(self):
-        """ Get nova_metadata_shared_secret value.
-
-            Notes:
-                Nova metadata shared secret
-
-                
-                This attribute is named `novaMetadataSharedSecret` in VSD API.
-                
-        """
-        return self._nova_metadata_shared_secret
-
-    @nova_metadata_shared_secret.setter
-    def nova_metadata_shared_secret(self, value):
-        """ Set nova_metadata_shared_secret value.
-
-            Notes:
-                Nova metadata shared secret
-
-                
-                This attribute is named `novaMetadataSharedSecret` in VSD API.
-                
-        """
-        self._nova_metadata_shared_secret = value
-
-    
-    @property
-    def nova_region_name(self):
-        """ Get nova_region_name value.
-
-            Notes:
-                Nova region name
-
-                
-                This attribute is named `novaRegionName` in VSD API.
-                
-        """
-        return self._nova_region_name
-
-    @nova_region_name.setter
-    def nova_region_name(self, value):
-        """ Set nova_region_name value.
-
-            Notes:
-                Nova region name
-
-                
-                This attribute is named `novaRegionName` in VSD API.
-                
-        """
-        self._nova_region_name = value
-
-    
-    @property
-    def ntp_server1(self):
-        """ Get ntp_server1 value.
-
-            Notes:
-                IP of the NTP server 1
-
-                
-                This attribute is named `ntpServer1` in VSD API.
-                
-        """
-        return self._ntp_server1
-
-    @ntp_server1.setter
-    def ntp_server1(self, value):
-        """ Set ntp_server1 value.
-
-            Notes:
-                IP of the NTP server 1
-
-                
-                This attribute is named `ntpServer1` in VSD API.
-                
-        """
-        self._ntp_server1 = value
-
-    
-    @property
-    def ntp_server2(self):
-        """ Get ntp_server2 value.
-
-            Notes:
-                IP of the NTP server 1
-
-                
-                This attribute is named `ntpServer2` in VSD API.
-                
-        """
-        return self._ntp_server2
-
-    @ntp_server2.setter
-    def ntp_server2(self, value):
-        """ Set ntp_server2 value.
-
-            Notes:
-                IP of the NTP server 1
-
-                
-                This attribute is named `ntpServer2` in VSD API.
-                
-        """
-        self._ntp_server2 = value
-
-    
-    @property
-    def personality(self):
-        """ Get personality value.
-
-            Notes:
-                VRS/VRS-G
-
-                
-        """
-        return self._personality
-
-    @personality.setter
-    def personality(self, value):
-        """ Set personality value.
-
-            Notes:
-                VRS/VRS-G
-
-                
-        """
-        self._personality = value
-
-    
-    @property
-    def portgroup_metadata(self):
-        """ Get portgroup_metadata value.
-
-            Notes:
-                Port Group Meta data
-
-                
-                This attribute is named `portgroupMetadata` in VSD API.
-                
-        """
-        return self._portgroup_metadata
-
-    @portgroup_metadata.setter
-    def portgroup_metadata(self, value):
-        """ Set portgroup_metadata value.
-
-            Notes:
-                Port Group Meta data
-
-                
-                This attribute is named `portgroupMetadata` in VSD API.
-                
-        """
-        self._portgroup_metadata = value
-
-    
-    @property
-    def primary_nuage_controller(self):
-        """ Get primary_nuage_controller value.
-
-            Notes:
-                IP address of the primary Controller (VSC)
-
-                
-                This attribute is named `primaryNuageController` in VSD API.
-                
-        """
-        return self._primary_nuage_controller
-
-    @primary_nuage_controller.setter
-    def primary_nuage_controller(self, value):
-        """ Set primary_nuage_controller value.
-
-            Notes:
-                IP address of the primary Controller (VSC)
-
-                
-                This attribute is named `primaryNuageController` in VSD API.
-                
-        """
-        self._primary_nuage_controller = value
-
-    
-    @property
-    def scope(self):
-        """ Get scope value.
-
-            Notes:
-                Cluster in scope or not in scope.
-
-                
-        """
-        return self._scope
-
-    @scope.setter
-    def scope(self, value):
-        """ Set scope value.
-
-            Notes:
-                Cluster in scope or not in scope.
-
-                
-        """
-        self._scope = value
-
-    
-    @property
-    def secondary_nuage_controller(self):
-        """ Get secondary_nuage_controller value.
-
-            Notes:
-                IP address of the secondary Controller (VSC)
-
-                
-                This attribute is named `secondaryNuageController` in VSD API.
-                
-        """
-        return self._secondary_nuage_controller
-
-    @secondary_nuage_controller.setter
-    def secondary_nuage_controller(self, value):
-        """ Set secondary_nuage_controller value.
-
-            Notes:
-                IP address of the secondary Controller (VSC)
-
-                
-                This attribute is named `secondaryNuageController` in VSD API.
-                
-        """
-        self._secondary_nuage_controller = value
-
-    
-    @property
-    def separate_data_network(self):
-        """ Get separate_data_network value.
-
-            Notes:
-                Whether Data will use the management network or not
-
-                
-                This attribute is named `separateDataNetwork` in VSD API.
-                
-        """
-        return self._separate_data_network
-
-    @separate_data_network.setter
-    def separate_data_network(self, value):
-        """ Set separate_data_network value.
-
-            Notes:
-                Whether Data will use the management network or not
-
-                
-                This attribute is named `separateDataNetwork` in VSD API.
-                
-        """
-        self._separate_data_network = value
-
-    
-    @property
-    def site_id(self):
-        """ Get site_id value.
-
-            Notes:
-                Site ID field for object profiles to support VSD Geo-redundancy
-
-                
-                This attribute is named `siteId` in VSD API.
-                
-        """
-        return self._site_id
-
-    @site_id.setter
-    def site_id(self, value):
-        """ Set site_id value.
-
-            Notes:
-                Site ID field for object profiles to support VSD Geo-redundancy
-
-                
-                This attribute is named `siteId` in VSD API.
-                
-        """
-        self._site_id = value
-
-    
-    @property
-    def static_route(self):
-        """ Get static_route value.
-
-            Notes:
-                static route to be configured in the VRS
-
-                
-                This attribute is named `staticRoute` in VSD API.
-                
-        """
-        return self._static_route
-
-    @static_route.setter
-    def static_route(self, value):
-        """ Set static_route value.
-
-            Notes:
-                static route to be configured in the VRS
-
-                
-                This attribute is named `staticRoute` in VSD API.
-                
-        """
-        self._static_route = value
-
-    
-    @property
-    def static_route_gateway(self):
-        """ Get static_route_gateway value.
-
-            Notes:
-                Gateway for the static route given above
-
-                
-                This attribute is named `staticRouteGateway` in VSD API.
-                
-        """
-        return self._static_route_gateway
-
-    @static_route_gateway.setter
-    def static_route_gateway(self, value):
-        """ Set static_route_gateway value.
-
-            Notes:
-                Gateway for the static route given above
-
-                
-                This attribute is named `staticRouteGateway` in VSD API.
-                
-        """
-        self._static_route_gateway = value
-
-    
-    @property
-    def static_route_netmask(self):
-        """ Get static_route_netmask value.
-
-            Notes:
-                Nova region name
-
-                
-                This attribute is named `staticRouteNetmask` in VSD API.
-                
-        """
-        return self._static_route_netmask
-
-    @static_route_netmask.setter
-    def static_route_netmask(self, value):
-        """ Set static_route_netmask value.
-
-            Notes:
-                Nova region name
-
-                
-                This attribute is named `staticRouteNetmask` in VSD API.
-                
-        """
-        self._static_route_netmask = value
-
-    
-    @property
-    def toolbox_deployment_mode(self):
-        """ Get toolbox_deployment_mode value.
-
-            Notes:
-                Flag to specify if VRS is deployed using tool box.
-
-                
-                This attribute is named `toolboxDeploymentMode` in VSD API.
-                
-        """
-        return self._toolbox_deployment_mode
-
-    @toolbox_deployment_mode.setter
-    def toolbox_deployment_mode(self, value):
-        """ Set toolbox_deployment_mode value.
-
-            Notes:
-                Flag to specify if VRS is deployed using tool box.
-
-                
-                This attribute is named `toolboxDeploymentMode` in VSD API.
-                
-        """
-        self._toolbox_deployment_mode = value
-
-    
-    @property
-    def toolbox_group(self):
-        """ Get toolbox_group value.
-
-            Notes:
-                Deployment Toolbox Group.
-
-                
-                This attribute is named `toolboxGroup` in VSD API.
-                
-        """
-        return self._toolbox_group
-
-    @toolbox_group.setter
-    def toolbox_group(self, value):
-        """ Set toolbox_group value.
-
-            Notes:
-                Deployment Toolbox Group.
-
-                
-                This attribute is named `toolboxGroup` in VSD API.
-                
-        """
-        self._toolbox_group = value
-
-    
-    @property
-    def toolbox_ip(self):
-        """ Get toolbox_ip value.
-
-            Notes:
-                Deployment Toolbox IP.
-
-                
-                This attribute is named `toolboxIP` in VSD API.
-                
-        """
-        return self._toolbox_ip
-
-    @toolbox_ip.setter
-    def toolbox_ip(self, value):
-        """ Set toolbox_ip value.
-
-            Notes:
-                Deployment Toolbox IP.
-
-                
-                This attribute is named `toolboxIP` in VSD API.
-                
-        """
-        self._toolbox_ip = value
-
-    
-    @property
-    def toolbox_password(self):
-        """ Get toolbox_password value.
-
-            Notes:
-                Deployment Toolbox password.
-
-                
-                This attribute is named `toolboxPassword` in VSD API.
-                
-        """
-        return self._toolbox_password
-
-    @toolbox_password.setter
-    def toolbox_password(self, value):
-        """ Set toolbox_password value.
-
-            Notes:
-                Deployment Toolbox password.
-
-                
-                This attribute is named `toolboxPassword` in VSD API.
-                
-        """
-        self._toolbox_password = value
-
-    
-    @property
-    def toolbox_user_name(self):
-        """ Get toolbox_user_name value.
-
-            Notes:
-                Deployment Toolbox username.
-
-                
-                This attribute is named `toolboxUserName` in VSD API.
-                
-        """
-        return self._toolbox_user_name
-
-    @toolbox_user_name.setter
-    def toolbox_user_name(self, value):
-        """ Set toolbox_user_name value.
-
-            Notes:
-                Deployment Toolbox username.
-
-                
-                This attribute is named `toolboxUserName` in VSD API.
-                
-        """
-        self._toolbox_user_name = value
-
-    
-    @property
-    def vcenter_ip(self):
-        """ Get vcenter_ip value.
-
-            Notes:
-                IP Address of the VCenter.
-
-                
-                This attribute is named `vCenterIP` in VSD API.
-                
-        """
-        return self._vcenter_ip
-
-    @vcenter_ip.setter
-    def vcenter_ip(self, value):
-        """ Set vcenter_ip value.
-
-            Notes:
-                IP Address of the VCenter.
-
-                
-                This attribute is named `vCenterIP` in VSD API.
-                
-        """
-        self._vcenter_ip = value
-
-    
-    @property
-    def vcenter_password(self):
-        """ Get vcenter_password value.
-
-            Notes:
-                Password for VCenter.
-
-                
-                This attribute is named `vCenterPassword` in VSD API.
-                
-        """
-        return self._vcenter_password
-
-    @vcenter_password.setter
-    def vcenter_password(self, value):
-        """ Set vcenter_password value.
-
-            Notes:
-                Password for VCenter.
-
-                
-                This attribute is named `vCenterPassword` in VSD API.
-                
-        """
-        self._vcenter_password = value
-
-    
-    @property
-    def vcenter_user(self):
-        """ Get vcenter_user value.
-
-            Notes:
-                Username for VCenter.
-
-                
-                This attribute is named `vCenterUser` in VSD API.
-                
-        """
-        return self._vcenter_user
-
-    @vcenter_user.setter
-    def vcenter_user(self, value):
-        """ Set vcenter_user value.
-
-            Notes:
-                Username for VCenter.
-
-                
-                This attribute is named `vCenterUser` in VSD API.
-                
-        """
-        self._vcenter_user = value
-
-    
-    @property
-    def v_require_nuage_metadata(self):
-        """ Get v_require_nuage_metadata value.
-
-            Notes:
-                Whether split-activation or not (Openstack/CloudStack)
-
-                
-                This attribute is named `vRequireNuageMetadata` in VSD API.
-                
-        """
-        return self._v_require_nuage_metadata
-
-    @v_require_nuage_metadata.setter
-    def v_require_nuage_metadata(self, value):
-        """ Set v_require_nuage_metadata value.
-
-            Notes:
-                Whether split-activation or not (Openstack/CloudStack)
-
-                
-                This attribute is named `vRequireNuageMetadata` in VSD API.
-                
-        """
-        self._v_require_nuage_metadata = value
-
-    
-    @property
-    def vm_network_portgroup(self):
-        """ Get vm_network_portgroup value.
-
-            Notes:
-                VM Network Port Group Name
-
-                
-                This attribute is named `vmNetworkPortgroup` in VSD API.
-                
-        """
-        return self._vm_network_portgroup
-
-    @vm_network_portgroup.setter
-    def vm_network_portgroup(self, value):
-        """ Set vm_network_portgroup value.
-
-            Notes:
-                VM Network Port Group Name
-
-                
-                This attribute is named `vmNetworkPortgroup` in VSD API.
-                
-        """
-        self._vm_network_portgroup = value
-
-    
-    @property
-    def vrs_id(self):
-        """ Get vrs_id value.
-
-            Notes:
-                VCenter Name or Id used by toolbox to identify the VRS virtual machine
-
-                
-                This attribute is named `vrsId` in VSD API.
-                
-        """
-        return self._vrs_id
-
-    @vrs_id.setter
-    def vrs_id(self, value):
-        """ Set vrs_id value.
-
-            Notes:
-                VCenter Name or Id used by toolbox to identify the VRS virtual machine
-
-                
-                This attribute is named `vrsId` in VSD API.
-                
-        """
-        self._vrs_id = value
-
-    
-    @property
-    def vrs_metrics_id(self):
-        """ Get vrs_metrics_id value.
-
-            Notes:
-                ID of the vrsMetrics Entity
-
-                
-                This attribute is named `vrsMetricsID` in VSD API.
-                
-        """
-        return self._vrs_metrics_id
-
-    @vrs_metrics_id.setter
-    def vrs_metrics_id(self, value):
-        """ Set vrs_metrics_id value.
-
-            Notes:
-                ID of the vrsMetrics Entity
-
-                
-                This attribute is named `vrsMetricsID` in VSD API.
-                
-        """
-        self._vrs_metrics_id = value
-
-    
-    @property
-    def vrs_password(self):
-        """ Get vrs_password value.
-
-            Notes:
-                VRS password to be used by toolbox to communicate with VRS
-
-                
-                This attribute is named `vrsPassword` in VSD API.
-                
-        """
-        return self._vrs_password
-
-    @vrs_password.setter
-    def vrs_password(self, value):
-        """ Set vrs_password value.
-
-            Notes:
-                VRS password to be used by toolbox to communicate with VRS
-
-                
-                This attribute is named `vrsPassword` in VSD API.
-                
-        """
-        self._vrs_password = value
-
-    
-    @property
-    def vrs_user_name(self):
-        """ Get vrs_user_name value.
-
-            Notes:
-                VRS user name to be used by toolbox to communicate with VRS
-
-                
-                This attribute is named `vrsUserName` in VSD API.
-                
-        """
-        return self._vrs_user_name
-
-    @vrs_user_name.setter
-    def vrs_user_name(self, value):
-        """ Set vrs_user_name value.
-
-            Notes:
-                VRS user name to be used by toolbox to communicate with VRS
-
-                
-                This attribute is named `vrsUserName` in VSD API.
-                
-        """
-        self._vrs_user_name = value
+        self._hypervisor_user = value
 
     
 

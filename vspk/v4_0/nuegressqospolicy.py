@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -143,13 +143,12 @@ class NUEgressQOSPolicy(NURESTObject):
 
         # Read/Write Attributes
         
-        self._assoc_egress_qos_id = None
-        self._description = None
-        self._entity_scope = None
-        self._external_id = None
-        self._last_updated_by = None
         self._name = None
         self._parent_queue_associated_rate_limiter_id = None
+        self._last_updated_by = None
+        self._description = None
+        self._entity_scope = None
+        self._assoc_egress_qos_id = None
         self._queue1_associated_rate_limiter_id = None
         self._queue1_forwarding_classes = None
         self._queue2_associated_rate_limiter_id = None
@@ -158,14 +157,14 @@ class NUEgressQOSPolicy(NURESTObject):
         self._queue3_forwarding_classes = None
         self._queue4_associated_rate_limiter_id = None
         self._queue4_forwarding_classes = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="assoc_egress_qos_id", remote_name="assocEgressQosId", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="parent_queue_associated_rate_limiter_id", remote_name="parentQueueAssociatedRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="assoc_egress_qos_id", remote_name="assocEgressQosId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="queue1_associated_rate_limiter_id", remote_name="queue1AssociatedRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="queue1_forwarding_classes", remote_name="queue1ForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="queue2_associated_rate_limiter_id", remote_name="queue2AssociatedRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
@@ -174,15 +173,16 @@ class NUEgressQOSPolicy(NURESTObject):
         self.expose_attribute(local_name="queue3_forwarding_classes", remote_name="queue3ForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="queue4_associated_rate_limiter_id", remote_name="queue4AssociatedRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="queue4_forwarding_classes", remote_name="queue4ForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -190,30 +190,80 @@ class NUEgressQOSPolicy(NURESTObject):
     # Properties
     
     @property
-    def assoc_egress_qos_id(self):
-        """ Get assoc_egress_qos_id value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                ID of object associated with this QoS object
+                A unique name of the QoS object
 
-                
-                This attribute is named `assocEgressQosId` in VSD API.
                 
         """
-        return self._assoc_egress_qos_id
+        return self._name
 
-    @assoc_egress_qos_id.setter
-    def assoc_egress_qos_id(self, value):
-        """ Set assoc_egress_qos_id value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                ID of object associated with this QoS object
+                A unique name of the QoS object
 
                 
-                This attribute is named `assocEgressQosId` in VSD API.
+        """
+        self._name = value
+
+    
+    @property
+    def parent_queue_associated_rate_limiter_id(self):
+        """ Get parent_queue_associated_rate_limiter_id value.
+
+            Notes:
+                ID of the parent rate limiter associated with this Egress QOS policy.
+
+                
+                This attribute is named `parentQueueAssociatedRateLimiterID` in VSD API.
                 
         """
-        self._assoc_egress_qos_id = value
+        return self._parent_queue_associated_rate_limiter_id
+
+    @parent_queue_associated_rate_limiter_id.setter
+    def parent_queue_associated_rate_limiter_id(self, value):
+        """ Set parent_queue_associated_rate_limiter_id value.
+
+            Notes:
+                ID of the parent rate limiter associated with this Egress QOS policy.
+
+                
+                This attribute is named `parentQueueAssociatedRateLimiterID` in VSD API.
+                
+        """
+        self._parent_queue_associated_rate_limiter_id = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
 
     
     @property
@@ -267,107 +317,30 @@ class NUEgressQOSPolicy(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
+    def assoc_egress_qos_id(self):
+        """ Get assoc_egress_qos_id value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                ID of object associated with this QoS object
 
                 
-                This attribute is named `externalID` in VSD API.
+                This attribute is named `assocEgressQosId` in VSD API.
                 
         """
-        return self._external_id
+        return self._assoc_egress_qos_id
 
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
+    @assoc_egress_qos_id.setter
+    def assoc_egress_qos_id(self, value):
+        """ Set assoc_egress_qos_id value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                ID of object associated with this QoS object
 
                 
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
+                This attribute is named `assocEgressQosId` in VSD API.
                 
         """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                A unique name of the QoS object
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                A unique name of the QoS object
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def parent_queue_associated_rate_limiter_id(self):
-        """ Get parent_queue_associated_rate_limiter_id value.
-
-            Notes:
-                ID of the parent rate limiter associated with this Egress QOS policy.
-
-                
-                This attribute is named `parentQueueAssociatedRateLimiterID` in VSD API.
-                
-        """
-        return self._parent_queue_associated_rate_limiter_id
-
-    @parent_queue_associated_rate_limiter_id.setter
-    def parent_queue_associated_rate_limiter_id(self, value):
-        """ Set parent_queue_associated_rate_limiter_id value.
-
-            Notes:
-                ID of the parent rate limiter associated with this Egress QOS policy.
-
-                
-                This attribute is named `parentQueueAssociatedRateLimiterID` in VSD API.
-                
-        """
-        self._parent_queue_associated_rate_limiter_id = value
+        self._assoc_egress_qos_id = value
 
     
     @property
@@ -584,6 +557,33 @@ class NUEgressQOSPolicy(NURESTObject):
                 
         """
         self._queue4_forwarding_classes = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

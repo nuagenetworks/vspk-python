@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -71,28 +71,28 @@ class NUVLANTemplate(NURESTObject):
 
         # Read/Write Attributes
         
-        self._associated_egress_qos_policy_id = None
+        self._value = None
+        self._last_updated_by = None
         self._description = None
         self._entity_scope = None
+        self._associated_egress_qos_policy_id = None
         self._external_id = None
-        self._last_updated_by = None
-        self._value = None
         
-        self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="value", remote_name="value", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="value", remote_name="value", attribute_type=int, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -100,30 +100,53 @@ class NUVLANTemplate(NURESTObject):
     # Properties
     
     @property
-    def associated_egress_qos_policy_id(self):
-        """ Get associated_egress_qos_policy_id value.
+    def value(self):
+        """ Get value value.
 
             Notes:
-                ID of the Egress QOS Policy associated with this Vlan.
+                value of VLAN
 
-                
-                This attribute is named `associatedEgressQOSPolicyID` in VSD API.
                 
         """
-        return self._associated_egress_qos_policy_id
+        return self._value
 
-    @associated_egress_qos_policy_id.setter
-    def associated_egress_qos_policy_id(self, value):
-        """ Set associated_egress_qos_policy_id value.
+    @value.setter
+    def value(self, value):
+        """ Set value value.
 
             Notes:
-                ID of the Egress QOS Policy associated with this Vlan.
+                value of VLAN
 
                 
-                This attribute is named `associatedEgressQOSPolicyID` in VSD API.
+        """
+        self._value = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        self._associated_egress_qos_policy_id = value
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
 
     
     @property
@@ -177,6 +200,33 @@ class NUVLANTemplate(NURESTObject):
 
     
     @property
+    def associated_egress_qos_policy_id(self):
+        """ Get associated_egress_qos_policy_id value.
+
+            Notes:
+                ID of the Egress QOS Policy associated with this Vlan.
+
+                
+                This attribute is named `associatedEgressQOSPolicyID` in VSD API.
+                
+        """
+        return self._associated_egress_qos_policy_id
+
+    @associated_egress_qos_policy_id.setter
+    def associated_egress_qos_policy_id(self, value):
+        """ Set associated_egress_qos_policy_id value.
+
+            Notes:
+                ID of the Egress QOS Policy associated with this Vlan.
+
+                
+                This attribute is named `associatedEgressQOSPolicyID` in VSD API.
+                
+        """
+        self._associated_egress_qos_policy_id = value
+
+    
+    @property
     def external_id(self):
         """ Get external_id value.
 
@@ -201,56 +251,6 @@ class NUVLANTemplate(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def value(self):
-        """ Get value value.
-
-            Notes:
-                value of VLAN
-
-                
-        """
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        """ Set value value.
-
-            Notes:
-                value of VLAN
-
-                
-        """
-        self._value = value
 
     
 

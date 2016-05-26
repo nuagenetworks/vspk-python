@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -48,15 +48,15 @@ class NUNetworkLayout(NURESTObject):
     
     ## Constants
     
-    CONST_SERVICE_TYPE_ROUTER_ONLY = "ROUTER_ONLY"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_SERVICE_TYPE_SUBNET_ONLY = "SUBNET_ONLY"
     
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
     CONST_SERVICE_TYPE_ROUTER_SWITCH = "ROUTER_SWITCH"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_SERVICE_TYPE_ROUTER_ONLY = "ROUTER_ONLY"
     
     
 
@@ -77,28 +77,28 @@ class NUNetworkLayout(NURESTObject):
 
         # Read/Write Attributes
         
-        self._autonomous_system_num = None
-        self._entity_scope = None
-        self._external_id = None
         self._last_updated_by = None
-        self._route_reflector_ip = None
         self._service_type = None
+        self._entity_scope = None
+        self._route_reflector_ip = None
+        self._autonomous_system_num = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="autonomous_system_num", remote_name="autonomousSystemNum", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="route_reflector_ip", remote_name="routeReflectorIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_type", remote_name="serviceType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ROUTER_ONLY', u'ROUTER_SWITCH', u'SUBNET_ONLY'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="route_reflector_ip", remote_name="routeReflectorIP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="autonomous_system_num", remote_name="autonomousSystemNum", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -106,30 +106,57 @@ class NUNetworkLayout(NURESTObject):
     # Properties
     
     @property
-    def autonomous_system_num(self):
-        """ Get autonomous_system_num value.
+    def last_updated_by(self):
+        """ Get last_updated_by value.
 
             Notes:
-                The AS number associated with this data center
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `autonomousSystemNum` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        return self._autonomous_system_num
+        return self._last_updated_by
 
-    @autonomous_system_num.setter
-    def autonomous_system_num(self, value):
-        """ Set autonomous_system_num value.
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
 
             Notes:
-                The AS number associated with this data center
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `autonomousSystemNum` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        self._autonomous_system_num = value
+        self._last_updated_by = value
+
+    
+    @property
+    def service_type(self):
+        """ Get service_type value.
+
+            Notes:
+                Identifies whether L3 or L2 services are supported.
+
+                
+                This attribute is named `serviceType` in VSD API.
+                
+        """
+        return self._service_type
+
+    @service_type.setter
+    def service_type(self, value):
+        """ Set service_type value.
+
+            Notes:
+                Identifies whether L3 or L2 services are supported.
+
+                
+                This attribute is named `serviceType` in VSD API.
+                
+        """
+        self._service_type = value
 
     
     @property
@@ -160,60 +187,6 @@ class NUNetworkLayout(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
     def route_reflector_ip(self):
         """ Get route_reflector_ip value.
 
@@ -241,30 +214,57 @@ class NUNetworkLayout(NURESTObject):
 
     
     @property
-    def service_type(self):
-        """ Get service_type value.
+    def autonomous_system_num(self):
+        """ Get autonomous_system_num value.
 
             Notes:
-                Identifies whether L3 or L2 services are supported.
+                The AS number associated with this data center
 
                 
-                This attribute is named `serviceType` in VSD API.
+                This attribute is named `autonomousSystemNum` in VSD API.
                 
         """
-        return self._service_type
+        return self._autonomous_system_num
 
-    @service_type.setter
-    def service_type(self, value):
-        """ Set service_type value.
+    @autonomous_system_num.setter
+    def autonomous_system_num(self, value):
+        """ Set autonomous_system_num value.
 
             Notes:
-                Identifies whether L3 or L2 services are supported.
+                The AS number associated with this data center
 
                 
-                This attribute is named `serviceType` in VSD API.
+                This attribute is named `autonomousSystemNum` in VSD API.
                 
         """
-        self._service_type = value
+        self._autonomous_system_num = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

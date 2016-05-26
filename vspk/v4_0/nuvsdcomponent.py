@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -91,41 +91,91 @@ class NUVSDComponent(NURESTObject):
 
         # Read/Write Attributes
         
+        self._name = None
+        self._management_ip = None
         self._address = None
         self._description = None
         self._entity_scope = None
-        self._external_id = None
         self._location = None
-        self._management_ip = None
-        self._name = None
         self._product_version = None
         self._status = None
+        self._external_id = None
         self._type = None
         
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="management_ip", remote_name="managementIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="location", remote_name="location", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="management_ip", remote_name="managementIP", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="product_version", remote_name="productVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'EJABBERD', u'JBOSS', u'MEDIATOR', u'PERCONA', u'STATSCOLLECTOR', u'STATSSERVER', u'TCA'])
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Identifies the entity with a name.
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Identifies the entity with a name.
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def management_ip(self):
+        """ Get management_ip value.
+
+            Notes:
+                An optional management IP to log into this component.
+
+                
+                This attribute is named `managementIP` in VSD API.
+                
+        """
+        return self._management_ip
+
+    @management_ip.setter
+    def management_ip(self, value):
+        """ Set management_ip value.
+
+            Notes:
+                An optional management IP to log into this component.
+
+                
+                This attribute is named `managementIP` in VSD API.
+                
+        """
+        self._management_ip = value
+
     
     @property
     def address(self):
@@ -201,33 +251,6 @@ class NUVSDComponent(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
     def location(self):
         """ Get location value.
 
@@ -248,56 +271,6 @@ class NUVSDComponent(NURESTObject):
                 
         """
         self._location = value
-
-    
-    @property
-    def management_ip(self):
-        """ Get management_ip value.
-
-            Notes:
-                An optional management IP to log into this component.
-
-                
-                This attribute is named `managementIP` in VSD API.
-                
-        """
-        return self._management_ip
-
-    @management_ip.setter
-    def management_ip(self, value):
-        """ Set management_ip value.
-
-            Notes:
-                An optional management IP to log into this component.
-
-                
-                This attribute is named `managementIP` in VSD API.
-                
-        """
-        self._management_ip = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Identifies the entity with a name.
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Identifies the entity with a name.
-
-                
-        """
-        self._name = value
 
     
     @property
@@ -348,6 +321,33 @@ class NUVSDComponent(NURESTObject):
                 
         """
         self._status = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
     @property

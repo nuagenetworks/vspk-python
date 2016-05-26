@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -71,40 +71,40 @@ class NUIKEPSK(NURESTObject):
 
         # Read/Write Attributes
         
-        self._associated_enterprise_id = None
-        self._auto_created = None
-        self._description = None
-        self._encrypted_psk = None
-        self._encrypting_certificate_serial_number = None
-        self._entity_scope = None
-        self._external_id = None
-        self._last_updated_by = None
         self._name = None
+        self._last_updated_by = None
+        self._description = None
         self._signature = None
         self._signing_certificate_serial_number = None
+        self._encrypted_psk = None
+        self._encrypting_certificate_serial_number = None
         self._unencrypted_psk = None
+        self._entity_scope = None
+        self._associated_enterprise_id = None
+        self._auto_created = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="auto_created", remote_name="autoCreated", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="encrypted_psk", remote_name="encryptedPSK", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="encrypting_certificate_serial_number", remote_name="encryptingCertificateSerialNumber", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="signature", remote_name="signature", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="signing_certificate_serial_number", remote_name="signingCertificateSerialNumber", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="encrypted_psk", remote_name="encryptedPSK", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="encrypting_certificate_serial_number", remote_name="encryptingCertificateSerialNumber", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="unencrypted_psk", remote_name="unencryptedPSK", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="auto_created", remote_name="autoCreated", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -112,57 +112,53 @@ class NUIKEPSK(NURESTObject):
     # Properties
     
     @property
-    def associated_enterprise_id(self):
-        """ Get associated_enterprise_id value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                The ID of the associated Enterprise
+                Name of the Encryption Profile
 
-                
-                This attribute is named `associatedEnterpriseID` in VSD API.
                 
         """
-        return self._associated_enterprise_id
+        return self._name
 
-    @associated_enterprise_id.setter
-    def associated_enterprise_id(self, value):
-        """ Set associated_enterprise_id value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                The ID of the associated Enterprise
+                Name of the Encryption Profile
 
                 
-                This attribute is named `associatedEnterpriseID` in VSD API.
-                
         """
-        self._associated_enterprise_id = value
+        self._name = value
 
     
     @property
-    def auto_created(self):
-        """ Get auto_created value.
+    def last_updated_by(self):
+        """ Get last_updated_by value.
 
             Notes:
-                Was this object autocreated from the connection
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `autoCreated` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        return self._auto_created
+        return self._last_updated_by
 
-    @auto_created.setter
-    def auto_created(self, value):
-        """ Set auto_created value.
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
 
             Notes:
-                Was this object autocreated from the connection
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `autoCreated` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        self._auto_created = value
+        self._last_updated_by = value
 
     
     @property
@@ -186,6 +182,56 @@ class NUIKEPSK(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def signature(self):
+        """ Get signature value.
+
+            Notes:
+                Base64 Encoded private key signature
+
+                
+        """
+        return self._signature
+
+    @signature.setter
+    def signature(self, value):
+        """ Set signature value.
+
+            Notes:
+                Base64 Encoded private key signature
+
+                
+        """
+        self._signature = value
+
+    
+    @property
+    def signing_certificate_serial_number(self):
+        """ Get signing_certificate_serial_number value.
+
+            Notes:
+                Serial Number of the certificate needed to verify the encrypted data
+
+                
+                This attribute is named `signingCertificateSerialNumber` in VSD API.
+                
+        """
+        return self._signing_certificate_serial_number
+
+    @signing_certificate_serial_number.setter
+    def signing_certificate_serial_number(self, value):
+        """ Set signing_certificate_serial_number value.
+
+            Notes:
+                Serial Number of the certificate needed to verify the encrypted data
+
+                
+                This attribute is named `signingCertificateSerialNumber` in VSD API.
+                
+        """
+        self._signing_certificate_serial_number = value
 
     
     @property
@@ -243,6 +289,33 @@ class NUIKEPSK(NURESTObject):
 
     
     @property
+    def unencrypted_psk(self):
+        """ Get unencrypted_psk value.
+
+            Notes:
+                Unencrypted PSK
+
+                
+                This attribute is named `unencryptedPSK` in VSD API.
+                
+        """
+        return self._unencrypted_psk
+
+    @unencrypted_psk.setter
+    def unencrypted_psk(self, value):
+        """ Set unencrypted_psk value.
+
+            Notes:
+                Unencrypted PSK
+
+                
+                This attribute is named `unencryptedPSK` in VSD API.
+                
+        """
+        self._unencrypted_psk = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -270,6 +343,60 @@ class NUIKEPSK(NURESTObject):
 
     
     @property
+    def associated_enterprise_id(self):
+        """ Get associated_enterprise_id value.
+
+            Notes:
+                The ID of the associated Enterprise
+
+                
+                This attribute is named `associatedEnterpriseID` in VSD API.
+                
+        """
+        return self._associated_enterprise_id
+
+    @associated_enterprise_id.setter
+    def associated_enterprise_id(self, value):
+        """ Set associated_enterprise_id value.
+
+            Notes:
+                The ID of the associated Enterprise
+
+                
+                This attribute is named `associatedEnterpriseID` in VSD API.
+                
+        """
+        self._associated_enterprise_id = value
+
+    
+    @property
+    def auto_created(self):
+        """ Get auto_created value.
+
+            Notes:
+                Was this object autocreated from the connection
+
+                
+                This attribute is named `autoCreated` in VSD API.
+                
+        """
+        return self._auto_created
+
+    @auto_created.setter
+    def auto_created(self, value):
+        """ Set auto_created value.
+
+            Notes:
+                Was this object autocreated from the connection
+
+                
+                This attribute is named `autoCreated` in VSD API.
+                
+        """
+        self._auto_created = value
+
+    
+    @property
     def external_id(self):
         """ Get external_id value.
 
@@ -294,133 +421,6 @@ class NUIKEPSK(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the Encryption Profile
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the Encryption Profile
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def signature(self):
-        """ Get signature value.
-
-            Notes:
-                Base64 Encoded private key signature
-
-                
-        """
-        return self._signature
-
-    @signature.setter
-    def signature(self, value):
-        """ Set signature value.
-
-            Notes:
-                Base64 Encoded private key signature
-
-                
-        """
-        self._signature = value
-
-    
-    @property
-    def signing_certificate_serial_number(self):
-        """ Get signing_certificate_serial_number value.
-
-            Notes:
-                Serial Number of the certificate needed to verify the encrypted data
-
-                
-                This attribute is named `signingCertificateSerialNumber` in VSD API.
-                
-        """
-        return self._signing_certificate_serial_number
-
-    @signing_certificate_serial_number.setter
-    def signing_certificate_serial_number(self, value):
-        """ Set signing_certificate_serial_number value.
-
-            Notes:
-                Serial Number of the certificate needed to verify the encrypted data
-
-                
-                This attribute is named `signingCertificateSerialNumber` in VSD API.
-                
-        """
-        self._signing_certificate_serial_number = value
-
-    
-    @property
-    def unencrypted_psk(self):
-        """ Get unencrypted_psk value.
-
-            Notes:
-                Unencrypted PSK
-
-                
-                This attribute is named `unencryptedPSK` in VSD API.
-                
-        """
-        return self._unencrypted_psk
-
-    @unencrypted_psk.setter
-    def unencrypted_psk(self, value):
-        """ Set unencrypted_psk value.
-
-            Notes:
-                Unencrypted PSK
-
-                
-                This attribute is named `unencryptedPSK` in VSD API.
-                
-        """
-        self._unencrypted_psk = value
 
     
 

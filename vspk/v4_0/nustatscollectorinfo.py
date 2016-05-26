@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -75,35 +75,62 @@ class NUStatsCollectorInfo(NURESTObject):
 
         # Read/Write Attributes
         
+        self._last_updated_by = None
         self._address_type = None
         self._entity_scope = None
-        self._external_id = None
-        self._ip_address = None
-        self._last_updated_by = None
         self._port = None
+        self._ip_address = None
         self._proto_buf_port = None
+        self._external_id = None
         
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address_type", remote_name="addressType", attribute_type=str, is_required=False, is_unique=False, choices=[u'fqdn', u'ip'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="ip_address", remote_name="ipAddress", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="port", remote_name="port", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ip_address", remote_name="ipAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="proto_buf_port", remote_name="protoBufPort", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
     
     @property
     def address_type(self):
@@ -160,30 +187,26 @@ class NUStatsCollectorInfo(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
+    def port(self):
+        """ Get port value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                Port(s) of the stats collector process
 
-                
-                This attribute is named `externalID` in VSD API.
                 
         """
-        return self._external_id
+        return self._port
 
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
+    @port.setter
+    def port(self, value):
+        """ Set port value.
 
             Notes:
-                External object ID. Used for integration with third party systems
+                Port(s) of the stats collector process
 
                 
-                This attribute is named `externalID` in VSD API.
-                
         """
-        self._external_id = value
+        self._port = value
 
     
     @property
@@ -214,56 +237,6 @@ class NUStatsCollectorInfo(NURESTObject):
 
     
     @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def port(self):
-        """ Get port value.
-
-            Notes:
-                Port(s) of the stats collector process
-
-                
-        """
-        return self._port
-
-    @port.setter
-    def port(self, value):
-        """ Set port value.
-
-            Notes:
-                Port(s) of the stats collector process
-
-                
-        """
-        self._port = value
-
-    
-    @property
     def proto_buf_port(self):
         """ Get proto_buf_port value.
 
@@ -288,6 +261,33 @@ class NUStatsCollectorInfo(NURESTObject):
                 
         """
         self._proto_buf_port = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 
 from .fetchers import NUNSPortTemplatesFetcher
@@ -74,30 +74,30 @@ class NUNSGatewayTemplate(NURESTObject):
 
         # Read/Write Attributes
         
+        self._name = None
+        self._last_updated_by = None
         self._description = None
+        self._infrastructure_profile_id = None
         self._enterprise_id = None
         self._entity_scope = None
         self._external_id = None
-        self._infrastructure_profile_id = None
-        self._last_updated_by = None
-        self._name = None
         
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="infrastructure_profile_id", remote_name="infrastructureProfileID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="infrastructure_profile_id", remote_name="infrastructureProfileID", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ns_port_templates = NUNSPortTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -106,6 +106,56 @@ class NUNSGatewayTemplate(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the Gateway
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the Gateway
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
     
     @property
     def description(self):
@@ -128,6 +178,33 @@ class NUNSGatewayTemplate(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def infrastructure_profile_id(self):
+        """ Get infrastructure_profile_id value.
+
+            Notes:
+                The ID of the infrastructure gateway profile this instance of a Gateway is associated with.
+
+                
+                This attribute is named `infrastructureProfileID` in VSD API.
+                
+        """
+        return self._infrastructure_profile_id
+
+    @infrastructure_profile_id.setter
+    def infrastructure_profile_id(self, value):
+        """ Set infrastructure_profile_id value.
+
+            Notes:
+                The ID of the infrastructure gateway profile this instance of a Gateway is associated with.
+
+                
+                This attribute is named `infrastructureProfileID` in VSD API.
+                
+        """
+        self._infrastructure_profile_id = value
 
     
     @property
@@ -209,83 +286,6 @@ class NUNSGatewayTemplate(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def infrastructure_profile_id(self):
-        """ Get infrastructure_profile_id value.
-
-            Notes:
-                The ID of the infrastructure gateway profile this instance of a Gateway is associated with.
-
-                
-                This attribute is named `infrastructureProfileID` in VSD API.
-                
-        """
-        return self._infrastructure_profile_id
-
-    @infrastructure_profile_id.setter
-    def infrastructure_profile_id(self, value):
-        """ Set infrastructure_profile_id value.
-
-            Notes:
-                The ID of the infrastructure gateway profile this instance of a Gateway is associated with.
-
-                
-                This attribute is named `infrastructureProfileID` in VSD API.
-                
-        """
-        self._infrastructure_profile_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the Gateway
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the Gateway
-
-                
-        """
-        self._name = value
 
     
 

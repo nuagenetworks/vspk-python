@@ -27,43 +27,13 @@
 
 
 
-from .fetchers import NUAlarmsFetcher
+from .fetchers import NUL2DomainsFetcher
 
 
-from .fetchers import NUAppsFetcher
+from .fetchers import NUL2DomainTemplatesFetcher
 
 
-from .fetchers import NUApplicationServicesFetcher
-
-
-from .fetchers import NUBGPProfilesFetcher
-
-
-from .fetchers import NUDomainsFetcher
-
-
-from .fetchers import NUDomainTemplatesFetcher
-
-
-from .fetchers import NUDSCPForwardingClassTablesFetcher
-
-
-from .fetchers import NUEgressQOSPoliciesFetcher
-
-
-from .fetchers import NUEnterpriseNetworksFetcher
-
-
-from .fetchers import NUEnterpriseSecuritiesFetcher
-
-
-from .fetchers import NUEventLogsFetcher
-
-
-from .fetchers import NUExternalAppServicesFetcher
-
-
-from .fetchers import NUExternalServicesFetcher
+from .fetchers import NURateLimitersFetcher
 
 
 from .fetchers import NUGatewaysFetcher
@@ -72,13 +42,34 @@ from .fetchers import NUGatewaysFetcher
 from .fetchers import NUGatewayTemplatesFetcher
 
 
-from .fetchers import NUGlobalMetadatasFetcher
+from .fetchers import NUPATNATPoolsFetcher
 
 
-from .fetchers import NUGroupsFetcher
+from .fetchers import NULDAPConfigurationsFetcher
 
 
-from .fetchers import NUGroupKeyEncryptionProfilesFetcher
+from .fetchers import NURedundancyGroupsFetcher
+
+
+from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUMetadataTagsFetcher
+
+
+from .fetchers import NUNetworkMacroGroupsFetcher
+
+
+from .fetchers import NUKeyServerMonitorsFetcher
+
+
+from .fetchers import NUBGPProfilesFetcher
+
+
+from .fetchers import NUEgressQOSPoliciesFetcher
+
+
+from .fetchers import NUSharedNetworkResourcesFetcher
 
 
 from .fetchers import NUIKECertificatesFetcher
@@ -96,34 +87,52 @@ from .fetchers import NUIKEGatewayProfilesFetcher
 from .fetchers import NUIKEPSKsFetcher
 
 
+from .fetchers import NUAlarmsFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
+
+
+from .fetchers import NUVMsFetcher
+
+
 from .fetchers import NUInfrastructurePortProfilesFetcher
+
+
+from .fetchers import NUEnterpriseNetworksFetcher
+
+
+from .fetchers import NUEnterpriseSecuritiesFetcher
 
 
 from .fetchers import NUJobsFetcher
 
 
-from .fetchers import NUKeyServerMonitorsFetcher
+from .fetchers import NUDomainsFetcher
 
 
-from .fetchers import NUL2DomainsFetcher
+from .fetchers import NUDomainTemplatesFetcher
 
 
-from .fetchers import NUL2DomainTemplatesFetcher
+from .fetchers import NURoutingPoliciesFetcher
 
 
-from .fetchers import NULDAPConfigurationsFetcher
+from .fetchers import NUAppsFetcher
 
 
-from .fetchers import NUMetadatasFetcher
+from .fetchers import NUApplicationServicesFetcher
 
 
-from .fetchers import NUMetadataTagsFetcher
+from .fetchers import NUGroupsFetcher
 
 
-from .fetchers import NUMultiCastListsFetcher
+from .fetchers import NUGroupKeyEncryptionProfilesFetcher
 
 
-from .fetchers import NUNetworkMacroGroupsFetcher
+from .fetchers import NUDSCPForwardingClassTablesFetcher
+
+
+from .fetchers import NUUsersFetcher
 
 
 from .fetchers import NUNSGatewaysFetcher
@@ -135,28 +144,19 @@ from .fetchers import NUNSGatewayTemplatesFetcher
 from .fetchers import NUNSRedundantGatewayGroupsFetcher
 
 
-from .fetchers import NUPATNATPoolsFetcher
-
-
 from .fetchers import NUPublicNetworkMacrosFetcher
 
 
-from .fetchers import NURateLimitersFetcher
+from .fetchers import NUMultiCastListsFetcher
 
 
-from .fetchers import NURedundancyGroupsFetcher
+from .fetchers import NUEventLogsFetcher
 
 
-from .fetchers import NURoutingPoliciesFetcher
+from .fetchers import NUExternalAppServicesFetcher
 
 
-from .fetchers import NUSharedNetworkResourcesFetcher
-
-
-from .fetchers import NUUsersFetcher
-
-
-from .fetchers import NUVMsFetcher
+from .fetchers import NUExternalServicesFetcher
 
 from bambou import NURESTObject
 
@@ -225,101 +225,71 @@ class NUEnterprise(NURESTObject):
 
         # Read/Write Attributes
         
-        self._bgp_enabled = None
-        self._dhcp_lease_interval = None
         self._ldap_authorization_enabled = None
         self._ldap_enabled = None
+        self._bgp_enabled = None
+        self._dhcp_lease_interval = None
+        self._name = None
+        self._last_updated_by = None
+        self._receive_multi_cast_list_id = None
+        self._send_multi_cast_list_id = None
+        self._description = None
         self._allow_advanced_qos_configuration = None
         self._allow_gateway_management = None
         self._allow_trusted_forwarding_class = None
         self._allowed_forwarding_classes = None
-        self._associated_enterprise_security_id = None
-        self._associated_group_key_encryption_profile_id = None
-        self._associated_key_server_monitor_id = None
-        self._avatar_data = None
-        self._avatar_type = None
-        self._customer_id = None
-        self._description = None
+        self._floating_ips_quota = None
+        self._floating_ips_used = None
         self._encryption_management_mode = None
         self._enterprise_profile_id = None
         self._entity_scope = None
-        self._external_id = None
-        self._floating_ips_quota = None
-        self._floating_ips_used = None
-        self._last_updated_by = None
         self._local_as = None
-        self._name = None
-        self._receive_multi_cast_list_id = None
-        self._send_multi_cast_list_id = None
+        self._associated_enterprise_security_id = None
+        self._associated_group_key_encryption_profile_id = None
+        self._associated_key_server_monitor_id = None
+        self._customer_id = None
+        self._avatar_data = None
+        self._avatar_type = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="bgp_enabled", remote_name="BGPEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dhcp_lease_interval", remote_name="DHCPLeaseInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ldap_authorization_enabled", remote_name="LDAPAuthorizationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ldap_enabled", remote_name="LDAPEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="bgp_enabled", remote_name="BGPEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="dhcp_lease_interval", remote_name="DHCPLeaseInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="receive_multi_cast_list_id", remote_name="receiveMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="send_multi_cast_list_id", remote_name="sendMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_advanced_qos_configuration", remote_name="allowAdvancedQOSConfiguration", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_gateway_management", remote_name="allowGatewayManagement", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_trusted_forwarding_class", remote_name="allowTrustedForwardingClass", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_forwarding_classes", remote_name="allowedForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
-        self.expose_attribute(local_name="associated_enterprise_security_id", remote_name="associatedEnterpriseSecurityID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_group_key_encryption_profile_id", remote_name="associatedGroupKeyEncryptionProfileID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_key_server_monitor_id", remote_name="associatedKeyServerMonitorID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="avatar_data", remote_name="avatarData", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="avatar_type", remote_name="avatarType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BASE64', u'COMPUTEDURL', u'URL'])
-        self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="floating_ips_quota", remote_name="floatingIPsQuota", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="floating_ips_used", remote_name="floatingIPsUsed", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption_management_mode", remote_name="encryptionManagementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'MANAGED'])
         self.expose_attribute(local_name="enterprise_profile_id", remote_name="enterpriseProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="floating_ips_quota", remote_name="floatingIPsQuota", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="floating_ips_used", remote_name="floatingIPsUsed", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="local_as", remote_name="localAS", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="receive_multi_cast_list_id", remote_name="receiveMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="send_multi_cast_list_id", remote_name="sendMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_enterprise_security_id", remote_name="associatedEnterpriseSecurityID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_group_key_encryption_profile_id", remote_name="associatedGroupKeyEncryptionProfileID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_key_server_monitor_id", remote_name="associatedKeyServerMonitorID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="avatar_data", remote_name="avatarData", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="avatar_type", remote_name="avatarType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BASE64', u'COMPUTEDURL', u'URL'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.l2_domains = NUL2DomainsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.apps = NUAppsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.l2_domain_templates = NUL2DomainTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.application_services = NUApplicationServicesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.bgp_profiles = NUBGPProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.domains = NUDomainsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.domain_templates = NUDomainTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.dscp_forwarding_class_tables = NUDSCPForwardingClassTablesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.egress_qos_policies = NUEgressQOSPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.enterprise_networks = NUEnterpriseNetworksFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.enterprise_securities = NUEnterpriseSecuritiesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.external_app_services = NUExternalAppServicesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.external_services = NUExternalServicesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.rate_limiters = NURateLimitersFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.gateways = NUGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -328,13 +298,34 @@ class NUEnterprise(NURESTObject):
         self.gateway_templates = NUGatewayTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.patnat_pools = NUPATNATPoolsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.ldap_configurations = NULDAPConfigurationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.group_key_encryption_profiles = NUGroupKeyEncryptionProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.redundancy_groups = NURedundancyGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.metadata_tags = NUMetadataTagsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.network_macro_groups = NUNetworkMacroGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.key_server_monitors = NUKeyServerMonitorsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.bgp_profiles = NUBGPProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.egress_qos_policies = NUEgressQOSPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.shared_network_resources = NUSharedNetworkResourcesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ike_certificates = NUIKECertificatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -352,34 +343,52 @@ class NUEnterprise(NURESTObject):
         self.ikepsks = NUIKEPSKsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.vms = NUVMsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.infrastructure_port_profiles = NUInfrastructurePortProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.enterprise_networks = NUEnterpriseNetworksFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.enterprise_securities = NUEnterpriseSecuritiesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.key_server_monitors = NUKeyServerMonitorsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.domains = NUDomainsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.l2_domains = NUL2DomainsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.domain_templates = NUDomainTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.l2_domain_templates = NUL2DomainTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.routing_policies = NURoutingPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.ldap_configurations = NULDAPConfigurationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.apps = NUAppsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.application_services = NUApplicationServicesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadata_tags = NUMetadataTagsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.multi_cast_lists = NUMultiCastListsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.group_key_encryption_profiles = NUGroupKeyEncryptionProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.network_macro_groups = NUNetworkMacroGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.dscp_forwarding_class_tables = NUDSCPForwardingClassTablesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.users = NUUsersFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ns_gateways = NUNSGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -391,33 +400,78 @@ class NUEnterprise(NURESTObject):
         self.ns_redundant_gateway_groups = NUNSRedundantGatewayGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.patnat_pools = NUPATNATPoolsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.public_network_macros = NUPublicNetworkMacrosFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.rate_limiters = NURateLimitersFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.multi_cast_lists = NUMultiCastListsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.redundancy_groups = NURedundancyGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.routing_policies = NURoutingPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.external_app_services = NUExternalAppServicesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.shared_network_resources = NUSharedNetworkResourcesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.users = NUUsersFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.vms = NUVMsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.external_services = NUExternalServicesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def ldap_authorization_enabled(self):
+        """ Get ldap_authorization_enabled value.
+
+            Notes:
+                Read-only flag - indicates if LDAP is used for authorization for the enterprise. For detailed explanation, see definition in LDAPConfiguration class
+
+                
+                This attribute is named `LDAPAuthorizationEnabled` in VSD API.
+                
+        """
+        return self._ldap_authorization_enabled
+
+    @ldap_authorization_enabled.setter
+    def ldap_authorization_enabled(self, value):
+        """ Set ldap_authorization_enabled value.
+
+            Notes:
+                Read-only flag - indicates if LDAP is used for authorization for the enterprise. For detailed explanation, see definition in LDAPConfiguration class
+
+                
+                This attribute is named `LDAPAuthorizationEnabled` in VSD API.
+                
+        """
+        self._ldap_authorization_enabled = value
+
+    
+    @property
+    def ldap_enabled(self):
+        """ Get ldap_enabled value.
+
+            Notes:
+                Read-only flag - indicates if LDAP is used for authentication for the enterprise. For detailed explanation, see definition in LDAPConfiguration class
+
+                
+                This attribute is named `LDAPEnabled` in VSD API.
+                
+        """
+        return self._ldap_enabled
+
+    @ldap_enabled.setter
+    def ldap_enabled(self, value):
+        """ Set ldap_enabled value.
+
+            Notes:
+                Read-only flag - indicates if LDAP is used for authentication for the enterprise. For detailed explanation, see definition in LDAPConfiguration class
+
+                
+                This attribute is named `LDAPEnabled` in VSD API.
+                
+        """
+        self._ldap_enabled = value
+
     
     @property
     def bgp_enabled(self):
@@ -474,57 +528,130 @@ class NUEnterprise(NURESTObject):
 
     
     @property
-    def ldap_authorization_enabled(self):
-        """ Get ldap_authorization_enabled value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                Read-only flag - indicates if LDAP is used for authorization for the enterprise. For detailed explanation, see definition in LDAPConfiguration class
+                The unique name of the enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
 
-                
-                This attribute is named `LDAPAuthorizationEnabled` in VSD API.
                 
         """
-        return self._ldap_authorization_enabled
+        return self._name
 
-    @ldap_authorization_enabled.setter
-    def ldap_authorization_enabled(self, value):
-        """ Set ldap_authorization_enabled value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                Read-only flag - indicates if LDAP is used for authorization for the enterprise. For detailed explanation, see definition in LDAPConfiguration class
+                The unique name of the enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
 
                 
-                This attribute is named `LDAPAuthorizationEnabled` in VSD API.
-                
         """
-        self._ldap_authorization_enabled = value
+        self._name = value
 
     
     @property
-    def ldap_enabled(self):
-        """ Get ldap_enabled value.
+    def last_updated_by(self):
+        """ Get last_updated_by value.
 
             Notes:
-                Read-only flag - indicates if LDAP is used for authentication for the enterprise. For detailed explanation, see definition in LDAPConfiguration class
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `LDAPEnabled` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        return self._ldap_enabled
+        return self._last_updated_by
 
-    @ldap_enabled.setter
-    def ldap_enabled(self, value):
-        """ Set ldap_enabled value.
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
 
             Notes:
-                Read-only flag - indicates if LDAP is used for authentication for the enterprise. For detailed explanation, see definition in LDAPConfiguration class
+                ID of the user who last updated the object.
 
                 
-                This attribute is named `LDAPEnabled` in VSD API.
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        self._ldap_enabled = value
+        self._last_updated_by = value
+
+    
+    @property
+    def receive_multi_cast_list_id(self):
+        """ Get receive_multi_cast_list_id value.
+
+            Notes:
+                Readonly Id of the auto generated receive multicast list associated with this enterprise profile
+
+                
+                This attribute is named `receiveMultiCastListID` in VSD API.
+                
+        """
+        return self._receive_multi_cast_list_id
+
+    @receive_multi_cast_list_id.setter
+    def receive_multi_cast_list_id(self, value):
+        """ Set receive_multi_cast_list_id value.
+
+            Notes:
+                Readonly Id of the auto generated receive multicast list associated with this enterprise profile
+
+                
+                This attribute is named `receiveMultiCastListID` in VSD API.
+                
+        """
+        self._receive_multi_cast_list_id = value
+
+    
+    @property
+    def send_multi_cast_list_id(self):
+        """ Get send_multi_cast_list_id value.
+
+            Notes:
+                Readonly Id of the auto generated send multicast list associated with this enterprise profile
+
+                
+                This attribute is named `sendMultiCastListID` in VSD API.
+                
+        """
+        return self._send_multi_cast_list_id
+
+    @send_multi_cast_list_id.setter
+    def send_multi_cast_list_id(self, value):
+        """ Set send_multi_cast_list_id value.
+
+            Notes:
+                Readonly Id of the auto generated send multicast list associated with this enterprise profile
+
+                
+                This attribute is named `sendMultiCastListID` in VSD API.
+                
+        """
+        self._send_multi_cast_list_id = value
+
+    
+    @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                A description of the enterprise
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                A description of the enterprise
+
+                
+        """
+        self._description = value
 
     
     @property
@@ -636,188 +763,57 @@ class NUEnterprise(NURESTObject):
 
     
     @property
-    def associated_enterprise_security_id(self):
-        """ Get associated_enterprise_security_id value.
+    def floating_ips_quota(self):
+        """ Get floating_ips_quota value.
 
             Notes:
-                Readonly Id of the associated group key encryption profile
+                Quota set for the number of floating IPs to be used by an enterprise.
 
                 
-                This attribute is named `associatedEnterpriseSecurityID` in VSD API.
+                This attribute is named `floatingIPsQuota` in VSD API.
                 
         """
-        return self._associated_enterprise_security_id
+        return self._floating_ips_quota
 
-    @associated_enterprise_security_id.setter
-    def associated_enterprise_security_id(self, value):
-        """ Set associated_enterprise_security_id value.
+    @floating_ips_quota.setter
+    def floating_ips_quota(self, value):
+        """ Set floating_ips_quota value.
 
             Notes:
-                Readonly Id of the associated group key encryption profile
+                Quota set for the number of floating IPs to be used by an enterprise.
 
                 
-                This attribute is named `associatedEnterpriseSecurityID` in VSD API.
+                This attribute is named `floatingIPsQuota` in VSD API.
                 
         """
-        self._associated_enterprise_security_id = value
+        self._floating_ips_quota = value
 
     
     @property
-    def associated_group_key_encryption_profile_id(self):
-        """ Get associated_group_key_encryption_profile_id value.
+    def floating_ips_used(self):
+        """ Get floating_ips_used value.
 
             Notes:
-                Readonly Id of the associated group key encryption profile
+                Number of floating IPs used by the enterprise from the assigned floatingIPsQuota
 
                 
-                This attribute is named `associatedGroupKeyEncryptionProfileID` in VSD API.
+                This attribute is named `floatingIPsUsed` in VSD API.
                 
         """
-        return self._associated_group_key_encryption_profile_id
+        return self._floating_ips_used
 
-    @associated_group_key_encryption_profile_id.setter
-    def associated_group_key_encryption_profile_id(self, value):
-        """ Set associated_group_key_encryption_profile_id value.
+    @floating_ips_used.setter
+    def floating_ips_used(self, value):
+        """ Set floating_ips_used value.
 
             Notes:
-                Readonly Id of the associated group key encryption profile
+                Number of floating IPs used by the enterprise from the assigned floatingIPsQuota
 
                 
-                This attribute is named `associatedGroupKeyEncryptionProfileID` in VSD API.
-                
-        """
-        self._associated_group_key_encryption_profile_id = value
-
-    
-    @property
-    def associated_key_server_monitor_id(self):
-        """ Get associated_key_server_monitor_id value.
-
-            Notes:
-                Readonly Id of the associated keyserver monitor
-
-                
-                This attribute is named `associatedKeyServerMonitorID` in VSD API.
+                This attribute is named `floatingIPsUsed` in VSD API.
                 
         """
-        return self._associated_key_server_monitor_id
-
-    @associated_key_server_monitor_id.setter
-    def associated_key_server_monitor_id(self, value):
-        """ Set associated_key_server_monitor_id value.
-
-            Notes:
-                Readonly Id of the associated keyserver monitor
-
-                
-                This attribute is named `associatedKeyServerMonitorID` in VSD API.
-                
-        """
-        self._associated_key_server_monitor_id = value
-
-    
-    @property
-    def avatar_data(self):
-        """ Get avatar_data value.
-
-            Notes:
-                URL to the avatar data associated with the enterprise. If the avatarType is URL then value of avatarData should an URL of the image. If the avatarType BASE64 then avatarData should be BASE64 encoded value of the image
-
-                
-                This attribute is named `avatarData` in VSD API.
-                
-        """
-        return self._avatar_data
-
-    @avatar_data.setter
-    def avatar_data(self, value):
-        """ Set avatar_data value.
-
-            Notes:
-                URL to the avatar data associated with the enterprise. If the avatarType is URL then value of avatarData should an URL of the image. If the avatarType BASE64 then avatarData should be BASE64 encoded value of the image
-
-                
-                This attribute is named `avatarData` in VSD API.
-                
-        """
-        self._avatar_data = value
-
-    
-    @property
-    def avatar_type(self):
-        """ Get avatar_type value.
-
-            Notes:
-                Avatar type - URL or BASE64 Possible values are URL, BASE64, COMPUTEDURL, .
-
-                
-                This attribute is named `avatarType` in VSD API.
-                
-        """
-        return self._avatar_type
-
-    @avatar_type.setter
-    def avatar_type(self, value):
-        """ Set avatar_type value.
-
-            Notes:
-                Avatar type - URL or BASE64 Possible values are URL, BASE64, COMPUTEDURL, .
-
-                
-                This attribute is named `avatarType` in VSD API.
-                
-        """
-        self._avatar_type = value
-
-    
-    @property
-    def customer_id(self):
-        """ Get customer_id value.
-
-            Notes:
-                CustomerID that is used by VSC to identify this enterprise. This is a read only attribute.
-
-                
-                This attribute is named `customerID` in VSD API.
-                
-        """
-        return self._customer_id
-
-    @customer_id.setter
-    def customer_id(self, value):
-        """ Set customer_id value.
-
-            Notes:
-                CustomerID that is used by VSC to identify this enterprise. This is a read only attribute.
-
-                
-                This attribute is named `customerID` in VSD API.
-                
-        """
-        self._customer_id = value
-
-    
-    @property
-    def description(self):
-        """ Get description value.
-
-            Notes:
-                A description of the enterprise
-
-                
-        """
-        return self._description
-
-    @description.setter
-    def description(self, value):
-        """ Set description value.
-
-            Notes:
-                A description of the enterprise
-
-                
-        """
-        self._description = value
+        self._floating_ips_used = value
 
     
     @property
@@ -902,114 +898,6 @@ class NUEnterprise(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def floating_ips_quota(self):
-        """ Get floating_ips_quota value.
-
-            Notes:
-                Quota set for the number of floating IPs to be used by an enterprise.
-
-                
-                This attribute is named `floatingIPsQuota` in VSD API.
-                
-        """
-        return self._floating_ips_quota
-
-    @floating_ips_quota.setter
-    def floating_ips_quota(self, value):
-        """ Set floating_ips_quota value.
-
-            Notes:
-                Quota set for the number of floating IPs to be used by an enterprise.
-
-                
-                This attribute is named `floatingIPsQuota` in VSD API.
-                
-        """
-        self._floating_ips_quota = value
-
-    
-    @property
-    def floating_ips_used(self):
-        """ Get floating_ips_used value.
-
-            Notes:
-                Number of floating IPs used by the enterprise from the assigned floatingIPsQuota
-
-                
-                This attribute is named `floatingIPsUsed` in VSD API.
-                
-        """
-        return self._floating_ips_used
-
-    @floating_ips_used.setter
-    def floating_ips_used(self, value):
-        """ Set floating_ips_used value.
-
-            Notes:
-                Number of floating IPs used by the enterprise from the assigned floatingIPsQuota
-
-                
-                This attribute is named `floatingIPsUsed` in VSD API.
-                
-        """
-        self._floating_ips_used = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
     def local_as(self):
         """ Get local_as value.
 
@@ -1037,80 +925,192 @@ class NUEnterprise(NURESTObject):
 
     
     @property
-    def name(self):
-        """ Get name value.
+    def associated_enterprise_security_id(self):
+        """ Get associated_enterprise_security_id value.
 
             Notes:
-                The unique name of the enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
+                Readonly Id of the associated group key encryption profile
 
                 
+                This attribute is named `associatedEnterpriseSecurityID` in VSD API.
+                
         """
-        return self._name
+        return self._associated_enterprise_security_id
 
-    @name.setter
-    def name(self, value):
-        """ Set name value.
+    @associated_enterprise_security_id.setter
+    def associated_enterprise_security_id(self, value):
+        """ Set associated_enterprise_security_id value.
 
             Notes:
-                The unique name of the enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
+                Readonly Id of the associated group key encryption profile
 
                 
+                This attribute is named `associatedEnterpriseSecurityID` in VSD API.
+                
         """
-        self._name = value
+        self._associated_enterprise_security_id = value
 
     
     @property
-    def receive_multi_cast_list_id(self):
-        """ Get receive_multi_cast_list_id value.
+    def associated_group_key_encryption_profile_id(self):
+        """ Get associated_group_key_encryption_profile_id value.
 
             Notes:
-                Readonly Id of the auto generated receive multicast list associated with this enterprise profile
+                Readonly Id of the associated group key encryption profile
 
                 
-                This attribute is named `receiveMultiCastListID` in VSD API.
+                This attribute is named `associatedGroupKeyEncryptionProfileID` in VSD API.
                 
         """
-        return self._receive_multi_cast_list_id
+        return self._associated_group_key_encryption_profile_id
 
-    @receive_multi_cast_list_id.setter
-    def receive_multi_cast_list_id(self, value):
-        """ Set receive_multi_cast_list_id value.
+    @associated_group_key_encryption_profile_id.setter
+    def associated_group_key_encryption_profile_id(self, value):
+        """ Set associated_group_key_encryption_profile_id value.
 
             Notes:
-                Readonly Id of the auto generated receive multicast list associated with this enterprise profile
+                Readonly Id of the associated group key encryption profile
 
                 
-                This attribute is named `receiveMultiCastListID` in VSD API.
+                This attribute is named `associatedGroupKeyEncryptionProfileID` in VSD API.
                 
         """
-        self._receive_multi_cast_list_id = value
+        self._associated_group_key_encryption_profile_id = value
 
     
     @property
-    def send_multi_cast_list_id(self):
-        """ Get send_multi_cast_list_id value.
+    def associated_key_server_monitor_id(self):
+        """ Get associated_key_server_monitor_id value.
 
             Notes:
-                Readonly Id of the auto generated send multicast list associated with this enterprise profile
+                Readonly Id of the associated keyserver monitor
 
                 
-                This attribute is named `sendMultiCastListID` in VSD API.
+                This attribute is named `associatedKeyServerMonitorID` in VSD API.
                 
         """
-        return self._send_multi_cast_list_id
+        return self._associated_key_server_monitor_id
 
-    @send_multi_cast_list_id.setter
-    def send_multi_cast_list_id(self, value):
-        """ Set send_multi_cast_list_id value.
+    @associated_key_server_monitor_id.setter
+    def associated_key_server_monitor_id(self, value):
+        """ Set associated_key_server_monitor_id value.
 
             Notes:
-                Readonly Id of the auto generated send multicast list associated with this enterprise profile
+                Readonly Id of the associated keyserver monitor
 
                 
-                This attribute is named `sendMultiCastListID` in VSD API.
+                This attribute is named `associatedKeyServerMonitorID` in VSD API.
                 
         """
-        self._send_multi_cast_list_id = value
+        self._associated_key_server_monitor_id = value
+
+    
+    @property
+    def customer_id(self):
+        """ Get customer_id value.
+
+            Notes:
+                CustomerID that is used by VSC to identify this enterprise. This is a read only attribute.
+
+                
+                This attribute is named `customerID` in VSD API.
+                
+        """
+        return self._customer_id
+
+    @customer_id.setter
+    def customer_id(self, value):
+        """ Set customer_id value.
+
+            Notes:
+                CustomerID that is used by VSC to identify this enterprise. This is a read only attribute.
+
+                
+                This attribute is named `customerID` in VSD API.
+                
+        """
+        self._customer_id = value
+
+    
+    @property
+    def avatar_data(self):
+        """ Get avatar_data value.
+
+            Notes:
+                URL to the avatar data associated with the enterprise. If the avatarType is URL then value of avatarData should an URL of the image. If the avatarType BASE64 then avatarData should be BASE64 encoded value of the image
+
+                
+                This attribute is named `avatarData` in VSD API.
+                
+        """
+        return self._avatar_data
+
+    @avatar_data.setter
+    def avatar_data(self, value):
+        """ Set avatar_data value.
+
+            Notes:
+                URL to the avatar data associated with the enterprise. If the avatarType is URL then value of avatarData should an URL of the image. If the avatarType BASE64 then avatarData should be BASE64 encoded value of the image
+
+                
+                This attribute is named `avatarData` in VSD API.
+                
+        """
+        self._avatar_data = value
+
+    
+    @property
+    def avatar_type(self):
+        """ Get avatar_type value.
+
+            Notes:
+                Avatar type - URL or BASE64 Possible values are URL, BASE64, COMPUTEDURL, .
+
+                
+                This attribute is named `avatarType` in VSD API.
+                
+        """
+        return self._avatar_type
+
+    @avatar_type.setter
+    def avatar_type(self, value):
+        """ Set avatar_type value.
+
+            Notes:
+                Avatar type - URL or BASE64 Possible values are URL, BASE64, COMPUTEDURL, .
+
+                
+                This attribute is named `avatarType` in VSD API.
+                
+        """
+        self._avatar_type = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

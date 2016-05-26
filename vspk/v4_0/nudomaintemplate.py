@@ -27,7 +27,13 @@
 
 
 
-from .fetchers import NUDomainsFetcher
+from .fetchers import NURedirectionTargetTemplatesFetcher
+
+
+from .fetchers import NUPermissionsFetcher
+
+
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUEgressACLTemplatesFetcher
@@ -39,13 +45,7 @@ from .fetchers import NUDomainFIPAclTemplatesFetcher
 from .fetchers import NUFloatingIPACLTemplatesFetcher
 
 
-from .fetchers import NUEventLogsFetcher
-
-
 from .fetchers import NUGlobalMetadatasFetcher
-
-
-from .fetchers import NUGroupsFetcher
 
 
 from .fetchers import NUIngressACLTemplatesFetcher
@@ -60,25 +60,25 @@ from .fetchers import NUIngressExternalServiceTemplatesFetcher
 from .fetchers import NUJobsFetcher
 
 
-from .fetchers import NUMetadatasFetcher
-
-
-from .fetchers import NUPermissionsFetcher
-
-
 from .fetchers import NUPolicyGroupTemplatesFetcher
+
+
+from .fetchers import NUDomainsFetcher
+
+
+from .fetchers import NUZoneTemplatesFetcher
 
 
 from .fetchers import NUQOSsFetcher
 
 
-from .fetchers import NURedirectionTargetTemplatesFetcher
+from .fetchers import NUGroupsFetcher
 
 
 from .fetchers import NUSubnetTemplatesFetcher
 
 
-from .fetchers import NUZoneTemplatesFetcher
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -135,35 +135,41 @@ class NUDomainTemplate(NURESTObject):
 
         # Read/Write Attributes
         
-        self._associated_bgp_profile_id = None
-        self._associated_multicast_channel_map_id = None
-        self._associated_pat_mapper_id = None
+        self._name = None
+        self._last_updated_by = None
         self._description = None
         self._encryption = None
         self._entity_scope = None
-        self._external_id = None
-        self._last_updated_by = None
-        self._multicast = None
-        self._name = None
         self._policy_change_status = None
+        self._associated_bgp_profile_id = None
+        self._associated_multicast_channel_map_id = None
+        self._associated_pat_mapper_id = None
+        self._multicast = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="associated_bgp_profile_id", remote_name="associatedBGPProfileID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_pat_mapper_id", remote_name="associatedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'DISCARDED', u'STARTED'])
+        self.expose_attribute(local_name="associated_bgp_profile_id", remote_name="associatedBGPProfileID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_pat_mapper_id", remote_name="associatedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.domains = NUDomainsFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        self.redirection_target_templates = NURedirectionTargetTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.egress_acl_templates = NUEgressACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -175,13 +181,7 @@ class NUDomainTemplate(NURESTObject):
         self.floating_ipacl_templates = NUFloatingIPACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ingress_acl_templates = NUIngressACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -196,30 +196,180 @@ class NUDomainTemplate(NURESTObject):
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.policy_group_templates = NUPolicyGroupTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.domains = NUDomainsFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        
+        
+        self.zone_templates = NUZoneTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.qoss = NUQOSsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.redirection_target_templates = NURedirectionTargetTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.subnet_templates = NUSubnetTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.zone_templates = NUZoneTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                The name of the domain template, that is unique within an enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                The name of the domain template, that is unique within an enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                Domain template description provided by the user
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                Domain template description provided by the user
+
+                
+        """
+        self._description = value
+
+    
+    @property
+    def encryption(self):
+        """ Get encryption value.
+
+            Notes:
+                Determines whether IPSEC is enabled. Possible values are ENABLED, DISABLED, .
+
+                
+        """
+        return self._encryption
+
+    @encryption.setter
+    def encryption(self, value):
+        """ Set encryption value.
+
+            Notes:
+                Determines whether IPSEC is enabled. Possible values are ENABLED, DISABLED, .
+
+                
+        """
+        self._encryption = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def policy_change_status(self):
+        """ Get policy_change_status value.
+
+            Notes:
+                
+
+                
+                This attribute is named `policyChangeStatus` in VSD API.
+                
+        """
+        return self._policy_change_status
+
+    @policy_change_status.setter
+    def policy_change_status(self, value):
+        """ Set policy_change_status value.
+
+            Notes:
+                
+
+                
+                This attribute is named `policyChangeStatus` in VSD API.
+                
+        """
+        self._policy_change_status = value
+
     
     @property
     def associated_bgp_profile_id(self):
@@ -303,76 +453,26 @@ class NUDomainTemplate(NURESTObject):
 
     
     @property
-    def description(self):
-        """ Get description value.
+    def multicast(self):
+        """ Get multicast value.
 
             Notes:
-                Domain template description provided by the user
+                Indicates multicast policy on domain.
 
                 
         """
-        return self._description
+        return self._multicast
 
-    @description.setter
-    def description(self, value):
-        """ Set description value.
+    @multicast.setter
+    def multicast(self, value):
+        """ Set multicast value.
 
             Notes:
-                Domain template description provided by the user
+                Indicates multicast policy on domain.
 
                 
         """
-        self._description = value
-
-    
-    @property
-    def encryption(self):
-        """ Get encryption value.
-
-            Notes:
-                Determines whether IPSEC is enabled. Possible values are ENABLED, DISABLED, .
-
-                
-        """
-        return self._encryption
-
-    @encryption.setter
-    def encryption(self, value):
-        """ Set encryption value.
-
-            Notes:
-                Determines whether IPSEC is enabled. Possible values are ENABLED, DISABLED, .
-
-                
-        """
-        self._encryption = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
+        self._multicast = value
 
     
     @property
@@ -400,106 +500,6 @@ class NUDomainTemplate(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def multicast(self):
-        """ Get multicast value.
-
-            Notes:
-                Indicates multicast policy on domain.
-
-                
-        """
-        return self._multicast
-
-    @multicast.setter
-    def multicast(self, value):
-        """ Set multicast value.
-
-            Notes:
-                Indicates multicast policy on domain.
-
-                
-        """
-        self._multicast = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                The name of the domain template, that is unique within an enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                The name of the domain template, that is unique within an enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def policy_change_status(self):
-        """ Get policy_change_status value.
-
-            Notes:
-                
-
-                
-                This attribute is named `policyChangeStatus` in VSD API.
-                
-        """
-        return self._policy_change_status
-
-    @policy_change_status.setter
-    def policy_change_status(self, value):
-        """ Set policy_change_status value.
-
-            Notes:
-                
-
-                
-                This attribute is named `policyChangeStatus` in VSD API.
-                
-        """
-        self._policy_change_status = value
 
     
 

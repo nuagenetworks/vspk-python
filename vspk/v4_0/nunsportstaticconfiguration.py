@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -72,31 +72,31 @@ class NUNSPortStaticConfiguration(NURESTObject):
         # Read/Write Attributes
         
         self._dns_address = None
+        self._last_updated_by = None
+        self._gateway = None
         self._address = None
+        self._netmask = None
         self._enabled = None
         self._entity_scope = None
         self._external_id = None
-        self._gateway = None
-        self._last_updated_by = None
-        self._netmask = None
         
         self.expose_attribute(local_name="dns_address", remote_name="DNSAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enabled", remote_name="enabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -131,6 +131,56 @@ class NUNSPortStaticConfiguration(NURESTObject):
 
     
     @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def gateway(self):
+        """ Get gateway value.
+
+            Notes:
+                IP address of the gateway bound to the Network NSPort.
+
+                
+        """
+        return self._gateway
+
+    @gateway.setter
+    def gateway(self, value):
+        """ Set gateway value.
+
+            Notes:
+                IP address of the gateway bound to the Network NSPort.
+
+                
+        """
+        self._gateway = value
+
+    
+    @property
     def address(self):
         """ Get address value.
 
@@ -151,6 +201,29 @@ class NUNSPortStaticConfiguration(NURESTObject):
                 
         """
         self._address = value
+
+    
+    @property
+    def netmask(self):
+        """ Get netmask value.
+
+            Notes:
+                IP address netmask of the Network NSPort.
+
+                
+        """
+        return self._netmask
+
+    @netmask.setter
+    def netmask(self, value):
+        """ Set netmask value.
+
+            Notes:
+                IP address netmask of the Network NSPort.
+
+                
+        """
+        self._netmask = value
 
     
     @property
@@ -228,79 +301,6 @@ class NUNSPortStaticConfiguration(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def gateway(self):
-        """ Get gateway value.
-
-            Notes:
-                IP address of the gateway bound to the Network NSPort.
-
-                
-        """
-        return self._gateway
-
-    @gateway.setter
-    def gateway(self, value):
-        """ Set gateway value.
-
-            Notes:
-                IP address of the gateway bound to the Network NSPort.
-
-                
-        """
-        self._gateway = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def netmask(self):
-        """ Get netmask value.
-
-            Notes:
-                IP address netmask of the Network NSPort.
-
-                
-        """
-        return self._netmask
-
-    @netmask.setter
-    def netmask(self, value):
-        """ Set netmask value.
-
-            Notes:
-                IP address netmask of the Network NSPort.
-
-                
-        """
-        self._netmask = value
 
     
 

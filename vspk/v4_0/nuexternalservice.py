@@ -27,19 +27,19 @@
 
 
 
-from .fetchers import NUEndPointsFetcher
+from .fetchers import NUMetadatasFetcher
 
 
-from .fetchers import NUEventLogsFetcher
+from .fetchers import NUMetadataTagsFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUMetadatasFetcher
+from .fetchers import NUEndPointsFetcher
 
 
-from .fetchers import NUMetadataTagsFetcher
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -88,35 +88,26 @@ class NUExternalService(NURESTObject):
 
         # Read/Write Attributes
         
+        self._name = None
+        self._last_updated_by = None
+        self._service_type = None
         self._description = None
         self._direction = None
         self._entity_scope = None
-        self._external_id = None
-        self._last_updated_by = None
-        self._name = None
-        self._service_type = None
         self._stage = None
+        self._external_id = None
         
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="service_type", remote_name="serviceType", attribute_type=str, is_required=True, is_unique=False, choices=[u'L2', u'L3'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="direction", remote_name="direction", attribute_type=str, is_required=False, is_unique=False, choices=[u'INGRESS'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="service_type", remote_name="serviceType", attribute_type=str, is_required=True, is_unique=False, choices=[u'L2', u'L3'])
         self.expose_attribute(local_name="stage", remote_name="stage", attribute_type=str, is_required=False, is_unique=False, choices=[u'START'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
-        
-        
-        self.end_points = NUEndPointsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -124,10 +115,96 @@ class NUExternalService(NURESTObject):
         
         self.metadata_tags = NUMetadataTagsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.end_points = NUEndPointsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                unique name of the External Service. 
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                unique name of the External Service. 
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def service_type(self):
+        """ Get service_type value.
+
+            Notes:
+                Type of the service.
+
+                
+                This attribute is named `serviceType` in VSD API.
+                
+        """
+        return self._service_type
+
+    @service_type.setter
+    def service_type(self, value):
+        """ Set service_type value.
+
+            Notes:
+                Type of the service.
+
+                
+                This attribute is named `serviceType` in VSD API.
+                
+        """
+        self._service_type = value
+
     
     @property
     def description(self):
@@ -203,6 +280,29 @@ class NUExternalService(NURESTObject):
 
     
     @property
+    def stage(self):
+        """ Get stage value.
+
+            Notes:
+                Stage -  START,END Possible values are START, .
+
+                
+        """
+        return self._stage
+
+    @stage.setter
+    def stage(self, value):
+        """ Set stage value.
+
+            Notes:
+                Stage -  START,END Possible values are START, .
+
+                
+        """
+        self._stage = value
+
+    
+    @property
     def external_id(self):
         """ Get external_id value.
 
@@ -227,106 +327,6 @@ class NUExternalService(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                unique name of the External Service. 
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                unique name of the External Service. 
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def service_type(self):
-        """ Get service_type value.
-
-            Notes:
-                Type of the service.
-
-                
-                This attribute is named `serviceType` in VSD API.
-                
-        """
-        return self._service_type
-
-    @service_type.setter
-    def service_type(self, value):
-        """ Set service_type value.
-
-            Notes:
-                Type of the service.
-
-                
-                This attribute is named `serviceType` in VSD API.
-                
-        """
-        self._service_type = value
-
-    
-    @property
-    def stage(self):
-        """ Get stage value.
-
-            Notes:
-                Stage -  START,END Possible values are START, .
-
-                
-        """
-        return self._stage
-
-    @stage.setter
-    def stage(self, value):
-        """ Set stage value.
-
-            Notes:
-                Stage -  START,END Possible values are START, .
-
-                
-        """
-        self._stage = value
 
     
 

@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -82,25 +82,25 @@ class NUKeyServerNotification(NURESTObject):
         # Read/Write Attributes
         
         self._base64_json_string = None
-        self._entity_scope = None
-        self._external_id = None
         self._message = None
+        self._entity_scope = None
         self._notification_type = None
+        self._external_id = None
         
         self.expose_attribute(local_name="base64_json_string", remote_name="base64JSONString", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="message", remote_name="message", attribute_type=dict, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="notification_type", remote_name="notificationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONFIG_UPDATE', u'ENCRYPTION_DISABLED', u'ENCRYPTION_ENABLED', u'REKEY', u'TEST'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -135,6 +135,29 @@ class NUKeyServerNotification(NURESTObject):
 
     
     @property
+    def message(self):
+        """ Get message value.
+
+            Notes:
+                The message to send
+
+                
+        """
+        return self._message
+
+    @message.setter
+    def message(self, value):
+        """ Set message value.
+
+            Notes:
+                The message to send
+
+                
+        """
+        self._message = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -162,56 +185,6 @@ class NUKeyServerNotification(NURESTObject):
 
     
     @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def message(self):
-        """ Get message value.
-
-            Notes:
-                The message to send
-
-                
-        """
-        return self._message
-
-    @message.setter
-    def message(self, value):
-        """ Set message value.
-
-            Notes:
-                The message to send
-
-                
-        """
-        self._message = value
-
-    
-    @property
     def notification_type(self):
         """ Get notification_type value.
 
@@ -236,6 +209,33 @@ class NUKeyServerNotification(NURESTObject):
                 
         """
         self._notification_type = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

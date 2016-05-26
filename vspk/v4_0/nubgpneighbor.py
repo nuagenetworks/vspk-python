@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -71,36 +71,36 @@ class NUBGPNeighbor(NURESTObject):
 
         # Read/Write Attributes
         
-        self._associated_export_routing_policy_id = None
-        self._associated_import_routing_policy_id = None
-        self._dampening_enabled = None
-        self._description = None
-        self._entity_scope = None
-        self._external_id = None
         self._name = None
+        self._dampening_enabled = None
         self._peer_as = None
         self._peer_ip = None
+        self._description = None
         self._session = None
+        self._entity_scope = None
+        self._associated_export_routing_policy_id = None
+        self._associated_import_routing_policy_id = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="associated_export_routing_policy_id", remote_name="associatedExportRoutingPolicyID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_import_routing_policy_id", remote_name="associatedImportRoutingPolicyID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dampening_enabled", remote_name="dampeningEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="dampening_enabled", remote_name="dampeningEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peer_as", remote_name="peerAS", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="peer_ip", remote_name="peerIP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="session", remote_name="session", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="associated_export_routing_policy_id", remote_name="associatedExportRoutingPolicyID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_import_routing_policy_id", remote_name="associatedImportRoutingPolicyID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -108,57 +108,26 @@ class NUBGPNeighbor(NURESTObject):
     # Properties
     
     @property
-    def associated_export_routing_policy_id(self):
-        """ Get associated_export_routing_policy_id value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                export policy ID
+                Name of the peer
 
-                
-                This attribute is named `associatedExportRoutingPolicyID` in VSD API.
                 
         """
-        return self._associated_export_routing_policy_id
+        return self._name
 
-    @associated_export_routing_policy_id.setter
-    def associated_export_routing_policy_id(self, value):
-        """ Set associated_export_routing_policy_id value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                export policy ID
+                Name of the peer
 
-                
-                This attribute is named `associatedExportRoutingPolicyID` in VSD API.
                 
         """
-        self._associated_export_routing_policy_id = value
-
-    
-    @property
-    def associated_import_routing_policy_id(self):
-        """ Get associated_import_routing_policy_id value.
-
-            Notes:
-                import routing policy ID
-
-                
-                This attribute is named `associatedImportRoutingPolicyID` in VSD API.
-                
-        """
-        return self._associated_import_routing_policy_id
-
-    @associated_import_routing_policy_id.setter
-    def associated_import_routing_policy_id(self, value):
-        """ Set associated_import_routing_policy_id value.
-
-            Notes:
-                import routing policy ID
-
-                
-                This attribute is named `associatedImportRoutingPolicyID` in VSD API.
-                
-        """
-        self._associated_import_routing_policy_id = value
+        self._name = value
 
     
     @property
@@ -186,106 +155,6 @@ class NUBGPNeighbor(NURESTObject):
                 
         """
         self._dampening_enabled = value
-
-    
-    @property
-    def description(self):
-        """ Get description value.
-
-            Notes:
-                Short description for this peer
-
-                
-        """
-        return self._description
-
-    @description.setter
-    def description(self, value):
-        """ Set description value.
-
-            Notes:
-                Short description for this peer
-
-                
-        """
-        self._description = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the peer
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the peer
-
-                
-        """
-        self._name = value
 
     
     @property
@@ -343,6 +212,29 @@ class NUBGPNeighbor(NURESTObject):
 
     
     @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                Short description for this peer
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                Short description for this peer
+
+                
+        """
+        self._description = value
+
+    
+    @property
     def session(self):
         """ Get session value.
 
@@ -363,6 +255,114 @@ class NUBGPNeighbor(NURESTObject):
                 
         """
         self._session = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def associated_export_routing_policy_id(self):
+        """ Get associated_export_routing_policy_id value.
+
+            Notes:
+                export policy ID
+
+                
+                This attribute is named `associatedExportRoutingPolicyID` in VSD API.
+                
+        """
+        return self._associated_export_routing_policy_id
+
+    @associated_export_routing_policy_id.setter
+    def associated_export_routing_policy_id(self, value):
+        """ Set associated_export_routing_policy_id value.
+
+            Notes:
+                export policy ID
+
+                
+                This attribute is named `associatedExportRoutingPolicyID` in VSD API.
+                
+        """
+        self._associated_export_routing_policy_id = value
+
+    
+    @property
+    def associated_import_routing_policy_id(self):
+        """ Get associated_import_routing_policy_id value.
+
+            Notes:
+                import routing policy ID
+
+                
+                This attribute is named `associatedImportRoutingPolicyID` in VSD API.
+                
+        """
+        return self._associated_import_routing_policy_id
+
+    @associated_import_routing_policy_id.setter
+    def associated_import_routing_policy_id(self, value):
+        """ Set associated_import_routing_policy_id value.
+
+            Notes:
+                import routing policy ID
+
+                
+                This attribute is named `associatedImportRoutingPolicyID` in VSD API.
+                
+        """
+        self._associated_import_routing_policy_id = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

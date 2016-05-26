@@ -27,10 +27,10 @@
 
 
 
-from .fetchers import NUGlobalMetadatasFetcher
-
-
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -157,13 +157,13 @@ class NUIKEEncryptionprofile(NURESTObject):
         self._isakmp_encryption_algorithm = None
         self._isakmp_encryption_key_lifetime = None
         self._isakmp_hash_algorithm = None
-        self._associated_enterprise_id = None
+        self._name = None
+        self._last_updated_by = None
+        self._sequence = None
         self._description = None
         self._entity_scope = None
+        self._associated_enterprise_id = None
         self._external_id = None
-        self._last_updated_by = None
-        self._name = None
-        self._sequence = None
         
         self.expose_attribute(local_name="dpd_interval", remote_name="DPDInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dpd_mode", remote_name="DPDMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'ON_DEMAND', u'PERIODIC', u'REPLY_ONLY'])
@@ -181,22 +181,22 @@ class NUIKEEncryptionprofile(NURESTObject):
         self.expose_attribute(local_name="isakmp_encryption_algorithm", remote_name="ISAKMPEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES128', u'AES192', u'AES256', u'TRIPLE_DES'])
         self.expose_attribute(local_name="isakmp_encryption_key_lifetime", remote_name="ISAKMPEncryptionKeyLifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="isakmp_hash_algorithm", remote_name="ISAKMPHashAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'MD5', u'SHA1', u'SHA256'])
-        self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="sequence", remote_name="sequence", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="sequence", remote_name="sequence", attribute_type=int, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -636,30 +636,76 @@ class NUIKEEncryptionprofile(NURESTObject):
 
     
     @property
-    def associated_enterprise_id(self):
-        """ Get associated_enterprise_id value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                The ID of the associated Enterprise
+                Name of the Encryption Profile
 
-                
-                This attribute is named `associatedEnterpriseID` in VSD API.
                 
         """
-        return self._associated_enterprise_id
+        return self._name
 
-    @associated_enterprise_id.setter
-    def associated_enterprise_id(self, value):
-        """ Set associated_enterprise_id value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                The ID of the associated Enterprise
+                Name of the Encryption Profile
 
                 
-                This attribute is named `associatedEnterpriseID` in VSD API.
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        self._associated_enterprise_id = value
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def sequence(self):
+        """ Get sequence value.
+
+            Notes:
+                
+
+                
+        """
+        return self._sequence
+
+    @sequence.setter
+    def sequence(self, value):
+        """ Set sequence value.
+
+            Notes:
+                
+
+                
+        """
+        self._sequence = value
 
     
     @property
@@ -713,6 +759,33 @@ class NUIKEEncryptionprofile(NURESTObject):
 
     
     @property
+    def associated_enterprise_id(self):
+        """ Get associated_enterprise_id value.
+
+            Notes:
+                The ID of the associated Enterprise
+
+                
+                This attribute is named `associatedEnterpriseID` in VSD API.
+                
+        """
+        return self._associated_enterprise_id
+
+    @associated_enterprise_id.setter
+    def associated_enterprise_id(self, value):
+        """ Set associated_enterprise_id value.
+
+            Notes:
+                The ID of the associated Enterprise
+
+                
+                This attribute is named `associatedEnterpriseID` in VSD API.
+                
+        """
+        self._associated_enterprise_id = value
+
+    
+    @property
     def external_id(self):
         """ Get external_id value.
 
@@ -737,79 +810,6 @@ class NUIKEEncryptionprofile(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the Encryption Profile
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the Encryption Profile
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def sequence(self):
-        """ Get sequence value.
-
-            Notes:
-                
-
-                
-        """
-        return self._sequence
-
-    @sequence.setter
-    def sequence(self, value):
-        """ Set sequence value.
-
-            Notes:
-                
-
-                
-        """
-        self._sequence = value
 
     
 

@@ -27,6 +27,9 @@
 
 
 
+from .fetchers import NUMetadatasFetcher
+
+
 from .fetchers import NUEgressACLEntryTemplatesFetcher
 
 
@@ -37,9 +40,6 @@ from .fetchers import NUIngressACLEntryTemplatesFetcher
 
 
 from .fetchers import NUIngressAdvFwdEntryTemplatesFetcher
-
-
-from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUVPortMirrorsFetcher
@@ -83,22 +83,25 @@ class NUMirrorDestination(NURESTObject):
 
         # Read/Write Attributes
         
+        self._name = None
+        self._last_updated_by = None
+        self._service_id = None
         self._destination_ip = None
         self._entity_scope = None
         self._external_id = None
-        self._last_updated_by = None
-        self._name = None
-        self._service_id = None
         
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="service_id", remote_name="serviceId", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_ip", remote_name="destinationIp", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="service_id", remote_name="serviceId", attribute_type=int, is_required=False, is_unique=False)
         
 
         # Fetchers
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.egress_acl_entry_templates = NUEgressACLEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -113,15 +116,89 @@ class NUMirrorDestination(NURESTObject):
         self.ingress_adv_fwd_entry_templates = NUIngressAdvFwdEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.vport_mirrors = NUVPortMirrorsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the mirror destination. Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the mirror destination. Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def service_id(self):
+        """ Get service_id value.
+
+            Notes:
+                Service ID of the mirror destination.
+
+                
+                This attribute is named `serviceId` in VSD API.
+                
+        """
+        return self._service_id
+
+    @service_id.setter
+    def service_id(self, value):
+        """ Set service_id value.
+
+            Notes:
+                Service ID of the mirror destination.
+
+                
+                This attribute is named `serviceId` in VSD API.
+                
+        """
+        self._service_id = value
+
     
     @property
     def destination_ip(self):
@@ -202,83 +279,6 @@ class NUMirrorDestination(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the mirror destination. Valid characters are alphabets, numbers, space and hyphen( - ).
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the mirror destination. Valid characters are alphabets, numbers, space and hyphen( - ).
-
-                
-        """
-        self._name = value
-
-    
-    @property
-    def service_id(self):
-        """ Get service_id value.
-
-            Notes:
-                Service ID of the mirror destination.
-
-                
-                This attribute is named `serviceId` in VSD API.
-                
-        """
-        return self._service_id
-
-    @service_id.setter
-    def service_id(self, value):
-        """ Set service_id value.
-
-            Notes:
-                Service ID of the mirror destination.
-
-                
-                This attribute is named `serviceId` in VSD API.
-                
-        """
-        self._service_id = value
 
     
 

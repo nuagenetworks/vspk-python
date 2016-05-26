@@ -27,52 +27,31 @@
 
 
 
-from .fetchers import NUAggregateMetadatasFetcher
-
-
-from .fetchers import NUAlarmsFetcher
-
-
-from .fetchers import NUBGPNeighborsFetcher
-
-
-from .fetchers import NUBridgeInterfacesFetcher
-
-
-from .fetchers import NUDHCPOptionsFetcher
-
-
-from .fetchers import NUEventLogsFetcher
-
-
-from .fetchers import NUGlobalMetadatasFetcher
-
-
-from .fetchers import NUHostInterfacesFetcher
-
-
-from .fetchers import NUMetadatasFetcher
-
-
-from .fetchers import NUPolicyGroupsFetcher
-
-
-from .fetchers import NUQOSsFetcher
+from .fetchers import NUTCAsFetcher
 
 
 from .fetchers import NURedirectionTargetsFetcher
 
 
-from .fetchers import NUStatisticsFetcher
+from .fetchers import NUMetadatasFetcher
 
 
-from .fetchers import NUStatisticsPoliciesFetcher
+from .fetchers import NUAggregateMetadatasFetcher
 
 
-from .fetchers import NUTCAsFetcher
+from .fetchers import NUBGPNeighborsFetcher
+
+
+from .fetchers import NUDHCPOptionsFetcher
 
 
 from .fetchers import NUVirtualIPsFetcher
+
+
+from .fetchers import NUAlarmsFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 
 from .fetchers import NUVMsFetcher
@@ -81,10 +60,31 @@ from .fetchers import NUVMsFetcher
 from .fetchers import NUVMInterfacesFetcher
 
 
+from .fetchers import NUPolicyGroupsFetcher
+
+
+from .fetchers import NUQOSsFetcher
+
+
+from .fetchers import NUHostInterfacesFetcher
+
+
 from .fetchers import NUVPortMirrorsFetcher
 
 
+from .fetchers import NUBridgeInterfacesFetcher
+
+
 from .fetchers import NUVRSsFetcher
+
+
+from .fetchers import NUStatisticsFetcher
+
+
+from .fetchers import NUStatisticsPoliciesFetcher
+
+
+from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
 
@@ -162,95 +162,74 @@ class NUVPort(NURESTObject):
         # Read/Write Attributes
         
         self._vlanid = None
+        self._name = None
+        self._has_attached_interfaces = None
+        self._last_updated_by = None
         self._active = None
         self._address_spoofing = None
+        self._description = None
+        self._entity_scope = None
+        self._domain_id = None
+        self._zone_id = None
+        self._operational_state = None
         self._associated_floating_ip_id = None
         self._associated_multicast_channel_map_id = None
         self._associated_send_multicast_channel_map_id = None
-        self._description = None
-        self._domain_id = None
-        self._entity_scope = None
-        self._external_id = None
-        self._has_attached_interfaces = None
-        self._last_updated_by = None
         self._multi_nic_vport_id = None
         self._multicast = None
-        self._name = None
-        self._operational_state = None
-        self._system_type = None
+        self._external_id = None
         self._type = None
-        self._zone_id = None
+        self._system_type = None
         
         self.expose_attribute(local_name="vlanid", remote_name="VLANID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="has_attached_interfaces", remote_name="hasAttachedInterfaces", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="active", remote_name="active", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address_spoofing", remote_name="addressSpoofing", attribute_type=str, is_required=True, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="domain_id", remote_name="domainID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="zone_id", remote_name="zoneID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="operational_state", remote_name="operationalState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DOWN', u'INIT', u'UP'])
         self.expose_attribute(local_name="associated_floating_ip_id", remote_name="associatedFloatingIPID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_send_multicast_channel_map_id", remote_name="associatedSendMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="domain_id", remote_name="domainID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="has_attached_interfaces", remote_name="hasAttachedInterfaces", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multi_nic_vport_id", remote_name="multiNICVPortID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="operational_state", remote_name="operationalState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DOWN', u'INIT', u'UP'])
-        self.expose_attribute(local_name="system_type", remote_name="systemType", attribute_type=str, is_required=False, is_unique=False, choices=[u'HARDWARE', u'HARDWARE_VTEP', u'NUAGE_1', u'NUAGE_2', u'NUAGE_VRSG', u'SOFTWARE'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'BRIDGE', u'HOST', u'VM'])
-        self.expose_attribute(local_name="zone_id", remote_name="zoneID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="system_type", remote_name="systemType", attribute_type=str, is_required=False, is_unique=False, choices=[u'HARDWARE', u'HARDWARE_VTEP', u'NUAGE_1', u'NUAGE_2', u'NUAGE_VRSG', u'SOFTWARE'])
         
 
         # Fetchers
         
         
-        self.aggregate_metadatas = NUAggregateMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.bgp_neighbors = NUBGPNeighborsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.bridge_interfaces = NUBridgeInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.dhcp_options = NUDHCPOptionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.host_interfaces = NUHostInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.policy_groups = NUPolicyGroupsFetcher.fetcher_with_object(parent_object=self, relationship="member")
-        
-        
-        self.qoss = NUQOSsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.tcas = NUTCAsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.redirection_targets = NURedirectionTargetsFetcher.fetcher_with_object(parent_object=self, relationship="member")
         
         
-        self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.statistics_policies = NUStatisticsPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.aggregate_metadatas = NUAggregateMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.tcas = NUTCAsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.bgp_neighbors = NUBGPNeighborsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.dhcp_options = NUDHCPOptionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.virtual_ips = NUVirtualIPsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.vms = NUVMsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -259,10 +238,31 @@ class NUVPort(NURESTObject):
         self.vm_interfaces = NUVMInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.policy_groups = NUPolicyGroupsFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        
+        
+        self.qoss = NUQOSsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.host_interfaces = NUHostInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.vport_mirrors = NUVPortMirrorsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.bridge_interfaces = NUBridgeInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.vrss = NUVRSsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.statistics_policies = NUStatisticsPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -294,6 +294,83 @@ class NUVPort(NURESTObject):
                 
         """
         self._vlanid = value
+
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the vport. Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the vport. Valid characters are alphabets, numbers, space and hyphen( - ).
+
+                
+        """
+        self._name = value
+
+    
+    @property
+    def has_attached_interfaces(self):
+        """ Get has_attached_interfaces value.
+
+            Notes:
+                Indicates that this vport has attached interfaces
+
+                
+                This attribute is named `hasAttachedInterfaces` in VSD API.
+                
+        """
+        return self._has_attached_interfaces
+
+    @has_attached_interfaces.setter
+    def has_attached_interfaces(self, value):
+        """ Set has_attached_interfaces value.
+
+            Notes:
+                Indicates that this vport has attached interfaces
+
+                
+                This attribute is named `hasAttachedInterfaces` in VSD API.
+                
+        """
+        self._has_attached_interfaces = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
 
     
     @property
@@ -344,6 +421,137 @@ class NUVPort(NURESTObject):
                 
         """
         self._address_spoofing = value
+
+    
+    @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                Description for this vport
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                Description for this vport
+
+                
+        """
+        self._description = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def domain_id(self):
+        """ Get domain_id value.
+
+            Notes:
+                ID the Domain associated with the VPort
+
+                
+                This attribute is named `domainID` in VSD API.
+                
+        """
+        return self._domain_id
+
+    @domain_id.setter
+    def domain_id(self, value):
+        """ Set domain_id value.
+
+            Notes:
+                ID the Domain associated with the VPort
+
+                
+                This attribute is named `domainID` in VSD API.
+                
+        """
+        self._domain_id = value
+
+    
+    @property
+    def zone_id(self):
+        """ Get zone_id value.
+
+            Notes:
+                ID the Zone associated with the VPort
+
+                
+                This attribute is named `zoneID` in VSD API.
+                
+        """
+        return self._zone_id
+
+    @zone_id.setter
+    def zone_id(self, value):
+        """ Set zone_id value.
+
+            Notes:
+                ID the Zone associated with the VPort
+
+                
+                This attribute is named `zoneID` in VSD API.
+                
+        """
+        self._zone_id = value
+
+    
+    @property
+    def operational_state(self):
+        """ Get operational_state value.
+
+            Notes:
+                Operational State of the VPort - RUNNING/SHUTDOWN Possible values are INIT, UP, DOWN, .
+
+                
+                This attribute is named `operationalState` in VSD API.
+                
+        """
+        return self._operational_state
+
+    @operational_state.setter
+    def operational_state(self, value):
+        """ Set operational_state value.
+
+            Notes:
+                Operational State of the VPort - RUNNING/SHUTDOWN Possible values are INIT, UP, DOWN, .
+
+                
+                This attribute is named `operationalState` in VSD API.
+                
+        """
+        self._operational_state = value
 
     
     @property
@@ -428,164 +636,6 @@ class NUVPort(NURESTObject):
 
     
     @property
-    def description(self):
-        """ Get description value.
-
-            Notes:
-                Description for this vport
-
-                
-        """
-        return self._description
-
-    @description.setter
-    def description(self, value):
-        """ Set description value.
-
-            Notes:
-                Description for this vport
-
-                
-        """
-        self._description = value
-
-    
-    @property
-    def domain_id(self):
-        """ Get domain_id value.
-
-            Notes:
-                ID the Domain associated with the VPort
-
-                
-                This attribute is named `domainID` in VSD API.
-                
-        """
-        return self._domain_id
-
-    @domain_id.setter
-    def domain_id(self, value):
-        """ Set domain_id value.
-
-            Notes:
-                ID the Domain associated with the VPort
-
-                
-                This attribute is named `domainID` in VSD API.
-                
-        """
-        self._domain_id = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
-
-    
-    @property
-    def has_attached_interfaces(self):
-        """ Get has_attached_interfaces value.
-
-            Notes:
-                Indicates that this vport has attached interfaces
-
-                
-                This attribute is named `hasAttachedInterfaces` in VSD API.
-                
-        """
-        return self._has_attached_interfaces
-
-    @has_attached_interfaces.setter
-    def has_attached_interfaces(self, value):
-        """ Set has_attached_interfaces value.
-
-            Notes:
-                Indicates that this vport has attached interfaces
-
-                
-                This attribute is named `hasAttachedInterfaces` in VSD API.
-                
-        """
-        self._has_attached_interfaces = value
-
-    
-    @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        return self._last_updated_by
-
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
-
-            Notes:
-                ID of the user who last updated the object.
-
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
-                
-        """
-        self._last_updated_by = value
-
-    
-    @property
     def multi_nic_vport_id(self):
         """ Get multi_nic_vport_id value.
 
@@ -636,53 +686,53 @@ class NUVPort(NURESTObject):
 
     
     @property
-    def name(self):
-        """ Get name value.
+    def external_id(self):
+        """ Get external_id value.
 
             Notes:
-                Name of the vport. Valid characters are alphabets, numbers, space and hyphen( - ).
+                External object ID. Used for integration with third party systems
 
                 
+                This attribute is named `externalID` in VSD API.
+                
         """
-        return self._name
+        return self._external_id
 
-    @name.setter
-    def name(self, value):
-        """ Set name value.
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
 
             Notes:
-                Name of the vport. Valid characters are alphabets, numbers, space and hyphen( - ).
+                External object ID. Used for integration with third party systems
 
                 
+                This attribute is named `externalID` in VSD API.
+                
         """
-        self._name = value
+        self._external_id = value
 
     
     @property
-    def operational_state(self):
-        """ Get operational_state value.
+    def type(self):
+        """ Get type value.
 
             Notes:
-                Operational State of the VPort - RUNNING/SHUTDOWN Possible values are INIT, UP, DOWN, .
+                Type of vport - possible values VM/HOST/BRIDGE Possible values are VM, HOST, BRIDGE, .
 
-                
-                This attribute is named `operationalState` in VSD API.
                 
         """
-        return self._operational_state
+        return self._type
 
-    @operational_state.setter
-    def operational_state(self, value):
-        """ Set operational_state value.
+    @type.setter
+    def type(self, value):
+        """ Set type value.
 
             Notes:
-                Operational State of the VPort - RUNNING/SHUTDOWN Possible values are INIT, UP, DOWN, .
+                Type of vport - possible values VM/HOST/BRIDGE Possible values are VM, HOST, BRIDGE, .
 
                 
-                This attribute is named `operationalState` in VSD API.
-                
         """
-        self._operational_state = value
+        self._type = value
 
     
     @property
@@ -710,56 +760,6 @@ class NUVPort(NURESTObject):
                 
         """
         self._system_type = value
-
-    
-    @property
-    def type(self):
-        """ Get type value.
-
-            Notes:
-                Type of vport - possible values VM/HOST/BRIDGE Possible values are VM, HOST, BRIDGE, .
-
-                
-        """
-        return self._type
-
-    @type.setter
-    def type(self, value):
-        """ Set type value.
-
-            Notes:
-                Type of vport - possible values VM/HOST/BRIDGE Possible values are VM, HOST, BRIDGE, .
-
-                
-        """
-        self._type = value
-
-    
-    @property
-    def zone_id(self):
-        """ Get zone_id value.
-
-            Notes:
-                ID the Zone associated with the VPort
-
-                
-                This attribute is named `zoneID` in VSD API.
-                
-        """
-        return self._zone_id
-
-    @zone_id.setter
-    def zone_id(self, value):
-        """ Set zone_id value.
-
-            Notes:
-                ID the Zone associated with the VPort
-
-                
-                This attribute is named `zoneID` in VSD API.
-                
-        """
-        self._zone_id = value
 
     
 
