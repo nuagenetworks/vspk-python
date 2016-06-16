@@ -606,6 +606,7 @@ class NUIngressExternalServiceTemplateEntry(NURESTObject):
         self._icmp_code = None
         self._icmp_type = None
         self._dscp = None
+        self._name = None
         self._last_updated_by = None
         self._action = None
         self._address_override = None
@@ -635,6 +636,7 @@ class NUIngressExternalServiceTemplateEntry(NURESTObject):
         self.expose_attribute(local_name="icmp_code", remote_name="ICMPCode", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="icmp_type", remote_name="ICMPType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'DROP', u'FORWARD', u'REDIRECT'])
         self.expose_attribute(local_name="address_override", remote_name="addressOverride", attribute_type=str, is_required=False, is_unique=False)
@@ -760,6 +762,29 @@ class NUIngressExternalServiceTemplateEntry(NURESTObject):
                 
         """
         self._dscp = value
+
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the entity.
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the entity.
+
+                
+        """
+        self._name = value
 
     
     @property

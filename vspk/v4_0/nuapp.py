@@ -62,6 +62,8 @@ class NUApp(NURESTObject):
     
     CONST_ASSOCIATED_DOMAIN_TYPE_DOMAIN = "DOMAIN"
     
+    CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_ZONE = "ZONE"
+    
     CONST_ASSOCIATED_NETWORK_OBJECT_TYPE_DOMAIN = "DOMAIN"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
@@ -112,7 +114,7 @@ class NUApp(NURESTObject):
         self.expose_attribute(local_name="associated_domain_id", remote_name="associatedDomainID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="associated_domain_type", remote_name="associatedDomainType", attribute_type=str, is_required=True, is_unique=False, choices=[u'DOMAIN', u'L2DOMAIN'])
         self.expose_attribute(local_name="associated_network_object_id", remote_name="associatedNetworkObjectID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_network_object_type", remote_name="associatedNetworkObjectType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DOMAIN', u'ENTERPRISE'])
+        self.expose_attribute(local_name="associated_network_object_type", remote_name="associatedNetworkObjectType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DOMAIN', u'ENTERPRISE', u'ZONE'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

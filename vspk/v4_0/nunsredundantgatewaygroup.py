@@ -119,6 +119,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         self._gateway_peer1_id = None
         self._gateway_peer1_name = None
         self._gateway_peer2_autodiscovered_gateway_id = None
+        self._gateway_peer2_id = None
         self._gateway_peer2_name = None
         self._heartbeat_interval = None
         self._heartbeat_vlanid = None
@@ -138,6 +139,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         self.expose_attribute(local_name="gateway_peer1_id", remote_name="gatewayPeer1ID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_name", remote_name="gatewayPeer1Name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer2_autodiscovered_gateway_id", remote_name="gatewayPeer2AutodiscoveredGatewayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_peer2_id", remote_name="gatewayPeer2ID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer2_name", remote_name="gatewayPeer2Name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="heartbeat_interval", remote_name="heartbeatInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="heartbeat_vlanid", remote_name="heartbeatVLANID", attribute_type=int, is_required=False, is_unique=False)
@@ -333,6 +335,33 @@ class NUNSRedundantGatewayGroup(NURESTObject):
                 
         """
         self._gateway_peer2_autodiscovered_gateway_id = value
+
+    
+    @property
+    def gateway_peer2_id(self):
+        """ Get gateway_peer2_id value.
+
+            Notes:
+                The gateway peer in this Redundant Group. when Redundant Group is deleted this gateway will not recieve vport associations
+
+                
+                This attribute is named `gatewayPeer2ID` in VSD API.
+                
+        """
+        return self._gateway_peer2_id
+
+    @gateway_peer2_id.setter
+    def gateway_peer2_id(self, value):
+        """ Set gateway_peer2_id value.
+
+            Notes:
+                The gateway peer in this Redundant Group. when Redundant Group is deleted this gateway will not recieve vport associations
+
+                
+                This attribute is named `gatewayPeer2ID` in VSD API.
+                
+        """
+        self._gateway_peer2_id = value
 
     
     @property
