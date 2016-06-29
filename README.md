@@ -2,7 +2,7 @@
 
 VSPK is a Python SDK for [Nuage VSP Platform](http://www.nuagenetworks.net/products/virtualized-services-platform/)
 
-Learn how to use it from our [complete documentation](http://nuagenetworks.github.io/vspkdoc/index.html)
+Learn how to use it from our [complete documentation](http://nuagenetworks.github.io/sdkdoc/index.html)
 
 
 ## License
