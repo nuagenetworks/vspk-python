@@ -78,6 +78,12 @@ from .fetchers import NUJobsFetcher
 from .fetchers import NUPolicyGroupsFetcher
 
 
+from .fetchers import NUContainersFetcher
+
+
+from .fetchers import NUContainerInterfacesFetcher
+
+
 from .fetchers import NUQOSsFetcher
 
 
@@ -288,6 +294,12 @@ class NUL2Domain(NURESTObject):
         
         
         self.policy_groups = NUPolicyGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.containers = NUContainersFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.container_interfaces = NUContainerInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.qoss = NUQOSsFetcher.fetcher_with_object(parent_object=self, relationship="child")

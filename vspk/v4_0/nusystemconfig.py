@@ -145,6 +145,9 @@ class NUSystemConfig(NURESTObject):
         self._rd_public_network_lower_limit = None
         self._rd_public_network_upper_limit = None
         self._rd_upper_limit = None
+        self._zfb_bootstrap_enabled = None
+        self._zfb_request_retry_timer = None
+        self._zfb_scheduler_stale_request_timeout = None
         self._dhcp_option_size = None
         self._vm_cache_size = None
         self._vm_purge_time = None
@@ -187,6 +190,7 @@ class NUSystemConfig(NURESTObject):
         self._ejbca_ocsp_responder_uri = None
         self._ejbca_vsp_root_ca = None
         self._alarms_max_per_object = None
+        self._elastic_cluster_name = None
         self._allow_enterprise_avatar_on_nsg = None
         self._inactive_timeout = None
         self._entity_scope = None
@@ -219,6 +223,7 @@ class NUSystemConfig(NURESTObject):
         self._stateful_acl_non_tcp_timeout = None
         self._stateful_acltcp_timeout = None
         self._static_wan_service_purge_time = None
+        self._statistics_enabled = None
         self._stats_collector_address = None
         self._stats_collector_port = None
         self._stats_collector_proto_buf_port = None
@@ -260,6 +265,9 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="rd_public_network_lower_limit", remote_name="RDPublicNetworkLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rd_public_network_upper_limit", remote_name="RDPublicNetworkUpperLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rd_upper_limit", remote_name="RDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="zfb_bootstrap_enabled", remote_name="ZFBBootstrapEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="zfb_request_retry_timer", remote_name="ZFBRequestRetryTimer", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="zfb_scheduler_stale_request_timeout", remote_name="ZFBSchedulerStaleRequestTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_option_size", remote_name="DHCPOptionSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vm_cache_size", remote_name="VMCacheSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vm_purge_time", remote_name="VMPurgeTime", attribute_type=int, is_required=False, is_unique=False)
@@ -302,6 +310,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="ejbca_ocsp_responder_uri", remote_name="ejbcaOCSPResponderURI", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ejbca_vsp_root_ca", remote_name="ejbcaVspRootCa", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="alarms_max_per_object", remote_name="alarmsMaxPerObject", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="elastic_cluster_name", remote_name="elasticClusterName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_enterprise_avatar_on_nsg", remote_name="allowEnterpriseAvatarOnNSG", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="inactive_timeout", remote_name="inactiveTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -334,6 +343,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="stateful_acl_non_tcp_timeout", remote_name="statefulACLNonTCPTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stateful_acltcp_timeout", remote_name="statefulACLTCPTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="static_wan_service_purge_time", remote_name="staticWANServicePurgeTime", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="statistics_enabled", remote_name="statisticsEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_collector_address", remote_name="statsCollectorAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_collector_port", remote_name="statsCollectorPort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_collector_proto_buf_port", remote_name="statsCollectorProtoBufPort", attribute_type=str, is_required=False, is_unique=False)
@@ -647,6 +657,87 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._rd_upper_limit = value
+
+    
+    @property
+    def zfb_bootstrap_enabled(self):
+        """ Get zfb_bootstrap_enabled value.
+
+            Notes:
+                Whether the NSG should auto bootstrap using ZFB
+
+                
+                This attribute is named `ZFBBootstrapEnabled` in VSD API.
+                
+        """
+        return self._zfb_bootstrap_enabled
+
+    @zfb_bootstrap_enabled.setter
+    def zfb_bootstrap_enabled(self, value):
+        """ Set zfb_bootstrap_enabled value.
+
+            Notes:
+                Whether the NSG should auto bootstrap using ZFB
+
+                
+                This attribute is named `ZFBBootstrapEnabled` in VSD API.
+                
+        """
+        self._zfb_bootstrap_enabled = value
+
+    
+    @property
+    def zfb_request_retry_timer(self):
+        """ Get zfb_request_retry_timer value.
+
+            Notes:
+                Retry time for the ZFB daemon to recheck ZFBRequest Status in seconds
+
+                
+                This attribute is named `ZFBRequestRetryTimer` in VSD API.
+                
+        """
+        return self._zfb_request_retry_timer
+
+    @zfb_request_retry_timer.setter
+    def zfb_request_retry_timer(self, value):
+        """ Set zfb_request_retry_timer value.
+
+            Notes:
+                Retry time for the ZFB daemon to recheck ZFBRequest Status in seconds
+
+                
+                This attribute is named `ZFBRequestRetryTimer` in VSD API.
+                
+        """
+        self._zfb_request_retry_timer = value
+
+    
+    @property
+    def zfb_scheduler_stale_request_timeout(self):
+        """ Get zfb_scheduler_stale_request_timeout value.
+
+            Notes:
+                Time for the ZFB scheduler to wait in seconds before deleting a stale request
+
+                
+                This attribute is named `ZFBSchedulerStaleRequestTimeout` in VSD API.
+                
+        """
+        return self._zfb_scheduler_stale_request_timeout
+
+    @zfb_scheduler_stale_request_timeout.setter
+    def zfb_scheduler_stale_request_timeout(self, value):
+        """ Set zfb_scheduler_stale_request_timeout value.
+
+            Notes:
+                Time for the ZFB scheduler to wait in seconds before deleting a stale request
+
+                
+                This attribute is named `ZFBSchedulerStaleRequestTimeout` in VSD API.
+                
+        """
+        self._zfb_scheduler_stale_request_timeout = value
 
     
     @property
@@ -1784,6 +1875,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def elastic_cluster_name(self):
+        """ Get elastic_cluster_name value.
+
+            Notes:
+                Specifies the name of the Elastic Search Cluster.
+
+                
+                This attribute is named `elasticClusterName` in VSD API.
+                
+        """
+        return self._elastic_cluster_name
+
+    @elastic_cluster_name.setter
+    def elastic_cluster_name(self, value):
+        """ Set elastic_cluster_name value.
+
+            Notes:
+                Specifies the name of the Elastic Search Cluster.
+
+                
+                This attribute is named `elasticClusterName` in VSD API.
+                
+        """
+        self._elastic_cluster_name = value
+
+    
+    @property
     def allow_enterprise_avatar_on_nsg(self):
         """ Get allow_enterprise_avatar_on_nsg value.
 
@@ -2645,6 +2763,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._static_wan_service_purge_time = value
+
+    
+    @property
+    def statistics_enabled(self):
+        """ Get statistics_enabled value.
+
+            Notes:
+                This flag is used to indicate if statistics is enabled in the system. CSProot is expected to activate this through the enable statistics script.
+
+                
+                This attribute is named `statisticsEnabled` in VSD API.
+                
+        """
+        return self._statistics_enabled
+
+    @statistics_enabled.setter
+    def statistics_enabled(self, value):
+        """ Set statistics_enabled value.
+
+            Notes:
+                This flag is used to indicate if statistics is enabled in the system. CSProot is expected to activate this through the enable statistics script.
+
+                
+                This attribute is named `statisticsEnabled` in VSD API.
+                
+        """
+        self._statistics_enabled = value
 
     
     @property

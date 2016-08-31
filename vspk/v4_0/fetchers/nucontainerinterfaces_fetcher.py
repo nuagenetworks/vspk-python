@@ -28,11 +28,11 @@
 from bambou import NURESTFetcher
 
 
-class NUGatewaySecurityProfilesFetcher(NURESTFetcher):
-    """ Represents a NUGatewaySecurityProfiles fetcher
+class NUContainerInterfacesFetcher(NURESTFetcher):
+    """ Represents a NUContainerInterfaces fetcher
 
         Notes:
-            This fetcher enables to fetch NUGatewaySecurityProfile objects.
+            This fetcher enables to fetch NUContainerInterface objects.
 
         See:
             bambou.NURESTFetcher
@@ -40,13 +40,13 @@ class NUGatewaySecurityProfilesFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUGatewaySecurityProfile class that is managed.
+        """ Return NUContainerInterface class that is managed.
 
             Returns:
-                .NUGatewaySecurityProfile: the managed class
+                .NUContainerInterface: the managed class
         """
 
-        from .. import NUGatewaySecurityProfile
-        return NUGatewaySecurityProfile
+        from .. import NUContainerInterface
+        return NUContainerInterface
 
     

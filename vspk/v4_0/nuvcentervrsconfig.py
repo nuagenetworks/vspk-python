@@ -35,6 +35,9 @@ from .fetchers import NUGlobalMetadatasFetcher
 
 from .fetchers import NUVRSAddressRangesFetcher
 
+
+from .fetchers import NUVRSRedeploymentpoliciesFetcher
+
 from bambou import NURESTObject
 
 
@@ -82,6 +85,7 @@ class NUVCenterVRSConfig(NURESTObject):
         self._data_network_portgroup = None
         self._datapath_sync_timeout = None
         self._secondary_nuage_controller = None
+        self._generic_split_activation = None
         self._separate_data_network = None
         self._personality = None
         self._metadata_server_ip = None
@@ -143,6 +147,7 @@ class NUVCenterVRSConfig(NURESTObject):
         self.expose_attribute(local_name="data_network_portgroup", remote_name="dataNetworkPortgroup", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_sync_timeout", remote_name="datapathSyncTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_nuage_controller", remote_name="secondaryNuageController", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="generic_split_activation", remote_name="genericSplitActivation", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="separate_data_network", remote_name="separateDataNetwork", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_server_ip", remote_name="metadataServerIP", attribute_type=str, is_required=False, is_unique=False)
@@ -207,6 +212,9 @@ class NUVCenterVRSConfig(NURESTObject):
         
         
         self.vrs_address_ranges = NUVRSAddressRangesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.vrs_redeploymentpolicies = NUVRSRedeploymentpoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -427,6 +435,33 @@ class NUVCenterVRSConfig(NURESTObject):
                 
         """
         self._secondary_nuage_controller = value
+
+    
+    @property
+    def generic_split_activation(self):
+        """ Get generic_split_activation value.
+
+            Notes:
+                Whether split-activation is needed from VRO
+
+                
+                This attribute is named `genericSplitActivation` in VSD API.
+                
+        """
+        return self._generic_split_activation
+
+    @generic_split_activation.setter
+    def generic_split_activation(self, value):
+        """ Set generic_split_activation value.
+
+            Notes:
+                Whether split-activation is needed from VRO
+
+                
+                This attribute is named `genericSplitActivation` in VSD API.
+                
+        """
+        self._generic_split_activation = value
 
     
     @property

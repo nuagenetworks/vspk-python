@@ -36,7 +36,13 @@ from .fetchers import NUGlobalMetadatasFetcher
 from .fetchers import NUVMsFetcher
 
 
+from .fetchers import NUContainersFetcher
+
+
 from .fetchers import NUGroupsFetcher
+
+
+from .fetchers import NUAvatarsFetcher
 
 
 from .fetchers import NUEventLogsFetcher
@@ -131,7 +137,13 @@ class NUUser(NURESTObject):
         self.vms = NUVMsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.containers = NUContainersFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.avatars = NUAvatarsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")

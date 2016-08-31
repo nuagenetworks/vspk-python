@@ -48,9 +48,17 @@ class NUNATMapEntry(NURESTObject):
     
     ## Constants
     
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_TYPE_ONE_TO_MANY_PAT = "ONE_TO_MANY_PAT"
+    
+    CONST_TYPE_UNKNOWN = "UNKNOWN"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_TYPE_ONE_TO_ONE_NAT = "ONE_TO_ONE_NAT"
+    
+    CONST_TYPE_MANY_TO_ONE_PAT = "MANY_TO_ONE_PAT"
     
     
 
@@ -74,16 +82,22 @@ class NUNATMapEntry(NURESTObject):
         self._last_updated_by = None
         self._entity_scope = None
         self._private_ip = None
+        self._private_port = None
         self._associated_patnat_pool_id = None
         self._public_ip = None
+        self._public_port = None
         self._external_id = None
+        self._type = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="private_ip", remote_name="privateIP", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="private_port", remote_name="privatePort", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="associated_patnat_pool_id", remote_name="associatedPATNATPoolID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="public_ip", remote_name="publicIP", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="public_port", remote_name="publicPort", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'MANY_TO_ONE_PAT', u'ONE_TO_MANY_PAT', u'ONE_TO_ONE_NAT', u'UNKNOWN'])
         
 
         # Fetchers
@@ -181,6 +195,33 @@ class NUNATMapEntry(NURESTObject):
 
     
     @property
+    def private_port(self):
+        """ Get private_port value.
+
+            Notes:
+                Private port identification
+
+                
+                This attribute is named `privatePort` in VSD API.
+                
+        """
+        return self._private_port
+
+    @private_port.setter
+    def private_port(self, value):
+        """ Set private_port value.
+
+            Notes:
+                Private port identification
+
+                
+                This attribute is named `privatePort` in VSD API.
+                
+        """
+        self._private_port = value
+
+    
+    @property
     def associated_patnat_pool_id(self):
         """ Get associated_patnat_pool_id value.
 
@@ -235,6 +276,33 @@ class NUNATMapEntry(NURESTObject):
 
     
     @property
+    def public_port(self):
+        """ Get public_port value.
+
+            Notes:
+                Public port identification
+
+                
+                This attribute is named `publicPort` in VSD API.
+                
+        """
+        return self._public_port
+
+    @public_port.setter
+    def public_port(self, value):
+        """ Set public_port value.
+
+            Notes:
+                Public port identification
+
+                
+                This attribute is named `publicPort` in VSD API.
+                
+        """
+        self._public_port = value
+
+    
+    @property
     def external_id(self):
         """ Get external_id value.
 
@@ -259,6 +327,29 @@ class NUNATMapEntry(NURESTObject):
                 
         """
         self._external_id = value
+
+    
+    @property
+    def type(self):
+        """ Get type value.
+
+            Notes:
+                The type of address mapping this instance is.
+
+                
+        """
+        return self._type
+
+    @type.setter
+    def type(self, value):
+        """ Set type value.
+
+            Notes:
+                The type of address mapping this instance is.
+
+                
+        """
+        self._type = value
 
     
 

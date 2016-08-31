@@ -39,9 +39,6 @@ from .fetchers import NUMetadatasFetcher
 from .fetchers import NUAggregateMetadatasFetcher
 
 
-from .fetchers import NUBGPNeighborsFetcher
-
-
 from .fetchers import NUDHCPOptionsFetcher
 
 
@@ -61,6 +58,15 @@ from .fetchers import NUVMInterfacesFetcher
 
 
 from .fetchers import NUPolicyGroupsFetcher
+
+
+from .fetchers import NUContainersFetcher
+
+
+from .fetchers import NUContainerInterfacesFetcher
+
+
+from .fetchers import NUPortMappingsFetcher
 
 
 from .fetchers import NUQOSsFetcher
@@ -93,7 +99,7 @@ class NUVPort(NURESTObject):
     """ Represents a VPort in the VSD
 
         Notes:
-            VPorts are a new level in the domain hierarchy, intended to provide more granular configuration than at subnet, and also support a split workflow, where the vPort is configured and associated with a VM port (or gateway port) before the port exists on the hypervisor or gateway.
+            VPorts are a new level in the domain hierarchy, intended to provide more granular configuration than at subnet, and also support a split workflow, where the vPort is configured and associated with a VM port (or gateway port) before the port exists.
     """
 
     __rest_name__ = "vport"
@@ -104,7 +110,7 @@ class NUVPort(NURESTObject):
     
     CONST_OPERATIONAL_STATE_DOWN = "DOWN"
     
-    CONST_SYSTEM_TYPE_NUAGE_1 = "NUAGE_1"
+    CONST_TYPE_CONTAINER = "CONTAINER"
     
     CONST_SYSTEM_TYPE_HARDWARE = "HARDWARE"
     
@@ -113,6 +119,8 @@ class NUVPort(NURESTObject):
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_SYSTEM_TYPE_HARDWARE_VTEP = "HARDWARE_VTEP"
+    
+    CONST_SYSTEM_TYPE_NUAGE_1 = "NUAGE_1"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
@@ -198,7 +206,7 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="multi_nic_vport_id", remote_name="multiNICVPortID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'BRIDGE', u'HOST', u'VM'])
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'BRIDGE', u'CONTAINER', u'HOST', u'VM'])
         self.expose_attribute(local_name="system_type", remote_name="systemType", attribute_type=str, is_required=False, is_unique=False, choices=[u'HARDWARE', u'HARDWARE_VTEP', u'NUAGE_1', u'NUAGE_2', u'NUAGE_VRSG', u'SOFTWARE'])
         
 
@@ -215,9 +223,6 @@ class NUVPort(NURESTObject):
         
         
         self.aggregate_metadatas = NUAggregateMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.bgp_neighbors = NUBGPNeighborsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.dhcp_options = NUDHCPOptionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -239,6 +244,15 @@ class NUVPort(NURESTObject):
         
         
         self.policy_groups = NUPolicyGroupsFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        
+        
+        self.containers = NUContainersFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.container_interfaces = NUContainerInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.port_mappings = NUPortMappingsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.qoss = NUQOSsFetcher.fetcher_with_object(parent_object=self, relationship="child")

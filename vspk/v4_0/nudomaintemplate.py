@@ -87,7 +87,7 @@ class NUDomainTemplate(NURESTObject):
     """ Represents a DomainTemplate in the VSD
 
         Notes:
-            Domains in VSD are created from domain templates. This object provides the definition of the DomainTemplate.
+            Domains in VSD are created from domain templates. This object provides the definition of the Domain Template.
     """
 
     __rest_name__ = "domaintemplate"

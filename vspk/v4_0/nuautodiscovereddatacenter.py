@@ -40,6 +40,13 @@ class NUAutodiscovereddatacenter(NURESTObject):
     __resource_name__ = "autodiscovereddatacenters"
 
     
+    ## Constants
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    
 
     def __init__(self, **kwargs):
         """ Initializes a Autodiscovereddatacenter instance
@@ -60,11 +67,17 @@ class NUAutodiscovereddatacenter(NURESTObject):
         
         self._name = None
         self._managed_object_id = None
-        self._assoc_vcenter_id = None
+        self._last_updated_by = None
+        self._entity_scope = None
+        self._associated_vcenter_id = None
+        self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="managed_object_id", remote_name="managedObjectID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="assoc_vcenter_id", remote_name="assocVCenterId", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="associated_vcenter_id", remote_name="associatedVCenterID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         self._compute_args(**kwargs)
@@ -122,30 +135,111 @@ class NUAutodiscovereddatacenter(NURESTObject):
 
     
     @property
-    def assoc_vcenter_id(self):
-        """ Get assoc_vcenter_id value.
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def associated_vcenter_id(self):
+        """ Get associated_vcenter_id value.
 
             Notes:
                 The ID of the vcenter to which this host is attached
 
                 
-                This attribute is named `assocVCenterId` in VSD API.
+                This attribute is named `associatedVCenterID` in VSD API.
                 
         """
-        return self._assoc_vcenter_id
+        return self._associated_vcenter_id
 
-    @assoc_vcenter_id.setter
-    def assoc_vcenter_id(self, value):
-        """ Set assoc_vcenter_id value.
+    @associated_vcenter_id.setter
+    def associated_vcenter_id(self, value):
+        """ Set associated_vcenter_id value.
 
             Notes:
                 The ID of the vcenter to which this host is attached
 
                 
-                This attribute is named `assocVCenterId` in VSD API.
+                This attribute is named `associatedVCenterID` in VSD API.
                 
         """
-        self._assoc_vcenter_id = value
+        self._associated_vcenter_id = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

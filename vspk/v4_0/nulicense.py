@@ -84,6 +84,7 @@ class NULicense(NURESTObject):
         
         self._major_release = None
         self._last_updated_by = None
+        self._additional_supported_versions = None
         self._phone = None
         self._license = None
         self._license_encryption = None
@@ -116,6 +117,7 @@ class NULicense(NURESTObject):
         
         self.expose_attribute(local_name="major_release", remote_name="majorRelease", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="additional_supported_versions", remote_name="additionalSupportedVersions", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="phone", remote_name="phone", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="license", remote_name="license", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="license_encryption", remote_name="licenseEncryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENCRYPTION_DISABLED', u'ENCRYPTION_ENABLED'])
@@ -215,6 +217,33 @@ class NULicense(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def additional_supported_versions(self):
+        """ Get additional_supported_versions value.
+
+            Notes:
+                Indicates additional versions supported by the license.
+
+                
+                This attribute is named `additionalSupportedVersions` in VSD API.
+                
+        """
+        return self._additional_supported_versions
+
+    @additional_supported_versions.setter
+    def additional_supported_versions(self, value):
+        """ Set additional_supported_versions value.
+
+            Notes:
+                Indicates additional versions supported by the license.
+
+                
+                This attribute is named `additionalSupportedVersions` in VSD API.
+                
+        """
+        self._additional_supported_versions = value
 
     
     @property
@@ -349,7 +378,7 @@ class NULicense(NURESTObject):
         """ Get license_type value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `licenseType` in VSD API.
@@ -362,7 +391,7 @@ class NULicense(NURESTObject):
         """ Set license_type value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `licenseType` in VSD API.

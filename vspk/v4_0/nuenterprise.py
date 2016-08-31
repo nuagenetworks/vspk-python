@@ -63,6 +63,9 @@ from .fetchers import NUNetworkMacroGroupsFetcher
 from .fetchers import NUKeyServerMonitorsFetcher
 
 
+from .fetchers import NUZFBRequestsFetcher
+
+
 from .fetchers import NUBGPProfilesFetcher
 
 
@@ -90,6 +93,9 @@ from .fetchers import NUIKEPSKsFetcher
 from .fetchers import NUAlarmsFetcher
 
 
+from .fetchers import NUAlarmsFetcher
+
+
 from .fetchers import NUGlobalMetadatasFetcher
 
 
@@ -112,6 +118,9 @@ from .fetchers import NUDomainsFetcher
 
 
 from .fetchers import NUDomainTemplatesFetcher
+
+
+from .fetchers import NUContainersFetcher
 
 
 from .fetchers import NURoutingPoliciesFetcher
@@ -148,6 +157,9 @@ from .fetchers import NUPublicNetworkMacrosFetcher
 
 
 from .fetchers import NUMultiCastListsFetcher
+
+
+from .fetchers import NUAvatarsFetcher
 
 
 from .fetchers import NUEventLogsFetcher
@@ -319,6 +331,9 @@ class NUEnterprise(NURESTObject):
         self.key_server_monitors = NUKeyServerMonitorsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.zfb_requests = NUZFBRequestsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.bgp_profiles = NUBGPProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -346,6 +361,9 @@ class NUEnterprise(NURESTObject):
         self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -368,6 +386,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.domain_templates = NUDomainTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.containers = NUContainersFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.routing_policies = NURoutingPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -404,6 +425,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.multi_cast_lists = NUMultiCastListsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.avatars = NUAvatarsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")

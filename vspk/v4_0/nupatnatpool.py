@@ -41,6 +41,15 @@ from .fetchers import NUGlobalMetadatasFetcher
 
 from .fetchers import NUEnterprisePermissionsFetcher
 
+
+from .fetchers import NUStatisticsFetcher
+
+
+from .fetchers import NUStatisticsPoliciesFetcher
+
+
+from .fetchers import NUBulkStatisticsFetcher
+
 from bambou import NURESTObject
 
 
@@ -59,11 +68,7 @@ class NUPATNATPool(NURESTObject):
     
     CONST_PERMITTED_ACTION_USE = "USE"
     
-    CONST_ASSOCIATED_GATEWAY_ID_AUTO_DISC_GATEWAY = "AUTO_DISC_GATEWAY"
-    
     CONST_PERMITTED_ACTION_READ = "READ"
-    
-    CONST_ASSOCIATED_GATEWAY_ID_IKEV2_GATEWAY = "IKEV2_GATEWAY"
     
     CONST_ASSOCIATED_GATEWAY_TYPE_GATEWAY = "GATEWAY"
     
@@ -78,10 +83,6 @@ class NUPATNATPool(NURESTObject):
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
-    
-    CONST_ASSOCIATED_GATEWAY_ID_GATEWAY = "GATEWAY"
-    
-    CONST_ASSOCIATED_GATEWAY_ID_NSGATEWAY = "NSGATEWAY"
     
     CONST_ASSOCIATED_GATEWAY_TYPE_NSGATEWAY = "NSGATEWAY"
     
@@ -117,9 +118,10 @@ class NUPATNATPool(NURESTObject):
         self._end_address_range = None
         self._end_source_address = None
         self._entity_scope = None
-        self._translation_timeout = None
         self._associated_gateway_id = None
         self._associated_gateway_type = None
+        self._associated_subnet_id = None
+        self._associated_vlan_id = None
         self._start_address_range = None
         self._start_source_address = None
         self._external_id = None
@@ -134,9 +136,10 @@ class NUPATNATPool(NURESTObject):
         self.expose_attribute(local_name="end_address_range", remote_name="endAddressRange", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="end_source_address", remote_name="endSourceAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="translation_timeout", remote_name="translationTimeout", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_gateway_id", remote_name="associatedGatewayId", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTO_DISC_GATEWAY', u'GATEWAY', u'IKEV2_GATEWAY', u'NSGATEWAY'])
+        self.expose_attribute(local_name="associated_gateway_id", remote_name="associatedGatewayId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_type", remote_name="associatedGatewayType", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTO_DISC_GATEWAY', u'GATEWAY', u'IKE_GATEWAY', u'NSGATEWAY'])
+        self.expose_attribute(local_name="associated_subnet_id", remote_name="associatedSubnetId", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_vlan_id", remote_name="associatedVlanId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="start_address_range", remote_name="startAddressRange", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="start_source_address", remote_name="startSourceAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -159,6 +162,15 @@ class NUPATNATPool(NURESTObject):
         
         
         self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.statistics_policies = NUStatisticsPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.bulk_statistics = NUBulkStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -401,38 +413,11 @@ class NUPATNATPool(NURESTObject):
 
     
     @property
-    def translation_timeout(self):
-        """ Get translation_timeout value.
-
-            Notes:
-                Used to clear out the dynamic address translations and free up the IP addresses for re-assignment.  Units are in second
-
-                
-                This attribute is named `translationTimeout` in VSD API.
-                
-        """
-        return self._translation_timeout
-
-    @translation_timeout.setter
-    def translation_timeout(self, value):
-        """ Set translation_timeout value.
-
-            Notes:
-                Used to clear out the dynamic address translations and free up the IP addresses for re-assignment.  Units are in second
-
-                
-                This attribute is named `translationTimeout` in VSD API.
-                
-        """
-        self._translation_timeout = value
-
-    
-    @property
     def associated_gateway_id(self):
         """ Get associated_gateway_id value.
 
             Notes:
-                
+                UUID of the NSG instance this Pool is assocated with. This attribute may be auto-populated when the pool is assigned to a Network VLAN instance.
 
                 
                 This attribute is named `associatedGatewayId` in VSD API.
@@ -445,7 +430,7 @@ class NUPATNATPool(NURESTObject):
         """ Set associated_gateway_id value.
 
             Notes:
-                
+                UUID of the NSG instance this Pool is assocated with. This attribute may be auto-populated when the pool is assigned to a Network VLAN instance.
 
                 
                 This attribute is named `associatedGatewayId` in VSD API.
@@ -479,6 +464,60 @@ class NUPATNATPool(NURESTObject):
                 
         """
         self._associated_gateway_type = value
+
+    
+    @property
+    def associated_subnet_id(self):
+        """ Get associated_subnet_id value.
+
+            Notes:
+                ID of the Subnet for which the information will be used to populate Source Address Range (Dynamic Source NAT).
+
+                
+                This attribute is named `associatedSubnetId` in VSD API.
+                
+        """
+        return self._associated_subnet_id
+
+    @associated_subnet_id.setter
+    def associated_subnet_id(self, value):
+        """ Set associated_subnet_id value.
+
+            Notes:
+                ID of the Subnet for which the information will be used to populate Source Address Range (Dynamic Source NAT).
+
+                
+                This attribute is named `associatedSubnetId` in VSD API.
+                
+        """
+        self._associated_subnet_id = value
+
+    
+    @property
+    def associated_vlan_id(self):
+        """ Get associated_vlan_id value.
+
+            Notes:
+                ID of the network port VLAN on which the pool is associated.
+
+                
+                This attribute is named `associatedVlanId` in VSD API.
+                
+        """
+        return self._associated_vlan_id
+
+    @associated_vlan_id.setter
+    def associated_vlan_id(self, value):
+        """ Set associated_vlan_id value.
+
+            Notes:
+                ID of the network port VLAN on which the pool is associated.
+
+                
+                This attribute is named `associatedVlanId` in VSD API.
+                
+        """
+        self._associated_vlan_id = value
 
     
     @property

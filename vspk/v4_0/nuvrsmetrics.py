@@ -29,8 +29,8 @@
 from bambou import NURESTObject
 
 
-class NUVrsMetrics(NURESTObject):
-    """ Represents a VrsMetrics in the VSD
+class NUVRSMetrics(NURESTObject):
+    """ Represents a VRSMetrics in the VSD
 
         Notes:
             None
@@ -40,9 +40,16 @@ class NUVrsMetrics(NURESTObject):
     __resource_name__ = "vrsmetrics"
 
     
+    ## Constants
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    
 
     def __init__(self, **kwargs):
-        """ Initializes a VrsMetrics instance
+        """ Initializes a VRSMetrics instance
 
             Notes:
                 You can specify all parameters while calling this methods.
@@ -50,11 +57,11 @@ class NUVrsMetrics(NURESTObject):
                 object from a Python dictionary
 
             Examples:
-                >>> vrsmetrics = NUVrsMetrics(id=u'xxxx-xxx-xxx-xxx', name=u'VrsMetrics')
-                >>> vrsmetrics = NUVrsMetrics(data=my_dict)
+                >>> vrsmetrics = NUVRSMetrics(id=u'xxxx-xxx-xxx-xxx', name=u'VRSMetrics')
+                >>> vrsmetrics = NUVRSMetrics(data=my_dict)
         """
 
-        super(NUVrsMetrics, self).__init__()
+        super(NUVRSMetrics, self).__init__()
 
         # Read/Write Attributes
         
@@ -62,21 +69,27 @@ class NUVrsMetrics(NURESTObject):
         self._cpu_utilization = None
         self._vrs_process = None
         self._vrsvsc_status = None
+        self._last_updated_by = None
         self._receiving_metrics = None
         self._memory_utilization = None
         self._jesxmon_process = None
         self._agent_name = None
-        self._assoc_vcenter_hypervisor_id = None
+        self._entity_scope = None
+        self._associated_vcenter_hypervisor_id = None
+        self._external_id = None
         
         self.expose_attribute(local_name="al_ubr0_status", remote_name="ALUbr0Status", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cpu_utilization", remote_name="CPUUtilization", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_process", remote_name="VRSProcess", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrsvsc_status", remote_name="VRSVSCStatus", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="receiving_metrics", remote_name="receivingMetrics", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="memory_utilization", remote_name="memoryUtilization", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="jesxmon_process", remote_name="jesxmonProcess", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="agent_name", remote_name="agentName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="assoc_vcenter_hypervisor_id", remote_name="assocVCenterHypervisorID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="associated_vcenter_hypervisor_id", remote_name="associatedVCenterHypervisorID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         self._compute_args(**kwargs)
@@ -192,6 +205,33 @@ class NUVrsMetrics(NURESTObject):
 
     
     @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
     def receiving_metrics(self):
         """ Get receiving_metrics value.
 
@@ -300,30 +340,84 @@ class NUVrsMetrics(NURESTObject):
 
     
     @property
-    def assoc_vcenter_hypervisor_id(self):
-        """ Get assoc_vcenter_hypervisor_id value.
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def associated_vcenter_hypervisor_id(self):
+        """ Get associated_vcenter_hypervisor_id value.
 
             Notes:
                 None
 
                 
-                This attribute is named `assocVCenterHypervisorID` in VSD API.
+                This attribute is named `associatedVCenterHypervisorID` in VSD API.
                 
         """
-        return self._assoc_vcenter_hypervisor_id
+        return self._associated_vcenter_hypervisor_id
 
-    @assoc_vcenter_hypervisor_id.setter
-    def assoc_vcenter_hypervisor_id(self, value):
-        """ Set assoc_vcenter_hypervisor_id value.
+    @associated_vcenter_hypervisor_id.setter
+    def associated_vcenter_hypervisor_id(self, value):
+        """ Set associated_vcenter_hypervisor_id value.
 
             Notes:
                 None
 
                 
-                This attribute is named `assocVCenterHypervisorID` in VSD API.
+                This attribute is named `associatedVCenterHypervisorID` in VSD API.
                 
         """
-        self._assoc_vcenter_hypervisor_id = value
+        self._associated_vcenter_hypervisor_id = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

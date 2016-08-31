@@ -32,7 +32,7 @@ class NUAutoDiscoverClustersFetcher(NURESTFetcher):
     """ Represents a NUAutoDiscoverClusters fetcher
 
         Notes:
-            This fetcher enables to fetch NUAutoDiscoverCluster objects.
+            This fetcher enables to fetch NUAutoDiscoverClusters objects.
 
         See:
             bambou.NURESTFetcher
@@ -40,13 +40,13 @@ class NUAutoDiscoverClustersFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUAutoDiscoverCluster class that is managed.
+        """ Return NUAutoDiscoverClusters class that is managed.
 
             Returns:
-                .NUAutoDiscoverCluster: the managed class
+                .NUAutoDiscoverClusters: the managed class
         """
 
-        from .. import NUAutoDiscoverCluster
-        return NUAutoDiscoverCluster
+        from .. import NUAutoDiscoverClusters
+        return NUAutoDiscoverClusters
 
     

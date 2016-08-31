@@ -48,6 +48,8 @@ class NUIKEEncryptionprofile(NURESTObject):
     
     ## Constants
     
+    CONST_IPSEC_ENCRYPTION_ALGORITHM_AES128 = "AES128"
+    
     CONST_ISAKMP_HASH_ALGORITHM_SHA1 = "SHA1"
     
     CONST_ISAKMP_ENCRYPTION_ALGORITHM_AES128 = "AES128"
@@ -56,59 +58,53 @@ class NUIKEEncryptionprofile(NURESTObject):
     
     CONST_DPD_MODE_REPLY_ONLY = "REPLY_ONLY"
     
-    CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_19_256_BIT_ECDH = "GROUP_19_256_BIT_ECDH"
-    
     CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_15_3072_BIT_DH = "GROUP_15_3072_BIT_DH"
     
-    CONST_IP_SEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_32 = "WINDOW_SIZE_32"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_DPD_MODE_ON_DEMAND = "ON_DEMAND"
     
     CONST_ISAKMP_HASH_ALGORITHM_SHA256 = "SHA256"
     
-    CONST_ISAKMP_HASH_ALGORITHM_MD5 = "MD5"
+    CONST_IPSEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_64 = "WINDOW_SIZE_64"
+    
+    CONST_IPSEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_128 = "WINDOW_SIZE_128"
+    
+    CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_17_6144_BIT_DH = "GROUP_17_6144_BIT_DH"
     
     CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_16_4096_BIT_DH = "GROUP_16_4096_BIT_DH"
     
-    CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_20_384_BIT_ECDH = "GROUP_20_384_BIT_ECDH"
+    CONST_IPSEC_AUTHENTICATION_ALGORITHM_HMAC_SHA512 = "HMAC_SHA512"
     
-    CONST_ISAKMP_AUTHENTICATION_MODE_RSA_SIGNATURE = "RSA_SIGNATURE"
+    CONST_IPSEC_AUTHENTICATION_ALGORITHM_HMAC_SHA1 = "HMAC_SHA1"
     
-    CONST_IP_SEC_ENCRYPTION_ALGORITHM_TRIPLE_DES = "TRIPLE_DES"
-    
-    CONST_IP_SEC_ENCRYPTION_ALGORITHM_AES256 = "AES256"
-    
-    CONST_ISAKMP_ENCRYPTION_ALGORITHM_AES256 = "AES256"
+    CONST_IPSEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_0 = "WINDOW_SIZE_0"
     
     CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_1_768_BIT_DH = "GROUP_1_768_BIT_DH"
     
-    CONST_IP_SEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_0 = "WINDOW_SIZE_0"
+    CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_18_8192_BIT_DH = "GROUP_18_8192_BIT_DH"
     
-    CONST_IP_SEC_AUTHENTICATION_ALGORITHM_HMAC_SHA256 = "HMAC_SHA256"
-    
-    CONST_IP_SEC_AUTHENTICATION_ALGORITHM_HMAC_SHA512 = "HMAC_SHA512"
-    
-    CONST_IP_SEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_64 = "WINDOW_SIZE_64"
+    CONST_IPSEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_1024 = "WINDOW_SIZE_1024"
     
     CONST_ISAKMP_AUTHENTICATION_MODE_PRE_SHARED_KEY = "PRE_SHARED_KEY"
     
-    CONST_IP_SEC_ENCRYPTION_ALGORITHM_AES192 = "AES192"
+    CONST_IPSEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_32 = "WINDOW_SIZE_32"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_IP_SEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_512 = "WINDOW_SIZE_512"
+    CONST_IPSEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_256 = "WINDOW_SIZE_256"
     
     CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_14_2048_BIT_DH = "GROUP_14_2048_BIT_DH"
     
-    CONST_DPD_MODE_PERIODIC = "PERIODIC"
+    CONST_IPSEC_ENCRYPTION_ALGORITHM_TRIPLE_DES = "TRIPLE_DES"
     
-    CONST_IP_SEC_AUTHENTICATION_ALGORITHM_HMAC_SHA1 = "HMAC_SHA1"
+    CONST_IPSEC_AUTHENTICATION_ALGORITHM_HMAC_SHA256 = "HMAC_SHA256"
     
-    CONST_IP_SEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_128 = "WINDOW_SIZE_128"
+    CONST_ISAKMP_ENCRYPTION_ALGORITHM_AES256 = "AES256"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_24_2048_BIT_ECDH = "GROUP_24_2048_BIT_ECDH"
+    CONST_IPSEC_ENCRYPTION_ALGORITHM_AES256 = "AES256"
+    
+    CONST_IPSEC_ENCRYPTION_ALGORITHM_AES192 = "AES192"
     
     CONST_ISAKMP_ENCRYPTION_ALGORITHM_AES192 = "AES192"
     
@@ -116,11 +112,7 @@ class NUIKEEncryptionprofile(NURESTObject):
     
     CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_5_1536_BIT_DH = "GROUP_5_1536_BIT_DH"
     
-    CONST_IP_SEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_1024 = "WINDOW_SIZE_1024"
-    
-    CONST_IP_SEC_ENCRYPTION_ALGORITHM_AES128 = "AES128"
-    
-    CONST_IP_SEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_256 = "WINDOW_SIZE_256"
+    CONST_IPSEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_512 = "WINDOW_SIZE_512"
     
     
 
@@ -143,15 +135,14 @@ class NUIKEEncryptionprofile(NURESTObject):
         
         self._dpd_interval = None
         self._dpd_mode = None
-        self._dpd_retry_interval = None
         self._dpd_timeout = None
-        self._ip_sec_authentication_algorithm = None
-        self._ip_sec_dont_fragment = None
-        self._ip_sec_enable_pfs = None
-        self._ip_sec_encryption_algorithm = None
-        self._ip_sec_pre_fragment = None
-        self._ip_sec_sa_lifetime = None
-        self._ip_sec_sa_replay_window_size = None
+        self._ipsec_authentication_algorithm = None
+        self._ipsec_dont_fragment = None
+        self._ipsec_enable_pfs = None
+        self._ipsec_encryption_algorithm = None
+        self._ipsec_pre_fragment = None
+        self._ipsec_sa_lifetime = None
+        self._ipsec_sa_replay_window_size = None
         self._isakmp_authentication_mode = None
         self._isakmp_diffie_helman_group_identifier = None
         self._isakmp_encryption_algorithm = None
@@ -166,21 +157,20 @@ class NUIKEEncryptionprofile(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="dpd_interval", remote_name="DPDInterval", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dpd_mode", remote_name="DPDMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'ON_DEMAND', u'PERIODIC', u'REPLY_ONLY'])
-        self.expose_attribute(local_name="dpd_retry_interval", remote_name="DPDRetryInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="dpd_mode", remote_name="DPDMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'ON_DEMAND', u'REPLY_ONLY'])
         self.expose_attribute(local_name="dpd_timeout", remote_name="DPDTimeout", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="ip_sec_authentication_algorithm", remote_name="IPSecAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA512'])
-        self.expose_attribute(local_name="ip_sec_dont_fragment", remote_name="IPSecDontFragment", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="ip_sec_enable_pfs", remote_name="IPSecEnablePFS", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="ip_sec_encryption_algorithm", remote_name="IPSecEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES128', u'AES192', u'AES256', u'TRIPLE_DES'])
-        self.expose_attribute(local_name="ip_sec_pre_fragment", remote_name="IPSecPreFragment", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="ip_sec_sa_lifetime", remote_name="IPSecSALifetime", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="ip_sec_sa_replay_window_size", remote_name="IPSecSAReplayWindowSize", attribute_type=str, is_required=False, is_unique=False, choices=[u'WINDOW_SIZE_0', u'WINDOW_SIZE_1024', u'WINDOW_SIZE_128', u'WINDOW_SIZE_256', u'WINDOW_SIZE_32', u'WINDOW_SIZE_512', u'WINDOW_SIZE_64'])
-        self.expose_attribute(local_name="isakmp_authentication_mode", remote_name="ISAKMPAuthenticationMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRE_SHARED_KEY', u'RSA_SIGNATURE'])
-        self.expose_attribute(local_name="isakmp_diffie_helman_group_identifier", remote_name="ISAKMPDiffieHelmanGroupIdentifier", attribute_type=str, is_required=False, is_unique=False, choices=[u'GROUP_14_2048_BIT_DH', u'GROUP_15_3072_BIT_DH', u'GROUP_16_4096_BIT_DH', u'GROUP_19_256_BIT_ECDH', u'GROUP_1_768_BIT_DH', u'GROUP_20_384_BIT_ECDH', u'GROUP_24_2048_BIT_ECDH', u'GROUP_2_1024_BIT_DH', u'GROUP_5_1536_BIT_DH'])
+        self.expose_attribute(local_name="ipsec_authentication_algorithm", remote_name="IPsecAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA512'])
+        self.expose_attribute(local_name="ipsec_dont_fragment", remote_name="IPsecDontFragment", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ipsec_enable_pfs", remote_name="IPsecEnablePFS", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ipsec_encryption_algorithm", remote_name="IPsecEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES128', u'AES192', u'AES256', u'TRIPLE_DES'])
+        self.expose_attribute(local_name="ipsec_pre_fragment", remote_name="IPsecPreFragment", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ipsec_sa_lifetime", remote_name="IPsecSALifetime", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ipsec_sa_replay_window_size", remote_name="IPsecSAReplayWindowSize", attribute_type=str, is_required=False, is_unique=False, choices=[u'WINDOW_SIZE_0', u'WINDOW_SIZE_1024', u'WINDOW_SIZE_128', u'WINDOW_SIZE_256', u'WINDOW_SIZE_32', u'WINDOW_SIZE_512', u'WINDOW_SIZE_64'])
+        self.expose_attribute(local_name="isakmp_authentication_mode", remote_name="ISAKMPAuthenticationMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRE_SHARED_KEY'])
+        self.expose_attribute(local_name="isakmp_diffie_helman_group_identifier", remote_name="ISAKMPDiffieHelmanGroupIdentifier", attribute_type=str, is_required=False, is_unique=False, choices=[u'GROUP_14_2048_BIT_DH', u'GROUP_15_3072_BIT_DH', u'GROUP_16_4096_BIT_DH', u'GROUP_17_6144_BIT_DH', u'GROUP_18_8192_BIT_DH', u'GROUP_1_768_BIT_DH', u'GROUP_2_1024_BIT_DH', u'GROUP_5_1536_BIT_DH'])
         self.expose_attribute(local_name="isakmp_encryption_algorithm", remote_name="ISAKMPEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES128', u'AES192', u'AES256', u'TRIPLE_DES'])
         self.expose_attribute(local_name="isakmp_encryption_key_lifetime", remote_name="ISAKMPEncryptionKeyLifetime", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="isakmp_hash_algorithm", remote_name="ISAKMPHashAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'MD5', u'SHA1', u'SHA256'])
+        self.expose_attribute(local_name="isakmp_hash_algorithm", remote_name="ISAKMPHashAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'SHA1', u'SHA256'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sequence", remote_name="sequence", attribute_type=int, is_required=False, is_unique=False)
@@ -258,33 +248,6 @@ class NUIKEEncryptionprofile(NURESTObject):
 
     
     @property
-    def dpd_retry_interval(self):
-        """ Get dpd_retry_interval value.
-
-            Notes:
-                DPD Retry Interval.
-
-                
-                This attribute is named `DPDRetryInterval` in VSD API.
-                
-        """
-        return self._dpd_retry_interval
-
-    @dpd_retry_interval.setter
-    def dpd_retry_interval(self, value):
-        """ Set dpd_retry_interval value.
-
-            Notes:
-                DPD Retry Interval.
-
-                
-                This attribute is named `DPDRetryInterval` in VSD API.
-                
-        """
-        self._dpd_retry_interval = value
-
-    
-    @property
     def dpd_timeout(self):
         """ Get dpd_timeout value.
 
@@ -312,192 +275,192 @@ class NUIKEEncryptionprofile(NURESTObject):
 
     
     @property
-    def ip_sec_authentication_algorithm(self):
-        """ Get ip_sec_authentication_algorithm value.
+    def ipsec_authentication_algorithm(self):
+        """ Get ipsec_authentication_algorithm value.
 
             Notes:
-                IPSec Authentication Algorithm.
+                IPsec Authentication Algorithm.
 
                 
-                This attribute is named `IPSecAuthenticationAlgorithm` in VSD API.
+                This attribute is named `IPsecAuthenticationAlgorithm` in VSD API.
                 
         """
-        return self._ip_sec_authentication_algorithm
+        return self._ipsec_authentication_algorithm
 
-    @ip_sec_authentication_algorithm.setter
-    def ip_sec_authentication_algorithm(self, value):
-        """ Set ip_sec_authentication_algorithm value.
+    @ipsec_authentication_algorithm.setter
+    def ipsec_authentication_algorithm(self, value):
+        """ Set ipsec_authentication_algorithm value.
 
             Notes:
-                IPSec Authentication Algorithm.
+                IPsec Authentication Algorithm.
 
                 
-                This attribute is named `IPSecAuthenticationAlgorithm` in VSD API.
+                This attribute is named `IPsecAuthenticationAlgorithm` in VSD API.
                 
         """
-        self._ip_sec_authentication_algorithm = value
+        self._ipsec_authentication_algorithm = value
 
     
     @property
-    def ip_sec_dont_fragment(self):
-        """ Get ip_sec_dont_fragment value.
+    def ipsec_dont_fragment(self):
+        """ Get ipsec_dont_fragment value.
 
             Notes:
-                IPSec Don't Fragment
+                IPsec Don't Fragment
 
                 
-                This attribute is named `IPSecDontFragment` in VSD API.
+                This attribute is named `IPsecDontFragment` in VSD API.
                 
         """
-        return self._ip_sec_dont_fragment
+        return self._ipsec_dont_fragment
 
-    @ip_sec_dont_fragment.setter
-    def ip_sec_dont_fragment(self, value):
-        """ Set ip_sec_dont_fragment value.
+    @ipsec_dont_fragment.setter
+    def ipsec_dont_fragment(self, value):
+        """ Set ipsec_dont_fragment value.
 
             Notes:
-                IPSec Don't Fragment
+                IPsec Don't Fragment
 
                 
-                This attribute is named `IPSecDontFragment` in VSD API.
+                This attribute is named `IPsecDontFragment` in VSD API.
                 
         """
-        self._ip_sec_dont_fragment = value
+        self._ipsec_dont_fragment = value
 
     
     @property
-    def ip_sec_enable_pfs(self):
-        """ Get ip_sec_enable_pfs value.
+    def ipsec_enable_pfs(self):
+        """ Get ipsec_enable_pfs value.
 
             Notes:
-                IPSec Enable PFS
+                IPsec Enable PFS
 
                 
-                This attribute is named `IPSecEnablePFS` in VSD API.
+                This attribute is named `IPsecEnablePFS` in VSD API.
                 
         """
-        return self._ip_sec_enable_pfs
+        return self._ipsec_enable_pfs
 
-    @ip_sec_enable_pfs.setter
-    def ip_sec_enable_pfs(self, value):
-        """ Set ip_sec_enable_pfs value.
+    @ipsec_enable_pfs.setter
+    def ipsec_enable_pfs(self, value):
+        """ Set ipsec_enable_pfs value.
 
             Notes:
-                IPSec Enable PFS
+                IPsec Enable PFS
 
                 
-                This attribute is named `IPSecEnablePFS` in VSD API.
+                This attribute is named `IPsecEnablePFS` in VSD API.
                 
         """
-        self._ip_sec_enable_pfs = value
+        self._ipsec_enable_pfs = value
 
     
     @property
-    def ip_sec_encryption_algorithm(self):
-        """ Get ip_sec_encryption_algorithm value.
+    def ipsec_encryption_algorithm(self):
+        """ Get ipsec_encryption_algorithm value.
 
             Notes:
-                IPSec Encryption Algorithm.
+                IPsec Encryption Algorithm.
 
                 
-                This attribute is named `IPSecEncryptionAlgorithm` in VSD API.
+                This attribute is named `IPsecEncryptionAlgorithm` in VSD API.
                 
         """
-        return self._ip_sec_encryption_algorithm
+        return self._ipsec_encryption_algorithm
 
-    @ip_sec_encryption_algorithm.setter
-    def ip_sec_encryption_algorithm(self, value):
-        """ Set ip_sec_encryption_algorithm value.
+    @ipsec_encryption_algorithm.setter
+    def ipsec_encryption_algorithm(self, value):
+        """ Set ipsec_encryption_algorithm value.
 
             Notes:
-                IPSec Encryption Algorithm.
+                IPsec Encryption Algorithm.
 
                 
-                This attribute is named `IPSecEncryptionAlgorithm` in VSD API.
+                This attribute is named `IPsecEncryptionAlgorithm` in VSD API.
                 
         """
-        self._ip_sec_encryption_algorithm = value
+        self._ipsec_encryption_algorithm = value
 
     
     @property
-    def ip_sec_pre_fragment(self):
-        """ Get ip_sec_pre_fragment value.
+    def ipsec_pre_fragment(self):
+        """ Get ipsec_pre_fragment value.
 
             Notes:
-                IPSec PreFragment
+                IPsec PreFragment
 
                 
-                This attribute is named `IPSecPreFragment` in VSD API.
+                This attribute is named `IPsecPreFragment` in VSD API.
                 
         """
-        return self._ip_sec_pre_fragment
+        return self._ipsec_pre_fragment
 
-    @ip_sec_pre_fragment.setter
-    def ip_sec_pre_fragment(self, value):
-        """ Set ip_sec_pre_fragment value.
+    @ipsec_pre_fragment.setter
+    def ipsec_pre_fragment(self, value):
+        """ Set ipsec_pre_fragment value.
 
             Notes:
-                IPSec PreFragment
+                IPsec PreFragment
 
                 
-                This attribute is named `IPSecPreFragment` in VSD API.
+                This attribute is named `IPsecPreFragment` in VSD API.
                 
         """
-        self._ip_sec_pre_fragment = value
+        self._ipsec_pre_fragment = value
 
     
     @property
-    def ip_sec_sa_lifetime(self):
-        """ Get ip_sec_sa_lifetime value.
+    def ipsec_sa_lifetime(self):
+        """ Get ipsec_sa_lifetime value.
 
             Notes:
-                IPSec SA Lifetime in Seconds.
+                IPsec SA Lifetime in Seconds.
 
                 
-                This attribute is named `IPSecSALifetime` in VSD API.
+                This attribute is named `IPsecSALifetime` in VSD API.
                 
         """
-        return self._ip_sec_sa_lifetime
+        return self._ipsec_sa_lifetime
 
-    @ip_sec_sa_lifetime.setter
-    def ip_sec_sa_lifetime(self, value):
-        """ Set ip_sec_sa_lifetime value.
+    @ipsec_sa_lifetime.setter
+    def ipsec_sa_lifetime(self, value):
+        """ Set ipsec_sa_lifetime value.
 
             Notes:
-                IPSec SA Lifetime in Seconds.
+                IPsec SA Lifetime in Seconds.
 
                 
-                This attribute is named `IPSecSALifetime` in VSD API.
+                This attribute is named `IPsecSALifetime` in VSD API.
                 
         """
-        self._ip_sec_sa_lifetime = value
+        self._ipsec_sa_lifetime = value
 
     
     @property
-    def ip_sec_sa_replay_window_size(self):
-        """ Get ip_sec_sa_replay_window_size value.
+    def ipsec_sa_replay_window_size(self):
+        """ Get ipsec_sa_replay_window_size value.
 
             Notes:
-                IPSec Replay Window Size in Packets.
+                IPsec Replay Window Size in Packets.
 
                 
-                This attribute is named `IPSecSAReplayWindowSize` in VSD API.
+                This attribute is named `IPsecSAReplayWindowSize` in VSD API.
                 
         """
-        return self._ip_sec_sa_replay_window_size
+        return self._ipsec_sa_replay_window_size
 
-    @ip_sec_sa_replay_window_size.setter
-    def ip_sec_sa_replay_window_size(self, value):
-        """ Set ip_sec_sa_replay_window_size value.
+    @ipsec_sa_replay_window_size.setter
+    def ipsec_sa_replay_window_size(self, value):
+        """ Set ipsec_sa_replay_window_size value.
 
             Notes:
-                IPSec Replay Window Size in Packets.
+                IPsec Replay Window Size in Packets.
 
                 
-                This attribute is named `IPSecSAReplayWindowSize` in VSD API.
+                This attribute is named `IPsecSAReplayWindowSize` in VSD API.
                 
         """
-        self._ip_sec_sa_replay_window_size = value
+        self._ipsec_sa_replay_window_size = value
 
     
     @property
@@ -690,7 +653,7 @@ class NUIKEEncryptionprofile(NURESTObject):
         """ Get sequence value.
 
             Notes:
-                
+                None
 
                 
         """
@@ -701,7 +664,7 @@ class NUIKEEncryptionprofile(NURESTObject):
         """ Set sequence value.
 
             Notes:
-                
+                None
 
                 
         """

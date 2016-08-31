@@ -42,6 +42,9 @@ from .fetchers import NUVMsFetcher
 from .fetchers import NUJobsFetcher
 
 
+from .fetchers import NUContainersFetcher
+
+
 from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
@@ -138,6 +141,9 @@ class NUEgressACLTemplate(NURESTObject):
         
         
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.containers = NUContainersFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")

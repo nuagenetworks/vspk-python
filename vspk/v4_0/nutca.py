@@ -54,11 +54,39 @@ class NUTCA(NURESTObject):
     
     ## Constants
     
+    CONST_METRIC_PACKETS_OUT_DROPPED = "PACKETS_OUT_DROPPED"
+    
+    CONST_TYPE_BREACH = "BREACH"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_SCOPE_LOCAL = "LOCAL"
+    
+    CONST_METRIC_EGRESS_PACKET_COUNT = "EGRESS_PACKET_COUNT"
+    
     CONST_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_METRIC_PACKETS_DROPPED_BY_RATE_LIMIT = "PACKETS_DROPPED_BY_RATE_LIMIT"
+    
+    CONST_METRIC_EGRESS_BYTE_COUNT = "EGRESS_BYTE_COUNT"
+    
+    CONST_METRIC_INGRESS_PACKET_COUNT = "INGRESS_PACKET_COUNT"
+    
+    CONST_METRIC_ADDRESS_MAP_INGRESS_BYTE_CNT = "ADDRESS_MAP_INGRESS_BYTE_CNT"
+    
+    CONST_METRIC_PACKETS_IN = "PACKETS_IN"
     
     CONST_METRIC_PACKETS_IN_DROPPED = "PACKETS_IN_DROPPED"
     
-    CONST_TYPE_BREACH = "BREACH"
+    CONST_METRIC_BYTES_IN = "BYTES_IN"
+    
+    CONST_METRIC_ADDRESS_MAP_EGRESS_BYTE_CNT = "ADDRESS_MAP_EGRESS_BYTE_CNT"
+    
+    CONST_METRIC_INGRESS_BYTE_COUNT = "INGRESS_BYTE_COUNT"
+    
+    CONST_METRIC_ADDRESS_MAP_EGRESS_PKT_CNT = "ADDRESS_MAP_EGRESS_PKT_CNT"
+    
+    CONST_METRIC_ADDRESS_MAP_INGRESS_PKT_CNT = "ADDRESS_MAP_INGRESS_PKT_CNT"
     
     CONST_METRIC_PACKETS_OUT_ERROR = "PACKETS_OUT_ERROR"
     
@@ -66,29 +94,9 @@ class NUTCA(NURESTObject):
     
     CONST_TYPE_ROLLING_AVERAGE = "ROLLING_AVERAGE"
     
-    CONST_METRIC_PACKETS_DROPPED_BY_RATE_LIMIT = "PACKETS_DROPPED_BY_RATE_LIMIT"
-    
-    CONST_METRIC_BYTES_IN = "BYTES_IN"
-    
-    CONST_METRIC_INGRESS_PACKET_COUNT = "INGRESS_PACKET_COUNT"
-    
-    CONST_METRIC_EGRESS_BYTE_COUNT = "EGRESS_BYTE_COUNT"
-    
-    CONST_SCOPE_LOCAL = "LOCAL"
-    
-    CONST_METRIC_INGRESS_BYTE_COUNT = "INGRESS_BYTE_COUNT"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_METRIC_PACKETS_OUT_DROPPED = "PACKETS_OUT_DROPPED"
-    
-    CONST_METRIC_PACKETS_IN = "PACKETS_IN"
-    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_METRIC_PACKETS_OUT = "PACKETS_OUT"
-    
-    CONST_METRIC_EGRESS_PACKET_COUNT = "EGRESS_PACKET_COUNT"
     
     CONST_METRIC_PACKETS_IN_ERROR = "PACKETS_IN_ERROR"
     
@@ -129,7 +137,7 @@ class NUTCA(NURESTObject):
         self.expose_attribute(local_name="scope", remote_name="scope", attribute_type=str, is_required=True, is_unique=False, choices=[u'GLOBAL', u'LOCAL'])
         self.expose_attribute(local_name="period", remote_name="period", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="metric", remote_name="metric", attribute_type=str, is_required=True, is_unique=False, choices=[u'BYTES_IN', u'BYTES_OUT', u'EGRESS_BYTE_COUNT', u'EGRESS_PACKET_COUNT', u'INGRESS_BYTE_COUNT', u'INGRESS_PACKET_COUNT', u'PACKETS_DROPPED_BY_RATE_LIMIT', u'PACKETS_IN', u'PACKETS_IN_DROPPED', u'PACKETS_IN_ERROR', u'PACKETS_OUT', u'PACKETS_OUT_DROPPED', u'PACKETS_OUT_ERROR'])
+        self.expose_attribute(local_name="metric", remote_name="metric", attribute_type=str, is_required=True, is_unique=False, choices=[u'ADDRESS_MAP_EGRESS_BYTE_CNT', u'ADDRESS_MAP_EGRESS_PKT_CNT', u'ADDRESS_MAP_INGRESS_BYTE_CNT', u'ADDRESS_MAP_INGRESS_PKT_CNT', u'BYTES_IN', u'BYTES_OUT', u'EGRESS_BYTE_COUNT', u'EGRESS_PACKET_COUNT', u'INGRESS_BYTE_COUNT', u'INGRESS_PACKET_COUNT', u'PACKETS_DROPPED_BY_RATE_LIMIT', u'PACKETS_IN', u'PACKETS_IN_DROPPED', u'PACKETS_IN_ERROR', u'PACKETS_OUT', u'PACKETS_OUT_DROPPED', u'PACKETS_OUT_ERROR'])
         self.expose_attribute(local_name="threshold", remote_name="threshold", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)

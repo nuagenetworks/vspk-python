@@ -45,6 +45,9 @@ from .fetchers import NUJobsFetcher
 from .fetchers import NUMonitoringPortsFetcher
 
 
+from .fetchers import NUContainersFetcher
+
+
 from .fetchers import NUVPortsFetcher
 
 
@@ -101,6 +104,8 @@ class NUVRS(NURESTObject):
     
     CONST_ROLE_SLAVE = "SLAVE"
     
+    CONST_LICENSED_STATE_LICENSED = "LICENSED"
+    
     CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
     
     CONST_JSONRPC_CONNECTION_STATE_UP = "UP"
@@ -126,6 +131,8 @@ class NUVRS(NURESTObject):
     CONST_VSC_CURRENT_STATE_SECONDARY = "SECONDARY"
     
     CONST_VSC_CURRENT_STATE_PRIMARY = "PRIMARY"
+    
+    CONST_LICENSED_STATE_UNLICENSED = "UNLICENSED"
     
     
 
@@ -167,6 +174,7 @@ class NUVRS(NURESTObject):
         self._revert_completed = None
         self._revert_count = None
         self._revert_failed_count = None
+        self._licensed_state = None
         self._disks = None
         self._cluster_node_role = None
         self._entity_scope = None
@@ -181,6 +189,7 @@ class NUVRS(NURESTObject):
         self._status = None
         self._multi_nic_vport_enabled = None
         self._number_of_bridge_interfaces = None
+        self._number_of_containers = None
         self._number_of_host_interfaces = None
         self._number_of_virtual_machines = None
         self._current_cpuusage = None
@@ -215,6 +224,7 @@ class NUVRS(NURESTObject):
         self.expose_attribute(local_name="revert_completed", remote_name="revertCompleted", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="revert_count", remote_name="revertCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="revert_failed_count", remote_name="revertFailedCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="licensed_state", remote_name="licensedState", attribute_type=str, is_required=False, is_unique=False, choices=[u'LICENSED', u'UNLICENSED'])
         self.expose_attribute(local_name="disks", remote_name="disks", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cluster_node_role", remote_name="clusterNodeRole", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'PRIMARY', u'SECONDARY'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -229,6 +239,7 @@ class NUVRS(NURESTObject):
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
         self.expose_attribute(local_name="multi_nic_vport_enabled", remote_name="multiNICVPortEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="number_of_bridge_interfaces", remote_name="numberOfBridgeInterfaces", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="number_of_containers", remote_name="numberOfContainers", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="number_of_host_interfaces", remote_name="numberOfHostInterfaces", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="number_of_virtual_machines", remote_name="numberOfVirtualMachines", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="current_cpuusage", remote_name="currentCPUUsage", attribute_type=float, is_required=False, is_unique=False)
@@ -262,6 +273,9 @@ class NUVRS(NURESTObject):
         
         
         self.monitoring_ports = NUMonitoringPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.containers = NUContainersFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.vports = NUVPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -827,6 +841,33 @@ class NUVRS(NURESTObject):
 
     
     @property
+    def licensed_state(self):
+        """ Get licensed_state value.
+
+            Notes:
+                Licensed state.
+
+                
+                This attribute is named `licensedState` in VSD API.
+                
+        """
+        return self._licensed_state
+
+    @licensed_state.setter
+    def licensed_state(self, value):
+        """ Set licensed_state value.
+
+            Notes:
+                Licensed state.
+
+                
+                This attribute is named `licensedState` in VSD API.
+                
+        """
+        self._licensed_state = value
+
+    
+    @property
     def disks(self):
         """ Get disks value.
 
@@ -1182,6 +1223,33 @@ class NUVRS(NURESTObject):
                 
         """
         self._number_of_bridge_interfaces = value
+
+    
+    @property
+    def number_of_containers(self):
+        """ Get number_of_containers value.
+
+            Notes:
+                Number of containers defined in this VRS.
+
+                
+                This attribute is named `numberOfContainers` in VSD API.
+                
+        """
+        return self._number_of_containers
+
+    @number_of_containers.setter
+    def number_of_containers(self, value):
+        """ Set number_of_containers value.
+
+            Notes:
+                Number of containers defined in this VRS.
+
+                
+                This attribute is named `numberOfContainers` in VSD API.
+                
+        """
+        self._number_of_containers = value
 
     
     @property

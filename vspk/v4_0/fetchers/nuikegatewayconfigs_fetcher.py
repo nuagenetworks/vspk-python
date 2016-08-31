@@ -28,11 +28,11 @@
 from bambou import NURESTFetcher
 
 
-class NUAutoDiscoverHypervisorFromDatacentersFetcher(NURESTFetcher):
-    """ Represents a NUAutoDiscoverHypervisorFromDatacenters fetcher
+class NUIKEGatewayConfigsFetcher(NURESTFetcher):
+    """ Represents a NUIKEGatewayConfigs fetcher
 
         Notes:
-            This fetcher enables to fetch NUAutoDiscoverHypervisorFromDatacenter objects.
+            This fetcher enables to fetch NUIKEGatewayConfig objects.
 
         See:
             bambou.NURESTFetcher
@@ -40,13 +40,13 @@ class NUAutoDiscoverHypervisorFromDatacentersFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUAutoDiscoverHypervisorFromDatacenter class that is managed.
+        """ Return NUIKEGatewayConfig class that is managed.
 
             Returns:
-                .NUAutoDiscoverHypervisorFromDatacenter: the managed class
+                .NUIKEGatewayConfig: the managed class
         """
 
-        from .. import NUAutoDiscoverHypervisorFromDatacenter
-        return NUAutoDiscoverHypervisorFromDatacenter
+        from .. import NUIKEGatewayConfig
+        return NUIKEGatewayConfig
 
     

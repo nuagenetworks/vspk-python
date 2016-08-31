@@ -147,7 +147,7 @@ class NUEnterpriseProfile(NURESTObject):
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.enterprises = NUEnterprisesFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        self.enterprises = NUEnterprisesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.multi_cast_lists = NUMultiCastListsFetcher.fetcher_with_object(parent_object=self, relationship="child")

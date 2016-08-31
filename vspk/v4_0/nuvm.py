@@ -204,7 +204,7 @@ class NUVM(NURESTObject):
         self._entity_scope = None
         self._domain_ids = None
         self._zone_ids = None
-        self._app_name = None
+        self._orchestration_id = None
         self._user_id = None
         self._user_name = None
         self._status = None
@@ -228,7 +228,7 @@ class NUVM(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="domain_ids", remote_name="domainIDs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zone_ids", remote_name="zoneIDs", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="app_name", remote_name="appName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="orchestration_id", remote_name="orchestrationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_id", remote_name="userID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_name", remote_name="userName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'BLOCKED', u'CRASHED', u'DELETE_PENDING', u'INIT', u'LAST', u'NOSTATE', u'PAUSED', u'RUNNING', u'SHUTDOWN', u'SHUTOFF', u'UNKNOWN', u'UNREACHABLE'])
@@ -690,30 +690,30 @@ class NUVM(NURESTObject):
 
     
     @property
-    def app_name(self):
-        """ Get app_name value.
+    def orchestration_id(self):
+        """ Get orchestration_id value.
 
             Notes:
-                Application name that this VM belongs to
+                Orchestration ID
 
                 
-                This attribute is named `appName` in VSD API.
+                This attribute is named `orchestrationID` in VSD API.
                 
         """
-        return self._app_name
+        return self._orchestration_id
 
-    @app_name.setter
-    def app_name(self, value):
-        """ Set app_name value.
+    @orchestration_id.setter
+    def orchestration_id(self, value):
+        """ Set orchestration_id value.
 
             Notes:
-                Application name that this VM belongs to
+                Orchestration ID
 
                 
-                This attribute is named `appName` in VSD API.
+                This attribute is named `orchestrationID` in VSD API.
                 
         """
-        self._app_name = value
+        self._orchestration_id = value
 
     
     @property

@@ -48,8 +48,6 @@ class NUInfrastructureGatewayProfile(NURESTObject):
     
     ## Constants
     
-    CONST_SYSTEM_SYNC_WINDOW_NONE = "NONE"
-    
     CONST_REMOTE_LOG_MODE_SCP = "SCP"
     
     CONST_UPGRADE_ACTION_UPGRADE_AT_BOOTSTRAPPING = "UPGRADE_AT_BOOTSTRAPPING"
@@ -60,19 +58,9 @@ class NUInfrastructureGatewayProfile(NURESTObject):
     
     CONST_REMOTE_LOG_MODE_RSYSLOG = "RSYSLOG"
     
-    CONST_SYSTEM_SYNC_WINDOW_TWO_HOURS = "TWO_HOURS"
-    
-    CONST_SYSTEM_SYNC_WINDOW_SIX_HOURS = "SIX_HOURS"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_SYSTEM_SYNC_WINDOW_THREE_HOURS = "THREE_HOURS"
-    
-    CONST_SYSTEM_SYNC_WINDOW_ONE_HOUR = "ONE_HOUR"
-    
     CONST_REMOTE_LOG_MODE_DISABLED = "DISABLED"
-    
-    CONST_SYSTEM_SYNC_WINDOW_THIRTY_MINUTES = "THIRTY_MINUTES"
     
     CONST_REMOTE_LOG_MODE_SFTP = "SFTP"
     
@@ -80,13 +68,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
     
     CONST_UPGRADE_ACTION_UPGRADE_NOW = "UPGRADE_NOW"
     
-    CONST_SYSTEM_SYNC_WINDOW_FOUR_HOURS = "FOUR_HOURS"
-    
     CONST_UPGRADE_ACTION_DOWNLOAD_AND_UPGRADE_NOW = "DOWNLOAD_AND_UPGRADE_NOW"
-    
-    CONST_SYSTEM_SYNC_WINDOW_TEN_MINUTES = "TEN_MINUTES"
-    
-    CONST_SYSTEM_SYNC_WINDOW_FIVE_HOURS = "FIVE_HOURS"
     
     CONST_UPGRADE_ACTION_DOWNLOAD_AND_UPGRADE_AT_WINDOW = "DOWNLOAD_AND_UPGRADE_AT_WINDOW"
     
@@ -116,28 +98,22 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self._datapath_sync_timeout = None
         self._dead_timer = None
         self._dead_timer_enabled = None
-        self._remote_log_dir_path = None
         self._remote_log_mode = None
-        self._remote_log_password = None
         self._remote_log_server_address = None
         self._remote_log_server_port = None
-        self._remote_log_username = None
         self._description = None
         self._metadata_upgrade_path = None
-        self._revert_behaviour = None
-        self._revert_timer = None
-        self._flow_eviction_threshold = None
         self._enterprise_id = None
         self._entity_scope = None
         self._controller_less_duration = None
         self._controller_less_enabled = None
+        self._force_immediate_system_sync = None
         self._upgrade_action = None
         self._proxy_dns_name = None
         self._use_two_factor = None
         self._stats_collector_port = None
         self._external_id = None
         self._system_sync_scheduler = None
-        self._system_sync_window = None
         
         self.expose_attribute(local_name="ntp_server_key", remote_name="NTPServerKey", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ntp_server_key_id", remote_name="NTPServerKeyID", attribute_type=int, is_required=False, is_unique=False)
@@ -146,28 +122,22 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self.expose_attribute(local_name="datapath_sync_timeout", remote_name="datapathSyncTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dead_timer", remote_name="deadTimer", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dead_timer_enabled", remote_name="deadTimerEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="remote_log_dir_path", remote_name="remoteLogDirPath", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="remote_log_mode", remote_name="remoteLogMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'RSYSLOG', u'SCP', u'SFTP'])
-        self.expose_attribute(local_name="remote_log_password", remote_name="remoteLogPassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="remote_log_server_address", remote_name="remoteLogServerAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="remote_log_server_port", remote_name="remoteLogServerPort", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="remote_log_username", remote_name="remoteLogUsername", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_upgrade_path", remote_name="metadataUpgradePath", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="revert_behaviour", remote_name="revertBehaviour", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="revert_timer", remote_name="revertTimer", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="flow_eviction_threshold", remote_name="flowEvictionThreshold", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="controller_less_duration", remote_name="controllerLessDuration", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="controller_less_enabled", remote_name="controllerLessEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="force_immediate_system_sync", remote_name="forceImmediateSystemSync", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="upgrade_action", remote_name="upgradeAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'DOWNLOAD_AND_UPGRADE_AT_WINDOW', u'DOWNLOAD_AND_UPGRADE_NOW', u'DOWNLOAD_ONLY', u'NONE', u'UPGRADE_AT_BOOTSTRAPPING', u'UPGRADE_NOW'])
         self.expose_attribute(local_name="proxy_dns_name", remote_name="proxyDNSName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="use_two_factor", remote_name="useTwoFactor", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_collector_port", remote_name="statsCollectorPort", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="system_sync_scheduler", remote_name="systemSyncScheduler", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="system_sync_window", remote_name="systemSyncWindow", attribute_type=str, is_required=False, is_unique=False, choices=[u'FIVE_HOURS', u'FOUR_HOURS', u'NONE', u'ONE_HOUR', u'SIX_HOURS', u'TEN_MINUTES', u'THIRTY_MINUTES', u'THREE_HOURS', u'TWO_HOURS'])
         
 
         # Fetchers
@@ -292,7 +262,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Get datapath_sync_timeout value.
 
             Notes:
-                Datapath flows sync-time-interval specified in milliseconds (default: 1000)
+                Datapath flows sync-time-interval specified in milliseconds
 
                 
                 This attribute is named `datapathSyncTimeout` in VSD API.
@@ -305,7 +275,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Set datapath_sync_timeout value.
 
             Notes:
-                Datapath flows sync-time-interval specified in milliseconds (default: 1000)
+                Datapath flows sync-time-interval specified in milliseconds
 
                 
                 This attribute is named `datapathSyncTimeout` in VSD API.
@@ -369,33 +339,6 @@ class NUInfrastructureGatewayProfile(NURESTObject):
 
     
     @property
-    def remote_log_dir_path(self):
-        """ Get remote_log_dir_path value.
-
-            Notes:
-                Path on the remote log server where the logs generated by the NSG are to be stored.  This field is only useful for SCP and SFTP.
-
-                
-                This attribute is named `remoteLogDirPath` in VSD API.
-                
-        """
-        return self._remote_log_dir_path
-
-    @remote_log_dir_path.setter
-    def remote_log_dir_path(self, value):
-        """ Set remote_log_dir_path value.
-
-            Notes:
-                Path on the remote log server where the logs generated by the NSG are to be stored.  This field is only useful for SCP and SFTP.
-
-                
-                This attribute is named `remoteLogDirPath` in VSD API.
-                
-        """
-        self._remote_log_dir_path = value
-
-    
-    @property
     def remote_log_mode(self):
         """ Get remote_log_mode value.
 
@@ -420,33 +363,6 @@ class NUInfrastructureGatewayProfile(NURESTObject):
                 
         """
         self._remote_log_mode = value
-
-    
-    @property
-    def remote_log_password(self):
-        """ Get remote_log_password value.
-
-            Notes:
-                Password to be used when accessing the remote log server via SCP or SFTP.  This field is only useful for SCP and SFTP.
-
-                
-                This attribute is named `remoteLogPassword` in VSD API.
-                
-        """
-        return self._remote_log_password
-
-    @remote_log_password.setter
-    def remote_log_password(self, value):
-        """ Set remote_log_password value.
-
-            Notes:
-                Password to be used when accessing the remote log server via SCP or SFTP.  This field is only useful for SCP and SFTP.
-
-                
-                This attribute is named `remoteLogPassword` in VSD API.
-                
-        """
-        self._remote_log_password = value
 
     
     @property
@@ -504,33 +420,6 @@ class NUInfrastructureGatewayProfile(NURESTObject):
 
     
     @property
-    def remote_log_username(self):
-        """ Get remote_log_username value.
-
-            Notes:
-                Username to be used when accessing the remote log server via SCP or SFTP.  This field is only useful for SCP and SFTP.
-
-                
-                This attribute is named `remoteLogUsername` in VSD API.
-                
-        """
-        return self._remote_log_username
-
-    @remote_log_username.setter
-    def remote_log_username(self, value):
-        """ Set remote_log_username value.
-
-            Notes:
-                Username to be used when accessing the remote log server via SCP or SFTP.  This field is only useful for SCP and SFTP.
-
-                
-                This attribute is named `remoteLogUsername` in VSD API.
-                
-        """
-        self._remote_log_username = value
-
-    
-    @property
     def description(self):
         """ Get description value.
 
@@ -578,87 +467,6 @@ class NUInfrastructureGatewayProfile(NURESTObject):
                 
         """
         self._metadata_upgrade_path = value
-
-    
-    @property
-    def revert_behaviour(self):
-        """ Get revert_behaviour value.
-
-            Notes:
-                Flag to indicate if the VRS-Revertive-Behaviour took place or not.
-
-                
-                This attribute is named `revertBehaviour` in VSD API.
-                
-        """
-        return self._revert_behaviour
-
-    @revert_behaviour.setter
-    def revert_behaviour(self, value):
-        """ Set revert_behaviour value.
-
-            Notes:
-                Flag to indicate if the VRS-Revertive-Behaviour took place or not.
-
-                
-                This attribute is named `revertBehaviour` in VSD API.
-                
-        """
-        self._revert_behaviour = value
-
-    
-    @property
-    def revert_timer(self):
-        """ Get revert_timer value.
-
-            Notes:
-                Duration for VRS-Revertive-Behaviour when Primary-VSC fails, which needs to be configured in NSG.
-
-                
-                This attribute is named `revertTimer` in VSD API.
-                
-        """
-        return self._revert_timer
-
-    @revert_timer.setter
-    def revert_timer(self, value):
-        """ Set revert_timer value.
-
-            Notes:
-                Duration for VRS-Revertive-Behaviour when Primary-VSC fails, which needs to be configured in NSG.
-
-                
-                This attribute is named `revertTimer` in VSD API.
-                
-        """
-        self._revert_timer = value
-
-    
-    @property
-    def flow_eviction_threshold(self):
-        """ Get flow_eviction_threshold value.
-
-            Notes:
-                Number of flows at which eviction from kernel flow table will be triggered (default: 2500)
-
-                
-                This attribute is named `flowEvictionThreshold` in VSD API.
-                
-        """
-        return self._flow_eviction_threshold
-
-    @flow_eviction_threshold.setter
-    def flow_eviction_threshold(self, value):
-        """ Set flow_eviction_threshold value.
-
-            Notes:
-                Number of flows at which eviction from kernel flow table will be triggered (default: 2500)
-
-                
-                This attribute is named `flowEvictionThreshold` in VSD API.
-                
-        """
-        self._flow_eviction_threshold = value
 
     
     @property
@@ -767,6 +575,33 @@ class NUInfrastructureGatewayProfile(NURESTObject):
                 
         """
         self._controller_less_enabled = value
+
+    
+    @property
+    def force_immediate_system_sync(self):
+        """ Get force_immediate_system_sync value.
+
+            Notes:
+                Usually the synchronization will span across 1 hour window after the defined synchronization time. Forcing an immediate synchronization can overload the system and can have a negative impact on the system.
+
+                
+                This attribute is named `forceImmediateSystemSync` in VSD API.
+                
+        """
+        return self._force_immediate_system_sync
+
+    @force_immediate_system_sync.setter
+    def force_immediate_system_sync(self, value):
+        """ Set force_immediate_system_sync value.
+
+            Notes:
+                Usually the synchronization will span across 1 hour window after the defined synchronization time. Forcing an immediate synchronization can overload the system and can have a negative impact on the system.
+
+                
+                This attribute is named `forceImmediateSystemSync` in VSD API.
+                
+        """
+        self._force_immediate_system_sync = value
 
     
     @property
@@ -929,33 +764,6 @@ class NUInfrastructureGatewayProfile(NURESTObject):
                 
         """
         self._system_sync_scheduler = value
-
-    
-    @property
-    def system_sync_window(self):
-        """ Get system_sync_window value.
-
-            Notes:
-                Length of time, in seconds, given to a Gateway to apply a configuration change.  This property is closely linked to systemSyncScheduler.
-
-                
-                This attribute is named `systemSyncWindow` in VSD API.
-                
-        """
-        return self._system_sync_window
-
-    @system_sync_window.setter
-    def system_sync_window(self, value):
-        """ Set system_sync_window value.
-
-            Notes:
-                Length of time, in seconds, given to a Gateway to apply a configuration change.  This property is closely linked to systemSyncScheduler.
-
-                
-                This attribute is named `systemSyncWindow` in VSD API.
-                
-        """
-        self._system_sync_window = value
 
     
 

@@ -40,6 +40,13 @@ class NULicenseStatus(NURESTObject):
     __resource_name__ = "licensestatus"
 
     
+    ## Constants
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    
 
     def __init__(self, **kwargs):
         """ Initializes a LicenseStatus instance
@@ -58,6 +65,7 @@ class NULicenseStatus(NURESTObject):
 
         # Read/Write Attributes
         
+        self._entity_scope = None
         self._total_licensed_nics_count = None
         self._total_licensed_nsgs_count = None
         self._total_licensed_used_nics_count = None
@@ -68,22 +76,52 @@ class NULicenseStatus(NURESTObject):
         self._total_licensed_vms_count = None
         self._total_licensed_vrsgs_count = None
         self._total_licensed_vrss_count = None
+        self._external_id = None
         
-        self.expose_attribute(local_name="total_licensed_nics_count", remote_name="totalLicensedNICsCount", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="total_licensed_nsgs_count", remote_name="totalLicensedNSGsCount", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="total_licensed_used_nics_count", remote_name="totalLicensedUsedNICsCount", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="total_licensed_used_nsgs_count", remote_name="totalLicensedUsedNSGsCount", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="total_licensed_used_vms_count", remote_name="totalLicensedUsedVMsCount", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="total_licensed_used_vrsgs_count", remote_name="totalLicensedUsedVRSGsCount", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="total_licensed_used_vrss_count", remote_name="totalLicensedUsedVRSsCount", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="total_licensed_vms_count", remote_name="totalLicensedVMsCount", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="total_licensed_vrsgs_count", remote_name="totalLicensedVRSGsCount", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="total_licensed_vrss_count", remote_name="totalLicensedVRSsCount", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="total_licensed_nics_count", remote_name="totalLicensedNICsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_nsgs_count", remote_name="totalLicensedNSGsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_used_nics_count", remote_name="totalLicensedUsedNICsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_used_nsgs_count", remote_name="totalLicensedUsedNSGsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_used_vms_count", remote_name="totalLicensedUsedVMsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_used_vrsgs_count", remote_name="totalLicensedUsedVRSGsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_used_vrss_count", remote_name="totalLicensedUsedVRSsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_vms_count", remote_name="totalLicensedVMsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_vrsgs_count", remote_name="totalLicensedVRSGsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_vrss_count", remote_name="totalLicensedVRSsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
     
     @property
     def total_licensed_nics_count(self):
@@ -353,6 +391,33 @@ class NULicenseStatus(NURESTObject):
                 
         """
         self._total_licensed_vrss_count = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

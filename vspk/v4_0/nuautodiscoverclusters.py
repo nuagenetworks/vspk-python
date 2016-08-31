@@ -29,8 +29,8 @@
 from bambou import NURESTObject
 
 
-class NUAutoDiscoverCluster(NURESTObject):
-    """ Represents a AutoDiscoverCluster in the VSD
+class NUAutoDiscoverClusters(NURESTObject):
+    """ Represents a AutoDiscoverClusters in the VSD
 
         Notes:
             None
@@ -40,9 +40,16 @@ class NUAutoDiscoverCluster(NURESTObject):
     __resource_name__ = "autodiscoveredclusters"
 
     
+    ## Constants
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    
 
     def __init__(self, **kwargs):
-        """ Initializes a AutoDiscoverCluster instance
+        """ Initializes a AutoDiscoverClusters instance
 
             Notes:
                 You can specify all parameters while calling this methods.
@@ -50,21 +57,27 @@ class NUAutoDiscoverCluster(NURESTObject):
                 object from a Python dictionary
 
             Examples:
-                >>> autodiscovercluster = NUAutoDiscoverCluster(id=u'xxxx-xxx-xxx-xxx', name=u'AutoDiscoverCluster')
-                >>> autodiscovercluster = NUAutoDiscoverCluster(data=my_dict)
+                >>> autodiscoverclusters = NUAutoDiscoverClusters(id=u'xxxx-xxx-xxx-xxx', name=u'AutoDiscoverClusters')
+                >>> autodiscoverclusters = NUAutoDiscoverClusters(data=my_dict)
         """
 
-        super(NUAutoDiscoverCluster, self).__init__()
+        super(NUAutoDiscoverClusters, self).__init__()
 
         # Read/Write Attributes
         
         self._name = None
         self._managed_object_id = None
+        self._last_updated_by = None
+        self._entity_scope = None
         self._assoc_vcenter_data_center_id = None
+        self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="managed_object_id", remote_name="managedObjectID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="assoc_vcenter_data_center_id", remote_name="assocVCenterDataCenterId", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="assoc_vcenter_data_center_id", remote_name="assocVCenterDataCenterID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         self._compute_args(**kwargs)
@@ -122,6 +135,60 @@ class NUAutoDiscoverCluster(NURESTObject):
 
     
     @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
     def assoc_vcenter_data_center_id(self):
         """ Get assoc_vcenter_data_center_id value.
 
@@ -129,7 +196,7 @@ class NUAutoDiscoverCluster(NURESTObject):
                 The ID of the vcenter to which this host is attached
 
                 
-                This attribute is named `assocVCenterDataCenterId` in VSD API.
+                This attribute is named `assocVCenterDataCenterID` in VSD API.
                 
         """
         return self._assoc_vcenter_data_center_id
@@ -142,10 +209,37 @@ class NUAutoDiscoverCluster(NURESTObject):
                 The ID of the vcenter to which this host is attached
 
                 
-                This attribute is named `assocVCenterDataCenterId` in VSD API.
+                This attribute is named `assocVCenterDataCenterID` in VSD API.
                 
         """
         self._assoc_vcenter_data_center_id = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

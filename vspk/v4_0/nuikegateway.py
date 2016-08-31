@@ -30,6 +30,9 @@
 from .fetchers import NUMetadatasFetcher
 
 
+from .fetchers import NUIKEGatewayConfigsFetcher
+
+
 from .fetchers import NUIKESubnetsFetcher
 
 
@@ -101,6 +104,9 @@ class NUIKEGateway(NURESTObject):
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ike_gateway_configs = NUIKEGatewayConfigsFetcher.fetcher_with_object(parent_object=self, relationship="member")
         
         
         self.ike_subnets = NUIKESubnetsFetcher.fetcher_with_object(parent_object=self, relationship="child")

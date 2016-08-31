@@ -111,6 +111,7 @@ class NUBootstrapActivation(NURESTObject):
         self._vsd_time = None
         self._csr = None
         self._status = None
+        self._auto_bootstrap = None
         self._external_id = None
         
         self.expose_attribute(local_name="cacert", remote_name="cacert", attribute_type=str, is_required=False, is_unique=False)
@@ -127,6 +128,7 @@ class NUBootstrapActivation(NURESTObject):
         self.expose_attribute(local_name="vsd_time", remote_name="vsdTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="csr", remote_name="csr", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="auto_bootstrap", remote_name="autoBootstrap", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -491,6 +493,33 @@ class NUBootstrapActivation(NURESTObject):
                 
         """
         self._status = value
+
+    
+    @property
+    def auto_bootstrap(self):
+        """ Get auto_bootstrap value.
+
+            Notes:
+                Indicates whether auto bootstrap is being used to bootstrap this NSG
+
+                
+                This attribute is named `autoBootstrap` in VSD API.
+                
+        """
+        return self._auto_bootstrap
+
+    @auto_bootstrap.setter
+    def auto_bootstrap(self, value):
+        """ Set auto_bootstrap value.
+
+            Notes:
+                Indicates whether auto bootstrap is being used to bootstrap this NSG
+
+                
+                This attribute is named `autoBootstrap` in VSD API.
+                
+        """
+        self._auto_bootstrap = value
 
     
     @property

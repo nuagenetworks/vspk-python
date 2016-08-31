@@ -54,6 +54,9 @@ from .fetchers import NUFloatingIPACLTemplatesFetcher
 from .fetchers import NUDHCPOptionsFetcher
 
 
+from .fetchers import NULinksFetcher
+
+
 from .fetchers import NUFloatingIpsFetcher
 
 
@@ -91,6 +94,12 @@ from .fetchers import NUDomainTemplatesFetcher
 
 
 from .fetchers import NUZonesFetcher
+
+
+from .fetchers import NUContainersFetcher
+
+
+from .fetchers import NUContainerInterfacesFetcher
 
 
 from .fetchers import NUQOSsFetcher
@@ -141,7 +150,7 @@ class NUDomain(NURESTObject):
     """ Represents a Domain in the VSD
 
         Notes:
-            This object is used to manipulate domain state. A domain corresponds to a distributed Virtual Router and Switch (dVRS).
+            This object is used to manipulate domain state. A domain corresponds to a distributed Virtual Router and Switch.
     """
 
     __rest_name__ = "domain"
@@ -354,6 +363,9 @@ class NUDomain(NURESTObject):
         self.dhcp_options = NUDHCPOptionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.links = NULinksFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.floating_ips = NUFloatingIpsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -391,6 +403,12 @@ class NUDomain(NURESTObject):
         
         
         self.zones = NUZonesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.containers = NUContainersFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.container_interfaces = NUContainerInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.qoss = NUQOSsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -1269,7 +1287,7 @@ class NUDomain(NURESTObject):
         """ Get associated_pat_mapper_id value.
 
             Notes:
-                The ID of the PatMapper entity to which this domain is associated to.
+                The ID of the PatMapper entity to which this l3-domain is associated to.
 
                 
                 This attribute is named `associatedPATMapperID` in VSD API.
@@ -1282,7 +1300,7 @@ class NUDomain(NURESTObject):
         """ Set associated_pat_mapper_id value.
 
             Notes:
-                The ID of the PatMapper entity to which this domain is associated to.
+                The ID of the PatMapper entity to which this l3-domain is associated to.
 
                 
                 This attribute is named `associatedPATMapperID` in VSD API.

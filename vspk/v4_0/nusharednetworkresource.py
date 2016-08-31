@@ -27,6 +27,9 @@
 
 
 
+from .fetchers import NUPATIPEntriesFetcher
+
+
 from .fetchers import NUAddressRangesFetcher
 
 
@@ -54,7 +57,7 @@ class NUSharedNetworkResource(NURESTObject):
     """ Represents a SharedNetworkResource in the VSD
 
         Notes:
-            This defines shared infrastructure resources that are created by user with CSPROOT role. These resources can be used by all the enterprises in the data center for various purposes. Examples of  shared resources are public subnet, floating subnet, public L2 domain, etc.
+            This defines shared infrastructure resources that are created by user with CSPROOT role. These resources can be used by all the enterprises in the data center for various purposes. Examples of  shared resources are public subnet, floating subnet, public L2 domain.
     """
 
     __rest_name__ = "sharednetworkresource"
@@ -164,6 +167,9 @@ class NUSharedNetworkResource(NURESTObject):
         
 
         # Fetchers
+        
+        
+        self.patip_entries = NUPATIPEntriesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.address_ranges = NUAddressRangesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -847,7 +853,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Get dynamic_pat_allocation_enabled value.
 
             Notes:
-                Indicates if PAT Mapping is enabled for the SharedNetworkResource or not.
+                Indicates if PAT Mapping is enabled for the SharedNetworkResource or not
 
                 
                 This attribute is named `dynamicPATAllocationEnabled` in VSD API.
@@ -860,7 +866,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Set dynamic_pat_allocation_enabled value.
 
             Notes:
-                Indicates if PAT Mapping is enabled for the SharedNetworkResource or not.
+                Indicates if PAT Mapping is enabled for the SharedNetworkResource or not
 
                 
                 This attribute is named `dynamicPATAllocationEnabled` in VSD API.

@@ -42,6 +42,9 @@ from .fetchers import NUGatewaysFetcher
 from .fetchers import NUGatewayTemplatesFetcher
 
 
+from .fetchers import NUPATMappersFetcher
+
+
 from .fetchers import NUPATNATPoolsFetcher
 
 
@@ -70,6 +73,15 @@ from .fetchers import NUMetadataTagsFetcher
 
 
 from .fetchers import NUNetworkLayoutsFetcher
+
+
+from .fetchers import NUKeyServerMembersFetcher
+
+
+from .fetchers import NUZFBAutoAssignmentsFetcher
+
+
+from .fetchers import NUZFBRequestsFetcher
 
 
 from .fetchers import NUBGPNeighborsFetcher
@@ -157,6 +169,12 @@ from .fetchers import NUDomainsFetcher
 
 
 from .fetchers import NUZonesFetcher
+
+
+from .fetchers import NUContainersFetcher
+
+
+from .fetchers import NUContainerInterfacesFetcher
 
 
 from .fetchers import NUHostInterfacesFetcher
@@ -311,6 +329,9 @@ class NUMe(NURESTRootObject):
         self.gateway_templates = NUGatewayTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.pat_mappers = NUPATMappersFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.patnat_pools = NUPATNATPoolsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -341,10 +362,19 @@ class NUMe(NURESTRootObject):
         self.network_layouts = NUNetworkLayoutsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.key_server_members = NUKeyServerMembersFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.zfb_auto_assignments = NUZFBAutoAssignmentsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.zfb_requests = NUZFBRequestsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.bgp_neighbors = NUBGPNeighborsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
-        self.bgp_profiles = NUBGPProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.bgp_profiles = NUBGPProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.egress_acl_entry_templates = NUEgressACLEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="root")
@@ -353,10 +383,10 @@ class NUMe(NURESTRootObject):
         self.egress_acl_templates = NUEgressACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
-        self.domain_fip_acl_templates = NUDomainFIPAclTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.domain_fip_acl_templates = NUDomainFIPAclTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
-        self.floating_ipacl_templates = NUFloatingIPACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.floating_ipacl_templates = NUFloatingIPACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.egress_qos_policies = NUEgressQOSPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="root")
@@ -428,10 +458,16 @@ class NUMe(NURESTRootObject):
         self.zones = NUZonesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.containers = NUContainersFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.container_interfaces = NUContainerInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.host_interfaces = NUHostInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
-        self.routing_policies = NURoutingPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.routing_policies = NURoutingPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.uplink_rds = NUUplinkRDsFetcher.fetcher_with_object(parent_object=self, relationship="root")

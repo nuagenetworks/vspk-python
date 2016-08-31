@@ -48,17 +48,29 @@ class NUBootstrap(NURESTObject):
     
     ## Constants
     
+    CONST_ZFB_MATCH_ATTRIBUTE_NONE = "NONE"
+    
+    CONST_ZFB_MATCH_ATTRIBUTE_NSGATEWAY_ID = "NSGATEWAY_ID"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_STATUS_NOTIFICATION_APP_REQ_SENT = "NOTIFICATION_APP_REQ_SENT"
+    
+    CONST_ZFB_MATCH_ATTRIBUTE_HOSTNAME = "HOSTNAME"
     
     CONST_STATUS_INACTIVE = "INACTIVE"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_STATUS_NOTIFICATION_APP_REQ_ACK = "NOTIFICATION_APP_REQ_ACK"
+    CONST_ZFB_MATCH_ATTRIBUTE_MAC_ADDRESS = "MAC_ADDRESS"
+    
+    CONST_ZFB_MATCH_ATTRIBUTE_IP_ADDRESS = "IP_ADDRESS"
+    
+    CONST_ZFB_MATCH_ATTRIBUTE_SERIAL_NUMBER = "SERIAL_NUMBER"
     
     CONST_STATUS_ACTIVE = "ACTIVE"
+    
+    CONST_STATUS_NOTIFICATION_APP_REQ_ACK = "NOTIFICATION_APP_REQ_ACK"
     
     CONST_STATUS_CERTIFICATE_SIGNED = "CERTIFICATE_SIGNED"
     
@@ -81,12 +93,18 @@ class NUBootstrap(NURESTObject):
 
         # Read/Write Attributes
         
+        self._zfb_info = None
+        self._zfb_match_attribute = None
+        self._zfb_match_value = None
         self._last_updated_by = None
         self._installer_id = None
         self._entity_scope = None
         self._status = None
         self._external_id = None
         
+        self.expose_attribute(local_name="zfb_info", remote_name="ZFBInfo", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="zfb_match_attribute", remote_name="ZFBMatchAttribute", attribute_type=str, is_required=False, is_unique=False, choices=[u'HOSTNAME', u'IP_ADDRESS', u'MAC_ADDRESS', u'NONE', u'NSGATEWAY_ID', u'SERIAL_NUMBER'])
+        self.expose_attribute(local_name="zfb_match_value", remote_name="ZFBMatchValue", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="installer_id", remote_name="installerID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -106,6 +124,87 @@ class NUBootstrap(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def zfb_info(self):
+        """ Get zfb_info value.
+
+            Notes:
+                Base64 Encoded JSON String of NSG ZFB Attribute Value Pairs
+
+                
+                This attribute is named `ZFBInfo` in VSD API.
+                
+        """
+        return self._zfb_info
+
+    @zfb_info.setter
+    def zfb_info(self, value):
+        """ Set zfb_info value.
+
+            Notes:
+                Base64 Encoded JSON String of NSG ZFB Attribute Value Pairs
+
+                
+                This attribute is named `ZFBInfo` in VSD API.
+                
+        """
+        self._zfb_info = value
+
+    
+    @property
+    def zfb_match_attribute(self):
+        """ Get zfb_match_attribute value.
+
+            Notes:
+                Attribute to auto match on
+
+                
+                This attribute is named `ZFBMatchAttribute` in VSD API.
+                
+        """
+        return self._zfb_match_attribute
+
+    @zfb_match_attribute.setter
+    def zfb_match_attribute(self, value):
+        """ Set zfb_match_attribute value.
+
+            Notes:
+                Attribute to auto match on
+
+                
+                This attribute is named `ZFBMatchAttribute` in VSD API.
+                
+        """
+        self._zfb_match_attribute = value
+
+    
+    @property
+    def zfb_match_value(self):
+        """ Get zfb_match_value value.
+
+            Notes:
+                Attribute value to auto match on
+
+                
+                This attribute is named `ZFBMatchValue` in VSD API.
+                
+        """
+        return self._zfb_match_value
+
+    @zfb_match_value.setter
+    def zfb_match_value(self, value):
+        """ Set zfb_match_value value.
+
+            Notes:
+                Attribute value to auto match on
+
+                
+                This attribute is named `ZFBMatchValue` in VSD API.
+                
+        """
+        self._zfb_match_value = value
+
     
     @property
     def last_updated_by(self):

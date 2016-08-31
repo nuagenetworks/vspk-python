@@ -63,7 +63,7 @@ class NUNSPort(NURESTObject):
     """ Represents a NSPort in the VSD
 
         Notes:
-            Represents a Port of a particular NS gateway object.
+            Represents a Port of a particular NS Gateway object.
     """
 
     __rest_name__ = "nsport"

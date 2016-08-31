@@ -63,6 +63,9 @@ from .fetchers import NUBootstrapsFetcher
 from .fetchers import NUBootstrapActivationsFetcher
 
 
+from .fetchers import NUNSGInfosFetcher
+
+
 from .fetchers import NUNSPortsFetcher
 
 
@@ -87,9 +90,13 @@ class NUNSGateway(NURESTObject):
     
     ## Constants
     
+    CONST_FAMILY_NSG_E = "NSG_E"
+    
     CONST_CONFIGURATION_STATUS_FAILURE = "FAILURE"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_FAMILY_NSG_V = "NSG_V"
     
     CONST_BOOTSTRAP_STATUS_ACTIVE = "ACTIVE"
     
@@ -113,7 +120,7 @@ class NUNSGateway(NURESTObject):
     
     CONST_BOOTSTRAP_STATUS_CERTIFICATE_SIGNED = "CERTIFICATE_SIGNED"
     
-    CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_SENT = "NOTIFICATION_APP_REQ_SENT"
+    CONST_FAMILY_ANY = "ANY"
     
     CONST_TPM_STATUS_DISABLED = "DISABLED"
     
@@ -134,6 +141,8 @@ class NUNSGateway(NURESTObject):
     CONST_TPM_STATUS_UNKNOWN = "UNKNOWN"
     
     CONST_PERSONALITY_VRSG = "VRSG"
+    
+    CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_SENT = "NOTIFICATION_APP_REQ_SENT"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
@@ -168,15 +177,22 @@ class NUNSGateway(NURESTObject):
 
         # Read/Write Attributes
         
+        self._mac_address = None
         self._nat_traversal_enabled = None
+        self._sku = None
         self._tpm_status = None
+        self._cpu_type = None
+        self._nsg_version = None
+        self._uuid = None
         self._name = None
+        self._family = None
         self._last_configuration_reload_timestamp = None
         self._last_updated_by = None
         self._datapath_id = None
         self._redundancy_group_id = None
         self._template_id = None
         self._pending = None
+        self._serial_number = None
         self._permitted_action = None
         self._personality = None
         self._description = None
@@ -189,19 +205,27 @@ class NUNSGateway(NURESTObject):
         self._bootstrap_status = None
         self._associated_gateway_security_id = None
         self._associated_gateway_security_profile_id = None
+        self._associated_nsg_info_id = None
         self._auto_disc_gateway_id = None
         self._external_id = None
         self._system_id = None
         
+        self.expose_attribute(local_name="mac_address", remote_name="MACAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nat_traversal_enabled", remote_name="NATTraversalEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="sku", remote_name="SKU", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tpm_status", remote_name="TPMStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED_NOT_OPERATIONAL', u'ENABLED_OPERATIONAL', u'UNKNOWN'])
+        self.expose_attribute(local_name="cpu_type", remote_name="CPUType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nsg_version", remote_name="NSGVersion", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_E', u'NSG_V'])
         self.expose_attribute(local_name="last_configuration_reload_timestamp", remote_name="lastConfigurationReloadTimestamp", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_id", remote_name="datapathID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redundancy_group_id", remote_name="redundancyGroupID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="pending", remote_name="pending", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'OTHER', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
@@ -214,6 +238,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT'])
         self.expose_attribute(local_name="associated_gateway_security_id", remote_name="associatedGatewaySecurityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_security_profile_id", remote_name="associatedGatewaySecurityProfileID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_nsg_info_id", remote_name="associatedNSGInfoID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="auto_disc_gateway_id", remote_name="autoDiscGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="system_id", remote_name="systemID", attribute_type=str, is_required=False, is_unique=False)
@@ -258,6 +283,9 @@ class NUNSGateway(NURESTObject):
         self.bootstrap_activations = NUBootstrapActivationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.nsg_infos = NUNSGInfosFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.ns_ports = NUNSPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -270,6 +298,33 @@ class NUNSGateway(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def mac_address(self):
+        """ Get mac_address value.
+
+            Notes:
+                MAC Address of the NSG
+
+                
+                This attribute is named `MACAddress` in VSD API.
+                
+        """
+        return self._mac_address
+
+    @mac_address.setter
+    def mac_address(self, value):
+        """ Set mac_address value.
+
+            Notes:
+                MAC Address of the NSG
+
+                
+                This attribute is named `MACAddress` in VSD API.
+                
+        """
+        self._mac_address = value
+
     
     @property
     def nat_traversal_enabled(self):
@@ -296,6 +351,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._nat_traversal_enabled = value
+
+    
+    @property
+    def sku(self):
+        """ Get sku value.
+
+            Notes:
+                The part number of the NSG
+
+                
+                This attribute is named `SKU` in VSD API.
+                
+        """
+        return self._sku
+
+    @sku.setter
+    def sku(self, value):
+        """ Set sku value.
+
+            Notes:
+                The part number of the NSG
+
+                
+                This attribute is named `SKU` in VSD API.
+                
+        """
+        self._sku = value
 
     
     @property
@@ -326,6 +408,87 @@ class NUNSGateway(NURESTObject):
 
     
     @property
+    def cpu_type(self):
+        """ Get cpu_type value.
+
+            Notes:
+                The NSG Processor Type
+
+                
+                This attribute is named `CPUType` in VSD API.
+                
+        """
+        return self._cpu_type
+
+    @cpu_type.setter
+    def cpu_type(self, value):
+        """ Set cpu_type value.
+
+            Notes:
+                The NSG Processor Type
+
+                
+                This attribute is named `CPUType` in VSD API.
+                
+        """
+        self._cpu_type = value
+
+    
+    @property
+    def nsg_version(self):
+        """ Get nsg_version value.
+
+            Notes:
+                The NSG Version
+
+                
+                This attribute is named `NSGVersion` in VSD API.
+                
+        """
+        return self._nsg_version
+
+    @nsg_version.setter
+    def nsg_version(self, value):
+        """ Set nsg_version value.
+
+            Notes:
+                The NSG Version
+
+                
+                This attribute is named `NSGVersion` in VSD API.
+                
+        """
+        self._nsg_version = value
+
+    
+    @property
+    def uuid(self):
+        """ Get uuid value.
+
+            Notes:
+                The Redhat UUID of the NSG
+
+                
+                This attribute is named `UUID` in VSD API.
+                
+        """
+        return self._uuid
+
+    @uuid.setter
+    def uuid(self, value):
+        """ Set uuid value.
+
+            Notes:
+                The Redhat UUID of the NSG
+
+                
+                This attribute is named `UUID` in VSD API.
+                
+        """
+        self._uuid = value
+
+    
+    @property
     def name(self):
         """ Get name value.
 
@@ -346,6 +509,29 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._name = value
+
+    
+    @property
+    def family(self):
+        """ Get family value.
+
+            Notes:
+                The NSG Type
+
+                
+        """
+        return self._family
+
+    @family.setter
+    def family(self, value):
+        """ Set family value.
+
+            Notes:
+                The NSG Type
+
+                
+        """
+        self._family = value
 
     
     @property
@@ -504,6 +690,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._pending = value
+
+    
+    @property
+    def serial_number(self):
+        """ Get serial_number value.
+
+            Notes:
+                The NSG's serial number
+
+                
+                This attribute is named `serialNumber` in VSD API.
+                
+        """
+        return self._serial_number
+
+    @serial_number.setter
+    def serial_number(self, value):
+        """ Set serial_number value.
+
+            Notes:
+                The NSG's serial number
+
+                
+                This attribute is named `serialNumber` in VSD API.
+                
+        """
+        self._serial_number = value
 
     
     @property
@@ -820,6 +1033,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._associated_gateway_security_profile_id = value
+
+    
+    @property
+    def associated_nsg_info_id(self):
+        """ Get associated_nsg_info_id value.
+
+            Notes:
+                Readonly Id of the associated nsg info object
+
+                
+                This attribute is named `associatedNSGInfoID` in VSD API.
+                
+        """
+        return self._associated_nsg_info_id
+
+    @associated_nsg_info_id.setter
+    def associated_nsg_info_id(self, value):
+        """ Set associated_nsg_info_id value.
+
+            Notes:
+                Readonly Id of the associated nsg info object
+
+                
+                This attribute is named `associatedNSGInfoID` in VSD API.
+                
+        """
+        self._associated_nsg_info_id = value
 
     
     @property

@@ -38,6 +38,12 @@ from .fetchers import NUJobsFetcher
 
 from .fetchers import NUVRSAddressRangesFetcher
 
+
+from .fetchers import NUVRSMetricsFetcher
+
+
+from .fetchers import NUVRSRedeploymentpoliciesFetcher
+
 from bambou import NURESTObject
 
 
@@ -84,6 +90,7 @@ class NUVCenterHypervisor(NURESTObject):
         self._v_require_nuage_metadata = None
         self._name = None
         self._last_updated_by = None
+        self._last_vrs_deployed_date = None
         self._data_dns1 = None
         self._data_dns2 = None
         self._data_gateway = None
@@ -95,6 +102,7 @@ class NUVCenterHypervisor(NURESTObject):
         self._secondary_nuage_controller = None
         self._generic_split_activation = None
         self._separate_data_network = None
+        self._deployment_count = None
         self._personality = None
         self._description = None
         self._metadata_server_ip = None
@@ -136,7 +144,6 @@ class NUVCenterHypervisor(NURESTObject):
         self._nova_region_name = None
         self._primary_nuage_controller = None
         self._vrs_id = None
-        self._vrs_metrics_id = None
         self._vrs_password = None
         self._vrs_user_name = None
         self._static_route = None
@@ -168,6 +175,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="v_require_nuage_metadata", remote_name="vRequireNuageMetadata", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_vrs_deployed_date", remote_name="lastVRSDeployedDate", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data_dns1", remote_name="dataDNS1", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data_dns2", remote_name="dataDNS2", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data_gateway", remote_name="dataGateway", attribute_type=str, is_required=False, is_unique=False)
@@ -179,6 +187,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="secondary_nuage_controller", remote_name="secondaryNuageController", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="generic_split_activation", remote_name="genericSplitActivation", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="separate_data_network", remote_name="separateDataNetwork", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="deployment_count", remote_name="deploymentCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="metadata_server_ip", remote_name="metadataServerIP", attribute_type=str, is_required=False, is_unique=False)
@@ -220,7 +229,6 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="nova_region_name", remote_name="novaRegionName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="primary_nuage_controller", remote_name="primaryNuageController", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_id", remote_name="vrsId", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="vrs_metrics_id", remote_name="vrsMetricsID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_password", remote_name="vrsPassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_user_name", remote_name="vrsUserName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="static_route", remote_name="staticRoute", attribute_type=str, is_required=False, is_unique=False)
@@ -259,6 +267,12 @@ class NUVCenterHypervisor(NURESTObject):
         
         
         self.vrs_address_ranges = NUVRSAddressRangesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.vrs_metrics = NUVRSMetricsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.vrs_redeploymentpolicies = NUVRSRedeploymentpoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -448,6 +462,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_vrs_deployed_date(self):
+        """ Get last_vrs_deployed_date value.
+
+            Notes:
+                Determines the time the vrs vm was last deployed.
+
+                
+                This attribute is named `lastVRSDeployedDate` in VSD API.
+                
+        """
+        return self._last_vrs_deployed_date
+
+    @last_vrs_deployed_date.setter
+    def last_vrs_deployed_date(self, value):
+        """ Set last_vrs_deployed_date value.
+
+            Notes:
+                Determines the time the vrs vm was last deployed.
+
+                
+                This attribute is named `lastVRSDeployedDate` in VSD API.
+                
+        """
+        self._last_vrs_deployed_date = value
 
     
     @property
@@ -741,6 +782,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._separate_data_network = value
+
+    
+    @property
+    def deployment_count(self):
+        """ Get deployment_count value.
+
+            Notes:
+                The number of times the vrs was deployed on this hypervisor
+
+                
+                This attribute is named `deploymentCount` in VSD API.
+                
+        """
+        return self._deployment_count
+
+    @deployment_count.setter
+    def deployment_count(self, value):
+        """ Set deployment_count value.
+
+            Notes:
+                The number of times the vrs was deployed on this hypervisor
+
+                
+                This attribute is named `deploymentCount` in VSD API.
+                
+        """
+        self._deployment_count = value
 
     
     @property
@@ -1840,33 +1908,6 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._vrs_id = value
-
-    
-    @property
-    def vrs_metrics_id(self):
-        """ Get vrs_metrics_id value.
-
-            Notes:
-                ID of the vrsMetrics Entity
-
-                
-                This attribute is named `vrsMetricsID` in VSD API.
-                
-        """
-        return self._vrs_metrics_id
-
-    @vrs_metrics_id.setter
-    def vrs_metrics_id(self, value):
-        """ Set vrs_metrics_id value.
-
-            Notes:
-                ID of the vrsMetrics Entity
-
-                
-                This attribute is named `vrsMetricsID` in VSD API.
-                
-        """
-        self._vrs_metrics_id = value
 
     
     @property

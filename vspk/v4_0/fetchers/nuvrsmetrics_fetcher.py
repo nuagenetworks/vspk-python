@@ -28,11 +28,11 @@
 from bambou import NURESTFetcher
 
 
-class NUVrsMetricsFetcher(NURESTFetcher):
-    """ Represents a NUVrsMetrics fetcher
+class NUVRSMetricsFetcher(NURESTFetcher):
+    """ Represents a NUVRSMetrics fetcher
 
         Notes:
-            This fetcher enables to fetch NUVrsMetrics objects.
+            This fetcher enables to fetch NUVRSMetrics objects.
 
         See:
             bambou.NURESTFetcher
@@ -40,13 +40,13 @@ class NUVrsMetricsFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUVrsMetrics class that is managed.
+        """ Return NUVRSMetrics class that is managed.
 
             Returns:
-                .NUVrsMetrics: the managed class
+                .NUVRSMetrics: the managed class
         """
 
-        from .. import NUVrsMetrics
-        return NUVrsMetrics
+        from .. import NUVRSMetrics
+        return NUVRSMetrics
 
     

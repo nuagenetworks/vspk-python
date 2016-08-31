@@ -35,27 +35,31 @@ from .fetchers import NUGlobalMetadatasFetcher
 from bambou import NURESTObject
 
 
-class NUGatewaySecurityProfile(NURESTObject):
-    """ Represents a GatewaySecurityProfile in the VSD
+class NUContainerResync(NURESTObject):
+    """ Represents a ContainerResync in the VSD
 
         Notes:
-            This object represents the gateway security object
+            Provide information about the state of a container resync request.
     """
 
-    __rest_name__ = "gatewaysecurityprofile"
-    __resource_name__ = "gatewaysecurityprofiles"
+    __rest_name__ = "containerresync"
+    __resource_name__ = "containerresync"
 
     
     ## Constants
     
+    CONST_STATUS_IN_PROGRESS = "IN_PROGRESS"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_STATUS_SUCCESS = "SUCCESS"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
 
     def __init__(self, **kwargs):
-        """ Initializes a GatewaySecurityProfile instance
+        """ Initializes a ContainerResync instance
 
             Notes:
                 You can specify all parameters while calling this methods.
@@ -63,24 +67,26 @@ class NUGatewaySecurityProfile(NURESTObject):
                 object from a Python dictionary
 
             Examples:
-                >>> gatewaysecurityprofile = NUGatewaySecurityProfile(id=u'xxxx-xxx-xxx-xxx', name=u'GatewaySecurityProfile')
-                >>> gatewaysecurityprofile = NUGatewaySecurityProfile(data=my_dict)
+                >>> containerresync = NUContainerResync(id=u'xxxx-xxx-xxx-xxx', name=u'ContainerResync')
+                >>> containerresync = NUContainerResync(data=my_dict)
         """
 
-        super(NUGatewaySecurityProfile, self).__init__()
+        super(NUContainerResync, self).__init__()
 
         # Read/Write Attributes
         
+        self._last_request_timestamp = None
+        self._last_time_resync_initiated = None
         self._last_updated_by = None
-        self._gateway_id = None
-        self._revision = None
         self._entity_scope = None
+        self._status = None
         self._external_id = None
         
+        self.expose_attribute(local_name="last_request_timestamp", remote_name="lastRequestTimestamp", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_time_resync_initiated", remote_name="lastTimeResyncInitiated", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="gateway_id", remote_name="gatewayID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="revision", remote_name="revision", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'IN_PROGRESS', u'SUCCESS'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -96,6 +102,60 @@ class NUGatewaySecurityProfile(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def last_request_timestamp(self):
+        """ Get last_request_timestamp value.
+
+            Notes:
+                Time of the last timestamp received
+
+                
+                This attribute is named `lastRequestTimestamp` in VSD API.
+                
+        """
+        return self._last_request_timestamp
+
+    @last_request_timestamp.setter
+    def last_request_timestamp(self, value):
+        """ Set last_request_timestamp value.
+
+            Notes:
+                Time of the last timestamp received
+
+                
+                This attribute is named `lastRequestTimestamp` in VSD API.
+                
+        """
+        self._last_request_timestamp = value
+
+    
+    @property
+    def last_time_resync_initiated(self):
+        """ Get last_time_resync_initiated value.
+
+            Notes:
+                Time that the resync was initiated
+
+                
+                This attribute is named `lastTimeResyncInitiated` in VSD API.
+                
+        """
+        return self._last_time_resync_initiated
+
+    @last_time_resync_initiated.setter
+    def last_time_resync_initiated(self, value):
+        """ Set last_time_resync_initiated value.
+
+            Notes:
+                Time that the resync was initiated
+
+                
+                This attribute is named `lastTimeResyncInitiated` in VSD API.
+                
+        """
+        self._last_time_resync_initiated = value
+
     
     @property
     def last_updated_by(self):
@@ -125,56 +185,6 @@ class NUGatewaySecurityProfile(NURESTObject):
 
     
     @property
-    def gateway_id(self):
-        """ Get gateway_id value.
-
-            Notes:
-                The gateway associated with this object. This is a read only attribute
-
-                
-                This attribute is named `gatewayID` in VSD API.
-                
-        """
-        return self._gateway_id
-
-    @gateway_id.setter
-    def gateway_id(self, value):
-        """ Set gateway_id value.
-
-            Notes:
-                The gateway associated with this object. This is a read only attribute
-
-                
-                This attribute is named `gatewayID` in VSD API.
-                
-        """
-        self._gateway_id = value
-
-    
-    @property
-    def revision(self):
-        """ Get revision value.
-
-            Notes:
-                revision number for the gateway security profile data
-
-                
-        """
-        return self._revision
-
-    @revision.setter
-    def revision(self, value):
-        """ Set revision value.
-
-            Notes:
-                revision number for the gateway security profile data
-
-                
-        """
-        self._revision = value
-
-    
-    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -199,6 +209,29 @@ class NUGatewaySecurityProfile(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def status(self):
+        """ Get status value.
+
+            Notes:
+                Status of the resync
+
+                
+        """
+        return self._status
+
+    @status.setter
+    def status(self, value):
+        """ Set status value.
+
+            Notes:
+                Status of the resync
+
+                
+        """
+        self._status = value
 
     
     @property
