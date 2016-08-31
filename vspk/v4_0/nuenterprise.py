@@ -93,7 +93,7 @@ from .fetchers import NUIKEPSKsFetcher
 from .fetchers import NUAlarmsFetcher
 
 
-from .fetchers import NUAlarmsFetcher
+from .fetchers import NUAllAlarmsFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
@@ -361,7 +361,7 @@ class NUEnterprise(NURESTObject):
         self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.all_alarms = NUAllAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
