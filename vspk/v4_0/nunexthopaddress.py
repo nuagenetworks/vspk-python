@@ -26,12 +26,6 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-
-from .fetchers import NUMetadatasFetcher
-
-
-from .fetchers import NUGlobalMetadatasFetcher
-
 from bambou import NURESTObject
 
 
@@ -39,19 +33,12 @@ class NUNextHopAddress(NURESTObject):
     """ Represents a NextHopAddress in the VSD
 
         Notes:
-            This represents a /32 IPv4 address as the next-hop. In the future can be a /128 IPv6 address.
+            None
     """
 
-    __rest_name__ = "nexthop"
-    __resource_name__ = "nexthops"
+    __rest_name__ = "nexthopaddress"
+    __resource_name__ = "nexthopaddress"
 
-    
-    ## Constants
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
     
 
     def __init__(self, **kwargs):
@@ -71,26 +58,13 @@ class NUNextHopAddress(NURESTObject):
 
         # Read/Write Attributes
         
-        self._last_updated_by = None
-        self._entity_scope = None
+        self._address = None
         self._route_distinguisher = None
-        self._ip = None
-        self._external_id = None
+        self._type = None
         
-        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=True, is_unique=True)
-        self.expose_attribute(local_name="ip", remote_name="ip", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        
-
-        # Fetchers
-        
-        
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False)
         
 
         self._compute_args(**kwargs)
@@ -98,57 +72,26 @@ class NUNextHopAddress(NURESTObject):
     # Properties
     
     @property
-    def last_updated_by(self):
-        """ Get last_updated_by value.
+    def address(self):
+        """ Get address value.
 
             Notes:
-                ID of the user who last updated the object.
+                IP address for the next hop.
 
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        return self._last_updated_by
+        return self._address
 
-    @last_updated_by.setter
-    def last_updated_by(self, value):
-        """ Set last_updated_by value.
+    @address.setter
+    def address(self, value):
+        """ Set address value.
 
             Notes:
-                ID of the user who last updated the object.
+                IP address for the next hop.
 
-                
-                This attribute is named `lastUpdatedBy` in VSD API.
                 
         """
-        self._last_updated_by = value
-
-    
-    @property
-    def entity_scope(self):
-        """ Get entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        return self._entity_scope
-
-    @entity_scope.setter
-    def entity_scope(self, value):
-        """ Set entity_scope value.
-
-            Notes:
-                Specify if scope of entity is Data center or Enterprise level
-
-                
-                This attribute is named `entityScope` in VSD API.
-                
-        """
-        self._entity_scope = value
+        self._address = value
 
     
     @property
@@ -156,7 +99,7 @@ class NUNextHopAddress(NURESTObject):
         """ Get route_distinguisher value.
 
             Notes:
-                The next-hop's route distinguisher. A unique 8 byte long. If not provided one will be generated.
+                A unique route distinguisher associated with the nexthop. If one is not provided the system generated one automatically. 
 
                 
                 This attribute is named `routeDistinguisher` in VSD API.
@@ -169,7 +112,7 @@ class NUNextHopAddress(NURESTObject):
         """ Set route_distinguisher value.
 
             Notes:
-                The next-hop's route distinguisher. A unique 8 byte long. If not provided one will be generated.
+                A unique route distinguisher associated with the nexthop. If one is not provided the system generated one automatically. 
 
                 
                 This attribute is named `routeDistinguisher` in VSD API.
@@ -179,53 +122,26 @@ class NUNextHopAddress(NURESTObject):
 
     
     @property
-    def ip(self):
-        """ Get ip value.
+    def type(self):
+        """ Get type value.
 
             Notes:
-                This is the /32 or /128 next-hop IP address. Currently we support only IPv4 address family.
+                Next hop type: IP only supported for service chaining
 
                 
         """
-        return self._ip
+        return self._type
 
-    @ip.setter
-    def ip(self, value):
-        """ Set ip value.
+    @type.setter
+    def type(self, value):
+        """ Set type value.
 
             Notes:
-                This is the /32 or /128 next-hop IP address. Currently we support only IPv4 address family.
+                Next hop type: IP only supported for service chaining
 
                 
         """
-        self._ip = value
-
-    
-    @property
-    def external_id(self):
-        """ Get external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, value):
-        """ Set external_id value.
-
-            Notes:
-                External object ID. Used for integration with third party systems
-
-                
-                This attribute is named `externalID` in VSD API.
-                
-        """
-        self._external_id = value
+        self._type = value
 
     
 

@@ -43,6 +43,13 @@ class NUApplicationperformancemanagement(NURESTObject):
     __resource_name__ = "applicationperformancemanagements"
 
     
+    ## Constants
+    
+    CONST_APPLICATION_GROUP_TYPE_MONITOR_PATH = "MONITOR_PATH"
+    
+    CONST_APPLICATION_GROUP_TYPE_DISCOVERY = "DISCOVERY"
+    
+    
 
     def __init__(self, **kwargs):
         """ Initializes a Applicationperformancemanagement instance
@@ -70,7 +77,7 @@ class NUApplicationperformancemanagement(NURESTObject):
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="read_only", remote_name="readOnly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="application_group_type", remote_name="applicationGroupType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="application_group_type", remote_name="applicationGroupType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISCOVERY', u'MONITOR_PATH'])
         self.expose_attribute(local_name="associated_performance_monitor_id", remote_name="associatedPerformanceMonitorID", attribute_type=str, is_required=False, is_unique=False)
         
 

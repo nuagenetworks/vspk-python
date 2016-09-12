@@ -57,12 +57,6 @@ from .fetchers import NUDHCPOptionsFetcher
 from .fetchers import NULinksFetcher
 
 
-from .fetchers import NULinksFetcher
-
-
-from .fetchers import NULinksFetcher
-
-
 from .fetchers import NUFloatingIpsFetcher
 
 
@@ -382,12 +376,6 @@ class NUDomain(NURESTObject):
         
         
         self.dhcp_options = NUDHCPOptionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.links = NULinksFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.links = NULinksFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.links = NULinksFetcher.fetcher_with_object(parent_object=self, relationship="child")
