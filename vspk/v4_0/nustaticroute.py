@@ -85,7 +85,7 @@ class NUStaticRoute(NURESTObject):
         # Read/Write Attributes
         
         self._ip_type = None
-        self._i_pv6_address = None
+        self._ipv6_address = None
         self._last_updated_by = None
         self._address = None
         self._netmask = None
@@ -96,7 +96,7 @@ class NUStaticRoute(NURESTObject):
         self._type = None
         
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
-        self.expose_attribute(local_name="i_pv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=True, is_unique=False)
@@ -151,8 +151,8 @@ class NUStaticRoute(NURESTObject):
 
     
     @property
-    def i_pv6_address(self):
-        """ Get i_pv6_address value.
+    def ipv6_address(self):
+        """ Get ipv6_address value.
 
             Notes:
                 IPv6 address of the route
@@ -161,11 +161,11 @@ class NUStaticRoute(NURESTObject):
                 This attribute is named `IPv6Address` in VSD API.
                 
         """
-        return self._i_pv6_address
+        return self._ipv6_address
 
-    @i_pv6_address.setter
-    def i_pv6_address(self, value):
-        """ Set i_pv6_address value.
+    @ipv6_address.setter
+    def ipv6_address(self, value):
+        """ Set ipv6_address value.
 
             Notes:
                 IPv6 address of the route
@@ -174,7 +174,7 @@ class NUStaticRoute(NURESTObject):
                 This attribute is named `IPv6Address` in VSD API.
                 
         """
-        self._i_pv6_address = value
+        self._ipv6_address = value
 
     
     @property

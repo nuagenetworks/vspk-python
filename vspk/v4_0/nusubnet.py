@@ -662,8 +662,8 @@ class NUSubnet(NURESTObject):
         self._pat_enabled = None
         self._dpi = None
         self._ip_type = None
-        self._i_pv6_address = None
-        self._i_pv6_gateway = None
+        self._ipv6_address = None
+        self._ipv6_gateway = None
         self._maintenance_mode = None
         self._name = None
         self._last_updated_by = None
@@ -698,8 +698,8 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="pat_enabled", remote_name="PATEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
-        self.expose_attribute(local_name="i_pv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="i_pv6_gateway", remote_name="IPv6Gateway", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ipv6_gateway", remote_name="IPv6Gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -881,8 +881,8 @@ class NUSubnet(NURESTObject):
 
     
     @property
-    def i_pv6_address(self):
-        """ Get i_pv6_address value.
+    def ipv6_address(self):
+        """ Get ipv6_address value.
 
             Notes:
                 IP address of the subnet defined. In case of zone, this is an optional field for and allows users to allocate an IP address range to a zone. The VSD will auto-assign IP addresses to subnets from this range if a specific IP address is not defined for the subnet
@@ -891,11 +891,11 @@ class NUSubnet(NURESTObject):
                 This attribute is named `IPv6Address` in VSD API.
                 
         """
-        return self._i_pv6_address
+        return self._ipv6_address
 
-    @i_pv6_address.setter
-    def i_pv6_address(self, value):
-        """ Set i_pv6_address value.
+    @ipv6_address.setter
+    def ipv6_address(self, value):
+        """ Set ipv6_address value.
 
             Notes:
                 IP address of the subnet defined. In case of zone, this is an optional field for and allows users to allocate an IP address range to a zone. The VSD will auto-assign IP addresses to subnets from this range if a specific IP address is not defined for the subnet
@@ -904,12 +904,12 @@ class NUSubnet(NURESTObject):
                 This attribute is named `IPv6Address` in VSD API.
                 
         """
-        self._i_pv6_address = value
+        self._ipv6_address = value
 
     
     @property
-    def i_pv6_gateway(self):
-        """ Get i_pv6_gateway value.
+    def ipv6_gateway(self):
+        """ Get ipv6_gateway value.
 
             Notes:
                 The IPv6 address of the gateway of this subnet
@@ -918,11 +918,11 @@ class NUSubnet(NURESTObject):
                 This attribute is named `IPv6Gateway` in VSD API.
                 
         """
-        return self._i_pv6_gateway
+        return self._ipv6_gateway
 
-    @i_pv6_gateway.setter
-    def i_pv6_gateway(self, value):
-        """ Set i_pv6_gateway value.
+    @ipv6_gateway.setter
+    def ipv6_gateway(self, value):
+        """ Set ipv6_gateway value.
 
             Notes:
                 The IPv6 address of the gateway of this subnet
@@ -931,7 +931,7 @@ class NUSubnet(NURESTObject):
                 This attribute is named `IPv6Gateway` in VSD API.
                 
         """
-        self._i_pv6_gateway = value
+        self._ipv6_gateway = value
 
     
     @property
