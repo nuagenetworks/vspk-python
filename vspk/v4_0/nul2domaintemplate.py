@@ -95,23 +95,29 @@ class NUL2DomainTemplate(NURESTObject):
     
     CONST_POLICY_CHANGE_STATUS_STARTED = "STARTED"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_ENCRYPTION_ENABLED = "ENABLED"
     
     CONST_ENCRYPTION_DISABLED = "DISABLED"
     
     CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
     
+    CONST_DPI_DISABLED = "DISABLED"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_IP_TYPE_IPV6 = "IPV6"
     
-    CONST_ENCRYPTION_ENABLED = "ENABLED"
+    CONST_DPI_INHERITED = "INHERITED"
     
     CONST_IP_TYPE_IPV4 = "IPV4"
     
     CONST_MULTICAST_ENABLED = "ENABLED"
     
     CONST_MULTICAST_INHERITED = "INHERITED"
+    
+    CONST_DPI_ENABLED = "ENABLED"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_POLICY_CHANGE_STATUS_APPLIED = "APPLIED"
     
@@ -153,7 +159,7 @@ class NUL2DomainTemplate(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="dhcp_managed", remote_name="DHCPManaged", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
