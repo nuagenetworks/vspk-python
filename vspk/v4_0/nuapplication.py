@@ -116,6 +116,7 @@ class NUApplication(NURESTObject):
         self._protocol = None
         self._associated_l7_application_signature_id = None
         self._ether_type = None
+        self._symmetry = None
         
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
@@ -136,6 +137,7 @@ class NUApplication(NURESTObject):
         self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'TCP', u'UDP'])
         self.expose_attribute(local_name="associated_l7_application_signature_id", remote_name="associatedL7ApplicationSignatureID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="ether_type", remote_name="etherType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="symmetry", remote_name="symmetry", attribute_type=bool, is_required=False, is_unique=False)
         
 
         # Fetchers
@@ -650,6 +652,29 @@ class NUApplication(NURESTObject):
                 
         """
         self._ether_type = value
+
+    
+    @property
+    def symmetry(self):
+        """ Get symmetry value.
+
+            Notes:
+                Maintain path symmetry during SLA violation
+
+                
+        """
+        return self._symmetry
+
+    @symmetry.setter
+    def symmetry(self, value):
+        """ Set symmetry value.
+
+            Notes:
+                Maintain path symmetry during SLA violation
+
+                
+        """
+        self._symmetry = value
 
     
 

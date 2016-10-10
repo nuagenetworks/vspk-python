@@ -54,6 +54,8 @@ class NUSystemConfig(NURESTObject):
     
     CONST_GROUP_KEY_DEFAULT_TRAFFIC_ENCRYPTION_ALGORITHM_AES_256_CBC = "AES_256_CBC"
     
+    CONST_CSPROOT_AUTHENTICATION_METHOD_LDAP = "LDAP"
+    
     CONST_SYSTEM_AVATAR_TYPE_URL = "URL"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
@@ -77,6 +79,8 @@ class NUSystemConfig(NURESTObject):
     CONST_GROUP_KEY_DEFAULT_TRAFFIC_ENCRYPTION_ALGORITHM_TRIPLE_DES_CBC = "TRIPLE_DES_CBC"
     
     CONST_GROUP_KEY_DEFAULT_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA256 = "HMAC_SHA256"
+    
+    CONST_CSPROOT_AUTHENTICATION_METHOD_LOCAL = "LOCAL"
     
     CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA224WITHRSA = "SHA224withRSA"
     
@@ -222,6 +226,7 @@ class NUSystemConfig(NURESTObject):
         self._nsg_config_endpoint = None
         self._nsg_local_ui_url = None
         self._esi_id = None
+        self._csproot_authentication_method = None
         self._stack_trace_enabled = None
         self._stateful_acl_non_tcp_timeout = None
         self._stateful_acltcp_timeout = None
@@ -234,6 +239,7 @@ class NUSystemConfig(NURESTObject):
         self._stats_min_duration = None
         self._stats_number_of_data_points = None
         self._stats_tsdb_server_address = None
+        self._sticky_ecmp_idle_timeout = None
         self._subnet_resync_interval = None
         self._subnet_resync_outstanding_interval = None
         self._customer_id_upper_limit = None
@@ -345,6 +351,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="nsg_config_endpoint", remote_name="nsgConfigEndpoint", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_local_ui_url", remote_name="nsgLocalUiUrl", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="esi_id", remote_name="esiID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="csproot_authentication_method", remote_name="csprootAuthenticationMethod", attribute_type=str, is_required=False, is_unique=False, choices=[u'LDAP', u'LOCAL'])
         self.expose_attribute(local_name="stack_trace_enabled", remote_name="stackTraceEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stateful_acl_non_tcp_timeout", remote_name="statefulACLNonTCPTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stateful_acltcp_timeout", remote_name="statefulACLTCPTimeout", attribute_type=int, is_required=False, is_unique=False)
@@ -357,6 +364,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="stats_min_duration", remote_name="statsMinDuration", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_number_of_data_points", remote_name="statsNumberOfDataPoints", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_tsdb_server_address", remote_name="statsTSDBServerAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="sticky_ecmp_idle_timeout", remote_name="stickyECMPIdleTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="subnet_resync_interval", remote_name="subnetResyncInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="subnet_resync_outstanding_interval", remote_name="subnetResyncOutstandingInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="customer_id_upper_limit", remote_name="customerIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
@@ -2745,6 +2753,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def csproot_authentication_method(self):
+        """ Get csproot_authentication_method value.
+
+            Notes:
+                Authentication method for csproot when local authentication is not used for CSP organization
+
+                
+                This attribute is named `csprootAuthenticationMethod` in VSD API.
+                
+        """
+        return self._csproot_authentication_method
+
+    @csproot_authentication_method.setter
+    def csproot_authentication_method(self, value):
+        """ Set csproot_authentication_method value.
+
+            Notes:
+                Authentication method for csproot when local authentication is not used for CSP organization
+
+                
+                This attribute is named `csprootAuthenticationMethod` in VSD API.
+                
+        """
+        self._csproot_authentication_method = value
+
+    
+    @property
     def stack_trace_enabled(self):
         """ Get stack_trace_enabled value.
 
@@ -3066,6 +3101,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._stats_tsdb_server_address = value
+
+    
+    @property
+    def sticky_ecmp_idle_timeout(self):
+        """ Get sticky_ecmp_idle_timeout value.
+
+            Notes:
+                sticky ECMP Idle Timeout in seconds
+
+                
+                This attribute is named `stickyECMPIdleTimeout` in VSD API.
+                
+        """
+        return self._sticky_ecmp_idle_timeout
+
+    @sticky_ecmp_idle_timeout.setter
+    def sticky_ecmp_idle_timeout(self, value):
+        """ Set sticky_ecmp_idle_timeout value.
+
+            Notes:
+                sticky ECMP Idle Timeout in seconds
+
+                
+                This attribute is named `stickyECMPIdleTimeout` in VSD API.
+                
+        """
+        self._sticky_ecmp_idle_timeout = value
 
     
     @property

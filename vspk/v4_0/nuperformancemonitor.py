@@ -82,17 +82,19 @@ class NUPerformanceMonitor(NURESTObject):
         
         self._name = None
         self._payload_size = None
+        self._read_only = None
         self._service_class = None
         self._description = None
         self._interval = None
         self._number_of_packets = None
         
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="payload_size", remote_name="payloadSize", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="payload_size", remote_name="payloadSize", attribute_type=int, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="read_only", remote_name="readOnly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_class", remote_name="serviceClass", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="interval", remote_name="interval", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="number_of_packets", remote_name="numberOfPackets", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="interval", remote_name="interval", attribute_type=int, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="number_of_packets", remote_name="numberOfPackets", attribute_type=int, is_required=True, is_unique=False)
         
 
         # Fetchers
@@ -153,6 +155,33 @@ class NUPerformanceMonitor(NURESTObject):
                 
         """
         self._payload_size = value
+
+    
+    @property
+    def read_only(self):
+        """ Get read_only value.
+
+            Notes:
+                Determines whether this entity is read only.  Read only objects cannot be modified or deleted.
+
+                
+                This attribute is named `readOnly` in VSD API.
+                
+        """
+        return self._read_only
+
+    @read_only.setter
+    def read_only(self, value):
+        """ Set read_only value.
+
+            Notes:
+                Determines whether this entity is read only.  Read only objects cannot be modified or deleted.
+
+                
+                This attribute is named `readOnly` in VSD API.
+                
+        """
+        self._read_only = value
 
     
     @property

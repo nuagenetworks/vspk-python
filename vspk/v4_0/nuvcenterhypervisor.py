@@ -62,7 +62,17 @@ class NUVCenterHypervisor(NURESTObject):
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
+    CONST_DESTINATION_MIRROR_PORT_ENS160 = "ens160"
+    
+    CONST_DESTINATION_MIRROR_PORT_ENS161 = "ens161"
+    
+    CONST_DESTINATION_MIRROR_PORT_ENS224 = "ens224"
+    
+    CONST_DESTINATION_MIRROR_PORT_ENS256 = "ens256"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_DESTINATION_MIRROR_PORT_NO_MIRROR = "no_mirror"
     
     
 
@@ -100,11 +110,13 @@ class NUVCenterHypervisor(NURESTObject):
         self._datapath_sync_timeout = None
         self._scope = None
         self._secondary_nuage_controller = None
+        self._removed_from_vcenter_inventory = None
         self._generic_split_activation = None
         self._separate_data_network = None
         self._deployment_count = None
         self._personality = None
         self._description = None
+        self._destination_mirror_port = None
         self._metadata_server_ip = None
         self._metadata_server_listen_port = None
         self._metadata_server_port = None
@@ -122,6 +134,7 @@ class NUVCenterHypervisor(NURESTObject):
         self._mgmt_netmask = None
         self._mgmt_network_portgroup = None
         self._dhcp_relay_server = None
+        self._mirror_network_portgroup = None
         self._site_id = None
         self._allow_data_dhcp = None
         self._allow_mgmt_dhcp = None
@@ -185,11 +198,13 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="datapath_sync_timeout", remote_name="datapathSyncTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="scope", remote_name="scope", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_nuage_controller", remote_name="secondaryNuageController", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="removed_from_vcenter_inventory", remote_name="removedFromVCenterInventory", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="generic_split_activation", remote_name="genericSplitActivation", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="separate_data_network", remote_name="separateDataNetwork", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="deployment_count", remote_name="deploymentCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="destination_mirror_port", remote_name="destinationMirrorPort", attribute_type=str, is_required=False, is_unique=False, choices=[u'ens160', u'ens161', u'ens224', u'ens256', u'no_mirror'])
         self.expose_attribute(local_name="metadata_server_ip", remote_name="metadataServerIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_server_listen_port", remote_name="metadataServerListenPort", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_server_port", remote_name="metadataServerPort", attribute_type=int, is_required=False, is_unique=False)
@@ -207,6 +222,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="mgmt_netmask", remote_name="mgmtNetmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mgmt_network_portgroup", remote_name="mgmtNetworkPortgroup", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="dhcp_relay_server", remote_name="dhcpRelayServer", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="mirror_network_portgroup", remote_name="mirrorNetworkPortgroup", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="site_id", remote_name="siteId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_data_dhcp", remote_name="allowDataDHCP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_mgmt_dhcp", remote_name="allowMgmtDHCP", attribute_type=bool, is_required=False, is_unique=False)
@@ -731,6 +747,33 @@ class NUVCenterHypervisor(NURESTObject):
 
     
     @property
+    def removed_from_vcenter_inventory(self):
+        """ Get removed_from_vcenter_inventory value.
+
+            Notes:
+                Set to true if the hypervisor is removed from Vcenter inventory datacenter or cluster
+
+                
+                This attribute is named `removedFromVCenterInventory` in VSD API.
+                
+        """
+        return self._removed_from_vcenter_inventory
+
+    @removed_from_vcenter_inventory.setter
+    def removed_from_vcenter_inventory(self, value):
+        """ Set removed_from_vcenter_inventory value.
+
+            Notes:
+                Set to true if the hypervisor is removed from Vcenter inventory datacenter or cluster
+
+                
+                This attribute is named `removedFromVCenterInventory` in VSD API.
+                
+        """
+        self._removed_from_vcenter_inventory = value
+
+    
+    @property
     def generic_split_activation(self):
         """ Get generic_split_activation value.
 
@@ -855,6 +898,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def destination_mirror_port(self):
+        """ Get destination_mirror_port value.
+
+            Notes:
+                Extra Vnic to mirror access port
+
+                
+                This attribute is named `destinationMirrorPort` in VSD API.
+                
+        """
+        return self._destination_mirror_port
+
+    @destination_mirror_port.setter
+    def destination_mirror_port(self, value):
+        """ Set destination_mirror_port value.
+
+            Notes:
+                Extra Vnic to mirror access port
+
+                
+                This attribute is named `destinationMirrorPort` in VSD API.
+                
+        """
+        self._destination_mirror_port = value
 
     
     @property
@@ -1314,6 +1384,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._dhcp_relay_server = value
+
+    
+    @property
+    def mirror_network_portgroup(self):
+        """ Get mirror_network_portgroup value.
+
+            Notes:
+                Mirror Port Group Name
+
+                
+                This attribute is named `mirrorNetworkPortgroup` in VSD API.
+                
+        """
+        return self._mirror_network_portgroup
+
+    @mirror_network_portgroup.setter
+    def mirror_network_portgroup(self, value):
+        """ Set mirror_network_portgroup value.
+
+            Notes:
+                Mirror Port Group Name
+
+                
+                This attribute is named `mirrorNetworkPortgroup` in VSD API.
+                
+        """
+        self._mirror_network_portgroup = value
 
     
     @property

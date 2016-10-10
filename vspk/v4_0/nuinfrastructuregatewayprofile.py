@@ -50,7 +50,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
     
     CONST_REMOTE_LOG_MODE_SCP = "SCP"
     
-    CONST_UPGRADE_ACTION_UPGRADE_AT_BOOTSTRAPPING = "UPGRADE_AT_BOOTSTRAPPING"
+    CONST_CONTROLLER_LESS_FORWARDING_MODE_LOCAL_AND_REMOTE = "LOCAL_AND_REMOTE"
     
     CONST_UPGRADE_ACTION_NONE = "NONE"
     
@@ -58,9 +58,15 @@ class NUInfrastructureGatewayProfile(NURESTObject):
     
     CONST_REMOTE_LOG_MODE_RSYSLOG = "RSYSLOG"
     
+    CONST_UPGRADE_ACTION_DOWNLOAD_AND_UPGRADE_NOW = "DOWNLOAD_AND_UPGRADE_NOW"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
+    CONST_CONTROLLER_LESS_FORWARDING_MODE_DISABLED = "DISABLED"
+    
     CONST_REMOTE_LOG_MODE_DISABLED = "DISABLED"
+    
+    CONST_UPGRADE_ACTION_UPGRADE_AT_BOOTSTRAPPING = "UPGRADE_AT_BOOTSTRAPPING"
     
     CONST_REMOTE_LOG_MODE_SFTP = "SFTP"
     
@@ -68,9 +74,9 @@ class NUInfrastructureGatewayProfile(NURESTObject):
     
     CONST_UPGRADE_ACTION_UPGRADE_NOW = "UPGRADE_NOW"
     
-    CONST_UPGRADE_ACTION_DOWNLOAD_AND_UPGRADE_NOW = "DOWNLOAD_AND_UPGRADE_NOW"
-    
     CONST_UPGRADE_ACTION_DOWNLOAD_AND_UPGRADE_AT_WINDOW = "DOWNLOAD_AND_UPGRADE_AT_WINDOW"
+    
+    CONST_CONTROLLER_LESS_FORWARDING_MODE_LOCAL_ONLY = "LOCAL_ONLY"
     
     
 
@@ -107,6 +113,8 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self._entity_scope = None
         self._controller_less_duration = None
         self._controller_less_enabled = None
+        self._controller_less_forwarding_mode = None
+        self._controller_less_remote_duration = None
         self._force_immediate_system_sync = None
         self._upgrade_action = None
         self._proxy_dns_name = None
@@ -131,6 +139,8 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="controller_less_duration", remote_name="controllerLessDuration", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="controller_less_enabled", remote_name="controllerLessEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="controller_less_forwarding_mode", remote_name="controllerLessForwardingMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'LOCAL_AND_REMOTE', u'LOCAL_ONLY'])
+        self.expose_attribute(local_name="controller_less_remote_duration", remote_name="controllerLessRemoteDuration", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="force_immediate_system_sync", remote_name="forceImmediateSystemSync", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="upgrade_action", remote_name="upgradeAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'DOWNLOAD_AND_UPGRADE_AT_WINDOW', u'DOWNLOAD_AND_UPGRADE_NOW', u'DOWNLOAD_ONLY', u'NONE', u'UPGRADE_AT_BOOTSTRAPPING', u'UPGRADE_NOW'])
         self.expose_attribute(local_name="proxy_dns_name", remote_name="proxyDNSName", attribute_type=str, is_required=True, is_unique=False)
@@ -564,7 +574,7 @@ Because the years and month are units that vary in length, for the time being th
         """ Get controller_less_duration value.
 
             Notes:
-                Duration for a controller-less operation (in ISO-duration format).
+                Duration for a controller-less local operation (in ISO-duration format).
 
                 
                 This attribute is named `controllerLessDuration` in VSD API.
@@ -577,7 +587,7 @@ Because the years and month are units that vary in length, for the time being th
         """ Set controller_less_duration value.
 
             Notes:
-                Duration for a controller-less operation (in ISO-duration format).
+                Duration for a controller-less local operation (in ISO-duration format).
 
                 
                 This attribute is named `controllerLessDuration` in VSD API.
@@ -611,6 +621,60 @@ Because the years and month are units that vary in length, for the time being th
                 
         """
         self._controller_less_enabled = value
+
+    
+    @property
+    def controller_less_forwarding_mode(self):
+        """ Get controller_less_forwarding_mode value.
+
+            Notes:
+                The forwarding mode to use for controllerLess operations
+
+                
+                This attribute is named `controllerLessForwardingMode` in VSD API.
+                
+        """
+        return self._controller_less_forwarding_mode
+
+    @controller_less_forwarding_mode.setter
+    def controller_less_forwarding_mode(self, value):
+        """ Set controller_less_forwarding_mode value.
+
+            Notes:
+                The forwarding mode to use for controllerLess operations
+
+                
+                This attribute is named `controllerLessForwardingMode` in VSD API.
+                
+        """
+        self._controller_less_forwarding_mode = value
+
+    
+    @property
+    def controller_less_remote_duration(self):
+        """ Get controller_less_remote_duration value.
+
+            Notes:
+                Duration for a controller-less remote operation (in ISO-duration format).
+
+                
+                This attribute is named `controllerLessRemoteDuration` in VSD API.
+                
+        """
+        return self._controller_less_remote_duration
+
+    @controller_less_remote_duration.setter
+    def controller_less_remote_duration(self, value):
+        """ Set controller_less_remote_duration value.
+
+            Notes:
+                Duration for a controller-less remote operation (in ISO-duration format).
+
+                
+                This attribute is named `controllerLessRemoteDuration` in VSD API.
+                
+        """
+        self._controller_less_remote_duration = value
 
     
     @property

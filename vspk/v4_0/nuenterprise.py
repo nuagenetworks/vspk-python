@@ -66,6 +66,9 @@ from .fetchers import NUMetadataTagsFetcher
 from .fetchers import NUNetworkMacroGroupsFetcher
 
 
+from .fetchers import NUNetworkPerformanceMeasurementsFetcher
+
+
 from .fetchers import NUKeyServerMonitorsFetcher
 
 
@@ -342,6 +345,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.network_macro_groups = NUNetworkMacroGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.network_performance_measurements = NUNetworkPerformanceMeasurementsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.key_server_monitors = NUKeyServerMonitorsFetcher.fetcher_with_object(parent_object=self, relationship="child")

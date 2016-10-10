@@ -95,6 +95,8 @@ class NUNSGateway(NURESTObject):
     
     CONST_FAMILY_NSG_E = "NSG_E"
     
+    CONST_INHERITED_SSH_SERVICE_STATE_ENABLED = "ENABLED"
+    
     CONST_CONFIGURATION_STATUS_FAILURE = "FAILURE"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
@@ -105,7 +107,11 @@ class NUNSGateway(NURESTObject):
     
     CONST_CONFIGURATION_RELOAD_STATE_PENDING = "PENDING"
     
+    CONST_SSH_SERVICE_DISABLED = "DISABLED"
+    
     CONST_PERSONALITY_OTHER = "OTHER"
+    
+    CONST_SSH_SERVICE_ENABLED = "ENABLED"
     
     CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_ACK = "NOTIFICATION_APP_REQ_ACK"
     
@@ -153,7 +159,11 @@ class NUNSGateway(NURESTObject):
     
     CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
     
+    CONST_INHERITED_SSH_SERVICE_STATE_DISABLED = "DISABLED"
+    
     CONST_TPM_STATUS_ENABLED_OPERATIONAL = "ENABLED_OPERATIONAL"
+    
+    CONST_SSH_SERVICE_INHERITED = "INHERITED"
     
     CONST_CONFIGURATION_STATUS_UNKNOWN = "UNKNOWN"
     
@@ -188,6 +198,7 @@ class NUNSGateway(NURESTObject):
         self._tpm_status = None
         self._cpu_type = None
         self._nsg_version = None
+        self._ssh_service = None
         self._uuid = None
         self._name = None
         self._family = None
@@ -202,6 +213,7 @@ class NUNSGateway(NURESTObject):
         self._personality = None
         self._description = None
         self._libraries = None
+        self._inherited_ssh_service_state = None
         self._enterprise_id = None
         self._entity_scope = None
         self._location_id = None
@@ -222,6 +234,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="tpm_status", remote_name="TPMStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED_NOT_OPERATIONAL', u'ENABLED_OPERATIONAL', u'UNKNOWN'])
         self.expose_attribute(local_name="cpu_type", remote_name="CPUType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_version", remote_name="NSGVersion", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ssh_service", remote_name="SSHService", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_E', u'NSG_V'])
@@ -236,6 +249,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'NSGBR', u'OTHER', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="inherited_ssh_service_state", remote_name="inheritedSSHServiceState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
@@ -469,6 +483,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._nsg_version = value
+
+    
+    @property
+    def ssh_service(self):
+        """ Get ssh_service value.
+
+            Notes:
+                Indicates if SSH Service is enabled/disabled on a NSG. The value configured for this attribute is used only when instanceSSHOverride is allowed on the associated Gateway Template.
+
+                
+                This attribute is named `SSHService` in VSD API.
+                
+        """
+        return self._ssh_service
+
+    @ssh_service.setter
+    def ssh_service(self, value):
+        """ Set ssh_service value.
+
+            Notes:
+                Indicates if SSH Service is enabled/disabled on a NSG. The value configured for this attribute is used only when instanceSSHOverride is allowed on the associated Gateway Template.
+
+                
+                This attribute is named `SSHService` in VSD API.
+                
+        """
+        self._ssh_service = value
 
     
     @property
@@ -823,6 +864,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._libraries = value
+
+    
+    @property
+    def inherited_ssh_service_state(self):
+        """ Get inherited_ssh_service_state value.
+
+            Notes:
+                Indicates the SSH Service state which is configured on the associated template instance.
+
+                
+                This attribute is named `inheritedSSHServiceState` in VSD API.
+                
+        """
+        return self._inherited_ssh_service_state
+
+    @inherited_ssh_service_state.setter
+    def inherited_ssh_service_state(self, value):
+        """ Set inherited_ssh_service_state value.
+
+            Notes:
+                Indicates the SSH Service state which is configured on the associated template instance.
+
+                
+                This attribute is named `inheritedSSHServiceState` in VSD API.
+                
+        """
+        self._inherited_ssh_service_state = value
 
     
     @property
