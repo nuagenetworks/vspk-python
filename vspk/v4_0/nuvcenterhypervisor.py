@@ -60,9 +60,11 @@ class NUVCenterHypervisor(NURESTObject):
     
     ## Constants
     
+    CONST_VRS_STATE_UPGRADING = "UPGRADING"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_DESTINATION_MIRROR_PORT_ENS160 = "ens160"
+    CONST_VRS_STATE_NOT_DEPLOYED = "NOT_DEPLOYED"
     
     CONST_DESTINATION_MIRROR_PORT_ENS161 = "ens161"
     
@@ -72,7 +74,15 @@ class NUVCenterHypervisor(NURESTObject):
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
+    CONST_DESTINATION_MIRROR_PORT_ENS160 = "ens160"
+    
+    CONST_VRS_STATE_DEPLOYED = "DEPLOYED"
+    
     CONST_DESTINATION_MIRROR_PORT_NO_MIRROR = "no_mirror"
+    
+    CONST_VRS_STATE_TIMEDOUT = "TIMEDOUT"
+    
+    CONST_VRS_STATE_DEPLOYING = "DEPLOYING"
     
     
 
@@ -96,9 +106,12 @@ class NUVCenterHypervisor(NURESTObject):
         self._vcenter_ip = None
         self._vcenter_password = None
         self._vcenter_user = None
+        self._vrs_configuration_time = None
         self._vrs_metrics_id = None
+        self._vrs_state = None
         self._v_require_nuage_metadata = None
         self._name = None
+        self._managed_object_id = None
         self._last_updated_by = None
         self._last_vrs_deployed_date = None
         self._data_dns1 = None
@@ -176,6 +189,7 @@ class NUVCenterHypervisor(NURESTObject):
         self._multicast_source_portgroup = None
         self._customized_script_url = None
         self._available_networks = None
+        self._ovf_url = None
         self._external_id = None
         self._hypervisor_ip = None
         self._hypervisor_password = None
@@ -184,9 +198,12 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="vcenter_ip", remote_name="vCenterIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vcenter_password", remote_name="vCenterPassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vcenter_user", remote_name="vCenterUser", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrs_configuration_time", remote_name="VRSConfigurationTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_metrics_id", remote_name="VRSMetricsID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrs_state", remote_name="VRSState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEPLOYED', u'DEPLOYING', u'NOT_DEPLOYED', u'TIMEDOUT', u'UPGRADING'])
         self.expose_attribute(local_name="v_require_nuage_metadata", remote_name="vRequireNuageMetadata", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="managed_object_id", remote_name="managedObjectID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_vrs_deployed_date", remote_name="lastVRSDeployedDate", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data_dns1", remote_name="dataDNS1", attribute_type=str, is_required=False, is_unique=False)
@@ -264,6 +281,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="multicast_source_portgroup", remote_name="multicastSourcePortgroup", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="customized_script_url", remote_name="customizedScriptURL", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="available_networks", remote_name="availableNetworks", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ovf_url", remote_name="ovfURL", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="hypervisor_ip", remote_name="hypervisorIP", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="hypervisor_password", remote_name="hypervisorPassword", attribute_type=str, is_required=True, is_unique=False)
@@ -377,6 +395,33 @@ class NUVCenterHypervisor(NURESTObject):
 
     
     @property
+    def vrs_configuration_time(self):
+        """ Get vrs_configuration_time value.
+
+            Notes:
+                The maximum wait time limit in minutes to get VRS configured at cluster level
+
+                
+                This attribute is named `VRSConfigurationTime` in VSD API.
+                
+        """
+        return self._vrs_configuration_time
+
+    @vrs_configuration_time.setter
+    def vrs_configuration_time(self, value):
+        """ Set vrs_configuration_time value.
+
+            Notes:
+                The maximum wait time limit in minutes to get VRS configured at cluster level
+
+                
+                This attribute is named `VRSConfigurationTime` in VSD API.
+                
+        """
+        self._vrs_configuration_time = value
+
+    
+    @property
     def vrs_metrics_id(self):
         """ Get vrs_metrics_id value.
 
@@ -401,6 +446,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._vrs_metrics_id = value
+
+    
+    @property
+    def vrs_state(self):
+        """ Get vrs_state value.
+
+            Notes:
+                Current state of the VRS VM on the hypervisor
+
+                
+                This attribute is named `VRSState` in VSD API.
+                
+        """
+        return self._vrs_state
+
+    @vrs_state.setter
+    def vrs_state(self, value):
+        """ Set vrs_state value.
+
+            Notes:
+                Current state of the VRS VM on the hypervisor
+
+                
+                This attribute is named `VRSState` in VSD API.
+                
+        """
+        self._vrs_state = value
 
     
     @property
@@ -451,6 +523,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._name = value
+
+    
+    @property
+    def managed_object_id(self):
+        """ Get managed_object_id value.
+
+            Notes:
+                managed Object ID of hypervisor
+
+                
+                This attribute is named `managedObjectID` in VSD API.
+                
+        """
+        return self._managed_object_id
+
+    @managed_object_id.setter
+    def managed_object_id(self, value):
+        """ Set managed_object_id value.
+
+            Notes:
+                managed Object ID of hypervisor
+
+                
+                This attribute is named `managedObjectID` in VSD API.
+                
+        """
+        self._managed_object_id = value
 
     
     @property
@@ -2514,6 +2613,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._available_networks = value
+
+    
+    @property
+    def ovf_url(self):
+        """ Get ovf_url value.
+
+            Notes:
+                ovf url
+
+                
+                This attribute is named `ovfURL` in VSD API.
+                
+        """
+        return self._ovf_url
+
+    @ovf_url.setter
+    def ovf_url(self, value):
+        """ Set ovf_url value.
+
+            Notes:
+                ovf url
+
+                
+                This attribute is named `ovfURL` in VSD API.
+                
+        """
+        self._ovf_url = value
 
     
     @property

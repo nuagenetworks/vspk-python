@@ -26,6 +26,9 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
+
+from .fetchers import NUUnderlaysFetcher
+
 from bambou import NURESTObject
 
 
@@ -42,7 +45,13 @@ class NUUplinkConnection(NURESTObject):
     
     ## Constants
     
+    CONST_ADVERTISEMENT_CRITERIA_OPERATIONAL_LINK = "OPERATIONAL_LINK"
+    
+    CONST_ADVERTISEMENT_CRITERIA_GATEWAY_PING = "GATEWAY_PING"
+    
     CONST_ROLE_UNKNOWN = "UNKNOWN"
+    
+    CONST_ROLE_NONE = "NONE"
     
     CONST_ROLE_SECONDARY = "SECONDARY"
     
@@ -53,6 +62,8 @@ class NUUplinkConnection(NURESTObject):
     CONST_ROLE_TERTIARY = "TERTIARY"
     
     CONST_MODE_ANY = "Any"
+    
+    CONST_ADVERTISEMENT_CRITERIA_CONTROL_SESSION = "CONTROL_SESSION"
     
     CONST_MODE_STATIC = "Static"
     
@@ -83,21 +94,35 @@ class NUUplinkConnection(NURESTObject):
         
         self._dns_address = None
         self._password = None
+        self._gateway = None
         self._address = None
+        self._advertisement_criteria = None
         self._netmask = None
         self._mode = None
         self._role = None
+        self._uplink_id = None
         self._username = None
+        self._assoc_underlay_id = None
         self._associated_vsc_profile_id = None
         
         self.expose_attribute(local_name="dns_address", remote_name="DNSAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPv4', u'IPv6'])
+        self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONTROL_SESSION', u'GATEWAY_PING', u'OPERATIONAL_LINK'])
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'Any', u'Dynamic', u'PPPoE', u'Static'])
-        self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'SECONDARY', u'TERTIARY', u'UNKNOWN'])
+        self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'PRIMARY', u'SECONDARY', u'TERTIARY', u'UNKNOWN'])
+        self.expose_attribute(local_name="uplink_id", remote_name="uplinkID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="username", remote_name="username", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="assoc_underlay_id", remote_name="assocUnderlayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vsc_profile_id", remote_name="associatedVSCProfileID", attribute_type=str, is_required=False, is_unique=False)
+        
+
+        # Fetchers
+        
+        
+        self.underlays = NUUnderlaysFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -155,6 +180,29 @@ class NUUplinkConnection(NURESTObject):
 
     
     @property
+    def gateway(self):
+        """ Get gateway value.
+
+            Notes:
+                IP address of the gateway bound to the port
+
+                
+        """
+        return self._gateway
+
+    @gateway.setter
+    def gateway(self, value):
+        """ Set gateway value.
+
+            Notes:
+                IP address of the gateway bound to the port
+
+                
+        """
+        self._gateway = value
+
+    
+    @property
     def address(self):
         """ Get address value.
 
@@ -175,6 +223,33 @@ class NUUplinkConnection(NURESTObject):
                 
         """
         self._address = value
+
+    
+    @property
+    def advertisement_criteria(self):
+        """ Get advertisement_criteria value.
+
+            Notes:
+                Advertisement Criteria for Traffic Flow
+
+                
+                This attribute is named `advertisementCriteria` in VSD API.
+                
+        """
+        return self._advertisement_criteria
+
+    @advertisement_criteria.setter
+    def advertisement_criteria(self, value):
+        """ Set advertisement_criteria value.
+
+            Notes:
+                Advertisement Criteria for Traffic Flow
+
+                
+                This attribute is named `advertisementCriteria` in VSD API.
+                
+        """
+        self._advertisement_criteria = value
 
     
     @property
@@ -247,6 +322,33 @@ class NUUplinkConnection(NURESTObject):
 
     
     @property
+    def uplink_id(self):
+        """ Get uplink_id value.
+
+            Notes:
+                ID that unqiuely identifies the uplink. 
+
+                
+                This attribute is named `uplinkID` in VSD API.
+                
+        """
+        return self._uplink_id
+
+    @uplink_id.setter
+    def uplink_id(self, value):
+        """ Set uplink_id value.
+
+            Notes:
+                ID that unqiuely identifies the uplink. 
+
+                
+                This attribute is named `uplinkID` in VSD API.
+                
+        """
+        self._uplink_id = value
+
+    
+    @property
     def username(self):
         """ Get username value.
 
@@ -267,6 +369,33 @@ class NUUplinkConnection(NURESTObject):
                 
         """
         self._username = value
+
+    
+    @property
+    def assoc_underlay_id(self):
+        """ Get assoc_underlay_id value.
+
+            Notes:
+                UUID of the underlay associated to the uplink.
+
+                
+                This attribute is named `assocUnderlayID` in VSD API.
+                
+        """
+        return self._assoc_underlay_id
+
+    @assoc_underlay_id.setter
+    def assoc_underlay_id(self, value):
+        """ Set assoc_underlay_id value.
+
+            Notes:
+                UUID of the underlay associated to the uplink.
+
+                
+                This attribute is named `assocUnderlayID` in VSD API.
+                
+        """
+        self._assoc_underlay_id = value
 
     
     @property

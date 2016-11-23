@@ -42,6 +42,12 @@ class NUBRConnection(NURESTObject):
     
     ## Constants
     
+    CONST_ADVERTISEMENT_CRITERIA_LINK_BASED = "LINK_BASED"
+    
+    CONST_ADVERTISEMENT_CRITERIA_GATEWAY_PING = "GATEWAY_PING"
+    
+    CONST_ADVERTISEMENT_CRITERIA_OPENFLOW = "OPENFLOW"
+    
     CONST_MODE_STATIC = "Static"
     
     
@@ -66,14 +72,18 @@ class NUBRConnection(NURESTObject):
         self._dns_address = None
         self._gateway = None
         self._address = None
+        self._advertisement_criteria = None
         self._netmask = None
         self._mode = None
+        self._uplink_id = None
         
         self.expose_attribute(local_name="dns_address", remote_name="DNSAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'GATEWAY_PING', u'LINK_BASED', u'OPENFLOW'])
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'Static'])
+        self.expose_attribute(local_name="uplink_id", remote_name="uplinkID", attribute_type=int, is_required=False, is_unique=False)
         
 
         self._compute_args(**kwargs)
@@ -154,6 +164,33 @@ class NUBRConnection(NURESTObject):
 
     
     @property
+    def advertisement_criteria(self):
+        """ Get advertisement_criteria value.
+
+            Notes:
+                Advertisement Criteria for Traffic Flow
+
+                
+                This attribute is named `advertisementCriteria` in VSD API.
+                
+        """
+        return self._advertisement_criteria
+
+    @advertisement_criteria.setter
+    def advertisement_criteria(self, value):
+        """ Set advertisement_criteria value.
+
+            Notes:
+                Advertisement Criteria for Traffic Flow
+
+                
+                This attribute is named `advertisementCriteria` in VSD API.
+                
+        """
+        self._advertisement_criteria = value
+
+    
+    @property
     def netmask(self):
         """ Get netmask value.
 
@@ -197,6 +234,33 @@ class NUBRConnection(NURESTObject):
                 
         """
         self._mode = value
+
+    
+    @property
+    def uplink_id(self):
+        """ Get uplink_id value.
+
+            Notes:
+                Internally generated ID in the range that idenitifies the uplink within the cotext of NSG
+
+                
+                This attribute is named `uplinkID` in VSD API.
+                
+        """
+        return self._uplink_id
+
+    @uplink_id.setter
+    def uplink_id(self, value):
+        """ Set uplink_id value.
+
+            Notes:
+                Internally generated ID in the range that idenitifies the uplink within the cotext of NSG
+
+                
+                This attribute is named `uplinkID` in VSD API.
+                
+        """
+        self._uplink_id = value
 
     
 

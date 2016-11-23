@@ -61,7 +61,11 @@ class NUNSGatewayTemplate(NURESTObject):
     
     CONST_INSTANCE_SSH_OVERRIDE_ALLOWED = "ALLOWED"
     
+    CONST_PERSONALITY_NSG = "NSG"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_PERSONALITY_NSGBR = "NSGBR"
     
     
 
@@ -85,6 +89,7 @@ class NUNSGatewayTemplate(NURESTObject):
         self._ssh_service = None
         self._name = None
         self._last_updated_by = None
+        self._personality = None
         self._description = None
         self._infrastructure_access_profile_id = None
         self._infrastructure_profile_id = None
@@ -96,6 +101,7 @@ class NUNSGatewayTemplate(NURESTObject):
         self.expose_attribute(local_name="ssh_service", remote_name="SSHService", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'NSG', u'NSGBR'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="infrastructure_access_profile_id", remote_name="infrastructureAccessProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="infrastructure_profile_id", remote_name="infrastructureProfileID", attribute_type=str, is_required=True, is_unique=False)
@@ -196,6 +202,29 @@ class NUNSGatewayTemplate(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def personality(self):
+        """ Get personality value.
+
+            Notes:
+                Personality of the Gateway - NSG, NSGBR, cannot be changed after creation.
+
+                
+        """
+        return self._personality
+
+    @personality.setter
+    def personality(self, value):
+        """ Set personality value.
+
+            Notes:
+                Personality of the Gateway - NSG, NSGBR, cannot be changed after creation.
+
+                
+        """
+        self._personality = value
 
     
     @property

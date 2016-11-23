@@ -96,6 +96,7 @@ class NUVCenter(NURESTObject):
 
         # Read/Write Attributes
         
+        self._vrs_configuration_time = None
         self._v_require_nuage_metadata = None
         self._name = None
         self._password = None
@@ -172,6 +173,7 @@ class NUVCenter(NURESTObject):
         self._ovf_url = None
         self._external_id = None
         
+        self.expose_attribute(local_name="vrs_configuration_time", remote_name="VRSConfigurationTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="v_require_nuage_metadata", remote_name="vRequireNuageMetadata", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=True, is_unique=False)
@@ -276,6 +278,33 @@ class NUVCenter(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def vrs_configuration_time(self):
+        """ Get vrs_configuration_time value.
+
+            Notes:
+                The maximum wait time limit in minutes to get VRS configured at cluster level
+
+                
+                This attribute is named `VRSConfigurationTime` in VSD API.
+                
+        """
+        return self._vrs_configuration_time
+
+    @vrs_configuration_time.setter
+    def vrs_configuration_time(self, value):
+        """ Set vrs_configuration_time value.
+
+            Notes:
+                The maximum wait time limit in minutes to get VRS configured at cluster level
+
+                
+                This attribute is named `VRSConfigurationTime` in VSD API.
+                
+        """
+        self._vrs_configuration_time = value
+
     
     @property
     def v_require_nuage_metadata(self):

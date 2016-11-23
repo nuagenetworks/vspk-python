@@ -159,6 +159,9 @@ from .fetchers import NUNSGatewaysFetcher
 from .fetchers import NUNSGatewayTemplatesFetcher
 
 
+from .fetchers import NUNSGGroupsFetcher
+
+
 from .fetchers import NUNSRedundantGatewayGroupsFetcher
 
 
@@ -438,6 +441,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.ns_gateway_templates = NUNSGatewayTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.nsg_groups = NUNSGGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ns_redundant_gateway_groups = NUNSRedundantGatewayGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")

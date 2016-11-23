@@ -83,6 +83,7 @@ class NUVLANTemplate(NURESTObject):
         self._entity_scope = None
         self._associated_egress_qos_policy_id = None
         self._associated_vsc_profile_id = None
+        self._duc_vlan = None
         self._external_id = None
         
         self.expose_attribute(local_name="value", remote_name="value", attribute_type=int, is_required=False, is_unique=False)
@@ -91,6 +92,7 @@ class NUVLANTemplate(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vsc_profile_id", remote_name="associatedVSCProfileID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="duc_vlan", remote_name="ducVlan", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -265,6 +267,33 @@ class NUVLANTemplate(NURESTObject):
                 
         """
         self._associated_vsc_profile_id = value
+
+    
+    @property
+    def duc_vlan(self):
+        """ Get duc_vlan value.
+
+            Notes:
+                When set to true, this specifies that this VLAN template instance serves as an underlay connection endpoint on an NSG-UBR gateway.
+
+                
+                This attribute is named `ducVlan` in VSD API.
+                
+        """
+        return self._duc_vlan
+
+    @duc_vlan.setter
+    def duc_vlan(self, value):
+        """ Set duc_vlan value.
+
+            Notes:
+                When set to true, this specifies that this VLAN template instance serves as an underlay connection endpoint on an NSG-UBR gateway.
+
+                
+                This attribute is named `ducVlan` in VSD API.
+                
+        """
+        self._duc_vlan = value
 
     
     @property

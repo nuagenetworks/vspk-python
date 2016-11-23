@@ -101,7 +101,11 @@ class NUNSGateway(NURESTObject):
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
+    CONST_PERSONALITY_NSGDUC = "NSGDUC"
+    
     CONST_FAMILY_NSG_V = "NSG_V"
+    
+    CONST_DERIVED_SSH_SERVICE_STATE_INSTANCE_DISABLED = "INSTANCE_DISABLED"
     
     CONST_BOOTSTRAP_STATUS_ACTIVE = "ACTIVE"
     
@@ -119,6 +123,8 @@ class NUNSGateway(NURESTObject):
     
     CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
     
+    CONST_DERIVED_SSH_SERVICE_STATE_INHERITED_ENABLED = "INHERITED_ENABLED"
+    
     CONST_CONFIGURATION_STATUS_SUCCESS = "SUCCESS"
     
     CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
@@ -128,6 +134,8 @@ class NUNSGateway(NURESTObject):
     CONST_PERSONALITY_DC7X50 = "DC7X50"
     
     CONST_BOOTSTRAP_STATUS_CERTIFICATE_SIGNED = "CERTIFICATE_SIGNED"
+    
+    CONST_DERIVED_SSH_SERVICE_STATE_INSTANCE_ENABLED = "INSTANCE_ENABLED"
     
     CONST_FAMILY_ANY = "ANY"
     
@@ -145,6 +153,8 @@ class NUNSGateway(NURESTObject):
     
     CONST_PERMITTED_ACTION_USE = "USE"
     
+    CONST_DERIVED_SSH_SERVICE_STATE_INHERITED_DISABLED = "INHERITED_DISABLED"
+    
     CONST_TPM_STATUS_ENABLED_NOT_OPERATIONAL = "ENABLED_NOT_OPERATIONAL"
     
     CONST_TPM_STATUS_UNKNOWN = "UNKNOWN"
@@ -158,6 +168,8 @@ class NUNSGateway(NURESTObject):
     CONST_PERMITTED_ACTION_ALL = "ALL"
     
     CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
+    
+    CONST_DERIVED_SSH_SERVICE_STATE_UNKNOWN = "UNKNOWN"
     
     CONST_INHERITED_SSH_SERVICE_STATE_DISABLED = "DISABLED"
     
@@ -209,6 +221,7 @@ class NUNSGateway(NURESTObject):
         self._template_id = None
         self._pending = None
         self._serial_number = None
+        self._derived_ssh_service_state = None
         self._permitted_action = None
         self._personality = None
         self._description = None
@@ -245,8 +258,9 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="pending", remote_name="pending", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="derived_ssh_service_state", remote_name="derivedSSHServiceState", attribute_type=str, is_required=False, is_unique=False, choices=[u'INHERITED_DISABLED', u'INHERITED_ENABLED', u'INSTANCE_DISABLED', u'INSTANCE_ENABLED', u'UNKNOWN'])
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'NSGBR', u'OTHER', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'NSGBR', u'NSGDUC', u'OTHER', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="inherited_ssh_service_state", remote_name="inheritedSSHServiceState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
@@ -768,6 +782,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._serial_number = value
+
+    
+    @property
+    def derived_ssh_service_state(self):
+        """ Get derived_ssh_service_state value.
+
+            Notes:
+                Indicates the SSH Service state on a NSG. This value is derived based on the SSHService configuration on the NSG and the associated Gateway Template.
+
+                
+                This attribute is named `derivedSSHServiceState` in VSD API.
+                
+        """
+        return self._derived_ssh_service_state
+
+    @derived_ssh_service_state.setter
+    def derived_ssh_service_state(self, value):
+        """ Set derived_ssh_service_state value.
+
+            Notes:
+                Indicates the SSH Service state on a NSG. This value is derived based on the SSHService configuration on the NSG and the associated Gateway Template.
+
+                
+                This attribute is named `derivedSSHServiceState` in VSD API.
+                
+        """
+        self._derived_ssh_service_state = value
 
     
     @property

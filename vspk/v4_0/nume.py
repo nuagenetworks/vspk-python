@@ -63,6 +63,9 @@ from .fetchers import NURedirectionTargetsFetcher
 from .fetchers import NURedundancyGroupsFetcher
 
 
+from .fetchers import NUPerformanceMonitorsFetcher
+
+
 from .fetchers import NUCertificatesFetcher
 
 
@@ -135,6 +138,9 @@ from .fetchers import NUVMInterfacesFetcher
 from .fetchers import NUCloudMgmtSystemsFetcher
 
 
+from .fetchers import NUUnderlaysFetcher
+
+
 from .fetchers import NUInfrastructureGatewayProfilesFetcher
 
 
@@ -198,6 +204,9 @@ from .fetchers import NUNSGatewaysFetcher
 from .fetchers import NUNSGatewayTemplatesFetcher
 
 
+from .fetchers import NUNSGGroupsFetcher
+
+
 from .fetchers import NUNSRedundantGatewayGroupsFetcher
 
 
@@ -211,6 +220,9 @@ from .fetchers import NUStatsCollectorInfosFetcher
 
 
 from .fetchers import NUSubnetsFetcher
+
+
+from .fetchers import NUDUCGroupsFetcher
 
 
 from .fetchers import NUMultiCastChannelMapsFetcher
@@ -346,6 +358,9 @@ class NUMe(NURESTRootObject):
         self.redundancy_groups = NURedundancyGroupsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.performance_monitors = NUPerformanceMonitorsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.certificates = NUCertificatesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -418,6 +433,9 @@ class NUMe(NURESTRootObject):
         self.cloud_mgmt_systems = NUCloudMgmtSystemsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.underlays = NUUnderlaysFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.infrastructure_gateway_profiles = NUInfrastructureGatewayProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -481,6 +499,9 @@ class NUMe(NURESTRootObject):
         self.ns_gateway_templates = NUNSGatewayTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.nsg_groups = NUNSGGroupsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.ns_redundant_gateway_groups = NUNSRedundantGatewayGroupsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -494,6 +515,9 @@ class NUMe(NURESTRootObject):
         
         
         self.subnets = NUSubnetsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.duc_groups = NUDUCGroupsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.multi_cast_channel_maps = NUMultiCastChannelMapsFetcher.fetcher_with_object(parent_object=self, relationship="root")

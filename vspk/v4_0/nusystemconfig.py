@@ -199,6 +199,7 @@ class NUSystemConfig(NURESTObject):
         self._elastic_search_ui_address = None
         self._allow_enterprise_avatar_on_nsg = None
         self._global_mac_address = None
+        self._flow_collection_enabled = None
         self._inactive_timeout = None
         self._entity_scope = None
         self._domain_tunnel_type = None
@@ -324,6 +325,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="elastic_search_ui_address", remote_name="elasticSearchUIAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_enterprise_avatar_on_nsg", remote_name="allowEnterpriseAvatarOnNSG", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="global_mac_address", remote_name="globalMACAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="inactive_timeout", remote_name="inactiveTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="domain_tunnel_type", remote_name="domainTunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VXLAN'])
@@ -2021,6 +2023,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._global_mac_address = value
+
+    
+    @property
+    def flow_collection_enabled(self):
+        """ Get flow_collection_enabled value.
+
+            Notes:
+                This flag is used to indicate if flow collection is enabled in the system.
+
+                
+                This attribute is named `flowCollectionEnabled` in VSD API.
+                
+        """
+        return self._flow_collection_enabled
+
+    @flow_collection_enabled.setter
+    def flow_collection_enabled(self, value):
+        """ Set flow_collection_enabled value.
+
+            Notes:
+                This flag is used to indicate if flow collection is enabled in the system.
+
+                
+                This attribute is named `flowCollectionEnabled` in VSD API.
+                
+        """
+        self._flow_collection_enabled = value
 
     
     @property

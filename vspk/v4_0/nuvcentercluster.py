@@ -96,6 +96,7 @@ class NUVCenterCluster(NURESTObject):
 
         # Read/Write Attributes
         
+        self._vrs_configuration_time = None
         self._v_require_nuage_metadata = None
         self._name = None
         self._managed_object_id = None
@@ -165,8 +166,10 @@ class NUVCenterCluster(NURESTObject):
         self._multicast_send_interface_netmask = None
         self._multicast_source_portgroup = None
         self._customized_script_url = None
+        self._ovf_url = None
         self._external_id = None
         
+        self.expose_attribute(local_name="vrs_configuration_time", remote_name="VRSConfigurationTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="v_require_nuage_metadata", remote_name="vRequireNuageMetadata", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="managed_object_id", remote_name="managedObjectID", attribute_type=str, is_required=False, is_unique=False)
@@ -236,6 +239,7 @@ class NUVCenterCluster(NURESTObject):
         self.expose_attribute(local_name="multicast_send_interface_netmask", remote_name="multicastSendInterfaceNetmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast_source_portgroup", remote_name="multicastSourcePortgroup", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="customized_script_url", remote_name="customizedScriptURL", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ovf_url", remote_name="ovfURL", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -266,6 +270,33 @@ class NUVCenterCluster(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def vrs_configuration_time(self):
+        """ Get vrs_configuration_time value.
+
+            Notes:
+                The maximum wait time limit in minutes to get VRS configured at cluster level
+
+                
+                This attribute is named `VRSConfigurationTime` in VSD API.
+                
+        """
+        return self._vrs_configuration_time
+
+    @vrs_configuration_time.setter
+    def vrs_configuration_time(self, value):
+        """ Set vrs_configuration_time value.
+
+            Notes:
+                The maximum wait time limit in minutes to get VRS configured at cluster level
+
+                
+                This attribute is named `VRSConfigurationTime` in VSD API.
+                
+        """
+        self._vrs_configuration_time = value
+
     
     @property
     def v_require_nuage_metadata(self):
@@ -2108,6 +2139,33 @@ class NUVCenterCluster(NURESTObject):
                 
         """
         self._customized_script_url = value
+
+    
+    @property
+    def ovf_url(self):
+        """ Get ovf_url value.
+
+            Notes:
+                ovf url
+
+                
+                This attribute is named `ovfURL` in VSD API.
+                
+        """
+        return self._ovf_url
+
+    @ovf_url.setter
+    def ovf_url(self, value):
+        """ Set ovf_url value.
+
+            Notes:
+                ovf url
+
+                
+                This attribute is named `ovfURL` in VSD API.
+                
+        """
+        self._ovf_url = value
 
     
     @property
