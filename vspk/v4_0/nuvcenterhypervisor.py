@@ -106,7 +106,7 @@ class NUVCenterHypervisor(NURESTObject):
         self._vcenter_ip = None
         self._vcenter_password = None
         self._vcenter_user = None
-        self._vrs_configuration_time = None
+        self._vrs_configuration_time_limit = None
         self._vrs_metrics_id = None
         self._vrs_state = None
         self._v_require_nuage_metadata = None
@@ -198,7 +198,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="vcenter_ip", remote_name="vCenterIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vcenter_password", remote_name="vCenterPassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vcenter_user", remote_name="vCenterUser", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="vrs_configuration_time", remote_name="VRSConfigurationTime", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrs_configuration_time_limit", remote_name="VRSConfigurationTimeLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_metrics_id", remote_name="VRSMetricsID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_state", remote_name="VRSState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEPLOYED', u'DEPLOYING', u'NOT_DEPLOYED', u'TIMEDOUT', u'UPGRADING'])
         self.expose_attribute(local_name="v_require_nuage_metadata", remote_name="vRequireNuageMetadata", attribute_type=bool, is_required=False, is_unique=False)
@@ -395,30 +395,30 @@ class NUVCenterHypervisor(NURESTObject):
 
     
     @property
-    def vrs_configuration_time(self):
-        """ Get vrs_configuration_time value.
+    def vrs_configuration_time_limit(self):
+        """ Get vrs_configuration_time_limit value.
 
             Notes:
                 The maximum wait time limit in minutes to get VRS configured at cluster level
 
                 
-                This attribute is named `VRSConfigurationTime` in VSD API.
+                This attribute is named `VRSConfigurationTimeLimit` in VSD API.
                 
         """
-        return self._vrs_configuration_time
+        return self._vrs_configuration_time_limit
 
-    @vrs_configuration_time.setter
-    def vrs_configuration_time(self, value):
-        """ Set vrs_configuration_time value.
+    @vrs_configuration_time_limit.setter
+    def vrs_configuration_time_limit(self, value):
+        """ Set vrs_configuration_time_limit value.
 
             Notes:
                 The maximum wait time limit in minutes to get VRS configured at cluster level
 
                 
-                This attribute is named `VRSConfigurationTime` in VSD API.
+                This attribute is named `VRSConfigurationTimeLimit` in VSD API.
                 
         """
-        self._vrs_configuration_time = value
+        self._vrs_configuration_time_limit = value
 
     
     @property

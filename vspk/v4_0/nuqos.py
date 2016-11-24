@@ -116,6 +116,10 @@ class NUQOS(NURESTObject):
         self._service_class = None
         self._description = None
         self._rewrite_forwarding_class = None
+        self._egress_fip_committed_burst_size = None
+        self._egress_fip_committed_information_rate = None
+        self._egress_fip_peak_burst_size = None
+        self._egress_fip_peak_information_rate = None
         self._entity_scope = None
         self._committed_burst_size = None
         self._committed_information_rate = None
@@ -144,6 +148,10 @@ class NUQOS(NURESTObject):
         self.expose_attribute(local_name="service_class", remote_name="serviceClass", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rewrite_forwarding_class", remote_name="rewriteForwardingClass", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="egress_fip_committed_burst_size", remote_name="EgressFIPCommittedBurstSize", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="egress_fip_committed_information_rate", remote_name="EgressFIPCommittedInformationRate", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="egress_fip_peak_burst_size", remote_name="EgressFIPPeakBurstSize", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="egress_fip_peak_information_rate", remote_name="EgressFIPPeakInformationRate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="committed_burst_size", remote_name="committedBurstSize", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="committed_information_rate", remote_name="committedInformationRate", attribute_type=str, is_required=False, is_unique=False)
@@ -645,6 +653,114 @@ class NUQOS(NURESTObject):
                 
         """
         self._rewrite_forwarding_class = value
+
+    
+    @property
+    def egress_fip_committed_burst_size(self):
+        """ Get egress_fip_committed_burst_size value.
+
+            Notes:
+                Committed burst size setting in kilo-bytes (kilo-octets) for FIP Shaper on the Egress.
+
+                
+                This attribute is named `EgressFIPCommittedBurstSize` in VSD API.
+                
+        """
+        return self._egress_fip_committed_burst_size
+
+    @egress_fip_committed_burst_size.setter
+    def egress_fip_committed_burst_size(self, value):
+        """ Set egress_fip_committed_burst_size value.
+
+            Notes:
+                Committed burst size setting in kilo-bytes (kilo-octets) for FIP Shaper on the Egress.
+
+                
+                This attribute is named `EgressFIPCommittedBurstSize` in VSD API.
+                
+        """
+        self._egress_fip_committed_burst_size = value
+
+    
+    @property
+    def egress_fip_committed_information_rate(self):
+        """ Get egress_fip_committed_information_rate value.
+
+            Notes:
+                Committed information rate setting in Mb/s for FIP Shaper on the egress side.
+
+                
+                This attribute is named `EgressFIPCommittedInformationRate` in VSD API.
+                
+        """
+        return self._egress_fip_committed_information_rate
+
+    @egress_fip_committed_information_rate.setter
+    def egress_fip_committed_information_rate(self, value):
+        """ Set egress_fip_committed_information_rate value.
+
+            Notes:
+                Committed information rate setting in Mb/s for FIP Shaper on the egress side.
+
+                
+                This attribute is named `EgressFIPCommittedInformationRate` in VSD API.
+                
+        """
+        self._egress_fip_committed_information_rate = value
+
+    
+    @property
+    def egress_fip_peak_burst_size(self):
+        """ Get egress_fip_peak_burst_size value.
+
+            Notes:
+                Peak burst size setting in kilo-bytes (kilo-octets) for Egress FIP rate limiting.
+
+                
+                This attribute is named `EgressFIPPeakBurstSize` in VSD API.
+                
+        """
+        return self._egress_fip_peak_burst_size
+
+    @egress_fip_peak_burst_size.setter
+    def egress_fip_peak_burst_size(self, value):
+        """ Set egress_fip_peak_burst_size value.
+
+            Notes:
+                Peak burst size setting in kilo-bytes (kilo-octets) for Egress FIP rate limiting.
+
+                
+                This attribute is named `EgressFIPPeakBurstSize` in VSD API.
+                
+        """
+        self._egress_fip_peak_burst_size = value
+
+    
+    @property
+    def egress_fip_peak_information_rate(self):
+        """ Get egress_fip_peak_information_rate value.
+
+            Notes:
+                Peak rate setting for FIP rate limiting on egress in Mb/s
+
+                
+                This attribute is named `EgressFIPPeakInformationRate` in VSD API.
+                
+        """
+        return self._egress_fip_peak_information_rate
+
+    @egress_fip_peak_information_rate.setter
+    def egress_fip_peak_information_rate(self, value):
+        """ Set egress_fip_peak_information_rate value.
+
+            Notes:
+                Peak rate setting for FIP rate limiting on egress in Mb/s
+
+                
+                This attribute is named `EgressFIPPeakInformationRate` in VSD API.
+                
+        """
+        self._egress_fip_peak_information_rate = value
 
     
     @property

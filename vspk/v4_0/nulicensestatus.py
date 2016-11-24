@@ -58,6 +58,8 @@ class NULicenseStatus(NURESTObject):
 
         # Read/Write Attributes
         
+        self._accumulate_licenses_enabled = None
+        self._total_licensed_gateways_count  = None
         self._total_licensed_nics_count = None
         self._total_licensed_nsgs_count = None
         self._total_licensed_used_nics_count = None
@@ -68,7 +70,10 @@ class NULicenseStatus(NURESTObject):
         self._total_licensed_vms_count = None
         self._total_licensed_vrsgs_count = None
         self._total_licensed_vrss_count = None
+        self._total_used_gateways_count  = None
         
+        self.expose_attribute(local_name="accumulate_licenses_enabled", remote_name="accumulateLicensesEnabled", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_gateways_count ", remote_name="totalLicensedGatewaysCount ", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_nics_count", remote_name="totalLicensedNICsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_nsgs_count", remote_name="totalLicensedNSGsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_used_nics_count", remote_name="totalLicensedUsedNICsCount", attribute_type=int, is_required=False, is_unique=False)
@@ -79,11 +84,66 @@ class NULicenseStatus(NURESTObject):
         self.expose_attribute(local_name="total_licensed_vms_count", remote_name="totalLicensedVMsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_vrsgs_count", remote_name="totalLicensedVRSGsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_vrss_count", remote_name="totalLicensedVRSsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_used_gateways_count ", remote_name="totalUsedGatewaysCount ", attribute_type=int, is_required=False, is_unique=False)
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def accumulate_licenses_enabled(self):
+        """ Get accumulate_licenses_enabled value.
+
+            Notes:
+                Whether the various VRS license flavours be merged in one pool
+
+                
+                This attribute is named `accumulateLicensesEnabled` in VSD API.
+                
+        """
+        return self._accumulate_licenses_enabled
+
+    @accumulate_licenses_enabled.setter
+    def accumulate_licenses_enabled(self, value):
+        """ Set accumulate_licenses_enabled value.
+
+            Notes:
+                Whether the various VRS license flavours be merged in one pool
+
+                
+                This attribute is named `accumulateLicensesEnabled` in VSD API.
+                
+        """
+        self._accumulate_licenses_enabled = value
+
+    
+    @property
+    def total_licensed_gateways_count (self):
+        """ Get total_licensed_gateways_count  value.
+
+            Notes:
+                 Indicates total VRS+VRSG+VRSB licenses licensed in the system
+
+                
+                This attribute is named `totalLicensedGatewaysCount ` in VSD API.
+                
+        """
+        return self._total_licensed_gateways_count 
+
+    @total_licensed_gateways_count .setter
+    def total_licensed_gateways_count (self, value):
+        """ Set total_licensed_gateways_count  value.
+
+            Notes:
+                 Indicates total VRS+VRSG+VRSB licenses licensed in the system
+
+                
+                This attribute is named `totalLicensedGatewaysCount ` in VSD API.
+                
+        """
+        self._total_licensed_gateways_count  = value
+
     
     @property
     def total_licensed_nics_count(self):
@@ -353,6 +413,33 @@ class NULicenseStatus(NURESTObject):
                 
         """
         self._total_licensed_vrss_count = value
+
+    
+    @property
+    def total_used_gateways_count (self):
+        """ Get total_used_gateways_count  value.
+
+            Notes:
+                Indicates total VRS+VRSG+VRSB licenses used in the system
+
+                
+                This attribute is named `totalUsedGatewaysCount ` in VSD API.
+                
+        """
+        return self._total_used_gateways_count 
+
+    @total_used_gateways_count .setter
+    def total_used_gateways_count (self, value):
+        """ Set total_used_gateways_count  value.
+
+            Notes:
+                Indicates total VRS+VRSG+VRSB licenses used in the system
+
+                
+                This attribute is named `totalUsedGatewaysCount ` in VSD API.
+                
+        """
+        self._total_used_gateways_count  = value
 
     
 

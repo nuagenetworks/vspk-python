@@ -96,7 +96,7 @@ class NUVCenter(NURESTObject):
 
         # Read/Write Attributes
         
-        self._vrs_configuration_time = None
+        self._vrs_configuration_time_limit = None
         self._v_require_nuage_metadata = None
         self._name = None
         self._password = None
@@ -129,6 +129,7 @@ class NUVCenter(NURESTObject):
         self._dhcp_relay_server = None
         self._mirror_network_portgroup = None
         self._site_id = None
+        self._old_agency_name = None
         self._allow_data_dhcp = None
         self._allow_mgmt_dhcp = None
         self._flow_eviction_threshold = None
@@ -173,7 +174,7 @@ class NUVCenter(NURESTObject):
         self._ovf_url = None
         self._external_id = None
         
-        self.expose_attribute(local_name="vrs_configuration_time", remote_name="VRSConfigurationTime", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrs_configuration_time_limit", remote_name="VRSConfigurationTimeLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="v_require_nuage_metadata", remote_name="vRequireNuageMetadata", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=True, is_unique=False)
@@ -206,6 +207,7 @@ class NUVCenter(NURESTObject):
         self.expose_attribute(local_name="dhcp_relay_server", remote_name="dhcpRelayServer", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mirror_network_portgroup", remote_name="mirrorNetworkPortgroup", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="site_id", remote_name="siteId", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="old_agency_name", remote_name="oldAgencyName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_data_dhcp", remote_name="allowDataDHCP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_mgmt_dhcp", remote_name="allowMgmtDHCP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_eviction_threshold", remote_name="flowEvictionThreshold", attribute_type=int, is_required=False, is_unique=False)
@@ -280,30 +282,30 @@ class NUVCenter(NURESTObject):
     # Properties
     
     @property
-    def vrs_configuration_time(self):
-        """ Get vrs_configuration_time value.
+    def vrs_configuration_time_limit(self):
+        """ Get vrs_configuration_time_limit value.
 
             Notes:
                 The maximum wait time limit in minutes to get VRS configured at cluster level
 
                 
-                This attribute is named `VRSConfigurationTime` in VSD API.
+                This attribute is named `VRSConfigurationTimeLimit` in VSD API.
                 
         """
-        return self._vrs_configuration_time
+        return self._vrs_configuration_time_limit
 
-    @vrs_configuration_time.setter
-    def vrs_configuration_time(self, value):
-        """ Set vrs_configuration_time value.
+    @vrs_configuration_time_limit.setter
+    def vrs_configuration_time_limit(self, value):
+        """ Set vrs_configuration_time_limit value.
 
             Notes:
                 The maximum wait time limit in minutes to get VRS configured at cluster level
 
                 
-                This attribute is named `VRSConfigurationTime` in VSD API.
+                This attribute is named `VRSConfigurationTimeLimit` in VSD API.
                 
         """
-        self._vrs_configuration_time = value
+        self._vrs_configuration_time_limit = value
 
     
     @property
@@ -1152,6 +1154,33 @@ class NUVCenter(NURESTObject):
                 
         """
         self._site_id = value
+
+    
+    @property
+    def old_agency_name(self):
+        """ Get old_agency_name value.
+
+            Notes:
+                Old Agency Name
+
+                
+                This attribute is named `oldAgencyName` in VSD API.
+                
+        """
+        return self._old_agency_name
+
+    @old_agency_name.setter
+    def old_agency_name(self, value):
+        """ Set old_agency_name value.
+
+            Notes:
+                Old Agency Name
+
+                
+                This attribute is named `oldAgencyName` in VSD API.
+                
+        """
+        self._old_agency_name = value
 
     
     @property
