@@ -62,14 +62,12 @@ class NUDUCGroup(NURESTObject):
         # Read/Write Attributes
         
         self._name = None
-        self._id = None
-        self._description  = None
+        self._description = None
         self._associated_ducs = None
         self._associated_performance_monitor_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="id", remote_name="id", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description ", remote_name="Description ", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ducs", remote_name="associatedDUCs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_performance_monitor_id", remote_name="associatedPerformanceMonitorID", attribute_type=str, is_required=False, is_unique=False)
         
@@ -108,53 +106,26 @@ class NUDUCGroup(NURESTObject):
 
     
     @property
-    def id(self):
-        """ Get id value.
-
-            Notes:
-                VSD System unique UUID of the UBR Group instance.
-
-                
-        """
-        return self._id
-
-    @id.setter
-    def id(self, value):
-        """ Set id value.
-
-            Notes:
-                VSD System unique UUID of the UBR Group instance.
-
-                
-        """
-        self._id = value
-
-    
-    @property
-    def description (self):
-        """ Get description  value.
+    def description(self):
+        """ Get description value.
 
             Notes:
                 Description of the UBR Group.
 
                 
-                This attribute is named `Description ` in VSD API.
-                
         """
-        return self._description 
+        return self._description
 
-    @description .setter
-    def description (self, value):
-        """ Set description  value.
+    @description.setter
+    def description(self, value):
+        """ Set description value.
 
             Notes:
                 Description of the UBR Group.
 
                 
-                This attribute is named `Description ` in VSD API.
-                
         """
-        self._description  = value
+        self._description = value
 
     
     @property

@@ -290,6 +290,7 @@ class NUMe(NURESTRootObject):
         self._first_name = None
         self._disabled = None
         self._elastic_search_ui_address = None
+        self._flow_collection_enabled = None
         self._email = None
         self._enterprise_id = None
         self._enterprise_name = None
@@ -297,6 +298,7 @@ class NUMe(NURESTRootObject):
         self._mobile_number = None
         self._role = None
         self._user_name = None
+        self._statistics_enabled = None
         self._avatar_data = None
         self._avatar_type = None
         self._external_id = None
@@ -307,6 +309,7 @@ class NUMe(NURESTRootObject):
         self.expose_attribute(local_name="first_name", remote_name="firstName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="disabled", remote_name="disabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="elastic_search_ui_address", remote_name="elasticSearchUIAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="email", remote_name="email", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
@@ -314,6 +317,7 @@ class NUMe(NURESTRootObject):
         self.expose_attribute(local_name="mobile_number", remote_name="mobileNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_name", remote_name="userName", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="statistics_enabled", remote_name="statisticsEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="avatar_data", remote_name="avatarData", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="avatar_type", remote_name="avatarType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BASE64', u'COMPUTEDURL', u'URL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -694,6 +698,33 @@ class NUMe(NURESTRootObject):
 
     
     @property
+    def flow_collection_enabled(self):
+        """ Get flow_collection_enabled value.
+
+            Notes:
+                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires "statisticsEnabled".
+
+                
+                This attribute is named `flowCollectionEnabled` in VSD API.
+                
+        """
+        return self._flow_collection_enabled
+
+    @flow_collection_enabled.setter
+    def flow_collection_enabled(self, value):
+        """ Set flow_collection_enabled value.
+
+            Notes:
+                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires "statisticsEnabled".
+
+                
+                This attribute is named `flowCollectionEnabled` in VSD API.
+                
+        """
+        self._flow_collection_enabled = value
+
+    
+    @property
     def email(self):
         """ Get email value.
 
@@ -872,6 +903,33 @@ class NUMe(NURESTRootObject):
                 
         """
         self._user_name = value
+
+    
+    @property
+    def statistics_enabled(self):
+        """ Get statistics_enabled value.
+
+            Notes:
+                This flag is used to indicate if statistics is enabled in the system. CSProot is expected to activate this through the enable statistics script.
+
+                
+                This attribute is named `statisticsEnabled` in VSD API.
+                
+        """
+        return self._statistics_enabled
+
+    @statistics_enabled.setter
+    def statistics_enabled(self, value):
+        """ Set statistics_enabled value.
+
+            Notes:
+                This flag is used to indicate if statistics is enabled in the system. CSProot is expected to activate this through the enable statistics script.
+
+                
+                This attribute is named `statisticsEnabled` in VSD API.
+                
+        """
+        self._statistics_enabled = value
 
     
     @property

@@ -84,6 +84,12 @@ from .fetchers import NUEgressQOSPoliciesFetcher
 from .fetchers import NUSharedNetworkResourcesFetcher
 
 
+from .fetchers import NUFirewallAclsFetcher
+
+
+from .fetchers import NUFirewallRulesFetcher
+
+
 from .fetchers import NUIKECertificatesFetcher
 
 
@@ -366,6 +372,12 @@ class NUEnterprise(NURESTObject):
         
         
         self.shared_network_resources = NUSharedNetworkResourcesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.firewall_acls = NUFirewallAclsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.firewall_rules = NUFirewallRulesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ike_certificates = NUIKECertificatesFetcher.fetcher_with_object(parent_object=self, relationship="child")

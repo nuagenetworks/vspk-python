@@ -61,11 +61,15 @@ class NUMonitorscope(NURESTObject):
         self._name = None
         self._read_only = None
         self._destination_nsgs = None
+        self._allow_all_destination_nsgs = None
+        self._allow_all_source_nsgs = None
         self._source_nsgs = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="read_only", remote_name="readOnly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_nsgs", remote_name="destinationNSGs", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="allow_all_destination_nsgs", remote_name="allowAllDestinationNSGs", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="allow_all_source_nsgs", remote_name="allowAllSourceNSGs", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_nsgs", remote_name="sourceNSGs", attribute_type=list, is_required=False, is_unique=False)
         
 
@@ -148,6 +152,60 @@ class NUMonitorscope(NURESTObject):
                 
         """
         self._destination_nsgs = value
+
+    
+    @property
+    def allow_all_destination_nsgs(self):
+        """ Get allow_all_destination_nsgs value.
+
+            Notes:
+                When set true, allows all destination NSGs
+
+                
+                This attribute is named `allowAllDestinationNSGs` in VSD API.
+                
+        """
+        return self._allow_all_destination_nsgs
+
+    @allow_all_destination_nsgs.setter
+    def allow_all_destination_nsgs(self, value):
+        """ Set allow_all_destination_nsgs value.
+
+            Notes:
+                When set true, allows all destination NSGs
+
+                
+                This attribute is named `allowAllDestinationNSGs` in VSD API.
+                
+        """
+        self._allow_all_destination_nsgs = value
+
+    
+    @property
+    def allow_all_source_nsgs(self):
+        """ Get allow_all_source_nsgs value.
+
+            Notes:
+                When set true, allows all Source NSGs
+
+                
+                This attribute is named `allowAllSourceNSGs` in VSD API.
+                
+        """
+        return self._allow_all_source_nsgs
+
+    @allow_all_source_nsgs.setter
+    def allow_all_source_nsgs(self, value):
+        """ Set allow_all_source_nsgs value.
+
+            Notes:
+                When set true, allows all Source NSGs
+
+                
+                This attribute is named `allowAllSourceNSGs` in VSD API.
+                
+        """
+        self._allow_all_source_nsgs = value
 
     
     @property

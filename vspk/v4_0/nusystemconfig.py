@@ -183,7 +183,7 @@ class NUSystemConfig(NURESTObject):
         self._last_updated_by = None
         self._max_failed_logins = None
         self._max_response = None
-        self._accumulate_licenses_enabled  = None
+        self._accumulate_licenses_enabled = None
         self._performance_path_selection_vnid = None
         self._service_id_upper_limit = None
         self._key_server_monitor_enabled = None
@@ -310,7 +310,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="max_failed_logins", remote_name="maxFailedLogins", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="max_response", remote_name="maxResponse", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="accumulate_licenses_enabled ", remote_name="accumulateLicensesEnabled ", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="accumulate_licenses_enabled", remote_name="accumulateLicensesEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="performance_path_selection_vnid", remote_name="performancePathSelectionVNID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_id_upper_limit", remote_name="serviceIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="key_server_monitor_enabled", remote_name="keyServerMonitorEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -1596,30 +1596,30 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
-    def accumulate_licenses_enabled (self):
-        """ Get accumulate_licenses_enabled  value.
+    def accumulate_licenses_enabled(self):
+        """ Get accumulate_licenses_enabled value.
 
             Notes:
                 Whether the various VRS license flavours be merged in one pool
 
                 
-                This attribute is named `accumulateLicensesEnabled ` in VSD API.
+                This attribute is named `accumulateLicensesEnabled` in VSD API.
                 
         """
-        return self._accumulate_licenses_enabled 
+        return self._accumulate_licenses_enabled
 
-    @accumulate_licenses_enabled .setter
-    def accumulate_licenses_enabled (self, value):
-        """ Set accumulate_licenses_enabled  value.
+    @accumulate_licenses_enabled.setter
+    def accumulate_licenses_enabled(self, value):
+        """ Set accumulate_licenses_enabled value.
 
             Notes:
                 Whether the various VRS license flavours be merged in one pool
 
                 
-                This attribute is named `accumulateLicensesEnabled ` in VSD API.
+                This attribute is named `accumulateLicensesEnabled` in VSD API.
                 
         """
-        self._accumulate_licenses_enabled  = value
+        self._accumulate_licenses_enabled = value
 
     
     @property
@@ -2059,7 +2059,7 @@ class NUSystemConfig(NURESTObject):
         """ Get flow_collection_enabled value.
 
             Notes:
-                This flag is used to indicate if flow collection is enabled in the system.
+                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires "statisticsEnabled".
 
                 
                 This attribute is named `flowCollectionEnabled` in VSD API.
@@ -2072,7 +2072,7 @@ class NUSystemConfig(NURESTObject):
         """ Set flow_collection_enabled value.
 
             Notes:
-                This flag is used to indicate if flow collection is enabled in the system.
+                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires "statisticsEnabled".
 
                 
                 This attribute is named `flowCollectionEnabled` in VSD API.

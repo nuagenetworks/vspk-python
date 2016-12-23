@@ -57,6 +57,9 @@ from .fetchers import NUDHCPOptionsFetcher
 from .fetchers import NULinksFetcher
 
 
+from .fetchers import NUFirewallAclsFetcher
+
+
 from .fetchers import NUFloatingIpsFetcher
 
 
@@ -379,6 +382,9 @@ class NUDomain(NURESTObject):
         
         
         self.links = NULinksFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.firewall_acls = NUFirewallAclsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.floating_ips = NUFloatingIpsFetcher.fetcher_with_object(parent_object=self, relationship="child")

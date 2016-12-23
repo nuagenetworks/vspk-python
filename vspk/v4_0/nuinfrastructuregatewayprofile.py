@@ -299,25 +299,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Get dead_timer value.
 
             Notes:
-                This is ISO 8601 format duration:
-P[date_fields]T[time_fields]
-P nYnMnD T nHnMnS where n represents the value of the date or time field.
-The table below shows the meaning of each field:
-
-+-------+----------------+
-|Letter |   Meaning      |
-+------------------------+
-| P     |   Period field |
-| Y     |   Year         |
-| M     |   Month        |
-| D     |   Day          |
-| T     |   Time field   |
-| H     |   Hour         |
-| M     |   Minute       |
-| S     |   Second       |
-+-------+----------------+
-
-Because the years and month are units that vary in length, for the time being those are not supported yet.
+                ISO 8601 format duration: **P nYnMnD T nHnMnS**. **P** represents the period field and **T** the time field. Period field: **Y** = year, **M** = month, **D** = day. Time field: **H** = hours, **M** = minutes, **S** = seconds. **n** is the value of each field. Because the years and month are units that vary in length, for the time being those are not supported yet.
 
                 
                 This attribute is named `deadTimer` in VSD API.
@@ -330,25 +312,7 @@ Because the years and month are units that vary in length, for the time being th
         """ Set dead_timer value.
 
             Notes:
-                This is ISO 8601 format duration:
-P[date_fields]T[time_fields]
-P nYnMnD T nHnMnS where n represents the value of the date or time field.
-The table below shows the meaning of each field:
-
-+-------+----------------+
-|Letter |   Meaning      |
-+------------------------+
-| P     |   Period field |
-| Y     |   Year         |
-| M     |   Month        |
-| D     |   Day          |
-| T     |   Time field   |
-| H     |   Hour         |
-| M     |   Minute       |
-| S     |   Second       |
-+-------+----------------+
-
-Because the years and month are units that vary in length, for the time being those are not supported yet.
+                ISO 8601 format duration: **P nYnMnD T nHnMnS**. **P** represents the period field and **T** the time field. Period field: **Y** = year, **M** = month, **D** = day. Time field: **H** = hours, **M** = minutes, **S** = seconds. **n** is the value of each field. Because the years and month are units that vary in length, for the time being those are not supported yet.
 
                 
                 This attribute is named `deadTimer` in VSD API.
