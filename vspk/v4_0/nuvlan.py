@@ -51,6 +51,15 @@ from .fetchers import NUGlobalMetadatasFetcher
 from .fetchers import NUEnterprisePermissionsFetcher
 
 
+from .fetchers import NUUplinkConnectionsFetcher
+
+
+from .fetchers import NUBRConnectionsFetcher
+
+
+from .fetchers import NULtestatisticsFetcher
+
+
 from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
@@ -126,7 +135,10 @@ class NUVLAN(NURESTObject):
         self._user_mnemonic = None
         self._associated_bgp_profile_id = None
         self._associated_egress_qos_policy_id = None
+        self._associated_uplink_connection_id = None
+        self._associated_vsc_profile_id = None
         self._status = None
+        self._duc_vlan = None
         self._external_id = None
         
         self.expose_attribute(local_name="value", remote_name="value", attribute_type=int, is_required=True, is_unique=False)
@@ -143,7 +155,10 @@ class NUVLAN(NURESTObject):
         self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_bgp_profile_id", remote_name="associatedBGPProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_uplink_connection_id", remote_name="associatedUplinkConnectionID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_vsc_profile_id", remote_name="associatedVSCProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'INITIALIZED', u'MISMATCH', u'ORPHAN', u'READY'])
+        self.expose_attribute(local_name="duc_vlan", remote_name="ducVlan", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -172,6 +187,15 @@ class NUVLAN(NURESTObject):
         
         
         self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.uplink_connections = NUUplinkConnectionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.br_connections = NUBRConnectionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ltestatistics = NULtestatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -544,6 +568,60 @@ class NUVLAN(NURESTObject):
 
     
     @property
+    def associated_uplink_connection_id(self):
+        """ Get associated_uplink_connection_id value.
+
+            Notes:
+                Associated uplink connection ID
+
+                
+                This attribute is named `associatedUplinkConnectionID` in VSD API.
+                
+        """
+        return self._associated_uplink_connection_id
+
+    @associated_uplink_connection_id.setter
+    def associated_uplink_connection_id(self, value):
+        """ Set associated_uplink_connection_id value.
+
+            Notes:
+                Associated uplink connection ID
+
+                
+                This attribute is named `associatedUplinkConnectionID` in VSD API.
+                
+        """
+        self._associated_uplink_connection_id = value
+
+    
+    @property
+    def associated_vsc_profile_id(self):
+        """ Get associated_vsc_profile_id value.
+
+            Notes:
+                The associated VSC profile for the uplink VLANS. This should be only be valid for the uplinks
+
+                
+                This attribute is named `associatedVSCProfileID` in VSD API.
+                
+        """
+        return self._associated_vsc_profile_id
+
+    @associated_vsc_profile_id.setter
+    def associated_vsc_profile_id(self, value):
+        """ Set associated_vsc_profile_id value.
+
+            Notes:
+                The associated VSC profile for the uplink VLANS. This should be only be valid for the uplinks
+
+                
+                This attribute is named `associatedVSCProfileID` in VSD API.
+                
+        """
+        self._associated_vsc_profile_id = value
+
+    
+    @property
     def status(self):
         """ Get status value.
 
@@ -564,6 +642,33 @@ class NUVLAN(NURESTObject):
                 
         """
         self._status = value
+
+    
+    @property
+    def duc_vlan(self):
+        """ Get duc_vlan value.
+
+            Notes:
+                When set to true, this specifies that this VLAN instance serves as an underlay connection endpoint on an NSG-UBR gateway.
+
+                
+                This attribute is named `ducVlan` in VSD API.
+                
+        """
+        return self._duc_vlan
+
+    @duc_vlan.setter
+    def duc_vlan(self, value):
+        """ Set duc_vlan value.
+
+            Notes:
+                When set to true, this specifies that this VLAN instance serves as an underlay connection endpoint on an NSG-UBR gateway.
+
+                
+                This attribute is named `ducVlan` in VSD API.
+                
+        """
+        self._duc_vlan = value
 
     
     @property

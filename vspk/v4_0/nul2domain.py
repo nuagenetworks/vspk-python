@@ -99,6 +99,9 @@ from .fetchers import NUVPNConnectionsFetcher
 from .fetchers import NUVPortsFetcher
 
 
+from .fetchers import NUApplicationperformancemanagementbindingsFetcher
+
+
 from .fetchers import NUBridgeInterfacesFetcher
 
 
@@ -132,45 +135,49 @@ class NUL2Domain(NURESTObject):
     
     ## Constants
     
-    CONST_MAINTENANCE_MODE_ENABLED_INHERITED = "ENABLED_INHERITED"
-    
-    CONST_MULTICAST_DISABLED = "DISABLED"
-    
-    CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
-    
-    CONST_POLICY_CHANGE_STATUS_STARTED = "STARTED"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
     CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
     
-    CONST_ENCRYPTION_DISABLED = "DISABLED"
-    
-    CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
-    
-    CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
+    CONST_DPI_ENABLED = "ENABLED"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_IP_TYPE_IPV6 = "IPV6"
     
-    CONST_ENCRYPTION_ENABLED = "ENABLED"
+    CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
     
-    CONST_IP_TYPE_IPV4 = "IPV4"
+    CONST_MAINTENANCE_MODE_DISABLED = "DISABLED"
+    
+    CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
+    
+    CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
+    
+    CONST_POLICY_CHANGE_STATUS_STARTED = "STARTED"
+    
+    CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
     
     CONST_MULTICAST_ENABLED = "ENABLED"
     
     CONST_MULTICAST_INHERITED = "INHERITED"
     
-    CONST_MAINTENANCE_MODE_DISABLED = "DISABLED"
-    
-    CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
-    
-    CONST_POLICY_CHANGE_STATUS_APPLIED = "APPLIED"
-    
     CONST_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
     
+    CONST_MULTICAST_DISABLED = "DISABLED"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ENCRYPTION_DISABLED = "DISABLED"
+    
+    CONST_IP_TYPE_IPV4 = "IPV4"
+    
+    CONST_DPI_DISABLED = "DISABLED"
+    
     CONST_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
+    
+    CONST_MAINTENANCE_MODE_ENABLED_INHERITED = "ENABLED_INHERITED"
+    
+    CONST_ENCRYPTION_ENABLED = "ENABLED"
+    
+    CONST_POLICY_CHANGE_STATUS_APPLIED = "APPLIED"
     
     
 
@@ -192,6 +199,7 @@ class NUL2Domain(NURESTObject):
         # Read/Write Attributes
         
         self._dhcp_managed = None
+        self._dpi = None
         self._ip_type = None
         self._maintenance_mode = None
         self._name = None
@@ -217,6 +225,7 @@ class NUL2Domain(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="dhcp_managed", remote_name="DHCPManaged", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
@@ -317,6 +326,9 @@ class NUL2Domain(NURESTObject):
         self.vports = NUVPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.applicationperformancemanagementbindings = NUApplicationperformancemanagementbindingsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.bridge_interfaces = NUBridgeInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -364,6 +376,33 @@ class NUL2Domain(NURESTObject):
                 
         """
         self._dhcp_managed = value
+
+    
+    @property
+    def dpi(self):
+        """ Get dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        return self._dpi
+
+    @dpi.setter
+    def dpi(self, value):
+        """ Set dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        self._dpi = value
 
     
     @property
@@ -725,7 +764,7 @@ class NUL2Domain(NURESTObject):
         """ Get policy_change_status value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `policyChangeStatus` in VSD API.
@@ -738,7 +777,7 @@ class NUL2Domain(NURESTObject):
         """ Set policy_change_status value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `policyChangeStatus` in VSD API.

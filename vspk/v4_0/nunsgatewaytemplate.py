@@ -51,9 +51,21 @@ class NUNSGatewayTemplate(NURESTObject):
     
     ## Constants
     
+    CONST_SSH_SERVICE_DISABLED = "DISABLED"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
+    CONST_SSH_SERVICE_ENABLED = "ENABLED"
+    
+    CONST_INSTANCE_SSH_OVERRIDE_DISALLOWED = "DISALLOWED"
+    
+    CONST_INSTANCE_SSH_OVERRIDE_ALLOWED = "ALLOWED"
+    
+    CONST_PERSONALITY_NSG = "NSG"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_PERSONALITY_NSGBR = "NSGBR"
     
     
 
@@ -74,18 +86,26 @@ class NUNSGatewayTemplate(NURESTObject):
 
         # Read/Write Attributes
         
+        self._ssh_service = None
         self._name = None
         self._last_updated_by = None
+        self._personality = None
         self._description = None
+        self._infrastructure_access_profile_id = None
         self._infrastructure_profile_id = None
+        self._instance_ssh_override = None
         self._enterprise_id = None
         self._entity_scope = None
         self._external_id = None
         
+        self.expose_attribute(local_name="ssh_service", remote_name="SSHService", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'NSG', u'NSGBR'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="infrastructure_access_profile_id", remote_name="infrastructureAccessProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="infrastructure_profile_id", remote_name="infrastructureProfileID", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="instance_ssh_override", remote_name="instanceSSHOverride", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALLOWED', u'DISALLOWED'])
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -106,6 +126,33 @@ class NUNSGatewayTemplate(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def ssh_service(self):
+        """ Get ssh_service value.
+
+            Notes:
+                Enable/Disable SSH Service on all the Gateway instances which inherit from this template.
+
+                
+                This attribute is named `SSHService` in VSD API.
+                
+        """
+        return self._ssh_service
+
+    @ssh_service.setter
+    def ssh_service(self, value):
+        """ Set ssh_service value.
+
+            Notes:
+                Enable/Disable SSH Service on all the Gateway instances which inherit from this template.
+
+                
+                This attribute is named `SSHService` in VSD API.
+                
+        """
+        self._ssh_service = value
+
     
     @property
     def name(self):
@@ -158,6 +205,29 @@ class NUNSGatewayTemplate(NURESTObject):
 
     
     @property
+    def personality(self):
+        """ Get personality value.
+
+            Notes:
+                Personality of the Gateway - NSG, NSGBR, cannot be changed after creation.
+
+                
+        """
+        return self._personality
+
+    @personality.setter
+    def personality(self, value):
+        """ Set personality value.
+
+            Notes:
+                Personality of the Gateway - NSG, NSGBR, cannot be changed after creation.
+
+                
+        """
+        self._personality = value
+
+    
+    @property
     def description(self):
         """ Get description value.
 
@@ -178,6 +248,33 @@ class NUNSGatewayTemplate(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def infrastructure_access_profile_id(self):
+        """ Get infrastructure_access_profile_id value.
+
+            Notes:
+                The ID of the infrastructure access profile associated to this Gateway Template.
+
+                
+                This attribute is named `infrastructureAccessProfileID` in VSD API.
+                
+        """
+        return self._infrastructure_access_profile_id
+
+    @infrastructure_access_profile_id.setter
+    def infrastructure_access_profile_id(self, value):
+        """ Set infrastructure_access_profile_id value.
+
+            Notes:
+                The ID of the infrastructure access profile associated to this Gateway Template.
+
+                
+                This attribute is named `infrastructureAccessProfileID` in VSD API.
+                
+        """
+        self._infrastructure_access_profile_id = value
 
     
     @property
@@ -205,6 +302,33 @@ class NUNSGatewayTemplate(NURESTObject):
                 
         """
         self._infrastructure_profile_id = value
+
+    
+    @property
+    def instance_ssh_override(self):
+        """ Get instance_ssh_override value.
+
+            Notes:
+                Indicates if this template instance allows the gateway instance(s) which inherit from it to independently enable/disable SSH service.
+
+                
+                This attribute is named `instanceSSHOverride` in VSD API.
+                
+        """
+        return self._instance_ssh_override
+
+    @instance_ssh_override.setter
+    def instance_ssh_override(self, value):
+        """ Set instance_ssh_override value.
+
+            Notes:
+                Indicates if this template instance allows the gateway instance(s) which inherit from it to independently enable/disable SSH service.
+
+                
+                This attribute is named `instanceSSHOverride` in VSD API.
+                
+        """
+        self._instance_ssh_override = value
 
     
     @property

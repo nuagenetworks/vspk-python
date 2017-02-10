@@ -78,6 +78,9 @@ from .fetchers import NUHostInterfacesFetcher
 from .fetchers import NUVPortMirrorsFetcher
 
 
+from .fetchers import NUApplicationperformancemanagementsFetcher
+
+
 from .fetchers import NUBridgeInterfacesFetcher
 
 
@@ -108,47 +111,53 @@ class NUVPort(NURESTObject):
     
     ## Constants
     
-    CONST_OPERATIONAL_STATE_DOWN = "DOWN"
-    
-    CONST_TYPE_CONTAINER = "CONTAINER"
-    
-    CONST_SYSTEM_TYPE_HARDWARE = "HARDWARE"
-    
-    CONST_MULTICAST_DISABLED = "DISABLED"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_SYSTEM_TYPE_HARDWARE_VTEP = "HARDWARE_VTEP"
+    CONST_SYSTEM_TYPE_NUAGE_2 = "NUAGE_2"
     
     CONST_SYSTEM_TYPE_NUAGE_1 = "NUAGE_1"
     
+    CONST_DPI_ENABLED = "ENABLED"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_OPERATIONAL_STATE_UP = "UP"
+    CONST_TYPE_CONTAINER = "CONTAINER"
     
-    CONST_SYSTEM_TYPE_NUAGE_VRSG = "NUAGE_VRSG"
+    CONST_DPI_INHERITED = "INHERITED"
+    
+    CONST_ADDRESS_SPOOFING_DISABLED = "DISABLED"
+    
+    CONST_ADDRESS_SPOOFING_INHERITED = "INHERITED"
+    
+    CONST_TYPE_HOST = "HOST"
+    
+    CONST_ADDRESS_SPOOFING_ENABLED = "ENABLED"
+    
+    CONST_SYSTEM_TYPE_SOFTWARE = "SOFTWARE"
+    
+    CONST_OPERATIONAL_STATE_DOWN = "DOWN"
+    
+    CONST_OPERATIONAL_STATE_UP = "UP"
     
     CONST_MULTICAST_ENABLED = "ENABLED"
     
     CONST_MULTICAST_INHERITED = "INHERITED"
     
-    CONST_TYPE_HOST = "HOST"
+    CONST_SYSTEM_TYPE_HARDWARE_VTEP = "HARDWARE_VTEP"
     
-    CONST_ADDRESS_SPOOFING_DISABLED = "DISABLED"
+    CONST_SYSTEM_TYPE_HARDWARE = "HARDWARE"
     
-    CONST_SYSTEM_TYPE_NUAGE_2 = "NUAGE_2"
+    CONST_TYPE_BRIDGE = "BRIDGE"
     
-    CONST_ADDRESS_SPOOFING_INHERITED = "INHERITED"
+    CONST_MULTICAST_DISABLED = "DISABLED"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_DPI_DISABLED = "DISABLED"
+    
+    CONST_SYSTEM_TYPE_NUAGE_VRSG = "NUAGE_VRSG"
     
     CONST_OPERATIONAL_STATE_INIT = "INIT"
     
-    CONST_SYSTEM_TYPE_SOFTWARE = "SOFTWARE"
-    
     CONST_TYPE_VM = "VM"
-    
-    CONST_ADDRESS_SPOOFING_ENABLED = "ENABLED"
-    
-    CONST_TYPE_BRIDGE = "BRIDGE"
     
     
 
@@ -170,6 +179,7 @@ class NUVPort(NURESTObject):
         # Read/Write Attributes
         
         self._vlanid = None
+        self._dpi = None
         self._name = None
         self._has_attached_interfaces = None
         self._last_updated_by = None
@@ -190,6 +200,7 @@ class NUVPort(NURESTObject):
         self._system_type = None
         
         self.expose_attribute(local_name="vlanid", remote_name="VLANID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="has_attached_interfaces", remote_name="hasAttachedInterfaces", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -264,6 +275,9 @@ class NUVPort(NURESTObject):
         self.vport_mirrors = NUVPortMirrorsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.applicationperformancemanagements = NUApplicationperformancemanagementsFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        
+        
         self.bridge_interfaces = NUBridgeInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -308,6 +322,33 @@ class NUVPort(NURESTObject):
                 
         """
         self._vlanid = value
+
+    
+    @property
+    def dpi(self):
+        """ Get dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        return self._dpi
+
+    @dpi.setter
+    def dpi(self, value):
+        """ Set dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        self._dpi = value
 
     
     @property

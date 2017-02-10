@@ -54,11 +54,17 @@ class NUIKEGateway(NURESTObject):
     
     ## Constants
     
+    CONST_IK_EV1_MODE_NONE = "NONE"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
+    CONST_IK_EV1_MODE_MAIN = "MAIN"
+    
     CONST_IKE_VERSION_V1 = "V1"
+    
+    CONST_IK_EV1_MODE_AGGRESSIVE = "AGGRESSIVE"
     
     CONST_IKE_VERSION_V2 = "V2"
     
@@ -82,6 +88,7 @@ class NUIKEGateway(NURESTObject):
         # Read/Write Attributes
         
         self._ike_version = None
+        self._ik_ev1_mode = None
         self._ip_address = None
         self._name = None
         self._last_updated_by = None
@@ -91,6 +98,7 @@ class NUIKEGateway(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="ike_version", remote_name="IKEVersion", attribute_type=str, is_required=False, is_unique=False, choices=[u'V1', u'V2'])
+        self.expose_attribute(local_name="ik_ev1_mode", remote_name="IKEv1Mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'AGGRESSIVE', u'MAIN', u'NONE'])
         self.expose_attribute(local_name="ip_address", remote_name="IPAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -144,6 +152,33 @@ class NUIKEGateway(NURESTObject):
                 
         """
         self._ike_version = value
+
+    
+    @property
+    def ik_ev1_mode(self):
+        """ Get ik_ev1_mode value.
+
+            Notes:
+                Mode for IKEv1
+
+                
+                This attribute is named `IKEv1Mode` in VSD API.
+                
+        """
+        return self._ik_ev1_mode
+
+    @ik_ev1_mode.setter
+    def ik_ev1_mode(self, value):
+        """ Set ik_ev1_mode value.
+
+            Notes:
+                Mode for IKEv1
+
+                
+                This attribute is named `IKEv1Mode` in VSD API.
+                
+        """
+        self._ik_ev1_mode = value
 
     
     @property

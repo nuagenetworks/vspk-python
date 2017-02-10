@@ -406,6 +406,8 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_MC_LIST = "MC_LIST"
     
+    CONST_UPLINK_PREFERENCE_DEFAULT = "DEFAULT"
+    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_JOB = "JOB"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_RTRD_ENTITY = "RTRD_ENTITY"
@@ -637,6 +639,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self._icmp_code = None
         self._icmp_type = None
         self._fc_override = None
+        self._ipv6_address_override = None
         self._dscp = None
         self._name = None
         self._last_updated_by = None
@@ -672,6 +675,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="icmp_code", remote_name="ICMPCode", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="icmp_type", remote_name="ICMPType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="fc_override", remote_name="FCOverride", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
+        self.expose_attribute(local_name="ipv6_address_override", remote_name="IPv6AddressOverride", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -691,7 +695,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
+        self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_application_id", remote_name="associatedApplicationID", attribute_type=str, is_required=False, is_unique=False)
@@ -829,6 +833,33 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
                 
         """
         self._fc_override = value
+
+    
+    @property
+    def ipv6_address_override(self):
+        """ Get ipv6_address_override value.
+
+            Notes:
+                Overrides the source IPv6 for Ingress and destination IPv6 for Egress, macentries will use this adress as the match criteria.
+
+                
+                This attribute is named `IPv6AddressOverride` in VSD API.
+                
+        """
+        return self._ipv6_address_override
+
+    @ipv6_address_override.setter
+    def ipv6_address_override(self, value):
+        """ Set ipv6_address_override value.
+
+            Notes:
+                Overrides the source IPv6 for Ingress and destination IPv6 for Egress, macentries will use this adress as the match criteria.
+
+                
+                This attribute is named `IPv6AddressOverride` in VSD API.
+                
+        """
+        self._ipv6_address_override = value
 
     
     @property
@@ -1337,7 +1368,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         """ Get uplink_preference value.
 
             Notes:
-                Indicates the preferencial path selection for network traffic for this ACL - Default is Primary 1 and Secondary 2 when the attribute is applicable.
+                Indicates the preferencial path selection for network traffic for this ACL - default is DEFAULT when the attribute is applicable.
 
                 
                 This attribute is named `uplinkPreference` in VSD API.
@@ -1350,7 +1381,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         """ Set uplink_preference value.
 
             Notes:
-                Indicates the preferencial path selection for network traffic for this ACL - Default is Primary 1 and Secondary 2 when the attribute is applicable.
+                Indicates the preferencial path selection for network traffic for this ACL - default is DEFAULT when the attribute is applicable.
 
                 
                 This attribute is named `uplinkPreference` in VSD API.

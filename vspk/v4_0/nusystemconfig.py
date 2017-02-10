@@ -54,6 +54,8 @@ class NUSystemConfig(NURESTObject):
     
     CONST_GROUP_KEY_DEFAULT_TRAFFIC_ENCRYPTION_ALGORITHM_AES_256_CBC = "AES_256_CBC"
     
+    CONST_CSPROOT_AUTHENTICATION_METHOD_LDAP = "LDAP"
+    
     CONST_SYSTEM_AVATAR_TYPE_URL = "URL"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
@@ -77,6 +79,8 @@ class NUSystemConfig(NURESTObject):
     CONST_GROUP_KEY_DEFAULT_TRAFFIC_ENCRYPTION_ALGORITHM_TRIPLE_DES_CBC = "TRIPLE_DES_CBC"
     
     CONST_GROUP_KEY_DEFAULT_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA256 = "HMAC_SHA256"
+    
+    CONST_CSPROOT_AUTHENTICATION_METHOD_LOCAL = "LOCAL"
     
     CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA224WITHRSA = "SHA224withRSA"
     
@@ -149,6 +153,8 @@ class NUSystemConfig(NURESTObject):
         self._zfb_request_retry_timer = None
         self._zfb_scheduler_stale_request_timeout = None
         self._dhcp_option_size = None
+        self._vlanid_lower_limit = None
+        self._vlanid_upper_limit = None
         self._vm_cache_size = None
         self._vm_purge_time = None
         self._vm_resync_deletion_wait_time = None
@@ -179,6 +185,9 @@ class NUSystemConfig(NURESTObject):
         self._last_updated_by = None
         self._max_failed_logins = None
         self._max_response = None
+        self._accumulate_licenses_enabled = None
+        self._per_domain_vlan_id_enabled = None
+        self._performance_path_selection_vnid = None
         self._service_id_upper_limit = None
         self._key_server_monitor_enabled = None
         self._key_server_vsd_data_synchronization_interval = None
@@ -191,7 +200,10 @@ class NUSystemConfig(NURESTObject):
         self._ejbca_vsp_root_ca = None
         self._alarms_max_per_object = None
         self._elastic_cluster_name = None
+        self._elastic_search_ui_address = None
         self._allow_enterprise_avatar_on_nsg = None
+        self._global_mac_address = None
+        self._flow_collection_enabled = None
         self._inactive_timeout = None
         self._entity_scope = None
         self._domain_tunnel_type = None
@@ -219,6 +231,7 @@ class NUSystemConfig(NURESTObject):
         self._nsg_config_endpoint = None
         self._nsg_local_ui_url = None
         self._esi_id = None
+        self._csproot_authentication_method = None
         self._stack_trace_enabled = None
         self._stateful_acl_non_tcp_timeout = None
         self._stateful_acltcp_timeout = None
@@ -231,6 +244,7 @@ class NUSystemConfig(NURESTObject):
         self._stats_min_duration = None
         self._stats_number_of_data_points = None
         self._stats_tsdb_server_address = None
+        self._sticky_ecmp_idle_timeout = None
         self._subnet_resync_interval = None
         self._subnet_resync_outstanding_interval = None
         self._customer_id_upper_limit = None
@@ -269,6 +283,8 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="zfb_request_retry_timer", remote_name="ZFBRequestRetryTimer", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zfb_scheduler_stale_request_timeout", remote_name="ZFBSchedulerStaleRequestTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_option_size", remote_name="DHCPOptionSize", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vlanid_lower_limit", remote_name="VLANIDLowerLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vlanid_upper_limit", remote_name="VLANIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vm_cache_size", remote_name="VMCacheSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vm_purge_time", remote_name="VMPurgeTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vm_resync_deletion_wait_time", remote_name="VMResyncDeletionWaitTime", attribute_type=int, is_required=False, is_unique=False)
@@ -299,6 +315,9 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="max_failed_logins", remote_name="maxFailedLogins", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="max_response", remote_name="maxResponse", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="accumulate_licenses_enabled", remote_name="accumulateLicensesEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="per_domain_vlan_id_enabled", remote_name="perDomainVlanIdEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="performance_path_selection_vnid", remote_name="performancePathSelectionVNID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_id_upper_limit", remote_name="serviceIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="key_server_monitor_enabled", remote_name="keyServerMonitorEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="key_server_vsd_data_synchronization_interval", remote_name="keyServerVSDDataSynchronizationInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -311,7 +330,10 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="ejbca_vsp_root_ca", remote_name="ejbcaVspRootCa", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="alarms_max_per_object", remote_name="alarmsMaxPerObject", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="elastic_cluster_name", remote_name="elasticClusterName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="elastic_search_ui_address", remote_name="elasticSearchUIAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_enterprise_avatar_on_nsg", remote_name="allowEnterpriseAvatarOnNSG", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="global_mac_address", remote_name="globalMACAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="inactive_timeout", remote_name="inactiveTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="domain_tunnel_type", remote_name="domainTunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VXLAN'])
@@ -339,6 +361,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="nsg_config_endpoint", remote_name="nsgConfigEndpoint", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_local_ui_url", remote_name="nsgLocalUiUrl", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="esi_id", remote_name="esiID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="csproot_authentication_method", remote_name="csprootAuthenticationMethod", attribute_type=str, is_required=False, is_unique=False, choices=[u'LDAP', u'LOCAL'])
         self.expose_attribute(local_name="stack_trace_enabled", remote_name="stackTraceEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stateful_acl_non_tcp_timeout", remote_name="statefulACLNonTCPTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stateful_acltcp_timeout", remote_name="statefulACLTCPTimeout", attribute_type=int, is_required=False, is_unique=False)
@@ -351,6 +374,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="stats_min_duration", remote_name="statsMinDuration", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_number_of_data_points", remote_name="statsNumberOfDataPoints", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_tsdb_server_address", remote_name="statsTSDBServerAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="sticky_ecmp_idle_timeout", remote_name="stickyECMPIdleTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="subnet_resync_interval", remote_name="subnetResyncInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="subnet_resync_outstanding_interval", remote_name="subnetResyncOutstandingInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="customer_id_upper_limit", remote_name="customerIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
@@ -765,6 +789,60 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._dhcp_option_size = value
+
+    
+    @property
+    def vlanid_lower_limit(self):
+        """ Get vlanid_lower_limit value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `VLANIDLowerLimit` in VSD API.
+                
+        """
+        return self._vlanid_lower_limit
+
+    @vlanid_lower_limit.setter
+    def vlanid_lower_limit(self, value):
+        """ Set vlanid_lower_limit value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `VLANIDLowerLimit` in VSD API.
+                
+        """
+        self._vlanid_lower_limit = value
+
+    
+    @property
+    def vlanid_upper_limit(self):
+        """ Get vlanid_upper_limit value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `VLANIDUpperLimit` in VSD API.
+                
+        """
+        return self._vlanid_upper_limit
+
+    @vlanid_upper_limit.setter
+    def vlanid_upper_limit(self, value):
+        """ Set vlanid_upper_limit value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `VLANIDUpperLimit` in VSD API.
+                
+        """
+        self._vlanid_upper_limit = value
 
     
     @property
@@ -1578,6 +1656,87 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def accumulate_licenses_enabled(self):
+        """ Get accumulate_licenses_enabled value.
+
+            Notes:
+                Whether the various VRS license flavours be merged in one pool
+
+                
+                This attribute is named `accumulateLicensesEnabled` in VSD API.
+                
+        """
+        return self._accumulate_licenses_enabled
+
+    @accumulate_licenses_enabled.setter
+    def accumulate_licenses_enabled(self, value):
+        """ Set accumulate_licenses_enabled value.
+
+            Notes:
+                Whether the various VRS license flavours be merged in one pool
+
+                
+                This attribute is named `accumulateLicensesEnabled` in VSD API.
+                
+        """
+        self._accumulate_licenses_enabled = value
+
+    
+    @property
+    def per_domain_vlan_id_enabled(self):
+        """ Get per_domain_vlan_id_enabled value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `perDomainVlanIdEnabled` in VSD API.
+                
+        """
+        return self._per_domain_vlan_id_enabled
+
+    @per_domain_vlan_id_enabled.setter
+    def per_domain_vlan_id_enabled(self, value):
+        """ Set per_domain_vlan_id_enabled value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `perDomainVlanIdEnabled` in VSD API.
+                
+        """
+        self._per_domain_vlan_id_enabled = value
+
+    
+    @property
+    def performance_path_selection_vnid(self):
+        """ Get performance_path_selection_vnid value.
+
+            Notes:
+                performance Path Selection Virtual Network ID
+
+                
+                This attribute is named `performancePathSelectionVNID` in VSD API.
+                
+        """
+        return self._performance_path_selection_vnid
+
+    @performance_path_selection_vnid.setter
+    def performance_path_selection_vnid(self, value):
+        """ Set performance_path_selection_vnid value.
+
+            Notes:
+                performance Path Selection Virtual Network ID
+
+                
+                This attribute is named `performancePathSelectionVNID` in VSD API.
+                
+        """
+        self._performance_path_selection_vnid = value
+
+    
+    @property
     def service_id_upper_limit(self):
         """ Get service_id_upper_limit value.
 
@@ -1902,6 +2061,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def elastic_search_ui_address(self):
+        """ Get elastic_search_ui_address value.
+
+            Notes:
+                Specifies the server address Elastic Search Cluster.
+
+                
+                This attribute is named `elasticSearchUIAddress` in VSD API.
+                
+        """
+        return self._elastic_search_ui_address
+
+    @elastic_search_ui_address.setter
+    def elastic_search_ui_address(self, value):
+        """ Set elastic_search_ui_address value.
+
+            Notes:
+                Specifies the server address Elastic Search Cluster.
+
+                
+                This attribute is named `elasticSearchUIAddress` in VSD API.
+                
+        """
+        self._elastic_search_ui_address = value
+
+    
+    @property
     def allow_enterprise_avatar_on_nsg(self):
         """ Get allow_enterprise_avatar_on_nsg value.
 
@@ -1926,6 +2112,60 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._allow_enterprise_avatar_on_nsg = value
+
+    
+    @property
+    def global_mac_address(self):
+        """ Get global_mac_address value.
+
+            Notes:
+                the MAC Address to use for those subnets that have the useGlobalMAC flag enabled.
+
+                
+                This attribute is named `globalMACAddress` in VSD API.
+                
+        """
+        return self._global_mac_address
+
+    @global_mac_address.setter
+    def global_mac_address(self, value):
+        """ Set global_mac_address value.
+
+            Notes:
+                the MAC Address to use for those subnets that have the useGlobalMAC flag enabled.
+
+                
+                This attribute is named `globalMACAddress` in VSD API.
+                
+        """
+        self._global_mac_address = value
+
+    
+    @property
+    def flow_collection_enabled(self):
+        """ Get flow_collection_enabled value.
+
+            Notes:
+                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires "statisticsEnabled".
+
+                
+                This attribute is named `flowCollectionEnabled` in VSD API.
+                
+        """
+        return self._flow_collection_enabled
+
+    @flow_collection_enabled.setter
+    def flow_collection_enabled(self, value):
+        """ Set flow_collection_enabled value.
+
+            Notes:
+                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires "statisticsEnabled".
+
+                
+                This attribute is named `flowCollectionEnabled` in VSD API.
+                
+        """
+        self._flow_collection_enabled = value
 
     
     @property
@@ -2658,6 +2898,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def csproot_authentication_method(self):
+        """ Get csproot_authentication_method value.
+
+            Notes:
+                Authentication method for csproot when local authentication is not used for CSP organization
+
+                
+                This attribute is named `csprootAuthenticationMethod` in VSD API.
+                
+        """
+        return self._csproot_authentication_method
+
+    @csproot_authentication_method.setter
+    def csproot_authentication_method(self, value):
+        """ Set csproot_authentication_method value.
+
+            Notes:
+                Authentication method for csproot when local authentication is not used for CSP organization
+
+                
+                This attribute is named `csprootAuthenticationMethod` in VSD API.
+                
+        """
+        self._csproot_authentication_method = value
+
+    
+    @property
     def stack_trace_enabled(self):
         """ Get stack_trace_enabled value.
 
@@ -2979,6 +3246,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._stats_tsdb_server_address = value
+
+    
+    @property
+    def sticky_ecmp_idle_timeout(self):
+        """ Get sticky_ecmp_idle_timeout value.
+
+            Notes:
+                sticky ECMP Idle Timeout in seconds
+
+                
+                This attribute is named `stickyECMPIdleTimeout` in VSD API.
+                
+        """
+        return self._sticky_ecmp_idle_timeout
+
+    @sticky_ecmp_idle_timeout.setter
+    def sticky_ecmp_idle_timeout(self, value):
+        """ Set sticky_ecmp_idle_timeout value.
+
+            Notes:
+                sticky ECMP Idle Timeout in seconds
+
+                
+                This attribute is named `stickyECMPIdleTimeout` in VSD API.
+                
+        """
+        self._sticky_ecmp_idle_timeout = value
 
     
     @property

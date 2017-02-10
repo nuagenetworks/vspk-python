@@ -33,6 +33,9 @@ from .fetchers import NUL2DomainsFetcher
 from .fetchers import NUL2DomainTemplatesFetcher
 
 
+from .fetchers import NUL7applicationsignaturesFetcher
+
+
 from .fetchers import NURateLimitersFetcher
 
 
@@ -51,6 +54,9 @@ from .fetchers import NULDAPConfigurationsFetcher
 from .fetchers import NURedundancyGroupsFetcher
 
 
+from .fetchers import NUPerformanceMonitorsFetcher
+
+
 from .fetchers import NUMetadatasFetcher
 
 
@@ -58,6 +64,9 @@ from .fetchers import NUMetadataTagsFetcher
 
 
 from .fetchers import NUNetworkMacroGroupsFetcher
+
+
+from .fetchers import NUNetworkPerformanceMeasurementsFetcher
 
 
 from .fetchers import NUKeyServerMonitorsFetcher
@@ -73,6 +82,12 @@ from .fetchers import NUEgressQOSPoliciesFetcher
 
 
 from .fetchers import NUSharedNetworkResourcesFetcher
+
+
+from .fetchers import NUFirewallAclsFetcher
+
+
+from .fetchers import NUFirewallRulesFetcher
 
 
 from .fetchers import NUIKECertificatesFetcher
@@ -102,9 +117,6 @@ from .fetchers import NUGlobalMetadatasFetcher
 from .fetchers import NUVMsFetcher
 
 
-from .fetchers import NUInfrastructurePortProfilesFetcher
-
-
 from .fetchers import NUEnterpriseNetworksFetcher
 
 
@@ -126,7 +138,10 @@ from .fetchers import NUContainersFetcher
 from .fetchers import NURoutingPoliciesFetcher
 
 
-from .fetchers import NUAppsFetcher
+from .fetchers import NUApplicationsFetcher
+
+
+from .fetchers import NUApplicationperformancemanagementsFetcher
 
 
 from .fetchers import NUApplicationServicesFetcher
@@ -148,6 +163,9 @@ from .fetchers import NUNSGatewaysFetcher
 
 
 from .fetchers import NUNSGatewayTemplatesFetcher
+
+
+from .fetchers import NUNSGGroupsFetcher
 
 
 from .fetchers import NUNSRedundantGatewayGroupsFetcher
@@ -246,12 +264,14 @@ class NUEnterprise(NURESTObject):
         self._receive_multi_cast_list_id = None
         self._send_multi_cast_list_id = None
         self._description = None
+        self._dictionary_version = None
         self._allow_advanced_qos_configuration = None
         self._allow_gateway_management = None
         self._allow_trusted_forwarding_class = None
         self._allowed_forwarding_classes = None
         self._floating_ips_quota = None
         self._floating_ips_used = None
+        self._enable_application_performance_management = None
         self._encryption_management_mode = None
         self._enterprise_profile_id = None
         self._entity_scope = None
@@ -273,12 +293,14 @@ class NUEnterprise(NURESTObject):
         self.expose_attribute(local_name="receive_multi_cast_list_id", remote_name="receiveMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="send_multi_cast_list_id", remote_name="sendMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="dictionary_version", remote_name="dictionaryVersion", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_advanced_qos_configuration", remote_name="allowAdvancedQOSConfiguration", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_gateway_management", remote_name="allowGatewayManagement", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_trusted_forwarding_class", remote_name="allowTrustedForwardingClass", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_forwarding_classes", remote_name="allowedForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="floating_ips_quota", remote_name="floatingIPsQuota", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="floating_ips_used", remote_name="floatingIPsUsed", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enable_application_performance_management", remote_name="enableApplicationPerformanceManagement", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption_management_mode", remote_name="encryptionManagementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'MANAGED'])
         self.expose_attribute(local_name="enterprise_profile_id", remote_name="enterpriseProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -301,6 +323,9 @@ class NUEnterprise(NURESTObject):
         self.l2_domain_templates = NUL2DomainTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.l7applicationsignatures = NUL7applicationsignaturesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.rate_limiters = NURateLimitersFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -319,6 +344,9 @@ class NUEnterprise(NURESTObject):
         self.redundancy_groups = NURedundancyGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.performance_monitors = NUPerformanceMonitorsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -326,6 +354,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.network_macro_groups = NUNetworkMacroGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.network_performance_measurements = NUNetworkPerformanceMeasurementsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.key_server_monitors = NUKeyServerMonitorsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -341,6 +372,12 @@ class NUEnterprise(NURESTObject):
         
         
         self.shared_network_resources = NUSharedNetworkResourcesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.firewall_acls = NUFirewallAclsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.firewall_rules = NUFirewallRulesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ike_certificates = NUIKECertificatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -370,9 +407,6 @@ class NUEnterprise(NURESTObject):
         self.vms = NUVMsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.infrastructure_port_profiles = NUInfrastructurePortProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.enterprise_networks = NUEnterpriseNetworksFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -394,7 +428,10 @@ class NUEnterprise(NURESTObject):
         self.routing_policies = NURoutingPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.apps = NUAppsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.applications = NUApplicationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.applicationperformancemanagements = NUApplicationperformancemanagementsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.application_services = NUApplicationServicesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -416,6 +453,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.ns_gateway_templates = NUNSGatewayTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.nsg_groups = NUNSGGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ns_redundant_gateway_groups = NUNSRedundantGatewayGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -679,6 +719,33 @@ class NUEnterprise(NURESTObject):
 
     
     @property
+    def dictionary_version(self):
+        """ Get dictionary_version value.
+
+            Notes:
+                L7 Application Type version
+
+                
+                This attribute is named `dictionaryVersion` in VSD API.
+                
+        """
+        return self._dictionary_version
+
+    @dictionary_version.setter
+    def dictionary_version(self, value):
+        """ Set dictionary_version value.
+
+            Notes:
+                L7 Application Type version
+
+                
+                This attribute is named `dictionaryVersion` in VSD API.
+                
+        """
+        self._dictionary_version = value
+
+    
+    @property
     def allow_advanced_qos_configuration(self):
         """ Get allow_advanced_qos_configuration value.
 
@@ -838,6 +905,33 @@ class NUEnterprise(NURESTObject):
                 
         """
         self._floating_ips_used = value
+
+    
+    @property
+    def enable_application_performance_management(self):
+        """ Get enable_application_performance_management value.
+
+            Notes:
+                This flag indicates if the DPI can be enabled for this enterpriseenterprise/organization.
+
+                
+                This attribute is named `enableApplicationPerformanceManagement` in VSD API.
+                
+        """
+        return self._enable_application_performance_management
+
+    @enable_application_performance_management.setter
+    def enable_application_performance_management(self, value):
+        """ Set enable_application_performance_management value.
+
+            Notes:
+                This flag indicates if the DPI can be enabled for this enterpriseenterprise/organization.
+
+                
+                This attribute is named `enableApplicationPerformanceManagement` in VSD API.
+                
+        """
+        self._enable_application_performance_management = value
 
     
     @property

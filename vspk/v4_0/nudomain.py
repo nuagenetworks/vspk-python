@@ -57,6 +57,9 @@ from .fetchers import NUDHCPOptionsFetcher
 from .fetchers import NULinksFetcher
 
 
+from .fetchers import NUFirewallAclsFetcher
+
+
 from .fetchers import NUFloatingIpsFetcher
 
 
@@ -120,6 +123,9 @@ from .fetchers import NUVPNConnectionsFetcher
 from .fetchers import NUVPortsFetcher
 
 
+from .fetchers import NUApplicationperformancemanagementbindingsFetcher
+
+
 from .fetchers import NUBridgeInterfacesFetcher
 
 
@@ -165,17 +171,17 @@ class NUDomain(NURESTObject):
     
     CONST_PAT_ENABLED_INHERITED = "INHERITED"
     
-    CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
-    
     CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
     
     CONST_DHCP_BEHAVIOR_CONSUME = "CONSUME"
     
-    CONST_APPLICATION_DEPLOYMENT_POLICY_NONE = "NONE"
+    CONST_DPI_ENABLED = "ENABLED"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
+    
+    CONST_DHCP_BEHAVIOR_UNDERLAY_RELAY = "UNDERLAY_RELAY"
     
     CONST_UNDERLAY_ENABLED_ENABLED = "ENABLED"
     
@@ -191,13 +197,15 @@ class NUDomain(NURESTObject):
     
     CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
     
+    CONST_DHCP_BEHAVIOR_OVERLAY_RELAY = "OVERLAY_RELAY"
+    
     CONST_UNDERLAY_ENABLED_INHERITED = "INHERITED"
     
     CONST_POLICY_CHANGE_STATUS_STARTED = "STARTED"
     
     CONST_PERMITTED_ACTION_READ = "READ"
     
-    CONST_DHCP_BEHAVIOR_RELAY = "RELAY"
+    CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
     
     CONST_APPLICATION_DEPLOYMENT_POLICY_ZONE = "ZONE"
     
@@ -208,6 +216,8 @@ class NUDomain(NURESTObject):
     CONST_MULTICAST_ENABLED = "ENABLED"
     
     CONST_MULTICAST_INHERITED = "INHERITED"
+    
+    CONST_APPLICATION_DEPLOYMENT_POLICY_NONE = "NONE"
     
     CONST_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
     
@@ -224,6 +234,8 @@ class NUDomain(NURESTObject):
     CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
     
     CONST_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
+    
+    CONST_DPI_DISABLED = "DISABLED"
     
     CONST_MAINTENANCE_MODE_ENABLED_INHERITED = "ENABLED_INHERITED"
     
@@ -259,9 +271,12 @@ class NUDomain(NURESTObject):
         self._bgp_enabled = None
         self._dhcp_behavior = None
         self._dhcp_server_address = None
+        self._dpi = None
         self._label_id = None
         self._back_haul_route_distinguisher = None
         self._back_haul_route_target = None
+        self._back_haul_subnet_ip_address = None
+        self._back_haul_subnet_mask = None
         self._back_haul_vnid = None
         self._maintenance_mode = None
         self._name = None
@@ -279,6 +294,8 @@ class NUDomain(NURESTObject):
         self._underlay_enabled = None
         self._entity_scope = None
         self._policy_change_status = None
+        self._domain_id = None
+        self._domain_vlanid = None
         self._route_distinguisher = None
         self._route_target = None
         self._uplink_preference = None
@@ -296,11 +313,14 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="pat_enabled", remote_name="PATEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="ecmp_count", remote_name="ECMPCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bgp_enabled", remote_name="BGPEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dhcp_behavior", remote_name="DHCPBehavior", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONSUME', u'FLOOD', u'RELAY'])
+        self.expose_attribute(local_name="dhcp_behavior", remote_name="DHCPBehavior", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONSUME', u'FLOOD', u'OVERLAY_RELAY', u'UNDERLAY_RELAY'])
         self.expose_attribute(local_name="dhcp_server_address", remote_name="DHCPServerAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="label_id", remote_name="labelID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_route_distinguisher", remote_name="backHaulRouteDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_route_target", remote_name="backHaulRouteTarget", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="back_haul_subnet_ip_address", remote_name="backHaulSubnetIPAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="back_haul_subnet_mask", remote_name="backHaulSubnetMask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_vnid", remote_name="backHaulVNID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
@@ -318,6 +338,8 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="underlay_enabled", remote_name="underlayEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'DISCARDED', u'STARTED'])
+        self.expose_attribute(local_name="domain_id", remote_name="domainID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="domain_vlanid", remote_name="domainVLANID", attribute_type=int, is_required=False, is_unique=True)
         self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="route_target", remote_name="routeTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
@@ -364,6 +386,9 @@ class NUDomain(NURESTObject):
         
         
         self.links = NULinksFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.firewall_acls = NUFirewallAclsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.floating_ips = NUFloatingIpsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -427,6 +452,9 @@ class NUDomain(NURESTObject):
         
         
         self.vports = NUVPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.applicationperformancemanagementbindings = NUApplicationperformancemanagementbindingsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.bridge_interfaces = NUBridgeInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -593,6 +621,33 @@ class NUDomain(NURESTObject):
 
     
     @property
+    def dpi(self):
+        """ Get dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        return self._dpi
+
+    @dpi.setter
+    def dpi(self, value):
+        """ Set dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        self._dpi = value
+
+    
+    @property
     def label_id(self):
         """ Get label_id value.
 
@@ -671,6 +726,60 @@ class NUDomain(NURESTObject):
                 
         """
         self._back_haul_route_target = value
+
+    
+    @property
+    def back_haul_subnet_ip_address(self):
+        """ Get back_haul_subnet_ip_address value.
+
+            Notes:
+                IP Address of the backhaul subnet 
+
+                
+                This attribute is named `backHaulSubnetIPAddress` in VSD API.
+                
+        """
+        return self._back_haul_subnet_ip_address
+
+    @back_haul_subnet_ip_address.setter
+    def back_haul_subnet_ip_address(self, value):
+        """ Set back_haul_subnet_ip_address value.
+
+            Notes:
+                IP Address of the backhaul subnet 
+
+                
+                This attribute is named `backHaulSubnetIPAddress` in VSD API.
+                
+        """
+        self._back_haul_subnet_ip_address = value
+
+    
+    @property
+    def back_haul_subnet_mask(self):
+        """ Get back_haul_subnet_mask value.
+
+            Notes:
+                Network mask of the backhaul subnet
+
+                
+                This attribute is named `backHaulSubnetMask` in VSD API.
+                
+        """
+        return self._back_haul_subnet_mask
+
+    @back_haul_subnet_mask.setter
+    def back_haul_subnet_mask(self, value):
+        """ Set back_haul_subnet_mask value.
+
+            Notes:
+                Network mask of the backhaul subnet
+
+                
+                This attribute is named `backHaulSubnetMask` in VSD API.
+                
+        """
+        self._back_haul_subnet_mask = value
 
     
     @property
@@ -1098,7 +1207,7 @@ class NUDomain(NURESTObject):
         """ Get policy_change_status value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `policyChangeStatus` in VSD API.
@@ -1111,13 +1220,67 @@ class NUDomain(NURESTObject):
         """ Set policy_change_status value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `policyChangeStatus` in VSD API.
                 
         """
         self._policy_change_status = value
+
+    
+    @property
+    def domain_id(self):
+        """ Get domain_id value.
+
+            Notes:
+                A unique 20-bitID editable however could be auto-generated by VSD.
+
+                
+                This attribute is named `domainID` in VSD API.
+                
+        """
+        return self._domain_id
+
+    @domain_id.setter
+    def domain_id(self, value):
+        """ Set domain_id value.
+
+            Notes:
+                A unique 20-bitID editable however could be auto-generated by VSD.
+
+                
+                This attribute is named `domainID` in VSD API.
+                
+        """
+        self._domain_id = value
+
+    
+    @property
+    def domain_vlanid(self):
+        """ Get domain_vlanid value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `domainVLANID` in VSD API.
+                
+        """
+        return self._domain_vlanid
+
+    @domain_vlanid.setter
+    def domain_vlanid(self, value):
+        """ Set domain_vlanid value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `domainVLANID` in VSD API.
+                
+        """
+        self._domain_vlanid = value
 
     
     @property
@@ -1233,7 +1396,7 @@ class NUDomain(NURESTObject):
         """ Get associated_bgp_profile_id value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `associatedBGPProfileID` in VSD API.
@@ -1246,7 +1409,7 @@ class NUDomain(NURESTObject):
         """ Set associated_bgp_profile_id value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `associatedBGPProfileID` in VSD API.

@@ -158,7 +158,7 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_IKE_GATEWAY_PROFILE = "IKE_GATEWAY_PROFILE"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NETWORK_POLICY_GROUP = "NETWORK_POLICY_GROUP"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_MONITORING_PORT = "MONITORING_PORT"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_STATS_COLLECTOR = "STATS_COLLECTOR"
     
@@ -210,6 +210,8 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_BGP_DAMPENING_MED_RESPONSE = "BGP_DAMPENING_MED_RESPONSE"
     
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_KEYSERVER_MONITOR = "KEYSERVER_MONITOR"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSGATEWAY_TEMPLATE = "NSGATEWAY_TEMPLATE"
@@ -232,6 +234,8 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_EGRESS_QOS_QUEUE_MR = "EGRESS_QOS_QUEUE_MR"
     
+    CONST_DEFAULT_ACTION_DROP_TRAFFIC = "DROP_TRAFFIC"
+    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VLAN = "VLAN"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_ADDRESS_RANGE = "ADDRESS_RANGE"
@@ -239,6 +243,8 @@ class NUSubnet(NURESTObject):
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_EGRESS_ACL_TEMPLATE = "EGRESS_ACL_TEMPLATE"
     
     CONST_UNDERLAY_ENABLED_DISABLED = "DISABLED"
+    
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INFRASTRUCTURE_CONFIG = "INFRASTRUCTURE_CONFIG"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_EGRESS_QOS_MR = "EGRESS_QOS_MR"
     
@@ -256,9 +262,13 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INGRESS_ADV_FWD = "INGRESS_ADV_FWD"
     
+    CONST_DPI_ENABLED = "ENABLED"
+    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_VCENTER_HYPERVISOR = "VMWARE_VCENTER_HYPERVISOR"
     
     CONST_IP_TYPE_IPV6 = "IPV6"
+    
+    CONST_DPI_INHERITED = "INHERITED"
     
     CONST_IP_TYPE_IPV4 = "IPV4"
     
@@ -276,7 +286,7 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VSG_REDUNDANT_PORT = "VSG_REDUNDANT_PORT"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INFRASTRUCTURE_CONFIG = "INFRASTRUCTURE_CONFIG"
+    CONST_DEFAULT_ACTION_USE_UNDERLAY = "USE_UNDERLAY"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_LIBVIRT_INTERFACE = "LIBVIRT_INTERFACE"
     
@@ -344,7 +354,7 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_PUBLIC_NETWORK = "PUBLIC_NETWORK"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_LDAP_CONFIG = "LDAP_CONFIG"
+    CONST_DPI_DISABLED = "DISABLED"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_EXPORTIMPORT = "EXPORTIMPORT"
     
@@ -376,7 +386,7 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_DHCP_OPTION = "DHCP_OPTION"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_DHCP_RELAY_STATUS_DISABLED = "DISABLED"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INGRESS_EXT_SERVICE_TEMPLATE = "INGRESS_EXT_SERVICE_TEMPLATE"
     
@@ -434,6 +444,8 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_FLOATINGIP = "FLOATINGIP"
     
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_LDAP_CONFIG = "LDAP_CONFIG"
+    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INGRESS_ADV_FWD_ENTRY = "INGRESS_ADV_FWD_ENTRY"
     
     CONST_MULTICAST_INHERITED = "INHERITED"
@@ -446,7 +458,7 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_L2DOMAIN_SHARED = "L2DOMAIN_SHARED"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_MONITORING_PORT = "MONITORING_PORT"
+    CONST_DHCP_RELAY_STATUS_ENABLED = "ENABLED"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GEO_VM_EVENT = "GEO_VM_EVENT"
     
@@ -483,6 +495,8 @@ class NUSubnet(NURESTObject):
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SERVICE_GATEWAY_RESPONSE = "SERVICE_GATEWAY_RESPONSE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSREDUNDANT_GW_GRP = "NSREDUNDANT_GW_GRP"
+    
+    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VPORTTAG = "VPORTTAG"
     
@@ -532,6 +546,8 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_METADATA_TAG = "METADATA_TAG"
     
+    CONST_USE_GLOBAL_MAC_ENABLED = "ENABLED"
+    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SHAPING_POLICY = "SHAPING_POLICY"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SERVICES_GATEWAY_RESPONSE = "SERVICES_GATEWAY_RESPONSE"
@@ -556,7 +572,7 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSGATEWAY_CONFIG = "NSGATEWAY_CONFIG"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_PERMISSION = "PERMISSION"
+    CONST_USE_GLOBAL_MAC_DISABLED = "DISABLED"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_RELOAD_CONFIG = "VMWARE_RELOAD_CONFIG"
     
@@ -569,6 +585,8 @@ class NUSubnet(NURESTObject):
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_DOMAIN_CONFIG = "DOMAIN_CONFIG"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSPORT_VLAN_CONFIG = "NSPORT_VLAN_CONFIG"
+    
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_PERMISSION = "PERMISSION"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_ENDPOINT = "ENDPOINT"
     
@@ -624,6 +642,8 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_VCENTER_DATACENTER = "VMWARE_VCENTER_DATACENTER"
     
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NETWORK_POLICY_GROUP = "NETWORK_POLICY_GROUP"
+    
     
 
     def __init__(self, **kwargs):
@@ -644,13 +664,18 @@ class NUSubnet(NURESTObject):
         # Read/Write Attributes
         
         self._pat_enabled = None
+        self._dhcp_relay_status = None
+        self._dpi = None
         self._ip_type = None
+        self._ipv6_address = None
+        self._ipv6_gateway = None
         self._maintenance_mode = None
         self._name = None
         self._last_updated_by = None
         self._gateway = None
         self._gateway_mac_address = None
         self._address = None
+        self._default_action = None
         self._template_id = None
         self._service_id = None
         self._description = None
@@ -665,6 +690,7 @@ class NUSubnet(NURESTObject):
         self._route_target = None
         self._split_subnet = None
         self._proxy_arp = None
+        self._use_global_mac = None
         self._associated_application_id = None
         self._associated_application_object_id = None
         self._associated_application_object_type = None
@@ -675,13 +701,18 @@ class NUSubnet(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="pat_enabled", remote_name="PATEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="dhcp_relay_status", remote_name="DHCPRelayStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ipv6_gateway", remote_name="IPv6Gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_mac_address", remote_name="gatewayMACAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="default_action", remote_name="defaultAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'DROP_TRAFFIC', u'USE_UNDERLAY'])
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_id", remote_name="serviceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
@@ -696,6 +727,7 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="route_target", remote_name="routeTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="split_subnet", remote_name="splitSubnet", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="proxy_arp", remote_name="proxyARP", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="associated_application_id", remote_name="associatedApplicationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_application_object_id", remote_name="associatedApplicationObjectID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_application_object_type", remote_name="associatedApplicationObjectType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACLENTRY_LOCATION', u'ADDRESS_RANGE', u'ADDRESS_RANGE_STATE', u'ALARM', u'APPD_APPLICATION', u'APPD_EXTERNAL_APP_SERVICE', u'APPD_FLOW', u'APPD_FLOW_FORWARDING_POLICY', u'APPD_FLOW_SECURITY_POLICY', u'APPD_SERVICE', u'APPD_TIER', u'APPLICATION', u'AUTO_DISC_GATEWAY', u'BACK_HAUL_SERVICE_RESP', u'BGP_DAMPENING_MED_RESPONSE', u'BGP_NEIGHBOR', u'BGP_NEIGHBOR_MED_RESPONSE', u'BGP_PROFILE', u'BGP_PROFILE_MED_RESPONSE', u'BGPPEER', u'BOOTSTRAP', u'BOOTSTRAP_ACTIVATION', u'BRIDGEINTERFACE', u'CERTIFICATE', u'CHILD_ENTITY_POLICY_CHANGE', u'CLOUD_MGMT_SYSTEM', u'CONTAINER_RESYNC', u'CUSTOMER_VRF_SEQUENCENO', u'DC_CONFIG', u'DHCP_ALLOC_MESSAGE', u'DHCP_CONFIG_RESP', u'DHCP_OPTION', u'DISKSTATS', u'DOMAIN', u'DOMAIN_CONFIG', u'DOMAIN_CONFIG_RESP', u'DOMAIN_FLOATING_IP_ACL_TEMPLATE', u'DOMAIN_FLOATING_IP_ACL_TEMPLATE_ENTRY', u'DOMAIN_TEMPLATE', u'DSCP_FORWARDING_CLASS_MAPPING', u'DSCP_FORWARDING_CLASS_TABLE', u'EGRESS_ACL', u'EGRESS_ACL_ENTRY', u'EGRESS_ACL_TEMPLATE', u'EGRESS_ACL_TEMPLATE_ENTRY', u'EGRESS_QOS_MR', u'EGRESS_QOS_PRIMITIVE', u'EGRESS_QOS_QUEUE_MR', u'ENDPOINT', u'ENTERPRISE', u'ENTERPRISE_CONFIG', u'ENTERPRISE_CONFIG_RESP', u'ENTERPRISE_NETWORK', u'ENTERPRISE_PERMISSION', u'ENTERPRISE_PROFILE', u'ENTERPRISE_SECURED_DATA', u'ENTERPRISE_SECURITY', u'ENTITY_METADATA_BINDING', u'ESI_SEQUENCENO', u'EVENT_LOG', u'EVPN_BGP_COMMUNITY_TAG_ENTRY', u'EVPN_BGP_COMMUNITY_TAG_SEQ_NO', u'EXPORTIMPORT', u'EXTERNAL_SERVICE', u'FLOATING_IP_ACL_TEMPLATE', u'FLOATING_IP_ACL_TEMPLATE_ENTRY', u'FLOATINGIP', u'FLOATINGIP_ACL', u'FLOATINGIP_ACL_ENTRY', u'GATEWAY', u'GATEWAY_CONFIG', u'GATEWAY_CONFIG_RESP', u'GATEWAY_SECURED_DATA', u'GATEWAY_SECURITY', u'GATEWAY_SECURITY_PROFILE_REQUEST', u'GATEWAY_SECURITY_PROFILE_RESPONSE', u'GATEWAY_SECURITY_REQUEST', u'GATEWAY_SECURITY_RESPONSE', u'GATEWAY_SERVICE_CONFIG', u'GATEWAY_SERVICE_CONFIG_RESP', u'GATEWAY_TEMPLATE', u'GATEWAY_VPORT_CONFIG', u'GATEWAY_VPORT_CONFIG_RESP', u'GEO_VM_EVENT', u'GEO_VM_REQ', u'GEO_VM_RES', u'GROUP', u'GROUPKEY_ENCRYPTION_PROFILE', u'HEALTH_REQ', u'HOSTINTERFACE', u'HSC', u'IKE_CERTIFICATE', u'IKE_ENCRYPTION_PROFILE', u'IKE_GATEWAY', u'IKE_GATEWAY_CONFIG', u'IKE_GATEWAY_CONNECTION', u'IKE_GATEWAY_PROFILE', u'IKE_PSK', u'IKE_SUBNET', u'INFRASTRUCTURE_CONFIG', u'INFRASTRUCTURE_GATEWAY_PROFILE', u'INFRASTRUCTURE_PORT_PROFILE', u'INFRASTRUCTURE_VSC_PROFILE', u'INGRESS_ACL', u'INGRESS_ACL_ENTRY', u'INGRESS_ACL_TEMPLATE', u'INGRESS_ACL_TEMPLATE_ENTRY', u'INGRESS_ADV_FWD', u'INGRESS_ADV_FWD_ENTRY', u'INGRESS_ADV_FWD_TEMPLATE', u'INGRESS_ADV_FWD_TEMPLATE_ENTRY', u'INGRESS_EXT_SERVICE', u'INGRESS_EXT_SERVICE_ENTRY', u'INGRESS_EXT_SERVICE_TEMPLATE', u'INGRESS_EXT_SERVICE_TEMPLATE_ENTRY', u'IP_BINDING', u'JOB', u'KEYSERVER_MEMBER', u'KEYSERVER_MONITOR', u'KEYSERVER_MONITOR_ENCRYPTED_SEED', u'KEYSERVER_MONITOR_SEED', u'KEYSERVER_MONITOR_SEK', u'KEYSERVER_NOTIFICATION', u'L2DOMAIN', u'L2DOMAIN_SHARED', u'L2DOMAIN_TEMPLATE', u'LDAP_CONFIG', u'LIBVIRT_INTERFACE', u'LICENSE', u'LOCATION', u'MC_CHANNEL_MAP', u'MC_LIST', u'MC_RANGE', u'METADATA', u'METADATA_TAG', u'MIRROR_DESTINATION', u'MONITORING_PORT', u'MULTI_NIC_VPORT', u'NATMAPENTRY', u'NETWORK_ELEMENT', u'NETWORK_LAYOUT', u'NETWORK_MACRO_GROUP', u'NETWORK_POLICY_GROUP', u'NEXT_HOP_RESP', u'NODE_EXECUTION_ERROR', u'NS_REDUNDANT_PORT', u'NSG_NOTIFICATION', u'NSGATEWAY', u'NSGATEWAY_CONFIG', u'NSGATEWAY_TEMPLATE', u'NSPORT', u'NSPORT_STATIC_CONFIG', u'NSPORT_TEMPLATE', u'NSPORT_VLAN_CONFIG', u'NSREDUNDANT_GW_GRP', u'PATCONFIG_CONFIG_RESP', u'PATNATPOOL', u'PERMISSION', u'PERMITTED_ACTION', u'POLICING_POLICY', u'POLICY_DECISION', u'POLICY_GROUP', u'POLICY_GROUP_TEMPLATE', u'PORT', u'PORT_MR', u'PORT_PUSH', u'PORT_TEMPLATE', u'PORT_VLAN_CONFIG', u'PORT_VLAN_CONFIG_RESPONSE', u'PUBLIC_NETWORK', u'QOS_PRIMITIVE', u'RATE_LIMITER', u'RD_SEQUENCENO', u'REDUNDANT_GW_GRP', u'ROUTING_POL_MED_RESPONSE', u'ROUTING_POLICY', u'RTRD_ENTITY', u'RTRD_SEQUENCENO', u'SERVICE_GATEWAY_RESPONSE', u'SERVICE_VRF_SEQUENCENO', u'SERVICES_GATEWAY_RESPONSE', u'SHAPING_POLICY', u'SHARED_RESOURCE', u'SITE', u'SITE_REQ', u'SITE_RES', u'STATIC_ROUTE', u'STATIC_ROUTE_RESP', u'STATISTICS', u'STATS_COLLECTOR', u'STATS_POLICY', u'STATS_TCA', u'STATSSERVER', u'SUBNET', u'SUBNET_ENTRY', u'SUBNET_MAC_ENTRY', u'SUBNET_POOL_ENTRY', u'SUBNET_TEMPLATE', u'SYSTEM_CONFIG', u'SYSTEM_CONFIG_REQ', u'SYSTEM_CONFIG_RESP', u'SYSTEM_MONITORING', u'UNSUPPORTED', u'UPLINK_RD', u'USER', u'VIRTUAL_IP', u'VIRTUAL_MACHINE', u'VIRTUAL_MACHINE_REPORT', u'VLAN', u'VLAN_CONFIG_RESPONSE', u'VLAN_TEMPLATE', u'VM_DESCRIPTION', u'VM_INTERFACE', u'VM_RESYNC', u'VMWARE_RELOAD_CONFIG', u'VMWARE_VCENTER', u'VMWARE_VCENTER_CLUSTER', u'VMWARE_VCENTER_DATACENTER', u'VMWARE_VCENTER_EAM_CONFIG', u'VMWARE_VCENTER_HYPERVISOR', u'VMWARE_VCENTER_VRS_BASE_CONFIG', u'VMWARE_VCENTER_VRS_CONFIG', u'VMWARE_VRS_ADDRESS_RANGE', u'VNID_SEQUENCENO', u'VPN_CONNECT', u'VPORT', u'VPORT_GATEWAY_RESPONSE', u'VPORT_MEDIATION_REQUEST', u'VPORT_MIRROR', u'VPORT_TAG_BASE', u'VPORTTAG', u'VPORTTAGTEMPLATE', u'VPRN_LABEL_SEQUENCENO', u'VRS', u'VSC', u'VSD', u'VSD_COMPONENT', u'VSG_REDUNDANT_PORT', u'VSP', u'WAN_SERVICE', u'ZONE', u'ZONE_TEMPLATE'])
@@ -801,6 +833,60 @@ class NUSubnet(NURESTObject):
 
     
     @property
+    def dhcp_relay_status(self):
+        """ Get dhcp_relay_status value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `DHCPRelayStatus` in VSD API.
+                
+        """
+        return self._dhcp_relay_status
+
+    @dhcp_relay_status.setter
+    def dhcp_relay_status(self, value):
+        """ Set dhcp_relay_status value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `DHCPRelayStatus` in VSD API.
+                
+        """
+        self._dhcp_relay_status = value
+
+    
+    @property
+    def dpi(self):
+        """ Get dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        return self._dpi
+
+    @dpi.setter
+    def dpi(self, value):
+        """ Set dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        self._dpi = value
+
+    
+    @property
     def ip_type(self):
         """ Get ip_type value.
 
@@ -825,6 +911,60 @@ class NUSubnet(NURESTObject):
                 
         """
         self._ip_type = value
+
+    
+    @property
+    def ipv6_address(self):
+        """ Get ipv6_address value.
+
+            Notes:
+                IP address of the subnet defined. In case of zone, this is an optional field for and allows users to allocate an IP address range to a zone. The VSD will auto-assign IP addresses to subnets from this range if a specific IP address is not defined for the subnet
+
+                
+                This attribute is named `IPv6Address` in VSD API.
+                
+        """
+        return self._ipv6_address
+
+    @ipv6_address.setter
+    def ipv6_address(self, value):
+        """ Set ipv6_address value.
+
+            Notes:
+                IP address of the subnet defined. In case of zone, this is an optional field for and allows users to allocate an IP address range to a zone. The VSD will auto-assign IP addresses to subnets from this range if a specific IP address is not defined for the subnet
+
+                
+                This attribute is named `IPv6Address` in VSD API.
+                
+        """
+        self._ipv6_address = value
+
+    
+    @property
+    def ipv6_gateway(self):
+        """ Get ipv6_gateway value.
+
+            Notes:
+                The IPv6 address of the gateway of this subnet
+
+                
+                This attribute is named `IPv6Gateway` in VSD API.
+                
+        """
+        return self._ipv6_gateway
+
+    @ipv6_gateway.setter
+    def ipv6_gateway(self, value):
+        """ Set ipv6_gateway value.
+
+            Notes:
+                The IPv6 address of the gateway of this subnet
+
+                
+                This attribute is named `IPv6Gateway` in VSD API.
+                
+        """
+        self._ipv6_gateway = value
 
     
     @property
@@ -975,6 +1115,33 @@ class NUSubnet(NURESTObject):
                 
         """
         self._address = value
+
+    
+    @property
+    def default_action(self):
+        """ Get default_action value.
+
+            Notes:
+                If PAT is disabled then this flag indicates what to do if routes don't exist in overlay, will default to drop | possible values USE_UNDERLAY, DROP_TRAFFIC Possible values are USE_UNDERLAY, DROP_TRAFFIC, .
+
+                
+                This attribute is named `defaultAction` in VSD API.
+                
+        """
+        return self._default_action
+
+    @default_action.setter
+    def default_action(self, value):
+        """ Set default_action value.
+
+            Notes:
+                If PAT is disabled then this flag indicates what to do if routes don't exist in overlay, will default to drop | possible values USE_UNDERLAY, DROP_TRAFFIC Possible values are USE_UNDERLAY, DROP_TRAFFIC, .
+
+                
+                This attribute is named `defaultAction` in VSD API.
+                
+        """
+        self._default_action = value
 
     
     @property
@@ -1132,7 +1299,7 @@ class NUSubnet(NURESTObject):
         """ Get underlay value.
 
             Notes:
-                Boolean flag to indicate whether underlay is enabled directly or indirectly
+                Read Only Boolean flag to indicate whether underlay is enabled directly or indirectly
 
                 
         """
@@ -1143,7 +1310,7 @@ class NUSubnet(NURESTObject):
         """ Set underlay value.
 
             Notes:
-                Boolean flag to indicate whether underlay is enabled directly or indirectly
+                Read Only Boolean flag to indicate whether underlay is enabled directly or indirectly
 
                 
         """
@@ -1337,6 +1504,33 @@ class NUSubnet(NURESTObject):
                 
         """
         self._proxy_arp = value
+
+    
+    @property
+    def use_global_mac(self):
+        """ Get use_global_mac value.
+
+            Notes:
+                if this flag is enabled, the system configured globalMACAddress will be used as the gateway mac address
+
+                
+                This attribute is named `useGlobalMAC` in VSD API.
+                
+        """
+        return self._use_global_mac
+
+    @use_global_mac.setter
+    def use_global_mac(self, value):
+        """ Set use_global_mac value.
+
+            Notes:
+                if this flag is enabled, the system configured globalMACAddress will be used as the gateway mac address
+
+                
+                This attribute is named `useGlobalMAC` in VSD API.
+                
+        """
+        self._use_global_mac = value
 
     
     @property

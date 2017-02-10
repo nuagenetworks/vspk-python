@@ -68,6 +68,7 @@ class NUVRSRedeploymentpolicy(NURESTObject):
         self._al_ubr0_status_redeployment_enabled = None
         self._cpu_utilization_redeployment_enabled = None
         self._cpu_utilization_threshold = None
+        self._vrs_corrective_action_delay = None
         self._vrs_process_redeployment_enabled = None
         self._vrsvsc_status_redeployment_enabled = None
         self._last_updated_by = None
@@ -82,6 +83,7 @@ class NUVRSRedeploymentpolicy(NURESTObject):
         self.expose_attribute(local_name="al_ubr0_status_redeployment_enabled", remote_name="ALUbr0StatusRedeploymentEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cpu_utilization_redeployment_enabled", remote_name="CPUUtilizationRedeploymentEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cpu_utilization_threshold", remote_name="CPUUtilizationThreshold", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrs_corrective_action_delay", remote_name="VRSCorrectiveActionDelay", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_process_redeployment_enabled", remote_name="VRSProcessRedeploymentEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrsvsc_status_redeployment_enabled", remote_name="VRSVSCStatusRedeploymentEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -177,6 +179,33 @@ class NUVRSRedeploymentpolicy(NURESTObject):
                 
         """
         self._cpu_utilization_threshold = value
+
+    
+    @property
+    def vrs_corrective_action_delay(self):
+        """ Get vrs_corrective_action_delay value.
+
+            Notes:
+                VRS Corrective Action Delay in seconds
+
+                
+                This attribute is named `VRSCorrectiveActionDelay` in VSD API.
+                
+        """
+        return self._vrs_corrective_action_delay
+
+    @vrs_corrective_action_delay.setter
+    def vrs_corrective_action_delay(self, value):
+        """ Set vrs_corrective_action_delay value.
+
+            Notes:
+                VRS Corrective Action Delay in seconds
+
+                
+                This attribute is named `VRSCorrectiveActionDelay` in VSD API.
+                
+        """
+        self._vrs_corrective_action_delay = value
 
     
     @property

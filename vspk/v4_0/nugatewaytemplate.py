@@ -61,6 +61,8 @@ class NUGatewayTemplate(NURESTObject):
     
     CONST_PERSONALITY_OTHER = "OTHER"
     
+    CONST_PERSONALITY_VRSB = "VRSB"
+    
     CONST_PERSONALITY_NSG = "NSG"
     
     CONST_PERSONALITY_VRSG = "VRSG"
@@ -98,7 +100,7 @@ class NUGatewayTemplate(NURESTObject):
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=True, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'OTHER', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=True, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'OTHER', u'VRSB', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])

@@ -86,6 +86,8 @@ class NUGateway(NURESTObject):
     
     CONST_PERSONALITY_NSG = "NSG"
     
+    CONST_PERSONALITY_VRSB = "VRSB"
+    
     CONST_PERMITTED_ACTION_ALL = "ALL"
     
     CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
@@ -132,6 +134,7 @@ class NUGateway(NURESTObject):
         self._description = None
         self._enterprise_id = None
         self._entity_scope = None
+        self._use_gateway_vlanvnid = None
         self._vtep = None
         self._auto_disc_gateway_id = None
         self._external_id = None
@@ -144,10 +147,11 @@ class NUGateway(NURESTObject):
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="pending", remote_name="pending", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=True, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'OTHER', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=True, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'OTHER', u'VRSB', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="use_gateway_vlanvnid", remote_name="useGatewayVLANVNID", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vtep", remote_name="vtep", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="auto_disc_gateway_id", remote_name="autoDiscGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -466,6 +470,33 @@ class NUGateway(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def use_gateway_vlanvnid(self):
+        """ Get use_gateway_vlanvnid value.
+
+            Notes:
+                When set, VLAN-VNID mapping must be unique for all the vports of the gateway
+
+                
+                This attribute is named `useGatewayVLANVNID` in VSD API.
+                
+        """
+        return self._use_gateway_vlanvnid
+
+    @use_gateway_vlanvnid.setter
+    def use_gateway_vlanvnid(self, value):
+        """ Set use_gateway_vlanvnid value.
+
+            Notes:
+                When set, VLAN-VNID mapping must be unique for all the vports of the gateway
+
+                
+                This attribute is named `useGatewayVLANVNID` in VSD API.
+                
+        """
+        self._use_gateway_vlanvnid = value
 
     
     @property

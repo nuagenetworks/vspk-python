@@ -107,6 +107,7 @@ class NUEnterpriseProfile(NURESTObject):
         
         self._bgp_enabled = None
         self._dhcp_lease_interval = None
+        self._dpi_enabled = None
         self._name = None
         self._last_updated_by = None
         self._receive_multi_cast_list_id = None
@@ -117,12 +118,14 @@ class NUEnterpriseProfile(NURESTObject):
         self._allow_trusted_forwarding_class = None
         self._allowed_forwarding_classes = None
         self._floating_ips_quota = None
+        self._enable_application_performance_management = None
         self._encryption_management_mode = None
         self._entity_scope = None
         self._external_id = None
         
         self.expose_attribute(local_name="bgp_enabled", remote_name="BGPEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_lease_interval", remote_name="DHCPLeaseInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="dpi_enabled", remote_name="DPIEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="receive_multi_cast_list_id", remote_name="receiveMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
@@ -133,6 +136,7 @@ class NUEnterpriseProfile(NURESTObject):
         self.expose_attribute(local_name="allow_trusted_forwarding_class", remote_name="allowTrustedForwardingClass", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_forwarding_classes", remote_name="allowedForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="floating_ips_quota", remote_name="floatingIPsQuota", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enable_application_performance_management", remote_name="enableApplicationPerformanceManagement", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption_management_mode", remote_name="encryptionManagementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'MANAGED'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -215,6 +219,33 @@ class NUEnterpriseProfile(NURESTObject):
                 
         """
         self._dhcp_lease_interval = value
+
+    
+    @property
+    def dpi_enabled(self):
+        """ Get dpi_enabled value.
+
+            Notes:
+                Enable DPI for this Enterprise Profile
+
+                
+                This attribute is named `DPIEnabled` in VSD API.
+                
+        """
+        return self._dpi_enabled
+
+    @dpi_enabled.setter
+    def dpi_enabled(self, value):
+        """ Set dpi_enabled value.
+
+            Notes:
+                Enable DPI for this Enterprise Profile
+
+                
+                This attribute is named `DPIEnabled` in VSD API.
+                
+        """
+        self._dpi_enabled = value
 
     
     @property
@@ -477,6 +508,33 @@ class NUEnterpriseProfile(NURESTObject):
                 
         """
         self._floating_ips_quota = value
+
+    
+    @property
+    def enable_application_performance_management(self):
+        """ Get enable_application_performance_management value.
+
+            Notes:
+                Enable DPI for this enterprise
+
+                
+                This attribute is named `enableApplicationPerformanceManagement` in VSD API.
+                
+        """
+        return self._enable_application_performance_management
+
+    @enable_application_performance_management.setter
+    def enable_application_performance_management(self, value):
+        """ Set enable_application_performance_management value.
+
+            Notes:
+                Enable DPI for this enterprise
+
+                
+                This attribute is named `enableApplicationPerformanceManagement` in VSD API.
+                
+        """
+        self._enable_application_performance_management = value
 
     
     @property

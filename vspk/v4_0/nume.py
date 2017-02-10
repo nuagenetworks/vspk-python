@@ -63,6 +63,9 @@ from .fetchers import NURedirectionTargetsFetcher
 from .fetchers import NURedundancyGroupsFetcher
 
 
+from .fetchers import NUPerformanceMonitorsFetcher
+
+
 from .fetchers import NUCertificatesFetcher
 
 
@@ -135,10 +138,13 @@ from .fetchers import NUVMInterfacesFetcher
 from .fetchers import NUCloudMgmtSystemsFetcher
 
 
+from .fetchers import NUUnderlaysFetcher
+
+
+from .fetchers import NUInfrastructureAccessProfilesFetcher
+
+
 from .fetchers import NUInfrastructureGatewayProfilesFetcher
-
-
-from .fetchers import NUInfrastructurePortProfilesFetcher
 
 
 from .fetchers import NUInfrastructureVscProfilesFetcher
@@ -201,13 +207,13 @@ from .fetchers import NUNSGatewaysFetcher
 from .fetchers import NUNSGatewayTemplatesFetcher
 
 
+from .fetchers import NUNSGGroupsFetcher
+
+
 from .fetchers import NUNSRedundantGatewayGroupsFetcher
 
 
 from .fetchers import NUVSPsFetcher
-
-
-from .fetchers import NUNSPortStaticConfigurationsFetcher
 
 
 from .fetchers import NUStaticRoutesFetcher
@@ -217,6 +223,9 @@ from .fetchers import NUStatsCollectorInfosFetcher
 
 
 from .fetchers import NUSubnetsFetcher
+
+
+from .fetchers import NUDUCGroupsFetcher
 
 
 from .fetchers import NUMultiCastChannelMapsFetcher
@@ -283,6 +292,8 @@ class NUMe(NURESTRootObject):
         self._last_updated_by = None
         self._first_name = None
         self._disabled = None
+        self._elastic_search_ui_address = None
+        self._flow_collection_enabled = None
         self._email = None
         self._enterprise_id = None
         self._enterprise_name = None
@@ -290,6 +301,7 @@ class NUMe(NURESTRootObject):
         self._mobile_number = None
         self._role = None
         self._user_name = None
+        self._statistics_enabled = None
         self._avatar_data = None
         self._avatar_type = None
         self._external_id = None
@@ -299,6 +311,8 @@ class NUMe(NURESTRootObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="first_name", remote_name="firstName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="disabled", remote_name="disabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="elastic_search_ui_address", remote_name="elasticSearchUIAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="email", remote_name="email", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
@@ -306,6 +320,7 @@ class NUMe(NURESTRootObject):
         self.expose_attribute(local_name="mobile_number", remote_name="mobileNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_name", remote_name="userName", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="statistics_enabled", remote_name="statisticsEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="avatar_data", remote_name="avatarData", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="avatar_type", remote_name="avatarType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BASE64', u'COMPUTEDURL', u'URL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -348,6 +363,9 @@ class NUMe(NURESTRootObject):
         
         
         self.redundancy_groups = NURedundancyGroupsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.performance_monitors = NUPerformanceMonitorsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.certificates = NUCertificatesFetcher.fetcher_with_object(parent_object=self, relationship="root")
@@ -422,10 +440,13 @@ class NUMe(NURESTRootObject):
         self.cloud_mgmt_systems = NUCloudMgmtSystemsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.underlays = NUUnderlaysFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.infrastructure_access_profiles = NUInfrastructureAccessProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.infrastructure_gateway_profiles = NUInfrastructureGatewayProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
-        
-        
-        self.infrastructure_port_profiles = NUInfrastructurePortProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.infrastructure_vsc_profiles = NUInfrastructureVscProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
@@ -488,13 +509,13 @@ class NUMe(NURESTRootObject):
         self.ns_gateway_templates = NUNSGatewayTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.nsg_groups = NUNSGGroupsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.ns_redundant_gateway_groups = NUNSRedundantGatewayGroupsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.vsps = NUVSPsFetcher.fetcher_with_object(parent_object=self, relationship="root")
-        
-        
-        self.ns_port_static_configurations = NUNSPortStaticConfigurationsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.static_routes = NUStaticRoutesFetcher.fetcher_with_object(parent_object=self, relationship="root")
@@ -504,6 +525,9 @@ class NUMe(NURESTRootObject):
         
         
         self.subnets = NUSubnetsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.duc_groups = NUDUCGroupsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.multi_cast_channel_maps = NUMultiCastChannelMapsFetcher.fetcher_with_object(parent_object=self, relationship="root")
@@ -650,6 +674,60 @@ class NUMe(NURESTRootObject):
                 
         """
         self._disabled = value
+
+    
+    @property
+    def elastic_search_ui_address(self):
+        """ Get elastic_search_ui_address value.
+
+            Notes:
+                elastic search UI address
+
+                
+                This attribute is named `elasticSearchUIAddress` in VSD API.
+                
+        """
+        return self._elastic_search_ui_address
+
+    @elastic_search_ui_address.setter
+    def elastic_search_ui_address(self, value):
+        """ Set elastic_search_ui_address value.
+
+            Notes:
+                elastic search UI address
+
+                
+                This attribute is named `elasticSearchUIAddress` in VSD API.
+                
+        """
+        self._elastic_search_ui_address = value
+
+    
+    @property
+    def flow_collection_enabled(self):
+        """ Get flow_collection_enabled value.
+
+            Notes:
+                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires "statisticsEnabled".
+
+                
+                This attribute is named `flowCollectionEnabled` in VSD API.
+                
+        """
+        return self._flow_collection_enabled
+
+    @flow_collection_enabled.setter
+    def flow_collection_enabled(self, value):
+        """ Set flow_collection_enabled value.
+
+            Notes:
+                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires "statisticsEnabled".
+
+                
+                This attribute is named `flowCollectionEnabled` in VSD API.
+                
+        """
+        self._flow_collection_enabled = value
 
     
     @property
@@ -834,6 +912,33 @@ class NUMe(NURESTRootObject):
 
     
     @property
+    def statistics_enabled(self):
+        """ Get statistics_enabled value.
+
+            Notes:
+                This flag is used to indicate if statistics is enabled in the system. CSProot is expected to activate this through the enable statistics script.
+
+                
+                This attribute is named `statisticsEnabled` in VSD API.
+                
+        """
+        return self._statistics_enabled
+
+    @statistics_enabled.setter
+    def statistics_enabled(self, value):
+        """ Set statistics_enabled value.
+
+            Notes:
+                This flag is used to indicate if statistics is enabled in the system. CSProot is expected to activate this through the enable statistics script.
+
+                
+                This attribute is named `statisticsEnabled` in VSD API.
+                
+        """
+        self._statistics_enabled = value
+
+    
+    @property
     def avatar_data(self):
         """ Get avatar_data value.
 
@@ -915,4 +1020,10 @@ class NUMe(NURESTRootObject):
 
     
 
+    
+    ## Custom methods
+    def save(self, async=False, callback=None):
+        """ """
+        super(NUMe, self).save(async=async, callback=callback, encrypted=False)
+    
     

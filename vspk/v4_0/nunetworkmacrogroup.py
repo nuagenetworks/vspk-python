@@ -77,12 +77,14 @@ class NUNetworkMacroGroup(NURESTObject):
         self._name = None
         self._last_updated_by = None
         self._description = None
+        self._network_macros = None
         self._entity_scope = None
         self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="network_macros", remote_name="networkMacros", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
@@ -174,6 +176,33 @@ class NUNetworkMacroGroup(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def network_macros(self):
+        """ Get network_macros value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `networkMacros` in VSD API.
+                
+        """
+        return self._network_macros
+
+    @network_macros.setter
+    def network_macros(self, value):
+        """ Set network_macros value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `networkMacros` in VSD API.
+                
+        """
+        self._network_macros = value
 
     
     @property

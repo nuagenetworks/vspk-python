@@ -53,11 +53,21 @@ class NUNSPortTemplate(NURESTObject):
     
     CONST_PORT_TYPE_NETWORK = "NETWORK"
     
+    CONST_SPEED_BASET10 = "BASET10"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_PORT_TYPE_ACCESS = "ACCESS"
     
+    CONST_SPEED_BASET1000 = "BASET1000"
+    
+    CONST_SPEED_BASEX10G = "BASEX10G"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_SPEED_AUTONEGOTIATE = "AUTONEGOTIATE"
+    
+    CONST_SPEED_BASETX100 = "BASETX100"
     
     
 
@@ -86,8 +96,9 @@ class NUNSPortTemplate(NURESTObject):
         self._infrastructure_profile_id = None
         self._entity_scope = None
         self._port_type = None
+        self._speed = None
         self._associated_egress_qos_policy_id = None
-        self._associated_vsc_profile_id = None
+        self._mtu = None
         self._external_id = None
         
         self.expose_attribute(local_name="vlan_range", remote_name="VLANRange", attribute_type=str, is_required=False, is_unique=False)
@@ -98,8 +109,9 @@ class NUNSPortTemplate(NURESTObject):
         self.expose_attribute(local_name="infrastructure_profile_id", remote_name="infrastructureProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'NETWORK'])
+        self.expose_attribute(local_name="speed", remote_name="speed", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTONEGOTIATE', u'BASET10', u'BASET1000', u'BASETX100', u'BASEX10G'])
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_vsc_profile_id", remote_name="associatedVSCProfileID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="mtu", remote_name="mtu", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -328,6 +340,29 @@ class NUNSPortTemplate(NURESTObject):
 
     
     @property
+    def speed(self):
+        """ Get speed value.
+
+            Notes:
+                Port Speed in Mb/s :  Supported Ethernet speeds are 10 (10Base-T), 100 (Fast-ethernet 100Base-TX), 1000 (Gigabit Ethernet 1000Base-T), 10 000 (10 Gigabit Ethernet 10GBase-X), and Auto-Negotiate
+
+                
+        """
+        return self._speed
+
+    @speed.setter
+    def speed(self, value):
+        """ Set speed value.
+
+            Notes:
+                Port Speed in Mb/s :  Supported Ethernet speeds are 10 (10Base-T), 100 (Fast-ethernet 100Base-TX), 1000 (Gigabit Ethernet 1000Base-T), 10 000 (10 Gigabit Ethernet 10GBase-X), and Auto-Negotiate
+
+                
+        """
+        self._speed = value
+
+    
+    @property
     def associated_egress_qos_policy_id(self):
         """ Get associated_egress_qos_policy_id value.
 
@@ -355,30 +390,26 @@ class NUNSPortTemplate(NURESTObject):
 
     
     @property
-    def associated_vsc_profile_id(self):
-        """ Get associated_vsc_profile_id value.
+    def mtu(self):
+        """ Get mtu value.
 
             Notes:
-                The ID of the infrastructure VSC profile this is associated with this instance of a port or port template.
+                Port MTU (Maximum Transmission Unit) :  The size in octets of the largest protocol data unit hat the layer can pass on.
 
-                
-                This attribute is named `associatedVSCProfileID` in VSD API.
                 
         """
-        return self._associated_vsc_profile_id
+        return self._mtu
 
-    @associated_vsc_profile_id.setter
-    def associated_vsc_profile_id(self, value):
-        """ Set associated_vsc_profile_id value.
+    @mtu.setter
+    def mtu(self, value):
+        """ Set mtu value.
 
             Notes:
-                The ID of the infrastructure VSC profile this is associated with this instance of a port or port template.
+                Port MTU (Maximum Transmission Unit) :  The size in octets of the largest protocol data unit hat the layer can pass on.
 
                 
-                This attribute is named `associatedVSCProfileID` in VSD API.
-                
         """
-        self._associated_vsc_profile_id = value
+        self._mtu = value
 
     
     @property

@@ -32,6 +32,12 @@ from .fetchers import NUMetadatasFetcher
 
 from .fetchers import NUGlobalMetadatasFetcher
 
+
+from .fetchers import NUUplinkConnectionsFetcher
+
+
+from .fetchers import NUBRConnectionsFetcher
+
 from bambou import NURESTObject
 
 
@@ -76,6 +82,8 @@ class NUVLANTemplate(NURESTObject):
         self._description = None
         self._entity_scope = None
         self._associated_egress_qos_policy_id = None
+        self._associated_vsc_profile_id = None
+        self._duc_vlan = None
         self._external_id = None
         
         self.expose_attribute(local_name="value", remote_name="value", attribute_type=int, is_required=False, is_unique=False)
@@ -83,6 +91,8 @@ class NUVLANTemplate(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_vsc_profile_id", remote_name="associatedVSCProfileID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="duc_vlan", remote_name="ducVlan", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -93,6 +103,12 @@ class NUVLANTemplate(NURESTObject):
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.uplink_connections = NUUplinkConnectionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.br_connections = NUBRConnectionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -224,6 +240,60 @@ class NUVLANTemplate(NURESTObject):
                 
         """
         self._associated_egress_qos_policy_id = value
+
+    
+    @property
+    def associated_vsc_profile_id(self):
+        """ Get associated_vsc_profile_id value.
+
+            Notes:
+                The ID of the infrastructure VSC profile this is associated with this instance of a vlan or vlan template.
+
+                
+                This attribute is named `associatedVSCProfileID` in VSD API.
+                
+        """
+        return self._associated_vsc_profile_id
+
+    @associated_vsc_profile_id.setter
+    def associated_vsc_profile_id(self, value):
+        """ Set associated_vsc_profile_id value.
+
+            Notes:
+                The ID of the infrastructure VSC profile this is associated with this instance of a vlan or vlan template.
+
+                
+                This attribute is named `associatedVSCProfileID` in VSD API.
+                
+        """
+        self._associated_vsc_profile_id = value
+
+    
+    @property
+    def duc_vlan(self):
+        """ Get duc_vlan value.
+
+            Notes:
+                When set to true, this specifies that this VLAN template instance serves as an underlay connection endpoint on an NSG-UBR gateway.
+
+                
+                This attribute is named `ducVlan` in VSD API.
+                
+        """
+        return self._duc_vlan
+
+    @duc_vlan.setter
+    def duc_vlan(self, value):
+        """ Set duc_vlan value.
+
+            Notes:
+                When set to true, this specifies that this VLAN template instance serves as an underlay connection endpoint on an NSG-UBR gateway.
+
+                
+                This attribute is named `ducVlan` in VSD API.
+                
+        """
+        self._duc_vlan = value
 
     
     @property

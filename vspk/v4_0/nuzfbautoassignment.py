@@ -81,7 +81,9 @@ class NUZFBAutoAssignment(NURESTObject):
         self._last_updated_by = None
         self._description = None
         self._entity_scope = None
+        self._priority = None
         self._associated_enterprise_id = None
+        self._associated_enterprise_name = None
         self._external_id = None
         
         self.expose_attribute(local_name="zfb_match_attribute", remote_name="ZFBMatchAttribute", attribute_type=str, is_required=False, is_unique=False, choices=[u'HOSTNAME', u'IP_ADDRESS', u'MAC_ADDRESS', u'NSGATEWAY_ID', u'SERIAL_NUMBER'])
@@ -90,7 +92,9 @@ class NUZFBAutoAssignment(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_enterprise_name", remote_name="associatedEnterpriseName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -253,6 +257,29 @@ class NUZFBAutoAssignment(NURESTObject):
 
     
     @property
+    def priority(self):
+        """ Get priority value.
+
+            Notes:
+                Priority of the Auto Assignment
+
+                
+        """
+        return self._priority
+
+    @priority.setter
+    def priority(self, value):
+        """ Set priority value.
+
+            Notes:
+                Priority of the Auto Assignment
+
+                
+        """
+        self._priority = value
+
+    
+    @property
     def associated_enterprise_id(self):
         """ Get associated_enterprise_id value.
 
@@ -277,6 +304,33 @@ class NUZFBAutoAssignment(NURESTObject):
                 
         """
         self._associated_enterprise_id = value
+
+    
+    @property
+    def associated_enterprise_name(self):
+        """ Get associated_enterprise_name value.
+
+            Notes:
+                The name of the associated Enterprise
+
+                
+                This attribute is named `associatedEnterpriseName` in VSD API.
+                
+        """
+        return self._associated_enterprise_name
+
+    @associated_enterprise_name.setter
+    def associated_enterprise_name(self, value):
+        """ Set associated_enterprise_name value.
+
+            Notes:
+                The name of the associated Enterprise
+
+                
+                This attribute is named `associatedEnterpriseName` in VSD API.
+                
+        """
+        self._associated_enterprise_name = value
 
     
     @property

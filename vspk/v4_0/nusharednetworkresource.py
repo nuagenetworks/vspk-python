@@ -76,7 +76,11 @@ class NUSharedNetworkResource(NURESTObject):
     
     CONST_TYPE_UPLINK_SUBNET = "UPLINK_SUBNET"
     
+    CONST_USE_GLOBAL_MAC_ENABLED = "ENABLED"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_USE_GLOBAL_MAC_DISABLED = "DISABLED"
     
     CONST_PERMITTED_ACTION_TYPE_USE = "USE"
     
@@ -117,6 +121,7 @@ class NUSharedNetworkResource(NURESTObject):
         self._name = None
         self._last_updated_by = None
         self._gateway = None
+        self._gateway_mac_address = None
         self._access_restriction_enabled = None
         self._address = None
         self._permitted_action_type = None
@@ -132,6 +137,7 @@ class NUSharedNetworkResource(NURESTObject):
         self._uplink_interface_ip = None
         self._uplink_interface_mac = None
         self._uplink_vport_name = None
+        self._use_global_mac = None
         self._associated_pat_mapper_id = None
         self._external_id = None
         self._dynamic_pat_allocation_enabled = None
@@ -145,6 +151,7 @@ class NUSharedNetworkResource(NURESTObject):
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_mac_address", remote_name="gatewayMACAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="access_restriction_enabled", remote_name="accessRestrictionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="permitted_action_type", remote_name="permittedActionType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
@@ -160,6 +167,7 @@ class NUSharedNetworkResource(NURESTObject):
         self.expose_attribute(local_name="uplink_interface_ip", remote_name="uplinkInterfaceIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_interface_mac", remote_name="uplinkInterfaceMAC", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_vport_name", remote_name="uplinkVPortName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="associated_pat_mapper_id", remote_name="associatedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="dynamic_pat_allocation_enabled", remote_name="dynamicPATAllocationEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -403,6 +411,33 @@ class NUSharedNetworkResource(NURESTObject):
                 
         """
         self._gateway = value
+
+    
+    @property
+    def gateway_mac_address(self):
+        """ Get gateway_mac_address value.
+
+            Notes:
+                MAC address for a public subnet or managed l2 domain
+
+                
+                This attribute is named `gatewayMACAddress` in VSD API.
+                
+        """
+        return self._gateway_mac_address
+
+    @gateway_mac_address.setter
+    def gateway_mac_address(self, value):
+        """ Set gateway_mac_address value.
+
+            Notes:
+                MAC address for a public subnet or managed l2 domain
+
+                
+                This attribute is named `gatewayMACAddress` in VSD API.
+                
+        """
+        self._gateway_mac_address = value
 
     
     @property
@@ -792,6 +827,33 @@ class NUSharedNetworkResource(NURESTObject):
                 
         """
         self._uplink_vport_name = value
+
+    
+    @property
+    def use_global_mac(self):
+        """ Get use_global_mac value.
+
+            Notes:
+                if this flag is enabled, the system configured globalMACAddress will be used as the gateway mac address
+
+                
+                This attribute is named `useGlobalMAC` in VSD API.
+                
+        """
+        return self._use_global_mac
+
+    @use_global_mac.setter
+    def use_global_mac(self, value):
+        """ Set use_global_mac value.
+
+            Notes:
+                if this flag is enabled, the system configured globalMACAddress will be used as the gateway mac address
+
+                
+                This attribute is named `useGlobalMAC` in VSD API.
+                
+        """
+        self._use_global_mac = value
 
     
     @property

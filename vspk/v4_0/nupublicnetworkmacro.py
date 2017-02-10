@@ -53,9 +53,11 @@ class NUPublicNetworkMacro(NURESTObject):
     
     CONST_IP_TYPE_IPV6 = "IPV6"
     
-    CONST_IP_TYPE_IPV4 = "IPV4"
+    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_IP_TYPE_IPV4 = "IPV4"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
@@ -79,6 +81,7 @@ class NUPublicNetworkMacro(NURESTObject):
         # Read/Write Attributes
         
         self._ip_type = None
+        self._ipv6_address = None
         self._name = None
         self._last_updated_by = None
         self._address = None
@@ -86,7 +89,8 @@ class NUPublicNetworkMacro(NURESTObject):
         self._entity_scope = None
         self._external_id = None
         
-        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=True, is_unique=False)
@@ -136,6 +140,33 @@ class NUPublicNetworkMacro(NURESTObject):
                 
         """
         self._ip_type = value
+
+    
+    @property
+    def ipv6_address(self):
+        """ Get ipv6_address value.
+
+            Notes:
+                IPv6 address of the subnet defined. In case of zone, this is an optional field for and allows users to allocate an IP address range to a zone. The VSD will auto-assign IP addresses to subnets from this range if a specific IP address is not defined for the subnet
+
+                
+                This attribute is named `IPv6Address` in VSD API.
+                
+        """
+        return self._ipv6_address
+
+    @ipv6_address.setter
+    def ipv6_address(self, value):
+        """ Set ipv6_address value.
+
+            Notes:
+                IPv6 address of the subnet defined. In case of zone, this is an optional field for and allows users to allocate an IP address range to a zone. The VSD will auto-assign IP addresses to subnets from this range if a specific IP address is not defined for the subnet
+
+                
+                This attribute is named `IPv6Address` in VSD API.
+                
+        """
+        self._ipv6_address = value
 
     
     @property

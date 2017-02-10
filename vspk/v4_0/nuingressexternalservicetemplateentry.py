@@ -608,6 +608,7 @@ class NUIngressExternalServiceTemplateEntry(NURESTObject):
         self._acl_template_name = None
         self._icmp_code = None
         self._icmp_type = None
+        self._ipv6_address_override = None
         self._dscp = None
         self._name = None
         self._last_updated_by = None
@@ -641,6 +642,7 @@ class NUIngressExternalServiceTemplateEntry(NURESTObject):
         self.expose_attribute(local_name="acl_template_name", remote_name="ACLTemplateName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="icmp_code", remote_name="ICMPCode", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="icmp_type", remote_name="ICMPType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ipv6_address_override", remote_name="IPv6AddressOverride", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -770,6 +772,33 @@ class NUIngressExternalServiceTemplateEntry(NURESTObject):
                 
         """
         self._icmp_type = value
+
+    
+    @property
+    def ipv6_address_override(self):
+        """ Get ipv6_address_override value.
+
+            Notes:
+                Overrides the source IPv6 for Ingress and destination IPv6 for Egress, macentries will use this adress as the match criteria.
+
+                
+                This attribute is named `IPv6AddressOverride` in VSD API.
+                
+        """
+        return self._ipv6_address_override
+
+    @ipv6_address_override.setter
+    def ipv6_address_override(self, value):
+        """ Set ipv6_address_override value.
+
+            Notes:
+                Overrides the source IPv6 for Ingress and destination IPv6 for Egress, macentries will use this adress as the match criteria.
+
+                
+                This attribute is named `IPv6AddressOverride` in VSD API.
+                
+        """
+        self._ipv6_address_override = value
 
     
     @property

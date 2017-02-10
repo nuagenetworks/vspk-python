@@ -87,6 +87,7 @@ class NUNSGInfo(NURESTObject):
         self._uuid = None
         self._family = None
         self._serial_number = None
+        self._libraries = None
         self._entity_scope = None
         self._associated_ns_gateway_id = None
         self._external_id = None
@@ -99,6 +100,7 @@ class NUNSGInfo(NURESTObject):
         self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_E', u'NSG_V'])
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="associated_ns_gateway_id", remote_name="associatedNSGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -318,6 +320,29 @@ class NUNSGInfo(NURESTObject):
                 
         """
         self._serial_number = value
+
+    
+    @property
+    def libraries(self):
+        """ Get libraries value.
+
+            Notes:
+                Tracks RPM package installed for some libraries installed on the NSG.
+
+                
+        """
+        return self._libraries
+
+    @libraries.setter
+    def libraries(self, value):
+        """ Set libraries value.
+
+            Notes:
+                Tracks RPM package installed for some libraries installed on the NSG.
+
+                
+        """
+        self._libraries = value
 
     
     @property

@@ -60,9 +60,29 @@ class NUVCenterHypervisor(NURESTObject):
     
     ## Constants
     
+    CONST_VRS_STATE_UPGRADING = "UPGRADING"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
+    CONST_VRS_STATE_NOT_DEPLOYED = "NOT_DEPLOYED"
+    
+    CONST_DESTINATION_MIRROR_PORT_ENS161 = "ens161"
+    
+    CONST_DESTINATION_MIRROR_PORT_ENS224 = "ens224"
+    
+    CONST_DESTINATION_MIRROR_PORT_ENS256 = "ens256"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_DESTINATION_MIRROR_PORT_ENS160 = "ens160"
+    
+    CONST_VRS_STATE_DEPLOYED = "DEPLOYED"
+    
+    CONST_DESTINATION_MIRROR_PORT_NO_MIRROR = "no_mirror"
+    
+    CONST_VRS_STATE_TIMEDOUT = "TIMEDOUT"
+    
+    CONST_VRS_STATE_DEPLOYING = "DEPLOYING"
     
     
 
@@ -86,9 +106,12 @@ class NUVCenterHypervisor(NURESTObject):
         self._vcenter_ip = None
         self._vcenter_password = None
         self._vcenter_user = None
+        self._vrs_configuration_time_limit = None
         self._vrs_metrics_id = None
+        self._vrs_state = None
         self._v_require_nuage_metadata = None
         self._name = None
+        self._managed_object_id = None
         self._last_updated_by = None
         self._last_vrs_deployed_date = None
         self._data_dns1 = None
@@ -100,11 +123,13 @@ class NUVCenterHypervisor(NURESTObject):
         self._datapath_sync_timeout = None
         self._scope = None
         self._secondary_nuage_controller = None
+        self._removed_from_vcenter_inventory = None
         self._generic_split_activation = None
         self._separate_data_network = None
         self._deployment_count = None
         self._personality = None
         self._description = None
+        self._destination_mirror_port = None
         self._metadata_server_ip = None
         self._metadata_server_listen_port = None
         self._metadata_server_port = None
@@ -122,6 +147,7 @@ class NUVCenterHypervisor(NURESTObject):
         self._mgmt_netmask = None
         self._mgmt_network_portgroup = None
         self._dhcp_relay_server = None
+        self._mirror_network_portgroup = None
         self._site_id = None
         self._allow_data_dhcp = None
         self._allow_mgmt_dhcp = None
@@ -142,6 +168,12 @@ class NUVCenterHypervisor(NURESTObject):
         self._nova_metadata_service_username = None
         self._nova_metadata_shared_secret = None
         self._nova_region_name = None
+        self._upgrade_package_password = None
+        self._upgrade_package_url = None
+        self._upgrade_package_username = None
+        self._upgrade_script_time_limit = None
+        self._upgrade_status = None
+        self._upgrade_timedout = None
         self._primary_nuage_controller = None
         self._vrs_id = None
         self._vrs_password = None
@@ -163,6 +195,7 @@ class NUVCenterHypervisor(NURESTObject):
         self._multicast_source_portgroup = None
         self._customized_script_url = None
         self._available_networks = None
+        self._ovf_url = None
         self._external_id = None
         self._hypervisor_ip = None
         self._hypervisor_password = None
@@ -171,9 +204,12 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="vcenter_ip", remote_name="vCenterIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vcenter_password", remote_name="vCenterPassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vcenter_user", remote_name="vCenterUser", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrs_configuration_time_limit", remote_name="VRSConfigurationTimeLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_metrics_id", remote_name="VRSMetricsID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrs_state", remote_name="VRSState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEPLOYED', u'DEPLOYING', u'NOT_DEPLOYED', u'TIMEDOUT', u'UPGRADING'])
         self.expose_attribute(local_name="v_require_nuage_metadata", remote_name="vRequireNuageMetadata", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="managed_object_id", remote_name="managedObjectID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_vrs_deployed_date", remote_name="lastVRSDeployedDate", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data_dns1", remote_name="dataDNS1", attribute_type=str, is_required=False, is_unique=False)
@@ -185,11 +221,13 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="datapath_sync_timeout", remote_name="datapathSyncTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="scope", remote_name="scope", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_nuage_controller", remote_name="secondaryNuageController", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="removed_from_vcenter_inventory", remote_name="removedFromVCenterInventory", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="generic_split_activation", remote_name="genericSplitActivation", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="separate_data_network", remote_name="separateDataNetwork", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="deployment_count", remote_name="deploymentCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="destination_mirror_port", remote_name="destinationMirrorPort", attribute_type=str, is_required=False, is_unique=False, choices=[u'ens160', u'ens161', u'ens224', u'ens256', u'no_mirror'])
         self.expose_attribute(local_name="metadata_server_ip", remote_name="metadataServerIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_server_listen_port", remote_name="metadataServerListenPort", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_server_port", remote_name="metadataServerPort", attribute_type=int, is_required=False, is_unique=False)
@@ -207,6 +245,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="mgmt_netmask", remote_name="mgmtNetmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mgmt_network_portgroup", remote_name="mgmtNetworkPortgroup", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="dhcp_relay_server", remote_name="dhcpRelayServer", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="mirror_network_portgroup", remote_name="mirrorNetworkPortgroup", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="site_id", remote_name="siteId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_data_dhcp", remote_name="allowDataDHCP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_mgmt_dhcp", remote_name="allowMgmtDHCP", attribute_type=bool, is_required=False, is_unique=False)
@@ -227,6 +266,12 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="nova_metadata_service_username", remote_name="novaMetadataServiceUsername", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nova_metadata_shared_secret", remote_name="novaMetadataSharedSecret", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nova_region_name", remote_name="novaRegionName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="upgrade_package_password", remote_name="upgradePackagePassword", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="upgrade_package_url", remote_name="upgradePackageURL", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="upgrade_package_username", remote_name="upgradePackageUsername", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="upgrade_script_time_limit", remote_name="upgradeScriptTimeLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="upgrade_status", remote_name="upgradeStatus", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="upgrade_timedout", remote_name="upgradeTimedout", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="primary_nuage_controller", remote_name="primaryNuageController", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_id", remote_name="vrsId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_password", remote_name="vrsPassword", attribute_type=str, is_required=False, is_unique=False)
@@ -248,6 +293,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="multicast_source_portgroup", remote_name="multicastSourcePortgroup", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="customized_script_url", remote_name="customizedScriptURL", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="available_networks", remote_name="availableNetworks", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ovf_url", remote_name="ovfURL", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="hypervisor_ip", remote_name="hypervisorIP", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="hypervisor_password", remote_name="hypervisorPassword", attribute_type=str, is_required=True, is_unique=False)
@@ -361,6 +407,33 @@ class NUVCenterHypervisor(NURESTObject):
 
     
     @property
+    def vrs_configuration_time_limit(self):
+        """ Get vrs_configuration_time_limit value.
+
+            Notes:
+                The maximum wait time limit in minutes to get VRS configured at cluster level
+
+                
+                This attribute is named `VRSConfigurationTimeLimit` in VSD API.
+                
+        """
+        return self._vrs_configuration_time_limit
+
+    @vrs_configuration_time_limit.setter
+    def vrs_configuration_time_limit(self, value):
+        """ Set vrs_configuration_time_limit value.
+
+            Notes:
+                The maximum wait time limit in minutes to get VRS configured at cluster level
+
+                
+                This attribute is named `VRSConfigurationTimeLimit` in VSD API.
+                
+        """
+        self._vrs_configuration_time_limit = value
+
+    
+    @property
     def vrs_metrics_id(self):
         """ Get vrs_metrics_id value.
 
@@ -385,6 +458,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._vrs_metrics_id = value
+
+    
+    @property
+    def vrs_state(self):
+        """ Get vrs_state value.
+
+            Notes:
+                Current state of the VRS VM on the hypervisor
+
+                
+                This attribute is named `VRSState` in VSD API.
+                
+        """
+        return self._vrs_state
+
+    @vrs_state.setter
+    def vrs_state(self, value):
+        """ Set vrs_state value.
+
+            Notes:
+                Current state of the VRS VM on the hypervisor
+
+                
+                This attribute is named `VRSState` in VSD API.
+                
+        """
+        self._vrs_state = value
 
     
     @property
@@ -435,6 +535,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._name = value
+
+    
+    @property
+    def managed_object_id(self):
+        """ Get managed_object_id value.
+
+            Notes:
+                managed Object ID of hypervisor
+
+                
+                This attribute is named `managedObjectID` in VSD API.
+                
+        """
+        return self._managed_object_id
+
+    @managed_object_id.setter
+    def managed_object_id(self, value):
+        """ Set managed_object_id value.
+
+            Notes:
+                managed Object ID of hypervisor
+
+                
+                This attribute is named `managedObjectID` in VSD API.
+                
+        """
+        self._managed_object_id = value
 
     
     @property
@@ -731,6 +858,33 @@ class NUVCenterHypervisor(NURESTObject):
 
     
     @property
+    def removed_from_vcenter_inventory(self):
+        """ Get removed_from_vcenter_inventory value.
+
+            Notes:
+                Set to true if the hypervisor is removed from Vcenter inventory datacenter or cluster
+
+                
+                This attribute is named `removedFromVCenterInventory` in VSD API.
+                
+        """
+        return self._removed_from_vcenter_inventory
+
+    @removed_from_vcenter_inventory.setter
+    def removed_from_vcenter_inventory(self, value):
+        """ Set removed_from_vcenter_inventory value.
+
+            Notes:
+                Set to true if the hypervisor is removed from Vcenter inventory datacenter or cluster
+
+                
+                This attribute is named `removedFromVCenterInventory` in VSD API.
+                
+        """
+        self._removed_from_vcenter_inventory = value
+
+    
+    @property
     def generic_split_activation(self):
         """ Get generic_split_activation value.
 
@@ -855,6 +1009,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def destination_mirror_port(self):
+        """ Get destination_mirror_port value.
+
+            Notes:
+                Extra Vnic to mirror access port
+
+                
+                This attribute is named `destinationMirrorPort` in VSD API.
+                
+        """
+        return self._destination_mirror_port
+
+    @destination_mirror_port.setter
+    def destination_mirror_port(self, value):
+        """ Set destination_mirror_port value.
+
+            Notes:
+                Extra Vnic to mirror access port
+
+                
+                This attribute is named `destinationMirrorPort` in VSD API.
+                
+        """
+        self._destination_mirror_port = value
 
     
     @property
@@ -1314,6 +1495,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._dhcp_relay_server = value
+
+    
+    @property
+    def mirror_network_portgroup(self):
+        """ Get mirror_network_portgroup value.
+
+            Notes:
+                Mirror Port Group Name
+
+                
+                This attribute is named `mirrorNetworkPortgroup` in VSD API.
+                
+        """
+        return self._mirror_network_portgroup
+
+    @mirror_network_portgroup.setter
+    def mirror_network_portgroup(self, value):
+        """ Set mirror_network_portgroup value.
+
+            Notes:
+                Mirror Port Group Name
+
+                
+                This attribute is named `mirrorNetworkPortgroup` in VSD API.
+                
+        """
+        self._mirror_network_portgroup = value
 
     
     @property
@@ -1854,6 +2062,168 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._nova_region_name = value
+
+    
+    @property
+    def upgrade_package_password(self):
+        """ Get upgrade_package_password value.
+
+            Notes:
+                upgradePackagePassword
+
+                
+                This attribute is named `upgradePackagePassword` in VSD API.
+                
+        """
+        return self._upgrade_package_password
+
+    @upgrade_package_password.setter
+    def upgrade_package_password(self, value):
+        """ Set upgrade_package_password value.
+
+            Notes:
+                upgradePackagePassword
+
+                
+                This attribute is named `upgradePackagePassword` in VSD API.
+                
+        """
+        self._upgrade_package_password = value
+
+    
+    @property
+    def upgrade_package_url(self):
+        """ Get upgrade_package_url value.
+
+            Notes:
+                upgradePackageURL
+
+                
+                This attribute is named `upgradePackageURL` in VSD API.
+                
+        """
+        return self._upgrade_package_url
+
+    @upgrade_package_url.setter
+    def upgrade_package_url(self, value):
+        """ Set upgrade_package_url value.
+
+            Notes:
+                upgradePackageURL
+
+                
+                This attribute is named `upgradePackageURL` in VSD API.
+                
+        """
+        self._upgrade_package_url = value
+
+    
+    @property
+    def upgrade_package_username(self):
+        """ Get upgrade_package_username value.
+
+            Notes:
+                upgradePackageUsername
+
+                
+                This attribute is named `upgradePackageUsername` in VSD API.
+                
+        """
+        return self._upgrade_package_username
+
+    @upgrade_package_username.setter
+    def upgrade_package_username(self, value):
+        """ Set upgrade_package_username value.
+
+            Notes:
+                upgradePackageUsername
+
+                
+                This attribute is named `upgradePackageUsername` in VSD API.
+                
+        """
+        self._upgrade_package_username = value
+
+    
+    @property
+    def upgrade_script_time_limit(self):
+        """ Get upgrade_script_time_limit value.
+
+            Notes:
+                upgradeScriptTimeLimit
+
+                
+                This attribute is named `upgradeScriptTimeLimit` in VSD API.
+                
+        """
+        return self._upgrade_script_time_limit
+
+    @upgrade_script_time_limit.setter
+    def upgrade_script_time_limit(self, value):
+        """ Set upgrade_script_time_limit value.
+
+            Notes:
+                upgradeScriptTimeLimit
+
+                
+                This attribute is named `upgradeScriptTimeLimit` in VSD API.
+                
+        """
+        self._upgrade_script_time_limit = value
+
+    
+    @property
+    def upgrade_status(self):
+        """ Get upgrade_status value.
+
+            Notes:
+                Script based upgrade Status
+
+                
+                This attribute is named `upgradeStatus` in VSD API.
+                
+        """
+        return self._upgrade_status
+
+    @upgrade_status.setter
+    def upgrade_status(self, value):
+        """ Set upgrade_status value.
+
+            Notes:
+                Script based upgrade Status
+
+                
+                This attribute is named `upgradeStatus` in VSD API.
+                
+        """
+        self._upgrade_status = value
+
+    
+    @property
+    def upgrade_timedout(self):
+        """ Get upgrade_timedout value.
+
+            Notes:
+                upgrade Timedout
+
+                
+                This attribute is named `upgradeTimedout` in VSD API.
+                
+        """
+        return self._upgrade_timedout
+
+    @upgrade_timedout.setter
+    def upgrade_timedout(self, value):
+        """ Set upgrade_timedout value.
+
+            Notes:
+                upgrade Timedout
+
+                
+                This attribute is named `upgradeTimedout` in VSD API.
+                
+        """
+        self._upgrade_timedout = value
 
     
     @property
@@ -2417,6 +2787,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._available_networks = value
+
+    
+    @property
+    def ovf_url(self):
+        """ Get ovf_url value.
+
+            Notes:
+                ovf url
+
+                
+                This attribute is named `ovfURL` in VSD API.
+                
+        """
+        return self._ovf_url
+
+    @ovf_url.setter
+    def ovf_url(self, value):
+        """ Set ovf_url value.
+
+            Notes:
+                ovf url
+
+                
+                This attribute is named `ovfURL` in VSD API.
+                
+        """
+        self._ovf_url = value
 
     
     @property

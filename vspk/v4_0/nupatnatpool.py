@@ -444,7 +444,7 @@ class NUPATNATPool(NURESTObject):
         """ Get associated_gateway_type value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `associatedGatewayType` in VSD API.
@@ -457,7 +457,7 @@ class NUPATNATPool(NURESTObject):
         """ Set associated_gateway_type value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `associatedGatewayType` in VSD API.

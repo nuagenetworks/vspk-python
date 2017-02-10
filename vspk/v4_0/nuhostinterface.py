@@ -126,7 +126,7 @@ class NUHostInterface(NURESTObject):
         self._attached_network_type = None
         self._external_id = None
         
-        self.expose_attribute(local_name="mac", remote_name="MAC", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="mac", remote_name="MAC", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ip_address", remote_name="IPAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vport_id", remote_name="VPortID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vport_name", remote_name="VPortName", attribute_type=str, is_required=False, is_unique=False)

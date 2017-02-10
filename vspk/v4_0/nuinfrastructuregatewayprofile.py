@@ -50,7 +50,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
     
     CONST_REMOTE_LOG_MODE_SCP = "SCP"
     
-    CONST_UPGRADE_ACTION_UPGRADE_AT_BOOTSTRAPPING = "UPGRADE_AT_BOOTSTRAPPING"
+    CONST_CONTROLLER_LESS_FORWARDING_MODE_LOCAL_AND_REMOTE = "LOCAL_AND_REMOTE"
     
     CONST_UPGRADE_ACTION_NONE = "NONE"
     
@@ -58,9 +58,15 @@ class NUInfrastructureGatewayProfile(NURESTObject):
     
     CONST_REMOTE_LOG_MODE_RSYSLOG = "RSYSLOG"
     
+    CONST_UPGRADE_ACTION_DOWNLOAD_AND_UPGRADE_NOW = "DOWNLOAD_AND_UPGRADE_NOW"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
+    CONST_CONTROLLER_LESS_FORWARDING_MODE_DISABLED = "DISABLED"
+    
     CONST_REMOTE_LOG_MODE_DISABLED = "DISABLED"
+    
+    CONST_UPGRADE_ACTION_UPGRADE_AT_BOOTSTRAPPING = "UPGRADE_AT_BOOTSTRAPPING"
     
     CONST_REMOTE_LOG_MODE_SFTP = "SFTP"
     
@@ -68,9 +74,9 @@ class NUInfrastructureGatewayProfile(NURESTObject):
     
     CONST_UPGRADE_ACTION_UPGRADE_NOW = "UPGRADE_NOW"
     
-    CONST_UPGRADE_ACTION_DOWNLOAD_AND_UPGRADE_NOW = "DOWNLOAD_AND_UPGRADE_NOW"
-    
     CONST_UPGRADE_ACTION_DOWNLOAD_AND_UPGRADE_AT_WINDOW = "DOWNLOAD_AND_UPGRADE_AT_WINDOW"
+    
+    CONST_CONTROLLER_LESS_FORWARDING_MODE_LOCAL_ONLY = "LOCAL_ONLY"
     
     
 
@@ -103,11 +109,15 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self._remote_log_server_port = None
         self._description = None
         self._metadata_upgrade_path = None
+        self._flow_eviction_threshold = None
         self._enterprise_id = None
         self._entity_scope = None
         self._controller_less_duration = None
         self._controller_less_enabled = None
+        self._controller_less_forwarding_mode = None
+        self._controller_less_remote_duration = None
         self._force_immediate_system_sync = None
+        self._open_flow_audit_timer = None
         self._upgrade_action = None
         self._proxy_dns_name = None
         self._use_two_factor = None
@@ -127,11 +137,15 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self.expose_attribute(local_name="remote_log_server_port", remote_name="remoteLogServerPort", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_upgrade_path", remote_name="metadataUpgradePath", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_eviction_threshold", remote_name="flowEvictionThreshold", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="controller_less_duration", remote_name="controllerLessDuration", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="controller_less_enabled", remote_name="controllerLessEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="controller_less_forwarding_mode", remote_name="controllerLessForwardingMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'LOCAL_AND_REMOTE', u'LOCAL_ONLY'])
+        self.expose_attribute(local_name="controller_less_remote_duration", remote_name="controllerLessRemoteDuration", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="force_immediate_system_sync", remote_name="forceImmediateSystemSync", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="open_flow_audit_timer", remote_name="openFlowAuditTimer", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="upgrade_action", remote_name="upgradeAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'DOWNLOAD_AND_UPGRADE_AT_WINDOW', u'DOWNLOAD_AND_UPGRADE_NOW', u'DOWNLOAD_ONLY', u'NONE', u'UPGRADE_AT_BOOTSTRAPPING', u'UPGRADE_NOW'])
         self.expose_attribute(local_name="proxy_dns_name", remote_name="proxyDNSName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="use_two_factor", remote_name="useTwoFactor", attribute_type=bool, is_required=False, is_unique=False)
@@ -289,7 +303,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Get dead_timer value.
 
             Notes:
-                Time, in seconds, allowed for a Gateway to be inactive before the VSD revokes its certificates and marks it as untrusted.
+                ISO 8601 format duration: **P nYnMnD T nHnMnS**. **P** represents the period field and **T** the time field. Period field: **Y** = year, **M** = month, **D** = day. Time field: **H** = hours, **M** = minutes, **S** = seconds. **n** is the value of each field. Because the years and month are units that vary in length, for the time being those are not supported yet.
 
                 
                 This attribute is named `deadTimer` in VSD API.
@@ -302,7 +316,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Set dead_timer value.
 
             Notes:
-                Time, in seconds, allowed for a Gateway to be inactive before the VSD revokes its certificates and marks it as untrusted.
+                ISO 8601 format duration: **P nYnMnD T nHnMnS**. **P** represents the period field and **T** the time field. Period field: **Y** = year, **M** = month, **D** = day. Time field: **H** = hours, **M** = minutes, **S** = seconds. **n** is the value of each field. Because the years and month are units that vary in length, for the time being those are not supported yet.
 
                 
                 This attribute is named `deadTimer` in VSD API.
@@ -470,6 +484,33 @@ class NUInfrastructureGatewayProfile(NURESTObject):
 
     
     @property
+    def flow_eviction_threshold(self):
+        """ Get flow_eviction_threshold value.
+
+            Notes:
+                Number of flows at which eviction from kernel flow table will be triggered (default: 2500)
+
+                
+                This attribute is named `flowEvictionThreshold` in VSD API.
+                
+        """
+        return self._flow_eviction_threshold
+
+    @flow_eviction_threshold.setter
+    def flow_eviction_threshold(self, value):
+        """ Set flow_eviction_threshold value.
+
+            Notes:
+                Number of flows at which eviction from kernel flow table will be triggered (default: 2500)
+
+                
+                This attribute is named `flowEvictionThreshold` in VSD API.
+                
+        """
+        self._flow_eviction_threshold = value
+
+    
+    @property
     def enterprise_id(self):
         """ Get enterprise_id value.
 
@@ -528,7 +569,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Get controller_less_duration value.
 
             Notes:
-                Duration for a controller-less operation (in ISO-duration format).
+                Duration for a controller-less local operation (in ISO-duration format).
 
                 
                 This attribute is named `controllerLessDuration` in VSD API.
@@ -541,7 +582,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Set controller_less_duration value.
 
             Notes:
-                Duration for a controller-less operation (in ISO-duration format).
+                Duration for a controller-less local operation (in ISO-duration format).
 
                 
                 This attribute is named `controllerLessDuration` in VSD API.
@@ -578,6 +619,60 @@ class NUInfrastructureGatewayProfile(NURESTObject):
 
     
     @property
+    def controller_less_forwarding_mode(self):
+        """ Get controller_less_forwarding_mode value.
+
+            Notes:
+                The forwarding mode to use for controllerLess operations
+
+                
+                This attribute is named `controllerLessForwardingMode` in VSD API.
+                
+        """
+        return self._controller_less_forwarding_mode
+
+    @controller_less_forwarding_mode.setter
+    def controller_less_forwarding_mode(self, value):
+        """ Set controller_less_forwarding_mode value.
+
+            Notes:
+                The forwarding mode to use for controllerLess operations
+
+                
+                This attribute is named `controllerLessForwardingMode` in VSD API.
+                
+        """
+        self._controller_less_forwarding_mode = value
+
+    
+    @property
+    def controller_less_remote_duration(self):
+        """ Get controller_less_remote_duration value.
+
+            Notes:
+                Duration for a controller-less remote operation (in ISO-duration format).
+
+                
+                This attribute is named `controllerLessRemoteDuration` in VSD API.
+                
+        """
+        return self._controller_less_remote_duration
+
+    @controller_less_remote_duration.setter
+    def controller_less_remote_duration(self, value):
+        """ Set controller_less_remote_duration value.
+
+            Notes:
+                Duration for a controller-less remote operation (in ISO-duration format).
+
+                
+                This attribute is named `controllerLessRemoteDuration` in VSD API.
+                
+        """
+        self._controller_less_remote_duration = value
+
+    
+    @property
     def force_immediate_system_sync(self):
         """ Get force_immediate_system_sync value.
 
@@ -602,6 +697,33 @@ class NUInfrastructureGatewayProfile(NURESTObject):
                 
         """
         self._force_immediate_system_sync = value
+
+    
+    @property
+    def open_flow_audit_timer(self):
+        """ Get open_flow_audit_timer value.
+
+            Notes:
+                Openflow audit timer in sec. Upon the expiry of this timer a set of cleanup operations will be performed
+
+                
+                This attribute is named `openFlowAuditTimer` in VSD API.
+                
+        """
+        return self._open_flow_audit_timer
+
+    @open_flow_audit_timer.setter
+    def open_flow_audit_timer(self, value):
+        """ Set open_flow_audit_timer value.
+
+            Notes:
+                Openflow audit timer in sec. Upon the expiry of this timer a set of cleanup operations will be performed
+
+                
+                This attribute is named `openFlowAuditTimer` in VSD API.
+                
+        """
+        self._open_flow_audit_timer = value
 
     
     @property

@@ -59,23 +59,29 @@ class NUZoneTemplate(NURESTObject):
     
     CONST_MULTICAST_DISABLED = "DISABLED"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_ENCRYPTION_ENABLED = "ENABLED"
     
     CONST_ENCRYPTION_DISABLED = "DISABLED"
     
-    CONST_ENCRYPTION_INHERITED = "INHERITED"
+    CONST_DPI_ENABLED = "ENABLED"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_IP_TYPE_IPV6 = "IPV6"
     
-    CONST_ENCRYPTION_ENABLED = "ENABLED"
+    CONST_DPI_INHERITED = "INHERITED"
     
     CONST_IP_TYPE_IPV4 = "IPV4"
     
     CONST_MULTICAST_ENABLED = "ENABLED"
     
     CONST_MULTICAST_INHERITED = "INHERITED"
+    
+    CONST_DPI_DISABLED = "DISABLED"
+    
+    CONST_ENCRYPTION_INHERITED = "INHERITED"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     
 
@@ -96,6 +102,7 @@ class NUZoneTemplate(NURESTObject):
 
         # Read/Write Attributes
         
+        self._dpi = None
         self._ip_type = None
         self._name = None
         self._last_updated_by = None
@@ -110,6 +117,7 @@ class NUZoneTemplate(NURESTObject):
         self._number_of_hosts_in_subnets = None
         self._external_id = None
         
+        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -146,6 +154,33 @@ class NUZoneTemplate(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def dpi(self):
+        """ Get dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        return self._dpi
+
+    @dpi.setter
+    def dpi(self, value):
+        """ Set dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        self._dpi = value
+
     
     @property
     def ip_type(self):

@@ -87,27 +87,37 @@ class NUL2DomainTemplate(NURESTObject):
     
     ## Constants
     
+    CONST_USE_GLOBAL_MAC_DISABLED = "DISABLED"
+    
+    CONST_USE_GLOBAL_MAC_ENABLED = "ENABLED"
+    
     CONST_MULTICAST_DISABLED = "DISABLED"
     
     CONST_POLICY_CHANGE_STATUS_STARTED = "STARTED"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_ENCRYPTION_ENABLED = "ENABLED"
     
     CONST_ENCRYPTION_DISABLED = "DISABLED"
     
     CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
     
+    CONST_DPI_ENABLED = "ENABLED"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_IP_TYPE_IPV6 = "IPV6"
     
-    CONST_ENCRYPTION_ENABLED = "ENABLED"
+    CONST_DPI_INHERITED = "INHERITED"
     
     CONST_IP_TYPE_IPV4 = "IPV4"
     
     CONST_MULTICAST_ENABLED = "ENABLED"
     
     CONST_MULTICAST_INHERITED = "INHERITED"
+    
+    CONST_DPI_DISABLED = "DISABLED"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_POLICY_CHANGE_STATUS_APPLIED = "APPLIED"
     
@@ -131,31 +141,37 @@ class NUL2DomainTemplate(NURESTObject):
         # Read/Write Attributes
         
         self._dhcp_managed = None
+        self._dpi = None
         self._ip_type = None
         self._name = None
         self._last_updated_by = None
         self._gateway = None
+        self._gateway_mac_address = None
         self._address = None
         self._description = None
         self._netmask = None
         self._encryption = None
         self._entity_scope = None
         self._policy_change_status = None
+        self._use_global_mac = None
         self._associated_multicast_channel_map_id = None
         self._multicast = None
         self._external_id = None
         
         self.expose_attribute(local_name="dhcp_managed", remote_name="DHCPManaged", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_mac_address", remote_name="gatewayMACAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'DISCARDED', u'STARTED'])
+        self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -238,6 +254,33 @@ class NUL2DomainTemplate(NURESTObject):
                 
         """
         self._dhcp_managed = value
+
+    
+    @property
+    def dpi(self):
+        """ Get dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        return self._dpi
+
+    @dpi.setter
+    def dpi(self, value):
+        """ Set dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        self._dpi = value
 
     
     @property
@@ -338,6 +381,33 @@ class NUL2DomainTemplate(NURESTObject):
                 
         """
         self._gateway = value
+
+    
+    @property
+    def gateway_mac_address(self):
+        """ Get gateway_mac_address value.
+
+            Notes:
+                gateway MAC address for a managed l2 domain
+
+                
+                This attribute is named `gatewayMACAddress` in VSD API.
+                
+        """
+        return self._gateway_mac_address
+
+    @gateway_mac_address.setter
+    def gateway_mac_address(self, value):
+        """ Set gateway_mac_address value.
+
+            Notes:
+                gateway MAC address for a managed l2 domain
+
+                
+                This attribute is named `gatewayMACAddress` in VSD API.
+                
+        """
+        self._gateway_mac_address = value
 
     
     @property
@@ -464,7 +534,7 @@ class NUL2DomainTemplate(NURESTObject):
         """ Get policy_change_status value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `policyChangeStatus` in VSD API.
@@ -477,13 +547,40 @@ class NUL2DomainTemplate(NURESTObject):
         """ Set policy_change_status value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `policyChangeStatus` in VSD API.
                 
         """
         self._policy_change_status = value
+
+    
+    @property
+    def use_global_mac(self):
+        """ Get use_global_mac value.
+
+            Notes:
+                Enable this flag to use system configured globalMACAddress as the gateway mac address for managed l2 domains
+
+                
+                This attribute is named `useGlobalMAC` in VSD API.
+                
+        """
+        return self._use_global_mac
+
+    @use_global_mac.setter
+    def use_global_mac(self, value):
+        """ Set use_global_mac value.
+
+            Notes:
+                Enable this flag to use system configured globalMACAddress as the gateway mac address for managed l2 domains
+
+                
+                This attribute is named `useGlobalMAC` in VSD API.
+                
+        """
+        self._use_global_mac = value
 
     
     @property

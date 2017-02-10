@@ -60,25 +60,37 @@ class NUSubnetTemplate(NURESTObject):
     
     ## Constants
     
+    CONST_USE_GLOBAL_MAC_DISABLED = "DISABLED"
+    
+    CONST_USE_GLOBAL_MAC_ENABLED = "ENABLED"
+    
     CONST_MULTICAST_DISABLED = "DISABLED"
+    
+    CONST_ENCRYPTION_ENABLED = "ENABLED"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ENCRYPTION_DISABLED = "DISABLED"
     
-    CONST_ENCRYPTION_INHERITED = "INHERITED"
+    CONST_DPI_ENABLED = "ENABLED"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_IP_TYPE_IPV6 = "IPV6"
     
-    CONST_ENCRYPTION_ENABLED = "ENABLED"
+    CONST_DPI_INHERITED = "INHERITED"
     
     CONST_IP_TYPE_IPV4 = "IPV4"
     
     CONST_MULTICAST_ENABLED = "ENABLED"
     
     CONST_MULTICAST_INHERITED = "INHERITED"
+    
+    CONST_DPI_DISABLED = "DISABLED"
+    
+    CONST_ENCRYPTION_INHERITED = "INHERITED"
+    
+    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
     
     
 
@@ -99,7 +111,10 @@ class NUSubnetTemplate(NURESTObject):
 
         # Read/Write Attributes
         
+        self._dpi = None
         self._ip_type = None
+        self._ipv6_gateway = None
+        self._ipv6address = None
         self._name = None
         self._last_updated_by = None
         self._gateway = None
@@ -110,11 +125,15 @@ class NUSubnetTemplate(NURESTObject):
         self._entity_scope = None
         self._split_subnet = None
         self._proxy_arp = None
+        self._use_global_mac = None
         self._associated_multicast_channel_map_id = None
         self._multicast = None
         self._external_id = None
         
-        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="ipv6_gateway", remote_name="IPv6Gateway", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ipv6address", remote_name="IPv6address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
@@ -125,6 +144,7 @@ class NUSubnetTemplate(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="split_subnet", remote_name="splitSubnet", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="proxy_arp", remote_name="proxyARP", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -156,6 +176,33 @@ class NUSubnetTemplate(NURESTObject):
     # Properties
     
     @property
+    def dpi(self):
+        """ Get dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        return self._dpi
+
+    @dpi.setter
+    def dpi(self, value):
+        """ Set dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        self._dpi = value
+
+    
+    @property
     def ip_type(self):
         """ Get ip_type value.
 
@@ -180,6 +227,60 @@ class NUSubnetTemplate(NURESTObject):
                 
         """
         self._ip_type = value
+
+    
+    @property
+    def ipv6_gateway(self):
+        """ Get ipv6_gateway value.
+
+            Notes:
+                The IPv6 address of the gateway of this subnet
+
+                
+                This attribute is named `IPv6Gateway` in VSD API.
+                
+        """
+        return self._ipv6_gateway
+
+    @ipv6_gateway.setter
+    def ipv6_gateway(self, value):
+        """ Set ipv6_gateway value.
+
+            Notes:
+                The IPv6 address of the gateway of this subnet
+
+                
+                This attribute is named `IPv6Gateway` in VSD API.
+                
+        """
+        self._ipv6_gateway = value
+
+    
+    @property
+    def ipv6address(self):
+        """ Get ipv6address value.
+
+            Notes:
+                IPv6 address of the subnet defined. In case of zone, this is an optional field for and allows users to allocate an IP address range to a zone. The VSD will auto-assign IP addresses to subnets from this range if a specific IP address is not defined for the subnet
+
+                
+                This attribute is named `IPv6address` in VSD API.
+                
+        """
+        return self._ipv6address
+
+    @ipv6address.setter
+    def ipv6address(self, value):
+        """ Set ipv6address value.
+
+            Notes:
+                IPv6 address of the subnet defined. In case of zone, this is an optional field for and allows users to allocate an IP address range to a zone. The VSD will auto-assign IP addresses to subnets from this range if a specific IP address is not defined for the subnet
+
+                
+                This attribute is named `IPv6address` in VSD API.
+                
+        """
+        self._ipv6address = value
 
     
     @property
@@ -426,6 +527,33 @@ class NUSubnetTemplate(NURESTObject):
                 
         """
         self._proxy_arp = value
+
+    
+    @property
+    def use_global_mac(self):
+        """ Get use_global_mac value.
+
+            Notes:
+                if this flag is enabled, the system configured globalMACAddress will be used as the gateway mac address
+
+                
+                This attribute is named `useGlobalMAC` in VSD API.
+                
+        """
+        return self._use_global_mac
+
+    @use_global_mac.setter
+    def use_global_mac(self, value):
+        """ Set use_global_mac value.
+
+            Notes:
+                if this flag is enabled, the system configured globalMACAddress will be used as the gateway mac address
+
+                
+                This attribute is named `useGlobalMAC` in VSD API.
+                
+        """
+        self._use_global_mac = value
 
     
     @property

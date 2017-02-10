@@ -70,6 +70,7 @@ class NUVRSMetrics(NURESTObject):
         self._vrs_process = None
         self._vrsvsc_status = None
         self._last_updated_by = None
+        self._re_deploy = None
         self._receiving_metrics = None
         self._memory_utilization = None
         self._jesxmon_process = None
@@ -83,6 +84,7 @@ class NUVRSMetrics(NURESTObject):
         self.expose_attribute(local_name="vrs_process", remote_name="VRSProcess", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrsvsc_status", remote_name="VRSVSCStatus", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="re_deploy", remote_name="reDeploy", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="receiving_metrics", remote_name="receivingMetrics", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="memory_utilization", remote_name="memoryUtilization", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="jesxmon_process", remote_name="jesxmonProcess", attribute_type=bool, is_required=False, is_unique=False)
@@ -229,6 +231,33 @@ class NUVRSMetrics(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def re_deploy(self):
+        """ Get re_deploy value.
+
+            Notes:
+                re-Deploy
+
+                
+                This attribute is named `reDeploy` in VSD API.
+                
+        """
+        return self._re_deploy
+
+    @re_deploy.setter
+    def re_deploy(self, value):
+        """ Set re_deploy value.
+
+            Notes:
+                re-Deploy
+
+                
+                This attribute is named `reDeploy` in VSD API.
+                
+        """
+        self._re_deploy = value
 
     
     @property

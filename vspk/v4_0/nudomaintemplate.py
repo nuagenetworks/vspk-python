@@ -104,6 +104,8 @@ class NUDomainTemplate(NURESTObject):
     
     CONST_ENCRYPTION_DISABLED = "DISABLED"
     
+    CONST_DPI_ENABLED = "ENABLED"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_ENCRYPTION_ENABLED = "ENABLED"
@@ -113,6 +115,8 @@ class NUDomainTemplate(NURESTObject):
     CONST_MULTICAST_ENABLED = "ENABLED"
     
     CONST_MULTICAST_INHERITED = "INHERITED"
+    
+    CONST_DPI_DISABLED = "DISABLED"
     
     CONST_POLICY_CHANGE_STATUS_APPLIED = "APPLIED"
     
@@ -135,6 +139,7 @@ class NUDomainTemplate(NURESTObject):
 
         # Read/Write Attributes
         
+        self._dpi = None
         self._name = None
         self._last_updated_by = None
         self._description = None
@@ -147,6 +152,7 @@ class NUDomainTemplate(NURESTObject):
         self._multicast = None
         self._external_id = None
         
+        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
@@ -220,6 +226,33 @@ class NUDomainTemplate(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def dpi(self):
+        """ Get dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        return self._dpi
+
+    @dpi.setter
+    def dpi(self, value):
+        """ Set dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        self._dpi = value
+
     
     @property
     def name(self):
@@ -349,7 +382,7 @@ class NUDomainTemplate(NURESTObject):
         """ Get policy_change_status value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `policyChangeStatus` in VSD API.
@@ -362,7 +395,7 @@ class NUDomainTemplate(NURESTObject):
         """ Set policy_change_status value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `policyChangeStatus` in VSD API.

@@ -42,7 +42,7 @@ class NUStaticRoute(NURESTObject):
     """ Represents a StaticRoute in the VSD
 
         Notes:
-            Static routes allow end users to define how traffic is routed through the dVRS in addition to the routes learned by VSC through VM activation. By using static routes, end users can define for example that all traffic with a destination address towards a specific subnet must be forwarded to a specific VM attached in the dVRS and this VM could be a firewall.
+            Static routes allow end users to define how traffic is routed through the dVRS in addition to the routes learned by VSC through VM activation. By using static routes, end users can define for example that all traffic with a destination address towards a specific subnet must be forwarded to a specific VM attached in the dVRS and this VM could be a firewall
     """
 
     __rest_name__ = "staticroute"
@@ -62,6 +62,8 @@ class NUStaticRoute(NURESTObject):
     CONST_IP_TYPE_IPV4 = "IPV4"
     
     CONST_TYPE_EXIT_DOMAIN = "EXIT_DOMAIN"
+    
+    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
     
     
 
@@ -83,6 +85,7 @@ class NUStaticRoute(NURESTObject):
         # Read/Write Attributes
         
         self._ip_type = None
+        self._ipv6_address = None
         self._last_updated_by = None
         self._address = None
         self._netmask = None
@@ -92,7 +95,8 @@ class NUStaticRoute(NURESTObject):
         self._external_id = None
         self._type = None
         
-        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=True, is_unique=False)
@@ -144,6 +148,33 @@ class NUStaticRoute(NURESTObject):
                 
         """
         self._ip_type = value
+
+    
+    @property
+    def ipv6_address(self):
+        """ Get ipv6_address value.
+
+            Notes:
+                IPv6 address of the route
+
+                
+                This attribute is named `IPv6Address` in VSD API.
+                
+        """
+        return self._ipv6_address
+
+    @ipv6_address.setter
+    def ipv6_address(self, value):
+        """ Set ipv6_address value.
+
+            Notes:
+                IPv6 address of the route
+
+                
+                This attribute is named `IPv6Address` in VSD API.
+                
+        """
+        self._ipv6_address = value
 
     
     @property

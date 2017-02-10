@@ -196,13 +196,13 @@ class NUZone(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSGATEWAY_TEMPLATE = "NSGATEWAY_TEMPLATE"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_CONFIG_RESP = "GATEWAY_CONFIG_RESP"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_SECURITY_PROFILE_REQUEST = "GATEWAY_SECURITY_PROFILE_REQUEST"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_MC_RANGE = "MC_RANGE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_BACK_HAUL_SERVICE_RESP = "BACK_HAUL_SERVICE_RESP"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_SECURITY_PROFILE_REQUEST = "GATEWAY_SECURITY_PROFILE_REQUEST"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GATEWAY_CONFIG_RESP = "GATEWAY_CONFIG_RESP"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_SUBNET_POOL_ENTRY = "SUBNET_POOL_ENTRY"
     
@@ -240,9 +240,13 @@ class NUZone(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INGRESS_ADV_FWD = "INGRESS_ADV_FWD"
     
+    CONST_DPI_ENABLED = "ENABLED"
+    
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_VCENTER_HYPERVISOR = "VMWARE_VCENTER_HYPERVISOR"
     
     CONST_IP_TYPE_IPV6 = "IPV6"
+    
+    CONST_DPI_INHERITED = "INHERITED"
     
     CONST_IP_TYPE_IPV4 = "IPV4"
     
@@ -328,7 +332,7 @@ class NUZone(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_PUBLIC_NETWORK = "PUBLIC_NETWORK"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_LDAP_CONFIG = "LDAP_CONFIG"
+    CONST_DPI_DISABLED = "DISABLED"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_EXPORTIMPORT = "EXPORTIMPORT"
     
@@ -417,6 +421,8 @@ class NUZone(NURESTObject):
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NSPORT = "NSPORT"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_FLOATINGIP = "FLOATINGIP"
+    
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_LDAP_CONFIG = "LDAP_CONFIG"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INGRESS_ADV_FWD_ENTRY = "INGRESS_ADV_FWD_ENTRY"
     
@@ -619,6 +625,7 @@ class NUZone(NURESTObject):
 
         # Read/Write Attributes
         
+        self._dpi = None
         self._ip_type = None
         self._maintenance_mode = None
         self._name = None
@@ -639,6 +646,7 @@ class NUZone(NURESTObject):
         self._number_of_hosts_in_subnets = None
         self._external_id = None
         
+        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
@@ -714,6 +722,33 @@ class NUZone(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def dpi(self):
+        """ Get dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        return self._dpi
+
+    @dpi.setter
+    def dpi(self, value):
+        """ Set dpi value.
+
+            Notes:
+                determines whether or not Deep packet inspection is enabled
+
+                
+                This attribute is named `DPI` in VSD API.
+                
+        """
+        self._dpi = value
+
     
     @property
     def ip_type(self):

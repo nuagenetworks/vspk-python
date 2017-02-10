@@ -1,0 +1,63 @@
+.. _nuautodiscoveredgateway:
+
+nuautodiscoveredgateway
+===========================================
+
+.. class:: nuautodiscoveredgateway.NUAutoDiscoveredGateway(bambou.nurest_object.NUMetaRESTObject,):
+
+Represents Auto discovered Gateway.
+
+
+Attributes
+----------
+
+
+- ``name`` (**Mandatory**): Name of the Gateway
+
+- ``last_updated_by``: ID of the user who last updated the object.
+
+- ``gateway_id``: The Gateway associated with this  Auto Discovered Gateway  . This is a read only attribute
+
+- ``peer``: The System ID of the peer gateway associated with this Gateway instance when it is discovered by the network manager (VSD) as being redundant.
+
+- ``personality`` (**Mandatory**): Personality of the Gateway - VSG,VRSG,NONE,OTHER, cannot be changed after creation.
+
+- ``description``: A description of the Gateway
+
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``controllers``: Controllers to which this gateway instance is associated with.
+
+- ``use_gateway_vlanvnid``: When set, VLAN-VNID mapping must be unique for all the vports of the gateway
+
+- ``vtep``: Represent the system ID or the Virtual IP of a service used by a Gateway (VSG for now) to establish a tunnel with a remote VSG or hypervisor.  The format of this field is consistent with an IP address.
+
+- ``external_id``: External object ID. Used for integration with third party systems
+
+- ``system_id``: Identifier of the Gateway
+
+
+
+
+Children
+--------
+
+================================================================================================================================================               ==========================================================================================
+**class**                                                                                                                                                      **fetcher**
+
+:ref:`nuwanservice.NUWANService<nuwanservice>`                                                                                                                   ``wan_services`` 
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+:ref:`nuport.NUPort<nuport>`                                                                                                                                     ``ports`` 
+:ref:`nunsport.NUNSPort<nunsport>`                                                                                                                               ``ns_ports`` 
+:ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
+================================================================================================================================================               ==========================================================================================
+
+
+
+Parents
+--------
+
+
+- :ref:`nume.NUMe<nume>`
+
