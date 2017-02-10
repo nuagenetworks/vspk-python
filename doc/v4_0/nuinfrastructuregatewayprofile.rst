@@ -36,6 +36,8 @@ Attributes
 
 - ``metadata_upgrade_path``: Path/URL to retrieve the NSG Upgrade information meta data files.  From that meta data, the NSG will be able to retrieve the upgrade package files and perform some validations.  It is expected that the meta data file is in JSON format.  RFC 2616 states that there are no 'official' maximum length for a URL but different browsers and servers have limits.  Our friendly Internet Explorer has a maximum of 'around' 2048 characters, we shall use this as a limit here.
 
+- ``flow_eviction_threshold``: Number of flows at which eviction from kernel flow table will be triggered (default: 2500)
+
 - ``enterprise_id``: Enterprise/Organisation associated with this Profile instance.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
@@ -49,6 +51,8 @@ Attributes
 - ``controller_less_remote_duration``: Duration for a controller-less remote operation (in ISO-duration format).
 
 - ``force_immediate_system_sync``: Usually the synchronization will span across 1 hour window after the defined synchronization time. Forcing an immediate synchronization can overload the system and can have a negative impact on the system.
+
+- ``open_flow_audit_timer``: Openflow audit timer in sec. Upon the expiry of this timer a set of cleanup operations will be performed
 
 - ``upgrade_action``: Upgrade action for NSG associated with this Infrastructure Gateway Profile instance.
 

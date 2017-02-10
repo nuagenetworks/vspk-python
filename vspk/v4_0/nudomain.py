@@ -171,8 +171,6 @@ class NUDomain(NURESTObject):
     
     CONST_PAT_ENABLED_INHERITED = "INHERITED"
     
-    CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
-    
     CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
     
     CONST_DHCP_BEHAVIOR_CONSUME = "CONSUME"
@@ -182,6 +180,8 @@ class NUDomain(NURESTObject):
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
+    
+    CONST_DHCP_BEHAVIOR_UNDERLAY_RELAY = "UNDERLAY_RELAY"
     
     CONST_UNDERLAY_ENABLED_ENABLED = "ENABLED"
     
@@ -197,13 +197,15 @@ class NUDomain(NURESTObject):
     
     CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
     
+    CONST_DHCP_BEHAVIOR_OVERLAY_RELAY = "OVERLAY_RELAY"
+    
     CONST_UNDERLAY_ENABLED_INHERITED = "INHERITED"
     
     CONST_POLICY_CHANGE_STATUS_STARTED = "STARTED"
     
     CONST_PERMITTED_ACTION_READ = "READ"
     
-    CONST_DHCP_BEHAVIOR_RELAY = "RELAY"
+    CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
     
     CONST_APPLICATION_DEPLOYMENT_POLICY_ZONE = "ZONE"
     
@@ -293,6 +295,7 @@ class NUDomain(NURESTObject):
         self._entity_scope = None
         self._policy_change_status = None
         self._domain_id = None
+        self._domain_vlanid = None
         self._route_distinguisher = None
         self._route_target = None
         self._uplink_preference = None
@@ -310,7 +313,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="pat_enabled", remote_name="PATEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="ecmp_count", remote_name="ECMPCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bgp_enabled", remote_name="BGPEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dhcp_behavior", remote_name="DHCPBehavior", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONSUME', u'FLOOD', u'RELAY'])
+        self.expose_attribute(local_name="dhcp_behavior", remote_name="DHCPBehavior", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONSUME', u'FLOOD', u'OVERLAY_RELAY', u'UNDERLAY_RELAY'])
         self.expose_attribute(local_name="dhcp_server_address", remote_name="DHCPServerAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="label_id", remote_name="labelID", attribute_type=int, is_required=False, is_unique=False)
@@ -336,6 +339,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'DISCARDED', u'STARTED'])
         self.expose_attribute(local_name="domain_id", remote_name="domainID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="domain_vlanid", remote_name="domainVLANID", attribute_type=int, is_required=False, is_unique=True)
         self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="route_target", remote_name="routeTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
@@ -1250,6 +1254,33 @@ class NUDomain(NURESTObject):
                 
         """
         self._domain_id = value
+
+    
+    @property
+    def domain_vlanid(self):
+        """ Get domain_vlanid value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `domainVLANID` in VSD API.
+                
+        """
+        return self._domain_vlanid
+
+    @domain_vlanid.setter
+    def domain_vlanid(self, value):
+        """ Set domain_vlanid value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `domainVLANID` in VSD API.
+                
+        """
+        self._domain_vlanid = value
 
     
     @property

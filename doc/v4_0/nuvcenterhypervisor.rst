@@ -142,6 +142,18 @@ Attributes
 
 - ``nova_region_name``: Nova region name
 
+- ``upgrade_package_password``: upgradePackagePassword
+
+- ``upgrade_package_url``: upgradePackageURL
+
+- ``upgrade_package_username``: upgradePackageUsername
+
+- ``upgrade_script_time_limit``: upgradeScriptTimeLimit
+
+- ``upgrade_status``: Script based upgrade Status
+
+- ``upgrade_timedout``: upgrade Timedout
+
 - ``primary_nuage_controller``: IP address of the primary Controller (VSC)
 
 - ``vrs_id``: VCenter Name or Id used by toolbox to identify the VRS virtual machine

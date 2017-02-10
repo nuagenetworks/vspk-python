@@ -35,8 +35,8 @@ from .fetchers import NUGlobalMetadatasFetcher
 from bambou import NURESTObject
 
 
-class NUInfrastructureaccessprofile(NURESTObject):
-    """ Represents a Infrastructureaccessprofile in the VSD
+class NUInfrastructureAccessProfile(NURESTObject):
+    """ Represents a InfrastructureAccessProfile in the VSD
 
         Notes:
             Represents an Infrastructure Access Profile
@@ -65,7 +65,7 @@ class NUInfrastructureaccessprofile(NURESTObject):
     
 
     def __init__(self, **kwargs):
-        """ Initializes a Infrastructureaccessprofile instance
+        """ Initializes a InfrastructureAccessProfile instance
 
             Notes:
                 You can specify all parameters while calling this methods.
@@ -73,11 +73,11 @@ class NUInfrastructureaccessprofile(NURESTObject):
                 object from a Python dictionary
 
             Examples:
-                >>> infrastructureaccessprofile = NUInfrastructureaccessprofile(id=u'xxxx-xxx-xxx-xxx', name=u'Infrastructureaccessprofile')
-                >>> infrastructureaccessprofile = NUInfrastructureaccessprofile(data=my_dict)
+                >>> infrastructureaccessprofile = NUInfrastructureAccessProfile(id=u'xxxx-xxx-xxx-xxx', name=u'InfrastructureAccessProfile')
+                >>> infrastructureaccessprofile = NUInfrastructureAccessProfile(data=my_dict)
         """
 
-        super(NUInfrastructureaccessprofile, self).__init__()
+        super(NUInfrastructureAccessProfile, self).__init__()
 
         # Read/Write Attributes
         

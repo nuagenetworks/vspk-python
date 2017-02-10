@@ -14,6 +14,8 @@ Attributes
 
 - ``pat_enabled``: None
 
+- ``dhcp_relay_status``: None
+
 - ``dpi``: determines whether or not Deep packet inspection is enabled
 
 - ``ip_type``: IPv4 or IPv6
@@ -48,7 +50,7 @@ Attributes
 
 - ``encryption``: Determines whether or not IPSEC is enabled.
 
-- ``underlay``: Boolean flag to indicate whether underlay is enabled directly or indirectly
+- ``underlay``: Read Only Boolean flag to indicate whether underlay is enabled directly or indirectly
 
 - ``underlay_enabled``: Indicates whether UNDERLAY is enabled for the subnets in this domain
 

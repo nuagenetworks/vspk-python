@@ -40,6 +40,10 @@ Attributes
 
 - ``dhcp_option_size``: Defines total DHCP options that can be set on a domain.
 
+- ``vlanid_lower_limit``: None
+
+- ``vlanid_upper_limit``: None
+
 - ``vm_cache_size``: LRU Map size for vm, this value has to set based on memory given to VSD jvm not finalized.
 
 - ``vm_purge_time``: Timers in sec for undefined vms to be deleted.
@@ -101,6 +105,8 @@ Attributes
 - ``max_response``: Defines maximum results returned by the REST call (allowed max=5000).
 
 - ``accumulate_licenses_enabled``: Whether the various VRS license flavours be merged in one pool
+
+- ``per_domain_vlan_id_enabled``: None
 
 - ``performance_path_selection_vnid``: performance Path Selection Virtual Network ID
 

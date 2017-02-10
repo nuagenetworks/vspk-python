@@ -28,11 +28,11 @@
 from bambou import NURESTFetcher
 
 
-class NUInfrastructureAccessProfilesFetcher(NURESTFetcher):
-    """ Represents a NUInfrastructureAccessProfiles fetcher
+class NUCustomPropertiesFetcher(NURESTFetcher):
+    """ Represents a NUCustomProperties fetcher
 
         Notes:
-            This fetcher enables to fetch NUInfrastructureAccessProfile objects.
+            This fetcher enables to fetch NUCustomProperty objects.
 
         See:
             bambou.NURESTFetcher
@@ -40,13 +40,13 @@ class NUInfrastructureAccessProfilesFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUInfrastructureAccessProfile class that is managed.
+        """ Return NUCustomProperty class that is managed.
 
             Returns:
-                .NUInfrastructureAccessProfile: the managed class
+                .NUCustomProperty: the managed class
         """
 
-        from .. import NUInfrastructureAccessProfile
-        return NUInfrastructureAccessProfile
+        from .. import NUCustomProperty
+        return NUCustomProperty
 
     

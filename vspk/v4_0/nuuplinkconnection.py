@@ -29,6 +29,9 @@
 
 from .fetchers import NUUnderlaysFetcher
 
+
+from .fetchers import NUCustomPropertiesFetcher
+
 from bambou import NURESTObject
 
 
@@ -51,13 +54,25 @@ class NUUplinkConnection(NURESTObject):
     
     CONST_ROLE_UNKNOWN = "UNKNOWN"
     
+    CONST_INTERFACE_CONNECTION_TYPE_PCI_EXPRESS = "PCI_EXPRESS"
+    
     CONST_ROLE_NONE = "NONE"
     
     CONST_ROLE_SECONDARY = "SECONDARY"
     
+    CONST_INTERFACE_CONNECTION_TYPE_EMBEDDED = "EMBEDDED"
+    
+    CONST_INTERFACE_CONNECTION_TYPE_AUTOMATIC = "AUTOMATIC"
+    
+    CONST_ADVERTISEMENT_CRITERIA_FATE_SHARING = "FATE_SHARING"
+    
+    CONST_INTERFACE_CONNECTION_TYPE_USB_MODEM = "USB_MODEM"
+    
     CONST_MODE_PPPOE = "PPPoE"
     
     CONST_MODE_DYNAMIC = "Dynamic"
+    
+    CONST_MODE_LTE = "LTE"
     
     CONST_ROLE_TERTIARY = "TERTIARY"
     
@@ -69,9 +84,11 @@ class NUUplinkConnection(NURESTObject):
     
     CONST_ADDRESS_IPV4 = "IPv4"
     
-    CONST_ROLE_PRIMARY = "PRIMARY"
+    CONST_INTERFACE_CONNECTION_TYPE_USB_ETHERNET = "USB_ETHERNET"
     
     CONST_ADDRESS_IPV6 = "IPv6"
+    
+    CONST_ROLE_PRIMARY = "PRIMARY"
     
     
 
@@ -98,31 +115,40 @@ class NUUplinkConnection(NURESTObject):
         self._address = None
         self._advertisement_criteria = None
         self._netmask = None
+        self._interface_connection_type = None
         self._mode = None
         self._role = None
         self._uplink_id = None
         self._username = None
         self._assoc_underlay_id = None
+        self._associated_underlay_name = None
         self._associated_vsc_profile_id = None
+        self._auxiliary_link = None
         
         self.expose_attribute(local_name="dns_address", remote_name="DNSAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPv4', u'IPv6'])
-        self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONTROL_SESSION', u'GATEWAY_PING', u'OPERATIONAL_LINK'])
+        self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONTROL_SESSION', u'FATE_SHARING', u'GATEWAY_PING', u'OPERATIONAL_LINK'])
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'Any', u'Dynamic', u'PPPoE', u'Static'])
+        self.expose_attribute(local_name="interface_connection_type", remote_name="interfaceConnectionType", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTOMATIC', u'EMBEDDED', u'PCI_EXPRESS', u'USB_ETHERNET', u'USB_MODEM'])
+        self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'Any', u'Dynamic', u'LTE', u'PPPoE', u'Static'])
         self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'PRIMARY', u'SECONDARY', u'TERTIARY', u'UNKNOWN'])
         self.expose_attribute(local_name="uplink_id", remote_name="uplinkID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="username", remote_name="username", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_underlay_id", remote_name="assocUnderlayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_underlay_name", remote_name="associatedUnderlayName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vsc_profile_id", remote_name="associatedVSCProfileID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="auxiliary_link", remote_name="auxiliaryLink", attribute_type=bool, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
         self.underlays = NUUnderlaysFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.custom_properties = NUCustomPropertiesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -276,11 +302,38 @@ class NUUplinkConnection(NURESTObject):
 
     
     @property
+    def interface_connection_type(self):
+        """ Get interface_connection_type value.
+
+            Notes:
+                The way the interface is connected via the NSG.  This value depends on if the interface internal or external to the NSG.
+
+                
+                This attribute is named `interfaceConnectionType` in VSD API.
+                
+        """
+        return self._interface_connection_type
+
+    @interface_connection_type.setter
+    def interface_connection_type(self, value):
+        """ Set interface_connection_type value.
+
+            Notes:
+                The way the interface is connected via the NSG.  This value depends on if the interface internal or external to the NSG.
+
+                
+                This attribute is named `interfaceConnectionType` in VSD API.
+                
+        """
+        self._interface_connection_type = value
+
+    
+    @property
     def mode(self):
         """ Get mode value.
 
             Notes:
-                Specify how to connect to the network. Possible values: Any, Dynamic (DHCP), Static (static configuration is required), PPPoE (pppoe configuration required). Default: Dynamic
+                Specify how to connect to the network. Possible values: Any, Dynamic (DHCP), Static (static configuration is required), PPPoE (pppoe configuration required), LTE (LTE configuration required). Default: Dynamic
 
                 
         """
@@ -291,7 +344,7 @@ class NUUplinkConnection(NURESTObject):
         """ Set mode value.
 
             Notes:
-                Specify how to connect to the network. Possible values: Any, Dynamic (DHCP), Static (static configuration is required), PPPoE (pppoe configuration required). Default: Dynamic
+                Specify how to connect to the network. Possible values: Any, Dynamic (DHCP), Static (static configuration is required), PPPoE (pppoe configuration required), LTE (LTE configuration required). Default: Dynamic
 
                 
         """
@@ -399,6 +452,33 @@ class NUUplinkConnection(NURESTObject):
 
     
     @property
+    def associated_underlay_name(self):
+        """ Get associated_underlay_name value.
+
+            Notes:
+                The display name of the Underlay instance associated with this uplink connection.
+
+                
+                This attribute is named `associatedUnderlayName` in VSD API.
+                
+        """
+        return self._associated_underlay_name
+
+    @associated_underlay_name.setter
+    def associated_underlay_name(self, value):
+        """ Set associated_underlay_name value.
+
+            Notes:
+                The display name of the Underlay instance associated with this uplink connection.
+
+                
+                This attribute is named `associatedUnderlayName` in VSD API.
+                
+        """
+        self._associated_underlay_name = value
+
+    
+    @property
     def associated_vsc_profile_id(self):
         """ Get associated_vsc_profile_id value.
 
@@ -423,6 +503,33 @@ class NUUplinkConnection(NURESTObject):
                 
         """
         self._associated_vsc_profile_id = value
+
+    
+    @property
+    def auxiliary_link(self):
+        """ Get auxiliary_link value.
+
+            Notes:
+                Make this uplink an auxiliary one that will only come up when all other uplinks are disconnected or can't perform their role.
+
+                
+                This attribute is named `auxiliaryLink` in VSD API.
+                
+        """
+        return self._auxiliary_link
+
+    @auxiliary_link.setter
+    def auxiliary_link(self, value):
+        """ Set auxiliary_link value.
+
+            Notes:
+                Make this uplink an auxiliary one that will only come up when all other uplinks are disconnected or can't perform their role.
+
+                
+                This attribute is named `auxiliaryLink` in VSD API.
+                
+        """
+        self._auxiliary_link = value
 
     
 

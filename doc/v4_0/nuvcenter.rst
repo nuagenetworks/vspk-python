@@ -114,6 +114,14 @@ Attributes
 
 - ``ip_address`` (**Mandatory**): IP Address of the VCenter
 
+- ``upgrade_package_password``: upgradePackagePassword
+
+- ``upgrade_package_url``: upgradePackageURL
+
+- ``upgrade_package_username``: upgradePackageUsername
+
+- ``upgrade_script_time_limit``: upgradeScriptTimeLimit
+
 - ``primary_nuage_controller``: IP address of the primary Controller (VSC)
 
 - ``vrs_config_id``: The ID of the template that this Port was created from

@@ -57,6 +57,9 @@ from .fetchers import NUUplinkConnectionsFetcher
 from .fetchers import NUBRConnectionsFetcher
 
 
+from .fetchers import NULtestatisticsFetcher
+
+
 from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
@@ -190,6 +193,9 @@ class NUVLAN(NURESTObject):
         
         
         self.br_connections = NUBRConnectionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ltestatistics = NULtestatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")

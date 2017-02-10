@@ -28,11 +28,11 @@
 from bambou import NURESTFetcher
 
 
-class NUInfrastructureAccessProfilesFetcher(NURESTFetcher):
-    """ Represents a NUInfrastructureAccessProfiles fetcher
+class NULtestatisticsFetcher(NURESTFetcher):
+    """ Represents a NULtestatistics fetcher
 
         Notes:
-            This fetcher enables to fetch NUInfrastructureAccessProfile objects.
+            This fetcher enables to fetch NULtestatistics objects.
 
         See:
             bambou.NURESTFetcher
@@ -40,13 +40,13 @@ class NUInfrastructureAccessProfilesFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUInfrastructureAccessProfile class that is managed.
+        """ Return NULtestatistics class that is managed.
 
             Returns:
-                .NUInfrastructureAccessProfile: the managed class
+                .NULtestatistics: the managed class
         """
 
-        from .. import NUInfrastructureAccessProfile
-        return NUInfrastructureAccessProfile
+        from .. import NULtestatistics
+        return NULtestatistics
 
     

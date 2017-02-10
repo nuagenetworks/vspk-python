@@ -95,6 +95,7 @@ Children
 :ref:`nuvminterface.NUVMInterface<nuvminterface>`                                                                                                                ``vm_interfaces`` 
 :ref:`nucloudmgmtsystem.NUCloudMgmtSystem<nucloudmgmtsystem>`                                                                                                    ``cloud_mgmt_systems`` 
 :ref:`nuunderlay.NUUnderlay<nuunderlay>`                                                                                                                         ``underlays`` 
+:ref:`nuinfrastructureaccessprofile.NUInfrastructureAccessProfile<nuinfrastructureaccessprofile>`                                                                ``infrastructure_access_profiles`` 
 :ref:`nuinfrastructuregatewayprofile.NUInfrastructureGatewayProfile<nuinfrastructuregatewayprofile>`                                                             ``infrastructure_gateway_profiles`` 
 :ref:`nuinfrastructurevscprofile.NUInfrastructureVscProfile<nuinfrastructurevscprofile>`                                                                         ``infrastructure_vsc_profiles`` 
 :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`                                                                            ``ingress_acl_entry_templates`` 

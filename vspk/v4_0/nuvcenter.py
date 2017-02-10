@@ -147,6 +147,10 @@ class NUVCenter(NURESTObject):
         self._nova_metadata_shared_secret = None
         self._nova_region_name = None
         self._ip_address = None
+        self._upgrade_package_password = None
+        self._upgrade_package_url = None
+        self._upgrade_package_username = None
+        self._upgrade_script_time_limit = None
         self._primary_nuage_controller = None
         self._vrs_config_id = None
         self._vrs_password = None
@@ -225,6 +229,10 @@ class NUVCenter(NURESTObject):
         self.expose_attribute(local_name="nova_metadata_shared_secret", remote_name="novaMetadataSharedSecret", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nova_region_name", remote_name="novaRegionName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ip_address", remote_name="ipAddress", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="upgrade_package_password", remote_name="upgradePackagePassword", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="upgrade_package_url", remote_name="upgradePackageURL", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="upgrade_package_username", remote_name="upgradePackageUsername", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="upgrade_script_time_limit", remote_name="upgradeScriptTimeLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="primary_nuage_controller", remote_name="primaryNuageController", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_config_id", remote_name="vrsConfigID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_password", remote_name="vrsPassword", attribute_type=str, is_required=False, is_unique=False)
@@ -1640,6 +1648,114 @@ class NUVCenter(NURESTObject):
                 
         """
         self._ip_address = value
+
+    
+    @property
+    def upgrade_package_password(self):
+        """ Get upgrade_package_password value.
+
+            Notes:
+                upgradePackagePassword
+
+                
+                This attribute is named `upgradePackagePassword` in VSD API.
+                
+        """
+        return self._upgrade_package_password
+
+    @upgrade_package_password.setter
+    def upgrade_package_password(self, value):
+        """ Set upgrade_package_password value.
+
+            Notes:
+                upgradePackagePassword
+
+                
+                This attribute is named `upgradePackagePassword` in VSD API.
+                
+        """
+        self._upgrade_package_password = value
+
+    
+    @property
+    def upgrade_package_url(self):
+        """ Get upgrade_package_url value.
+
+            Notes:
+                upgradePackageURL
+
+                
+                This attribute is named `upgradePackageURL` in VSD API.
+                
+        """
+        return self._upgrade_package_url
+
+    @upgrade_package_url.setter
+    def upgrade_package_url(self, value):
+        """ Set upgrade_package_url value.
+
+            Notes:
+                upgradePackageURL
+
+                
+                This attribute is named `upgradePackageURL` in VSD API.
+                
+        """
+        self._upgrade_package_url = value
+
+    
+    @property
+    def upgrade_package_username(self):
+        """ Get upgrade_package_username value.
+
+            Notes:
+                upgradePackageUsername
+
+                
+                This attribute is named `upgradePackageUsername` in VSD API.
+                
+        """
+        return self._upgrade_package_username
+
+    @upgrade_package_username.setter
+    def upgrade_package_username(self, value):
+        """ Set upgrade_package_username value.
+
+            Notes:
+                upgradePackageUsername
+
+                
+                This attribute is named `upgradePackageUsername` in VSD API.
+                
+        """
+        self._upgrade_package_username = value
+
+    
+    @property
+    def upgrade_script_time_limit(self):
+        """ Get upgrade_script_time_limit value.
+
+            Notes:
+                upgradeScriptTimeLimit
+
+                
+                This attribute is named `upgradeScriptTimeLimit` in VSD API.
+                
+        """
+        return self._upgrade_script_time_limit
+
+    @upgrade_script_time_limit.setter
+    def upgrade_script_time_limit(self, value):
+        """ Set upgrade_script_time_limit value.
+
+            Notes:
+                upgradeScriptTimeLimit
+
+                
+                This attribute is named `upgradeScriptTimeLimit` in VSD API.
+                
+        """
+        self._upgrade_script_time_limit = value
 
     
     @property

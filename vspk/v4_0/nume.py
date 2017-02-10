@@ -141,6 +141,9 @@ from .fetchers import NUCloudMgmtSystemsFetcher
 from .fetchers import NUUnderlaysFetcher
 
 
+from .fetchers import NUInfrastructureAccessProfilesFetcher
+
+
 from .fetchers import NUInfrastructureGatewayProfilesFetcher
 
 
@@ -438,6 +441,9 @@ class NUMe(NURESTRootObject):
         
         
         self.underlays = NUUnderlaysFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.infrastructure_access_profiles = NUInfrastructureAccessProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.infrastructure_gateway_profiles = NUInfrastructureGatewayProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")

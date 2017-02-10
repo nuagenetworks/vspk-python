@@ -110,6 +110,14 @@ Attributes
 
 - ``nova_region_name``: Nova region name
 
+- ``upgrade_package_password``: upgradePackagePassword
+
+- ``upgrade_package_url``: upgradePackageURL
+
+- ``upgrade_package_username``: upgradePackageUsername
+
+- ``upgrade_script_time_limit``: upgradeScriptTimeLimit
+
 - ``primary_nuage_controller``: IP address of the primary Controller (VSC)
 
 - ``vrs_password``: VRS password to be used by toolbox to communicate with VRS

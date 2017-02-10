@@ -153,6 +153,8 @@ class NUSystemConfig(NURESTObject):
         self._zfb_request_retry_timer = None
         self._zfb_scheduler_stale_request_timeout = None
         self._dhcp_option_size = None
+        self._vlanid_lower_limit = None
+        self._vlanid_upper_limit = None
         self._vm_cache_size = None
         self._vm_purge_time = None
         self._vm_resync_deletion_wait_time = None
@@ -184,6 +186,7 @@ class NUSystemConfig(NURESTObject):
         self._max_failed_logins = None
         self._max_response = None
         self._accumulate_licenses_enabled = None
+        self._per_domain_vlan_id_enabled = None
         self._performance_path_selection_vnid = None
         self._service_id_upper_limit = None
         self._key_server_monitor_enabled = None
@@ -280,6 +283,8 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="zfb_request_retry_timer", remote_name="ZFBRequestRetryTimer", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zfb_scheduler_stale_request_timeout", remote_name="ZFBSchedulerStaleRequestTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_option_size", remote_name="DHCPOptionSize", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vlanid_lower_limit", remote_name="VLANIDLowerLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vlanid_upper_limit", remote_name="VLANIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vm_cache_size", remote_name="VMCacheSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vm_purge_time", remote_name="VMPurgeTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vm_resync_deletion_wait_time", remote_name="VMResyncDeletionWaitTime", attribute_type=int, is_required=False, is_unique=False)
@@ -311,6 +316,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="max_failed_logins", remote_name="maxFailedLogins", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="max_response", remote_name="maxResponse", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="accumulate_licenses_enabled", remote_name="accumulateLicensesEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="per_domain_vlan_id_enabled", remote_name="perDomainVlanIdEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="performance_path_selection_vnid", remote_name="performancePathSelectionVNID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_id_upper_limit", remote_name="serviceIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="key_server_monitor_enabled", remote_name="keyServerMonitorEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -783,6 +789,60 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._dhcp_option_size = value
+
+    
+    @property
+    def vlanid_lower_limit(self):
+        """ Get vlanid_lower_limit value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `VLANIDLowerLimit` in VSD API.
+                
+        """
+        return self._vlanid_lower_limit
+
+    @vlanid_lower_limit.setter
+    def vlanid_lower_limit(self, value):
+        """ Set vlanid_lower_limit value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `VLANIDLowerLimit` in VSD API.
+                
+        """
+        self._vlanid_lower_limit = value
+
+    
+    @property
+    def vlanid_upper_limit(self):
+        """ Get vlanid_upper_limit value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `VLANIDUpperLimit` in VSD API.
+                
+        """
+        return self._vlanid_upper_limit
+
+    @vlanid_upper_limit.setter
+    def vlanid_upper_limit(self, value):
+        """ Set vlanid_upper_limit value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `VLANIDUpperLimit` in VSD API.
+                
+        """
+        self._vlanid_upper_limit = value
 
     
     @property
@@ -1620,6 +1680,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._accumulate_licenses_enabled = value
+
+    
+    @property
+    def per_domain_vlan_id_enabled(self):
+        """ Get per_domain_vlan_id_enabled value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `perDomainVlanIdEnabled` in VSD API.
+                
+        """
+        return self._per_domain_vlan_id_enabled
+
+    @per_domain_vlan_id_enabled.setter
+    def per_domain_vlan_id_enabled(self, value):
+        """ Set per_domain_vlan_id_enabled value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `perDomainVlanIdEnabled` in VSD API.
+                
+        """
+        self._per_domain_vlan_id_enabled = value
 
     
     @property

@@ -158,7 +158,7 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_IKE_GATEWAY_PROFILE = "IKE_GATEWAY_PROFILE"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NETWORK_POLICY_GROUP = "NETWORK_POLICY_GROUP"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_MONITORING_PORT = "MONITORING_PORT"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_STATS_COLLECTOR = "STATS_COLLECTOR"
     
@@ -209,6 +209,8 @@ class NUSubnet(NURESTObject):
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GROUP = "GROUP"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_BGP_DAMPENING_MED_RESPONSE = "BGP_DAMPENING_MED_RESPONSE"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_KEYSERVER_MONITOR = "KEYSERVER_MONITOR"
     
@@ -384,7 +386,7 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_DHCP_OPTION = "DHCP_OPTION"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_DHCP_RELAY_STATUS_DISABLED = "DISABLED"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INGRESS_EXT_SERVICE_TEMPLATE = "INGRESS_EXT_SERVICE_TEMPLATE"
     
@@ -456,7 +458,7 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_L2DOMAIN_SHARED = "L2DOMAIN_SHARED"
     
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_MONITORING_PORT = "MONITORING_PORT"
+    CONST_DHCP_RELAY_STATUS_ENABLED = "ENABLED"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GEO_VM_EVENT = "GEO_VM_EVENT"
     
@@ -640,6 +642,8 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_VCENTER_DATACENTER = "VMWARE_VCENTER_DATACENTER"
     
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_NETWORK_POLICY_GROUP = "NETWORK_POLICY_GROUP"
+    
     
 
     def __init__(self, **kwargs):
@@ -660,6 +664,7 @@ class NUSubnet(NURESTObject):
         # Read/Write Attributes
         
         self._pat_enabled = None
+        self._dhcp_relay_status = None
         self._dpi = None
         self._ip_type = None
         self._ipv6_address = None
@@ -696,6 +701,7 @@ class NUSubnet(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="pat_enabled", remote_name="PATEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="dhcp_relay_status", remote_name="DHCPRelayStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
@@ -824,6 +830,33 @@ class NUSubnet(NURESTObject):
                 
         """
         self._pat_enabled = value
+
+    
+    @property
+    def dhcp_relay_status(self):
+        """ Get dhcp_relay_status value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `DHCPRelayStatus` in VSD API.
+                
+        """
+        return self._dhcp_relay_status
+
+    @dhcp_relay_status.setter
+    def dhcp_relay_status(self, value):
+        """ Set dhcp_relay_status value.
+
+            Notes:
+                None
+
+                
+                This attribute is named `DHCPRelayStatus` in VSD API.
+                
+        """
+        self._dhcp_relay_status = value
 
     
     @property
@@ -1266,7 +1299,7 @@ class NUSubnet(NURESTObject):
         """ Get underlay value.
 
             Notes:
-                Boolean flag to indicate whether underlay is enabled directly or indirectly
+                Read Only Boolean flag to indicate whether underlay is enabled directly or indirectly
 
                 
         """
@@ -1277,7 +1310,7 @@ class NUSubnet(NURESTObject):
         """ Set underlay value.
 
             Notes:
-                Boolean flag to indicate whether underlay is enabled directly or indirectly
+                Read Only Boolean flag to indicate whether underlay is enabled directly or indirectly
 
                 
         """

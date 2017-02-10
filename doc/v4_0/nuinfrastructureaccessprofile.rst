@@ -3,7 +3,7 @@
 nuinfrastructureaccessprofile
 ===========================================
 
-.. class:: nuinfrastructureaccessprofile.NUInfrastructureaccessprofile(bambou.nurest_object.NUMetaRESTObject,):
+.. class:: nuinfrastructureaccessprofile.NUInfrastructureAccessProfile(bambou.nurest_object.NUMetaRESTObject,):
 
 Represents an Infrastructure Access Profile
 
@@ -45,4 +45,11 @@ Children
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 ================================================================================================================================================               ==========================================================================================
 
+
+
+Parents
+--------
+
+
+- :ref:`nume.NUMe<nume>`
 

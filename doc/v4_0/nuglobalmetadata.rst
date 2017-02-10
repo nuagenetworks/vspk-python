@@ -202,7 +202,7 @@ Parents
 
 - :ref:`nunetworkmacrogroup.NUNetworkMacroGroup<nunetworkmacrogroup>`
 
-- :ref:`nuinfrastructureaccessprofile.NUInfrastructureaccessprofile<nuinfrastructureaccessprofile>`
+- :ref:`nuinfrastructureaccessprofile.NUInfrastructureAccessProfile<nuinfrastructureaccessprofile>`
 
 - :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
 
@@ -231,6 +231,8 @@ Parents
 - :ref:`nucertificate.NUCertificate<nucertificate>`
 
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
+
+- :ref:`nultestatistics.NULtestatistics<nultestatistics>`
 
 - :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
 
