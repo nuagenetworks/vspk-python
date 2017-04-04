@@ -12,15 +12,17 @@ Attributes
 ----------
 
 
-- ``guid``: GUID of the Application
-
 - ``name`` (**Mandatory**):  name of the L7 App
 
 - ``category``: Category of this application
 
+- ``readonly``: Determines whether this entity is read only.  Read only objects cannot be modified or deleted.
+
 - ``description``: description for L7 App
 
 - ``dictionary_version``: Version of the L7 Application Type
+
+- ``guidstring``: GUID of the Application
 
 
 

@@ -200,7 +200,6 @@ class NUSystemConfig(NURESTObject):
         self._ejbca_vsp_root_ca = None
         self._alarms_max_per_object = None
         self._elastic_cluster_name = None
-        self._elastic_search_ui_address = None
         self._allow_enterprise_avatar_on_nsg = None
         self._global_mac_address = None
         self._flow_collection_enabled = None
@@ -330,7 +329,6 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="ejbca_vsp_root_ca", remote_name="ejbcaVspRootCa", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="alarms_max_per_object", remote_name="alarmsMaxPerObject", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="elastic_cluster_name", remote_name="elasticClusterName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="elastic_search_ui_address", remote_name="elasticSearchUIAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_enterprise_avatar_on_nsg", remote_name="allowEnterpriseAvatarOnNSG", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="global_mac_address", remote_name="globalMACAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -2058,33 +2056,6 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._elastic_cluster_name = value
-
-    
-    @property
-    def elastic_search_ui_address(self):
-        """ Get elastic_search_ui_address value.
-
-            Notes:
-                Specifies the server address Elastic Search Cluster.
-
-                
-                This attribute is named `elasticSearchUIAddress` in VSD API.
-                
-        """
-        return self._elastic_search_ui_address
-
-    @elastic_search_ui_address.setter
-    def elastic_search_ui_address(self, value):
-        """ Set elastic_search_ui_address value.
-
-            Notes:
-                Specifies the server address Elastic Search Cluster.
-
-                
-                This attribute is named `elasticSearchUIAddress` in VSD API.
-                
-        """
-        self._elastic_search_ui_address = value
 
     
     @property

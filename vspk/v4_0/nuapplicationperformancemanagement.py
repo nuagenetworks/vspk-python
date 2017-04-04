@@ -43,13 +43,6 @@ class NUApplicationperformancemanagement(NURESTObject):
     __resource_name__ = "applicationperformancemanagements"
 
     
-    ## Constants
-    
-    CONST_APPLICATION_GROUP_TYPE_MONITOR_PATH = "MONITOR_PATH"
-    
-    CONST_APPLICATION_GROUP_TYPE_DISCOVERY = "DISCOVERY"
-    
-    
 
     def __init__(self, **kwargs):
         """ Initializes a Applicationperformancemanagement instance
@@ -71,13 +64,11 @@ class NUApplicationperformancemanagement(NURESTObject):
         self._name = None
         self._read_only = None
         self._description = None
-        self._application_group_type = None
         self._associated_performance_monitor_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="read_only", remote_name="readOnly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="application_group_type", remote_name="applicationGroupType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISCOVERY', u'MONITOR_PATH'])
         self.expose_attribute(local_name="associated_performance_monitor_id", remote_name="associatedPerformanceMonitorID", attribute_type=str, is_required=False, is_unique=False)
         
 
@@ -162,33 +153,6 @@ class NUApplicationperformancemanagement(NURESTObject):
                 
         """
         self._description = value
-
-    
-    @property
-    def application_group_type(self):
-        """ Get application_group_type value.
-
-            Notes:
-                with values  MONITOR_PATH,DISCOVERY
-
-                
-                This attribute is named `applicationGroupType` in VSD API.
-                
-        """
-        return self._application_group_type
-
-    @application_group_type.setter
-    def application_group_type(self, value):
-        """ Set application_group_type value.
-
-            Notes:
-                with values  MONITOR_PATH,DISCOVERY
-
-                
-                This attribute is named `applicationGroupType` in VSD API.
-                
-        """
-        self._application_group_type = value
 
     
     @property

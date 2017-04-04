@@ -134,8 +134,6 @@ Attributes
 
 - ``elastic_cluster_name``: Specifies the name of the Elastic Search Cluster.
 
-- ``elastic_search_ui_address``: Specifies the server address Elastic Search Cluster.
-
 - ``allow_enterprise_avatar_on_nsg``: Allow Enterprise Avatar to be populated on NSG Portal
 
 - ``global_mac_address``: the MAC Address to use for those subnets that have the useGlobalMAC flag enabled.
