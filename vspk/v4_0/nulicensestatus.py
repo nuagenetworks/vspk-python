@@ -59,9 +59,13 @@ class NULicenseStatus(NURESTObject):
         # Read/Write Attributes
         
         self._accumulate_licenses_enabled = None
+        self._total_licensed_avrsgs_count = None
+        self._total_licensed_avrss_count = None
         self._total_licensed_gateways_count = None
         self._total_licensed_nics_count = None
         self._total_licensed_nsgs_count = None
+        self._total_licensed_used_avrsgs_count = None
+        self._total_licensed_used_avrss_count = None
         self._total_licensed_used_nics_count = None
         self._total_licensed_used_nsgs_count = None
         self._total_licensed_used_vms_count = None
@@ -72,10 +76,14 @@ class NULicenseStatus(NURESTObject):
         self._total_licensed_vrss_count = None
         self._total_used_gateways_count = None
         
-        self.expose_attribute(local_name="accumulate_licenses_enabled", remote_name="accumulateLicensesEnabled", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="accumulate_licenses_enabled", remote_name="accumulateLicensesEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_avrsgs_count", remote_name="totalLicensedAVRSGsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_avrss_count", remote_name="totalLicensedAVRSsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_gateways_count", remote_name="totalLicensedGatewaysCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_nics_count", remote_name="totalLicensedNICsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_nsgs_count", remote_name="totalLicensedNSGsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_used_avrsgs_count", remote_name="totalLicensedUsedAVRSGsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_used_avrss_count", remote_name="totalLicensedUsedAVRSsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_used_nics_count", remote_name="totalLicensedUsedNICsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_used_nsgs_count", remote_name="totalLicensedUsedNSGsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_used_vms_count", remote_name="totalLicensedUsedVMsCount", attribute_type=int, is_required=False, is_unique=False)
@@ -116,6 +124,60 @@ class NULicenseStatus(NURESTObject):
                 
         """
         self._accumulate_licenses_enabled = value
+
+    
+    @property
+    def total_licensed_avrsgs_count(self):
+        """ Get total_licensed_avrsgs_count value.
+
+            Notes:
+                Indicates total AVRSG count for all the licenses in the system
+
+                
+                This attribute is named `totalLicensedAVRSGsCount` in VSD API.
+                
+        """
+        return self._total_licensed_avrsgs_count
+
+    @total_licensed_avrsgs_count.setter
+    def total_licensed_avrsgs_count(self, value):
+        """ Set total_licensed_avrsgs_count value.
+
+            Notes:
+                Indicates total AVRSG count for all the licenses in the system
+
+                
+                This attribute is named `totalLicensedAVRSGsCount` in VSD API.
+                
+        """
+        self._total_licensed_avrsgs_count = value
+
+    
+    @property
+    def total_licensed_avrss_count(self):
+        """ Get total_licensed_avrss_count value.
+
+            Notes:
+                Indicates total AVRS count for all the licenses in the system
+
+                
+                This attribute is named `totalLicensedAVRSsCount` in VSD API.
+                
+        """
+        return self._total_licensed_avrss_count
+
+    @total_licensed_avrss_count.setter
+    def total_licensed_avrss_count(self, value):
+        """ Set total_licensed_avrss_count value.
+
+            Notes:
+                Indicates total AVRS count for all the licenses in the system
+
+                
+                This attribute is named `totalLicensedAVRSsCount` in VSD API.
+                
+        """
+        self._total_licensed_avrss_count = value
 
     
     @property
@@ -197,6 +259,60 @@ class NULicenseStatus(NURESTObject):
                 
         """
         self._total_licensed_nsgs_count = value
+
+    
+    @property
+    def total_licensed_used_avrsgs_count(self):
+        """ Get total_licensed_used_avrsgs_count value.
+
+            Notes:
+                Indicates total used AVRSG count for all the licenses in the system
+
+                
+                This attribute is named `totalLicensedUsedAVRSGsCount` in VSD API.
+                
+        """
+        return self._total_licensed_used_avrsgs_count
+
+    @total_licensed_used_avrsgs_count.setter
+    def total_licensed_used_avrsgs_count(self, value):
+        """ Set total_licensed_used_avrsgs_count value.
+
+            Notes:
+                Indicates total used AVRSG count for all the licenses in the system
+
+                
+                This attribute is named `totalLicensedUsedAVRSGsCount` in VSD API.
+                
+        """
+        self._total_licensed_used_avrsgs_count = value
+
+    
+    @property
+    def total_licensed_used_avrss_count(self):
+        """ Get total_licensed_used_avrss_count value.
+
+            Notes:
+                Indicates total used AVRS count for all the licenses in the system.
+
+                
+                This attribute is named `totalLicensedUsedAVRSsCount` in VSD API.
+                
+        """
+        return self._total_licensed_used_avrss_count
+
+    @total_licensed_used_avrss_count.setter
+    def total_licensed_used_avrss_count(self, value):
+        """ Set total_licensed_used_avrss_count value.
+
+            Notes:
+                Indicates total used AVRS count for all the licenses in the system.
+
+                
+                This attribute is named `totalLicensedUsedAVRSsCount` in VSD API.
+                
+        """
+        self._total_licensed_used_avrss_count = value
 
     
     @property

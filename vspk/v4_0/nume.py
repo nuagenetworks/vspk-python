@@ -292,7 +292,7 @@ class NUMe(NURESTRootObject):
         self._last_updated_by = None
         self._first_name = None
         self._disabled = None
-        self._elastic_search_ui_address = None
+        self._elastic_search_address = None
         self._flow_collection_enabled = None
         self._email = None
         self._enterprise_id = None
@@ -311,7 +311,7 @@ class NUMe(NURESTRootObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="first_name", remote_name="firstName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="disabled", remote_name="disabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="elastic_search_ui_address", remote_name="elasticSearchUIAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="elastic_search_address", remote_name="elasticSearchAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="email", remote_name="email", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
@@ -677,30 +677,30 @@ class NUMe(NURESTRootObject):
 
     
     @property
-    def elastic_search_ui_address(self):
-        """ Get elastic_search_ui_address value.
+    def elastic_search_address(self):
+        """ Get elastic_search_address value.
 
             Notes:
-                elastic search UI address
+                elastic search address
 
                 
-                This attribute is named `elasticSearchUIAddress` in VSD API.
+                This attribute is named `elasticSearchAddress` in VSD API.
                 
         """
-        return self._elastic_search_ui_address
+        return self._elastic_search_address
 
-    @elastic_search_ui_address.setter
-    def elastic_search_ui_address(self, value):
-        """ Set elastic_search_ui_address value.
+    @elastic_search_address.setter
+    def elastic_search_address(self, value):
+        """ Set elastic_search_address value.
 
             Notes:
-                elastic search UI address
+                elastic search address
 
                 
-                This attribute is named `elasticSearchUIAddress` in VSD API.
+                This attribute is named `elasticSearchAddress` in VSD API.
                 
         """
-        self._elastic_search_ui_address = value
+        self._elastic_search_address = value
 
     
     @property

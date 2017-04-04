@@ -983,7 +983,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         """ Get network_id value.
 
             Notes:
-                The destination network entity that is referenced(subnet/zone/macro)
+                The ID of the destination endpoint (Subnet/Zone/Macro/MacroGroup/PolicyGroup)
 
                 
                 This attribute is named `networkID` in VSD API.
@@ -996,7 +996,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         """ Set network_id value.
 
             Notes:
-                The destination network entity that is referenced(subnet/zone/macro)
+                The ID of the destination endpoint (Subnet/Zone/Macro/MacroGroup/PolicyGroup)
 
                 
                 This attribute is named `networkID` in VSD API.
@@ -1010,7 +1010,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         """ Get network_type value.
 
             Notes:
-                Type of the source network.
+                Type of the destination endpoint (Subnet/Zone/Macro/MacroGroup/PolicyGroup)
 
                 
                 This attribute is named `networkType` in VSD API.
@@ -1023,7 +1023,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         """ Set network_type value.
 
             Notes:
-                Type of the source network.
+                Type of the destination endpoint (Subnet/Zone/Macro/MacroGroup/PolicyGroup)
 
                 
                 This attribute is named `networkType` in VSD API.
@@ -1145,7 +1145,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         """ Get location_id value.
 
             Notes:
-                The ID of the location entity (Subnet/Zone/VportTag)
+                The ID of the source endpoint (Subnet/Zone/VportTag/PortGroup)
 
                 
                 This attribute is named `locationID` in VSD API.
@@ -1158,7 +1158,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         """ Set location_id value.
 
             Notes:
-                The ID of the location entity (Subnet/Zone/VportTag)
+                The ID of the source endpoint (Subnet/Zone/VportTag/PortGroup)
 
                 
                 This attribute is named `locationID` in VSD API.
@@ -1172,7 +1172,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         """ Get location_type value.
 
             Notes:
-                Type of the location entity.
+                Type of the source endpoint (Subnet/Zone/VportTag/PortGroup)
 
                 
                 This attribute is named `locationType` in VSD API.
@@ -1185,7 +1185,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         """ Set location_type value.
 
             Notes:
-                Type of the location entity.
+                Type of the source endpoint (Subnet/Zone/VportTag/PortGroup)
 
                 
                 This attribute is named `locationType` in VSD API.

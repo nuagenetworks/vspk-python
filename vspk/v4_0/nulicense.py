@@ -94,6 +94,8 @@ class NULicense(NURESTObject):
         self._minor_release = None
         self._zip = None
         self._city = None
+        self._allowed_avrsgs_count = None
+        self._allowed_avrss_count = None
         self._allowed_cpes_count = None
         self._allowed_nics_count = None
         self._allowed_vms_count = None
@@ -113,6 +115,7 @@ class NULicense(NURESTObject):
         self._street = None
         self._customer_key = None
         self._expiration_date = None
+        self._expiry_timestamp = None
         self._external_id = None
         
         self.expose_attribute(local_name="major_release", remote_name="majorRelease", attribute_type=int, is_required=False, is_unique=False)
@@ -127,6 +130,8 @@ class NULicense(NURESTObject):
         self.expose_attribute(local_name="minor_release", remote_name="minorRelease", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zip", remote_name="zip", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="city", remote_name="city", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="allowed_avrsgs_count", remote_name="allowedAVRSGsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="allowed_avrss_count", remote_name="allowedAVRSsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_cpes_count", remote_name="allowedCPEsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_nics_count", remote_name="allowedNICsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_vms_count", remote_name="allowedVMsCount", attribute_type=int, is_required=False, is_unique=False)
@@ -146,6 +151,7 @@ class NULicense(NURESTObject):
         self.expose_attribute(local_name="street", remote_name="street", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="customer_key", remote_name="customerKey", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="expiration_date", remote_name="expirationDate", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="expiry_timestamp", remote_name="expiryTimestamp", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -471,6 +477,60 @@ class NULicense(NURESTObject):
                 
         """
         self._city = value
+
+    
+    @property
+    def allowed_avrsgs_count(self):
+        """ Get allowed_avrsgs_count value.
+
+            Notes:
+                Maximum number of AVRSGs enabled with this license. A value of -1 indicates an unlimited number of AVRSGs
+
+                
+                This attribute is named `allowedAVRSGsCount` in VSD API.
+                
+        """
+        return self._allowed_avrsgs_count
+
+    @allowed_avrsgs_count.setter
+    def allowed_avrsgs_count(self, value):
+        """ Set allowed_avrsgs_count value.
+
+            Notes:
+                Maximum number of AVRSGs enabled with this license. A value of -1 indicates an unlimited number of AVRSGs
+
+                
+                This attribute is named `allowedAVRSGsCount` in VSD API.
+                
+        """
+        self._allowed_avrsgs_count = value
+
+    
+    @property
+    def allowed_avrss_count(self):
+        """ Get allowed_avrss_count value.
+
+            Notes:
+                Maximum number of AVRSs enabled with this license. A value of -1 indicates an unlimited number of AVRSs
+
+                
+                This attribute is named `allowedAVRSsCount` in VSD API.
+                
+        """
+        return self._allowed_avrss_count
+
+    @allowed_avrss_count.setter
+    def allowed_avrss_count(self, value):
+        """ Set allowed_avrss_count value.
+
+            Notes:
+                Maximum number of AVRSs enabled with this license. A value of -1 indicates an unlimited number of AVRSs
+
+                
+                This attribute is named `allowedAVRSsCount` in VSD API.
+                
+        """
+        self._allowed_avrss_count = value
 
     
     @property
@@ -960,6 +1020,33 @@ class NULicense(NURESTObject):
                 
         """
         self._expiration_date = value
+
+    
+    @property
+    def expiry_timestamp(self):
+        """ Get expiry_timestamp value.
+
+            Notes:
+                The Timestamp value of the expiration date of this license
+
+                
+                This attribute is named `expiryTimestamp` in VSD API.
+                
+        """
+        return self._expiry_timestamp
+
+    @expiry_timestamp.setter
+    def expiry_timestamp(self, value):
+        """ Set expiry_timestamp value.
+
+            Notes:
+                The Timestamp value of the expiration date of this license
+
+                
+                This attribute is named `expiryTimestamp` in VSD API.
+                
+        """
+        self._expiry_timestamp = value
 
     
     @property

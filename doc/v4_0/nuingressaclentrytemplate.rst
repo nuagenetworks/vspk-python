@@ -34,9 +34,9 @@ Attributes
 
 - ``destination_port``: The destination port to be matched if protocol is UDP or TCP. Value should be either * or single port number or a port range
 
-- ``network_id``: The destination network entity that is referenced(subnet/zone/macro)
+- ``network_id``: The ID of the destination endpoint (Subnet/Zone/Macro/MacroGroup/PolicyGroup)
 
-- ``network_type``: Type of the source network.
+- ``network_type``: Type of the destination endpoint (Subnet/Zone/Macro/MacroGroup/PolicyGroup)
 
 - ``mirror_destination_id``: Destination ID of the mirror destination object.
 
@@ -46,9 +46,9 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``location_id``: The ID of the location entity (Subnet/Zone/VportTag)
+- ``location_id``: The ID of the source endpoint (Subnet/Zone/VportTag/PortGroup)
 
-- ``location_type`` (**Mandatory**): Type of the location entity.
+- ``location_type`` (**Mandatory**): Type of the source endpoint (Subnet/Zone/VportTag/PortGroup)
 
 - ``policy_state``: State of the policy.
 

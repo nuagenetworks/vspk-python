@@ -99,6 +99,7 @@ class NUApplication(NURESTObject):
         
         self._dscp = None
         self._name = None
+        self._bandwidth = None
         self._read_only = None
         self._performance_monitor_type = None
         self._description = None
@@ -111,6 +112,7 @@ class NUApplication(NURESTObject):
         self._post_classification_path = None
         self._source_ip = None
         self._source_port = None
+        self._app_id = None
         self._optimize_path_selection = None
         self._pre_classification_path = None
         self._protocol = None
@@ -120,6 +122,7 @@ class NUApplication(NURESTObject):
         
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="bandwidth", remote_name="bandwidth", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="read_only", remote_name="readOnly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="performance_monitor_type", remote_name="performanceMonitorType", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONTINUOUS', u'FIRST_PACKET', u'FIRST_PACKET_AND_CONTINUOUS'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
@@ -132,10 +135,11 @@ class NUApplication(NURESTObject):
         self.expose_attribute(local_name="post_classification_path", remote_name="postClassificationPath", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'PRIMARY', u'SECONDARY'])
         self.expose_attribute(local_name="source_ip", remote_name="sourceIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="app_id", remote_name="appId", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="optimize_path_selection", remote_name="optimizePathSelection", attribute_type=str, is_required=False, is_unique=False, choices=[u'JITTER', u'LATENCY', u'PACKETLOSS'])
         self.expose_attribute(local_name="pre_classification_path", remote_name="preClassificationPath", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'PRIMARY', u'SECONDARY'])
         self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'TCP', u'UDP'])
-        self.expose_attribute(local_name="associated_l7_application_signature_id", remote_name="associatedL7ApplicationSignatureID", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="associated_l7_application_signature_id", remote_name="associatedL7ApplicationSignatureID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ether_type", remote_name="etherType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="symmetry", remote_name="symmetry", attribute_type=bool, is_required=False, is_unique=False)
         
@@ -158,7 +162,7 @@ class NUApplication(NURESTObject):
         """ Get dscp value.
 
             Notes:
-                DSCP match condition to be set in the rule
+                DSCP match condition to be set in the rule. It is either * or from 0-63.
 
                 
                 This attribute is named `DSCP` in VSD API.
@@ -171,7 +175,7 @@ class NUApplication(NURESTObject):
         """ Set dscp value.
 
             Notes:
-                DSCP match condition to be set in the rule
+                DSCP match condition to be set in the rule. It is either * or from 0-63.
 
                 
                 This attribute is named `DSCP` in VSD API.
@@ -201,6 +205,29 @@ class NUApplication(NURESTObject):
                 
         """
         self._name = value
+
+    
+    @property
+    def bandwidth(self):
+        """ Get bandwidth value.
+
+            Notes:
+                Minimum Failover Bandwidth of the application.
+
+                
+        """
+        return self._bandwidth
+
+    @bandwidth.setter
+    def bandwidth(self, value):
+        """ Set bandwidth value.
+
+            Notes:
+                Minimum Failover Bandwidth of the application.
+
+                
+        """
+        self._bandwidth = value
 
     
     @property
@@ -521,6 +548,33 @@ class NUApplication(NURESTObject):
                 
         """
         self._source_port = value
+
+    
+    @property
+    def app_id(self):
+        """ Get app_id value.
+
+            Notes:
+                a unique 2 byte id generated when a application is created and used by VRS  for probing.
+
+                
+                This attribute is named `appId` in VSD API.
+                
+        """
+        return self._app_id
+
+    @app_id.setter
+    def app_id(self, value):
+        """ Set app_id value.
+
+            Notes:
+                a unique 2 byte id generated when a application is created and used by VRS  for probing.
+
+                
+                This attribute is named `appId` in VSD API.
+                
+        """
+        self._app_id = value
 
     
     @property

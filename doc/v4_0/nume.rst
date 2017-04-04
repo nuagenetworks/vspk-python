@@ -22,7 +22,7 @@ Attributes
 
 - ``disabled``: Status of the user account; true=disabled, false=not disabled; default value = false
 
-- ``elastic_search_ui_address``: elastic search UI address
+- ``elastic_search_address``: elastic search address
 
 - ``flow_collection_enabled``: Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires "statisticsEnabled".
 

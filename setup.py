@@ -48,12 +48,12 @@ for version_folder in os.listdir(api_version_path):
 
 setup(
     name='vspk',
-    version="4.0.5",
+    version="4.0.8",
     url='http://nuagenetworks.net/',
     author='nuage networks',
     author_email='opensource@nuagenetworks.net',
     packages=packages,
-    description='VSD Python SDK for API',
+    description='SDK for the VSD API',
     long_description=open('README.md').read(),
     license='BSD-3',
     include_package_data=True,

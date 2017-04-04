@@ -16,7 +16,7 @@ Attributes
 
 - ``priority``: Priority of the Application within an Application Group
 
-- ``associated_application_id``: Associated software application ID
+- ``associated_application_id`` (**Mandatory**): Associated software application ID
 
 
 

@@ -14,11 +14,19 @@ Attributes
 
 - ``accumulate_licenses_enabled``: Whether the various VRS license flavours be merged in one pool
 
+- ``total_licensed_avrsgs_count``: Indicates total AVRSG count for all the licenses in the system
+
+- ``total_licensed_avrss_count``: Indicates total AVRS count for all the licenses in the system
+
 - ``total_licensed_gateways_count``:  Indicates total VRS+VRSG+VRSB licenses licensed in the system
 
 - ``total_licensed_nics_count``: Indicates total NIC count for all the licenses in the system
 
 - ``total_licensed_nsgs_count``: Indicates total NSG count for all the licenses in the system
+
+- ``total_licensed_used_avrsgs_count``: Indicates total used AVRSG count for all the licenses in the system
+
+- ``total_licensed_used_avrss_count``: Indicates total used AVRS count for all the licenses in the system.
 
 - ``total_licensed_used_nics_count``: Indicates total used NIC count for all the licenses in the system
 

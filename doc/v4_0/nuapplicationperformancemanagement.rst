@@ -18,8 +18,6 @@ Attributes
 
 - ``description``: Description of Application Group
 
-- ``application_group_type``: with values  MONITOR_PATH,DISCOVERY
-
 - ``associated_performance_monitor_id``: associated Probe ID
 
 

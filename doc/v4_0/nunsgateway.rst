@@ -16,6 +16,10 @@ Attributes
 
 - ``nat_traversal_enabled``: This attribute is deprecated in version 4.0.
 
+- ``tcpmss_enabled``: Boolean flag to indicate whether MSS on TCP is enabled or not
+
+- ``tcp_maximum_segment_size``: Maximum Segment Size for TCP(min = 576, max = 7812).
+
 - ``sku``: The part number of the NSG
 
 - ``tpm_status``: TPM Status of the NSG based on the information received by the device during bootstrapping or upgrade.
