@@ -206,8 +206,6 @@ class NUNSGateway(NURESTObject):
         
         self._mac_address = None
         self._nat_traversal_enabled = None
-        self._tcpmss_enabled = None
-        self._tcp_maximum_segment_size = None
         self._sku = None
         self._tpm_status = None
         self._cpu_type = None
@@ -245,8 +243,6 @@ class NUNSGateway(NURESTObject):
         
         self.expose_attribute(local_name="mac_address", remote_name="MACAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nat_traversal_enabled", remote_name="NATTraversalEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="tcpmss_enabled", remote_name="TCPMSSEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="tcp_maximum_segment_size", remote_name="TCPMaximumSegmentSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sku", remote_name="SKU", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tpm_status", remote_name="TPMStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED_NOT_OPERATIONAL', u'ENABLED_OPERATIONAL', u'UNKNOWN'])
         self.expose_attribute(local_name="cpu_type", remote_name="CPUType", attribute_type=str, is_required=False, is_unique=False)
@@ -393,60 +389,6 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._nat_traversal_enabled = value
-
-    
-    @property
-    def tcpmss_enabled(self):
-        """ Get tcpmss_enabled value.
-
-            Notes:
-                Boolean flag to indicate whether MSS on TCP is enabled or not
-
-                
-                This attribute is named `TCPMSSEnabled` in VSD API.
-                
-        """
-        return self._tcpmss_enabled
-
-    @tcpmss_enabled.setter
-    def tcpmss_enabled(self, value):
-        """ Set tcpmss_enabled value.
-
-            Notes:
-                Boolean flag to indicate whether MSS on TCP is enabled or not
-
-                
-                This attribute is named `TCPMSSEnabled` in VSD API.
-                
-        """
-        self._tcpmss_enabled = value
-
-    
-    @property
-    def tcp_maximum_segment_size(self):
-        """ Get tcp_maximum_segment_size value.
-
-            Notes:
-                Maximum Segment Size for TCP(min = 576, max = 7812).
-
-                
-                This attribute is named `TCPMaximumSegmentSize` in VSD API.
-                
-        """
-        return self._tcp_maximum_segment_size
-
-    @tcp_maximum_segment_size.setter
-    def tcp_maximum_segment_size(self, value):
-        """ Set tcp_maximum_segment_size value.
-
-            Notes:
-                Maximum Segment Size for TCP(min = 576, max = 7812).
-
-                
-                This attribute is named `TCPMaximumSegmentSize` in VSD API.
-                
-        """
-        self._tcp_maximum_segment_size = value
 
     
     @property

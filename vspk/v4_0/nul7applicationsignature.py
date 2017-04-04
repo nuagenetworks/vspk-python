@@ -61,30 +61,55 @@ class NUL7applicationsignature(NURESTObject):
 
         # Read/Write Attributes
         
+        self._guid = None
         self._name = None
         self._category = None
-        self._readonly = None
         self._description = None
         self._dictionary_version = None
-        self._guidstring = None
         
+        self.expose_attribute(local_name="guid", remote_name="GUID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="category", remote_name="category", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="readonly", remote_name="readonly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dictionary_version", remote_name="dictionaryVersion", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="guidstring", remote_name="guidstring", attribute_type=str, is_required=False, is_unique=False)
         
 
         # Fetchers
         
         
-        self.applications = NUApplicationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.applications = NUApplicationsFetcher.fetcher_with_object(parent_object=self, relationship="member")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def guid(self):
+        """ Get guid value.
+
+            Notes:
+                GUID of the Application
+
+                
+                This attribute is named `GUID` in VSD API.
+                
+        """
+        return self._guid
+
+    @guid.setter
+    def guid(self, value):
+        """ Set guid value.
+
+            Notes:
+                GUID of the Application
+
+                
+                This attribute is named `GUID` in VSD API.
+                
+        """
+        self._guid = value
+
     
     @property
     def name(self):
@@ -130,29 +155,6 @@ class NUL7applicationsignature(NURESTObject):
                 
         """
         self._category = value
-
-    
-    @property
-    def readonly(self):
-        """ Get readonly value.
-
-            Notes:
-                Determines whether this entity is read only.  Read only objects cannot be modified or deleted.
-
-                
-        """
-        return self._readonly
-
-    @readonly.setter
-    def readonly(self, value):
-        """ Set readonly value.
-
-            Notes:
-                Determines whether this entity is read only.  Read only objects cannot be modified or deleted.
-
-                
-        """
-        self._readonly = value
 
     
     @property
@@ -203,29 +205,6 @@ class NUL7applicationsignature(NURESTObject):
                 
         """
         self._dictionary_version = value
-
-    
-    @property
-    def guidstring(self):
-        """ Get guidstring value.
-
-            Notes:
-                GUID of the Application
-
-                
-        """
-        return self._guidstring
-
-    @guidstring.setter
-    def guidstring(self, value):
-        """ Set guidstring value.
-
-            Notes:
-                GUID of the Application
-
-                
-        """
-        self._guidstring = value
 
     
 

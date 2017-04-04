@@ -27,7 +27,5 @@ Parents
 --------
 
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nunetworkperformancemeasurement.NUNetworkPerformanceMeasurement<nunetworkperformancemeasurement>`
 
