@@ -33,9 +33,9 @@ Parents
 --------
 
 
-- :ref:`nuapplication.NUApplication<nuapplication>`
-
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
+
+- :ref:`nuapplication.NUApplication<nuapplication>`
 
 - :ref:`nunetworkperformancemeasurement.NUNetworkPerformanceMeasurement<nunetworkperformancemeasurement>`
 

@@ -1,0 +1,94 @@
+.. _nulicense:
+
+nulicense
+===========================================
+
+.. class:: nulicense.NULicense(bambou.nurest_object.NUMetaRESTObject,):
+
+Enables retrieval/modification and creation of license files. Most of the attributes are retrieved from the encrypted license. The create API simply provides the encrypted license that is in base64 format.
+
+
+Attributes
+----------
+
+
+- ``major_release``: Major software release associated with this license
+
+- ``last_updated_by``: ID of the user who last updated the object.
+
+- ``phone``: Phone number of the owner associated with the license file
+
+- ``license`` (**Mandatory**): Base 64 value of the license
+
+- ``license_encryption``: License encryption
+
+- ``license_id``: Unique identifier of the license file
+
+- ``license_type``: 
+
+- ``minor_release``: Minor software release for which this license has been issued
+
+- ``zip``: Zipcode of the owner associated with the license file
+
+- ``city``: City of the owner associated with the license file
+
+- ``allowed_cpes_count``: Maximum number of CPEs enabled with this license. A value of -1 indicates an unlimited number of CPEs
+
+- ``allowed_nics_count``: Maximum number of NICs allowed. A value of -1 indicates unlimited number of NICs
+
+- ``allowed_vms_count``: Maximum number of VMs enabled with this license. A value of -1 indicates an unlimited number of VMs
+
+- ``allowed_vrsgs_count``: Maximum number of VRSGs enabled with this license. A value of -1 indicates an unlimited number of VRSGs
+
+- ``allowed_vrss_count``: Maximum number of VRSs enabled with this license. A value of -1 indicates an unlimited number of VRSs
+
+- ``email``: Email of the owner associated with the license file
+
+- ``encryption_mode``: Indicates if the system is associated with a license that allows encryption or not
+
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``company``: Company of the owner associated with the license file
+
+- ``country``: Country of the owner associated with the license file
+
+- ``product_version``: Version of the product that this license applies to
+
+- ``provider``: Provider of the license file
+
+- ``is_cluster_license``: Indicates if the license is associated with standlone or cluster setup of VSD
+
+- ``user_name``: The name of the user associated with the license
+
+- ``state``: State of the owner associated with the license file
+
+- ``street``: Address of the owner associated with the license file
+
+- ``customer_key``: Customer key associated with the licese
+
+- ``expiration_date``: Expiration date of this license
+
+- ``external_id``: External object ID. Used for integration with third party systems
+
+
+
+
+Children
+--------
+
+================================================================================================================================================               ==========================================================================================
+**class**                                                                                                                                                      **fetcher**
+
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+:ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
+================================================================================================================================================               ==========================================================================================
+
+
+
+Parents
+--------
+
+
+- :ref:`nume.NUMe<nume>`
+

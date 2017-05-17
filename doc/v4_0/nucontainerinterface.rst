@@ -96,9 +96,9 @@ Parents
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
-- :ref:`nucontainer.NUContainer<nucontainer>`
-
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nucontainer.NUContainer<nucontainer>`
 

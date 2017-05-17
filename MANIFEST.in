@@ -3,3 +3,5 @@ include README.md
 include LICENSE
 
 include vspk/v4_0/resources/*.ini
+
+include vspk/v3_2/resources/*.ini

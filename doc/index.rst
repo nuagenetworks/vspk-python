@@ -14,3 +14,11 @@ VSPK Documentation
 
     v4_0/*
 
+
+.. toctree::
+    :caption: v3_2 reference
+    :maxdepth: 1
+    :glob:
+
+    v3_2/*
+
