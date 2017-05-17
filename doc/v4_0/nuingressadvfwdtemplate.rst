@@ -57,9 +57,9 @@ Parents
 
 - :ref:`nudomain.NUDomain<nudomain>`
 
-- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
-
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
+
+- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 

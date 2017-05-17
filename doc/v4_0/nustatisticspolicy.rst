@@ -45,6 +45,8 @@ Parents
 
 - :ref:`nuzone.NUZone<nuzone>`
 
+- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
+
 - :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
@@ -58,6 +60,4 @@ Parents
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
-
-- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
 

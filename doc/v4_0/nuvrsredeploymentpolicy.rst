@@ -53,9 +53,9 @@ Parents
 
 - :ref:`nuvcenterhypervisor.NUVCenterHypervisor<nuvcenterhypervisor>`
 
-- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
-
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
 
 - :ref:`nuvcenter.NUVCenter<nuvcenter>`
+
+- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 

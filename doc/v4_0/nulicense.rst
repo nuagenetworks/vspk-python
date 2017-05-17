@@ -36,6 +36,10 @@ Attributes
 
 - ``city``: City of the owner associated with the license file
 
+- ``allowed_avrsgs_count``: Maximum number of AVRSGs enabled with this license. A value of -1 indicates an unlimited number of AVRSGs
+
+- ``allowed_avrss_count``: Maximum number of AVRSs enabled with this license. A value of -1 indicates an unlimited number of AVRSs
+
 - ``allowed_cpes_count``: Maximum number of CPEs enabled with this license. A value of -1 indicates an unlimited number of CPEs
 
 - ``allowed_nics_count``: Maximum number of NICs allowed. A value of -1 indicates unlimited number of NICs
@@ -73,6 +77,8 @@ Attributes
 - ``customer_key``: Customer key associated with the licese
 
 - ``expiration_date``: Expiration date of this license
+
+- ``expiry_timestamp``: The Timestamp value of the expiration date of this license
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

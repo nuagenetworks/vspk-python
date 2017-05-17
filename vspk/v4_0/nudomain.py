@@ -39,6 +39,9 @@ from .fetchers import NUPermissionsFetcher
 from .fetchers import NUMetadatasFetcher
 
 
+from .fetchers import NUNetworkPerformanceBindingsFetcher
+
+
 from .fetchers import NUEgressACLEntryTemplatesFetcher
 
 
@@ -368,6 +371,9 @@ class NUDomain(NURESTObject):
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.network_performance_bindings = NUNetworkPerformanceBindingsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.egress_acl_entry_templates = NUEgressACLEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")

@@ -16,7 +16,7 @@ Attributes
 
 - ``priority``: Priority of the associated Application Group
 
-- ``associated_application_performance_management_id``: Associated Application Group ID
+- ``associated_application_performance_management_id`` (**Mandatory**): Associated Application Group ID
 
 
 

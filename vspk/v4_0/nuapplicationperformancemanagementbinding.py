@@ -64,7 +64,7 @@ class NUApplicationperformancemanagementbinding(NURESTObject):
         
         self.expose_attribute(local_name="read_only", remote_name="readOnly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="associated_application_performance_management_id", remote_name="associatedApplicationPerformanceManagementID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_application_performance_management_id", remote_name="associatedApplicationPerformanceManagementID", attribute_type=str, is_required=True, is_unique=False)
         
 
         self._compute_args(**kwargs)
