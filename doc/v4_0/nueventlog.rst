@@ -119,8 +119,6 @@ Parents
 
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
-
 - :ref:`nulicense.NULicense<nulicense>`
 
 - :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
@@ -136,6 +134,8 @@ Parents
 - :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
+
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nuapplicationservice.NUApplicationService<nuapplicationservice>`
 

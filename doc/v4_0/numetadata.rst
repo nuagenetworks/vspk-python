@@ -117,6 +117,8 @@ Parents
 
 - :ref:`nuingressexternalservicetemplateentry.NUIngressExternalServiceTemplateEntry<nuingressexternalservicetemplateentry>`
 
+- :ref:`nudomainfipacltemplate.NUDomainFIPAclTemplate<nudomainfipacltemplate>`
+
 - :ref:`nuavatar.NUAvatar<nuavatar>`
 
 - :ref:`nubootstrapactivation.NUBootstrapActivation<nubootstrapactivation>`
@@ -187,7 +189,7 @@ Parents
 
 - :ref:`nunetworklayout.NUNetworkLayout<nunetworklayout>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
+- :ref:`nucertificate.NUCertificate<nucertificate>`
 
 - :ref:`nulicense.NULicense<nulicense>`
 
@@ -217,7 +219,7 @@ Parents
 
 - :ref:`nunatmapentry.NUNATMapEntry<nunatmapentry>`
 
-- :ref:`nudomainfipacltemplate.NUDomainFIPAclTemplate<nudomainfipacltemplate>`
+- :ref:`nueventlog.NUEventLog<nueventlog>`
 
 - :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
 
@@ -229,7 +231,7 @@ Parents
 
 - :ref:`nunsporttemplate.NUNSPortTemplate<nunsporttemplate>`
 
-- :ref:`nueventlog.NUEventLog<nueventlog>`
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
 
@@ -250,8 +252,6 @@ Parents
 - :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`
 
 - :ref:`nuroutingpolicy.NURoutingPolicy<nuroutingpolicy>`
-
-- :ref:`nucertificate.NUCertificate<nucertificate>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 

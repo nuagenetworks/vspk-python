@@ -1,0 +1,64 @@
+.. _nulink:
+
+nulink
+===========================================
+
+.. class:: nulink.NULink(bambou.nurest_object.NUMetaRESTObject,):
+
+This object represents the link between a source and destination domain in service chaining
+
+
+Attributes
+----------
+
+
+- ``last_updated_by``: ID of the user who last updated the object.
+
+- ``acceptance_criteria``: A route filtering criteria enum. Defaults to ALL.
+
+- ``read_only``: This is set to true if a link has been created in the opposite direction
+
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``associated_destination_id``: This is the  ID of the domain receiving the routes from the source. This can only be set for links of type OVERLAY_ADDRESS_TRANSLATION.
+
+- ``associated_destination_name``: None
+
+- ``associated_destination_type``: Type of the entity type for the source
+
+- ``associated_source_id``: The ID of the domain receiving the routes from another domain
+
+- ``associated_source_name``: None
+
+- ``associated_source_type``: This is the source object type for the associatedSourceID
+
+- ``external_id``: External object ID. Used for integration with third party systems
+
+- ``type``: This is used to distinguish between different type of links: hub and spoke, ip address, VNS border router links.
+
+
+
+
+Children
+--------
+
+================================================================================================================================================               ==========================================================================================
+**class**                                                                                                                                                      **fetcher**
+
+:ref:`nudemarcationservice.NUDemarcationService<nudemarcationservice>`                                                                                           ``demarcation_services`` 
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nunexthopaddress.NUNextHopAddress<nunexthopaddress>`                                                                                                       ``next_hop_address`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+:ref:`nucsnatpool.NUCSNATPool<nucsnatpool>`                                                                                                                      ``csnat_pools`` 
+:ref:`nupsnatpool.NUPSNATPool<nupsnatpool>`                                                                                                                      ``psnat_pools`` 
+:ref:`nuoverlayaddresspool.NUOverlayAddressPool<nuoverlayaddresspool>`                                                                                           ``overlay_address_pools`` 
+================================================================================================================================================               ==========================================================================================
+
+
+
+Parents
+--------
+
+
+- :ref:`nudomain.NUDomain<nudomain>`
+
