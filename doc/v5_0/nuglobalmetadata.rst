@@ -123,7 +123,7 @@ Parents
 
 - :ref:`nuvsp.NUVSP<nuvsp>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
 
 - :ref:`nuredundantport.NURedundantPort<nuredundantport>`
 
@@ -131,7 +131,9 @@ Parents
 
 - :ref:`nusystemconfig.NUSystemConfig<nusystemconfig>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
+- :ref:`nuvsc.NUVSC<nuvsc>`
+
+- :ref:`nuvsd.NUVSD<nuvsd>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
@@ -183,7 +185,7 @@ Parents
 
 - :ref:`nunetworklayout.NUNetworkLayout<nunetworklayout>`
 
-- :ref:`nucertificate.NUCertificate<nucertificate>`
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nulicense.NULicense<nulicense>`
 
@@ -209,7 +211,7 @@ Parents
 
 - :ref:`nukeyservernotification.NUKeyServerNotification<nukeyservernotification>`
 
-- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nunatmapentry.NUNATMapEntry<nunatmapentry>`
 
@@ -245,6 +247,8 @@ Parents
 
 - :ref:`nuroutingpolicy.NURoutingPolicy<nuroutingpolicy>`
 
+- :ref:`nucertificate.NUCertificate<nucertificate>`
+
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuikegatewayconfig.NUIKEGatewayConfig<nuikegatewayconfig>`
@@ -269,13 +273,9 @@ Parents
 
 - :ref:`nunsgatewaytemplate.NUNSGatewayTemplate<nunsgatewaytemplate>`
 
-- :ref:`nuvsc.NUVSC<nuvsc>`
-
 - :ref:`nuuplinkrd.NUUplinkRD<nuuplinkrd>`
 
 - :ref:`nusiteinfo.NUSiteInfo<nusiteinfo>`
-
-- :ref:`nuvsd.NUVSD<nuvsd>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
 

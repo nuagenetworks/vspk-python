@@ -61,9 +61,9 @@ Parents
 
 - :ref:`nuvlan.NUVLAN<nuvlan>`
 
-- :ref:`nugateway.NUGateway<nugateway>`
-
 - :ref:`nuwanservice.NUWANService<nuwanservice>`
+
+- :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 

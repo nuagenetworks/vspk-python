@@ -58,12 +58,10 @@ class NUDUCGroupBinding(NURESTObject):
 
         # Read/Write Attributes
         
-        self._id = None
         self._one_way_delay = None
         self._priority = None
         self._associated_duc_group_id = None
         
-        self.expose_attribute(local_name="id", remote_name="id", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="one_way_delay", remote_name="oneWayDelay", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_duc_group_id", remote_name="associatedDUCGroupID", attribute_type=str, is_required=False, is_unique=False)
@@ -72,29 +70,6 @@ class NUDUCGroupBinding(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
-    
-    @property
-    def id(self):
-        """ Get id value.
-
-            Notes:
-                VSD UUID of the UBR Group Binding instance.
-
-                
-        """
-        return self._id
-
-    @id.setter
-    def id(self, value):
-        """ Set id value.
-
-            Notes:
-                VSD UUID of the UBR Group Binding instance.
-
-                
-        """
-        self._id = value
-
     
     @property
     def one_way_delay(self):

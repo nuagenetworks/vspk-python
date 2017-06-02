@@ -60,11 +60,11 @@ Parents
 
 - :ref:`nuvlan.NUVLAN<nuvlan>`
 
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
+
 - :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
-
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 

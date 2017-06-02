@@ -24,7 +24,7 @@ Attributes
 
 - ``active``: Indicates if this vport is up or down
 
-- ``address_spoofing`` (**Mandatory**): Indicates if address spoofing is ENABLED/DISABLED/INHERITED for this vport Possible values are INHERITED, ENABLED, DISABLED, .
+- ``address_spoofing`` (**Mandatory**): Indicates if address spoofing is ENABLED/DISABLED/INHERITED for this vport.
 
 - ``description``: Description for this vport
 
@@ -34,7 +34,7 @@ Attributes
 
 - ``zone_id``: ID the Zone associated with the VPort
 
-- ``operational_state``: Operational State of the VPort - RUNNING/SHUTDOWN Possible values are INIT, UP, DOWN, .
+- ``operational_state``: Operational State of the VPort. Possible values are INIT, UP, DOWN.
 
 - ``associated_floating_ip_id``: Id of Floating IP address associated to this vport
 
@@ -48,7 +48,7 @@ Attributes
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
-- ``type`` (**Mandatory**): Type of vport - possible values VM/HOST/BRIDGE Possible values are VM, HOST, BRIDGE, .
+- ``type`` (**Mandatory**): Type of vport. Possible values are VM, HOST, BRIDGE, CONTAINER.
 
 - ``system_type``: Indicates what system it is.
 
@@ -65,6 +65,7 @@ Children
 :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`                                                                                              ``redirection_targets`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuaggregatemetadata.NUAggregateMetadata<nuaggregatemetadata>`                                                                                              ``aggregate_metadatas`` 
+:ref:`nubgpneighbor.NUBGPNeighbor<nubgpneighbor>`                                                                                                                ``bgp_neighbors`` 
 :ref:`nudhcpoption.NUDHCPOption<nudhcpoption>`                                                                                                                   ``dhcp_options`` 
 :ref:`nuvirtualip.NUVirtualIP<nuvirtualip>`                                                                                                                      ``virtual_ips`` 
 :ref:`nualarm.NUAlarm<nualarm>`                                                                                                                                  ``alarms`` 

@@ -236,6 +236,8 @@ class NUNSGateway(NURESTObject):
         self._configuration_status = None
         self._bootstrap_id = None
         self._bootstrap_status = None
+        self._operation_mode = None
+        self._operation_status = None
         self._associated_gateway_security_id = None
         self._associated_gateway_security_profile_id = None
         self._associated_nsg_info_id = None
@@ -275,6 +277,8 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="configuration_status", remote_name="configurationStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAILURE', u'SUCCESS', u'UNKNOWN'])
         self.expose_attribute(local_name="bootstrap_id", remote_name="bootstrapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT'])
+        self.expose_attribute(local_name="operation_mode", remote_name="operationMode", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="operation_status", remote_name="operationStatus", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_security_id", remote_name="associatedGatewaySecurityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_security_profile_id", remote_name="associatedGatewaySecurityProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_nsg_info_id", remote_name="associatedNSGInfoID", attribute_type=str, is_required=False, is_unique=False)
@@ -1179,6 +1183,60 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._bootstrap_status = value
+
+    
+    @property
+    def operation_mode(self):
+        """ Get operation_mode value.
+
+            Notes:
+                Operation mode of NSGateway
+
+                
+                This attribute is named `operationMode` in VSD API.
+                
+        """
+        return self._operation_mode
+
+    @operation_mode.setter
+    def operation_mode(self, value):
+        """ Set operation_mode value.
+
+            Notes:
+                Operation mode of NSGateway
+
+                
+                This attribute is named `operationMode` in VSD API.
+                
+        """
+        self._operation_mode = value
+
+    
+    @property
+    def operation_status(self):
+        """ Get operation_status value.
+
+            Notes:
+                Operation Status of NSGateway
+
+                
+                This attribute is named `operationStatus` in VSD API.
+                
+        """
+        return self._operation_status
+
+    @operation_status.setter
+    def operation_status(self, value):
+        """ Set operation_status value.
+
+            Notes:
+                Operation Status of NSGateway
+
+                
+                This attribute is named `operationStatus` in VSD API.
+                
+        """
+        self._operation_status = value
 
     
     @property

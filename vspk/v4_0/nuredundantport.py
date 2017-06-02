@@ -58,9 +58,11 @@ class NURedundantPort(NURESTObject):
     
     CONST_PERMITTED_ACTION_USE = "USE"
     
+    CONST_SPEED_BASETX100 = "BASETX100"
+    
     CONST_PERMITTED_ACTION_READ = "READ"
     
-    CONST_STATUS_READY = "READY"
+    CONST_STATUS_INITIALIZED = "INITIALIZED"
     
     CONST_PERMITTED_ACTION_ALL = "ALL"
     
@@ -72,15 +74,23 @@ class NURedundantPort(NURESTObject):
     
     CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
     
-    CONST_STATUS_INITIALIZED = "INITIALIZED"
+    CONST_SPEED_BASET1000 = "BASET1000"
+    
+    CONST_SPEED_BASE10 = "BASE10"
     
     CONST_STATUS_MISMATCH = "MISMATCH"
+    
+    CONST_STATUS_READY = "READY"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_PORT_TYPE_ACCESS = "ACCESS"
     
     CONST_STATUS_ORPHAN = "ORPHAN"
+    
+    CONST_SPEED_AUTONEGOTIATE = "AUTONEGOTIATE"
+    
+    CONST_SPEED_BASEX10G = "BASEX10G"
     
     
 
@@ -102,6 +112,7 @@ class NURedundantPort(NURESTObject):
         # Read/Write Attributes
         
         self._vlan_range = None
+        self._mtu = None
         self._name = None
         self._last_updated_by = None
         self._permitted_action = None
@@ -112,6 +123,7 @@ class NURedundantPort(NURESTObject):
         self._port_peer1_id = None
         self._port_peer2_id = None
         self._port_type = None
+        self._speed = None
         self._use_untagged_heartbeat_vlan = None
         self._use_user_mnemonic = None
         self._user_mnemonic = None
@@ -120,6 +132,7 @@ class NURedundantPort(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="vlan_range", remote_name="VLANRange", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="mtu", remote_name="MTU", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
@@ -130,6 +143,7 @@ class NURedundantPort(NURESTObject):
         self.expose_attribute(local_name="port_peer1_id", remote_name="portPeer1ID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="port_peer2_id", remote_name="portPeer2ID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'NETWORK'])
+        self.expose_attribute(local_name="speed", remote_name="speed", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTONEGOTIATE', u'BASE10', u'BASET1000', u'BASETX100', u'BASEX10G'])
         self.expose_attribute(local_name="use_untagged_heartbeat_vlan", remote_name="useUntaggedHeartbeatVlan", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_user_mnemonic", remote_name="useUserMnemonic", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=False, is_unique=False)
@@ -182,6 +196,33 @@ class NURedundantPort(NURESTObject):
                 
         """
         self._vlan_range = value
+
+    
+    @property
+    def mtu(self):
+        """ Get mtu value.
+
+            Notes:
+                Port MTU (Maximum Transmission Unit) :  The size in octets of the largest protocol data unit (PDU) that the layer can pass on.  The default value is normally 1500 octets for Ethernet v2 and can go up to 9198 for Jumbo Frames.
+
+                
+                This attribute is named `MTU` in VSD API.
+                
+        """
+        return self._mtu
+
+    @mtu.setter
+    def mtu(self, value):
+        """ Set mtu value.
+
+            Notes:
+                Port MTU (Maximum Transmission Unit) :  The size in octets of the largest protocol data unit (PDU) that the layer can pass on.  The default value is normally 1500 octets for Ethernet v2 and can go up to 9198 for Jumbo Frames.
+
+                
+                This attribute is named `MTU` in VSD API.
+                
+        """
+        self._mtu = value
 
     
     @property
@@ -444,6 +485,29 @@ class NURedundantPort(NURESTObject):
                 
         """
         self._port_type = value
+
+    
+    @property
+    def speed(self):
+        """ Get speed value.
+
+            Notes:
+                Port Speed in Mb/s :  Supported Ethernet speeds are 10 (10Base-T), 100 (Fast-ethernet 100Base-TX), 1000 (Gigabit Ethernet 1000Base-T), 10 000 (10 Gigabit Ethernet 10GBase-X), and Auto-Negotiate.
+
+                
+        """
+        return self._speed
+
+    @speed.setter
+    def speed(self, value):
+        """ Set speed value.
+
+            Notes:
+                Port Speed in Mb/s :  Supported Ethernet speeds are 10 (10Base-T), 100 (Fast-ethernet 100Base-TX), 1000 (Gigabit Ethernet 1000Base-T), 10 000 (10 Gigabit Ethernet 10GBase-X), and Auto-Negotiate.
+
+                
+        """
+        self._speed = value
 
     
     @property

@@ -66,11 +66,9 @@ class NUNSGGroup(NURESTObject):
         
         self._name = None
         self._description = None
-        self._associated_nsgs = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_nsgs", remote_name="associatedNSGs", attribute_type=list, is_required=False, is_unique=False)
         
 
         # Fetchers
@@ -130,33 +128,6 @@ class NUNSGGroup(NURESTObject):
                 
         """
         self._description = value
-
-    
-    @property
-    def associated_nsgs(self):
-        """ Get associated_nsgs value.
-
-            Notes:
-                List of NSGs that belong to NSG Group
-
-                
-                This attribute is named `associatedNSGs` in VSD API.
-                
-        """
-        return self._associated_nsgs
-
-    @associated_nsgs.setter
-    def associated_nsgs(self, value):
-        """ Set associated_nsgs value.
-
-            Notes:
-                List of NSGs that belong to NSG Group
-
-                
-                This attribute is named `associatedNSGs` in VSD API.
-                
-        """
-        self._associated_nsgs = value
 
     
 

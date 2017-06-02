@@ -69,8 +69,6 @@ Parents
 
 - :ref:`nuvcenterhypervisor.NUVCenterHypervisor<nuvcenterhypervisor>`
 
-- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
-
 - :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 
 - :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`
@@ -98,6 +96,8 @@ Parents
 - :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`
 
 - :ref:`nuingressadvfwdtemplate.NUIngressAdvFwdTemplate<nuingressadvfwdtemplate>`
+
+- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
 - :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 

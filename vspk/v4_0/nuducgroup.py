@@ -63,12 +63,10 @@ class NUDUCGroup(NURESTObject):
         
         self._name = None
         self._description = None
-        self._associated_ducs = None
         self._associated_performance_monitor_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_ducs", remote_name="associatedDUCs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_performance_monitor_id", remote_name="associatedPerformanceMonitorID", attribute_type=str, is_required=False, is_unique=False)
         
 
@@ -126,33 +124,6 @@ class NUDUCGroup(NURESTObject):
                 
         """
         self._description = value
-
-    
-    @property
-    def associated_ducs(self):
-        """ Get associated_ducs value.
-
-            Notes:
-                List of NSG UBRs (formely named DUCs) that belong to this Disjoint Underlay Connector Group. 
-
-                
-                This attribute is named `associatedDUCs` in VSD API.
-                
-        """
-        return self._associated_ducs
-
-    @associated_ducs.setter
-    def associated_ducs(self, value):
-        """ Set associated_ducs value.
-
-            Notes:
-                List of NSG UBRs (formely named DUCs) that belong to this Disjoint Underlay Connector Group. 
-
-                
-                This attribute is named `associatedDUCs` in VSD API.
-                
-        """
-        self._associated_ducs = value
 
     
     @property

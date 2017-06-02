@@ -109,8 +109,6 @@ Parents
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
 - :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
@@ -118,6 +116,8 @@ Parents
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
 - :ref:`nutrunk.NUTrunk<nutrunk>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 

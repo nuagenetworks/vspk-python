@@ -16,8 +16,6 @@ Attributes
 
 - ``dhcp_lease_interval``: DHCP Lease Interval (in hours) to be used by an enterprise.
 
-- ``dpi_enabled``: Enable DPI for this Enterprise Profile
-
 - ``name`` (**Mandatory**): The unique name of the enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
 
 - ``last_updated_by``: ID of the user who last updated the object.

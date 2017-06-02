@@ -120,8 +120,6 @@ Parents
 
 - :ref:`nuingressexternalservicetemplateentry.NUIngressExternalServiceTemplateEntry<nuingressexternalservicetemplateentry>`
 
-- :ref:`nudomainfipacltemplate.NUDomainFIPAclTemplate<nudomainfipacltemplate>`
-
 - :ref:`nuavatar.NUAvatar<nuavatar>`
 
 - :ref:`nubootstrapactivation.NUBootstrapActivation<nubootstrapactivation>`
@@ -192,13 +190,13 @@ Parents
 
 - :ref:`nunetworklayout.NUNetworkLayout<nunetworklayout>`
 
-- :ref:`nucertificate.NUCertificate<nucertificate>`
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nulicense.NULicense<nulicense>`
 
 - :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
 
-- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
+- :ref:`nufloatingipacltemplateentry.NUFloatingIPACLTemplateEntry<nufloatingipacltemplateentry>`
 
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
@@ -222,7 +220,7 @@ Parents
 
 - :ref:`nunatmapentry.NUNATMapEntry<nunatmapentry>`
 
-- :ref:`nueventlog.NUEventLog<nueventlog>`
+- :ref:`nudomainfipacltemplate.NUDomainFIPAclTemplate<nudomainfipacltemplate>`
 
 - :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
 
@@ -234,7 +232,7 @@ Parents
 
 - :ref:`nunsporttemplate.NUNSPortTemplate<nunsporttemplate>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
+- :ref:`nueventlog.NUEventLog<nueventlog>`
 
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
 
@@ -255,6 +253,8 @@ Parents
 - :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`
 
 - :ref:`nuroutingpolicy.NURoutingPolicy<nuroutingpolicy>`
+
+- :ref:`nucertificate.NUCertificate<nucertificate>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
@@ -338,7 +338,7 @@ Parents
 
 - :ref:`nuikeencryptionprofile.NUIKEEncryptionprofile<nuikeencryptionprofile>`
 
-- :ref:`nufloatingipacltemplateentry.NUFloatingIPACLTemplateEntry<nufloatingipacltemplateentry>`
+- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
 - :ref:`nuinfrastructureconfig.NUInfrastructureConfig<nuinfrastructureconfig>`
 

@@ -91,9 +91,9 @@ Parents
 
 - :ref:`nuvsp.NUVSP<nuvsp>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`nuvsc.NUVSC<nuvsc>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
+- :ref:`nuvsd.NUVSD<nuvsd>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
@@ -117,6 +117,8 @@ Parents
 
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
 
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
+
 - :ref:`nulicense.NULicense<nulicense>`
 
 - :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
@@ -129,6 +131,8 @@ Parents
 
 - :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
 
+- :ref:`nudomain.NUDomain<nudomain>`
+
 - :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nuapplicationservice.NUApplicationService<nuapplicationservice>`
@@ -140,10 +144,6 @@ Parents
 - :ref:`nudhcpoption.NUDHCPOption<nudhcpoption>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
-
-- :ref:`nuvsc.NUVSC<nuvsc>`
-
-- :ref:`nuvsd.NUVSD<nuvsd>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
 

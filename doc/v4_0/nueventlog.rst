@@ -119,11 +119,11 @@ Parents
 
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
 
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
+
 - :ref:`nulicense.NULicense<nulicense>`
 
 - :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
-
-- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
@@ -134,8 +134,6 @@ Parents
 - :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
-
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nuapplicationservice.NUApplicationService<nuapplicationservice>`
 
@@ -166,6 +164,8 @@ Parents
 - :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
+
+- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
 - :ref:`nuuser.NUUser<nuuser>`
 

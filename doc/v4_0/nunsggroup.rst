@@ -16,8 +16,6 @@ Attributes
 
 - ``description``: Description of the NSG Group
 
-- ``associated_nsgs``: List of NSGs that belong to NSG Group
-
 
 
 

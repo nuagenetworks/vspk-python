@@ -170,9 +170,11 @@ class NUDomain(NURESTObject):
     
     CONST_PAT_ENABLED_DISABLED = "DISABLED"
     
-    CONST_PERMITTED_ACTION_ALL = "ALL"
+    CONST_ENCRYPTION_DISABLED = "DISABLED"
     
     CONST_PAT_ENABLED_INHERITED = "INHERITED"
+    
+    CONST_APPLICATION_DEPLOYMENT_POLICY_NONE = "NONE"
     
     CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
     
@@ -220,7 +222,7 @@ class NUDomain(NURESTObject):
     
     CONST_MULTICAST_INHERITED = "INHERITED"
     
-    CONST_APPLICATION_DEPLOYMENT_POLICY_NONE = "NONE"
+    CONST_ADVERTISE_CRITERIA_HUB_ROUTES = "HUB_ROUTES"
     
     CONST_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
     
@@ -232,7 +234,7 @@ class NUDomain(NURESTObject):
     
     CONST_TUNNEL_TYPE_VXLAN = "VXLAN"
     
-    CONST_ENCRYPTION_DISABLED = "DISABLED"
+    CONST_PERMITTED_ACTION_ALL = "ALL"
     
     CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
     
@@ -284,6 +286,7 @@ class NUDomain(NURESTObject):
         self._maintenance_mode = None
         self._name = None
         self._last_updated_by = None
+        self._advertise_criteria = None
         self._leaking_enabled = None
         self._secondary_dhcp_server_address = None
         self._template_id = None
@@ -328,6 +331,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="advertise_criteria", remote_name="advertiseCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'HUB_ROUTES'])
         self.expose_attribute(local_name="leaking_enabled", remote_name="leakingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_dhcp_server_address", remote_name="secondaryDHCPServerAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=True, is_unique=False)
@@ -890,6 +894,33 @@ class NUDomain(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def advertise_criteria(self):
+        """ Get advertise_criteria value.
+
+            Notes:
+                Set this attribute to allow the spoke domain routes to be leaked into the hub domain.
+
+                
+                This attribute is named `advertiseCriteria` in VSD API.
+                
+        """
+        return self._advertise_criteria
+
+    @advertise_criteria.setter
+    def advertise_criteria(self, value):
+        """ Set advertise_criteria value.
+
+            Notes:
+                Set this attribute to allow the spoke domain routes to be leaked into the hub domain.
+
+                
+                This attribute is named `advertiseCriteria` in VSD API.
+                
+        """
+        self._advertise_criteria = value
 
     
     @property
