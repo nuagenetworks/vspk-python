@@ -76,6 +76,10 @@ Attributes
 
 - ``bootstrap_status``: The bootstrap status of this NSGateway. NOTE: this is a read only property
 
+- ``operation_mode``: Operation mode of NSGateway
+
+- ``operation_status``: Operation Status of NSGateway
+
 - ``associated_gateway_security_id``: Readonly Id of the associated gateway security object
 
 - ``associated_gateway_security_profile_id``: Readonly Id of the associated gateway security profile object

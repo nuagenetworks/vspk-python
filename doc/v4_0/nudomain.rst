@@ -42,6 +42,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``advertise_criteria``: Set this attribute to allow the spoke domain routes to be leaked into the hub domain.
+
 - ``leaking_enabled``: Indicates if this domain is a leakable domain or not - boolean true/false
 
 - ``secondary_dhcp_server_address``: when DHCPBehaviorType is RELAY, then DHCP Server IP Address needs to be set

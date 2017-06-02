@@ -39,6 +39,9 @@ from .fetchers import NUMetadatasFetcher
 from .fetchers import NUAggregateMetadatasFetcher
 
 
+from .fetchers import NUBGPNeighborsFetcher
+
+
 from .fetchers import NUDHCPOptionsFetcher
 
 
@@ -234,6 +237,9 @@ class NUVPort(NURESTObject):
         
         
         self.aggregate_metadatas = NUAggregateMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.bgp_neighbors = NUBGPNeighborsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.dhcp_options = NUDHCPOptionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -456,7 +462,7 @@ class NUVPort(NURESTObject):
         """ Get address_spoofing value.
 
             Notes:
-                Indicates if address spoofing is ENABLED/DISABLED/INHERITED for this vport Possible values are INHERITED, ENABLED, DISABLED, .
+                Indicates if address spoofing is ENABLED/DISABLED/INHERITED for this vport.
 
                 
                 This attribute is named `addressSpoofing` in VSD API.
@@ -469,7 +475,7 @@ class NUVPort(NURESTObject):
         """ Set address_spoofing value.
 
             Notes:
-                Indicates if address spoofing is ENABLED/DISABLED/INHERITED for this vport Possible values are INHERITED, ENABLED, DISABLED, .
+                Indicates if address spoofing is ENABLED/DISABLED/INHERITED for this vport.
 
                 
                 This attribute is named `addressSpoofing` in VSD API.
@@ -587,7 +593,7 @@ class NUVPort(NURESTObject):
         """ Get operational_state value.
 
             Notes:
-                Operational State of the VPort - RUNNING/SHUTDOWN Possible values are INIT, UP, DOWN, .
+                Operational State of the VPort. Possible values are INIT, UP, DOWN.
 
                 
                 This attribute is named `operationalState` in VSD API.
@@ -600,7 +606,7 @@ class NUVPort(NURESTObject):
         """ Set operational_state value.
 
             Notes:
-                Operational State of the VPort - RUNNING/SHUTDOWN Possible values are INIT, UP, DOWN, .
+                Operational State of the VPort. Possible values are INIT, UP, DOWN.
 
                 
                 This attribute is named `operationalState` in VSD API.
@@ -772,7 +778,7 @@ class NUVPort(NURESTObject):
         """ Get type value.
 
             Notes:
-                Type of vport - possible values VM/HOST/BRIDGE Possible values are VM, HOST, BRIDGE, .
+                Type of vport. Possible values are VM, HOST, BRIDGE, CONTAINER.
 
                 
         """
@@ -783,7 +789,7 @@ class NUVPort(NURESTObject):
         """ Set type value.
 
             Notes:
-                Type of vport - possible values VM/HOST/BRIDGE Possible values are VM, HOST, BRIDGE, .
+                Type of vport. Possible values are VM, HOST, BRIDGE, CONTAINER.
 
                 
         """

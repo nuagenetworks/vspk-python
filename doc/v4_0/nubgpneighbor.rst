@@ -51,6 +51,8 @@ Parents
 --------
 
 
+- :ref:`nuvport.NUVPort<nuvport>`
+
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
 - :ref:`nume.NUMe<nume>`

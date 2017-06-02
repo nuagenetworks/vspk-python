@@ -14,6 +14,8 @@ Attributes
 
 - ``vlan_range``: VLAN Range of the Port.  Format must conform to a-b,c,d-f where a,b,c,d,f are integers between 0 and 4095.
 
+- ``mtu``: Port MTU (Maximum Transmission Unit) :  The size in octets of the largest protocol data unit (PDU) that the layer can pass on.  The default value is normally 1500 octets for Ethernet v2 and can go up to 9198 for Jumbo Frames.
+
 - ``name`` (**Mandatory**): Name of the Port
 
 - ``last_updated_by``: ID of the user who last updated the object.
@@ -33,6 +35,8 @@ Attributes
 - ``port_peer2_id``: The slave gateway peer port id.
 
 - ``port_type`` (**Mandatory**): Type of the Port.
+
+- ``speed``: Port Speed in Mb/s :  Supported Ethernet speeds are 10 (10Base-T), 100 (Fast-ethernet 100Base-TX), 1000 (Gigabit Ethernet 1000Base-T), 10 000 (10 Gigabit Ethernet 10GBase-X), and Auto-Negotiate.
 
 - ``use_untagged_heartbeat_vlan``: A flag to indicate if for this redundant port an untagged heartbeat VLAN is to be used. If this is not set then will use the heartbeat VLAN set by the NS redundant group
 
