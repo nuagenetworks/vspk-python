@@ -71,7 +71,7 @@ Parents
 
 - :ref:`nuzone.NUZone<nuzone>`
 
-- :ref:`nuexternalservice.NUExternalService<nuexternalservice>`
+- :ref:`nuapp.NUApp<nuapp>`
 
 - :ref:`nuflowsecuritypolicy.NUFlowSecurityPolicy<nuflowsecuritypolicy>`
 
@@ -163,7 +163,7 @@ Parents
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
-- :ref:`nuapp.NUApp<nuapp>`
+- :ref:`nuexternalservice.NUExternalService<nuexternalservice>`
 
 - :ref:`nuvlan.NUVLAN<nuvlan>`
 

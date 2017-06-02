@@ -74,7 +74,7 @@ Parents
 
 - :ref:`nuzone.NUZone<nuzone>`
 
-- :ref:`nuexternalservice.NUExternalService<nuexternalservice>`
+- :ref:`nuapp.NUApp<nuapp>`
 
 - :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
 
@@ -274,7 +274,7 @@ Parents
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
-- :ref:`nuapp.NUApp<nuapp>`
+- :ref:`nuexternalservice.NUExternalService<nuexternalservice>`
 
 - :ref:`nukeyservermonitorsek.NUKeyServerMonitorSEK<nukeyservermonitorsek>`
 
