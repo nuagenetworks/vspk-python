@@ -16,7 +16,7 @@ Attributes
 
 - ``dpi``: determines whether or not Deep packet inspection is enabled
 
-- ``ip_type``: IPv4 or IPv6
+- ``ip_type``: IPv4 or DUALSTACK
 
 - ``name`` (**Mandatory**): Name of the L2Domain / L2Domain template,has to be unique within a Enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
 

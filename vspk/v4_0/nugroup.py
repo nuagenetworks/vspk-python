@@ -103,6 +103,7 @@ class NUGroup(NURESTObject):
 
         # Read/Write Attributes
         
+        self._ldap_group_dn = None
         self._name = None
         self._management_mode = None
         self._last_updated_by = None
@@ -114,6 +115,7 @@ class NUGroup(NURESTObject):
         self._private = None
         self._external_id = None
         
+        self.expose_attribute(local_name="ldap_group_dn", remote_name="LDAPGroupDN", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="management_mode", remote_name="managementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'CMS', u'DEFAULT'])
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -144,6 +146,33 @@ class NUGroup(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def ldap_group_dn(self):
+        """ Get ldap_group_dn value.
+
+            Notes:
+                The LDAP distinguished name (DN) for the group.
+
+                
+                This attribute is named `LDAPGroupDN` in VSD API.
+                
+        """
+        return self._ldap_group_dn
+
+    @ldap_group_dn.setter
+    def ldap_group_dn(self, value):
+        """ Set ldap_group_dn value.
+
+            Notes:
+                The LDAP distinguished name (DN) for the group.
+
+                
+                This attribute is named `LDAPGroupDN` in VSD API.
+                
+        """
+        self._ldap_group_dn = value
+
     
     @property
     def name(self):

@@ -174,6 +174,8 @@ Attributes
 
 - ``mtu``: Maximum Transmission Unit for eth2 interface
 
+- ``successfully_applied_version``: Successfully applied version of the VRS VM (Provided by VRS VM)
+
 - ``multi_vmssupport``: Whether Multi VM is to be used or not
 
 - ``multicast_receive_interface``: Multicast Receive Interface
@@ -229,9 +231,9 @@ Parents
 --------
 
 
-- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
-
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
 
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 

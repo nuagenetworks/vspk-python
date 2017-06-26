@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``ldapuser_dn``: The LDAP distinguished name (DN) for the user.
+
 - ``management_mode``: Management mode of the user object - allows for override of external authorization and syncup
 
 - ``password`` (**Mandatory**): User password stored as a hash (SHA-1 encrpted)

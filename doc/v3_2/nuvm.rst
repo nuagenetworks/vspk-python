@@ -96,8 +96,6 @@ Parents
 
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
-- :ref:`nutier.NUTier<nutier>`
-
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nume.NUMe<nume>`
@@ -105,6 +103,8 @@ Parents
 - :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`
 
 - :ref:`nuuser.NUUser<nuuser>`
+
+- :ref:`nutier.NUTier<nutier>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

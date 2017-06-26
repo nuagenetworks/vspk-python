@@ -97,6 +97,8 @@ class NUL2DomainTemplate(NURESTObject):
     
     CONST_ENCRYPTION_ENABLED = "ENABLED"
     
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
     CONST_ENCRYPTION_DISABLED = "DISABLED"
     
     CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
@@ -104,8 +106,6 @@ class NUL2DomainTemplate(NURESTObject):
     CONST_DPI_ENABLED = "ENABLED"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_IP_TYPE_IPV6 = "IPV6"
     
     CONST_DPI_INHERITED = "INHERITED"
     
@@ -117,7 +117,7 @@ class NUL2DomainTemplate(NURESTObject):
     
     CONST_DPI_DISABLED = "DISABLED"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
     
     CONST_POLICY_CHANGE_STATUS_APPLIED = "APPLIED"
     
@@ -160,7 +160,7 @@ class NUL2DomainTemplate(NURESTObject):
         
         self.expose_attribute(local_name="dhcp_managed", remote_name="DHCPManaged", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
@@ -288,7 +288,7 @@ class NUL2DomainTemplate(NURESTObject):
         """ Get ip_type value.
 
             Notes:
-                IPv4 or IPv6
+                IPv4 or DUALSTACK
 
                 
                 This attribute is named `IPType` in VSD API.
@@ -301,7 +301,7 @@ class NUL2DomainTemplate(NURESTObject):
         """ Set ip_type value.
 
             Notes:
-                IPv4 or IPv6
+                IPv4 or DUALSTACK
 
                 
                 This attribute is named `IPType` in VSD API.

@@ -36,6 +36,8 @@ Attributes
 
 - ``associated_vcenter_hypervisor_id``: None
 
+- ``current_version``: Current version of the VRS VM (Provided by VRS VM)
+
 - ``external_id``: External object ID. Used for integration with third party systems
 
 

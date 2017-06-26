@@ -16,7 +16,7 @@ Attributes
 
 - ``dpi``: determines whether or not Deep packet inspection is enabled
 
-- ``ip_type``: IPv4 or IPv6
+- ``ip_type``: IPv4 or DUALSTACK
 
 - ``maintenance_mode``: maintenanceMode is an enum that indicates if the L2Domain is accepting VM activation requests. Possible values are DISABLED, ENABLED and ENABLED_INHERITED Possible values are .
 

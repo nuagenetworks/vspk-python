@@ -139,6 +139,8 @@ class NUSystemConfig(NURESTObject):
 
         # Read/Write Attributes
         
+        self._aar_flow_stats_interval = None
+        self._aar_probe_stats_interval = None
         self._acl_allow_origin = None
         self._ecmp_count = None
         self._ldap_sync_interval = None
@@ -172,7 +174,9 @@ class NUSystemConfig(NURESTObject):
         self._vsc_on_same_version_as_vsd = None
         self._vsd_read_only_mode = None
         self._vsd_upgrade_is_complete = None
+        self._nsg_uplink_hold_down_timer = None
         self._as_number = None
+        self._vss_stats_interval = None
         self._rt_lower_limit = None
         self._rt_public_network_lower_limit = None
         self._rt_public_network_upper_limit = None
@@ -268,6 +272,8 @@ class NUSystemConfig(NURESTObject):
         self._system_avatar_data = None
         self._system_avatar_type = None
         
+        self.expose_attribute(local_name="aar_flow_stats_interval", remote_name="AARFlowStatsInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="aar_probe_stats_interval", remote_name="AARProbeStatsInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="acl_allow_origin", remote_name="ACLAllowOrigin", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ecmp_count", remote_name="ECMPCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ldap_sync_interval", remote_name="LDAPSyncInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -301,7 +307,9 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="vsc_on_same_version_as_vsd", remote_name="VSCOnSameVersionAsVSD", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsd_read_only_mode", remote_name="VSDReadOnlyMode", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsd_upgrade_is_complete", remote_name="VSDUpgradeIsComplete", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nsg_uplink_hold_down_timer", remote_name="NSGUplinkHoldDownTimer", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="as_number", remote_name="ASNumber", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vss_stats_interval", remote_name="VSSStatsInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rt_lower_limit", remote_name="RTLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rt_public_network_lower_limit", remote_name="RTPublicNetworkLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rt_public_network_upper_limit", remote_name="RTPublicNetworkUpperLimit", attribute_type=int, is_required=False, is_unique=False)
@@ -410,6 +418,60 @@ class NUSystemConfig(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def aar_flow_stats_interval(self):
+        """ Get aar_flow_stats_interval value.
+
+            Notes:
+                AAR flow statistics collection frequency
+
+                
+                This attribute is named `AARFlowStatsInterval` in VSD API.
+                
+        """
+        return self._aar_flow_stats_interval
+
+    @aar_flow_stats_interval.setter
+    def aar_flow_stats_interval(self, value):
+        """ Set aar_flow_stats_interval value.
+
+            Notes:
+                AAR flow statistics collection frequency
+
+                
+                This attribute is named `AARFlowStatsInterval` in VSD API.
+                
+        """
+        self._aar_flow_stats_interval = value
+
+    
+    @property
+    def aar_probe_stats_interval(self):
+        """ Get aar_probe_stats_interval value.
+
+            Notes:
+                AAR probe statistics collection frequency
+
+                
+                This attribute is named `AARProbeStatsInterval` in VSD API.
+                
+        """
+        return self._aar_probe_stats_interval
+
+    @aar_probe_stats_interval.setter
+    def aar_probe_stats_interval(self, value):
+        """ Set aar_probe_stats_interval value.
+
+            Notes:
+                AAR probe statistics collection frequency
+
+                
+                This attribute is named `AARProbeStatsInterval` in VSD API.
+                
+        """
+        self._aar_probe_stats_interval = value
+
     
     @property
     def acl_allow_origin(self):
@@ -1303,6 +1365,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def nsg_uplink_hold_down_timer(self):
+        """ Get nsg_uplink_hold_down_timer value.
+
+            Notes:
+                In case of an NSG with dual uplinks, when an uplink connection comes back after failure, the NSG does not use this uplink until the below timer (in seconds) expires, to account for propagation delay of the reachability information to neighboring NSGs.
+
+                
+                This attribute is named `NSGUplinkHoldDownTimer` in VSD API.
+                
+        """
+        return self._nsg_uplink_hold_down_timer
+
+    @nsg_uplink_hold_down_timer.setter
+    def nsg_uplink_hold_down_timer(self, value):
+        """ Set nsg_uplink_hold_down_timer value.
+
+            Notes:
+                In case of an NSG with dual uplinks, when an uplink connection comes back after failure, the NSG does not use this uplink until the below timer (in seconds) expires, to account for propagation delay of the reachability information to neighboring NSGs.
+
+                
+                This attribute is named `NSGUplinkHoldDownTimer` in VSD API.
+                
+        """
+        self._nsg_uplink_hold_down_timer = value
+
+    
+    @property
     def as_number(self):
         """ Get as_number value.
 
@@ -1327,6 +1416,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._as_number = value
+
+    
+    @property
+    def vss_stats_interval(self):
+        """ Get vss_stats_interval value.
+
+            Notes:
+                VSS statistics collection frequency
+
+                
+                This attribute is named `VSSStatsInterval` in VSD API.
+                
+        """
+        return self._vss_stats_interval
+
+    @vss_stats_interval.setter
+    def vss_stats_interval(self, value):
+        """ Set vss_stats_interval value.
+
+            Notes:
+                VSS statistics collection frequency
+
+                
+                This attribute is named `VSSStatsInterval` in VSD API.
+                
+        """
+        self._vss_stats_interval = value
 
     
     @property
@@ -3764,7 +3880,7 @@ class NUSystemConfig(NURESTObject):
         """ Get sysmon_node_presence_timeout value.
 
             Notes:
-                Node presence timeout in seconds if no messages.
+                Time interval in seconds at which sysmon messages are reported by controller.
 
                 
                 This attribute is named `sysmonNodePresenceTimeout` in VSD API.
@@ -3777,7 +3893,7 @@ class NUSystemConfig(NURESTObject):
         """ Set sysmon_node_presence_timeout value.
 
             Notes:
-                Node presence timeout in seconds if no messages.
+                Time interval in seconds at which sysmon messages are reported by controller.
 
                 
                 This attribute is named `sysmonNodePresenceTimeout` in VSD API.

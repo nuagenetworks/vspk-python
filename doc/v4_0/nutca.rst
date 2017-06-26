@@ -81,11 +81,11 @@ Parents
 
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
-- :ref:`nutier.NUTier<nutier>`
-
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
 
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nutier.NUTier<nutier>`
 

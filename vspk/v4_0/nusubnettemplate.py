@@ -76,8 +76,6 @@ class NUSubnetTemplate(NURESTObject):
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_IP_TYPE_IPV6 = "IPV6"
-    
     CONST_DPI_INHERITED = "INHERITED"
     
     CONST_IP_TYPE_IPV4 = "IPV4"
@@ -131,7 +129,7 @@ class NUSubnetTemplate(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4'])
         self.expose_attribute(local_name="ipv6_gateway", remote_name="IPv6Gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ipv6address", remote_name="IPv6address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
@@ -207,7 +205,7 @@ class NUSubnetTemplate(NURESTObject):
         """ Get ip_type value.
 
             Notes:
-                IPv4 or IPv6
+                IPv4 or DUALSTACK
 
                 
                 This attribute is named `IPType` in VSD API.
@@ -220,7 +218,7 @@ class NUSubnetTemplate(NURESTObject):
         """ Set ip_type value.
 
             Notes:
-                IPv4 or IPv6
+                IPv4 or DUALSTACK
 
                 
                 This attribute is named `IPType` in VSD API.

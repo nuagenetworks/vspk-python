@@ -25,42 +25,28 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-from setuptools import setup
-import os
+from bambou import NURESTFetcher
 
-packages = ['vspk', 'vspk.cli']
-resources = []
-api_version_path = "./vspk"
 
-for version_folder in os.listdir(api_version_path):
+class NUBFDSessionsFetcher(NURESTFetcher):
+    """ Represents a NUBFDSessions fetcher
 
-    if os.path.isfile("%s/%s" % (api_version_path, version_folder)):
-        continue
+        Notes:
+            This fetcher enables to fetch NUBFDSession objects.
 
-    if version_folder == "cli":
-        continue
+        See:
+            bambou.NURESTFetcher
+    """
 
-    packages.append("vspk.%s" % version_folder)
-    packages.append("vspk.%s.fetchers" % version_folder)
+    @classmethod
+    def managed_class(cls):
+        """ Return NUBFDSession class that is managed.
 
-    if os.path.exists('vspk/%s/resources' % version_folder):
-        resources.append(('vspk/%s/resources' % version_folder, ['vspk/%s/resources/attrs_defaults.ini' % version_folder]))
+            Returns:
+                .NUBFDSession: the managed class
+        """
 
-setup(
-    name='vspk',
-    version="4.0.10",
-    url='http://nuagenetworks.net/',
-    author='nuage networks',
-    author_email='opensource@nuagenetworks.net',
-    packages=packages,
-    description='SDK for the VSD API',
-    long_description=open('README.md').read(),
-    license='BSD-3',
-    include_package_data=True,
-    install_requires=[line for line in open('requirements.txt')],
-    data_files=resources,
-    entry_points={
-        'console_scripts': [
-            'vsd = vspk.cli.cli:main']
-    }
-)
+        from .. import NUBFDSession
+        return NUBFDSession
+
+    

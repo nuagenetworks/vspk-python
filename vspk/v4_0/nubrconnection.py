@@ -26,6 +26,9 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
+
+from .fetchers import NUBFDSessionsFetcher
+
 from bambou import NURESTObject
 
 
@@ -44,11 +47,9 @@ class NUBRConnection(NURESTObject):
     
     CONST_ADVERTISEMENT_CRITERIA_LINK_BASED = "LINK_BASED"
     
-    CONST_ADVERTISEMENT_CRITERIA_GATEWAY_PING = "GATEWAY_PING"
+    CONST_ADVERTISEMENT_CRITERIA_BFD = "BFD"
     
     CONST_ADVERTISEMENT_CRITERIA_OPENFLOW = "OPENFLOW"
-    
-    CONST_ADVERTISEMENT_CRITERIA_FATE_SHARING = "FATE_SHARING"
     
     CONST_MODE_STATIC = "Static"
     
@@ -82,10 +83,16 @@ class NUBRConnection(NURESTObject):
         self.expose_attribute(local_name="dns_address", remote_name="DNSAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'FATE_SHARING', u'GATEWAY_PING', u'LINK_BASED', u'OPENFLOW'])
+        self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'BFD', u'LINK_BASED', u'OPENFLOW'])
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'Static'])
         self.expose_attribute(local_name="uplink_id", remote_name="uplinkID", attribute_type=int, is_required=False, is_unique=False)
+        
+
+        # Fetchers
+        
+        
+        self.bfd_sessions = NUBFDSessionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)

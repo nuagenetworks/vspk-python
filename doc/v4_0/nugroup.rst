@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``ldap_group_dn``: The LDAP distinguished name (DN) for the group.
+
 - ``name`` (**Mandatory**): A unique name of the group
 
 - ``management_mode``: Management mode of the user object - allows for override of external authorization and syncup
@@ -63,7 +65,7 @@ Parents
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 
-- :ref:`nuuser.NUUser<nuuser>`
-
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
+- :ref:`nuuser.NUUser<nuuser>`
 

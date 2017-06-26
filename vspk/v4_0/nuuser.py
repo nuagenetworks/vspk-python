@@ -96,6 +96,7 @@ class NUUser(NURESTObject):
 
         # Read/Write Attributes
         
+        self._ldapuser_dn = None
         self._management_mode = None
         self._password = None
         self._last_name = None
@@ -110,6 +111,7 @@ class NUUser(NURESTObject):
         self._avatar_type = None
         self._external_id = None
         
+        self.expose_attribute(local_name="ldapuser_dn", remote_name="LDAPUserDN", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="management_mode", remote_name="managementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'CMS', u'DEFAULT'])
         self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_name", remote_name="lastName", attribute_type=str, is_required=True, is_unique=False)
@@ -152,6 +154,33 @@ class NUUser(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def ldapuser_dn(self):
+        """ Get ldapuser_dn value.
+
+            Notes:
+                The LDAP distinguished name (DN) for the user.
+
+                
+                This attribute is named `LDAPUserDN` in VSD API.
+                
+        """
+        return self._ldapuser_dn
+
+    @ldapuser_dn.setter
+    def ldapuser_dn(self, value):
+        """ Set ldapuser_dn value.
+
+            Notes:
+                The LDAP distinguished name (DN) for the user.
+
+                
+                This attribute is named `LDAPUserDN` in VSD API.
+                
+        """
+        self._ldapuser_dn = value
+
     
     @property
     def management_mode(self):
