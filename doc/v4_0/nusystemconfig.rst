@@ -12,6 +12,10 @@ Attributes
 ----------
 
 
+- ``aar_flow_stats_interval``: AAR flow statistics collection frequency
+
+- ``aar_probe_stats_interval``: AAR probe statistics collection frequency
+
 - ``acl_allow_origin``: Defines the domains allowed for access control list.
 
 - ``ecmp_count``: System Default Equal-cost multi-path routing count,Every Domain derives ECMP count from this value unless specifically set for the domain
@@ -78,7 +82,11 @@ Attributes
 
 - ``vsd_upgrade_is_complete``: This flag is used to indicate that whether VSD upgrade is complete,it is expected that csproot will set to true,after VSD upgrade is complete and also making sure that all VSC's audits and Gateway audits with VSD are done
 
+- ``nsg_uplink_hold_down_timer``: In case of an NSG with dual uplinks, when an uplink connection comes back after failure, the NSG does not use this uplink until the below timer (in seconds) expires, to account for propagation delay of the reachability information to neighboring NSGs.
+
 - ``as_number``:  Autonomous System Number,Used for RT/RD auto-generation
+
+- ``vss_stats_interval``: VSS statistics collection frequency
 
 - ``rt_lower_limit``: route target lower limit
 
@@ -260,7 +268,7 @@ Attributes
 
 - ``sysmon_cleanup_task_interval``: Sysmon cleanup task run interval in seconds.
 
-- ``sysmon_node_presence_timeout``: Node presence timeout in seconds if no messages.
+- ``sysmon_node_presence_timeout``: Time interval in seconds at which sysmon messages are reported by controller.
 
 - ``sysmon_probe_response_timeout``: Probe response timeout in seconds.
 

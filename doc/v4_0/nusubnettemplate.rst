@@ -14,7 +14,7 @@ Attributes
 
 - ``dpi``: determines whether or not Deep packet inspection is enabled
 
-- ``ip_type``: IPv4 or IPv6
+- ``ip_type``: IPv4 or DUALSTACK
 
 - ``ipv6_gateway``: The IPv6 address of the gateway of this subnet
 

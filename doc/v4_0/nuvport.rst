@@ -99,6 +99,8 @@ Parents
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
+- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
+
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
@@ -110,6 +112,4 @@ Parents
 - :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
 
 - :ref:`nutier.NUTier<nutier>`
-
-- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 

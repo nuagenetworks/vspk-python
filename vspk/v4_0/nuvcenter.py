@@ -128,6 +128,7 @@ class NUVCenter(NURESTObject):
         self._mgmt_network_portgroup = None
         self._dhcp_relay_server = None
         self._mirror_network_portgroup = None
+        self._disable_network_discovery = None
         self._site_id = None
         self._old_agency_name = None
         self._allow_data_dhcp = None
@@ -210,6 +211,7 @@ class NUVCenter(NURESTObject):
         self.expose_attribute(local_name="mgmt_network_portgroup", remote_name="mgmtNetworkPortgroup", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_relay_server", remote_name="dhcpRelayServer", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mirror_network_portgroup", remote_name="mirrorNetworkPortgroup", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="disable_network_discovery", remote_name="disableNetworkDiscovery", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="site_id", remote_name="siteId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="old_agency_name", remote_name="oldAgencyName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_data_dhcp", remote_name="allowDataDHCP", attribute_type=bool, is_required=False, is_unique=False)
@@ -1135,6 +1137,33 @@ class NUVCenter(NURESTObject):
                 
         """
         self._mirror_network_portgroup = value
+
+    
+    @property
+    def disable_network_discovery(self):
+        """ Get disable_network_discovery value.
+
+            Notes:
+                This flag will disable network discovery. (trye - dont fetch port groups from vcenter, false - fetch portgroups from vcenter))
+
+                
+                This attribute is named `disableNetworkDiscovery` in VSD API.
+                
+        """
+        return self._disable_network_discovery
+
+    @disable_network_discovery.setter
+    def disable_network_discovery(self, value):
+        """ Set disable_network_discovery value.
+
+            Notes:
+                This flag will disable network discovery. (trye - dont fetch port groups from vcenter, false - fetch portgroups from vcenter))
+
+                
+                This attribute is named `disableNetworkDiscovery` in VSD API.
+                
+        """
+        self._disable_network_discovery = value
 
     
     @property

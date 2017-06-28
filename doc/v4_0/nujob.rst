@@ -61,6 +61,8 @@ Parents
 
 - :ref:`nuvsd.NUVSD<nuvsd>`
 
+- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
+
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
 - :ref:`nuhsc.NUHSC<nuhsc>`
@@ -98,8 +100,6 @@ Parents
 - :ref:`nuingressadvfwdtemplate.NUIngressAdvFwdTemplate<nuingressadvfwdtemplate>`
 
 - :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
-
-- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

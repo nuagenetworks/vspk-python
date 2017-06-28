@@ -109,21 +109,21 @@ Parents
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
+- :ref:`nudomain.NUDomain<nudomain>`
+
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
-- :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
+- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
 - :ref:`nutrunk.NUTrunk<nutrunk>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
 
 - :ref:`nutier.NUTier<nutier>`
-
-- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 

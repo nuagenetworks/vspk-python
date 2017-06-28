@@ -184,6 +184,7 @@ class NUVCenterHypervisor(NURESTObject):
         self._ntp_server1 = None
         self._ntp_server2 = None
         self._mtu = None
+        self._successfully_applied_version = None
         self._multi_vmssupport = None
         self._multicast_receive_interface = None
         self._multicast_receive_interface_ip = None
@@ -282,6 +283,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="ntp_server1", remote_name="ntpServer1", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ntp_server2", remote_name="ntpServer2", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mtu", remote_name="mtu", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="successfully_applied_version", remote_name="successfullyAppliedVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multi_vmssupport", remote_name="multiVMSsupport", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast_receive_interface", remote_name="multicastReceiveInterface", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast_receive_interface_ip", remote_name="multicastReceiveInterfaceIP", attribute_type=str, is_required=False, is_unique=False)
@@ -2490,6 +2492,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._mtu = value
+
+    
+    @property
+    def successfully_applied_version(self):
+        """ Get successfully_applied_version value.
+
+            Notes:
+                Successfully applied version of the VRS VM (Provided by VRS VM)
+
+                
+                This attribute is named `successfullyAppliedVersion` in VSD API.
+                
+        """
+        return self._successfully_applied_version
+
+    @successfully_applied_version.setter
+    def successfully_applied_version(self, value):
+        """ Set successfully_applied_version value.
+
+            Notes:
+                Successfully applied version of the VRS VM (Provided by VRS VM)
+
+                
+                This attribute is named `successfullyAppliedVersion` in VSD API.
+                
+        """
+        self._successfully_applied_version = value
 
     
     @property

@@ -210,7 +210,7 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_BGP_DAMPENING_MED_RESPONSE = "BGP_DAMPENING_MED_RESPONSE"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_DHCP_RELAY_STATUS_DISABLED = "DISABLED"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_KEYSERVER_MONITOR = "KEYSERVER_MONITOR"
     
@@ -266,7 +266,7 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_VMWARE_VCENTER_HYPERVISOR = "VMWARE_VCENTER_HYPERVISOR"
     
-    CONST_IP_TYPE_IPV6 = "IPV6"
+    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_CLOUD_MGMT_SYSTEM = "CLOUD_MGMT_SYSTEM"
     
     CONST_DPI_INHERITED = "INHERITED"
     
@@ -386,7 +386,7 @@ class NUSubnet(NURESTObject):
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_DHCP_OPTION = "DHCP_OPTION"
     
-    CONST_DHCP_RELAY_STATUS_DISABLED = "DISABLED"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INGRESS_EXT_SERVICE_TEMPLATE = "INGRESS_EXT_SERVICE_TEMPLATE"
     
@@ -463,8 +463,6 @@ class NUSubnet(NURESTObject):
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_GEO_VM_EVENT = "GEO_VM_EVENT"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_INGRESS_EXT_SERVICE_ENTRY = "INGRESS_EXT_SERVICE_ENTRY"
-    
-    CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_CLOUD_MGMT_SYSTEM = "CLOUD_MGMT_SYSTEM"
     
     CONST_ASSOCIATED_APPLICATION_OBJECT_TYPE_PATNATPOOL = "PATNATPOOL"
     
@@ -703,7 +701,7 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="pat_enabled", remote_name="PATEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="dhcp_relay_status", remote_name="DHCPRelayStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4'])
         self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ipv6_gateway", remote_name="IPv6Gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
@@ -891,7 +889,7 @@ class NUSubnet(NURESTObject):
         """ Get ip_type value.
 
             Notes:
-                IPv4 or IPv6
+                IPv4 or DUALSTACK
 
                 
                 This attribute is named `IPType` in VSD API.
@@ -904,7 +902,7 @@ class NUSubnet(NURESTObject):
         """ Set ip_type value.
 
             Notes:
-                IPv4 or IPv6
+                IPv4 or DUALSTACK
 
                 
                 This attribute is named `IPType` in VSD API.

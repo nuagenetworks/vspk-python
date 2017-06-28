@@ -76,6 +76,8 @@ Attributes
 
 - ``mirror_network_portgroup``: Mirror Port Group Name
 
+- ``disable_network_discovery``: This flag will disable network discovery. (trye - dont fetch port groups from vcenter, false - fetch portgroups from vcenter))
+
 - ``site_id``: Site ID field for object profiles to support VSD Geo-redundancy
 
 - ``old_agency_name``: Old Agency Name

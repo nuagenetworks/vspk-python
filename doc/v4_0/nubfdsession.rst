@@ -1,38 +1,28 @@
-.. _nuvportmirror:
+.. _nubfdsession:
 
-nuvportmirror
+nubfdsession
 ===========================================
 
-.. class:: nuvportmirror.NUVPortMirror(bambou.nurest_object.NUMetaRESTObject,):
+.. class:: nubfdsession.NUBFDSession(bambou.nurest_object.NUMetaRESTObject,):
 
-VPort Mirror represents the relationship between a vport and a mirror destination.
+Represents the Bidirectional Forwarding Detection session that can be configured on an uplink/BR connection.
 
 
 Attributes
 ----------
 
 
-- ``vport_name``: Name of the vport to which the mirror destination is associated with.
+- ``bfd_destination_ip``: Destination IP Address used for Bidirectional Forwarding Detection.
+
+- ``bfd_multiplier``: Multiplier used for Bidirectional Forwarding Detection Timer.
+
+- ``bfd_timer``: Timer for Bidirectional Forwarding Detection. (min = 200, max = 100,000) Unit is milliseconds.
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``network_name``: Name of the network to which the vport belongs to
-
-- ``mirror_destination_id``: Destination ID of the mirror destination object.
-
-- ``mirror_destination_name``: Name of the mirror destination
-
-- ``mirror_direction``: Describes what type of traffic needs to be mirrored.
-
-- ``enterpise_name``: Enterprise to which the vport associated with the mirror destination belongs to.
-
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``domain_name``: Domain name of the vport associated with the mirror destination
-
-- ``vport_id``: Id of the vport to which the mirror destination is associated with.
-
-- ``attached_network_type``: Type of the network attached - L2/L3
+- ``multi_hop_enabled``: Boolean flag to indicate whether the BFD Session has single hop or multi hop capability.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -55,7 +45,7 @@ Parents
 --------
 
 
-- :ref:`nuvport.NUVPort<nuvport>`
+- :ref:`nubrconnection.NUBRConnection<nubrconnection>`
 
-- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
+- :ref:`nuuplinkconnection.NUUplinkConnection<nuuplinkconnection>`
 

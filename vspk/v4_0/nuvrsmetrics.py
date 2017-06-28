@@ -77,6 +77,7 @@ class NUVRSMetrics(NURESTObject):
         self._agent_name = None
         self._entity_scope = None
         self._associated_vcenter_hypervisor_id = None
+        self._current_version = None
         self._external_id = None
         
         self.expose_attribute(local_name="al_ubr0_status", remote_name="ALUbr0Status", attribute_type=bool, is_required=False, is_unique=False)
@@ -91,6 +92,7 @@ class NUVRSMetrics(NURESTObject):
         self.expose_attribute(local_name="agent_name", remote_name="agentName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="associated_vcenter_hypervisor_id", remote_name="associatedVCenterHypervisorID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="current_version", remote_name="currentVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -420,6 +422,33 @@ class NUVRSMetrics(NURESTObject):
                 
         """
         self._associated_vcenter_hypervisor_id = value
+
+    
+    @property
+    def current_version(self):
+        """ Get current_version value.
+
+            Notes:
+                Current version of the VRS VM (Provided by VRS VM)
+
+                
+                This attribute is named `currentVersion` in VSD API.
+                
+        """
+        return self._current_version
+
+    @current_version.setter
+    def current_version(self, value):
+        """ Set current_version value.
+
+            Notes:
+                Current version of the VRS VM (Provided by VRS VM)
+
+                
+                This attribute is named `currentVersion` in VSD API.
+                
+        """
+        self._current_version = value
 
     
     @property
