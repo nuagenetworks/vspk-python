@@ -45,6 +45,9 @@ from .fetchers import NUMetadatasFetcher
 from .fetchers import NUEgressACLTemplatesFetcher
 
 
+from .fetchers import NUEgressAdvFwdTemplatesFetcher
+
+
 from .fetchers import NUGlobalMetadatasFetcher
 
 
@@ -70,6 +73,9 @@ from .fetchers import NUGroupsFetcher
 
 
 from .fetchers import NUEventLogsFetcher
+
+
+from .fetchers import NUOverlayMirrorDestinationTemplatesFetcher
 
 from bambou import NURESTObject
 
@@ -97,6 +103,8 @@ class NUL2DomainTemplate(NURESTObject):
     
     CONST_ENCRYPTION_ENABLED = "ENABLED"
     
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
     CONST_ENCRYPTION_DISABLED = "DISABLED"
     
     CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
@@ -104,8 +112,6 @@ class NUL2DomainTemplate(NURESTObject):
     CONST_DPI_ENABLED = "ENABLED"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_IP_TYPE_IPV6 = "IPV6"
     
     CONST_DPI_INHERITED = "INHERITED"
     
@@ -117,7 +123,7 @@ class NUL2DomainTemplate(NURESTObject):
     
     CONST_DPI_DISABLED = "DISABLED"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
     
     CONST_ENTITY_STATE_MARKED_FOR_DELETION = "MARKED_FOR_DELETION"
     
@@ -166,7 +172,7 @@ class NUL2DomainTemplate(NURESTObject):
         
         self.expose_attribute(local_name="dhcp_managed", remote_name="DHCPManaged", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4'])
         self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ipv6_gateway", remote_name="IPv6Gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
@@ -206,6 +212,9 @@ class NUL2DomainTemplate(NURESTObject):
         self.egress_acl_templates = NUEgressACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.egress_adv_fwd_templates = NUEgressAdvFwdTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -231,6 +240,9 @@ class NUL2DomainTemplate(NURESTObject):
         
         
         self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.overlay_mirror_destination_templates = NUOverlayMirrorDestinationTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -296,7 +308,7 @@ class NUL2DomainTemplate(NURESTObject):
         """ Get ip_type value.
 
             Notes:
-                IPv4 or IPv6
+                IPv4 or DUALSTACK
 
                 
                 This attribute is named `IPType` in VSD API.
@@ -309,7 +321,7 @@ class NUL2DomainTemplate(NURESTObject):
         """ Set ip_type value.
 
             Notes:
-                IPv4 or IPv6
+                IPv4 or DUALSTACK
 
                 
                 This attribute is named `IPType` in VSD API.

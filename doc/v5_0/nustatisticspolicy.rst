@@ -59,5 +59,3 @@ Parents
 
 - :ref:`nunsport.NUNSPort<nunsport>`
 
-- :ref:`nutier.NUTier<nutier>`
-

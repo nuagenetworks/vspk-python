@@ -28,11 +28,11 @@
 from bambou import NURESTFetcher
 
 
-class NUTiersFetcher(NURESTFetcher):
-    """ Represents a NUTiers fetcher
+class NUEgressAdvFwdTemplatesFetcher(NURESTFetcher):
+    """ Represents a NUEgressAdvFwdTemplates fetcher
 
         Notes:
-            This fetcher enables to fetch NUTier objects.
+            This fetcher enables to fetch NUEgressAdvFwdTemplate objects.
 
         See:
             bambou.NURESTFetcher
@@ -40,13 +40,13 @@ class NUTiersFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUTier class that is managed.
+        """ Return NUEgressAdvFwdTemplate class that is managed.
 
             Returns:
-                .NUTier: the managed class
+                .NUEgressAdvFwdTemplate: the managed class
         """
 
-        from .. import NUTier
-        return NUTier
+        from .. import NUEgressAdvFwdTemplate
+        return NUEgressAdvFwdTemplate
 
     

@@ -28,11 +28,11 @@
 from bambou import NURESTFetcher
 
 
-class NUNextHopAddressFetcher(NURESTFetcher):
-    """ Represents a NUNextHopAddress fetcher
+class NUPolicyStatementsFetcher(NURESTFetcher):
+    """ Represents a NUPolicyStatements fetcher
 
         Notes:
-            This fetcher enables to fetch NUNextHopAddress objects.
+            This fetcher enables to fetch NUPolicyStatement objects.
 
         See:
             bambou.NURESTFetcher
@@ -40,13 +40,13 @@ class NUNextHopAddressFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUNextHopAddress class that is managed.
+        """ Return NUPolicyStatement class that is managed.
 
             Returns:
-                .NUNextHopAddress: the managed class
+                .NUPolicyStatement: the managed class
         """
 
-        from .. import NUNextHopAddress
-        return NUNextHopAddress
+        from .. import NUPolicyStatement
+        return NUPolicyStatement
 
     

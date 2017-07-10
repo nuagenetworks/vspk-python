@@ -48,6 +48,9 @@ from .fetchers import NUEgressACLEntryTemplatesFetcher
 from .fetchers import NUEgressACLTemplatesFetcher
 
 
+from .fetchers import NUEgressAdvFwdTemplatesFetcher
+
+
 from .fetchers import NUDHCPOptionsFetcher
 
 
@@ -108,9 +111,6 @@ from .fetchers import NUBridgeInterfacesFetcher
 from .fetchers import NUGroupsFetcher
 
 
-from .fetchers import NUStaticRoutesFetcher
-
-
 from .fetchers import NUStatisticsFetcher
 
 
@@ -118,6 +118,9 @@ from .fetchers import NUStatisticsPoliciesFetcher
 
 
 from .fetchers import NUEventLogsFetcher
+
+
+from .fetchers import NUOverlayMirrorDestinationsFetcher
 
 from bambou import NURESTObject
 
@@ -140,8 +143,6 @@ class NUL2Domain(NURESTObject):
     CONST_DPI_ENABLED = "ENABLED"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_IP_TYPE_IPV6 = "IPV6"
     
     CONST_ENTITY_STATE_MARKED_FOR_DELETION = "MARKED_FOR_DELETION"
     
@@ -167,6 +168,8 @@ class NUL2Domain(NURESTObject):
     
     CONST_MULTICAST_INHERITED = "INHERITED"
     
+    CONST_POLICY_CHANGE_STATUS_APPLIED = "APPLIED"
+    
     CONST_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
     
     CONST_MULTICAST_DISABLED = "DISABLED"
@@ -185,7 +188,7 @@ class NUL2Domain(NURESTObject):
     
     CONST_ENCRYPTION_ENABLED = "ENABLED"
     
-    CONST_POLICY_CHANGE_STATUS_APPLIED = "APPLIED"
+    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
     
     
 
@@ -238,7 +241,7 @@ class NUL2Domain(NURESTObject):
         
         self.expose_attribute(local_name="dhcp_managed", remote_name="DHCPManaged", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
-        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4'])
         self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ipv6_gateway", remote_name="IPv6Gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
@@ -289,6 +292,9 @@ class NUL2Domain(NURESTObject):
         
         
         self.egress_acl_templates = NUEgressACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.egress_adv_fwd_templates = NUEgressAdvFwdTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.dhcp_options = NUDHCPOptionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -351,9 +357,6 @@ class NUL2Domain(NURESTObject):
         self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.static_routes = NUStaticRoutesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -361,6 +364,9 @@ class NUL2Domain(NURESTObject):
         
         
         self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.overlay_mirror_destinations = NUOverlayMirrorDestinationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -426,7 +432,7 @@ class NUL2Domain(NURESTObject):
         """ Get ip_type value.
 
             Notes:
-                IPv4 or IPv6
+                IPv4 or DUALSTACK
 
                 
                 This attribute is named `IPType` in VSD API.
@@ -439,7 +445,7 @@ class NUL2Domain(NURESTObject):
         """ Set ip_type value.
 
             Notes:
-                IPv4 or IPv6
+                IPv4 or DUALSTACK
 
                 
                 This attribute is named `IPType` in VSD API.

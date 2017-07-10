@@ -60,7 +60,7 @@ Attributes
 
 - ``policy_state``: State of the policy. 
 
-- ``domain_name`` (**Mandatory**): The name of the domain/domain template for the aclTemplateNames parent
+- ``domain_name``: The name of the domain/domain template for the aclTemplateNames parent
 
 - ``source_pg_id``: In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
 
@@ -75,12 +75,6 @@ Attributes
 - ``priority``: The priority of the ACL entry that determines the order of entries
 
 - ``protocol``: Protocol number that must be matched
-
-- ``associated_application_id``: The associated application ID
-
-- ``associated_application_object_id``: The associated application object ID
-
-- ``associated_application_object_type``: The associated application object type
 
 - ``associated_live_entity_id``: ID of the associated live entity
 

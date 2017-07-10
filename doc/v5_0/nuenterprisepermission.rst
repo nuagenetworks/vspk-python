@@ -59,8 +59,6 @@ Parents
 
 - :ref:`nuport.NUPort<nuport>`
 
-- :ref:`nuvlan.NUVLAN<nuvlan>`
-
 - :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
@@ -68,4 +66,6 @@ Parents
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
+
+- :ref:`nuvlan.NUVLAN<nuvlan>`
 

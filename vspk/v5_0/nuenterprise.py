@@ -114,6 +114,9 @@ from .fetchers import NUGlobalMetadatasFetcher
 from .fetchers import NUVMsFetcher
 
 
+from .fetchers import NUVNFsFetcher
+
+
 from .fetchers import NUEnterpriseNetworksFetcher
 
 
@@ -121,6 +124,9 @@ from .fetchers import NUEnterpriseSecuritiesFetcher
 
 
 from .fetchers import NUJobsFetcher
+
+
+from .fetchers import NUPolicyObjectGroupsFetcher
 
 
 from .fetchers import NUDomainsFetcher
@@ -139,9 +145,6 @@ from .fetchers import NUApplicationsFetcher
 
 
 from .fetchers import NUApplicationperformancemanagementsFetcher
-
-
-from .fetchers import NUApplicationServicesFetcher
 
 
 from .fetchers import NUGroupsFetcher
@@ -398,6 +401,9 @@ class NUEnterprise(NURESTObject):
         self.vms = NUVMsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.vnfs = NUVNFsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.enterprise_networks = NUEnterpriseNetworksFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -405,6 +411,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.policy_object_groups = NUPolicyObjectGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.domains = NUDomainsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -423,9 +432,6 @@ class NUEnterprise(NURESTObject):
         
         
         self.applicationperformancemanagements = NUApplicationperformancemanagementsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.application_services = NUApplicationServicesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")

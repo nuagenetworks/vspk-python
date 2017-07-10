@@ -65,6 +65,8 @@ Parents
 
 - :ref:`numulticastchannelmap.NUMultiCastChannelMap<numulticastchannelmap>`
 
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nutca.NUTCA<nutca>`
@@ -72,8 +74,6 @@ Parents
 - :ref:`nugroup.NUGroup<nugroup>`
 
 - :ref:`nuzone.NUZone<nuzone>`
-
-- :ref:`nuflowsecuritypolicy.NUFlowSecurityPolicy<nuflowsecuritypolicy>`
 
 - :ref:`nuenterprisenetwork.NUEnterpriseNetwork<nuenterprisenetwork>`
 
@@ -97,8 +97,6 @@ Parents
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
-- :ref:`nuflowforwardingpolicy.NUFlowForwardingPolicy<nuflowforwardingpolicy>`
-
 - :ref:`nuport.NUPort<nuport>`
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
@@ -110,8 +108,6 @@ Parents
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
 - :ref:`nuhsc.NUHSC<nuhsc>`
-
-- :ref:`nuvlan.NUVLAN<nuvlan>`
 
 - :ref:`nustaticroute.NUStaticRoute<nustaticroute>`
 
@@ -127,11 +123,11 @@ Parents
 
 - :ref:`numulticastrange.NUMultiCastRange<numulticastrange>`
 
+- :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
+
 - :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
-
-- :ref:`nuapplicationservice.NUApplicationService<nuapplicationservice>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
@@ -161,17 +157,15 @@ Parents
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
+- :ref:`nuvlan.NUVLAN<nuvlan>`
+
+- :ref:`nuwirelessport.NUWirelessPort<nuwirelessport>`
+
 - :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
 - :ref:`nuuser.NUUser<nuuser>`
 
-- :ref:`nutier.NUTier<nutier>`
-
 - :ref:`nucontainer.NUContainer<nucontainer>`
-
-- :ref:`nuflow.NUFlow<nuflow>`
-
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`
 

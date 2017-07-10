@@ -28,11 +28,11 @@
 from bambou import NURESTFetcher
 
 
-class NUFlowSecurityPoliciesFetcher(NURESTFetcher):
-    """ Represents a NUFlowSecurityPolicies fetcher
+class NUSSIDConnectionsFetcher(NURESTFetcher):
+    """ Represents a NUSSIDConnections fetcher
 
         Notes:
-            This fetcher enables to fetch NUFlowSecurityPolicy objects.
+            This fetcher enables to fetch NUSSIDConnection objects.
 
         See:
             bambou.NURESTFetcher
@@ -40,13 +40,13 @@ class NUFlowSecurityPoliciesFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUFlowSecurityPolicy class that is managed.
+        """ Return NUSSIDConnection class that is managed.
 
             Returns:
-                .NUFlowSecurityPolicy: the managed class
+                .NUSSIDConnection: the managed class
         """
 
-        from .. import NUFlowSecurityPolicy
-        return NUFlowSecurityPolicy
+        from .. import NUSSIDConnection
+        return NUSSIDConnection
 
     

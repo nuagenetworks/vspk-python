@@ -26,8 +26,6 @@ Attributes
 
 - ``description``: A description of the Port
 
-- ``network_acceleration_enabled``: Flag to enable/disable network throughput acceleration on this port. If this flag is not set then the setting of the port's template will be taken into account.
-
 - ``physical_name`` (**Mandatory**): Identifier of the Port
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
@@ -38,7 +36,7 @@ Attributes
 
 - ``use_user_mnemonic``: determines whether to use user mnemonic of the Port
 
-- ``user_mnemonic`` (**Mandatory**): user mnemonic of the Port
+- ``user_mnemonic``: user mnemonic of the Port
 
 - ``associated_egress_qos_policy_id``: ID of the Egress QOS Policy associated with this Vlan.
 

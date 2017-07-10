@@ -28,11 +28,11 @@
 from bambou import NURESTFetcher
 
 
-class NUFlowsFetcher(NURESTFetcher):
-    """ Represents a NUFlows fetcher
+class NUWirelessPortsFetcher(NURESTFetcher):
+    """ Represents a NUWirelessPorts fetcher
 
         Notes:
-            This fetcher enables to fetch NUFlow objects.
+            This fetcher enables to fetch NUWirelessPort objects.
 
         See:
             bambou.NURESTFetcher
@@ -40,13 +40,13 @@ class NUFlowsFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUFlow class that is managed.
+        """ Return NUWirelessPort class that is managed.
 
             Returns:
-                .NUFlow: the managed class
+                .NUWirelessPort: the managed class
         """
 
-        from .. import NUFlow
-        return NUFlow
+        from .. import NUWirelessPort
+        return NUWirelessPort
 
     

@@ -47,8 +47,9 @@ Children
 
 :ref:`nudemarcationservice.NUDemarcationService<nudemarcationservice>`                                                                                           ``demarcation_services`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
-:ref:`nunexthopaddress.NUNextHopAddress<nunexthopaddress>`                                                                                                       ``next_hop_address`` 
+:ref:`nunexthop.NUNextHop<nunexthop>`                                                                                                                            ``next_hops`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+:ref:`nupolicystatement.NUPolicyStatement<nupolicystatement>`                                                                                                    ``policy_statements`` 
 :ref:`nucsnatpool.NUCSNATPool<nucsnatpool>`                                                                                                                      ``csnat_pools`` 
 :ref:`nupsnatpool.NUPSNATPool<nupsnatpool>`                                                                                                                      ``psnat_pools`` 
 :ref:`nuoverlayaddresspool.NUOverlayAddressPool<nuoverlayaddresspool>`                                                                                           ``overlay_address_pools`` 

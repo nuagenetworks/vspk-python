@@ -54,8 +54,6 @@ class NURedundantPort(NURESTObject):
     
     ## Constants
     
-    CONST_PORT_TYPE_NETWORK = "NETWORK"
-    
     CONST_PERMITTED_ACTION_USE = "USE"
     
     CONST_SPEED_BASETX100 = "BASETX100"
@@ -131,7 +129,7 @@ class NURedundantPort(NURESTObject):
         self._status = None
         self._external_id = None
         
-        self.expose_attribute(local_name="vlan_range", remote_name="VLANRange", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vlan_range", remote_name="VLANRange", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="mtu", remote_name="MTU", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -142,7 +140,7 @@ class NURedundantPort(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="port_peer1_id", remote_name="portPeer1ID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="port_peer2_id", remote_name="portPeer2ID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'NETWORK'])
+        self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS'])
         self.expose_attribute(local_name="speed", remote_name="speed", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTONEGOTIATE', u'BASE10', u'BASET1000', u'BASETX100', u'BASEX10G'])
         self.expose_attribute(local_name="use_untagged_heartbeat_vlan", remote_name="useUntaggedHeartbeatVlan", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_user_mnemonic", remote_name="useUserMnemonic", attribute_type=bool, is_required=False, is_unique=False)

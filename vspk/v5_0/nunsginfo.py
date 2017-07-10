@@ -80,6 +80,7 @@ class NUNSGInfo(NURESTObject):
         # Read/Write Attributes
         
         self._mac_address = None
+        self._bios_version = None
         self._sku = None
         self._tpm_status = None
         self._cpu_type = None
@@ -89,10 +90,12 @@ class NUNSGInfo(NURESTObject):
         self._serial_number = None
         self._libraries = None
         self._entity_scope = None
+        self._product_name = None
         self._associated_ns_gateway_id = None
         self._external_id = None
         
         self.expose_attribute(local_name="mac_address", remote_name="MACAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="bios_version", remote_name="BIOSVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sku", remote_name="SKU", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tpm_status", remote_name="TPMStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED_NOT_OPERATIONAL', u'ENABLED_OPERATIONAL', u'UNKNOWN'])
         self.expose_attribute(local_name="cpu_type", remote_name="CPUType", attribute_type=str, is_required=False, is_unique=False)
@@ -102,6 +105,7 @@ class NUNSGInfo(NURESTObject):
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="product_name", remote_name="productName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ns_gateway_id", remote_name="associatedNSGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
@@ -135,6 +139,33 @@ class NUNSGInfo(NURESTObject):
                 
         """
         self._mac_address = value
+
+    
+    @property
+    def bios_version(self):
+        """ Get bios_version value.
+
+            Notes:
+                NSG BIOS Version
+
+                
+                This attribute is named `BIOSVersion` in VSD API.
+                
+        """
+        return self._bios_version
+
+    @bios_version.setter
+    def bios_version(self, value):
+        """ Set bios_version value.
+
+            Notes:
+                NSG BIOS Version
+
+                
+                This attribute is named `BIOSVersion` in VSD API.
+                
+        """
+        self._bios_version = value
 
     
     @property
@@ -370,6 +401,33 @@ class NUNSGInfo(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def product_name(self):
+        """ Get product_name value.
+
+            Notes:
+                NSG Product Name
+
+                
+                This attribute is named `productName` in VSD API.
+                
+        """
+        return self._product_name
+
+    @product_name.setter
+    def product_name(self, value):
+        """ Set product_name value.
+
+            Notes:
+                NSG Product Name
+
+                
+                This attribute is named `productName` in VSD API.
+                
+        """
+        self._product_name = value
 
     
     @property

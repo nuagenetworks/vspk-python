@@ -49,6 +49,7 @@ Children
 :ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`                                                                                              ``egress_acl_templates`` 
+:ref:`nuegressadvfwdtemplate.NUEgressAdvFwdTemplate<nuegressadvfwdtemplate>`                                                                                     ``egress_adv_fwd_templates`` 
 :ref:`nudomainfipacltemplate.NUDomainFIPAclTemplate<nudomainfipacltemplate>`                                                                                     ``domain_fip_acl_templates`` 
 :ref:`nufloatingipacltemplate.NUFloatingIPACLTemplate<nufloatingipacltemplate>`                                                                                  ``floating_ipacl_templates`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
@@ -71,7 +72,7 @@ Parents
 --------
 
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 

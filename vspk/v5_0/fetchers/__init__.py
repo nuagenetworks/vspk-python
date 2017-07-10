@@ -25,7 +25,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-__all__ = ['NUAddressMapsFetcher', 'NUAddressRangesFetcher', 'NUAggregateMetadatasFetcher', 'NUAlarmsFetcher', 'NUAllAlarmsFetcher', 'NUApplicationBindingsFetcher', 'NUApplicationperformancemanagementbindingsFetcher', 'NUApplicationperformancemanagementsFetcher', 'NUApplicationsFetcher', 'NUApplicationServicesFetcher', 'NUAutoDiscoverClustersFetcher', 'NUAutodiscovereddatacentersFetcher', 'NUAutoDiscoveredGatewaysFetcher', 'NUAutoDiscoverHypervisorFromClustersFetcher', 'NUAvatarsFetcher', 'NUBGPNeighborsFetcher', 'NUBGPPeersFetcher', 'NUBGPProfilesFetcher', 'NUBootstrapActivationsFetcher', 'NUBootstrapsFetcher', 'NUBRConnectionsFetcher', 'NUBridgeInterfacesFetcher', 'NUBulkStatisticsFetcher', 'NUCertificatesFetcher', 'NUCloudMgmtSystemsFetcher', 'NUConnectionendpointsFetcher', 'NUContainerInterfacesFetcher', 'NUContainerResyncsFetcher', 'NUContainersFetcher', 'NUCSNATPoolsFetcher', 'NUCTranslationMapsFetcher', 'NUCustomPropertiesFetcher', 'NUDemarcationServicesFetcher', 'NUDHCPOptionsFetcher', 'NUDiskStatsFetcher', 'NUDomainFIPAclTemplateEntriesFetcher', 'NUDomainFIPAclTemplatesFetcher', 'NUDomainsFetcher', 'NUDomainTemplatesFetcher', 'NUDSCPForwardingClassMappingsFetcher', 'NUDSCPForwardingClassTablesFetcher', 'NUDUCGroupBindingsFetcher', 'NUDUCGroupsFetcher', 'NUEgressACLEntryTemplatesFetcher', 'NUEgressACLTemplatesFetcher', 'NUEgressQOSPoliciesFetcher', 'NUEnterpriseNetworksFetcher', 'NUEnterprisePermissionsFetcher', 'NUEnterpriseProfilesFetcher', 'NUEnterprisesFetcher', 'NUEnterpriseSecuredDatasFetcher', 'NUEnterpriseSecuritiesFetcher', 'NUEventLogsFetcher', 'NUFirewallAclsFetcher', 'NUFirewallRulesFetcher', 'NUFloatingIPACLTemplateEntriesFetcher', 'NUFloatingIPACLTemplatesFetcher', 'NUFloatingIpsFetcher', 'NUFlowForwardingPoliciesFetcher', 'NUFlowsFetcher', 'NUFlowSecurityPoliciesFetcher', 'NUGatewaysFetcher', 'NUGatewaySecuredDatasFetcher', 'NUGatewaySecuritiesFetcher', 'NUGatewayTemplatesFetcher', 'NUGlobalMetadatasFetcher', 'NUGroupKeyEncryptionProfilesFetcher', 'NUGroupsFetcher', 'NUHostInterfacesFetcher', 'NUHSCsFetcher', 'NUIKECertificatesFetcher', 'NUIKEEncryptionprofilesFetcher', 'NUIKEGatewayConfigsFetcher', 'NUIKEGatewayConnectionsFetcher', 'NUIKEGatewayProfilesFetcher', 'NUIKEGatewaysFetcher', 'NUIKEPSKsFetcher', 'NUIKESubnetsFetcher', 'NUInfrastructureAccessProfilesFetcher', 'NUInfrastructureConfigsFetcher', 'NUInfrastructureGatewayProfilesFetcher', 'NUInfrastructureVscProfilesFetcher', 'NUIngressACLEntryTemplatesFetcher', 'NUIngressACLTemplatesFetcher', 'NUIngressAdvFwdEntryTemplatesFetcher', 'NUIngressAdvFwdTemplatesFetcher', 'NUIngressExternalServiceTemplateEntriesFetcher', 'NUIngressExternalServiceTemplatesFetcher', 'NUIPReservationsFetcher', 'NUJobsFetcher', 'NUKeyServerMembersFetcher', 'NUKeyServerMonitorEncryptedSeedsFetcher', 'NUKeyServerMonitorsFetcher', 'NUKeyServerMonitorSeedsFetcher', 'NUKeyServerMonitorSEKsFetcher', 'NUKeyServerNotificationsFetcher', 'NUL2DomainsFetcher', 'NUL2DomainTemplatesFetcher', 'NUL7applicationsignaturesFetcher', 'NULDAPConfigurationsFetcher', 'NULicensesFetcher', 'NULicenseStatusFetcher', 'NULinksFetcher', 'NULocationsFetcher', 'NULTEInformationsFetcher', 'NULtestatisticsFetcher', 'NUMesFetcher', 'NUMetadatasFetcher', 'NUMirrorDestinationsFetcher', 'NUMonitoringPortsFetcher', 'NUMonitorscopesFetcher', 'NUMultiCastChannelMapsFetcher', 'NUMultiCastListsFetcher', 'NUMultiCastRangesFetcher', 'NUMultiNICVPortsFetcher', 'NUNATMapEntriesFetcher', 'NUNetworkLayoutsFetcher', 'NUNetworkMacroGroupsFetcher', 'NUNetworkPerformanceBindingsFetcher', 'NUNetworkPerformanceMeasurementsFetcher', 'NUNextHopAddressFetcher', 'NUNextHopsFetcher', 'NUNSGatewaysFetcher', 'NUNSGatewayTemplatesFetcher', 'NUNSGGroupsFetcher', 'NUNSGInfosFetcher', 'NUNSPortsFetcher', 'NUNSPortTemplatesFetcher', 'NUNSRedundantGatewayGroupsFetcher', 'NUOverlayAddressPoolsFetcher', 'NUOverlayPATNATEntriesFetcher', 'NUPATIPEntriesFetcher', 'NUPATMappersFetcher', 'NUPATNATPoolsFetcher', 'NUPerformanceMonitorsFetcher', 'NUPermissionsFetcher', 'NUPolicyDecisionsFetcher', 'NUPolicyGroupsFetcher', 'NUPolicyGroupTemplatesFetcher', 'NUPortMappingsFetcher', 'NUPortsFetcher', 'NUPortTemplatesFetcher', 'NUPSNATPoolsFetcher', 'NUPSPATMapsFetcher', 'NUPTranslationMapsFetcher', 'NUPublicNetworkMacrosFetcher', 'NUQOSsFetcher', 'NURateLimitersFetcher', 'NURedirectionTargetsFetcher', 'NURedirectionTargetTemplatesFetcher', 'NURedundancyGroupsFetcher', 'NURedundantPortsFetcher', 'NURoutingPoliciesFetcher', 'NUSharedNetworkResourcesFetcher', 'NUSiteInfosFetcher', 'NUSPATSourcesPoolsFetcher', 'NUSSHKeysFetcher', 'NUStaticRoutesFetcher', 'NUStatisticsFetcher', 'NUStatisticsPoliciesFetcher', 'NUStatsCollectorInfosFetcher', 'NUSubnetsFetcher', 'NUSubnetTemplatesFetcher', 'NUSystemConfigsFetcher', 'NUTCAsFetcher', 'NUTiersFetcher', 'NUTrunksFetcher', 'NUUnderlaysFetcher', 'NUUplinkConnectionsFetcher', 'NUUplinkRDsFetcher', 'NUUsersFetcher', 'NUVCenterClustersFetcher', 'NUVCenterDataCentersFetcher', 'NUVCenterEAMConfigsFetcher', 'NUVCenterHypervisorsFetcher', 'NUVCentersFetcher', 'NUVCenterVRSConfigsFetcher', 'NUViasFetcher', 'NUVirtualIPsFetcher', 'NUVLANsFetcher', 'NUVLANTemplatesFetcher', 'NUVMInterfacesFetcher', 'NUVMResyncsFetcher', 'NUVMsFetcher', 'NUVPNConnectionsFetcher', 'NUVPortMirrorsFetcher', 'NUVPortsFetcher', 'NUVRSAddressRangesFetcher', 'NUVRSMetricsFetcher', 'NUVRSRedeploymentpoliciesFetcher', 'NUVRSsFetcher', 'NUVSCsFetcher', 'NUVSDComponentsFetcher', 'NUVSDsFetcher', 'NUVsgRedundantPortsFetcher', 'NUVSPsFetcher', 'NUWANServicesFetcher', 'NUZFBAutoAssignmentsFetcher', 'NUZFBRequestsFetcher', 'NUZonesFetcher', 'NUZoneTemplatesFetcher']
+__all__ = ['NUAddressMapsFetcher', 'NUAddressRangesFetcher', 'NUAggregateMetadatasFetcher', 'NUAlarmsFetcher', 'NUAllAlarmsFetcher', 'NUApplicationBindingsFetcher', 'NUApplicationperformancemanagementbindingsFetcher', 'NUApplicationperformancemanagementsFetcher', 'NUApplicationsFetcher', 'NUAutoDiscoverClustersFetcher', 'NUAutodiscovereddatacentersFetcher', 'NUAutoDiscoveredGatewaysFetcher', 'NUAutoDiscoverHypervisorFromClustersFetcher', 'NUAvatarsFetcher', 'NUBGPNeighborsFetcher', 'NUBGPPeersFetcher', 'NUBGPProfilesFetcher', 'NUBootstrapActivationsFetcher', 'NUBootstrapsFetcher', 'NUBRConnectionsFetcher', 'NUBridgeInterfacesFetcher', 'NUBulkStatisticsFetcher', 'NUCertificatesFetcher', 'NUCloudMgmtSystemsFetcher', 'NUConnectionendpointsFetcher', 'NUContainerInterfacesFetcher', 'NUContainerResyncsFetcher', 'NUContainersFetcher', 'NUCSNATPoolsFetcher', 'NUCTranslationMapsFetcher', 'NUCustomPropertiesFetcher', 'NUDemarcationServicesFetcher', 'NUDHCPOptionsFetcher', 'NUDiskStatsFetcher', 'NUDomainFIPAclTemplateEntriesFetcher', 'NUDomainFIPAclTemplatesFetcher', 'NUDomainsFetcher', 'NUDomainTemplatesFetcher', 'NUDSCPForwardingClassMappingsFetcher', 'NUDSCPForwardingClassTablesFetcher', 'NUDUCGroupBindingsFetcher', 'NUDUCGroupsFetcher', 'NUEgressACLEntryTemplatesFetcher', 'NUEgressACLTemplatesFetcher', 'NUEgressAdvFwdEntryTemplatesFetcher', 'NUEgressAdvFwdTemplatesFetcher', 'NUEgressQOSPoliciesFetcher', 'NUEnterpriseNetworksFetcher', 'NUEnterprisePermissionsFetcher', 'NUEnterpriseProfilesFetcher', 'NUEnterprisesFetcher', 'NUEnterpriseSecuredDatasFetcher', 'NUEnterpriseSecuritiesFetcher', 'NUEventLogsFetcher', 'NUFirewallAclsFetcher', 'NUFirewallRulesFetcher', 'NUFloatingIPACLTemplateEntriesFetcher', 'NUFloatingIPACLTemplatesFetcher', 'NUFloatingIpsFetcher', 'NUGatewaysFetcher', 'NUGatewaySecuredDatasFetcher', 'NUGatewaySecuritiesFetcher', 'NUGatewayTemplatesFetcher', 'NUGlobalMetadatasFetcher', 'NUGroupKeyEncryptionProfilesFetcher', 'NUGroupsFetcher', 'NUHostInterfacesFetcher', 'NUHSCsFetcher', 'NUIKECertificatesFetcher', 'NUIKEEncryptionprofilesFetcher', 'NUIKEGatewayConfigsFetcher', 'NUIKEGatewayConnectionsFetcher', 'NUIKEGatewayProfilesFetcher', 'NUIKEGatewaysFetcher', 'NUIKEPSKsFetcher', 'NUIKESubnetsFetcher', 'NUInfrastructureAccessProfilesFetcher', 'NUInfrastructureConfigsFetcher', 'NUInfrastructureGatewayProfilesFetcher', 'NUInfrastructureVscProfilesFetcher', 'NUIngressACLEntryTemplatesFetcher', 'NUIngressACLTemplatesFetcher', 'NUIngressAdvFwdEntryTemplatesFetcher', 'NUIngressAdvFwdTemplatesFetcher', 'NUIngressExternalServiceTemplateEntriesFetcher', 'NUIngressExternalServiceTemplatesFetcher', 'NUIPReservationsFetcher', 'NUJobsFetcher', 'NUKeyServerMembersFetcher', 'NUKeyServerMonitorEncryptedSeedsFetcher', 'NUKeyServerMonitorsFetcher', 'NUKeyServerMonitorSeedsFetcher', 'NUKeyServerMonitorSEKsFetcher', 'NUKeyServerNotificationsFetcher', 'NUL2DomainsFetcher', 'NUL2DomainTemplatesFetcher', 'NUL7applicationsignaturesFetcher', 'NULDAPConfigurationsFetcher', 'NULicensesFetcher', 'NULicenseStatusFetcher', 'NULinksFetcher', 'NULocationsFetcher', 'NULTEInformationsFetcher', 'NULtestatisticsFetcher', 'NUMesFetcher', 'NUMetadatasFetcher', 'NUMirrorDestinationsFetcher', 'NUMonitoringPortsFetcher', 'NUMonitorscopesFetcher', 'NUMultiCastChannelMapsFetcher', 'NUMultiCastListsFetcher', 'NUMultiCastRangesFetcher', 'NUMultiNICVPortsFetcher', 'NUNATMapEntriesFetcher', 'NUNetworkLayoutsFetcher', 'NUNetworkMacroGroupsFetcher', 'NUNetworkPerformanceBindingsFetcher', 'NUNetworkPerformanceMeasurementsFetcher', 'NUNextHopsFetcher', 'NUNSGatewaysFetcher', 'NUNSGatewayTemplatesFetcher', 'NUNSGGroupsFetcher', 'NUNSGInfosFetcher', 'NUNSPortsFetcher', 'NUNSPortTemplatesFetcher', 'NUNSRedundantGatewayGroupsFetcher', 'NUOverlayAddressPoolsFetcher', 'NUOverlayMirrorDestinationsFetcher', 'NUOverlayMirrorDestinationTemplatesFetcher', 'NUOverlayPATNATEntriesFetcher', 'NUPATIPEntriesFetcher', 'NUPATMappersFetcher', 'NUPATNATPoolsFetcher', 'NUPerformanceMonitorsFetcher', 'NUPermissionsFetcher', 'NUPolicyDecisionsFetcher', 'NUPolicyEntriesFetcher', 'NUPolicyGroupsFetcher', 'NUPolicyGroupTemplatesFetcher', 'NUPolicyObjectGroupsFetcher', 'NUPolicyStatementsFetcher', 'NUPortMappingsFetcher', 'NUPortsFetcher', 'NUPortTemplatesFetcher', 'NUPSNATPoolsFetcher', 'NUPSPATMapsFetcher', 'NUPTranslationMapsFetcher', 'NUPublicNetworkMacrosFetcher', 'NUQOSsFetcher', 'NURateLimitersFetcher', 'NURedirectionTargetsFetcher', 'NURedirectionTargetTemplatesFetcher', 'NURedundancyGroupsFetcher', 'NURedundantPortsFetcher', 'NURoutingPoliciesFetcher', 'NUSharedNetworkResourcesFetcher', 'NUSiteInfosFetcher', 'NUSPATSourcesPoolsFetcher', 'NUSSHKeysFetcher', 'NUSSIDConnectionsFetcher', 'NUStaticRoutesFetcher', 'NUStatisticsFetcher', 'NUStatisticsPoliciesFetcher', 'NUStatsCollectorInfosFetcher', 'NUSubnetsFetcher', 'NUSubnetTemplatesFetcher', 'NUSystemConfigsFetcher', 'NUTCAsFetcher', 'NUTrunksFetcher', 'NUUnderlaysFetcher', 'NUUplinkConnectionsFetcher', 'NUUplinkRDsFetcher', 'NUUsersFetcher', 'NUVCenterClustersFetcher', 'NUVCenterDataCentersFetcher', 'NUVCenterEAMConfigsFetcher', 'NUVCenterHypervisorsFetcher', 'NUVCentersFetcher', 'NUVCenterVRSConfigsFetcher', 'NUViasFetcher', 'NUVirtualIPsFetcher', 'NUVLANsFetcher', 'NUVLANTemplatesFetcher', 'NUVMInterfacesFetcher', 'NUVMResyncsFetcher', 'NUVMsFetcher', 'NUVNFCatalogsFetcher', 'NUVNFDescriptorsFetcher', 'NUVNFInterfaceDescriptorsFetcher', 'NUVNFInterfacesFetcher', 'NUVNFMetadatasFetcher', 'NUVNFsFetcher', 'NUVPNConnectionsFetcher', 'NUVPortMirrorsFetcher', 'NUVPortsFetcher', 'NUVRSAddressRangesFetcher', 'NUVRSMetricsFetcher', 'NUVRSRedeploymentpoliciesFetcher', 'NUVRSsFetcher', 'NUVSCsFetcher', 'NUVSDComponentsFetcher', 'NUVSDsFetcher', 'NUVsgRedundantPortsFetcher', 'NUVSPsFetcher', 'NUWANServicesFetcher', 'NUWirelessPortsFetcher', 'NUWirelessPortTemplatesFetcher', 'NUZFBAutoAssignmentsFetcher', 'NUZFBRequestsFetcher', 'NUZonesFetcher', 'NUZoneTemplatesFetcher']
 
 from .nuaddressmaps_fetcher import NUAddressMapsFetcher
 from .nuaddressranges_fetcher import NUAddressRangesFetcher
@@ -36,7 +36,6 @@ from .nuapplicationbindings_fetcher import NUApplicationBindingsFetcher
 from .nuapplicationperformancemanagementbindings_fetcher import NUApplicationperformancemanagementbindingsFetcher
 from .nuapplicationperformancemanagements_fetcher import NUApplicationperformancemanagementsFetcher
 from .nuapplications_fetcher import NUApplicationsFetcher
-from .nuapplicationservices_fetcher import NUApplicationServicesFetcher
 from .nuautodiscoverclusters_fetcher import NUAutoDiscoverClustersFetcher
 from .nuautodiscovereddatacenters_fetcher import NUAutodiscovereddatacentersFetcher
 from .nuautodiscoveredgateways_fetcher import NUAutoDiscoveredGatewaysFetcher
@@ -72,6 +71,8 @@ from .nuducgroupbindings_fetcher import NUDUCGroupBindingsFetcher
 from .nuducgroups_fetcher import NUDUCGroupsFetcher
 from .nuegressaclentrytemplates_fetcher import NUEgressACLEntryTemplatesFetcher
 from .nuegressacltemplates_fetcher import NUEgressACLTemplatesFetcher
+from .nuegressadvfwdentrytemplates_fetcher import NUEgressAdvFwdEntryTemplatesFetcher
+from .nuegressadvfwdtemplates_fetcher import NUEgressAdvFwdTemplatesFetcher
 from .nuegressqospolicies_fetcher import NUEgressQOSPoliciesFetcher
 from .nuenterprisenetworks_fetcher import NUEnterpriseNetworksFetcher
 from .nuenterprisepermissions_fetcher import NUEnterprisePermissionsFetcher
@@ -85,9 +86,6 @@ from .nufirewallrules_fetcher import NUFirewallRulesFetcher
 from .nufloatingipacltemplateentries_fetcher import NUFloatingIPACLTemplateEntriesFetcher
 from .nufloatingipacltemplates_fetcher import NUFloatingIPACLTemplatesFetcher
 from .nufloatingips_fetcher import NUFloatingIpsFetcher
-from .nuflowforwardingpolicies_fetcher import NUFlowForwardingPoliciesFetcher
-from .nuflows_fetcher import NUFlowsFetcher
-from .nuflowsecuritypolicies_fetcher import NUFlowSecurityPoliciesFetcher
 from .nugateways_fetcher import NUGatewaysFetcher
 from .nugatewaysecureddatas_fetcher import NUGatewaySecuredDatasFetcher
 from .nugatewaysecurities_fetcher import NUGatewaySecuritiesFetcher
@@ -147,7 +145,6 @@ from .nunetworklayouts_fetcher import NUNetworkLayoutsFetcher
 from .nunetworkmacrogroups_fetcher import NUNetworkMacroGroupsFetcher
 from .nunetworkperformancebindings_fetcher import NUNetworkPerformanceBindingsFetcher
 from .nunetworkperformancemeasurements_fetcher import NUNetworkPerformanceMeasurementsFetcher
-from .nunexthopaddress_fetcher import NUNextHopAddressFetcher
 from .nunexthops_fetcher import NUNextHopsFetcher
 from .nunsgateways_fetcher import NUNSGatewaysFetcher
 from .nunsgatewaytemplates_fetcher import NUNSGatewayTemplatesFetcher
@@ -157,6 +154,8 @@ from .nunsports_fetcher import NUNSPortsFetcher
 from .nunsporttemplates_fetcher import NUNSPortTemplatesFetcher
 from .nunsredundantgatewaygroups_fetcher import NUNSRedundantGatewayGroupsFetcher
 from .nuoverlayaddresspools_fetcher import NUOverlayAddressPoolsFetcher
+from .nuoverlaymirrordestinations_fetcher import NUOverlayMirrorDestinationsFetcher
+from .nuoverlaymirrordestinationtemplates_fetcher import NUOverlayMirrorDestinationTemplatesFetcher
 from .nuoverlaypatnatentries_fetcher import NUOverlayPATNATEntriesFetcher
 from .nupatipentries_fetcher import NUPATIPEntriesFetcher
 from .nupatmappers_fetcher import NUPATMappersFetcher
@@ -164,8 +163,11 @@ from .nupatnatpools_fetcher import NUPATNATPoolsFetcher
 from .nuperformancemonitors_fetcher import NUPerformanceMonitorsFetcher
 from .nupermissions_fetcher import NUPermissionsFetcher
 from .nupolicydecisions_fetcher import NUPolicyDecisionsFetcher
+from .nupolicyentries_fetcher import NUPolicyEntriesFetcher
 from .nupolicygroups_fetcher import NUPolicyGroupsFetcher
 from .nupolicygrouptemplates_fetcher import NUPolicyGroupTemplatesFetcher
+from .nupolicyobjectgroups_fetcher import NUPolicyObjectGroupsFetcher
+from .nupolicystatements_fetcher import NUPolicyStatementsFetcher
 from .nuportmappings_fetcher import NUPortMappingsFetcher
 from .nuports_fetcher import NUPortsFetcher
 from .nuporttemplates_fetcher import NUPortTemplatesFetcher
@@ -184,6 +186,7 @@ from .nusharednetworkresources_fetcher import NUSharedNetworkResourcesFetcher
 from .nusiteinfos_fetcher import NUSiteInfosFetcher
 from .nuspatsourcespools_fetcher import NUSPATSourcesPoolsFetcher
 from .nusshkeys_fetcher import NUSSHKeysFetcher
+from .nussidconnections_fetcher import NUSSIDConnectionsFetcher
 from .nustaticroutes_fetcher import NUStaticRoutesFetcher
 from .nustatistics_fetcher import NUStatisticsFetcher
 from .nustatisticspolicies_fetcher import NUStatisticsPoliciesFetcher
@@ -192,7 +195,6 @@ from .nusubnets_fetcher import NUSubnetsFetcher
 from .nusubnettemplates_fetcher import NUSubnetTemplatesFetcher
 from .nusystemconfigs_fetcher import NUSystemConfigsFetcher
 from .nutcas_fetcher import NUTCAsFetcher
-from .nutiers_fetcher import NUTiersFetcher
 from .nutrunks_fetcher import NUTrunksFetcher
 from .nuunderlays_fetcher import NUUnderlaysFetcher
 from .nuuplinkconnections_fetcher import NUUplinkConnectionsFetcher
@@ -211,6 +213,12 @@ from .nuvlantemplates_fetcher import NUVLANTemplatesFetcher
 from .nuvminterfaces_fetcher import NUVMInterfacesFetcher
 from .nuvmresyncs_fetcher import NUVMResyncsFetcher
 from .nuvms_fetcher import NUVMsFetcher
+from .nuvnfcatalogs_fetcher import NUVNFCatalogsFetcher
+from .nuvnfdescriptors_fetcher import NUVNFDescriptorsFetcher
+from .nuvnfinterfacedescriptors_fetcher import NUVNFInterfaceDescriptorsFetcher
+from .nuvnfinterfaces_fetcher import NUVNFInterfacesFetcher
+from .nuvnfmetadatas_fetcher import NUVNFMetadatasFetcher
+from .nuvnfs_fetcher import NUVNFsFetcher
 from .nuvpnconnections_fetcher import NUVPNConnectionsFetcher
 from .nuvportmirrors_fetcher import NUVPortMirrorsFetcher
 from .nuvports_fetcher import NUVPortsFetcher
@@ -224,6 +232,8 @@ from .nuvsds_fetcher import NUVSDsFetcher
 from .nuvsgredundantports_fetcher import NUVsgRedundantPortsFetcher
 from .nuvsps_fetcher import NUVSPsFetcher
 from .nuwanservices_fetcher import NUWANServicesFetcher
+from .nuwirelessports_fetcher import NUWirelessPortsFetcher
+from .nuwirelessporttemplates_fetcher import NUWirelessPortTemplatesFetcher
 from .nuzfbautoassignments_fetcher import NUZFBAutoAssignmentsFetcher
 from .nuzfbrequests_fetcher import NUZFBRequestsFetcher
 from .nuzones_fetcher import NUZonesFetcher

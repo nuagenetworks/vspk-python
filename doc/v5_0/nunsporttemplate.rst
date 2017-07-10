@@ -20,8 +20,6 @@ Attributes
 
 - ``description``: A description of the Port
 
-- ``network_acceleration_enabled``: Flag to enable/disable network throughput acceleration on this port. All port instantiated from this template will inherit this flag.If a particular port instance needs to have a different setting then overwrite the flag for that port instance.
-
 - ``physical_name`` (**Mandatory**): Identifier of the Port
 
 - ``infrastructure_profile_id``: The ID of the infrastructure profile this instance is associated with.

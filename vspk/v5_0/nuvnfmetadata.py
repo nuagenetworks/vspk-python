@@ -29,20 +29,20 @@
 from bambou import NURESTObject
 
 
-class NUNextHopAddress(NURESTObject):
-    """ Represents a NextHopAddress in the VSD
+class NUVNFMetadata(NURESTObject):
+    """ Represents a VNFMetadata in the VSD
 
         Notes:
             None
     """
 
-    __rest_name__ = "nexthopaddress"
-    __resource_name__ = "nexthopaddress"
+    __rest_name__ = "vnfmetadata"
+    __resource_name__ = "vnfmetadatas"
 
     
 
     def __init__(self, **kwargs):
-        """ Initializes a NextHopAddress instance
+        """ Initializes a VNFMetadata instance
 
             Notes:
                 You can specify all parameters while calling this methods.
@@ -50,21 +50,21 @@ class NUNextHopAddress(NURESTObject):
                 object from a Python dictionary
 
             Examples:
-                >>> nexthopaddress = NUNextHopAddress(id=u'xxxx-xxx-xxx-xxx', name=u'NextHopAddress')
-                >>> nexthopaddress = NUNextHopAddress(data=my_dict)
+                >>> vnfmetadata = NUVNFMetadata(id=u'xxxx-xxx-xxx-xxx', name=u'VNFMetadata')
+                >>> vnfmetadata = NUVNFMetadata(data=my_dict)
         """
 
-        super(NUNextHopAddress, self).__init__()
+        super(NUVNFMetadata, self).__init__()
 
         # Read/Write Attributes
         
-        self._address = None
-        self._route_distinguisher = None
-        self._type = None
+        self._name = None
+        self._description = None
+        self._blob = None
         
-        self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="blob", remote_name="blob", attribute_type=str, is_required=True, is_unique=False)
         
 
         self._compute_args(**kwargs)
@@ -72,76 +72,72 @@ class NUNextHopAddress(NURESTObject):
     # Properties
     
     @property
-    def address(self):
-        """ Get address value.
+    def name(self):
+        """ Get name value.
 
             Notes:
-                IP address for the next hop.
+                Name of the VNF Metadata  
 
                 
         """
-        return self._address
+        return self._name
 
-    @address.setter
-    def address(self, value):
-        """ Set address value.
+    @name.setter
+    def name(self, value):
+        """ Set name value.
 
             Notes:
-                IP address for the next hop.
+                Name of the VNF Metadata  
 
                 
         """
-        self._address = value
+        self._name = value
 
     
     @property
-    def route_distinguisher(self):
-        """ Get route_distinguisher value.
+    def description(self):
+        """ Get description value.
 
             Notes:
-                A unique route distinguisher associated with the nexthop. If one is not provided the system generated one automatically. 
+                Description of the VNF Metadata
 
-                
-                This attribute is named `routeDistinguisher` in VSD API.
                 
         """
-        return self._route_distinguisher
+        return self._description
 
-    @route_distinguisher.setter
-    def route_distinguisher(self, value):
-        """ Set route_distinguisher value.
+    @description.setter
+    def description(self, value):
+        """ Set description value.
 
             Notes:
-                A unique route distinguisher associated with the nexthop. If one is not provided the system generated one automatically. 
+                Description of the VNF Metadata
 
                 
-                This attribute is named `routeDistinguisher` in VSD API.
-                
         """
-        self._route_distinguisher = value
+        self._description = value
 
     
     @property
-    def type(self):
-        """ Get type value.
+    def blob(self):
+        """ Get blob value.
 
             Notes:
-                Next hop type: IP only supported for service chaining
+                The Metadata blob 
 
                 
         """
-        return self._type
+        return self._blob
 
-    @type.setter
-    def type(self, value):
-        """ Set type value.
+    @blob.setter
+    def blob(self, value):
+        """ Set blob value.
 
             Notes:
-                Next hop type: IP only supported for service chaining
+                The Metadata blob 
 
                 
         """
-        self._type = value
+        self._blob = value
 
     
 

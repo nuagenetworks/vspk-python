@@ -82,7 +82,7 @@ class NUBGPNeighbor(NURESTObject):
         self._associated_import_routing_policy_id = None
         self._external_id = None
         
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="dampening_enabled", remote_name="dampeningEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peer_as", remote_name="peerAS", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="peer_ip", remote_name="peerIP", attribute_type=str, is_required=False, is_unique=False)

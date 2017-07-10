@@ -48,6 +48,9 @@ from .fetchers import NUEgressACLEntryTemplatesFetcher
 from .fetchers import NUEgressACLTemplatesFetcher
 
 
+from .fetchers import NUEgressAdvFwdTemplatesFetcher
+
+
 from .fetchers import NUDomainFIPAclTemplatesFetcher
 
 
@@ -174,8 +177,6 @@ class NUDomain(NURESTObject):
     
     CONST_PAT_ENABLED_INHERITED = "INHERITED"
     
-    CONST_APPLICATION_DEPLOYMENT_POLICY_NONE = "NONE"
-    
     CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
     
     CONST_DHCP_BEHAVIOR_CONSUME = "CONSUME"
@@ -211,8 +212,6 @@ class NUDomain(NURESTObject):
     CONST_PERMITTED_ACTION_READ = "READ"
     
     CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
-    
-    CONST_APPLICATION_DEPLOYMENT_POLICY_ZONE = "ZONE"
     
     CONST_PERMITTED_ACTION_USE = "USE"
     
@@ -299,13 +298,13 @@ class NUDomain(NURESTObject):
         self._encryption = None
         self._underlay_enabled = None
         self._entity_scope = None
+        self._local_as = None
         self._policy_change_status = None
         self._domain_id = None
         self._domain_vlanid = None
         self._route_distinguisher = None
         self._route_target = None
         self._uplink_preference = None
-        self._application_deployment_policy = None
         self._associated_bgp_profile_id = None
         self._associated_multicast_channel_map_id = None
         self._associated_pat_mapper_id = None
@@ -344,13 +343,13 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="underlay_enabled", remote_name="underlayEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="local_as", remote_name="localAS", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'DISCARDED', u'STARTED'])
         self.expose_attribute(local_name="domain_id", remote_name="domainID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="domain_vlanid", remote_name="domainVLANID", attribute_type=int, is_required=False, is_unique=True)
         self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="route_target", remote_name="routeTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
-        self.expose_attribute(local_name="application_deployment_policy", remote_name="applicationDeploymentPolicy", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'ZONE'])
         self.expose_attribute(local_name="associated_bgp_profile_id", remote_name="associatedBGPProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_pat_mapper_id", remote_name="associatedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
@@ -384,6 +383,9 @@ class NUDomain(NURESTObject):
         
         
         self.egress_acl_templates = NUEgressACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.egress_adv_fwd_templates = NUEgressAdvFwdTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.domain_fip_acl_templates = NUDomainFIPAclTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -581,7 +583,7 @@ class NUDomain(NURESTObject):
         """ Get dhcp_behavior value.
 
             Notes:
-                DHCPBehaviorType is an enum that indicates DHCP Behavior of VRS having VM's under this domain. Possible values are FLOOD, CONSUME ,RELAY Possible values are CONSUME, FLOOD, RELAY, .
+                DHCPBehaviorType is an enum that indicates DHCP Behavior of VRS having VM's under this domain. Possible values are FLOOD, CONSUME, OVERLAY_RELAY, UNDERLAY_RELAY.
 
                 
                 This attribute is named `DHCPBehavior` in VSD API.
@@ -594,7 +596,7 @@ class NUDomain(NURESTObject):
         """ Set dhcp_behavior value.
 
             Notes:
-                DHCPBehaviorType is an enum that indicates DHCP Behavior of VRS having VM's under this domain. Possible values are FLOOD, CONSUME ,RELAY Possible values are CONSUME, FLOOD, RELAY, .
+                DHCPBehaviorType is an enum that indicates DHCP Behavior of VRS having VM's under this domain. Possible values are FLOOD, CONSUME, OVERLAY_RELAY, UNDERLAY_RELAY.
 
                 
                 This attribute is named `DHCPBehavior` in VSD API.
@@ -1240,6 +1242,33 @@ class NUDomain(NURESTObject):
 
     
     @property
+    def local_as(self):
+        """ Get local_as value.
+
+            Notes:
+                Local autonomous system for the domain
+
+                
+                This attribute is named `localAS` in VSD API.
+                
+        """
+        return self._local_as
+
+    @local_as.setter
+    def local_as(self, value):
+        """ Set local_as value.
+
+            Notes:
+                Local autonomous system for the domain
+
+                
+                This attribute is named `localAS` in VSD API.
+                
+        """
+        self._local_as = value
+
+    
+    @property
     def policy_change_status(self):
         """ Get policy_change_status value.
 
@@ -1399,33 +1428,6 @@ class NUDomain(NURESTObject):
                 
         """
         self._uplink_preference = value
-
-    
-    @property
-    def application_deployment_policy(self):
-        """ Get application_deployment_policy value.
-
-            Notes:
-                Application deployment policy.
-
-                
-                This attribute is named `applicationDeploymentPolicy` in VSD API.
-                
-        """
-        return self._application_deployment_policy
-
-    @application_deployment_policy.setter
-    def application_deployment_policy(self, value):
-        """ Set application_deployment_policy value.
-
-            Notes:
-                Application deployment policy.
-
-                
-                This attribute is named `applicationDeploymentPolicy` in VSD API.
-                
-        """
-        self._application_deployment_policy = value
 
     
     @property

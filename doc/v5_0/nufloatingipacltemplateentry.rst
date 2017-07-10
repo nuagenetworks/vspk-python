@@ -58,12 +58,6 @@ Attributes
 
 - ``protocol``: Protocol number that must be matched
 
-- ``associated_application_id``: The associated application ID
-
-- ``associated_application_object_id``: The associated application object ID
-
-- ``associated_application_object_type``: The associated application object type
-
 - ``associated_live_entity_id``: ID of the associated live entity
 
 - ``stateful``: True means that this ACL entry is stateful, so there will be a corresponding rule that will be created by OVS in the network. False means that there is no corresponding rule created by OVS in the network.

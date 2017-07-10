@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``name``: Name of the underlay
+- ``name`` (**Mandatory**): Name of the underlay
 
 - ``description``: Description of the underlay
 

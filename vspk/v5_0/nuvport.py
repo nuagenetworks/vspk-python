@@ -63,6 +63,9 @@ from .fetchers import NUVMsFetcher
 from .fetchers import NUVMInterfacesFetcher
 
 
+from .fetchers import NUVNFInterfacesFetcher
+
+
 from .fetchers import NUIngressACLEntryTemplatesFetcher
 
 
@@ -146,7 +149,7 @@ class NUVPort(NURESTObject):
     
     CONST_ADDRESS_SPOOFING_ENABLED = "ENABLED"
     
-    CONST_SYSTEM_TYPE_SOFTWARE = "SOFTWARE"
+    CONST_SUB_TYPE_VNF = "VNF"
     
     CONST_OPERATIONAL_STATE_DOWN = "DOWN"
     
@@ -166,9 +169,13 @@ class NUVPort(NURESTObject):
     
     CONST_TYPE_BRIDGE = "BRIDGE"
     
+    CONST_SUB_TYPE_NONE = "NONE"
+    
     CONST_MULTICAST_DISABLED = "DISABLED"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_SYSTEM_TYPE_SOFTWARE = "SOFTWARE"
     
     CONST_TRUNK_ROLE_PARENT_PORT = "PARENT_PORT"
     
@@ -216,8 +223,10 @@ class NUVPort(NURESTObject):
         self._trunk_role = None
         self._associated_floating_ip_id = None
         self._associated_multicast_channel_map_id = None
+        self._associated_ssid = None
         self._associated_send_multicast_channel_map_id = None
         self._associated_trunk_id = None
+        self._sub_type = None
         self._multi_nic_vport_id = None
         self._multicast = None
         self._external_id = None
@@ -241,8 +250,10 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="trunk_role", remote_name="trunkRole", attribute_type=str, is_required=False, is_unique=False, choices=[u'PARENT_PORT', u'SUB_PORT'])
         self.expose_attribute(local_name="associated_floating_ip_id", remote_name="associatedFloatingIPID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_ssid", remote_name="associatedSSID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_send_multicast_channel_map_id", remote_name="associatedSendMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_trunk_id", remote_name="associatedTrunkID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="sub_type", remote_name="subType", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'VNF'])
         self.expose_attribute(local_name="multi_nic_vport_id", remote_name="multiNICVPortID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -287,6 +298,9 @@ class NUVPort(NURESTObject):
         
         
         self.vm_interfaces = NUVMInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.vnf_interfaces = NUVNFInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ingress_acl_entry_templates = NUIngressACLEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -789,6 +803,33 @@ class NUVPort(NURESTObject):
 
     
     @property
+    def associated_ssid(self):
+        """ Get associated_ssid value.
+
+            Notes:
+                The UUID of the SSID Connection tied to this instance of a vPort.
+
+                
+                This attribute is named `associatedSSID` in VSD API.
+                
+        """
+        return self._associated_ssid
+
+    @associated_ssid.setter
+    def associated_ssid(self, value):
+        """ Set associated_ssid value.
+
+            Notes:
+                The UUID of the SSID Connection tied to this instance of a vPort.
+
+                
+                This attribute is named `associatedSSID` in VSD API.
+                
+        """
+        self._associated_ssid = value
+
+    
+    @property
     def associated_send_multicast_channel_map_id(self):
         """ Get associated_send_multicast_channel_map_id value.
 
@@ -840,6 +881,33 @@ class NUVPort(NURESTObject):
                 
         """
         self._associated_trunk_id = value
+
+    
+    @property
+    def sub_type(self):
+        """ Get sub_type value.
+
+            Notes:
+                Sub type of vport - possible values are NONE/VNF
+
+                
+                This attribute is named `subType` in VSD API.
+                
+        """
+        return self._sub_type
+
+    @sub_type.setter
+    def sub_type(self, value):
+        """ Set sub_type value.
+
+            Notes:
+                Sub type of vport - possible values are NONE/VNF
+
+                
+                This attribute is named `subType` in VSD API.
+                
+        """
+        self._sub_type = value
 
     
     @property

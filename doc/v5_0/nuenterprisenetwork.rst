@@ -49,7 +49,7 @@ Parents
 --------
 
 
-- :ref:`nunetworkmacrogroup.NUNetworkMacroGroup<nunetworkmacrogroup>`
-
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
+- :ref:`nunetworkmacrogroup.NUNetworkMacroGroup<nunetworkmacrogroup>`
 

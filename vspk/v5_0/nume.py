@@ -138,6 +138,12 @@ from .fetchers import NUCloudMgmtSystemsFetcher
 from .fetchers import NUUnderlaysFetcher
 
 
+from .fetchers import NUVNFCatalogsFetcher
+
+
+from .fetchers import NUVNFMetadatasFetcher
+
+
 from .fetchers import NUInfrastructureAccessProfilesFetcher
 
 
@@ -187,9 +193,6 @@ from .fetchers import NURoutingPoliciesFetcher
 
 
 from .fetchers import NUUplinkRDsFetcher
-
-
-from .fetchers import NUApplicationServicesFetcher
 
 
 from .fetchers import NUVCenterVRSConfigsFetcher
@@ -431,6 +434,12 @@ class NUMe(NURESTRootObject):
         self.underlays = NUUnderlaysFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.vnf_catalogs = NUVNFCatalogsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.vnf_metadatas = NUVNFMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.infrastructure_access_profiles = NUInfrastructureAccessProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -480,9 +489,6 @@ class NUMe(NURESTRootObject):
         
         
         self.uplink_rds = NUUplinkRDsFetcher.fetcher_with_object(parent_object=self, relationship="root")
-        
-        
-        self.application_services = NUApplicationServicesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.vcenter_vrs_configs = NUVCenterVRSConfigsFetcher.fetcher_with_object(parent_object=self, relationship="root")

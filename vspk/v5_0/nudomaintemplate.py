@@ -39,6 +39,9 @@ from .fetchers import NUMetadatasFetcher
 from .fetchers import NUEgressACLTemplatesFetcher
 
 
+from .fetchers import NUEgressAdvFwdTemplatesFetcher
+
+
 from .fetchers import NUDomainFIPAclTemplatesFetcher
 
 
@@ -179,6 +182,9 @@ class NUDomainTemplate(NURESTObject):
         
         
         self.egress_acl_templates = NUEgressACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.egress_adv_fwd_templates = NUEgressAdvFwdTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.domain_fip_acl_templates = NUDomainFIPAclTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")

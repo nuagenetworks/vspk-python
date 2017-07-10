@@ -60,8 +60,6 @@ Parents
 
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
 
-- :ref:`nul2domain.NUL2Domain<nul2domain>`
-
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
 
 - :ref:`nume.NUMe<nume>`

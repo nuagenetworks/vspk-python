@@ -58,12 +58,6 @@ Attributes
 
 - ``protocol``: Protocol number that must be matched
 
-- ``associated_application_id``: The associated application ID
-
-- ``associated_application_object_id``: The associated application object ID
-
-- ``associated_application_object_type``: The associated application object type Refer to API section for supported types.
-
 - ``associated_live_entity_id``: In the draft mode, the ACL entry refers to this LiveEntity. In non-drafted mode, this is null.
 
 - ``stateful``: True means that this ACL entry is stateful, so there will be a corresponding rule that will be created by OVS in the network. False means that there is no corresponding rule created by OVS in the network.
@@ -73,6 +67,8 @@ Attributes
 - ``stats_logging_enabled``: Is stats logging enabled for this particular template
 
 - ``ether_type`` (**Mandatory**): Ether type of the packet to be matched. etherType can be * or a valid hexadecimal value
+
+- ``overlay_mirror_destination_id``: ID of the overlay mirror destination
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

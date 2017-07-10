@@ -38,6 +38,10 @@ Attributes
 
 - ``zfb_scheduler_stale_request_timeout``: Time for the ZFB scheduler to wait in seconds before deleting a stale request
 
+- ``pgid_lower_limit``: Lower limit for the policy group id.
+
+- ``pgid_upper_limit``: Upper limit for the policy group id.
+
 - ``dhcp_option_size``: Defines total DHCP options that can be set on a domain.
 
 - ``vlanid_lower_limit``: None
@@ -55,6 +59,8 @@ Attributes
 - ``vm_unreachable_cleanup_time``: Timers in sec for unreachable VMs for cleanup.
 
 - ``vm_unreachable_time``: Timers in sec for unreachable VMs.
+
+- ``vnf_task_timeout``: Timeout for VNF task for nsg agent
 
 - ``vnid_lower_limit``: Virtual network ID offset
 
@@ -260,7 +266,7 @@ Attributes
 
 - ``sysmon_cleanup_task_interval``: Sysmon cleanup task run interval in seconds.
 
-- ``sysmon_node_presence_timeout``: Node presence timeout in seconds if no messages.
+- ``sysmon_node_presence_timeout``: Time interval in seconds at which sysmon messages are reported by controller.
 
 - ``sysmon_probe_response_timeout``: Probe response timeout in seconds.
 

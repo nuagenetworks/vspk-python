@@ -16,7 +16,7 @@ Attributes
 
 - ``dpi``: determines whether or not Deep packet inspection is enabled
 
-- ``ip_type``: IPv4 or IPv6
+- ``ip_type``: IPv4 or DUALSTACK
 
 - ``ipv6_address``: IPV6 address of the route - Optional
 
@@ -65,6 +65,7 @@ Children
 :ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`                                                                                              ``egress_acl_templates`` 
+:ref:`nuegressadvfwdtemplate.NUEgressAdvFwdTemplate<nuegressadvfwdtemplate>`                                                                                     ``egress_adv_fwd_templates`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`                                                                                           ``ingress_acl_templates`` 
 :ref:`nuingressadvfwdtemplate.NUIngressAdvFwdTemplate<nuingressadvfwdtemplate>`                                                                                  ``ingress_adv_fwd_templates`` 
@@ -74,6 +75,7 @@ Children
 :ref:`nuqos.NUQOS<nuqos>`                                                                                                                                        ``qoss`` 
 :ref:`nugroup.NUGroup<nugroup>`                                                                                                                                  ``groups`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
+:ref:`nuoverlaymirrordestinationtemplate.NUOverlayMirrorDestinationTemplate<nuoverlaymirrordestinationtemplate>`                                                 ``overlay_mirror_destination_templates`` 
 ================================================================================================================================================               ==========================================================================================
 
 

@@ -26,7 +26,7 @@ Attributes
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
-- ``type`` (**Mandatory**): DHCP option type. Type should be a hexadecimal value(ie. Hex value 0x06 would be passed as '06')
+- ``type``: DHCP option type. Type should be a hexadecimal value(ie. Hex value 0x06 would be passed as '06')
 
 
 

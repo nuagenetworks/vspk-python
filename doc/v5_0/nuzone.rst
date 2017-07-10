@@ -38,12 +38,6 @@ Attributes
 
 - ``policy_group_id``: PG ID for the subnet. This is unique per domain and will be in the range 1-4095
 
-- ``associated_application_id``: The associated application ID.
-
-- ``associated_application_object_id``: The associated application object ID.
-
-- ``associated_application_object_type``: The associated application object type. Refer to API section for supported types.
-
 - ``associated_multicast_channel_map_id``: The ID of the Multi Cast Channel Map  this zone/zone template is associated with. This has to be set when  enableMultiCast is set to ENABLED
 
 - ``public_zone``: If a zone is marked as public, then it is lined to the public network associated with this data center

@@ -142,7 +142,6 @@ class NUNSPort(NURESTObject):
         self._template_id = None
         self._permitted_action = None
         self._description = None
-        self._network_acceleration_enabled = None
         self._physical_name = None
         self._entity_scope = None
         self._port_type = None
@@ -162,13 +161,12 @@ class NUNSPort(NURESTObject):
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="network_acceleration_enabled", remote_name="networkAccelerationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'NETWORK'])
         self.expose_attribute(local_name="speed", remote_name="speed", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTONEGOTIATE', u'BASE10', u'BASET1000', u'BASETX100', u'BASEX10G'])
         self.expose_attribute(local_name="use_user_mnemonic", remote_name="useUserMnemonic", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_redundant_port_id", remote_name="associatedRedundantPortID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'INITIALIZED', u'MISMATCH', u'ORPHAN', u'READY'])
@@ -392,33 +390,6 @@ class NUNSPort(NURESTObject):
                 
         """
         self._description = value
-
-    
-    @property
-    def network_acceleration_enabled(self):
-        """ Get network_acceleration_enabled value.
-
-            Notes:
-                Flag to enable/disable network throughput acceleration on this port. If this flag is not set then the setting of the port's template will be taken into account.
-
-                
-                This attribute is named `networkAccelerationEnabled` in VSD API.
-                
-        """
-        return self._network_acceleration_enabled
-
-    @network_acceleration_enabled.setter
-    def network_acceleration_enabled(self, value):
-        """ Set network_acceleration_enabled value.
-
-            Notes:
-                Flag to enable/disable network throughput acceleration on this port. If this flag is not set then the setting of the port's template will be taken into account.
-
-                
-                This attribute is named `networkAccelerationEnabled` in VSD API.
-                
-        """
-        self._network_acceleration_enabled = value
 
     
     @property

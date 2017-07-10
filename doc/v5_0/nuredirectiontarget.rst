@@ -18,7 +18,7 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``redundancy_enabled`` (**Mandatory**): Allow/Disallow redundant appliances and VIP
+- ``redundancy_enabled``: Allow/Disallow redundant appliances and VIP
 
 - ``template_id``: Template to which this redirection target belongs to
 

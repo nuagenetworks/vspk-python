@@ -68,6 +68,8 @@ Parents
 
 - :ref:`numulticastchannelmap.NUMultiCastChannelMap<numulticastchannelmap>`
 
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nutca.NUTCA<nutca>`
@@ -80,7 +82,7 @@ Parents
 
 - :ref:`nuexternalservice.NUExternalService<nuexternalservice>`
 
-- :ref:`nuikegatewayprofile.NUIKEGatewayProfile<nuikegatewayprofile>`
+- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
 
 - :ref:`nuikesubnet.NUIKESubnet<nuikesubnet>`
 
@@ -126,11 +128,11 @@ Parents
 
 - :ref:`nubootstrapactivation.NUBootstrapActivation<nubootstrapactivation>`
 
-- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
+- :ref:`nucloudmgmtsystem.NUCloudMgmtSystem<nucloudmgmtsystem>`
 
 - :ref:`nuvsp.NUVSP<nuvsp>`
 
-- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuredundantport.NURedundantPort<nuredundantport>`
 
@@ -168,8 +170,6 @@ Parents
 
 - :ref:`nuhsc.NUHSC<nuhsc>`
 
-- :ref:`nuvlan.NUVLAN<nuvlan>`
-
 - :ref:`nuldapconfiguration.NULDAPConfiguration<nuldapconfiguration>`
 
 - :ref:`nuvsdcomponent.NUVSDComponent<nuvsdcomponent>`
@@ -192,17 +192,15 @@ Parents
 
 - :ref:`nunetworklayout.NUNetworkLayout<nunetworklayout>`
 
-- :ref:`nucertificate.NUCertificate<nucertificate>`
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nulicense.NULicense<nulicense>`
 
 - :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
 
-- :ref:`nufloatingipacltemplateentry.NUFloatingIPACLTemplateEntry<nufloatingipacltemplateentry>`
-
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
-- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
+- :ref:`nuinfrastructureconfig.NUInfrastructureConfig<nuinfrastructureconfig>`
 
 - :ref:`numulticastrange.NUMultiCastRange<numulticastrange>`
 
@@ -210,15 +208,15 @@ Parents
 
 - :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`
 
-- :ref:`numulticastlist.NUMultiCastList<numulticastlist>`
-
 - :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
+
+- :ref:`numulticastlist.NUMultiCastList<numulticastlist>`
 
 - :ref:`nunexthop.NUNextHop<nunexthop>`
 
 - :ref:`nukeyservernotification.NUKeyServerNotification<nukeyservernotification>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
 
 - :ref:`nunatmapentry.NUNATMapEntry<nunatmapentry>`
 
@@ -236,7 +234,7 @@ Parents
 
 - :ref:`nunsporttemplate.NUNSPortTemplate<nunsporttemplate>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
+- :ref:`nucertificate.NUCertificate<nucertificate>`
 
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
 
@@ -265,6 +263,8 @@ Parents
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
 
 - :ref:`nusiteinfo.NUSiteInfo<nusiteinfo>`
+
+- :ref:`nuexternalappservice.NUExternalAppService<nuexternalappservice>`
 
 - :ref:`nulink.NULink<nulink>`
 
@@ -304,7 +304,7 @@ Parents
 
 - :ref:`nuvm.NUVM<nuvm>`
 
-- :ref:`nucloudmgmtsystem.NUCloudMgmtSystem<nucloudmgmtsystem>`
+- :ref:`nufloatingipacltemplateentry.NUFloatingIPACLTemplateEntry<nufloatingipacltemplateentry>`
 
 - :ref:`nuvmresync.NUVMResync<nuvmresync>`
 
@@ -332,13 +332,13 @@ Parents
 
 - :ref:`nuallalarm.NUAllAlarm<nuallalarm>`
 
-- :ref:`nuikepsk.NUIKEPSK<nuikepsk>`
+- :ref:`nuvlan.NUVLAN<nuvlan>`
 
 - :ref:`nuikeencryptionprofile.NUIKEEncryptionprofile<nuikeencryptionprofile>`
 
 - :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
-- :ref:`nuinfrastructureconfig.NUInfrastructureConfig<nuinfrastructureconfig>`
+- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 
 - :ref:`nuuser.NUUser<nuuser>`
 
@@ -348,7 +348,7 @@ Parents
 
 - :ref:`nuenterprisesecureddata.NUEnterpriseSecuredData<nuenterprisesecureddata>`
 
-- :ref:`nuexternalappservice.NUExternalAppService<nuexternalappservice>`
+- :ref:`nuikegatewayprofile.NUIKEGatewayProfile<nuikegatewayprofile>`
 
 - :ref:`nualarm.NUAlarm<nualarm>`
 
@@ -362,7 +362,7 @@ Parents
 
 - :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nuikepsk.NUIKEPSK<nuikepsk>`
 
 - :ref:`nuikecertificate.NUIKECertificate<nuikecertificate>`
 

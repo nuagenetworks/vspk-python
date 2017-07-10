@@ -104,6 +104,7 @@ class NUEnterpriseProfile(NURESTObject):
         
         self._bgp_enabled = None
         self._dhcp_lease_interval = None
+        self._vnf_management_enabled = None
         self._name = None
         self._last_updated_by = None
         self._receive_multi_cast_list_id = None
@@ -121,6 +122,7 @@ class NUEnterpriseProfile(NURESTObject):
         
         self.expose_attribute(local_name="bgp_enabled", remote_name="BGPEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_lease_interval", remote_name="DHCPLeaseInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vnf_management_enabled", remote_name="VNFManagementEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="receive_multi_cast_list_id", remote_name="receiveMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
@@ -211,6 +213,33 @@ class NUEnterpriseProfile(NURESTObject):
                 
         """
         self._dhcp_lease_interval = value
+
+    
+    @property
+    def vnf_management_enabled(self):
+        """ Get vnf_management_enabled value.
+
+            Notes:
+                Enable VNF Management for this enterprise
+
+                
+                This attribute is named `VNFManagementEnabled` in VSD API.
+                
+        """
+        return self._vnf_management_enabled
+
+    @vnf_management_enabled.setter
+    def vnf_management_enabled(self, value):
+        """ Set vnf_management_enabled value.
+
+            Notes:
+                Enable VNF Management for this enterprise
+
+                
+                This attribute is named `VNFManagementEnabled` in VSD API.
+                
+        """
+        self._vnf_management_enabled = value
 
     
     @property

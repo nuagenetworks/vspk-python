@@ -20,6 +20,8 @@ Attributes
 
 - ``tcp_maximum_segment_size``: Maximum Segment Size for TCP(min = 576, max = 7812).
 
+- ``bios_version``: NSG BIOS Version
+
 - ``sku``: The part number of the NSG
 
 - ``tpm_status``: TPM Status of the NSG based on the information received by the device during bootstrapping or upgrade.
@@ -58,6 +60,8 @@ Attributes
 
 - ``description``: A description of the Gateway
 
+- ``network_acceleration``: Network Acceleration type to be used when network acceleration is enabled
+
 - ``libraries``: Transient representation of the same property on NSGInfo.
 
 - ``inherited_ssh_service_state``: Indicates the SSH Service state which is configured on the associated template instance.
@@ -79,6 +83,8 @@ Attributes
 - ``operation_mode``: Operation mode of NSGateway
 
 - ``operation_status``: Operation Status of NSGateway
+
+- ``product_name``: NSG Product Name
 
 - ``associated_gateway_security_id``: Readonly Id of the associated gateway security object
 
@@ -105,6 +111,7 @@ Children
 :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`                                                                                                                   ``patnat_pools`` 
 :ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuwirelessport.NUWirelessPort<nuwirelessport>`                                                                                                             ``wireless_ports`` 
 :ref:`nualarm.NUAlarm<nualarm>`                                                                                                                                  ``alarms`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuinfrastructureconfig.NUInfrastructureConfig<nuinfrastructureconfig>`                                                                                     ``infrastructure_configs`` 
@@ -127,13 +134,15 @@ Parents
 --------
 
 
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
 - :ref:`nuducgroup.NUDUCGroup<nuducgroup>`
+
+- :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
 
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nunsggroup.NUNSGGroup<nunsggroup>`
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
-
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

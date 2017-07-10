@@ -16,7 +16,7 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``route_distinguisher`` (**Mandatory**): The next-hop's route distinguisher. A unique 8 byte long. If not provided one will be generated.
+- ``route_distinguisher``: The next-hop's route distinguisher. A unique 8 byte long. If not provided one will be generated.
 
 - ``ip``: This is the /32 or /128 next-hop IP address. Currently we support only IPv4 address family.
 
@@ -35,4 +35,11 @@ Children
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 ================================================================================================================================================               ==========================================================================================
 
+
+
+Parents
+--------
+
+
+- :ref:`nulink.NULink<nulink>`
 

@@ -46,9 +46,13 @@ Attributes
 
 - ``associated_multicast_channel_map_id``: The ID of the receive Multicast Channel Map this Vport is associated with. This has to be set when enableMultiCast is set to ENABLED
 
+- ``associated_ssid``: The UUID of the SSID Connection tied to this instance of a vPort.
+
 - ``associated_send_multicast_channel_map_id``: The ID of the send Multicast Channel Map this Vport is associated with. This has to be set when enableMultiCast is set to ENABLED
 
 - ``associated_trunk_id``: The trunk uuid associated with another vport of trunkRole PARENT_PORT. Can be specified only if trunkRole of this vport is SUB_PORT.
+
+- ``sub_type``: Sub type of vport - possible values are NONE/VNF
 
 - ``multi_nic_vport_id``: ID of the Multi NIC VPort associated with the VPort
 
@@ -81,6 +85,7 @@ Children
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuvm.NUVM<nuvm>`                                                                                                                                           ``vms`` 
 :ref:`nuvminterface.NUVMInterface<nuvminterface>`                                                                                                                ``vm_interfaces`` 
+:ref:`nuvnfinterface.NUVNFInterface<nuvnfinterface>`                                                                                                             ``vnf_interfaces`` 
 :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`                                                                            ``ingress_acl_entry_templates`` 
 :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`                                                                   ``ingress_adv_fwd_entry_templates`` 
 :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`                                                                                                                ``policy_groups`` 
@@ -115,15 +120,13 @@ Parents
 
 - :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 
+- :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
+
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
 - :ref:`nutrunk.NUTrunk<nutrunk>`
 
-- :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
-
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
-
-- :ref:`nutier.NUTier<nutier>`
 

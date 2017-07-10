@@ -28,11 +28,11 @@
 from bambou import NURESTFetcher
 
 
-class NUFlowForwardingPoliciesFetcher(NURESTFetcher):
-    """ Represents a NUFlowForwardingPolicies fetcher
+class NUVNFsFetcher(NURESTFetcher):
+    """ Represents a NUVNFs fetcher
 
         Notes:
-            This fetcher enables to fetch NUFlowForwardingPolicy objects.
+            This fetcher enables to fetch NUVNF objects.
 
         See:
             bambou.NURESTFetcher
@@ -40,13 +40,13 @@ class NUFlowForwardingPoliciesFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUFlowForwardingPolicy class that is managed.
+        """ Return NUVNF class that is managed.
 
             Returns:
-                .NUFlowForwardingPolicy: the managed class
+                .NUVNF: the managed class
         """
 
-        from .. import NUFlowForwardingPolicy
-        return NUFlowForwardingPolicy
+        from .. import NUVNF
+        return NUVNF
 
     

@@ -87,5 +87,3 @@ Parents
 
 - :ref:`nume.NUMe<nume>`
 
-- :ref:`nutier.NUTier<nutier>`
-

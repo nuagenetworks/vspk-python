@@ -18,7 +18,7 @@ Attributes
 
 - ``dpi``: determines whether or not Deep packet inspection is enabled
 
-- ``ip_type``: IPv4 or IPv6
+- ``ip_type``: IPv4 or DUALSTACK
 
 - ``ipv6_address``: IP address of the subnet defined. In case of zone, this is an optional field for and allows users to allocate an IP address range to a zone. The VSD will auto-assign IP addresses to subnets from this range if a specific IP address is not defined for the subnet
 
@@ -69,12 +69,6 @@ Attributes
 - ``proxy_arp``:  when set VRS will act as  ARP Proxy
 
 - ``use_global_mac``: if this flag is enabled, the system configured globalMACAddress will be used as the gateway mac address
-
-- ``associated_application_id``: The associated application ID.
-
-- ``associated_application_object_id``: The associated application object ID.
-
-- ``associated_application_object_type``: The associated application object type. Refer to API section for supported types.
 
 - ``associated_multicast_channel_map_id``: The ID of the Multi Cast Channel Map  this Subnet/Subnet Template is associated with. This has to be set when enableMultiCast is set to ENABLED
 

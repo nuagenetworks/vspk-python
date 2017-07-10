@@ -152,6 +152,8 @@ class NUSystemConfig(NURESTObject):
         self._zfb_bootstrap_enabled = None
         self._zfb_request_retry_timer = None
         self._zfb_scheduler_stale_request_timeout = None
+        self._pgid_lower_limit = None
+        self._pgid_upper_limit = None
         self._dhcp_option_size = None
         self._vlanid_lower_limit = None
         self._vlanid_upper_limit = None
@@ -161,6 +163,7 @@ class NUSystemConfig(NURESTObject):
         self._vm_resync_outstanding_interval = None
         self._vm_unreachable_cleanup_time = None
         self._vm_unreachable_time = None
+        self._vnf_task_timeout = None
         self._vnid_lower_limit = None
         self._vnid_public_network_lower_limit = None
         self._vnid_public_network_upper_limit = None
@@ -281,6 +284,8 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="zfb_bootstrap_enabled", remote_name="ZFBBootstrapEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zfb_request_retry_timer", remote_name="ZFBRequestRetryTimer", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zfb_scheduler_stale_request_timeout", remote_name="ZFBSchedulerStaleRequestTimeout", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="pgid_lower_limit", remote_name="PGIDLowerLimit", attribute_type=dict, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="pgid_upper_limit", remote_name="PGIDUpperLimit", attribute_type=dict, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_option_size", remote_name="DHCPOptionSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vlanid_lower_limit", remote_name="VLANIDLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vlanid_upper_limit", remote_name="VLANIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
@@ -290,6 +295,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="vm_resync_outstanding_interval", remote_name="VMResyncOutstandingInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vm_unreachable_cleanup_time", remote_name="VMUnreachableCleanupTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vm_unreachable_time", remote_name="VMUnreachableTime", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vnf_task_timeout", remote_name="VNFTaskTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vnid_lower_limit", remote_name="VNIDLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vnid_public_network_lower_limit", remote_name="VNIDPublicNetworkLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vnid_public_network_upper_limit", remote_name="VNIDPublicNetworkUpperLimit", attribute_type=int, is_required=False, is_unique=False)
@@ -763,6 +769,60 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def pgid_lower_limit(self):
+        """ Get pgid_lower_limit value.
+
+            Notes:
+                Lower limit for the policy group id.
+
+                
+                This attribute is named `PGIDLowerLimit` in VSD API.
+                
+        """
+        return self._pgid_lower_limit
+
+    @pgid_lower_limit.setter
+    def pgid_lower_limit(self, value):
+        """ Set pgid_lower_limit value.
+
+            Notes:
+                Lower limit for the policy group id.
+
+                
+                This attribute is named `PGIDLowerLimit` in VSD API.
+                
+        """
+        self._pgid_lower_limit = value
+
+    
+    @property
+    def pgid_upper_limit(self):
+        """ Get pgid_upper_limit value.
+
+            Notes:
+                Upper limit for the policy group id.
+
+                
+                This attribute is named `PGIDUpperLimit` in VSD API.
+                
+        """
+        return self._pgid_upper_limit
+
+    @pgid_upper_limit.setter
+    def pgid_upper_limit(self, value):
+        """ Set pgid_upper_limit value.
+
+            Notes:
+                Upper limit for the policy group id.
+
+                
+                This attribute is named `PGIDUpperLimit` in VSD API.
+                
+        """
+        self._pgid_upper_limit = value
+
+    
+    @property
     def dhcp_option_size(self):
         """ Get dhcp_option_size value.
 
@@ -1003,6 +1063,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._vm_unreachable_time = value
+
+    
+    @property
+    def vnf_task_timeout(self):
+        """ Get vnf_task_timeout value.
+
+            Notes:
+                Timeout for VNF task for nsg agent
+
+                
+                This attribute is named `VNFTaskTimeout` in VSD API.
+                
+        """
+        return self._vnf_task_timeout
+
+    @vnf_task_timeout.setter
+    def vnf_task_timeout(self, value):
+        """ Set vnf_task_timeout value.
+
+            Notes:
+                Timeout for VNF task for nsg agent
+
+                
+                This attribute is named `VNFTaskTimeout` in VSD API.
+                
+        """
+        self._vnf_task_timeout = value
 
     
     @property
@@ -3764,7 +3851,7 @@ class NUSystemConfig(NURESTObject):
         """ Get sysmon_node_presence_timeout value.
 
             Notes:
-                Node presence timeout in seconds if no messages.
+                Time interval in seconds at which sysmon messages are reported by controller.
 
                 
                 This attribute is named `sysmonNodePresenceTimeout` in VSD API.
@@ -3777,7 +3864,7 @@ class NUSystemConfig(NURESTObject):
         """ Set sysmon_node_presence_timeout value.
 
             Notes:
-                Node presence timeout in seconds if no messages.
+                Time interval in seconds at which sysmon messages are reported by controller.
 
                 
                 This attribute is named `sysmonNodePresenceTimeout` in VSD API.

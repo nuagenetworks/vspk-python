@@ -33,10 +33,13 @@ from .fetchers import NUDemarcationServicesFetcher
 from .fetchers import NUMetadatasFetcher
 
 
-from .fetchers import NUNextHopAddressFetcher
+from .fetchers import NUNextHopsFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
+
+
+from .fetchers import NUPolicyStatementsFetcher
 
 
 from .fetchers import NUCSNATPoolsFetcher
@@ -138,10 +141,13 @@ class NULink(NURESTObject):
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.next_hop_address = NUNextHopAddressFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.next_hops = NUNextHopsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.policy_statements = NUPolicyStatementsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.csnat_pools = NUCSNATPoolsFetcher.fetcher_with_object(parent_object=self, relationship="child")

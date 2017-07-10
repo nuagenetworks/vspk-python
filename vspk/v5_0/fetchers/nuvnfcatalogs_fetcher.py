@@ -28,11 +28,11 @@
 from bambou import NURESTFetcher
 
 
-class NUApplicationServicesFetcher(NURESTFetcher):
-    """ Represents a NUApplicationServices fetcher
+class NUVNFCatalogsFetcher(NURESTFetcher):
+    """ Represents a NUVNFCatalogs fetcher
 
         Notes:
-            This fetcher enables to fetch NUApplicationService objects.
+            This fetcher enables to fetch NUVNFCatalog objects.
 
         See:
             bambou.NURESTFetcher
@@ -40,13 +40,13 @@ class NUApplicationServicesFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUApplicationService class that is managed.
+        """ Return NUVNFCatalog class that is managed.
 
             Returns:
-                .NUApplicationService: the managed class
+                .NUVNFCatalog: the managed class
         """
 
-        from .. import NUApplicationService
-        return NUApplicationService
+        from .. import NUVNFCatalog
+        return NUVNFCatalog
 
     

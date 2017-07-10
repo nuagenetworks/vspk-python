@@ -39,6 +39,9 @@ from .fetchers import NUPermissionsFetcher
 from .fetchers import NUMetadatasFetcher
 
 
+from .fetchers import NUWirelessPortsFetcher
+
+
 from .fetchers import NUAlarmsFetcher
 
 
@@ -96,6 +99,8 @@ class NUNSGateway(NURESTObject):
     
     ## Constants
     
+    CONST_NETWORK_ACCELERATION_NONE = "NONE"
+    
     CONST_FAMILY_NSG_E = "NSG_E"
     
     CONST_INHERITED_SSH_SERVICE_STATE_ENABLED = "ENABLED"
@@ -114,7 +119,7 @@ class NUNSGateway(NURESTObject):
     
     CONST_BOOTSTRAP_STATUS_ACTIVE = "ACTIVE"
     
-    CONST_CONFIGURATION_RELOAD_STATE_PENDING = "PENDING"
+    CONST_NETWORK_ACCELERATION_NORMAL = "NORMAL"
     
     CONST_SSH_SERVICE_DISABLED = "DISABLED"
     
@@ -134,11 +139,13 @@ class NUNSGateway(NURESTObject):
     
     CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
     
-    CONST_CONFIGURATION_RELOAD_STATE_UNKNOWN = "UNKNOWN"
+    CONST_CONFIGURATION_RELOAD_STATE_PENDING = "PENDING"
     
     CONST_PERSONALITY_DC7X50 = "DC7X50"
     
     CONST_BOOTSTRAP_STATUS_CERTIFICATE_SIGNED = "CERTIFICATE_SIGNED"
+    
+    CONST_NETWORK_ACCELERATION_OPTIMAL = "OPTIMAL"
     
     CONST_DERIVED_SSH_SERVICE_STATE_INSTANCE_ENABLED = "INSTANCE_ENABLED"
     
@@ -150,7 +157,11 @@ class NUNSGateway(NURESTObject):
     
     CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
     
+    CONST_CONFIGURATION_RELOAD_STATE_UNKNOWN = "UNKNOWN"
+    
     CONST_PERSONALITY_VSA = "VSA"
+    
+    CONST_NETWORK_ACCELERATION_PERFORMANCE = "PERFORMANCE"
     
     CONST_PERSONALITY_VSG = "VSG"
     
@@ -213,6 +224,7 @@ class NUNSGateway(NURESTObject):
         self._nat_traversal_enabled = None
         self._tcpmss_enabled = None
         self._tcp_maximum_segment_size = None
+        self._bios_version = None
         self._sku = None
         self._tpm_status = None
         self._cpu_type = None
@@ -232,6 +244,7 @@ class NUNSGateway(NURESTObject):
         self._permitted_action = None
         self._personality = None
         self._description = None
+        self._network_acceleration = None
         self._libraries = None
         self._inherited_ssh_service_state = None
         self._enterprise_id = None
@@ -243,6 +256,7 @@ class NUNSGateway(NURESTObject):
         self._bootstrap_status = None
         self._operation_mode = None
         self._operation_status = None
+        self._product_name = None
         self._associated_gateway_security_id = None
         self._associated_gateway_security_profile_id = None
         self._associated_nsg_info_id = None
@@ -254,6 +268,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="nat_traversal_enabled", remote_name="NATTraversalEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tcpmss_enabled", remote_name="TCPMSSEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tcp_maximum_segment_size", remote_name="TCPMaximumSegmentSize", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="bios_version", remote_name="BIOSVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sku", remote_name="SKU", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tpm_status", remote_name="TPMStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED_NOT_OPERATIONAL', u'ENABLED_OPERATIONAL', u'UNKNOWN'])
         self.expose_attribute(local_name="cpu_type", remote_name="CPUType", attribute_type=str, is_required=False, is_unique=False)
@@ -273,6 +288,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'NSGBR', u'NSGDUC', u'OTHER', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="network_acceleration", remote_name="networkAcceleration", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'NORMAL', u'OPTIMAL', u'PERFORMANCE'])
         self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="inherited_ssh_service_state", remote_name="inheritedSSHServiceState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
@@ -284,6 +300,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT'])
         self.expose_attribute(local_name="operation_mode", remote_name="operationMode", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="operation_status", remote_name="operationStatus", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="product_name", remote_name="productName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_security_id", remote_name="associatedGatewaySecurityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_security_profile_id", remote_name="associatedGatewaySecurityProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_nsg_info_id", remote_name="associatedNSGInfoID", attribute_type=str, is_required=False, is_unique=False)
@@ -305,6 +322,9 @@ class NUNSGateway(NURESTObject):
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.wireless_ports = NUWirelessPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -459,6 +479,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._tcp_maximum_segment_size = value
+
+    
+    @property
+    def bios_version(self):
+        """ Get bios_version value.
+
+            Notes:
+                NSG BIOS Version
+
+                
+                This attribute is named `BIOSVersion` in VSD API.
+                
+        """
+        return self._bios_version
+
+    @bios_version.setter
+    def bios_version(self, value):
+        """ Set bios_version value.
+
+            Notes:
+                NSG BIOS Version
+
+                
+                This attribute is named `BIOSVersion` in VSD API.
+                
+        """
+        self._bios_version = value
 
     
     @property
@@ -955,6 +1002,33 @@ class NUNSGateway(NURESTObject):
 
     
     @property
+    def network_acceleration(self):
+        """ Get network_acceleration value.
+
+            Notes:
+                Network Acceleration type to be used when network acceleration is enabled
+
+                
+                This attribute is named `networkAcceleration` in VSD API.
+                
+        """
+        return self._network_acceleration
+
+    @network_acceleration.setter
+    def network_acceleration(self, value):
+        """ Set network_acceleration value.
+
+            Notes:
+                Network Acceleration type to be used when network acceleration is enabled
+
+                
+                This attribute is named `networkAcceleration` in VSD API.
+                
+        """
+        self._network_acceleration = value
+
+    
+    @property
     def libraries(self):
         """ Get libraries value.
 
@@ -1245,6 +1319,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._operation_status = value
+
+    
+    @property
+    def product_name(self):
+        """ Get product_name value.
+
+            Notes:
+                NSG Product Name
+
+                
+                This attribute is named `productName` in VSD API.
+                
+        """
+        return self._product_name
+
+    @product_name.setter
+    def product_name(self, value):
+        """ Set product_name value.
+
+            Notes:
+                NSG Product Name
+
+                
+                This attribute is named `productName` in VSD API.
+                
+        """
+        self._product_name = value
 
     
     @property

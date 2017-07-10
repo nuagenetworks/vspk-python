@@ -32,6 +32,10 @@ Attributes
 
 - ``address_override``: Overrides the source IP for Ingress and destination IP for Egress, MAC entries will use this address as the match criteria.
 
+- ``redirect_rewrite_type``: The type of redirection rewrite. Currently only VLAN is supported
+
+- ``redirect_rewrite_value``: The redirect rewrite value. Currently only vlan id is supported
+
 - ``redirect_vport_tag_id``: VPort tag to which traffic will be redirected to, when ACL entry match criteria succeeds
 
 - ``description``: Description of the ACL entry
@@ -43,6 +47,8 @@ Attributes
 - ``network_type``: Type of the source network.
 
 - ``mirror_destination_id``: Destination ID of the mirror destination object.
+
+- ``vlan_range``: The range can be a single number or a range. Eg : 1,10,15-17
 
 - ``flow_logging_enabled``: Is flow logging enabled for this particular template
 
@@ -65,12 +71,6 @@ Attributes
 - ``priority``: The priority of the ACL entry that determines the order of entries
 
 - ``protocol``: Protocol number that must be matched
-
-- ``associated_application_id``: The associated application ID
-
-- ``associated_application_object_id``: The associated application object ID
-
-- ``associated_application_object_type``: The associated application object type Refer to API section for supported types.
 
 - ``associated_live_entity_id``: In the draft mode, the ACL entry refers to this LiveEntity. In non-drafted mode, this is null.
 

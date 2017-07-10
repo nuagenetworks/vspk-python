@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``name``: Name of the peer
+- ``name`` (**Mandatory**): Name of the peer
 
 - ``dampening_enabled``: Enable/disable route flap damping.
 
@@ -55,7 +55,7 @@ Parents
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
-- :ref:`nuvlan.NUVLAN<nuvlan>`
-
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nuvlan.NUVLAN<nuvlan>`
 

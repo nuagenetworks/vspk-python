@@ -72,7 +72,7 @@ class NUDemarcationService(NURESTObject):
         self._type = None
         
         self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_id", remote_name="associatedGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vlanid", remote_name="associatedVLANID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'BR_PORT', u'GATEWAY'])

@@ -20,7 +20,7 @@ Attributes
 
 - ``private_port``: None
 
-- ``associated_patnat_pool_id`` (**Mandatory**): Read Only - Indicates which PATNATPool this entry belongs to
+- ``associated_patnat_pool_id``: Read Only - Indicates which PATNATPool this entry belongs to
 
 - ``public_ip`` (**Mandatory**): Public IP address of the interface
 

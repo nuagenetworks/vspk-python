@@ -62,7 +62,7 @@ class NUUnderlay(NURESTObject):
         self._description = None
         self._underlay_id = None
         
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="underlay_id", remote_name="underlayID", attribute_type=int, is_required=False, is_unique=False)
         

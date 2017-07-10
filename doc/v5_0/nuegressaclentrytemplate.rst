@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``acl_template_name`` (**Mandatory**): The name of the parent Template for this acl entry
+- ``acl_template_name``: The name of the parent Template for this acl entry
 
 - ``icmp_code``: The ICMP Code when selected protocol is ICMP
 
@@ -40,7 +40,7 @@ Attributes
 
 - ``flow_logging_enabled``: Is flow logging enabled for this particular template
 
-- ``enterprise_name`` (**Mandatory**): The name of the enterprise for the domains parent
+- ``enterprise_name``: The name of the enterprise for the domains parent
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
@@ -50,19 +50,13 @@ Attributes
 
 - ``policy_state``: State of the policy.  Possible values are DRAFT, LIVE, .
 
-- ``domain_name`` (**Mandatory**): The name of the domain/domain template for the aclTemplateNames parent
+- ``domain_name``: The name of the domain/domain template for the aclTemplateNames parent
 
 - ``source_port``: Source port to be matched if protocol is UDP or TCP. Value can be either * or single port number or a port range
 
 - ``priority``: The priority of the ACL entry that determines the order of entries
 
 - ``protocol``: Protocol number that must be matched
-
-- ``associated_application_id``: The associated application ID
-
-- ``associated_application_object_id``: The associated application object ID
-
-- ``associated_application_object_type``: The associated application object type Refer to API section for supported types.
 
 - ``associated_live_entity_id``: In the draft mode, the ACL entry refers to this LiveEntity. In non-drafted mode, this is null.
 

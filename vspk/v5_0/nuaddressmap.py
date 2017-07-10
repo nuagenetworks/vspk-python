@@ -95,7 +95,7 @@ class NUAddressMap(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="private_ip", remote_name="privateIP", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="private_port", remote_name="privatePort", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_patnat_pool_id", remote_name="associatedPATNATPoolID", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="associated_patnat_pool_id", remote_name="associatedPATNATPoolID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="public_ip", remote_name="publicIP", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="public_port", remote_name="publicPort", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)

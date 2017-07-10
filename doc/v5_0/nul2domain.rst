@@ -16,7 +16,7 @@ Attributes
 
 - ``dpi``: determines whether or not Deep packet inspection is enabled
 
-- ``ip_type``: IPv4 or IPv6
+- ``ip_type``: IPv4 or DUALSTACK
 
 - ``ipv6_address``: IPV6 address of the route - Optional
 
@@ -86,6 +86,7 @@ Children
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`                                                                               ``egress_acl_entry_templates`` 
 :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`                                                                                              ``egress_acl_templates`` 
+:ref:`nuegressadvfwdtemplate.NUEgressAdvFwdTemplate<nuegressadvfwdtemplate>`                                                                                     ``egress_adv_fwd_templates`` 
 :ref:`nudhcpoption.NUDHCPOption<nudhcpoption>`                                                                                                                   ``dhcp_options`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuvm.NUVM<nuvm>`                                                                                                                                           ``vms`` 
@@ -106,10 +107,10 @@ Children
 :ref:`nuapplicationperformancemanagementbinding.NUApplicationperformancemanagementbinding<nuapplicationperformancemanagementbinding>`                            ``applicationperformancemanagementbindings`` 
 :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`                                                                                                    ``bridge_interfaces`` 
 :ref:`nugroup.NUGroup<nugroup>`                                                                                                                                  ``groups`` 
-:ref:`nustaticroute.NUStaticRoute<nustaticroute>`                                                                                                                ``static_routes`` 
 :ref:`nustatistics.NUStatistics<nustatistics>`                                                                                                                   ``statistics`` 
 :ref:`nustatisticspolicy.NUStatisticsPolicy<nustatisticspolicy>`                                                                                                 ``statistics_policies`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
+:ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`                                                                         ``overlay_mirror_destinations`` 
 ================================================================================================================================================               ==========================================================================================
 
 
@@ -118,9 +119,9 @@ Parents
 --------
 
 
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
-
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

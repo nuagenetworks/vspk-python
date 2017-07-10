@@ -94,6 +94,8 @@ Children
 :ref:`nuvminterface.NUVMInterface<nuvminterface>`                                                                                                                ``vm_interfaces`` 
 :ref:`nucloudmgmtsystem.NUCloudMgmtSystem<nucloudmgmtsystem>`                                                                                                    ``cloud_mgmt_systems`` 
 :ref:`nuunderlay.NUUnderlay<nuunderlay>`                                                                                                                         ``underlays`` 
+:ref:`nuvnfcatalog.NUVNFCatalog<nuvnfcatalog>`                                                                                                                   ``vnf_catalogs`` 
+:ref:`nuvnfmetadata.NUVNFMetadata<nuvnfmetadata>`                                                                                                                ``vnf_metadatas`` 
 :ref:`nuinfrastructureaccessprofile.NUInfrastructureAccessProfile<nuinfrastructureaccessprofile>`                                                                ``infrastructure_access_profiles`` 
 :ref:`nuinfrastructuregatewayprofile.NUInfrastructureGatewayProfile<nuinfrastructuregatewayprofile>`                                                             ``infrastructure_gateway_profiles`` 
 :ref:`nuinfrastructurevscprofile.NUInfrastructureVscProfile<nuinfrastructurevscprofile>`                                                                         ``infrastructure_vsc_profiles`` 
@@ -111,7 +113,6 @@ Children
 :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`                                                                                                          ``host_interfaces`` 
 :ref:`nuroutingpolicy.NURoutingPolicy<nuroutingpolicy>`                                                                                                          ``routing_policies`` 
 :ref:`nuuplinkrd.NUUplinkRD<nuuplinkrd>`                                                                                                                         ``uplink_rds`` 
-:ref:`nuapplicationservice.NUApplicationService<nuapplicationservice>`                                                                                           ``application_services`` 
 :ref:`nuvcentervrsconfig.NUVCenterVRSConfig<nuvcentervrsconfig>`                                                                                                 ``vcenter_vrs_configs`` 
 :ref:`nuuser.NUUser<nuuser>`                                                                                                                                     ``users`` 
 :ref:`nunsgateway.NUNSGateway<nunsgateway>`                                                                                                                      ``ns_gateways`` 

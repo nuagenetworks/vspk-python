@@ -16,6 +16,8 @@ Attributes
 
 - ``dhcp_lease_interval``: DHCP Lease Interval (in hours) to be used by an enterprise.
 
+- ``vnf_management_enabled``: Enable VNF Management for this enterprise
+
 - ``name`` (**Mandatory**): The unique name of the enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
 
 - ``last_updated_by``: ID of the user who last updated the object.
