@@ -72,6 +72,8 @@ Parents
 
 - :ref:`nutca.NUTCA<nutca>`
 
+- :ref:`nuikesubnet.NUIKESubnet<nuikesubnet>`
+
 - :ref:`nugroup.NUGroup<nugroup>`
 
 - :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
@@ -79,8 +81,6 @@ Parents
 - :ref:`nuzone.NUZone<nuzone>`
 
 - :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
-
-- :ref:`nuikesubnet.NUIKESubnet<nuikesubnet>`
 
 - :ref:`nuinfrastructuregatewayprofile.NUInfrastructureGatewayProfile<nuinfrastructuregatewayprofile>`
 
@@ -152,8 +152,6 @@ Parents
 
 - :ref:`nuzonetemplate.NUZoneTemplate<nuzonetemplate>`
 
-- :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
-
 - :ref:`nukeyservermonitorseed.NUKeyServerMonitorSeed<nukeyservermonitorseed>`
 
 - :ref:`nugatewaytemplate.NUGatewayTemplate<nugatewaytemplate>`
@@ -219,6 +217,8 @@ Parents
 - :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
+
+- :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
 
 - :ref:`nubfdsession.NUBFDSession<nubfdsession>`
 

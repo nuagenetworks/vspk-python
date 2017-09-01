@@ -105,11 +105,11 @@ Parents
 
 - :ref:`nudomain.NUDomain<nudomain>`
 
+- :ref:`nutier.NUTier<nutier>`
+
 - :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
-
-- :ref:`nutier.NUTier<nutier>`
 

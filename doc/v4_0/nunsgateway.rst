@@ -126,8 +126,6 @@ Parents
 --------
 
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nuducgroup.NUDUCGroup<nuducgroup>`
 
 - :ref:`nume.NUMe<nume>`
@@ -135,4 +133,6 @@ Parents
 - :ref:`nunsggroup.NUNSGGroup<nunsggroup>`
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

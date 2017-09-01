@@ -121,13 +121,13 @@ Parents
 
 - :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 
-- :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
-
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
 - :ref:`nutrunk.NUTrunk<nutrunk>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 

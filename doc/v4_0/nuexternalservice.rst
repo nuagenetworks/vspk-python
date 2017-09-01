@@ -50,9 +50,9 @@ Parents
 --------
 
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
 
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

@@ -53,11 +53,11 @@ Parents
 
 - :ref:`nudomain.NUDomain<nudomain>`
 
+- :ref:`nutier.NUTier<nutier>`
+
 - :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
-
-- :ref:`nutier.NUTier<nutier>`
 

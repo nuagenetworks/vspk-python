@@ -65,8 +65,6 @@ Parents
 
 - :ref:`numulticastchannelmap.NUMultiCastChannelMap<numulticastchannelmap>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nutca.NUTCA<nutca>`
@@ -167,6 +165,8 @@ Parents
 
 - :ref:`nuhsc.NUHSC<nuhsc>`
 
+- :ref:`nuvlan.NUVLAN<nuvlan>`
+
 - :ref:`nuldapconfiguration.NULDAPConfiguration<nuldapconfiguration>`
 
 - :ref:`nuvsdcomponent.NUVSDComponent<nuvsdcomponent>`
@@ -189,13 +189,13 @@ Parents
 
 - :ref:`nunetworklayout.NUNetworkLayout<nunetworklayout>`
 
-- :ref:`nueventlog.NUEventLog<nueventlog>`
+- :ref:`nucertificate.NUCertificate<nucertificate>`
 
 - :ref:`nulicense.NULicense<nulicense>`
 
 - :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
 
-- :ref:`nufloatingipacltemplateentry.NUFloatingIPACLTemplateEntry<nufloatingipacltemplateentry>`
+- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
@@ -217,7 +217,7 @@ Parents
 
 - :ref:`nudomain.NUDomain<nudomain>`
 
-- :ref:`nunatmapentry.NUNATMapEntry<nunatmapentry>`
+- :ref:`nutier.NUTier<nutier>`
 
 - :ref:`nudomainfipacltemplate.NUDomainFIPAclTemplate<nudomainfipacltemplate>`
 
@@ -233,7 +233,7 @@ Parents
 
 - :ref:`nunsporttemplate.NUNSPortTemplate<nunsporttemplate>`
 
-- :ref:`nucertificate.NUCertificate<nucertificate>`
+- :ref:`nueventlog.NUEventLog<nueventlog>`
 
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
 
@@ -305,6 +305,8 @@ Parents
 
 - :ref:`nuvm.NUVM<nuvm>`
 
+- :ref:`nufloatingipacltemplateentry.NUFloatingIPACLTemplateEntry<nufloatingipacltemplateentry>`
+
 - :ref:`nuvmresync.NUVMResync<nuvmresync>`
 
 - :ref:`nugatewaysecurity.NUGatewaySecurity<nugatewaysecurity>`
@@ -333,17 +335,15 @@ Parents
 
 - :ref:`nuallalarm.NUAllAlarm<nuallalarm>`
 
-- :ref:`nuvlan.NUVLAN<nuvlan>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuikeencryptionprofile.NUIKEEncryptionprofile<nuikeencryptionprofile>`
-
-- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
 - :ref:`nuinfrastructureconfig.NUInfrastructureConfig<nuinfrastructureconfig>`
 
 - :ref:`nuuser.NUUser<nuuser>`
 
-- :ref:`nutier.NUTier<nutier>`
+- :ref:`nunatmapentry.NUNATMapEntry<nunatmapentry>`
 
 - :ref:`nucontainer.NUContainer<nucontainer>`
 
