@@ -32,9 +32,9 @@ Attributes
 
 - ``destination_port``: The destination port to be matched if protocol is UDP or TCP. Value should be either * or single port number or a port range
 
-- ``network_id``: The ID of the destination endpoint (Subnet/Zone/Macro/MacroGroup/PolicyGroup)
+- ``network_id``: The ID of the destination endpoint (Subnet/Zone/Macro/MacroGroup/PolicyGroup/PolicyGroupExpression)
 
-- ``network_type``: Type of the destination endpoint (Subnet/Zone/Macro/MacroGroup/PolicyGroup)
+- ``network_type``: Type of the destination endpoint (Subnet/Zone/Macro/MacroGroup/PolicyGroup/PolicyGroupExpression)
 
 - ``mirror_destination_id``: Destination ID of the mirror destination object.
 
@@ -44,9 +44,9 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``location_id``: The ID of the source endpoint (Subnet/Zone/VportTag/PortGroup)
+- ``location_id``: The ID of the source endpoint (Subnet/Zone/VportTag/PortGroup/PolicyGroupExpression)
 
-- ``location_type`` (**Mandatory**): Type of the source endpoint (Subnet/Zone/VportTag/PortGroup)
+- ``location_type`` (**Mandatory**): Type of the source endpoint (Subnet/Zone/VportTag/PortGroup/PolicyGroupExpression)
 
 - ``policy_state``: State of the policy.
 
@@ -58,7 +58,13 @@ Attributes
 
 - ``protocol``: Protocol number that must be matched
 
+- ``associated_l7_application_signature_id``: The UUID of the associated L7 Application signature
+
 - ``associated_live_entity_id``: In the draft mode, the ACL entry refers to this LiveEntity. In non-drafted mode, this is null.
+
+- ``associated_traffic_type``: This property reflects the type of traffic in case an ACL entry is created using an L4 Service or L4 Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
+
+- ``associated_traffic_type_id``: If a traffic type is specified as L4 Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
 
 - ``stateful``: True means that this ACL entry is stateful, so there will be a corresponding rule that will be created by OVS in the network. False means that there is no corresponding rule created by OVS in the network.
 
@@ -93,11 +99,11 @@ Parents
 --------
 
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
-- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 

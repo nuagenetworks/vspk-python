@@ -12,6 +12,10 @@ Attributes
 ----------
 
 
+- ``aar_flow_stats_interval``: AAR flow statistics collection frequency
+
+- ``aar_probe_stats_interval``: AAR probe statistics collection frequency
+
 - ``acl_allow_origin``: Defines the domains allowed for access control list.
 
 - ``ecmp_count``: System Default Equal-cost multi-path routing count,Every Domain derives ECMP count from this value unless specifically set for the domain
@@ -85,6 +89,8 @@ Attributes
 - ``vsd_upgrade_is_complete``: This flag is used to indicate that whether VSD upgrade is complete,it is expected that csproot will set to true,after VSD upgrade is complete and also making sure that all VSC's audits and Gateway audits with VSD are done
 
 - ``as_number``:  Autonomous System Number,Used for RT/RD auto-generation
+
+- ``vss_stats_interval``: VSS statistics collection frequency
 
 - ``rt_lower_limit``: route target lower limit
 
@@ -227,6 +233,10 @@ Attributes
 - ``stats_tsdb_server_address``: Specifies the TSDB server location.
 
 - ``sticky_ecmp_idle_timeout``: sticky ECMP Idle Timeout in seconds
+
+- ``attach_probe_to_ipsec_npm``: Flag to attach/remove system generated probe to system generated NPM for IPSEC.
+
+- ``attach_probe_to_vxlannpm``: Flag to attach/remove system generated probe to system generated NPM for VXLAN.
 
 - ``subnet_resync_interval``: After resync on a subnet , another resync on the same subnet is allowed based on the below value subnet resync complete wait time in min.
 

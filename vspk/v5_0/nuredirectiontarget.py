@@ -74,6 +74,8 @@ class NURedirectionTarget(NURESTObject):
     
     CONST_TRIGGER_TYPE_GARP = "GARP"
     
+    CONST_END_POINT_TYPE_NSG_VNF = "NSG_VNF"
+    
     
 
     def __init__(self, **kwargs):
@@ -112,7 +114,7 @@ class NURedirectionTarget(NURESTObject):
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="virtual_network_id", remote_name="virtualNetworkID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="end_point_type", remote_name="endPointType", attribute_type=str, is_required=True, is_unique=False, choices=[u'L3', u'NONE', u'VIRTUAL_WIRE'])
+        self.expose_attribute(local_name="end_point_type", remote_name="endPointType", attribute_type=str, is_required=True, is_unique=False, choices=[u'L3', u'NONE', u'NSG_VNF', u'VIRTUAL_WIRE'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="trigger_type", remote_name="triggerType", attribute_type=str, is_required=False, is_unique=False, choices=[u'GARP', u'NONE'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -329,7 +331,7 @@ class NURedirectionTarget(NURESTObject):
         """ Get end_point_type value.
 
             Notes:
-                EndpointType defines the type of header rewrite and forwarding performed by VRS when the endpoint is used as a PBR destination. NONE type is deprecated. Possible values are NONE, L3, VIRTUAL_WIRE, .
+                EndpointType defines the type of header rewrite and forwarding performed by VRS when the endpoint is used as a PBR destination. NONE type is deprecated. Possible values are NONE, L3, VIRTUAL_WIRE and NSG_VNF.
 
                 
                 This attribute is named `endPointType` in VSD API.
@@ -342,7 +344,7 @@ class NURedirectionTarget(NURESTObject):
         """ Set end_point_type value.
 
             Notes:
-                EndpointType defines the type of header rewrite and forwarding performed by VRS when the endpoint is used as a PBR destination. NONE type is deprecated. Possible values are NONE, L3, VIRTUAL_WIRE, .
+                EndpointType defines the type of header rewrite and forwarding performed by VRS when the endpoint is used as a PBR destination. NONE type is deprecated. Possible values are NONE, L3, VIRTUAL_WIRE and NSG_VNF.
 
                 
                 This attribute is named `endPointType` in VSD API.

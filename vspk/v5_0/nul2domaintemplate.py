@@ -42,6 +42,9 @@ from .fetchers import NUPermissionsFetcher
 from .fetchers import NUMetadatasFetcher
 
 
+from .fetchers import NUPGExpressionTemplatesFetcher
+
+
 from .fetchers import NUEgressACLTemplatesFetcher
 
 
@@ -207,6 +210,9 @@ class NUL2DomainTemplate(NURESTObject):
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.pg_expression_templates = NUPGExpressionTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.egress_acl_templates = NUEgressACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")

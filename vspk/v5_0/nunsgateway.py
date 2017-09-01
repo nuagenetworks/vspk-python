@@ -60,6 +60,9 @@ from .fetchers import NUJobsFetcher
 from .fetchers import NULocationsFetcher
 
 
+from .fetchers import NUCommandsFetcher
+
+
 from .fetchers import NUMonitorscopesFetcher
 
 
@@ -99,6 +102,8 @@ class NUNSGateway(NURESTObject):
     
     ## Constants
     
+    CONST_FAMILY_NSG_C = "NSG_C"
+    
     CONST_NETWORK_ACCELERATION_NONE = "NONE"
     
     CONST_FAMILY_NSG_E = "NSG_E"
@@ -121,7 +126,13 @@ class NUNSGateway(NURESTObject):
     
     CONST_NETWORK_ACCELERATION_NORMAL = "NORMAL"
     
+    CONST_FAMILY_NSG_X = "NSG_X"
+    
+    CONST_FAMILY_NSG_E200 = "NSG_E200"
+    
     CONST_SSH_SERVICE_DISABLED = "DISABLED"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_PERSONALITY_OTHER = "OTHER"
     
@@ -175,11 +186,15 @@ class NUNSGateway(NURESTObject):
     
     CONST_TPM_STATUS_UNKNOWN = "UNKNOWN"
     
+    CONST_FAMILY_NSG_E300 = "NSG_E300"
+    
+    CONST_FAMILY_NSG_X200 = "NSG_X200"
+    
     CONST_PERSONALITY_VRSG = "VRSG"
     
     CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_SENT = "NOTIFICATION_APP_REQ_SENT"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_FAMILY_NSG_AMI = "NSG_AMI"
     
     CONST_PERMITTED_ACTION_ALL = "ALL"
     
@@ -252,6 +267,8 @@ class NUNSGateway(NURESTObject):
         self._location_id = None
         self._configuration_reload_state = None
         self._configuration_status = None
+        self._control_traffic_cos_value = None
+        self._control_traffic_dscp_value = None
         self._bootstrap_id = None
         self._bootstrap_status = None
         self._operation_mode = None
@@ -260,6 +277,7 @@ class NUNSGateway(NURESTObject):
         self._associated_gateway_security_id = None
         self._associated_gateway_security_profile_id = None
         self._associated_nsg_info_id = None
+        self._associated_nsg_upgrade_profile_id = None
         self._auto_disc_gateway_id = None
         self._external_id = None
         self._system_id = None
@@ -276,7 +294,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="ssh_service", remote_name="SSHService", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_E', u'NSG_V'])
+        self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_AMI', u'NSG_C', u'NSG_E', u'NSG_E200', u'NSG_E300', u'NSG_V', u'NSG_X', u'NSG_X200'])
         self.expose_attribute(local_name="last_configuration_reload_timestamp", remote_name="lastConfigurationReloadTimestamp", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_id", remote_name="datapathID", attribute_type=str, is_required=False, is_unique=False)
@@ -296,6 +314,8 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="configuration_reload_state", remote_name="configurationReloadState", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'FAILED_TO_APPLY', u'PENDING', u'SENT', u'UNKNOWN'])
         self.expose_attribute(local_name="configuration_status", remote_name="configurationStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAILURE', u'SUCCESS', u'UNKNOWN'])
+        self.expose_attribute(local_name="control_traffic_cos_value", remote_name="controlTrafficCOSValue", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="control_traffic_dscp_value", remote_name="controlTrafficDSCPValue", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bootstrap_id", remote_name="bootstrapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT'])
         self.expose_attribute(local_name="operation_mode", remote_name="operationMode", attribute_type=str, is_required=False, is_unique=False)
@@ -304,6 +324,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="associated_gateway_security_id", remote_name="associatedGatewaySecurityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_security_profile_id", remote_name="associatedGatewaySecurityProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_nsg_info_id", remote_name="associatedNSGInfoID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_nsg_upgrade_profile_id", remote_name="associatedNSGUpgradeProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="auto_disc_gateway_id", remote_name="autoDiscGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="system_id", remote_name="systemID", attribute_type=str, is_required=False, is_unique=False)
@@ -343,6 +364,9 @@ class NUNSGateway(NURESTObject):
         
         
         self.locations = NULocationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.commands = NUCommandsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.monitorscopes = NUMonitorscopesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -1214,6 +1238,60 @@ class NUNSGateway(NURESTObject):
 
     
     @property
+    def control_traffic_cos_value(self):
+        """ Get control_traffic_cos_value value.
+
+            Notes:
+                COS Value for Self Generated Traffic (Control Traffic). Min is 0 and Max is 7
+
+                
+                This attribute is named `controlTrafficCOSValue` in VSD API.
+                
+        """
+        return self._control_traffic_cos_value
+
+    @control_traffic_cos_value.setter
+    def control_traffic_cos_value(self, value):
+        """ Set control_traffic_cos_value value.
+
+            Notes:
+                COS Value for Self Generated Traffic (Control Traffic). Min is 0 and Max is 7
+
+                
+                This attribute is named `controlTrafficCOSValue` in VSD API.
+                
+        """
+        self._control_traffic_cos_value = value
+
+    
+    @property
+    def control_traffic_dscp_value(self):
+        """ Get control_traffic_dscp_value value.
+
+            Notes:
+                DSCP Value for Self Generated Traffic (Control Traffic). Min is 0 and Max is 63
+
+                
+                This attribute is named `controlTrafficDSCPValue` in VSD API.
+                
+        """
+        return self._control_traffic_dscp_value
+
+    @control_traffic_dscp_value.setter
+    def control_traffic_dscp_value(self, value):
+        """ Set control_traffic_dscp_value value.
+
+            Notes:
+                DSCP Value for Self Generated Traffic (Control Traffic). Min is 0 and Max is 63
+
+                
+                This attribute is named `controlTrafficDSCPValue` in VSD API.
+                
+        """
+        self._control_traffic_dscp_value = value
+
+    
+    @property
     def bootstrap_id(self):
         """ Get bootstrap_id value.
 
@@ -1427,6 +1505,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._associated_nsg_info_id = value
+
+    
+    @property
+    def associated_nsg_upgrade_profile_id(self):
+        """ Get associated_nsg_upgrade_profile_id value.
+
+            Notes:
+                The UUID of the NSG Upgrade Profile associated to this NSG instance.
+
+                
+                This attribute is named `associatedNSGUpgradeProfileID` in VSD API.
+                
+        """
+        return self._associated_nsg_upgrade_profile_id
+
+    @associated_nsg_upgrade_profile_id.setter
+    def associated_nsg_upgrade_profile_id(self, value):
+        """ Set associated_nsg_upgrade_profile_id value.
+
+            Notes:
+                The UUID of the NSG Upgrade Profile associated to this NSG instance.
+
+                
+                This attribute is named `associatedNSGUpgradeProfileID` in VSD API.
+                
+        """
+        self._associated_nsg_upgrade_profile_id = value
 
     
     @property

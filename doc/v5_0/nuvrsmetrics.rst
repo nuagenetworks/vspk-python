@@ -30,9 +30,11 @@ Attributes
 
 - ``jesxmon_process``: jesxmon process status
 
-- ``agent_name``: VRS Agent Name
-
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``log_disk_partition_utilization``: Log Disk Partition Utilization
+
+- ``root_disk_partition_utilization``: Root Disk Partition Utilization
 
 - ``associated_vcenter_hypervisor_id``: None
 

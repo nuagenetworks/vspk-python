@@ -34,7 +34,11 @@ Attributes
 
 - ``gateway_mac_address``: None
 
+- ``access_restriction_enabled``: This attribute specifies whether subnet is enabled with access restrictions. Note: Applicable to shared infrastructure enterprise subnets.
+
 - ``address``: IP address of the subnet defined. In case of zone, this is an optional field for and allows users to allocate an IP address range to a zone. The VSD will auto-assign IP addresses to subnets from this range if a specific IP address is not defined for the subnet
+
+- ``advertise``: Subnet will be advertised in Overlay and WAN BGP
 
 - ``default_action``: If PAT is disabled then this flag indicates what to do if routes don't exist in overlay, will default to drop | possible values USE_UNDERLAY, DROP_TRAFFIC Possible values are USE_UNDERLAY, DROP_TRAFFIC, .
 
@@ -43,6 +47,8 @@ Attributes
 - ``service_id``: The service ID used by the VSCs to identify this subnet
 
 - ``description``: A description field provided by the user that identifies the subnet
+
+- ``resource_type``: Defines the type of the subnet, PUBLIC,FLOATING,STANDARD OR NSG_VNF
 
 - ``netmask``: Netmask of the subnet defined
 
@@ -91,6 +97,7 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nupatipentry.NUPATIPEntry<nupatipentry>`                                                                                                                   ``patip_entries`` 
 :ref:`nutca.NUTCA<nutca>`                                                                                                                                        ``tcas`` 
 :ref:`nuaddressrange.NUAddressRange<nuaddressrange>`                                                                                                             ``address_ranges`` 
 :ref:`nuvmresync.NUVMResync<nuvmresync>`                                                                                                                         ``vm_resyncs`` 
@@ -102,12 +109,14 @@ Children
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuvm.NUVM<nuvm>`                                                                                                                                           ``vms`` 
 :ref:`nuvminterface.NUVMInterface<nuvminterface>`                                                                                                                ``vm_interfaces`` 
+:ref:`nuenterprisepermission.NUEnterprisePermission<nuenterprisepermission>`                                                                                     ``enterprise_permissions`` 
 :ref:`nucontainer.NUContainer<nucontainer>`                                                                                                                      ``containers`` 
 :ref:`nucontainerinterface.NUContainerInterface<nucontainerinterface>`                                                                                           ``container_interfaces`` 
 :ref:`nucontainerresync.NUContainerResync<nucontainerresync>`                                                                                                    ``container_resyncs`` 
 :ref:`nuqos.NUQOS<nuqos>`                                                                                                                                        ``qoss`` 
 :ref:`nuvport.NUVPort<nuvport>`                                                                                                                                  ``vports`` 
 :ref:`nuipreservation.NUIPReservation<nuipreservation>`                                                                                                          ``ip_reservations`` 
+:ref:`nuproxyarpfilter.NUProxyARPFilter<nuproxyarpfilter>`                                                                                                       ``proxy_arp_filters`` 
 :ref:`nustatistics.NUStatistics<nustatistics>`                                                                                                                   ``statistics`` 
 :ref:`nustatisticspolicy.NUStatisticsPolicy<nustatisticspolicy>`                                                                                                 ``statistics_policies`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
@@ -130,4 +139,6 @@ Parents
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
+
+- :ref:`nupatmapper.NUPATMapper<nupatmapper>`
 

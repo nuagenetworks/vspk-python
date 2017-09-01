@@ -76,6 +76,10 @@ Attributes
 
 - ``configuration_status``: NSG Configuration status represents the NSG update state following a query by the NSG to get the latest version of the infraconfig.json file.  This status will be updated following a Bootstrap request or a Configuration Reload.  Success means that the NSG was able to apply the changes included in the latest infraconfig.json file.  A Failure response will be returned if the NSG was unable to apply the changes; this is normally accompanied with a rollback of the NSG to the previous configuration.
 
+- ``control_traffic_cos_value``: COS Value for Self Generated Traffic (Control Traffic). Min is 0 and Max is 7
+
+- ``control_traffic_dscp_value``: DSCP Value for Self Generated Traffic (Control Traffic). Min is 0 and Max is 63
+
 - ``bootstrap_id``: The bootstrap details associated with this NSGateway. NOTE: this is a read only property, it can only be set during creation of an NSG
 
 - ``bootstrap_status``: The bootstrap status of this NSGateway. NOTE: this is a read only property
@@ -91,6 +95,8 @@ Attributes
 - ``associated_gateway_security_profile_id``: Readonly Id of the associated gateway security profile object
 
 - ``associated_nsg_info_id``: Readonly Id of the associated nsg info object
+
+- ``associated_nsg_upgrade_profile_id``: The UUID of the NSG Upgrade Profile associated to this NSG instance.
 
 - ``auto_disc_gateway_id``: The Auto Discovered Gateway associated with this Gateway Instance
 
@@ -118,6 +124,7 @@ Children
 :ref:`nuenterprisepermission.NUEnterprisePermission<nuenterprisepermission>`                                                                                     ``enterprise_permissions`` 
 :ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
 :ref:`nulocation.NULocation<nulocation>`                                                                                                                         ``locations`` 
+:ref:`nucommand.NUCommand<nucommand>`                                                                                                                            ``commands`` 
 :ref:`numonitorscope.NUMonitorscope<numonitorscope>`                                                                                                             ``monitorscopes`` 
 :ref:`nubootstrap.NUBootstrap<nubootstrap>`                                                                                                                      ``bootstraps`` 
 :ref:`nubootstrapactivation.NUBootstrapActivation<nubootstrapactivation>`                                                                                        ``bootstrap_activations`` 
@@ -139,6 +146,8 @@ Parents
 - :ref:`nuducgroup.NUDUCGroup<nuducgroup>`
 
 - :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
+
+- :ref:`nuperformancemonitor.NUPerformanceMonitor<nuperformancemonitor>`
 
 - :ref:`nume.NUMe<nume>`
 

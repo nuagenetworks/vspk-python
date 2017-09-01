@@ -27,6 +27,9 @@
 
 
 
+from .fetchers import NUBFDSessionsFetcher
+
+
 from .fetchers import NUUnderlaysFetcher
 
 
@@ -48,9 +51,9 @@ class NUUplinkConnection(NURESTObject):
     
     ## Constants
     
-    CONST_ADVERTISEMENT_CRITERIA_OPERATIONAL_LINK = "OPERATIONAL_LINK"
+    CONST_INTERFACE_CONNECTION_TYPE_AUTOMATIC = "AUTOMATIC"
     
-    CONST_ADVERTISEMENT_CRITERIA_GATEWAY_PING = "GATEWAY_PING"
+    CONST_ADVERTISEMENT_CRITERIA_BFD = "BFD"
     
     CONST_ROLE_UNKNOWN = "UNKNOWN"
     
@@ -62,9 +65,7 @@ class NUUplinkConnection(NURESTObject):
     
     CONST_INTERFACE_CONNECTION_TYPE_EMBEDDED = "EMBEDDED"
     
-    CONST_INTERFACE_CONNECTION_TYPE_AUTOMATIC = "AUTOMATIC"
-    
-    CONST_ADVERTISEMENT_CRITERIA_FATE_SHARING = "FATE_SHARING"
+    CONST_ADVERTISEMENT_CRITERIA_OPERATIONAL_LINK = "OPERATIONAL_LINK"
     
     CONST_INTERFACE_CONNECTION_TYPE_USB_MODEM = "USB_MODEM"
     
@@ -75,8 +76,6 @@ class NUUplinkConnection(NURESTObject):
     CONST_MODE_LTE = "LTE"
     
     CONST_ROLE_TERTIARY = "TERTIARY"
-    
-    CONST_MODE_ANY = "Any"
     
     CONST_ADVERTISEMENT_CRITERIA_CONTROL_SESSION = "CONTROL_SESSION"
     
@@ -134,12 +133,12 @@ class NUUplinkConnection(NURESTObject):
         self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPv4', u'IPv6'])
-        self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONTROL_SESSION', u'FATE_SHARING', u'GATEWAY_PING', u'OPERATIONAL_LINK'])
+        self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'BFD', u'CONTROL_SESSION', u'OPERATIONAL_LINK'])
         self.expose_attribute(local_name="secondary_address", remote_name="secondaryAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vlan_id", remote_name="vlanId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="interface_connection_type", remote_name="interfaceConnectionType", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTOMATIC', u'EMBEDDED', u'PCI_EXPRESS', u'USB_ETHERNET', u'USB_MODEM'])
-        self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'Any', u'Dynamic', u'LTE', u'PPPoE', u'Static'])
+        self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'Dynamic', u'LTE', u'PPPoE', u'Static'])
         self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'PRIMARY', u'SECONDARY', u'TERTIARY', u'UNKNOWN'])
         self.expose_attribute(local_name="role_order", remote_name="roleOrder", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="port_name", remote_name="portName", attribute_type=str, is_required=False, is_unique=False)
@@ -153,6 +152,9 @@ class NUUplinkConnection(NURESTObject):
         
 
         # Fetchers
+        
+        
+        self.bfd_sessions = NUBFDSessionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.underlays = NUUnderlaysFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -397,7 +399,7 @@ class NUUplinkConnection(NURESTObject):
         """ Get mode value.
 
             Notes:
-                Specify how to connect to the network. Possible values: Any, Dynamic (DHCP), Static (static configuration is required), PPPoE (pppoe configuration required), LTE (LTE configuration required). Default: Dynamic
+                Specify how to connect to the network. Possible values: Dynamic (DHCP), Static (static configuration is required), PPPoE (pppoe configuration required), LTE (LTE configuration required). Default: Dynamic
 
                 
         """
@@ -408,7 +410,7 @@ class NUUplinkConnection(NURESTObject):
         """ Set mode value.
 
             Notes:
-                Specify how to connect to the network. Possible values: Any, Dynamic (DHCP), Static (static configuration is required), PPPoE (pppoe configuration required), LTE (LTE configuration required). Default: Dynamic
+                Specify how to connect to the network. Possible values: Dynamic (DHCP), Static (static configuration is required), PPPoE (pppoe configuration required), LTE (LTE configuration required). Default: Dynamic
 
                 
         """

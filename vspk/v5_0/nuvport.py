@@ -72,6 +72,9 @@ from .fetchers import NUIngressACLEntryTemplatesFetcher
 from .fetchers import NUIngressAdvFwdEntryTemplatesFetcher
 
 
+from .fetchers import NUJobsFetcher
+
+
 from .fetchers import NUPolicyGroupsFetcher
 
 
@@ -145,9 +148,13 @@ class NUVPort(NURESTObject):
     
     CONST_ADDRESS_SPOOFING_INHERITED = "INHERITED"
     
+    CONST_ADDRESS_SPOOFING_ENABLED = "ENABLED"
+    
     CONST_TYPE_HOST = "HOST"
     
-    CONST_ADDRESS_SPOOFING_ENABLED = "ENABLED"
+    CONST_GATEWAY_MAC_MOVE_ROLE_TERTIARY = "TERTIARY"
+    
+    CONST_GATEWAY_MAC_MOVE_ROLE_SECONDARY = "SECONDARY"
     
     CONST_SUB_TYPE_VNF = "VNF"
     
@@ -211,6 +218,7 @@ class NUVPort(NURESTObject):
         self._name = None
         self._has_attached_interfaces = None
         self._last_updated_by = None
+        self._gateway_mac_move_role = None
         self._active = None
         self._address_spoofing = None
         self._segmentation_id = None
@@ -238,6 +246,7 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="has_attached_interfaces", remote_name="hasAttachedInterfaces", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_mac_move_role", remote_name="gatewayMACMoveRole", attribute_type=str, is_required=False, is_unique=False, choices=[u'SECONDARY', u'TERTIARY'])
         self.expose_attribute(local_name="active", remote_name="active", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address_spoofing", remote_name="addressSpoofing", attribute_type=str, is_required=True, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="segmentation_id", remote_name="segmentationID", attribute_type=int, is_required=False, is_unique=False)
@@ -307,6 +316,9 @@ class NUVPort(NURESTObject):
         
         
         self.ingress_adv_fwd_entry_templates = NUIngressAdvFwdEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.policy_groups = NUPolicyGroupsFetcher.fetcher_with_object(parent_object=self, relationship="member")
@@ -484,6 +496,33 @@ class NUVPort(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def gateway_mac_move_role(self):
+        """ Get gateway_mac_move_role value.
+
+            Notes:
+                Role of the gateway vport when handling mac move errors
+
+                
+                This attribute is named `gatewayMACMoveRole` in VSD API.
+                
+        """
+        return self._gateway_mac_move_role
+
+    @gateway_mac_move_role.setter
+    def gateway_mac_move_role(self, value):
+        """ Set gateway_mac_move_role value.
+
+            Notes:
+                Role of the gateway vport when handling mac move errors
+
+                
+                This attribute is named `gatewayMACMoveRole` in VSD API.
+                
+        """
+        self._gateway_mac_move_role = value
 
     
     @property

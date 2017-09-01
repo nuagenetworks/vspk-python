@@ -40,6 +40,8 @@ Attributes
 
 - ``associated_egress_qos_policy_id``: ID of the Egress QOS Policy associated with this VLAN.
 
+- ``associated_ingress_qos_policy_id``: ID of the Ingress QOS Policy / Tunnel Shaper associated with this VLAN.
+
 - ``associated_uplink_connection_id``: Associated uplink connection ID
 
 - ``associated_vsc_profile_id``: The associated VSC profile for the uplink VLANS. This should be only be valid for the uplinks

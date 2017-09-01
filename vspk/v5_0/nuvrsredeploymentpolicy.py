@@ -78,6 +78,10 @@ class NUVRSRedeploymentpolicy(NURESTObject):
         self._deployment_count_threshold = None
         self._jesxmon_process_redeployment_enabled = None
         self._entity_scope = None
+        self._log_disk_utilization_redeployment_enabled = None
+        self._log_disk_utilization_threshold = None
+        self._root_disk_utilization_redeployment_enabled = None
+        self._root_disk_utilization_threshold = None
         self._external_id = None
         
         self.expose_attribute(local_name="al_ubr0_status_redeployment_enabled", remote_name="ALUbr0StatusRedeploymentEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -93,6 +97,10 @@ class NUVRSRedeploymentpolicy(NURESTObject):
         self.expose_attribute(local_name="deployment_count_threshold", remote_name="deploymentCountThreshold", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="jesxmon_process_redeployment_enabled", remote_name="jesxmonProcessRedeploymentEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="log_disk_utilization_redeployment_enabled", remote_name="logDiskUtilizationRedeploymentEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="log_disk_utilization_threshold", remote_name="logDiskUtilizationThreshold", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="root_disk_utilization_redeployment_enabled", remote_name="rootDiskUtilizationRedeploymentEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="root_disk_utilization_threshold", remote_name="rootDiskUtilizationThreshold", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -449,6 +457,114 @@ class NUVRSRedeploymentpolicy(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def log_disk_utilization_redeployment_enabled(self):
+        """ Get log_disk_utilization_redeployment_enabled value.
+
+            Notes:
+                Log disk Utilization Redeployment Enabled
+
+                
+                This attribute is named `logDiskUtilizationRedeploymentEnabled` in VSD API.
+                
+        """
+        return self._log_disk_utilization_redeployment_enabled
+
+    @log_disk_utilization_redeployment_enabled.setter
+    def log_disk_utilization_redeployment_enabled(self, value):
+        """ Set log_disk_utilization_redeployment_enabled value.
+
+            Notes:
+                Log disk Utilization Redeployment Enabled
+
+                
+                This attribute is named `logDiskUtilizationRedeploymentEnabled` in VSD API.
+                
+        """
+        self._log_disk_utilization_redeployment_enabled = value
+
+    
+    @property
+    def log_disk_utilization_threshold(self):
+        """ Get log_disk_utilization_threshold value.
+
+            Notes:
+                Log disk Utilization Threshold
+
+                
+                This attribute is named `logDiskUtilizationThreshold` in VSD API.
+                
+        """
+        return self._log_disk_utilization_threshold
+
+    @log_disk_utilization_threshold.setter
+    def log_disk_utilization_threshold(self, value):
+        """ Set log_disk_utilization_threshold value.
+
+            Notes:
+                Log disk Utilization Threshold
+
+                
+                This attribute is named `logDiskUtilizationThreshold` in VSD API.
+                
+        """
+        self._log_disk_utilization_threshold = value
+
+    
+    @property
+    def root_disk_utilization_redeployment_enabled(self):
+        """ Get root_disk_utilization_redeployment_enabled value.
+
+            Notes:
+                Root disk Utilization Redeployment Enabled
+
+                
+                This attribute is named `rootDiskUtilizationRedeploymentEnabled` in VSD API.
+                
+        """
+        return self._root_disk_utilization_redeployment_enabled
+
+    @root_disk_utilization_redeployment_enabled.setter
+    def root_disk_utilization_redeployment_enabled(self, value):
+        """ Set root_disk_utilization_redeployment_enabled value.
+
+            Notes:
+                Root disk Utilization Redeployment Enabled
+
+                
+                This attribute is named `rootDiskUtilizationRedeploymentEnabled` in VSD API.
+                
+        """
+        self._root_disk_utilization_redeployment_enabled = value
+
+    
+    @property
+    def root_disk_utilization_threshold(self):
+        """ Get root_disk_utilization_threshold value.
+
+            Notes:
+                Root disk Utilization Threshold
+
+                
+                This attribute is named `rootDiskUtilizationThreshold` in VSD API.
+                
+        """
+        return self._root_disk_utilization_threshold
+
+    @root_disk_utilization_threshold.setter
+    def root_disk_utilization_threshold(self, value):
+        """ Set root_disk_utilization_threshold value.
+
+            Notes:
+                Root disk Utilization Threshold
+
+                
+                This attribute is named `rootDiskUtilizationThreshold` in VSD API.
+                
+        """
+        self._root_disk_utilization_threshold = value
 
     
     @property

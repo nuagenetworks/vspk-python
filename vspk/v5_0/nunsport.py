@@ -143,9 +143,11 @@ class NUNSPort(NURESTObject):
         self._permitted_action = None
         self._description = None
         self._physical_name = None
+        self._enable_nat_probes = None
         self._entity_scope = None
         self._port_type = None
         self._speed = None
+        self._traffic_through_ubr_only = None
         self._use_user_mnemonic = None
         self._user_mnemonic = None
         self._associated_egress_qos_policy_id = None
@@ -162,9 +164,11 @@ class NUNSPort(NURESTObject):
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="enable_nat_probes", remote_name="enableNATProbes", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'NETWORK'])
         self.expose_attribute(local_name="speed", remote_name="speed", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTONEGOTIATE', u'BASE10', u'BASET1000', u'BASETX100', u'BASEX10G'])
+        self.expose_attribute(local_name="traffic_through_ubr_only", remote_name="TrafficThroughUBROnly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_user_mnemonic", remote_name="useUserMnemonic", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
@@ -420,6 +424,33 @@ class NUNSPort(NURESTObject):
 
     
     @property
+    def enable_nat_probes(self):
+        """ Get enable_nat_probes value.
+
+            Notes:
+                If enabled, probes will be sent to other NSGs and DTLS sessions for IPSEC and VXLAN will be set up to the VSCs. If disabled, no NAT probes are sent on that uplink and no DTLS sessions are set up to the VSCs.
+
+                
+                This attribute is named `enableNATProbes` in VSD API.
+                
+        """
+        return self._enable_nat_probes
+
+    @enable_nat_probes.setter
+    def enable_nat_probes(self, value):
+        """ Set enable_nat_probes value.
+
+            Notes:
+                If enabled, probes will be sent to other NSGs and DTLS sessions for IPSEC and VXLAN will be set up to the VSCs. If disabled, no NAT probes are sent on that uplink and no DTLS sessions are set up to the VSCs.
+
+                
+                This attribute is named `enableNATProbes` in VSD API.
+                
+        """
+        self._enable_nat_probes = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -494,6 +525,33 @@ class NUNSPort(NURESTObject):
                 
         """
         self._speed = value
+
+    
+    @property
+    def traffic_through_ubr_only(self):
+        """ Get traffic_through_ubr_only value.
+
+            Notes:
+                If enabled, cuts down the number of probes to just the number of provisioned UBRs.
+
+                
+                This attribute is named `TrafficThroughUBROnly` in VSD API.
+                
+        """
+        return self._traffic_through_ubr_only
+
+    @traffic_through_ubr_only.setter
+    def traffic_through_ubr_only(self, value):
+        """ Set traffic_through_ubr_only value.
+
+            Notes:
+                If enabled, cuts down the number of probes to just the number of provisioned UBRs.
+
+                
+                This attribute is named `TrafficThroughUBROnly` in VSD API.
+                
+        """
+        self._traffic_through_ubr_only = value
 
     
     @property

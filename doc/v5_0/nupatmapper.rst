@@ -32,6 +32,7 @@ Children
 **class**                                                                                                                                                      **fetcher**
 
 :ref:`nusharednetworkresource.NUSharedNetworkResource<nusharednetworkresource>`                                                                                  ``shared_network_resources`` 
+:ref:`nusubnet.NUSubnet<nusubnet>`                                                                                                                               ``subnets`` 
 ================================================================================================================================================               ==========================================================================================
 
 

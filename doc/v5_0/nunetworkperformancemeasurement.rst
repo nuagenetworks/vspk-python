@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``npm_type``: Type of network performance measurement
+
 - ``name`` (**Mandatory**): name of the network performance measurement
 
 - ``read_only``: Determines whether this entity is read only.  Read only objects cannot be modified or deleted.

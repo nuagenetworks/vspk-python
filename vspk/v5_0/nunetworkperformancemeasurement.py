@@ -46,6 +46,15 @@ class NUNetworkPerformanceMeasurement(NURESTObject):
     __resource_name__ = "networkperformancemeasurements"
 
     
+    ## Constants
+    
+    CONST_NPM_TYPE_VXLAN = "VXLAN"
+    
+    CONST_NPM_TYPE_NONE = "NONE"
+    
+    CONST_NPM_TYPE_IPSEC = "IPSEC"
+    
+    
 
     def __init__(self, **kwargs):
         """ Initializes a NetworkPerformanceMeasurement instance
@@ -64,11 +73,13 @@ class NUNetworkPerformanceMeasurement(NURESTObject):
 
         # Read/Write Attributes
         
+        self._npm_type = None
         self._name = None
         self._read_only = None
         self._description = None
         self._associated_performance_monitor_id = None
         
+        self.expose_attribute(local_name="npm_type", remote_name="NPMType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPSEC', u'NONE', u'VXLAN'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="read_only", remote_name="readOnly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
@@ -87,6 +98,33 @@ class NUNetworkPerformanceMeasurement(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def npm_type(self):
+        """ Get npm_type value.
+
+            Notes:
+                Type of network performance measurement
+
+                
+                This attribute is named `NPMType` in VSD API.
+                
+        """
+        return self._npm_type
+
+    @npm_type.setter
+    def npm_type(self, value):
+        """ Set npm_type value.
+
+            Notes:
+                Type of network performance measurement
+
+                
+                This attribute is named `NPMType` in VSD API.
+                
+        """
+        self._npm_type = value
+
     
     @property
     def name(self):

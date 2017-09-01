@@ -18,9 +18,15 @@ Attributes
 
 - ``vcenter_user``: Username for VCenter.
 
+- ``vrs_agent_moid``: VRS agent MOID to uniquely identify VRS VM on the Vcenter
+
+- ``vrs_agent_name``: VRS agent name on the Vcenter
+
 - ``vrs_configuration_time_limit``: The maximum wait time limit in minutes to get VRS configured at cluster level
 
 - ``vrs_metrics_id``: ID of the VRS metrics object.
+
+- ``vrs_mgmt_hostname``: The VRS Management Hostname that will be configured on the VRS and in case of vCenter 6.5 and above, will be used to rename the VRS Agent in vCenter
 
 - ``vrs_state``: Current state of the VRS VM on the hypervisor
 
@@ -51,6 +57,12 @@ Attributes
 - ``scope``: Cluster in scope or not in scope.
 
 - ``secondary_nuage_controller``: IP address of the secondary Controller (VSC)
+
+- ``remote_syslog_server_ip``: Remote syslog server IP
+
+- ``remote_syslog_server_port``: Remote syslog server port
+
+- ``remote_syslog_server_type``: Remote syslog server type (UDP/TCP)
 
 - ``removed_from_vcenter_inventory``: Set to true if the hypervisor is removed from Vcenter inventory datacenter or cluster
 
@@ -247,9 +259,9 @@ Parents
 --------
 
 
+- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
+
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
 
 - :ref:`nume.NUMe<nume>`
-
-- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 

@@ -143,6 +143,7 @@ class NUVLAN(NURESTObject):
         self._user_mnemonic = None
         self._associated_bgp_profile_id = None
         self._associated_egress_qos_policy_id = None
+        self._associated_ingress_qos_policy_id = None
         self._associated_uplink_connection_id = None
         self._associated_vsc_profile_id = None
         self._status = None
@@ -164,6 +165,7 @@ class NUVLAN(NURESTObject):
         self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_bgp_profile_id", remote_name="associatedBGPProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_ingress_qos_policy_id", remote_name="associatedIngressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_uplink_connection_id", remote_name="associatedUplinkConnectionID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vsc_profile_id", remote_name="associatedVSCProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'INITIALIZED', u'MISMATCH', u'ORPHAN', u'READY'])
@@ -575,6 +577,33 @@ class NUVLAN(NURESTObject):
                 
         """
         self._associated_egress_qos_policy_id = value
+
+    
+    @property
+    def associated_ingress_qos_policy_id(self):
+        """ Get associated_ingress_qos_policy_id value.
+
+            Notes:
+                ID of the Ingress QOS Policy / Tunnel Shaper associated with this VLAN.
+
+                
+                This attribute is named `associatedIngressQOSPolicyID` in VSD API.
+                
+        """
+        return self._associated_ingress_qos_policy_id
+
+    @associated_ingress_qos_policy_id.setter
+    def associated_ingress_qos_policy_id(self, value):
+        """ Set associated_ingress_qos_policy_id value.
+
+            Notes:
+                ID of the Ingress QOS Policy / Tunnel Shaper associated with this VLAN.
+
+                
+                This attribute is named `associatedIngressQOSPolicyID` in VSD API.
+                
+        """
+        self._associated_ingress_qos_policy_id = value
 
     
     @property

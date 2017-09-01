@@ -20,6 +20,8 @@ Attributes
 
 - ``dhcp_lease_interval``: DHCP Lease Interval (in hrs) to be used by an enterprise.
 
+- ``vnf_management_enabled``: Read only flag to display if VNF management is enabled for this enterprise
+
 - ``name`` (**Mandatory**): The unique name of the enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
 
 - ``last_updated_by``: ID of the user who last updated the object.
@@ -29,6 +31,8 @@ Attributes
 - ``send_multi_cast_list_id``: Readonly Id of the auto generated send multicast list associated with this enterprise profile
 
 - ``description``: A description of the enterprise
+
+- ``shared_enterprise``: This flag indicates whether this is a Shared Infrastructure Enterprise or not. Its a read-only attribute and it cannot be set by anybody.
 
 - ``dictionary_version``: L7 Application Type version
 
@@ -79,7 +83,10 @@ Children
 
 :ref:`nul2domain.NUL2Domain<nul2domain>`                                                                                                                         ``l2_domains`` 
 :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`                                                                                                 ``l2_domain_templates`` 
+:ref:`nul4service.NUL4Service<nul4service>`                                                                                                                      ``l4_services`` 
+:ref:`nul4servicegroup.NUL4ServiceGroup<nul4servicegroup>`                                                                                                       ``l4_service_groups`` 
 :ref:`nul7applicationsignature.NUL7applicationsignature<nul7applicationsignature>`                                                                               ``l7applicationsignatures`` 
+:ref:`nucaptiveportalprofile.NUCaptivePortalProfile<nucaptiveportalprofile>`                                                                                     ``captive_portal_profiles`` 
 :ref:`nuratelimiter.NURateLimiter<nuratelimiter>`                                                                                                                ``rate_limiters`` 
 :ref:`nugateway.NUGateway<nugateway>`                                                                                                                            ``gateways`` 
 :ref:`nugatewaytemplate.NUGatewayTemplate<nugatewaytemplate>`                                                                                                    ``gateway_templates`` 
@@ -107,6 +114,8 @@ Children
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuvm.NUVM<nuvm>`                                                                                                                                           ``vms`` 
 :ref:`nuvnf.NUVNF<nuvnf>`                                                                                                                                        ``vnfs`` 
+:ref:`nuvnfmetadata.NUVNFMetadata<nuvnfmetadata>`                                                                                                                ``vnf_metadatas`` 
+:ref:`nuingressqospolicy.NUIngressQOSPolicy<nuingressqospolicy>`                                                                                                 ``ingress_qos_policies`` 
 :ref:`nuenterprisenetwork.NUEnterpriseNetwork<nuenterprisenetwork>`                                                                                              ``enterprise_networks`` 
 :ref:`nuenterprisesecurity.NUEnterpriseSecurity<nuenterprisesecurity>`                                                                                           ``enterprise_securities`` 
 :ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
@@ -114,6 +123,7 @@ Children
 :ref:`nudomain.NUDomain<nudomain>`                                                                                                                               ``domains`` 
 :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`                                                                                                       ``domain_templates`` 
 :ref:`nucontainer.NUContainer<nucontainer>`                                                                                                                      ``containers`` 
+:ref:`nucosremarkingpolicytable.NUCOSRemarkingPolicyTable<nucosremarkingpolicytable>`                                                                            ``cos_remarking_policy_tables`` 
 :ref:`nuroutingpolicy.NURoutingPolicy<nuroutingpolicy>`                                                                                                          ``routing_policies`` 
 :ref:`nuapplication.NUApplication<nuapplication>`                                                                                                                ``applications`` 
 :ref:`nuapplicationperformancemanagement.NUApplicationperformancemanagement<nuapplicationperformancemanagement>`                                                 ``applicationperformancemanagements`` 
@@ -121,6 +131,7 @@ Children
 :ref:`nugroupkeyencryptionprofile.NUGroupKeyEncryptionProfile<nugroupkeyencryptionprofile>`                                                                      ``group_key_encryption_profiles`` 
 :ref:`nutrunk.NUTrunk<nutrunk>`                                                                                                                                  ``trunks`` 
 :ref:`nudscpforwardingclasstable.NUDSCPForwardingClassTable<nudscpforwardingclasstable>`                                                                         ``dscp_forwarding_class_tables`` 
+:ref:`nudscpremarkingpolicytable.NUDSCPRemarkingPolicyTable<nudscpremarkingpolicytable>`                                                                         ``dscp_remarking_policy_tables`` 
 :ref:`nuuser.NUUser<nuuser>`                                                                                                                                     ``users`` 
 :ref:`nunsgateway.NUNSGateway<nunsgateway>`                                                                                                                      ``ns_gateways`` 
 :ref:`nunsgatewaytemplate.NUNSGatewayTemplate<nunsgatewaytemplate>`                                                                                              ``ns_gateway_templates`` 

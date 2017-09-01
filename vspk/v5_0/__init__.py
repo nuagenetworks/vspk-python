@@ -25,7 +25,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-__all__ = ['NUVSDSession', 'NUAddressMap', 'NUAddressRange', 'NUAggregateMetadata', 'NUAlarm', 'NUAllAlarm', 'NUApplication', 'NUApplicationBinding', 'NUApplicationperformancemanagement', 'NUApplicationperformancemanagementbinding', 'NUAutoDiscoverCluster', 'NUAutodiscovereddatacenter', 'NUAutoDiscoveredGateway', 'NUAutoDiscoverHypervisorFromCluster', 'NUAvatar', 'NUBGPNeighbor', 'NUBGPPeer', 'NUBGPProfile', 'NUBootstrap', 'NUBootstrapActivation', 'NUBRConnection', 'NUBridgeInterface', 'NUBulkStatistics', 'NUCertificate', 'NUCloudMgmtSystem', 'NUConnectionendpoint', 'NUContainer', 'NUContainerInterface', 'NUContainerResync', 'NUCSNATPool', 'NUCTranslationMap', 'NUCustomProperty', 'NUDemarcationService', 'NUDHCPOption', 'NUDiskStat', 'NUDomain', 'NUDomainFIPAclTemplate', 'NUDomainFIPAclTemplateEntry', 'NUDomainTemplate', 'NUDSCPForwardingClassMapping', 'NUDSCPForwardingClassTable', 'NUDUCGroup', 'NUDUCGroupBinding', 'NUEgressACLEntryTemplate', 'NUEgressACLTemplate', 'NUEgressAdvFwdEntryTemplate', 'NUEgressAdvFwdTemplate', 'NUEgressQOSPolicy', 'NUEnterprise', 'NUEnterpriseNetwork', 'NUEnterprisePermission', 'NUEnterpriseProfile', 'NUEnterpriseSecuredData', 'NUEnterpriseSecurity', 'NUEventLog', 'NUFirewallAcl', 'NUFirewallRule', 'NUFloatingIp', 'NUFloatingIPACLTemplate', 'NUFloatingIPACLTemplateEntry', 'NUGateway', 'NUGatewaySecuredData', 'NUGatewaySecurity', 'NUGatewayTemplate', 'NUGlobalMetadata', 'NUGroup', 'NUGroupKeyEncryptionProfile', 'NUHostInterface', 'NUHSC', 'NUIKECertificate', 'NUIKEEncryptionprofile', 'NUIKEGateway', 'NUIKEGatewayConfig', 'NUIKEGatewayConnection', 'NUIKEGatewayProfile', 'NUIKEPSK', 'NUIKESubnet', 'NUInfrastructureAccessProfile', 'NUInfrastructureConfig', 'NUInfrastructureGatewayProfile', 'NUInfrastructureVscProfile', 'NUIngressACLEntryTemplate', 'NUIngressACLTemplate', 'NUIngressAdvFwdEntryTemplate', 'NUIngressAdvFwdTemplate', 'NUIngressExternalServiceTemplate', 'NUIngressExternalServiceTemplateEntry', 'NUIPReservation', 'NUJob', 'NUKeyServerMember', 'NUKeyServerMonitor', 'NUKeyServerMonitorEncryptedSeed', 'NUKeyServerMonitorSeed', 'NUKeyServerMonitorSEK', 'NUKeyServerNotification', 'NUL2Domain', 'NUL2DomainTemplate', 'NUL7applicationsignature', 'NULDAPConfiguration', 'NULicense', 'NULicenseStatus', 'NULink', 'NULocation', 'NULTEInformation', 'NULtestatistics', 'NUMe', 'NUMetadata', 'NUMirrorDestination', 'NUMonitoringPort', 'NUMonitorscope', 'NUMultiCastChannelMap', 'NUMultiCastList', 'NUMultiCastRange', 'NUMultiNICVPort', 'NUNATMapEntry', 'NUNetworkLayout', 'NUNetworkMacroGroup', 'NUNetworkPerformanceBinding', 'NUNetworkPerformanceMeasurement', 'NUNextHop', 'NUNSGateway', 'NUNSGatewayTemplate', 'NUNSGGroup', 'NUNSGInfo', 'NUNSPort', 'NUNSPortTemplate', 'NUNSRedundantGatewayGroup', 'NUOverlayAddressPool', 'NUOverlayMirrorDestination', 'NUOverlayMirrorDestinationTemplate', 'NUOverlayPATNATEntry', 'NUPATIPEntry', 'NUPATMapper', 'NUPATNATPool', 'NUPerformanceMonitor', 'NUPermission', 'NUPolicyDecision', 'NUPolicyEntry', 'NUPolicyGroup', 'NUPolicyGroupTemplate', 'NUPolicyObjectGroup', 'NUPolicyStatement', 'NUPort', 'NUPortMapping', 'NUPortTemplate', 'NUPSNATPool', 'NUPSPATMap', 'NUPTranslationMap', 'NUPublicNetworkMacro', 'NUQOS', 'NURateLimiter', 'NURedirectionTarget', 'NURedirectionTargetTemplate', 'NURedundancyGroup', 'NURedundantPort', 'NURoutingPolicy', 'NUSharedNetworkResource', 'NUSiteInfo', 'NUSPATSourcesPool', 'NUSSHKey', 'NUSSIDConnection', 'NUStaticRoute', 'NUStatistics', 'NUStatisticsPolicy', 'NUStatsCollectorInfo', 'NUSubnet', 'NUSubnetTemplate', 'NUSystemConfig', 'NUTCA', 'NUTrunk', 'NUUnderlay', 'NUUplinkConnection', 'NUUplinkRD', 'NUUser', 'NUVCenter', 'NUVCenterCluster', 'NUVCenterDataCenter', 'NUVCenterEAMConfig', 'NUVCenterHypervisor', 'NUVCenterVRSConfig', 'NUVia', 'NUVirtualIP', 'NUVLAN', 'NUVLANTemplate', 'NUVM', 'NUVMInterface', 'NUVMResync', 'NUVNF', 'NUVNFCatalog', 'NUVNFDescriptor', 'NUVNFInterface', 'NUVNFInterfaceDescriptor', 'NUVNFMetadata', 'NUVPNConnection', 'NUVPort', 'NUVPortMirror', 'NUVRS', 'NUVRSAddressRange', 'NUVRSMetrics', 'NUVRSRedeploymentpolicy', 'NUVSC', 'NUVSD', 'NUVSDComponent', 'NUVsgRedundantPort', 'NUVSP', 'NUWANService', 'NUWirelessPort', 'NUWirelessPortTemplate', 'NUZFBAutoAssignment', 'NUZFBRequest', 'NUZone', 'NUZoneTemplate']
+__all__ = ['NUVSDSession', 'NUAddressMap', 'NUAddressRange', 'NUAggregateMetadata', 'NUAlarm', 'NUAllAlarm', 'NUApplication', 'NUApplicationBinding', 'NUApplicationperformancemanagement', 'NUApplicationperformancemanagementbinding', 'NUAutoDiscoverCluster', 'NUAutodiscovereddatacenter', 'NUAutoDiscoveredGateway', 'NUAutoDiscoverHypervisorFromCluster', 'NUAvatar', 'NUBFDSession', 'NUBGPNeighbor', 'NUBGPPeer', 'NUBGPProfile', 'NUBootstrap', 'NUBootstrapActivation', 'NUBRConnection', 'NUBridgeInterface', 'NUBulkStatistics', 'NUCaptivePortalProfile', 'NUCertificate', 'NUCloudMgmtSystem', 'NUCommand', 'NUConnectionendpoint', 'NUContainer', 'NUContainerInterface', 'NUContainerResync', 'NUCOSRemarkingPolicy', 'NUCOSRemarkingPolicyTable', 'NUCSNATPool', 'NUCTranslationMap', 'NUCustomProperty', 'NUDemarcationService', 'NUDHCPOption', 'NUDiskStat', 'NUDomain', 'NUDomainFIPAclTemplate', 'NUDomainFIPAclTemplateEntry', 'NUDomainTemplate', 'NUDSCPForwardingClassMapping', 'NUDSCPForwardingClassTable', 'NUDSCPRemarkingPolicy', 'NUDSCPRemarkingPolicyTable', 'NUDUCGroup', 'NUDUCGroupBinding', 'NUEgressACLEntryTemplate', 'NUEgressACLTemplate', 'NUEgressAdvFwdEntryTemplate', 'NUEgressAdvFwdTemplate', 'NUEgressQOSPolicy', 'NUEnterprise', 'NUEnterpriseNetwork', 'NUEnterprisePermission', 'NUEnterpriseProfile', 'NUEnterpriseSecuredData', 'NUEnterpriseSecurity', 'NUEventLog', 'NUFirewallAcl', 'NUFirewallRule', 'NUFloatingIp', 'NUFloatingIPACLTemplate', 'NUFloatingIPACLTemplateEntry', 'NUGateway', 'NUGatewaySecuredData', 'NUGatewaySecurity', 'NUGatewayTemplate', 'NUGlobalMetadata', 'NUGroup', 'NUGroupKeyEncryptionProfile', 'NUHostInterface', 'NUHSC', 'NUIKECertificate', 'NUIKEEncryptionprofile', 'NUIKEGateway', 'NUIKEGatewayConfig', 'NUIKEGatewayConnection', 'NUIKEGatewayProfile', 'NUIKEPSK', 'NUIKESubnet', 'NUInfrastructureAccessProfile', 'NUInfrastructureConfig', 'NUInfrastructureGatewayProfile', 'NUInfrastructureVscProfile', 'NUIngressACLEntryTemplate', 'NUIngressACLTemplate', 'NUIngressAdvFwdEntryTemplate', 'NUIngressAdvFwdTemplate', 'NUIngressExternalServiceTemplate', 'NUIngressExternalServiceTemplateEntry', 'NUIngressQOSPolicy', 'NUIPReservation', 'NUJob', 'NUKeyServerMember', 'NUKeyServerMonitor', 'NUKeyServerMonitorEncryptedSeed', 'NUKeyServerMonitorSeed', 'NUKeyServerMonitorSEK', 'NUKeyServerNotification', 'NUL2Domain', 'NUL2DomainTemplate', 'NUL4Service', 'NUL4ServiceGroup', 'NUL7applicationsignature', 'NULDAPConfiguration', 'NULicense', 'NULicenseStatus', 'NULink', 'NULocation', 'NULTEInformation', 'NULtestatistics', 'NUMe', 'NUMetadata', 'NUMirrorDestination', 'NUMonitoringPort', 'NUMonitorscope', 'NUMultiCastChannelMap', 'NUMultiCastList', 'NUMultiCastRange', 'NUMultiNICVPort', 'NUNATMapEntry', 'NUNetworkLayout', 'NUNetworkMacroGroup', 'NUNetworkPerformanceBinding', 'NUNetworkPerformanceMeasurement', 'NUNextHop', 'NUNSGateway', 'NUNSGatewayTemplate', 'NUNSGGroup', 'NUNSGInfo', 'NUNSGUpgradeProfile', 'NUNSPort', 'NUNSPortTemplate', 'NUNSRedundantGatewayGroup', 'NUOverlayAddressPool', 'NUOverlayMirrorDestination', 'NUOverlayMirrorDestinationTemplate', 'NUOverlayPATNATEntry', 'NUPATIPEntry', 'NUPATMapper', 'NUPATNATPool', 'NUPerformanceMonitor', 'NUPermission', 'NUPGExpression', 'NUPGExpressionTemplate', 'NUPolicyDecision', 'NUPolicyEntry', 'NUPolicyGroup', 'NUPolicyGroupTemplate', 'NUPolicyObjectGroup', 'NUPolicyStatement', 'NUPort', 'NUPortMapping', 'NUPortTemplate', 'NUProxyARPFilter', 'NUPSNATPool', 'NUPSPATMap', 'NUPTranslationMap', 'NUPublicNetworkMacro', 'NUQOS', 'NURateLimiter', 'NURedirectionTarget', 'NURedirectionTargetTemplate', 'NURedundancyGroup', 'NURedundantPort', 'NURoutingPolicy', 'NUSharedNetworkResource', 'NUSiteInfo', 'NUSPATSourcesPool', 'NUSSHKey', 'NUSSIDConnection', 'NUStaticRoute', 'NUStatistics', 'NUStatisticsPolicy', 'NUStatsCollectorInfo', 'NUSubnet', 'NUSubnetTemplate', 'NUSystemConfig', 'NUTCA', 'NUTrunk', 'NUUnderlay', 'NUUplinkConnection', 'NUUplinkRD', 'NUUser', 'NUUserContext', 'NUVCenter', 'NUVCenterCluster', 'NUVCenterDataCenter', 'NUVCenterEAMConfig', 'NUVCenterHypervisor', 'NUVCenterVRSConfig', 'NUVia', 'NUVirtualIP', 'NUVLAN', 'NUVLANTemplate', 'NUVM', 'NUVMInterface', 'NUVMResync', 'NUVNF', 'NUVNFCatalog', 'NUVNFDescriptor', 'NUVNFDomainMapping', 'NUVNFInterface', 'NUVNFInterfaceDescriptor', 'NUVNFMetadata', 'NUVPNConnection', 'NUVPort', 'NUVPortMirror', 'NUVRS', 'NUVRSAddressRange', 'NUVRSMetrics', 'NUVRSRedeploymentpolicy', 'NUVSC', 'NUVSD', 'NUVSDComponent', 'NUVsgRedundantPort', 'NUVSP', 'NUWANService', 'NUWirelessPort', 'NUWirelessPortTemplate', 'NUZFBAutoAssignment', 'NUZFBRequest', 'NUZone', 'NUZoneTemplate']
 
 from .nuaddressmap import NUAddressMap
 from .nuaddressrange import NUAddressRange
@@ -41,6 +41,7 @@ from .nuautodiscovereddatacenter import NUAutodiscovereddatacenter
 from .nuautodiscoveredgateway import NUAutoDiscoveredGateway
 from .nuautodiscoverhypervisorfromcluster import NUAutoDiscoverHypervisorFromCluster
 from .nuavatar import NUAvatar
+from .nubfdsession import NUBFDSession
 from .nubgpneighbor import NUBGPNeighbor
 from .nubgppeer import NUBGPPeer
 from .nubgpprofile import NUBGPProfile
@@ -49,12 +50,16 @@ from .nubootstrapactivation import NUBootstrapActivation
 from .nubrconnection import NUBRConnection
 from .nubridgeinterface import NUBridgeInterface
 from .nubulkstatistics import NUBulkStatistics
+from .nucaptiveportalprofile import NUCaptivePortalProfile
 from .nucertificate import NUCertificate
 from .nucloudmgmtsystem import NUCloudMgmtSystem
+from .nucommand import NUCommand
 from .nuconnectionendpoint import NUConnectionendpoint
 from .nucontainer import NUContainer
 from .nucontainerinterface import NUContainerInterface
 from .nucontainerresync import NUContainerResync
+from .nucosremarkingpolicy import NUCOSRemarkingPolicy
+from .nucosremarkingpolicytable import NUCOSRemarkingPolicyTable
 from .nucsnatpool import NUCSNATPool
 from .nuctranslationmap import NUCTranslationMap
 from .nucustomproperty import NUCustomProperty
@@ -67,6 +72,8 @@ from .nudomainfipacltemplateentry import NUDomainFIPAclTemplateEntry
 from .nudomaintemplate import NUDomainTemplate
 from .nudscpforwardingclassmapping import NUDSCPForwardingClassMapping
 from .nudscpforwardingclasstable import NUDSCPForwardingClassTable
+from .nudscpremarkingpolicy import NUDSCPRemarkingPolicy
+from .nudscpremarkingpolicytable import NUDSCPRemarkingPolicyTable
 from .nuducgroup import NUDUCGroup
 from .nuducgroupbinding import NUDUCGroupBinding
 from .nuegressaclentrytemplate import NUEgressACLEntryTemplate
@@ -113,6 +120,7 @@ from .nuingressadvfwdentrytemplate import NUIngressAdvFwdEntryTemplate
 from .nuingressadvfwdtemplate import NUIngressAdvFwdTemplate
 from .nuingressexternalservicetemplate import NUIngressExternalServiceTemplate
 from .nuingressexternalservicetemplateentry import NUIngressExternalServiceTemplateEntry
+from .nuingressqospolicy import NUIngressQOSPolicy
 from .nuipreservation import NUIPReservation
 from .nujob import NUJob
 from .nukeyservermember import NUKeyServerMember
@@ -123,6 +131,8 @@ from .nukeyservermonitorsek import NUKeyServerMonitorSEK
 from .nukeyservernotification import NUKeyServerNotification
 from .nul2domain import NUL2Domain
 from .nul2domaintemplate import NUL2DomainTemplate
+from .nul4service import NUL4Service
+from .nul4servicegroup import NUL4ServiceGroup
 from .nul7applicationsignature import NUL7applicationsignature
 from .nuldapconfiguration import NULDAPConfiguration
 from .nulicense import NULicense
@@ -150,6 +160,7 @@ from .nunsgateway import NUNSGateway
 from .nunsgatewaytemplate import NUNSGatewayTemplate
 from .nunsggroup import NUNSGGroup
 from .nunsginfo import NUNSGInfo
+from .nunsgupgradeprofile import NUNSGUpgradeProfile
 from .nunsport import NUNSPort
 from .nunsporttemplate import NUNSPortTemplate
 from .nunsredundantgatewaygroup import NUNSRedundantGatewayGroup
@@ -162,6 +173,8 @@ from .nupatmapper import NUPATMapper
 from .nupatnatpool import NUPATNATPool
 from .nuperformancemonitor import NUPerformanceMonitor
 from .nupermission import NUPermission
+from .nupgexpression import NUPGExpression
+from .nupgexpressiontemplate import NUPGExpressionTemplate
 from .nupolicydecision import NUPolicyDecision
 from .nupolicyentry import NUPolicyEntry
 from .nupolicygroup import NUPolicyGroup
@@ -171,6 +184,7 @@ from .nupolicystatement import NUPolicyStatement
 from .nuport import NUPort
 from .nuportmapping import NUPortMapping
 from .nuporttemplate import NUPortTemplate
+from .nuproxyarpfilter import NUProxyARPFilter
 from .nupsnatpool import NUPSNATPool
 from .nupspatmap import NUPSPATMap
 from .nuptranslationmap import NUPTranslationMap
@@ -200,6 +214,7 @@ from .nuunderlay import NUUnderlay
 from .nuuplinkconnection import NUUplinkConnection
 from .nuuplinkrd import NUUplinkRD
 from .nuuser import NUUser
+from .nuusercontext import NUUserContext
 from .nuvcenter import NUVCenter
 from .nuvcentercluster import NUVCenterCluster
 from .nuvcenterdatacenter import NUVCenterDataCenter
@@ -216,6 +231,7 @@ from .nuvmresync import NUVMResync
 from .nuvnf import NUVNF
 from .nuvnfcatalog import NUVNFCatalog
 from .nuvnfdescriptor import NUVNFDescriptor
+from .nuvnfdomainmapping import NUVNFDomainMapping
 from .nuvnfinterface import NUVNFInterface
 from .nuvnfinterfacedescriptor import NUVNFInterfaceDescriptor
 from .nuvnfmetadata import NUVNFMetadata
@@ -264,6 +280,7 @@ def __setup_bambou():
     NURESTModelController.register_model(NUAutoDiscoveredGateway)
     NURESTModelController.register_model(NUAutoDiscoverHypervisorFromCluster)
     NURESTModelController.register_model(NUAvatar)
+    NURESTModelController.register_model(NUBFDSession)
     NURESTModelController.register_model(NUBGPNeighbor)
     NURESTModelController.register_model(NUBGPPeer)
     NURESTModelController.register_model(NUBGPProfile)
@@ -272,12 +289,16 @@ def __setup_bambou():
     NURESTModelController.register_model(NUBRConnection)
     NURESTModelController.register_model(NUBridgeInterface)
     NURESTModelController.register_model(NUBulkStatistics)
+    NURESTModelController.register_model(NUCaptivePortalProfile)
     NURESTModelController.register_model(NUCertificate)
     NURESTModelController.register_model(NUCloudMgmtSystem)
+    NURESTModelController.register_model(NUCommand)
     NURESTModelController.register_model(NUConnectionendpoint)
     NURESTModelController.register_model(NUContainer)
     NURESTModelController.register_model(NUContainerInterface)
     NURESTModelController.register_model(NUContainerResync)
+    NURESTModelController.register_model(NUCOSRemarkingPolicy)
+    NURESTModelController.register_model(NUCOSRemarkingPolicyTable)
     NURESTModelController.register_model(NUCSNATPool)
     NURESTModelController.register_model(NUCTranslationMap)
     NURESTModelController.register_model(NUCustomProperty)
@@ -290,6 +311,8 @@ def __setup_bambou():
     NURESTModelController.register_model(NUDomainTemplate)
     NURESTModelController.register_model(NUDSCPForwardingClassMapping)
     NURESTModelController.register_model(NUDSCPForwardingClassTable)
+    NURESTModelController.register_model(NUDSCPRemarkingPolicy)
+    NURESTModelController.register_model(NUDSCPRemarkingPolicyTable)
     NURESTModelController.register_model(NUDUCGroup)
     NURESTModelController.register_model(NUDUCGroupBinding)
     NURESTModelController.register_model(NUEgressACLEntryTemplate)
@@ -336,6 +359,7 @@ def __setup_bambou():
     NURESTModelController.register_model(NUIngressAdvFwdTemplate)
     NURESTModelController.register_model(NUIngressExternalServiceTemplate)
     NURESTModelController.register_model(NUIngressExternalServiceTemplateEntry)
+    NURESTModelController.register_model(NUIngressQOSPolicy)
     NURESTModelController.register_model(NUIPReservation)
     NURESTModelController.register_model(NUJob)
     NURESTModelController.register_model(NUKeyServerMember)
@@ -346,6 +370,8 @@ def __setup_bambou():
     NURESTModelController.register_model(NUKeyServerNotification)
     NURESTModelController.register_model(NUL2Domain)
     NURESTModelController.register_model(NUL2DomainTemplate)
+    NURESTModelController.register_model(NUL4Service)
+    NURESTModelController.register_model(NUL4ServiceGroup)
     NURESTModelController.register_model(NUL7applicationsignature)
     NURESTModelController.register_model(NULDAPConfiguration)
     NURESTModelController.register_model(NULicense)
@@ -373,6 +399,7 @@ def __setup_bambou():
     NURESTModelController.register_model(NUNSGatewayTemplate)
     NURESTModelController.register_model(NUNSGGroup)
     NURESTModelController.register_model(NUNSGInfo)
+    NURESTModelController.register_model(NUNSGUpgradeProfile)
     NURESTModelController.register_model(NUNSPort)
     NURESTModelController.register_model(NUNSPortTemplate)
     NURESTModelController.register_model(NUNSRedundantGatewayGroup)
@@ -385,6 +412,8 @@ def __setup_bambou():
     NURESTModelController.register_model(NUPATNATPool)
     NURESTModelController.register_model(NUPerformanceMonitor)
     NURESTModelController.register_model(NUPermission)
+    NURESTModelController.register_model(NUPGExpression)
+    NURESTModelController.register_model(NUPGExpressionTemplate)
     NURESTModelController.register_model(NUPolicyDecision)
     NURESTModelController.register_model(NUPolicyEntry)
     NURESTModelController.register_model(NUPolicyGroup)
@@ -394,6 +423,7 @@ def __setup_bambou():
     NURESTModelController.register_model(NUPort)
     NURESTModelController.register_model(NUPortMapping)
     NURESTModelController.register_model(NUPortTemplate)
+    NURESTModelController.register_model(NUProxyARPFilter)
     NURESTModelController.register_model(NUPSNATPool)
     NURESTModelController.register_model(NUPSPATMap)
     NURESTModelController.register_model(NUPTranslationMap)
@@ -423,6 +453,7 @@ def __setup_bambou():
     NURESTModelController.register_model(NUUplinkConnection)
     NURESTModelController.register_model(NUUplinkRD)
     NURESTModelController.register_model(NUUser)
+    NURESTModelController.register_model(NUUserContext)
     NURESTModelController.register_model(NUVCenter)
     NURESTModelController.register_model(NUVCenterCluster)
     NURESTModelController.register_model(NUVCenterDataCenter)
@@ -439,6 +470,7 @@ def __setup_bambou():
     NURESTModelController.register_model(NUVNF)
     NURESTModelController.register_model(NUVNFCatalog)
     NURESTModelController.register_model(NUVNFDescriptor)
+    NURESTModelController.register_model(NUVNFDomainMapping)
     NURESTModelController.register_model(NUVNFInterface)
     NURESTModelController.register_model(NUVNFInterfaceDescriptor)
     NURESTModelController.register_model(NUVNFMetadata)

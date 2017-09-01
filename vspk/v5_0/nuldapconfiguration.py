@@ -81,6 +81,8 @@ class NULDAPConfiguration(NURESTObject):
         self._entity_scope = None
         self._port = None
         self._group_dn = None
+        self._group_name_prefix = None
+        self._group_name_suffix = None
         self._user_dn_template = None
         self._authorization_enabled = None
         self._authorizing_user_dn = None
@@ -96,7 +98,9 @@ class NULDAPConfiguration(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="port", remote_name="port", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="group_dn", remote_name="groupDN", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="user_dn_template", remote_name="userDNTemplate", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="group_name_prefix", remote_name="groupNamePrefix", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="group_name_suffix", remote_name="groupNameSuffix", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="user_dn_template", remote_name="userDNTemplate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="authorization_enabled", remote_name="authorizationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="authorizing_user_dn", remote_name="authorizingUserDN", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -363,6 +367,60 @@ class NULDAPConfiguration(NURESTObject):
                 
         """
         self._group_dn = value
+
+    
+    @property
+    def group_name_prefix(self):
+        """ Get group_name_prefix value.
+
+            Notes:
+                If this is specified, Prefix+Pre-definedGroupName will be used to look for users.
+
+                
+                This attribute is named `groupNamePrefix` in VSD API.
+                
+        """
+        return self._group_name_prefix
+
+    @group_name_prefix.setter
+    def group_name_prefix(self, value):
+        """ Set group_name_prefix value.
+
+            Notes:
+                If this is specified, Prefix+Pre-definedGroupName will be used to look for users.
+
+                
+                This attribute is named `groupNamePrefix` in VSD API.
+                
+        """
+        self._group_name_prefix = value
+
+    
+    @property
+    def group_name_suffix(self):
+        """ Get group_name_suffix value.
+
+            Notes:
+                If this is specified, Pre-definedGroupName+Suffix will be used to look for users.
+
+                
+                This attribute is named `groupNameSuffix` in VSD API.
+                
+        """
+        return self._group_name_suffix
+
+    @group_name_suffix.setter
+    def group_name_suffix(self, value):
+        """ Set group_name_suffix value.
+
+            Notes:
+                If this is specified, Pre-definedGroupName+Suffix will be used to look for users.
+
+                
+                This attribute is named `groupNameSuffix` in VSD API.
+                
+        """
+        self._group_name_suffix = value
 
     
     @property

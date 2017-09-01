@@ -60,13 +60,15 @@ class NUEgressQOSPolicy(NURESTObject):
     
     CONST_QUEUE2_FORWARDING_CLASSES_D = "D"
     
-    CONST_QUEUE2_FORWARDING_CLASSES_E = "E"
+    CONST_QUEUE1_FORWARDING_CLASSES_C = "C"
     
     CONST_QUEUE2_FORWARDING_CLASSES_F = "F"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_QUEUE4_FORWARDING_CLASSES_NONE = "NONE"
+    
+    CONST_QUEUE3_FORWARDING_CLASSES_G = "G"
     
     CONST_QUEUE1_FORWARDING_CLASSES_NONE = "NONE"
     
@@ -78,7 +80,7 @@ class NUEgressQOSPolicy(NURESTObject):
     
     CONST_QUEUE3_FORWARDING_CLASSES_A = "A"
     
-    CONST_QUEUE3_FORWARDING_CLASSES_G = "G"
+    CONST_QUEUE2_FORWARDING_CLASSES_E = "E"
     
     CONST_QUEUE3_FORWARDING_CLASSES_F = "F"
     
@@ -86,9 +88,11 @@ class NUEgressQOSPolicy(NURESTObject):
     
     CONST_QUEUE3_FORWARDING_CLASSES_D = "D"
     
+    CONST_QUEUE1_FORWARDING_CLASSES_H = "H"
+    
     CONST_QUEUE1_FORWARDING_CLASSES_A = "A"
     
-    CONST_QUEUE1_FORWARDING_CLASSES_C = "C"
+    CONST_DEFAULT_SERVICE_CLASS_H = "H"
     
     CONST_QUEUE1_FORWARDING_CLASSES_B = "B"
     
@@ -100,7 +104,19 @@ class NUEgressQOSPolicy(NURESTObject):
     
     CONST_QUEUE1_FORWARDING_CLASSES_F = "F"
     
-    CONST_QUEUE1_FORWARDING_CLASSES_H = "H"
+    CONST_DEFAULT_SERVICE_CLASS_B = "B"
+    
+    CONST_DEFAULT_SERVICE_CLASS_C = "C"
+    
+    CONST_DEFAULT_SERVICE_CLASS_A = "A"
+    
+    CONST_DEFAULT_SERVICE_CLASS_F = "F"
+    
+    CONST_DEFAULT_SERVICE_CLASS_G = "G"
+    
+    CONST_DEFAULT_SERVICE_CLASS_D = "D"
+    
+    CONST_DEFAULT_SERVICE_CLASS_E = "E"
     
     CONST_QUEUE4_FORWARDING_CLASSES_B = "B"
     
@@ -146,9 +162,12 @@ class NUEgressQOSPolicy(NURESTObject):
         self._name = None
         self._parent_queue_associated_rate_limiter_id = None
         self._last_updated_by = None
+        self._default_service_class = None
         self._description = None
         self._entity_scope = None
         self._assoc_egress_qos_id = None
+        self._associated_cos_remarking_policy_table_id = None
+        self._associated_dscp_remarking_policy_table_id = None
         self._queue1_associated_rate_limiter_id = None
         self._queue1_forwarding_classes = None
         self._queue2_associated_rate_limiter_id = None
@@ -162,9 +181,12 @@ class NUEgressQOSPolicy(NURESTObject):
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="parent_queue_associated_rate_limiter_id", remote_name="parentQueueAssociatedRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="default_service_class", remote_name="defaultServiceClass", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="assoc_egress_qos_id", remote_name="assocEgressQosId", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_cos_remarking_policy_table_id", remote_name="associatedCOSRemarkingPolicyTableID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_dscp_remarking_policy_table_id", remote_name="associatedDSCPRemarkingPolicyTableID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="queue1_associated_rate_limiter_id", remote_name="queue1AssociatedRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="queue1_forwarding_classes", remote_name="queue1ForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="queue2_associated_rate_limiter_id", remote_name="queue2AssociatedRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
@@ -267,6 +289,33 @@ class NUEgressQOSPolicy(NURESTObject):
 
     
     @property
+    def default_service_class(self):
+        """ Get default_service_class value.
+
+            Notes:
+                The Default Service Class for this Egress QoS Policy. The queue that contains the default service class will be treated as the default queue.
+
+                
+                This attribute is named `defaultServiceClass` in VSD API.
+                
+        """
+        return self._default_service_class
+
+    @default_service_class.setter
+    def default_service_class(self, value):
+        """ Set default_service_class value.
+
+            Notes:
+                The Default Service Class for this Egress QoS Policy. The queue that contains the default service class will be treated as the default queue.
+
+                
+                This attribute is named `defaultServiceClass` in VSD API.
+                
+        """
+        self._default_service_class = value
+
+    
+    @property
     def description(self):
         """ Get description value.
 
@@ -341,6 +390,60 @@ class NUEgressQOSPolicy(NURESTObject):
                 
         """
         self._assoc_egress_qos_id = value
+
+    
+    @property
+    def associated_cos_remarking_policy_table_id(self):
+        """ Get associated_cos_remarking_policy_table_id value.
+
+            Notes:
+                ID of the associated CoS Remarking Policy table. 
+
+                
+                This attribute is named `associatedCOSRemarkingPolicyTableID` in VSD API.
+                
+        """
+        return self._associated_cos_remarking_policy_table_id
+
+    @associated_cos_remarking_policy_table_id.setter
+    def associated_cos_remarking_policy_table_id(self, value):
+        """ Set associated_cos_remarking_policy_table_id value.
+
+            Notes:
+                ID of the associated CoS Remarking Policy table. 
+
+                
+                This attribute is named `associatedCOSRemarkingPolicyTableID` in VSD API.
+                
+        """
+        self._associated_cos_remarking_policy_table_id = value
+
+    
+    @property
+    def associated_dscp_remarking_policy_table_id(self):
+        """ Get associated_dscp_remarking_policy_table_id value.
+
+            Notes:
+                ID of the DSCP Remarking Policy Table associated with this Egress QOS policy.
+
+                
+                This attribute is named `associatedDSCPRemarkingPolicyTableID` in VSD API.
+                
+        """
+        return self._associated_dscp_remarking_policy_table_id
+
+    @associated_dscp_remarking_policy_table_id.setter
+    def associated_dscp_remarking_policy_table_id(self, value):
+        """ Set associated_dscp_remarking_policy_table_id value.
+
+            Notes:
+                ID of the DSCP Remarking Policy Table associated with this Egress QOS policy.
+
+                
+                This attribute is named `associatedDSCPRemarkingPolicyTableID` in VSD API.
+                
+        """
+        self._associated_dscp_remarking_policy_table_id = value
 
     
     @property

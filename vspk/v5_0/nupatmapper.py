@@ -29,6 +29,9 @@
 
 from .fetchers import NUSharedNetworkResourcesFetcher
 
+
+from .fetchers import NUSubnetsFetcher
+
 from bambou import NURESTObject
 
 
@@ -85,6 +88,9 @@ class NUPATMapper(NURESTObject):
         
         
         self.shared_network_resources = NUSharedNetworkResourcesFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        
+        
+        self.subnets = NUSubnetsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)

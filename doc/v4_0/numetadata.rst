@@ -111,6 +111,8 @@ Parents
 
 - :ref:`nufloatingipacltemplate.NUFloatingIPACLTemplate<nufloatingipacltemplate>`
 
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
+
 - :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
@@ -118,8 +120,6 @@ Parents
 - :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`
 
 - :ref:`nuingressexternalservicetemplateentry.NUIngressExternalServiceTemplateEntry<nuingressexternalservicetemplateentry>`
-
-- :ref:`nudomainfipacltemplate.NUDomainFIPAclTemplate<nudomainfipacltemplate>`
 
 - :ref:`nuavatar.NUAvatar<nuavatar>`
 
@@ -129,7 +129,7 @@ Parents
 
 - :ref:`nuvsp.NUVSP<nuvsp>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
 
 - :ref:`nuredundantport.NURedundantPort<nuredundantport>`
 
@@ -189,15 +189,17 @@ Parents
 
 - :ref:`nunetworklayout.NUNetworkLayout<nunetworklayout>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
+- :ref:`nueventlog.NUEventLog<nueventlog>`
 
 - :ref:`nulicense.NULicense<nulicense>`
 
 - :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
 
+- :ref:`nufloatingipacltemplateentry.NUFloatingIPACLTemplateEntry<nufloatingipacltemplateentry>`
+
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
-- :ref:`nuinfrastructureconfig.NUInfrastructureConfig<nuinfrastructureconfig>`
+- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 
 - :ref:`numulticastrange.NUMultiCastRange<numulticastrange>`
 
@@ -213,11 +215,11 @@ Parents
 
 - :ref:`nukeyservernotification.NUKeyServerNotification<nukeyservernotification>`
 
-- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nunatmapentry.NUNATMapEntry<nunatmapentry>`
 
-- :ref:`nueventlog.NUEventLog<nueventlog>`
+- :ref:`nudomainfipacltemplate.NUDomainFIPAclTemplate<nudomainfipacltemplate>`
 
 - :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
 
@@ -241,7 +243,7 @@ Parents
 
 - :ref:`nuapplicationservice.NUApplicationService<nuapplicationservice>`
 
-- :ref:`nuikegateway.NUIKEGateway<nuikegateway>`
+- :ref:`nuikegatewayconfig.NUIKEGatewayConfig<nuikegatewayconfig>`
 
 - :ref:`nustatscollectorinfo.NUStatsCollectorInfo<nustatscollectorinfo>`
 
@@ -255,11 +257,11 @@ Parents
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
-- :ref:`nuikegatewayconfig.NUIKEGatewayConfig<nuikegatewayconfig>`
+- :ref:`nuikegateway.NUIKEGateway<nuikegateway>`
 
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
 
-- :ref:`nusiteinfo.NUSiteInfo<nusiteinfo>`
+- :ref:`nuenterprisesecureddata.NUEnterpriseSecuredData<nuenterprisesecureddata>`
 
 - :ref:`nuexternalappservice.NUExternalAppService<nuexternalappservice>`
 
@@ -283,6 +285,8 @@ Parents
 
 - :ref:`nuuplinkrd.NUUplinkRD<nuuplinkrd>`
 
+- :ref:`nusiteinfo.NUSiteInfo<nusiteinfo>`
+
 - :ref:`nunsport.NUNSPort<nunsport>`
 
 - :ref:`nuvrsaddressrange.NUVRSAddressRange<nuvrsaddressrange>`
@@ -301,9 +305,9 @@ Parents
 
 - :ref:`nuvm.NUVM<nuvm>`
 
-- :ref:`nufloatingipacltemplateentry.NUFloatingIPACLTemplateEntry<nufloatingipacltemplateentry>`
-
 - :ref:`nuvmresync.NUVMResync<nuvmresync>`
+
+- :ref:`nugatewaysecurity.NUGatewaySecurity<nugatewaysecurity>`
 
 - :ref:`nupolicydecision.NUPolicyDecision<nupolicydecision>`
 
@@ -335,15 +339,13 @@ Parents
 
 - :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
-- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
+- :ref:`nuinfrastructureconfig.NUInfrastructureConfig<nuinfrastructureconfig>`
 
 - :ref:`nuuser.NUUser<nuuser>`
 
 - :ref:`nutier.NUTier<nutier>`
 
 - :ref:`nucontainer.NUContainer<nucontainer>`
-
-- :ref:`nuenterprisesecureddata.NUEnterpriseSecuredData<nuenterprisesecureddata>`
 
 - :ref:`nuikegatewayprofile.NUIKEGatewayProfile<nuikegatewayprofile>`
 
@@ -354,8 +356,6 @@ Parents
 - :ref:`nuflow.NUFlow<nuflow>`
 
 - :ref:`nuvlantemplate.NUVLANTemplate<nuvlantemplate>`
-
-- :ref:`nugatewaysecurity.NUGatewaySecurity<nugatewaysecurity>`
 
 - :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`
 

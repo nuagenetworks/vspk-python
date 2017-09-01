@@ -28,11 +28,15 @@ Attributes
 
 - ``physical_name`` (**Mandatory**): Identifier of the Port
 
+- ``enable_nat_probes``: If enabled, probes will be sent to other NSGs and DTLS sessions for IPSEC and VXLAN will be set up to the VSCs. If disabled, no NAT probes are sent on that uplink and no DTLS sessions are set up to the VSCs.
+
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``port_type`` (**Mandatory**): Type of the Port.
 
 - ``speed``: Port Speed in Mb/s :  Supported Ethernet speeds are 10 (10Base-T), 100 (Fast-ethernet 100Base-TX), 1000 (Gigabit Ethernet 1000Base-T), 10 000 (10 Gigabit Ethernet 10GBase-X), and Auto-Negotiate.
+
+- ``traffic_through_ubr_only``: If enabled, cuts down the number of probes to just the number of provisioned UBRs.
 
 - ``use_user_mnemonic``: determines whether to use user mnemonic of the Port
 

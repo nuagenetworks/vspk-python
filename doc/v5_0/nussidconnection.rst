@@ -16,6 +16,10 @@ Attributes
 
 - ``passphrase``: Password or passphrase associated to an SSID instance.  Based on the authenticationMode selected.
 
+- ``redirect_option``: Redirection action to exercise once the connecting user has accepted the use policy presented on the Wireless Captive Portal.
+
+- ``redirect_url``: URL to have a newly connected user redirected to once the use policy defined on the Wireless Captive Portal has been accepted by the user.
+
 - ``generic_config``: Blob type attribute that serves to define non-mandatory properties that can be defined in the WiFi Card configuration file.
 
 - ``description``: Brief description of the SSID.
@@ -27,6 +31,8 @@ Attributes
 - ``interface_name``: A read-only attribute that represents the generated interface name for the SSID connection to be provisioned on the NSG.
 
 - ``broadcast_ssid``: Boolean that defines if the SSID name is to be broadcasted or not.
+
+- ``associated_captive_portal_profile_id``: Identification of the Captive Portal Profile that is associated with this instance of SSID connection.
 
 - ``associated_egress_qos_policy_id``: Identification of the Egress QoS policy that is associated with this instance of an SSID Connection.
 
@@ -41,6 +47,7 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nucaptiveportalprofile.NUCaptivePortalProfile<nucaptiveportalprofile>`                                                                                     ``captive_portal_profiles`` 
 :ref:`nualarm.NUAlarm<nualarm>`                                                                                                                                  ``alarms`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
 ================================================================================================================================================               ==========================================================================================

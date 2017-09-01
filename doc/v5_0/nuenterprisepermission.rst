@@ -57,9 +57,11 @@ Parents
 
 - :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
 
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
+
 - :ref:`nuport.NUPort<nuport>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
+- :ref:`nusubnet.NUSubnet<nusubnet>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 

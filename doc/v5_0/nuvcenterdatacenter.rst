@@ -36,6 +36,12 @@ Attributes
 
 - ``deleted_from_vcenter``: Set to true if the datacenter is deleted from Vcenter
 
+- ``remote_syslog_server_ip``: Remote syslog server IP
+
+- ``remote_syslog_server_port``: Remote syslog server port
+
+- ``remote_syslog_server_type``: Remote syslog server type (UDP/TCP)
+
 - ``generic_split_activation``: Whether split-activation is needed from VRO
 
 - ``separate_data_network``: Whether Data will use the management network or not

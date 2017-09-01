@@ -74,8 +74,9 @@ class NUVRSMetrics(NURESTObject):
         self._receiving_metrics = None
         self._memory_utilization = None
         self._jesxmon_process = None
-        self._agent_name = None
         self._entity_scope = None
+        self._log_disk_partition_utilization = None
+        self._root_disk_partition_utilization = None
         self._associated_vcenter_hypervisor_id = None
         self._current_version = None
         self._external_id = None
@@ -89,8 +90,9 @@ class NUVRSMetrics(NURESTObject):
         self.expose_attribute(local_name="receiving_metrics", remote_name="receivingMetrics", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="memory_utilization", remote_name="memoryUtilization", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="jesxmon_process", remote_name="jesxmonProcess", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="agent_name", remote_name="agentName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="log_disk_partition_utilization", remote_name="logDiskPartitionUtilization", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="root_disk_partition_utilization", remote_name="rootDiskPartitionUtilization", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vcenter_hypervisor_id", remote_name="associatedVCenterHypervisorID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="current_version", remote_name="currentVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -344,33 +346,6 @@ class NUVRSMetrics(NURESTObject):
 
     
     @property
-    def agent_name(self):
-        """ Get agent_name value.
-
-            Notes:
-                VRS Agent Name
-
-                
-                This attribute is named `agentName` in VSD API.
-                
-        """
-        return self._agent_name
-
-    @agent_name.setter
-    def agent_name(self, value):
-        """ Set agent_name value.
-
-            Notes:
-                VRS Agent Name
-
-                
-                This attribute is named `agentName` in VSD API.
-                
-        """
-        self._agent_name = value
-
-    
-    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -395,6 +370,60 @@ class NUVRSMetrics(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def log_disk_partition_utilization(self):
+        """ Get log_disk_partition_utilization value.
+
+            Notes:
+                Log Disk Partition Utilization
+
+                
+                This attribute is named `logDiskPartitionUtilization` in VSD API.
+                
+        """
+        return self._log_disk_partition_utilization
+
+    @log_disk_partition_utilization.setter
+    def log_disk_partition_utilization(self, value):
+        """ Set log_disk_partition_utilization value.
+
+            Notes:
+                Log Disk Partition Utilization
+
+                
+                This attribute is named `logDiskPartitionUtilization` in VSD API.
+                
+        """
+        self._log_disk_partition_utilization = value
+
+    
+    @property
+    def root_disk_partition_utilization(self):
+        """ Get root_disk_partition_utilization value.
+
+            Notes:
+                Root Disk Partition Utilization
+
+                
+                This attribute is named `rootDiskPartitionUtilization` in VSD API.
+                
+        """
+        return self._root_disk_partition_utilization
+
+    @root_disk_partition_utilization.setter
+    def root_disk_partition_utilization(self, value):
+        """ Set root_disk_partition_utilization value.
+
+            Notes:
+                Root Disk Partition Utilization
+
+                
+                This attribute is named `rootDiskPartitionUtilization` in VSD API.
+                
+        """
+        self._root_disk_partition_utilization = value
 
     
     @property

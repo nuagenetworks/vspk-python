@@ -18,11 +18,17 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``default_service_class``: The Default Service Class for this Egress QoS Policy. The queue that contains the default service class will be treated as the default queue.
+
 - ``description``: A description of the QoS object
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``assoc_egress_qos_id``: ID of object associated with this QoS object
+
+- ``associated_cos_remarking_policy_table_id``: ID of the associated CoS Remarking Policy table. 
+
+- ``associated_dscp_remarking_policy_table_id``: ID of the DSCP Remarking Policy Table associated with this Egress QOS policy.
 
 - ``queue1_associated_rate_limiter_id``: ID of the queue1 rate limiter associated with this Egress QOS policy.
 

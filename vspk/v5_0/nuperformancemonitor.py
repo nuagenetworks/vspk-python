@@ -29,6 +29,9 @@
 
 from .fetchers import NUApplicationperformancemanagementsFetcher
 
+
+from .fetchers import NUNSGatewaysFetcher
+
 from bambou import NURESTObject
 
 
@@ -47,6 +50,10 @@ class NUPerformanceMonitor(NURESTObject):
     
     CONST_SERVICE_CLASS_H = "H"
     
+    CONST_PROBE_TYPE_IPSEC_AND_VXLAN = "IPSEC_AND_VXLAN"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
     CONST_SERVICE_CLASS_A = "A"
     
     CONST_SERVICE_CLASS_B = "B"
@@ -60,6 +67,12 @@ class NUPerformanceMonitor(NURESTObject):
     CONST_SERVICE_CLASS_F = "F"
     
     CONST_SERVICE_CLASS_G = "G"
+    
+    CONST_PROBE_TYPE_HTTP = "HTTP"
+    
+    CONST_PROBE_TYPE_ONEWAY = "ONEWAY"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
 
@@ -81,26 +94,43 @@ class NUPerformanceMonitor(NURESTObject):
         # Read/Write Attributes
         
         self._name = None
+        self._last_updated_by = None
         self._payload_size = None
         self._read_only = None
         self._service_class = None
         self._description = None
+        self._destination_target_list = None
+        self._timeout = None
         self._interval = None
+        self._entity_scope = None
+        self._down_threshold_count = None
+        self._probe_type = None
         self._number_of_packets = None
+        self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="payload_size", remote_name="payloadSize", attribute_type=int, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="payload_size", remote_name="payloadSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="read_only", remote_name="readOnly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_class", remote_name="serviceClass", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="destination_target_list", remote_name="destinationTargetList", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="timeout", remote_name="timeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="interval", remote_name="interval", attribute_type=int, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="down_threshold_count", remote_name="downThresholdCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="probe_type", remote_name="probeType", attribute_type=str, is_required=False, is_unique=False, choices=[u'HTTP', u'IPSEC_AND_VXLAN', u'ONEWAY'])
         self.expose_attribute(local_name="number_of_packets", remote_name="numberOfPackets", attribute_type=int, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
         self.applicationperformancemanagements = NUApplicationperformancemanagementsFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        
+        
+        self.ns_gateways = NUNSGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="member")
         
 
         self._compute_args(**kwargs)
@@ -131,11 +161,38 @@ class NUPerformanceMonitor(NURESTObject):
 
     
     @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
     def payload_size(self):
         """ Get payload_size value.
 
             Notes:
-                Payload size
+                Payload size (This is a mandatory field if the networkProbeType = ONEWAY, and optional for probeType = HTTP,IPSEC_AND_VXLAN)
 
                 
                 This attribute is named `payloadSize` in VSD API.
@@ -148,7 +205,7 @@ class NUPerformanceMonitor(NURESTObject):
         """ Set payload_size value.
 
             Notes:
-                Payload size
+                Payload size (This is a mandatory field if the networkProbeType = ONEWAY, and optional for probeType = HTTP,IPSEC_AND_VXLAN)
 
                 
                 This attribute is named `payloadSize` in VSD API.
@@ -235,6 +292,56 @@ class NUPerformanceMonitor(NURESTObject):
 
     
     @property
+    def destination_target_list(self):
+        """ Get destination_target_list value.
+
+            Notes:
+                List of targets for IKE performance monitor probes
+
+                
+                This attribute is named `destinationTargetList` in VSD API.
+                
+        """
+        return self._destination_target_list
+
+    @destination_target_list.setter
+    def destination_target_list(self, value):
+        """ Set destination_target_list value.
+
+            Notes:
+                List of targets for IKE performance monitor probes
+
+                
+                This attribute is named `destinationTargetList` in VSD API.
+                
+        """
+        self._destination_target_list = value
+
+    
+    @property
+    def timeout(self):
+        """ Get timeout value.
+
+            Notes:
+                number of milliseconds to wait until the probe is timed out
+
+                
+        """
+        return self._timeout
+
+    @timeout.setter
+    def timeout(self, value):
+        """ Set timeout value.
+
+            Notes:
+                number of milliseconds to wait until the probe is timed out
+
+                
+        """
+        self._timeout = value
+
+    
+    @property
     def interval(self):
         """ Get interval value.
 
@@ -255,6 +362,87 @@ class NUPerformanceMonitor(NURESTObject):
                 
         """
         self._interval = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def down_threshold_count(self):
+        """ Get down_threshold_count value.
+
+            Notes:
+                Number of times the probe is allowed to retry on successive timeouts
+
+                
+                This attribute is named `downThresholdCount` in VSD API.
+                
+        """
+        return self._down_threshold_count
+
+    @down_threshold_count.setter
+    def down_threshold_count(self, value):
+        """ Set down_threshold_count value.
+
+            Notes:
+                Number of times the probe is allowed to retry on successive timeouts
+
+                
+                This attribute is named `downThresholdCount` in VSD API.
+                
+        """
+        self._down_threshold_count = value
+
+    
+    @property
+    def probe_type(self):
+        """ Get probe_type value.
+
+            Notes:
+                Type to be assigned to this probe
+
+                
+                This attribute is named `probeType` in VSD API.
+                
+        """
+        return self._probe_type
+
+    @probe_type.setter
+    def probe_type(self, value):
+        """ Set probe_type value.
+
+            Notes:
+                Type to be assigned to this probe
+
+                
+                This attribute is named `probeType` in VSD API.
+                
+        """
+        self._probe_type = value
 
     
     @property
@@ -282,6 +470,33 @@ class NUPerformanceMonitor(NURESTObject):
                 
         """
         self._number_of_packets = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

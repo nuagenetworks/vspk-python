@@ -72,6 +72,8 @@ class NUEgressACLEntryTemplate(NURESTObject):
     
     CONST_NETWORK_TYPE_ENDPOINT_DOMAIN = "ENDPOINT_DOMAIN"
     
+    CONST_LOCATION_TYPE_PGEXPRESSION = "PGEXPRESSION"
+    
     CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
     
     CONST_NETWORK_TYPE_ANY = "ANY"
@@ -82,6 +84,8 @@ class NUEgressACLEntryTemplate(NURESTObject):
     
     CONST_NETWORK_TYPE_ZONE = "ZONE"
     
+    CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE_GROUP = "L4_SERVICE_GROUP"
+    
     CONST_NETWORK_TYPE_ENDPOINT_SUBNET = "ENDPOINT_SUBNET"
     
     CONST_LOCATION_TYPE_VPORTTAG = "VPORTTAG"
@@ -90,11 +94,15 @@ class NUEgressACLEntryTemplate(NURESTObject):
     
     CONST_POLICY_STATE_DRAFT = "DRAFT"
     
+    CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE = "L4_SERVICE"
+    
     CONST_LOCATION_TYPE_REDIRECTIONTARGET = "REDIRECTIONTARGET"
     
     CONST_POLICY_STATE_LIVE = "LIVE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_NETWORK_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
     CONST_NETWORK_TYPE_INTERNET_POLICYGROUP = "INTERNET_POLICYGROUP"
     
@@ -142,7 +150,10 @@ class NUEgressACLEntryTemplate(NURESTObject):
         self._source_port = None
         self._priority = None
         self._protocol = None
+        self._associated_l7_application_signature_id = None
         self._associated_live_entity_id = None
+        self._associated_traffic_type = None
+        self._associated_traffic_type_id = None
         self._stateful = None
         self._stats_id = None
         self._stats_logging_enabled = None
@@ -160,19 +171,22 @@ class NUEgressACLEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'INTERNET_POLICYGROUP', u'NETWORK_MACRO_GROUP', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'ZONE'])
+        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'INTERNET_POLICYGROUP', u'NETWORK_MACRO_GROUP', u'PGEXPRESSION', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'ZONE'])
         self.expose_attribute(local_name="mirror_destination_id", remote_name="mirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_logging_enabled", remote_name="flowLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'POLICYGROUP', u'REDIRECTIONTARGET', u'SUBNET', u'VPORTTAG', u'ZONE'])
+        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'PGEXPRESSION', u'POLICYGROUP', u'REDIRECTIONTARGET', u'SUBNET', u'VPORTTAG', u'ZONE'])
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_l7_application_signature_id", remote_name="associatedL7ApplicationSignatureID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_traffic_type", remote_name="associatedTrafficType", attribute_type=str, is_required=False, is_unique=False, choices=[u'L4_SERVICE', u'L4_SERVICE_GROUP'])
+        self.expose_attribute(local_name="associated_traffic_type_id", remote_name="associatedTrafficTypeID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stateful", remote_name="stateful", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_id", remote_name="statsID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_logging_enabled", remote_name="statsLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -466,7 +480,7 @@ class NUEgressACLEntryTemplate(NURESTObject):
         """ Get network_id value.
 
             Notes:
-                The ID of the source endpoint (Subnet/Zone/Macro/MacroGroup/PortGroup)
+                The ID of the source endpoint (Subnet/Zone/Macro/MacroGroup/PortGroup/PolicyGroupExpression)
 
                 
                 This attribute is named `networkID` in VSD API.
@@ -479,7 +493,7 @@ class NUEgressACLEntryTemplate(NURESTObject):
         """ Set network_id value.
 
             Notes:
-                The ID of the source endpoint (Subnet/Zone/Macro/MacroGroup/PortGroup)
+                The ID of the source endpoint (Subnet/Zone/Macro/MacroGroup/PortGroup/PolicyGroupExpression)
 
                 
                 This attribute is named `networkID` in VSD API.
@@ -493,7 +507,7 @@ class NUEgressACLEntryTemplate(NURESTObject):
         """ Get network_type value.
 
             Notes:
-                Type of the source endpoint (Subnet/Zone/Macro/MacroGroup/PortGroup)
+                Type of the source endpoint (Subnet/Zone/Macro/MacroGroup/PortGroup/PolicyGroupExpression)
 
                 
                 This attribute is named `networkType` in VSD API.
@@ -506,7 +520,7 @@ class NUEgressACLEntryTemplate(NURESTObject):
         """ Set network_type value.
 
             Notes:
-                Type of the source endpoint (Subnet/Zone/Macro/MacroGroup/PortGroup)
+                Type of the source endpoint (Subnet/Zone/Macro/MacroGroup/PortGroup/PolicyGroupExpression)
 
                 
                 This attribute is named `networkType` in VSD API.
@@ -628,7 +642,7 @@ class NUEgressACLEntryTemplate(NURESTObject):
         """ Get location_id value.
 
             Notes:
-                The ID of the destination endpoint (Subnet/Zone/VportTag/PolicyGroup)
+                The ID of the destination endpoint (Subnet/Zone/VportTag/PolicyGroup/PolicyGroupExpression)
 
                 
                 This attribute is named `locationID` in VSD API.
@@ -641,7 +655,7 @@ class NUEgressACLEntryTemplate(NURESTObject):
         """ Set location_id value.
 
             Notes:
-                The ID of the destination endpoint (Subnet/Zone/VportTag/PolicyGroup)
+                The ID of the destination endpoint (Subnet/Zone/VportTag/PolicyGroup/PolicyGroupExpression)
 
                 
                 This attribute is named `locationID` in VSD API.
@@ -655,7 +669,7 @@ class NUEgressACLEntryTemplate(NURESTObject):
         """ Get location_type value.
 
             Notes:
-                Type of the destination endpoint (Subnet/Zone/VportTag/PolicyGroup)
+                Type of the destination endpoint (Subnet/Zone/VportTag/PolicyGroup/PolicyGroupExpression
 
                 
                 This attribute is named `locationType` in VSD API.
@@ -668,7 +682,7 @@ class NUEgressACLEntryTemplate(NURESTObject):
         """ Set location_type value.
 
             Notes:
-                Type of the destination endpoint (Subnet/Zone/VportTag/PolicyGroup)
+                Type of the destination endpoint (Subnet/Zone/VportTag/PolicyGroup/PolicyGroupExpression
 
                 
                 This attribute is named `locationType` in VSD API.
@@ -805,6 +819,33 @@ class NUEgressACLEntryTemplate(NURESTObject):
 
     
     @property
+    def associated_l7_application_signature_id(self):
+        """ Get associated_l7_application_signature_id value.
+
+            Notes:
+                The UUID of the associated L7 Application signature
+
+                
+                This attribute is named `associatedL7ApplicationSignatureID` in VSD API.
+                
+        """
+        return self._associated_l7_application_signature_id
+
+    @associated_l7_application_signature_id.setter
+    def associated_l7_application_signature_id(self, value):
+        """ Set associated_l7_application_signature_id value.
+
+            Notes:
+                The UUID of the associated L7 Application signature
+
+                
+                This attribute is named `associatedL7ApplicationSignatureID` in VSD API.
+                
+        """
+        self._associated_l7_application_signature_id = value
+
+    
+    @property
     def associated_live_entity_id(self):
         """ Get associated_live_entity_id value.
 
@@ -829,6 +870,60 @@ class NUEgressACLEntryTemplate(NURESTObject):
                 
         """
         self._associated_live_entity_id = value
+
+    
+    @property
+    def associated_traffic_type(self):
+        """ Get associated_traffic_type value.
+
+            Notes:
+                This property reflects the type of traffic in case an ACL entry is created using an L4 Service or L4 Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
+
+                
+                This attribute is named `associatedTrafficType` in VSD API.
+                
+        """
+        return self._associated_traffic_type
+
+    @associated_traffic_type.setter
+    def associated_traffic_type(self, value):
+        """ Set associated_traffic_type value.
+
+            Notes:
+                This property reflects the type of traffic in case an ACL entry is created using an L4 Service or L4 Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
+
+                
+                This attribute is named `associatedTrafficType` in VSD API.
+                
+        """
+        self._associated_traffic_type = value
+
+    
+    @property
+    def associated_traffic_type_id(self):
+        """ Get associated_traffic_type_id value.
+
+            Notes:
+                If a traffic type is specified as L4 Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
+
+                
+                This attribute is named `associatedTrafficTypeID` in VSD API.
+                
+        """
+        return self._associated_traffic_type_id
+
+    @associated_traffic_type_id.setter
+    def associated_traffic_type_id(self, value):
+        """ Set associated_traffic_type_id value.
+
+            Notes:
+                If a traffic type is specified as L4 Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
+
+                
+                This attribute is named `associatedTrafficTypeID` in VSD API.
+                
+        """
+        self._associated_traffic_type_id = value
 
     
     @property

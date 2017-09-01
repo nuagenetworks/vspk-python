@@ -42,6 +42,9 @@ from .fetchers import NUMetadatasFetcher
 from .fetchers import NUNetworkPerformanceBindingsFetcher
 
 
+from .fetchers import NUPGExpressionsFetcher
+
+
 from .fetchers import NUEgressACLEntryTemplatesFetcher
 
 
@@ -76,6 +79,9 @@ from .fetchers import NUVMsFetcher
 
 
 from .fetchers import NUVMInterfacesFetcher
+
+
+from .fetchers import NUVNFDomainMappingsFetcher
 
 
 from .fetchers import NUIngressACLEntryTemplatesFetcher
@@ -275,6 +281,7 @@ class NUDomain(NURESTObject):
         self._bgp_enabled = None
         self._dhcp_behavior = None
         self._dhcp_server_address = None
+        self._fip_underlay = None
         self._dpi = None
         self._label_id = None
         self._back_haul_route_distinguisher = None
@@ -308,6 +315,7 @@ class NUDomain(NURESTObject):
         self._associated_bgp_profile_id = None
         self._associated_multicast_channel_map_id = None
         self._associated_pat_mapper_id = None
+        self._associated_shared_pat_mapper_id = None
         self._stretched = None
         self._multicast = None
         self._tunnel_type = None
@@ -320,6 +328,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="bgp_enabled", remote_name="BGPEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_behavior", remote_name="DHCPBehavior", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONSUME', u'FLOOD', u'OVERLAY_RELAY', u'UNDERLAY_RELAY'])
         self.expose_attribute(local_name="dhcp_server_address", remote_name="DHCPServerAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="fip_underlay", remote_name="FIPUnderlay", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="label_id", remote_name="labelID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_route_distinguisher", remote_name="backHaulRouteDistinguisher", attribute_type=str, is_required=False, is_unique=False)
@@ -353,6 +362,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="associated_bgp_profile_id", remote_name="associatedBGPProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_pat_mapper_id", remote_name="associatedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_shared_pat_mapper_id", remote_name="associatedSharedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stretched", remote_name="stretched", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="tunnel_type", remote_name="tunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VXLAN'])
@@ -377,6 +387,9 @@ class NUDomain(NURESTObject):
         
         
         self.network_performance_bindings = NUNetworkPerformanceBindingsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.pg_expressions = NUPGExpressionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.egress_acl_entry_templates = NUEgressACLEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -413,6 +426,9 @@ class NUDomain(NURESTObject):
         
         
         self.vm_interfaces = NUVMInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.vnf_domain_mappings = NUVNFDomainMappingsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ingress_acl_entry_templates = NUIngressACLEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -630,6 +646,33 @@ class NUDomain(NURESTObject):
                 
         """
         self._dhcp_server_address = value
+
+    
+    @property
+    def fip_underlay(self):
+        """ Get fip_underlay value.
+
+            Notes:
+                Boolean flag to indicate whether this is a Floating IP to underlay domain or not
+
+                
+                This attribute is named `FIPUnderlay` in VSD API.
+                
+        """
+        return self._fip_underlay
+
+    @fip_underlay.setter
+    def fip_underlay(self, value):
+        """ Set fip_underlay value.
+
+            Notes:
+                Boolean flag to indicate whether this is a Floating IP to underlay domain or not
+
+                
+                This attribute is named `FIPUnderlay` in VSD API.
+                
+        """
+        self._fip_underlay = value
 
     
     @property
@@ -1509,6 +1552,33 @@ class NUDomain(NURESTObject):
                 
         """
         self._associated_pat_mapper_id = value
+
+    
+    @property
+    def associated_shared_pat_mapper_id(self):
+        """ Get associated_shared_pat_mapper_id value.
+
+            Notes:
+                The ID of the PatMapper entity to which this SharedNetworkResource is associated to.
+
+                
+                This attribute is named `associatedSharedPATMapperID` in VSD API.
+                
+        """
+        return self._associated_shared_pat_mapper_id
+
+    @associated_shared_pat_mapper_id.setter
+    def associated_shared_pat_mapper_id(self, value):
+        """ Set associated_shared_pat_mapper_id value.
+
+            Notes:
+                The ID of the PatMapper entity to which this SharedNetworkResource is associated to.
+
+                
+                This attribute is named `associatedSharedPATMapperID` in VSD API.
+                
+        """
+        self._associated_shared_pat_mapper_id = value
 
     
     @property

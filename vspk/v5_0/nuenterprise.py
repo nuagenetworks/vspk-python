@@ -33,7 +33,16 @@ from .fetchers import NUL2DomainsFetcher
 from .fetchers import NUL2DomainTemplatesFetcher
 
 
+from .fetchers import NUL4ServicesFetcher
+
+
+from .fetchers import NUL4ServiceGroupsFetcher
+
+
 from .fetchers import NUL7applicationsignaturesFetcher
+
+
+from .fetchers import NUCaptivePortalProfilesFetcher
 
 
 from .fetchers import NURateLimitersFetcher
@@ -117,6 +126,12 @@ from .fetchers import NUVMsFetcher
 from .fetchers import NUVNFsFetcher
 
 
+from .fetchers import NUVNFMetadatasFetcher
+
+
+from .fetchers import NUIngressQOSPoliciesFetcher
+
+
 from .fetchers import NUEnterpriseNetworksFetcher
 
 
@@ -138,6 +153,9 @@ from .fetchers import NUDomainTemplatesFetcher
 from .fetchers import NUContainersFetcher
 
 
+from .fetchers import NUCOSRemarkingPolicyTablesFetcher
+
+
 from .fetchers import NURoutingPoliciesFetcher
 
 
@@ -157,6 +175,9 @@ from .fetchers import NUTrunksFetcher
 
 
 from .fetchers import NUDSCPForwardingClassTablesFetcher
+
+
+from .fetchers import NUDSCPRemarkingPolicyTablesFetcher
 
 
 from .fetchers import NUUsersFetcher
@@ -256,11 +277,13 @@ class NUEnterprise(NURESTObject):
         self._ldap_enabled = None
         self._bgp_enabled = None
         self._dhcp_lease_interval = None
+        self._vnf_management_enabled = None
         self._name = None
         self._last_updated_by = None
         self._receive_multi_cast_list_id = None
         self._send_multi_cast_list_id = None
         self._description = None
+        self._shared_enterprise = None
         self._dictionary_version = None
         self._allow_advanced_qos_configuration = None
         self._allow_gateway_management = None
@@ -285,11 +308,13 @@ class NUEnterprise(NURESTObject):
         self.expose_attribute(local_name="ldap_enabled", remote_name="LDAPEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bgp_enabled", remote_name="BGPEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_lease_interval", remote_name="DHCPLeaseInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vnf_management_enabled", remote_name="VNFManagementEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="receive_multi_cast_list_id", remote_name="receiveMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="send_multi_cast_list_id", remote_name="sendMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="shared_enterprise", remote_name="sharedEnterprise", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dictionary_version", remote_name="dictionaryVersion", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_advanced_qos_configuration", remote_name="allowAdvancedQOSConfiguration", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_gateway_management", remote_name="allowGatewayManagement", attribute_type=bool, is_required=False, is_unique=False)
@@ -320,7 +345,16 @@ class NUEnterprise(NURESTObject):
         self.l2_domain_templates = NUL2DomainTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.l4_services = NUL4ServicesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.l4_service_groups = NUL4ServiceGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.l7applicationsignatures = NUL7applicationsignaturesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.captive_portal_profiles = NUCaptivePortalProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.rate_limiters = NURateLimitersFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -404,6 +438,12 @@ class NUEnterprise(NURESTObject):
         self.vnfs = NUVNFsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.vnf_metadatas = NUVNFMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ingress_qos_policies = NUIngressQOSPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.enterprise_networks = NUEnterpriseNetworksFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -425,6 +465,9 @@ class NUEnterprise(NURESTObject):
         self.containers = NUContainersFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.cos_remarking_policy_tables = NUCOSRemarkingPolicyTablesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.routing_policies = NURoutingPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -444,6 +487,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.dscp_forwarding_class_tables = NUDSCPForwardingClassTablesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.dscp_remarking_policy_tables = NUDSCPRemarkingPolicyTablesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.users = NUUsersFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -586,6 +632,33 @@ class NUEnterprise(NURESTObject):
 
     
     @property
+    def vnf_management_enabled(self):
+        """ Get vnf_management_enabled value.
+
+            Notes:
+                Read only flag to display if VNF management is enabled for this enterprise
+
+                
+                This attribute is named `VNFManagementEnabled` in VSD API.
+                
+        """
+        return self._vnf_management_enabled
+
+    @vnf_management_enabled.setter
+    def vnf_management_enabled(self, value):
+        """ Set vnf_management_enabled value.
+
+            Notes:
+                Read only flag to display if VNF management is enabled for this enterprise
+
+                
+                This attribute is named `VNFManagementEnabled` in VSD API.
+                
+        """
+        self._vnf_management_enabled = value
+
+    
+    @property
     def name(self):
         """ Get name value.
 
@@ -710,6 +783,33 @@ class NUEnterprise(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def shared_enterprise(self):
+        """ Get shared_enterprise value.
+
+            Notes:
+                This flag indicates whether this is a Shared Infrastructure Enterprise or not. Its a read-only attribute and it cannot be set by anybody.
+
+                
+                This attribute is named `sharedEnterprise` in VSD API.
+                
+        """
+        return self._shared_enterprise
+
+    @shared_enterprise.setter
+    def shared_enterprise(self, value):
+        """ Set shared_enterprise value.
+
+            Notes:
+                This flag indicates whether this is a Shared Infrastructure Enterprise or not. Its a read-only attribute and it cannot be set by anybody.
+
+                
+                This attribute is named `sharedEnterprise` in VSD API.
+                
+        """
+        self._shared_enterprise = value
 
     
     @property

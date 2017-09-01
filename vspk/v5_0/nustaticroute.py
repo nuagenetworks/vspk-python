@@ -92,6 +92,7 @@ class NUStaticRoute(NURESTObject):
         self._next_hop_ip = None
         self._entity_scope = None
         self._route_distinguisher = None
+        self._associated_subnet_id = None
         self._external_id = None
         self._type = None
         
@@ -103,6 +104,7 @@ class NUStaticRoute(NURESTObject):
         self.expose_attribute(local_name="next_hop_ip", remote_name="nextHopIp", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_subnet_id", remote_name="associatedSubnetID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'EXIT_DOMAIN', u'OVERLAY'])
         
@@ -329,6 +331,33 @@ class NUStaticRoute(NURESTObject):
                 
         """
         self._route_distinguisher = value
+
+    
+    @property
+    def associated_subnet_id(self):
+        """ Get associated_subnet_id value.
+
+            Notes:
+                UUID of Do Not Advertise Subnet
+
+                
+                This attribute is named `associatedSubnetID` in VSD API.
+                
+        """
+        return self._associated_subnet_id
+
+    @associated_subnet_id.setter
+    def associated_subnet_id(self, value):
+        """ Set associated_subnet_id value.
+
+            Notes:
+                UUID of Do Not Advertise Subnet
+
+                
+                This attribute is named `associatedSubnetID` in VSD API.
+                
+        """
+        self._associated_subnet_id = value
 
     
     @property

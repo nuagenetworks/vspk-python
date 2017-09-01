@@ -42,6 +42,10 @@ Attributes
 
 - ``enterprise_id``: ID of the enterprise that this VNF belongs to
 
+- ``is_attached_to_descriptor``: This specifies if VNF instance is using VNF descriptor or it is decoupled from it
+
+- ``associated_vnf_metadata_id``: VNF metadata associated to VNF instance. 
+
 - ``status``: State/Status of the VNF
 
 - ``storage_gb``: Disk storage (in GB) to be allocated for deployed VNF instance

@@ -63,19 +63,25 @@ class NUVCenterCluster(NURESTObject):
     
     ## Constants
     
+    CONST_REMOTE_SYSLOG_SERVER_TYPE_NONE = "NONE"
+    
+    CONST_REMOTE_SYSLOG_SERVER_TYPE_UDP = "UDP"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_DESTINATION_MIRROR_PORT_ENS160 = "ens160"
     
     CONST_DESTINATION_MIRROR_PORT_ENS161 = "ens161"
     
-    CONST_DESTINATION_MIRROR_PORT_ENS224 = "ens224"
+    CONST_DESTINATION_MIRROR_PORT_NO_MIRROR = "no_mirror"
     
-    CONST_DESTINATION_MIRROR_PORT_ENS256 = "ens256"
+    CONST_REMOTE_SYSLOG_SERVER_TYPE_TCP = "TCP"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_DESTINATION_MIRROR_PORT_NO_MIRROR = "no_mirror"
+    CONST_DESTINATION_MIRROR_PORT_ENS224 = "ens224"
+    
+    CONST_DESTINATION_MIRROR_PORT_ENS256 = "ens256"
     
     
 
@@ -109,6 +115,9 @@ class NUVCenterCluster(NURESTObject):
         self._scope = None
         self._secondary_nuage_controller = None
         self._deleted_from_vcenter_data_center = None
+        self._remote_syslog_server_ip = None
+        self._remote_syslog_server_port = None
+        self._remote_syslog_server_type = None
         self._generic_split_activation = None
         self._separate_data_network = None
         self._personality = None
@@ -191,6 +200,9 @@ class NUVCenterCluster(NURESTObject):
         self.expose_attribute(local_name="scope", remote_name="scope", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_nuage_controller", remote_name="secondaryNuageController", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="deleted_from_vcenter_data_center", remote_name="deletedFromVCenterDataCenter", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="remote_syslog_server_ip", remote_name="remoteSyslogServerIP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="remote_syslog_server_port", remote_name="remoteSyslogServerPort", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="remote_syslog_server_type", remote_name="remoteSyslogServerType", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'TCP', u'UDP'])
         self.expose_attribute(local_name="generic_split_activation", remote_name="genericSplitActivation", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="separate_data_network", remote_name="separateDataNetwork", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False)
@@ -630,6 +642,87 @@ class NUVCenterCluster(NURESTObject):
                 
         """
         self._deleted_from_vcenter_data_center = value
+
+    
+    @property
+    def remote_syslog_server_ip(self):
+        """ Get remote_syslog_server_ip value.
+
+            Notes:
+                Remote syslog server IP
+
+                
+                This attribute is named `remoteSyslogServerIP` in VSD API.
+                
+        """
+        return self._remote_syslog_server_ip
+
+    @remote_syslog_server_ip.setter
+    def remote_syslog_server_ip(self, value):
+        """ Set remote_syslog_server_ip value.
+
+            Notes:
+                Remote syslog server IP
+
+                
+                This attribute is named `remoteSyslogServerIP` in VSD API.
+                
+        """
+        self._remote_syslog_server_ip = value
+
+    
+    @property
+    def remote_syslog_server_port(self):
+        """ Get remote_syslog_server_port value.
+
+            Notes:
+                Remote syslog server port
+
+                
+                This attribute is named `remoteSyslogServerPort` in VSD API.
+                
+        """
+        return self._remote_syslog_server_port
+
+    @remote_syslog_server_port.setter
+    def remote_syslog_server_port(self, value):
+        """ Set remote_syslog_server_port value.
+
+            Notes:
+                Remote syslog server port
+
+                
+                This attribute is named `remoteSyslogServerPort` in VSD API.
+                
+        """
+        self._remote_syslog_server_port = value
+
+    
+    @property
+    def remote_syslog_server_type(self):
+        """ Get remote_syslog_server_type value.
+
+            Notes:
+                Remote syslog server type (UDP/TCP)
+
+                
+                This attribute is named `remoteSyslogServerType` in VSD API.
+                
+        """
+        return self._remote_syslog_server_type
+
+    @remote_syslog_server_type.setter
+    def remote_syslog_server_type(self, value):
+        """ Set remote_syslog_server_type value.
+
+            Notes:
+                Remote syslog server type (UDP/TCP)
+
+                
+                This attribute is named `remoteSyslogServerType` in VSD API.
+                
+        """
+        self._remote_syslog_server_type = value
 
     
     @property

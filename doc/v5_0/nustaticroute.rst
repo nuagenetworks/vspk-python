@@ -28,6 +28,8 @@ Attributes
 
 - ``route_distinguisher``: Route distinguisher associated with the nexthop. System generates this identifier automatically
 
+- ``associated_subnet_id``: UUID of Do Not Advertise Subnet
+
 - ``external_id``: External object ID. Used for integration with third party systems
 
 - ``type``: Type flag for static-route provisioning for exit-domain (break-to-underlay) prefixes.
@@ -56,9 +58,9 @@ Parents
 
 - :ref:`nusharednetworkresource.NUSharedNetworkResource<nusharednetworkresource>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
 

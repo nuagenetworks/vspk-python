@@ -80,6 +80,10 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_REDIRECT_REWRITE_TYPE_VLAN = "VLAN"
     
+    CONST_LOCATION_TYPE_PGEXPRESSION = "PGEXPRESSION"
+    
+    CONST_APP_TYPE_APPLICATION = "APPLICATION"
+    
     CONST_FC_OVERRIDE_NONE = "NONE"
     
     CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
@@ -88,7 +92,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_LOCATION_TYPE_POLICYGROUP = "POLICYGROUP"
     
-    CONST_FC_OVERRIDE_H = "H"
+    CONST_FAILSAFE_DATAPATH_FAIL_TO_WIRE = "FAIL_TO_WIRE"
     
     CONST_FC_OVERRIDE_F = "F"
     
@@ -104,15 +108,23 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_FC_OVERRIDE_A = "A"
     
+    CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE_GROUP = "L4_SERVICE_GROUP"
+    
     CONST_NETWORK_TYPE_UNDERLAY_INTERNET_POLICYGROUP = "UNDERLAY_INTERNET_POLICYGROUP"
     
-    CONST_NETWORK_TYPE_SUBNET = "SUBNET"
+    CONST_FC_OVERRIDE_H = "H"
+    
+    CONST_APP_TYPE_ALL = "ALL"
     
     CONST_UPLINK_PREFERENCE_DEFAULT = "DEFAULT"
     
     CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
     
     CONST_NETWORK_TYPE_ENDPOINT_SUBNET = "ENDPOINT_SUBNET"
+    
+    CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE = "L4_SERVICE"
+    
+    CONST_FAILSAFE_DATAPATH_FAIL_TO_BLOCK = "FAIL_TO_BLOCK"
     
     CONST_LOCATION_TYPE_VPORTTAG = "VPORTTAG"
     
@@ -122,6 +134,8 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_POLICY_STATE_DRAFT = "DRAFT"
     
+    CONST_APP_TYPE_NONE = "NONE"
+    
     CONST_LOCATION_TYPE_REDIRECTIONTARGET = "REDIRECTIONTARGET"
     
     CONST_POLICY_STATE_LIVE = "LIVE"
@@ -130,11 +144,15 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
     
+    CONST_NETWORK_TYPE_PGEXPRESSION = "PGEXPRESSION"
+    
     CONST_NETWORK_TYPE_ZONE = "ZONE"
     
     CONST_NETWORK_TYPE_INTERNET_POLICYGROUP = "INTERNET_POLICYGROUP"
     
     CONST_ACTION_FORWARD = "FORWARD"
+    
+    CONST_NETWORK_TYPE_SUBNET = "SUBNET"
     
     
 
@@ -161,6 +179,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self._fc_override = None
         self._ipv6_address_override = None
         self._dscp = None
+        self._failsafe_datapath = None
         self._name = None
         self._last_updated_by = None
         self._action = None
@@ -183,9 +202,14 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self._domain_name = None
         self._source_port = None
         self._uplink_preference = None
+        self._app_type = None
         self._priority = None
         self._protocol = None
+        self._is_sla_aware = None
+        self._associated_application_id = None
         self._associated_live_entity_id = None
+        self._associated_traffic_type = None
+        self._associated_traffic_type_id = None
         self._stats_id = None
         self._stats_logging_enabled = None
         self._ether_type = None
@@ -197,6 +221,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="fc_override", remote_name="FCOverride", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="ipv6_address_override", remote_name="IPv6AddressOverride", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="failsafe_datapath", remote_name="failsafeDatapath", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAIL_TO_BLOCK', u'FAIL_TO_WIRE'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'DROP', u'FORWARD', u'REDIRECT'])
@@ -207,21 +232,26 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'INTERNET_POLICYGROUP', u'NETWORK_MACRO_GROUP', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'UNDERLAY_INTERNET_POLICYGROUP', u'ZONE'])
+        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'INTERNET_POLICYGROUP', u'NETWORK_MACRO_GROUP', u'PGEXPRESSION', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'UNDERLAY_INTERNET_POLICYGROUP', u'ZONE'])
         self.expose_attribute(local_name="mirror_destination_id", remote_name="mirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vlan_range", remote_name="vlanRange", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_logging_enabled", remote_name="flowLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'POLICYGROUP', u'REDIRECTIONTARGET', u'SUBNET', u'VPORTTAG', u'ZONE'])
+        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'PGEXPRESSION', u'POLICYGROUP', u'REDIRECTIONTARGET', u'SUBNET', u'VPORTTAG', u'ZONE'])
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
+        self.expose_attribute(local_name="app_type", remote_name="appType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'APPLICATION', u'NONE'])
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="is_sla_aware", remote_name="isSLAAware", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_application_id", remote_name="associatedApplicationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_traffic_type", remote_name="associatedTrafficType", attribute_type=str, is_required=False, is_unique=False, choices=[u'L4_SERVICE', u'L4_SERVICE_GROUP'])
+        self.expose_attribute(local_name="associated_traffic_type_id", remote_name="associatedTrafficTypeID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_id", remote_name="statsID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_logging_enabled", remote_name="statsLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ether_type", remote_name="etherType", attribute_type=str, is_required=True, is_unique=False)
@@ -407,6 +437,33 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
                 
         """
         self._dscp = value
+
+    
+    @property
+    def failsafe_datapath(self):
+        """ Get failsafe_datapath value.
+
+            Notes:
+                Backup datapath option if VNF/VM is down
+
+                
+                This attribute is named `failsafeDatapath` in VSD API.
+                
+        """
+        return self._failsafe_datapath
+
+    @failsafe_datapath.setter
+    def failsafe_datapath(self, value):
+        """ Set failsafe_datapath value.
+
+            Notes:
+                Backup datapath option if VNF/VM is down
+
+                
+                This attribute is named `failsafeDatapath` in VSD API.
+                
+        """
+        self._failsafe_datapath = value
 
     
     @property
@@ -645,7 +702,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         """ Get network_id value.
 
             Notes:
-                The destination network entity that is referenced(subnet/zone/macro)
+                The destination network entity that is referenced(subnet/zone/macro/PolicyGroupExpression)
 
                 
                 This attribute is named `networkID` in VSD API.
@@ -658,7 +715,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         """ Set network_id value.
 
             Notes:
-                The destination network entity that is referenced(subnet/zone/macro)
+                The destination network entity that is referenced(subnet/zone/macro/PolicyGroupExpression)
 
                 
                 This attribute is named `networkID` in VSD API.
@@ -834,7 +891,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         """ Get location_id value.
 
             Notes:
-                The ID of the location entity (Subnet/Zone/VportTag)
+                The ID of the location entity (Subnet/Zone/VportTag/PolicyGroupExpression)
 
                 
                 This attribute is named `locationID` in VSD API.
@@ -847,7 +904,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         """ Set location_id value.
 
             Notes:
-                The ID of the location entity (Subnet/Zone/VportTag)
+                The ID of the location entity (Subnet/Zone/VportTag/PolicyGroupExpression)
 
                 
                 This attribute is named `locationID` in VSD API.
@@ -992,6 +1049,33 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
 
     
     @property
+    def app_type(self):
+        """ Get app_type value.
+
+            Notes:
+                Type of application selected, ALL (all applications in match criteria), NONE (no application in match criteria), APPLICATION (specific application in match criteria).
+
+                
+                This attribute is named `appType` in VSD API.
+                
+        """
+        return self._app_type
+
+    @app_type.setter
+    def app_type(self, value):
+        """ Set app_type value.
+
+            Notes:
+                Type of application selected, ALL (all applications in match criteria), NONE (no application in match criteria), APPLICATION (specific application in match criteria).
+
+                
+                This attribute is named `appType` in VSD API.
+                
+        """
+        self._app_type = value
+
+    
+    @property
     def priority(self):
         """ Get priority value.
 
@@ -1038,6 +1122,60 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
 
     
     @property
+    def is_sla_aware(self):
+        """ Get is_sla_aware value.
+
+            Notes:
+                This flag denotes whether the Uplink Preference configured by the user will work with AAR or will over-ride AAR.
+
+                
+                This attribute is named `isSLAAware` in VSD API.
+                
+        """
+        return self._is_sla_aware
+
+    @is_sla_aware.setter
+    def is_sla_aware(self, value):
+        """ Set is_sla_aware value.
+
+            Notes:
+                This flag denotes whether the Uplink Preference configured by the user will work with AAR or will over-ride AAR.
+
+                
+                This attribute is named `isSLAAware` in VSD API.
+                
+        """
+        self._is_sla_aware = value
+
+    
+    @property
+    def associated_application_id(self):
+        """ Get associated_application_id value.
+
+            Notes:
+                Associated application UUID.
+
+                
+                This attribute is named `associatedApplicationID` in VSD API.
+                
+        """
+        return self._associated_application_id
+
+    @associated_application_id.setter
+    def associated_application_id(self, value):
+        """ Set associated_application_id value.
+
+            Notes:
+                Associated application UUID.
+
+                
+                This attribute is named `associatedApplicationID` in VSD API.
+                
+        """
+        self._associated_application_id = value
+
+    
+    @property
     def associated_live_entity_id(self):
         """ Get associated_live_entity_id value.
 
@@ -1062,6 +1200,60 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
                 
         """
         self._associated_live_entity_id = value
+
+    
+    @property
+    def associated_traffic_type(self):
+        """ Get associated_traffic_type value.
+
+            Notes:
+                This property reflects the type of traffic in case an ACL entry is created using an L4 Service or L4 Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
+
+                
+                This attribute is named `associatedTrafficType` in VSD API.
+                
+        """
+        return self._associated_traffic_type
+
+    @associated_traffic_type.setter
+    def associated_traffic_type(self, value):
+        """ Set associated_traffic_type value.
+
+            Notes:
+                This property reflects the type of traffic in case an ACL entry is created using an L4 Service or L4 Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
+
+                
+                This attribute is named `associatedTrafficType` in VSD API.
+                
+        """
+        self._associated_traffic_type = value
+
+    
+    @property
+    def associated_traffic_type_id(self):
+        """ Get associated_traffic_type_id value.
+
+            Notes:
+                If a traffic type is specified as L4 Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
+
+                
+                This attribute is named `associatedTrafficTypeID` in VSD API.
+                
+        """
+        return self._associated_traffic_type_id
+
+    @associated_traffic_type_id.setter
+    def associated_traffic_type_id(self, value):
+        """ Set associated_traffic_type_id value.
+
+            Notes:
+                If a traffic type is specified as L4 Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
+
+                
+                This attribute is named `associatedTrafficTypeID` in VSD API.
+                
+        """
+        self._associated_traffic_type_id = value
 
     
     @property

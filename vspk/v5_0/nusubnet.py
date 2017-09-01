@@ -27,6 +27,9 @@
 
 
 
+from .fetchers import NUPATIPEntriesFetcher
+
+
 from .fetchers import NUTCAsFetcher
 
 
@@ -60,6 +63,9 @@ from .fetchers import NUVMsFetcher
 from .fetchers import NUVMInterfacesFetcher
 
 
+from .fetchers import NUEnterprisePermissionsFetcher
+
+
 from .fetchers import NUContainersFetcher
 
 
@@ -76,6 +82,9 @@ from .fetchers import NUVPortsFetcher
 
 
 from .fetchers import NUIPReservationsFetcher
+
+
+from .fetchers import NUProxyARPFiltersFetcher
 
 
 from .fetchers import NUStatisticsFetcher
@@ -108,9 +117,13 @@ class NUSubnet(NURESTObject):
     
     CONST_USE_GLOBAL_MAC_DISABLED = "DISABLED"
     
+    CONST_RESOURCE_TYPE_FLOATING = "FLOATING"
+    
+    CONST_RESOURCE_TYPE_NSG_VNF = "NSG_VNF"
+    
     CONST_DPI_ENABLED = "ENABLED"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_DHCP_RELAY_STATUS_DISABLED = "DISABLED"
     
     CONST_DPI_INHERITED = "INHERITED"
     
@@ -120,11 +133,15 @@ class NUSubnet(NURESTObject):
     
     CONST_MAINTENANCE_MODE_DISABLED = "DISABLED"
     
+    CONST_RESOURCE_TYPE_STANDARD = "STANDARD"
+    
     CONST_DEFAULT_ACTION_USE_UNDERLAY = "USE_UNDERLAY"
     
     CONST_USE_GLOBAL_MAC_ENABLED = "ENABLED"
     
     CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
+    
+    CONST_RESOURCE_TYPE_PUBLIC = "PUBLIC"
     
     CONST_UNDERLAY_ENABLED_INHERITED = "INHERITED"
     
@@ -138,7 +155,7 @@ class NUSubnet(NURESTObject):
     
     CONST_MULTICAST_INHERITED = "INHERITED"
     
-    CONST_DHCP_RELAY_STATUS_DISABLED = "DISABLED"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_DHCP_RELAY_STATUS_ENABLED = "ENABLED"
     
@@ -192,11 +209,14 @@ class NUSubnet(NURESTObject):
         self._last_updated_by = None
         self._gateway = None
         self._gateway_mac_address = None
+        self._access_restriction_enabled = None
         self._address = None
+        self._advertise = None
         self._default_action = None
         self._template_id = None
         self._service_id = None
         self._description = None
+        self._resource_type = None
         self._netmask = None
         self._vn_id = None
         self._encryption = None
@@ -228,11 +248,14 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_mac_address", remote_name="gatewayMACAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="access_restriction_enabled", remote_name="accessRestrictionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="advertise", remote_name="advertise", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="default_action", remote_name="defaultAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'DROP_TRAFFIC', u'USE_UNDERLAY'])
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_id", remote_name="serviceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="resource_type", remote_name="resourceType", attribute_type=str, is_required=False, is_unique=False, choices=[u'FLOATING', u'NSG_VNF', u'PUBLIC', u'STANDARD'])
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vn_id", remote_name="vnId", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
@@ -255,6 +278,9 @@ class NUSubnet(NURESTObject):
         
 
         # Fetchers
+        
+        
+        self.patip_entries = NUPATIPEntriesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.tcas = NUTCAsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -290,6 +316,9 @@ class NUSubnet(NURESTObject):
         self.vm_interfaces = NUVMInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.containers = NUContainersFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -306,6 +335,9 @@ class NUSubnet(NURESTObject):
         
         
         self.ip_reservations = NUIPReservationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.proxy_arp_filters = NUProxyARPFiltersFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -611,6 +643,33 @@ class NUSubnet(NURESTObject):
 
     
     @property
+    def access_restriction_enabled(self):
+        """ Get access_restriction_enabled value.
+
+            Notes:
+                This attribute specifies whether subnet is enabled with access restrictions. Note: Applicable to shared infrastructure enterprise subnets.
+
+                
+                This attribute is named `accessRestrictionEnabled` in VSD API.
+                
+        """
+        return self._access_restriction_enabled
+
+    @access_restriction_enabled.setter
+    def access_restriction_enabled(self, value):
+        """ Set access_restriction_enabled value.
+
+            Notes:
+                This attribute specifies whether subnet is enabled with access restrictions. Note: Applicable to shared infrastructure enterprise subnets.
+
+                
+                This attribute is named `accessRestrictionEnabled` in VSD API.
+                
+        """
+        self._access_restriction_enabled = value
+
+    
+    @property
     def address(self):
         """ Get address value.
 
@@ -631,6 +690,29 @@ class NUSubnet(NURESTObject):
                 
         """
         self._address = value
+
+    
+    @property
+    def advertise(self):
+        """ Get advertise value.
+
+            Notes:
+                Subnet will be advertised in Overlay and WAN BGP
+
+                
+        """
+        return self._advertise
+
+    @advertise.setter
+    def advertise(self, value):
+        """ Set advertise value.
+
+            Notes:
+                Subnet will be advertised in Overlay and WAN BGP
+
+                
+        """
+        self._advertise = value
 
     
     @property
@@ -735,6 +817,33 @@ class NUSubnet(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def resource_type(self):
+        """ Get resource_type value.
+
+            Notes:
+                Defines the type of the subnet, PUBLIC,FLOATING,STANDARD OR NSG_VNF
+
+                
+                This attribute is named `resourceType` in VSD API.
+                
+        """
+        return self._resource_type
+
+    @resource_type.setter
+    def resource_type(self, value):
+        """ Set resource_type value.
+
+            Notes:
+                Defines the type of the subnet, PUBLIC,FLOATING,STANDARD OR NSG_VNF
+
+                
+                This attribute is named `resourceType` in VSD API.
+                
+        """
+        self._resource_type = value
 
     
     @property

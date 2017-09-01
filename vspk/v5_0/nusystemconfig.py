@@ -139,6 +139,8 @@ class NUSystemConfig(NURESTObject):
 
         # Read/Write Attributes
         
+        self._aar_flow_stats_interval = None
+        self._aar_probe_stats_interval = None
         self._acl_allow_origin = None
         self._ecmp_count = None
         self._ldap_sync_interval = None
@@ -176,6 +178,7 @@ class NUSystemConfig(NURESTObject):
         self._vsd_read_only_mode = None
         self._vsd_upgrade_is_complete = None
         self._as_number = None
+        self._vss_stats_interval = None
         self._rt_lower_limit = None
         self._rt_public_network_lower_limit = None
         self._rt_public_network_upper_limit = None
@@ -247,6 +250,8 @@ class NUSystemConfig(NURESTObject):
         self._stats_number_of_data_points = None
         self._stats_tsdb_server_address = None
         self._sticky_ecmp_idle_timeout = None
+        self._attach_probe_to_ipsec_npm = None
+        self._attach_probe_to_vxlannpm = None
         self._subnet_resync_interval = None
         self._subnet_resync_outstanding_interval = None
         self._customer_id_upper_limit = None
@@ -271,6 +276,8 @@ class NUSystemConfig(NURESTObject):
         self._system_avatar_data = None
         self._system_avatar_type = None
         
+        self.expose_attribute(local_name="aar_flow_stats_interval", remote_name="AARFlowStatsInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="aar_probe_stats_interval", remote_name="AARProbeStatsInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="acl_allow_origin", remote_name="ACLAllowOrigin", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ecmp_count", remote_name="ECMPCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ldap_sync_interval", remote_name="LDAPSyncInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -308,6 +315,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="vsd_read_only_mode", remote_name="VSDReadOnlyMode", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsd_upgrade_is_complete", remote_name="VSDUpgradeIsComplete", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="as_number", remote_name="ASNumber", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vss_stats_interval", remote_name="VSSStatsInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rt_lower_limit", remote_name="RTLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rt_public_network_lower_limit", remote_name="RTPublicNetworkLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rt_public_network_upper_limit", remote_name="RTPublicNetworkUpperLimit", attribute_type=int, is_required=False, is_unique=False)
@@ -379,6 +387,8 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="stats_number_of_data_points", remote_name="statsNumberOfDataPoints", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_tsdb_server_address", remote_name="statsTSDBServerAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sticky_ecmp_idle_timeout", remote_name="stickyECMPIdleTimeout", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="attach_probe_to_ipsec_npm", remote_name="attachProbeToIPsecNPM", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="attach_probe_to_vxlannpm", remote_name="attachProbeToVXLANNPM", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="subnet_resync_interval", remote_name="subnetResyncInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="subnet_resync_outstanding_interval", remote_name="subnetResyncOutstandingInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="customer_id_upper_limit", remote_name="customerIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
@@ -416,6 +426,60 @@ class NUSystemConfig(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def aar_flow_stats_interval(self):
+        """ Get aar_flow_stats_interval value.
+
+            Notes:
+                AAR flow statistics collection frequency
+
+                
+                This attribute is named `AARFlowStatsInterval` in VSD API.
+                
+        """
+        return self._aar_flow_stats_interval
+
+    @aar_flow_stats_interval.setter
+    def aar_flow_stats_interval(self, value):
+        """ Set aar_flow_stats_interval value.
+
+            Notes:
+                AAR flow statistics collection frequency
+
+                
+                This attribute is named `AARFlowStatsInterval` in VSD API.
+                
+        """
+        self._aar_flow_stats_interval = value
+
+    
+    @property
+    def aar_probe_stats_interval(self):
+        """ Get aar_probe_stats_interval value.
+
+            Notes:
+                AAR probe statistics collection frequency
+
+                
+                This attribute is named `AARProbeStatsInterval` in VSD API.
+                
+        """
+        return self._aar_probe_stats_interval
+
+    @aar_probe_stats_interval.setter
+    def aar_probe_stats_interval(self, value):
+        """ Set aar_probe_stats_interval value.
+
+            Notes:
+                AAR probe statistics collection frequency
+
+                
+                This attribute is named `AARProbeStatsInterval` in VSD API.
+                
+        """
+        self._aar_probe_stats_interval = value
+
     
     @property
     def acl_allow_origin(self):
@@ -1414,6 +1478,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._as_number = value
+
+    
+    @property
+    def vss_stats_interval(self):
+        """ Get vss_stats_interval value.
+
+            Notes:
+                VSS statistics collection frequency
+
+                
+                This attribute is named `VSSStatsInterval` in VSD API.
+                
+        """
+        return self._vss_stats_interval
+
+    @vss_stats_interval.setter
+    def vss_stats_interval(self, value):
+        """ Set vss_stats_interval value.
+
+            Notes:
+                VSS statistics collection frequency
+
+                
+                This attribute is named `VSSStatsInterval` in VSD API.
+                
+        """
+        self._vss_stats_interval = value
 
     
     @property
@@ -3331,6 +3422,60 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._sticky_ecmp_idle_timeout = value
+
+    
+    @property
+    def attach_probe_to_ipsec_npm(self):
+        """ Get attach_probe_to_ipsec_npm value.
+
+            Notes:
+                Flag to attach/remove system generated probe to system generated NPM for IPSEC.
+
+                
+                This attribute is named `attachProbeToIPsecNPM` in VSD API.
+                
+        """
+        return self._attach_probe_to_ipsec_npm
+
+    @attach_probe_to_ipsec_npm.setter
+    def attach_probe_to_ipsec_npm(self, value):
+        """ Set attach_probe_to_ipsec_npm value.
+
+            Notes:
+                Flag to attach/remove system generated probe to system generated NPM for IPSEC.
+
+                
+                This attribute is named `attachProbeToIPsecNPM` in VSD API.
+                
+        """
+        self._attach_probe_to_ipsec_npm = value
+
+    
+    @property
+    def attach_probe_to_vxlannpm(self):
+        """ Get attach_probe_to_vxlannpm value.
+
+            Notes:
+                Flag to attach/remove system generated probe to system generated NPM for VXLAN.
+
+                
+                This attribute is named `attachProbeToVXLANNPM` in VSD API.
+                
+        """
+        return self._attach_probe_to_vxlannpm
+
+    @attach_probe_to_vxlannpm.setter
+    def attach_probe_to_vxlannpm(self, value):
+        """ Set attach_probe_to_vxlannpm value.
+
+            Notes:
+                Flag to attach/remove system generated probe to system generated NPM for VXLAN.
+
+                
+                This attribute is named `attachProbeToVXLANNPM` in VSD API.
+                
+        """
+        self._attach_probe_to_vxlannpm = value
 
     
     @property

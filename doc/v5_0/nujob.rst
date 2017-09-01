@@ -61,9 +61,9 @@ Parents
 
 - :ref:`nuingressexternalservicetemplateentry.NUIngressExternalServiceTemplateEntry<nuingressexternalservicetemplateentry>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nuvsc.NUVSC<nuvsc>`
+
+- :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 
@@ -73,7 +73,11 @@ Parents
 
 - :ref:`nuzfbrequest.NUZFBRequest<nuzfbrequest>`
 
+- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
+
 - :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
@@ -104,8 +108,6 @@ Parents
 - :ref:`nuvnf.NUVNF<nuvnf>`
 
 - :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
-
-- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 
 - :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`
 

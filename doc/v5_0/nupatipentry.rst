@@ -39,3 +39,5 @@ Parents
 
 - :ref:`nusharednetworkresource.NUSharedNetworkResource<nusharednetworkresource>`
 
+- :ref:`nusubnet.NUSubnet<nusubnet>`
+

@@ -38,6 +38,14 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``log_disk_utilization_redeployment_enabled``: Log disk Utilization Redeployment Enabled
+
+- ``log_disk_utilization_threshold``: Log disk Utilization Threshold
+
+- ``root_disk_utilization_redeployment_enabled``: Root disk Utilization Redeployment Enabled
+
+- ``root_disk_utilization_threshold``: Root disk Utilization Threshold
+
 - ``external_id``: External object ID. Used for integration with third party systems
 
 
@@ -51,11 +59,11 @@ Parents
 
 - :ref:`nuvcentervrsconfig.NUVCenterVRSConfig<nuvcentervrsconfig>`
 
+- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
+
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
 
 - :ref:`nuvcenter.NUVCenter<nuvcenter>`
-
-- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 
 - :ref:`nuvcenterhypervisor.NUVCenterHypervisor<nuvcenterhypervisor>`
 

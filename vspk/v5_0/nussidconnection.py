@@ -27,6 +27,9 @@
 
 
 
+from .fetchers import NUCaptivePortalProfilesFetcher
+
+
 from .fetchers import NUAlarmsFetcher
 
 
@@ -50,7 +53,13 @@ class NUSSIDConnection(NURESTObject):
     
     CONST_AUTHENTICATION_MODE_WEP = "WEP"
     
+    CONST_REDIRECT_OPTION_CONFIGURED_URL = "CONFIGURED_URL"
+    
     CONST_AUTHENTICATION_MODE_WPA = "WPA"
+    
+    CONST_REDIRECT_OPTION_ORIGINAL_REQUEST = "ORIGINAL_REQUEST"
+    
+    CONST_AUTHENTICATION_MODE_CAPTIVE_PORTAL = "CAPTIVE_PORTAL"
     
     CONST_AUTHENTICATION_MODE_WPA_OTP = "WPA_OTP"
     
@@ -81,28 +90,37 @@ class NUSSIDConnection(NURESTObject):
         
         self._name = None
         self._passphrase = None
+        self._redirect_option = None
+        self._redirect_url = None
         self._generic_config = None
         self._description = None
         self._white_list = None
         self._black_list = None
         self._interface_name = None
         self._broadcast_ssid = None
+        self._associated_captive_portal_profile_id = None
         self._associated_egress_qos_policy_id = None
         self._authentication_mode = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=True)
         self.expose_attribute(local_name="passphrase", remote_name="passphrase", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="redirect_option", remote_name="redirectOption", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONFIGURED_URL', u'ORIGINAL_REQUEST'])
+        self.expose_attribute(local_name="redirect_url", remote_name="redirectURL", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="generic_config", remote_name="genericConfig", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="white_list", remote_name="whiteList", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="black_list", remote_name="blackList", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="interface_name", remote_name="interfaceName", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="broadcast_ssid", remote_name="broadcastSSID", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_captive_portal_profile_id", remote_name="associatedCaptivePortalProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="authentication_mode", remote_name="authenticationMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'OPEN', u'WEP', u'WPA', u'WPA2', u'WPA_OTP', u'WPA_WPA2'])
+        self.expose_attribute(local_name="authentication_mode", remote_name="authenticationMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'CAPTIVE_PORTAL', u'OPEN', u'WEP', u'WPA', u'WPA2', u'WPA_OTP', u'WPA_WPA2'])
         
 
         # Fetchers
+        
+        
+        self.captive_portal_profiles = NUCaptivePortalProfilesFetcher.fetcher_with_object(parent_object=self, relationship="member")
         
         
         self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -159,6 +177,60 @@ class NUSSIDConnection(NURESTObject):
                 
         """
         self._passphrase = value
+
+    
+    @property
+    def redirect_option(self):
+        """ Get redirect_option value.
+
+            Notes:
+                Redirection action to exercise once the connecting user has accepted the use policy presented on the Wireless Captive Portal.
+
+                
+                This attribute is named `redirectOption` in VSD API.
+                
+        """
+        return self._redirect_option
+
+    @redirect_option.setter
+    def redirect_option(self, value):
+        """ Set redirect_option value.
+
+            Notes:
+                Redirection action to exercise once the connecting user has accepted the use policy presented on the Wireless Captive Portal.
+
+                
+                This attribute is named `redirectOption` in VSD API.
+                
+        """
+        self._redirect_option = value
+
+    
+    @property
+    def redirect_url(self):
+        """ Get redirect_url value.
+
+            Notes:
+                URL to have a newly connected user redirected to once the use policy defined on the Wireless Captive Portal has been accepted by the user.
+
+                
+                This attribute is named `redirectURL` in VSD API.
+                
+        """
+        return self._redirect_url
+
+    @redirect_url.setter
+    def redirect_url(self, value):
+        """ Set redirect_url value.
+
+            Notes:
+                URL to have a newly connected user redirected to once the use policy defined on the Wireless Captive Portal has been accepted by the user.
+
+                
+                This attribute is named `redirectURL` in VSD API.
+                
+        """
+        self._redirect_url = value
 
     
     @property
@@ -317,6 +389,33 @@ class NUSSIDConnection(NURESTObject):
                 
         """
         self._broadcast_ssid = value
+
+    
+    @property
+    def associated_captive_portal_profile_id(self):
+        """ Get associated_captive_portal_profile_id value.
+
+            Notes:
+                Identification of the Captive Portal Profile that is associated with this instance of SSID connection.
+
+                
+                This attribute is named `associatedCaptivePortalProfileID` in VSD API.
+                
+        """
+        return self._associated_captive_portal_profile_id
+
+    @associated_captive_portal_profile_id.setter
+    def associated_captive_portal_profile_id(self, value):
+        """ Set associated_captive_portal_profile_id value.
+
+            Notes:
+                Identification of the Captive Portal Profile that is associated with this instance of SSID connection.
+
+                
+                This attribute is named `associatedCaptivePortalProfileID` in VSD API.
+                
+        """
+        self._associated_captive_portal_profile_id = value
 
     
     @property

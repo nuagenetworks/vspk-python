@@ -162,6 +162,9 @@ from .fetchers import NUIngressACLTemplatesFetcher
 from .fetchers import NUIngressAdvFwdEntryTemplatesFetcher
 
 
+from .fetchers import NUIngressQOSPoliciesFetcher
+
+
 from .fetchers import NUEnterprisesFetcher
 
 
@@ -186,6 +189,9 @@ from .fetchers import NUContainersFetcher
 from .fetchers import NUContainerInterfacesFetcher
 
 
+from .fetchers import NUCOSRemarkingPolicyTablesFetcher
+
+
 from .fetchers import NUHostInterfacesFetcher
 
 
@@ -196,6 +202,9 @@ from .fetchers import NUUplinkRDsFetcher
 
 
 from .fetchers import NUVCenterVRSConfigsFetcher
+
+
+from .fetchers import NUDSCPRemarkingPolicyTablesFetcher
 
 
 from .fetchers import NUUsersFetcher
@@ -211,6 +220,9 @@ from .fetchers import NUNSGGroupsFetcher
 
 
 from .fetchers import NUNSRedundantGatewayGroupsFetcher
+
+
+from .fetchers import NUNSGUpgradeProfilesFetcher
 
 
 from .fetchers import NUVSPsFetcher
@@ -281,6 +293,9 @@ class NUMe(NURESTRootObject):
 
         # Read/Write Attributes
         
+        self._aar_flow_stats_interval = None
+        self._aar_probe_stats_interval = None
+        self._vss_stats_interval = None
         self._password = None
         self._last_name = None
         self._last_updated_by = None
@@ -300,6 +315,9 @@ class NUMe(NURESTRootObject):
         self._avatar_type = None
         self._external_id = None
         
+        self.expose_attribute(local_name="aar_flow_stats_interval", remote_name="AARFlowStatsInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="aar_probe_stats_interval", remote_name="AARProbeStatsInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vss_stats_interval", remote_name="VSSStatsInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_name", remote_name="lastName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -458,6 +476,9 @@ class NUMe(NURESTRootObject):
         self.ingress_adv_fwd_entry_templates = NUIngressAdvFwdEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.ingress_qos_policies = NUIngressQOSPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.enterprises = NUEnterprisesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -482,6 +503,9 @@ class NUMe(NURESTRootObject):
         self.container_interfaces = NUContainerInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.cos_remarking_policy_tables = NUCOSRemarkingPolicyTablesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.host_interfaces = NUHostInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -492,6 +516,9 @@ class NUMe(NURESTRootObject):
         
         
         self.vcenter_vrs_configs = NUVCenterVRSConfigsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.dscp_remarking_policy_tables = NUDSCPRemarkingPolicyTablesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.users = NUUsersFetcher.fetcher_with_object(parent_object=self, relationship="root")
@@ -507,6 +534,9 @@ class NUMe(NURESTRootObject):
         
         
         self.ns_redundant_gateway_groups = NUNSRedundantGatewayGroupsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.nsg_upgrade_profiles = NUNSGUpgradeProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.vsps = NUVSPsFetcher.fetcher_with_object(parent_object=self, relationship="root")
@@ -536,6 +566,87 @@ class NUMe(NURESTRootObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def aar_flow_stats_interval(self):
+        """ Get aar_flow_stats_interval value.
+
+            Notes:
+                AAR flow stats frequency
+
+                
+                This attribute is named `AARFlowStatsInterval` in VSD API.
+                
+        """
+        return self._aar_flow_stats_interval
+
+    @aar_flow_stats_interval.setter
+    def aar_flow_stats_interval(self, value):
+        """ Set aar_flow_stats_interval value.
+
+            Notes:
+                AAR flow stats frequency
+
+                
+                This attribute is named `AARFlowStatsInterval` in VSD API.
+                
+        """
+        self._aar_flow_stats_interval = value
+
+    
+    @property
+    def aar_probe_stats_interval(self):
+        """ Get aar_probe_stats_interval value.
+
+            Notes:
+                AAR Probe stats frequency
+
+                
+                This attribute is named `AARProbeStatsInterval` in VSD API.
+                
+        """
+        return self._aar_probe_stats_interval
+
+    @aar_probe_stats_interval.setter
+    def aar_probe_stats_interval(self, value):
+        """ Set aar_probe_stats_interval value.
+
+            Notes:
+                AAR Probe stats frequency
+
+                
+                This attribute is named `AARProbeStatsInterval` in VSD API.
+                
+        """
+        self._aar_probe_stats_interval = value
+
+    
+    @property
+    def vss_stats_interval(self):
+        """ Get vss_stats_interval value.
+
+            Notes:
+                VSS flow stats frequency
+
+                
+                This attribute is named `VSSStatsInterval` in VSD API.
+                
+        """
+        return self._vss_stats_interval
+
+    @vss_stats_interval.setter
+    def vss_stats_interval(self, value):
+        """ Set vss_stats_interval value.
+
+            Notes:
+                VSS flow stats frequency
+
+                
+                This attribute is named `VSSStatsInterval` in VSD API.
+                
+        """
+        self._vss_stats_interval = value
+
     
     @property
     def password(self):

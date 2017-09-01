@@ -51,21 +51,27 @@ class NUVNF(NURESTObject):
     
     ## Constants
     
-    CONST_STATUS_SHUTOFF = "SHUTOFF"
+    CONST_STATUS_SHUTDOWN = "SHUTDOWN"
+    
+    CONST_TASK_STATE_STOPPING = "STOPPING"
+    
+    CONST_ALLOWED_ACTIONS_START = "START"
     
     CONST_STATUS_IDLE = "IDLE"
     
     CONST_TASK_STATE_NONE = "NONE"
     
-    CONST_STATUS_SHUTDOWN = "SHUTDOWN"
+    CONST_STATUS_INIT = "INIT"
     
-    CONST_STATUS_PAUSED = "PAUSED"
+    CONST_ALLOWED_ACTIONS_DEPLOY = "DEPLOY"
     
-    CONST_STATUS_PMSUSPENDED = "PMSUSPENDED"
+    CONST_TASK_STATE_DEPLOYING = "DEPLOYING"
     
-    CONST_ALLOWED_ACTIONS_STOP = "STOP"
+    CONST_STATUS_DYING = "DYING"
     
-    CONST_TASK_STATE_STARTING = "STARTING"
+    CONST_ALLOWED_ACTIONS_RESTART = "RESTART"
+    
+    CONST_ALLOWED_ACTIONS_UNDEPLOY = "UNDEPLOY"
     
     CONST_STATUS_LAST = "LAST"
     
@@ -73,23 +79,21 @@ class NUVNF(NURESTObject):
     
     CONST_STATUS_RUNNING = "RUNNING"
     
-    CONST_ALLOWED_ACTIONS_UNDEPLOY = "UNDEPLOY"
-    
-    CONST_STATUS_INIT = "INIT"
-    
-    CONST_STATUS_DYING = "DYING"
-    
-    CONST_ALLOWED_ACTIONS_DEPLOY = "DEPLOY"
-    
-    CONST_TASK_STATE_STOPPING = "STOPPING"
-    
     CONST_STATUS_BLOCKED = "BLOCKED"
     
+    CONST_STATUS_PAUSED = "PAUSED"
+    
+    CONST_TASK_STATE_STARTING = "STARTING"
+    
+    CONST_STATUS_SHUTOFF = "SHUTOFF"
+    
+    CONST_ALLOWED_ACTIONS_REDEPLOY = "REDEPLOY"
+    
+    CONST_ALLOWED_ACTIONS_STOP = "STOP"
+    
+    CONST_STATUS_PMSUSPENDED = "PMSUSPENDED"
+    
     CONST_TASK_STATE_UNDEPLOYING = "UNDEPLOYING"
-    
-    CONST_TASK_STATE_DEPLOYING = "DEPLOYING"
-    
-    CONST_ALLOWED_ACTIONS_START = "START"
     
     
 
@@ -125,6 +129,8 @@ class NUVNF(NURESTObject):
         self._metadata_id = None
         self._allowed_actions = None
         self._enterprise_id = None
+        self._is_attached_to_descriptor = None
+        self._associated_vnf_metadata_id = None
         self._status = None
         self._storage_gb = None
         
@@ -141,8 +147,10 @@ class NUVNF(NURESTObject):
         self.expose_attribute(local_name="vendor", remote_name="vendor", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_id", remote_name="metadataID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="allowed_actions", remote_name="allowedActions", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEPLOY', u'START', u'STOP', u'UNDEPLOY'])
+        self.expose_attribute(local_name="allowed_actions", remote_name="allowedActions", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEPLOY', u'REDEPLOY', u'RESTART', u'START', u'STOP', u'UNDEPLOY'])
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="is_attached_to_descriptor", remote_name="isAttachedToDescriptor", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_vnf_metadata_id", remote_name="associatedVNFMetadataID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'BLOCKED', u'CRASHED', u'DYING', u'IDLE', u'INIT', u'LAST', u'PAUSED', u'PMSUSPENDED', u'RUNNING', u'SHUTDOWN', u'SHUTOFF'])
         self.expose_attribute(local_name="storage_gb", remote_name="storageGB", attribute_type=int, is_required=False, is_unique=False)
         
@@ -554,6 +562,60 @@ class NUVNF(NURESTObject):
                 
         """
         self._enterprise_id = value
+
+    
+    @property
+    def is_attached_to_descriptor(self):
+        """ Get is_attached_to_descriptor value.
+
+            Notes:
+                This specifies if VNF instance is using VNF descriptor or it is decoupled from it
+
+                
+                This attribute is named `isAttachedToDescriptor` in VSD API.
+                
+        """
+        return self._is_attached_to_descriptor
+
+    @is_attached_to_descriptor.setter
+    def is_attached_to_descriptor(self, value):
+        """ Set is_attached_to_descriptor value.
+
+            Notes:
+                This specifies if VNF instance is using VNF descriptor or it is decoupled from it
+
+                
+                This attribute is named `isAttachedToDescriptor` in VSD API.
+                
+        """
+        self._is_attached_to_descriptor = value
+
+    
+    @property
+    def associated_vnf_metadata_id(self):
+        """ Get associated_vnf_metadata_id value.
+
+            Notes:
+                VNF metadata associated to VNF instance. 
+
+                
+                This attribute is named `associatedVNFMetadataID` in VSD API.
+                
+        """
+        return self._associated_vnf_metadata_id
+
+    @associated_vnf_metadata_id.setter
+    def associated_vnf_metadata_id(self, value):
+        """ Set associated_vnf_metadata_id value.
+
+            Notes:
+                VNF metadata associated to VNF instance. 
+
+                
+                This attribute is named `associatedVNFMetadataID` in VSD API.
+                
+        """
+        self._associated_vnf_metadata_id = value
 
     
     @property

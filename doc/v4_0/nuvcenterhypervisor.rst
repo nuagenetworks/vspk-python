@@ -231,9 +231,9 @@ Parents
 --------
 
 
+- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
+
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
 
 - :ref:`nume.NUMe<nume>`
-
-- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 

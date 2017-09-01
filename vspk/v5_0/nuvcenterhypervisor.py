@@ -62,6 +62,10 @@ class NUVCenterHypervisor(NURESTObject):
     
     CONST_VRS_STATE_UPGRADING = "UPGRADING"
     
+    CONST_REMOTE_SYSLOG_SERVER_TYPE_NONE = "NONE"
+    
+    CONST_REMOTE_SYSLOG_SERVER_TYPE_UDP = "UDP"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_VRS_STATE_NOT_DEPLOYED = "NOT_DEPLOYED"
@@ -70,7 +74,7 @@ class NUVCenterHypervisor(NURESTObject):
     
     CONST_DESTINATION_MIRROR_PORT_ENS224 = "ens224"
     
-    CONST_DESTINATION_MIRROR_PORT_ENS256 = "ens256"
+    CONST_REMOTE_SYSLOG_SERVER_TYPE_TCP = "TCP"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
@@ -81,6 +85,8 @@ class NUVCenterHypervisor(NURESTObject):
     CONST_DESTINATION_MIRROR_PORT_NO_MIRROR = "no_mirror"
     
     CONST_VRS_STATE_TIMEDOUT = "TIMEDOUT"
+    
+    CONST_DESTINATION_MIRROR_PORT_ENS256 = "ens256"
     
     CONST_VRS_STATE_DEPLOYING = "DEPLOYING"
     
@@ -106,8 +112,11 @@ class NUVCenterHypervisor(NURESTObject):
         self._vcenter_ip = None
         self._vcenter_password = None
         self._vcenter_user = None
+        self._vrs_agent_moid = None
+        self._vrs_agent_name = None
         self._vrs_configuration_time_limit = None
         self._vrs_metrics_id = None
+        self._vrs_mgmt_hostname = None
         self._vrs_state = None
         self._v_require_nuage_metadata = None
         self._name = None
@@ -123,6 +132,9 @@ class NUVCenterHypervisor(NURESTObject):
         self._datapath_sync_timeout = None
         self._scope = None
         self._secondary_nuage_controller = None
+        self._remote_syslog_server_ip = None
+        self._remote_syslog_server_port = None
+        self._remote_syslog_server_type = None
         self._removed_from_vcenter_inventory = None
         self._generic_split_activation = None
         self._separate_data_network = None
@@ -213,8 +225,11 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="vcenter_ip", remote_name="vCenterIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vcenter_password", remote_name="vCenterPassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vcenter_user", remote_name="vCenterUser", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrs_agent_moid", remote_name="VRSAgentMOID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrs_agent_name", remote_name="VRSAgentName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_configuration_time_limit", remote_name="VRSConfigurationTimeLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_metrics_id", remote_name="VRSMetricsID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrs_mgmt_hostname", remote_name="VRSMgmtHostname", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_state", remote_name="VRSState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEPLOYED', u'DEPLOYING', u'NOT_DEPLOYED', u'TIMEDOUT', u'UPGRADING'])
         self.expose_attribute(local_name="v_require_nuage_metadata", remote_name="vRequireNuageMetadata", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
@@ -230,6 +245,9 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="datapath_sync_timeout", remote_name="datapathSyncTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="scope", remote_name="scope", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_nuage_controller", remote_name="secondaryNuageController", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="remote_syslog_server_ip", remote_name="remoteSyslogServerIP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="remote_syslog_server_port", remote_name="remoteSyslogServerPort", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="remote_syslog_server_type", remote_name="remoteSyslogServerType", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'TCP', u'UDP'])
         self.expose_attribute(local_name="removed_from_vcenter_inventory", remote_name="removedFromVCenterInventory", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="generic_split_activation", remote_name="genericSplitActivation", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="separate_data_network", remote_name="separateDataNetwork", attribute_type=bool, is_required=False, is_unique=False)
@@ -425,6 +443,60 @@ class NUVCenterHypervisor(NURESTObject):
 
     
     @property
+    def vrs_agent_moid(self):
+        """ Get vrs_agent_moid value.
+
+            Notes:
+                VRS agent MOID to uniquely identify VRS VM on the Vcenter
+
+                
+                This attribute is named `VRSAgentMOID` in VSD API.
+                
+        """
+        return self._vrs_agent_moid
+
+    @vrs_agent_moid.setter
+    def vrs_agent_moid(self, value):
+        """ Set vrs_agent_moid value.
+
+            Notes:
+                VRS agent MOID to uniquely identify VRS VM on the Vcenter
+
+                
+                This attribute is named `VRSAgentMOID` in VSD API.
+                
+        """
+        self._vrs_agent_moid = value
+
+    
+    @property
+    def vrs_agent_name(self):
+        """ Get vrs_agent_name value.
+
+            Notes:
+                VRS agent name on the Vcenter
+
+                
+                This attribute is named `VRSAgentName` in VSD API.
+                
+        """
+        return self._vrs_agent_name
+
+    @vrs_agent_name.setter
+    def vrs_agent_name(self, value):
+        """ Set vrs_agent_name value.
+
+            Notes:
+                VRS agent name on the Vcenter
+
+                
+                This attribute is named `VRSAgentName` in VSD API.
+                
+        """
+        self._vrs_agent_name = value
+
+    
+    @property
     def vrs_configuration_time_limit(self):
         """ Get vrs_configuration_time_limit value.
 
@@ -476,6 +548,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._vrs_metrics_id = value
+
+    
+    @property
+    def vrs_mgmt_hostname(self):
+        """ Get vrs_mgmt_hostname value.
+
+            Notes:
+                The VRS Management Hostname that will be configured on the VRS and in case of vCenter 6.5 and above, will be used to rename the VRS Agent in vCenter
+
+                
+                This attribute is named `VRSMgmtHostname` in VSD API.
+                
+        """
+        return self._vrs_mgmt_hostname
+
+    @vrs_mgmt_hostname.setter
+    def vrs_mgmt_hostname(self, value):
+        """ Set vrs_mgmt_hostname value.
+
+            Notes:
+                The VRS Management Hostname that will be configured on the VRS and in case of vCenter 6.5 and above, will be used to rename the VRS Agent in vCenter
+
+                
+                This attribute is named `VRSMgmtHostname` in VSD API.
+                
+        """
+        self._vrs_mgmt_hostname = value
 
     
     @property
@@ -873,6 +972,87 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._secondary_nuage_controller = value
+
+    
+    @property
+    def remote_syslog_server_ip(self):
+        """ Get remote_syslog_server_ip value.
+
+            Notes:
+                Remote syslog server IP
+
+                
+                This attribute is named `remoteSyslogServerIP` in VSD API.
+                
+        """
+        return self._remote_syslog_server_ip
+
+    @remote_syslog_server_ip.setter
+    def remote_syslog_server_ip(self, value):
+        """ Set remote_syslog_server_ip value.
+
+            Notes:
+                Remote syslog server IP
+
+                
+                This attribute is named `remoteSyslogServerIP` in VSD API.
+                
+        """
+        self._remote_syslog_server_ip = value
+
+    
+    @property
+    def remote_syslog_server_port(self):
+        """ Get remote_syslog_server_port value.
+
+            Notes:
+                Remote syslog server port
+
+                
+                This attribute is named `remoteSyslogServerPort` in VSD API.
+                
+        """
+        return self._remote_syslog_server_port
+
+    @remote_syslog_server_port.setter
+    def remote_syslog_server_port(self, value):
+        """ Set remote_syslog_server_port value.
+
+            Notes:
+                Remote syslog server port
+
+                
+                This attribute is named `remoteSyslogServerPort` in VSD API.
+                
+        """
+        self._remote_syslog_server_port = value
+
+    
+    @property
+    def remote_syslog_server_type(self):
+        """ Get remote_syslog_server_type value.
+
+            Notes:
+                Remote syslog server type (UDP/TCP)
+
+                
+                This attribute is named `remoteSyslogServerType` in VSD API.
+                
+        """
+        return self._remote_syslog_server_type
+
+    @remote_syslog_server_type.setter
+    def remote_syslog_server_type(self, value):
+        """ Set remote_syslog_server_type value.
+
+            Notes:
+                Remote syslog server type (UDP/TCP)
+
+                
+                This attribute is named `remoteSyslogServerType` in VSD API.
+                
+        """
+        self._remote_syslog_server_type = value
 
     
     @property

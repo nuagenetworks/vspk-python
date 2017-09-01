@@ -89,13 +89,13 @@ Parents
 
 - :ref:`numetadatatag.NUMetadataTag<numetadatatag>`
 
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
+
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
 - :ref:`numetadata.NUMetadata<numetadata>`
 
 - :ref:`nuvsp.NUVSP<nuvsp>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuvsc.NUVSC<nuvsc>`
 
@@ -121,8 +121,6 @@ Parents
 
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
-
 - :ref:`nulicense.NULicense<nulicense>`
 
 - :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
@@ -132,6 +130,8 @@ Parents
 - :ref:`numulticastrange.NUMultiCastRange<numulticastrange>`
 
 - :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 

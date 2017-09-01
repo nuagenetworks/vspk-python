@@ -78,6 +78,8 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
     
+    CONST_LOCATION_TYPE_PGEXPRESSION = "PGEXPRESSION"
+    
     CONST_FC_OVERRIDE_NONE = "NONE"
     
     CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
@@ -86,7 +88,7 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_LOCATION_TYPE_POLICYGROUP = "POLICYGROUP"
     
-    CONST_NETWORK_TYPE_SUBNET = "SUBNET"
+    CONST_FAILSAFE_DATAPATH_FAIL_TO_WIRE = "FAIL_TO_WIRE"
     
     CONST_FC_OVERRIDE_F = "F"
     
@@ -112,6 +114,8 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_NETWORK_TYPE_ENDPOINT_SUBNET = "ENDPOINT_SUBNET"
     
+    CONST_FAILSAFE_DATAPATH_FAIL_TO_BLOCK = "FAIL_TO_BLOCK"
+    
     CONST_LOCATION_TYPE_VPORTTAG = "VPORTTAG"
     
     CONST_LOCATION_TYPE_SUBNET = "SUBNET"
@@ -128,11 +132,15 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
     
+    CONST_NETWORK_TYPE_PGEXPRESSION = "PGEXPRESSION"
+    
     CONST_NETWORK_TYPE_ZONE = "ZONE"
     
     CONST_NETWORK_TYPE_INTERNET_POLICYGROUP = "INTERNET_POLICYGROUP"
     
     CONST_ACTION_FORWARD = "FORWARD"
+    
+    CONST_NETWORK_TYPE_SUBNET = "SUBNET"
     
     
 
@@ -159,6 +167,7 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
         self._fc_override = None
         self._ipv6_address_override = None
         self._dscp = None
+        self._failsafe_datapath = None
         self._name = None
         self._last_updated_by = None
         self._action = None
@@ -192,6 +201,7 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="fc_override", remote_name="FCOverride", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="ipv6_address_override", remote_name="IPv6AddressOverride", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="failsafe_datapath", remote_name="failsafeDatapath", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAIL_TO_BLOCK', u'FAIL_TO_WIRE'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'DROP', u'FORWARD', u'REDIRECT'])
@@ -200,13 +210,13 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'INTERNET_POLICYGROUP', u'NETWORK_MACRO_GROUP', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'UNDERLAY_INTERNET_POLICYGROUP', u'ZONE'])
+        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'INTERNET_POLICYGROUP', u'NETWORK_MACRO_GROUP', u'PGEXPRESSION', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'UNDERLAY_INTERNET_POLICYGROUP', u'ZONE'])
         self.expose_attribute(local_name="mirror_destination_id", remote_name="mirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_logging_enabled", remote_name="flowLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'POLICYGROUP', u'REDIRECTIONTARGET', u'SUBNET', u'VPORTTAG', u'ZONE'])
+        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'PGEXPRESSION', u'POLICYGROUP', u'REDIRECTIONTARGET', u'SUBNET', u'VPORTTAG', u'ZONE'])
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=False, is_unique=False)
@@ -402,6 +412,33 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
 
     
     @property
+    def failsafe_datapath(self):
+        """ Get failsafe_datapath value.
+
+            Notes:
+                Backup datapath option if VNF/VM is down
+
+                
+                This attribute is named `failsafeDatapath` in VSD API.
+                
+        """
+        return self._failsafe_datapath
+
+    @failsafe_datapath.setter
+    def failsafe_datapath(self, value):
+        """ Set failsafe_datapath value.
+
+            Notes:
+                Backup datapath option if VNF/VM is down
+
+                
+                This attribute is named `failsafeDatapath` in VSD API.
+                
+        """
+        self._failsafe_datapath = value
+
+    
+    @property
     def name(self):
         """ Get name value.
 
@@ -583,7 +620,7 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
         """ Get network_id value.
 
             Notes:
-                The source network entity id that is referenced(subnet/zone/macro)
+                The source network entity id that is referenced(subnet/zone/macro/PolicyGroupExpression)
 
                 
                 This attribute is named `networkID` in VSD API.
@@ -596,7 +633,7 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
         """ Set network_id value.
 
             Notes:
-                The source network entity id that is referenced(subnet/zone/macro)
+                The source network entity id that is referenced(subnet/zone/macro/PolicyGroupExpression)
 
                 
                 This attribute is named `networkID` in VSD API.
@@ -745,7 +782,7 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
         """ Get location_id value.
 
             Notes:
-                The ID of the destination location entity (Subnet/Zone/VportTag)
+                The ID of the destination location entity (Subnet/Zone/VportTag/PolicyGroupExpression)
 
                 
                 This attribute is named `locationID` in VSD API.
@@ -758,7 +795,7 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
         """ Set location_id value.
 
             Notes:
-                The ID of the destination location entity (Subnet/Zone/VportTag)
+                The ID of the destination location entity (Subnet/Zone/VportTag/PolicyGroupExpression)
 
                 
                 This attribute is named `locationID` in VSD API.

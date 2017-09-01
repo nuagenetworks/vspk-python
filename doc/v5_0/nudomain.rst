@@ -22,6 +22,8 @@ Attributes
 
 - ``dhcp_server_address``: when DHCPBehaviorType is RELAY, then DHCP Server IP Address needs to be set
 
+- ``fip_underlay``: Boolean flag to indicate whether this is a Floating IP to underlay domain or not
+
 - ``dpi``: determines whether or not Deep packet inspection is enabled
 
 - ``label_id``: The label associated with the dVRS. This is a read only attribute
@@ -88,6 +90,8 @@ Attributes
 
 - ``associated_pat_mapper_id``: The ID of the PatMapper entity to which this l3-domain is associated to.
 
+- ``associated_shared_pat_mapper_id``: The ID of the PatMapper entity to which this SharedNetworkResource is associated to.
+
 - ``stretched``: Indicates whether this domain is streched,if so remote VM resolutions will be allowed
 
 - ``multicast``: multicast is enum that indicates multicast policy on domain. Possible values are ENABLED ,DISABLED  and INHERITED Possible values are INHERITED, ENABLED, DISABLED, .
@@ -114,6 +118,7 @@ Children
 :ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nunetworkperformancebinding.NUNetworkPerformanceBinding<nunetworkperformancebinding>`                                                                      ``network_performance_bindings`` 
+:ref:`nupgexpression.NUPGExpression<nupgexpression>`                                                                                                             ``pg_expressions`` 
 :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`                                                                               ``egress_acl_entry_templates`` 
 :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`                                                                                              ``egress_acl_templates`` 
 :ref:`nuegressadvfwdtemplate.NUEgressAdvFwdTemplate<nuegressadvfwdtemplate>`                                                                                     ``egress_adv_fwd_templates`` 
@@ -126,6 +131,7 @@ Children
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuvm.NUVM<nuvm>`                                                                                                                                           ``vms`` 
 :ref:`nuvminterface.NUVMInterface<nuvminterface>`                                                                                                                ``vm_interfaces`` 
+:ref:`nuvnfdomainmapping.NUVNFDomainMapping<nuvnfdomainmapping>`                                                                                                 ``vnf_domain_mappings`` 
 :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`                                                                            ``ingress_acl_entry_templates`` 
 :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`                                                                                           ``ingress_acl_templates`` 
 :ref:`nuingressadvfwdtemplate.NUIngressAdvFwdTemplate<nuingressadvfwdtemplate>`                                                                                  ``ingress_adv_fwd_templates`` 

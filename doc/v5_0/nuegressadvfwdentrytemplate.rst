@@ -24,6 +24,8 @@ Attributes
 
 - ``dscp`` (**Mandatory**): DSCP match condition to be set in the rule. It is either * or from 0-63
 
+- ``failsafe_datapath``: Backup datapath option if VNF/VM is down
+
 - ``name`` (**Mandatory**): Name of the policy
 
 - ``last_updated_by``: ID of the user who last updated the object.
@@ -38,7 +40,7 @@ Attributes
 
 - ``destination_port``: The destination port to be matched if protocol is UDP or TCP. Value should be either * or single port number or a port range
 
-- ``network_id``: The source network entity id that is referenced(subnet/zone/macro)
+- ``network_id``: The source network entity id that is referenced(subnet/zone/macro/PolicyGroupExpression)
 
 - ``network_type``: Type of the source network.
 
@@ -50,7 +52,7 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``location_id``: The ID of the destination location entity (Subnet/Zone/VportTag)
+- ``location_id``: The ID of the destination location entity (Subnet/Zone/VportTag/PolicyGroupExpression)
 
 - ``location_type`` (**Mandatory**): Type of the destination location entity.
 
