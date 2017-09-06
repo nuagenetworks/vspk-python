@@ -51,7 +51,7 @@ Parents
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
-- :ref:`nul2domain.NUL2Domain<nul2domain>`
-
 - :ref:`nutier.NUTier<nutier>`
+
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
 

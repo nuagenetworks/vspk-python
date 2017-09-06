@@ -60,9 +60,9 @@ Parents
 
 - :ref:`nuport.NUPort<nuport>`
 
-- :ref:`nugateway.NUGateway<nugateway>`
-
 - :ref:`nuwanservice.NUWANService<nuwanservice>`
+
+- :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 

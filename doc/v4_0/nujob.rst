@@ -61,8 +61,6 @@ Parents
 
 - :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`
 
-- :ref:`nuvsc.NUVSC<nuvsc>`
-
 - :ref:`nuvsd.NUVSD<nuvsd>`
 
 - :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
@@ -91,6 +89,8 @@ Parents
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
+- :ref:`nuvsc.NUVSC<nuvsc>`
+
 - :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
@@ -99,9 +99,9 @@ Parents
 
 - :ref:`nuingressadvfwdtemplate.NUIngressAdvFwdTemplate<nuingressadvfwdtemplate>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`
 

@@ -104,11 +104,11 @@ Parents
 
 - :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nuuser.NUUser<nuuser>`
 
 - :ref:`nutier.NUTier<nutier>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`
 

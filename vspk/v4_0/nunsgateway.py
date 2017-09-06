@@ -93,6 +93,8 @@ class NUNSGateway(NURESTObject):
     
     ## Constants
     
+    CONST_FAMILY_NSG_C = "NSG_C"
+    
     CONST_FAMILY_NSG_E = "NSG_E"
     
     CONST_INHERITED_SSH_SERVICE_STATE_ENABLED = "ENABLED"
@@ -111,7 +113,11 @@ class NUNSGateway(NURESTObject):
     
     CONST_CONFIGURATION_RELOAD_STATE_PENDING = "PENDING"
     
+    CONST_FAMILY_NSG_X = "NSG_X"
+    
     CONST_SSH_SERVICE_DISABLED = "DISABLED"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_PERSONALITY_OTHER = "OTHER"
     
@@ -163,7 +169,7 @@ class NUNSGateway(NURESTObject):
     
     CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_SENT = "NOTIFICATION_APP_REQ_SENT"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_FAMILY_NSG_AMI = "NSG_AMI"
     
     CONST_PERMITTED_ACTION_ALL = "ALL"
     
@@ -256,7 +262,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="ssh_service", remote_name="SSHService", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_E', u'NSG_V'])
+        self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_AMI', u'NSG_C', u'NSG_E', u'NSG_V', u'NSG_X'])
         self.expose_attribute(local_name="last_configuration_reload_timestamp", remote_name="lastConfigurationReloadTimestamp", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_id", remote_name="datapathID", attribute_type=str, is_required=False, is_unique=False)

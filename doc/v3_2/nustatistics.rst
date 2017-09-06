@@ -59,11 +59,11 @@ Parents
 
 - :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`
 
+- :ref:`nutier.NUTier<nutier>`
+
 - :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
-
-- :ref:`nutier.NUTier<nutier>`
 

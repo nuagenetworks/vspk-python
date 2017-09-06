@@ -142,7 +142,7 @@ Parents
 
 - :ref:`nukeyservermonitorencryptedseed.NUKeyServerMonitorEncryptedSeed<nukeyservermonitorencryptedseed>`
 
-- :ref:`nuzonetemplate.NUZoneTemplate<nuzonetemplate>`
+- :ref:`nuuplinkrd.NUUplinkRD<nuuplinkrd>`
 
 - :ref:`nukeyservermonitorseed.NUKeyServerMonitorSeed<nukeyservermonitorseed>`
 
@@ -170,7 +170,7 @@ Parents
 
 - :ref:`nunetworklayout.NUNetworkLayout<nunetworklayout>`
 
-- :ref:`nueventlog.NUEventLog<nueventlog>`
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nulicense.NULicense<nulicense>`
 
@@ -178,7 +178,7 @@ Parents
 
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
-- :ref:`nuinfrastructureconfig.NUInfrastructureConfig<nuinfrastructureconfig>`
+- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 
 - :ref:`numulticastrange.NUMultiCastRange<numulticastrange>`
 
@@ -192,7 +192,7 @@ Parents
 
 - :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
 
-- :ref:`nunatmapentry.NUNATMapEntry<nunatmapentry>`
+- :ref:`nutier.NUTier<nutier>`
 
 - :ref:`nukeyservermonitorencryptedsek.NUKeyServerMonitorEncryptedSEK<nukeyservermonitorencryptedsek>`
 
@@ -204,7 +204,7 @@ Parents
 
 - :ref:`nunsporttemplate.NUNSPortTemplate<nunsporttemplate>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
+- :ref:`nueventlog.NUEventLog<nueventlog>`
 
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
 
@@ -240,7 +240,7 @@ Parents
 
 - :ref:`nunsgatewaytemplate.NUNSGatewayTemplate<nunsgatewaytemplate>`
 
-- :ref:`nuuplinkrd.NUUplinkRD<nuuplinkrd>`
+- :ref:`nuzonetemplate.NUZoneTemplate<nuzonetemplate>`
 
 - :ref:`nualarm.NUAlarm<nualarm>`
 
@@ -288,11 +288,11 @@ Parents
 
 - :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
-- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
+- :ref:`nuinfrastructureconfig.NUInfrastructureConfig<nuinfrastructureconfig>`
 
 - :ref:`nuuser.NUUser<nuuser>`
 
-- :ref:`nutier.NUTier<nutier>`
+- :ref:`nunatmapentry.NUNATMapEntry<nunatmapentry>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
 

@@ -191,7 +191,7 @@ Parents
 --------
 
 
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
+
+- :ref:`nume.NUMe<nume>`
 

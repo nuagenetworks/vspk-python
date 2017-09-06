@@ -65,7 +65,7 @@ Parents
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nuuser.NUUser<nuuser>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
