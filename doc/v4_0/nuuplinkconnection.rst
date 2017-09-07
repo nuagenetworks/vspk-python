@@ -38,8 +38,6 @@ Attributes
 
 - ``associated_underlay_name``: The display name of the Underlay instance associated with this uplink connection.
 
-- ``associated_vsc_profile_id``: The ID of the infrastructure VSC profile this is associated with this instance of a vlan or vlan template.
-
 - ``auxiliary_link``: Make this uplink an auxiliary one that will only come up when all other uplinks are disconnected or can't perform their role.
 
 
