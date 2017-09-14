@@ -123,7 +123,6 @@ class NUUplinkConnection(NURESTObject):
         self._username = None
         self._assoc_underlay_id = None
         self._associated_underlay_name = None
-        self._associated_vsc_profile_id = None
         self._auxiliary_link = None
         
         self.expose_attribute(local_name="dns_address", remote_name="DNSAddress", attribute_type=str, is_required=False, is_unique=False)
@@ -139,7 +138,6 @@ class NUUplinkConnection(NURESTObject):
         self.expose_attribute(local_name="username", remote_name="username", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_underlay_id", remote_name="assocUnderlayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_underlay_name", remote_name="associatedUnderlayName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_vsc_profile_id", remote_name="associatedVSCProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="auxiliary_link", remote_name="auxiliaryLink", attribute_type=bool, is_required=False, is_unique=False)
         
 
@@ -480,33 +478,6 @@ class NUUplinkConnection(NURESTObject):
                 
         """
         self._associated_underlay_name = value
-
-    
-    @property
-    def associated_vsc_profile_id(self):
-        """ Get associated_vsc_profile_id value.
-
-            Notes:
-                The ID of the infrastructure VSC profile this is associated with this instance of a vlan or vlan template.
-
-                
-                This attribute is named `associatedVSCProfileID` in VSD API.
-                
-        """
-        return self._associated_vsc_profile_id
-
-    @associated_vsc_profile_id.setter
-    def associated_vsc_profile_id(self, value):
-        """ Set associated_vsc_profile_id value.
-
-            Notes:
-                The ID of the infrastructure VSC profile this is associated with this instance of a vlan or vlan template.
-
-                
-                This attribute is named `associatedVSCProfileID` in VSD API.
-                
-        """
-        self._associated_vsc_profile_id = value
 
     
     @property
