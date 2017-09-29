@@ -49,6 +49,8 @@ Parents
 --------
 
 
+- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
+
 - :ref:`nuredirectiontargettemplate.NURedirectionTargetTemplate<nuredirectiontargettemplate>`
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
@@ -70,8 +72,6 @@ Parents
 - :ref:`nuzfbrequest.NUZFBRequest<nuzfbrequest>`
 
 - :ref:`nuvcenterhypervisor.NUVCenterHypervisor<nuvcenterhypervisor>`
-
-- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
 - :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 

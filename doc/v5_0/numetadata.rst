@@ -244,8 +244,6 @@ Parents
 
 - :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`
 
-- :ref:`nuingressqospolicy.NUIngressQOSPolicy<nuingressqospolicy>`
-
 - :ref:`nuroutingpolicy.NURoutingPolicy<nuroutingpolicy>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
@@ -289,6 +287,8 @@ Parents
 - :ref:`nupublicnetworkmacro.NUPublicNetworkMacro<nupublicnetworkmacro>`
 
 - :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
+
+- :ref:`nuingressqospolicy.NUIngressQOSPolicy<nuingressqospolicy>`
 
 - :ref:`nuaddressrange.NUAddressRange<nuaddressrange>`
 

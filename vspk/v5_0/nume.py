@@ -30,6 +30,9 @@
 from .fetchers import NUL2DomainsFetcher
 
 
+from .fetchers import NUL4ServicesFetcher
+
+
 from .fetchers import NUVCenterEAMConfigsFetcher
 
 
@@ -342,6 +345,9 @@ class NUMe(NURESTRootObject):
         
         
         self.l2_domains = NUL2DomainsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.l4_services = NUL4ServicesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.vcenter_eam_configs = NUVCenterEAMConfigsFetcher.fetcher_with_object(parent_object=self, relationship="root")

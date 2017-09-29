@@ -73,6 +73,8 @@ Parents
 
 - :ref:`nuexternalservice.NUExternalService<nuexternalservice>`
 
+- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
+
 - :ref:`nuflowsecuritypolicy.NUFlowSecurityPolicy<nuflowsecuritypolicy>`
 
 - :ref:`nuenterprisenetwork.NUEnterpriseNetwork<nuenterprisenetwork>`
@@ -124,8 +126,6 @@ Parents
 - :ref:`nulicense.NULicense<nulicense>`
 
 - :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
-
-- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 

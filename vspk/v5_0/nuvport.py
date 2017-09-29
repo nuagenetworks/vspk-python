@@ -150,6 +150,8 @@ class NUVPort(NURESTObject):
     
     CONST_ADDRESS_SPOOFING_ENABLED = "ENABLED"
     
+    CONST_SYSTEM_TYPE_HARDWARE = "HARDWARE"
+    
     CONST_TYPE_HOST = "HOST"
     
     CONST_GATEWAY_MAC_MOVE_ROLE_TERTIARY = "TERTIARY"
@@ -157,6 +159,8 @@ class NUVPort(NURESTObject):
     CONST_GATEWAY_MAC_MOVE_ROLE_SECONDARY = "SECONDARY"
     
     CONST_SUB_TYPE_VNF = "VNF"
+    
+    CONST_SEGMENTATION_TYPE_NONE = "NONE"
     
     CONST_OPERATIONAL_STATE_DOWN = "DOWN"
     
@@ -172,7 +176,7 @@ class NUVPort(NURESTObject):
     
     CONST_SYSTEM_TYPE_HARDWARE_VTEP = "HARDWARE_VTEP"
     
-    CONST_SYSTEM_TYPE_HARDWARE = "HARDWARE"
+    CONST_TRUNK_ROLE_NONE = "NONE"
     
     CONST_TYPE_BRIDGE = "BRIDGE"
     
@@ -250,13 +254,13 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="active", remote_name="active", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address_spoofing", remote_name="addressSpoofing", attribute_type=str, is_required=True, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="segmentation_id", remote_name="segmentationID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="segmentation_type", remote_name="segmentationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'VLAN'])
+        self.expose_attribute(local_name="segmentation_type", remote_name="segmentationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'VLAN'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="domain_id", remote_name="domainID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zone_id", remote_name="zoneID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="operational_state", remote_name="operationalState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DOWN', u'INIT', u'UP'])
-        self.expose_attribute(local_name="trunk_role", remote_name="trunkRole", attribute_type=str, is_required=False, is_unique=False, choices=[u'PARENT_PORT', u'SUB_PORT'])
+        self.expose_attribute(local_name="trunk_role", remote_name="trunkRole", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'PARENT_PORT', u'SUB_PORT'])
         self.expose_attribute(local_name="associated_floating_ip_id", remote_name="associatedFloatingIPID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ssid", remote_name="associatedSSID", attribute_type=str, is_required=False, is_unique=False)

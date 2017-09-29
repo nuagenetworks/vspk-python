@@ -64,6 +64,7 @@ Children
 **class**                                                                                                                                                      **fetcher**
 
 :ref:`nul2domain.NUL2Domain<nul2domain>`                                                                                                                         ``l2_domains`` 
+:ref:`nul4service.NUL4Service<nul4service>`                                                                                                                      ``l4_services`` 
 :ref:`nuvcentereamconfig.NUVCenterEAMConfig<nuvcentereamconfig>`                                                                                                 ``vcenter_eam_configs`` 
 :ref:`nuratelimiter.NURateLimiter<nuratelimiter>`                                                                                                                ``rate_limiters`` 
 :ref:`nugateway.NUGateway<nugateway>`                                                                                                                            ``gateways`` 

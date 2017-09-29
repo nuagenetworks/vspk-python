@@ -30,13 +30,17 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``vport_id``: The Vport associated with this  VLAN  . This is a read only attribute
+- ``vport_id``: The Vport associated with this VLAN. This is a read only attribute
+
+- ``is_uplink``: Indicates if the VLAN is used as an uplink.
 
 - ``use_user_mnemonic``: determines whether to use user mnemonic of the Port
 
 - ``user_mnemonic``: user mnemonic of the Port
 
 - ``associated_bgp_profile_id``: The ID of the associated BGP profile
+
+- ``associated_connection_type``: Specifies the type of Connection (uplink, BR) associated to this VLAN instance.
 
 - ``associated_egress_qos_policy_id``: ID of the Egress QOS Policy associated with this VLAN.
 

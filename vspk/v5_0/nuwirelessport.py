@@ -120,7 +120,7 @@ class NUWirelessPort(NURESTObject):
     
     CONST_COUNTRY_CODE_NZ = "NZ"
     
-    CONST_FREQUENCY_CHANNEL_CH_104 = "CH_104"
+    CONST_FREQUENCY_CHANNEL_CH_7 = "CH_7"
     
     CONST_COUNTRY_CODE_NO = "NO"
     
@@ -144,8 +144,6 @@ class NUWirelessPort(NURESTObject):
     
     CONST_FREQUENCY_CHANNEL_CH_3 = "CH_3"
     
-    CONST_COUNTRY_CODE_CZ = "CZ"
-    
     CONST_COUNTRY_CODE_LT = "LT"
     
     CONST_FREQUENCY_CHANNEL_CH_0 = "CH_0"
@@ -158,7 +156,7 @@ class NUWirelessPort(NURESTObject):
     
     CONST_FREQUENCY_CHANNEL_CH_4 = "CH_4"
     
-    CONST_FREQUENCY_CHANNEL_CH_7 = "CH_7"
+    CONST_FREQUENCY_CHANNEL_CH_104 = "CH_104"
     
     CONST_FREQUENCY_CHANNEL_CH_6 = "CH_6"
     
@@ -178,13 +176,15 @@ class NUWirelessPort(NURESTObject):
     
     CONST_COUNTRY_CODE_CA = "CA"
     
+    CONST_FREQUENCY_CHANNEL_CH_56 = "CH_56"
+    
     CONST_WIFI_MODE_WIFI_B_G = "WIFI_B_G"
     
     CONST_WIFI_MODE_WIFI_A_AC = "WIFI_A_AC"
     
     CONST_COUNTRY_CODE_CY = "CY"
     
-    CONST_FREQUENCY_CHANNEL_CH_56 = "CH_56"
+    CONST_COUNTRY_CODE_CZ = "CZ"
     
     CONST_FREQUENCY_CHANNEL_CH_52 = "CH_52"
     
@@ -260,7 +260,6 @@ class NUWirelessPort(NURESTObject):
         # Read/Write Attributes
         
         self._name = None
-        self._template_id = None
         self._generic_config = None
         self._description = None
         self._physical_name = None
@@ -271,7 +270,6 @@ class NUWirelessPort(NURESTObject):
         self._frequency_channel = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="generic_config", remote_name="genericConfig", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=True)
@@ -322,33 +320,6 @@ class NUWirelessPort(NURESTObject):
                 
         """
         self._name = value
-
-    
-    @property
-    def template_id(self):
-        """ Get template_id value.
-
-            Notes:
-                The ID of the template that this Wireless Port was created from.  If the wireless port was not created from a template, then the value will be null.
-
-                
-                This attribute is named `templateID` in VSD API.
-                
-        """
-        return self._template_id
-
-    @template_id.setter
-    def template_id(self, value):
-        """ Set template_id value.
-
-            Notes:
-                The ID of the template that this Wireless Port was created from.  If the wireless port was not created from a template, then the value will be null.
-
-                
-                This attribute is named `templateID` in VSD API.
-                
-        """
-        self._template_id = value
 
     
     @property
