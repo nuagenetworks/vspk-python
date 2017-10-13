@@ -63,6 +63,8 @@ Parents
 
 - :ref:`numulticastchannelmap.NUMultiCastChannelMap<numulticastchannelmap>`
 
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nutca.NUTCA<nutca>`
@@ -72,8 +74,6 @@ Parents
 - :ref:`nuzone.NUZone<nuzone>`
 
 - :ref:`nuexternalservice.NUExternalService<nuexternalservice>`
-
-- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
 - :ref:`nuflowsecuritypolicy.NUFlowSecurityPolicy<nuflowsecuritypolicy>`
 
@@ -117,8 +117,6 @@ Parents
 
 - :ref:`nuhsc.NUHSC<nuhsc>`
 
-- :ref:`nuvlan.NUVLAN<nuvlan>`
-
 - :ref:`nustaticroute.NUStaticRoute<nustaticroute>`
 
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
@@ -127,11 +125,15 @@ Parents
 
 - :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
 
+- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
+
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
 - :ref:`numulticastrange.NUMultiCastRange<numulticastrange>`
 
 - :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
+
+- :ref:`nutier.NUTier<nutier>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
@@ -167,15 +169,13 @@ Parents
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
-- :ref:`nuuser.NUUser<nuuser>`
+- :ref:`nuvlan.NUVLAN<nuvlan>`
 
-- :ref:`nutier.NUTier<nutier>`
+- :ref:`nuuser.NUUser<nuuser>`
 
 - :ref:`nucontainer.NUContainer<nucontainer>`
 
 - :ref:`nuflow.NUFlow<nuflow>`
-
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`
 

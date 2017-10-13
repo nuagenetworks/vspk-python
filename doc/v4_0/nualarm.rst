@@ -57,6 +57,8 @@ Parents
 --------
 
 
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nutca.NUTCA<nutca>`
@@ -75,8 +77,6 @@ Parents
 
 - :ref:`nuhsc.NUHSC<nuhsc>`
 
-- :ref:`nuvlan.NUVLAN<nuvlan>`
-
 - :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
@@ -89,7 +89,7 @@ Parents
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
-- :ref:`nucontainer.NUContainer<nucontainer>`
+- :ref:`nuvlan.NUVLAN<nuvlan>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nucontainer.NUContainer<nucontainer>`
 

@@ -108,13 +108,15 @@ Parents
 
 - :ref:`nuingressexternalservicetemplateentry.NUIngressExternalServiceTemplateEntry<nuingressexternalservicetemplateentry>`
 
+- :ref:`nuvsdcomponent.NUVSDComponent<nuvsdcomponent>`
+
 - :ref:`nubootstrapactivation.NUBootstrapActivation<nubootstrapactivation>`
 
 - :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
 
 - :ref:`nuvsp.NUVSP<nuvsp>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
 
 - :ref:`nuredundantport.NURedundantPort<nuredundantport>`
 
@@ -154,9 +156,9 @@ Parents
 
 - :ref:`nuldapconfiguration.NULDAPConfiguration<nuldapconfiguration>`
 
-- :ref:`nuvsdcomponent.NUVSDComponent<nuvsdcomponent>`
-
 - :ref:`nuenterprisepermission.NUEnterprisePermission<nuenterprisepermission>`
+
+- :ref:`nuingressadvfwdtemplate.NUIngressAdvFwdTemplate<nuingressadvfwdtemplate>`
 
 - :ref:`nustaticroute.NUStaticRoute<nustaticroute>`
 
@@ -178,7 +180,7 @@ Parents
 
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
-- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
+- :ref:`nuinfrastructureconfig.NUInfrastructureConfig<nuinfrastructureconfig>`
 
 - :ref:`numulticastrange.NUMultiCastRange<numulticastrange>`
 
@@ -190,9 +192,11 @@ Parents
 
 - :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
 
-- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nutier.NUTier<nutier>`
+
+- :ref:`nueventlog.NUEventLog<nueventlog>`
 
 - :ref:`nukeyservermonitorencryptedsek.NUKeyServerMonitorEncryptedSEK<nukeyservermonitorencryptedsek>`
 
@@ -204,7 +208,7 @@ Parents
 
 - :ref:`nunsporttemplate.NUNSPortTemplate<nunsporttemplate>`
 
-- :ref:`nueventlog.NUEventLog<nueventlog>`
+- :ref:`nucertificate.NUCertificate<nucertificate>`
 
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
 
@@ -215,8 +219,6 @@ Parents
 - :ref:`nuvcenter.NUVCenter<nuvcenter>`
 
 - :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`
-
-- :ref:`nucertificate.NUCertificate<nucertificate>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
@@ -278,8 +280,6 @@ Parents
 
 - :ref:`nukeyservermonitorsek.NUKeyServerMonitorSEK<nukeyservermonitorsek>`
 
-- :ref:`nuingressadvfwdtemplate.NUIngressAdvFwdTemplate<nuingressadvfwdtemplate>`
-
 - :ref:`nuvportmirror.NUVPortMirror<nuvportmirror>`
 
 - :ref:`nunsportstaticconfiguration.NUNSPortStaticConfiguration<nunsportstaticconfiguration>`
@@ -288,7 +288,7 @@ Parents
 
 - :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
-- :ref:`nuinfrastructureconfig.NUInfrastructureConfig<nuinfrastructureconfig>`
+- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 
 - :ref:`nuuser.NUUser<nuuser>`
 

@@ -159,6 +159,9 @@ from .fetchers import NUIngressACLTemplatesFetcher
 from .fetchers import NUIngressAdvFwdEntryTemplatesFetcher
 
 
+from .fetchers import NUIngressQOSPoliciesFetcher
+
+
 from .fetchers import NUEnterprisesFetcher
 
 
@@ -459,6 +462,9 @@ class NUMe(NURESTRootObject):
         
         
         self.ingress_adv_fwd_entry_templates = NUIngressAdvFwdEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.ingress_qos_policies = NUIngressQOSPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.enterprises = NUEnterprisesFetcher.fetcher_with_object(parent_object=self, relationship="root")

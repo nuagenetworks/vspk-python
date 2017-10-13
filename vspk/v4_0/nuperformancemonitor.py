@@ -47,6 +47,8 @@ class NUPerformanceMonitor(NURESTObject):
     
     CONST_SERVICE_CLASS_H = "H"
     
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
     CONST_SERVICE_CLASS_A = "A"
     
     CONST_SERVICE_CLASS_B = "B"
@@ -60,6 +62,8 @@ class NUPerformanceMonitor(NURESTObject):
     CONST_SERVICE_CLASS_F = "F"
     
     CONST_SERVICE_CLASS_G = "G"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
 
@@ -81,20 +85,26 @@ class NUPerformanceMonitor(NURESTObject):
         # Read/Write Attributes
         
         self._name = None
+        self._last_updated_by = None
         self._payload_size = None
         self._read_only = None
         self._service_class = None
         self._description = None
         self._interval = None
+        self._entity_scope = None
         self._number_of_packets = None
+        self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="payload_size", remote_name="payloadSize", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="read_only", remote_name="readOnly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_class", remote_name="serviceClass", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="interval", remote_name="interval", attribute_type=int, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="number_of_packets", remote_name="numberOfPackets", attribute_type=int, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
@@ -128,6 +138,33 @@ class NUPerformanceMonitor(NURESTObject):
                 
         """
         self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
 
     
     @property
@@ -258,6 +295,33 @@ class NUPerformanceMonitor(NURESTObject):
 
     
     @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
     def number_of_packets(self):
         """ Get number_of_packets value.
 
@@ -282,6 +346,33 @@ class NUPerformanceMonitor(NURESTObject):
                 
         """
         self._number_of_packets = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 
