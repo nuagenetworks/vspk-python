@@ -255,6 +255,8 @@ Parents
 
 - :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`
 
+- :ref:`nuingressqospolicy.NUIngressQOSPolicy<nuingressqospolicy>`
+
 - :ref:`nuroutingpolicy.NURoutingPolicy<nuroutingpolicy>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
@@ -264,6 +266,8 @@ Parents
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
 
 - :ref:`nuenterprisesecureddata.NUEnterpriseSecuredData<nuenterprisesecureddata>`
+
+- :ref:`nuexternalappservice.NUExternalAppService<nuexternalappservice>`
 
 - :ref:`nulink.NULink<nulink>`
 
@@ -346,8 +350,6 @@ Parents
 - :ref:`nucontainer.NUContainer<nucontainer>`
 
 - :ref:`nuikegatewayprofile.NUIKEGatewayProfile<nuikegatewayprofile>`
-
-- :ref:`nuexternalappservice.NUExternalAppService<nuexternalappservice>`
 
 - :ref:`nualarm.NUAlarm<nualarm>`
 

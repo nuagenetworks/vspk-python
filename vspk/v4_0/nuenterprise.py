@@ -117,6 +117,9 @@ from .fetchers import NUGlobalMetadatasFetcher
 from .fetchers import NUVMsFetcher
 
 
+from .fetchers import NUIngressQOSPoliciesFetcher
+
+
 from .fetchers import NUEnterpriseNetworksFetcher
 
 
@@ -405,6 +408,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.vms = NUVMsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ingress_qos_policies = NUIngressQOSPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.enterprise_networks = NUEnterpriseNetworksFetcher.fetcher_with_object(parent_object=self, relationship="child")

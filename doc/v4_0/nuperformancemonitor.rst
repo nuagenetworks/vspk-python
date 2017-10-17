@@ -14,6 +14,8 @@ Attributes
 
 - ``name`` (**Mandatory**): Name of the application group probe
 
+- ``last_updated_by``: ID of the user who last updated the object.
+
 - ``payload_size`` (**Mandatory**): Payload size
 
 - ``read_only``: Determines whether this entity is read only.  Read only objects cannot be modified or deleted.
@@ -24,7 +26,11 @@ Attributes
 
 - ``interval`` (**Mandatory**): interval in seconds
 
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
 - ``number_of_packets`` (**Mandatory**): number of packets
+
+- ``external_id``: External object ID. Used for integration with third party systems
 
 
 

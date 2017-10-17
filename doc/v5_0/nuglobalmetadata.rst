@@ -91,7 +91,7 @@ Parents
 
 - :ref:`nulocation.NULocation<nulocation>`
 
-- :ref:`nuenterprisesecurity.NUEnterpriseSecurity<nuenterprisesecurity>`
+- :ref:`nucosremarkingpolicytable.NUCOSRemarkingPolicyTable<nucosremarkingpolicytable>`
 
 - :ref:`nuvcentervrsconfig.NUVCenterVRSConfig<nuvcentervrsconfig>`
 
@@ -215,8 +215,6 @@ Parents
 
 - :ref:`nudomainfipacltemplate.NUDomainFIPAclTemplate<nudomainfipacltemplate>`
 
-- :ref:`nucosremarkingpolicytable.NUCOSRemarkingPolicyTable<nucosremarkingpolicytable>`
-
 - :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
@@ -247,6 +245,8 @@ Parents
 
 - :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`
 
+- :ref:`nuingressqospolicy.NUIngressQOSPolicy<nuingressqospolicy>`
+
 - :ref:`nuroutingpolicy.NURoutingPolicy<nuroutingpolicy>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
@@ -259,7 +259,11 @@ Parents
 
 - :ref:`nulink.NULink<nulink>`
 
+- :ref:`nuenterprisesecurity.NUEnterpriseSecurity<nuenterprisesecurity>`
+
 - :ref:`nuingressexternalservicetemplate.NUIngressExternalServiceTemplate<nuingressexternalservicetemplate>`
+
+- :ref:`nuporttemplate.NUPortTemplate<nuporttemplate>`
 
 - :ref:`nuegressadvfwdtemplate.NUEgressAdvFwdTemplate<nuegressadvfwdtemplate>`
 
@@ -291,8 +295,6 @@ Parents
 
 - :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
 
-- :ref:`nuingressqospolicy.NUIngressQOSPolicy<nuingressqospolicy>`
-
 - :ref:`nuaddressrange.NUAddressRange<nuaddressrange>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
@@ -302,8 +304,6 @@ Parents
 - :ref:`nudomainfipacltemplateentry.NUDomainFIPAclTemplateEntry<nudomainfipacltemplateentry>`
 
 - :ref:`nuvmresync.NUVMResync<nuvmresync>`
-
-- :ref:`nugatewaysecurity.NUGatewaySecurity<nugatewaysecurity>`
 
 - :ref:`nupolicydecision.NUPolicyDecision<nupolicydecision>`
 
@@ -349,9 +349,9 @@ Parents
 
 - :ref:`nubootstrap.NUBootstrap<nubootstrap>`
 
-- :ref:`nuporttemplate.NUPortTemplate<nuporttemplate>`
-
 - :ref:`nuvlantemplate.NUVLANTemplate<nuvlantemplate>`
+
+- :ref:`nugatewaysecurity.NUGatewaySecurity<nugatewaysecurity>`
 
 - :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`
 

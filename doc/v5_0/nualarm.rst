@@ -77,9 +77,9 @@ Parents
 
 - :ref:`nuhsc.NUHSC<nuhsc>`
 
-- :ref:`nugateway.NUGateway<nugateway>`
-
 - :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
+
+- :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 

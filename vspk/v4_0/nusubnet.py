@@ -1401,7 +1401,7 @@ class NUSubnet(NURESTObject):
         """ Get route_distinguisher value.
 
             Notes:
-                The Route Distinguisher value assigned by VSD for this subnet that is used by the BGP-EVPN protocol in VSC
+                Route distinguisher for this subnet that is used by the BGP-EVPN protocol in VSC. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `routeDistinguisher` in VSD API.
@@ -1414,7 +1414,7 @@ class NUSubnet(NURESTObject):
         """ Set route_distinguisher value.
 
             Notes:
-                The Route Distinguisher value assigned by VSD for this subnet that is used by the BGP-EVPN protocol in VSC
+                Route distinguisher for this subnet that is used by the BGP-EVPN protocol in VSC. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `routeDistinguisher` in VSD API.
@@ -1428,7 +1428,7 @@ class NUSubnet(NURESTObject):
         """ Get route_target value.
 
             Notes:
-                The Route Target value assigned by VSD for this subnet that is used by the BGP-EVPN protocol in VSC
+                Route target for this subnet that is used by the BGP-EVPN protocol in VSC. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `routeTarget` in VSD API.
@@ -1441,7 +1441,7 @@ class NUSubnet(NURESTObject):
         """ Set route_target value.
 
             Notes:
-                The Route Target value assigned by VSD for this subnet that is used by the BGP-EVPN protocol in VSC
+                Route target for this subnet that is used by the BGP-EVPN protocol in VSC. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `routeTarget` in VSD API.

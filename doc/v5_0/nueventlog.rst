@@ -123,6 +123,8 @@ Parents
 
 - :ref:`numulticastrange.NUMultiCastRange<numulticastrange>`
 
+- :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
+
 - :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
@@ -132,8 +134,6 @@ Parents
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
-
-- :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
 
 - :ref:`nudhcpoption.NUDHCPOption<nudhcpoption>`
 

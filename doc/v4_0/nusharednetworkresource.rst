@@ -16,11 +16,11 @@ Attributes
 
 - ``dhcp_managed``: true if DHCP is enabled else it is false. This value is always true for network resource of type PUBLIC or FLOATING.
 
-- ``back_haul_route_distinguisher``: backHaulRouteDistinguisher of the Shared Resource
+- ``back_haul_route_distinguisher``: Backhaul route distinguisher of the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
-- ``back_haul_route_target``: backHaulRouteTarget of the Shared Resource
+- ``back_haul_route_target``: Backhaul route target of the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
-- ``back_haul_vnid``: backHaulVNID of the Shared Resource
+- ``back_haul_vnid``: Backhaul virtual network ID of the shared resource
 
 - ``name`` (**Mandatory**): Name of the shared resource. Valid characters are alphabets, numbers, space and hyphen( - ).
 
@@ -42,15 +42,15 @@ Attributes
 
 - ``shared_resource_parent_id``: Parent ID of the floating IP subnet to which this FIP subnet must be attached. If empty it will be created in a new domain.
 
-- ``vn_id``: VNID of the Shared Resource
+- ``vn_id``: Virtual network ID of the shared resource
 
 - ``underlay``: Indicates whether this shared subnet is in underlay or not.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``domain_route_distinguisher``: Route distinguisher configured on the shared resource
+- ``domain_route_distinguisher``: Route distinguisher configured on the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
-- ``domain_route_target``: Route target configured on the shared resource
+- ``domain_route_target``: Route target configured on the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
 - ``uplink_gw_vlan_attachment_id``: VLAN ID to which this vport must be attached
 
@@ -63,6 +63,10 @@ Attributes
 - ``use_global_mac``: if this flag is enabled, the system configured globalMACAddress will be used as the gateway mac address
 
 - ``associated_pat_mapper_id``: The ID of the PatMapper entity to which this pool is associated to.
+
+- ``subnet_route_distinguisher``: Route distinguisher configured on the shared resource subnetwork. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
+
+- ``subnet_route_target``: Route target configured on the shared resource subnetwork. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
