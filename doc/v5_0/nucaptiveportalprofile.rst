@@ -35,7 +35,7 @@ Parents
 --------
 
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

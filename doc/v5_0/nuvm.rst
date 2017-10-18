@@ -84,9 +84,9 @@ Parents
 
 - :ref:`nuqos.NUQOS<nuqos>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nuzone.NUZone<nuzone>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
@@ -94,13 +94,13 @@ Parents
 
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuuser.NUUser<nuuser>`
 

@@ -16,7 +16,7 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``gateway_id``: The Gateway associated with this  VLAN  . This is a read only attribute
+- ``gateway_id``: The Gateway associated with this  VLAN. This is a read only attribute
 
 - ``readonly``: Determines whether this entity is read only.  Read only objects cannot be modified or deleted.
 
@@ -44,7 +44,11 @@ Attributes
 
 - ``associated_egress_qos_policy_id``: ID of the Egress QOS Policy associated with this VLAN.
 
+- ``associated_ingress_overlay_qo_s_policer_id``: ID of the Ingress Overlay QoS Policer associated with this VLAN.
+
 - ``associated_ingress_qos_policy_id``: ID of the Ingress QOS Policy / Tunnel Shaper associated with this VLAN.
+
+- ``associated_ingress_underlay_qo_s_policer_id``: ID of the Ingress Underlay QoS Policer associated with this VLAN.
 
 - ``associated_uplink_connection_id``: Associated uplink connection ID
 
@@ -77,6 +81,7 @@ Children
 :ref:`nuenterprisepermission.NUEnterprisePermission<nuenterprisepermission>`                                                                                     ``enterprise_permissions`` 
 :ref:`nuuplinkconnection.NUUplinkConnection<nuuplinkconnection>`                                                                                                 ``uplink_connections`` 
 :ref:`nubrconnection.NUBRConnection<nubrconnection>`                                                                                                             ``br_connections`` 
+:ref:`nustatistics.NUStatistics<nustatistics>`                                                                                                                   ``statistics`` 
 :ref:`nultestatistics.NULtestatistics<nultestatistics>`                                                                                                          ``ltestatistics`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
 ================================================================================================================================================               ==========================================================================================

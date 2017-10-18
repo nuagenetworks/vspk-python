@@ -64,15 +64,27 @@ class NUL7applicationsignature(NURESTObject):
         self._name = None
         self._category = None
         self._readonly = None
+        self._reference = None
         self._description = None
         self._dictionary_version = None
+        self._signature_index = None
+        self._risk = None
+        self._plugin_name = None
+        self._software_flags = None
+        self._productivity = None
         self._guidstring = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="category", remote_name="category", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="readonly", remote_name="readonly", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="reference", remote_name="reference", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dictionary_version", remote_name="dictionaryVersion", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="signature_index", remote_name="signatureIndex", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="risk", remote_name="risk", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="plugin_name", remote_name="pluginName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="software_flags", remote_name="softwareFlags", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="productivity", remote_name="productivity", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="guidstring", remote_name="guidstring", attribute_type=str, is_required=False, is_unique=False)
         
 
@@ -156,6 +168,29 @@ class NUL7applicationsignature(NURESTObject):
 
     
     @property
+    def reference(self):
+        """ Get reference value.
+
+            Notes:
+                URL address reference received from Procera for every signature.
+
+                
+        """
+        return self._reference
+
+    @reference.setter
+    def reference(self, value):
+        """ Set reference value.
+
+            Notes:
+                URL address reference received from Procera for every signature.
+
+                
+        """
+        self._reference = value
+
+    
+    @property
     def description(self):
         """ Get description value.
 
@@ -203,6 +238,133 @@ class NUL7applicationsignature(NURESTObject):
                 
         """
         self._dictionary_version = value
+
+    
+    @property
+    def signature_index(self):
+        """ Get signature_index value.
+
+            Notes:
+                Index number received from Procera for every L7 signature.
+
+                
+                This attribute is named `signatureIndex` in VSD API.
+                
+        """
+        return self._signature_index
+
+    @signature_index.setter
+    def signature_index(self, value):
+        """ Set signature_index value.
+
+            Notes:
+                Index number received from Procera for every L7 signature.
+
+                
+                This attribute is named `signatureIndex` in VSD API.
+                
+        """
+        self._signature_index = value
+
+    
+    @property
+    def risk(self):
+        """ Get risk value.
+
+            Notes:
+                Risk is determined on a scale of 1 to 5. It is received from Procera for every signature.
+
+                
+        """
+        return self._risk
+
+    @risk.setter
+    def risk(self, value):
+        """ Set risk value.
+
+            Notes:
+                Risk is determined on a scale of 1 to 5. It is received from Procera for every signature.
+
+                
+        """
+        self._risk = value
+
+    
+    @property
+    def plugin_name(self):
+        """ Get plugin_name value.
+
+            Notes:
+                Plugin name received from Procera for every signature.
+
+                
+                This attribute is named `pluginName` in VSD API.
+                
+        """
+        return self._plugin_name
+
+    @plugin_name.setter
+    def plugin_name(self, value):
+        """ Set plugin_name value.
+
+            Notes:
+                Plugin name received from Procera for every signature.
+
+                
+                This attribute is named `pluginName` in VSD API.
+                
+        """
+        self._plugin_name = value
+
+    
+    @property
+    def software_flags(self):
+        """ Get software_flags value.
+
+            Notes:
+                Software flags received from Procera for every signature.
+
+                
+                This attribute is named `softwareFlags` in VSD API.
+                
+        """
+        return self._software_flags
+
+    @software_flags.setter
+    def software_flags(self, value):
+        """ Set software_flags value.
+
+            Notes:
+                Software flags received from Procera for every signature.
+
+                
+                This attribute is named `softwareFlags` in VSD API.
+                
+        """
+        self._software_flags = value
+
+    
+    @property
+    def productivity(self):
+        """ Get productivity value.
+
+            Notes:
+                Productivity Index is scored relative to a work environment for every L7 signature on a scale of 1-5.
+
+                
+        """
+        return self._productivity
+
+    @productivity.setter
+    def productivity(self, value):
+        """ Set productivity value.
+
+            Notes:
+                Productivity Index is scored relative to a work environment for every L7 signature on a scale of 1-5.
+
+                
+        """
+        self._productivity = value
 
     
     @property

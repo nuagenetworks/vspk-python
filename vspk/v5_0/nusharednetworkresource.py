@@ -139,6 +139,8 @@ class NUSharedNetworkResource(NURESTObject):
         self._uplink_vport_name = None
         self._use_global_mac = None
         self._associated_pat_mapper_id = None
+        self._subnet_route_distinguisher = None
+        self._subnet_route_target = None
         self._external_id = None
         self._dynamic_pat_allocation_enabled = None
         self._type = None
@@ -169,6 +171,8 @@ class NUSharedNetworkResource(NURESTObject):
         self.expose_attribute(local_name="uplink_vport_name", remote_name="uplinkVPortName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="associated_pat_mapper_id", remote_name="associatedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="subnet_route_distinguisher", remote_name="subnetRouteDistinguisher", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="subnet_route_target", remote_name="subnetRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="dynamic_pat_allocation_enabled", remote_name="dynamicPATAllocationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'FLOATING', u'L2DOMAIN', u'PUBLIC', u'UPLINK_SUBNET'])
@@ -264,7 +268,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Get back_haul_route_distinguisher value.
 
             Notes:
-                backHaulRouteDistinguisher of the Shared Resource
+                Backhaul route distinguisher of the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `backHaulRouteDistinguisher` in VSD API.
@@ -277,7 +281,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Set back_haul_route_distinguisher value.
 
             Notes:
-                backHaulRouteDistinguisher of the Shared Resource
+                Backhaul route distinguisher of the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `backHaulRouteDistinguisher` in VSD API.
@@ -291,7 +295,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Get back_haul_route_target value.
 
             Notes:
-                backHaulRouteTarget of the Shared Resource
+                Backhaul route target of the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `backHaulRouteTarget` in VSD API.
@@ -304,7 +308,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Set back_haul_route_target value.
 
             Notes:
-                backHaulRouteTarget of the Shared Resource
+                Backhaul route target of the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `backHaulRouteTarget` in VSD API.
@@ -318,7 +322,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Get back_haul_vnid value.
 
             Notes:
-                backHaulVNID of the Shared Resource
+                Backhaul virtual network ID of the shared resource
 
                 
                 This attribute is named `backHaulVNID` in VSD API.
@@ -331,7 +335,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Set back_haul_vnid value.
 
             Notes:
-                backHaulVNID of the Shared Resource
+                Backhaul virtual network ID of the shared resource
 
                 
                 This attribute is named `backHaulVNID` in VSD API.
@@ -595,7 +599,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Get vn_id value.
 
             Notes:
-                VNID of the Shared Resource
+                Virtual network ID of the shared resource
 
                 
                 This attribute is named `vnID` in VSD API.
@@ -608,7 +612,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Set vn_id value.
 
             Notes:
-                VNID of the Shared Resource
+                Virtual network ID of the shared resource
 
                 
                 This attribute is named `vnID` in VSD API.
@@ -672,7 +676,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Get domain_route_distinguisher value.
 
             Notes:
-                Route distinguisher configured on the shared resource
+                Route distinguisher configured on the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `domainRouteDistinguisher` in VSD API.
@@ -685,7 +689,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Set domain_route_distinguisher value.
 
             Notes:
-                Route distinguisher configured on the shared resource
+                Route distinguisher configured on the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `domainRouteDistinguisher` in VSD API.
@@ -699,7 +703,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Get domain_route_target value.
 
             Notes:
-                Route target configured on the shared resource
+                Route target configured on the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `domainRouteTarget` in VSD API.
@@ -712,7 +716,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Set domain_route_target value.
 
             Notes:
-                Route target configured on the shared resource
+                Route target configured on the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `domainRouteTarget` in VSD API.
@@ -881,6 +885,60 @@ class NUSharedNetworkResource(NURESTObject):
                 
         """
         self._associated_pat_mapper_id = value
+
+    
+    @property
+    def subnet_route_distinguisher(self):
+        """ Get subnet_route_distinguisher value.
+
+            Notes:
+                Route distinguisher configured on the shared resource subnetwork. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
+
+                
+                This attribute is named `subnetRouteDistinguisher` in VSD API.
+                
+        """
+        return self._subnet_route_distinguisher
+
+    @subnet_route_distinguisher.setter
+    def subnet_route_distinguisher(self, value):
+        """ Set subnet_route_distinguisher value.
+
+            Notes:
+                Route distinguisher configured on the shared resource subnetwork. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
+
+                
+                This attribute is named `subnetRouteDistinguisher` in VSD API.
+                
+        """
+        self._subnet_route_distinguisher = value
+
+    
+    @property
+    def subnet_route_target(self):
+        """ Get subnet_route_target value.
+
+            Notes:
+                Route target configured on the shared resource subnetwork. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
+
+                
+                This attribute is named `subnetRouteTarget` in VSD API.
+                
+        """
+        return self._subnet_route_target
+
+    @subnet_route_target.setter
+    def subnet_route_target(self, value):
+        """ Set subnet_route_target value.
+
+            Notes:
+                Route target configured on the shared resource subnetwork. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
+
+                
+                This attribute is named `subnetRouteTarget` in VSD API.
+                
+        """
+        self._subnet_route_target = value
 
     
     @property

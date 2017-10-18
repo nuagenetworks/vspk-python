@@ -97,6 +97,7 @@ class NUSSIDConnection(NURESTObject):
         self._white_list = None
         self._black_list = None
         self._interface_name = None
+        self._vport_id = None
         self._broadcast_ssid = None
         self._associated_captive_portal_profile_id = None
         self._associated_egress_qos_policy_id = None
@@ -111,6 +112,7 @@ class NUSSIDConnection(NURESTObject):
         self.expose_attribute(local_name="white_list", remote_name="whiteList", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="black_list", remote_name="blackList", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="interface_name", remote_name="interfaceName", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="vport_id", remote_name="vportID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="broadcast_ssid", remote_name="broadcastSSID", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_captive_portal_profile_id", remote_name="associatedCaptivePortalProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
@@ -362,6 +364,33 @@ class NUSSIDConnection(NURESTObject):
                 
         """
         self._interface_name = value
+
+    
+    @property
+    def vport_id(self):
+        """ Get vport_id value.
+
+            Notes:
+                The Vport associated with this SSID connection.
+
+                
+                This attribute is named `vportID` in VSD API.
+                
+        """
+        return self._vport_id
+
+    @vport_id.setter
+    def vport_id(self, value):
+        """ Set vport_id value.
+
+            Notes:
+                The Vport associated with this SSID connection.
+
+                
+                This attribute is named `vportID` in VSD API.
+                
+        """
+        self._vport_id = value
 
     
     @property

@@ -49,8 +49,6 @@ Parents
 --------
 
 
-- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
-
 - :ref:`nuredirectiontargettemplate.NURedirectionTargetTemplate<nuredirectiontargettemplate>`
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
@@ -59,7 +57,7 @@ Parents
 
 - :ref:`nuingressexternalservicetemplateentry.NUIngressExternalServiceTemplateEntry<nuingressexternalservicetemplateentry>`
 
-- :ref:`nuvsc.NUVSC<nuvsc>`
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuvsd.NUVSD<nuvsd>`
 
@@ -77,8 +75,6 @@ Parents
 
 - :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nuvcenter.NUVCenter<nuvcenter>`
@@ -93,6 +89,8 @@ Parents
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
+- :ref:`nuvsc.NUVSC<nuvsc>`
+
 - :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
@@ -100,6 +98,8 @@ Parents
 - :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`
 
 - :ref:`nuingressadvfwdtemplate.NUIngressAdvFwdTemplate<nuingressadvfwdtemplate>`
+
+- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

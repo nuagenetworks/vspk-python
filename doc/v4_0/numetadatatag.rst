@@ -52,7 +52,7 @@ Parents
 
 - :ref:`nume.NUMe<nume>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

@@ -66,9 +66,9 @@ Attributes
 
 - ``policy_group_id``: PG ID for the subnet. This is unique per domain and will be in the range 1-4095
 
-- ``route_distinguisher``: The Route Distinguisher value assigned by VSD for this subnet that is used by the BGP-EVPN protocol in VSC
+- ``route_distinguisher``: Route distinguisher for this subnet that is used by the BGP-EVPN protocol in VSC. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
-- ``route_target``: The Route Target value assigned by VSD for this subnet that is used by the BGP-EVPN protocol in VSC
+- ``route_target``: Route target for this subnet that is used by the BGP-EVPN protocol in VSC. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
 - ``split_subnet``: Need to add correct description
 
@@ -81,6 +81,8 @@ Attributes
 - ``associated_shared_network_resource_id``: The ID of public subnet that is associated with this subnet
 
 - ``public``: when set to true means public subnet under a public zone
+
+- ``multi_home_enabled``: Boolean flag to indicate whether this is a Multi-homed subnet or not.
 
 - ``multicast``: multicast is enum that indicates multicast policy on Subnet/Subnet Template.
 

@@ -55,7 +55,7 @@ Parents
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nuvlan.NUVLAN<nuvlan>`
+
+- :ref:`nume.NUMe<nume>`
 

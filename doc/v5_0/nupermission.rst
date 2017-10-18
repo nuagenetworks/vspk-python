@@ -56,11 +56,13 @@ Parents
 
 - :ref:`nuzone.NUZone<nuzone>`
 
+- :ref:`nudomain.NUDomain<nudomain>`
+
 - :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nuport.NUPort<nuport>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`nuvlan.NUVLAN<nuvlan>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
@@ -73,6 +75,4 @@ Parents
 - :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
-
-- :ref:`nuvlan.NUVLAN<nuvlan>`
 

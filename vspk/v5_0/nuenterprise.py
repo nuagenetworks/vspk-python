@@ -129,6 +129,9 @@ from .fetchers import NUVNFsFetcher
 from .fetchers import NUVNFMetadatasFetcher
 
 
+from .fetchers import NUVNFThresholdPoliciesFetcher
+
+
 from .fetchers import NUIngressQOSPoliciesFetcher
 
 
@@ -439,6 +442,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.vnf_metadatas = NUVNFMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.vnf_threshold_policies = NUVNFThresholdPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ingress_qos_policies = NUIngressQOSPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")

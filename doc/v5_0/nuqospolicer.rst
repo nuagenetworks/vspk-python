@@ -1,26 +1,28 @@
-.. _nuroutingpolicy:
+.. _nuqospolicer:
 
-nuroutingpolicy
+nuqospolicer
 ===========================================
 
-.. class:: nuroutingpolicy.NURoutingPolicy(bambou.nurest_object.NUMetaRESTObject,):
+.. class:: nuqospolicer.NUQosPolicer(bambou.nurest_object.NUMetaRESTObject,):
 
-None
+QoS Policer ensures that traffic adheres to the stipulated QoS defined in your network. Contains Rate and Burst configurations and can be associated to VLANs.
 
 
 Attributes
 ----------
 
 
-- ``name`` (**Mandatory**): policy name, unique within an enterprise
+- ``name`` (**Mandatory**): Name of the QoS Policer
 
-- ``default_action`` (**Mandatory**): accept/reject
+- ``last_updated_by``: ID of the user who last updated the object.
 
-- ``description``: None
+- ``rate``: Rate: Bandwidth that is allowed in Mb/s; only whole values supported.
+
+- ``description``: Description of the QoS Policer
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``policy_definition``: String blob
+- ``burst``: Burst Size: The maximum burst size associated with the QoS Policer in kilo-bits; only whole values are supported.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -43,9 +45,5 @@ Parents
 --------
 
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nume.NUMe<nume>`
-
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
