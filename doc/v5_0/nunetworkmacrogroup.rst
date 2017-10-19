@@ -44,7 +44,7 @@ Parents
 --------
 
 
-- :ref:`nuenterprisenetwork.NUEnterpriseNetwork<nuenterprisenetwork>`
-
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
+- :ref:`nuenterprisenetwork.NUEnterpriseNetwork<nuenterprisenetwork>`
 

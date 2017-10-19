@@ -50,8 +50,6 @@ Attributes
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
-- ``dynamic_ipv6_address``: Turn on or off dynamic allocation of IPV6 address
-
 
 
 

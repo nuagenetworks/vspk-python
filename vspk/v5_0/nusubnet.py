@@ -233,7 +233,6 @@ class NUSubnet(NURESTObject):
         self._associated_multicast_channel_map_id = None
         self._associated_shared_network_resource_id = None
         self._public = None
-        self._multi_home_enabled = None
         self._multicast = None
         self._external_id = None
         self._dynamic_ipv6_address = None
@@ -273,7 +272,6 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_shared_network_resource_id", remote_name="associatedSharedNetworkResourceID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="public", remote_name="public", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="multi_home_enabled", remote_name="multiHomeEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="dynamic_ipv6_address", remote_name="dynamicIpv6Address", attribute_type=bool, is_required=False, is_unique=False)
@@ -1057,7 +1055,7 @@ class NUSubnet(NURESTObject):
         """ Get route_distinguisher value.
 
             Notes:
-                Route distinguisher for this subnet that is used by the BGP-EVPN protocol in VSC. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
+                The Route Distinguisher value assigned by VSD for this subnet that is used by the BGP-EVPN protocol in VSC
 
                 
                 This attribute is named `routeDistinguisher` in VSD API.
@@ -1070,7 +1068,7 @@ class NUSubnet(NURESTObject):
         """ Set route_distinguisher value.
 
             Notes:
-                Route distinguisher for this subnet that is used by the BGP-EVPN protocol in VSC. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
+                The Route Distinguisher value assigned by VSD for this subnet that is used by the BGP-EVPN protocol in VSC
 
                 
                 This attribute is named `routeDistinguisher` in VSD API.
@@ -1084,7 +1082,7 @@ class NUSubnet(NURESTObject):
         """ Get route_target value.
 
             Notes:
-                Route target for this subnet that is used by the BGP-EVPN protocol in VSC. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
+                The Route Target value assigned by VSD for this subnet that is used by the BGP-EVPN protocol in VSC
 
                 
                 This attribute is named `routeTarget` in VSD API.
@@ -1097,7 +1095,7 @@ class NUSubnet(NURESTObject):
         """ Set route_target value.
 
             Notes:
-                Route target for this subnet that is used by the BGP-EVPN protocol in VSC. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
+                The Route Target value assigned by VSD for this subnet that is used by the BGP-EVPN protocol in VSC
 
                 
                 This attribute is named `routeTarget` in VSD API.
@@ -1262,33 +1260,6 @@ class NUSubnet(NURESTObject):
                 
         """
         self._public = value
-
-    
-    @property
-    def multi_home_enabled(self):
-        """ Get multi_home_enabled value.
-
-            Notes:
-                Boolean flag to indicate whether this is a Multi-homed subnet or not.
-
-                
-                This attribute is named `multiHomeEnabled` in VSD API.
-                
-        """
-        return self._multi_home_enabled
-
-    @multi_home_enabled.setter
-    def multi_home_enabled(self, value):
-        """ Set multi_home_enabled value.
-
-            Notes:
-                Boolean flag to indicate whether this is a Multi-homed subnet or not.
-
-                
-                This attribute is named `multiHomeEnabled` in VSD API.
-                
-        """
-        self._multi_home_enabled = value
 
     
     @property

@@ -65,6 +65,8 @@ Parents
 
 - :ref:`numulticastchannelmap.NUMultiCastChannelMap<numulticastchannelmap>`
 
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nutca.NUTCA<nutca>`
@@ -83,19 +85,17 @@ Parents
 
 - :ref:`nusubnettemplate.NUSubnetTemplate<nusubnettemplate>`
 
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
+
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
 - :ref:`numetadata.NUMetadata<numetadata>`
 
 - :ref:`nuvsp.NUVSP<nuvsp>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nuproxyarpfilter.NUProxyARPFilter<nuproxyarpfilter>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
-
-- :ref:`nuvsd.NUVSD<nuvsd>`
+- :ref:`nuvsc.NUVSC<nuvsc>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
@@ -111,8 +111,6 @@ Parents
 
 - :ref:`nuhsc.NUHSC<nuhsc>`
 
-- :ref:`nuvlan.NUVLAN<nuvlan>`
-
 - :ref:`nustaticroute.NUStaticRoute<nustaticroute>`
 
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
@@ -125,7 +123,11 @@ Parents
 
 - :ref:`numulticastrange.NUMultiCastRange<numulticastrange>`
 
+- :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
+
 - :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
@@ -133,15 +135,11 @@ Parents
 
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
 
-- :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
-
 - :ref:`nudhcpoption.NUDHCPOption<nudhcpoption>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
-- :ref:`nuvsc.NUVSC<nuvsc>`
-
-- :ref:`nuvm.NUVM<nuvm>`
+- :ref:`nuvsd.NUVSD<nuvsd>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
 
@@ -153,13 +151,15 @@ Parents
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 
+- :ref:`nuvm.NUVM<nuvm>`
+
 - :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
 
 - :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nuvlan.NUVLAN<nuvlan>`
 
 - :ref:`nuwirelessport.NUWirelessPort<nuwirelessport>`
 

@@ -65,6 +65,8 @@ Parents
 
 - :ref:`nuwanservice.NUWANService<nuwanservice>`
 
+- :ref:`nuvsc.NUVSC<nuvsc>`
+
 - :ref:`nuvsd.NUVSD<nuvsd>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
@@ -81,15 +83,13 @@ Parents
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
-- :ref:`nuvsc.NUVSC<nuvsc>`
+- :ref:`nunsport.NUNSPort<nunsport>`
 
 - :ref:`nuvm.NUVM<nuvm>`
 
-- :ref:`nunsport.NUNSPort<nunsport>`
-
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
-- :ref:`nucontainer.NUContainer<nucontainer>`
-
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
+- :ref:`nucontainer.NUContainer<nucontainer>`
 

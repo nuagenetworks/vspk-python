@@ -26,8 +26,6 @@ Attributes
 
 - ``visible``: Controls if descriptor visible in catalog to create new VNF
 
-- ``associated_vnf_threshold_policy_id``: The Id of referenced VNF threshold policy
-
 - ``storage_gb`` (**Mandatory**): Disk storage (in GB) to be allocated VNF instance when deployed
 
 

@@ -172,7 +172,6 @@ class NUL2DomainTemplate(NURESTObject):
         self._associated_multicast_channel_map_id = None
         self._multicast = None
         self._external_id = None
-        self._dynamic_ipv6_address = None
         
         self.expose_attribute(local_name="dhcp_managed", remote_name="DHCPManaged", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
@@ -193,7 +192,6 @@ class NUL2DomainTemplate(NURESTObject):
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="dynamic_ipv6_address", remote_name="dynamicIpv6Address", attribute_type=bool, is_required=False, is_unique=False)
         
 
         # Fetchers
@@ -740,33 +738,6 @@ class NUL2DomainTemplate(NURESTObject):
                 
         """
         self._external_id = value
-
-    
-    @property
-    def dynamic_ipv6_address(self):
-        """ Get dynamic_ipv6_address value.
-
-            Notes:
-                Turn on or off dynamic allocation of IPV6 address
-
-                
-                This attribute is named `dynamicIpv6Address` in VSD API.
-                
-        """
-        return self._dynamic_ipv6_address
-
-    @dynamic_ipv6_address.setter
-    def dynamic_ipv6_address(self, value):
-        """ Set dynamic_ipv6_address value.
-
-            Notes:
-                Turn on or off dynamic allocation of IPV6 address
-
-                
-                This attribute is named `dynamicIpv6Address` in VSD API.
-                
-        """
-        self._dynamic_ipv6_address = value
 
     
 

@@ -115,9 +115,9 @@ Parents
 --------
 
 
-- :ref:`nuvport.NUVPort<nuvport>`
-
 - :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
+
+- :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nume.NUMe<nume>`
 

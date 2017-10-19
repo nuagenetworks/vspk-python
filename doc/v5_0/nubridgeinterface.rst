@@ -75,9 +75,9 @@ Parents
 --------
 
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nuvport.NUVPort<nuvport>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 

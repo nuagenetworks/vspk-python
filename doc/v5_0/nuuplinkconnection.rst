@@ -40,7 +40,7 @@ Attributes
 
 - ``download_rate_limit``: Download rate limit for this uplink in Mbits/sec.
 
-- ``uplink_id``: ID that unqiuely identifies the uplink.
+- ``uplink_id``: ID that unqiuely identifies the uplink. 
 
 - ``username``: PPPoE username
 
@@ -72,9 +72,9 @@ Parents
 --------
 
 
-- :ref:`nuvlan.NUVLAN<nuvlan>`
-
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
+
+- :ref:`nuvlan.NUVLAN<nuvlan>`
 
 - :ref:`nuvlantemplate.NUVLANTemplate<nuvlantemplate>`
 

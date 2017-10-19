@@ -68,7 +68,6 @@ class NUVNFDescriptor(NURESTObject):
         self._description = None
         self._metadata_id = None
         self._visible = None
-        self._associated_vnf_threshold_policy_id = None
         self._storage_gb = None
         
         self.expose_attribute(local_name="cpu_count", remote_name="CPUCount", attribute_type=int, is_required=False, is_unique=False)
@@ -78,7 +77,6 @@ class NUVNFDescriptor(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_id", remote_name="metadataID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="visible", remote_name="visible", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_vnf_threshold_policy_id", remote_name="associatedVNFThresholdPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="storage_gb", remote_name="storageGB", attribute_type=int, is_required=True, is_unique=False)
         
 
@@ -263,33 +261,6 @@ class NUVNFDescriptor(NURESTObject):
                 
         """
         self._visible = value
-
-    
-    @property
-    def associated_vnf_threshold_policy_id(self):
-        """ Get associated_vnf_threshold_policy_id value.
-
-            Notes:
-                The Id of referenced VNF threshold policy
-
-                
-                This attribute is named `associatedVNFThresholdPolicyID` in VSD API.
-                
-        """
-        return self._associated_vnf_threshold_policy_id
-
-    @associated_vnf_threshold_policy_id.setter
-    def associated_vnf_threshold_policy_id(self, value):
-        """ Set associated_vnf_threshold_policy_id value.
-
-            Notes:
-                The Id of referenced VNF threshold policy
-
-                
-                This attribute is named `associatedVNFThresholdPolicyID` in VSD API.
-                
-        """
-        self._associated_vnf_threshold_policy_id = value
 
     
     @property

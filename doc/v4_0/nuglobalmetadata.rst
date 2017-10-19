@@ -112,6 +112,8 @@ Parents
 
 - :ref:`nufloatingipacltemplate.NUFloatingIPACLTemplate<nufloatingipacltemplate>`
 
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
+
 - :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
@@ -128,15 +130,15 @@ Parents
 
 - :ref:`nuvsp.NUVSP<nuvsp>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
 
 - :ref:`nuredundantport.NURedundantPort<nuredundantport>`
 
 - :ref:`nudscpforwardingclassmapping.NUDSCPForwardingClassMapping<nudscpforwardingclassmapping>`
 
-- :ref:`nuporttemplate.NUPortTemplate<nuporttemplate>`
+- :ref:`nusystemconfig.NUSystemConfig<nusystemconfig>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
+- :ref:`nuvsc.NUVSC<nuvsc>`
 
 - :ref:`nuvsd.NUVSD<nuvsd>`
 
@@ -216,7 +218,7 @@ Parents
 
 - :ref:`nukeyservernotification.NUKeyServerNotification<nukeyservernotification>`
 
-- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nutier.NUTier<nutier>`
 
@@ -244,7 +246,7 @@ Parents
 
 - :ref:`nuapplicationservice.NUApplicationService<nuapplicationservice>`
 
-- :ref:`nuikegateway.NUIKEGateway<nuikegateway>`
+- :ref:`nuikegatewayconfig.NUIKEGatewayConfig<nuikegatewayconfig>`
 
 - :ref:`nustatscollectorinfo.NUStatsCollectorInfo<nustatscollectorinfo>`
 
@@ -260,7 +262,7 @@ Parents
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
-- :ref:`nuikegatewayconfig.NUIKEGatewayConfig<nuikegatewayconfig>`
+- :ref:`nuikegateway.NUIKEGateway<nuikegateway>`
 
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
 
@@ -271,6 +273,8 @@ Parents
 - :ref:`nulink.NULink<nulink>`
 
 - :ref:`nuingressexternalservicetemplate.NUIngressExternalServiceTemplate<nuingressexternalservicetemplate>`
+
+- :ref:`nuporttemplate.NUPortTemplate<nuporttemplate>`
 
 - :ref:`nume.NUMe<nume>`
 
@@ -284,11 +288,9 @@ Parents
 
 - :ref:`nunsgatewaytemplate.NUNSGatewayTemplate<nunsgatewaytemplate>`
 
-- :ref:`nuvsc.NUVSC<nuvsc>`
-
 - :ref:`nuuplinkrd.NUUplinkRD<nuuplinkrd>`
 
-- :ref:`nuvm.NUVM<nuvm>`
+- :ref:`nusiteinfo.NUSiteInfo<nusiteinfo>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
 
@@ -306,9 +308,11 @@ Parents
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 
-- :ref:`nusiteinfo.NUSiteInfo<nusiteinfo>`
+- :ref:`nuvm.NUVM<nuvm>`
 
 - :ref:`nuvmresync.NUVMResync<nuvmresync>`
+
+- :ref:`nugatewaysecurity.NUGatewaySecurity<nugatewaysecurity>`
 
 - :ref:`nupolicydecision.NUPolicyDecision<nupolicydecision>`
 
@@ -334,9 +338,7 @@ Parents
 
 - :ref:`nuallalarm.NUAllAlarm<nuallalarm>`
 
-- :ref:`nuikepsk.NUIKEPSK<nuikepsk>`
-
-- :ref:`nusystemconfig.NUSystemConfig<nusystemconfig>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuikeencryptionprofile.NUIKEEncryptionprofile<nuikeencryptionprofile>`
 
@@ -360,11 +362,9 @@ Parents
 
 - :ref:`nuvlantemplate.NUVLANTemplate<nuvlantemplate>`
 
-- :ref:`nugatewaysecurity.NUGatewaySecurity<nugatewaysecurity>`
-
 - :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nuikepsk.NUIKEPSK<nuikepsk>`
 
 - :ref:`nuikecertificate.NUIKECertificate<nuikecertificate>`
 

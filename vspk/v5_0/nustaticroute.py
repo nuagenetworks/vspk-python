@@ -53,8 +53,6 @@ class NUStaticRoute(NURESTObject):
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_TYPE_OVERLAY_ADDRESS_TRANSLATION = "OVERLAY_ADDRESS_TRANSLATION"
-    
     CONST_TYPE_OVERLAY = "OVERLAY"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
@@ -108,7 +106,7 @@ class NUStaticRoute(NURESTObject):
         self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_subnet_id", remote_name="associatedSubnetID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'EXIT_DOMAIN', u'OVERLAY', u'OVERLAY_ADDRESS_TRANSLATION'])
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'EXIT_DOMAIN', u'OVERLAY'])
         
 
         # Fetchers

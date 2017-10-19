@@ -28,11 +28,11 @@
 from bambou import NURESTFetcher
 
 
-class NUQosPolicersFetcher(NURESTFetcher):
-    """ Represents a NUQosPolicers fetcher
+class NUWirelessPortTemplatesFetcher(NURESTFetcher):
+    """ Represents a NUWirelessPortTemplates fetcher
 
         Notes:
-            This fetcher enables to fetch NUQosPolicer objects.
+            This fetcher enables to fetch NUWirelessPortTemplate objects.
 
         See:
             bambou.NURESTFetcher
@@ -40,13 +40,13 @@ class NUQosPolicersFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUQosPolicer class that is managed.
+        """ Return NUWirelessPortTemplate class that is managed.
 
             Returns:
-                .NUQosPolicer: the managed class
+                .NUWirelessPortTemplate: the managed class
         """
 
-        from .. import NUQosPolicer
-        return NUQosPolicer
+        from .. import NUWirelessPortTemplate
+        return NUWirelessPortTemplate
 
     

@@ -46,8 +46,6 @@ Attributes
 
 - ``associated_vnf_metadata_id``: VNF metadata associated to VNF instance. 
 
-- ``associated_vnf_threshold_policy_id``: VNF threshold policy associated to VNF instance
-
 - ``status``: State/Status of the VNF
 
 - ``storage_gb``: Disk storage (in GB) to be allocated for deployed VNF instance

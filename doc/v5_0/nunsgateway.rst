@@ -141,6 +141,8 @@ Parents
 --------
 
 
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
 - :ref:`nuducgroup.NUDUCGroup<nuducgroup>`
 
 - :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
@@ -152,6 +154,4 @@ Parents
 - :ref:`nunsggroup.NUNSGGroup<nunsggroup>`
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
-
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

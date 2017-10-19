@@ -131,7 +131,6 @@ class NUVNF(NURESTObject):
         self._enterprise_id = None
         self._is_attached_to_descriptor = None
         self._associated_vnf_metadata_id = None
-        self._associated_vnf_threshold_policy_id = None
         self._status = None
         self._storage_gb = None
         
@@ -152,7 +151,6 @@ class NUVNF(NURESTObject):
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="is_attached_to_descriptor", remote_name="isAttachedToDescriptor", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vnf_metadata_id", remote_name="associatedVNFMetadataID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_vnf_threshold_policy_id", remote_name="associatedVNFThresholdPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'BLOCKED', u'CRASHED', u'DYING', u'IDLE', u'INIT', u'LAST', u'PAUSED', u'PMSUSPENDED', u'RUNNING', u'SHUTDOWN', u'SHUTOFF'])
         self.expose_attribute(local_name="storage_gb", remote_name="storageGB", attribute_type=int, is_required=False, is_unique=False)
         
@@ -618,33 +616,6 @@ class NUVNF(NURESTObject):
                 
         """
         self._associated_vnf_metadata_id = value
-
-    
-    @property
-    def associated_vnf_threshold_policy_id(self):
-        """ Get associated_vnf_threshold_policy_id value.
-
-            Notes:
-                VNF threshold policy associated to VNF instance
-
-                
-                This attribute is named `associatedVNFThresholdPolicyID` in VSD API.
-                
-        """
-        return self._associated_vnf_threshold_policy_id
-
-    @associated_vnf_threshold_policy_id.setter
-    def associated_vnf_threshold_policy_id(self, value):
-        """ Set associated_vnf_threshold_policy_id value.
-
-            Notes:
-                VNF threshold policy associated to VNF instance
-
-                
-                This attribute is named `associatedVNFThresholdPolicyID` in VSD API.
-                
-        """
-        self._associated_vnf_threshold_policy_id = value
 
     
     @property

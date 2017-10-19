@@ -87,15 +87,15 @@ Parents
 
 - :ref:`numetadatatag.NUMetadataTag<numetadatatag>`
 
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
+
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
 - :ref:`numetadata.NUMetadata<numetadata>`
 
 - :ref:`nuvsp.NUVSP<nuvsp>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
+- :ref:`nuvsc.NUVSC<nuvsc>`
 
 - :ref:`nuvsd.NUVSD<nuvsd>`
 
@@ -131,6 +131,8 @@ Parents
 
 - :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
 
+- :ref:`nudomain.NUDomain<nudomain>`
+
 - :ref:`nutier.NUTier<nutier>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
@@ -147,10 +149,6 @@ Parents
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
-- :ref:`nuvsc.NUVSC<nuvsc>`
-
-- :ref:`nuvm.NUVM<nuvm>`
-
 - :ref:`nunsport.NUNSPort<nunsport>`
 
 - :ref:`nupublicnetworkmacro.NUPublicNetworkMacro<nupublicnetworkmacro>`
@@ -161,11 +159,15 @@ Parents
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 
+- :ref:`nuvm.NUVM<nuvm>`
+
 - :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
 
 - :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
@@ -174,8 +176,6 @@ Parents
 - :ref:`nucontainer.NUContainer<nucontainer>`
 
 - :ref:`nuflow.NUFlow<nuflow>`
-
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`
 

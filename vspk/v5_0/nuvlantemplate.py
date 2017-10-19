@@ -54,11 +54,9 @@ class NUVLANTemplate(NURESTObject):
     
     ## Constants
     
-    CONST_ASSOCIATED_CONNECTION_TYPE_UPLINK_CONNECTION = "UPLINK_CONNECTION"
+    CONST_TYPE_UPLINK = "UPLINK"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_ASSOCIATED_CONNECTION_TYPE_BR_CONNECTION = "BR_CONNECTION"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
@@ -67,8 +65,6 @@ class NUVLANTemplate(NURESTObject):
     CONST_TYPE_ACCESS = "ACCESS"
     
     CONST_TYPE_BR = "BR"
-    
-    CONST_TYPE_UPLINK = "UPLINK"
     
     
 
@@ -93,11 +89,7 @@ class NUVLANTemplate(NURESTObject):
         self._last_updated_by = None
         self._description = None
         self._entity_scope = None
-        self._is_uplink = None
-        self._associated_connection_type = None
         self._associated_egress_qos_policy_id = None
-        self._associated_ingress_qos_policy_id = None
-        self._associated_uplink_connection_id = None
         self._associated_vsc_profile_id = None
         self._duc_vlan = None
         self._external_id = None
@@ -107,11 +99,7 @@ class NUVLANTemplate(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="is_uplink", remote_name="isUplink", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_connection_type", remote_name="associatedConnectionType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BR_CONNECTION', u'UPLINK_CONNECTION'])
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_ingress_qos_policy_id", remote_name="associatedIngressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_uplink_connection_id", remote_name="associatedUplinkConnectionID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vsc_profile_id", remote_name="associatedVSCProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="duc_vlan", remote_name="ducVlan", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -142,7 +130,7 @@ class NUVLANTemplate(NURESTObject):
         """ Get value value.
 
             Notes:
-                Value of VLAN
+                value of VLAN
 
                 
         """
@@ -153,7 +141,7 @@ class NUVLANTemplate(NURESTObject):
         """ Set value value.
 
             Notes:
-                Value of VLAN
+                value of VLAN
 
                 
         """
@@ -238,60 +226,6 @@ class NUVLANTemplate(NURESTObject):
 
     
     @property
-    def is_uplink(self):
-        """ Get is_uplink value.
-
-            Notes:
-                Indicates that this VLAN Template should be considered as being used for uplink connection.
-
-                
-                This attribute is named `isUplink` in VSD API.
-                
-        """
-        return self._is_uplink
-
-    @is_uplink.setter
-    def is_uplink(self, value):
-        """ Set is_uplink value.
-
-            Notes:
-                Indicates that this VLAN Template should be considered as being used for uplink connection.
-
-                
-                This attribute is named `isUplink` in VSD API.
-                
-        """
-        self._is_uplink = value
-
-    
-    @property
-    def associated_connection_type(self):
-        """ Get associated_connection_type value.
-
-            Notes:
-                States the managed object type of the uplink connection associated to this VLAN Template instance.
-
-                
-                This attribute is named `associatedConnectionType` in VSD API.
-                
-        """
-        return self._associated_connection_type
-
-    @associated_connection_type.setter
-    def associated_connection_type(self, value):
-        """ Set associated_connection_type value.
-
-            Notes:
-                States the managed object type of the uplink connection associated to this VLAN Template instance.
-
-                
-                This attribute is named `associatedConnectionType` in VSD API.
-                
-        """
-        self._associated_connection_type = value
-
-    
-    @property
     def associated_egress_qos_policy_id(self):
         """ Get associated_egress_qos_policy_id value.
 
@@ -316,60 +250,6 @@ class NUVLANTemplate(NURESTObject):
                 
         """
         self._associated_egress_qos_policy_id = value
-
-    
-    @property
-    def associated_ingress_qos_policy_id(self):
-        """ Get associated_ingress_qos_policy_id value.
-
-            Notes:
-                ID of the Ingress QoS Policy associated with this VLAN Template.
-
-                
-                This attribute is named `associatedIngressQOSPolicyID` in VSD API.
-                
-        """
-        return self._associated_ingress_qos_policy_id
-
-    @associated_ingress_qos_policy_id.setter
-    def associated_ingress_qos_policy_id(self, value):
-        """ Set associated_ingress_qos_policy_id value.
-
-            Notes:
-                ID of the Ingress QoS Policy associated with this VLAN Template.
-
-                
-                This attribute is named `associatedIngressQOSPolicyID` in VSD API.
-                
-        """
-        self._associated_ingress_qos_policy_id = value
-
-    
-    @property
-    def associated_uplink_connection_id(self):
-        """ Get associated_uplink_connection_id value.
-
-            Notes:
-                ID of the uplink connection making use of this VLAN Template instance.
-
-                
-                This attribute is named `associatedUplinkConnectionID` in VSD API.
-                
-        """
-        return self._associated_uplink_connection_id
-
-    @associated_uplink_connection_id.setter
-    def associated_uplink_connection_id(self, value):
-        """ Set associated_uplink_connection_id value.
-
-            Notes:
-                ID of the uplink connection making use of this VLAN Template instance.
-
-                
-                This attribute is named `associatedUplinkConnectionID` in VSD API.
-                
-        """
-        self._associated_uplink_connection_id = value
 
     
     @property
@@ -458,7 +338,7 @@ class NUVLANTemplate(NURESTObject):
         """ Get type value.
 
             Notes:
-                This type marks a VLAN for its utility.
+                This type marks a VLAN for it's utility.
 
                 
         """
@@ -469,7 +349,7 @@ class NUVLANTemplate(NURESTObject):
         """ Set type value.
 
             Notes:
-                This type marks a VLAN for its utility.
+                This type marks a VLAN for it's utility.
 
                 
         """

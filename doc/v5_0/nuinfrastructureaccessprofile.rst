@@ -14,7 +14,7 @@ Attributes
 
 - ``ssh_auth_mode``: Indicates the Authentication method used during a SSH session.
 
-- ``name`` (**Mandatory**): Name of the Infrastructure Acces Profile
+- ``name`` (**Mandatory**): Name of the Infrastructure Profile
 
 - ``password`` (**Mandatory**): Password of the default user associated to the access profile.
 

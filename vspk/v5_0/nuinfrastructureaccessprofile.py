@@ -149,7 +149,7 @@ class NUInfrastructureAccessProfile(NURESTObject):
         """ Get name value.
 
             Notes:
-                Name of the Infrastructure Acces Profile
+                Name of the Infrastructure Profile
 
                 
         """
@@ -160,7 +160,7 @@ class NUInfrastructureAccessProfile(NURESTObject):
         """ Set name value.
 
             Notes:
-                Name of the Infrastructure Acces Profile
+                Name of the Infrastructure Profile
 
                 
         """

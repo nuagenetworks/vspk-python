@@ -26,224 +26,58 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-
-from .fetchers import NUAlarmsFetcher
-
-
-from .fetchers import NUSSIDConnectionsFetcher
-
-
-from .fetchers import NUStatisticsFetcher
-
-
-from .fetchers import NUEventLogsFetcher
-
 from bambou import NURESTObject
 
 
-class NUWirelessPort(NURESTObject):
-    """ Represents a WirelessPort in the VSD
+class NUWirelessPortTemplate(NURESTObject):
+    """ Represents a WirelessPortTemplate in the VSD
 
         Notes:
-            Represents a wireless (WiFi) interface configured on a Network Service Gateway (NSG) instance.  The WirelessPort instance may map to a physical WiFi card or a WiFi port.
+            Template of a Wireless Interface that may exist on a NSGateway Template instance.  Instantiation of NSG Template will result in the creation of a Wireless Port instance on the NSG instance.  Parameters defined on the template will be used to polulate the attributes on the Wireless Port instance inheriting from the template.
     """
 
-    __rest_name__ = "wirelessport"
-    __resource_name__ = "wirelessports"
+    __rest_name__ = "wirelessporttemplate"
+    __resource_name__ = "wirelessporttemplates"
 
     
     ## Constants
     
-    CONST_COUNTRY_CODE_HK = "HK"
-    
-    CONST_FREQUENCY_CHANNEL_CH_11 = "CH_11"
-    
-    CONST_FREQUENCY_CHANNEL_CH_10 = "CH_10"
-    
-    CONST_FREQUENCY_CHANNEL_CH_13 = "CH_13"
-    
-    CONST_FREQUENCY_CHANNEL_CH_12 = "CH_12"
-    
-    CONST_FREQUENCY_CHANNEL_CH_14 = "CH_14"
-    
-    CONST_FREQUENCY_CHANNEL_CH_149 = "CH_149"
-    
-    CONST_FREQUENCY_CHANNEL_CH_144 = "CH_144"
-    
-    CONST_COUNTRY_CODE_HU = "HU"
-    
-    CONST_FREQUENCY_CHANNEL_CH_140 = "CH_140"
-    
-    CONST_WIFI_FREQUENCY_BAND_FREQ_2_4_GHZ = "FREQ_2_4_GHZ"
-    
-    CONST_COUNTRY_CODE_GB = "GB"
-    
-    CONST_FREQUENCY_CHANNEL_CH_132 = "CH_132"
-    
-    CONST_FREQUENCY_CHANNEL_CH_136 = "CH_136"
-    
-    CONST_WIFI_FREQUENCY_BAND_FREQ_5_0_GHZ = "FREQ_5_0_GHZ"
-    
-    CONST_COUNTRY_CODE_GR = "GR"
-    
-    CONST_COUNTRY_CODE_IN = "IN"
-    
-    CONST_COUNTRY_CODE_AU = "AU"
-    
-    CONST_COUNTRY_CODE_IL = "IL"
-    
-    CONST_COUNTRY_CODE_PH = "PH"
-    
-    CONST_COUNTRY_CODE_IE = "IE"
-    
-    CONST_COUNTRY_CODE_ID = "ID"
-    
-    CONST_COUNTRY_CODE_PL = "PL"
-    
-    CONST_COUNTRY_CODE_PT = "PT"
-    
-    CONST_FREQUENCY_CHANNEL_CH_157 = "CH_157"
-    
-    CONST_COUNTRY_CODE_IT = "IT"
-    
-    CONST_FREQUENCY_CHANNEL_CH_153 = "CH_153"
-    
-    CONST_COUNTRY_CODE_SI = "SI"
-    
-    CONST_COUNTRY_CODE_LU = "LU"
-    
-    CONST_FREQUENCY_CHANNEL_CH_100 = "CH_100"
-    
     CONST_COUNTRY_CODE_US = "US"
     
-    CONST_FREQUENCY_CHANNEL_CH_36 = "CH_36"
-    
-    CONST_COUNTRY_CODE_NZ = "NZ"
-    
-    CONST_FREQUENCY_CHANNEL_CH_104 = "CH_104"
-    
-    CONST_COUNTRY_CODE_NO = "NO"
-    
-    CONST_COUNTRY_CODE_NL = "NL"
-    
-    CONST_FREQUENCY_CHANNEL_CH_161 = "CH_161"
-    
-    CONST_FREQUENCY_CHANNEL_CH_165 = "CH_165"
-    
-    CONST_COUNTRY_CODE_EE = "EE"
+    CONST_COUNTRY_CODE_CA = "CA"
     
     CONST_WIFI_MODE_WIFI_A_N = "WIFI_A_N"
-    
-    CONST_PORT_TYPE_ACCESS = "ACCESS"
-    
-    CONST_COUNTRY_CODE_ES = "ES"
-    
-    CONST_COUNTRY_CODE_FI = "FI"
-    
-    CONST_COUNTRY_CODE_FR = "FR"
-    
-    CONST_FREQUENCY_CHANNEL_CH_3 = "CH_3"
-    
-    CONST_COUNTRY_CODE_CZ = "CZ"
-    
-    CONST_COUNTRY_CODE_LT = "LT"
-    
-    CONST_FREQUENCY_CHANNEL_CH_0 = "CH_0"
-    
-    CONST_COUNTRY_CODE_SK = "SK"
-    
-    CONST_FREQUENCY_CHANNEL_CH_2 = "CH_2"
-    
-    CONST_FREQUENCY_CHANNEL_CH_5 = "CH_5"
-    
-    CONST_FREQUENCY_CHANNEL_CH_4 = "CH_4"
-    
-    CONST_FREQUENCY_CHANNEL_CH_7 = "CH_7"
-    
-    CONST_FREQUENCY_CHANNEL_CH_6 = "CH_6"
-    
-    CONST_FREQUENCY_CHANNEL_CH_9 = "CH_9"
-    
-    CONST_FREQUENCY_CHANNEL_CH_8 = "CH_8"
-    
-    CONST_FREQUENCY_CHANNEL_CH_108 = "CH_108"
-    
-    CONST_COUNTRY_CODE_SE = "SE"
-    
-    CONST_COUNTRY_CODE_SG = "SG"
-    
-    CONST_COUNTRY_CODE_CH = "CH"
-    
-    CONST_COUNTRY_CODE_CN = "CN"
-    
-    CONST_COUNTRY_CODE_CA = "CA"
     
     CONST_WIFI_MODE_WIFI_B_G = "WIFI_B_G"
     
     CONST_WIFI_MODE_WIFI_A_AC = "WIFI_A_AC"
     
-    CONST_COUNTRY_CODE_CY = "CY"
-    
-    CONST_FREQUENCY_CHANNEL_CH_56 = "CH_56"
-    
-    CONST_FREQUENCY_CHANNEL_CH_52 = "CH_52"
-    
-    CONST_COUNTRY_CODE_MY = "MY"
-    
-    CONST_COUNTRY_CODE_TW = "TW"
-    
-    CONST_FREQUENCY_CHANNEL_CH_112 = "CH_112"
-    
-    CONST_COUNTRY_CODE_TH = "TH"
-    
-    CONST_WIFI_MODE_WIFI_A_N_AC = "WIFI_A_N_AC"
-    
-    CONST_FREQUENCY_CHANNEL_CH_116 = "CH_116"
-    
-    CONST_WIFI_MODE_WIFI_B_G_N = "WIFI_B_G_N"
-    
-    CONST_COUNTRY_CODE_DK = "DK"
-    
-    CONST_COUNTRY_CODE_DE = "DE"
+    CONST_WIFI_MODE_WIFI_A = "WIFI_A"
     
     CONST_FREQUENCY_CHANNEL_CH_1 = "CH_1"
     
-    CONST_FREQUENCY_CHANNEL_CH_44 = "CH_44"
+    CONST_FREQUENCY_CHANNEL_CH_0 = "CH_0"
     
-    CONST_FREQUENCY_CHANNEL_CH_40 = "CH_40"
+    CONST_FREQUENCY_CHANNEL_CH_2 = "CH_2"
     
-    CONST_FREQUENCY_CHANNEL_CH_48 = "CH_48"
+    CONST_WIFI_FREQUENCY_BAND_FREQ_5_0_GHZ = "FREQ_5_0_GHZ"
     
-    CONST_WIFI_MODE_WIFI_A = "WIFI_A"
+    CONST_WIFI_MODE_WIFI_A_N_AC = "WIFI_A_N_AC"
     
-    CONST_COUNTRY_CODE_JP = "JP"
+    CONST_COUNTRY_CODE_UK = "UK"
     
-    CONST_COUNTRY_CODE_AT = "AT"
+    CONST_COUNTRY_CODE_FR = "FR"
     
-    CONST_COUNTRY_CODE_LV = "LV"
+    CONST_PORT_TYPE_ACCESS = "ACCESS"
     
-    CONST_FREQUENCY_CHANNEL_CH_64 = "CH_64"
+    CONST_WIFI_MODE_WIFI_B_G_N = "WIFI_B_G_N"
     
-    CONST_FREQUENCY_CHANNEL_CH_60 = "CH_60"
-    
-    CONST_COUNTRY_CODE_KR = "KR"
-    
-    CONST_FREQUENCY_CHANNEL_CH_128 = "CH_128"
-    
-    CONST_FREQUENCY_CHANNEL_CH_124 = "CH_124"
-    
-    CONST_FREQUENCY_CHANNEL_CH_120 = "CH_120"
-    
-    CONST_COUNTRY_CODE_BE = "BE"
-    
-    CONST_COUNTRY_CODE_ZA = "ZA"
-    
-    CONST_COUNTRY_CODE_BR = "BR"
+    CONST_WIFI_FREQUENCY_BAND_FREQ_2_4_GHZ = "FREQ_2_4_GHZ"
     
     
 
     def __init__(self, **kwargs):
-        """ Initializes a WirelessPort instance
+        """ Initializes a WirelessPortTemplate instance
 
             Notes:
                 You can specify all parameters while calling this methods.
@@ -251,16 +85,15 @@ class NUWirelessPort(NURESTObject):
                 object from a Python dictionary
 
             Examples:
-                >>> wirelessport = NUWirelessPort(id=u'xxxx-xxx-xxx-xxx', name=u'WirelessPort')
-                >>> wirelessport = NUWirelessPort(data=my_dict)
+                >>> wirelessporttemplate = NUWirelessPortTemplate(id=u'xxxx-xxx-xxx-xxx', name=u'WirelessPortTemplate')
+                >>> wirelessporttemplate = NUWirelessPortTemplate(data=my_dict)
         """
 
-        super(NUWirelessPort, self).__init__()
+        super(NUWirelessPortTemplate, self).__init__()
 
         # Read/Write Attributes
         
         self._name = None
-        self._template_id = None
         self._generic_config = None
         self._description = None
         self._physical_name = None
@@ -271,30 +104,14 @@ class NUWirelessPort(NURESTObject):
         self._frequency_channel = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="generic_config", remote_name="genericConfig", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=True)
         self.expose_attribute(local_name="wifi_frequency_band", remote_name="wifiFrequencyBand", attribute_type=str, is_required=True, is_unique=False, choices=[u'FREQ_2_4_GHZ', u'FREQ_5_0_GHZ'])
         self.expose_attribute(local_name="wifi_mode", remote_name="wifiMode", attribute_type=str, is_required=True, is_unique=False, choices=[u'WIFI_A', u'WIFI_A_AC', u'WIFI_A_N', u'WIFI_A_N_AC', u'WIFI_B_G', u'WIFI_B_G_N'])
         self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS'])
-        self.expose_attribute(local_name="country_code", remote_name="countryCode", attribute_type=str, is_required=True, is_unique=False, choices=[u'AT', u'AU', u'BE', u'BR', u'CA', u'CH', u'CN', u'CY', u'CZ', u'DE', u'DK', u'EE', u'ES', u'FI', u'FR', u'GB', u'GR', u'HK', u'HU', u'ID', u'IE', u'IL', u'IN', u'IT', u'JP', u'KR', u'LT', u'LU', u'LV', u'MY', u'NL', u'NO', u'NZ', u'PH', u'PL', u'PT', u'SE', u'SG', u'SI', u'SK', u'TH', u'TW', u'US', u'ZA'])
-        self.expose_attribute(local_name="frequency_channel", remote_name="frequencyChannel", attribute_type=str, is_required=True, is_unique=False, choices=[u'CH_0', u'CH_1', u'CH_10', u'CH_100', u'CH_104', u'CH_108', u'CH_11', u'CH_112', u'CH_116', u'CH_12', u'CH_120', u'CH_124', u'CH_128', u'CH_13', u'CH_132', u'CH_136', u'CH_14', u'CH_140', u'CH_144', u'CH_149', u'CH_153', u'CH_157', u'CH_161', u'CH_165', u'CH_2', u'CH_3', u'CH_36', u'CH_4', u'CH_40', u'CH_44', u'CH_48', u'CH_5', u'CH_52', u'CH_56', u'CH_6', u'CH_60', u'CH_64', u'CH_7', u'CH_8', u'CH_9'])
-        
-
-        # Fetchers
-        
-        
-        self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.ssid_connections = NUSSIDConnectionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.expose_attribute(local_name="country_code", remote_name="countryCode", attribute_type=str, is_required=True, is_unique=False, choices=[u'CA', u'FR', u'UK', u'US'])
+        self.expose_attribute(local_name="frequency_channel", remote_name="frequencyChannel", attribute_type=str, is_required=True, is_unique=False, choices=[u'CH_0', u'CH_1', u'CH_2'])
         
 
         self._compute_args(**kwargs)
@@ -306,7 +123,7 @@ class NUWirelessPort(NURESTObject):
         """ Get name value.
 
             Notes:
-                A customer friendly name for the Wireless Port instance.
+                A customer friendly name for the Wireless Port template.
 
                 
         """
@@ -317,7 +134,7 @@ class NUWirelessPort(NURESTObject):
         """ Set name value.
 
             Notes:
-                A customer friendly name for the Wireless Port instance.
+                A customer friendly name for the Wireless Port template.
 
                 
         """
@@ -325,38 +142,11 @@ class NUWirelessPort(NURESTObject):
 
     
     @property
-    def template_id(self):
-        """ Get template_id value.
-
-            Notes:
-                The ID of the template that this Wireless Port was created from.  If the wireless port was not created from a template, then the value will be null.
-
-                
-                This attribute is named `templateID` in VSD API.
-                
-        """
-        return self._template_id
-
-    @template_id.setter
-    def template_id(self, value):
-        """ Set template_id value.
-
-            Notes:
-                The ID of the template that this Wireless Port was created from.  If the wireless port was not created from a template, then the value will be null.
-
-                
-                This attribute is named `templateID` in VSD API.
-                
-        """
-        self._template_id = value
-
-    
-    @property
     def generic_config(self):
         """ Get generic_config value.
 
             Notes:
-                This field is used to contain the "blob" parameters for the WiFi Card (physical module) on the NSG.
+                Configuration blob for the Wireless Port/Card installed on the NSG.  It contains the less common Wireless parameters that can be configured at the OS level for the WiFi card.
 
                 
                 This attribute is named `genericConfig` in VSD API.
@@ -369,7 +159,7 @@ class NUWirelessPort(NURESTObject):
         """ Set generic_config value.
 
             Notes:
-                This field is used to contain the "blob" parameters for the WiFi Card (physical module) on the NSG.
+                Configuration blob for the Wireless Port/Card installed on the NSG.  It contains the less common Wireless parameters that can be configured at the OS level for the WiFi card.
 
                 
                 This attribute is named `genericConfig` in VSD API.
@@ -383,7 +173,7 @@ class NUWirelessPort(NURESTObject):
         """ Get description value.
 
             Notes:
-                A customer friendly description to be given to the Wireless Port instance.
+                A customer friendly description to be given to the Wireless Port Template.
 
                 
         """
@@ -394,7 +184,7 @@ class NUWirelessPort(NURESTObject):
         """ Set description value.
 
             Notes:
-                A customer friendly description to be given to the Wireless Port instance.
+                A customer friendly description to be given to the Wireless Port Template.
 
                 
         """
