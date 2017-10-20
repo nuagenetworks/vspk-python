@@ -60,6 +60,8 @@ Parents
 
 - :ref:`nubgppeer.NUBGPPeer<nubgppeer>`
 
+- :ref:`nuikepsk.NUIKEPSK<nuikepsk>`
+
 - :ref:`nusharednetworkresource.NUSharedNetworkResource<nusharednetworkresource>`
 
 - :ref:`nuvirtualip.NUVirtualIP<nuvirtualip>`
@@ -67,8 +69,6 @@ Parents
 - :ref:`nudscpforwardingclasstable.NUDSCPForwardingClassTable<nudscpforwardingclasstable>`
 
 - :ref:`numulticastchannelmap.NUMultiCastChannelMap<numulticastchannelmap>`
-
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
@@ -196,7 +196,7 @@ Parents
 
 - :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
 
-- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
+- :ref:`nufloatingipacltemplateentry.NUFloatingIPACLTemplateEntry<nufloatingipacltemplateentry>`
 
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
@@ -306,8 +306,6 @@ Parents
 
 - :ref:`nuvm.NUVM<nuvm>`
 
-- :ref:`nufloatingipacltemplateentry.NUFloatingIPACLTemplateEntry<nufloatingipacltemplateentry>`
-
 - :ref:`nucloudmgmtsystem.NUCloudMgmtSystem<nucloudmgmtsystem>`
 
 - :ref:`nuvmresync.NUVMResync<nuvmresync>`
@@ -342,6 +340,8 @@ Parents
 
 - :ref:`nuikeencryptionprofile.NUIKEEncryptionprofile<nuikeencryptionprofile>`
 
+- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
+
 - :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 
 - :ref:`nuuser.NUUser<nuuser>`
@@ -364,7 +364,7 @@ Parents
 
 - :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`
 
-- :ref:`nuikepsk.NUIKEPSK<nuikepsk>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuikecertificate.NUIKECertificate<nuikecertificate>`
 

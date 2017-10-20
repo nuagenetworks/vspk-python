@@ -159,8 +159,6 @@ Parents
 --------
 
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nufirewallacl.NUFirewallAcl<nufirewallacl>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
@@ -168,4 +166,6 @@ Parents
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

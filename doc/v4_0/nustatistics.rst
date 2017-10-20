@@ -75,3 +75,5 @@ Parents
 
 - :ref:`nunsport.NUNSPort<nunsport>`
 
+- :ref:`nuvlan.NUVLAN<nuvlan>`
+

@@ -30,7 +30,7 @@ Attributes
 
 - ``role``: To allow prioritisation of traffic, the NSG network ports must be configured with an uplink type or tag value which will be used in the identification of packets being forwarded.  That identification is at the base of the selection of which network port will serve in sending packets to the outside world.  The default value is PRIMARY. Possible values are PRIMARY, SECONDARY, TERTIARY, UNKNOWN, 
 
-- ``uplink_id``: ID that unqiuely identifies the uplink. 
+- ``uplink_id``: ID that unqiuely identifies the uplink.
 
 - ``username``: PPPoE username
 

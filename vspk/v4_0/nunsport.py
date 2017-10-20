@@ -71,8 +71,6 @@ class NUNSPort(NURESTObject):
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_SPEED_BASE10 = "BASE10"
-    
     CONST_SPEED_BASETX100 = "BASETX100"
     
     CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
@@ -90,6 +88,8 @@ class NUNSPort(NURESTObject):
     CONST_PORT_TYPE_NETWORK = "NETWORK"
     
     CONST_NAT_TRAVERSAL_FULL_NAT = "FULL_NAT"
+    
+    CONST_SPEED_BASET10 = "BASET10"
     
     CONST_PERMITTED_ACTION_READ = "READ"
     
@@ -161,7 +161,7 @@ class NUNSPort(NURESTObject):
         self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'NETWORK'])
-        self.expose_attribute(local_name="speed", remote_name="speed", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTONEGOTIATE', u'BASE10', u'BASET1000', u'BASETX100', u'BASEX10G'])
+        self.expose_attribute(local_name="speed", remote_name="speed", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTONEGOTIATE', u'BASET10', u'BASET1000', u'BASETX100', u'BASEX10G'])
         self.expose_attribute(local_name="use_user_mnemonic", remote_name="useUserMnemonic", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)

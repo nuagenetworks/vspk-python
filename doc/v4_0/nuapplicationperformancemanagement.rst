@@ -40,9 +40,9 @@ Parents
 --------
 
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nuperformancemonitor.NUPerformanceMonitor<nuperformancemonitor>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

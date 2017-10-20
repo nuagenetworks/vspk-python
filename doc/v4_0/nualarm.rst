@@ -57,8 +57,6 @@ Parents
 --------
 
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nutca.NUTCA<nutca>`
@@ -92,4 +90,6 @@ Parents
 - :ref:`nuvlan.NUVLAN<nuvlan>`
 
 - :ref:`nucontainer.NUContainer<nucontainer>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
