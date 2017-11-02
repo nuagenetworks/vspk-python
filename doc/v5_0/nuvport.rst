@@ -113,9 +113,13 @@ Parents
 --------
 
 
+- :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
+
 - :ref:`nuzone.NUZone<nuzone>`
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
@@ -124,8 +128,6 @@ Parents
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
 - :ref:`nutrunk.NUTrunk<nutrunk>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
 

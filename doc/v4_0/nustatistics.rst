@@ -51,17 +51,19 @@ Parents
 
 - :ref:`nuingressexternalservicetemplateentry.NUIngressExternalServiceTemplateEntry<nuingressexternalservicetemplateentry>`
 
+- :ref:`nudomain.NUDomain<nudomain>`
+
 - :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
+
+- :ref:`nuvlan.NUVLAN<nuvlan>`
 
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
 
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
 - :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nutier.NUTier<nutier>`
 

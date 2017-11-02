@@ -30,6 +30,9 @@
 from .fetchers import NUL2DomainsFetcher
 
 
+from .fetchers import NUL4ServicesFetcher
+
+
 from .fetchers import NUVCenterEAMConfigsFetcher
 
 
@@ -153,6 +156,9 @@ from .fetchers import NUInfrastructureGatewayProfilesFetcher
 from .fetchers import NUInfrastructureVscProfilesFetcher
 
 
+from .fetchers import NUVNFThresholdPoliciesFetcher
+
+
 from .fetchers import NUIngressACLEntryTemplatesFetcher
 
 
@@ -187,6 +193,9 @@ from .fetchers import NUContainersFetcher
 
 
 from .fetchers import NUContainerInterfacesFetcher
+
+
+from .fetchers import NUQosPolicersFetcher
 
 
 from .fetchers import NUCOSRemarkingPolicyTablesFetcher
@@ -344,6 +353,9 @@ class NUMe(NURESTRootObject):
         self.l2_domains = NUL2DomainsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.l4_services = NUL4ServicesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.vcenter_eam_configs = NUVCenterEAMConfigsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -467,6 +479,9 @@ class NUMe(NURESTRootObject):
         self.infrastructure_vsc_profiles = NUInfrastructureVscProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.vnf_threshold_policies = NUVNFThresholdPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.ingress_acl_entry_templates = NUIngressACLEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -501,6 +516,9 @@ class NUMe(NURESTRootObject):
         
         
         self.container_interfaces = NUContainerInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.qos_policers = NUQosPolicersFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.cos_remarking_policy_tables = NUCOSRemarkingPolicyTablesFetcher.fetcher_with_object(parent_object=self, relationship="root")

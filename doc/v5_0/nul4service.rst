@@ -37,7 +37,9 @@ Parents
 --------
 
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nul4servicegroup.NUL4ServiceGroup<nul4servicegroup>`
+
+- :ref:`nume.NUMe<nume>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

@@ -57,8 +57,6 @@ class NUUplinkConnection(NURESTObject):
     
     CONST_ROLE_UNKNOWN = "UNKNOWN"
     
-    CONST_INTERFACE_CONNECTION_TYPE_PCI_EXPRESS = "PCI_EXPRESS"
-    
     CONST_ROLE_NONE = "NONE"
     
     CONST_ROLE_SECONDARY = "SECONDARY"
@@ -83,11 +81,9 @@ class NUUplinkConnection(NURESTObject):
     
     CONST_MODE_STATIC = "Static"
     
-    CONST_ADDRESS_IPV4 = "IPv4"
+    CONST_INTERFACE_CONNECTION_TYPE_PCI_EXPRESS = "PCI_EXPRESS"
     
     CONST_INTERFACE_CONNECTION_TYPE_USB_ETHERNET = "USB_ETHERNET"
-    
-    CONST_ADDRESS_IPV6 = "IPv6"
     
     CONST_ROLE_PRIMARY = "PRIMARY"
     
@@ -128,13 +124,13 @@ class NUUplinkConnection(NURESTObject):
         self.expose_attribute(local_name="dns_address", remote_name="DNSAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPv4', u'IPv6'])
+        self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'BFD', u'CONTROL_SESSION', u'OPERATIONAL_LINK'])
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="interface_connection_type", remote_name="interfaceConnectionType", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTOMATIC', u'EMBEDDED', u'PCI_EXPRESS', u'USB_ETHERNET', u'USB_MODEM'])
         self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'Any', u'Dynamic', u'LTE', u'PPPoE', u'Static'])
         self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'PRIMARY', u'SECONDARY', u'TERTIARY', u'UNKNOWN'])
-        self.expose_attribute(local_name="uplink_id", remote_name="uplinkID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="uplink_id", remote_name="uplinkID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="username", remote_name="username", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_underlay_id", remote_name="assocUnderlayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_underlay_name", remote_name="associatedUnderlayName", attribute_type=str, is_required=False, is_unique=False)
@@ -381,7 +377,7 @@ class NUUplinkConnection(NURESTObject):
         """ Get uplink_id value.
 
             Notes:
-                ID that unqiuely identifies the uplink. 
+                ID that unqiuely identifies the uplink.
 
                 
                 This attribute is named `uplinkID` in VSD API.
@@ -394,7 +390,7 @@ class NUUplinkConnection(NURESTObject):
         """ Set uplink_id value.
 
             Notes:
-                ID that unqiuely identifies the uplink. 
+                ID that unqiuely identifies the uplink.
 
                 
                 This attribute is named `uplinkID` in VSD API.

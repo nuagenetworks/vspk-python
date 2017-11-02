@@ -39,7 +39,7 @@ class NUBRConnection(NURESTObject):
             None
     """
 
-    __rest_name__ = "brconnections"
+    __rest_name__ = "brconnection"
     __resource_name__ = "brconnections"
 
     

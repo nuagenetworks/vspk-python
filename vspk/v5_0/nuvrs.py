@@ -86,6 +86,8 @@ class NUVRS(NURESTObject):
     
     CONST_PERSONALITY_NUAGE_210_WBX_32_Q = "NUAGE_210_WBX_32_Q"
     
+    CONST_PERSONALITY_NSGDUC = "NSGDUC"
+    
     CONST_PERSONALITY_NONE = "NONE"
     
     CONST_CLUSTER_NODE_ROLE_NONE = "NONE"
@@ -114,6 +116,8 @@ class NUVRS(NURESTObject):
     
     CONST_JSONRPC_CONNECTION_STATE_ADMIN_DOWN = "ADMIN_DOWN"
     
+    CONST_PERSONALITY_VRSB = "VRSB"
+    
     CONST_STATUS_UP = "UP"
     
     CONST_PERSONALITY_NUAGE_210_WBX_48_S = "NUAGE_210_WBX_48_S"
@@ -137,6 +141,8 @@ class NUVRS(NURESTObject):
     CONST_VSC_CURRENT_STATE_PRIMARY = "PRIMARY"
     
     CONST_LICENSED_STATE_UNLICENSED = "UNLICENSED"
+    
+    CONST_PERSONALITY_NSGBR = "NSGBR"
     
     
 
@@ -221,7 +227,7 @@ class NUVRS(NURESTObject):
         self.expose_attribute(local_name="peak_cpuusage", remote_name="peakCPUUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peak_memory_usage", remote_name="peakMemoryUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peer", remote_name="peer", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'HARDWARE_VTEP', u'NONE', u'NSG', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'VRS', u'VRSG'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'HARDWARE_VTEP', u'NONE', u'NSG', u'NSGBR', u'NSGDUC', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'VRS', u'VRSB', u'VRSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="messages", remote_name="messages", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="revert_behavior_enabled", remote_name="revertBehaviorEnabled", attribute_type=bool, is_required=False, is_unique=False)

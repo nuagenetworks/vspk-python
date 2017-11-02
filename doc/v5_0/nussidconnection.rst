@@ -30,6 +30,8 @@ Attributes
 
 - ``interface_name``: A read-only attribute that represents the generated interface name for the SSID connection to be provisioned on the NSG.
 
+- ``vport_id``: The Vport associated with this SSID connection.
+
 - ``broadcast_ssid``: Boolean that defines if the SSID name is to be broadcasted or not.
 
 - ``associated_captive_portal_profile_id``: Identification of the Captive Portal Profile that is associated with this instance of SSID connection.

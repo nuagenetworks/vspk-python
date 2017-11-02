@@ -58,9 +58,9 @@ Parents
 
 - :ref:`nusharednetworkresource.NUSharedNetworkResource<nusharednetworkresource>`
 
-- :ref:`nuvminterface.NUVMInterface<nuvminterface>`
-
 - :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nuvminterface.NUVMInterface<nuvminterface>`
 
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
 

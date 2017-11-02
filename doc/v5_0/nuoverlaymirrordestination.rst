@@ -16,6 +16,8 @@ Attributes
 
 - ``name``: Name of this overlay mirror destination
 
+- ``last_updated_by``: ID of the user who last updated the object.
+
 - ``redundancy_enabled``: Allow/Disallow redundant appliances and VIP
 
 - ``template_id``: Template to which this overlay mirror destination belongs to
@@ -26,10 +28,25 @@ Attributes
 
 - ``end_point_type`` (**Mandatory**): EndPointType is an enum. It defines the type of header rewrite and forwarding performed by VRS when the endpoint is used as a mirror destination. Possible value is VIRTUAL_WIRE
 
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
 - ``trigger_type``: Trigger type, THIS IS READ ONLY. Possible values are NONE, GARP, .
 
+- ``external_id``: External object ID. Used for integration with third party systems
 
 
+
+
+Children
+--------
+
+================================================================================================================================================               ==========================================================================================
+**class**                                                                                                                                                      **fetcher**
+
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+:ref:`nuvport.NUVPort<nuvport>`                                                                                                                                  ``vports`` 
+================================================================================================================================================               ==========================================================================================
 
 
 

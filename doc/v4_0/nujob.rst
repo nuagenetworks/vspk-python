@@ -57,6 +57,8 @@ Parents
 
 - :ref:`nuingressexternalservicetemplateentry.NUIngressExternalServiceTemplateEntry<nuingressexternalservicetemplateentry>`
 
+- :ref:`nudomain.NUDomain<nudomain>`
+
 - :ref:`nuvsc.NUVSC<nuvsc>`
 
 - :ref:`nuvsd.NUVSD<nuvsd>`
@@ -74,8 +76,6 @@ Parents
 - :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 
 - :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 

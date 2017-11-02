@@ -16,7 +16,7 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``gateway_id``: The Gateway associated with this  VLAN  . This is a read only attribute
+- ``gateway_id``: The Gateway associated with this  VLAN. This is a read only attribute
 
 - ``readonly``: Determines whether this entity is read only.  Read only objects cannot be modified or deleted.
 
@@ -30,7 +30,9 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``vport_id``: The Vport associated with this  VLAN  . This is a read only attribute
+- ``vport_id``: The Vport associated with this VLAN. This is a read only attribute
+
+- ``is_uplink``: Indicates if the VLAN is used as an uplink.
 
 - ``use_user_mnemonic``: determines whether to use user mnemonic of the Port
 
@@ -38,7 +40,11 @@ Attributes
 
 - ``associated_bgp_profile_id``: The ID of the associated BGP profile
 
+- ``associated_connection_type``: Specifies the type of Connection (uplink, BR) associated to this VLAN instance.
+
 - ``associated_egress_qos_policy_id``: ID of the Egress QOS Policy associated with this VLAN.
+
+- ``associated_ingress_qos_policy_id``: ID of the Ingress QOS Policy / Tunnel Shaper associated with this VLAN.
 
 - ``associated_uplink_connection_id``: Associated uplink connection ID
 
@@ -69,6 +75,7 @@ Children
 :ref:`nuenterprisepermission.NUEnterprisePermission<nuenterprisepermission>`                                                                                     ``enterprise_permissions`` 
 :ref:`nuuplinkconnection.NUUplinkConnection<nuuplinkconnection>`                                                                                                 ``uplink_connections`` 
 :ref:`nubrconnection.NUBRConnection<nubrconnection>`                                                                                                             ``br_connections`` 
+:ref:`nustatistics.NUStatistics<nustatistics>`                                                                                                                   ``statistics`` 
 :ref:`nultestatistics.NULtestatistics<nultestatistics>`                                                                                                          ``ltestatistics`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
 ================================================================================================================================================               ==========================================================================================

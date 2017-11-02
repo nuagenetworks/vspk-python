@@ -48,7 +48,7 @@ Attributes
 
 - ``flow_logging_enabled``: Is flow logging enabled for this particular template
 
-- ``enterprise_name`` (**Mandatory**): The name of the enterprise for the domains parent
+- ``enterprise_name``: The name of the enterprise for the domains parent
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 

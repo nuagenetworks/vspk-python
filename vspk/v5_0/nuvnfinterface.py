@@ -97,7 +97,7 @@ class NUVNFInterface(NURESTObject):
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zone_id", remote_name="zoneID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zone_name", remote_name="zoneName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="is_management_interface", remote_name="isManagementInterface", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="is_management_interface", remote_name="isManagementInterface", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="attached_network_id", remote_name="attachedNetworkID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="attached_network_type", remote_name="attachedNetworkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'L2DOMAIN', u'SUBNET'])
         

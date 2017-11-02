@@ -98,7 +98,7 @@ class NUNetworkMacroGroup(NURESTObject):
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.enterprise_networks = NUEnterpriseNetworksFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.enterprise_networks = NUEnterpriseNetworksFetcher.fetcher_with_object(parent_object=self, relationship="member")
         
 
         self._compute_args(**kwargs)

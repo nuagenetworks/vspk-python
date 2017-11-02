@@ -264,7 +264,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Get back_haul_route_distinguisher value.
 
             Notes:
-                backHaulRouteDistinguisher of the Shared Resource
+                Backhaul route distinguisher of the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `backHaulRouteDistinguisher` in VSD API.
@@ -277,7 +277,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Set back_haul_route_distinguisher value.
 
             Notes:
-                backHaulRouteDistinguisher of the Shared Resource
+                Backhaul route distinguisher of the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `backHaulRouteDistinguisher` in VSD API.
@@ -291,7 +291,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Get back_haul_route_target value.
 
             Notes:
-                backHaulRouteTarget of the Shared Resource
+                Backhaul route target of the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `backHaulRouteTarget` in VSD API.
@@ -304,7 +304,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Set back_haul_route_target value.
 
             Notes:
-                backHaulRouteTarget of the Shared Resource
+                Backhaul route target of the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `backHaulRouteTarget` in VSD API.
@@ -318,7 +318,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Get back_haul_vnid value.
 
             Notes:
-                backHaulVNID of the Shared Resource
+                Backhaul virtual network ID of the shared resource
 
                 
                 This attribute is named `backHaulVNID` in VSD API.
@@ -331,7 +331,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Set back_haul_vnid value.
 
             Notes:
-                backHaulVNID of the Shared Resource
+                Backhaul virtual network ID of the shared resource
 
                 
                 This attribute is named `backHaulVNID` in VSD API.
@@ -595,7 +595,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Get vn_id value.
 
             Notes:
-                VNID of the Shared Resource
+                Virtual network ID of the shared resource
 
                 
                 This attribute is named `vnID` in VSD API.
@@ -608,7 +608,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Set vn_id value.
 
             Notes:
-                VNID of the Shared Resource
+                Virtual network ID of the shared resource
 
                 
                 This attribute is named `vnID` in VSD API.
@@ -672,7 +672,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Get domain_route_distinguisher value.
 
             Notes:
-                Route distinguisher configured on the shared resource
+                Route distinguisher configured on the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `domainRouteDistinguisher` in VSD API.
@@ -685,7 +685,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Set domain_route_distinguisher value.
 
             Notes:
-                Route distinguisher configured on the shared resource
+                Route distinguisher configured on the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `domainRouteDistinguisher` in VSD API.
@@ -699,7 +699,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Get domain_route_target value.
 
             Notes:
-                Route target configured on the shared resource
+                Route target configured on the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `domainRouteTarget` in VSD API.
@@ -712,7 +712,7 @@ class NUSharedNetworkResource(NURESTObject):
         """ Set domain_route_target value.
 
             Notes:
-                Route target configured on the shared resource
+                Route target configured on the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
                 
                 This attribute is named `domainRouteTarget` in VSD API.

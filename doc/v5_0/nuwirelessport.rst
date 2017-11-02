@@ -14,8 +14,6 @@ Attributes
 
 - ``name`` (**Mandatory**): A customer friendly name for the Wireless Port instance.
 
-- ``template_id``: The ID of the template that this Wireless Port was created from.  If the wireless port was not created from a template, then the value will be null.
-
 - ``generic_config``: This field is used to contain the "blob" parameters for the WiFi Card (physical module) on the NSG.
 
 - ``description``: A customer friendly description to be given to the Wireless Port instance.

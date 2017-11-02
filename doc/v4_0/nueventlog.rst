@@ -87,13 +87,11 @@ Parents
 
 - :ref:`numetadatatag.NUMetadataTag<numetadatatag>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
-
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
-- :ref:`numetadata.NUMetadata<numetadata>`
-
 - :ref:`nuvsp.NUVSP<nuvsp>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuvsc.NUVSC<nuvsc>`
 
@@ -111,6 +109,8 @@ Parents
 
 - :ref:`nuzonetemplate.NUZoneTemplate<nuzonetemplate>`
 
+- :ref:`numetadata.NUMetadata<numetadata>`
+
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
 - :ref:`nuhsc.NUHSC<nuhsc>`
@@ -121,6 +121,8 @@ Parents
 
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
 
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
+
 - :ref:`nulicense.NULicense<nulicense>`
 
 - :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
@@ -130,8 +132,6 @@ Parents
 - :ref:`numulticastrange.NUMultiCastRange<numulticastrange>`
 
 - :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nutier.NUTier<nutier>`
 
@@ -149,6 +149,8 @@ Parents
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
+- :ref:`nuvm.NUVM<nuvm>`
+
 - :ref:`nunsport.NUNSPort<nunsport>`
 
 - :ref:`nupublicnetworkmacro.NUPublicNetworkMacro<nupublicnetworkmacro>`
@@ -158,8 +160,6 @@ Parents
 - :ref:`nuaddressrange.NUAddressRange<nuaddressrange>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
-
-- :ref:`nuvm.NUVM<nuvm>`
 
 - :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
 

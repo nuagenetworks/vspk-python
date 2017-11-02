@@ -64,6 +64,7 @@ Children
 **class**                                                                                                                                                      **fetcher**
 
 :ref:`nul2domain.NUL2Domain<nul2domain>`                                                                                                                         ``l2_domains`` 
+:ref:`nul4service.NUL4Service<nul4service>`                                                                                                                      ``l4_services`` 
 :ref:`nuvcentereamconfig.NUVCenterEAMConfig<nuvcentereamconfig>`                                                                                                 ``vcenter_eam_configs`` 
 :ref:`nuratelimiter.NURateLimiter<nuratelimiter>`                                                                                                                ``rate_limiters`` 
 :ref:`nugateway.NUGateway<nugateway>`                                                                                                                            ``gateways`` 
@@ -105,6 +106,7 @@ Children
 :ref:`nuinfrastructureaccessprofile.NUInfrastructureAccessProfile<nuinfrastructureaccessprofile>`                                                                ``infrastructure_access_profiles`` 
 :ref:`nuinfrastructuregatewayprofile.NUInfrastructureGatewayProfile<nuinfrastructuregatewayprofile>`                                                             ``infrastructure_gateway_profiles`` 
 :ref:`nuinfrastructurevscprofile.NUInfrastructureVscProfile<nuinfrastructurevscprofile>`                                                                         ``infrastructure_vsc_profiles`` 
+:ref:`nuvnfthresholdpolicy.NUVNFThresholdPolicy<nuvnfthresholdpolicy>`                                                                                           ``vnf_threshold_policies`` 
 :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`                                                                            ``ingress_acl_entry_templates`` 
 :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`                                                                                           ``ingress_acl_templates`` 
 :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`                                                                   ``ingress_adv_fwd_entry_templates`` 
@@ -117,6 +119,7 @@ Children
 :ref:`nuzone.NUZone<nuzone>`                                                                                                                                     ``zones`` 
 :ref:`nucontainer.NUContainer<nucontainer>`                                                                                                                      ``containers`` 
 :ref:`nucontainerinterface.NUContainerInterface<nucontainerinterface>`                                                                                           ``container_interfaces`` 
+:ref:`nuqospolicer.NUQosPolicer<nuqospolicer>`                                                                                                                   ``qos_policers`` 
 :ref:`nucosremarkingpolicytable.NUCOSRemarkingPolicyTable<nucosremarkingpolicytable>`                                                                            ``cos_remarking_policy_tables`` 
 :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`                                                                                                          ``host_interfaces`` 
 :ref:`nuroutingpolicy.NURoutingPolicy<nuroutingpolicy>`                                                                                                          ``routing_policies`` 

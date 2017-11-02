@@ -35,15 +35,15 @@ from .fetchers import NUGlobalMetadatasFetcher
 from bambou import NURESTObject
 
 
-class NUOverlayMirrorDestinationTemplate(NURESTObject):
-    """ Represents a OverlayMirrorDestinationTemplate in the VSD
+class NUQosPolicer(NURESTObject):
+    """ Represents a QosPolicer in the VSD
 
         Notes:
-            None
+            QoS Policer ensures that traffic adheres to the stipulated QoS defined in your network. Contains Rate and Burst configurations and can be associated to VLANs.
     """
 
-    __rest_name__ = "overlaymirrordestinationtemplate"
-    __resource_name__ = "overlaymirrordestinationtemplates"
+    __rest_name__ = "qospolicer"
+    __resource_name__ = "qospolicers"
 
     
     ## Constants
@@ -52,18 +52,10 @@ class NUOverlayMirrorDestinationTemplate(NURESTObject):
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_END_POINT_TYPE_NONE = "NONE"
-    
-    CONST_TRIGGER_TYPE_NONE = "NONE"
-    
-    CONST_END_POINT_TYPE_VIRTUAL_WIRE = "VIRTUAL_WIRE"
-    
-    CONST_TRIGGER_TYPE_GARP = "GARP"
-    
     
 
     def __init__(self, **kwargs):
-        """ Initializes a OverlayMirrorDestinationTemplate instance
+        """ Initializes a QosPolicer instance
 
             Notes:
                 You can specify all parameters while calling this methods.
@@ -71,30 +63,28 @@ class NUOverlayMirrorDestinationTemplate(NURESTObject):
                 object from a Python dictionary
 
             Examples:
-                >>> overlaymirrordestinationtemplate = NUOverlayMirrorDestinationTemplate(id=u'xxxx-xxx-xxx-xxx', name=u'OverlayMirrorDestinationTemplate')
-                >>> overlaymirrordestinationtemplate = NUOverlayMirrorDestinationTemplate(data=my_dict)
+                >>> qospolicer = NUQosPolicer(id=u'xxxx-xxx-xxx-xxx', name=u'QosPolicer')
+                >>> qospolicer = NUQosPolicer(data=my_dict)
         """
 
-        super(NUOverlayMirrorDestinationTemplate, self).__init__()
+        super(NUQosPolicer, self).__init__()
 
         # Read/Write Attributes
         
         self._name = None
         self._last_updated_by = None
-        self._redundancy_enabled = None
+        self._rate = None
         self._description = None
-        self._end_point_type = None
         self._entity_scope = None
-        self._trigger_type = None
+        self._burst = None
         self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="redundancy_enabled", remote_name="redundancyEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="rate", remote_name="rate", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="end_point_type", remote_name="endPointType", attribute_type=str, is_required=True, is_unique=False, choices=[u'NONE', u'VIRTUAL_WIRE'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="trigger_type", remote_name="triggerType", attribute_type=str, is_required=False, is_unique=False, choices=[u'GARP', u'NONE'])
+        self.expose_attribute(local_name="burst", remote_name="burst", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -116,7 +106,7 @@ class NUOverlayMirrorDestinationTemplate(NURESTObject):
         """ Get name value.
 
             Notes:
-                Name of this overlay mirror destination template
+                Name of the QoS Policer
 
                 
         """
@@ -127,7 +117,7 @@ class NUOverlayMirrorDestinationTemplate(NURESTObject):
         """ Set name value.
 
             Notes:
-                Name of this overlay mirror destination template
+                Name of the QoS Policer
 
                 
         """
@@ -162,30 +152,26 @@ class NUOverlayMirrorDestinationTemplate(NURESTObject):
 
     
     @property
-    def redundancy_enabled(self):
-        """ Get redundancy_enabled value.
+    def rate(self):
+        """ Get rate value.
 
             Notes:
-                Allow/Disallow redundant appliances and VIP
+                Rate: Bandwidth that is allowed in Mb/s; only whole values supported.
 
-                
-                This attribute is named `redundancyEnabled` in VSD API.
                 
         """
-        return self._redundancy_enabled
+        return self._rate
 
-    @redundancy_enabled.setter
-    def redundancy_enabled(self, value):
-        """ Set redundancy_enabled value.
+    @rate.setter
+    def rate(self, value):
+        """ Set rate value.
 
             Notes:
-                Allow/Disallow redundant appliances and VIP
+                Rate: Bandwidth that is allowed in Mb/s; only whole values supported.
 
                 
-                This attribute is named `redundancyEnabled` in VSD API.
-                
         """
-        self._redundancy_enabled = value
+        self._rate = value
 
     
     @property
@@ -193,7 +179,7 @@ class NUOverlayMirrorDestinationTemplate(NURESTObject):
         """ Get description value.
 
             Notes:
-                Description of this overlay mirror destination template
+                Description of the QoS Policer
 
                 
         """
@@ -204,38 +190,11 @@ class NUOverlayMirrorDestinationTemplate(NURESTObject):
         """ Set description value.
 
             Notes:
-                Description of this overlay mirror destination template
+                Description of the QoS Policer
 
                 
         """
         self._description = value
-
-    
-    @property
-    def end_point_type(self):
-        """ Get end_point_type value.
-
-            Notes:
-                VPortTagEndPointType is an enum. It defines the type of header rewrite and forwarding performed by VRS when the endpoint is used as a overlay mirror destination. Possible value is VIRTUAL_WIRE.
-
-                
-                This attribute is named `endPointType` in VSD API.
-                
-        """
-        return self._end_point_type
-
-    @end_point_type.setter
-    def end_point_type(self, value):
-        """ Set end_point_type value.
-
-            Notes:
-                VPortTagEndPointType is an enum. It defines the type of header rewrite and forwarding performed by VRS when the endpoint is used as a overlay mirror destination. Possible value is VIRTUAL_WIRE.
-
-                
-                This attribute is named `endPointType` in VSD API.
-                
-        """
-        self._end_point_type = value
 
     
     @property
@@ -266,30 +225,26 @@ class NUOverlayMirrorDestinationTemplate(NURESTObject):
 
     
     @property
-    def trigger_type(self):
-        """ Get trigger_type value.
+    def burst(self):
+        """ Get burst value.
 
             Notes:
-                Trigger type, could be NONE/GARP - THIS IS READONLY
+                Burst Size: The maximum burst size associated with the QoS Policer in kilo-bits; only whole values are supported.
 
-                
-                This attribute is named `triggerType` in VSD API.
                 
         """
-        return self._trigger_type
+        return self._burst
 
-    @trigger_type.setter
-    def trigger_type(self, value):
-        """ Set trigger_type value.
+    @burst.setter
+    def burst(self, value):
+        """ Set burst value.
 
             Notes:
-                Trigger type, could be NONE/GARP - THIS IS READONLY
+                Burst Size: The maximum burst size associated with the QoS Policer in kilo-bits; only whole values are supported.
 
                 
-                This attribute is named `triggerType` in VSD API.
-                
         """
-        self._trigger_type = value
+        self._burst = value
 
     
     @property
