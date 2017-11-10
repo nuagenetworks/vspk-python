@@ -38,7 +38,7 @@ class Utils(object):
     """ Utils """
 
     # TODO: remove that custom thing
-    INVARIANT_RESOURCES = ["qos", "vrs", "cms", "statistics"]
+    INVARIANT_RESOURCES = ["qos", "vrs", "cms", "statistics", "licensestatus"]
 
     @classmethod
     def _clean_name(cls, string):
