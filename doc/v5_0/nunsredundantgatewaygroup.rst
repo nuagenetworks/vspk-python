@@ -20,33 +20,33 @@ Attributes
 
 - ``gateway_peer1_id``: The gateway configuration owner in this Redundant Group. when Redundant Group is deleted this gateway will recieve vport associations 
 
-- ``gateway_peer1_name``: The gateway   configuration owner name in this Redundant Group
+- ``gateway_peer1_name``: The name of the authoritative gateway owning the configuration for the Redundant Group
 
-- ``gateway_peer2_autodiscovered_gateway_id``: The Auto Discovered Gateway  peer in this Redundant Group
+- ``gateway_peer2_autodiscovered_gateway_id``: The Auto Discovered Gateway configuration for the secondary gateway in this Redundant Group.
 
 - ``gateway_peer2_id``: The gateway peer in this Redundant Group. when Redundant Group is deleted this gateway will not recieve vport associations
 
-- ``gateway_peer2_name``: The gateway peer name in this Redundant Group
+- ``gateway_peer2_name``: The secondary gateway peer name in this Redundant Group.
 
-- ``heartbeat_interval``: Heartbeat interval in milliseconds to declare the neighbor dead.
+- ``heartbeat_interval``: Heartbeat interval in milliseconds to declare the neighbor as dead.
 
 - ``heartbeat_vlanid``: Heartbeat VLAN used for BFD.
 
-- ``redundancy_port_ids``: Collections resilient port ids associated with this redundant group.
+- ``redundancy_port_ids``: Collections resilient port IDs associated with this redundant group.
 
-- ``redundant_gateway_status``: The status of  Redundant Group.
+- ``redundant_gateway_status``: The status of the Redundant Group.
 
-- ``permitted_action``: The permitted  action to USE/EXTEND  this Gateway.
+- ``permitted_action``: The permitted action to USE/EXTEND this Gateway.
 
 - ``personality``: Derived personality of the Redundancy Group.
 
-- ``description``:  Description of the Redundancy Group
+- ``description``: Description of the Redundancy Group
 
 - ``enterprise_id``: The enterprise associated with this Redundant Group. This is a read only attribute
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``consecutive_failures_count``: Consecutive failure count.
+- ``consecutive_failures_count``: Consecutive failure count.  Supported value is 3.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

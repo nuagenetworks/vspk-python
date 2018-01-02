@@ -51,6 +51,9 @@ from .fetchers import NUDomainFIPAclTemplatesFetcher
 from .fetchers import NUFloatingIPACLTemplatesFetcher
 
 
+from .fetchers import NUVirtualFirewallPoliciesFetcher
+
+
 from .fetchers import NUGlobalMetadatasFetcher
 
 
@@ -197,6 +200,9 @@ class NUDomainTemplate(NURESTObject):
         
         
         self.floating_ipacl_templates = NUFloatingIPACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.virtual_firewall_policies = NUVirtualFirewallPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")

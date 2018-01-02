@@ -103,7 +103,7 @@ class NUVLANTemplate(NURESTObject):
         self._external_id = None
         self._type = None
         
-        self.expose_attribute(local_name="value", remote_name="value", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="value", remote_name="value", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])

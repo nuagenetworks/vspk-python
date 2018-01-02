@@ -65,6 +65,10 @@ class NUEgressACLTemplate(NURESTObject):
     
     CONST_POLICY_STATE_DRAFT = "DRAFT"
     
+    CONST_PRIORITY_TYPE_MIDDLE_FIREWALL = "MIDDLE_FIREWALL"
+    
+    CONST_PRIORITY_TYPE_TOP_FIREWALL = "TOP_FIREWALL"
+    
     CONST_POLICY_STATE_LIVE = "LIVE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
@@ -72,6 +76,8 @@ class NUEgressACLTemplate(NURESTObject):
     CONST_PRIORITY_TYPE_NONE = "NONE"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_PRIORITY_TYPE_BOTTOM_FIREWALL = "BOTTOM_FIREWALL"
     
     CONST_PRIORITY_TYPE_TOP = "TOP"
     
@@ -108,6 +114,7 @@ class NUEgressACLTemplate(NURESTObject):
         self._priority = None
         self._priority_type = None
         self._associated_live_entity_id = None
+        self._associated_virtual_firewall_policy_id = None
         self._auto_generate_priority = None
         self._external_id = None
         
@@ -121,8 +128,9 @@ class NUEgressACLTemplate(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="priority_type", remote_name="priorityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BOTTOM', u'NONE', u'TOP'])
+        self.expose_attribute(local_name="priority_type", remote_name="priorityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BOTTOM', u'BOTTOM_FIREWALL', u'MIDDLE_FIREWALL', u'NONE', u'TOP', u'TOP_FIREWALL'])
         self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_virtual_firewall_policy_id", remote_name="associatedVirtualFirewallPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="auto_generate_priority", remote_name="autoGeneratePriority", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
@@ -364,7 +372,7 @@ class NUEgressACLTemplate(NURESTObject):
         """ Get policy_state value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `policyState` in VSD API.
@@ -377,7 +385,7 @@ class NUEgressACLTemplate(NURESTObject):
         """ Set policy_state value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `policyState` in VSD API.
@@ -414,7 +422,7 @@ class NUEgressACLTemplate(NURESTObject):
         """ Get priority_type value.
 
             Notes:
-                
+                Possible values: TOP, BOTTOM, TOP_FIREWALL, BOTTOM_FIREWALL, MIDDLE_FIREWALL or NONE. TOP and BOTTOM ACL policies can only be defined and managed on the template level, NONE can be used on both the template and instantiated level. TOP_FIREWALL, BOTTOM_FIREWALL, MIDDLE_FIREWALL are used to represent acls dirived from Virtual Firewall Policies. These allow for careful control of ACL priority handling.
 
                 
                 This attribute is named `priorityType` in VSD API.
@@ -427,7 +435,7 @@ class NUEgressACLTemplate(NURESTObject):
         """ Set priority_type value.
 
             Notes:
-                
+                Possible values: TOP, BOTTOM, TOP_FIREWALL, BOTTOM_FIREWALL, MIDDLE_FIREWALL or NONE. TOP and BOTTOM ACL policies can only be defined and managed on the template level, NONE can be used on both the template and instantiated level. TOP_FIREWALL, BOTTOM_FIREWALL, MIDDLE_FIREWALL are used to represent acls dirived from Virtual Firewall Policies. These allow for careful control of ACL priority handling.
 
                 
                 This attribute is named `priorityType` in VSD API.
@@ -464,11 +472,38 @@ class NUEgressACLTemplate(NURESTObject):
 
     
     @property
+    def associated_virtual_firewall_policy_id(self):
+        """ Get associated_virtual_firewall_policy_id value.
+
+            Notes:
+                The ID of the Virtual Firewall Policy, if this was created as part of the Virtual Firewall Policy creation
+
+                
+                This attribute is named `associatedVirtualFirewallPolicyID` in VSD API.
+                
+        """
+        return self._associated_virtual_firewall_policy_id
+
+    @associated_virtual_firewall_policy_id.setter
+    def associated_virtual_firewall_policy_id(self, value):
+        """ Set associated_virtual_firewall_policy_id value.
+
+            Notes:
+                The ID of the Virtual Firewall Policy, if this was created as part of the Virtual Firewall Policy creation
+
+                
+                This attribute is named `associatedVirtualFirewallPolicyID` in VSD API.
+                
+        """
+        self._associated_virtual_firewall_policy_id = value
+
+    
+    @property
     def auto_generate_priority(self):
         """ Get auto_generate_priority value.
 
             Notes:
-                This option affects how ACL entry priorities are generated when not specified. If "false", the priority is generated by incrementing the current highest priority by 100. If "true", a random priority will be generated, which is advised when creating many entries concurrently without specifying the priority. This will cause the ACL entry to be randomly placed in the existing list of ACL entries. Therefore it is advised to only enable this when allow rules are being created.
+                This option affects how ACL entry priorities are generated when not specified. If 'false', the priority is generated by incrementing the current highest priority by 100. If 'true', a random priority will be generated, which is advised when creating many entries concurrently without specifying the priority. This will cause the ACL entry to be randomly placed in the existing list of ACL entries. Therefore it is advised to only enable this when allow rules are being created.
 
                 
                 This attribute is named `autoGeneratePriority` in VSD API.
@@ -481,7 +516,7 @@ class NUEgressACLTemplate(NURESTObject):
         """ Set auto_generate_priority value.
 
             Notes:
-                This option affects how ACL entry priorities are generated when not specified. If "false", the priority is generated by incrementing the current highest priority by 100. If "true", a random priority will be generated, which is advised when creating many entries concurrently without specifying the priority. This will cause the ACL entry to be randomly placed in the existing list of ACL entries. Therefore it is advised to only enable this when allow rules are being created.
+                This option affects how ACL entry priorities are generated when not specified. If 'false', the priority is generated by incrementing the current highest priority by 100. If 'true', a random priority will be generated, which is advised when creating many entries concurrently without specifying the priority. This will cause the ACL entry to be randomly placed in the existing list of ACL entries. Therefore it is advised to only enable this when allow rules are being created.
 
                 
                 This attribute is named `autoGeneratePriority` in VSD API.

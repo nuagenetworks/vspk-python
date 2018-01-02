@@ -64,7 +64,7 @@ Attributes
 
 - ``associated_key_server_monitor_id``: Readonly Id of the associated keyserver monitor
 
-- ``customer_id``: CustomerID that is used by VSC to identify this enterprise. This is a read only attribute.
+- ``customer_id``: CustomerID that is used by VSC to identify this enterprise. This can be configured by root user.
 
 - ``avatar_data``: URL to the avatar data associated with the enterprise. If the avatarType is URL then value of avatarData should an URL of the image. If the avatarType BASE64 then avatarData should be BASE64 encoded value of the image
 

@@ -1228,7 +1228,7 @@ class NUEnterprise(NURESTObject):
         """ Get customer_id value.
 
             Notes:
-                CustomerID that is used by VSC to identify this enterprise. This is a read only attribute.
+                CustomerID that is used by VSC to identify this enterprise. This can be configured by root user.
 
                 
                 This attribute is named `customerID` in VSD API.
@@ -1241,7 +1241,7 @@ class NUEnterprise(NURESTObject):
         """ Set customer_id value.
 
             Notes:
-                CustomerID that is used by VSC to identify this enterprise. This is a read only attribute.
+                CustomerID that is used by VSC to identify this enterprise. This can be configured by root user.
 
                 
                 This attribute is named `customerID` in VSD API.

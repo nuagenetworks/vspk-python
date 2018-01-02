@@ -288,7 +288,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Get gateway_peer1_name value.
 
             Notes:
-                The gateway   configuration owner name in this Redundant Group
+                The name of the authoritative gateway owning the configuration for the Redundant Group
 
                 
                 This attribute is named `gatewayPeer1Name` in VSD API.
@@ -301,7 +301,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Set gateway_peer1_name value.
 
             Notes:
-                The gateway   configuration owner name in this Redundant Group
+                The name of the authoritative gateway owning the configuration for the Redundant Group
 
                 
                 This attribute is named `gatewayPeer1Name` in VSD API.
@@ -315,7 +315,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Get gateway_peer2_autodiscovered_gateway_id value.
 
             Notes:
-                The Auto Discovered Gateway  peer in this Redundant Group
+                The Auto Discovered Gateway configuration for the secondary gateway in this Redundant Group.
 
                 
                 This attribute is named `gatewayPeer2AutodiscoveredGatewayID` in VSD API.
@@ -328,7 +328,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Set gateway_peer2_autodiscovered_gateway_id value.
 
             Notes:
-                The Auto Discovered Gateway  peer in this Redundant Group
+                The Auto Discovered Gateway configuration for the secondary gateway in this Redundant Group.
 
                 
                 This attribute is named `gatewayPeer2AutodiscoveredGatewayID` in VSD API.
@@ -369,7 +369,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Get gateway_peer2_name value.
 
             Notes:
-                The gateway peer name in this Redundant Group
+                The secondary gateway peer name in this Redundant Group.
 
                 
                 This attribute is named `gatewayPeer2Name` in VSD API.
@@ -382,7 +382,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Set gateway_peer2_name value.
 
             Notes:
-                The gateway peer name in this Redundant Group
+                The secondary gateway peer name in this Redundant Group.
 
                 
                 This attribute is named `gatewayPeer2Name` in VSD API.
@@ -396,7 +396,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Get heartbeat_interval value.
 
             Notes:
-                Heartbeat interval in milliseconds to declare the neighbor dead.
+                Heartbeat interval in milliseconds to declare the neighbor as dead.
 
                 
                 This attribute is named `heartbeatInterval` in VSD API.
@@ -409,7 +409,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Set heartbeat_interval value.
 
             Notes:
-                Heartbeat interval in milliseconds to declare the neighbor dead.
+                Heartbeat interval in milliseconds to declare the neighbor as dead.
 
                 
                 This attribute is named `heartbeatInterval` in VSD API.
@@ -450,7 +450,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Get redundancy_port_ids value.
 
             Notes:
-                Collections resilient port ids associated with this redundant group.
+                Collections resilient port IDs associated with this redundant group.
 
                 
                 This attribute is named `redundancyPortIDs` in VSD API.
@@ -463,7 +463,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Set redundancy_port_ids value.
 
             Notes:
-                Collections resilient port ids associated with this redundant group.
+                Collections resilient port IDs associated with this redundant group.
 
                 
                 This attribute is named `redundancyPortIDs` in VSD API.
@@ -477,7 +477,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Get redundant_gateway_status value.
 
             Notes:
-                The status of  Redundant Group.
+                The status of the Redundant Group.
 
                 
                 This attribute is named `redundantGatewayStatus` in VSD API.
@@ -490,7 +490,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Set redundant_gateway_status value.
 
             Notes:
-                The status of  Redundant Group.
+                The status of the Redundant Group.
 
                 
                 This attribute is named `redundantGatewayStatus` in VSD API.
@@ -504,7 +504,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Get permitted_action value.
 
             Notes:
-                The permitted  action to USE/EXTEND  this Gateway.
+                The permitted action to USE/EXTEND this Gateway.
 
                 
                 This attribute is named `permittedAction` in VSD API.
@@ -517,7 +517,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Set permitted_action value.
 
             Notes:
-                The permitted  action to USE/EXTEND  this Gateway.
+                The permitted action to USE/EXTEND this Gateway.
 
                 
                 This attribute is named `permittedAction` in VSD API.
@@ -554,7 +554,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Get description value.
 
             Notes:
-                 Description of the Redundancy Group
+                Description of the Redundancy Group
 
                 
         """
@@ -565,7 +565,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Set description value.
 
             Notes:
-                 Description of the Redundancy Group
+                Description of the Redundancy Group
 
                 
         """
@@ -631,7 +631,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Get consecutive_failures_count value.
 
             Notes:
-                Consecutive failure count.
+                Consecutive failure count.  Supported value is 3.
 
                 
                 This attribute is named `consecutiveFailuresCount` in VSD API.
@@ -644,7 +644,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         """ Set consecutive_failures_count value.
 
             Notes:
-                Consecutive failure count.
+                Consecutive failure count.  Supported value is 3.
 
                 
                 This attribute is named `consecutiveFailuresCount` in VSD API.

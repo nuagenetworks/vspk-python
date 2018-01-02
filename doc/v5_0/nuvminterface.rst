@@ -94,7 +94,7 @@ Parents
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nuvm.NUVM<nuvm>`
+
+- :ref:`nume.NUMe<nume>`
 

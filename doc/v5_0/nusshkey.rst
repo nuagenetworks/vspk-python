@@ -24,3 +24,10 @@ Attributes
 
 
 
+
+Parents
+--------
+
+
+- :ref:`nuinfrastructureaccessprofile.NUInfrastructureAccessProfile<nuinfrastructureaccessprofile>`
+

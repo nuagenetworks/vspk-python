@@ -56,7 +56,27 @@ Attributes
 
 - ``scope``: Cluster in scope or not in scope.
 
+- ``secondary_data_uplink_dhcp_enabled``: Enable DHCP on the secondary data uplink.
+
+- ``secondary_data_uplink_enabled`` (**Mandatory**): Enable secondary data uplink
+
+- ``secondary_data_uplink_ip``: Secondary data uplink IP
+
+- ``secondary_data_uplink_interface``: Interface to use for the secondary data uplink. This interface can be a normal interface or a VLAN on an existing interface. Please read the VMware integration guide for more details.
+
+- ``secondary_data_uplink_mtu``: Secondary data uplink MTU
+
+- ``secondary_data_uplink_netmask``: Secondary data uplink Netmask
+
+- ``secondary_data_uplink_primary_controller``: Secondary data uplink primary controller IP
+
+- ``secondary_data_uplink_secondary_controller``: Secondary data uplink secondary controller IP
+
+- ``secondary_data_uplink_underlay_id``: Secondary data uplink underlay ID
+
 - ``secondary_nuage_controller``: IP address of the secondary Controller (VSC)
+
+- ``memory_size_in_gb``: Memory in Gigabytes
 
 - ``remote_syslog_server_ip``: Remote syslog server IP
 
@@ -94,6 +114,10 @@ Attributes
 
 - ``network_uplink_interface_netmask``: Network Uplink Interface Netmask
 
+- ``revertive_controller_enabled`` (**Mandatory**): Enable revertive controller behaviour. If this is enabled, OVS will make its primary VSC as its master VSC once it is back up.
+
+- ``revertive_timer`` (**Mandatory**):  A timer in seconds indicating after how long OVS should retry to connect to the primary VSC as its master after a failure.
+
 - ``nfs_log_server``: IP address of NFS server to send the VRS log
 
 - ``nfs_mount_path``: Location to mount the NFS server
@@ -114,6 +138,10 @@ Attributes
 
 - ``mirror_network_portgroup``: Mirror Port Group Name
 
+- ``disable_gro_on_datapath``: Disable GRO on datapath
+
+- ``disable_lro_on_datapath``: Disable LRO on datapath
+
 - ``site_id``: Site ID field for object profiles to support VSD Geo-redundancy
 
 - ``allow_data_dhcp``: Whether to get the Data IP for the VRS VM from DHCP or statically
@@ -124,7 +152,11 @@ Attributes
 
 - ``vm_network_portgroup`` (**Mandatory**): VM Network Port Group Name
 
+- ``enable_vrs_resource_reservation``: Enable resource reservation on the VRS. When this is enabled, all memory and 100% of CPU resources allocated to the VRS will be reserved.
+
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``configured_metrics_push_interval``: Configured VRS metrics push interval on VCIN
 
 - ``toolbox_deployment_mode``: Flag to specify if VRS is deployed using tool box.
 
@@ -175,6 +207,10 @@ Attributes
 - ``upgrade_status``: Script based upgrade Status
 
 - ``upgrade_timedout``: Time limit for the patch based upgrade functionality. If the upgrade process of a VRS has not returned a success or failure status within this time limit, the status will be changed to TIMEOUT. Specified in seconds
+
+- ``cpu_count``: The number of vCPUs that will be assigned to the VRS.
+
+- ``primary_data_uplink_underlay_id``: Primary data uplink underlay ID
 
 - ``primary_nuage_controller``: IP address of the primary Controller (VSC)
 
@@ -227,6 +263,10 @@ Attributes
 - ``available_networks``: List of the available network list for the hypervisor.
 
 - ``ovf_url``: ovf url
+
+- ``avrs_enabled``: When enabled, the AVRS functionality will be enabled on the VRS during bootstrapping. This feature requires special AVRS licenses and specific configuration which is described in the product documentation.
+
+- ``avrs_profile``: The AVRS configuration profile that needs to be set up. This profile will configure the AVRS services so that it can support a certain type of performance.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

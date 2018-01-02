@@ -42,6 +42,9 @@ from .fetchers import NUPermissionsFetcher
 from .fetchers import NUMetadatasFetcher
 
 
+from .fetchers import NUNetworkPerformanceBindingsFetcher
+
+
 from .fetchers import NUPGExpressionsFetcher
 
 
@@ -55,6 +58,9 @@ from .fetchers import NUEgressAdvFwdTemplatesFetcher
 
 
 from .fetchers import NUDHCPOptionsFetcher
+
+
+from .fetchers import NUVirtualFirewallPoliciesFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
@@ -103,9 +109,6 @@ from .fetchers import NUVPNConnectionsFetcher
 
 
 from .fetchers import NUVPortsFetcher
-
-
-from .fetchers import NUApplicationperformancemanagementbindingsFetcher
 
 
 from .fetchers import NUBridgeInterfacesFetcher
@@ -238,6 +241,7 @@ class NUL2Domain(NURESTObject):
         self._use_global_mac = None
         self._associated_multicast_channel_map_id = None
         self._associated_shared_network_resource_id = None
+        self._associated_underlay_id = None
         self._stretched = None
         self._multicast = None
         self._external_id = None
@@ -269,6 +273,7 @@ class NUL2Domain(NURESTObject):
         self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED ', u'ENABLED'])
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_shared_network_resource_id", remote_name="associatedSharedNetworkResourceID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_underlay_id", remote_name="associatedUnderlayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stretched", remote_name="stretched", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -293,6 +298,9 @@ class NUL2Domain(NURESTObject):
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.network_performance_bindings = NUNetworkPerformanceBindingsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.pg_expressions = NUPGExpressionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -306,6 +314,9 @@ class NUL2Domain(NURESTObject):
         
         
         self.dhcp_options = NUDHCPOptionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.virtual_firewall_policies = NUVirtualFirewallPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -354,9 +365,6 @@ class NUL2Domain(NURESTObject):
         
         
         self.vports = NUVPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.applicationperformancemanagementbindings = NUApplicationperformancemanagementbindingsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.bridge_interfaces = NUBridgeInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -1057,6 +1065,33 @@ class NUL2Domain(NURESTObject):
                 
         """
         self._associated_shared_network_resource_id = value
+
+    
+    @property
+    def associated_underlay_id(self):
+        """ Get associated_underlay_id value.
+
+            Notes:
+                The ID of the Underlay entity to which this L2 Domain is associated.
+
+                
+                This attribute is named `associatedUnderlayID` in VSD API.
+                
+        """
+        return self._associated_underlay_id
+
+    @associated_underlay_id.setter
+    def associated_underlay_id(self, value):
+        """ Set associated_underlay_id value.
+
+            Notes:
+                The ID of the Underlay entity to which this L2 Domain is associated.
+
+                
+                This attribute is named `associatedUnderlayID` in VSD API.
+                
+        """
+        self._associated_underlay_id = value
 
     
     @property

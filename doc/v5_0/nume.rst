@@ -18,7 +18,7 @@ Attributes
 
 - ``vss_stats_interval``: VSS flow stats frequency
 
-- ``password`` (**Mandatory**): User password stored as a hash (SHA-1 encrpted)
+- ``password`` (**Mandatory**): User password in clear text. Password cannot be a single character asterisk (*)
 
 - ``last_name`` (**Mandatory**): Last name of the user
 
@@ -30,7 +30,7 @@ Attributes
 
 - ``elastic_search_address``: elastic search address
 
-- ``flow_collection_enabled``: Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires "statisticsEnabled".
+- ``flow_collection_enabled``: Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires 'statisticsEnabled'.
 
 - ``email`` (**Mandatory**): Email address of the user
 
@@ -94,6 +94,7 @@ Children
 :ref:`nulicense.NULicense<nulicense>`                                                                                                                            ``licenses`` 
 :ref:`nulicensestatus.NULicenseStatus<nulicensestatus>`                                                                                                          ``license_status`` 
 :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`                                                                                              ``mirror_destinations`` 
+:ref:`nuvirtualfirewallpolicy.NUVirtualFirewallPolicy<nuvirtualfirewallpolicy>`                                                                                  ``virtual_firewall_policies`` 
 :ref:`nusiteinfo.NUSiteInfo<nusiteinfo>`                                                                                                                         ``site_infos`` 
 :ref:`nufloatingip.NUFloatingIp<nufloatingip>`                                                                                                                   ``floating_ips`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
@@ -127,6 +128,7 @@ Children
 :ref:`nuvcentervrsconfig.NUVCenterVRSConfig<nuvcentervrsconfig>`                                                                                                 ``vcenter_vrs_configs`` 
 :ref:`nudscpremarkingpolicytable.NUDSCPRemarkingPolicyTable<nudscpremarkingpolicytable>`                                                                         ``dscp_remarking_policy_tables`` 
 :ref:`nuuser.NUUser<nuuser>`                                                                                                                                     ``users`` 
+:ref:`nuusercontext.NUUserContext<nuusercontext>`                                                                                                                ``user_contexts`` 
 :ref:`nunsgateway.NUNSGateway<nunsgateway>`                                                                                                                      ``ns_gateways`` 
 :ref:`nunsgatewaytemplate.NUNSGatewayTemplate<nunsgatewaytemplate>`                                                                                              ``ns_gateway_templates`` 
 :ref:`nunsggroup.NUNSGGroup<nunsggroup>`                                                                                                                         ``nsg_groups`` 

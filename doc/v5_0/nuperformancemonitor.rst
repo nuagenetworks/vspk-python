@@ -32,7 +32,7 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``down_threshold_count``: Number of times the probe is allowed to retry on successive timeouts
+- ``hold_down_timer``: probation Timer in seconds
 
 - ``probe_type``: Type to be assigned to this probe
 
@@ -49,6 +49,7 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nutier.NUTier<nutier>`                                                                                                                                     ``tiers`` 
 :ref:`nuapplicationperformancemanagement.NUApplicationperformancemanagement<nuapplicationperformancemanagement>`                                                 ``applicationperformancemanagements`` 
 :ref:`nunsgateway.NUNSGateway<nunsgateway>`                                                                                                                      ``ns_gateways`` 
 ================================================================================================================================================               ==========================================================================================
@@ -58,6 +59,8 @@ Children
 Parents
 --------
 
+
+- :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
 
 - :ref:`nume.NUMe<nume>`
 

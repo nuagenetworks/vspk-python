@@ -32,6 +32,12 @@ from .fetchers import NUMetadatasFetcher
 
 from .fetchers import NUGlobalMetadatasFetcher
 
+
+from .fetchers import NUConnectionendpointsFetcher
+
+
+from .fetchers import NUSSHKeysFetcher
+
 from bambou import NURESTObject
 
 
@@ -93,7 +99,7 @@ class NUInfrastructureAccessProfile(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="ssh_auth_mode", remote_name="SSHAuthMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'KEY_BASED', u'PASSWORD_AND_KEY_BASED', u'PASSWORD_BASED'])
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=True)
         self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
@@ -112,6 +118,12 @@ class NUInfrastructureAccessProfile(NURESTObject):
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
+        
+        self.connectionendpoints = NUConnectionendpointsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ssh_keys = NUSSHKeysFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
 
         self._compute_args(**kwargs)
 
@@ -122,7 +134,7 @@ class NUInfrastructureAccessProfile(NURESTObject):
         """ Get ssh_auth_mode value.
 
             Notes:
-                Indicates the Authentication method used during a SSH session.
+                Indicates the authentication method used during an SSH session.
 
                 
                 This attribute is named `SSHAuthMode` in VSD API.
@@ -135,7 +147,7 @@ class NUInfrastructureAccessProfile(NURESTObject):
         """ Set ssh_auth_mode value.
 
             Notes:
-                Indicates the Authentication method used during a SSH session.
+                Indicates the authentication method used during an SSH session.
 
                 
                 This attribute is named `SSHAuthMode` in VSD API.
@@ -149,7 +161,7 @@ class NUInfrastructureAccessProfile(NURESTObject):
         """ Get name value.
 
             Notes:
-                Name of the Infrastructure Acces Profile
+                Name of the Infrastructure Access Profile
 
                 
         """
@@ -160,7 +172,7 @@ class NUInfrastructureAccessProfile(NURESTObject):
         """ Set name value.
 
             Notes:
-                Name of the Infrastructure Acces Profile
+                Name of the Infrastructure Access Profile
 
                 
         """

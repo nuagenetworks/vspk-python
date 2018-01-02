@@ -214,7 +214,7 @@ class NUUser(NURESTObject):
         """ Get password value.
 
             Notes:
-                User password stored as a hash (SHA-1 encrpted)
+                User password in clear text. Password cannot be a single character asterisk (*)
 
                 
         """
@@ -225,7 +225,7 @@ class NUUser(NURESTObject):
         """ Set password value.
 
             Notes:
-                User password stored as a hash (SHA-1 encrpted)
+                User password in clear text. Password cannot be a single character asterisk (*)
 
                 
         """

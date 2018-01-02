@@ -163,7 +163,7 @@ class NUUserContext(NURESTObject):
         """ Get flow_collection_enabled value.
 
             Notes:
-                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires "statisticsEnabled".
+                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires 'statisticsEnabled'.
 
                 
                 This attribute is named `flowCollectionEnabled` in VSD API.
@@ -176,7 +176,7 @@ class NUUserContext(NURESTObject):
         """ Set flow_collection_enabled value.
 
             Notes:
-                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires "statisticsEnabled".
+                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires 'statisticsEnabled'.
 
                 
                 This attribute is named `flowCollectionEnabled` in VSD API.

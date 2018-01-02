@@ -5,7 +5,7 @@ nuinfrastructuregatewayprofile
 
 .. class:: nuinfrastructuregatewayprofile.NUInfrastructureGatewayProfile(bambou.nurest_object.NUMetaRESTObject,):
 
-Represents Infrastructure Gateway Profile
+Represents Infrastructure Gateway Profile instance.  This object contains the common parameters for different types of NSGs to perform bootstrapping and have their network infrastructure and services configured before becoming operational.
 
 
 Attributes
@@ -14,7 +14,7 @@ Attributes
 
 - ``ntp_server_key``: If set, this represents the security key for the Gateway to communicate with the NTP server (a VSC).
 
-- ``ntp_server_key_id``: Correspond to the key ID on the NTP server that matches the ntpServerKey value.  Valid values are from 1 to 255 as specified by SR-OS and 0 to specify unused (VSD/NSG only).
+- ``ntp_server_key_id``: Corresponds to the key ID on the NTP server that matches the NTPServerKey value.  Valid values are from 1 to 255 as specified by SR-OS and when value 0 is entered, it means that the NTP Key is not used (VSD/NSG only).
 
 - ``name`` (**Mandatory**): Name of the Infrastructure Profile
 
@@ -22,7 +22,7 @@ Attributes
 
 - ``datapath_sync_timeout``: Datapath flows sync-time-interval specified in milliseconds
 
-- ``dead_timer``: ISO 8601 format duration: **P nYnMnD T nHnMnS**. **P** represents the period field and **T** the time field. Period field: **Y** = year, **M** = month, **D** = day. Time field: **H** = hours, **M** = minutes, **S** = seconds. **n** is the value of each field. Because the years and month are units that vary in length, for the time being those are not supported yet.
+- ``dead_timer``: ISO 8601 format duration: **PnYnMnD T nHnMnS**. **P** represents the period field and **T** the time field. Period field: **Y** = year, **M** = month, **D** = day. Time field: **H** = hours, **M** = minutes, **S** = seconds. **n** is the value of each field. Because the years and month are units that vary in length, for the time being those are not supported yet.
 
 - ``dead_timer_enabled``: Flag to enable automatic deactivation.
 
@@ -50,7 +50,7 @@ Attributes
 
 - ``force_immediate_system_sync``: Usually the synchronization will span across 1 hour window after the defined synchronization time. Forcing an immediate synchronization can overload the system and can have a negative impact on the system.
 
-- ``open_flow_audit_timer``: Openflow audit timer in sec. Upon the expiry of this timer a set of cleanup operations will be performed
+- ``open_flow_audit_timer``: Openflow audit timer in seconds. Upon the expiry of this timer a set of cleanup operations will be performed
 
 - ``upgrade_action``: Upgrade action for NSG associated with this Infrastructure Gateway Profile instance.
 
@@ -58,11 +58,11 @@ Attributes
 
 - ``use_two_factor``: Use Two Factor :  When set to true, the use of two independent authentication factors will be used to secure the installed NSG.  When set to false, there is an assumption that the NSG is being installed in a secure environment and the installer is also trusted.  The defaut value is true, using 2-factor.
 
-- ``stats_collector_port``: The port to open by the proxy for stats collector to use
+- ``stats_collector_port``: The port to open by the proxy for the statistics collector to use.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
-- ``system_sync_scheduler``: Time in a Cron format when configuration update are being applied on the Gateway (NSG).  This property is linked to systemSyncWindow.  Default value is every midnight (0 0 * * *).  Format:  Minutes Hours DayOfMonth Month DayOfWeek
+- ``system_sync_scheduler``: Time, in a Cron format, when configuration updates are being applied on the Gateway (NSG).  This property is linked to systemSyncWindow.  Default value is every midnight (0 0 * * *).  Format:  Minutes Hours DayOfMonth Month DayOfWeek
 
 
 

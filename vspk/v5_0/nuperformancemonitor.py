@@ -27,6 +27,9 @@
 
 
 
+from .fetchers import NUTiersFetcher
+
+
 from .fetchers import NUApplicationperformancemanagementsFetcher
 
 
@@ -103,7 +106,7 @@ class NUPerformanceMonitor(NURESTObject):
         self._timeout = None
         self._interval = None
         self._entity_scope = None
-        self._down_threshold_count = None
+        self._hold_down_timer = None
         self._probe_type = None
         self._number_of_packets = None
         self._external_id = None
@@ -118,13 +121,16 @@ class NUPerformanceMonitor(NURESTObject):
         self.expose_attribute(local_name="timeout", remote_name="timeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="interval", remote_name="interval", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="down_threshold_count", remote_name="downThresholdCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="hold_down_timer", remote_name="holdDownTimer", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="probe_type", remote_name="probeType", attribute_type=str, is_required=False, is_unique=False, choices=[u'HTTP', u'IPSEC_AND_VXLAN', u'ONEWAY'])
         self.expose_attribute(local_name="number_of_packets", remote_name="numberOfPackets", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
+        
+        
+        self.tiers = NUTiersFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.applicationperformancemanagements = NUApplicationperformancemanagementsFetcher.fetcher_with_object(parent_object=self, relationship="member")
@@ -392,30 +398,30 @@ class NUPerformanceMonitor(NURESTObject):
 
     
     @property
-    def down_threshold_count(self):
-        """ Get down_threshold_count value.
+    def hold_down_timer(self):
+        """ Get hold_down_timer value.
 
             Notes:
-                Number of times the probe is allowed to retry on successive timeouts
+                probation Timer in seconds
 
                 
-                This attribute is named `downThresholdCount` in VSD API.
+                This attribute is named `holdDownTimer` in VSD API.
                 
         """
-        return self._down_threshold_count
+        return self._hold_down_timer
 
-    @down_threshold_count.setter
-    def down_threshold_count(self, value):
-        """ Set down_threshold_count value.
+    @hold_down_timer.setter
+    def hold_down_timer(self, value):
+        """ Set hold_down_timer value.
 
             Notes:
-                Number of times the probe is allowed to retry on successive timeouts
+                probation Timer in seconds
 
                 
-                This attribute is named `downThresholdCount` in VSD API.
+                This attribute is named `holdDownTimer` in VSD API.
                 
         """
-        self._down_threshold_count = value
+        self._hold_down_timer = value
 
     
     @property

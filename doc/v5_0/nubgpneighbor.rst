@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``bfd_enabled``: Enable or disable Bidirectional Forwarding Detection for this BGP neighbor
+
 - ``name`` (**Mandatory**): Name of the peer
 
 - ``dampening_enabled``: Enable/disable route flap damping.

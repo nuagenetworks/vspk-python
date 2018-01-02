@@ -39,7 +39,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
     """ Represents a InfrastructureGatewayProfile in the VSD
 
         Notes:
-            Represents Infrastructure Gateway Profile
+            Represents Infrastructure Gateway Profile instance.  This object contains the common parameters for different types of NSGs to perform bootstrapping and have their network infrastructure and services configured before becoming operational.
     """
 
     __rest_name__ = "infrastructuregatewayprofile"
@@ -122,7 +122,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         
         self.expose_attribute(local_name="ntp_server_key", remote_name="NTPServerKey", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ntp_server_key_id", remote_name="NTPServerKeyID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=True)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_sync_timeout", remote_name="datapathSyncTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dead_timer", remote_name="deadTimer", attribute_type=str, is_required=False, is_unique=False)
@@ -193,7 +193,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Get ntp_server_key_id value.
 
             Notes:
-                Correspond to the key ID on the NTP server that matches the ntpServerKey value.  Valid values are from 1 to 255 as specified by SR-OS and 0 to specify unused (VSD/NSG only).
+                Corresponds to the key ID on the NTP server that matches the NTPServerKey value.  Valid values are from 1 to 255 as specified by SR-OS and when value 0 is entered, it means that the NTP Key is not used (VSD/NSG only).
 
                 
                 This attribute is named `NTPServerKeyID` in VSD API.
@@ -206,7 +206,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Set ntp_server_key_id value.
 
             Notes:
-                Correspond to the key ID on the NTP server that matches the ntpServerKey value.  Valid values are from 1 to 255 as specified by SR-OS and 0 to specify unused (VSD/NSG only).
+                Corresponds to the key ID on the NTP server that matches the NTPServerKey value.  Valid values are from 1 to 255 as specified by SR-OS and when value 0 is entered, it means that the NTP Key is not used (VSD/NSG only).
 
                 
                 This attribute is named `NTPServerKeyID` in VSD API.
@@ -297,7 +297,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Get dead_timer value.
 
             Notes:
-                ISO 8601 format duration: **P nYnMnD T nHnMnS**. **P** represents the period field and **T** the time field. Period field: **Y** = year, **M** = month, **D** = day. Time field: **H** = hours, **M** = minutes, **S** = seconds. **n** is the value of each field. Because the years and month are units that vary in length, for the time being those are not supported yet.
+                ISO 8601 format duration: **PnYnMnD T nHnMnS**. **P** represents the period field and **T** the time field. Period field: **Y** = year, **M** = month, **D** = day. Time field: **H** = hours, **M** = minutes, **S** = seconds. **n** is the value of each field. Because the years and month are units that vary in length, for the time being those are not supported yet.
 
                 
                 This attribute is named `deadTimer` in VSD API.
@@ -310,7 +310,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Set dead_timer value.
 
             Notes:
-                ISO 8601 format duration: **P nYnMnD T nHnMnS**. **P** represents the period field and **T** the time field. Period field: **Y** = year, **M** = month, **D** = day. Time field: **H** = hours, **M** = minutes, **S** = seconds. **n** is the value of each field. Because the years and month are units that vary in length, for the time being those are not supported yet.
+                ISO 8601 format duration: **PnYnMnD T nHnMnS**. **P** represents the period field and **T** the time field. Period field: **Y** = year, **M** = month, **D** = day. Time field: **H** = hours, **M** = minutes, **S** = seconds. **n** is the value of each field. Because the years and month are units that vary in length, for the time being those are not supported yet.
 
                 
                 This attribute is named `deadTimer` in VSD API.
@@ -671,7 +671,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Get open_flow_audit_timer value.
 
             Notes:
-                Openflow audit timer in sec. Upon the expiry of this timer a set of cleanup operations will be performed
+                Openflow audit timer in seconds. Upon the expiry of this timer a set of cleanup operations will be performed
 
                 
                 This attribute is named `openFlowAuditTimer` in VSD API.
@@ -684,7 +684,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Set open_flow_audit_timer value.
 
             Notes:
-                Openflow audit timer in sec. Upon the expiry of this timer a set of cleanup operations will be performed
+                Openflow audit timer in seconds. Upon the expiry of this timer a set of cleanup operations will be performed
 
                 
                 This attribute is named `openFlowAuditTimer` in VSD API.
@@ -779,7 +779,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Get stats_collector_port value.
 
             Notes:
-                The port to open by the proxy for stats collector to use
+                The port to open by the proxy for the statistics collector to use.
 
                 
                 This attribute is named `statsCollectorPort` in VSD API.
@@ -792,7 +792,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Set stats_collector_port value.
 
             Notes:
-                The port to open by the proxy for stats collector to use
+                The port to open by the proxy for the statistics collector to use.
 
                 
                 This attribute is named `statsCollectorPort` in VSD API.
@@ -833,7 +833,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Get system_sync_scheduler value.
 
             Notes:
-                Time in a Cron format when configuration update are being applied on the Gateway (NSG).  This property is linked to systemSyncWindow.  Default value is every midnight (0 0 * * *).  Format:  Minutes Hours DayOfMonth Month DayOfWeek
+                Time, in a Cron format, when configuration updates are being applied on the Gateway (NSG).  This property is linked to systemSyncWindow.  Default value is every midnight (0 0 * * *).  Format:  Minutes Hours DayOfMonth Month DayOfWeek
 
                 
                 This attribute is named `systemSyncScheduler` in VSD API.
@@ -846,7 +846,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Set system_sync_scheduler value.
 
             Notes:
-                Time in a Cron format when configuration update are being applied on the Gateway (NSG).  This property is linked to systemSyncWindow.  Default value is every midnight (0 0 * * *).  Format:  Minutes Hours DayOfMonth Month DayOfWeek
+                Time, in a Cron format, when configuration updates are being applied on the Gateway (NSG).  This property is linked to systemSyncWindow.  Default value is every midnight (0 0 * * *).  Format:  Minutes Hours DayOfMonth Month DayOfWeek
 
                 
                 This attribute is named `systemSyncScheduler` in VSD API.

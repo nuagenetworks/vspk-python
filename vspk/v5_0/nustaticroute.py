@@ -86,6 +86,7 @@ class NUStaticRoute(NURESTObject):
 
         # Read/Write Attributes
         
+        self._bfd_enabled = None
         self._ip_type = None
         self._ipv6_address = None
         self._last_updated_by = None
@@ -98,6 +99,7 @@ class NUStaticRoute(NURESTObject):
         self._external_id = None
         self._type = None
         
+        self.expose_attribute(local_name="bfd_enabled", remote_name="BFDEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -126,6 +128,33 @@ class NUStaticRoute(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def bfd_enabled(self):
+        """ Get bfd_enabled value.
+
+            Notes:
+                Enable or disable Bidirectional Forwarding Detection for this static route
+
+                
+                This attribute is named `BFDEnabled` in VSD API.
+                
+        """
+        return self._bfd_enabled
+
+    @bfd_enabled.setter
+    def bfd_enabled(self, value):
+        """ Set bfd_enabled value.
+
+            Notes:
+                Enable or disable Bidirectional Forwarding Detection for this static route
+
+                
+                This attribute is named `BFDEnabled` in VSD API.
+                
+        """
+        self._bfd_enabled = value
+
     
     @property
     def ip_type(self):

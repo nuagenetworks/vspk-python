@@ -40,6 +40,8 @@ Attributes
 
 - ``redirect_vport_tag_id``: VPort tag to which traffic will be redirected to, when ACL entry match criteria succeeds
 
+- ``remote_uplink_preference``: Indicates the preferencial path selection for network traffic for this ACL.
+
 - ``description``: Description of the ACL entry
 
 - ``destination_port``: The destination port to be matched if protocol is UDP or TCP. Value should be either * or single port number or a port range

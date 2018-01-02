@@ -213,7 +213,7 @@ class NUNSPortTemplate(NURESTObject):
         """ Get description value.
 
             Notes:
-                A description of the Port
+                A description of the NSG Port Template
 
                 
         """
@@ -224,7 +224,7 @@ class NUNSPortTemplate(NURESTObject):
         """ Set description value.
 
             Notes:
-                A description of the Port
+                A description of the NSG Port Template
 
                 
         """
@@ -263,7 +263,7 @@ class NUNSPortTemplate(NURESTObject):
         """ Get infrastructure_profile_id value.
 
             Notes:
-                The ID of the infrastructure profile this instance is associated with.
+                The ID of the infrastructure port profile this Template instance is associated with. (Deprecated in 4.0)
 
                 
                 This attribute is named `infrastructureProfileID` in VSD API.
@@ -276,7 +276,7 @@ class NUNSPortTemplate(NURESTObject):
         """ Set infrastructure_profile_id value.
 
             Notes:
-                The ID of the infrastructure profile this instance is associated with.
+                The ID of the infrastructure port profile this Template instance is associated with. (Deprecated in 4.0)
 
                 
                 This attribute is named `infrastructureProfileID` in VSD API.
@@ -317,7 +317,7 @@ class NUNSPortTemplate(NURESTObject):
         """ Get port_type value.
 
             Notes:
-                Type of the Port.
+                Type of the Ports that will be instantiated from this template.
 
                 
                 This attribute is named `portType` in VSD API.
@@ -330,7 +330,7 @@ class NUNSPortTemplate(NURESTObject):
         """ Set port_type value.
 
             Notes:
-                Type of the Port.
+                Type of the Ports that will be instantiated from this template.
 
                 
                 This attribute is named `portType` in VSD API.
@@ -367,7 +367,7 @@ class NUNSPortTemplate(NURESTObject):
         """ Get associated_egress_qos_policy_id value.
 
             Notes:
-                ID of the Egress QOS Policy associated with this Vlan.
+                ID of the Egress QoS Policy associated with this NSG Port Template.
 
                 
                 This attribute is named `associatedEgressQOSPolicyID` in VSD API.
@@ -380,7 +380,7 @@ class NUNSPortTemplate(NURESTObject):
         """ Set associated_egress_qos_policy_id value.
 
             Notes:
-                ID of the Egress QOS Policy associated with this Vlan.
+                ID of the Egress QoS Policy associated with this NSG Port Template.
 
                 
                 This attribute is named `associatedEgressQOSPolicyID` in VSD API.

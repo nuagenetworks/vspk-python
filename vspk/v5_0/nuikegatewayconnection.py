@@ -27,7 +27,13 @@
 
 
 
+from .fetchers import NUPerformanceMonitorsFetcher
+
+
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUAlarmsFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
@@ -576,6 +582,7 @@ class NUIKEGatewayConnection(NURESTObject):
         self._nsg_identifier_type = None
         self._nsg_role = None
         self._name = None
+        self._mark = None
         self._last_updated_by = None
         self._sequence = None
         self._allow_any_subnet = None
@@ -594,6 +601,7 @@ class NUIKEGatewayConnection(NURESTObject):
         self.expose_attribute(local_name="nsg_identifier_type", remote_name="NSGIdentifierType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ID_DER_ASN1_DN', u'ID_FQDN', u'ID_IPV4_ADDR', u'ID_KEY_ID', u'ID_RFC822_ADDR'])
         self.expose_attribute(local_name="nsg_role", remote_name="NSGRole", attribute_type=str, is_required=False, is_unique=False, choices=[u'INITIATOR', u'RESPONDER'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="mark", remote_name="mark", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sequence", remote_name="sequence", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_any_subnet", remote_name="allowAnySubnet", attribute_type=bool, is_required=False, is_unique=False)
@@ -612,7 +620,13 @@ class NUIKEGatewayConnection(NURESTObject):
         # Fetchers
         
         
+        self.performance_monitors = NUPerformanceMonitorsFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        
+        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -730,6 +744,29 @@ class NUIKEGatewayConnection(NURESTObject):
 
     
     @property
+    def mark(self):
+        """ Get mark value.
+
+            Notes:
+                skbMark, used by vrs for the ike monitor feature
+
+                
+        """
+        return self._mark
+
+    @mark.setter
+    def mark(self, value):
+        """ Set mark value.
+
+            Notes:
+                skbMark, used by vrs for the ike monitor feature
+
+                
+        """
+        self._mark = value
+
+    
+    @property
     def last_updated_by(self):
         """ Get last_updated_by value.
 
@@ -761,7 +798,7 @@ class NUIKEGatewayConnection(NURESTObject):
         """ Get sequence value.
 
             Notes:
-                
+                The sequence of the IKE Gateway Connection
 
                 
         """
@@ -772,7 +809,7 @@ class NUIKEGatewayConnection(NURESTObject):
         """ Set sequence value.
 
             Notes:
-                
+                The sequence of the IKE Gateway Connection
 
                 
         """

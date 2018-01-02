@@ -66,11 +66,17 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ACTION_REDIRECT = "REDIRECT"
     
+    CONST_NETWORK_TYPE_INTERNET_POLICYGROUP = "INTERNET_POLICYGROUP"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_NETWORK_TYPE_PUBLIC_NETWORK = "PUBLIC_NETWORK"
     
-    CONST_NETWORK_TYPE_ENDPOINT_ZONE = "ENDPOINT_ZONE"
+    CONST_ACTION_FORWARD = "FORWARD"
+    
+    CONST_NETWORK_TYPE_PGEXPRESSION = "PGEXPRESSION"
+    
+    CONST_REMOTE_UPLINK_PREFERENCE_DEFAULT = "DEFAULT"
     
     CONST_NETWORK_TYPE_POLICYGROUP = "POLICYGROUP"
     
@@ -86,7 +92,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_FC_OVERRIDE_NONE = "NONE"
     
-    CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
+    CONST_REMOTE_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
     
     CONST_NETWORK_TYPE_ANY = "ANY"
     
@@ -126,6 +132,8 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_FAILSAFE_DATAPATH_FAIL_TO_BLOCK = "FAIL_TO_BLOCK"
     
+    CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
+    
     CONST_LOCATION_TYPE_VPORTTAG = "VPORTTAG"
     
     CONST_LOCATION_TYPE_SUBNET = "SUBNET"
@@ -144,13 +152,15 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
     
-    CONST_NETWORK_TYPE_PGEXPRESSION = "PGEXPRESSION"
+    CONST_NETWORK_TYPE_ENDPOINT_ZONE = "ENDPOINT_ZONE"
     
     CONST_NETWORK_TYPE_ZONE = "ZONE"
     
-    CONST_NETWORK_TYPE_INTERNET_POLICYGROUP = "INTERNET_POLICYGROUP"
+    CONST_REMOTE_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
     
-    CONST_ACTION_FORWARD = "FORWARD"
+    CONST_REMOTE_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
+    
+    CONST_REMOTE_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
     
     CONST_NETWORK_TYPE_SUBNET = "SUBNET"
     
@@ -187,6 +197,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self._redirect_rewrite_type = None
         self._redirect_rewrite_value = None
         self._redirect_vport_tag_id = None
+        self._remote_uplink_preference = None
         self._description = None
         self._destination_port = None
         self._network_id = None
@@ -229,6 +240,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="redirect_rewrite_type", remote_name="redirectRewriteType", attribute_type=str, is_required=False, is_unique=True, choices=[u'VLAN'])
         self.expose_attribute(local_name="redirect_rewrite_value", remote_name="redirectRewriteValue", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redirect_vport_tag_id", remote_name="redirectVPortTagID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="remote_uplink_preference", remote_name="remoteUplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
@@ -645,6 +657,33 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
                 
         """
         self._redirect_vport_tag_id = value
+
+    
+    @property
+    def remote_uplink_preference(self):
+        """ Get remote_uplink_preference value.
+
+            Notes:
+                Indicates the preferencial path selection for network traffic for this ACL.
+
+                
+                This attribute is named `remoteUplinkPreference` in VSD API.
+                
+        """
+        return self._remote_uplink_preference
+
+    @remote_uplink_preference.setter
+    def remote_uplink_preference(self, value):
+        """ Set remote_uplink_preference value.
+
+            Notes:
+                Indicates the preferencial path selection for network traffic for this ACL.
+
+                
+                This attribute is named `remoteUplinkPreference` in VSD API.
+                
+        """
+        self._remote_uplink_preference = value
 
     
     @property

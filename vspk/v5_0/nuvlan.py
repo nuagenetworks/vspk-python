@@ -394,7 +394,7 @@ class NUVLAN(NURESTObject):
         """ Get description value.
 
             Notes:
-                A description of the Port
+                A description of the VLAN instance.
 
                 
         """
@@ -405,7 +405,7 @@ class NUVLAN(NURESTObject):
         """ Set description value.
 
             Notes:
-                A description of the Port
+                A description of the VLAN instance.
 
                 
         """
@@ -521,7 +521,7 @@ class NUVLAN(NURESTObject):
         """ Get use_user_mnemonic value.
 
             Notes:
-                determines whether to use user mnemonic of the Port
+                Determines whether to use the defined mnemonic for this VLAN instance.
 
                 
                 This attribute is named `useUserMnemonic` in VSD API.
@@ -534,7 +534,7 @@ class NUVLAN(NURESTObject):
         """ Set use_user_mnemonic value.
 
             Notes:
-                determines whether to use user mnemonic of the Port
+                Determines whether to use the defined mnemonic for this VLAN instance.
 
                 
                 This attribute is named `useUserMnemonic` in VSD API.
@@ -548,7 +548,7 @@ class NUVLAN(NURESTObject):
         """ Get user_mnemonic value.
 
             Notes:
-                user mnemonic of the Port
+                User mnemonic of the VLAN instance.
 
                 
                 This attribute is named `userMnemonic` in VSD API.
@@ -561,7 +561,7 @@ class NUVLAN(NURESTObject):
         """ Set user_mnemonic value.
 
             Notes:
-                user mnemonic of the Port
+                User mnemonic of the VLAN instance.
 
                 
                 This attribute is named `userMnemonic` in VSD API.
@@ -683,7 +683,7 @@ class NUVLAN(NURESTObject):
         """ Get associated_ingress_qos_policy_id value.
 
             Notes:
-                ID of the Ingress QOS Policy / Tunnel Shaper associated with this VLAN.
+                ID of the Ingress QoS Policy / Tunnel Shaper associated with this VLAN.
 
                 
                 This attribute is named `associatedIngressQOSPolicyID` in VSD API.
@@ -696,7 +696,7 @@ class NUVLAN(NURESTObject):
         """ Set associated_ingress_qos_policy_id value.
 
             Notes:
-                ID of the Ingress QOS Policy / Tunnel Shaper associated with this VLAN.
+                ID of the Ingress QoS Policy / Tunnel Shaper associated with this VLAN.
 
                 
                 This attribute is named `associatedIngressQOSPolicyID` in VSD API.
@@ -868,7 +868,7 @@ class NUVLAN(NURESTObject):
         """ Get type value.
 
             Notes:
-                This type marks a VLAN for it's utility.
+                This type marks a VLAN for its utility.
 
                 
         """
@@ -879,7 +879,7 @@ class NUVLAN(NURESTObject):
         """ Set type value.
 
             Notes:
-                This type marks a VLAN for it's utility.
+                This type marks a VLAN for its utility.
 
                 
         """

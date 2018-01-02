@@ -132,6 +132,8 @@ Attributes
 
 - ``offset_service_id``: Service id offset, this value has to be set before jboss starts during install time, after that any change of value is ignored (minexclusive = 0, max = 40000) system wide value
 
+- ``virtual_firewall_rules_enabled``: Enable Virtual Firewall Rule creation and management. This will be available only with VSS license
+
 - ``ejbca_nsg_certificate_profile``: EJBCA NSG Certificate Profile
 
 - ``ejbca_nsg_end_entity_profile``: EJBCA NSG End Entity Profile
@@ -150,7 +152,7 @@ Attributes
 
 - ``global_mac_address``: the MAC Address to use for those subnets that have the useGlobalMAC flag enabled.
 
-- ``flow_collection_enabled``: Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires "statisticsEnabled".
+- ``flow_collection_enabled``: Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires 'statisticsEnabled'.
 
 - ``inactive_timeout``: Defines the inactive timeout for the client. If the client is inactive for more than timeout, server clears off all the cache/information regarding the client. This value should be greater than event processor max timeout
 

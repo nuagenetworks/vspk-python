@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``nat_traversal``: Enum value that states the type of NAT Traversal the NSG instance will use to talk to other NSGs and the Internet.
+- ``nat_traversal``: Enum value that states the type of NAT Traversal the NSG instance will use to talk to other NSGs and the Internet.  (This field is deprecated in 5.0)
 
 - ``vlan_range``: VLAN Range of the Port.  Format must conform to a-b,c,d-f where a,b,c,d,f are integers between 0 and 4095.
 
@@ -22,7 +22,7 @@ Attributes
 
 - ``template_id``: The ID of the template that this Port was created from
 
-- ``permitted_action``: The permitted  action to USE/EXTEND  this Gateway.
+- ``permitted_action``: The permitted action to USE/EXTEND this NSG Port.
 
 - ``description``: A description of the Port
 
@@ -42,7 +42,7 @@ Attributes
 
 - ``user_mnemonic``: user mnemonic of the Port
 
-- ``associated_egress_qos_policy_id``: ID of the Egress QOS Policy associated with this Vlan.
+- ``associated_egress_qos_policy_id``: ID of the Egress QoS Policy associated with this NSG Port.
 
 - ``associated_redundant_port_id``: ID of the redundant port to which the Port is associated to.
 

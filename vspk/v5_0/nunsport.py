@@ -220,7 +220,7 @@ class NUNSPort(NURESTObject):
         """ Get nat_traversal value.
 
             Notes:
-                Enum value that states the type of NAT Traversal the NSG instance will use to talk to other NSGs and the Internet.
+                Enum value that states the type of NAT Traversal the NSG instance will use to talk to other NSGs and the Internet.  (This field is deprecated in 5.0)
 
                 
                 This attribute is named `NATTraversal` in VSD API.
@@ -233,7 +233,7 @@ class NUNSPort(NURESTObject):
         """ Set nat_traversal value.
 
             Notes:
-                Enum value that states the type of NAT Traversal the NSG instance will use to talk to other NSGs and the Internet.
+                Enum value that states the type of NAT Traversal the NSG instance will use to talk to other NSGs and the Internet.  (This field is deprecated in 5.0)
 
                 
                 This attribute is named `NATTraversal` in VSD API.
@@ -351,7 +351,7 @@ class NUNSPort(NURESTObject):
         """ Get permitted_action value.
 
             Notes:
-                The permitted  action to USE/EXTEND  this Gateway.
+                The permitted action to USE/EXTEND this NSG Port.
 
                 
                 This attribute is named `permittedAction` in VSD API.
@@ -364,7 +364,7 @@ class NUNSPort(NURESTObject):
         """ Set permitted_action value.
 
             Notes:
-                The permitted  action to USE/EXTEND  this Gateway.
+                The permitted action to USE/EXTEND this NSG Port.
 
                 
                 This attribute is named `permittedAction` in VSD API.
@@ -613,7 +613,7 @@ class NUNSPort(NURESTObject):
         """ Get associated_egress_qos_policy_id value.
 
             Notes:
-                ID of the Egress QOS Policy associated with this Vlan.
+                ID of the Egress QoS Policy associated with this NSG Port.
 
                 
                 This attribute is named `associatedEgressQOSPolicyID` in VSD API.
@@ -626,7 +626,7 @@ class NUNSPort(NURESTObject):
         """ Set associated_egress_qos_policy_id value.
 
             Notes:
-                ID of the Egress QOS Policy associated with this Vlan.
+                ID of the Egress QoS Policy associated with this NSG Port.
 
                 
                 This attribute is named `associatedEgressQOSPolicyID` in VSD API.

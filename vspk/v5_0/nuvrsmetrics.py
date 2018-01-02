@@ -77,6 +77,7 @@ class NUVRSMetrics(NURESTObject):
         self._entity_scope = None
         self._log_disk_partition_utilization = None
         self._root_disk_partition_utilization = None
+        self._applied_metrics_push_interval = None
         self._associated_vcenter_hypervisor_id = None
         self._current_version = None
         self._external_id = None
@@ -93,6 +94,7 @@ class NUVRSMetrics(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="log_disk_partition_utilization", remote_name="logDiskPartitionUtilization", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="root_disk_partition_utilization", remote_name="rootDiskPartitionUtilization", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="applied_metrics_push_interval", remote_name="appliedMetricsPushInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vcenter_hypervisor_id", remote_name="associatedVCenterHypervisorID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="current_version", remote_name="currentVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -424,6 +426,33 @@ class NUVRSMetrics(NURESTObject):
                 
         """
         self._root_disk_partition_utilization = value
+
+    
+    @property
+    def applied_metrics_push_interval(self):
+        """ Get applied_metrics_push_interval value.
+
+            Notes:
+                The currently applied interval with which metrics are being send to VCIN from the VRS. The value can be configured through VCIN
+
+                
+                This attribute is named `appliedMetricsPushInterval` in VSD API.
+                
+        """
+        return self._applied_metrics_push_interval
+
+    @applied_metrics_push_interval.setter
+    def applied_metrics_push_interval(self, value):
+        """ Set applied_metrics_push_interval value.
+
+            Notes:
+                The currently applied interval with which metrics are being send to VCIN from the VRS. The value can be configured through VCIN
+
+                
+                This attribute is named `appliedMetricsPushInterval` in VSD API.
+                
+        """
+        self._applied_metrics_push_interval = value
 
     
     @property

@@ -14,7 +14,7 @@ Attributes
 
 - ``name`` (**Mandatory**): A customer friendly name for the Wireless Port instance.
 
-- ``generic_config``: This field is used to contain the "blob" parameters for the WiFi Card (physical module) on the NSG.
+- ``generic_config``: This field is used to contain the 'blob' parameters for the WiFi Card (physical module) on the NSG.
 
 - ``description``: A customer friendly description to be given to the Wireless Port instance.
 

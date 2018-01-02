@@ -71,6 +71,7 @@ class NUBGPNeighbor(NURESTObject):
 
         # Read/Write Attributes
         
+        self._bfd_enabled = None
         self._name = None
         self._dampening_enabled = None
         self._peer_as = None
@@ -82,6 +83,7 @@ class NUBGPNeighbor(NURESTObject):
         self._associated_import_routing_policy_id = None
         self._external_id = None
         
+        self.expose_attribute(local_name="bfd_enabled", remote_name="BFDEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="dampening_enabled", remote_name="dampeningEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peer_as", remote_name="peerAS", attribute_type=int, is_required=True, is_unique=False)
@@ -106,6 +108,33 @@ class NUBGPNeighbor(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def bfd_enabled(self):
+        """ Get bfd_enabled value.
+
+            Notes:
+                Enable or disable Bidirectional Forwarding Detection for this BGP neighbor
+
+                
+                This attribute is named `BFDEnabled` in VSD API.
+                
+        """
+        return self._bfd_enabled
+
+    @bfd_enabled.setter
+    def bfd_enabled(self, value):
+        """ Set bfd_enabled value.
+
+            Notes:
+                Enable or disable Bidirectional Forwarding Detection for this BGP neighbor
+
+                
+                This attribute is named `BFDEnabled` in VSD API.
+                
+        """
+        self._bfd_enabled = value
+
     
     @property
     def name(self):

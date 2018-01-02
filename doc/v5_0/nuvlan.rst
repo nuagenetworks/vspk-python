@@ -24,7 +24,7 @@ Attributes
 
 - ``permitted_action``: The permitted  action to USE/EXTEND  this Gateway.
 
-- ``description``: A description of the Port
+- ``description``: A description of the VLAN instance.
 
 - ``restricted``: Determines whether this entity can be used in associations with other properties.
 
@@ -34,9 +34,9 @@ Attributes
 
 - ``is_uplink``: Indicates if the VLAN is used as an uplink.
 
-- ``use_user_mnemonic``: determines whether to use user mnemonic of the Port
+- ``use_user_mnemonic``: Determines whether to use the defined mnemonic for this VLAN instance.
 
-- ``user_mnemonic``: user mnemonic of the Port
+- ``user_mnemonic``: User mnemonic of the VLAN instance.
 
 - ``associated_bgp_profile_id``: The ID of the associated BGP profile
 
@@ -46,7 +46,7 @@ Attributes
 
 - ``associated_ingress_overlay_qo_s_policer_id``: ID of the Ingress Overlay QoS Policer associated with this VLAN.
 
-- ``associated_ingress_qos_policy_id``: ID of the Ingress QOS Policy / Tunnel Shaper associated with this VLAN.
+- ``associated_ingress_qos_policy_id``: ID of the Ingress QoS Policy / Tunnel Shaper associated with this VLAN.
 
 - ``associated_ingress_underlay_qo_s_policer_id``: ID of the Ingress Underlay QoS Policer associated with this VLAN.
 
@@ -60,7 +60,7 @@ Attributes
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
-- ``type``: This type marks a VLAN for it's utility.
+- ``type``: This type marks a VLAN for its utility.
 
 
 

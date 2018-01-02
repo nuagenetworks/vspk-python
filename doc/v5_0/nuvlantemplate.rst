@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``value``: Value of VLAN
+- ``value`` (**Mandatory**): Value of VLAN
 
 - ``last_updated_by``: ID of the user who last updated the object.
 

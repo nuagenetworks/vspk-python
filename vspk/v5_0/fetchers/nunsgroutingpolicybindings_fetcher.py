@@ -28,11 +28,11 @@
 from bambou import NURESTFetcher
 
 
-class NUViasFetcher(NURESTFetcher):
-    """ Represents a NUVias fetcher
+class NUNSGRoutingPolicyBindingsFetcher(NURESTFetcher):
+    """ Represents a NUNSGRoutingPolicyBindings fetcher
 
         Notes:
-            This fetcher enables to fetch NUVia objects.
+            This fetcher enables to fetch NUNSGRoutingPolicyBinding objects.
 
         See:
             bambou.NURESTFetcher
@@ -40,13 +40,13 @@ class NUViasFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUVia class that is managed.
+        """ Return NUNSGRoutingPolicyBinding class that is managed.
 
             Returns:
-                .NUVia: the managed class
+                .NUNSGRoutingPolicyBinding: the managed class
         """
 
-        from .. import NUVia
-        return NUVia
+        from .. import NUNSGRoutingPolicyBinding
+        return NUNSGRoutingPolicyBinding
 
     

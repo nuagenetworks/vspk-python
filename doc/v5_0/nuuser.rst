@@ -16,7 +16,7 @@ Attributes
 
 - ``management_mode``: Management mode of the user object - allows for override of external authorization and syncup
 
-- ``password`` (**Mandatory**): User password stored as a hash (SHA-1 encrpted)
+- ``password`` (**Mandatory**): User password in clear text. Password cannot be a single character asterisk (*)
 
 - ``last_name`` (**Mandatory**): Last name of the user
 

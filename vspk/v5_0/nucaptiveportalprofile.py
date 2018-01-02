@@ -33,7 +33,7 @@ class NUCaptivePortalProfile(NURESTObject):
     """ Represents a CaptivePortalProfile in the VSD
 
         Notes:
-            Object representing a Wireless Access Captive Portal Profile which can be associated with SSID entities from which end users may be presented with instructions and condition of use when connecting to an Open wireless access point.
+            Object representing a Wireless Access Captive Portal Profile which can be associated with SSID entities from which end users may be presented with instructions and condition of use when connecting to an open wireless access point.
     """
 
     __rest_name__ = "captiveportalprofile"
@@ -80,7 +80,7 @@ class NUCaptivePortalProfile(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="portal_type", remote_name="portalType", attribute_type=str, is_required=False, is_unique=False, choices=[u'CLICK_THROUGH'])
+        self.expose_attribute(local_name="portal_type", remote_name="portalType", attribute_type=str, is_required=True, is_unique=False, choices=[u'CLICK_THROUGH'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -116,7 +116,7 @@ class NUCaptivePortalProfile(NURESTObject):
         """ Get captive_page value.
 
             Notes:
-                Attribute having the contents of captive portal page displayed to end user. User can possibly include very basic HTML tags like <p>, <ul> etc. inorder to fomat the text displayed to the user.
+                Attribute having the contents of captive portal page displayed to end user. User can possibly include very basic HTML tags like <p>, <ul> etc. in order to fomat the text displayed to the user.
 
                 
                 This attribute is named `captivePage` in VSD API.
@@ -129,7 +129,7 @@ class NUCaptivePortalProfile(NURESTObject):
         """ Set captive_page value.
 
             Notes:
-                Attribute having the contents of captive portal page displayed to end user. User can possibly include very basic HTML tags like <p>, <ul> etc. inorder to fomat the text displayed to the user.
+                Attribute having the contents of captive portal page displayed to end user. User can possibly include very basic HTML tags like <p>, <ul> etc. in order to fomat the text displayed to the user.
 
                 
                 This attribute is named `captivePage` in VSD API.
@@ -220,7 +220,7 @@ class NUCaptivePortalProfile(NURESTObject):
         """ Get portal_type value.
 
             Notes:
-                Type of the portal page.
+                Type of the portal page.  Will decide if the NSG rendering the page will have a strict rendering of the welcoming page based on what is given by VSD, or if the information can be made customisable by an operator to include animations, videos, images, and other types of more complex scripts.
 
                 
                 This attribute is named `portalType` in VSD API.
@@ -233,7 +233,7 @@ class NUCaptivePortalProfile(NURESTObject):
         """ Set portal_type value.
 
             Notes:
-                Type of the portal page.
+                Type of the portal page.  Will decide if the NSG rendering the page will have a strict rendering of the welcoming page based on what is given by VSD, or if the information can be made customisable by an operator to include animations, videos, images, and other types of more complex scripts.
 
                 
                 This attribute is named `portalType` in VSD API.

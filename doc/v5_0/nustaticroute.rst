@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``bfd_enabled``: Enable or disable Bidirectional Forwarding Detection for this static route
+
 - ``ip_type``: IPv4 or IPv6
 
 - ``ipv6_address``: IPv6 address of the route

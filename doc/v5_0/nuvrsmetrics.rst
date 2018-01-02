@@ -36,6 +36,8 @@ Attributes
 
 - ``root_disk_partition_utilization``: Root Disk Partition Utilization
 
+- ``applied_metrics_push_interval``: The currently applied interval with which metrics are being send to VCIN from the VRS. The value can be configured through VCIN
+
 - ``associated_vcenter_hypervisor_id``: None
 
 - ``current_version``: Current version of the VRS VM

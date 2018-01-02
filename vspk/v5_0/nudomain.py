@@ -69,6 +69,9 @@ from .fetchers import NULinksFetcher
 from .fetchers import NUFirewallAclsFetcher
 
 
+from .fetchers import NUVirtualFirewallPoliciesFetcher
+
+
 from .fetchers import NUFloatingIpsFetcher
 
 
@@ -145,6 +148,12 @@ from .fetchers import NUBridgeInterfacesFetcher
 
 
 from .fetchers import NUGroupsFetcher
+
+
+from .fetchers import NUNSGRoutingPolicyBindingsFetcher
+
+
+from .fetchers import NUOSPFInstancesFetcher
 
 
 from .fetchers import NUStaticRoutesFetcher
@@ -286,6 +295,7 @@ class NUDomain(NURESTObject):
         self._label_id = None
         self._back_haul_route_distinguisher = None
         self._back_haul_route_target = None
+        self._back_haul_service_id = None
         self._back_haul_subnet_ip_address = None
         self._back_haul_subnet_mask = None
         self._back_haul_vnid = None
@@ -316,6 +326,7 @@ class NUDomain(NURESTObject):
         self._associated_multicast_channel_map_id = None
         self._associated_pat_mapper_id = None
         self._associated_shared_pat_mapper_id = None
+        self._associated_underlay_id = None
         self._stretched = None
         self._multicast = None
         self._tunnel_type = None
@@ -333,6 +344,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="label_id", remote_name="labelID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_route_distinguisher", remote_name="backHaulRouteDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_route_target", remote_name="backHaulRouteTarget", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="back_haul_service_id", remote_name="backHaulServiceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_subnet_ip_address", remote_name="backHaulSubnetIPAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_subnet_mask", remote_name="backHaulSubnetMask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_vnid", remote_name="backHaulVNID", attribute_type=int, is_required=False, is_unique=False)
@@ -363,6 +375,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_pat_mapper_id", remote_name="associatedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_shared_pat_mapper_id", remote_name="associatedSharedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_underlay_id", remote_name="associatedUnderlayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stretched", remote_name="stretched", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="tunnel_type", remote_name="tunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VXLAN'])
@@ -414,6 +427,9 @@ class NUDomain(NURESTObject):
         
         
         self.firewall_acls = NUFirewallAclsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.virtual_firewall_policies = NUVirtualFirewallPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.floating_ips = NUFloatingIpsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -492,6 +508,12 @@ class NUDomain(NURESTObject):
         
         
         self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.nsg_routing_policy_bindings = NUNSGRoutingPolicyBindingsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ospf_instances = NUOSPFInstancesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.static_routes = NUStaticRoutesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -781,6 +803,33 @@ class NUDomain(NURESTObject):
                 
         """
         self._back_haul_route_target = value
+
+    
+    @property
+    def back_haul_service_id(self):
+        """ Get back_haul_service_id value.
+
+            Notes:
+                The backhaul serviceID of the Virtual Router created in VSC and is associated with this object. This is auto-generated by VSD
+
+                
+                This attribute is named `backHaulServiceID` in VSD API.
+                
+        """
+        return self._back_haul_service_id
+
+    @back_haul_service_id.setter
+    def back_haul_service_id(self, value):
+        """ Set back_haul_service_id value.
+
+            Notes:
+                The backhaul serviceID of the Virtual Router created in VSC and is associated with this object. This is auto-generated by VSD
+
+                
+                This attribute is named `backHaulServiceID` in VSD API.
+                
+        """
+        self._back_haul_service_id = value
 
     
     @property
@@ -1579,6 +1628,33 @@ class NUDomain(NURESTObject):
                 
         """
         self._associated_shared_pat_mapper_id = value
+
+    
+    @property
+    def associated_underlay_id(self):
+        """ Get associated_underlay_id value.
+
+            Notes:
+                The ID of the Underlay entity to which this L3 Domain is associated.
+
+                
+                This attribute is named `associatedUnderlayID` in VSD API.
+                
+        """
+        return self._associated_underlay_id
+
+    @associated_underlay_id.setter
+    def associated_underlay_id(self, value):
+        """ Set associated_underlay_id value.
+
+            Notes:
+                The ID of the Underlay entity to which this L3 Domain is associated.
+
+                
+                This attribute is named `associatedUnderlayID` in VSD API.
+                
+        """
+        self._associated_underlay_id = value
 
     
     @property

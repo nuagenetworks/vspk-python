@@ -51,6 +51,9 @@ from .fetchers import NUEgressACLTemplatesFetcher
 from .fetchers import NUEgressAdvFwdTemplatesFetcher
 
 
+from .fetchers import NUVirtualFirewallPoliciesFetcher
+
+
 from .fetchers import NUGlobalMetadatasFetcher
 
 
@@ -221,6 +224,9 @@ class NUL2DomainTemplate(NURESTObject):
         
         
         self.egress_adv_fwd_templates = NUEgressAdvFwdTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.virtual_firewall_policies = NUVirtualFirewallPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")

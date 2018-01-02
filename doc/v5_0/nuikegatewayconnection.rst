@@ -20,9 +20,11 @@ Attributes
 
 - ``name``: Optional Name of the connection
 
+- ``mark``: skbMark, used by vrs for the ike monitor feature
+
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``sequence``: 
+- ``sequence``: The sequence of the IKE Gateway Connection
 
 - ``allow_any_subnet``: Allow any local subnets to be used
 
@@ -55,7 +57,9 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nuperformancemonitor.NUPerformanceMonitor<nuperformancemonitor>`                                                                                           ``performance_monitors`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nualarm.NUAlarm<nualarm>`                                                                                                                                  ``alarms`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nusubnet.NUSubnet<nusubnet>`                                                                                                                               ``subnets`` 
 ================================================================================================================================================               ==========================================================================================

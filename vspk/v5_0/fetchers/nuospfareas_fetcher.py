@@ -28,11 +28,11 @@
 from bambou import NURESTFetcher
 
 
-class NUKeyServerNotificationsFetcher(NURESTFetcher):
-    """ Represents a NUKeyServerNotifications fetcher
+class NUOSPFAreasFetcher(NURESTFetcher):
+    """ Represents a NUOSPFAreas fetcher
 
         Notes:
-            This fetcher enables to fetch NUKeyServerNotification objects.
+            This fetcher enables to fetch NUOSPFArea objects.
 
         See:
             bambou.NURESTFetcher
@@ -40,13 +40,13 @@ class NUKeyServerNotificationsFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUKeyServerNotification class that is managed.
+        """ Return NUOSPFArea class that is managed.
 
             Returns:
-                .NUKeyServerNotification: the managed class
+                .NUOSPFArea: the managed class
         """
 
-        from .. import NUKeyServerNotification
-        return NUKeyServerNotification
+        from .. import NUOSPFArea
+        return NUOSPFArea
 
     

@@ -269,7 +269,7 @@ class NUWirelessPort(NURESTObject):
         self._country_code = None
         self._frequency_channel = None
         
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=True)
         self.expose_attribute(local_name="generic_config", remote_name="genericConfig", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=True)
@@ -327,7 +327,7 @@ class NUWirelessPort(NURESTObject):
         """ Get generic_config value.
 
             Notes:
-                This field is used to contain the "blob" parameters for the WiFi Card (physical module) on the NSG.
+                This field is used to contain the 'blob' parameters for the WiFi Card (physical module) on the NSG.
 
                 
                 This attribute is named `genericConfig` in VSD API.
@@ -340,7 +340,7 @@ class NUWirelessPort(NURESTObject):
         """ Set generic_config value.
 
             Notes:
-                This field is used to contain the "blob" parameters for the WiFi Card (physical module) on the NSG.
+                This field is used to contain the 'blob' parameters for the WiFi Card (physical module) on the NSG.
 
                 
                 This attribute is named `genericConfig` in VSD API.

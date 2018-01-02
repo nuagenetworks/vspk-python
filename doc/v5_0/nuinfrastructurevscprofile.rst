@@ -12,13 +12,13 @@ Attributes
 ----------
 
 
-- ``name`` (**Mandatory**): Name of the Infrastructure Profile
+- ``name`` (**Mandatory**): Name of the Infrastructure VSC Profile
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
 - ``second_controller``: Second VSC Controller :  IP Address of the secondary VSC system NSG instances associated to this profile will be reaching for.
 
-- ``description``: A description of the Profile instance created.
+- ``description``: A description of the VSC Profile instance created.
 
 - ``first_controller``: First VSC Controller :  IP Address of the first VSC system NSG instances associated to this profile will be reaching for.
 
@@ -26,7 +26,7 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``probe_interval``: Openflow echo timer in millisecond
+- ``probe_interval``: Openflow echo timer in milliseconds.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

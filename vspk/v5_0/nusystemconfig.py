@@ -199,6 +199,7 @@ class NUSystemConfig(NURESTObject):
         self._key_server_vsd_data_synchronization_interval = None
         self._offset_customer_id = None
         self._offset_service_id = None
+        self._virtual_firewall_rules_enabled = None
         self._ejbca_nsg_certificate_profile = None
         self._ejbca_nsg_end_entity_profile = None
         self._ejbca_ocsp_responder_cn = None
@@ -336,6 +337,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="key_server_vsd_data_synchronization_interval", remote_name="keyServerVSDDataSynchronizationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="offset_customer_id", remote_name="offsetCustomerID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="offset_service_id", remote_name="offsetServiceID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="virtual_firewall_rules_enabled", remote_name="virtualFirewallRulesEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ejbca_nsg_certificate_profile", remote_name="ejbcaNSGCertificateProfile", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ejbca_nsg_end_entity_profile", remote_name="ejbcaNSGEndEntityProfile", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ejbca_ocsp_responder_cn", remote_name="ejbcaOCSPResponderCN", attribute_type=str, is_required=False, is_unique=False)
@@ -2048,6 +2050,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def virtual_firewall_rules_enabled(self):
+        """ Get virtual_firewall_rules_enabled value.
+
+            Notes:
+                Enable Virtual Firewall Rule creation and management. This will be available only with VSS license
+
+                
+                This attribute is named `virtualFirewallRulesEnabled` in VSD API.
+                
+        """
+        return self._virtual_firewall_rules_enabled
+
+    @virtual_firewall_rules_enabled.setter
+    def virtual_firewall_rules_enabled(self, value):
+        """ Set virtual_firewall_rules_enabled value.
+
+            Notes:
+                Enable Virtual Firewall Rule creation and management. This will be available only with VSS license
+
+                
+                This attribute is named `virtualFirewallRulesEnabled` in VSD API.
+                
+        """
+        self._virtual_firewall_rules_enabled = value
+
+    
+    @property
     def ejbca_nsg_certificate_profile(self):
         """ Get ejbca_nsg_certificate_profile value.
 
@@ -2295,7 +2324,7 @@ class NUSystemConfig(NURESTObject):
         """ Get flow_collection_enabled value.
 
             Notes:
-                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires "statisticsEnabled".
+                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires 'statisticsEnabled'.
 
                 
                 This attribute is named `flowCollectionEnabled` in VSD API.
@@ -2308,7 +2337,7 @@ class NUSystemConfig(NURESTObject):
         """ Set flow_collection_enabled value.
 
             Notes:
-                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires "statisticsEnabled".
+                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires 'statisticsEnabled'.
 
                 
                 This attribute is named `flowCollectionEnabled` in VSD API.

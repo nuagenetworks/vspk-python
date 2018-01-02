@@ -16,37 +16,37 @@ Attributes
 
 - ``mtu``: Port MTU (Maximum Transmission Unit) :  The size in octets of the largest protocol data unit (PDU) that the layer can pass on.  The default value is normally 1500 octets for Ethernet v2 and can go up to 9198 for Jumbo Frames.
 
-- ``name`` (**Mandatory**): Name of the Port
+- ``name`` (**Mandatory**): Name of the Redundant Port
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``permitted_action``: The permitted  action to USE/EXTEND  this Gateway.
+- ``permitted_action``: The permitted action to USE/EXTEND this Redundant Port.
 
-- ``description``: A description of the Port
+- ``description``: A description of the Redundant Port instance.
 
-- ``physical_name`` (**Mandatory**): Identifier of the Port
+- ``physical_name`` (**Mandatory**): Identifier of the Redundant Port.  The name should be corresponding to the Physical Name of the ports belonging to this redundant instance.
 
-- ``infrastructure_profile_id``: The ID of the infrastructure profile this instance is associated with.
+- ``infrastructure_profile_id``: The ID of the infrastructure port profile this instance is associated with.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``port_peer1_id``: The master gateway peer port id.
+- ``port_peer1_id``: Port ID of the port acting as master component of the redundant port instance.
 
-- ``port_peer2_id``: The slave gateway peer port id.
+- ``port_peer2_id``: Port ID of the port acting as slave component of the redundant port instance.
 
-- ``port_type`` (**Mandatory**): Type of the Port.
+- ``port_type`` (**Mandatory**): Type of the Redundant Port.
 
 - ``speed``: Port Speed in Mb/s :  Supported Ethernet speeds are 10 (10Base-T), 100 (Fast-ethernet 100Base-TX), 1000 (Gigabit Ethernet 1000Base-T), 10 000 (10 Gigabit Ethernet 10GBase-X), and Auto-Negotiate.
 
 - ``use_untagged_heartbeat_vlan``: A flag to indicate if for this redundant port an untagged heartbeat VLAN is to be used. If this is not set then will use the heartbeat VLAN set by the NS redundant group
 
-- ``use_user_mnemonic``: determines whether to use user mnemonic of the Port
+- ``use_user_mnemonic``: Determines whether to use user mnemonic of the Port
 
-- ``user_mnemonic``: user mnemonic of the Port
+- ``user_mnemonic``: User mnemonic of the Redundant Port.
 
-- ``associated_egress_qos_policy_id``: ID of the Egress QOS Policy associated with this Vlan.
+- ``associated_egress_qos_policy_id``: ID of the Egress QoS Policy associated with this Redundant Port.
 
-- ``status``: Status of the port.
+- ``status``: Status of the redundant port.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

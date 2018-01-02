@@ -12,9 +12,9 @@ Attributes
 ----------
 
 
-- ``ssh_auth_mode``: Indicates the Authentication method used during a SSH session.
+- ``ssh_auth_mode``: Indicates the authentication method used during an SSH session.
 
-- ``name`` (**Mandatory**): Name of the Infrastructure Acces Profile
+- ``name`` (**Mandatory**): Name of the Infrastructure Access Profile
 
 - ``password`` (**Mandatory**): Password of the default user associated to the access profile.
 
@@ -43,6 +43,8 @@ Children
 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+:ref:`nuconnectionendpoint.NUConnectionendpoint<nuconnectionendpoint>`                                                                                           ``connectionendpoints`` 
+:ref:`nusshkey.NUSSHKey<nusshkey>`                                                                                                                               ``ssh_keys`` 
 ================================================================================================================================================               ==========================================================================================
 
 

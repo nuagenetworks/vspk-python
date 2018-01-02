@@ -63,7 +63,9 @@ Parents
 
 - :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
 
-- :ref:`nuvsc.NUVSC<nuvsc>`
+- :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
+
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nuvsd.NUVSD<nuvsd>`
 
@@ -77,15 +79,15 @@ Parents
 
 - :ref:`nuvlan.NUVLAN<nuvlan>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
-
 - :ref:`nugateway.NUGateway<nugateway>`
+
+- :ref:`nuvm.NUVM<nuvm>`
 
 - :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
-- :ref:`nuvm.NUVM<nuvm>`
+- :ref:`nuvsc.NUVSC<nuvsc>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
 

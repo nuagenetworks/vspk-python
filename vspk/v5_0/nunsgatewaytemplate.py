@@ -161,7 +161,7 @@ class NUNSGatewayTemplate(NURESTObject):
         """ Get name value.
 
             Notes:
-                Name of the Gateway
+                Name of the Gateway template.
 
                 
         """
@@ -172,7 +172,7 @@ class NUNSGatewayTemplate(NURESTObject):
         """ Set name value.
 
             Notes:
-                Name of the Gateway
+                Name of the Gateway template.
 
                 
         """
@@ -211,7 +211,7 @@ class NUNSGatewayTemplate(NURESTObject):
         """ Get personality value.
 
             Notes:
-                Personality of the Gateway - NSG, NSGBR, cannot be changed after creation.
+                Personality of the Gateway template - NSG, NSGBR, cannot be changed after creation.
 
                 
         """
@@ -222,7 +222,7 @@ class NUNSGatewayTemplate(NURESTObject):
         """ Set personality value.
 
             Notes:
-                Personality of the Gateway - NSG, NSGBR, cannot be changed after creation.
+                Personality of the Gateway template - NSG, NSGBR, cannot be changed after creation.
 
                 
         """
@@ -234,7 +234,7 @@ class NUNSGatewayTemplate(NURESTObject):
         """ Get description value.
 
             Notes:
-                A description of the Gateway
+                A description of the Gateway template.
 
                 
         """
@@ -245,7 +245,7 @@ class NUNSGatewayTemplate(NURESTObject):
         """ Set description value.
 
             Notes:
-                A description of the Gateway
+                A description of the Gateway template.
 
                 
         """
@@ -284,7 +284,7 @@ class NUNSGatewayTemplate(NURESTObject):
         """ Get infrastructure_profile_id value.
 
             Notes:
-                The ID of the infrastructure gateway profile this instance of a Gateway is associated with.
+                The ID of the infrastructure gateway profile this instance of a Gateway template is associated with.
 
                 
                 This attribute is named `infrastructureProfileID` in VSD API.
@@ -297,7 +297,7 @@ class NUNSGatewayTemplate(NURESTObject):
         """ Set infrastructure_profile_id value.
 
             Notes:
-                The ID of the infrastructure gateway profile this instance of a Gateway is associated with.
+                The ID of the infrastructure gateway profile this instance of a Gateway template is associated with.
 
                 
                 This attribute is named `infrastructureProfileID` in VSD API.
@@ -338,7 +338,7 @@ class NUNSGatewayTemplate(NURESTObject):
         """ Get enterprise_id value.
 
             Notes:
-                The enterprise associated with this Gateway. This is a read only attribute
+                The enterprise associated with this Gateway template. This is a read only attribute
 
                 
                 This attribute is named `enterpriseID` in VSD API.
@@ -351,7 +351,7 @@ class NUNSGatewayTemplate(NURESTObject):
         """ Set enterprise_id value.
 
             Notes:
-                The enterprise associated with this Gateway. This is a read only attribute
+                The enterprise associated with this Gateway template. This is a read only attribute
 
                 
                 This attribute is named `enterpriseID` in VSD API.

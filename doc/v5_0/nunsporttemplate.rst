@@ -18,19 +18,19 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``description``: A description of the Port
+- ``description``: A description of the NSG Port Template
 
 - ``physical_name`` (**Mandatory**): Identifier of the Port
 
-- ``infrastructure_profile_id``: The ID of the infrastructure profile this instance is associated with.
+- ``infrastructure_profile_id``: The ID of the infrastructure port profile this Template instance is associated with. (Deprecated in 4.0)
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``port_type`` (**Mandatory**): Type of the Port.
+- ``port_type`` (**Mandatory**): Type of the Ports that will be instantiated from this template.
 
 - ``speed``: Port Speed in Mb/s :  Supported Ethernet speeds are 10 (10Base-T), 100 (Fast-ethernet 100Base-TX), 1000 (Gigabit Ethernet 1000Base-T), 10 000 (10 Gigabit Ethernet 10GBase-X), and Auto-Negotiate
 
-- ``associated_egress_qos_policy_id``: ID of the Egress QOS Policy associated with this Vlan.
+- ``associated_egress_qos_policy_id``: ID of the Egress QoS Policy associated with this NSG Port Template.
 
 - ``mtu``: Port MTU (Maximum Transmission Unit) :  The size in octets of the largest protocol data unit hat the layer can pass on.
 

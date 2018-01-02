@@ -120,6 +120,9 @@ from .fetchers import NULicenseStatusFetcher
 from .fetchers import NUMirrorDestinationsFetcher
 
 
+from .fetchers import NUVirtualFirewallPoliciesFetcher
+
+
 from .fetchers import NUSiteInfosFetcher
 
 
@@ -217,6 +220,9 @@ from .fetchers import NUDSCPRemarkingPolicyTablesFetcher
 
 
 from .fetchers import NUUsersFetcher
+
+
+from .fetchers import NUUserContextsFetcher
 
 
 from .fetchers import NUNSGatewaysFetcher
@@ -443,6 +449,9 @@ class NUMe(NURESTRootObject):
         self.mirror_destinations = NUMirrorDestinationsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.virtual_firewall_policies = NUVirtualFirewallPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.site_infos = NUSiteInfosFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -540,6 +549,9 @@ class NUMe(NURESTRootObject):
         
         
         self.users = NUUsersFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.user_contexts = NUUserContextsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.ns_gateways = NUNSGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="root")
@@ -671,7 +683,7 @@ class NUMe(NURESTRootObject):
         """ Get password value.
 
             Notes:
-                User password stored as a hash (SHA-1 encrpted)
+                User password in clear text. Password cannot be a single character asterisk (*)
 
                 
         """
@@ -682,7 +694,7 @@ class NUMe(NURESTRootObject):
         """ Set password value.
 
             Notes:
-                User password stored as a hash (SHA-1 encrpted)
+                User password in clear text. Password cannot be a single character asterisk (*)
 
                 
         """
@@ -825,7 +837,7 @@ class NUMe(NURESTRootObject):
         """ Get flow_collection_enabled value.
 
             Notes:
-                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires "statisticsEnabled".
+                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires 'statisticsEnabled'.
 
                 
                 This attribute is named `flowCollectionEnabled` in VSD API.
@@ -838,7 +850,7 @@ class NUMe(NURESTRootObject):
         """ Set flow_collection_enabled value.
 
             Notes:
-                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires "statisticsEnabled".
+                Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires 'statisticsEnabled'.
 
                 
                 This attribute is named `flowCollectionEnabled` in VSD API.

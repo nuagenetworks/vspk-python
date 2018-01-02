@@ -110,7 +110,7 @@ class NUInfrastructureVscProfile(NURESTObject):
         """ Get name value.
 
             Notes:
-                Name of the Infrastructure Profile
+                Name of the Infrastructure VSC Profile
 
                 
         """
@@ -121,7 +121,7 @@ class NUInfrastructureVscProfile(NURESTObject):
         """ Set name value.
 
             Notes:
-                Name of the Infrastructure Profile
+                Name of the Infrastructure VSC Profile
 
                 
         """
@@ -187,7 +187,7 @@ class NUInfrastructureVscProfile(NURESTObject):
         """ Get description value.
 
             Notes:
-                A description of the Profile instance created.
+                A description of the VSC Profile instance created.
 
                 
         """
@@ -198,7 +198,7 @@ class NUInfrastructureVscProfile(NURESTObject):
         """ Set description value.
 
             Notes:
-                A description of the Profile instance created.
+                A description of the VSC Profile instance created.
 
                 
         """
@@ -291,7 +291,7 @@ class NUInfrastructureVscProfile(NURESTObject):
         """ Get probe_interval value.
 
             Notes:
-                Openflow echo timer in millisecond
+                Openflow echo timer in milliseconds.
 
                 
                 This attribute is named `probeInterval` in VSD API.
@@ -304,7 +304,7 @@ class NUInfrastructureVscProfile(NURESTObject):
         """ Set probe_interval value.
 
             Notes:
-                Openflow echo timer in millisecond
+                Openflow echo timer in milliseconds.
 
                 
                 This attribute is named `probeInterval` in VSD API.

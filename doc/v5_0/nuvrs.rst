@@ -139,13 +139,13 @@ Parents
 --------
 
 
-- :ref:`nuvsc.NUVSC<nuvsc>`
-
 - :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nuhsc.NUHSC<nuhsc>`
 
 - :ref:`nuvm.NUVM<nuvm>`
+
+- :ref:`nuvsc.NUVSC<nuvsc>`
 
 - :ref:`nucontainer.NUContainer<nucontainer>`
 

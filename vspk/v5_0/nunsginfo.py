@@ -42,19 +42,33 @@ class NUNSGInfo(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_FAMILY_NSG_E200 = "NSG_E200"
     
-    CONST_FAMILY_NSG_E = "NSG_E"
+    CONST_FAMILY_NSG_C = "NSG_C"
+    
+    CONST_FAMILY_NSG_DOCKER = "NSG_DOCKER"
+    
+    CONST_FAMILY_NSG_AMI = "NSG_AMI"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_FAMILY_NSG_E = "NSG_E"
     
     CONST_TPM_STATUS_ENABLED_NOT_OPERATIONAL = "ENABLED_NOT_OPERATIONAL"
     
     CONST_TPM_STATUS_ENABLED_OPERATIONAL = "ENABLED_OPERATIONAL"
     
+    CONST_FAMILY_NSG_X200 = "NSG_X200"
+    
     CONST_FAMILY_NSG_V = "NSG_V"
     
     CONST_TPM_STATUS_UNKNOWN = "UNKNOWN"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_FAMILY_NSG_E300 = "NSG_E300"
+    
+    CONST_FAMILY_NSG_X = "NSG_X"
     
     CONST_FAMILY_ANY = "ANY"
     
@@ -80,6 +94,7 @@ class NUNSGInfo(NURESTObject):
         # Read/Write Attributes
         
         self._mac_address = None
+        self._bios_release_date = None
         self._bios_version = None
         self._sku = None
         self._tpm_status = None
@@ -95,13 +110,14 @@ class NUNSGInfo(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="mac_address", remote_name="MACAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="bios_release_date", remote_name="BIOSReleaseDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bios_version", remote_name="BIOSVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sku", remote_name="SKU", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tpm_status", remote_name="TPMStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED_NOT_OPERATIONAL', u'ENABLED_OPERATIONAL', u'UNKNOWN'])
         self.expose_attribute(local_name="cpu_type", remote_name="CPUType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_version", remote_name="NSGVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_E', u'NSG_V'])
+        self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_AMI', u'NSG_C', u'NSG_DOCKER', u'NSG_E', u'NSG_E200', u'NSG_E300', u'NSG_V', u'NSG_X', u'NSG_X200'])
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -119,7 +135,7 @@ class NUNSGInfo(NURESTObject):
         """ Get mac_address value.
 
             Notes:
-                MAC Address of the NSG
+                MAC Address of the NSG.  May represent the MAC address of the first uplink that came operational during bootstrapping.
 
                 
                 This attribute is named `MACAddress` in VSD API.
@@ -132,7 +148,7 @@ class NUNSGInfo(NURESTObject):
         """ Set mac_address value.
 
             Notes:
-                MAC Address of the NSG
+                MAC Address of the NSG.  May represent the MAC address of the first uplink that came operational during bootstrapping.
 
                 
                 This attribute is named `MACAddress` in VSD API.
@@ -142,11 +158,38 @@ class NUNSGInfo(NURESTObject):
 
     
     @property
+    def bios_release_date(self):
+        """ Get bios_release_date value.
+
+            Notes:
+                Release Date of the NSG BiOS
+
+                
+                This attribute is named `BIOSReleaseDate` in VSD API.
+                
+        """
+        return self._bios_release_date
+
+    @bios_release_date.setter
+    def bios_release_date(self, value):
+        """ Set bios_release_date value.
+
+            Notes:
+                Release Date of the NSG BiOS
+
+                
+                This attribute is named `BIOSReleaseDate` in VSD API.
+                
+        """
+        self._bios_release_date = value
+
+    
+    @property
     def bios_version(self):
         """ Get bios_version value.
 
             Notes:
-                NSG BIOS Version
+                NSG BIOS Version as received from the NSG during bootstrap or a reboot.  If the information exeeds 255 characters, the extra characters will be truncated.
 
                 
                 This attribute is named `BIOSVersion` in VSD API.
@@ -159,7 +202,7 @@ class NUNSGInfo(NURESTObject):
         """ Set bios_version value.
 
             Notes:
-                NSG BIOS Version
+                NSG BIOS Version as received from the NSG during bootstrap or a reboot.  If the information exeeds 255 characters, the extra characters will be truncated.
 
                 
                 This attribute is named `BIOSVersion` in VSD API.
@@ -200,7 +243,7 @@ class NUNSGInfo(NURESTObject):
         """ Get tpm_status value.
 
             Notes:
-                TPM status
+                TPM status as reported by the NSG during bootstrapping.  This informate indicates if TPM is being used in securing the private key/certificate of an NSG.
 
                 
                 This attribute is named `TPMStatus` in VSD API.
@@ -213,7 +256,7 @@ class NUNSGInfo(NURESTObject):
         """ Set tpm_status value.
 
             Notes:
-                TPM status
+                TPM status as reported by the NSG during bootstrapping.  This informate indicates if TPM is being used in securing the private key/certificate of an NSG.
 
                 
                 This attribute is named `TPMStatus` in VSD API.
@@ -227,7 +270,7 @@ class NUNSGInfo(NURESTObject):
         """ Get cpu_type value.
 
             Notes:
-                The NSG Processor Type
+                The NSG Processor Type based on information extracted during bootstrapping.  This may refer to a type of processor manufactured by Intel, ARM, AMD, Cyrix, VIA, or others.
 
                 
                 This attribute is named `CPUType` in VSD API.
@@ -240,7 +283,7 @@ class NUNSGInfo(NURESTObject):
         """ Set cpu_type value.
 
             Notes:
-                The NSG Processor Type
+                The NSG Processor Type based on information extracted during bootstrapping.  This may refer to a type of processor manufactured by Intel, ARM, AMD, Cyrix, VIA, or others.
 
                 
                 This attribute is named `CPUType` in VSD API.
@@ -254,7 +297,7 @@ class NUNSGInfo(NURESTObject):
         """ Get nsg_version value.
 
             Notes:
-                The NSG Version
+                The NSG Version as reported during a bootstrap or a reboot of the NSG. 
 
                 
                 This attribute is named `NSGVersion` in VSD API.
@@ -267,7 +310,7 @@ class NUNSGInfo(NURESTObject):
         """ Set nsg_version value.
 
             Notes:
-                The NSG Version
+                The NSG Version as reported during a bootstrap or a reboot of the NSG. 
 
                 
                 This attribute is named `NSGVersion` in VSD API.
@@ -281,7 +324,7 @@ class NUNSGInfo(NURESTObject):
         """ Get uuid value.
 
             Notes:
-                The Redhat UUID of the NSG
+                The Redhat/CentOS UUID of the NSG
 
                 
                 This attribute is named `UUID` in VSD API.
@@ -294,7 +337,7 @@ class NUNSGInfo(NURESTObject):
         """ Set uuid value.
 
             Notes:
-                The Redhat UUID of the NSG
+                The Redhat/CentOS UUID of the NSG
 
                 
                 This attribute is named `UUID` in VSD API.
@@ -308,7 +351,7 @@ class NUNSGInfo(NURESTObject):
         """ Get family value.
 
             Notes:
-                The NSG Type
+                The NSG Family type as it was returned by the NSG during bootstrapping.
 
                 
         """
@@ -319,7 +362,7 @@ class NUNSGInfo(NURESTObject):
         """ Set family value.
 
             Notes:
-                The NSG Type
+                The NSG Family type as it was returned by the NSG during bootstrapping.
 
                 
         """
@@ -331,7 +374,7 @@ class NUNSGInfo(NURESTObject):
         """ Get serial_number value.
 
             Notes:
-                The NSG's serial number
+                The NSG's serial number as it is stored in the system's CMOS (Motherboard)
 
                 
                 This attribute is named `serialNumber` in VSD API.
@@ -344,7 +387,7 @@ class NUNSGInfo(NURESTObject):
         """ Set serial_number value.
 
             Notes:
-                The NSG's serial number
+                The NSG's serial number as it is stored in the system's CMOS (Motherboard)
 
                 
                 This attribute is named `serialNumber` in VSD API.
@@ -408,7 +451,7 @@ class NUNSGInfo(NURESTObject):
         """ Get product_name value.
 
             Notes:
-                NSG Product Name
+                NSG Product Name as reported when the device bootstraps.
 
                 
                 This attribute is named `productName` in VSD API.
@@ -421,7 +464,7 @@ class NUNSGInfo(NURESTObject):
         """ Set product_name value.
 
             Notes:
-                NSG Product Name
+                NSG Product Name as reported when the device bootstraps.
 
                 
                 This attribute is named `productName` in VSD API.
@@ -435,7 +478,7 @@ class NUNSGInfo(NURESTObject):
         """ Get associated_ns_gateway_id value.
 
             Notes:
-                Associated NS Gateway ID
+                The ID of the NSG from which the infomation was collected.
 
                 
                 This attribute is named `associatedNSGatewayID` in VSD API.
@@ -448,7 +491,7 @@ class NUNSGInfo(NURESTObject):
         """ Set associated_ns_gateway_id value.
 
             Notes:
-                Associated NS Gateway ID
+                The ID of the NSG from which the infomation was collected.
 
                 
                 This attribute is named `associatedNSGatewayID` in VSD API.

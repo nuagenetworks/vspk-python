@@ -228,7 +228,7 @@ class NURedundantPort(NURESTObject):
         """ Get name value.
 
             Notes:
-                Name of the Port
+                Name of the Redundant Port
 
                 
         """
@@ -239,7 +239,7 @@ class NURedundantPort(NURESTObject):
         """ Set name value.
 
             Notes:
-                Name of the Port
+                Name of the Redundant Port
 
                 
         """
@@ -278,7 +278,7 @@ class NURedundantPort(NURESTObject):
         """ Get permitted_action value.
 
             Notes:
-                The permitted  action to USE/EXTEND  this Gateway.
+                The permitted action to USE/EXTEND this Redundant Port.
 
                 
                 This attribute is named `permittedAction` in VSD API.
@@ -291,7 +291,7 @@ class NURedundantPort(NURESTObject):
         """ Set permitted_action value.
 
             Notes:
-                The permitted  action to USE/EXTEND  this Gateway.
+                The permitted action to USE/EXTEND this Redundant Port.
 
                 
                 This attribute is named `permittedAction` in VSD API.
@@ -305,7 +305,7 @@ class NURedundantPort(NURESTObject):
         """ Get description value.
 
             Notes:
-                A description of the Port
+                A description of the Redundant Port instance.
 
                 
         """
@@ -316,7 +316,7 @@ class NURedundantPort(NURESTObject):
         """ Set description value.
 
             Notes:
-                A description of the Port
+                A description of the Redundant Port instance.
 
                 
         """
@@ -328,7 +328,7 @@ class NURedundantPort(NURESTObject):
         """ Get physical_name value.
 
             Notes:
-                Identifier of the Port
+                Identifier of the Redundant Port.  The name should be corresponding to the Physical Name of the ports belonging to this redundant instance.
 
                 
                 This attribute is named `physicalName` in VSD API.
@@ -341,7 +341,7 @@ class NURedundantPort(NURESTObject):
         """ Set physical_name value.
 
             Notes:
-                Identifier of the Port
+                Identifier of the Redundant Port.  The name should be corresponding to the Physical Name of the ports belonging to this redundant instance.
 
                 
                 This attribute is named `physicalName` in VSD API.
@@ -355,7 +355,7 @@ class NURedundantPort(NURESTObject):
         """ Get infrastructure_profile_id value.
 
             Notes:
-                The ID of the infrastructure profile this instance is associated with.
+                The ID of the infrastructure port profile this instance is associated with.
 
                 
                 This attribute is named `infrastructureProfileID` in VSD API.
@@ -368,7 +368,7 @@ class NURedundantPort(NURESTObject):
         """ Set infrastructure_profile_id value.
 
             Notes:
-                The ID of the infrastructure profile this instance is associated with.
+                The ID of the infrastructure port profile this instance is associated with.
 
                 
                 This attribute is named `infrastructureProfileID` in VSD API.
@@ -409,7 +409,7 @@ class NURedundantPort(NURESTObject):
         """ Get port_peer1_id value.
 
             Notes:
-                The master gateway peer port id.
+                Port ID of the port acting as master component of the redundant port instance.
 
                 
                 This attribute is named `portPeer1ID` in VSD API.
@@ -422,7 +422,7 @@ class NURedundantPort(NURESTObject):
         """ Set port_peer1_id value.
 
             Notes:
-                The master gateway peer port id.
+                Port ID of the port acting as master component of the redundant port instance.
 
                 
                 This attribute is named `portPeer1ID` in VSD API.
@@ -436,7 +436,7 @@ class NURedundantPort(NURESTObject):
         """ Get port_peer2_id value.
 
             Notes:
-                The slave gateway peer port id.
+                Port ID of the port acting as slave component of the redundant port instance.
 
                 
                 This attribute is named `portPeer2ID` in VSD API.
@@ -449,7 +449,7 @@ class NURedundantPort(NURESTObject):
         """ Set port_peer2_id value.
 
             Notes:
-                The slave gateway peer port id.
+                Port ID of the port acting as slave component of the redundant port instance.
 
                 
                 This attribute is named `portPeer2ID` in VSD API.
@@ -463,7 +463,7 @@ class NURedundantPort(NURESTObject):
         """ Get port_type value.
 
             Notes:
-                Type of the Port.
+                Type of the Redundant Port.
 
                 
                 This attribute is named `portType` in VSD API.
@@ -476,7 +476,7 @@ class NURedundantPort(NURESTObject):
         """ Set port_type value.
 
             Notes:
-                Type of the Port.
+                Type of the Redundant Port.
 
                 
                 This attribute is named `portType` in VSD API.
@@ -540,7 +540,7 @@ class NURedundantPort(NURESTObject):
         """ Get use_user_mnemonic value.
 
             Notes:
-                determines whether to use user mnemonic of the Port
+                Determines whether to use user mnemonic of the Port
 
                 
                 This attribute is named `useUserMnemonic` in VSD API.
@@ -553,7 +553,7 @@ class NURedundantPort(NURESTObject):
         """ Set use_user_mnemonic value.
 
             Notes:
-                determines whether to use user mnemonic of the Port
+                Determines whether to use user mnemonic of the Port
 
                 
                 This attribute is named `useUserMnemonic` in VSD API.
@@ -567,7 +567,7 @@ class NURedundantPort(NURESTObject):
         """ Get user_mnemonic value.
 
             Notes:
-                user mnemonic of the Port
+                User mnemonic of the Redundant Port.
 
                 
                 This attribute is named `userMnemonic` in VSD API.
@@ -580,7 +580,7 @@ class NURedundantPort(NURESTObject):
         """ Set user_mnemonic value.
 
             Notes:
-                user mnemonic of the Port
+                User mnemonic of the Redundant Port.
 
                 
                 This attribute is named `userMnemonic` in VSD API.
@@ -594,7 +594,7 @@ class NURedundantPort(NURESTObject):
         """ Get associated_egress_qos_policy_id value.
 
             Notes:
-                ID of the Egress QOS Policy associated with this Vlan.
+                ID of the Egress QoS Policy associated with this Redundant Port.
 
                 
                 This attribute is named `associatedEgressQOSPolicyID` in VSD API.
@@ -607,7 +607,7 @@ class NURedundantPort(NURESTObject):
         """ Set associated_egress_qos_policy_id value.
 
             Notes:
-                ID of the Egress QOS Policy associated with this Vlan.
+                ID of the Egress QoS Policy associated with this Redundant Port.
 
                 
                 This attribute is named `associatedEgressQOSPolicyID` in VSD API.
@@ -621,7 +621,7 @@ class NURedundantPort(NURESTObject):
         """ Get status value.
 
             Notes:
-                Status of the port.
+                Status of the redundant port.
 
                 
         """
@@ -632,7 +632,7 @@ class NURedundantPort(NURESTObject):
         """ Set status value.
 
             Notes:
-                Status of the port.
+                Status of the redundant port.
 
                 
         """

@@ -113,8 +113,6 @@ Parents
 --------
 
 
-- :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
-
 - :ref:`nuzone.NUZone<nuzone>`
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
@@ -126,6 +124,8 @@ Parents
 - :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 
 - :ref:`nuvrs.NUVRS<nuvrs>`
+
+- :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
 
 - :ref:`nutrunk.NUTrunk<nutrunk>`
 

@@ -1,24 +1,30 @@
-.. _nukeyservernotification:
+.. _nutier:
 
-nukeyservernotification
+nutier
 ===========================================
 
-.. class:: nukeyservernotification.NUKeyServerNotification(bambou.nurest_object.NUMetaRESTObject,):
+.. class:: nutier.NUTier(bambou.nurest_object.NUMetaRESTObject,):
 
-KeyServer Notification - Create one of these transient objects to push an event to the KeyServer
+When the customer creates an HTTP probe, VSD will automatically create Tier1 and Tier2 under it with default properties.
 
 
 Attributes
 ----------
 
 
-- ``base64_json_string``: The base 64 encoded JSON String of the message object
+- ``packet_count``: packet count (part of rate along with probeInterval)
 
-- ``message``: The message to send
+- ``last_updated_by``: ID of the user who last updated the object.
+
+- ``tier_type`` (**Mandatory**): Tier type
+
+- ``timeout``: number of milliseconds to wait until the probe is timed out
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``notification_type``: The notification type to trigger
+- ``down_threshold_count``: Number of times the probe is allowed to retry on successive timeouts. Applicable only for TIER2
+
+- ``probe_interval``: probe interval (part of rate along with packetCount)
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -31,8 +37,16 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nudestinationurl.NUDestinationurl<nudestinationurl>`                                                                                                       ``destinationurls`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 ================================================================================================================================================               ==========================================================================================
 
+
+
+Parents
+--------
+
+
+- :ref:`nuperformancemonitor.NUPerformanceMonitor<nuperformancemonitor>`
 

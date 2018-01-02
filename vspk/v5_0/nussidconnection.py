@@ -371,7 +371,7 @@ class NUSSIDConnection(NURESTObject):
         """ Get vport_id value.
 
             Notes:
-                The Vport associated with this SSID connection.
+                The Vport associated with this SSID connection.  The attribute can't be modified directly from the SSID Connection.
 
                 
                 This attribute is named `vportID` in VSD API.
@@ -384,7 +384,7 @@ class NUSSIDConnection(NURESTObject):
         """ Set vport_id value.
 
             Notes:
-                The Vport associated with this SSID connection.
+                The Vport associated with this SSID connection.  The attribute can't be modified directly from the SSID Connection.
 
                 
                 This attribute is named `vportID` in VSD API.

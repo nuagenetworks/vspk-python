@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``pat_enabled``: Indicates whether PAT is enabled on the underlay for this uplink connection.
+
 - ``dns_address``: DNS server address
 
 - ``password``: PPPoE password.
@@ -27,6 +29,10 @@ Attributes
 - ``netmask``: Subnet mask
 
 - ``vlan_id``: The tag of the uplink's parent VLAN
+
+- ``underlay_enabled``: Indicated whether route to underlay is enabled on this uplink connection.
+
+- ``installer_managed``: Boolean flag to indicate that connection parameters will be configured by the installer onsite. Limited to ConnectionMode: PPPoE
 
 - ``interface_connection_type``: The way the interface is connected via the NSG.  This value depends on if the interface internal or external to the NSG.
 

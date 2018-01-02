@@ -58,11 +58,11 @@ Parents
 
 - :ref:`nudomain.NUDomain<nudomain>`
 
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
+
 - :ref:`nuport.NUPort<nuport>`
 
 - :ref:`nuvlan.NUVLAN<nuvlan>`
-
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 

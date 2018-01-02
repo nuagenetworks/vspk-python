@@ -104,6 +104,7 @@ class NUUplinkConnection(NURESTObject):
 
         # Read/Write Attributes
         
+        self._pat_enabled = None
         self._dns_address = None
         self._password = None
         self._gateway = None
@@ -112,6 +113,8 @@ class NUUplinkConnection(NURESTObject):
         self._secondary_address = None
         self._netmask = None
         self._vlan_id = None
+        self._underlay_enabled = None
+        self._installer_managed = None
         self._interface_connection_type = None
         self._mode = None
         self._role = None
@@ -125,6 +128,7 @@ class NUUplinkConnection(NURESTObject):
         self._associated_underlay_name = None
         self._auxiliary_link = None
         
+        self.expose_attribute(local_name="pat_enabled", remote_name="PATEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dns_address", remote_name="DNSAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
@@ -133,6 +137,8 @@ class NUUplinkConnection(NURESTObject):
         self.expose_attribute(local_name="secondary_address", remote_name="secondaryAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vlan_id", remote_name="vlanId", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="underlay_enabled", remote_name="underlayEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="installer_managed", remote_name="installerManaged", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="interface_connection_type", remote_name="interfaceConnectionType", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTOMATIC', u'EMBEDDED', u'PCI_EXPRESS', u'USB_ETHERNET', u'USB_MODEM'])
         self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'Dynamic', u'LTE', u'PPPoE', u'Static'])
         self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'PRIMARY', u'SECONDARY', u'TERTIARY', u'UNKNOWN'])
@@ -162,6 +168,33 @@ class NUUplinkConnection(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def pat_enabled(self):
+        """ Get pat_enabled value.
+
+            Notes:
+                Indicates whether PAT is enabled on the underlay for this uplink connection.
+
+                
+                This attribute is named `PATEnabled` in VSD API.
+                
+        """
+        return self._pat_enabled
+
+    @pat_enabled.setter
+    def pat_enabled(self, value):
+        """ Set pat_enabled value.
+
+            Notes:
+                Indicates whether PAT is enabled on the underlay for this uplink connection.
+
+                
+                This attribute is named `PATEnabled` in VSD API.
+                
+        """
+        self._pat_enabled = value
+
     
     @property
     def dns_address(self):
@@ -361,6 +394,60 @@ class NUUplinkConnection(NURESTObject):
                 
         """
         self._vlan_id = value
+
+    
+    @property
+    def underlay_enabled(self):
+        """ Get underlay_enabled value.
+
+            Notes:
+                Indicated whether route to underlay is enabled on this uplink connection.
+
+                
+                This attribute is named `underlayEnabled` in VSD API.
+                
+        """
+        return self._underlay_enabled
+
+    @underlay_enabled.setter
+    def underlay_enabled(self, value):
+        """ Set underlay_enabled value.
+
+            Notes:
+                Indicated whether route to underlay is enabled on this uplink connection.
+
+                
+                This attribute is named `underlayEnabled` in VSD API.
+                
+        """
+        self._underlay_enabled = value
+
+    
+    @property
+    def installer_managed(self):
+        """ Get installer_managed value.
+
+            Notes:
+                Boolean flag to indicate that connection parameters will be configured by the installer onsite. Limited to ConnectionMode: PPPoE
+
+                
+                This attribute is named `installerManaged` in VSD API.
+                
+        """
+        return self._installer_managed
+
+    @installer_managed.setter
+    def installer_managed(self, value):
+        """ Set installer_managed value.
+
+            Notes:
+                Boolean flag to indicate that connection parameters will be configured by the installer onsite. Limited to ConnectionMode: PPPoE
+
+                
+                This attribute is named `installerManaged` in VSD API.
+                
+        """
+        self._installer_managed = value
 
     
     @property
