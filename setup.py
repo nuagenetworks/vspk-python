@@ -48,7 +48,7 @@ for version_folder in os.listdir(api_version_path):
 
 setup(
     name='vspk',
-    version="5.1.2",
+    version="5.2.1",
     url='http://nuagenetworks.net/',
     author='nuage networks',
     author_email='opensource@nuagenetworks.net',
