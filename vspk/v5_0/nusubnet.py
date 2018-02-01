@@ -1111,7 +1111,7 @@ class NUSubnet(NURESTObject):
         """ Get split_subnet value.
 
             Notes:
-                Need to add correct description
+                Block subnet routes
 
                 
                 This attribute is named `splitSubnet` in VSD API.
@@ -1124,7 +1124,7 @@ class NUSubnet(NURESTObject):
         """ Set split_subnet value.
 
             Notes:
-                Need to add correct description
+                Block subnet routes
 
                 
                 This attribute is named `splitSubnet` in VSD API.
@@ -1138,7 +1138,7 @@ class NUSubnet(NURESTObject):
         """ Get proxy_arp value.
 
             Notes:
-                 when set VRS will act as  ARP Proxy
+                 When set, VRS will act as  ARP Proxy
 
                 
                 This attribute is named `proxyARP` in VSD API.
@@ -1151,7 +1151,7 @@ class NUSubnet(NURESTObject):
         """ Set proxy_arp value.
 
             Notes:
-                 when set VRS will act as  ARP Proxy
+                 When set, VRS will act as  ARP Proxy
 
                 
                 This attribute is named `proxyARP` in VSD API.

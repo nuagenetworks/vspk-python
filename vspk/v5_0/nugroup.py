@@ -54,6 +54,8 @@ class NUGroup(NURESTObject):
     
     ## Constants
     
+    CONST_ROLE_ADMINOPERATOR = "ADMINOPERATOR"
+    
     CONST_MANAGEMENT_MODE_CMS = "CMS"
     
     CONST_ROLE_CMS = "CMS"
@@ -79,6 +81,8 @@ class NUGroup(NURESTObject):
     CONST_ROLE_CSPROOT = "CSPROOT"
     
     CONST_ROLE_SYSTEM = "SYSTEM"
+    
+    CONST_ROLE_SECURITYADMINISTRATOR = "SECURITYADMINISTRATOR"
     
     CONST_ROLE_ORGADMIN = "ORGADMIN"
     
@@ -123,7 +127,7 @@ class NUGroup(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="restriction_date", remote_name="restrictionDate", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=[u'CMS', u'CSPOPERATOR', u'CSPROOT', u'JMS', u'ORGADMIN', u'ORGAPPDESIGNER', u'ORGNETWORKDESIGNER', u'ORGUSER', u'SYSTEM', u'UNKNOWN', u'USER'])
+        self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMINOPERATOR', u'CMS', u'CSPOPERATOR', u'CSPROOT', u'JMS', u'ORGADMIN', u'ORGAPPDESIGNER', u'ORGNETWORKDESIGNER', u'ORGUSER', u'SECURITYADMINISTRATOR', u'SYSTEM', u'UNKNOWN', u'USER'])
         self.expose_attribute(local_name="private", remote_name="private", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         

@@ -36,9 +36,9 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``split_subnet``: Need to add correct description
+- ``split_subnet``: Block subnet routes
 
-- ``proxy_arp``:  when set VRS will act as  ARP Proxy
+- ``proxy_arp``:  When set, VRS will act as  ARP Proxy
 
 - ``use_global_mac``: if this flag is enabled, the system configured globalMACAddress will be used as the gateway mac address
 

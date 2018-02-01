@@ -73,6 +73,8 @@ Parents
 
 - :ref:`nuzone.NUZone<nuzone>`
 
+- :ref:`nunsport.NUNSPort<nunsport>`
+
 - :ref:`nuenterprisenetwork.NUEnterpriseNetwork<nuenterprisenetwork>`
 
 - :ref:`nupermission.NUPermission<nupermission>`
@@ -85,17 +87,11 @@ Parents
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
-- :ref:`numetadata.NUMetadata<numetadata>`
-
 - :ref:`nuvsp.NUVSP<nuvsp>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuproxyarpfilter.NUProxyARPFilter<nuproxyarpfilter>`
 
 - :ref:`nuwanservice.NUWANService<nuwanservice>`
-
-- :ref:`nuvsd.NUVSD<nuvsd>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
@@ -106,6 +102,8 @@ Parents
 - :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 
 - :ref:`nuzonetemplate.NUZoneTemplate<nuzonetemplate>`
+
+- :ref:`numetadata.NUMetadata<numetadata>`
 
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
@@ -127,13 +125,13 @@ Parents
 
 - :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
 
+- :ref:`nudomain.NUDomain<nudomain>`
+
 - :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
-
-- :ref:`nuvm.NUVM<nuvm>`
 
 - :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
 
@@ -143,7 +141,9 @@ Parents
 
 - :ref:`nuvsc.NUVSC<nuvsc>`
 
-- :ref:`nunsport.NUNSPort<nunsport>`
+- :ref:`nuvm.NUVM<nuvm>`
+
+- :ref:`nuvsd.NUVSD<nuvsd>`
 
 - :ref:`nupublicnetworkmacro.NUPublicNetworkMacro<nupublicnetworkmacro>`
 

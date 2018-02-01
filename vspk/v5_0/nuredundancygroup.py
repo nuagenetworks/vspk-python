@@ -72,39 +72,49 @@ class NURedundancyGroup(NURESTObject):
     
     ## Constants
     
-    CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_PERSONALITY_VSA = "VSA"
-    
-    CONST_PERMITTED_ACTION_ALL = "ALL"
-    
-    CONST_PERSONALITY_VSG = "VSG"
-    
-    CONST_PERMITTED_ACTION_READ = "READ"
+    CONST_PERSONALITY_NSGDUC = "NSGDUC"
     
     CONST_PERSONALITY_OTHER = "OTHER"
     
     CONST_PERSONALITY_NSG = "NSG"
     
-    CONST_REDUNDANT_GATEWAY_STATUS_SUCCESS = "SUCCESS"
-    
-    CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
-    
     CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
-    
-    CONST_PERMITTED_ACTION_USE = "USE"
-    
-    CONST_PERSONALITY_VRSG = "VRSG"
     
     CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
     
     CONST_PERSONALITY_DC7X50 = "DC7X50"
     
+    CONST_REDUNDANT_GATEWAY_STATUS_FAILED = "FAILED"
+    
+    CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
+    
+    CONST_PERSONALITY_VSA = "VSA"
+    
+    CONST_PERMITTED_ACTION_USE = "USE"
+    
+    CONST_PERSONALITY_VSG = "VSG"
+    
+    CONST_PERMITTED_ACTION_READ = "READ"
+    
+    CONST_PERSONALITY_VRSB = "VRSB"
+    
+    CONST_REDUNDANT_GATEWAY_STATUS_SUCCESS = "SUCCESS"
+    
+    CONST_PERSONALITY_NUAGE_210_WBX_48_S = "NUAGE_210_WBX_48_S"
+    
+    CONST_PERSONALITY_VRSG = "VRSG"
+    
+    CONST_PERSONALITY_NUAGE_210_WBX_32_Q = "NUAGE_210_WBX_32_Q"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_PERMITTED_ACTION_ALL = "ALL"
     
-    CONST_REDUNDANT_GATEWAY_STATUS_FAILED = "FAILED"
+    CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
+    
+    CONST_PERSONALITY_NSGBR = "NSGBR"
     
     
 
@@ -152,7 +162,7 @@ class NURedundancyGroup(NURESTObject):
         self.expose_attribute(local_name="gateway_peer2_name", remote_name="gatewayPeer2Name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redundant_gateway_status", remote_name="redundantGatewayStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAILED', u'SUCCESS'])
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'OTHER', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'NSGBR', u'NSGDUC', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VRSB', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])

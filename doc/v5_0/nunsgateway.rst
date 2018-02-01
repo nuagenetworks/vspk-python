@@ -141,15 +141,15 @@ Parents
 --------
 
 
-- :ref:`nuducgroup.NUDUCGroup<nuducgroup>`
+- :ref:`nuperformancemonitor.NUPerformanceMonitor<nuperformancemonitor>`
 
 - :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
-
-- :ref:`nuperformancemonitor.NUPerformanceMonitor<nuperformancemonitor>`
 
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nunsggroup.NUNSGGroup<nunsggroup>`
+
+- :ref:`nuducgroup.NUDUCGroup<nuducgroup>`
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 

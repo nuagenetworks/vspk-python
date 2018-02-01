@@ -70,9 +70,9 @@ Attributes
 
 - ``route_target``: Route target for this subnet that is used by the BGP-EVPN protocol in VSC. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
-- ``split_subnet``: Need to add correct description
+- ``split_subnet``: Block subnet routes
 
-- ``proxy_arp``:  when set VRS will act as  ARP Proxy
+- ``proxy_arp``:  When set, VRS will act as  ARP Proxy
 
 - ``use_global_mac``: if this flag is enabled, the system configured globalMACAddress will be used as the gateway mac address
 

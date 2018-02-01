@@ -94,17 +94,17 @@ Parents
 
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
+- :ref:`nutier.NUTier<nutier>`
+
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nuuser.NUUser<nuuser>`
 
-- :ref:`nutier.NUTier<nutier>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`
 

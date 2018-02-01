@@ -65,6 +65,8 @@ Parents
 
 - :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`
 
+- :ref:`nutier.NUTier<nutier>`
+
 - :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
 
 - :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`
@@ -74,6 +76,4 @@ Parents
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
-
-- :ref:`nutier.NUTier<nutier>`
 

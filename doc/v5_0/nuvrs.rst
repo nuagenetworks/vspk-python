@@ -143,9 +143,9 @@ Parents
 
 - :ref:`nuhsc.NUHSC<nuhsc>`
 
-- :ref:`nuvm.NUVM<nuvm>`
-
 - :ref:`nuvsc.NUVSC<nuvsc>`
+
+- :ref:`nuvm.NUVM<nuvm>`
 
 - :ref:`nucontainer.NUContainer<nucontainer>`
 

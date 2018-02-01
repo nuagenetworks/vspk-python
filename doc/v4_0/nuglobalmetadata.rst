@@ -124,6 +124,8 @@ Parents
 
 - :ref:`nubootstrapactivation.NUBootstrapActivation<nubootstrapactivation>`
 
+- :ref:`nugatewaytemplate.NUGatewayTemplate<nugatewaytemplate>`
+
 - :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
 
 - :ref:`nuvsp.NUVSP<nuvsp>`
@@ -160,8 +162,6 @@ Parents
 
 - :ref:`nukeyservermonitorseed.NUKeyServerMonitorSeed<nukeyservermonitorseed>`
 
-- :ref:`nugatewaytemplate.NUGatewayTemplate<nugatewaytemplate>`
-
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
 - :ref:`nuhsc.NUHSC<nuhsc>`
@@ -188,7 +188,7 @@ Parents
 
 - :ref:`nukeyservermonitor.NUKeyServerMonitor<nukeyservermonitor>`
 
-- :ref:`nucertificate.NUCertificate<nucertificate>`
+- :ref:`nueventlog.NUEventLog<nueventlog>`
 
 - :ref:`nulicense.NULicense<nulicense>`
 
@@ -218,7 +218,7 @@ Parents
 
 - :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
 
-- :ref:`nunatmapentry.NUNATMapEntry<nunatmapentry>`
+- :ref:`nutier.NUTier<nutier>`
 
 - :ref:`nudomainfipacltemplate.NUDomainFIPAclTemplate<nudomainfipacltemplate>`
 
@@ -234,7 +234,7 @@ Parents
 
 - :ref:`nunsporttemplate.NUNSPortTemplate<nunsporttemplate>`
 
-- :ref:`nueventlog.NUEventLog<nueventlog>`
+- :ref:`nucertificate.NUCertificate<nucertificate>`
 
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
 
@@ -253,6 +253,8 @@ Parents
 - :ref:`nubulkstatistics.NUBulkStatistics<nubulkstatistics>`
 
 - :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`
+
+- :ref:`nuingressqospolicy.NUIngressQOSPolicy<nuingressqospolicy>`
 
 - :ref:`nuroutingpolicy.NURoutingPolicy<nuroutingpolicy>`
 
@@ -300,8 +302,6 @@ Parents
 
 - :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
 
-- :ref:`nuingressqospolicy.NUIngressQOSPolicy<nuingressqospolicy>`
-
 - :ref:`nuaddressrange.NUAddressRange<nuaddressrange>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
@@ -336,7 +336,7 @@ Parents
 
 - :ref:`nuallalarm.NUAllAlarm<nuallalarm>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nuikepsk.NUIKEPSK<nuikepsk>`
 
 - :ref:`nusystemconfig.NUSystemConfig<nusystemconfig>`
 
@@ -348,7 +348,7 @@ Parents
 
 - :ref:`nuuser.NUUser<nuuser>`
 
-- :ref:`nutier.NUTier<nutier>`
+- :ref:`nunatmapentry.NUNATMapEntry<nunatmapentry>`
 
 - :ref:`nucontainer.NUContainer<nucontainer>`
 
@@ -364,7 +364,7 @@ Parents
 
 - :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`
 
-- :ref:`nuikepsk.NUIKEPSK<nuikepsk>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuikecertificate.NUIKECertificate<nuikecertificate>`
 

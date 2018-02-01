@@ -45,17 +45,17 @@ Parents
 
 - :ref:`nuzone.NUZone<nuzone>`
 
-- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
+- :ref:`nunsport.NUNSPort<nunsport>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
+- :ref:`nudomain.NUDomain<nudomain>`
+
 - :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
-
-- :ref:`nunsport.NUNSPort<nunsport>`
 
