@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -27,6 +27,7 @@
 
 
 
+
 from .fetchers import NUPATIPEntriesFetcher
 
 
@@ -34,6 +35,9 @@ from .fetchers import NUTCAsFetcher
 
 
 from .fetchers import NUAddressRangesFetcher
+
+
+from .fetchers import NUDefaultGatewaysFetcher
 
 
 from .fetchers import NUVMResyncsFetcher
@@ -121,6 +125,8 @@ class NUSubnet(NURESTObject):
     
     CONST_RESOURCE_TYPE_NSG_VNF = "NSG_VNF"
     
+    CONST_FLOW_COLLECTION_ENABLED_INHERITED = "INHERITED"
+    
     CONST_DPI_ENABLED = "ENABLED"
     
     CONST_DHCP_RELAY_STATUS_DISABLED = "DISABLED"
@@ -141,6 +147,8 @@ class NUSubnet(NURESTObject):
     
     CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
     
+    CONST_FLOW_COLLECTION_ENABLED_DISABLED = "DISABLED"
+    
     CONST_RESOURCE_TYPE_PUBLIC = "PUBLIC"
     
     CONST_UNDERLAY_ENABLED_INHERITED = "INHERITED"
@@ -158,6 +166,8 @@ class NUSubnet(NURESTObject):
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_DHCP_RELAY_STATUS_ENABLED = "ENABLED"
+    
+    CONST_FLOW_COLLECTION_ENABLED_ENABLED = "ENABLED"
     
     CONST_MULTICAST_DISABLED = "DISABLED"
     
@@ -218,6 +228,7 @@ class NUSubnet(NURESTObject):
         self._description = None
         self._resource_type = None
         self._netmask = None
+        self._flow_collection_enabled = None
         self._vn_id = None
         self._encryption = None
         self._underlay = None
@@ -258,6 +269,7 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="resource_type", remote_name="resourceType", attribute_type=str, is_required=False, is_unique=False, choices=[u'FLOATING', u'NSG_VNF', u'PUBLIC', u'STANDARD'])
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="vn_id", remote_name="vnId", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="underlay", remote_name="underlay", attribute_type=bool, is_required=False, is_unique=False)
@@ -289,6 +301,9 @@ class NUSubnet(NURESTObject):
         
         
         self.address_ranges = NUAddressRangesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.default_gateways = NUDefaultGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.vm_resyncs = NUVMResyncsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -869,6 +884,33 @@ class NUSubnet(NURESTObject):
                 
         """
         self._netmask = value
+
+    
+    @property
+    def flow_collection_enabled(self):
+        """ Get flow_collection_enabled value.
+
+            Notes:
+                Determines whether or not flow collection is enabled.
+
+                
+                This attribute is named `flowCollectionEnabled` in VSD API.
+                
+        """
+        return self._flow_collection_enabled
+
+    @flow_collection_enabled.setter
+    def flow_collection_enabled(self, value):
+        """ Set flow_collection_enabled value.
+
+            Notes:
+                Determines whether or not flow collection is enabled.
+
+                
+                This attribute is named `flowCollectionEnabled` in VSD API.
+                
+        """
+        self._flow_collection_enabled = value
 
     
     @property

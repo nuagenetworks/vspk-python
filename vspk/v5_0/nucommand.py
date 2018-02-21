@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
+
 from bambou import NURESTObject
 
 
@@ -42,7 +43,9 @@ class NUCommand(NURESTObject):
     
     ## Constants
     
-    CONST_STATUS_UNKNOWN = "UNKNOWN"
+    CONST_OVERRIDE_ABANDON = "ABANDON"
+    
+    CONST_COMMAND_NSG_APPLY_PATCH = "NSG_APPLY_PATCH"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
@@ -52,6 +55,8 @@ class NUCommand(NURESTObject):
     
     CONST_COMMAND_UNKNOWN = "UNKNOWN"
     
+    CONST_OVERRIDE_UNSPECIFIED = "UNSPECIFIED"
+    
     CONST_COMMAND_NSG_DOWNLOAD_OS_IMAGE = "NSG_DOWNLOAD_OS_IMAGE"
     
     CONST_STATUS_COMPLETE = "COMPLETE"
@@ -59,6 +64,8 @@ class NUCommand(NURESTObject):
     CONST_STATUS_FAILED = "FAILED"
     
     CONST_COMMAND_NSG_UPGRADE_TO_IMAGE = "NSG_UPGRADE_TO_IMAGE"
+    
+    CONST_STATUS_UNKNOWN = "UNKNOWN"
     
     
 
@@ -85,18 +92,26 @@ class NUCommand(NURESTObject):
         self._entity_scope = None
         self._command = None
         self._command_information = None
+        self._associated_param = None
+        self._associated_param_type = None
         self._status = None
+        self._full_command = None
         self._summary = None
+        self._override = None
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="detailed_status", remote_name="detailedStatus", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="detailed_status_code", remote_name="detailedStatusCode", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="command", remote_name="command", attribute_type=str, is_required=True, is_unique=False, choices=[u'NSG_DOWNLOAD_OS_IMAGE', u'NSG_UPGRADE_TO_IMAGE', u'UNKNOWN'])
+        self.expose_attribute(local_name="command", remote_name="command", attribute_type=str, is_required=True, is_unique=False, choices=[u'NSG_APPLY_PATCH', u'NSG_DOWNLOAD_OS_IMAGE', u'NSG_UPGRADE_TO_IMAGE', u'UNKNOWN'])
         self.expose_attribute(local_name="command_information", remote_name="commandInformation", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_param", remote_name="associatedParam", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_param_type", remote_name="associatedParamType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'COMPLETE', u'FAILED', u'STARTED', u'UNKNOWN'])
+        self.expose_attribute(local_name="full_command", remote_name="fullCommand", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="summary", remote_name="summary", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="override", remote_name="override", attribute_type=str, is_required=False, is_unique=False, choices=[u'ABANDON', u'UNSPECIFIED'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -263,6 +278,60 @@ class NUCommand(NURESTObject):
 
     
     @property
+    def associated_param(self):
+        """ Get associated_param value.
+
+            Notes:
+                Parameters to be supplied for execution of this command. This could either be a string of parameters or ID of an object supplying parameters.
+
+                
+                This attribute is named `associatedParam` in VSD API.
+                
+        """
+        return self._associated_param
+
+    @associated_param.setter
+    def associated_param(self, value):
+        """ Set associated_param value.
+
+            Notes:
+                Parameters to be supplied for execution of this command. This could either be a string of parameters or ID of an object supplying parameters.
+
+                
+                This attribute is named `associatedParam` in VSD API.
+                
+        """
+        self._associated_param = value
+
+    
+    @property
+    def associated_param_type(self):
+        """ Get associated_param_type value.
+
+            Notes:
+                Type of the object which supplies parameters for this command.
+
+                
+                This attribute is named `associatedParamType` in VSD API.
+                
+        """
+        return self._associated_param_type
+
+    @associated_param_type.setter
+    def associated_param_type(self, value):
+        """ Set associated_param_type value.
+
+            Notes:
+                Type of the object which supplies parameters for this command.
+
+                
+                This attribute is named `associatedParamType` in VSD API.
+                
+        """
+        self._associated_param_type = value
+
+    
+    @property
     def status(self):
         """ Get status value.
 
@@ -286,6 +355,33 @@ class NUCommand(NURESTObject):
 
     
     @property
+    def full_command(self):
+        """ Get full_command value.
+
+            Notes:
+                Full command including parameters that is to be executed.
+
+                
+                This attribute is named `fullCommand` in VSD API.
+                
+        """
+        return self._full_command
+
+    @full_command.setter
+    def full_command(self, value):
+        """ Set full_command value.
+
+            Notes:
+                Full command including parameters that is to be executed.
+
+                
+                This attribute is named `fullCommand` in VSD API.
+                
+        """
+        self._full_command = value
+
+    
+    @property
     def summary(self):
         """ Get summary value.
 
@@ -306,6 +402,29 @@ class NUCommand(NURESTObject):
                 
         """
         self._summary = value
+
+    
+    @property
+    def override(self):
+        """ Get override value.
+
+            Notes:
+                Operator specified action which overrides the normal life cycle of a command.
+
+                
+        """
+        return self._override
+
+    @override.setter
+    def override(self, value):
+        """ Set override value.
+
+            Notes:
+                Operator specified action which overrides the normal life cycle of a command.
+
+                
+        """
+        self._override = value
 
     
     @property

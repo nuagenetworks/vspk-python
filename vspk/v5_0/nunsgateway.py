@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
 # ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 
 
 
@@ -235,6 +236,7 @@ class NUNSGateway(NURESTObject):
         self._bios_version = None
         self._sku = None
         self._tpm_status = None
+        self._tpm_version = None
         self._cpu_type = None
         self._nsg_version = None
         self._ssh_service = None
@@ -244,6 +246,7 @@ class NUNSGateway(NURESTObject):
         self._last_configuration_reload_timestamp = None
         self._last_updated_by = None
         self._datapath_id = None
+        self._patches = None
         self._redundancy_group_id = None
         self._template_id = None
         self._pending = None
@@ -282,6 +285,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="bios_version", remote_name="BIOSVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sku", remote_name="SKU", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tpm_status", remote_name="TPMStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED_NOT_OPERATIONAL', u'ENABLED_OPERATIONAL', u'UNKNOWN'])
+        self.expose_attribute(local_name="tpm_version", remote_name="TPMVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cpu_type", remote_name="CPUType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_version", remote_name="NSGVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ssh_service", remote_name="SSHService", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
@@ -291,6 +295,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="last_configuration_reload_timestamp", remote_name="lastConfigurationReloadTimestamp", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_id", remote_name="datapathID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="patches", remote_name="patches", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redundancy_group_id", remote_name="redundancyGroupID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="pending", remote_name="pending", attribute_type=bool, is_required=False, is_unique=False)
@@ -606,6 +611,33 @@ class NUNSGateway(NURESTObject):
 
     
     @property
+    def tpm_version(self):
+        """ Get tpm_version value.
+
+            Notes:
+                TPM (Trusted Platform Module) version as reported by the NSG.
+
+                
+                This attribute is named `TPMVersion` in VSD API.
+                
+        """
+        return self._tpm_version
+
+    @tpm_version.setter
+    def tpm_version(self, value):
+        """ Set tpm_version value.
+
+            Notes:
+                TPM (Trusted Platform Module) version as reported by the NSG.
+
+                
+                This attribute is named `TPMVersion` in VSD API.
+                
+        """
+        self._tpm_version = value
+
+    
+    @property
     def cpu_type(self):
         """ Get cpu_type value.
 
@@ -838,6 +870,29 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._datapath_id = value
+
+    
+    @property
+    def patches(self):
+        """ Get patches value.
+
+            Notes:
+                Patches that have been installed on the NSG.
+
+                
+        """
+        return self._patches
+
+    @patches.setter
+    def patches(self, value):
+        """ Set patches value.
+
+            Notes:
+                Patches that have been installed on the NSG.
+
+                
+        """
+        self._patches = value
 
     
     @property

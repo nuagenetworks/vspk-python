@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -27,6 +27,7 @@
 
 
 
+
 from .fetchers import NUVNFInterfaceDescriptorsFetcher
 
 from bambou import NURESTObject
@@ -42,6 +43,13 @@ class NUVNFDescriptor(NURESTObject):
     __rest_name__ = "vnfdescriptor"
     __resource_name__ = "vnfdescriptors"
 
+    
+    ## Constants
+    
+    CONST_TYPE_FIREWALL = "FIREWALL"
+    
+    CONST_TYPE_WAN_OPT = "WAN_OPT"
+    
     
 
     def __init__(self, **kwargs):
@@ -70,6 +78,7 @@ class NUVNFDescriptor(NURESTObject):
         self._visible = None
         self._associated_vnf_threshold_policy_id = None
         self._storage_gb = None
+        self._type = None
         
         self.expose_attribute(local_name="cpu_count", remote_name="CPUCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
@@ -80,6 +89,7 @@ class NUVNFDescriptor(NURESTObject):
         self.expose_attribute(local_name="visible", remote_name="visible", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vnf_threshold_policy_id", remote_name="associatedVNFThresholdPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="storage_gb", remote_name="storageGB", attribute_type=int, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'FIREWALL', u'WAN_OPT'])
         
 
         # Fetchers
@@ -317,6 +327,29 @@ class NUVNFDescriptor(NURESTObject):
                 
         """
         self._storage_gb = value
+
+    
+    @property
+    def type(self):
+        """ Get type value.
+
+            Notes:
+                Type of virtual network function
+
+                
+        """
+        return self._type
+
+    @type.setter
+    def type(self, value):
+        """ Set type value.
+
+            Notes:
+                Type of virtual network function
+
+                
+        """
+        self._type = value
 
     
 

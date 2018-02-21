@@ -73,8 +73,6 @@ Parents
 
 - :ref:`nuzone.NUZone<nuzone>`
 
-- :ref:`nunsport.NUNSPort<nunsport>`
-
 - :ref:`nuenterprisenetwork.NUEnterpriseNetwork<nuenterprisenetwork>`
 
 - :ref:`nupermission.NUPermission<nupermission>`
@@ -144,6 +142,8 @@ Parents
 - :ref:`nuvm.NUVM<nuvm>`
 
 - :ref:`nuvsd.NUVSD<nuvsd>`
+
+- :ref:`nunsport.NUNSPort<nunsport>`
 
 - :ref:`nupublicnetworkmacro.NUPublicNetworkMacro<nupublicnetworkmacro>`
 

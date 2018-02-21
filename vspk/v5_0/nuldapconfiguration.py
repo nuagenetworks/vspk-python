@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
 # ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 
 
 
@@ -84,6 +85,7 @@ class NULDAPConfiguration(NURESTObject):
         self._group_name_prefix = None
         self._group_name_suffix = None
         self._user_dn_template = None
+        self._user_name_attribute = None
         self._authorization_enabled = None
         self._authorizing_user_dn = None
         self._external_id = None
@@ -101,6 +103,7 @@ class NULDAPConfiguration(NURESTObject):
         self.expose_attribute(local_name="group_name_prefix", remote_name="groupNamePrefix", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_name_suffix", remote_name="groupNameSuffix", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_dn_template", remote_name="userDNTemplate", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="user_name_attribute", remote_name="userNameAttribute", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="authorization_enabled", remote_name="authorizationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="authorizing_user_dn", remote_name="authorizingUserDN", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -448,6 +451,33 @@ class NULDAPConfiguration(NURESTObject):
                 
         """
         self._user_dn_template = value
+
+    
+    @property
+    def user_name_attribute(self):
+        """ Get user_name_attribute value.
+
+            Notes:
+                This is an optional field. This is a LDAP property. If specified, it will be used as the VSD username per organization.
+
+                
+                This attribute is named `userNameAttribute` in VSD API.
+                
+        """
+        return self._user_name_attribute
+
+    @user_name_attribute.setter
+    def user_name_attribute(self, value):
+        """ Set user_name_attribute value.
+
+            Notes:
+                This is an optional field. This is a LDAP property. If specified, it will be used as the VSD username per organization.
+
+                
+                This attribute is named `userNameAttribute` in VSD API.
+                
+        """
+        self._user_name_attribute = value
 
     
     @property

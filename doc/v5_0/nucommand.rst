@@ -24,9 +24,17 @@ Attributes
 
 - ``command_information``: Informative details on what command is to be executed.  It complements the commandType attribute.  An example of a value could be a URL, a version number, a UUID of another object, ...
 
+- ``associated_param``: Parameters to be supplied for execution of this command. This could either be a string of parameters or ID of an object supplying parameters.
+
+- ``associated_param_type``: Type of the object which supplies parameters for this command.
+
 - ``status``: The status of the Command from a VSD perspective.
 
+- ``full_command``: Full command including parameters that is to be executed.
+
 - ``summary`` (**Mandatory**): A generated summary for the action giving some general context on the command executed.
+
+- ``override``: Operator specified action which overrides the normal life cycle of a command.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

@@ -22,6 +22,8 @@ Attributes
 
 - ``tpm_status``: TPM status as reported by the NSG during bootstrapping.  This informate indicates if TPM is being used in securing the private key/certificate of an NSG.
 
+- ``tpm_version``: TPM (Trusted Platform Module) version as reported by the NSG.
+
 - ``cpu_type``: The NSG Processor Type based on information extracted during bootstrapping.  This may refer to a type of processor manufactured by Intel, ARM, AMD, Cyrix, VIA, or others.
 
 - ``nsg_version``: The NSG Version as reported during a bootstrap or a reboot of the NSG. 
@@ -29,6 +31,8 @@ Attributes
 - ``uuid``: The Redhat/CentOS UUID of the NSG
 
 - ``family``: The NSG Family type as it was returned by the NSG during bootstrapping.
+
+- ``patches``: Patches that have been installed on the NSG.
 
 - ``serial_number``: The NSG's serial number as it is stored in the system's CMOS (Motherboard)
 

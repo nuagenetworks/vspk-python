@@ -18,6 +18,8 @@ Attributes
 
 - ``bandwidth``: Minimum Failover Bandwidth of the application.
 
+- ``last_updated_by``: ID of the user who last updated the object.
+
 - ``read_only``: determines whether this entity is read only.  Read only objects cannot be modified or deleted.
 
 - ``performance_monitor_type``: Describes the trigger for the application.
@@ -35,6 +37,8 @@ Attributes
 - ``one_way_jitter``: one way Jitter
 
 - ``one_way_loss``: one way loss
+
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``post_classification_path``: default set to any , possible values primary/secondary/any
 
@@ -54,6 +58,8 @@ Attributes
 
 - ``ether_type``: Ether type of the packet to be matched. etherType can be * or a valid hexadecimal value
 
+- ``external_id``: External object ID. Used for integration with third party systems
+
 - ``symmetry``: Maintain path symmetry during SLA violation
 
 
@@ -65,6 +71,8 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`numonitorscope.NUMonitorscope<numonitorscope>`                                                                                                             ``monitorscopes`` 
 :ref:`nuapplicationbinding.NUApplicationBinding<nuapplicationbinding>`                                                                                           ``application_bindings`` 
 ================================================================================================================================================               ==========================================================================================

@@ -28,6 +28,8 @@ Attributes
 
 - ``tpm_status``: TPM Status of the NSG based on the information received by the device during bootstrapping or upgrade.
 
+- ``tpm_version``: TPM (Trusted Platform Module) version as reported by the NSG.
+
 - ``cpu_type``: The NSG Processor Type as reported during bootstrapping.
 
 - ``nsg_version``: The NSG Version (software) as reported during bootstrapping or following an upgrade.
@@ -45,6 +47,8 @@ Attributes
 - ``last_updated_by``: ID of the user who last updated the object.
 
 - ``datapath_id``: Identifier of the Gateway, based on the systemId
+
+- ``patches``: Patches that have been installed on the NSG.
 
 - ``redundancy_group_id``: The Redundancy Gateway Group associated with this Gateway Instance. This is a read only attribute
 
@@ -141,15 +145,15 @@ Parents
 --------
 
 
-- :ref:`nuperformancemonitor.NUPerformanceMonitor<nuperformancemonitor>`
+- :ref:`nuducgroup.NUDUCGroup<nuducgroup>`
 
 - :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
+
+- :ref:`nuperformancemonitor.NUPerformanceMonitor<nuperformancemonitor>`
 
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nunsggroup.NUNSGGroup<nunsggroup>`
-
-- :ref:`nuducgroup.NUDUCGroup<nuducgroup>`
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 

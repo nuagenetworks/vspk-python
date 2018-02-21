@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
 # ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 
 
 
@@ -69,6 +70,8 @@ class NUVNF(NURESTObject):
     
     CONST_STATUS_DYING = "DYING"
     
+    CONST_TYPE_WAN_OPT = "WAN_OPT"
+    
     CONST_ALLOWED_ACTIONS_RESTART = "RESTART"
     
     CONST_ALLOWED_ACTIONS_UNDEPLOY = "UNDEPLOY"
@@ -88,6 +91,8 @@ class NUVNF(NURESTObject):
     CONST_STATUS_SHUTOFF = "SHUTOFF"
     
     CONST_ALLOWED_ACTIONS_REDEPLOY = "REDEPLOY"
+    
+    CONST_TYPE_FIREWALL = "FIREWALL"
     
     CONST_ALLOWED_ACTIONS_STOP = "STOP"
     
@@ -134,6 +139,7 @@ class NUVNF(NURESTObject):
         self._associated_vnf_threshold_policy_id = None
         self._status = None
         self._storage_gb = None
+        self._type = None
         
         self.expose_attribute(local_name="vnf_descriptor_id", remote_name="VNFDescriptorID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="vnf_descriptor_name", remote_name="VNFDescriptorName", attribute_type=str, is_required=False, is_unique=False)
@@ -155,6 +161,7 @@ class NUVNF(NURESTObject):
         self.expose_attribute(local_name="associated_vnf_threshold_policy_id", remote_name="associatedVNFThresholdPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'BLOCKED', u'CRASHED', u'DYING', u'IDLE', u'INIT', u'LAST', u'PAUSED', u'PMSUSPENDED', u'RUNNING', u'SHUTDOWN', u'SHUTOFF'])
         self.expose_attribute(local_name="storage_gb", remote_name="storageGB", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'FIREWALL', u'WAN_OPT'])
         
 
         # Fetchers
@@ -695,6 +702,29 @@ class NUVNF(NURESTObject):
                 
         """
         self._storage_gb = value
+
+    
+    @property
+    def type(self):
+        """ Get type value.
+
+            Notes:
+                Type of virtual network function
+
+                
+        """
+        return self._type
+
+    @type.setter
+    def type(self, value):
+        """ Set type value.
+
+            Notes:
+                Type of virtual network function
+
+                
+        """
+        self._type = value
 
     
 

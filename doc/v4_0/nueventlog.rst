@@ -151,8 +151,6 @@ Parents
 
 - :ref:`nuvm.NUVM<nuvm>`
 
-- :ref:`nunsport.NUNSPort<nunsport>`
-
 - :ref:`nupublicnetworkmacro.NUPublicNetworkMacro<nupublicnetworkmacro>`
 
 - :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
@@ -167,15 +165,17 @@ Parents
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
 - :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
 - :ref:`nuuser.NUUser<nuuser>`
 
 - :ref:`nucontainer.NUContainer<nucontainer>`
 
-- :ref:`nuflow.NUFlow<nuflow>`
+- :ref:`nunsport.NUNSPort<nunsport>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nuflow.NUFlow<nuflow>`
 
 - :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`
 

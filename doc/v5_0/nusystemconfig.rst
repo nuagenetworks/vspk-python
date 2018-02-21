@@ -118,6 +118,8 @@ Attributes
 
 - ``accumulate_licenses_enabled``: Whether the various VRS license flavours be merged in one pool
 
+- ``vcin_load_balancer_ip``: If VCIN Active/Standby is enabled, this needs to be the load-balancer IP which sits in front of the Active and Standby VCIN nodes. The VRS will make its API calls to this load-balancer
+
 - ``per_domain_vlan_id_enabled``: None
 
 - ``performance_path_selection_vnid``: performance Path Selection Virtual Network ID
@@ -155,6 +157,8 @@ Attributes
 - ``flow_collection_enabled``: Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires 'statisticsEnabled'.
 
 - ``inactive_timeout``: Defines the inactive timeout for the client. If the client is inactive for more than timeout, server clears off all the cache/information regarding the client. This value should be greater than event processor max timeout
+
+- ``infrastructure_bgpas_number``: Autonomous System Number, Used for Infrastructure BGP PE_CE.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 

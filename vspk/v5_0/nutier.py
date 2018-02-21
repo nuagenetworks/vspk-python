@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
 # ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 
 
 
@@ -118,7 +119,7 @@ class NUTier(NURESTObject):
         """ Get packet_count value.
 
             Notes:
-                packet count (part of rate along with probeInterval)
+                packet count (part of rate along with probeInterval). Applicable to Tier2 type.
 
                 
                 This attribute is named `packetCount` in VSD API.
@@ -131,7 +132,7 @@ class NUTier(NURESTObject):
         """ Set packet_count value.
 
             Notes:
-                packet count (part of rate along with probeInterval)
+                packet count (part of rate along with probeInterval). Applicable to Tier2 type.
 
                 
                 This attribute is named `packetCount` in VSD API.
@@ -199,7 +200,7 @@ class NUTier(NURESTObject):
         """ Get timeout value.
 
             Notes:
-                number of milliseconds to wait until the probe is timed out
+                number of milliseconds to wait until the probe is timed out. Applicable to Tier2 type.
 
                 
         """
@@ -210,7 +211,7 @@ class NUTier(NURESTObject):
         """ Set timeout value.
 
             Notes:
-                number of milliseconds to wait until the probe is timed out
+                number of milliseconds to wait until the probe is timed out. Applicable to Tier2 type.
 
                 
         """
@@ -276,7 +277,7 @@ class NUTier(NURESTObject):
         """ Get probe_interval value.
 
             Notes:
-                probe interval (part of rate along with packetCount)
+                probe interval (part of rate along with packetCount). Applicable to Tier2 type.
 
                 
                 This attribute is named `probeInterval` in VSD API.
@@ -289,7 +290,7 @@ class NUTier(NURESTObject):
         """ Set probe_interval value.
 
             Notes:
-                probe interval (part of rate along with packetCount)
+                probe interval (part of rate along with packetCount). Applicable to Tier2 type.
 
                 
                 This attribute is named `probeInterval` in VSD API.

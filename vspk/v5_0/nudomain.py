@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
 # ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 
 
 
@@ -202,6 +203,8 @@ class NUDomain(NURESTObject):
     
     CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
     
+    CONST_FLOW_COLLECTION_ENABLED_DISABLED = "DISABLED"
+    
     CONST_DHCP_BEHAVIOR_UNDERLAY_RELAY = "UNDERLAY_RELAY"
     
     CONST_UNDERLAY_ENABLED_ENABLED = "ENABLED"
@@ -229,6 +232,10 @@ class NUDomain(NURESTObject):
     CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
     
     CONST_PERMITTED_ACTION_USE = "USE"
+    
+    CONST_FLOW_COLLECTION_ENABLED_ENABLED = "ENABLED"
+    
+    CONST_FLOW_COLLECTION_ENABLED_INHERITED = "INHERITED"
     
     CONST_PAT_ENABLED_ENABLED = "ENABLED"
     
@@ -311,6 +318,7 @@ class NUDomain(NURESTObject):
         self._description = None
         self._dhcp_server_addresses = None
         self._global_routing_enabled = None
+        self._flow_collection_enabled = None
         self._import_route_target = None
         self._encryption = None
         self._underlay_enabled = None
@@ -360,6 +368,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_server_addresses", remote_name="dhcpServerAddresses", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="global_routing_enabled", remote_name="globalRoutingEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="import_route_target", remote_name="importRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="underlay_enabled", remote_name="underlayEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
@@ -1227,6 +1236,33 @@ class NUDomain(NURESTObject):
                 
         """
         self._global_routing_enabled = value
+
+    
+    @property
+    def flow_collection_enabled(self):
+        """ Get flow_collection_enabled value.
+
+            Notes:
+                Determines whether or not flow collection is enabled.
+
+                
+                This attribute is named `flowCollectionEnabled` in VSD API.
+                
+        """
+        return self._flow_collection_enabled
+
+    @flow_collection_enabled.setter
+    def flow_collection_enabled(self, value):
+        """ Set flow_collection_enabled value.
+
+            Notes:
+                Determines whether or not flow collection is enabled.
+
+                
+                This attribute is named `flowCollectionEnabled` in VSD API.
+                
+        """
+        self._flow_collection_enabled = value
 
     
     @property

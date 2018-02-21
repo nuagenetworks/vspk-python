@@ -20,11 +20,11 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``policy_state``: 
+- ``policy_state``: None
 
 - ``priority``: The priority of the ACL entry that determines the order of entries
 
-- ``priority_type``: 
+- ``priority_type``: None
 
 - ``associated_live_entity_id``: In the draft mode, the ACL entry refers to this LiveEntity. In non-drafted mode, this is null.
 

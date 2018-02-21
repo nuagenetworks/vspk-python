@@ -56,8 +56,6 @@ Parents
 
 - :ref:`nuzone.NUZone<nuzone>`
 
-- :ref:`nunsport.NUNSPort<nunsport>`
-
 - :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nuport.NUPort<nuport>`
@@ -71,6 +69,8 @@ Parents
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
+
+- :ref:`nunsport.NUNSPort<nunsport>`
 
 - :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
 

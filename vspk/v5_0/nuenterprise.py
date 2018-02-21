@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
 # ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 
 
 
@@ -227,6 +228,8 @@ class NUEnterprise(NURESTObject):
     
     CONST_ENCRYPTION_MANAGEMENT_MODE_MANAGED = "MANAGED"
     
+    CONST_FLOW_COLLECTION_ENABLED_ENABLED = "ENABLED"
+    
     CONST_AVATAR_TYPE_COMPUTEDURL = "COMPUTEDURL"
     
     CONST_ALLOWED_FORWARDING_CLASSES_NONE = "NONE"
@@ -234,6 +237,8 @@ class NUEnterprise(NURESTObject):
     CONST_AVATAR_TYPE_BASE64 = "BASE64"
     
     CONST_ENCRYPTION_MANAGEMENT_MODE_DISABLED = "DISABLED"
+    
+    CONST_FLOW_COLLECTION_ENABLED_DISABLED = "DISABLED"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
@@ -294,6 +299,7 @@ class NUEnterprise(NURESTObject):
         self._allowed_forwarding_classes = None
         self._floating_ips_quota = None
         self._floating_ips_used = None
+        self._flow_collection_enabled = None
         self._enable_application_performance_management = None
         self._encryption_management_mode = None
         self._enterprise_profile_id = None
@@ -325,6 +331,7 @@ class NUEnterprise(NURESTObject):
         self.expose_attribute(local_name="allowed_forwarding_classes", remote_name="allowedForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="floating_ips_quota", remote_name="floatingIPsQuota", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="floating_ips_used", remote_name="floatingIPsUsed", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="enable_application_performance_management", remote_name="enableApplicationPerformanceManagement", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption_management_mode", remote_name="encryptionManagementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'MANAGED'])
         self.expose_attribute(local_name="enterprise_profile_id", remote_name="enterpriseProfileID", attribute_type=str, is_required=False, is_unique=False)
@@ -1005,6 +1012,33 @@ class NUEnterprise(NURESTObject):
                 
         """
         self._floating_ips_used = value
+
+    
+    @property
+    def flow_collection_enabled(self):
+        """ Get flow_collection_enabled value.
+
+            Notes:
+                Determines whether or not flow collection is enabled.
+
+                
+                This attribute is named `flowCollectionEnabled` in VSD API.
+                
+        """
+        return self._flow_collection_enabled
+
+    @flow_collection_enabled.setter
+    def flow_collection_enabled(self, value):
+        """ Set flow_collection_enabled value.
+
+            Notes:
+                Determines whether or not flow collection is enabled.
+
+                
+                This attribute is named `flowCollectionEnabled` in VSD API.
+                
+        """
+        self._flow_collection_enabled = value
 
     
     @property

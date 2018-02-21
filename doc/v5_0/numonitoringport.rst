@@ -20,7 +20,7 @@ Attributes
 
 - ``description``: Optional port description.
 
-- ``resiliency_state``: 
+- ``resiliency_state``: None
 
 - ``resilient``: Flag to indicate if an ACCESS port is resilient or not.
 

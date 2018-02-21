@@ -48,6 +48,8 @@ Attributes
 
 - ``floating_ips_used``: Number of floating IPs used by the enterprise from the assigned floatingIPsQuota
 
+- ``flow_collection_enabled``: Determines whether or not flow collection is enabled.
+
 - ``enable_application_performance_management``: This flag indicates if the DPI can be enabled for this enterpriseenterprise/organization.
 
 - ``encryption_management_mode``: Readonly encryption management mode of the associated profile

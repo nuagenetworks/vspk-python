@@ -32,6 +32,8 @@ Attributes
 
 - ``netmask``: Netmask of the subnet defined
 
+- ``flow_collection_enabled``: Determines whether or not flow collection is enabled.
+
 - ``encryption``: Determines whether or not IPSEC is enabled.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level

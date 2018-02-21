@@ -34,6 +34,8 @@ Attributes
 
 - ``description``: Description for this vport
 
+- ``flow_collection_enabled``: Determines whether or not flow collection is enabled.
+
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``domain_id``: ID the Domain associated with the VPort

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
 # ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 
 
 from bambou import NURESTObject
@@ -98,10 +99,12 @@ class NUNSGInfo(NURESTObject):
         self._bios_version = None
         self._sku = None
         self._tpm_status = None
+        self._tpm_version = None
         self._cpu_type = None
         self._nsg_version = None
         self._uuid = None
         self._family = None
+        self._patches = None
         self._serial_number = None
         self._libraries = None
         self._entity_scope = None
@@ -114,10 +117,12 @@ class NUNSGInfo(NURESTObject):
         self.expose_attribute(local_name="bios_version", remote_name="BIOSVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sku", remote_name="SKU", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tpm_status", remote_name="TPMStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED_NOT_OPERATIONAL', u'ENABLED_OPERATIONAL', u'UNKNOWN'])
+        self.expose_attribute(local_name="tpm_version", remote_name="TPMVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cpu_type", remote_name="CPUType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_version", remote_name="NSGVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_AMI', u'NSG_C', u'NSG_DOCKER', u'NSG_E', u'NSG_E200', u'NSG_E300', u'NSG_V', u'NSG_X', u'NSG_X200'])
+        self.expose_attribute(local_name="patches", remote_name="patches", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -266,6 +271,33 @@ class NUNSGInfo(NURESTObject):
 
     
     @property
+    def tpm_version(self):
+        """ Get tpm_version value.
+
+            Notes:
+                TPM (Trusted Platform Module) version as reported by the NSG.
+
+                
+                This attribute is named `TPMVersion` in VSD API.
+                
+        """
+        return self._tpm_version
+
+    @tpm_version.setter
+    def tpm_version(self, value):
+        """ Set tpm_version value.
+
+            Notes:
+                TPM (Trusted Platform Module) version as reported by the NSG.
+
+                
+                This attribute is named `TPMVersion` in VSD API.
+                
+        """
+        self._tpm_version = value
+
+    
+    @property
     def cpu_type(self):
         """ Get cpu_type value.
 
@@ -367,6 +399,29 @@ class NUNSGInfo(NURESTObject):
                 
         """
         self._family = value
+
+    
+    @property
+    def patches(self):
+        """ Get patches value.
+
+            Notes:
+                Patches that have been installed on the NSG.
+
+                
+        """
+        return self._patches
+
+    @patches.setter
+    def patches(self, value):
+        """ Set patches value.
+
+            Notes:
+                Patches that have been installed on the NSG.
+
+                
+        """
+        self._patches = value
 
     
     @property

@@ -55,8 +55,6 @@ Parents
 
 - :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
 
-- :ref:`nunsport.NUNSPort<nunsport>`
-
 - :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
 
 - :ref:`nuwanservice.NUWANService<nuwanservice>`
@@ -70,4 +68,6 @@ Parents
 - :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
+
+- :ref:`nunsport.NUNSPort<nunsport>`
 

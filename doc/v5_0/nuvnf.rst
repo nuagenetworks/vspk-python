@@ -52,6 +52,8 @@ Attributes
 
 - ``storage_gb``: Disk storage (in GB) to be allocated for deployed VNF instance
 
+- ``type``: Type of virtual network function
+
 
 
 

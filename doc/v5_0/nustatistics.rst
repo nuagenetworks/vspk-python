@@ -47,7 +47,7 @@ Parents
 
 - :ref:`nuzone.NUZone<nuzone>`
 
-- :ref:`nunsport.NUNSPort<nunsport>`
+- :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`
 
 - :ref:`nuingressexternalservicetemplateentry.NUIngressExternalServiceTemplateEntry<nuingressexternalservicetemplateentry>`
 
@@ -63,8 +63,6 @@ Parents
 
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
-- :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`
-
 - :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
@@ -78,6 +76,8 @@ Parents
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
+
+- :ref:`nunsport.NUNSPort<nunsport>`
 
 - :ref:`nuwirelessport.NUWirelessPort<nuwirelessport>`
 

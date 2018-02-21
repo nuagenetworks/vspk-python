@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
 # ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 
 
 
@@ -192,6 +193,7 @@ class NUSystemConfig(NURESTObject):
         self._max_failed_logins = None
         self._max_response = None
         self._accumulate_licenses_enabled = None
+        self._vcin_load_balancer_ip = None
         self._per_domain_vlan_id_enabled = None
         self._performance_path_selection_vnid = None
         self._service_id_upper_limit = None
@@ -211,6 +213,7 @@ class NUSystemConfig(NURESTObject):
         self._global_mac_address = None
         self._flow_collection_enabled = None
         self._inactive_timeout = None
+        self._infrastructure_bgpas_number = None
         self._entity_scope = None
         self._domain_tunnel_type = None
         self._post_processor_threads_count = None
@@ -330,6 +333,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="max_failed_logins", remote_name="maxFailedLogins", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="max_response", remote_name="maxResponse", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="accumulate_licenses_enabled", remote_name="accumulateLicensesEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vcin_load_balancer_ip", remote_name="vcinLoadBalancerIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="per_domain_vlan_id_enabled", remote_name="perDomainVlanIdEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="performance_path_selection_vnid", remote_name="performancePathSelectionVNID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_id_upper_limit", remote_name="serviceIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
@@ -349,6 +353,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="global_mac_address", remote_name="globalMACAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="inactive_timeout", remote_name="inactiveTimeout", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="infrastructure_bgpas_number", remote_name="infrastructureBGPASNumber", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="domain_tunnel_type", remote_name="domainTunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VXLAN'])
         self.expose_attribute(local_name="post_processor_threads_count", remote_name="postProcessorThreadsCount", attribute_type=int, is_required=False, is_unique=False)
@@ -1861,6 +1866,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def vcin_load_balancer_ip(self):
+        """ Get vcin_load_balancer_ip value.
+
+            Notes:
+                If VCIN Active/Standby is enabled, this needs to be the load-balancer IP which sits in front of the Active and Standby VCIN nodes. The VRS will make its API calls to this load-balancer
+
+                
+                This attribute is named `vcinLoadBalancerIP` in VSD API.
+                
+        """
+        return self._vcin_load_balancer_ip
+
+    @vcin_load_balancer_ip.setter
+    def vcin_load_balancer_ip(self, value):
+        """ Set vcin_load_balancer_ip value.
+
+            Notes:
+                If VCIN Active/Standby is enabled, this needs to be the load-balancer IP which sits in front of the Active and Standby VCIN nodes. The VRS will make its API calls to this load-balancer
+
+                
+                This attribute is named `vcinLoadBalancerIP` in VSD API.
+                
+        """
+        self._vcin_load_balancer_ip = value
+
+    
+    @property
     def per_domain_vlan_id_enabled(self):
         """ Get per_domain_vlan_id_enabled value.
 
@@ -2371,6 +2403,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._inactive_timeout = value
+
+    
+    @property
+    def infrastructure_bgpas_number(self):
+        """ Get infrastructure_bgpas_number value.
+
+            Notes:
+                Autonomous System Number, Used for Infrastructure BGP PE_CE.
+
+                
+                This attribute is named `infrastructureBGPASNumber` in VSD API.
+                
+        """
+        return self._infrastructure_bgpas_number
+
+    @infrastructure_bgpas_number.setter
+    def infrastructure_bgpas_number(self, value):
+        """ Set infrastructure_bgpas_number value.
+
+            Notes:
+                Autonomous System Number, Used for Infrastructure BGP PE_CE.
+
+                
+                This attribute is named `infrastructureBGPASNumber` in VSD API.
+                
+        """
+        self._infrastructure_bgpas_number = value
 
     
     @property

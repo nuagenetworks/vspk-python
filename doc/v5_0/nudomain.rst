@@ -64,6 +64,8 @@ Attributes
 
 - ``global_routing_enabled``: Indicates if this domain is a globally routable domain or not - boolean true/false
 
+- ``flow_collection_enabled``: Determines whether or not flow collection is enabled.
+
 - ``import_route_target``: Route distinguisher associated with the dVRS. It is an optional parameter that can be provided by the user or auto-managed by VSD. System generates this identifier automatically, if not provided
 
 - ``encryption``: Determines whether IPSEC is enabled Possible values are ENABLED, DISABLED, .

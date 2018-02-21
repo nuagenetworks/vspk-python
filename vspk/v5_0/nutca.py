@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
 # ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 
 
 
@@ -74,6 +75,8 @@ class NUTCA(NURESTObject):
     
     CONST_METRIC_Q3_PKT_COUNT = "Q3_PKT_COUNT"
     
+    CONST_METRIC_TCP_FLAG_ACK_IN = "TCP_FLAG_ACK_IN"
+    
     CONST_METRIC_EGRESS_PACKET_COUNT = "EGRESS_PACKET_COUNT"
     
     CONST_METRIC_Q2_DROPPED = "Q2_DROPPED"
@@ -85,8 +88,6 @@ class NUTCA(NURESTObject):
     CONST_TYPE_ROLLING_AVERAGE = "ROLLING_AVERAGE"
     
     CONST_METRIC_FIP_RATE_LIMIT_DROPPED_BYTES = "FIP_RATE_LIMIT_DROPPED_BYTES"
-    
-    CONST_METRIC_Q10_PKT_COUNT = "Q10_PKT_COUNT"
     
     CONST_METRIC_PACKETS_DROPPED_BY_RATE_LIMIT = "PACKETS_DROPPED_BY_RATE_LIMIT"
     
@@ -126,11 +127,11 @@ class NUTCA(NURESTObject):
     
     CONST_METRIC_BYTES_IN = "BYTES_IN"
     
-    CONST_METRIC_Q4_PKT_COUNT = "Q4_PKT_COUNT"
+    CONST_METRIC_Q10_PKT_COUNT = "Q10_PKT_COUNT"
     
     CONST_METRIC_FIP_PRE_RATE_LIMIT_BYTES = "FIP_PRE_RATE_LIMIT_BYTES"
     
-    CONST_METRIC_TCP_FLAG_RST_OUT = "TCP_FLAG_RST_OUT"
+    CONST_METRIC_Q4_PKT_COUNT = "Q4_PKT_COUNT"
     
     CONST_METRIC_ADDRESS_MAP_EGRESS_BYTE_CNT = "ADDRESS_MAP_EGRESS_BYTE_CNT"
     
@@ -142,7 +143,7 @@ class NUTCA(NURESTObject):
     
     CONST_METRIC_TX_PKT_COUNT = "TX_PKT_COUNT"
     
-    CONST_METRIC_RX_ERRORS = "RX_ERRORS"
+    CONST_METRIC_TCP_FLAG_RST_OUT = "TCP_FLAG_RST_OUT"
     
     CONST_METRIC_Q1_PKT_COUNT = "Q1_PKT_COUNT"
     
@@ -150,7 +151,7 @@ class NUTCA(NURESTObject):
     
     CONST_METRIC_ADDRESS_MAP_INGRESS_PKT_CNT = "ADDRESS_MAP_INGRESS_PKT_CNT"
     
-    CONST_METRIC_TCP_FLAG_ACK_IN = "TCP_FLAG_ACK_IN"
+    CONST_METRIC_RX_ERRORS = "RX_ERRORS"
     
     CONST_METRIC_Q0_BYTES = "Q0_BYTES"
     
@@ -420,7 +421,7 @@ class NUTCA(NURESTObject):
         """ Get description value.
 
             Notes:
-                Desription of the TCA
+                Description of the TCA
 
                 
         """
@@ -431,7 +432,7 @@ class NUTCA(NURESTObject):
         """ Set description value.
 
             Notes:
-                Desription of the TCA
+                Description of the TCA
 
                 
         """

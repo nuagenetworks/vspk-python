@@ -128,9 +128,9 @@ Parents
 
 - :ref:`nuducgroup.NUDUCGroup<nuducgroup>`
 
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nunsggroup.NUNSGGroup<nunsggroup>`
+
+- :ref:`nume.NUMe<nume>`
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 

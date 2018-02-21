@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
 # ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 
 
 
@@ -144,7 +145,9 @@ class NUL2Domain(NURESTObject):
     
     ## Constants
     
-    CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
+    CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
+    
+    CONST_FLOW_COLLECTION_ENABLED_INHERITED = "INHERITED"
     
     CONST_DPI_ENABLED = "ENABLED"
     
@@ -152,7 +155,7 @@ class NUL2Domain(NURESTObject):
     
     CONST_ENTITY_STATE_MARKED_FOR_DELETION = "MARKED_FOR_DELETION"
     
-    CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
+    CONST_IP_TYPE_IPV4 = "IPV4"
     
     CONST_MAINTENANCE_MODE_DISABLED = "DISABLED"
     
@@ -164,9 +167,11 @@ class NUL2Domain(NURESTObject):
     
     CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
     
+    CONST_FLOW_COLLECTION_ENABLED_DISABLED = "DISABLED"
+    
     CONST_POLICY_CHANGE_STATUS_STARTED = "STARTED"
     
-    CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
+    CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
     
     CONST_ENTITY_STATE_UNDER_CONSTRUCTION = "UNDER_CONSTRUCTION"
     
@@ -178,23 +183,25 @@ class NUL2Domain(NURESTObject):
     
     CONST_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
     
+    CONST_FLOW_COLLECTION_ENABLED_ENABLED = "ENABLED"
+    
     CONST_MULTICAST_DISABLED = "DISABLED"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ENCRYPTION_DISABLED = "DISABLED"
     
-    CONST_IP_TYPE_IPV4 = "IPV4"
+    CONST_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
     
     CONST_DPI_DISABLED = "DISABLED"
-    
-    CONST_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
     
     CONST_MAINTENANCE_MODE_ENABLED_INHERITED = "ENABLED_INHERITED"
     
     CONST_ENCRYPTION_ENABLED = "ENABLED"
     
     CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
+    
+    CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
     
     
 
@@ -230,6 +237,7 @@ class NUL2Domain(NURESTObject):
         self._service_id = None
         self._description = None
         self._netmask = None
+        self._flow_collection_enabled = None
         self._vn_id = None
         self._encryption = None
         self._entity_scope = None
@@ -262,6 +270,7 @@ class NUL2Domain(NURESTObject):
         self.expose_attribute(local_name="service_id", remote_name="serviceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="vn_id", remote_name="vnId", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -772,6 +781,33 @@ class NUL2Domain(NURESTObject):
                 
         """
         self._netmask = value
+
+    
+    @property
+    def flow_collection_enabled(self):
+        """ Get flow_collection_enabled value.
+
+            Notes:
+                Determines whether or not flow collection is enabled.
+
+                
+                This attribute is named `flowCollectionEnabled` in VSD API.
+                
+        """
+        return self._flow_collection_enabled
+
+    @flow_collection_enabled.setter
+    def flow_collection_enabled(self, value):
+        """ Set flow_collection_enabled value.
+
+            Notes:
+                Determines whether or not flow collection is enabled.
+
+                
+                This attribute is named `flowCollectionEnabled` in VSD API.
+                
+        """
+        self._flow_collection_enabled = value
 
     
     @property

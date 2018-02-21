@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
+
 from bambou import NURESTObject
 
 
@@ -39,6 +40,15 @@ class NUVNFInterfaceDescriptor(NURESTObject):
     __rest_name__ = "vnfinterfacedescriptor"
     __resource_name__ = "vnfinterfacedescriptors"
 
+    
+    ## Constants
+    
+    CONST_TYPE_WAN = "WAN"
+    
+    CONST_TYPE_LAN = "LAN"
+    
+    CONST_TYPE_MANAGEMENT = "MANAGEMENT"
+    
     
 
     def __init__(self, **kwargs):
@@ -59,10 +69,10 @@ class NUVNFInterfaceDescriptor(NURESTObject):
         # Read/Write Attributes
         
         self._name = None
-        self._is_management_interface = None
+        self._type = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="is_management_interface", remote_name="isManagementInterface", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'LAN', u'MANAGEMENT', u'WAN'])
         
 
         self._compute_args(**kwargs)
@@ -93,30 +103,26 @@ class NUVNFInterfaceDescriptor(NURESTObject):
 
     
     @property
-    def is_management_interface(self):
-        """ Get is_management_interface value.
+    def type(self):
+        """ Get type value.
 
             Notes:
-                Indicates if this is a management interface
+                Type of VNF interface
 
-                
-                This attribute is named `isManagementInterface` in VSD API.
                 
         """
-        return self._is_management_interface
+        return self._type
 
-    @is_management_interface.setter
-    def is_management_interface(self, value):
-        """ Set is_management_interface value.
+    @type.setter
+    def type(self, value):
+        """ Set type value.
 
             Notes:
-                Indicates if this is a management interface
+                Type of VNF interface
 
                 
-                This attribute is named `isManagementInterface` in VSD API.
-                
         """
-        self._is_management_interface = value
+        self._type = value
 
     
 

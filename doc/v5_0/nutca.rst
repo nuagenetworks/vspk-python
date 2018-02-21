@@ -24,7 +24,7 @@ Attributes
 
 - ``period`` (**Mandatory**): The averaging period
 
-- ``description``: Desription of the TCA
+- ``description``: Description of the TCA
 
 - ``metric`` (**Mandatory**): The metric associated with the TCA.
 

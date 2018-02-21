@@ -32,7 +32,7 @@ Attributes
 
 - ``priority``: The priority of the ACL entry that determines the order of entries
 
-- ``priority_type``: 
+- ``priority_type``: None
 
 - ``associated_live_entity_id``: ID of the associated live entity
 

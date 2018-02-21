@@ -42,6 +42,8 @@ Attributes
 
 - ``netmask``: Netmask of the L2Domain / L2Domain template defined
 
+- ``flow_collection_enabled``: Determines whether or not flow collection is enabled.
+
 - ``vn_id``: Current network's globally unique VXLAN network identifier
 
 - ``encryption``: Determines whether IPSEC is enabled Possible values are ENABLED, DISABLED, .

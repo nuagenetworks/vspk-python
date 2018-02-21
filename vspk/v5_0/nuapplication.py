@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -25,6 +25,13 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+
+
+
+from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 
 from .fetchers import NUMonitorscopesFetcher
@@ -56,11 +63,15 @@ class NUApplication(NURESTObject):
     
     CONST_PRE_CLASSIFICATION_PATH_PRIMARY = "PRIMARY"
     
-    CONST_PERFORMANCE_MONITOR_TYPE_CONTINUOUS = "CONTINUOUS"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_PRE_CLASSIFICATION_PATH_SECONDARY = "SECONDARY"
     
+    CONST_PERFORMANCE_MONITOR_TYPE_CONTINUOUS = "CONTINUOUS"
+    
     CONST_OPTIMIZE_PATH_SELECTION_PACKETLOSS = "PACKETLOSS"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_OPTIMIZE_PATH_SELECTION_LATENCY = "LATENCY"
     
@@ -100,6 +111,7 @@ class NUApplication(NURESTObject):
         self._dscp = None
         self._name = None
         self._bandwidth = None
+        self._last_updated_by = None
         self._read_only = None
         self._performance_monitor_type = None
         self._description = None
@@ -109,6 +121,7 @@ class NUApplication(NURESTObject):
         self._one_way_delay = None
         self._one_way_jitter = None
         self._one_way_loss = None
+        self._entity_scope = None
         self._post_classification_path = None
         self._source_ip = None
         self._source_port = None
@@ -118,11 +131,13 @@ class NUApplication(NURESTObject):
         self._protocol = None
         self._associated_l7_application_signature_id = None
         self._ether_type = None
+        self._external_id = None
         self._symmetry = None
         
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="bandwidth", remote_name="bandwidth", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="read_only", remote_name="readOnly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="performance_monitor_type", remote_name="performanceMonitorType", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONTINUOUS', u'FIRST_PACKET', u'FIRST_PACKET_AND_CONTINUOUS'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
@@ -132,6 +147,7 @@ class NUApplication(NURESTObject):
         self.expose_attribute(local_name="one_way_delay", remote_name="oneWayDelay", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="one_way_jitter", remote_name="oneWayJitter", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="one_way_loss", remote_name="oneWayLoss", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="post_classification_path", remote_name="postClassificationPath", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'PRIMARY', u'SECONDARY'])
         self.expose_attribute(local_name="source_ip", remote_name="sourceIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=False, is_unique=False)
@@ -141,10 +157,17 @@ class NUApplication(NURESTObject):
         self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'TCP', u'UDP'])
         self.expose_attribute(local_name="associated_l7_application_signature_id", remote_name="associatedL7ApplicationSignatureID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ether_type", remote_name="etherType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="symmetry", remote_name="symmetry", attribute_type=bool, is_required=False, is_unique=False)
         
 
         # Fetchers
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.monitorscopes = NUMonitorscopesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -228,6 +251,33 @@ class NUApplication(NURESTObject):
                 
         """
         self._bandwidth = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
 
     
     @property
@@ -470,6 +520,33 @@ class NUApplication(NURESTObject):
 
     
     @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
     def post_classification_path(self):
         """ Get post_classification_path value.
 
@@ -706,6 +783,33 @@ class NUApplication(NURESTObject):
                 
         """
         self._ether_type = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
     @property

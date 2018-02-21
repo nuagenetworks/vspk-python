@@ -12,19 +12,19 @@ Attributes
 ----------
 
 
-- ``packet_count``: packet count (part of rate along with probeInterval)
+- ``packet_count``: packet count (part of rate along with probeInterval). Applicable to Tier2 type.
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
 - ``tier_type`` (**Mandatory**): Tier type
 
-- ``timeout``: number of milliseconds to wait until the probe is timed out
+- ``timeout``: number of milliseconds to wait until the probe is timed out. Applicable to Tier2 type.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``down_threshold_count``: Number of times the probe is allowed to retry on successive timeouts. Applicable only for TIER2
 
-- ``probe_interval``: probe interval (part of rate along with packetCount)
+- ``probe_interval``: probe interval (part of rate along with packetCount). Applicable to Tier2 type.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

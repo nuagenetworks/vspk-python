@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
 # ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 
 
 
@@ -81,6 +82,7 @@ class NUOSPFInstance(NURESTObject):
         self._preference = None
         self._associated_export_routing_policy_id = None
         self._associated_import_routing_policy_id = None
+        self._super_backbone_enabled = None
         self._export_limit = None
         self._export_to_overlay = None
         self._external_id = None
@@ -93,6 +95,7 @@ class NUOSPFInstance(NURESTObject):
         self.expose_attribute(local_name="preference", remote_name="preference", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_export_routing_policy_id", remote_name="associatedExportRoutingPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_import_routing_policy_id", remote_name="associatedImportRoutingPolicyID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="super_backbone_enabled", remote_name="superBackboneEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="export_limit", remote_name="exportLimit", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="export_to_overlay", remote_name="exportToOverlay", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -290,6 +293,33 @@ class NUOSPFInstance(NURESTObject):
                 
         """
         self._associated_import_routing_policy_id = value
+
+    
+    @property
+    def super_backbone_enabled(self):
+        """ Get super_backbone_enabled value.
+
+            Notes:
+                Flag to determine whether SuperBackbone is enabled or not.
+
+                
+                This attribute is named `superBackboneEnabled` in VSD API.
+                
+        """
+        return self._super_backbone_enabled
+
+    @super_backbone_enabled.setter
+    def super_backbone_enabled(self, value):
+        """ Set super_backbone_enabled value.
+
+            Notes:
+                Flag to determine whether SuperBackbone is enabled or not.
+
+                
+                This attribute is named `superBackboneEnabled` in VSD API.
+                
+        """
+        self._super_backbone_enabled = value
 
     
     @property

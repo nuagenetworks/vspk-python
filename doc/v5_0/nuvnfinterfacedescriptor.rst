@@ -14,7 +14,7 @@ Attributes
 
 - ``name`` (**Mandatory**): Device name associated with this interface
 
-- ``is_management_interface``: Indicates if this is a management interface
+- ``type``: Type of VNF interface
 
 
 

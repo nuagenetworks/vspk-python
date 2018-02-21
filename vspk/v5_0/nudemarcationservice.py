@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
+
 from bambou import NURESTObject
 
 
@@ -33,7 +34,7 @@ class NUDemarcationService(NURESTObject):
     """ Represents a DemarcationService in the VSD
 
         Notes:
-            None
+            test
     """
 
     __rest_name__ = "demarcationservice"

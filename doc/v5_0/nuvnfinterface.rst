@@ -40,11 +40,11 @@ Attributes
 
 - ``zone_name``: Name of the zone that the VM is attached to
 
-- ``is_management_interface``: Indicates if this is a management interface
-
 - ``attached_network_id``: ID of the Subnet that the interface is attached to
 
 - ``attached_network_type``: network type that the interface is attached to
+
+- ``type``: Type of VNF interface
 
 
 

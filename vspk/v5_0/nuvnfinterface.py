@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
+
 from bambou import NURESTObject
 
 
@@ -41,6 +42,12 @@ class NUVNFInterface(NURESTObject):
 
     
     ## Constants
+    
+    CONST_TYPE_WAN = "WAN"
+    
+    CONST_TYPE_LAN = "LAN"
+    
+    CONST_TYPE_MANAGEMENT = "MANAGEMENT"
     
     CONST_ATTACHED_NETWORK_TYPE_SUBNET = "SUBNET"
     
@@ -79,9 +86,9 @@ class NUVNFInterface(NURESTObject):
         self._domain_name = None
         self._zone_id = None
         self._zone_name = None
-        self._is_management_interface = None
         self._attached_network_id = None
         self._attached_network_type = None
+        self._type = None
         
         self.expose_attribute(local_name="mac", remote_name="MAC", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vnfuuid", remote_name="VNFUUID", attribute_type=str, is_required=False, is_unique=False)
@@ -97,9 +104,9 @@ class NUVNFInterface(NURESTObject):
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zone_id", remote_name="zoneID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zone_name", remote_name="zoneName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="is_management_interface", remote_name="isManagementInterface", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="attached_network_id", remote_name="attachedNetworkID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="attached_network_type", remote_name="attachedNetworkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'L2DOMAIN', u'SUBNET'])
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'LAN', u'MANAGEMENT', u'WAN'])
         
 
         self._compute_args(**kwargs)
@@ -473,33 +480,6 @@ class NUVNFInterface(NURESTObject):
 
     
     @property
-    def is_management_interface(self):
-        """ Get is_management_interface value.
-
-            Notes:
-                Indicates if this is a management interface
-
-                
-                This attribute is named `isManagementInterface` in VSD API.
-                
-        """
-        return self._is_management_interface
-
-    @is_management_interface.setter
-    def is_management_interface(self, value):
-        """ Set is_management_interface value.
-
-            Notes:
-                Indicates if this is a management interface
-
-                
-                This attribute is named `isManagementInterface` in VSD API.
-                
-        """
-        self._is_management_interface = value
-
-    
-    @property
     def attached_network_id(self):
         """ Get attached_network_id value.
 
@@ -551,6 +531,29 @@ class NUVNFInterface(NURESTObject):
                 
         """
         self._attached_network_type = value
+
+    
+    @property
+    def type(self):
+        """ Get type value.
+
+            Notes:
+                Type of VNF interface
+
+                
+        """
+        return self._type
+
+    @type.setter
+    def type(self, value):
+        """ Set type value.
+
+            Notes:
+                Type of VNF interface
+
+                
+        """
+        self._type = value
 
     
 

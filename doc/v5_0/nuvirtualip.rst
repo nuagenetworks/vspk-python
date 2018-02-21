@@ -14,6 +14,8 @@ Attributes
 
 - ``mac``: The MAC address of the virtual port
 
+- ``ip_type``: Specify if the virtualIP attribute value is in IPv4 or IPv6 format
+
 - ``last_updated_by``: ID of the user who last updated the object.
 
 - ``virtual_ip`` (**Mandatory**): Virtual IP address

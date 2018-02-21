@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
 # ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 
 
 
@@ -228,7 +229,7 @@ class NUIngressExternalServiceTemplate(NURESTObject):
         """ Get policy_state value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `policyState` in VSD API.
@@ -241,7 +242,7 @@ class NUIngressExternalServiceTemplate(NURESTObject):
         """ Set policy_state value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `policyState` in VSD API.
@@ -278,7 +279,7 @@ class NUIngressExternalServiceTemplate(NURESTObject):
         """ Get priority_type value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `priorityType` in VSD API.
@@ -291,7 +292,7 @@ class NUIngressExternalServiceTemplate(NURESTObject):
         """ Set priority_type value.
 
             Notes:
-                
+                None
 
                 
                 This attribute is named `priorityType` in VSD API.

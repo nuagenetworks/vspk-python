@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015, Alcatel-Lucent Inc
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
 # ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 
 
 
@@ -51,6 +52,10 @@ class NUVirtualIP(NURESTObject):
     
     ## Constants
     
+    CONST_IP_TYPE_IPV6 = "IPV6"
+    
+    CONST_IP_TYPE_IPV4 = "IPV4"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
@@ -75,6 +80,7 @@ class NUVirtualIP(NURESTObject):
         # Read/Write Attributes
         
         self._mac = None
+        self._ip_type = None
         self._last_updated_by = None
         self._virtual_ip = None
         self._entity_scope = None
@@ -83,6 +89,7 @@ class NUVirtualIP(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="mac", remote_name="MAC", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="virtual_ip", remote_name="virtualIP", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -132,6 +139,33 @@ class NUVirtualIP(NURESTObject):
                 
         """
         self._mac = value
+
+    
+    @property
+    def ip_type(self):
+        """ Get ip_type value.
+
+            Notes:
+                Specify if the virtualIP attribute value is in IPv4 or IPv6 format
+
+                
+                This attribute is named `IPType` in VSD API.
+                
+        """
+        return self._ip_type
+
+    @ip_type.setter
+    def ip_type(self, value):
+        """ Set ip_type value.
+
+            Notes:
+                Specify if the virtualIP attribute value is in IPv4 or IPv6 format
+
+                
+                This attribute is named `IPType` in VSD API.
+                
+        """
+        self._ip_type = value
 
     
     @property

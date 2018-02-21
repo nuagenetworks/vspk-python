@@ -5,7 +5,7 @@ nudemarcationservice
 
 .. class:: nudemarcationservice.NUDemarcationService(bambou.nurest_object.NUMetaRESTObject,):
 
-None
+test
 
 
 Attributes

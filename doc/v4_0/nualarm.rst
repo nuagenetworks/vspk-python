@@ -85,11 +85,11 @@ Parents
 
 - :ref:`nuvm.NUVM<nuvm>`
 
-- :ref:`nunsport.NUNSPort<nunsport>`
-
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nucontainer.NUContainer<nucontainer>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nunsport.NUNSPort<nunsport>`
 
