@@ -76,6 +76,8 @@ class NUUplinkConnection(NURESTObject):
     
     CONST_ROLE_TERTIARY = "TERTIARY"
     
+    CONST_MODE_ANY = "Any"
+    
     CONST_ADVERTISEMENT_CRITERIA_CONTROL_SESSION = "CONTROL_SESSION"
     
     CONST_MODE_STATIC = "Static"
@@ -115,6 +117,7 @@ class NUUplinkConnection(NURESTObject):
         self._netmask = None
         self._vlan_id = None
         self._underlay_enabled = None
+        self._inherited = None
         self._installer_managed = None
         self._interface_connection_type = None
         self._mode = None
@@ -139,9 +142,10 @@ class NUUplinkConnection(NURESTObject):
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vlan_id", remote_name="vlanId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="underlay_enabled", remote_name="underlayEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="inherited", remote_name="inherited", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="installer_managed", remote_name="installerManaged", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="interface_connection_type", remote_name="interfaceConnectionType", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTOMATIC', u'EMBEDDED', u'PCI_EXPRESS', u'USB_ETHERNET', u'USB_MODEM'])
-        self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'Dynamic', u'LTE', u'PPPoE', u'Static'])
+        self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'Any', u'Dynamic', u'LTE', u'PPPoE', u'Static'])
         self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'PRIMARY', u'SECONDARY', u'TERTIARY', u'UNKNOWN'])
         self.expose_attribute(local_name="role_order", remote_name="roleOrder", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="port_name", remote_name="portName", attribute_type=str, is_required=False, is_unique=False)
@@ -422,6 +426,29 @@ class NUUplinkConnection(NURESTObject):
                 
         """
         self._underlay_enabled = value
+
+    
+    @property
+    def inherited(self):
+        """ Get inherited value.
+
+            Notes:
+                This flag will determine if the abstract connection is inherited from the instance template
+
+                
+        """
+        return self._inherited
+
+    @inherited.setter
+    def inherited(self, value):
+        """ Set inherited value.
+
+            Notes:
+                This flag will determine if the abstract connection is inherited from the instance template
+
+                
+        """
+        self._inherited = value
 
     
     @property

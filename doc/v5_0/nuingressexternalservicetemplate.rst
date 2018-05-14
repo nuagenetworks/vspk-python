@@ -42,7 +42,6 @@ Children
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuingressexternalservicetemplateentry.NUIngressExternalServiceTemplateEntry<nuingressexternalservicetemplateentry>`                                        ``ingress_external_service_template_entries`` 
-:ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
 ================================================================================================================================================               ==========================================================================================
 
 

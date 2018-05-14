@@ -36,6 +36,8 @@ Attributes
 
 - ``dictionary_version``: L7 Application Type version
 
+- ``virtual_firewall_rules_enabled``: Read-only flag that indicates if virtual firewall rules are allowed.
+
 - ``allow_advanced_qos_configuration``: Controls whether this enterprise has access to advanced QoS settings
 
 - ``allow_gateway_management``: This flag indicates if the enterprise/organization can manage gateways. If yes then it can create gateway templates, instantiate them etc.

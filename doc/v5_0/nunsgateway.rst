@@ -66,6 +66,8 @@ Attributes
 
 - ``description``: A description of the Gateway
 
+- ``network_acceleration``: Attribute that enables or disables Network Acceleration (DPDK) on the NSGateway instance.  Changing the value of this field will cause the device to restart at the next configuration reload.
+
 - ``libraries``: Transient representation of the same property on NSGInfo.
 
 - ``inherited_ssh_service_state``: Indicates the SSH Service state which is configured on the associated template instance.

@@ -45,9 +45,11 @@ class NUZFBAutoAssignment(NURESTObject):
     
     CONST_ZFB_MATCH_ATTRIBUTE_NSGATEWAY_ID = "NSGATEWAY_ID"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_ZFB_MATCH_ATTRIBUTE_UUID = "UUID"
     
     CONST_ZFB_MATCH_ATTRIBUTE_HOSTNAME = "HOSTNAME"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
@@ -87,7 +89,7 @@ class NUZFBAutoAssignment(NURESTObject):
         self._associated_enterprise_name = None
         self._external_id = None
         
-        self.expose_attribute(local_name="zfb_match_attribute", remote_name="ZFBMatchAttribute", attribute_type=str, is_required=False, is_unique=False, choices=[u'HOSTNAME', u'IP_ADDRESS', u'MAC_ADDRESS', u'NSGATEWAY_ID', u'SERIAL_NUMBER'])
+        self.expose_attribute(local_name="zfb_match_attribute", remote_name="ZFBMatchAttribute", attribute_type=str, is_required=False, is_unique=False, choices=[u'HOSTNAME', u'IP_ADDRESS', u'MAC_ADDRESS', u'NSGATEWAY_ID', u'SERIAL_NUMBER', u'UUID'])
         self.expose_attribute(local_name="zfb_match_attribute_values", remote_name="ZFBMatchAttributeValues", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)

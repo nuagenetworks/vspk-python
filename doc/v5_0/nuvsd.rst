@@ -5,7 +5,7 @@ nuvsd
 
 .. class:: nuvsd.NUVSD(bambou.nurest_object.NUMetaRESTObject,):
 
-System Monitoring details for VSD.
+System Monitoring details for VSD. This is deprecated and no longer provided through the Nuage API. This information can now be gathered through the Monit API.
 
 
 Attributes

@@ -293,6 +293,7 @@ class NUEnterprise(NURESTObject):
         self._description = None
         self._shared_enterprise = None
         self._dictionary_version = None
+        self._virtual_firewall_rules_enabled = None
         self._allow_advanced_qos_configuration = None
         self._allow_gateway_management = None
         self._allow_trusted_forwarding_class = None
@@ -325,6 +326,7 @@ class NUEnterprise(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="shared_enterprise", remote_name="sharedEnterprise", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dictionary_version", remote_name="dictionaryVersion", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="virtual_firewall_rules_enabled", remote_name="virtualFirewallRulesEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_advanced_qos_configuration", remote_name="allowAdvancedQOSConfiguration", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_gateway_management", remote_name="allowGatewayManagement", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_trusted_forwarding_class", remote_name="allowTrustedForwardingClass", attribute_type=bool, is_required=False, is_unique=False)
@@ -850,6 +852,33 @@ class NUEnterprise(NURESTObject):
                 
         """
         self._dictionary_version = value
+
+    
+    @property
+    def virtual_firewall_rules_enabled(self):
+        """ Get virtual_firewall_rules_enabled value.
+
+            Notes:
+                Read-only flag that indicates if virtual firewall rules are allowed.
+
+                
+                This attribute is named `virtualFirewallRulesEnabled` in VSD API.
+                
+        """
+        return self._virtual_firewall_rules_enabled
+
+    @virtual_firewall_rules_enabled.setter
+    def virtual_firewall_rules_enabled(self, value):
+        """ Set virtual_firewall_rules_enabled value.
+
+            Notes:
+                Read-only flag that indicates if virtual firewall rules are allowed.
+
+                
+                This attribute is named `virtualFirewallRulesEnabled` in VSD API.
+                
+        """
+        self._virtual_firewall_rules_enabled = value
 
     
     @property

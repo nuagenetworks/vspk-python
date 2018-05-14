@@ -18,6 +18,8 @@ Attributes
 
 - ``name`` (**Mandatory**): Name of the VCenter
 
+- ``manage_vrs_availability``: When this is set to true, the vCenter Integration Node will be responsible for marking a VRS Agent as available in the EAM framework. Until a VRS Agent has been marked as available, vCenter will not migrate VMs to the host running the VRS Agent and will not allow VMs to be powered on that host.
+
 - ``password`` (**Mandatory**): Password for the VCenter user
 
 - ``last_updated_by``: ID of the user who last updated the object.

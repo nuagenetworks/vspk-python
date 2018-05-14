@@ -121,6 +121,9 @@ from .fetchers import NUContainersFetcher
 from .fetchers import NUContainerInterfacesFetcher
 
 
+from .fetchers import NUForwardingPathListsFetcher
+
+
 from .fetchers import NUQOSsFetcher
 
 
@@ -487,6 +490,9 @@ class NUDomain(NURESTObject):
         
         
         self.container_interfaces = NUContainerInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.forwarding_path_lists = NUForwardingPathListsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.qoss = NUQOSsFetcher.fetcher_with_object(parent_object=self, relationship="child")

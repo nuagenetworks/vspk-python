@@ -81,6 +81,9 @@ class NULocation(NURESTObject):
         self._locality = None
         self._longitude = None
         self._country = None
+        self._associated_entity_id = None
+        self._associated_entity_name = None
+        self._associated_entity_type = None
         self._state = None
         self._external_id = None
         
@@ -93,6 +96,9 @@ class NULocation(NURESTObject):
         self.expose_attribute(local_name="locality", remote_name="locality", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="longitude", remote_name="longitude", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="country", remote_name="country", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_entity_id", remote_name="associatedEntityID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_entity_name", remote_name="associatedEntityName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_entity_type", remote_name="associatedEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="state", remote_name="state", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
@@ -331,6 +337,87 @@ class NULocation(NURESTObject):
                 
         """
         self._country = value
+
+    
+    @property
+    def associated_entity_id(self):
+        """ Get associated_entity_id value.
+
+            Notes:
+                Associated entity UUID.
+
+                
+                This attribute is named `associatedEntityID` in VSD API.
+                
+        """
+        return self._associated_entity_id
+
+    @associated_entity_id.setter
+    def associated_entity_id(self, value):
+        """ Set associated_entity_id value.
+
+            Notes:
+                Associated entity UUID.
+
+                
+                This attribute is named `associatedEntityID` in VSD API.
+                
+        """
+        self._associated_entity_id = value
+
+    
+    @property
+    def associated_entity_name(self):
+        """ Get associated_entity_name value.
+
+            Notes:
+                Name of the associated entity.
+
+                
+                This attribute is named `associatedEntityName` in VSD API.
+                
+        """
+        return self._associated_entity_name
+
+    @associated_entity_name.setter
+    def associated_entity_name(self, value):
+        """ Set associated_entity_name value.
+
+            Notes:
+                Name of the associated entity.
+
+                
+                This attribute is named `associatedEntityName` in VSD API.
+                
+        """
+        self._associated_entity_name = value
+
+    
+    @property
+    def associated_entity_type(self):
+        """ Get associated_entity_type value.
+
+            Notes:
+                Object type of the associated entity.
+
+                
+                This attribute is named `associatedEntityType` in VSD API.
+                
+        """
+        return self._associated_entity_type
+
+    @associated_entity_type.setter
+    def associated_entity_type(self, value):
+        """ Set associated_entity_type value.
+
+            Notes:
+                Object type of the associated entity.
+
+                
+                This attribute is named `associatedEntityType` in VSD API.
+                
+        """
+        self._associated_entity_type = value
 
     
     @property

@@ -206,7 +206,7 @@ class NUAlarm(NURESTObject):
         """ Get acknowledged value.
 
             Notes:
-                Flag to indicate that alarm is already acknowledged or not
+                Flag to indicate if the alarm has been acknowledged already.
 
                 
         """
@@ -217,7 +217,7 @@ class NUAlarm(NURESTObject):
         """ Set acknowledged value.
 
             Notes:
-                Flag to indicate that alarm is already acknowledged or not
+                Flag to indicate if the alarm has been acknowledged already.
 
                 
         """
@@ -298,7 +298,7 @@ class NUAlarm(NURESTObject):
         """ Get timestamp value.
 
             Notes:
-                Indicates the time that the alarm was triggered
+                Indicates the time at which the alarm was triggered
 
                 
         """
@@ -309,7 +309,7 @@ class NUAlarm(NURESTObject):
         """ Set timestamp value.
 
             Notes:
-                Indicates the time that the alarm was triggered
+                Indicates the time at which the alarm was triggered
 
                 
         """

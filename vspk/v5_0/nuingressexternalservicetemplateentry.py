@@ -34,9 +34,6 @@ from .fetchers import NUMetadatasFetcher
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUJobsFetcher
-
-
 from .fetchers import NUStatisticsFetcher
 
 from bambou import NURESTObject
@@ -55,53 +52,47 @@ class NUIngressExternalServiceTemplateEntry(NURESTObject):
     
     ## Constants
     
+    CONST_NETWORK_TYPE_ENDPOINT_DOMAIN = "ENDPOINT_DOMAIN"
+    
     CONST_NETWORK_TYPE_NETWORK_MACRO_GROUP = "NETWORK_MACRO_GROUP"
+    
+    CONST_POLICY_STATE_DRAFT = "DRAFT"
+    
+    CONST_POLICY_STATE_LIVE = "LIVE"
     
     CONST_ACTION_DROP = "DROP"
     
-    CONST_LOCATION_TYPE_ZONE = "ZONE"
+    CONST_LOCATION_TYPE_POLICYGROUP = "POLICYGROUP"
+    
+    CONST_NETWORK_TYPE_ENDPOINT_SUBNET = "ENDPOINT_SUBNET"
     
     CONST_ACTION_REDIRECT = "REDIRECT"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
+    CONST_NETWORK_TYPE_ANY = "ANY"
+    
     CONST_NETWORK_TYPE_PUBLIC_NETWORK = "PUBLIC_NETWORK"
-    
-    CONST_ACTION_FORWARD = "FORWARD"
-    
-    CONST_NETWORK_TYPE_POLICYGROUP = "POLICYGROUP"
-    
-    CONST_LOCATION_TYPE_ANY = "ANY"
-    
-    CONST_NETWORK_TYPE_ENDPOINT_DOMAIN = "ENDPOINT_DOMAIN"
     
     CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
     
-    CONST_NETWORK_TYPE_ANY = "ANY"
-    
-    CONST_LOCATION_TYPE_POLICYGROUP = "POLICYGROUP"
+    CONST_ACTION_FORWARD = "FORWARD"
     
     CONST_NETWORK_TYPE_SUBNET = "SUBNET"
     
-    CONST_NETWORK_TYPE_ZONE = "ZONE"
+    CONST_NETWORK_TYPE_POLICYGROUP = "POLICYGROUP"
     
-    CONST_NETWORK_TYPE_ENDPOINT_SUBNET = "ENDPOINT_SUBNET"
-    
-    CONST_LOCATION_TYPE_VPORTTAG = "VPORTTAG"
-    
-    CONST_LOCATION_TYPE_SUBNET = "SUBNET"
-    
-    CONST_POLICY_STATE_DRAFT = "DRAFT"
-    
-    CONST_LOCATION_TYPE_REDIRECTIONTARGET = "REDIRECTIONTARGET"
-    
-    CONST_POLICY_STATE_LIVE = "LIVE"
+    CONST_NETWORK_TYPE_ENDPOINT_ZONE = "ENDPOINT_ZONE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_NETWORK_TYPE_INTERNET_POLICYGROUP = "INTERNET_POLICYGROUP"
+    CONST_LOCATION_TYPE_ANY = "ANY"
     
-    CONST_NETWORK_TYPE_ENDPOINT_ZONE = "ENDPOINT_ZONE"
+    CONST_NETWORK_TYPE_ZONE = "ZONE"
+    
+    CONST_LOCATION_TYPE_SUBNET = "SUBNET"
+    
+    CONST_LOCATION_TYPE_ZONE = "ZONE"
     
     
 
@@ -166,13 +157,13 @@ class NUIngressExternalServiceTemplateEntry(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'INTERNET_POLICYGROUP', u'NETWORK_MACRO_GROUP', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'ZONE'])
+        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'NETWORK_MACRO_GROUP', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'ZONE'])
         self.expose_attribute(local_name="mirror_destination_id", remote_name="mirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_logging_enabled", remote_name="flowLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'POLICYGROUP', u'REDIRECTIONTARGET', u'SUBNET', u'VPORTTAG', u'ZONE'])
+        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'POLICYGROUP', u'SUBNET', u'ZONE'])
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=False, is_unique=False)
@@ -192,9 +183,6 @@ class NUIngressExternalServiceTemplateEntry(NURESTObject):
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")

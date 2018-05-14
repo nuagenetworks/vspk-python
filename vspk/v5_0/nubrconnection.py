@@ -46,6 +46,8 @@ class NUBRConnection(NURESTObject):
     
     ## Constants
     
+    CONST_ADVERTISEMENT_CRITERIA_OPERATIONAL_LINK = "OPERATIONAL_LINK"
+    
     CONST_ADVERTISEMENT_CRITERIA_LINK_BASED = "LINK_BASED"
     
     CONST_ADVERTISEMENT_CRITERIA_BFD = "BFD"
@@ -78,14 +80,16 @@ class NUBRConnection(NURESTObject):
         self._address = None
         self._advertisement_criteria = None
         self._netmask = None
+        self._inherited = None
         self._mode = None
         self._uplink_id = None
         
         self.expose_attribute(local_name="dns_address", remote_name="DNSAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'BFD', u'LINK_BASED', u'OPENFLOW'])
+        self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'BFD', u'LINK_BASED', u'OPENFLOW', u'OPERATIONAL_LINK'])
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="inherited", remote_name="inherited", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'Static'])
         self.expose_attribute(local_name="uplink_id", remote_name="uplinkID", attribute_type=int, is_required=False, is_unique=False)
         
@@ -221,6 +225,29 @@ class NUBRConnection(NURESTObject):
                 
         """
         self._netmask = value
+
+    
+    @property
+    def inherited(self):
+        """ Get inherited value.
+
+            Notes:
+                This flag will determine if the abstract connection is inherited from the instance template
+
+                
+        """
+        return self._inherited
+
+    @inherited.setter
+    def inherited(self, value):
+        """ Set inherited value.
+
+            Notes:
+                This flag will determine if the abstract connection is inherited from the instance template
+
+                
+        """
+        self._inherited = value
 
     
     @property

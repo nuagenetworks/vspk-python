@@ -14,6 +14,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``detail``: Details about the command execution as reported directly from the NSG independent of status codes.
+
 - ``detailed_status``: A string representing the detailed status of the operation that was triggered by the execution of the Command instance.
 
 - ``detailed_status_code``: A numerical code mapping to a list of detailed statuses that can apply to a Command instance.

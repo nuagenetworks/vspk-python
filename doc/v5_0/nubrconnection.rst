@@ -22,6 +22,8 @@ Attributes
 
 - ``netmask``: network mask
 
+- ``inherited``: This flag will determine if the abstract connection is inherited from the instance template
+
 - ``mode``: Connection mode: Static.
 
 - ``uplink_id``: Internally generated ID in the range that idenitifies the uplink within the cotext of NSG

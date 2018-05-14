@@ -77,6 +77,8 @@ class NUVNFInterface(NURESTObject):
         self._ip_address = None
         self._vport_id = None
         self._vport_name = None
+        self._ipv6_address = None
+        self._ipv6_gateway = None
         self._name = None
         self._gateway = None
         self._netmask = None
@@ -95,6 +97,8 @@ class NUVNFInterface(NURESTObject):
         self.expose_attribute(local_name="ip_address", remote_name="IPAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vport_id", remote_name="VPortID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vport_name", remote_name="VPortName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ipv6_gateway", remote_name="IPv6Gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
@@ -172,7 +176,7 @@ class NUVNFInterface(NURESTObject):
         """ Get ip_address value.
 
             Notes:
-                IP address of the  interface
+                IP address of the interface
 
                 
                 This attribute is named `IPAddress` in VSD API.
@@ -185,7 +189,7 @@ class NUVNFInterface(NURESTObject):
         """ Set ip_address value.
 
             Notes:
-                IP address of the  interface
+                IP address of the interface
 
                 
                 This attribute is named `IPAddress` in VSD API.
@@ -246,6 +250,60 @@ class NUVNFInterface(NURESTObject):
                 
         """
         self._vport_name = value
+
+    
+    @property
+    def ipv6_address(self):
+        """ Get ipv6_address value.
+
+            Notes:
+                IPv6 address of the  interface
+
+                
+                This attribute is named `IPv6Address` in VSD API.
+                
+        """
+        return self._ipv6_address
+
+    @ipv6_address.setter
+    def ipv6_address(self, value):
+        """ Set ipv6_address value.
+
+            Notes:
+                IPv6 address of the  interface
+
+                
+                This attribute is named `IPv6Address` in VSD API.
+                
+        """
+        self._ipv6_address = value
+
+    
+    @property
+    def ipv6_gateway(self):
+        """ Get ipv6_gateway value.
+
+            Notes:
+                IPV6 Gateway of the subnet that the VNF is connected to.
+
+                
+                This attribute is named `IPv6Gateway` in VSD API.
+                
+        """
+        return self._ipv6_gateway
+
+    @ipv6_gateway.setter
+    def ipv6_gateway(self, value):
+        """ Set ipv6_gateway value.
+
+            Notes:
+                IPV6 Gateway of the subnet that the VNF is connected to.
+
+                
+                This attribute is named `IPv6Gateway` in VSD API.
+                
+        """
+        self._ipv6_gateway = value
 
     
     @property

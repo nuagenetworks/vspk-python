@@ -46,11 +46,11 @@ Attributes
 
 - ``associated_enterprise_id``: the ID of the associated enteprise
 
-- ``associated_enterprise_name``: name of the associated Enterprise
+- ``associated_enterprise_name``: Name of the associated enterprise
 
 - ``associated_ns_gateway_id``: ID of the assigned NSG
 
-- ``associated_ns_gateway_name``: name of the associated NSG
+- ``associated_ns_gateway_name``: Name of the associated NSG
 
 - ``status_string``: Extra status info
 

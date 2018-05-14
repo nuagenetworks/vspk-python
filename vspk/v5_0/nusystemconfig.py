@@ -178,6 +178,7 @@ class NUSystemConfig(NURESTObject):
         self._vsc_on_same_version_as_vsd = None
         self._vsd_read_only_mode = None
         self._vsd_upgrade_is_complete = None
+        self._nsg_uplink_hold_down_timer = None
         self._as_number = None
         self._vss_stats_interval = None
         self._rt_lower_limit = None
@@ -295,8 +296,8 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="zfb_bootstrap_enabled", remote_name="ZFBBootstrapEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zfb_request_retry_timer", remote_name="ZFBRequestRetryTimer", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zfb_scheduler_stale_request_timeout", remote_name="ZFBSchedulerStaleRequestTimeout", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="pgid_lower_limit", remote_name="PGIDLowerLimit", attribute_type=dict, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="pgid_upper_limit", remote_name="PGIDUpperLimit", attribute_type=dict, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="pgid_lower_limit", remote_name="PGIDLowerLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="pgid_upper_limit", remote_name="PGIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_option_size", remote_name="DHCPOptionSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vlanid_lower_limit", remote_name="VLANIDLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vlanid_upper_limit", remote_name="VLANIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
@@ -318,6 +319,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="vsc_on_same_version_as_vsd", remote_name="VSCOnSameVersionAsVSD", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsd_read_only_mode", remote_name="VSDReadOnlyMode", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsd_upgrade_is_complete", remote_name="VSDUpgradeIsComplete", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nsg_uplink_hold_down_timer", remote_name="NSGUplinkHoldDownTimer", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="as_number", remote_name="ASNumber", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vss_stats_interval", remote_name="VSSStatsInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rt_lower_limit", remote_name="RTLowerLimit", attribute_type=int, is_required=False, is_unique=False)
@@ -1458,6 +1460,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._vsd_upgrade_is_complete = value
+
+    
+    @property
+    def nsg_uplink_hold_down_timer(self):
+        """ Get nsg_uplink_hold_down_timer value.
+
+            Notes:
+                In case of a dual-uplink NSG, the hold down time in seconds, after which an uplink connection that recovered from failure is re-used.
+
+                
+                This attribute is named `NSGUplinkHoldDownTimer` in VSD API.
+                
+        """
+        return self._nsg_uplink_hold_down_timer
+
+    @nsg_uplink_hold_down_timer.setter
+    def nsg_uplink_hold_down_timer(self, value):
+        """ Set nsg_uplink_hold_down_timer value.
+
+            Notes:
+                In case of a dual-uplink NSG, the hold down time in seconds, after which an uplink connection that recovered from failure is re-used.
+
+                
+                This attribute is named `NSGUplinkHoldDownTimer` in VSD API.
+                
+        """
+        self._nsg_uplink_hold_down_timer = value
 
     
     @property

@@ -33,33 +33,58 @@ from .fetchers import NUMetadatasFetcher
 
 from .fetchers import NUGlobalMetadatasFetcher
 
-
-from .fetchers import NUApplicationBindingsFetcher
-
 from bambou import NURESTObject
 
 
-class NUApplicationperformancemanagement(NURESTObject):
-    """ Represents a Applicationperformancemanagement in the VSD
+class NUForwardingPathListEntry(NURESTObject):
+    """ Represents a ForwardingPathListEntry in the VSD
 
         Notes:
-            Application Group is a container for group of applications 
+            Forwarding path list entry to be associated with forwarding path list for l4 based policy to PAT / IKE to underlay.
     """
 
-    __rest_name__ = "applicationperformancemanagement"
-    __resource_name__ = "applicationperformancemanagements"
+    __rest_name__ = "forwardingpathlistentry"
+    __resource_name__ = "forwardingpathlistentries"
 
     
     ## Constants
     
+    CONST_FORWARDING_ACTION_IKE = "IKE"
+    
+    CONST_FORWARDING_ACTION_UNDERLAY_ROUTE = "UNDERLAY_ROUTE"
+    
+    CONST_FORWARDING_ACTION_UNDERLAY_PAT = "UNDERLAY_PAT"
+    
+    CONST_FC_OVERRIDE_NONE = "NONE"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
+    CONST_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
+    
+    CONST_FC_OVERRIDE_H = "H"
+    
+    CONST_FC_OVERRIDE_F = "F"
+    
+    CONST_FC_OVERRIDE_G = "G"
+    
+    CONST_FC_OVERRIDE_D = "D"
+    
+    CONST_FC_OVERRIDE_E = "E"
+    
+    CONST_FC_OVERRIDE_B = "B"
+    
+    CONST_FC_OVERRIDE_C = "C"
+    
+    CONST_FC_OVERRIDE_A = "A"
     
     
 
     def __init__(self, **kwargs):
-        """ Initializes a Applicationperformancemanagement instance
+        """ Initializes a ForwardingPathListEntry instance
 
             Notes:
                 You can specify all parameters while calling this methods.
@@ -67,28 +92,26 @@ class NUApplicationperformancemanagement(NURESTObject):
                 object from a Python dictionary
 
             Examples:
-                >>> applicationperformancemanagement = NUApplicationperformancemanagement(id=u'xxxx-xxx-xxx-xxx', name=u'Applicationperformancemanagement')
-                >>> applicationperformancemanagement = NUApplicationperformancemanagement(data=my_dict)
+                >>> forwardingpathlistentry = NUForwardingPathListEntry(id=u'xxxx-xxx-xxx-xxx', name=u'ForwardingPathListEntry')
+                >>> forwardingpathlistentry = NUForwardingPathListEntry(data=my_dict)
         """
 
-        super(NUApplicationperformancemanagement, self).__init__()
+        super(NUForwardingPathListEntry, self).__init__()
 
         # Read/Write Attributes
         
-        self._name = None
+        self._fc_override = None
         self._last_updated_by = None
-        self._read_only = None
-        self._description = None
         self._entity_scope = None
-        self._associated_performance_monitor_id = None
+        self._forwarding_action = None
+        self._uplink_preference = None
         self._external_id = None
         
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="fc_override", remote_name="FCOverride", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="read_only", remote_name="readOnly", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="associated_performance_monitor_id", remote_name="associatedPerformanceMonitorID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="forwarding_action", remote_name="forwardingAction", attribute_type=str, is_required=True, is_unique=False, choices=[u'IKE', u'UNDERLAY_PAT', u'UNDERLAY_ROUTE'])
+        self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'SECONDARY'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -100,35 +123,36 @@ class NUApplicationperformancemanagement(NURESTObject):
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
-        
-        self.application_bindings = NUApplicationBindingsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
 
         self._compute_args(**kwargs)
 
     # Properties
     
     @property
-    def name(self):
-        """ Get name value.
+    def fc_override(self):
+        """ Get fc_override value.
 
             Notes:
-                name of the application group
+                Value of the Service Class to be overridden in the packet when the match conditions are satisfied.
 
                 
+                This attribute is named `FCOverride` in VSD API.
+                
         """
-        return self._name
+        return self._fc_override
 
-    @name.setter
-    def name(self, value):
-        """ Set name value.
+    @fc_override.setter
+    def fc_override(self, value):
+        """ Set fc_override value.
 
             Notes:
-                name of the application group
+                Value of the Service Class to be overridden in the packet when the match conditions are satisfied.
 
                 
+                This attribute is named `FCOverride` in VSD API.
+                
         """
-        self._name = value
+        self._fc_override = value
 
     
     @property
@@ -159,56 +183,6 @@ class NUApplicationperformancemanagement(NURESTObject):
 
     
     @property
-    def read_only(self):
-        """ Get read_only value.
-
-            Notes:
-                Determines whether this entity is read only.  Read only objects cannot be modified or deleted.
-
-                
-                This attribute is named `readOnly` in VSD API.
-                
-        """
-        return self._read_only
-
-    @read_only.setter
-    def read_only(self, value):
-        """ Set read_only value.
-
-            Notes:
-                Determines whether this entity is read only.  Read only objects cannot be modified or deleted.
-
-                
-                This attribute is named `readOnly` in VSD API.
-                
-        """
-        self._read_only = value
-
-    
-    @property
-    def description(self):
-        """ Get description value.
-
-            Notes:
-                Description of Application Group
-
-                
-        """
-        return self._description
-
-    @description.setter
-    def description(self, value):
-        """ Set description value.
-
-            Notes:
-                Description of Application Group
-
-                
-        """
-        self._description = value
-
-    
-    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -236,30 +210,57 @@ class NUApplicationperformancemanagement(NURESTObject):
 
     
     @property
-    def associated_performance_monitor_id(self):
-        """ Get associated_performance_monitor_id value.
+    def forwarding_action(self):
+        """ Get forwarding_action value.
 
             Notes:
-                associated Probe ID
+                Type of forwarding action associated with this entry.
 
                 
-                This attribute is named `associatedPerformanceMonitorID` in VSD API.
+                This attribute is named `forwardingAction` in VSD API.
                 
         """
-        return self._associated_performance_monitor_id
+        return self._forwarding_action
 
-    @associated_performance_monitor_id.setter
-    def associated_performance_monitor_id(self, value):
-        """ Set associated_performance_monitor_id value.
+    @forwarding_action.setter
+    def forwarding_action(self, value):
+        """ Set forwarding_action value.
 
             Notes:
-                associated Probe ID
+                Type of forwarding action associated with this entry.
 
                 
-                This attribute is named `associatedPerformanceMonitorID` in VSD API.
+                This attribute is named `forwardingAction` in VSD API.
                 
         """
-        self._associated_performance_monitor_id = value
+        self._forwarding_action = value
+
+    
+    @property
+    def uplink_preference(self):
+        """ Get uplink_preference value.
+
+            Notes:
+                Type of forwarding uplink preference associated with this entry. In case of forwardingAction "IKE", uplinkPreference must not be set.
+
+                
+                This attribute is named `uplinkPreference` in VSD API.
+                
+        """
+        return self._uplink_preference
+
+    @uplink_preference.setter
+    def uplink_preference(self, value):
+        """ Set uplink_preference value.
+
+            Notes:
+                Type of forwarding uplink preference associated with this entry. In case of forwardingAction "IKE", uplinkPreference must not be set.
+
+                
+                This attribute is named `uplinkPreference` in VSD API.
+                
+        """
+        self._uplink_preference = value
 
     
     @property

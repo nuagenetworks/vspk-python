@@ -137,6 +137,7 @@ class NUVCenterHypervisor(NURESTObject):
         self._vrs_state = None
         self._v_require_nuage_metadata = None
         self._name = None
+        self._manage_vrs_availability = None
         self._managed_object_id = None
         self._last_updated_by = None
         self._last_vrs_deployed_date = None
@@ -228,6 +229,7 @@ class NUVCenterHypervisor(NURESTObject):
         self._primary_data_uplink_underlay_id = None
         self._primary_nuage_controller = None
         self._vrs_id = None
+        self._vrs_marked_as_available = None
         self._vrs_password = None
         self._vrs_user_name = None
         self._static_route = None
@@ -270,6 +272,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="vrs_state", remote_name="VRSState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEPLOYED', u'DEPLOYING', u'NOT_DEPLOYED', u'TIMEDOUT', u'UPGRADING'])
         self.expose_attribute(local_name="v_require_nuage_metadata", remote_name="vRequireNuageMetadata", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="manage_vrs_availability", remote_name="manageVRSAvailability", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="managed_object_id", remote_name="managedObjectID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_vrs_deployed_date", remote_name="lastVRSDeployedDate", attribute_type=float, is_required=False, is_unique=False)
@@ -361,6 +364,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="primary_data_uplink_underlay_id", remote_name="primaryDataUplinkUnderlayID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="primary_nuage_controller", remote_name="primaryNuageController", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_id", remote_name="vrsId", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrs_marked_as_available", remote_name="vrsMarkedAsAvailable", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_password", remote_name="vrsPassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_user_name", remote_name="vrsUserName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="static_route", remote_name="staticRoute", attribute_type=str, is_required=False, is_unique=False)
@@ -709,6 +713,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._name = value
+
+    
+    @property
+    def manage_vrs_availability(self):
+        """ Get manage_vrs_availability value.
+
+            Notes:
+                When this is set to true, the vCenter Integration Node will be responsible for marking a VRS Agent as available in the EAM framework. Until a VRS Agent has been marked as available, vCenter will not migrate VMs to the host running the VRS Agent and will not allow VMs to be powered on that host.
+
+                
+                This attribute is named `manageVRSAvailability` in VSD API.
+                
+        """
+        return self._manage_vrs_availability
+
+    @manage_vrs_availability.setter
+    def manage_vrs_availability(self, value):
+        """ Set manage_vrs_availability value.
+
+            Notes:
+                When this is set to true, the vCenter Integration Node will be responsible for marking a VRS Agent as available in the EAM framework. Until a VRS Agent has been marked as available, vCenter will not migrate VMs to the host running the VRS Agent and will not allow VMs to be powered on that host.
+
+                
+                This attribute is named `manageVRSAvailability` in VSD API.
+                
+        """
+        self._manage_vrs_availability = value
 
     
     @property
@@ -3154,6 +3185,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._vrs_id = value
+
+    
+    @property
+    def vrs_marked_as_available(self):
+        """ Get vrs_marked_as_available value.
+
+            Notes:
+                Indicates whether the VRS Agent has been marked as available by VCIN
+
+                
+                This attribute is named `vrsMarkedAsAvailable` in VSD API.
+                
+        """
+        return self._vrs_marked_as_available
+
+    @vrs_marked_as_available.setter
+    def vrs_marked_as_available(self, value):
+        """ Set vrs_marked_as_available value.
+
+            Notes:
+                Indicates whether the VRS Agent has been marked as available by VCIN
+
+                
+                This attribute is named `vrsMarkedAsAvailable` in VSD API.
+                
+        """
+        self._vrs_marked_as_available = value
 
     
     @property

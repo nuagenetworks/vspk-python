@@ -30,7 +30,7 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``action`` (**Mandatory**): The action of the ACL entry DROP or FORWARD or REDIRECT. Action REDIRECT is allowed only for IngressAdvancedForwardingEntry Possible values are DROP, FORWARD, REDIRECT, .
+- ``action`` (**Mandatory**): The action of the ACL entry DROP or FORWARD or REDIRECT or ACTION_LIST. Actions REDIRECT and ACTION_LIST are allowed only for IngressAdvancedForwardingEntry. Possible values are DROP, FORWARD, REDIRECT, ACTION_LIST. If ACTION_LIST is selected in IngressAdvancedForwardingEntry, user will have to attach a ForwardingPathList (list of forwarding action-uplink preference entries) to the ACL.  
 
 - ``address_override``: Overrides the source IP for Ingress and destination IP for Egress, MAC entries will use this address as the match criteria.
 
@@ -38,7 +38,7 @@ Attributes
 
 - ``redirect_rewrite_value``: The redirect rewrite value. Currently only vlan id is supported
 
-- ``redirect_vport_tag_id``: VPort tag to which traffic will be redirected to, when ACL entry match criteria succeeds
+- ``redirect_vport_tag_id`` (**Mandatory**): VPort tag to which traffic will be redirected to, when ACL entry match criteria succeeds
 
 - ``remote_uplink_preference``: Indicates the preferencial path selection for network traffic for this ACL.
 
@@ -82,6 +82,8 @@ Attributes
 
 - ``associated_application_id``: Associated application UUID.
 
+- ``associated_forwarding_path_list_id``: Associated forwarding path list UUID.
+
 - ``associated_live_entity_id``: In the draft mode, the ACL entry refers to this LiveEntity. In non-drafted mode, this is null.
 
 - ``associated_traffic_type``: This property reflects the type of traffic in case an ACL entry is created using an L4 Service or L4 Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
@@ -107,7 +109,6 @@ Children
 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
-:ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
 :ref:`nustatistics.NUStatistics<nustatistics>`                                                                                                                   ``statistics`` 
 ================================================================================================================================================               ==========================================================================================
 

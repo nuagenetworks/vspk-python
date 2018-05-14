@@ -16,11 +16,15 @@ Attributes
 
 - ``vnfuuid``: UUID of the associated VNF
 
-- ``ip_address``: IP address of the  interface
+- ``ip_address``: IP address of the interface
 
 - ``vport_id``: ID of the vport that the interface is attached to
 
 - ``vport_name``: Name of the vport that the interface is attached to
+
+- ``ipv6_address``: IPv6 address of the  interface
+
+- ``ipv6_gateway``: IPV6 Gateway of the subnet that the VNF is connected to.
 
 - ``name``: Device name associated with this interface
 

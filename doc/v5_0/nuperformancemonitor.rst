@@ -32,7 +32,7 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``hold_down_timer``: probation Timer in seconds
+- ``hold_down_timer``: Probe Timeout in milliseconds
 
 - ``probe_type``: Type to be assigned to this probe
 

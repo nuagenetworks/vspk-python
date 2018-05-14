@@ -89,7 +89,6 @@ Children
 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
-:ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
 :ref:`nustatistics.NUStatistics<nustatistics>`                                                                                                                   ``statistics`` 
 ================================================================================================================================================               ==========================================================================================
 

@@ -52,7 +52,7 @@ class NUVSD(NURESTObject):
     """ Represents a VSD in the VSD
 
         Notes:
-            System Monitoring details for VSD.
+            System Monitoring details for VSD. This is deprecated and no longer provided through the Nuage API. This information can now be gathered through the Monit API.
     """
 
     __rest_name__ = "vsd"

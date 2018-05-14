@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``name`` (**Mandatory**): The Customer to Provider NAT Pool
+
 - ``end_address`` (**Mandatory**): The last IP address in the range.
 
 - ``start_address`` (**Mandatory**): The first IP in the range.

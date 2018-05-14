@@ -34,44 +34,32 @@ from .fetchers import NUMetadatasFetcher
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUEventLogsFetcher
+from .fetchers import NUForwardingPathListEntriesFetcher
 
 from bambou import NURESTObject
 
 
-class NURedirectionTargetTemplate(NURESTObject):
-    """ Represents a RedirectionTargetTemplate in the VSD
+class NUForwardingPathList(NURESTObject):
+    """ Represents a ForwardingPathList in the VSD
 
         Notes:
-            Template for a vporttag. It can be created only at the template level and available for all instances.
+            Forwarding path list is l4 based policy to PAT / IKE to underlay.
     """
 
-    __rest_name__ = "redirectiontargettemplate"
-    __resource_name__ = "redirectiontargettemplates"
+    __rest_name__ = "forwardingpathlist"
+    __resource_name__ = "forwardingpathlists"
 
     
     ## Constants
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_END_POINT_TYPE_L3 = "L3"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_END_POINT_TYPE_NONE = "NONE"
-    
-    CONST_TRIGGER_TYPE_NONE = "NONE"
-    
-    CONST_END_POINT_TYPE_VIRTUAL_WIRE = "VIRTUAL_WIRE"
-    
-    CONST_TRIGGER_TYPE_GARP = "GARP"
-    
-    CONST_END_POINT_TYPE_NSG_VNF = "NSG_VNF"
     
     
 
     def __init__(self, **kwargs):
-        """ Initializes a RedirectionTargetTemplate instance
+        """ Initializes a ForwardingPathList instance
 
             Notes:
                 You can specify all parameters while calling this methods.
@@ -79,30 +67,24 @@ class NURedirectionTargetTemplate(NURESTObject):
                 object from a Python dictionary
 
             Examples:
-                >>> redirectiontargettemplate = NURedirectionTargetTemplate(id=u'xxxx-xxx-xxx-xxx', name=u'RedirectionTargetTemplate')
-                >>> redirectiontargettemplate = NURedirectionTargetTemplate(data=my_dict)
+                >>> forwardingpathlist = NUForwardingPathList(id=u'xxxx-xxx-xxx-xxx', name=u'ForwardingPathList')
+                >>> forwardingpathlist = NUForwardingPathList(data=my_dict)
         """
 
-        super(NURedirectionTargetTemplate, self).__init__()
+        super(NUForwardingPathList, self).__init__()
 
         # Read/Write Attributes
         
         self._name = None
         self._last_updated_by = None
-        self._redundancy_enabled = None
         self._description = None
-        self._end_point_type = None
         self._entity_scope = None
-        self._trigger_type = None
         self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="redundancy_enabled", remote_name="redundancyEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="end_point_type", remote_name="endPointType", attribute_type=str, is_required=True, is_unique=False, choices=[u'L3', u'NONE', u'NSG_VNF', u'VIRTUAL_WIRE'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="trigger_type", remote_name="triggerType", attribute_type=str, is_required=False, is_unique=False, choices=[u'GARP', u'NONE'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -115,7 +97,7 @@ class NURedirectionTargetTemplate(NURESTObject):
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.forwarding_path_list_entries = NUForwardingPathListEntriesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -127,7 +109,7 @@ class NURedirectionTargetTemplate(NURESTObject):
         """ Get name value.
 
             Notes:
-                Name of this redirection target template
+                Name of the forwarding path list.
 
                 
         """
@@ -138,7 +120,7 @@ class NURedirectionTargetTemplate(NURESTObject):
         """ Set name value.
 
             Notes:
-                Name of this redirection target template
+                Name of the forwarding path list.
 
                 
         """
@@ -173,38 +155,11 @@ class NURedirectionTargetTemplate(NURESTObject):
 
     
     @property
-    def redundancy_enabled(self):
-        """ Get redundancy_enabled value.
-
-            Notes:
-                Allow/Disallow redundant appliances and VIP
-
-                
-                This attribute is named `redundancyEnabled` in VSD API.
-                
-        """
-        return self._redundancy_enabled
-
-    @redundancy_enabled.setter
-    def redundancy_enabled(self, value):
-        """ Set redundancy_enabled value.
-
-            Notes:
-                Allow/Disallow redundant appliances and VIP
-
-                
-                This attribute is named `redundancyEnabled` in VSD API.
-                
-        """
-        self._redundancy_enabled = value
-
-    
-    @property
     def description(self):
         """ Get description value.
 
             Notes:
-                Description of this redirection target template
+                Describes the Forwarding Path List
 
                 
         """
@@ -215,38 +170,11 @@ class NURedirectionTargetTemplate(NURESTObject):
         """ Set description value.
 
             Notes:
-                Description of this redirection target template
+                Describes the Forwarding Path List
 
                 
         """
         self._description = value
-
-    
-    @property
-    def end_point_type(self):
-        """ Get end_point_type value.
-
-            Notes:
-                VPortTagEndPointType is an enum. It defines the type of header rewrite and forwarding performed by VRS when the endpoint is used as a PBR destination. Possible values are NONE, L3, VIRTUAL_WIRE and NSG_VNF.
-
-                
-                This attribute is named `endPointType` in VSD API.
-                
-        """
-        return self._end_point_type
-
-    @end_point_type.setter
-    def end_point_type(self, value):
-        """ Set end_point_type value.
-
-            Notes:
-                VPortTagEndPointType is an enum. It defines the type of header rewrite and forwarding performed by VRS when the endpoint is used as a PBR destination. Possible values are NONE, L3, VIRTUAL_WIRE and NSG_VNF.
-
-                
-                This attribute is named `endPointType` in VSD API.
-                
-        """
-        self._end_point_type = value
 
     
     @property
@@ -277,33 +205,6 @@ class NURedirectionTargetTemplate(NURESTObject):
 
     
     @property
-    def trigger_type(self):
-        """ Get trigger_type value.
-
-            Notes:
-                Trigger type, could be NONE/GARP - THIS IS READONLY
-
-                
-                This attribute is named `triggerType` in VSD API.
-                
-        """
-        return self._trigger_type
-
-    @trigger_type.setter
-    def trigger_type(self, value):
-        """ Set trigger_type value.
-
-            Notes:
-                Trigger type, could be NONE/GARP - THIS IS READONLY
-
-                
-                This attribute is named `triggerType` in VSD API.
-                
-        """
-        self._trigger_type = value
-
-    
-    @property
     def external_id(self):
         """ Get external_id value.
 
@@ -331,25 +232,4 @@ class NURedirectionTargetTemplate(NURESTObject):
 
     
 
-    
-    ## Custom methods
-    def is_template(self):
-        """ Verify that the object is a template
-    
-            Returns:
-                (bool): True if the object is a template
-        """
-        return True
-    
-    def is_from_template(self):
-        """ Verify if the object has been instantiated from a template
-    
-            Note:
-                The object has to be fetched. Otherwise, it does not
-                have information from its parent
-    
-            Returns:
-                (bool): True if the object is a template
-        """
-        return False
     

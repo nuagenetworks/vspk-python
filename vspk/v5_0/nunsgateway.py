@@ -105,6 +105,8 @@ class NUNSGateway(NURESTObject):
     
     CONST_FAMILY_NSG_C = "NSG_C"
     
+    CONST_NETWORK_ACCELERATION_NONE = "NONE"
+    
     CONST_FAMILY_NSG_E = "NSG_E"
     
     CONST_INHERITED_SSH_SERVICE_STATE_ENABLED = "ENABLED"
@@ -166,6 +168,8 @@ class NUNSGateway(NURESTObject):
     CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
     
     CONST_PERSONALITY_VSA = "VSA"
+    
+    CONST_NETWORK_ACCELERATION_PERFORMANCE = "PERFORMANCE"
     
     CONST_PERSONALITY_VSG = "VSG"
     
@@ -255,6 +259,7 @@ class NUNSGateway(NURESTObject):
         self._permitted_action = None
         self._personality = None
         self._description = None
+        self._network_acceleration = None
         self._libraries = None
         self._inherited_ssh_service_state = None
         self._enterprise_id = None
@@ -304,6 +309,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'NSGBR', u'NSGDUC', u'OTHER', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="network_acceleration", remote_name="networkAcceleration", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'PERFORMANCE'])
         self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="inherited_ssh_service_state", remote_name="inheritedSSHServiceState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
@@ -1097,6 +1103,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def network_acceleration(self):
+        """ Get network_acceleration value.
+
+            Notes:
+                Attribute that enables or disables Network Acceleration (DPDK) on the NSGateway instance.  Changing the value of this field will cause the device to restart at the next configuration reload.
+
+                
+                This attribute is named `networkAcceleration` in VSD API.
+                
+        """
+        return self._network_acceleration
+
+    @network_acceleration.setter
+    def network_acceleration(self, value):
+        """ Set network_acceleration value.
+
+            Notes:
+                Attribute that enables or disables Network Acceleration (DPDK) on the NSGateway instance.  Changing the value of this field will cause the device to restart at the next configuration reload.
+
+                
+                This attribute is named `networkAcceleration` in VSD API.
+                
+        """
+        self._network_acceleration = value
 
     
     @property

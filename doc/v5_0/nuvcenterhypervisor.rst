@@ -34,6 +34,8 @@ Attributes
 
 - ``name`` (**Mandatory**): Name of the Hypervisor
 
+- ``manage_vrs_availability``: When this is set to true, the vCenter Integration Node will be responsible for marking a VRS Agent as available in the EAM framework. Until a VRS Agent has been marked as available, vCenter will not migrate VMs to the host running the VRS Agent and will not allow VMs to be powered on that host.
+
 - ``managed_object_id``: managed Object ID of hypervisor
 
 - ``last_updated_by``: ID of the user who last updated the object.
@@ -215,6 +217,8 @@ Attributes
 - ``primary_nuage_controller``: IP address of the primary Controller (VSC)
 
 - ``vrs_id``: VCenter Name or Id used by toolbox to identify the VRS virtual machine
+
+- ``vrs_marked_as_available``: Indicates whether the VRS Agent has been marked as available by VCIN
 
 - ``vrs_password``: VRS password to be used by toolbox to communicate with VRS
 

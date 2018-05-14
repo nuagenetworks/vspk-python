@@ -602,7 +602,7 @@ class NUZFBRequest(NURESTObject):
         """ Get associated_enterprise_name value.
 
             Notes:
-                name of the associated Enterprise
+                Name of the associated enterprise
 
                 
                 This attribute is named `associatedEnterpriseName` in VSD API.
@@ -615,7 +615,7 @@ class NUZFBRequest(NURESTObject):
         """ Set associated_enterprise_name value.
 
             Notes:
-                name of the associated Enterprise
+                Name of the associated enterprise
 
                 
                 This attribute is named `associatedEnterpriseName` in VSD API.
@@ -656,7 +656,7 @@ class NUZFBRequest(NURESTObject):
         """ Get associated_ns_gateway_name value.
 
             Notes:
-                name of the associated NSG
+                Name of the associated NSG
 
                 
                 This attribute is named `associatedNSGatewayName` in VSD API.
@@ -669,7 +669,7 @@ class NUZFBRequest(NURESTObject):
         """ Set associated_ns_gateway_name value.
 
             Notes:
-                name of the associated NSG
+                Name of the associated NSG
 
                 
                 This attribute is named `associatedNSGatewayName` in VSD API.

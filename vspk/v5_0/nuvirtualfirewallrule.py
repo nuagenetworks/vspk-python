@@ -34,9 +34,6 @@ from .fetchers import NUMetadatasFetcher
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUJobsFetcher
-
-
 from .fetchers import NUStatisticsFetcher
 
 from bambou import NURESTObject
@@ -60,8 +57,6 @@ class NUVirtualFirewallRule(NURESTObject):
     CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
     
     CONST_LOCATION_TYPE_ZONE = "ZONE"
-    
-    CONST_ACTION_REDIRECT = "REDIRECT"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
@@ -149,6 +144,7 @@ class NUVirtualFirewallRule(NURESTObject):
         self._associated_live_entity_id = None
         self._associated_traffic_type = None
         self._associated_traffic_type_id = None
+        self._stateful = None
         self._stats_id = None
         self._stats_logging_enabled = None
         self._overlay_mirror_destination_id = None
@@ -159,7 +155,7 @@ class NUVirtualFirewallRule(NURESTObject):
         self.expose_attribute(local_name="icmp_type", remote_name="ICMPType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'DROP', u'FORWARD', u'REDIRECT'])
+        self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'DROP', u'FORWARD'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
@@ -179,6 +175,7 @@ class NUVirtualFirewallRule(NURESTObject):
         self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_traffic_type", remote_name="associatedTrafficType", attribute_type=str, is_required=False, is_unique=False, choices=[u'L4_SERVICE', u'L4_SERVICE_GROUP'])
         self.expose_attribute(local_name="associated_traffic_type_id", remote_name="associatedTrafficTypeID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="stateful", remote_name="stateful", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_id", remote_name="statsID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_logging_enabled", remote_name="statsLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="overlay_mirror_destination_id", remote_name="overlayMirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
@@ -192,9 +189,6 @@ class NUVirtualFirewallRule(NURESTObject):
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -344,7 +338,7 @@ class NUVirtualFirewallRule(NURESTObject):
         """ Get action value.
 
             Notes:
-                The action of the rule, DROP or FORWARD or REDIRECT. Action REDIRECT is allowed only for IngressAdvancedForwardingEntry Possible values are DROP, FORWARD, REDIRECT, .
+                The action of the rule, DROP or FORWARD. Possible values are DROP, FORWARD.
 
                 
         """
@@ -355,7 +349,7 @@ class NUVirtualFirewallRule(NURESTObject):
         """ Set action value.
 
             Notes:
-                The action of the rule, DROP or FORWARD or REDIRECT. Action REDIRECT is allowed only for IngressAdvancedForwardingEntry Possible values are DROP, FORWARD, REDIRECT, .
+                The action of the rule, DROP or FORWARD. Possible values are DROP, FORWARD.
 
                 
         """
@@ -861,6 +855,29 @@ class NUVirtualFirewallRule(NURESTObject):
                 
         """
         self._associated_traffic_type_id = value
+
+    
+    @property
+    def stateful(self):
+        """ Get stateful value.
+
+            Notes:
+                True means that this ACL entry is stateful, so there will be a corresponding rule that will be created by OVS in the network. False means that there is no corresponding rule created by OVS in the network.
+
+                
+        """
+        return self._stateful
+
+    @stateful.setter
+    def stateful(self, value):
+        """ Set stateful value.
+
+            Notes:
+                True means that this ACL entry is stateful, so there will be a corresponding rule that will be created by OVS in the network. False means that there is no corresponding rule created by OVS in the network.
+
+                
+        """
+        self._stateful = value
 
     
     @property

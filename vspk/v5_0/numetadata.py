@@ -70,21 +70,27 @@ class NUMetadata(NURESTObject):
         # Read/Write Attributes
         
         self._name = None
+        self._last_updated_by = None
         self._description = None
         self._metadata_tag_ids = None
         self._network_notification_disabled = None
         self._blob = None
         self._global_metadata = None
         self._entity_scope = None
+        self._assoc_entity_id = None
+        self._assoc_entity_type = None
         self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_tag_ids", remote_name="metadataTagIDs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_notification_disabled", remote_name="networkNotificationDisabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="blob", remote_name="blob", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="global_metadata", remote_name="global", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="assoc_entity_id", remote_name="assocEntityID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="assoc_entity_type", remote_name="assocEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -119,6 +125,33 @@ class NUMetadata(NURESTObject):
                 
         """
         self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
 
     
     @property
@@ -273,6 +306,60 @@ class NUMetadata(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def assoc_entity_id(self):
+        """ Get assoc_entity_id value.
+
+            Notes:
+                ID of the entity to which the Metadata is associated to.
+
+                
+                This attribute is named `assocEntityID` in VSD API.
+                
+        """
+        return self._assoc_entity_id
+
+    @assoc_entity_id.setter
+    def assoc_entity_id(self, value):
+        """ Set assoc_entity_id value.
+
+            Notes:
+                ID of the entity to which the Metadata is associated to.
+
+                
+                This attribute is named `assocEntityID` in VSD API.
+                
+        """
+        self._assoc_entity_id = value
+
+    
+    @property
+    def assoc_entity_type(self):
+        """ Get assoc_entity_type value.
+
+            Notes:
+                Type of the entity to which the Metadata is associated to.
+
+                
+                This attribute is named `assocEntityType` in VSD API.
+                
+        """
+        return self._assoc_entity_type
+
+    @assoc_entity_type.setter
+    def assoc_entity_type(self, value):
+        """ Set assoc_entity_type value.
+
+            Notes:
+                Type of the entity to which the Metadata is associated to.
+
+                
+                This attribute is named `assocEntityType` in VSD API.
+                
+        """
+        self._assoc_entity_type = value
 
     
     @property

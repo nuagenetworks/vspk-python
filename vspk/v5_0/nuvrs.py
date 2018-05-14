@@ -173,6 +173,7 @@ class NUVRS(NURESTObject):
         self._last_event_timestamp = None
         self._last_state_change = None
         self._last_updated_by = None
+        self._gateway_uuid = None
         self._db_synced = None
         self._address = None
         self._peak_cpuusage = None
@@ -223,6 +224,7 @@ class NUVRS(NURESTObject):
         self.expose_attribute(local_name="last_event_timestamp", remote_name="lastEventTimestamp", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_state_change", remote_name="lastStateChange", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_uuid", remote_name="gatewayUUID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="db_synced", remote_name="dbSynced", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peak_cpuusage", remote_name="peakCPUUsage", attribute_type=float, is_required=False, is_unique=False)
@@ -545,6 +547,33 @@ class NUVRS(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def gateway_uuid(self):
+        """ Get gateway_uuid value.
+
+            Notes:
+                UUID of the gateway instance
+
+                
+                This attribute is named `gatewayUUID` in VSD API.
+                
+        """
+        return self._gateway_uuid
+
+    @gateway_uuid.setter
+    def gateway_uuid(self, value):
+        """ Set gateway_uuid value.
+
+            Notes:
+                UUID of the gateway instance
+
+                
+                This attribute is named `gatewayUUID` in VSD API.
+                
+        """
+        self._gateway_uuid = value
 
     
     @property

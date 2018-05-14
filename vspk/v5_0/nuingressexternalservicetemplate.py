@@ -36,9 +36,6 @@ from .fetchers import NUGlobalMetadatasFetcher
 
 from .fetchers import NUIngressExternalServiceTemplateEntriesFetcher
 
-
-from .fetchers import NUJobsFetcher
-
 from bambou import NURESTObject
 
 
@@ -119,9 +116,6 @@ class NUIngressExternalServiceTemplate(NURESTObject):
         
         
         self.ingress_external_service_template_entries = NUIngressExternalServiceTemplateEntriesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)

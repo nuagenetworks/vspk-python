@@ -403,7 +403,7 @@ class NUPerformanceMonitor(NURESTObject):
         """ Get hold_down_timer value.
 
             Notes:
-                probation Timer in seconds
+                Probe Timeout in milliseconds
 
                 
                 This attribute is named `holdDownTimer` in VSD API.
@@ -416,7 +416,7 @@ class NUPerformanceMonitor(NURESTObject):
         """ Set hold_down_timer value.
 
             Notes:
-                probation Timer in seconds
+                Probe Timeout in milliseconds
 
                 
                 This attribute is named `holdDownTimer` in VSD API.

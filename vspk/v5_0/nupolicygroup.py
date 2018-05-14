@@ -34,9 +34,6 @@ from .fetchers import NUMetadatasFetcher
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUJobsFetcher
-
-
 from .fetchers import NUVPortsFetcher
 
 
@@ -115,9 +112,6 @@ class NUPolicyGroup(NURESTObject):
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.vports = NUVPortsFetcher.fetcher_with_object(parent_object=self, relationship="member")

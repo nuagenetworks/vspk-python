@@ -34,9 +34,6 @@ from .fetchers import NUMetadatasFetcher
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUJobsFetcher
-
-
 from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
@@ -108,9 +105,6 @@ class NUPolicyGroupTemplate(NURESTObject):
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")

@@ -34,9 +34,6 @@ from .fetchers import NUMetadatasFetcher
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUJobsFetcher
-
-
 from .fetchers import NUStatisticsFetcher
 
 from bambou import NURESTObject
@@ -67,11 +64,11 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_ACTION_REDIRECT = "REDIRECT"
     
-    CONST_NETWORK_TYPE_INTERNET_POLICYGROUP = "INTERNET_POLICYGROUP"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_NETWORK_TYPE_PUBLIC_NETWORK = "PUBLIC_NETWORK"
+    
+    CONST_ACTION_ACTION_LIST = "ACTION_LIST"
     
     CONST_ACTION_FORWARD = "FORWARD"
     
@@ -135,8 +132,6 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
     
-    CONST_LOCATION_TYPE_VPORTTAG = "VPORTTAG"
-    
     CONST_LOCATION_TYPE_SUBNET = "SUBNET"
     
     CONST_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
@@ -144,8 +139,6 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     CONST_POLICY_STATE_DRAFT = "DRAFT"
     
     CONST_APP_TYPE_NONE = "NONE"
-    
-    CONST_LOCATION_TYPE_REDIRECTIONTARGET = "REDIRECTIONTARGET"
     
     CONST_POLICY_STATE_LIVE = "LIVE"
     
@@ -219,6 +212,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self._protocol = None
         self._is_sla_aware = None
         self._associated_application_id = None
+        self._associated_forwarding_path_list_id = None
         self._associated_live_entity_id = None
         self._associated_traffic_type = None
         self._associated_traffic_type_id = None
@@ -236,23 +230,23 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="failsafe_datapath", remote_name="failsafeDatapath", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAIL_TO_BLOCK', u'FAIL_TO_WIRE'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'DROP', u'FORWARD', u'REDIRECT'])
+        self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACTION_LIST', u'DROP', u'FORWARD', u'REDIRECT'])
         self.expose_attribute(local_name="address_override", remote_name="addressOverride", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redirect_rewrite_type", remote_name="redirectRewriteType", attribute_type=str, is_required=False, is_unique=True, choices=[u'VLAN'])
         self.expose_attribute(local_name="redirect_rewrite_value", remote_name="redirectRewriteValue", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="redirect_vport_tag_id", remote_name="redirectVPortTagID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="redirect_vport_tag_id", remote_name="redirectVPortTagID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="remote_uplink_preference", remote_name="remoteUplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'INTERNET_POLICYGROUP', u'NETWORK_MACRO_GROUP', u'PGEXPRESSION', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'UNDERLAY_INTERNET_POLICYGROUP', u'ZONE'])
+        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'NETWORK_MACRO_GROUP', u'PGEXPRESSION', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'UNDERLAY_INTERNET_POLICYGROUP', u'ZONE'])
         self.expose_attribute(local_name="mirror_destination_id", remote_name="mirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vlan_range", remote_name="vlanRange", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_logging_enabled", remote_name="flowLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'PGEXPRESSION', u'POLICYGROUP', u'REDIRECTIONTARGET', u'SUBNET', u'VPORTTAG', u'ZONE'])
+        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'PGEXPRESSION', u'POLICYGROUP', u'SUBNET', u'ZONE'])
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=False, is_unique=False)
@@ -262,6 +256,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="is_sla_aware", remote_name="isSLAAware", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_application_id", remote_name="associatedApplicationID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_forwarding_path_list_id", remote_name="associatedForwardingPathListID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_traffic_type", remote_name="associatedTrafficType", attribute_type=str, is_required=False, is_unique=False, choices=[u'L4_SERVICE', u'L4_SERVICE_GROUP'])
         self.expose_attribute(local_name="associated_traffic_type_id", remote_name="associatedTrafficTypeID", attribute_type=str, is_required=False, is_unique=False)
@@ -278,9 +273,6 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -534,7 +526,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         """ Get action value.
 
             Notes:
-                The action of the ACL entry DROP or FORWARD or REDIRECT. Action REDIRECT is allowed only for IngressAdvancedForwardingEntry Possible values are DROP, FORWARD, REDIRECT, .
+                The action of the ACL entry DROP or FORWARD or REDIRECT or ACTION_LIST. Actions REDIRECT and ACTION_LIST are allowed only for IngressAdvancedForwardingEntry. Possible values are DROP, FORWARD, REDIRECT, ACTION_LIST. If ACTION_LIST is selected in IngressAdvancedForwardingEntry, user will have to attach a ForwardingPathList (list of forwarding action-uplink preference entries) to the ACL.  
 
                 
         """
@@ -545,7 +537,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         """ Set action value.
 
             Notes:
-                The action of the ACL entry DROP or FORWARD or REDIRECT. Action REDIRECT is allowed only for IngressAdvancedForwardingEntry Possible values are DROP, FORWARD, REDIRECT, .
+                The action of the ACL entry DROP or FORWARD or REDIRECT or ACTION_LIST. Actions REDIRECT and ACTION_LIST are allowed only for IngressAdvancedForwardingEntry. Possible values are DROP, FORWARD, REDIRECT, ACTION_LIST. If ACTION_LIST is selected in IngressAdvancedForwardingEntry, user will have to attach a ForwardingPathList (list of forwarding action-uplink preference entries) to the ACL.  
 
                 
         """
@@ -1213,6 +1205,33 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
                 
         """
         self._associated_application_id = value
+
+    
+    @property
+    def associated_forwarding_path_list_id(self):
+        """ Get associated_forwarding_path_list_id value.
+
+            Notes:
+                Associated forwarding path list UUID.
+
+                
+                This attribute is named `associatedForwardingPathListID` in VSD API.
+                
+        """
+        return self._associated_forwarding_path_list_id
+
+    @associated_forwarding_path_list_id.setter
+    def associated_forwarding_path_list_id(self, value):
+        """ Set associated_forwarding_path_list_id value.
+
+            Notes:
+                Associated forwarding path list UUID.
+
+                
+                This attribute is named `associatedForwardingPathListID` in VSD API.
+                
+        """
+        self._associated_forwarding_path_list_id = value
 
     
     @property

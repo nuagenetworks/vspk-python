@@ -18,7 +18,7 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``acknowledged``: Flag to indicate that alarm is already acknowledged or not
+- ``acknowledged``: Flag to indicate if the alarm has been acknowledged already.
 
 - ``reason``: Provides a description of the alarm
 
@@ -26,7 +26,7 @@ Attributes
 
 - ``severity``: Severity of the alarm.
 
-- ``timestamp``: Indicates the time that the alarm was triggered
+- ``timestamp``: Indicates the time at which the alarm was triggered
 
 - ``enterprise_id``: Enterprise that this alarm belongs to
 
@@ -67,6 +67,8 @@ Parents
 
 - :ref:`nuwanservice.NUWANService<nuwanservice>`
 
+- :ref:`nuvsd.NUVSD<nuvsd>`
+
 - :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nuport.NUPort<nuport>`
@@ -86,8 +88,6 @@ Parents
 - :ref:`nuvsc.NUVSC<nuvsc>`
 
 - :ref:`nuvm.NUVM<nuvm>`
-
-- :ref:`nuvsd.NUVSD<nuvsd>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
 

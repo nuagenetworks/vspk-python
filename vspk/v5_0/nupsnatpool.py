@@ -65,9 +65,11 @@ class NUPSNATPool(NURESTObject):
 
         # Read/Write Attributes
         
+        self._name = None
         self._end_address = None
         self._start_address = None
         
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="end_address", remote_name="endAddress", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="start_address", remote_name="startAddress", attribute_type=str, is_required=True, is_unique=False)
         
@@ -84,6 +86,29 @@ class NUPSNATPool(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                The Provider to Customer NAT Pool
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                The Provider to Customer NAT Pool
+
+                
+        """
+        self._name = value
+
     
     @property
     def end_address(self):

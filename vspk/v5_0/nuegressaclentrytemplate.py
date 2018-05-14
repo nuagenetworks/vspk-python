@@ -34,9 +34,6 @@ from .fetchers import NUMetadatasFetcher
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUJobsFetcher
-
-
 from .fetchers import NUStatisticsFetcher
 
 from bambou import NURESTObject
@@ -91,15 +88,11 @@ class NUEgressACLEntryTemplate(NURESTObject):
     
     CONST_NETWORK_TYPE_ENDPOINT_SUBNET = "ENDPOINT_SUBNET"
     
-    CONST_LOCATION_TYPE_VPORTTAG = "VPORTTAG"
-    
     CONST_LOCATION_TYPE_SUBNET = "SUBNET"
     
     CONST_POLICY_STATE_DRAFT = "DRAFT"
     
     CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE = "L4_SERVICE"
-    
-    CONST_LOCATION_TYPE_REDIRECTIONTARGET = "REDIRECTIONTARGET"
     
     CONST_POLICY_STATE_LIVE = "LIVE"
     
@@ -180,7 +173,7 @@ class NUEgressACLEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'PGEXPRESSION', u'POLICYGROUP', u'REDIRECTIONTARGET', u'SUBNET', u'VPORTTAG', u'ZONE'])
+        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'PGEXPRESSION', u'POLICYGROUP', u'SUBNET', u'ZONE'])
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=False, is_unique=False)
@@ -204,9 +197,6 @@ class NUEgressACLEntryTemplate(NURESTObject):
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")

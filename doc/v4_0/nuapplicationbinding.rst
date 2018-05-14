@@ -27,7 +27,7 @@ Parents
 --------
 
 
-- :ref:`nuapplicationperformancemanagement.NUApplicationperformancemanagement<nuapplicationperformancemanagement>`
-
 - :ref:`nuapplication.NUApplication<nuapplication>`
+
+- :ref:`nuapplicationperformancemanagement.NUApplicationperformancemanagement<nuapplicationperformancemanagement>`
 

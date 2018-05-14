@@ -150,6 +150,7 @@ Children
 :ref:`nuzone.NUZone<nuzone>`                                                                                                                                     ``zones`` 
 :ref:`nucontainer.NUContainer<nucontainer>`                                                                                                                      ``containers`` 
 :ref:`nucontainerinterface.NUContainerInterface<nucontainerinterface>`                                                                                           ``container_interfaces`` 
+:ref:`nuforwardingpathlist.NUForwardingPathList<nuforwardingpathlist>`                                                                                           ``forwarding_path_lists`` 
 :ref:`nuqos.NUQOS<nuqos>`                                                                                                                                        ``qoss`` 
 :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`                                                                                                          ``host_interfaces`` 
 :ref:`nuroutingpolicy.NURoutingPolicy<nuroutingpolicy>`                                                                                                          ``routing_policies`` 

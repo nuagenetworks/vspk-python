@@ -37,9 +37,6 @@ from .fetchers import NUVirtualIPsFetcher
 from .fetchers import NUGlobalMetadatasFetcher
 
 
-from .fetchers import NUJobsFetcher
-
-
 from .fetchers import NUVPortsFetcher
 
 
@@ -67,15 +64,13 @@ class NURedirectionTarget(NURESTObject):
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_END_POINT_TYPE_NONE = "NONE"
+    CONST_END_POINT_TYPE_NSG_VNF = "NSG_VNF"
     
     CONST_TRIGGER_TYPE_NONE = "NONE"
     
     CONST_END_POINT_TYPE_VIRTUAL_WIRE = "VIRTUAL_WIRE"
     
     CONST_TRIGGER_TYPE_GARP = "GARP"
-    
-    CONST_END_POINT_TYPE_NSG_VNF = "NSG_VNF"
     
     
 
@@ -115,7 +110,7 @@ class NURedirectionTarget(NURESTObject):
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="virtual_network_id", remote_name="virtualNetworkID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="end_point_type", remote_name="endPointType", attribute_type=str, is_required=True, is_unique=False, choices=[u'L3', u'NONE', u'NSG_VNF', u'VIRTUAL_WIRE'])
+        self.expose_attribute(local_name="end_point_type", remote_name="endPointType", attribute_type=str, is_required=True, is_unique=False, choices=[u'L3', u'NSG_VNF', u'VIRTUAL_WIRE'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="trigger_type", remote_name="triggerType", attribute_type=str, is_required=False, is_unique=False, choices=[u'GARP', u'NONE'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -131,9 +126,6 @@ class NURedirectionTarget(NURESTObject):
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.vports = NUVPortsFetcher.fetcher_with_object(parent_object=self, relationship="member")

@@ -88,6 +88,8 @@ Attributes
 
 - ``vsd_upgrade_is_complete``: This flag is used to indicate that whether VSD upgrade is complete,it is expected that csproot will set to true,after VSD upgrade is complete and also making sure that all VSC's audits and Gateway audits with VSD are done
 
+- ``nsg_uplink_hold_down_timer``: In case of a dual-uplink NSG, the hold down time in seconds, after which an uplink connection that recovered from failure is re-used.
+
 - ``as_number``:  Autonomous System Number,Used for RT/RD auto-generation
 
 - ``vss_stats_interval``: VSS statistics collection frequency

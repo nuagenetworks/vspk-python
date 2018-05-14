@@ -141,7 +141,7 @@ class NUVNF(NURESTObject):
         self._storage_gb = None
         self._type = None
         
-        self.expose_attribute(local_name="vnf_descriptor_id", remote_name="VNFDescriptorID", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="vnf_descriptor_id", remote_name="VNFDescriptorID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vnf_descriptor_name", remote_name="VNFDescriptorName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cpu_count", remote_name="CPUCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_name", remote_name="NSGName", attribute_type=str, is_required=False, is_unique=False)
@@ -185,7 +185,7 @@ class NUVNF(NURESTObject):
         """ Get vnf_descriptor_id value.
 
             Notes:
-                The ID of VNF Descriptor from which VNF to be created.
+                The ID of VNF Descriptor from which VNF to be created. This is required on creation and can be removed on moidification of VNF instance.
 
                 
                 This attribute is named `VNFDescriptorID` in VSD API.
@@ -198,7 +198,7 @@ class NUVNF(NURESTObject):
         """ Set vnf_descriptor_id value.
 
             Notes:
-                The ID of VNF Descriptor from which VNF to be created.
+                The ID of VNF Descriptor from which VNF to be created. This is required on creation and can be removed on moidification of VNF instance.
 
                 
                 This attribute is named `VNFDescriptorID` in VSD API.

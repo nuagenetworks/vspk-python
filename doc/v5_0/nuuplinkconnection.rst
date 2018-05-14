@@ -32,6 +32,8 @@ Attributes
 
 - ``underlay_enabled``: Indicated whether route to underlay is enabled on this uplink connection.
 
+- ``inherited``: This flag will determine if the abstract connection is inherited from the instance template
+
 - ``installer_managed``: Boolean flag to indicate that connection parameters will be configured by the installer onsite. Limited to ConnectionMode: PPPoE
 
 - ``interface_connection_type``: The way the interface is connected via the NSG.  This value depends on if the interface internal or external to the NSG.

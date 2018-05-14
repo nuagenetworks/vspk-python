@@ -69,9 +69,9 @@ class NUGroup(NURESTObject):
     
     CONST_ROLE_CSPOPERATOR = "CSPOPERATOR"
     
-    CONST_ROLE_USER = "USER"
-    
     CONST_ROLE_ORGAPPDESIGNER = "ORGAPPDESIGNER"
+    
+    CONST_MANAGEMENT_MODE_RESERVED = "RESERVED"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
@@ -84,6 +84,8 @@ class NUGroup(NURESTObject):
     CONST_ROLE_SYSTEM = "SYSTEM"
     
     CONST_ROLE_SECURITYADMINISTRATOR = "SECURITYADMINISTRATOR"
+    
+    CONST_ROLE_USER = "USER"
     
     CONST_ROLE_ORGADMIN = "ORGADMIN"
     
@@ -122,7 +124,7 @@ class NUGroup(NURESTObject):
         
         self.expose_attribute(local_name="ldap_group_dn", remote_name="LDAPGroupDN", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="management_mode", remote_name="managementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'CMS', u'DEFAULT'])
+        self.expose_attribute(local_name="management_mode", remote_name="managementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'CMS', u'DEFAULT', u'RESERVED'])
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="account_restrictions", remote_name="accountRestrictions", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)

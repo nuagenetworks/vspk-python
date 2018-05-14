@@ -30,6 +30,12 @@ Attributes
 
 - ``country``: Country
 
+- ``associated_entity_id``: Associated entity UUID.
+
+- ``associated_entity_name``: Name of the associated entity.
+
+- ``associated_entity_type``: Object type of the associated entity.
+
 - ``state``: State/Province/Region
 
 - ``external_id``: External object ID. Used for integration with third party systems

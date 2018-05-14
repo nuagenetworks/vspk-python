@@ -30,6 +30,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``gateway_uuid``: UUID of the gateway instance
+
 - ``db_synced``: Flag to indicate if the ovs database is synced between the NSG pair part of a redundant group
 
 - ``address``: The IP of the VRS entity

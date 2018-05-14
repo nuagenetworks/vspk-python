@@ -36,9 +36,6 @@ from .fetchers import NUEgressAdvFwdEntryTemplatesFetcher
 
 from .fetchers import NUGlobalMetadatasFetcher
 
-
-from .fetchers import NUJobsFetcher
-
 from bambou import NURESTObject
 
 
@@ -123,9 +120,6 @@ class NUEgressAdvFwdTemplate(NURESTObject):
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)

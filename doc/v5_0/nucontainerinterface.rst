@@ -20,6 +20,10 @@ Attributes
 
 - ``vport_name``: Name of the vport that the container is attached to
 
+- ``ipv6_address``: IPv6 address of the  interface
+
+- ``ipv6_gateway``: IPV6 Gateway of the subnet that the Container is connected to"
+
 - ``name``: Device name associated with this interface
 
 - ``last_updated_by``: ID of the user who last updated the object.

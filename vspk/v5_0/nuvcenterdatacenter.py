@@ -125,6 +125,7 @@ class NUVCenterDataCenter(NURESTObject):
         self._vrs_configuration_time_limit = None
         self._v_require_nuage_metadata = None
         self._name = None
+        self._manage_vrs_availability = None
         self._managed_object_id = None
         self._last_updated_by = None
         self._data_dns1 = None
@@ -226,6 +227,7 @@ class NUVCenterDataCenter(NURESTObject):
         self.expose_attribute(local_name="vrs_configuration_time_limit", remote_name="VRSConfigurationTimeLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="v_require_nuage_metadata", remote_name="vRequireNuageMetadata", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="manage_vrs_availability", remote_name="manageVRSAvailability", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="managed_object_id", remote_name="managedObjectID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data_dns1", remote_name="dataDNS1", attribute_type=str, is_required=False, is_unique=False)
@@ -431,6 +433,33 @@ class NUVCenterDataCenter(NURESTObject):
                 
         """
         self._name = value
+
+    
+    @property
+    def manage_vrs_availability(self):
+        """ Get manage_vrs_availability value.
+
+            Notes:
+                When this is set to true, the vCenter Integration Node will be responsible for marking a VRS Agent as available in the EAM framework. Until a VRS Agent has been marked as available, vCenter will not migrate VMs to the host running the VRS Agent and will not allow VMs to be powered on that host.
+
+                
+                This attribute is named `manageVRSAvailability` in VSD API.
+                
+        """
+        return self._manage_vrs_availability
+
+    @manage_vrs_availability.setter
+    def manage_vrs_availability(self, value):
+        """ Set manage_vrs_availability value.
+
+            Notes:
+                When this is set to true, the vCenter Integration Node will be responsible for marking a VRS Agent as available in the EAM framework. Until a VRS Agent has been marked as available, vCenter will not migrate VMs to the host running the VRS Agent and will not allow VMs to be powered on that host.
+
+                
+                This attribute is named `manageVRSAvailability` in VSD API.
+                
+        """
+        self._manage_vrs_availability = value
 
     
     @property

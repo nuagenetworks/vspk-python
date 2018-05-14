@@ -87,6 +87,7 @@ class NUCommand(NURESTObject):
         # Read/Write Attributes
         
         self._last_updated_by = None
+        self._detail = None
         self._detailed_status = None
         self._detailed_status_code = None
         self._entity_scope = None
@@ -101,6 +102,7 @@ class NUCommand(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="detail", remote_name="detail", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="detailed_status", remote_name="detailedStatus", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="detailed_status_code", remote_name="detailedStatusCode", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -144,6 +146,29 @@ class NUCommand(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def detail(self):
+        """ Get detail value.
+
+            Notes:
+                Details about the command execution as reported directly from the NSG independent of status codes.
+
+                
+        """
+        return self._detail
+
+    @detail.setter
+    def detail(self, value):
+        """ Set detail value.
+
+            Notes:
+                Details about the command execution as reported directly from the NSG independent of status codes.
+
+                
+        """
+        self._detail = value
 
     
     @property

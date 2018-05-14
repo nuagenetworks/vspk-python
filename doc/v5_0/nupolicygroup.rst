@@ -43,7 +43,6 @@ Children
 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
-:ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
 :ref:`nuvport.NUVPort<nuvport>`                                                                                                                                  ``vports`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
 ================================================================================================================================================               ==========================================================================================
