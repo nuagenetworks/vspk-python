@@ -18,11 +18,15 @@ Attributes
 
 - ``gateway_peer1_autodiscovered_gateway_id``: The Auto Discovered Gateway configuration owner in this Redundant Group. 
 
+- ``gateway_peer1_connected``: Indicates status of the authoritative  gateway of this Redundancy Group.
+
 - ``gateway_peer1_id``: The gateway configuration owner in this Redundant Group. when Redundant Group is deleted this gateway will recieve vport associations 
 
 - ``gateway_peer1_name``: The gateway   configuration owner name in this Redundant Group
 
 - ``gateway_peer2_autodiscovered_gateway_id``: The Auto Discovered Gateway  peer in this Redundant Group
+
+- ``gateway_peer2_connected``: Indicates status of the secondary gateway of this Redundancy Group.
 
 - ``gateway_peer2_id``: The gateway peer in this Redundant Group. when Redundant Group is deleted this gateway will not recieve vport associations
 
@@ -32,7 +36,7 @@ Attributes
 
 - ``permitted_action``: The permitted  action to USE/EXTEND  this Gateway Possible values are USE, READ, ALL, INSTANTIATE, EXTEND, DEPLOY, .
 
-- ``personality``: derived personality of the Redundancy Group - VSG,VRSG,NSG,OTHER Possible values are VSG, VSA, VRSG, DC7X50, NSG, HARDWARE_VTEP, OTHER, .
+- ``personality``: derived personality of the Redundancy Group - VSG,VRSG,NSG,OTHER Possible values are VSG, VSA, VRSG, VDFG, DC7X50, NSG, HARDWARE_VTEP, OTHER, .
 
 - ``description``:  Description of the Redundancy Group
 
@@ -53,14 +57,25 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nul2domain.NUL2Domain<nul2domain>`                                                                                                                         ``l2_domains`` 
+:ref:`numacfilterprofile.NUMACFilterProfile<numacfilterprofile>`                                                                                                 ``mac_filter_profiles`` 
+:ref:`nusapegressqosprofile.NUSAPEgressQoSProfile<nusapegressqosprofile>`                                                                                        ``sap_egress_qo_s_profiles`` 
+:ref:`nusapingressqosprofile.NUSAPIngressQoSProfile<nusapingressqosprofile>`                                                                                     ``sap_ingress_qo_s_profiles`` 
 :ref:`nugateway.NUGateway<nugateway>`                                                                                                                            ``gateways`` 
+:ref:`nugatewayredundantport.NUGatewayRedundantPort<nugatewayredundantport>`                                                                                     ``gateway_redundant_ports`` 
+:ref:`nudeploymentfailure.NUDeploymentFailure<nudeploymentfailure>`                                                                                              ``deployment_failures`` 
 :ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`nuwanservice.NUWANService<nuwanservice>`                                                                                                                   ``wan_services`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuegressprofile.NUEgressProfile<nuegressprofile>`                                                                                                          ``egress_profiles`` 
 :ref:`nualarm.NUAlarm<nualarm>`                                                                                                                                  ``alarms`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+:ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`                                                                                                       ``ingress_profiles`` 
 :ref:`nuenterprisepermission.NUEnterprisePermission<nuenterprisepermission>`                                                                                     ``enterprise_permissions`` 
+:ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
 :ref:`nuport.NUPort<nuport>`                                                                                                                                     ``ports`` 
+:ref:`nuipfilterprofile.NUIPFilterProfile<nuipfilterprofile>`                                                                                                    ``ip_filter_profiles`` 
+:ref:`nuipv6filterprofile.NUIPv6FilterProfile<nuipv6filterprofile>`                                                                                              ``ipv6_filter_profiles`` 
 :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`                                                                                                 ``vsg_redundant_ports`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
 ================================================================================================================================================               ==========================================================================================

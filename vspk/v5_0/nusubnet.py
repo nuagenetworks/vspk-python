@@ -244,6 +244,7 @@ class NUSubnet(NURESTObject):
         self._associated_multicast_channel_map_id = None
         self._associated_shared_network_resource_id = None
         self._public = None
+        self._subnet_vlanid = None
         self._multi_home_enabled = None
         self._multicast = None
         self._external_id = None
@@ -261,14 +262,14 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_mac_address", remote_name="gatewayMACAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="access_restriction_enabled", remote_name="accessRestrictionEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="advertise", remote_name="advertise", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="default_action", remote_name="defaultAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'DROP_TRAFFIC', u'USE_UNDERLAY'])
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_id", remote_name="serviceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="resource_type", remote_name="resourceType", attribute_type=str, is_required=False, is_unique=False, choices=[u'FLOATING', u'NSG_VNF', u'PUBLIC', u'STANDARD'])
-        self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="vn_id", remote_name="vnId", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
@@ -285,6 +286,7 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_shared_network_resource_id", remote_name="associatedSharedNetworkResourceID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="public", remote_name="public", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="subnet_vlanid", remote_name="subnetVLANID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multi_home_enabled", remote_name="multiHomeEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -1304,6 +1306,33 @@ class NUSubnet(NURESTObject):
                 
         """
         self._public = value
+
+    
+    @property
+    def subnet_vlanid(self):
+        """ Get subnet_vlanid value.
+
+            Notes:
+                Determines the VLANID for this associated Subnet.
+
+                
+                This attribute is named `subnetVLANID` in VSD API.
+                
+        """
+        return self._subnet_vlanid
+
+    @subnet_vlanid.setter
+    def subnet_vlanid(self, value):
+        """ Set subnet_vlanid value.
+
+            Notes:
+                Determines the VLANID for this associated Subnet.
+
+                
+                This attribute is named `subnetVLANID` in VSD API.
+                
+        """
+        self._subnet_vlanid = value
 
     
     @property

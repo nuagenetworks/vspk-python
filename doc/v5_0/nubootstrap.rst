@@ -47,5 +47,7 @@ Parents
 --------
 
 
+- :ref:`nugateway.NUGateway<nugateway>`
+
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 

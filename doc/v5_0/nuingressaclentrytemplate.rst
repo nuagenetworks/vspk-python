@@ -62,9 +62,9 @@ Attributes
 
 - ``associated_live_entity_id``: In the draft mode, the ACL entry refers to this LiveEntity. In non-drafted mode, this is null.
 
-- ``associated_traffic_type``: This property reflects the type of traffic in case an ACL entry is created using an L4 Service or L4 Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
+- ``associated_traffic_type``: This property reflects the type of traffic in case an ACL entry is created using an Service or Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
 
-- ``associated_traffic_type_id``: If a traffic type is specified as L4 Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
+- ``associated_traffic_type_id``: If a traffic type is specified as Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
 
 - ``stateful``: True means that this ACL entry is stateful, so there will be a corresponding rule that will be created by OVS in the network. False means that there is no corresponding rule created by OVS in the network.
 
@@ -98,11 +98,11 @@ Parents
 --------
 
 
-- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 

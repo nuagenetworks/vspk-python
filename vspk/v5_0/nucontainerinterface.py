@@ -67,7 +67,7 @@ class NUContainerInterface(NURESTObject):
     """ Represents a ContainerInterface in the VSD
 
         Notes:
-            Read only API that can retrieve the container interface associated with a domain, zone or subnet for mediation created container's for REST created  container interfaces you need to set the additional proxy header in http request : X-Nuage-ProxyUservalue of the header has to be either :1) enterpriseName@UserName (example :bob@Alcatel Lucent), or 2) external ID of user in VSD, typically is UUID generally decided by the CMS tool in questionUser needs to have CMS privileges to use proxy user header.
+            API that can retrieve the container interface associated with a domain, zone or subnet for mediation created container's for REST created  container interfaces you need to set the additional proxy header in http request : X-Nuage-ProxyUservalue of the header has to be either :1) enterpriseName@UserName (example :bob@Alcatel Lucent), or 2) external ID of user in VSD, typically is UUID generally decided by the CMS tool in questionUser needs to have CMS privileges to use proxy user header.
     """
 
     __rest_name__ = "containerinterface"

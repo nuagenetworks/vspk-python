@@ -43,7 +43,7 @@ class NUNetworkMacroGroup(NURESTObject):
     """ Represents a NetworkMacroGroup in the VSD
 
         Notes:
-            Administrators of an enterprise can define macros that are set of IP addresses that identify enterprise networks. These macros can be used in the ACL definitions by network designers and other users to identify access restrictions towards specific enterprise networks.
+            Network Macro Groups are a collection of existing Network Macros. These groups can be used in Security Policies in order to create rules that matches multiple Network Macros.
     """
 
     __rest_name__ = "networkmacrogroup"
@@ -80,6 +80,7 @@ class NUNetworkMacroGroup(NURESTObject):
         self._description = None
         self._network_macros = None
         self._entity_scope = None
+        self._is_saa_s_type = None
         self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
@@ -87,6 +88,7 @@ class NUNetworkMacroGroup(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_macros", remote_name="networkMacros", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="is_saa_s_type", remote_name="isSaaSType", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -231,6 +233,33 @@ class NUNetworkMacroGroup(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def is_saa_s_type(self):
+        """ Get is_saa_s_type value.
+
+            Notes:
+                Determines whether this entity is specific to SaaS Breakout Feature.
+
+                
+                This attribute is named `isSaaSType` in VSD API.
+                
+        """
+        return self._is_saa_s_type
+
+    @is_saa_s_type.setter
+    def is_saa_s_type(self, value):
+        """ Set is_saa_s_type value.
+
+            Notes:
+                Determines whether this entity is specific to SaaS Breakout Feature.
+
+                
+                This attribute is named `isSaaSType` in VSD API.
+                
+        """
+        self._is_saa_s_type = value
 
     
     @property

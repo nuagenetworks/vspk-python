@@ -28,6 +28,8 @@ Attributes
 
 - ``restricted``: Determines whether this entity can be used in associations with other properties.
 
+- ``shunt_vlan``: A flag to mark this instance of a VLAN as a candidate to be a termination point of a Shunt Link.  Only VLANs residing on a Network Port can have this attribute set to true.
+
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``vport_id``: The Vport associated with this VLAN. This is a read only attribute
@@ -93,6 +95,8 @@ Parents
 
 
 - :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
+
+- :ref:`nugatewayredundantport.NUGatewayRedundantPort<nugatewayredundantport>`
 
 - :ref:`nuredundantport.NURedundantPort<nuredundantport>`
 

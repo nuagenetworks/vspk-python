@@ -36,6 +36,7 @@ Children
 **class**                                                                                                                                                      **fetcher**
 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nunetconfmanager.NUNetconfManager<nunetconfmanager>`                                                                                                       ``netconf_managers`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuhsc.NUHSC<nuhsc>`                                                                                                                                        ``hscs`` 
 :ref:`nuvsc.NUVSC<nuvsc>`                                                                                                                                        ``vscs`` 

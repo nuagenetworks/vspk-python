@@ -92,6 +92,7 @@ class NULicense(NURESTObject):
         self._license_entities = None
         self._license_id = None
         self._license_type = None
+        self._licensed_feature = None
         self._minor_release = None
         self._zip = None
         self._city = None
@@ -99,6 +100,8 @@ class NULicense(NURESTObject):
         self._allowed_avrss_count = None
         self._allowed_cpes_count = None
         self._allowed_nics_count = None
+        self._allowed_vdfgs_count = None
+        self._allowed_vdfs_count = None
         self._allowed_vms_count = None
         self._allowed_vrsgs_count = None
         self._allowed_vrss_count = None
@@ -128,6 +131,7 @@ class NULicense(NURESTObject):
         self.expose_attribute(local_name="license_entities", remote_name="licenseEntities", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="license_id", remote_name="licenseID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="license_type", remote_name="licenseType", attribute_type=str, is_required=False, is_unique=False, choices=[u'CLUSTERED', u'STANDARD'])
+        self.expose_attribute(local_name="licensed_feature", remote_name="licensedFeature", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="minor_release", remote_name="minorRelease", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zip", remote_name="zip", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="city", remote_name="city", attribute_type=str, is_required=False, is_unique=False)
@@ -135,6 +139,8 @@ class NULicense(NURESTObject):
         self.expose_attribute(local_name="allowed_avrss_count", remote_name="allowedAVRSsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_cpes_count", remote_name="allowedCPEsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_nics_count", remote_name="allowedNICsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="allowed_vdfgs_count", remote_name="allowedVDFGsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="allowed_vdfs_count", remote_name="allowedVDFsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_vms_count", remote_name="allowedVMsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_vrsgs_count", remote_name="allowedVRSGsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_vrss_count", remote_name="allowedVRSsCount", attribute_type=int, is_required=False, is_unique=False)
@@ -408,6 +414,33 @@ class NULicense(NURESTObject):
 
     
     @property
+    def licensed_feature(self):
+        """ Get licensed_feature value.
+
+            Notes:
+                Indicates the feature supported by the license. Possible value is "vss".
+
+                
+                This attribute is named `licensedFeature` in VSD API.
+                
+        """
+        return self._licensed_feature
+
+    @licensed_feature.setter
+    def licensed_feature(self, value):
+        """ Set licensed_feature value.
+
+            Notes:
+                Indicates the feature supported by the license. Possible value is "vss".
+
+                
+                This attribute is named `licensedFeature` in VSD API.
+                
+        """
+        self._licensed_feature = value
+
+    
+    @property
     def minor_release(self):
         """ Get minor_release value.
 
@@ -586,6 +619,60 @@ class NULicense(NURESTObject):
                 
         """
         self._allowed_nics_count = value
+
+    
+    @property
+    def allowed_vdfgs_count(self):
+        """ Get allowed_vdfgs_count value.
+
+            Notes:
+                Maximum number of VDFGs enabled with this license. A value of -1 indicates an unlimited number of VDFGs.
+
+                
+                This attribute is named `allowedVDFGsCount` in VSD API.
+                
+        """
+        return self._allowed_vdfgs_count
+
+    @allowed_vdfgs_count.setter
+    def allowed_vdfgs_count(self, value):
+        """ Set allowed_vdfgs_count value.
+
+            Notes:
+                Maximum number of VDFGs enabled with this license. A value of -1 indicates an unlimited number of VDFGs.
+
+                
+                This attribute is named `allowedVDFGsCount` in VSD API.
+                
+        """
+        self._allowed_vdfgs_count = value
+
+    
+    @property
+    def allowed_vdfs_count(self):
+        """ Get allowed_vdfs_count value.
+
+            Notes:
+                Maximum number of VDFs enabled with this license. A value of -1 indicates an unlimited number of VDFs
+
+                
+                This attribute is named `allowedVDFsCount` in VSD API.
+                
+        """
+        return self._allowed_vdfs_count
+
+    @allowed_vdfs_count.setter
+    def allowed_vdfs_count(self, value):
+        """ Set allowed_vdfs_count value.
+
+            Notes:
+                Maximum number of VDFs enabled with this license. A value of -1 indicates an unlimited number of VDFs
+
+                
+                This attribute is named `allowedVDFsCount` in VSD API.
+                
+        """
+        self._allowed_vdfs_count = value
 
     
     @property

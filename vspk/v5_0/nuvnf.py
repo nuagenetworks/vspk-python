@@ -43,7 +43,7 @@ class NUVNF(NURESTObject):
     """ Represents a VNF in the VSD
 
         Notes:
-            Represent a VNF instance
+            Instantiation of a VNF on a specified Network Services Gateway that has the resources to manage a VNF.
     """
 
     __rest_name__ = "vnf"

@@ -158,6 +158,7 @@ class NUIKEEncryptionprofile(NURESTObject):
         self._sequence = None
         self._description = None
         self._entity_scope = None
+        self._ipsec_sa_replay_window_size_value = None
         self._associated_enterprise_id = None
         self._external_id = None
         
@@ -181,6 +182,7 @@ class NUIKEEncryptionprofile(NURESTObject):
         self.expose_attribute(local_name="sequence", remote_name="sequence", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="ipsec_sa_replay_window_size_value", remote_name="ipsecSAReplayWindowSizeValue", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
@@ -724,6 +726,33 @@ class NUIKEEncryptionprofile(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def ipsec_sa_replay_window_size_value(self):
+        """ Get ipsec_sa_replay_window_size_value value.
+
+            Notes:
+                IPsec Replay Window Size in Packets.
+
+                
+                This attribute is named `ipsecSAReplayWindowSizeValue` in VSD API.
+                
+        """
+        return self._ipsec_sa_replay_window_size_value
+
+    @ipsec_sa_replay_window_size_value.setter
+    def ipsec_sa_replay_window_size_value(self, value):
+        """ Set ipsec_sa_replay_window_size_value value.
+
+            Notes:
+                IPsec Replay Window Size in Packets.
+
+                
+                This attribute is named `ipsecSAReplayWindowSizeValue` in VSD API.
+                
+        """
+        self._ipsec_sa_replay_window_size_value = value
 
     
     @property

@@ -5,7 +5,7 @@ nuvnfmetadata
 
 .. class:: nuvnfmetadata.NUVNFMetadata(bambou.nurest_object.NUMetaRESTObject,):
 
-None
+The VNF deployment properties that includes the location of the image, bootstrap config and rest of the libvirt domain XML template defined as text file.
 
 
 Attributes

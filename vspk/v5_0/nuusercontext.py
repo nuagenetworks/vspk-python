@@ -61,15 +61,21 @@ class NUUserContext(NURESTObject):
         
         self._aar_flow_stats_interval = None
         self._aar_probe_stats_interval = None
+        self._vss_feature_enabled = None
         self._vss_stats_interval = None
+        self._page_size = None
         self._flow_collection_enabled = None
+        self._google_maps_api_key = None
         self._statistics_enabled = None
         self._stats_tsdb_server_address = None
         
         self.expose_attribute(local_name="aar_flow_stats_interval", remote_name="AARFlowStatsInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="aar_probe_stats_interval", remote_name="AARProbeStatsInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vss_feature_enabled", remote_name="VSSFeatureEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vss_stats_interval", remote_name="VSSStatsInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="page_size", remote_name="pageSize", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="google_maps_api_key", remote_name="googleMapsAPIKey", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="statistics_enabled", remote_name="statisticsEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_tsdb_server_address", remote_name="statsTSDBServerAddress", attribute_type=str, is_required=False, is_unique=False)
         
@@ -133,6 +139,33 @@ class NUUserContext(NURESTObject):
 
     
     @property
+    def vss_feature_enabled(self):
+        """ Get vss_feature_enabled value.
+
+            Notes:
+                Flag to indicate if VSS feature is enabled.
+
+                
+                This attribute is named `VSSFeatureEnabled` in VSD API.
+                
+        """
+        return self._vss_feature_enabled
+
+    @vss_feature_enabled.setter
+    def vss_feature_enabled(self, value):
+        """ Set vss_feature_enabled value.
+
+            Notes:
+                Flag to indicate if VSS feature is enabled.
+
+                
+                This attribute is named `VSSFeatureEnabled` in VSD API.
+                
+        """
+        self._vss_feature_enabled = value
+
+    
+    @property
     def vss_stats_interval(self):
         """ Get vss_stats_interval value.
 
@@ -160,6 +193,33 @@ class NUUserContext(NURESTObject):
 
     
     @property
+    def page_size(self):
+        """ Get page_size value.
+
+            Notes:
+                Result size for queries
+
+                
+                This attribute is named `pageSize` in VSD API.
+                
+        """
+        return self._page_size
+
+    @page_size.setter
+    def page_size(self, value):
+        """ Set page_size value.
+
+            Notes:
+                Result size for queries
+
+                
+                This attribute is named `pageSize` in VSD API.
+                
+        """
+        self._page_size = value
+
+    
+    @property
     def flow_collection_enabled(self):
         """ Get flow_collection_enabled value.
 
@@ -184,6 +244,33 @@ class NUUserContext(NURESTObject):
                 
         """
         self._flow_collection_enabled = value
+
+    
+    @property
+    def google_maps_api_key(self):
+        """ Get google_maps_api_key value.
+
+            Notes:
+                Google Maps API Key used to display maps on Nuage UI applications
+
+                
+                This attribute is named `googleMapsAPIKey` in VSD API.
+                
+        """
+        return self._google_maps_api_key
+
+    @google_maps_api_key.setter
+    def google_maps_api_key(self, value):
+        """ Set google_maps_api_key value.
+
+            Notes:
+                Google Maps API Key used to display maps on Nuage UI applications
+
+                
+                This attribute is named `googleMapsAPIKey` in VSD API.
+                
+        """
+        self._google_maps_api_key = value
 
     
     @property

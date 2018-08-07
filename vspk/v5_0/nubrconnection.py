@@ -56,6 +56,10 @@ class NUBRConnection(NURESTObject):
     
     CONST_MODE_STATIC = "Static"
     
+    CONST_ADDRESS_FAMILY_IPV6 = "IPV6"
+    
+    CONST_ADDRESS_FAMILY_IPV4 = "IPV4"
+    
     
 
     def __init__(self, **kwargs):
@@ -76,8 +80,12 @@ class NUBRConnection(NURESTObject):
         # Read/Write Attributes
         
         self._dns_address = None
+        self._dns_address_v6 = None
         self._gateway = None
+        self._gateway_v6 = None
         self._address = None
+        self._address_family = None
+        self._address_v6 = None
         self._advertisement_criteria = None
         self._netmask = None
         self._inherited = None
@@ -85,8 +93,12 @@ class NUBRConnection(NURESTObject):
         self._uplink_id = None
         
         self.expose_attribute(local_name="dns_address", remote_name="DNSAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="dns_address_v6", remote_name="DNSAddressV6", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_v6", remote_name="gatewayV6", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="address_family", remote_name="addressFamily", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="address_v6", remote_name="addressV6", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'BFD', u'LINK_BASED', u'OPENFLOW', u'OPERATIONAL_LINK'])
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="inherited", remote_name="inherited", attribute_type=bool, is_required=False, is_unique=False)
@@ -132,6 +144,33 @@ class NUBRConnection(NURESTObject):
 
     
     @property
+    def dns_address_v6(self):
+        """ Get dns_address_v6 value.
+
+            Notes:
+                DNS IPv6 Address
+
+                
+                This attribute is named `DNSAddressV6` in VSD API.
+                
+        """
+        return self._dns_address_v6
+
+    @dns_address_v6.setter
+    def dns_address_v6(self, value):
+        """ Set dns_address_v6 value.
+
+            Notes:
+                DNS IPv6 Address
+
+                
+                This attribute is named `DNSAddressV6` in VSD API.
+                
+        """
+        self._dns_address_v6 = value
+
+    
+    @property
     def gateway(self):
         """ Get gateway value.
 
@@ -155,6 +194,33 @@ class NUBRConnection(NURESTObject):
 
     
     @property
+    def gateway_v6(self):
+        """ Get gateway_v6 value.
+
+            Notes:
+                IPv6 address of the gateway bound to the port.
+
+                
+                This attribute is named `gatewayV6` in VSD API.
+                
+        """
+        return self._gateway_v6
+
+    @gateway_v6.setter
+    def gateway_v6(self, value):
+        """ Set gateway_v6 value.
+
+            Notes:
+                IPv6 address of the gateway bound to the port.
+
+                
+                This attribute is named `gatewayV6` in VSD API.
+                
+        """
+        self._gateway_v6 = value
+
+    
+    @property
     def address(self):
         """ Get address value.
 
@@ -175,6 +241,60 @@ class NUBRConnection(NURESTObject):
                 
         """
         self._address = value
+
+    
+    @property
+    def address_family(self):
+        """ Get address_family value.
+
+            Notes:
+                IP address family of this BRConnection
+
+                
+                This attribute is named `addressFamily` in VSD API.
+                
+        """
+        return self._address_family
+
+    @address_family.setter
+    def address_family(self, value):
+        """ Set address_family value.
+
+            Notes:
+                IP address family of this BRConnection
+
+                
+                This attribute is named `addressFamily` in VSD API.
+                
+        """
+        self._address_family = value
+
+    
+    @property
+    def address_v6(self):
+        """ Get address_v6 value.
+
+            Notes:
+                IPv6 address for static configuration.
+
+                
+                This attribute is named `addressV6` in VSD API.
+                
+        """
+        return self._address_v6
+
+    @address_v6.setter
+    def address_v6(self, value):
+        """ Set address_v6 value.
+
+            Notes:
+                IPv6 address for static configuration.
+
+                
+                This attribute is named `addressV6` in VSD API.
+                
+        """
+        self._address_v6 = value
 
     
     @property

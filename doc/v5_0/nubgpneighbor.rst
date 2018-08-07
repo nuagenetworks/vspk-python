@@ -14,6 +14,10 @@ Attributes
 
 - ``bfd_enabled``: Enable or disable Bidirectional Forwarding Detection for this BGP neighbor
 
+- ``ip_type``: It can be either IPv4 or IPv6
+
+- ``ipv6_address``: Peer IPv6 address
+
 - ``name`` (**Mandatory**): Name of the peer
 
 - ``dampening_enabled``: Enable/disable route flap damping.

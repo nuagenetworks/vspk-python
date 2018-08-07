@@ -20,6 +20,8 @@ Attributes
 
 - ``seed_traffic_encryption_key_lifetime``: Seed Traffic Encryption Key Lifetime in Seconds
 
+- ``seed_type``: Indicates if this is a Standard (or) a Disaster Recovery seed.
+
 - ``lifetime``: The lifetime of this entry (seconds)
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level

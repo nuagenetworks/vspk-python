@@ -18,7 +18,7 @@ Attributes
 
 - ``start_time``: Start time for the statistics to be retrieved
 
-- ``stats_data``: Map&lt;TCAMetric, Long[]&gt; TCAMetric is an Enum. Possible values are packets_in, bytes_in, packets_in_dropped, packets_in_errors, packets_out, bytes_out, packets_out_dropped, packets_out_errors, packets_dropped_rate_limit
+- ``stats_data``: Contains the requested statistics data. Possible values are PACKETS_IN, BYTES_IN, PACKETS_IN_DROPPED, PACKETS_IN_ERRORS, PACKETS_OUT, BYTES_OUT, PACKETS_OUT_DROPPED, PACKETS_OUT_ERRORS, PACKETS_DROPPED_RATE_LIMIT, DISKS, MEMORY, CPU
 
 - ``number_of_data_points``: Number of data points between start time and end time
 
@@ -47,13 +47,19 @@ Parents
 
 - :ref:`nuzone.NUZone<nuzone>`
 
+- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
+
+- :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`
+
 - :ref:`nuingressexternalservicetemplateentry.NUIngressExternalServiceTemplateEntry<nuingressexternalservicetemplateentry>`
 
-- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
+
+- :ref:`nuvrs.NUVRS<nuvrs>`
 
 - :ref:`nuvlan.NUVLAN<nuvlan>`
 
@@ -61,11 +67,7 @@ Parents
 
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
-- :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`
-
 - :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
 
@@ -76,6 +78,8 @@ Parents
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
+
+- :ref:`nuvsc.NUVSC<nuvsc>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
 

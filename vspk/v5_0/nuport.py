@@ -80,11 +80,13 @@ class NUPort(NURESTObject):
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
+    CONST_STATUS_MISMATCH = "MISMATCH"
+    
     CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
     
     CONST_STATUS_INITIALIZED = "INITIALIZED"
     
-    CONST_STATUS_MISMATCH = "MISMATCH"
+    CONST_PORT_TYPE_MANAGEMENT = "MANAGEMENT"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
@@ -136,7 +138,7 @@ class NUPort(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'NETWORK'])
+        self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'MANAGEMENT', u'NETWORK'])
         self.expose_attribute(local_name="is_resilient", remote_name="isResilient", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_user_mnemonic", remote_name="useUserMnemonic", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=False, is_unique=False)
@@ -387,7 +389,7 @@ class NUPort(NURESTObject):
         """ Get port_type value.
 
             Notes:
-                Type of the Port.
+                Type of the Port. Possible values are ACCESS, NETWORK, MANAGEMENT.
 
                 
                 This attribute is named `portType` in VSD API.
@@ -400,7 +402,7 @@ class NUPort(NURESTObject):
         """ Set port_type value.
 
             Notes:
-                Type of the Port.
+                Type of the Port. Possible values are ACCESS, NETWORK, MANAGEMENT.
 
                 
                 This attribute is named `portType` in VSD API.

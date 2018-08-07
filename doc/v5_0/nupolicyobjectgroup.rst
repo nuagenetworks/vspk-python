@@ -5,7 +5,7 @@ nupolicyobjectgroup
 
 .. class:: nupolicyobjectgroup.NUPolicyObjectGroup(bambou.nurest_object.NUMetaRESTObject,):
 
-None
+Policy Object Groups are a collection of existing Network Services Gateways. These groups can be used in routing policies for domain links.
 
 
 Attributes

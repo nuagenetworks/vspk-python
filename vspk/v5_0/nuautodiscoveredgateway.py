@@ -207,7 +207,7 @@ class NUAutoDiscoveredGateway(NURESTObject):
         """ Get gateway_id value.
 
             Notes:
-                The Gateway associated with this  Auto Discovered Gateway  . This is a read only attribute
+                The Gateway associated with this Auto Discovered Gateway. This is a read only attribute
 
                 
                 This attribute is named `gatewayID` in VSD API.
@@ -220,7 +220,7 @@ class NUAutoDiscoveredGateway(NURESTObject):
         """ Set gateway_id value.
 
             Notes:
-                The Gateway associated with this  Auto Discovered Gateway  . This is a read only attribute
+                The Gateway associated with this Auto Discovered Gateway. This is a read only attribute
 
                 
                 This attribute is named `gatewayID` in VSD API.

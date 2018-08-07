@@ -85,15 +85,13 @@ Parents
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
-- :ref:`numetadata.NUMetadata<numetadata>`
-
 - :ref:`nuvsp.NUVSP<nuvsp>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuproxyarpfilter.NUProxyARPFilter<nuproxyarpfilter>`
 
 - :ref:`nuwanservice.NUWANService<nuwanservice>`
-
-- :ref:`nuvsd.NUVSD<nuvsd>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
@@ -104,6 +102,8 @@ Parents
 - :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 
 - :ref:`nuzonetemplate.NUZoneTemplate<nuzonetemplate>`
+
+- :ref:`numetadata.NUMetadata<numetadata>`
 
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
@@ -123,17 +123,15 @@ Parents
 
 - :ref:`numulticastrange.NUMultiCastRange<numulticastrange>`
 
-- :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
+- :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
-
-- :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
 
 - :ref:`nudhcpoption.NUDHCPOption<nudhcpoption>`
 
@@ -142,6 +140,8 @@ Parents
 - :ref:`nuvsc.NUVSC<nuvsc>`
 
 - :ref:`nuvm.NUVM<nuvm>`
+
+- :ref:`nuvsd.NUVSD<nuvsd>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
 

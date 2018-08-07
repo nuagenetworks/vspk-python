@@ -5,7 +5,7 @@ numulticastchannelmap
 
 .. class:: numulticastchannelmap.NUMultiCastChannelMap(bambou.nurest_object.NUMetaRESTObject,):
 
-This is the definition of a MultiCast Channel Map.
+Multicast channel maps define the available multicast groups that can be joined by VMs belonging to enterprises to which the maps have been assigned to. A map can contain one or more ranges defining the available channels. Ranges are non overlapping within a single map.
 
 
 Attributes

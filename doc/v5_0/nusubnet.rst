@@ -36,7 +36,7 @@ Attributes
 
 - ``access_restriction_enabled``: This attribute specifies whether subnet is enabled with access restrictions. Note: Applicable to shared infrastructure enterprise subnets.
 
-- ``address``: IP address of the subnet defined. In case of zone, this is an optional field for and allows users to allocate an IP address range to a zone. The VSD will auto-assign IP addresses to subnets from this range if a specific IP address is not defined for the subnet
+- ``address`` (**Mandatory**): IP address of the subnet defined. In case of zone, this is an optional field for and allows users to allocate an IP address range to a zone. The VSD will auto-assign IP addresses to subnets from this range if a specific IP address is not defined for the subnet
 
 - ``advertise``: Subnet will be advertised in Overlay and WAN BGP
 
@@ -50,7 +50,7 @@ Attributes
 
 - ``resource_type``: Defines the type of the subnet, PUBLIC,FLOATING,STANDARD OR NSG_VNF
 
-- ``netmask``: Netmask of the subnet defined
+- ``netmask`` (**Mandatory**): Netmask of the subnet defined
 
 - ``flow_collection_enabled``: Determines whether or not flow collection is enabled.
 
@@ -83,6 +83,8 @@ Attributes
 - ``associated_shared_network_resource_id``: The ID of public subnet that is associated with this subnet
 
 - ``public``: when set to true means public subnet under a public zone
+
+- ``subnet_vlanid``: Determines the VLANID for this associated Subnet.
 
 - ``multi_home_enabled``: Boolean flag to indicate whether this is a Multi-homed subnet or not.
 
@@ -141,9 +143,9 @@ Parents
 
 - :ref:`nudomain.NUDomain<nudomain>`
 
+- :ref:`nupatmapper.NUPATMapper<nupatmapper>`
+
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
-
-- :ref:`nupatmapper.NUPATMapper<nupatmapper>`
 

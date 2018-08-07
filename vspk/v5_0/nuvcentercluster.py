@@ -98,7 +98,11 @@ class NUVCenterCluster(NURESTObject):
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
+    CONST_PERSONALITY_VDF = "VDF"
+    
     CONST_CPU_COUNT_XLARGE_8 = "XLARGE_8"
+    
+    CONST_PERSONALITY_VRS = "VRS"
     
     
 
@@ -138,6 +142,7 @@ class NUVCenterCluster(NURESTObject):
         self._secondary_data_uplink_primary_controller = None
         self._secondary_data_uplink_secondary_controller = None
         self._secondary_data_uplink_underlay_id = None
+        self._secondary_data_uplink_vdf_control_vlan = None
         self._secondary_nuage_controller = None
         self._deleted_from_vcenter_data_center = None
         self._memory_size_in_gb = None
@@ -197,6 +202,7 @@ class NUVCenterCluster(NURESTObject):
         self._upgrade_script_time_limit = None
         self._cpu_count = None
         self._primary_data_uplink_underlay_id = None
+        self._primary_data_uplink_vdf_control_vlan = None
         self._primary_nuage_controller = None
         self._vrs_password = None
         self._vrs_user_name = None
@@ -242,6 +248,7 @@ class NUVCenterCluster(NURESTObject):
         self.expose_attribute(local_name="secondary_data_uplink_primary_controller", remote_name="secondaryDataUplinkPrimaryController", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_data_uplink_secondary_controller", remote_name="secondaryDataUplinkSecondaryController", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_data_uplink_underlay_id", remote_name="secondaryDataUplinkUnderlayID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="secondary_data_uplink_vdf_control_vlan", remote_name="secondaryDataUplinkVDFControlVLAN", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_nuage_controller", remote_name="secondaryNuageController", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="deleted_from_vcenter_data_center", remote_name="deletedFromVCenterDataCenter", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="memory_size_in_gb", remote_name="memorySizeInGB", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT_4', u'LARGE_8', u'MEDIUM_6'])
@@ -250,7 +257,7 @@ class NUVCenterCluster(NURESTObject):
         self.expose_attribute(local_name="remote_syslog_server_type", remote_name="remoteSyslogServerType", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'TCP', u'UDP'])
         self.expose_attribute(local_name="generic_split_activation", remote_name="genericSplitActivation", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="separate_data_network", remote_name="separateDataNetwork", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'VDF', u'VRS'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_mirror_port", remote_name="destinationMirrorPort", attribute_type=str, is_required=False, is_unique=False, choices=[u'ens160', u'ens161', u'ens224', u'ens256', u'no_mirror'])
         self.expose_attribute(local_name="metadata_server_ip", remote_name="metadataServerIP", attribute_type=str, is_required=False, is_unique=False)
@@ -301,6 +308,7 @@ class NUVCenterCluster(NURESTObject):
         self.expose_attribute(local_name="upgrade_script_time_limit", remote_name="upgradeScriptTimeLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cpu_count", remote_name="cpuCount", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT_2', u'LARGE_6', u'MEDIUM_4', u'XLARGE_8'])
         self.expose_attribute(local_name="primary_data_uplink_underlay_id", remote_name="primaryDataUplinkUnderlayID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="primary_data_uplink_vdf_control_vlan", remote_name="primaryDataUplinkVDFControlVLAN", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="primary_nuage_controller", remote_name="primaryNuageController", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_password", remote_name="vrsPassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_user_name", remote_name="vrsUserName", attribute_type=str, is_required=False, is_unique=False)
@@ -862,6 +870,33 @@ class NUVCenterCluster(NURESTObject):
 
     
     @property
+    def secondary_data_uplink_vdf_control_vlan(self):
+        """ Get secondary_data_uplink_vdf_control_vlan value.
+
+            Notes:
+                The VLAN for the control communication with VSC on the secondary datapath interface, when VDF is enabled. This VLAN can not be used as a subnet VLAN in the VSD configuration.
+
+                
+                This attribute is named `secondaryDataUplinkVDFControlVLAN` in VSD API.
+                
+        """
+        return self._secondary_data_uplink_vdf_control_vlan
+
+    @secondary_data_uplink_vdf_control_vlan.setter
+    def secondary_data_uplink_vdf_control_vlan(self, value):
+        """ Set secondary_data_uplink_vdf_control_vlan value.
+
+            Notes:
+                The VLAN for the control communication with VSC on the secondary datapath interface, when VDF is enabled. This VLAN can not be used as a subnet VLAN in the VSD configuration.
+
+                
+                This attribute is named `secondaryDataUplinkVDFControlVLAN` in VSD API.
+                
+        """
+        self._secondary_data_uplink_vdf_control_vlan = value
+
+    
+    @property
     def secondary_nuage_controller(self):
         """ Get secondary_nuage_controller value.
 
@@ -1082,7 +1117,7 @@ class NUVCenterCluster(NURESTObject):
         """ Get personality value.
 
             Notes:
-                VRS/VRS-G
+                The personality of the VRS Agent, supported values when deploying through the vCenter Integration Node: VRS, VDF.
 
                 
         """
@@ -1093,7 +1128,7 @@ class NUVCenterCluster(NURESTObject):
         """ Set personality value.
 
             Notes:
-                VRS/VRS-G
+                The personality of the VRS Agent, supported values when deploying through the vCenter Integration Node: VRS, VDF.
 
                 
         """
@@ -2444,6 +2479,33 @@ class NUVCenterCluster(NURESTObject):
                 
         """
         self._primary_data_uplink_underlay_id = value
+
+    
+    @property
+    def primary_data_uplink_vdf_control_vlan(self):
+        """ Get primary_data_uplink_vdf_control_vlan value.
+
+            Notes:
+                The VLAN for the control communication with VSC on the primary datapath interface, when VDF is enabled. This VLAN can not be used as a subnet VLAN in the VSD configuration.
+
+                
+                This attribute is named `primaryDataUplinkVDFControlVLAN` in VSD API.
+                
+        """
+        return self._primary_data_uplink_vdf_control_vlan
+
+    @primary_data_uplink_vdf_control_vlan.setter
+    def primary_data_uplink_vdf_control_vlan(self, value):
+        """ Set primary_data_uplink_vdf_control_vlan value.
+
+            Notes:
+                The VLAN for the control communication with VSC on the primary datapath interface, when VDF is enabled. This VLAN can not be used as a subnet VLAN in the VSD configuration.
+
+                
+                This attribute is named `primaryDataUplinkVDFControlVLAN` in VSD API.
+                
+        """
+        self._primary_data_uplink_vdf_control_vlan = value
 
     
     @property

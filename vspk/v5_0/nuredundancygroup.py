@@ -28,7 +28,25 @@
 
 
 
+from .fetchers import NUL2DomainsFetcher
+
+
+from .fetchers import NUMACFilterProfilesFetcher
+
+
+from .fetchers import NUSAPEgressQoSProfilesFetcher
+
+
+from .fetchers import NUSAPIngressQoSProfilesFetcher
+
+
 from .fetchers import NUGatewaysFetcher
+
+
+from .fetchers import NUGatewayRedundantPortsFetcher
+
+
+from .fetchers import NUDeploymentFailuresFetcher
 
 
 from .fetchers import NUPermissionsFetcher
@@ -40,16 +58,31 @@ from .fetchers import NUWANServicesFetcher
 from .fetchers import NUMetadatasFetcher
 
 
+from .fetchers import NUEgressProfilesFetcher
+
+
 from .fetchers import NUAlarmsFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
 
 
+from .fetchers import NUIngressProfilesFetcher
+
+
 from .fetchers import NUEnterprisePermissionsFetcher
 
 
+from .fetchers import NUJobsFetcher
+
+
 from .fetchers import NUPortsFetcher
+
+
+from .fetchers import NUIPFilterProfilesFetcher
+
+
+from .fetchers import NUIPv6FilterProfilesFetcher
 
 
 from .fetchers import NUVsgRedundantPortsFetcher
@@ -73,11 +106,13 @@ class NURedundancyGroup(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_PERSONALITY_NUAGE_210_WBX_32_Q = "NUAGE_210_WBX_32_Q"
     
     CONST_PERSONALITY_NSGDUC = "NSGDUC"
     
     CONST_PERSONALITY_OTHER = "OTHER"
+    
+    CONST_PERSONALITY_VDFG = "VDFG"
     
     CONST_PERSONALITY_NSG = "NSG"
     
@@ -103,11 +138,13 @@ class NURedundancyGroup(NURESTObject):
     
     CONST_REDUNDANT_GATEWAY_STATUS_SUCCESS = "SUCCESS"
     
+    CONST_PERSONALITY_NETCONF_7X50 = "NETCONF_7X50"
+    
     CONST_PERSONALITY_NUAGE_210_WBX_48_S = "NUAGE_210_WBX_48_S"
     
     CONST_PERSONALITY_VRSG = "VRSG"
     
-    CONST_PERSONALITY_NUAGE_210_WBX_32_Q = "NUAGE_210_WBX_32_Q"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
@@ -139,9 +176,11 @@ class NURedundancyGroup(NURESTObject):
         self._name = None
         self._last_updated_by = None
         self._gateway_peer1_autodiscovered_gateway_id = None
+        self._gateway_peer1_connected = None
         self._gateway_peer1_id = None
         self._gateway_peer1_name = None
         self._gateway_peer2_autodiscovered_gateway_id = None
+        self._gateway_peer2_connected = None
         self._gateway_peer2_id = None
         self._gateway_peer2_name = None
         self._redundant_gateway_status = None
@@ -156,14 +195,16 @@ class NURedundancyGroup(NURESTObject):
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_autodiscovered_gateway_id", remote_name="gatewayPeer1AutodiscoveredGatewayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_peer1_connected", remote_name="gatewayPeer1Connected", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_id", remote_name="gatewayPeer1ID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_name", remote_name="gatewayPeer1Name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer2_autodiscovered_gateway_id", remote_name="gatewayPeer2AutodiscoveredGatewayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_peer2_connected", remote_name="gatewayPeer2Connected", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer2_id", remote_name="gatewayPeer2ID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer2_name", remote_name="gatewayPeer2Name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redundant_gateway_status", remote_name="redundantGatewayStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAILED', u'SUCCESS'])
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'NSGBR', u'NSGDUC', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VRSB', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NSG', u'NSGBR', u'NSGDUC', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -174,7 +215,25 @@ class NURedundancyGroup(NURESTObject):
         # Fetchers
         
         
+        self.l2_domains = NUL2DomainsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.mac_filter_profiles = NUMACFilterProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.sap_egress_qo_s_profiles = NUSAPEgressQoSProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.sap_ingress_qo_s_profiles = NUSAPIngressQoSProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.gateways = NUGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.gateway_redundant_ports = NUGatewayRedundantPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.deployment_failures = NUDeploymentFailuresFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -186,16 +245,31 @@ class NURedundancyGroup(NURESTObject):
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.egress_profiles = NUEgressProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.ingress_profiles = NUIngressProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.ports = NUPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ip_filter_profiles = NUIPFilterProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ipv6_filter_profiles = NUIPv6FilterProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.vsg_redundant_ports = NUVsgRedundantPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -286,6 +360,33 @@ class NURedundancyGroup(NURESTObject):
 
     
     @property
+    def gateway_peer1_connected(self):
+        """ Get gateway_peer1_connected value.
+
+            Notes:
+                Indicates status of the authoritative  gateway of this Redundancy Group.
+
+                
+                This attribute is named `gatewayPeer1Connected` in VSD API.
+                
+        """
+        return self._gateway_peer1_connected
+
+    @gateway_peer1_connected.setter
+    def gateway_peer1_connected(self, value):
+        """ Set gateway_peer1_connected value.
+
+            Notes:
+                Indicates status of the authoritative  gateway of this Redundancy Group.
+
+                
+                This attribute is named `gatewayPeer1Connected` in VSD API.
+                
+        """
+        self._gateway_peer1_connected = value
+
+    
+    @property
     def gateway_peer1_id(self):
         """ Get gateway_peer1_id value.
 
@@ -364,6 +465,33 @@ class NURedundancyGroup(NURESTObject):
                 
         """
         self._gateway_peer2_autodiscovered_gateway_id = value
+
+    
+    @property
+    def gateway_peer2_connected(self):
+        """ Get gateway_peer2_connected value.
+
+            Notes:
+                Indicates status of the secondary gateway of this Redundancy Group.
+
+                
+                This attribute is named `gatewayPeer2Connected` in VSD API.
+                
+        """
+        return self._gateway_peer2_connected
+
+    @gateway_peer2_connected.setter
+    def gateway_peer2_connected(self, value):
+        """ Set gateway_peer2_connected value.
+
+            Notes:
+                Indicates status of the secondary gateway of this Redundancy Group.
+
+                
+                This attribute is named `gatewayPeer2Connected` in VSD API.
+                
+        """
+        self._gateway_peer2_connected = value
 
     
     @property
@@ -479,7 +607,7 @@ class NURedundancyGroup(NURESTObject):
         """ Get personality value.
 
             Notes:
-                derived personality of the Redundancy Group - VSG,VRSG,NSG,OTHER Possible values are VSG, VSA, VRSG, DC7X50, NSG, HARDWARE_VTEP, OTHER, .
+                derived personality of the Redundancy Group - VSG,VRSG,NSG,OTHER Possible values are VSG, VSA, VRSG, VDFG, DC7X50, NSG, HARDWARE_VTEP, OTHER, .
 
                 
         """
@@ -490,7 +618,7 @@ class NURedundancyGroup(NURESTObject):
         """ Set personality value.
 
             Notes:
-                derived personality of the Redundancy Group - VSG,VRSG,NSG,OTHER Possible values are VSG, VSA, VRSG, DC7X50, NSG, HARDWARE_VTEP, OTHER, .
+                derived personality of the Redundancy Group - VSG,VRSG,NSG,OTHER Possible values are VSG, VSA, VRSG, VDFG, DC7X50, NSG, HARDWARE_VTEP, OTHER, .
 
                 
         """

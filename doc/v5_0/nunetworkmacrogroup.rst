@@ -5,7 +5,7 @@ nunetworkmacrogroup
 
 .. class:: nunetworkmacrogroup.NUNetworkMacroGroup(bambou.nurest_object.NUMetaRESTObject,):
 
-Administrators of an enterprise can define macros that are set of IP addresses that identify enterprise networks. These macros can be used in the ACL definitions by network designers and other users to identify access restrictions towards specific enterprise networks.
+Network Macro Groups are a collection of existing Network Macros. These groups can be used in Security Policies in order to create rules that matches multiple Network Macros.
 
 
 Attributes
@@ -21,6 +21,8 @@ Attributes
 - ``network_macros``: None
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``is_saa_s_type``: Determines whether this entity is specific to SaaS Breakout Feature.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

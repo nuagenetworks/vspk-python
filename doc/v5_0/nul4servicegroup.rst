@@ -5,18 +5,18 @@ nul4servicegroup
 
 .. class:: nul4servicegroup.NUL4ServiceGroup(bambou.nurest_object.NUMetaRESTObject,):
 
-L4 Service Group is a set of L4 Services that can be used in ACLs.
+Service Group is a set of Services that can be used in ACLs.
 
 
 Attributes
 ----------
 
 
-- ``name`` (**Mandatory**): Name of the L4 Services group
+- ``name`` (**Mandatory**): Name of the Service group
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``description``: Describes the L4 Service Group
+- ``description``: Describes the Service Group
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 

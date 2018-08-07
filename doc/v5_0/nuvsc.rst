@@ -72,6 +72,7 @@ Children
 :ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
 :ref:`numonitoringport.NUMonitoringPort<numonitoringport>`                                                                                                       ``monitoring_ports`` 
 :ref:`nuvrs.NUVRS<nuvrs>`                                                                                                                                        ``vrss`` 
+:ref:`nustatistics.NUStatistics<nustatistics>`                                                                                                                   ``statistics`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
 ================================================================================================================================================               ==========================================================================================
 

@@ -32,11 +32,19 @@ Attributes
 
 - ``total_licensed_used_nsgs_count``: Indicates total used NSG count for all the licenses in the system
 
+- ``total_licensed_used_vdfgs_count``: Indicates total used VDFG count for all the licenses in the system.
+
+- ``total_licensed_used_vdfs_count``: Indicates total used VDF count for all the licenses in the system.
+
 - ``total_licensed_used_vms_count``: Indicates total used VM count for all the licenses in the system
 
 - ``total_licensed_used_vrsgs_count``: Indicates total used VRSG count for all the licenses in the system
 
 - ``total_licensed_used_vrss_count``: Indicates total used VRS count for all the licenses in the system
+
+- ``total_licensed_vdfgs_count``: Indicates total VDFG count for all the licenses in the system
+
+- ``total_licensed_vdfs_count``: Indicates total VDF count for all the licenses in the system
 
 - ``total_licensed_vms_count``: Indicates total VM count for all the licenses in the system
 
@@ -44,7 +52,7 @@ Attributes
 
 - ``total_licensed_vrss_count``: Indicates total VRS count for all the licenses in the system
 
-- ``total_used_gateways_count``: Indicates total VRS+VRSG+VRSB licenses used in the system
+- ``total_used_gateways_count``: Indicates total VRS+VRSG+VRSB+VDFG licenses used in the system
 
 
 

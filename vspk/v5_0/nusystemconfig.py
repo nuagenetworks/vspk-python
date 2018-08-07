@@ -63,7 +63,7 @@ class NUSystemConfig(NURESTObject):
     
     CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA384WITHRSA = "SHA384withRSA"
     
-    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA512WITHRSA = "SHA512withRSA"
+    CONST_DOMAIN_TUNNEL_TYPE_VLAN = "VLAN"
     
     CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_ENCRYPTION_ALGORITHM_RSA_1024 = "RSA_1024"
     
@@ -96,6 +96,8 @@ class NUSystemConfig(NURESTObject):
     CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA256WITHRSA = "SHA256withRSA"
     
     CONST_DOMAIN_TUNNEL_TYPE_GRE = "GRE"
+    
+    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA512WITHRSA = "SHA512withRSA"
     
     CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA224WITHRSA = "SHA224withRSA"
     
@@ -188,6 +190,7 @@ class NUSystemConfig(NURESTObject):
         self._evpnbgp_community_tag_as_number = None
         self._evpnbgp_community_tag_lower_limit = None
         self._evpnbgp_community_tag_upper_limit = None
+        self._saa_s_applications_publish_date = None
         self._page_max_size = None
         self._page_size = None
         self._last_updated_by = None
@@ -213,10 +216,12 @@ class NUSystemConfig(NURESTObject):
         self._allow_enterprise_avatar_on_nsg = None
         self._global_mac_address = None
         self._flow_collection_enabled = None
+        self._imported_saa_s_applications_version = None
         self._inactive_timeout = None
         self._infrastructure_bgpas_number = None
         self._entity_scope = None
         self._domain_tunnel_type = None
+        self._google_maps_api_key = None
         self._post_processor_threads_count = None
         self._group_key_default_sek_generation_interval = None
         self._group_key_default_sek_lifetime = None
@@ -329,6 +334,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="evpnbgp_community_tag_as_number", remote_name="EVPNBGPCommunityTagASNumber", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="evpnbgp_community_tag_lower_limit", remote_name="EVPNBGPCommunityTagLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="evpnbgp_community_tag_upper_limit", remote_name="EVPNBGPCommunityTagUpperLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="saa_s_applications_publish_date", remote_name="SaaSApplicationsPublishDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="page_max_size", remote_name="pageMaxSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="page_size", remote_name="pageSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -354,10 +360,12 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="allow_enterprise_avatar_on_nsg", remote_name="allowEnterpriseAvatarOnNSG", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="global_mac_address", remote_name="globalMACAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="imported_saa_s_applications_version", remote_name="importedSaaSApplicationsVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="inactive_timeout", remote_name="inactiveTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="infrastructure_bgpas_number", remote_name="infrastructureBGPASNumber", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="domain_tunnel_type", remote_name="domainTunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VXLAN'])
+        self.expose_attribute(local_name="domain_tunnel_type", remote_name="domainTunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VLAN', u'VXLAN'])
+        self.expose_attribute(local_name="google_maps_api_key", remote_name="googleMapsAPIKey", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="post_processor_threads_count", remote_name="postProcessorThreadsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_generation_interval", remote_name="groupKeyDefaultSEKGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_lifetime", remote_name="groupKeyDefaultSEKLifetime", attribute_type=int, is_required=False, is_unique=False)
@@ -1733,6 +1741,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def saa_s_applications_publish_date(self):
+        """ Get saa_s_applications_publish_date value.
+
+            Notes:
+                Determines the time that saas applications were imported in VSD.
+
+                
+                This attribute is named `SaaSApplicationsPublishDate` in VSD API.
+                
+        """
+        return self._saa_s_applications_publish_date
+
+    @saa_s_applications_publish_date.setter
+    def saa_s_applications_publish_date(self, value):
+        """ Set saa_s_applications_publish_date value.
+
+            Notes:
+                Determines the time that saas applications were imported in VSD.
+
+                
+                This attribute is named `SaaSApplicationsPublishDate` in VSD API.
+                
+        """
+        self._saa_s_applications_publish_date = value
+
+    
+    @property
     def page_max_size(self):
         """ Get page_max_size value.
 
@@ -2408,6 +2443,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def imported_saa_s_applications_version(self):
+        """ Get imported_saa_s_applications_version value.
+
+            Notes:
+                Version of the current imported SaaS Application Type Master List.
+
+                
+                This attribute is named `importedSaaSApplicationsVersion` in VSD API.
+                
+        """
+        return self._imported_saa_s_applications_version
+
+    @imported_saa_s_applications_version.setter
+    def imported_saa_s_applications_version(self, value):
+        """ Set imported_saa_s_applications_version value.
+
+            Notes:
+                Version of the current imported SaaS Application Type Master List.
+
+                
+                This attribute is named `importedSaaSApplicationsVersion` in VSD API.
+                
+        """
+        self._imported_saa_s_applications_version = value
+
+    
+    @property
     def inactive_timeout(self):
         """ Get inactive_timeout value.
 
@@ -2513,6 +2575,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._domain_tunnel_type = value
+
+    
+    @property
+    def google_maps_api_key(self):
+        """ Get google_maps_api_key value.
+
+            Notes:
+                Google Maps API Key used to display maps on Nuage UI applications
+
+                
+                This attribute is named `googleMapsAPIKey` in VSD API.
+                
+        """
+        return self._google_maps_api_key
+
+    @google_maps_api_key.setter
+    def google_maps_api_key(self, value):
+        """ Set google_maps_api_key value.
+
+            Notes:
+                Google Maps API Key used to display maps on Nuage UI applications
+
+                
+                This attribute is named `googleMapsAPIKey` in VSD API.
+                
+        """
+        self._google_maps_api_key = value
 
     
     @property

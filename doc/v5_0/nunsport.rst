@@ -26,6 +26,8 @@ Attributes
 
 - ``description``: A description of the Port
 
+- ``shunt_port``: Identifies a Port instance on which a VLAN is shunted.  Ports of type Network are the only one that supports being in Shunt mode. Shunted ports are only relevant when NSGs are in redundant mode.
+
 - ``physical_name`` (**Mandatory**): Identifier of the Port
 
 - ``enable_nat_probes``: If enabled, probes will be sent to other NSGs and DTLS sessions for IPSEC and VXLAN will be set up to the VSCs. If disabled, no NAT probes are sent on that uplink and no DTLS sessions are set up to the VSCs.

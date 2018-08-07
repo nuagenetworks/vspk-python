@@ -5,12 +5,16 @@ nul4service
 
 .. class:: nul4service.NUL4Service(bambou.nurest_object.NUMetaRESTObject,):
 
-L4 Service is a port range and protocol combination that can be used in ACLs
+Service is a port range and protocol combination that can be used in ACLs
 
 
 Attributes
 ----------
 
+
+- ``icmp_code``: The ICMP Code when protocol selected is ICMP.
+
+- ``icmp_type``: The ICMP Type when protocol selected is ICMP.
 
 - ``name`` (**Mandatory**): Name of the service
 

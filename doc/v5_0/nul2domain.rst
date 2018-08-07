@@ -58,6 +58,8 @@ Attributes
 
 - ``route_target``: Route target that is used by the BGP-EVPN protocol in VSC. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
+- ``routed_vpls_enabled``: Determines whether routed VPLS services are enabled on this domain.
+
 - ``uplink_preference``: Indicates the preferencial path selection for network traffic in this domain - Default is Primary 1 and Secondary 2. Possible values are PRIMARY_SECONDARY, SECONDARY_PRIMARY, PRIMARY, SECONDARY, SYMMETRIC, .
 
 - ``use_global_mac``: Enable this flag to use system configured globalMACAddress as the gateway mac address for managed l2 domains
@@ -113,8 +115,10 @@ Children
 :ref:`nuuplinkrd.NUUplinkRD<nuuplinkrd>`                                                                                                                         ``uplink_rds`` 
 :ref:`nuvpnconnection.NUVPNConnection<nuvpnconnection>`                                                                                                          ``vpn_connections`` 
 :ref:`nuvport.NUVPort<nuvport>`                                                                                                                                  ``vports`` 
+:ref:`nuapplicationperformancemanagementbinding.NUApplicationperformancemanagementbinding<nuapplicationperformancemanagementbinding>`                            ``applicationperformancemanagementbindings`` 
 :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`                                                                                                    ``bridge_interfaces`` 
 :ref:`nugroup.NUGroup<nugroup>`                                                                                                                                  ``groups`` 
+:ref:`nunsgatewaysummary.NUNSGatewaySummary<nunsgatewaysummary>`                                                                                                 ``ns_gateway_summaries`` 
 :ref:`nustatistics.NUStatistics<nustatistics>`                                                                                                                   ``statistics`` 
 :ref:`nustatisticspolicy.NUStatisticsPolicy<nustatisticspolicy>`                                                                                                 ``statistics_policies`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
@@ -126,6 +130,8 @@ Children
 Parents
 --------
 
+
+- :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nume.NUMe<nume>`
 

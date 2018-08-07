@@ -95,9 +95,9 @@ Parents
 --------
 
 
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nupatmapper.NUPATMapper<nupatmapper>`
+
+- :ref:`nume.NUMe<nume>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

@@ -5,7 +5,7 @@ nuikegatewayprofile
 
 .. class:: nuikegatewayprofile.NUIKEGatewayProfile(bambou.nurest_object.NUMetaRESTObject,):
 
-Represents an IKE Gateway
+Define attributes of the remote IKE gateway.
 
 
 Attributes

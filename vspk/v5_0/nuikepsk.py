@@ -40,7 +40,7 @@ class NUIKEPSK(NURESTObject):
     """ Represents a IKEPSK in the VSD
 
         Notes:
-            Represents an IKE Pre Shared Key
+            Shared secret used during the authentication phase of IKE protocol.
     """
 
     __rest_name__ = "ikepsk"

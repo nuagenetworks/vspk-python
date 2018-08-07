@@ -143,6 +143,7 @@ class NUNSPort(NURESTObject):
         self._template_id = None
         self._permitted_action = None
         self._description = None
+        self._shunt_port = None
         self._physical_name = None
         self._enable_nat_probes = None
         self._entity_scope = None
@@ -164,6 +165,7 @@ class NUNSPort(NURESTObject):
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="shunt_port", remote_name="shuntPort", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="enable_nat_probes", remote_name="enableNATProbes", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -395,6 +397,33 @@ class NUNSPort(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def shunt_port(self):
+        """ Get shunt_port value.
+
+            Notes:
+                Identifies a Port instance on which a VLAN is shunted.  Ports of type Network are the only one that supports being in Shunt mode. Shunted ports are only relevant when NSGs are in redundant mode.
+
+                
+                This attribute is named `shuntPort` in VSD API.
+                
+        """
+        return self._shunt_port
+
+    @shunt_port.setter
+    def shunt_port(self, value):
+        """ Set shunt_port value.
+
+            Notes:
+                Identifies a Port instance on which a VLAN is shunted.  Ports of type Network are the only one that supports being in Shunt mode. Shunted ports are only relevant when NSGs are in redundant mode.
+
+                
+                This attribute is named `shuntPort` in VSD API.
+                
+        """
+        self._shunt_port = value
 
     
     @property

@@ -40,7 +40,7 @@ class NUPATMapper(NURESTObject):
     """ Represents a PATMapper in the VSD
 
         Notes:
-            missing documentation.
+            PAT Mapper is a construct which will be associated with 1-N FIP Domains
     """
 
     __rest_name__ = "patmapper"

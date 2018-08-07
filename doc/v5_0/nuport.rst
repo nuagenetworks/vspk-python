@@ -28,7 +28,7 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``port_type`` (**Mandatory**): Type of the Port.
+- ``port_type`` (**Mandatory**): Type of the Port. Possible values are ACCESS, NETWORK, MANAGEMENT.
 
 - ``is_resilient``: States if this port instance is resilient (redundant).  An example would be a Multi-Chassis LAG port.
 

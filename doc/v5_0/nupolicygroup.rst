@@ -26,6 +26,10 @@ Attributes
 
 - ``policy_group_id``: PG ID for the subnet. This is unique per domain and will be in the range 1-4095
 
+- ``assoc_policy_group_category_id``: UUID of the associated Policy Group Category for contextual filtering of policy groups.
+
+- ``assoc_policy_group_category_name``: Name of the Policy Group Category used for contextual filtering of policy groups.
+
 - ``external``: Indicates whether this PG is internal to VSP or not.
 
 - ``external_id``: External object ID. Used for integration with third party systems
@@ -55,13 +59,15 @@ Parents
 
 - :ref:`nucontainerinterface.NUContainerInterface<nucontainerinterface>`
 
+- :ref:`nudomain.NUDomain<nudomain>`
+
 - :ref:`nuvport.NUVPort<nuvport>`
+
+- :ref:`nupolicygroupcategory.NUPolicyGroupCategory<nupolicygroupcategory>`
 
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
 
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 

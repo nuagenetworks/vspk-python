@@ -16,11 +16,19 @@ Attributes
 
 - ``dns_address``: DNS server address
 
+- ``dns_address_v6``: IPv6 DNS server address
+
 - ``password``: PPPoE password.
 
 - ``gateway``: IP address of the gateway bound to the port
 
+- ``gateway_v6``: IPv6 address of the gateway bound to the port.
+
 - ``address``: IP address for static configuration
+
+- ``address_family``: IP address family of this UplinkConnection
+
+- ``address_v6``: IPv6 address for static configuration
 
 - ``advertisement_criteria``: Advertisement Criteria for Traffic Flow
 

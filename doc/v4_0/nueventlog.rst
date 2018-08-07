@@ -89,13 +89,11 @@ Parents
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
-- :ref:`numetadata.NUMetadata<numetadata>`
-
 - :ref:`nuvsp.NUVSP<nuvsp>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
 
-- :ref:`nuvsc.NUVSC<nuvsc>`
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nuvsd.NUVSD<nuvsd>`
 
@@ -111,6 +109,8 @@ Parents
 
 - :ref:`nuzonetemplate.NUZoneTemplate<nuzonetemplate>`
 
+- :ref:`numetadata.NUMetadata<numetadata>`
+
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
 - :ref:`nuhsc.NUHSC<nuhsc>`
@@ -120,8 +120,6 @@ Parents
 - :ref:`nustaticroute.NUStaticRoute<nustaticroute>`
 
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
-
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nulicense.NULicense<nulicense>`
 
@@ -148,6 +146,8 @@ Parents
 - :ref:`nudhcpoption.NUDHCPOption<nudhcpoption>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
+
+- :ref:`nuvsc.NUVSC<nuvsc>`
 
 - :ref:`nuvm.NUVM<nuvm>`
 

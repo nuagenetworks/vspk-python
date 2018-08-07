@@ -37,7 +37,7 @@ class NUL4ServiceGroup(NURESTObject):
     """ Represents a L4ServiceGroup in the VSD
 
         Notes:
-            L4 Service Group is a set of L4 Services that can be used in ACLs.
+            Service Group is a set of Services that can be used in ACLs.
     """
 
     __rest_name__ = "l4servicegroup"
@@ -97,7 +97,7 @@ class NUL4ServiceGroup(NURESTObject):
         """ Get name value.
 
             Notes:
-                Name of the L4 Services group
+                Name of the Service group
 
                 
         """
@@ -108,7 +108,7 @@ class NUL4ServiceGroup(NURESTObject):
         """ Set name value.
 
             Notes:
-                Name of the L4 Services group
+                Name of the Service group
 
                 
         """
@@ -147,7 +147,7 @@ class NUL4ServiceGroup(NURESTObject):
         """ Get description value.
 
             Notes:
-                Describes the L4 Service Group
+                Describes the Service Group
 
                 
         """
@@ -158,7 +158,7 @@ class NUL4ServiceGroup(NURESTObject):
         """ Set description value.
 
             Notes:
-                Describes the L4 Service Group
+                Describes the Service Group
 
                 
         """

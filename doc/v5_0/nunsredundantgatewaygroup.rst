@@ -18,11 +18,15 @@ Attributes
 
 - ``gateway_peer1_autodiscovered_gateway_id``: The Auto Discovered Gateway configuration owner in this Redundant Group. 
 
+- ``gateway_peer1_connected``: Indicates status of the authoritative gateway of this Redundancy Group.
+
 - ``gateway_peer1_id``: The gateway configuration owner in this Redundant Group. when Redundant Group is deleted this gateway will recieve vport associations 
 
 - ``gateway_peer1_name``: The name of the authoritative gateway owning the configuration for the Redundant Group
 
 - ``gateway_peer2_autodiscovered_gateway_id``: The Auto Discovered Gateway configuration for the secondary gateway in this Redundant Group.
+
+- ``gateway_peer2_connected``: Indicates status of the secondary gateway of this Redundancy Group.
 
 - ``gateway_peer2_id``: The gateway peer in this Redundant Group. when Redundant Group is deleted this gateway will not recieve vport associations
 
@@ -60,6 +64,7 @@ Children
 **class**                                                                                                                                                      **fetcher**
 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nushuntlink.NUShuntLink<nushuntlink>`                                                                                                                      ``shunt_links`` 
 :ref:`nualarm.NUAlarm<nualarm>`                                                                                                                                  ``alarms`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nunsgateway.NUNSGateway<nunsgateway>`                                                                                                                      ``ns_gateways`` 

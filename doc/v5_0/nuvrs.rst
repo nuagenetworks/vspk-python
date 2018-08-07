@@ -131,6 +131,7 @@ Children
 :ref:`nuvport.NUVPort<nuvport>`                                                                                                                                  ``vports`` 
 :ref:`nuhsc.NUHSC<nuhsc>`                                                                                                                                        ``hscs`` 
 :ref:`nuvsc.NUVSC<nuvsc>`                                                                                                                                        ``vscs`` 
+:ref:`nustatistics.NUStatistics<nustatistics>`                                                                                                                   ``statistics`` 
 :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`                                                                                                          ``multi_nic_vports`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
 ================================================================================================================================================               ==========================================================================================

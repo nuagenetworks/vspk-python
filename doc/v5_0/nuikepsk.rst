@@ -5,7 +5,7 @@ nuikepsk
 
 .. class:: nuikepsk.NUIKEPSK(bambou.nurest_object.NUMetaRESTObject,):
 
-Represents an IKE Pre Shared Key
+Shared secret used during the authentication phase of IKE protocol.
 
 
 Attributes

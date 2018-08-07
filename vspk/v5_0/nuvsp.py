@@ -31,6 +31,9 @@
 from .fetchers import NUMetadatasFetcher
 
 
+from .fetchers import NUNetconfManagersFetcher
+
+
 from .fetchers import NUGlobalMetadatasFetcher
 
 
@@ -105,6 +108,9 @@ class NUVSP(NURESTObject):
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.netconf_managers = NUNetconfManagersFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")

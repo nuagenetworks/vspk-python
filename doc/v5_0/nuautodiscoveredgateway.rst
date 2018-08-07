@@ -16,7 +16,7 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``gateway_id``: The Gateway associated with this  Auto Discovered Gateway  . This is a read only attribute
+- ``gateway_id``: The Gateway associated with this Auto Discovered Gateway. This is a read only attribute
 
 - ``peer``: The System ID of the peer gateway associated with this Gateway instance when it is discovered by the network manager (VSD) as being redundant.
 

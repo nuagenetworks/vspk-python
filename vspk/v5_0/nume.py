@@ -76,6 +76,9 @@ from .fetchers import NUCertificatesFetcher
 from .fetchers import NUMetadatasFetcher
 
 
+from .fetchers import NUNetconfProfilesFetcher
+
+
 from .fetchers import NUNetworkLayoutsFetcher
 
 
@@ -152,6 +155,9 @@ from .fetchers import NUVNFMetadatasFetcher
 
 
 from .fetchers import NUInfrastructureAccessProfilesFetcher
+
+
+from .fetchers import NUInfrastructureEVDFProfilesFetcher
 
 
 from .fetchers import NUInfrastructureGatewayProfilesFetcher
@@ -408,6 +414,9 @@ class NUMe(NURESTRootObject):
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.netconf_profiles = NUNetconfProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.network_layouts = NUNetworkLayoutsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -484,6 +493,9 @@ class NUMe(NURESTRootObject):
         
         
         self.infrastructure_access_profiles = NUInfrastructureAccessProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.infrastructure_evdf_profiles = NUInfrastructureEVDFProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.infrastructure_gateway_profiles = NUInfrastructureGatewayProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")

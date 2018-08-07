@@ -54,6 +54,8 @@ class NUPortTemplate(NURESTObject):
     
     CONST_PORT_TYPE_NETWORK = "NETWORK"
     
+    CONST_PORT_TYPE_MANAGEMENT = "MANAGEMENT"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_PORT_TYPE_ACCESS = "ACCESS"
@@ -95,7 +97,7 @@ class NUPortTemplate(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'NETWORK'])
+        self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'MANAGEMENT', u'NETWORK'])
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
@@ -275,7 +277,7 @@ class NUPortTemplate(NURESTObject):
         """ Get port_type value.
 
             Notes:
-                Type of the Port - NETWORK, ACCESS Possible values are ACCESS, NETWORK, .
+                Type of the Port. Possible values are ACCESS, NETWORK, MANAGEMENT.
 
                 
                 This attribute is named `portType` in VSD API.
@@ -288,7 +290,7 @@ class NUPortTemplate(NURESTObject):
         """ Set port_type value.
 
             Notes:
-                Type of the Port - NETWORK, ACCESS Possible values are ACCESS, NETWORK, .
+                Type of the Port. Possible values are ACCESS, NETWORK, MANAGEMENT.
 
                 
                 This attribute is named `portType` in VSD API.

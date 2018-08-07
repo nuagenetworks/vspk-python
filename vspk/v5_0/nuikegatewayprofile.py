@@ -40,7 +40,7 @@ class NUIKEGatewayProfile(NURESTObject):
     """ Represents a IKEGatewayProfile in the VSD
 
         Notes:
-            Represents an IKE Gateway
+            Define attributes of the remote IKE gateway.
     """
 
     __rest_name__ = "ikegatewayprofile"

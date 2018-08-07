@@ -16,9 +16,15 @@ Attributes
 
 - ``aar_probe_stats_interval``: Interval for AAR probe stats
 
+- ``vss_feature_enabled``: Flag to indicate if VSS feature is enabled.
+
 - ``vss_stats_interval``: Interval for VSS stats
 
+- ``page_size``: Result size for queries
+
 - ``flow_collection_enabled``: Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires 'statisticsEnabled'.
+
+- ``google_maps_api_key``: Google Maps API Key used to display maps on Nuage UI applications
 
 - ``statistics_enabled``: This flag is used to indicate if statistics is enabled in the system. CSProot is expected to activate this through the enable statistics script.
 

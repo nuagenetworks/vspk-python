@@ -5,7 +5,7 @@ nutrunk
 
 .. class:: nutrunk.NUTrunk(bambou.nurest_object.NUMetaRESTObject,):
 
-Trunk is an object that is an aggregator of sub-vports corresponding to segmentation-ids (vlans) in a trunk
+A trunk is used to attach multiple vPorts to a single NIC on a VM. These sub-vPorts are separated by a segmentation identifier (currently the VLAN ID) so the attached VM can distinguish between traffic on the sub-vPorts.
 
 
 Attributes

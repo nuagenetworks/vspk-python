@@ -40,7 +40,7 @@ class NUInfrastructureVscProfile(NURESTObject):
     """ Represents a InfrastructureVscProfile in the VSD
 
         Notes:
-            Represents an Infrastructure VSC Profile.
+            Infrastructure VSC Profiles identify a set of controllers which will be used to connect bootstrapped NSGs.
     """
 
     __rest_name__ = "infrastructurevscprofile"
@@ -49,7 +49,13 @@ class NUInfrastructureVscProfile(NURESTObject):
     
     ## Constants
     
+    CONST_ADDRESS_FAMILY_DUALSTACK = "DUALSTACK"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ADDRESS_FAMILY_IPV6 = "IPV6"
+    
+    CONST_ADDRESS_FAMILY_IPV4 = "IPV4"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
@@ -74,9 +80,12 @@ class NUInfrastructureVscProfile(NURESTObject):
         
         self._name = None
         self._last_updated_by = None
+        self._address_family = None
         self._second_controller = None
+        self._second_controller_v6 = None
         self._description = None
         self._first_controller = None
+        self._first_controller_v6 = None
         self._enterprise_id = None
         self._entity_scope = None
         self._probe_interval = None
@@ -84,9 +93,12 @@ class NUInfrastructureVscProfile(NURESTObject):
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="address_family", remote_name="addressFamily", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="second_controller", remote_name="secondController", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="second_controller_v6", remote_name="secondControllerV6", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="first_controller", remote_name="firstController", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="first_controller_v6", remote_name="firstControllerV6", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="probe_interval", remote_name="probeInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -157,6 +169,33 @@ class NUInfrastructureVscProfile(NURESTObject):
 
     
     @property
+    def address_family(self):
+        """ Get address_family value.
+
+            Notes:
+                The type of IP address used in the identification of the active and standby controllers.
+
+                
+                This attribute is named `addressFamily` in VSD API.
+                
+        """
+        return self._address_family
+
+    @address_family.setter
+    def address_family(self, value):
+        """ Set address_family value.
+
+            Notes:
+                The type of IP address used in the identification of the active and standby controllers.
+
+                
+                This attribute is named `addressFamily` in VSD API.
+                
+        """
+        self._address_family = value
+
+    
+    @property
     def second_controller(self):
         """ Get second_controller value.
 
@@ -181,6 +220,33 @@ class NUInfrastructureVscProfile(NURESTObject):
                 
         """
         self._second_controller = value
+
+    
+    @property
+    def second_controller_v6(self):
+        """ Get second_controller_v6 value.
+
+            Notes:
+                Second VSC Controller:  IPv6 address of the secondary VSC system NSG instances associated to this profile will be reaching for.
+
+                
+                This attribute is named `secondControllerV6` in VSD API.
+                
+        """
+        return self._second_controller_v6
+
+    @second_controller_v6.setter
+    def second_controller_v6(self, value):
+        """ Set second_controller_v6 value.
+
+            Notes:
+                Second VSC Controller:  IPv6 address of the secondary VSC system NSG instances associated to this profile will be reaching for.
+
+                
+                This attribute is named `secondControllerV6` in VSD API.
+                
+        """
+        self._second_controller_v6 = value
 
     
     @property
@@ -231,6 +297,33 @@ class NUInfrastructureVscProfile(NURESTObject):
                 
         """
         self._first_controller = value
+
+    
+    @property
+    def first_controller_v6(self):
+        """ Get first_controller_v6 value.
+
+            Notes:
+                First VSC Controller: IPv6 address of the first VSC system NSG instances associated to this profile will be reaching for.
+
+                
+                This attribute is named `firstControllerV6` in VSD API.
+                
+        """
+        return self._first_controller_v6
+
+    @first_controller_v6.setter
+    def first_controller_v6(self, value):
+        """ Set first_controller_v6 value.
+
+            Notes:
+                First VSC Controller: IPv6 address of the first VSC system NSG instances associated to this profile will be reaching for.
+
+                
+                This attribute is named `firstControllerV6` in VSD API.
+                
+        """
+        self._first_controller_v6 = value
 
     
     @property

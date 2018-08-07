@@ -5,7 +5,7 @@ nuvnfthresholdpolicy
 
 .. class:: nuvnfthresholdpolicy.NUVNFThresholdPolicy(bambou.nurest_object.NUMetaRESTObject,):
 
-Represents thresholds for resources consumed by VNF instance running on NS Gateway and action to be taken when resource utilization crosses configured thresholds.
+VNF Threshold Policy represents thresholds for resources consumed by VNF instance running on NS Gateway and action to be taken when resource utilization crosses configured thresholds.
 
 
 Attributes

@@ -5,7 +5,7 @@ nupatmapper
 
 .. class:: nupatmapper.NUPATMapper(bambou.nurest_object.NUMetaRESTObject,):
 
-missing documentation.
+PAT Mapper is a construct which will be associated with 1-N FIP Domains
 
 
 Attributes

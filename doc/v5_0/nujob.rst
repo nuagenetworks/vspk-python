@@ -49,7 +49,9 @@ Parents
 --------
 
 
-- :ref:`nuvsd.NUVSD<nuvsd>`
+- :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
@@ -60,8 +62,6 @@ Parents
 - :ref:`nuzfbrequest.NUZFBRequest<nuzfbrequest>`
 
 - :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
@@ -74,6 +74,8 @@ Parents
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
 - :ref:`nuvsc.NUVSC<nuvsc>`
+
+- :ref:`nuvsd.NUVSD<nuvsd>`
 
 - :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
 

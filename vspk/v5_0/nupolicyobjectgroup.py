@@ -37,7 +37,7 @@ class NUPolicyObjectGroup(NURESTObject):
     """ Represents a PolicyObjectGroup in the VSD
 
         Notes:
-            None
+            Policy Object Groups are a collection of existing Network Services Gateways. These groups can be used in routing policies for domain links.
     """
 
     __rest_name__ = "policyobjectgroup"

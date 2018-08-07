@@ -76,6 +76,8 @@ Attributes
 
 - ``secondary_data_uplink_underlay_id``: Secondary data uplink underlay ID
 
+- ``secondary_data_uplink_vdf_control_vlan``: The VLAN for the control communication with VSC on the secondary datapath interface, when VDF is enabled. This VLAN can not be used as a subnet VLAN in the VSD configuration.
+
 - ``secondary_nuage_controller``: IP address of the secondary Controller (VSC)
 
 - ``memory_size_in_gb``: Memory in Gigabytes
@@ -94,7 +96,7 @@ Attributes
 
 - ``deployment_count``: The number of times the vrs was deployed on this hypervisor
 
-- ``personality``: VRS/VRS-G
+- ``personality``: The personality of the VRS Agent, supported values when deploying through the vCenter Integration Node: VRS, VDF.
 
 - ``description`` (**Mandatory**): Description of the Hypervisor
 
@@ -213,6 +215,8 @@ Attributes
 - ``cpu_count``: The number of vCPUs that will be assigned to the VRS.
 
 - ``primary_data_uplink_underlay_id``: Primary data uplink underlay ID
+
+- ``primary_data_uplink_vdf_control_vlan``: The VLAN for the control communication with VSC on the primary datapath interface, when VDF is enabled. This VLAN can not be used as a subnet VLAN in the VSD configuration.
 
 - ``primary_nuage_controller``: IP address of the primary Controller (VSC)
 

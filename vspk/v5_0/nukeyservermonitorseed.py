@@ -58,7 +58,7 @@ class NUKeyServerMonitorSeed(NURESTObject):
     
     CONST_SEED_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA1 = "HMAC_SHA1"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_SEED_TYPE_DR = "DR"
     
     CONST_SEED_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA384 = "HMAC_SHA384"
     
@@ -69,6 +69,10 @@ class NUKeyServerMonitorSeed(NURESTObject):
     CONST_SEED_TRAFFIC_ENCRYPTION_ALGORITHM_AES_192_CBC = "AES_192_CBC"
     
     CONST_SEED_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_MD5 = "HMAC_MD5"
+    
+    CONST_SEED_TYPE_STANDARD = "STANDARD"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
@@ -97,6 +101,7 @@ class NUKeyServerMonitorSeed(NURESTObject):
         self._seed_traffic_authentication_algorithm = None
         self._seed_traffic_encryption_algorithm = None
         self._seed_traffic_encryption_key_lifetime = None
+        self._seed_type = None
         self._lifetime = None
         self._entity_scope = None
         self._creation_time = None
@@ -107,6 +112,7 @@ class NUKeyServerMonitorSeed(NURESTObject):
         self.expose_attribute(local_name="seed_traffic_authentication_algorithm", remote_name="seedTrafficAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_MD5', u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA384', u'HMAC_SHA512'])
         self.expose_attribute(local_name="seed_traffic_encryption_algorithm", remote_name="seedTrafficEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES_128_CBC', u'AES_192_CBC', u'AES_256_CBC', u'TRIPLE_DES_CBC'])
         self.expose_attribute(local_name="seed_traffic_encryption_key_lifetime", remote_name="seedTrafficEncryptionKeyLifetime", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="seed_type", remote_name="seedType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DR', u'STANDARD'])
         self.expose_attribute(local_name="lifetime", remote_name="lifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="creation_time", remote_name="creationTime", attribute_type=int, is_required=False, is_unique=False)
@@ -236,6 +242,33 @@ class NUKeyServerMonitorSeed(NURESTObject):
                 
         """
         self._seed_traffic_encryption_key_lifetime = value
+
+    
+    @property
+    def seed_type(self):
+        """ Get seed_type value.
+
+            Notes:
+                Indicates if this is a Standard (or) a Disaster Recovery seed.
+
+                
+                This attribute is named `seedType` in VSD API.
+                
+        """
+        return self._seed_type
+
+    @seed_type.setter
+    def seed_type(self, value):
+        """ Set seed_type value.
+
+            Notes:
+                Indicates if this is a Standard (or) a Disaster Recovery seed.
+
+                
+                This attribute is named `seedType` in VSD API.
+                
+        """
+        self._seed_type = value
 
     
     @property

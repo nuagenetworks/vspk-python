@@ -48,6 +48,12 @@ Attributes
 
 - ``associated_enterprise_name``: Name of the associated enterprise
 
+- ``associated_entity_type``: Associated Entity Type: NSGATEWAY or GATEWAY
+
+- ``associated_gateway_id``: ID of the assigned Gateway
+
+- ``associated_gateway_name``: Name of the associated Gateway
+
 - ``associated_ns_gateway_id``: ID of the assigned NSG
 
 - ``associated_ns_gateway_name``: Name of the associated NSG

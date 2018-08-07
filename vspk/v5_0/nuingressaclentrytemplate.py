@@ -86,6 +86,8 @@ class NUIngressACLEntryTemplate(NURESTObject):
     
     CONST_NETWORK_TYPE_UNDERLAY_INTERNET_POLICYGROUP = "UNDERLAY_INTERNET_POLICYGROUP"
     
+    CONST_NETWORK_TYPE_SAAS_APPLICATION_GROUP = "SAAS_APPLICATION_GROUP"
+    
     CONST_NETWORK_TYPE_ENDPOINT_SUBNET = "ENDPOINT_SUBNET"
     
     CONST_LOCATION_TYPE_SUBNET = "SUBNET"
@@ -166,7 +168,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'NETWORK_MACRO_GROUP', u'PGEXPRESSION', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'UNDERLAY_INTERNET_POLICYGROUP', u'ZONE'])
+        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'NETWORK_MACRO_GROUP', u'PGEXPRESSION', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SAAS_APPLICATION_GROUP', u'SUBNET', u'UNDERLAY_INTERNET_POLICYGROUP', u'ZONE'])
         self.expose_attribute(local_name="mirror_destination_id", remote_name="mirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_logging_enabled", remote_name="flowLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
@@ -870,7 +872,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         """ Get associated_traffic_type value.
 
             Notes:
-                This property reflects the type of traffic in case an ACL entry is created using an L4 Service or L4 Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
+                This property reflects the type of traffic in case an ACL entry is created using an Service or Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
 
                 
                 This attribute is named `associatedTrafficType` in VSD API.
@@ -883,7 +885,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         """ Set associated_traffic_type value.
 
             Notes:
-                This property reflects the type of traffic in case an ACL entry is created using an L4 Service or L4 Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
+                This property reflects the type of traffic in case an ACL entry is created using an Service or Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
 
                 
                 This attribute is named `associatedTrafficType` in VSD API.
@@ -897,7 +899,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         """ Get associated_traffic_type_id value.
 
             Notes:
-                If a traffic type is specified as L4 Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
+                If a traffic type is specified as Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
 
                 
                 This attribute is named `associatedTrafficTypeID` in VSD API.
@@ -910,7 +912,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         """ Set associated_traffic_type_id value.
 
             Notes:
-                If a traffic type is specified as L4 Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
+                If a traffic type is specified as Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
 
                 
                 This attribute is named `associatedTrafficTypeID` in VSD API.

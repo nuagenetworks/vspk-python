@@ -61,11 +61,15 @@ class NUPolicyEntry(NURESTObject):
         
         self._name = None
         self._match_criteria = None
+        self._match_overlay_address_pool_id = None
+        self._match_policy_object_group_id = None
         self._actions = None
         self._description = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="match_criteria", remote_name="matchCriteria", attribute_type=dict, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="match_overlay_address_pool_id", remote_name="matchOverlayAddressPoolID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="match_policy_object_group_id", remote_name="matchPolicyObjectGroupID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="actions", remote_name="actions", attribute_type=dict, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         
@@ -122,6 +126,60 @@ class NUPolicyEntry(NURESTObject):
                 
         """
         self._match_criteria = value
+
+    
+    @property
+    def match_overlay_address_pool_id(self):
+        """ Get match_overlay_address_pool_id value.
+
+            Notes:
+                ID of Overlay Address Pool for this Policy Entry.
+
+                
+                This attribute is named `matchOverlayAddressPoolID` in VSD API.
+                
+        """
+        return self._match_overlay_address_pool_id
+
+    @match_overlay_address_pool_id.setter
+    def match_overlay_address_pool_id(self, value):
+        """ Set match_overlay_address_pool_id value.
+
+            Notes:
+                ID of Overlay Address Pool for this Policy Entry.
+
+                
+                This attribute is named `matchOverlayAddressPoolID` in VSD API.
+                
+        """
+        self._match_overlay_address_pool_id = value
+
+    
+    @property
+    def match_policy_object_group_id(self):
+        """ Get match_policy_object_group_id value.
+
+            Notes:
+                ID of Policy Object Group where this Policy Entry belongs.
+
+                
+                This attribute is named `matchPolicyObjectGroupID` in VSD API.
+                
+        """
+        return self._match_policy_object_group_id
+
+    @match_policy_object_group_id.setter
+    def match_policy_object_group_id(self, value):
+        """ Set match_policy_object_group_id value.
+
+            Notes:
+                ID of Policy Object Group where this Policy Entry belongs.
+
+                
+                This attribute is named `matchPolicyObjectGroupID` in VSD API.
+                
+        """
+        self._match_policy_object_group_id = value
 
     
     @property

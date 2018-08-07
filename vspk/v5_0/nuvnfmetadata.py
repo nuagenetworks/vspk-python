@@ -34,7 +34,7 @@ class NUVNFMetadata(NURESTObject):
     """ Represents a VNFMetadata in the VSD
 
         Notes:
-            None
+            The VNF deployment properties that includes the location of the image, bootstrap config and rest of the libvirt domain XML template defined as text file.
     """
 
     __rest_name__ = "vnfmetadata"

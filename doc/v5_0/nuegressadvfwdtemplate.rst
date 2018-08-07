@@ -5,7 +5,7 @@ nuegressadvfwdtemplate
 
 .. class:: nuegressadvfwdtemplate.NUEgressAdvFwdTemplate(bambou.nurest_object.NUMetaRESTObject,):
 
-Defines the template for an Egress Advanced Forwarding.
+A group of egress forwarding policy rules. Each group can have priority which defines the order in which the egress forwarding policy rules are applied. The rules itself are used to redirect traffic or change the forwarding class of the traffic.
 
 
 Attributes

@@ -112,10 +112,16 @@ from .fetchers import NUVPNConnectionsFetcher
 from .fetchers import NUVPortsFetcher
 
 
+from .fetchers import NUApplicationperformancemanagementbindingsFetcher
+
+
 from .fetchers import NUBridgeInterfacesFetcher
 
 
 from .fetchers import NUGroupsFetcher
+
+
+from .fetchers import NUNSGatewaySummariesFetcher
 
 
 from .fetchers import NUStatisticsFetcher
@@ -245,6 +251,7 @@ class NUL2Domain(NURESTObject):
         self._policy_change_status = None
         self._route_distinguisher = None
         self._route_target = None
+        self._routed_vpls_enabled = None
         self._uplink_preference = None
         self._use_global_mac = None
         self._associated_multicast_channel_map_id = None
@@ -278,6 +285,7 @@ class NUL2Domain(NURESTObject):
         self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'DISCARDED', u'STARTED'])
         self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="route_target", remote_name="routeTarget", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="routed_vpls_enabled", remote_name="routedVPLSEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
         self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED ', u'ENABLED'])
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
@@ -376,10 +384,16 @@ class NUL2Domain(NURESTObject):
         self.vports = NUVPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.applicationperformancemanagementbindings = NUApplicationperformancemanagementbindingsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.bridge_interfaces = NUBridgeInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ns_gateway_summaries = NUNSGatewaySummariesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -993,6 +1007,33 @@ class NUL2Domain(NURESTObject):
                 
         """
         self._route_target = value
+
+    
+    @property
+    def routed_vpls_enabled(self):
+        """ Get routed_vpls_enabled value.
+
+            Notes:
+                Determines whether routed VPLS services are enabled on this domain.
+
+                
+                This attribute is named `routedVPLSEnabled` in VSD API.
+                
+        """
+        return self._routed_vpls_enabled
+
+    @routed_vpls_enabled.setter
+    def routed_vpls_enabled(self, value):
+        """ Set routed_vpls_enabled value.
+
+            Notes:
+                Determines whether routed VPLS services are enabled on this domain.
+
+                
+                This attribute is named `routedVPLSEnabled` in VSD API.
+                
+        """
+        self._routed_vpls_enabled = value
 
     
     @property

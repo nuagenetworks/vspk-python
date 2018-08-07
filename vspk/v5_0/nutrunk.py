@@ -37,7 +37,7 @@ class NUTrunk(NURESTObject):
     """ Represents a Trunk in the VSD
 
         Notes:
-            Trunk is an object that is an aggregator of sub-vports corresponding to segmentation-ids (vlans) in a trunk
+            A trunk is used to attach multiple vPorts to a single NIC on a VM. These sub-vPorts are separated by a segmentation identifier (currently the VLAN ID) so the attached VM can distinguish between traffic on the sub-vPorts.
     """
 
     __rest_name__ = "trunk"

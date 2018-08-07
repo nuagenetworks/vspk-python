@@ -40,7 +40,7 @@ class NUEgressQOSPolicy(NURESTObject):
     """ Represents a EgressQOSPolicy in the VSD
 
         Notes:
-            The object manipulates Egress QoS parameters attached to a Access Port / VLAN or Network port.
+            An Egress QoS Policy is a policy that groups rate-limiting profiles, traffic directionality and classifiers to govern the rate of traffic being sent or received by an end-host or application.
     """
 
     __rest_name__ = "egressqospolicy"

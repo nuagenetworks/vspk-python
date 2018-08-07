@@ -49,6 +49,9 @@ from .fetchers import NUMonitoringPortsFetcher
 from .fetchers import NUVRSsFetcher
 
 
+from .fetchers import NUStatisticsFetcher
+
+
 from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
@@ -165,6 +168,9 @@ class NUVSC(NURESTObject):
         
         
         self.vrss = NUVRSsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")

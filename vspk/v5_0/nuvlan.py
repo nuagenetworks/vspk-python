@@ -145,6 +145,7 @@ class NUVLAN(NURESTObject):
         self._permitted_action = None
         self._description = None
         self._restricted = None
+        self._shunt_vlan = None
         self._entity_scope = None
         self._vport_id = None
         self._is_uplink = None
@@ -171,6 +172,7 @@ class NUVLAN(NURESTObject):
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="restricted", remote_name="restricted", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="shunt_vlan", remote_name="shuntVLAN", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="vport_id", remote_name="vportID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="is_uplink", remote_name="isUplink", attribute_type=bool, is_required=False, is_unique=False)
@@ -434,6 +436,33 @@ class NUVLAN(NURESTObject):
                 
         """
         self._restricted = value
+
+    
+    @property
+    def shunt_vlan(self):
+        """ Get shunt_vlan value.
+
+            Notes:
+                A flag to mark this instance of a VLAN as a candidate to be a termination point of a Shunt Link.  Only VLANs residing on a Network Port can have this attribute set to true.
+
+                
+                This attribute is named `shuntVLAN` in VSD API.
+                
+        """
+        return self._shunt_vlan
+
+    @shunt_vlan.setter
+    def shunt_vlan(self, value):
+        """ Set shunt_vlan value.
+
+            Notes:
+                A flag to mark this instance of a VLAN as a candidate to be a termination point of a Shunt Link.  Only VLANs residing on a Network Port can have this attribute set to true.
+
+                
+                This attribute is named `shuntVLAN` in VSD API.
+                
+        """
+        self._shunt_vlan = value
 
     
     @property

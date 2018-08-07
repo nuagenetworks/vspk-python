@@ -43,7 +43,7 @@ class NUGatewayTemplate(NURESTObject):
     """ Represents a GatewayTemplate in the VSD
 
         Notes:
-            Represents Gateway Template object.
+            A gateway is your point of exit to an external network. It can be a physical or a virtual device. Gateways are templatable. You can attach gateway's VLANs to any existing host or bridge VPorts.
     """
 
     __rest_name__ = "gatewaytemplate"
@@ -54,7 +54,11 @@ class NUGatewayTemplate(NURESTObject):
     
     CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
     
+    CONST_PERSONALITY_EVDFB = "EVDFB"
+    
     CONST_PERSONALITY_VSA = "VSA"
+    
+    CONST_PERSONALITY_VRSB = "VRSB"
     
     CONST_PERSONALITY_VSG = "VSG"
     
@@ -62,9 +66,11 @@ class NUGatewayTemplate(NURESTObject):
     
     CONST_PERSONALITY_OTHER = "OTHER"
     
-    CONST_PERSONALITY_VRSB = "VRSB"
+    CONST_PERSONALITY_EVDF = "EVDF"
     
     CONST_PERSONALITY_NSG = "NSG"
+    
+    CONST_PERSONALITY_NETCONF_7X50 = "NETCONF_7X50"
     
     CONST_PERSONALITY_NUAGE_210_WBX_48_S = "NUAGE_210_WBX_48_S"
     
@@ -75,6 +81,8 @@ class NUGatewayTemplate(NURESTObject):
     CONST_PERSONALITY_DC7X50 = "DC7X50"
     
     CONST_PERSONALITY_VRSG = "VRSG"
+    
+    CONST_PERSONALITY_VDFG = "VDFG"
     
     
 
@@ -99,14 +107,16 @@ class NUGatewayTemplate(NURESTObject):
         self._last_updated_by = None
         self._personality = None
         self._description = None
+        self._infrastructure_profile_id = None
         self._enterprise_id = None
         self._entity_scope = None
         self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=True, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VRSB', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=True, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NSG', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="infrastructure_profile_id", remote_name="infrastructureProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -222,6 +232,33 @@ class NUGatewayTemplate(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def infrastructure_profile_id(self):
+        """ Get infrastructure_profile_id value.
+
+            Notes:
+                The ID of the associated Infrastructure Gateway Profile tied to this instance of a Gateway Template.
+
+                
+                This attribute is named `infrastructureProfileID` in VSD API.
+                
+        """
+        return self._infrastructure_profile_id
+
+    @infrastructure_profile_id.setter
+    def infrastructure_profile_id(self, value):
+        """ Set infrastructure_profile_id value.
+
+            Notes:
+                The ID of the associated Infrastructure Gateway Profile tied to this instance of a Gateway Template.
+
+                
+                This attribute is named `infrastructureProfileID` in VSD API.
+                
+        """
+        self._infrastructure_profile_id = value
 
     
     @property

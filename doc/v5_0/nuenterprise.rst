@@ -16,19 +16,19 @@ Attributes
 
 - ``ldap_enabled``: Read-only flag - indicates if LDAP is used for authentication for the enterprise. For detailed explanation, see definition in LDAPConfiguration class
 
-- ``bgp_enabled``: Read only flag to display if BGP is enabled for this enterprise
+- ``bgp_enabled``: Read-only flag to display if BGP is enabled for this enterprise
 
 - ``dhcp_lease_interval``: DHCP Lease Interval (in hrs) to be used by an enterprise.
 
-- ``vnf_management_enabled``: Read only flag to display if VNF management is enabled for this enterprise
+- ``vnf_management_enabled``: Read-only flag to display if VNF management is enabled for this enterprise
 
 - ``name`` (**Mandatory**): The unique name of the enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``receive_multi_cast_list_id``: Readonly Id of the auto generated receive multicast list associated with this enterprise profile
+- ``receive_multi_cast_list_id``: Read-only Id of the auto generated receive multicast list associated with this enterprise profile
 
-- ``send_multi_cast_list_id``: Readonly Id of the auto generated send multicast list associated with this enterprise profile
+- ``send_multi_cast_list_id``: Read-only Id of the auto generated send multicast list associated with this enterprise profile
 
 - ``description``: A description of the enterprise
 
@@ -54,7 +54,7 @@ Attributes
 
 - ``enable_application_performance_management``: This flag indicates if the DPI can be enabled for this enterpriseenterprise/organization.
 
-- ``encryption_management_mode``: Readonly encryption management mode of the associated profile
+- ``encryption_management_mode``: Read-only encryption management mode of the associated profile
 
 - ``enterprise_profile_id``: Enterprise profile id for this enterprise
 
@@ -62,11 +62,11 @@ Attributes
 
 - ``local_as``: Local autonomous system for the enterprise
 
-- ``associated_enterprise_security_id``: Readonly Id of the associated group key encryption profile
+- ``associated_enterprise_security_id``: Read-only Id of the associated group key encryption profile
 
-- ``associated_group_key_encryption_profile_id``: Readonly Id of the associated group key encryption profile
+- ``associated_group_key_encryption_profile_id``: Read-only Id of the associated group key encryption profile
 
-- ``associated_key_server_monitor_id``: Readonly Id of the associated keyserver monitor
+- ``associated_key_server_monitor_id``: Read-only Id of the associated keyserver monitor
 
 - ``customer_id``: CustomerID that is used by VSC to identify this enterprise. This can be configured by root user.
 
@@ -90,6 +90,8 @@ Children
 :ref:`nul4service.NUL4Service<nul4service>`                                                                                                                      ``l4_services`` 
 :ref:`nul4servicegroup.NUL4ServiceGroup<nul4servicegroup>`                                                                                                       ``l4_service_groups`` 
 :ref:`nul7applicationsignature.NUL7applicationsignature<nul7applicationsignature>`                                                                               ``l7applicationsignatures`` 
+:ref:`nusaasapplicationgroup.NUSaaSApplicationGroup<nusaasapplicationgroup>`                                                                                     ``saa_s_application_groups`` 
+:ref:`nusaasapplicationtype.NUSaaSApplicationType<nusaasapplicationtype>`                                                                                        ``saa_s_application_types`` 
 :ref:`nucaptiveportalprofile.NUCaptivePortalProfile<nucaptiveportalprofile>`                                                                                     ``captive_portal_profiles`` 
 :ref:`nuratelimiter.NURateLimiter<nuratelimiter>`                                                                                                                ``rate_limiters`` 
 :ref:`nugateway.NUGateway<nugateway>`                                                                                                                            ``gateways`` 
@@ -99,6 +101,7 @@ Children
 :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`                                                                                                    ``redundancy_groups`` 
 :ref:`nuperformancemonitor.NUPerformanceMonitor<nuperformancemonitor>`                                                                                           ``performance_monitors`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nunetconfprofile.NUNetconfProfile<nunetconfprofile>`                                                                                                       ``netconf_profiles`` 
 :ref:`nunetworkmacrogroup.NUNetworkMacroGroup<nunetworkmacrogroup>`                                                                                              ``network_macro_groups`` 
 :ref:`nunetworkperformancemeasurement.NUNetworkPerformanceMeasurement<nunetworkperformancemeasurement>`                                                          ``network_performance_measurements`` 
 :ref:`nukeyservermonitor.NUKeyServerMonitor<nukeyservermonitor>`                                                                                                 ``key_server_monitors`` 
@@ -124,6 +127,7 @@ Children
 :ref:`nuenterprisenetwork.NUEnterpriseNetwork<nuenterprisenetwork>`                                                                                              ``enterprise_networks`` 
 :ref:`nuenterprisesecurity.NUEnterpriseSecurity<nuenterprisesecurity>`                                                                                           ``enterprise_securities`` 
 :ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
+:ref:`nupolicygroupcategory.NUPolicyGroupCategory<nupolicygroupcategory>`                                                                                        ``policy_group_categories`` 
 :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`                                                                                              ``policy_object_groups`` 
 :ref:`nudomain.NUDomain<nudomain>`                                                                                                                               ``domains`` 
 :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`                                                                                                       ``domain_templates`` 
@@ -139,6 +143,7 @@ Children
 :ref:`nudscpremarkingpolicytable.NUDSCPRemarkingPolicyTable<nudscpremarkingpolicytable>`                                                                         ``dscp_remarking_policy_tables`` 
 :ref:`nuuser.NUUser<nuuser>`                                                                                                                                     ``users`` 
 :ref:`nunsgateway.NUNSGateway<nunsgateway>`                                                                                                                      ``ns_gateways`` 
+:ref:`nunsgatewaysummary.NUNSGatewaySummary<nunsgatewaysummary>`                                                                                                 ``ns_gateway_summaries`` 
 :ref:`nunsgatewaytemplate.NUNSGatewayTemplate<nunsgatewaytemplate>`                                                                                              ``ns_gateway_templates`` 
 :ref:`nunsggroup.NUNSGGroup<nunsggroup>`                                                                                                                         ``nsg_groups`` 
 :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`                                                                            ``ns_redundant_gateway_groups`` 

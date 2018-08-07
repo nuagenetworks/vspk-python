@@ -5,7 +5,7 @@ nunsgateway
 
 .. class:: nunsgateway.NUNSGateway(bambou.nurest_object.NUMetaRESTObject,):
 
-Represents a Network Service Gateway.
+Network Services Gateways are a policy enforcement end-points responsible for the delivery of networking services. NSG access ports/VLANs may be attached to existing host or bridge VPorts.
 
 
 Attributes
@@ -19,6 +19,10 @@ Attributes
 - ``tcpmss_enabled``: Boolean flag to indicate whether MSS on TCP is enabled or not
 
 - ``tcp_maximum_segment_size``: Maximum Segment Size for TCP(min = 576, max = 7812).
+
+- ``zfb_match_attribute``: The Zero Factor Bootstrapping (ZFB) Attribute that should be used to match the gateway on when it tries to bootstrap.
+
+- ``zfb_match_value``: The Zero Factor Bootstrapping (ZFB) value that needs to match with the gateway during the bootstrap attempt. This value needs to match with the ZFB Match Attribute.
 
 - ``bios_release_date``: Release Date of the NSG BiOS
 
@@ -49,6 +53,8 @@ Attributes
 - ``datapath_id``: Identifier of the Gateway, based on the systemId
 
 - ``patches``: Patches that have been installed on the NSG.
+
+- ``gateway_connected``: Indicates status of this gateway
 
 - ``redundancy_group_id``: The Redundancy Gateway Group associated with this Gateway Instance. This is a read only attribute
 
@@ -86,9 +92,9 @@ Attributes
 
 - ``control_traffic_dscp_value``: DSCP Value for Self Generated Traffic (Control Traffic). Min is 0 and Max is 63
 
-- ``bootstrap_id``: The bootstrap details associated with this NSGateway. NOTE: this is a read only property, it can only be set during creation of an NSG
+- ``bootstrap_id``: The bootstrap details associated with this NSGateway. NOTE: This is a read only property, it can only be set during creation of an NSG.
 
-- ``bootstrap_status``: The bootstrap status of this NSGateway. NOTE: this is a read only property
+- ``bootstrap_status``: The bootstrap status of this NSGateway. NOTE: This is a read only property.
 
 - ``operation_mode``: Operation mode of NSGateway
 
@@ -135,6 +141,7 @@ Children
 :ref:`nubootstrap.NUBootstrap<nubootstrap>`                                                                                                                      ``bootstraps`` 
 :ref:`nubootstrapactivation.NUBootstrapActivation<nubootstrapactivation>`                                                                                        ``bootstrap_activations`` 
 :ref:`nuuplinkconnection.NUUplinkConnection<nuuplinkconnection>`                                                                                                 ``uplink_connections`` 
+:ref:`nunsgatewaysummary.NUNSGatewaySummary<nunsgatewaysummary>`                                                                                                 ``ns_gateway_summaries`` 
 :ref:`nunsginfo.NUNSGInfo<nunsginfo>`                                                                                                                            ``nsg_infos`` 
 :ref:`nunsport.NUNSPort<nunsport>`                                                                                                                               ``ns_ports`` 
 :ref:`nusubnet.NUSubnet<nusubnet>`                                                                                                                               ``subnets`` 

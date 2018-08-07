@@ -5,7 +5,7 @@ nupatnatpool
 
 .. class:: nupatnatpool.NUPATNATPool(bambou.nurest_object.NUMetaRESTObject,):
 
-Represents a PAT NAT Pool object.
+Address Translation Pools are a range of externally routable IP addresses. User or application traffic is translated prior to being forwarded across the network.
 
 
 Attributes

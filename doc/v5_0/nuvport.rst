@@ -12,9 +12,13 @@ Attributes
 ----------
 
 
-- ``vlanid``: associated Vlan of this vport - applicable for type host/bridge
+- ``fip_ignore_default_route``: Determines whether the default Overlay route will be ignored or not when a VM has FIP so that it takes Underlay route.
 
-- ``dpi``: determines whether or not Deep packet inspection is enabled
+- ``vlan``: VLAN number of the associated VLAN of this vport - applicable for type host or bridge
+
+- ``vlanid``: UUID of the associated VLAN of this vport - applicable for type host or bridge
+
+- ``dpi``: determines whether or not deep packet inspection is enabled
 
 - ``name`` (**Mandatory**): Name of the vport. Valid characters are alphabets, numbers, space and hyphen( - ).
 
@@ -22,19 +26,23 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``gateway_mac_move_role``: Role of the gateway vport when handling mac move errors
+- ``gateway_mac_move_role``: Role of the gateway vport when handling MAC move errors
+
+- ``gateway_port_name``: Gateway portname eg: eth1 - applicable for type host/bridge
 
 - ``active``: Indicates if this vport is up or down
 
 - ``address_spoofing`` (**Mandatory**): Indicates if address spoofing is ENABLED/DISABLED/INHERITED for this vport.
 
+- ``peer_operational_state``: Operational state of the peer vport in multichassis lag scenario
+
 - ``segmentation_id``: The VLAN Number (1-4095), valid only if the trunkRole is SUB_PORT
 
 - ``segmentation_type``: The type of segmentation that is used. This must be VLAN for vports with trunkRole set to SUB_PORT. This can not be specified for a parent vport (trunkRole = PARENT_PORT)
 
-- ``description``: Description for this vport
+- ``service_id``: The service ID used by the VSCs to identify the subnet associated with this vport
 
-- ``flow_collection_enabled``: Determines whether or not flow collection is enabled.
+- ``description``: Description for this vport
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
@@ -46,7 +54,19 @@ Attributes
 
 - ``trunk_role``: Indicates the role of the vport in trunking operations
 
+- ``assoc_entity_id``: UUID of the entity to which the vport is associated to. This could be UUID of a SUBNET or a L2DOMAIN
+
+- ``associated_egress_profile_id``: UUID of the Egress Profile associated with this Vport entity.
+
 - ``associated_floating_ip_id``: Id of Floating IP address associated to this vport
+
+- ``associated_gateway_id``: Associated gateway ID of VPort
+
+- ``associated_gateway_personality``: Personality of the associated Gateway
+
+- ``associated_gateway_type``: Associated gateway type of VPort.
+
+- ``associated_ingress_profile_id``: UUID of the Ingress Profile associated with this Vport entity.
 
 - ``associated_multicast_channel_map_id``: The ID of the receive Multicast Channel Map this Vport is associated with. This has to be set when enableMultiCast is set to ENABLED
 
@@ -61,6 +81,8 @@ Attributes
 - ``multi_nic_vport_id``: ID of the Multi NIC VPort associated with the VPort
 
 - ``multicast``: Indicates multicast policy on Vport.
+
+- ``gw_eligible``: Indicates that this vport is eligible to be given in gateway vport config request. It becomes eligible when it has properly attached host or bridge interfaces.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -121,6 +143,8 @@ Parents
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
+- :ref:`nudomain.NUDomain<nudomain>`
+
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
 - :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
@@ -129,7 +153,9 @@ Parents
 
 - :ref:`nutrunk.NUTrunk<nutrunk>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`
+
+- :ref:`nuegressprofile.NUEgressProfile<nuegressprofile>`
 
 - :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
 

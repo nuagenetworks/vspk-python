@@ -46,7 +46,7 @@ class NUEnterpriseNetwork(NURESTObject):
     """ Represents a EnterpriseNetwork in the VSD
 
         Notes:
-            Administrators of an enterprise can define macros that are set of IP addresses that identify enterprise networks. These macros can be used in the ACL definitions by network designers and other users to identify access restrictions towards specific enterprise networks.
+            Network Macros are organization wide defined macros that can be used as a destination of a policy rule. For instance, you can create a network that represents your internal Intranet access, and use it as a destination of a policy rule to drop any packet that is coming from a particular port. Macros can now be created under SaaS Application Types. SaaS Application Types can then be associated to a SaaS Application Group which can be used as a destination of a policy rule.
     """
 
     __rest_name__ = "enterprisenetwork"

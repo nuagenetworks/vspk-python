@@ -40,7 +40,7 @@ class NUNSGGroup(NURESTObject):
     """ Represents a NSGGroup in the VSD
 
         Notes:
-            None
+            A logical group of NSG and NSG-BR instances that can be used to assign NSG-UBRs to all NSGs in the group, to provide connectivity to NSGs in disjoint underlays.
     """
 
     __rest_name__ = "nsggroup"

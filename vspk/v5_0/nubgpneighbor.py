@@ -49,6 +49,10 @@ class NUBGPNeighbor(NURESTObject):
     
     ## Constants
     
+    CONST_IP_TYPE_IPV6 = "IPV6"
+    
+    CONST_IP_TYPE_IPV4 = "IPV4"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
@@ -73,6 +77,8 @@ class NUBGPNeighbor(NURESTObject):
         # Read/Write Attributes
         
         self._bfd_enabled = None
+        self._ip_type = None
+        self._ipv6_address = None
         self._name = None
         self._dampening_enabled = None
         self._peer_as = None
@@ -85,6 +91,8 @@ class NUBGPNeighbor(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="bfd_enabled", remote_name="BFDEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="dampening_enabled", remote_name="dampeningEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peer_as", remote_name="peerAS", attribute_type=int, is_required=True, is_unique=False)
@@ -135,6 +143,60 @@ class NUBGPNeighbor(NURESTObject):
                 
         """
         self._bfd_enabled = value
+
+    
+    @property
+    def ip_type(self):
+        """ Get ip_type value.
+
+            Notes:
+                It can be either IPv4 or IPv6
+
+                
+                This attribute is named `IPType` in VSD API.
+                
+        """
+        return self._ip_type
+
+    @ip_type.setter
+    def ip_type(self, value):
+        """ Set ip_type value.
+
+            Notes:
+                It can be either IPv4 or IPv6
+
+                
+                This attribute is named `IPType` in VSD API.
+                
+        """
+        self._ip_type = value
+
+    
+    @property
+    def ipv6_address(self):
+        """ Get ipv6_address value.
+
+            Notes:
+                Peer IPv6 address
+
+                
+                This attribute is named `IPv6Address` in VSD API.
+                
+        """
+        return self._ipv6_address
+
+    @ipv6_address.setter
+    def ipv6_address(self, value):
+        """ Set ipv6_address value.
+
+            Notes:
+                Peer IPv6 address
+
+                
+                This attribute is named `IPv6Address` in VSD API.
+                
+        """
+        self._ipv6_address = value
 
     
     @property

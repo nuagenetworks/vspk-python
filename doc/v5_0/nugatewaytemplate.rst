@@ -5,7 +5,7 @@ nugatewaytemplate
 
 .. class:: nugatewaytemplate.NUGatewayTemplate(bambou.nurest_object.NUMetaRESTObject,):
 
-Represents Gateway Template object.
+A gateway is your point of exit to an external network. It can be a physical or a virtual device. Gateways are templatable. You can attach gateway's VLANs to any existing host or bridge VPorts.
 
 
 Attributes
@@ -19,6 +19,8 @@ Attributes
 - ``personality`` (**Mandatory**): Personality of the Gateway, cannot be changed after creation.
 
 - ``description``: A description of the Gateway
+
+- ``infrastructure_profile_id``: The ID of the associated Infrastructure Gateway Profile tied to this instance of a Gateway Template.
 
 - ``enterprise_id``: The enterprise associated with this Gateway. This is a read only attribute
 

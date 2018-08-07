@@ -5,7 +5,7 @@ nudomaintemplate
 
 .. class:: nudomaintemplate.NUDomainTemplate(bambou.nurest_object.NUMetaRESTObject,):
 
-Domains in VSD are created from domain templates. This object provides the definition of the Domain Template.
+A domain is a distributed logical router that enables L2 and L3 communication. A domain template is a model that can be instantiated as often as required, thereby creating real, functioning domains.
 
 
 Attributes

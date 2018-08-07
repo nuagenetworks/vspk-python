@@ -154,6 +154,9 @@ from .fetchers import NUBridgeInterfacesFetcher
 from .fetchers import NUGroupsFetcher
 
 
+from .fetchers import NUNSGatewaySummariesFetcher
+
+
 from .fetchers import NUNSGRoutingPolicyBindingsFetcher
 
 
@@ -214,6 +217,8 @@ class NUDomain(NURESTObject):
     
     CONST_MAINTENANCE_MODE_DISABLED = "DISABLED"
     
+    CONST_TUNNEL_TYPE_VLAN = "VLAN"
+    
     CONST_TUNNEL_TYPE_DC_DEFAULT = "DC_DEFAULT"
     
     CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
@@ -248,6 +253,8 @@ class NUDomain(NURESTObject):
     
     CONST_ADVERTISE_CRITERIA_HUB_ROUTES = "HUB_ROUTES"
     
+    CONST_FIP_IGNORE_DEFAULT_ROUTE_DISABLED = "DISABLED"
+    
     CONST_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
     
     CONST_DHCP_BEHAVIOR_FLOOD = "FLOOD"
@@ -270,11 +277,13 @@ class NUDomain(NURESTObject):
     
     CONST_ENCRYPTION_ENABLED = "ENABLED"
     
+    CONST_UNDERLAY_ENABLED_DISABLED = "DISABLED"
+    
     CONST_TUNNEL_TYPE_GRE = "GRE"
     
     CONST_POLICY_CHANGE_STATUS_APPLIED = "APPLIED"
     
-    CONST_UNDERLAY_ENABLED_DISABLED = "DISABLED"
+    CONST_FIP_IGNORE_DEFAULT_ROUTE_ENABLED = "ENABLED"
     
     
 
@@ -300,6 +309,7 @@ class NUDomain(NURESTObject):
         self._bgp_enabled = None
         self._dhcp_behavior = None
         self._dhcp_server_address = None
+        self._fip_ignore_default_route = None
         self._fip_underlay = None
         self._dpi = None
         self._label_id = None
@@ -350,6 +360,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="bgp_enabled", remote_name="BGPEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_behavior", remote_name="DHCPBehavior", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONSUME', u'FLOOD', u'OVERLAY_RELAY', u'UNDERLAY_RELAY'])
         self.expose_attribute(local_name="dhcp_server_address", remote_name="DHCPServerAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="fip_ignore_default_route", remote_name="FIPIgnoreDefaultRoute", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="fip_underlay", remote_name="FIPUnderlay", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="label_id", remote_name="labelID", attribute_type=int, is_required=False, is_unique=False)
@@ -390,7 +401,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="associated_underlay_id", remote_name="associatedUnderlayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stretched", remote_name="stretched", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="tunnel_type", remote_name="tunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VXLAN'])
+        self.expose_attribute(local_name="tunnel_type", remote_name="tunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VLAN', u'VXLAN'])
         self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="export_route_target", remote_name="exportRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -523,6 +534,9 @@ class NUDomain(NURESTObject):
         
         
         self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ns_gateway_summaries = NUNSGatewaySummariesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.nsg_routing_policy_bindings = NUNSGRoutingPolicyBindingsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -683,6 +697,33 @@ class NUDomain(NURESTObject):
                 
         """
         self._dhcp_server_address = value
+
+    
+    @property
+    def fip_ignore_default_route(self):
+        """ Get fip_ignore_default_route value.
+
+            Notes:
+                Determines whether the default Overlay route will be ignored or not when a VM has FIP so that it takes Underlay route.
+
+                
+                This attribute is named `FIPIgnoreDefaultRoute` in VSD API.
+                
+        """
+        return self._fip_ignore_default_route
+
+    @fip_ignore_default_route.setter
+    def fip_ignore_default_route(self, value):
+        """ Set fip_ignore_default_route value.
+
+            Notes:
+                Determines whether the default Overlay route will be ignored or not when a VM has FIP so that it takes Underlay route.
+
+                
+                This attribute is named `FIPIgnoreDefaultRoute` in VSD API.
+                
+        """
+        self._fip_ignore_default_route = value
 
     
     @property

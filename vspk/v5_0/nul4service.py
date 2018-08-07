@@ -34,7 +34,7 @@ class NUL4Service(NURESTObject):
     """ Represents a L4Service in the VSD
 
         Notes:
-            L4 Service is a port range and protocol combination that can be used in ACLs
+            Service is a port range and protocol combination that can be used in ACLs
     """
 
     __rest_name__ = "l4service"
@@ -66,6 +66,8 @@ class NUL4Service(NURESTObject):
 
         # Read/Write Attributes
         
+        self._icmp_code = None
+        self._icmp_type = None
         self._name = None
         self._last_updated_by = None
         self._default_service = None
@@ -75,6 +77,8 @@ class NUL4Service(NURESTObject):
         self._protocol = None
         self._external_id = None
         
+        self.expose_attribute(local_name="icmp_code", remote_name="ICMPCode", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="icmp_type", remote_name="ICMPType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=True)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="default_service", remote_name="defaultService", attribute_type=bool, is_required=False, is_unique=False)
@@ -88,6 +92,60 @@ class NUL4Service(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def icmp_code(self):
+        """ Get icmp_code value.
+
+            Notes:
+                The ICMP Code when protocol selected is ICMP.
+
+                
+                This attribute is named `ICMPCode` in VSD API.
+                
+        """
+        return self._icmp_code
+
+    @icmp_code.setter
+    def icmp_code(self, value):
+        """ Set icmp_code value.
+
+            Notes:
+                The ICMP Code when protocol selected is ICMP.
+
+                
+                This attribute is named `ICMPCode` in VSD API.
+                
+        """
+        self._icmp_code = value
+
+    
+    @property
+    def icmp_type(self):
+        """ Get icmp_type value.
+
+            Notes:
+                The ICMP Type when protocol selected is ICMP.
+
+                
+                This attribute is named `ICMPType` in VSD API.
+                
+        """
+        return self._icmp_type
+
+    @icmp_type.setter
+    def icmp_type(self, value):
+        """ Set icmp_type value.
+
+            Notes:
+                The ICMP Type when protocol selected is ICMP.
+
+                
+                This attribute is named `ICMPType` in VSD API.
+                
+        """
+        self._icmp_type = value
+
     
     @property
     def name(self):

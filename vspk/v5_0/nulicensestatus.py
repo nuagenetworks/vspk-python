@@ -69,9 +69,13 @@ class NULicenseStatus(NURESTObject):
         self._total_licensed_used_avrss_count = None
         self._total_licensed_used_nics_count = None
         self._total_licensed_used_nsgs_count = None
+        self._total_licensed_used_vdfgs_count = None
+        self._total_licensed_used_vdfs_count = None
         self._total_licensed_used_vms_count = None
         self._total_licensed_used_vrsgs_count = None
         self._total_licensed_used_vrss_count = None
+        self._total_licensed_vdfgs_count = None
+        self._total_licensed_vdfs_count = None
         self._total_licensed_vms_count = None
         self._total_licensed_vrsgs_count = None
         self._total_licensed_vrss_count = None
@@ -87,9 +91,13 @@ class NULicenseStatus(NURESTObject):
         self.expose_attribute(local_name="total_licensed_used_avrss_count", remote_name="totalLicensedUsedAVRSsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_used_nics_count", remote_name="totalLicensedUsedNICsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_used_nsgs_count", remote_name="totalLicensedUsedNSGsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_used_vdfgs_count", remote_name="totalLicensedUsedVDFGsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_used_vdfs_count", remote_name="totalLicensedUsedVDFsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_used_vms_count", remote_name="totalLicensedUsedVMsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_used_vrsgs_count", remote_name="totalLicensedUsedVRSGsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_used_vrss_count", remote_name="totalLicensedUsedVRSsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_vdfgs_count", remote_name="totalLicensedVDFGsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_vdfs_count", remote_name="totalLicensedVDFsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_vms_count", remote_name="totalLicensedVMsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_vrsgs_count", remote_name="totalLicensedVRSGsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_vrss_count", remote_name="totalLicensedVRSsCount", attribute_type=int, is_required=False, is_unique=False)
@@ -371,6 +379,60 @@ class NULicenseStatus(NURESTObject):
 
     
     @property
+    def total_licensed_used_vdfgs_count(self):
+        """ Get total_licensed_used_vdfgs_count value.
+
+            Notes:
+                Indicates total used VDFG count for all the licenses in the system.
+
+                
+                This attribute is named `totalLicensedUsedVDFGsCount` in VSD API.
+                
+        """
+        return self._total_licensed_used_vdfgs_count
+
+    @total_licensed_used_vdfgs_count.setter
+    def total_licensed_used_vdfgs_count(self, value):
+        """ Set total_licensed_used_vdfgs_count value.
+
+            Notes:
+                Indicates total used VDFG count for all the licenses in the system.
+
+                
+                This attribute is named `totalLicensedUsedVDFGsCount` in VSD API.
+                
+        """
+        self._total_licensed_used_vdfgs_count = value
+
+    
+    @property
+    def total_licensed_used_vdfs_count(self):
+        """ Get total_licensed_used_vdfs_count value.
+
+            Notes:
+                Indicates total used VDF count for all the licenses in the system.
+
+                
+                This attribute is named `totalLicensedUsedVDFsCount` in VSD API.
+                
+        """
+        return self._total_licensed_used_vdfs_count
+
+    @total_licensed_used_vdfs_count.setter
+    def total_licensed_used_vdfs_count(self, value):
+        """ Set total_licensed_used_vdfs_count value.
+
+            Notes:
+                Indicates total used VDF count for all the licenses in the system.
+
+                
+                This attribute is named `totalLicensedUsedVDFsCount` in VSD API.
+                
+        """
+        self._total_licensed_used_vdfs_count = value
+
+    
+    @property
     def total_licensed_used_vms_count(self):
         """ Get total_licensed_used_vms_count value.
 
@@ -449,6 +511,60 @@ class NULicenseStatus(NURESTObject):
                 
         """
         self._total_licensed_used_vrss_count = value
+
+    
+    @property
+    def total_licensed_vdfgs_count(self):
+        """ Get total_licensed_vdfgs_count value.
+
+            Notes:
+                Indicates total VDFG count for all the licenses in the system
+
+                
+                This attribute is named `totalLicensedVDFGsCount` in VSD API.
+                
+        """
+        return self._total_licensed_vdfgs_count
+
+    @total_licensed_vdfgs_count.setter
+    def total_licensed_vdfgs_count(self, value):
+        """ Set total_licensed_vdfgs_count value.
+
+            Notes:
+                Indicates total VDFG count for all the licenses in the system
+
+                
+                This attribute is named `totalLicensedVDFGsCount` in VSD API.
+                
+        """
+        self._total_licensed_vdfgs_count = value
+
+    
+    @property
+    def total_licensed_vdfs_count(self):
+        """ Get total_licensed_vdfs_count value.
+
+            Notes:
+                Indicates total VDF count for all the licenses in the system
+
+                
+                This attribute is named `totalLicensedVDFsCount` in VSD API.
+                
+        """
+        return self._total_licensed_vdfs_count
+
+    @total_licensed_vdfs_count.setter
+    def total_licensed_vdfs_count(self, value):
+        """ Set total_licensed_vdfs_count value.
+
+            Notes:
+                Indicates total VDF count for all the licenses in the system
+
+                
+                This attribute is named `totalLicensedVDFsCount` in VSD API.
+                
+        """
+        self._total_licensed_vdfs_count = value
 
     
     @property
@@ -537,7 +653,7 @@ class NULicenseStatus(NURESTObject):
         """ Get total_used_gateways_count value.
 
             Notes:
-                Indicates total VRS+VRSG+VRSB licenses used in the system
+                Indicates total VRS+VRSG+VRSB+VDFG licenses used in the system
 
                 
                 This attribute is named `totalUsedGatewaysCount` in VSD API.
@@ -550,7 +666,7 @@ class NULicenseStatus(NURESTObject):
         """ Set total_used_gateways_count value.
 
             Notes:
-                Indicates total VRS+VRSG+VRSB licenses used in the system
+                Indicates total VRS+VRSG+VRSB+VDFG licenses used in the system
 
                 
                 This attribute is named `totalUsedGatewaysCount` in VSD API.

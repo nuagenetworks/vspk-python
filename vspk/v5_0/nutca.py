@@ -137,7 +137,7 @@ class NUTCA(NURESTObject):
     
     CONST_METRIC_INGRESS_BYTE_COUNT = "INGRESS_BYTE_COUNT"
     
-    CONST_ACTION_ALERT_POLICYGROUPCHANGE = "ALERT_POLICYGROUPCHANGE"
+    CONST_ACTION_ALERT_POLICYGROUPCHANGE = "Alert_PolicyGroupChange"
     
     CONST_METRIC_PACKETS_IN_ERROR = "PACKETS_IN_ERROR"
     
@@ -181,7 +181,7 @@ class NUTCA(NURESTObject):
     
     CONST_METRIC_FIP_PRE_RATE_LIMIT_PACKETS = "FIP_PRE_RATE_LIMIT_PACKETS"
     
-    CONST_ACTION_ALERT = "ALERT"
+    CONST_ACTION_ALERT = "Alert"
     
     CONST_METRIC_TCP_FLAG_SYN_IN = "TCP_FLAG_SYN_IN"
     
@@ -232,7 +232,7 @@ class NUTCA(NURESTObject):
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="target_policy_group_id", remote_name="targetPolicyGroupID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'ALERT', u'ALERT_POLICYGROUPCHANGE'])
+        self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'Alert', u'Alert_PolicyGroupChange'])
         self.expose_attribute(local_name="period", remote_name="period", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metric", remote_name="metric", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACL_DENY_EVENT_COUNT', u'ADDRESS_MAP_EGRESS_BYTE_CNT', u'ADDRESS_MAP_EGRESS_PKT_CNT', u'ADDRESS_MAP_INGRESS_BYTE_CNT', u'ADDRESS_MAP_INGRESS_PKT_CNT', u'ANTI_SPOOF_EVENT_COUNT', u'BYTES_IN', u'BYTES_OUT', u'CONNECTION_TYPE', u'EGRESS_BYTE_COUNT', u'EGRESS_PACKET_COUNT', u'FIP_PRE_RATE_LIMIT_BYTES', u'FIP_PRE_RATE_LIMIT_PACKETS', u'FIP_RATE_LIMIT_DROPPED_BYTES', u'FIP_RATE_LIMIT_DROPPED_PACKETS', u'INGRESS_BYTE_COUNT', u'INGRESS_PACKET_COUNT', u'L7_BYTES_IN', u'L7_BYTES_OUT', u'L7_PACKETS_IN', u'L7_PACKETS_OUT', u'PACKETS_DROPPED_BY_RATE_LIMIT', u'PACKETS_IN', u'PACKETS_IN_DROPPED', u'PACKETS_IN_ERROR', u'PACKETS_OUT', u'PACKETS_OUT_DROPPED', u'PACKETS_OUT_ERROR', u'Q0_BYTES', u'Q0_DROPPED', u'Q0_PKT_COUNT', u'Q10_BYTES', u'Q10_DROPPED', u'Q10_PKT_COUNT', u'Q1_BYTES', u'Q1_DROPPED', u'Q1_PKT_COUNT', u'Q2_BYTES', u'Q2_DROPPED', u'Q2_PKT_COUNT', u'Q3_BYTES', u'Q3_DROPPED', u'Q3_PKT_COUNT', u'Q4_BYTES', u'Q4_DROPPED', u'Q4_PKT_COUNT', u'RX_BYTES', u'RX_DROPPED', u'RX_ERRORS', u'RX_PKT_COUNT', u'TCP_FLAG_ACK_IN', u'TCP_FLAG_NULL_IN', u'TCP_FLAG_NULL_OUT', u'TCP_FLAG_RST_IN', u'TCP_FLAG_RST_OUT', u'TCP_FLAG_SYN_IN', u'TCP_FLAG_SYN_OUT', u'TCP_SYN_EVENT_COUNT', u'TX_BYTES', u'TX_DROPPED', u'TX_ERRORS', u'TX_PKT_COUNT'])

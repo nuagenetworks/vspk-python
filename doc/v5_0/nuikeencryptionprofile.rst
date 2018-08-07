@@ -52,6 +52,8 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``ipsec_sa_replay_window_size_value``: IPsec Replay Window Size in Packets.
+
 - ``associated_enterprise_id``: The ID of the associated Enterprise
 
 - ``external_id``: External object ID. Used for integration with third party systems

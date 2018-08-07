@@ -43,6 +43,12 @@ from .fetchers import NUL4ServiceGroupsFetcher
 from .fetchers import NUL7applicationsignaturesFetcher
 
 
+from .fetchers import NUSaaSApplicationGroupsFetcher
+
+
+from .fetchers import NUSaaSApplicationTypesFetcher
+
+
 from .fetchers import NUCaptivePortalProfilesFetcher
 
 
@@ -68,6 +74,9 @@ from .fetchers import NUPerformanceMonitorsFetcher
 
 
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUNetconfProfilesFetcher
 
 
 from .fetchers import NUNetworkMacroGroupsFetcher
@@ -145,6 +154,9 @@ from .fetchers import NUEnterpriseSecuritiesFetcher
 from .fetchers import NUJobsFetcher
 
 
+from .fetchers import NUPolicyGroupCategoriesFetcher
+
+
 from .fetchers import NUPolicyObjectGroupsFetcher
 
 
@@ -188,6 +200,9 @@ from .fetchers import NUUsersFetcher
 
 
 from .fetchers import NUNSGatewaysFetcher
+
+
+from .fetchers import NUNSGatewaySummariesFetcher
 
 
 from .fetchers import NUNSGatewayTemplatesFetcher
@@ -366,6 +381,12 @@ class NUEnterprise(NURESTObject):
         self.l7applicationsignatures = NUL7applicationsignaturesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.saa_s_application_groups = NUSaaSApplicationGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.saa_s_application_types = NUSaaSApplicationTypesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.captive_portal_profiles = NUCaptivePortalProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -391,6 +412,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.netconf_profiles = NUNetconfProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.network_macro_groups = NUNetworkMacroGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -468,6 +492,9 @@ class NUEnterprise(NURESTObject):
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.policy_group_categories = NUPolicyGroupCategoriesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.policy_object_groups = NUPolicyObjectGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -511,6 +538,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.ns_gateways = NUNSGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ns_gateway_summaries = NUNSGatewaySummariesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ns_gateway_templates = NUNSGatewayTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -597,7 +627,7 @@ class NUEnterprise(NURESTObject):
         """ Get bgp_enabled value.
 
             Notes:
-                Read only flag to display if BGP is enabled for this enterprise
+                Read-only flag to display if BGP is enabled for this enterprise
 
                 
                 This attribute is named `BGPEnabled` in VSD API.
@@ -610,7 +640,7 @@ class NUEnterprise(NURESTObject):
         """ Set bgp_enabled value.
 
             Notes:
-                Read only flag to display if BGP is enabled for this enterprise
+                Read-only flag to display if BGP is enabled for this enterprise
 
                 
                 This attribute is named `BGPEnabled` in VSD API.
@@ -651,7 +681,7 @@ class NUEnterprise(NURESTObject):
         """ Get vnf_management_enabled value.
 
             Notes:
-                Read only flag to display if VNF management is enabled for this enterprise
+                Read-only flag to display if VNF management is enabled for this enterprise
 
                 
                 This attribute is named `VNFManagementEnabled` in VSD API.
@@ -664,7 +694,7 @@ class NUEnterprise(NURESTObject):
         """ Set vnf_management_enabled value.
 
             Notes:
-                Read only flag to display if VNF management is enabled for this enterprise
+                Read-only flag to display if VNF management is enabled for this enterprise
 
                 
                 This attribute is named `VNFManagementEnabled` in VSD API.
@@ -728,7 +758,7 @@ class NUEnterprise(NURESTObject):
         """ Get receive_multi_cast_list_id value.
 
             Notes:
-                Readonly Id of the auto generated receive multicast list associated with this enterprise profile
+                Read-only Id of the auto generated receive multicast list associated with this enterprise profile
 
                 
                 This attribute is named `receiveMultiCastListID` in VSD API.
@@ -741,7 +771,7 @@ class NUEnterprise(NURESTObject):
         """ Set receive_multi_cast_list_id value.
 
             Notes:
-                Readonly Id of the auto generated receive multicast list associated with this enterprise profile
+                Read-only Id of the auto generated receive multicast list associated with this enterprise profile
 
                 
                 This attribute is named `receiveMultiCastListID` in VSD API.
@@ -755,7 +785,7 @@ class NUEnterprise(NURESTObject):
         """ Get send_multi_cast_list_id value.
 
             Notes:
-                Readonly Id of the auto generated send multicast list associated with this enterprise profile
+                Read-only Id of the auto generated send multicast list associated with this enterprise profile
 
                 
                 This attribute is named `sendMultiCastListID` in VSD API.
@@ -768,7 +798,7 @@ class NUEnterprise(NURESTObject):
         """ Set send_multi_cast_list_id value.
 
             Notes:
-                Readonly Id of the auto generated send multicast list associated with this enterprise profile
+                Read-only Id of the auto generated send multicast list associated with this enterprise profile
 
                 
                 This attribute is named `sendMultiCastListID` in VSD API.
@@ -1102,7 +1132,7 @@ class NUEnterprise(NURESTObject):
         """ Get encryption_management_mode value.
 
             Notes:
-                Readonly encryption management mode of the associated profile
+                Read-only encryption management mode of the associated profile
 
                 
                 This attribute is named `encryptionManagementMode` in VSD API.
@@ -1115,7 +1145,7 @@ class NUEnterprise(NURESTObject):
         """ Set encryption_management_mode value.
 
             Notes:
-                Readonly encryption management mode of the associated profile
+                Read-only encryption management mode of the associated profile
 
                 
                 This attribute is named `encryptionManagementMode` in VSD API.
@@ -1210,7 +1240,7 @@ class NUEnterprise(NURESTObject):
         """ Get associated_enterprise_security_id value.
 
             Notes:
-                Readonly Id of the associated group key encryption profile
+                Read-only Id of the associated group key encryption profile
 
                 
                 This attribute is named `associatedEnterpriseSecurityID` in VSD API.
@@ -1223,7 +1253,7 @@ class NUEnterprise(NURESTObject):
         """ Set associated_enterprise_security_id value.
 
             Notes:
-                Readonly Id of the associated group key encryption profile
+                Read-only Id of the associated group key encryption profile
 
                 
                 This attribute is named `associatedEnterpriseSecurityID` in VSD API.
@@ -1237,7 +1267,7 @@ class NUEnterprise(NURESTObject):
         """ Get associated_group_key_encryption_profile_id value.
 
             Notes:
-                Readonly Id of the associated group key encryption profile
+                Read-only Id of the associated group key encryption profile
 
                 
                 This attribute is named `associatedGroupKeyEncryptionProfileID` in VSD API.
@@ -1250,7 +1280,7 @@ class NUEnterprise(NURESTObject):
         """ Set associated_group_key_encryption_profile_id value.
 
             Notes:
-                Readonly Id of the associated group key encryption profile
+                Read-only Id of the associated group key encryption profile
 
                 
                 This attribute is named `associatedGroupKeyEncryptionProfileID` in VSD API.
@@ -1264,7 +1294,7 @@ class NUEnterprise(NURESTObject):
         """ Get associated_key_server_monitor_id value.
 
             Notes:
-                Readonly Id of the associated keyserver monitor
+                Read-only Id of the associated keyserver monitor
 
                 
                 This attribute is named `associatedKeyServerMonitorID` in VSD API.
@@ -1277,7 +1307,7 @@ class NUEnterprise(NURESTObject):
         """ Set associated_key_server_monitor_id value.
 
             Notes:
-                Readonly Id of the associated keyserver monitor
+                Read-only Id of the associated keyserver monitor
 
                 
                 This attribute is named `associatedKeyServerMonitorID` in VSD API.

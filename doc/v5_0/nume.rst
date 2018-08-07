@@ -79,6 +79,7 @@ Children
 :ref:`nuperformancemonitor.NUPerformanceMonitor<nuperformancemonitor>`                                                                                           ``performance_monitors`` 
 :ref:`nucertificate.NUCertificate<nucertificate>`                                                                                                                ``certificates`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nunetconfprofile.NUNetconfProfile<nunetconfprofile>`                                                                                                       ``netconf_profiles`` 
 :ref:`nunetworklayout.NUNetworkLayout<nunetworklayout>`                                                                                                          ``network_layouts`` 
 :ref:`nukeyservermember.NUKeyServerMember<nukeyservermember>`                                                                                                    ``key_server_members`` 
 :ref:`nuzfbautoassignment.NUZFBAutoAssignment<nuzfbautoassignment>`                                                                                              ``zfb_auto_assignments`` 
@@ -105,6 +106,7 @@ Children
 :ref:`nuvnfcatalog.NUVNFCatalog<nuvnfcatalog>`                                                                                                                   ``vnf_catalogs`` 
 :ref:`nuvnfmetadata.NUVNFMetadata<nuvnfmetadata>`                                                                                                                ``vnf_metadatas`` 
 :ref:`nuinfrastructureaccessprofile.NUInfrastructureAccessProfile<nuinfrastructureaccessprofile>`                                                                ``infrastructure_access_profiles`` 
+:ref:`nuinfrastructureevdfprofile.NUInfrastructureEVDFProfile<nuinfrastructureevdfprofile>`                                                                      ``infrastructure_evdf_profiles`` 
 :ref:`nuinfrastructuregatewayprofile.NUInfrastructureGatewayProfile<nuinfrastructuregatewayprofile>`                                                             ``infrastructure_gateway_profiles`` 
 :ref:`nuinfrastructurevscprofile.NUInfrastructureVscProfile<nuinfrastructurevscprofile>`                                                                         ``infrastructure_vsc_profiles`` 
 :ref:`nuvnfthresholdpolicy.NUVNFThresholdPolicy<nuvnfthresholdpolicy>`                                                                                           ``vnf_threshold_policies`` 

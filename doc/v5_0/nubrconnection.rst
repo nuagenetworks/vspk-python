@@ -14,9 +14,17 @@ Attributes
 
 - ``dns_address``: DNS Address for the vlan
 
+- ``dns_address_v6``: DNS IPv6 Address
+
 - ``gateway``: IP address of the gateway bound to the VLAN.
 
+- ``gateway_v6``: IPv6 address of the gateway bound to the port.
+
 - ``address``: Static IP address for the VLAN
+
+- ``address_family``: IP address family of this BRConnection
+
+- ``address_v6``: IPv6 address for static configuration.
 
 - ``advertisement_criteria``: Advertisement Criteria for Traffic Flow
 

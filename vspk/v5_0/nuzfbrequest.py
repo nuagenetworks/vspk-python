@@ -64,6 +64,10 @@ class NUZFBRequest(NURESTObject):
     
     CONST_ZFB_APPROVAL_STATUS_ASSIGNED = "ASSIGNED"
     
+    CONST_ASSOCIATED_ENTITY_TYPE_GATEWAY = "GATEWAY"
+    
+    CONST_ASSOCIATED_ENTITY_TYPE_NSGATEWAY = "NSGATEWAY"
+    
     
 
     def __init__(self, **kwargs):
@@ -101,6 +105,9 @@ class NUZFBRequest(NURESTObject):
         self._hostname = None
         self._associated_enterprise_id = None
         self._associated_enterprise_name = None
+        self._associated_entity_type = None
+        self._associated_gateway_id = None
+        self._associated_gateway_name = None
         self._associated_ns_gateway_id = None
         self._associated_ns_gateway_name = None
         self._status_string = None
@@ -124,6 +131,9 @@ class NUZFBRequest(NURESTObject):
         self.expose_attribute(local_name="hostname", remote_name="hostname", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_enterprise_name", remote_name="associatedEnterpriseName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_entity_type", remote_name="associatedEntityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'GATEWAY', u'NSGATEWAY'])
+        self.expose_attribute(local_name="associated_gateway_id", remote_name="associatedGatewayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_gateway_name", remote_name="associatedGatewayName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ns_gateway_id", remote_name="associatedNSGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ns_gateway_name", remote_name="associatedNSGatewayName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status_string", remote_name="statusString", attribute_type=str, is_required=False, is_unique=False)
@@ -622,6 +632,87 @@ class NUZFBRequest(NURESTObject):
                 
         """
         self._associated_enterprise_name = value
+
+    
+    @property
+    def associated_entity_type(self):
+        """ Get associated_entity_type value.
+
+            Notes:
+                Associated Entity Type: NSGATEWAY or GATEWAY
+
+                
+                This attribute is named `associatedEntityType` in VSD API.
+                
+        """
+        return self._associated_entity_type
+
+    @associated_entity_type.setter
+    def associated_entity_type(self, value):
+        """ Set associated_entity_type value.
+
+            Notes:
+                Associated Entity Type: NSGATEWAY or GATEWAY
+
+                
+                This attribute is named `associatedEntityType` in VSD API.
+                
+        """
+        self._associated_entity_type = value
+
+    
+    @property
+    def associated_gateway_id(self):
+        """ Get associated_gateway_id value.
+
+            Notes:
+                ID of the assigned Gateway
+
+                
+                This attribute is named `associatedGatewayID` in VSD API.
+                
+        """
+        return self._associated_gateway_id
+
+    @associated_gateway_id.setter
+    def associated_gateway_id(self, value):
+        """ Set associated_gateway_id value.
+
+            Notes:
+                ID of the assigned Gateway
+
+                
+                This attribute is named `associatedGatewayID` in VSD API.
+                
+        """
+        self._associated_gateway_id = value
+
+    
+    @property
+    def associated_gateway_name(self):
+        """ Get associated_gateway_name value.
+
+            Notes:
+                Name of the associated Gateway
+
+                
+                This attribute is named `associatedGatewayName` in VSD API.
+                
+        """
+        return self._associated_gateway_name
+
+    @associated_gateway_name.setter
+    def associated_gateway_name(self, value):
+        """ Set associated_gateway_name value.
+
+            Notes:
+                Name of the associated Gateway
+
+                
+                This attribute is named `associatedGatewayName` in VSD API.
+                
+        """
+        self._associated_gateway_name = value
 
     
     @property

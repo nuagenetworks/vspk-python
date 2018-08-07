@@ -31,6 +31,9 @@
 from .fetchers import NUMetadatasFetcher
 
 
+from .fetchers import NUShuntLinksFetcher
+
+
 from .fetchers import NUAlarmsFetcher
 
 
@@ -127,9 +130,11 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         self._name = None
         self._last_updated_by = None
         self._gateway_peer1_autodiscovered_gateway_id = None
+        self._gateway_peer1_connected = None
         self._gateway_peer1_id = None
         self._gateway_peer1_name = None
         self._gateway_peer2_autodiscovered_gateway_id = None
+        self._gateway_peer2_connected = None
         self._gateway_peer2_id = None
         self._gateway_peer2_name = None
         self._heartbeat_interval = None
@@ -147,9 +152,11 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_autodiscovered_gateway_id", remote_name="gatewayPeer1AutodiscoveredGatewayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_peer1_connected", remote_name="gatewayPeer1Connected", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_id", remote_name="gatewayPeer1ID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_name", remote_name="gatewayPeer1Name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer2_autodiscovered_gateway_id", remote_name="gatewayPeer2AutodiscoveredGatewayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_peer2_connected", remote_name="gatewayPeer2Connected", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer2_id", remote_name="gatewayPeer2ID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer2_name", remote_name="gatewayPeer2Name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="heartbeat_interval", remote_name="heartbeatInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -169,6 +176,9 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.shunt_links = NUShuntLinksFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -268,6 +278,33 @@ class NUNSRedundantGatewayGroup(NURESTObject):
 
     
     @property
+    def gateway_peer1_connected(self):
+        """ Get gateway_peer1_connected value.
+
+            Notes:
+                Indicates status of the authoritative gateway of this Redundancy Group.
+
+                
+                This attribute is named `gatewayPeer1Connected` in VSD API.
+                
+        """
+        return self._gateway_peer1_connected
+
+    @gateway_peer1_connected.setter
+    def gateway_peer1_connected(self, value):
+        """ Set gateway_peer1_connected value.
+
+            Notes:
+                Indicates status of the authoritative gateway of this Redundancy Group.
+
+                
+                This attribute is named `gatewayPeer1Connected` in VSD API.
+                
+        """
+        self._gateway_peer1_connected = value
+
+    
+    @property
     def gateway_peer1_id(self):
         """ Get gateway_peer1_id value.
 
@@ -346,6 +383,33 @@ class NUNSRedundantGatewayGroup(NURESTObject):
                 
         """
         self._gateway_peer2_autodiscovered_gateway_id = value
+
+    
+    @property
+    def gateway_peer2_connected(self):
+        """ Get gateway_peer2_connected value.
+
+            Notes:
+                Indicates status of the secondary gateway of this Redundancy Group.
+
+                
+                This attribute is named `gatewayPeer2Connected` in VSD API.
+                
+        """
+        return self._gateway_peer2_connected
+
+    @gateway_peer2_connected.setter
+    def gateway_peer2_connected(self, value):
+        """ Set gateway_peer2_connected value.
+
+            Notes:
+                Indicates status of the secondary gateway of this Redundancy Group.
+
+                
+                This attribute is named `gatewayPeer2Connected` in VSD API.
+                
+        """
+        self._gateway_peer2_connected = value
 
     
     @property

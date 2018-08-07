@@ -108,6 +108,8 @@ Attributes
 
 - ``evpnbgp_community_tag_upper_limit``: EVPNBGPCommunityTag upper limit
 
+- ``saa_s_applications_publish_date``: Determines the time that saas applications were imported in VSD.
+
 - ``page_max_size``: Defines upper bound for the page size. Configured or input page size should be less than this max page size.
 
 - ``page_size``: Defines the page size for the results returned by the REST call.
@@ -158,6 +160,8 @@ Attributes
 
 - ``flow_collection_enabled``: Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires 'statisticsEnabled'.
 
+- ``imported_saa_s_applications_version``: Version of the current imported SaaS Application Type Master List.
+
 - ``inactive_timeout``: Defines the inactive timeout for the client. If the client is inactive for more than timeout, server clears off all the cache/information regarding the client. This value should be greater than event processor max timeout
 
 - ``infrastructure_bgpas_number``: Autonomous System Number, Used for Infrastructure BGP PE_CE.
@@ -165,6 +169,8 @@ Attributes
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``domain_tunnel_type``: Default Domain Tunnel Type .Possible values are VXLAN,GRE Possible values are DC_DEFAULT, GRE, VXLAN, .
+
+- ``google_maps_api_key``: Google Maps API Key used to display maps on Nuage UI applications
 
 - ``post_processor_threads_count``: Post processor thread count.
 

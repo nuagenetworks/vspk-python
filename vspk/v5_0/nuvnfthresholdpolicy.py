@@ -34,7 +34,7 @@ class NUVNFThresholdPolicy(NURESTObject):
     """ Represents a VNFThresholdPolicy in the VSD
 
         Notes:
-            Represents thresholds for resources consumed by VNF instance running on NS Gateway and action to be taken when resource utilization crosses configured thresholds.
+            VNF Threshold Policy represents thresholds for resources consumed by VNF instance running on NS Gateway and action to be taken when resource utilization crosses configured thresholds.
     """
 
     __rest_name__ = "vnfthresholdpolicy"

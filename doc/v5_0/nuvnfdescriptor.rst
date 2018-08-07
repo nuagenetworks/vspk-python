@@ -5,7 +5,7 @@ nuvnfdescriptor
 
 .. class:: nuvnfdescriptor.NUVNFDescriptor(bambou.nurest_object.NUMetaRESTObject,):
 
-Represent Virtual Network Function Descriptor Object
+The behavioral and deployment information of a VNF is defined in the VNF descriptor template. The template is based on the libvirt domain XML and is on-boarded in a VNF catalog. The resource requirements for CPU, memory and storage are defined in this screen and the rest of the template is inherited from the VNF Metadata object.
 
 
 Attributes

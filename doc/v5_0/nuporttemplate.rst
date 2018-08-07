@@ -24,7 +24,7 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``port_type`` (**Mandatory**): Type of the Port - NETWORK, ACCESS Possible values are ACCESS, NETWORK, .
+- ``port_type`` (**Mandatory**): Type of the Port. Possible values are ACCESS, NETWORK, MANAGEMENT.
 
 - ``associated_egress_qos_policy_id``: ID of the Egress QOS Policy associated with this Vlan.
 

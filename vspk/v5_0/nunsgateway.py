@@ -76,6 +76,9 @@ from .fetchers import NUBootstrapActivationsFetcher
 from .fetchers import NUUplinkConnectionsFetcher
 
 
+from .fetchers import NUNSGatewaySummariesFetcher
+
+
 from .fetchers import NUNSGInfosFetcher
 
 
@@ -94,7 +97,7 @@ class NUNSGateway(NURESTObject):
     """ Represents a NSGateway in the VSD
 
         Notes:
-            Represents a Network Service Gateway.
+            Network Services Gateways are a policy enforcement end-points responsible for the delivery of networking services. NSG access ports/VLANs may be attached to existing host or bridge VPorts.
     """
 
     __rest_name__ = "nsgateway"
@@ -104,6 +107,8 @@ class NUNSGateway(NURESTObject):
     ## Constants
     
     CONST_FAMILY_NSG_C = "NSG_C"
+    
+    CONST_PERMITTED_ACTION_ALL = "ALL"
     
     CONST_NETWORK_ACCELERATION_NONE = "NONE"
     
@@ -117,6 +122,8 @@ class NUNSGateway(NURESTObject):
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
+    CONST_ZFB_MATCH_ATTRIBUTE_MAC_ADDRESS = "MAC_ADDRESS"
+    
     CONST_PERSONALITY_NSGDUC = "NSGDUC"
     
     CONST_FAMILY_NSG_V = "NSG_V"
@@ -127,11 +134,17 @@ class NUNSGateway(NURESTObject):
     
     CONST_CONFIGURATION_RELOAD_STATE_PENDING = "PENDING"
     
+    CONST_ZFB_MATCH_ATTRIBUTE_IP_ADDRESS = "IP_ADDRESS"
+    
     CONST_FAMILY_NSG_X = "NSG_X"
     
     CONST_FAMILY_NSG_E200 = "NSG_E200"
     
+    CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_SENT = "NOTIFICATION_APP_REQ_SENT"
+    
     CONST_SSH_SERVICE_DISABLED = "DISABLED"
+    
+    CONST_ZFB_MATCH_ATTRIBUTE_NSGATEWAY_ID = "NSGATEWAY_ID"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
@@ -157,7 +170,7 @@ class NUNSGateway(NURESTObject):
     
     CONST_BOOTSTRAP_STATUS_CERTIFICATE_SIGNED = "CERTIFICATE_SIGNED"
     
-    CONST_DERIVED_SSH_SERVICE_STATE_INSTANCE_ENABLED = "INSTANCE_ENABLED"
+    CONST_FAMILY_NSG_AZ = "NSG_AZ"
     
     CONST_FAMILY_ANY = "ANY"
     
@@ -165,7 +178,7 @@ class NUNSGateway(NURESTObject):
     
     CONST_CONFIGURATION_RELOAD_STATE_APPLIED = "APPLIED"
     
-    CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
+    CONST_ZFB_MATCH_ATTRIBUTE_NONE = "NONE"
     
     CONST_PERSONALITY_VSA = "VSA"
     
@@ -187,13 +200,17 @@ class NUNSGateway(NURESTObject):
     
     CONST_FAMILY_NSG_X200 = "NSG_X200"
     
+    CONST_DERIVED_SSH_SERVICE_STATE_INSTANCE_ENABLED = "INSTANCE_ENABLED"
+    
     CONST_PERSONALITY_VRSG = "VRSG"
     
-    CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_SENT = "NOTIFICATION_APP_REQ_SENT"
+    CONST_ZFB_MATCH_ATTRIBUTE_SERIAL_NUMBER = "SERIAL_NUMBER"
+    
+    CONST_ZFB_MATCH_ATTRIBUTE_UUID = "UUID"
+    
+    CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
     
     CONST_FAMILY_NSG_AMI = "NSG_AMI"
-    
-    CONST_PERMITTED_ACTION_ALL = "ALL"
     
     CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
     
@@ -206,6 +223,8 @@ class NUNSGateway(NURESTObject):
     CONST_SSH_SERVICE_INHERITED = "INHERITED"
     
     CONST_CONFIGURATION_STATUS_UNKNOWN = "UNKNOWN"
+    
+    CONST_ZFB_MATCH_ATTRIBUTE_HOSTNAME = "HOSTNAME"
     
     CONST_CONFIGURATION_RELOAD_STATE_SENT = "SENT"
     
@@ -236,6 +255,8 @@ class NUNSGateway(NURESTObject):
         self._nat_traversal_enabled = None
         self._tcpmss_enabled = None
         self._tcp_maximum_segment_size = None
+        self._zfb_match_attribute = None
+        self._zfb_match_value = None
         self._bios_release_date = None
         self._bios_version = None
         self._sku = None
@@ -251,6 +272,7 @@ class NUNSGateway(NURESTObject):
         self._last_updated_by = None
         self._datapath_id = None
         self._patches = None
+        self._gateway_connected = None
         self._redundancy_group_id = None
         self._template_id = None
         self._pending = None
@@ -286,6 +308,8 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="nat_traversal_enabled", remote_name="NATTraversalEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tcpmss_enabled", remote_name="TCPMSSEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tcp_maximum_segment_size", remote_name="TCPMaximumSegmentSize", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="zfb_match_attribute", remote_name="ZFBMatchAttribute", attribute_type=str, is_required=False, is_unique=False, choices=[u'HOSTNAME', u'IP_ADDRESS', u'MAC_ADDRESS', u'NONE', u'NSGATEWAY_ID', u'SERIAL_NUMBER', u'UUID'])
+        self.expose_attribute(local_name="zfb_match_value", remote_name="ZFBMatchValue", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bios_release_date", remote_name="BIOSReleaseDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bios_version", remote_name="BIOSVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sku", remote_name="SKU", attribute_type=str, is_required=False, is_unique=False)
@@ -296,11 +320,12 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="ssh_service", remote_name="SSHService", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_AMI', u'NSG_C', u'NSG_E', u'NSG_E200', u'NSG_E300', u'NSG_V', u'NSG_X', u'NSG_X200'])
+        self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_AMI', u'NSG_AZ', u'NSG_C', u'NSG_E', u'NSG_E200', u'NSG_E300', u'NSG_V', u'NSG_X', u'NSG_X200'])
         self.expose_attribute(local_name="last_configuration_reload_timestamp", remote_name="lastConfigurationReloadTimestamp", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_id", remote_name="datapathID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="patches", remote_name="patches", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_connected", remote_name="gatewayConnected", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redundancy_group_id", remote_name="redundancyGroupID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="pending", remote_name="pending", attribute_type=bool, is_required=False, is_unique=False)
@@ -382,6 +407,9 @@ class NUNSGateway(NURESTObject):
         
         
         self.uplink_connections = NUUplinkConnectionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ns_gateway_summaries = NUNSGatewaySummariesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.nsg_infos = NUNSGInfosFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -506,6 +534,60 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._tcp_maximum_segment_size = value
+
+    
+    @property
+    def zfb_match_attribute(self):
+        """ Get zfb_match_attribute value.
+
+            Notes:
+                The Zero Factor Bootstrapping (ZFB) Attribute that should be used to match the gateway on when it tries to bootstrap.
+
+                
+                This attribute is named `ZFBMatchAttribute` in VSD API.
+                
+        """
+        return self._zfb_match_attribute
+
+    @zfb_match_attribute.setter
+    def zfb_match_attribute(self, value):
+        """ Set zfb_match_attribute value.
+
+            Notes:
+                The Zero Factor Bootstrapping (ZFB) Attribute that should be used to match the gateway on when it tries to bootstrap.
+
+                
+                This attribute is named `ZFBMatchAttribute` in VSD API.
+                
+        """
+        self._zfb_match_attribute = value
+
+    
+    @property
+    def zfb_match_value(self):
+        """ Get zfb_match_value value.
+
+            Notes:
+                The Zero Factor Bootstrapping (ZFB) value that needs to match with the gateway during the bootstrap attempt. This value needs to match with the ZFB Match Attribute.
+
+                
+                This attribute is named `ZFBMatchValue` in VSD API.
+                
+        """
+        return self._zfb_match_value
+
+    @zfb_match_value.setter
+    def zfb_match_value(self, value):
+        """ Set zfb_match_value value.
+
+            Notes:
+                The Zero Factor Bootstrapping (ZFB) value that needs to match with the gateway during the bootstrap attempt. This value needs to match with the ZFB Match Attribute.
+
+                
+                This attribute is named `ZFBMatchValue` in VSD API.
+                
+        """
+        self._zfb_match_value = value
 
     
     @property
@@ -899,6 +981,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._patches = value
+
+    
+    @property
+    def gateway_connected(self):
+        """ Get gateway_connected value.
+
+            Notes:
+                Indicates status of this gateway
+
+                
+                This attribute is named `gatewayConnected` in VSD API.
+                
+        """
+        return self._gateway_connected
+
+    @gateway_connected.setter
+    def gateway_connected(self, value):
+        """ Set gateway_connected value.
+
+            Notes:
+                Indicates status of this gateway
+
+                
+                This attribute is named `gatewayConnected` in VSD API.
+                
+        """
+        self._gateway_connected = value
 
     
     @property
@@ -1376,7 +1485,7 @@ class NUNSGateway(NURESTObject):
         """ Get bootstrap_id value.
 
             Notes:
-                The bootstrap details associated with this NSGateway. NOTE: this is a read only property, it can only be set during creation of an NSG
+                The bootstrap details associated with this NSGateway. NOTE: This is a read only property, it can only be set during creation of an NSG.
 
                 
                 This attribute is named `bootstrapID` in VSD API.
@@ -1389,7 +1498,7 @@ class NUNSGateway(NURESTObject):
         """ Set bootstrap_id value.
 
             Notes:
-                The bootstrap details associated with this NSGateway. NOTE: this is a read only property, it can only be set during creation of an NSG
+                The bootstrap details associated with this NSGateway. NOTE: This is a read only property, it can only be set during creation of an NSG.
 
                 
                 This attribute is named `bootstrapID` in VSD API.
@@ -1403,7 +1512,7 @@ class NUNSGateway(NURESTObject):
         """ Get bootstrap_status value.
 
             Notes:
-                The bootstrap status of this NSGateway. NOTE: this is a read only property
+                The bootstrap status of this NSGateway. NOTE: This is a read only property.
 
                 
                 This attribute is named `bootstrapStatus` in VSD API.
@@ -1416,7 +1525,7 @@ class NUNSGateway(NURESTObject):
         """ Set bootstrap_status value.
 
             Notes:
-                The bootstrap status of this NSGateway. NOTE: this is a read only property
+                The bootstrap status of this NSGateway. NOTE: This is a read only property.
 
                 
                 This attribute is named `bootstrapStatus` in VSD API.

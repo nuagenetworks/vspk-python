@@ -49,7 +49,7 @@ class NUQOS(NURESTObject):
     """ Represents a QOS in the VSD
 
         Notes:
-            The object manipulates the QoS parameters attached to a domain, zone, or subnet.
+            QoS policies enable you to classify and limit network traffic.
     """
 
     __rest_name__ = "qos"

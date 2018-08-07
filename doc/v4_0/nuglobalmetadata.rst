@@ -80,7 +80,7 @@ Parents
 
 - :ref:`nuexternalservice.NUExternalService<nuexternalservice>`
 
-- :ref:`nuikegatewayprofile.NUIKEGatewayProfile<nuikegatewayprofile>`
+- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
 
 - :ref:`nuikesubnet.NUIKESubnet<nuikesubnet>`
 
@@ -116,17 +116,17 @@ Parents
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
-- :ref:`nunetworklayout.NUNetworkLayout<nunetworklayout>`
+- :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`
 
 - :ref:`nuingressexternalservicetemplateentry.NUIngressExternalServiceTemplateEntry<nuingressexternalservicetemplateentry>`
-
-- :ref:`nudomainfipacltemplate.NUDomainFIPAclTemplate<nudomainfipacltemplate>`
 
 - :ref:`nuavatar.NUAvatar<nuavatar>`
 
 - :ref:`nubootstrapactivation.NUBootstrapActivation<nubootstrapactivation>`
 
-- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
+- :ref:`nugatewaytemplate.NUGatewayTemplate<nugatewaytemplate>`
+
+- :ref:`nucloudmgmtsystem.NUCloudMgmtSystem<nucloudmgmtsystem>`
 
 - :ref:`nuvsp.NUVSP<nuvsp>`
 
@@ -136,9 +136,9 @@ Parents
 
 - :ref:`nudscpforwardingclassmapping.NUDSCPForwardingClassMapping<nudscpforwardingclassmapping>`
 
-- :ref:`nuporttemplate.NUPortTemplate<nuporttemplate>`
+- :ref:`nunetworklayout.NUNetworkLayout<nunetworklayout>`
 
-- :ref:`nuvsc.NUVSC<nuvsc>`
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nuvsd.NUVSD<nuvsd>`
 
@@ -161,8 +161,6 @@ Parents
 - :ref:`nuzonetemplate.NUZoneTemplate<nuzonetemplate>`
 
 - :ref:`nukeyservermonitorseed.NUKeyServerMonitorSeed<nukeyservermonitorseed>`
-
-- :ref:`nugatewaytemplate.NUGatewayTemplate<nugatewaytemplate>`
 
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
@@ -190,7 +188,7 @@ Parents
 
 - :ref:`nukeyservermonitor.NUKeyServerMonitor<nukeyservermonitor>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
+- :ref:`nucertificate.NUCertificate<nucertificate>`
 
 - :ref:`nulicense.NULicense<nulicense>`
 
@@ -206,8 +204,6 @@ Parents
 
 - :ref:`nunetworkmacrogroup.NUNetworkMacroGroup<nunetworkmacrogroup>`
 
-- :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`
-
 - :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`
 
 - :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
@@ -222,7 +218,7 @@ Parents
 
 - :ref:`nutier.NUTier<nutier>`
 
-- :ref:`nueventlog.NUEventLog<nueventlog>`
+- :ref:`nudomainfipacltemplate.NUDomainFIPAclTemplate<nudomainfipacltemplate>`
 
 - :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
 
@@ -236,7 +232,7 @@ Parents
 
 - :ref:`nunsporttemplate.NUNSPortTemplate<nunsporttemplate>`
 
-- :ref:`nucertificate.NUCertificate<nucertificate>`
+- :ref:`nueventlog.NUEventLog<nueventlog>`
 
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
 
@@ -274,6 +270,8 @@ Parents
 
 - :ref:`nuingressexternalservicetemplate.NUIngressExternalServiceTemplate<nuingressexternalservicetemplate>`
 
+- :ref:`nuporttemplate.NUPortTemplate<nuporttemplate>`
+
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nuendpoint.NUEndPoint<nuendpoint>`
@@ -285,6 +283,8 @@ Parents
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
 - :ref:`nunsgatewaytemplate.NUNSGatewayTemplate<nunsgatewaytemplate>`
+
+- :ref:`nuvsc.NUVSC<nuvsc>`
 
 - :ref:`nuuplinkrd.NUUplinkRD<nuuplinkrd>`
 
@@ -307,8 +307,6 @@ Parents
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 
 - :ref:`nusiteinfo.NUSiteInfo<nusiteinfo>`
-
-- :ref:`nucloudmgmtsystem.NUCloudMgmtSystem<nucloudmgmtsystem>`
 
 - :ref:`nuvmresync.NUVMResync<nuvmresync>`
 
@@ -351,6 +349,8 @@ Parents
 - :ref:`nunatmapentry.NUNATMapEntry<nunatmapentry>`
 
 - :ref:`nucontainer.NUContainer<nucontainer>`
+
+- :ref:`nuikegatewayprofile.NUIKEGatewayProfile<nuikegatewayprofile>`
 
 - :ref:`nualarm.NUAlarm<nualarm>`
 

@@ -58,6 +58,9 @@ from .fetchers import NUHSCsFetcher
 from .fetchers import NUVSCsFetcher
 
 
+from .fetchers import NUStatisticsFetcher
+
+
 from .fetchers import NUMultiNICVPortsFetcher
 
 
@@ -298,6 +301,9 @@ class NUVRS(NURESTObject):
         
         
         self.vscs = NUVSCsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.multi_nic_vports = NUMultiNICVPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")

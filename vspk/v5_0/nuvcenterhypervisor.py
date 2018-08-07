@@ -67,6 +67,8 @@ class NUVCenterHypervisor(NURESTObject):
     
     CONST_DESTINATION_MIRROR_PORT_NO_MIRROR = "no_mirror"
     
+    CONST_PERSONALITY_VRS = "VRS"
+    
     CONST_VRS_STATE_UPGRADING = "UPGRADING"
     
     CONST_REMOTE_SYSLOG_SERVER_TYPE_UDP = "UDP"
@@ -106,6 +108,8 @@ class NUVCenterHypervisor(NURESTObject):
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_CPU_COUNT_MEDIUM_4 = "MEDIUM_4"
+    
+    CONST_PERSONALITY_VDF = "VDF"
     
     
 
@@ -158,6 +162,7 @@ class NUVCenterHypervisor(NURESTObject):
         self._secondary_data_uplink_primary_controller = None
         self._secondary_data_uplink_secondary_controller = None
         self._secondary_data_uplink_underlay_id = None
+        self._secondary_data_uplink_vdf_control_vlan = None
         self._secondary_nuage_controller = None
         self._memory_size_in_gb = None
         self._remote_syslog_server_ip = None
@@ -227,6 +232,7 @@ class NUVCenterHypervisor(NURESTObject):
         self._upgrade_timedout = None
         self._cpu_count = None
         self._primary_data_uplink_underlay_id = None
+        self._primary_data_uplink_vdf_control_vlan = None
         self._primary_nuage_controller = None
         self._vrs_id = None
         self._vrs_marked_as_available = None
@@ -293,6 +299,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="secondary_data_uplink_primary_controller", remote_name="secondaryDataUplinkPrimaryController", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_data_uplink_secondary_controller", remote_name="secondaryDataUplinkSecondaryController", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_data_uplink_underlay_id", remote_name="secondaryDataUplinkUnderlayID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="secondary_data_uplink_vdf_control_vlan", remote_name="secondaryDataUplinkVDFControlVLAN", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_nuage_controller", remote_name="secondaryNuageController", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="memory_size_in_gb", remote_name="memorySizeInGB", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT_4', u'LARGE_8', u'MEDIUM_6'])
         self.expose_attribute(local_name="remote_syslog_server_ip", remote_name="remoteSyslogServerIP", attribute_type=str, is_required=False, is_unique=False)
@@ -302,7 +309,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="generic_split_activation", remote_name="genericSplitActivation", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="separate_data_network", remote_name="separateDataNetwork", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="deployment_count", remote_name="deploymentCount", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'VDF', u'VRS'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="destination_mirror_port", remote_name="destinationMirrorPort", attribute_type=str, is_required=False, is_unique=False, choices=[u'ens160', u'ens161', u'ens224', u'ens256', u'no_mirror'])
         self.expose_attribute(local_name="metadata_server_ip", remote_name="metadataServerIP", attribute_type=str, is_required=False, is_unique=False)
@@ -362,6 +369,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="upgrade_timedout", remote_name="upgradeTimedout", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cpu_count", remote_name="cpuCount", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT_2', u'LARGE_6', u'MEDIUM_4', u'XLARGE_8'])
         self.expose_attribute(local_name="primary_data_uplink_underlay_id", remote_name="primaryDataUplinkUnderlayID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="primary_data_uplink_vdf_control_vlan", remote_name="primaryDataUplinkVDFControlVLAN", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="primary_nuage_controller", remote_name="primaryNuageController", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_id", remote_name="vrsId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_marked_as_available", remote_name="vrsMarkedAsAvailable", attribute_type=bool, is_required=False, is_unique=False)
@@ -1279,6 +1287,33 @@ class NUVCenterHypervisor(NURESTObject):
 
     
     @property
+    def secondary_data_uplink_vdf_control_vlan(self):
+        """ Get secondary_data_uplink_vdf_control_vlan value.
+
+            Notes:
+                The VLAN for the control communication with VSC on the secondary datapath interface, when VDF is enabled. This VLAN can not be used as a subnet VLAN in the VSD configuration.
+
+                
+                This attribute is named `secondaryDataUplinkVDFControlVLAN` in VSD API.
+                
+        """
+        return self._secondary_data_uplink_vdf_control_vlan
+
+    @secondary_data_uplink_vdf_control_vlan.setter
+    def secondary_data_uplink_vdf_control_vlan(self, value):
+        """ Set secondary_data_uplink_vdf_control_vlan value.
+
+            Notes:
+                The VLAN for the control communication with VSC on the secondary datapath interface, when VDF is enabled. This VLAN can not be used as a subnet VLAN in the VSD configuration.
+
+                
+                This attribute is named `secondaryDataUplinkVDFControlVLAN` in VSD API.
+                
+        """
+        self._secondary_data_uplink_vdf_control_vlan = value
+
+    
+    @property
     def secondary_nuage_controller(self):
         """ Get secondary_nuage_controller value.
 
@@ -1526,7 +1561,7 @@ class NUVCenterHypervisor(NURESTObject):
         """ Get personality value.
 
             Notes:
-                VRS/VRS-G
+                The personality of the VRS Agent, supported values when deploying through the vCenter Integration Node: VRS, VDF.
 
                 
         """
@@ -1537,7 +1572,7 @@ class NUVCenterHypervisor(NURESTObject):
         """ Set personality value.
 
             Notes:
-                VRS/VRS-G
+                The personality of the VRS Agent, supported values when deploying through the vCenter Integration Node: VRS, VDF.
 
                 
         """
@@ -3131,6 +3166,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._primary_data_uplink_underlay_id = value
+
+    
+    @property
+    def primary_data_uplink_vdf_control_vlan(self):
+        """ Get primary_data_uplink_vdf_control_vlan value.
+
+            Notes:
+                The VLAN for the control communication with VSC on the primary datapath interface, when VDF is enabled. This VLAN can not be used as a subnet VLAN in the VSD configuration.
+
+                
+                This attribute is named `primaryDataUplinkVDFControlVLAN` in VSD API.
+                
+        """
+        return self._primary_data_uplink_vdf_control_vlan
+
+    @primary_data_uplink_vdf_control_vlan.setter
+    def primary_data_uplink_vdf_control_vlan(self, value):
+        """ Set primary_data_uplink_vdf_control_vlan value.
+
+            Notes:
+                The VLAN for the control communication with VSC on the primary datapath interface, when VDF is enabled. This VLAN can not be used as a subnet VLAN in the VSD configuration.
+
+                
+                This attribute is named `primaryDataUplinkVDFControlVLAN` in VSD API.
+                
+        """
+        self._primary_data_uplink_vdf_control_vlan = value
 
     
     @property

@@ -37,7 +37,7 @@ class NUVNFDescriptor(NURESTObject):
     """ Represents a VNFDescriptor in the VSD
 
         Notes:
-            Represent Virtual Network Function Descriptor Object
+            The behavioral and deployment information of a VNF is defined in the VNF descriptor template. The template is based on the libvirt domain XML and is on-boarded in a VNF catalog. The resource requirements for CPU, memory and storage are defined in this screen and the rest of the template is inherited from the VNF Metadata object.
     """
 
     __rest_name__ = "vnfdescriptor"

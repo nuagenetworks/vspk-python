@@ -30,6 +30,8 @@ Attributes
 
 - ``license_type``: None
 
+- ``licensed_feature``: Indicates the feature supported by the license. Possible value is "vss".
+
 - ``minor_release``: Minor software release for which this license has been issued
 
 - ``zip``: Zipcode of the owner associated with the license file
@@ -43,6 +45,10 @@ Attributes
 - ``allowed_cpes_count``: Maximum number of NSGs enabled with this license. A value of -1 indicates an unlimited number of NSGs
 
 - ``allowed_nics_count``: Maximum number of NICs allowed. A value of -1 indicates unlimited number of NICs
+
+- ``allowed_vdfgs_count``: Maximum number of VDFGs enabled with this license. A value of -1 indicates an unlimited number of VDFGs.
+
+- ``allowed_vdfs_count``: Maximum number of VDFs enabled with this license. A value of -1 indicates an unlimited number of VDFs
 
 - ``allowed_vms_count``: Maximum number of VMs enabled with this license. A value of -1 indicates an unlimited number of VMs
 

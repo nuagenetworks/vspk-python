@@ -89,6 +89,8 @@ class NUPolicyGroup(NURESTObject):
         self._description = None
         self._entity_scope = None
         self._policy_group_id = None
+        self._assoc_policy_group_category_id = None
+        self._assoc_policy_group_category_name = None
         self._external = None
         self._external_id = None
         self._type = None
@@ -100,6 +102,8 @@ class NUPolicyGroup(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="policy_group_id", remote_name="policyGroupID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="assoc_policy_group_category_id", remote_name="assocPolicyGroupCategoryID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="assoc_policy_group_category_name", remote_name="assocPolicyGroupCategoryName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external", remote_name="external", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'HARDWARE', u'SOFTWARE'])
@@ -303,6 +307,60 @@ class NUPolicyGroup(NURESTObject):
                 
         """
         self._policy_group_id = value
+
+    
+    @property
+    def assoc_policy_group_category_id(self):
+        """ Get assoc_policy_group_category_id value.
+
+            Notes:
+                UUID of the associated Policy Group Category for contextual filtering of policy groups.
+
+                
+                This attribute is named `assocPolicyGroupCategoryID` in VSD API.
+                
+        """
+        return self._assoc_policy_group_category_id
+
+    @assoc_policy_group_category_id.setter
+    def assoc_policy_group_category_id(self, value):
+        """ Set assoc_policy_group_category_id value.
+
+            Notes:
+                UUID of the associated Policy Group Category for contextual filtering of policy groups.
+
+                
+                This attribute is named `assocPolicyGroupCategoryID` in VSD API.
+                
+        """
+        self._assoc_policy_group_category_id = value
+
+    
+    @property
+    def assoc_policy_group_category_name(self):
+        """ Get assoc_policy_group_category_name value.
+
+            Notes:
+                Name of the Policy Group Category used for contextual filtering of policy groups.
+
+                
+                This attribute is named `assocPolicyGroupCategoryName` in VSD API.
+                
+        """
+        return self._assoc_policy_group_category_name
+
+    @assoc_policy_group_category_name.setter
+    def assoc_policy_group_category_name(self, value):
+        """ Set assoc_policy_group_category_name value.
+
+            Notes:
+                Name of the Policy Group Category used for contextual filtering of policy groups.
+
+                
+                This attribute is named `assocPolicyGroupCategoryName` in VSD API.
+                
+        """
+        self._assoc_policy_group_category_name = value
 
     
     @property

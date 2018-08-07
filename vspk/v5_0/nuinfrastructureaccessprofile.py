@@ -46,7 +46,7 @@ class NUInfrastructureAccessProfile(NURESTObject):
     """ Represents a InfrastructureAccessProfile in the VSD
 
         Notes:
-            Represents an Infrastructure Access Profile
+            Infrastructure Access Profiles identify a set of NSG template level platform attributes specifically related to user and access control, inherited by gateways as they are instantiated.
     """
 
     __rest_name__ = "infrastructureaccessprofile"

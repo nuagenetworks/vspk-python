@@ -5,7 +5,7 @@ nuvnf
 
 .. class:: nuvnf.NUVNF(bambou.nurest_object.NUMetaRESTObject,):
 
-Represent a VNF instance
+Instantiation of a VNF on a specified Network Services Gateway that has the resources to manage a VNF.
 
 
 Attributes

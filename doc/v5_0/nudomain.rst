@@ -22,6 +22,8 @@ Attributes
 
 - ``dhcp_server_address``: when DHCPBehaviorType is RELAY, then DHCP Server IP Address needs to be set
 
+- ``fip_ignore_default_route``: Determines whether the default Overlay route will be ignored or not when a VM has FIP so that it takes Underlay route.
+
 - ``fip_underlay``: Boolean flag to indicate whether this is a Floating IP to underlay domain or not
 
 - ``dpi``: determines whether or not Deep packet inspection is enabled
@@ -161,6 +163,7 @@ Children
 :ref:`nuapplicationperformancemanagementbinding.NUApplicationperformancemanagementbinding<nuapplicationperformancemanagementbinding>`                            ``applicationperformancemanagementbindings`` 
 :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`                                                                                                    ``bridge_interfaces`` 
 :ref:`nugroup.NUGroup<nugroup>`                                                                                                                                  ``groups`` 
+:ref:`nunsgatewaysummary.NUNSGatewaySummary<nunsgatewaysummary>`                                                                                                 ``ns_gateway_summaries`` 
 :ref:`nunsgroutingpolicybinding.NUNSGRoutingPolicyBinding<nunsgroutingpolicybinding>`                                                                            ``nsg_routing_policy_bindings`` 
 :ref:`nuospfinstance.NUOSPFInstance<nuospfinstance>`                                                                                                             ``ospf_instances`` 
 :ref:`nustaticroute.NUStaticRoute<nustaticroute>`                                                                                                                ``static_routes`` 

@@ -52,6 +52,8 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     ## Constants
     
+    CONST_ACTION_FORWARDING_PATH_LIST = "FORWARDING_PATH_LIST"
+    
     CONST_NETWORK_TYPE_NETWORK_MACRO_GROUP = "NETWORK_MACRO_GROUP"
     
     CONST_ACTION_DROP = "DROP"
@@ -67,8 +69,6 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_NETWORK_TYPE_PUBLIC_NETWORK = "PUBLIC_NETWORK"
-    
-    CONST_ACTION_ACTION_LIST = "ACTION_LIST"
     
     CONST_ACTION_FORWARD = "FORWARD"
     
@@ -123,6 +123,8 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     CONST_UPLINK_PREFERENCE_DEFAULT = "DEFAULT"
     
     CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
+    
+    CONST_NETWORK_TYPE_SAAS_APPLICATION_GROUP = "SAAS_APPLICATION_GROUP"
     
     CONST_NETWORK_TYPE_ENDPOINT_SUBNET = "ENDPOINT_SUBNET"
     
@@ -183,6 +185,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self._fc_override = None
         self._ipv6_address_override = None
         self._dscp = None
+        self._dscp_remarking = None
         self._failsafe_datapath = None
         self._name = None
         self._last_updated_by = None
@@ -227,10 +230,11 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="fc_override", remote_name="FCOverride", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="ipv6_address_override", remote_name="IPv6AddressOverride", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="dscp_remarking", remote_name="DSCPRemarking", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="failsafe_datapath", remote_name="failsafeDatapath", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAIL_TO_BLOCK', u'FAIL_TO_WIRE'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACTION_LIST', u'DROP', u'FORWARD', u'REDIRECT'])
+        self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'DROP', u'FORWARD', u'FORWARDING_PATH_LIST', u'REDIRECT'])
         self.expose_attribute(local_name="address_override", remote_name="addressOverride", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redirect_rewrite_type", remote_name="redirectRewriteType", attribute_type=str, is_required=False, is_unique=True, choices=[u'VLAN'])
         self.expose_attribute(local_name="redirect_rewrite_value", remote_name="redirectRewriteValue", attribute_type=str, is_required=False, is_unique=False)
@@ -239,7 +243,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'NETWORK_MACRO_GROUP', u'PGEXPRESSION', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'UNDERLAY_INTERNET_POLICYGROUP', u'ZONE'])
+        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'NETWORK_MACRO_GROUP', u'PGEXPRESSION', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SAAS_APPLICATION_GROUP', u'SUBNET', u'UNDERLAY_INTERNET_POLICYGROUP', u'ZONE'])
         self.expose_attribute(local_name="mirror_destination_id", remote_name="mirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vlan_range", remote_name="vlanRange", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_logging_enabled", remote_name="flowLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -445,6 +449,33 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
 
     
     @property
+    def dscp_remarking(self):
+        """ Get dscp_remarking value.
+
+            Notes:
+                Remarking value for the DSCP field in IP header of customer packet.DSCP value range from enumeration of 65 values: NONE, 0, 1, ..., 63
+
+                
+                This attribute is named `DSCPRemarking` in VSD API.
+                
+        """
+        return self._dscp_remarking
+
+    @dscp_remarking.setter
+    def dscp_remarking(self, value):
+        """ Set dscp_remarking value.
+
+            Notes:
+                Remarking value for the DSCP field in IP header of customer packet.DSCP value range from enumeration of 65 values: NONE, 0, 1, ..., 63
+
+                
+                This attribute is named `DSCPRemarking` in VSD API.
+                
+        """
+        self._dscp_remarking = value
+
+    
+    @property
     def failsafe_datapath(self):
         """ Get failsafe_datapath value.
 
@@ -526,7 +557,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         """ Get action value.
 
             Notes:
-                The action of the ACL entry DROP or FORWARD or REDIRECT or ACTION_LIST. Actions REDIRECT and ACTION_LIST are allowed only for IngressAdvancedForwardingEntry. Possible values are DROP, FORWARD, REDIRECT, ACTION_LIST. If ACTION_LIST is selected in IngressAdvancedForwardingEntry, user will have to attach a ForwardingPathList (list of forwarding action-uplink preference entries) to the ACL.  
+                The action of the ACL entry DROP or FORWARD or REDIRECT or FORWARDING_PATH_LIST. Actions REDIRECT and FORWARDING_PATH_LIST are allowed only for IngressAdvancedForwardingEntry. Possible values are DROP, FORWARD, REDIRECT, FORWARDING_PATH_LIST. If FORWARDING_PATH_LIST is selected in IngressAdvancedForwardingEntry, user will have to attach a ForwardingPathList (list of forwarding action-uplink preference entries) to the ACL.  
 
                 
         """
@@ -537,7 +568,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         """ Set action value.
 
             Notes:
-                The action of the ACL entry DROP or FORWARD or REDIRECT or ACTION_LIST. Actions REDIRECT and ACTION_LIST are allowed only for IngressAdvancedForwardingEntry. Possible values are DROP, FORWARD, REDIRECT, ACTION_LIST. If ACTION_LIST is selected in IngressAdvancedForwardingEntry, user will have to attach a ForwardingPathList (list of forwarding action-uplink preference entries) to the ACL.  
+                The action of the ACL entry DROP or FORWARD or REDIRECT or FORWARDING_PATH_LIST. Actions REDIRECT and FORWARDING_PATH_LIST are allowed only for IngressAdvancedForwardingEntry. Possible values are DROP, FORWARD, REDIRECT, FORWARDING_PATH_LIST. If FORWARDING_PATH_LIST is selected in IngressAdvancedForwardingEntry, user will have to attach a ForwardingPathList (list of forwarding action-uplink preference entries) to the ACL.  
 
                 
         """
@@ -1266,7 +1297,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         """ Get associated_traffic_type value.
 
             Notes:
-                This property reflects the type of traffic in case an ACL entry is created using an L4 Service or L4 Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
+                This property reflects the type of traffic in case an ACL entry is created using an Service or Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
 
                 
                 This attribute is named `associatedTrafficType` in VSD API.
@@ -1279,7 +1310,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         """ Set associated_traffic_type value.
 
             Notes:
-                This property reflects the type of traffic in case an ACL entry is created using an L4 Service or L4 Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
+                This property reflects the type of traffic in case an ACL entry is created using an Service or Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
 
                 
                 This attribute is named `associatedTrafficType` in VSD API.
@@ -1293,7 +1324,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         """ Get associated_traffic_type_id value.
 
             Notes:
-                If a traffic type is specified as L4 Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
+                If a traffic type is specified as Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
 
                 
                 This attribute is named `associatedTrafficTypeID` in VSD API.
@@ -1306,7 +1337,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         """ Set associated_traffic_type_id value.
 
             Notes:
-                If a traffic type is specified as L4 Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
+                If a traffic type is specified as Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
 
                 
                 This attribute is named `associatedTrafficTypeID` in VSD API.

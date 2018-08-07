@@ -870,7 +870,7 @@ class NUEgressACLEntryTemplate(NURESTObject):
         """ Get associated_traffic_type value.
 
             Notes:
-                This property reflects the type of traffic in case an ACL entry is created using an L4 Service or L4 Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
+                This property reflects the type of traffic in case an ACL entry is created using an Service or Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
 
                 
                 This attribute is named `associatedTrafficType` in VSD API.
@@ -883,7 +883,7 @@ class NUEgressACLEntryTemplate(NURESTObject):
         """ Set associated_traffic_type value.
 
             Notes:
-                This property reflects the type of traffic in case an ACL entry is created using an L4 Service or L4 Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
+                This property reflects the type of traffic in case an ACL entry is created using an Service or Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
 
                 
                 This attribute is named `associatedTrafficType` in VSD API.
@@ -897,7 +897,7 @@ class NUEgressACLEntryTemplate(NURESTObject):
         """ Get associated_traffic_type_id value.
 
             Notes:
-                If a traffic type is specified as L4 Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
+                If a traffic type is specified as Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
 
                 
                 This attribute is named `associatedTrafficTypeID` in VSD API.
@@ -910,7 +910,7 @@ class NUEgressACLEntryTemplate(NURESTObject):
         """ Set associated_traffic_type_id value.
 
             Notes:
-                If a traffic type is specified as L4 Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
+                If a traffic type is specified as Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
 
                 
                 This attribute is named `associatedTrafficTypeID` in VSD API.
