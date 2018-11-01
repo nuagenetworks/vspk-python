@@ -12,8 +12,6 @@ Attributes
 ----------
 
 
-- ``vport_name``: Name of the vport to which the mirror destination is associated with.
-
 - ``last_updated_by``: ID of the user who last updated the object.
 
 - ``network_name``: Name of the network to which the vport belongs to
@@ -31,6 +29,8 @@ Attributes
 - ``domain_name``: Domain name of the vport associated with the mirror destination
 
 - ``vport_id``: Id of the vport to which the mirror destination is associated with.
+
+- ``vport_name``: Name of the vport to which the mirror destination is associated with.
 
 - ``attached_network_type``: Type of the network attached - L2/L3
 
@@ -55,7 +55,7 @@ Parents
 --------
 
 
-- :ref:`nuvport.NUVPort<nuvport>`
-
 - :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
+
+- :ref:`nuvport.NUVPort<nuvport>`
 

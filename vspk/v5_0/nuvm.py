@@ -204,6 +204,7 @@ class NUVM(NURESTObject):
         self._enterprise_name = None
         self._entity_scope = None
         self._domain_ids = None
+        self._compute_provisioned = None
         self._zone_ids = None
         self._orchestration_id = None
         self._user_id = None
@@ -228,6 +229,7 @@ class NUVM(NURESTObject):
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="domain_ids", remote_name="domainIDs", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="compute_provisioned", remote_name="computeProvisioned", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zone_ids", remote_name="zoneIDs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="orchestration_id", remote_name="orchestrationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_id", remote_name="userID", attribute_type=str, is_required=False, is_unique=False)
@@ -661,6 +663,33 @@ class NUVM(NURESTObject):
                 
         """
         self._domain_ids = value
+
+    
+    @property
+    def compute_provisioned(self):
+        """ Get compute_provisioned value.
+
+            Notes:
+                computeProvisioned
+
+                
+                This attribute is named `computeProvisioned` in VSD API.
+                
+        """
+        return self._compute_provisioned
+
+    @compute_provisioned.setter
+    def compute_provisioned(self, value):
+        """ Set compute_provisioned value.
+
+            Notes:
+                computeProvisioned
+
+                
+                This attribute is named `computeProvisioned` in VSD API.
+                
+        """
+        self._compute_provisioned = value
 
     
     @property

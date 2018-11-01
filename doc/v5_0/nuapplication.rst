@@ -24,11 +24,15 @@ Attributes
 
 - ``performance_monitor_type``: Describes the trigger for the application.
 
+- ``certificate_common_name``: Describes the certificate common name
+
 - ``description``: description of Application
 
 - ``destination_ip``: destination IP in CIDR format
 
 - ``destination_port``: value should be either * or single port number 
+
+- ``network_symmetry``: Network symmetry flag
 
 - ``enable_pps``: Enable the performance probe for this application
 
@@ -82,6 +86,12 @@ Children
 Parents
 --------
 
+
+- :ref:`nume.NUMe<nume>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nul7applicationsignature.NUL7applicationsignature<nul7applicationsignature>`
 

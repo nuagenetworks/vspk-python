@@ -111,6 +111,7 @@ class NUBootstrapActivation(NURESTObject):
         self._srk_password = None
         self._vsd_time = None
         self._csr = None
+        self._associated_entity_type = None
         self._status = None
         self._auto_bootstrap = None
         self._external_id = None
@@ -128,6 +129,7 @@ class NUBootstrapActivation(NURESTObject):
         self.expose_attribute(local_name="srk_password", remote_name="srkPassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsd_time", remote_name="vsdTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="csr", remote_name="csr", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_entity_type", remote_name="associatedEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="auto_bootstrap", remote_name="autoBootstrap", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -471,6 +473,33 @@ class NUBootstrapActivation(NURESTObject):
                 
         """
         self._csr = value
+
+    
+    @property
+    def associated_entity_type(self):
+        """ Get associated_entity_type value.
+
+            Notes:
+                Object type of the associated entity.
+
+                
+                This attribute is named `associatedEntityType` in VSD API.
+                
+        """
+        return self._associated_entity_type
+
+    @associated_entity_type.setter
+    def associated_entity_type(self, value):
+        """ Set associated_entity_type value.
+
+            Notes:
+                Object type of the associated entity.
+
+                
+                This attribute is named `associatedEntityType` in VSD API.
+                
+        """
+        self._associated_entity_type = value
 
     
     @property

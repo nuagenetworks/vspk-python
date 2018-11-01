@@ -38,6 +38,8 @@ Attributes
 
 - ``csr``: The CSR of the request
 
+- ``associated_entity_type``: Object type of the associated entity.
+
 - ``status``: The agent status for the request
 
 - ``auto_bootstrap``: Indicates whether auto bootstrap is being used to bootstrap this NSG
@@ -62,6 +64,8 @@ Children
 Parents
 --------
 
+
+- :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 

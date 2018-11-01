@@ -32,6 +32,8 @@ Attributes
 
 - ``ipsec_sa_replay_window_size``: IPsec Replay Window Size in Packets.
 
+- ``ipsec_sa_replay_window_size_value``: IPsec Replay Window Size in Packets.
+
 - ``isakmp_authentication_mode``: ISAKMP Authentication Algorithm.
 
 - ``isakmp_diffie_helman_group_identifier``: ISAKMP Diffie-Helman Group Identifier.
@@ -51,8 +53,6 @@ Attributes
 - ``description``: A description of the Profile instance created.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
-
-- ``ipsec_sa_replay_window_size_value``: IPsec Replay Window Size in Packets.
 
 - ``associated_enterprise_id``: The ID of the associated Enterprise
 

@@ -81,8 +81,6 @@ class NUIKEEncryptionprofile(NURESTObject):
     
     CONST_IPSEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_1024 = "WINDOW_SIZE_1024"
     
-    CONST_IPSEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_0 = "WINDOW_SIZE_0"
-    
     CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_1_768_BIT_DH = "GROUP_1_768_BIT_DH"
     
     CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_18_8192_BIT_DH = "GROUP_18_8192_BIT_DH"
@@ -148,6 +146,7 @@ class NUIKEEncryptionprofile(NURESTObject):
         self._ipsec_pre_fragment = None
         self._ipsec_sa_lifetime = None
         self._ipsec_sa_replay_window_size = None
+        self._ipsec_sa_replay_window_size_value = None
         self._isakmp_authentication_mode = None
         self._isakmp_diffie_helman_group_identifier = None
         self._isakmp_encryption_algorithm = None
@@ -158,7 +157,6 @@ class NUIKEEncryptionprofile(NURESTObject):
         self._sequence = None
         self._description = None
         self._entity_scope = None
-        self._ipsec_sa_replay_window_size_value = None
         self._associated_enterprise_id = None
         self._external_id = None
         
@@ -171,7 +169,8 @@ class NUIKEEncryptionprofile(NURESTObject):
         self.expose_attribute(local_name="ipsec_encryption_algorithm", remote_name="IPsecEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES128', u'AES192', u'AES256', u'NULL', u'TRIPLE_DES'])
         self.expose_attribute(local_name="ipsec_pre_fragment", remote_name="IPsecPreFragment", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ipsec_sa_lifetime", remote_name="IPsecSALifetime", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="ipsec_sa_replay_window_size", remote_name="IPsecSAReplayWindowSize", attribute_type=str, is_required=False, is_unique=False, choices=[u'WINDOW_SIZE_0', u'WINDOW_SIZE_1024', u'WINDOW_SIZE_128', u'WINDOW_SIZE_256', u'WINDOW_SIZE_32', u'WINDOW_SIZE_512', u'WINDOW_SIZE_64'])
+        self.expose_attribute(local_name="ipsec_sa_replay_window_size", remote_name="IPsecSAReplayWindowSize", attribute_type=str, is_required=False, is_unique=False, choices=[u'WINDOW_SIZE_1024', u'WINDOW_SIZE_128', u'WINDOW_SIZE_256', u'WINDOW_SIZE_32', u'WINDOW_SIZE_512', u'WINDOW_SIZE_64'])
+        self.expose_attribute(local_name="ipsec_sa_replay_window_size_value", remote_name="IPsecSAReplayWindowSizeValue", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="isakmp_authentication_mode", remote_name="ISAKMPAuthenticationMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRE_SHARED_KEY'])
         self.expose_attribute(local_name="isakmp_diffie_helman_group_identifier", remote_name="ISAKMPDiffieHelmanGroupIdentifier", attribute_type=str, is_required=False, is_unique=False, choices=[u'GROUP_14_2048_BIT_DH', u'GROUP_15_3072_BIT_DH', u'GROUP_16_4096_BIT_DH', u'GROUP_17_6144_BIT_DH', u'GROUP_18_8192_BIT_DH', u'GROUP_1_768_BIT_DH', u'GROUP_2_1024_BIT_DH', u'GROUP_5_1536_BIT_DH'])
         self.expose_attribute(local_name="isakmp_encryption_algorithm", remote_name="ISAKMPEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES128', u'AES192', u'AES256', u'TRIPLE_DES'])
@@ -182,7 +181,6 @@ class NUIKEEncryptionprofile(NURESTObject):
         self.expose_attribute(local_name="sequence", remote_name="sequence", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="ipsec_sa_replay_window_size_value", remote_name="ipsecSAReplayWindowSizeValue", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
@@ -471,6 +469,33 @@ class NUIKEEncryptionprofile(NURESTObject):
 
     
     @property
+    def ipsec_sa_replay_window_size_value(self):
+        """ Get ipsec_sa_replay_window_size_value value.
+
+            Notes:
+                IPsec Replay Window Size in Packets.
+
+                
+                This attribute is named `IPsecSAReplayWindowSizeValue` in VSD API.
+                
+        """
+        return self._ipsec_sa_replay_window_size_value
+
+    @ipsec_sa_replay_window_size_value.setter
+    def ipsec_sa_replay_window_size_value(self, value):
+        """ Set ipsec_sa_replay_window_size_value value.
+
+            Notes:
+                IPsec Replay Window Size in Packets.
+
+                
+                This attribute is named `IPsecSAReplayWindowSizeValue` in VSD API.
+                
+        """
+        self._ipsec_sa_replay_window_size_value = value
+
+    
+    @property
     def isakmp_authentication_mode(self):
         """ Get isakmp_authentication_mode value.
 
@@ -726,33 +751,6 @@ class NUIKEEncryptionprofile(NURESTObject):
                 
         """
         self._entity_scope = value
-
-    
-    @property
-    def ipsec_sa_replay_window_size_value(self):
-        """ Get ipsec_sa_replay_window_size_value value.
-
-            Notes:
-                IPsec Replay Window Size in Packets.
-
-                
-                This attribute is named `ipsecSAReplayWindowSizeValue` in VSD API.
-                
-        """
-        return self._ipsec_sa_replay_window_size_value
-
-    @ipsec_sa_replay_window_size_value.setter
-    def ipsec_sa_replay_window_size_value(self, value):
-        """ Set ipsec_sa_replay_window_size_value value.
-
-            Notes:
-                IPsec Replay Window Size in Packets.
-
-                
-                This attribute is named `ipsecSAReplayWindowSizeValue` in VSD API.
-                
-        """
-        self._ipsec_sa_replay_window_size_value = value
 
     
     @property

@@ -29,11 +29,11 @@
 from bambou import NURESTFetcher
 
 
-class NUIngressExternalServiceTemplatesFetcher(NURESTFetcher):
-    """ Represents a NUIngressExternalServiceTemplates fetcher
+class NUPatchsFetcher(NURESTFetcher):
+    """ Represents a NUPatchs fetcher
 
         Notes:
-            This fetcher enables to fetch NUIngressExternalServiceTemplate objects.
+            This fetcher enables to fetch NUPatch objects.
 
         See:
             bambou.NURESTFetcher
@@ -41,13 +41,13 @@ class NUIngressExternalServiceTemplatesFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUIngressExternalServiceTemplate class that is managed.
+        """ Return NUPatch class that is managed.
 
             Returns:
-                .NUIngressExternalServiceTemplate: the managed class
+                .NUPatch: the managed class
         """
 
-        from .. import NUIngressExternalServiceTemplate
-        return NUIngressExternalServiceTemplate
+        from .. import NUPatch
+        return NUPatch
 
     

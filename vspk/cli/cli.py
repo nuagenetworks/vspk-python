@@ -73,6 +73,8 @@ def main(argv=sys.argv):
     list_parser.add_argument("-f", "--filter", dest="filter", help="Specify a filter predicate")
     list_parser.add_argument("-x", "--fields", dest="fields", help="Specify output fields", nargs="+", type=str)
     list_parser.add_argument("-q", "--query", dest="query_parameters", nargs="*", help="List of Key=Value that will be sent as query parameters", required=False)
+    list_parser.add_argument("-p", "--page", dest="page", help="The page number that needs to be retreived. This value is ignored unless you also configure the page size parameter. Default value is 0", type=int, default=0)
+    list_parser.add_argument("-s", "--page-size", dest="page_size", help="The size of a single page that needs to be retreived. If this is configured, the list command will only return a maximum of this amount of results", type=int)
 
     # Count Command
     count_parser = subparsers.add_parser("count", description="Count all objects", parents=[default_parser])

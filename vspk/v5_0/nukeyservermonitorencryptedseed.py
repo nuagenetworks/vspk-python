@@ -49,6 +49,10 @@ class NUKeyServerMonitorEncryptedSeed(NURESTObject):
     
     ## Constants
     
+    CONST_SEED_TYPE_DR = "DR"
+    
+    CONST_SEED_TYPE_STANDARD = "STANDARD"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
@@ -74,6 +78,7 @@ class NUKeyServerMonitorEncryptedSeed(NURESTObject):
         
         self._sek_creation_time = None
         self._last_updated_by = None
+        self._seed_type = None
         self._key_server_certificate_serial_number = None
         self._enterprise_secured_data_id = None
         self._entity_scope = None
@@ -85,6 +90,7 @@ class NUKeyServerMonitorEncryptedSeed(NURESTObject):
         
         self.expose_attribute(local_name="sek_creation_time", remote_name="SEKCreationTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="seed_type", remote_name="seedType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DR', u'STANDARD'])
         self.expose_attribute(local_name="key_server_certificate_serial_number", remote_name="keyServerCertificateSerialNumber", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_secured_data_id", remote_name="enterpriseSecuredDataID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -160,6 +166,33 @@ class NUKeyServerMonitorEncryptedSeed(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def seed_type(self):
+        """ Get seed_type value.
+
+            Notes:
+                Seed Type
+
+                
+                This attribute is named `seedType` in VSD API.
+                
+        """
+        return self._seed_type
+
+    @seed_type.setter
+    def seed_type(self, value):
+        """ Set seed_type value.
+
+            Notes:
+                Seed Type
+
+                
+                This attribute is named `seedType` in VSD API.
+                
+        """
+        self._seed_type = value
 
     
     @property

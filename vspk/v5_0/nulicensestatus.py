@@ -27,6 +27,12 @@
 
 
 
+
+from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
+
 from bambou import NURESTObject
 
 
@@ -40,6 +46,13 @@ class NULicenseStatus(NURESTObject):
     __rest_name__ = "licensestatus"
     __resource_name__ = "licensestatus"
 
+    
+    ## Constants
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
     
 
     def __init__(self, **kwargs):
@@ -60,6 +73,7 @@ class NULicenseStatus(NURESTObject):
         # Read/Write Attributes
         
         self._accumulate_licenses_enabled = None
+        self._entity_scope = None
         self._total_licensed_avrsgs_count = None
         self._total_licensed_avrss_count = None
         self._total_licensed_gateways_count = None
@@ -80,8 +94,10 @@ class NULicenseStatus(NURESTObject):
         self._total_licensed_vrsgs_count = None
         self._total_licensed_vrss_count = None
         self._total_used_gateways_count = None
+        self._external_id = None
         
         self.expose_attribute(local_name="accumulate_licenses_enabled", remote_name="accumulateLicensesEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="total_licensed_avrsgs_count", remote_name="totalLicensedAVRSGsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_avrss_count", remote_name="totalLicensedAVRSsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_gateways_count", remote_name="totalLicensedGatewaysCount", attribute_type=int, is_required=False, is_unique=False)
@@ -102,6 +118,16 @@ class NULicenseStatus(NURESTObject):
         self.expose_attribute(local_name="total_licensed_vrsgs_count", remote_name="totalLicensedVRSGsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_vrss_count", remote_name="totalLicensedVRSsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_used_gateways_count", remote_name="totalUsedGatewaysCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        
+
+        # Fetchers
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -133,6 +159,33 @@ class NULicenseStatus(NURESTObject):
                 
         """
         self._accumulate_licenses_enabled = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
 
     
     @property
@@ -653,7 +706,7 @@ class NULicenseStatus(NURESTObject):
         """ Get total_used_gateways_count value.
 
             Notes:
-                Indicates total VRS+VRSG+VRSB+VDFG licenses used in the system
+                Indicates total VRS+VRSG+VRSB+VDF+VDFG licenses used in the system
 
                 
                 This attribute is named `totalUsedGatewaysCount` in VSD API.
@@ -666,13 +719,40 @@ class NULicenseStatus(NURESTObject):
         """ Set total_used_gateways_count value.
 
             Notes:
-                Indicates total VRS+VRSG+VRSB+VDFG licenses used in the system
+                Indicates total VRS+VRSG+VRSB+VDF+VDFG licenses used in the system
 
                 
                 This attribute is named `totalUsedGatewaysCount` in VSD API.
                 
         """
         self._total_used_gateways_count = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

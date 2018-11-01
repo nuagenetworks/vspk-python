@@ -22,25 +22,15 @@ Attributes
 
 - ``dscp``: DSCP match condition to be set in the rule. It is either * or from 0-63
 
+- ``last_updated_by``: ID of the user who last updated the object.
+
 - ``action``: The action of the ACL entry DROP or FORWARD or REDIRECT.
 
 - ``address_override``: Overrides the source IP for Ingress and destination IP for Egress, MAC entries will use this address as the match criteria.
 
 - ``description``: Description of the ACL entry
 
-- ``dest_network``: Destination network - available in version 1.0 api
-
-- ``dest_pg_id``: In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
-
-- ``dest_pg_type``: In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
-
-- ``destination_ipv6_value``: destination IPV6 address
-
 - ``destination_port``: The destination port to be matched if protocol is UDP or TCP. Value should be either * or single port number or a port range
-
-- ``destination_type``: Network Type - either PolicyGroup or Network
-
-- ``destination_value``: In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
 
 - ``network_id``: The destination network entity that is referenced(subnet/zone/macro)
 
@@ -52,31 +42,25 @@ Attributes
 
 - ``enterprise_name``: The name of the enterprise for the domains parent
 
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
 - ``location_id``: The ID of the location entity (Subnet/Zone/VportTag)
 
 - ``location_type``: Type of the location entity - ANY or SUBNET or ZONE or VPORTTAG
 
 - ``domain_name``: The name of the domain/domain template for the aclTemplateNames parent
 
-- ``source_ipv6_value``: source IPV6 address
-
-- ``source_network``: Source network - available in version 1.0 api
-
-- ``source_pg_id``: In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
-
-- ``source_pg_type``: in case of PG this will be its EVPNBGPCommunity String, incase of network itdomainfip will be network cidr
-
 - ``source_port``: Source port to be matched if protocol is UDP or TCP. Value can be either * or single port number or a port range
-
-- ``source_type``: Location Type - either PolicyGroup or Network
-
-- ``source_value``: In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
 
 - ``priority``: The priority of the ACL entry that determines the order of entries
 
-- ``associated_application_id``: The associated application ID
+- ``protocol``: Protocol number that must be matched
 
-- ``associated_application_object_id``: The associated application object ID
+- ``associated_live_template_id``: In the draft mode, the ACL entity refers to this live entity parent. In non-drafted mode, this is null
+
+- ``associated_traffic_type``: The associated Traffic type. L4 Service / L4 Service Group
+
+- ``associated_traffic_type_id``: The associated Traffic Type ID
 
 - ``associatedfirewall_aclid``: Associated Firewall Acl ID
 
@@ -88,8 +72,20 @@ Attributes
 
 - ``ether_type``: Ether type of the packet to be matched. etherType can be * or a valid hexadecimal value
 
+- ``external_id``: External object ID. Used for integration with third party systems
 
 
+
+
+Children
+--------
+
+================================================================================================================================================               ==========================================================================================
+**class**                                                                                                                                                      **fetcher**
+
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+================================================================================================================================================               ==========================================================================================
 
 
 

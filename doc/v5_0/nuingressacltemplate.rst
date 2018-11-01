@@ -34,8 +34,6 @@ Attributes
 
 - ``priority_type``: Possible values: TOP, BOTTOM, TOP_FIREWALL, BOTTOM_FIREWALL, MIDDLE_FIREWALL or NONE. TOP and BOTTOM ACL policies can only be defined and managed on the template level, NONE can be used on both the template and instantiated level. TOP_FIREWALL, BOTTOM_FIREWALL, MIDDLE_FIREWALL are used to represent acls dirived from Virtual Firewall Policies. These allow for careful control of ACL priority handling.
 
-- ``assoc_acl_template_id``: ID of the ACL template associated with this ACL template
-
 - ``associated_live_entity_id``: In the draft mode, the ACL entry refers to this LiveEntity. In non-drafted mode, this is null.
 
 - ``associated_virtual_firewall_policy_id``: The ID of the Virtual Firewall Policy, if this was created as part of the Virtual Firewall Policy creation
@@ -68,13 +66,13 @@ Parents
 --------
 
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
-- :ref:`nul2domain.NUL2Domain<nul2domain>`
-
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 

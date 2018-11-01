@@ -53,6 +53,18 @@ class NUNextHop(NURESTObject):
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
+    CONST_IP_TYPE_IPV6 = "IPV6"
+    
+    CONST_IP_TYPE_IPV4 = "IPV4"
+    
+    CONST_TYPE_GATEWAY = "GATEWAY"
+    
+    CONST_TYPE_BR_PORT = "BR_PORT"
+    
+    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
+    
+    CONST_TYPE_IP = "IP"
+    
     
 
     def __init__(self, **kwargs):
@@ -72,17 +84,21 @@ class NUNextHop(NURESTObject):
 
         # Read/Write Attributes
         
+        self._ip_type = None
         self._last_updated_by = None
         self._entity_scope = None
         self._route_distinguisher = None
         self._ip = None
         self._external_id = None
+        self._type = None
         
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="ip", remote_name="ip", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'BR_PORT', u'GATEWAY', u'IP'])
         
 
         # Fetchers
@@ -97,6 +113,33 @@ class NUNextHop(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def ip_type(self):
+        """ Get ip_type value.
+
+            Notes:
+                The IP Type of this Nexthop, possible values are IPV4, IPV6 or DUALSTACK.
+
+                
+                This attribute is named `IPType` in VSD API.
+                
+        """
+        return self._ip_type
+
+    @ip_type.setter
+    def ip_type(self, value):
+        """ Set ip_type value.
+
+            Notes:
+                The IP Type of this Nexthop, possible values are IPV4, IPV6 or DUALSTACK.
+
+                
+                This attribute is named `IPType` in VSD API.
+                
+        """
+        self._ip_type = value
+
     
     @property
     def last_updated_by(self):
@@ -227,6 +270,29 @@ class NUNextHop(NURESTObject):
                 
         """
         self._external_id = value
+
+    
+    @property
+    def type(self):
+        """ Get type value.
+
+            Notes:
+                Next hop type: IP only supported for service chaining
+
+                
+        """
+        return self._type
+
+    @type.setter
+    def type(self, value):
+        """ Set type value.
+
+            Notes:
+                Next hop type: IP only supported for service chaining
+
+                
+        """
+        self._type = value
 
     
 

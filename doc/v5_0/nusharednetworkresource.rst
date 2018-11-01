@@ -46,6 +46,8 @@ Attributes
 
 - ``underlay``: Indicates whether this shared subnet is in underlay or not.
 
+- ``enterprise_id``: Enterprise that this subnet belongs to
+
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``domain_route_distinguisher``: Route distinguisher configured on the shared resource. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
@@ -63,6 +65,10 @@ Attributes
 - ``use_global_mac``: if this flag is enabled, the system configured globalMACAddress will be used as the gateway mac address
 
 - ``associated_pat_mapper_id``: The ID of the PatMapper entity to which this pool is associated to.
+
+- ``subnet_route_distinguisher``: Route distinguisher configured on the shared resource subnetwork
+
+- ``subnet_route_target``: Route target configured on the shared resource subnetwork
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -95,9 +101,9 @@ Parents
 --------
 
 
-- :ref:`nupatmapper.NUPATMapper<nupatmapper>`
-
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nupatmapper.NUPATMapper<nupatmapper>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

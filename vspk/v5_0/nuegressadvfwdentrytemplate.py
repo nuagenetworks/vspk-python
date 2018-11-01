@@ -33,9 +33,6 @@ from .fetchers import NUMetadatasFetcher
 
 from .fetchers import NUGlobalMetadatasFetcher
 
-
-from .fetchers import NUStatisticsFetcher
-
 from bambou import NURESTObject
 
 
@@ -102,6 +99,8 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_FC_OVERRIDE_A = "A"
     
+    CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE_GROUP = "L4_SERVICE_GROUP"
+    
     CONST_NETWORK_TYPE_UNDERLAY_INTERNET_POLICYGROUP = "UNDERLAY_INTERNET_POLICYGROUP"
     
     CONST_FC_OVERRIDE_H = "H"
@@ -119,6 +118,8 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
     CONST_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
     
     CONST_POLICY_STATE_DRAFT = "DRAFT"
+    
+    CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE = "L4_SERVICE"
     
     CONST_POLICY_STATE_LIVE = "LIVE"
     
@@ -162,7 +163,6 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
         self._ipv6_address_override = None
         self._dscp = None
         self._failsafe_datapath = None
-        self._name = None
         self._last_updated_by = None
         self._action = None
         self._address_override = None
@@ -184,6 +184,9 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
         self._priority = None
         self._protocol = None
         self._associated_live_entity_id = None
+        self._associated_live_template_id = None
+        self._associated_traffic_type = None
+        self._associated_traffic_type_id = None
         self._stats_id = None
         self._stats_logging_enabled = None
         self._ether_type = None
@@ -196,7 +199,6 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="ipv6_address_override", remote_name="IPv6AddressOverride", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="failsafe_datapath", remote_name="failsafeDatapath", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAIL_TO_BLOCK', u'FAIL_TO_WIRE'])
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'DROP', u'FORWARD', u'REDIRECT'])
         self.expose_attribute(local_name="address_override", remote_name="addressOverride", attribute_type=str, is_required=False, is_unique=False)
@@ -218,6 +220,9 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_live_template_id", remote_name="associatedLiveTemplateID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_traffic_type", remote_name="associatedTrafficType", attribute_type=str, is_required=False, is_unique=False, choices=[u'L4_SERVICE', u'L4_SERVICE_GROUP'])
+        self.expose_attribute(local_name="associated_traffic_type_id", remote_name="associatedTrafficTypeID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_id", remote_name="statsID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_logging_enabled", remote_name="statsLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ether_type", remote_name="etherType", attribute_type=str, is_required=True, is_unique=False)
@@ -231,9 +236,6 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -427,29 +429,6 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
                 
         """
         self._failsafe_datapath = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the policy
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the policy
-
-                
-        """
-        self._name = value
 
     
     @property
@@ -1001,6 +980,87 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
                 
         """
         self._associated_live_entity_id = value
+
+    
+    @property
+    def associated_live_template_id(self):
+        """ Get associated_live_template_id value.
+
+            Notes:
+                In the draft mode, the ACL entity refers to this live entity parent. In non-drafted mode, this is null
+
+                
+                This attribute is named `associatedLiveTemplateID` in VSD API.
+                
+        """
+        return self._associated_live_template_id
+
+    @associated_live_template_id.setter
+    def associated_live_template_id(self, value):
+        """ Set associated_live_template_id value.
+
+            Notes:
+                In the draft mode, the ACL entity refers to this live entity parent. In non-drafted mode, this is null
+
+                
+                This attribute is named `associatedLiveTemplateID` in VSD API.
+                
+        """
+        self._associated_live_template_id = value
+
+    
+    @property
+    def associated_traffic_type(self):
+        """ Get associated_traffic_type value.
+
+            Notes:
+                The associated Traffic type. L4 Service / L4 Service Group
+
+                
+                This attribute is named `associatedTrafficType` in VSD API.
+                
+        """
+        return self._associated_traffic_type
+
+    @associated_traffic_type.setter
+    def associated_traffic_type(self, value):
+        """ Set associated_traffic_type value.
+
+            Notes:
+                The associated Traffic type. L4 Service / L4 Service Group
+
+                
+                This attribute is named `associatedTrafficType` in VSD API.
+                
+        """
+        self._associated_traffic_type = value
+
+    
+    @property
+    def associated_traffic_type_id(self):
+        """ Get associated_traffic_type_id value.
+
+            Notes:
+                The associated Traffic Type ID
+
+                
+                This attribute is named `associatedTrafficTypeID` in VSD API.
+                
+        """
+        return self._associated_traffic_type_id
+
+    @associated_traffic_type_id.setter
+    def associated_traffic_type_id(self, value):
+        """ Set associated_traffic_type_id value.
+
+            Notes:
+                The associated Traffic Type ID
+
+                
+                This attribute is named `associatedTrafficTypeID` in VSD API.
+                
+        """
+        self._associated_traffic_type_id = value
 
     
     @property

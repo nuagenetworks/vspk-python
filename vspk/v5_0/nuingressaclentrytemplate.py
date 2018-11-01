@@ -148,8 +148,10 @@ class NUIngressACLEntryTemplate(NURESTObject):
         self._protocol = None
         self._associated_l7_application_signature_id = None
         self._associated_live_entity_id = None
+        self._associated_live_template_id = None
         self._associated_traffic_type = None
         self._associated_traffic_type_id = None
+        self._associated_virtual_firewall_rule_id = None
         self._stateful = None
         self._stats_id = None
         self._stats_logging_enabled = None
@@ -182,8 +184,10 @@ class NUIngressACLEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_l7_application_signature_id", remote_name="associatedL7ApplicationSignatureID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_live_template_id", remote_name="associatedLiveTemplateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_traffic_type", remote_name="associatedTrafficType", attribute_type=str, is_required=False, is_unique=False, choices=[u'L4_SERVICE', u'L4_SERVICE_GROUP'])
         self.expose_attribute(local_name="associated_traffic_type_id", remote_name="associatedTrafficTypeID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_virtual_firewall_rule_id", remote_name="associatedVirtualFirewallRuleID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stateful", remote_name="stateful", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_id", remote_name="statsID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_logging_enabled", remote_name="statsLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -868,6 +872,33 @@ class NUIngressACLEntryTemplate(NURESTObject):
 
     
     @property
+    def associated_live_template_id(self):
+        """ Get associated_live_template_id value.
+
+            Notes:
+                In the draft mode, the ACL entity refers to this live entity parent. In non-drafted mode, this is null
+
+                
+                This attribute is named `associatedLiveTemplateID` in VSD API.
+                
+        """
+        return self._associated_live_template_id
+
+    @associated_live_template_id.setter
+    def associated_live_template_id(self, value):
+        """ Set associated_live_template_id value.
+
+            Notes:
+                In the draft mode, the ACL entity refers to this live entity parent. In non-drafted mode, this is null
+
+                
+                This attribute is named `associatedLiveTemplateID` in VSD API.
+                
+        """
+        self._associated_live_template_id = value
+
+    
+    @property
     def associated_traffic_type(self):
         """ Get associated_traffic_type value.
 
@@ -919,6 +950,33 @@ class NUIngressACLEntryTemplate(NURESTObject):
                 
         """
         self._associated_traffic_type_id = value
+
+    
+    @property
+    def associated_virtual_firewall_rule_id(self):
+        """ Get associated_virtual_firewall_rule_id value.
+
+            Notes:
+                The ID of the Virtual Firewall Rule, if this was derived as part of the Virtual Firewall Rule creation
+
+                
+                This attribute is named `associatedVirtualFirewallRuleID` in VSD API.
+                
+        """
+        return self._associated_virtual_firewall_rule_id
+
+    @associated_virtual_firewall_rule_id.setter
+    def associated_virtual_firewall_rule_id(self, value):
+        """ Set associated_virtual_firewall_rule_id value.
+
+            Notes:
+                The ID of the Virtual Firewall Rule, if this was derived as part of the Virtual Firewall Rule creation
+
+                
+                This attribute is named `associatedVirtualFirewallRuleID` in VSD API.
+                
+        """
+        self._associated_virtual_firewall_rule_id = value
 
     
     @property

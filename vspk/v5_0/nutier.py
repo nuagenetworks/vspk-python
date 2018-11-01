@@ -81,6 +81,7 @@ class NUTier(NURESTObject):
         
         self._packet_count = None
         self._last_updated_by = None
+        self._description = None
         self._tier_type = None
         self._timeout = None
         self._entity_scope = None
@@ -90,6 +91,7 @@ class NUTier(NURESTObject):
         
         self.expose_attribute(local_name="packet_count", remote_name="packetCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tier_type", remote_name="tierType", attribute_type=str, is_required=True, is_unique=False, choices=[u'TIER1', u'TIER2'])
         self.expose_attribute(local_name="timeout", remote_name="timeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -166,6 +168,29 @@ class NUTier(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                Descrtiption of the Tier
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                Descrtiption of the Tier
+
+                
+        """
+        self._description = value
 
     
     @property

@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``ip_type``: IPv4 or IPv6
+
 - ``name`` (**Mandatory**): Name of the PATNATPool
 
 - ``last_updated_by``: ID of the user who last updated the object.
@@ -71,11 +73,11 @@ Parents
 --------
 
 
+- :ref:`nume.NUMe<nume>`
+
 - :ref:`nuvlan.NUVLAN<nuvlan>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
-
-- :ref:`nume.NUMe<nume>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 

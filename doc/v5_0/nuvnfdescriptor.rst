@@ -26,9 +26,13 @@ Attributes
 
 - ``visible``: Controls if descriptor visible in catalog to create new VNF
 
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
 - ``associated_vnf_threshold_policy_id``: The Id of referenced VNF threshold policy
 
 - ``storage_gb`` (**Mandatory**): Disk storage (in GB) to be allocated VNF instance when deployed
+
+- ``external_id``: External object ID. Used for integration with third party systems
 
 - ``type``: Type of virtual network function
 
@@ -41,6 +45,8 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuvnfinterfacedescriptor.NUVNFInterfaceDescriptor<nuvnfinterfacedescriptor>`                                                                               ``vnf_interface_descriptors`` 
 ================================================================================================================================================               ==========================================================================================
 

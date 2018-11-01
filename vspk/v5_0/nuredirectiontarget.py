@@ -58,7 +58,11 @@ class NURedirectionTarget(NURESTObject):
     
     ## Constants
     
+    CONST_DESTINATION_TYPE_REDIRECTION_TARGET = "REDIRECTION_TARGET"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_DESTINATION_TYPE_OVERLAY_MIRROR_DESTINATION = "OVERLAY_MIRROR_DESTINATION"
     
     CONST_END_POINT_TYPE_L3 = "L3"
     
@@ -97,6 +101,7 @@ class NURedirectionTarget(NURESTObject):
         self._redundancy_enabled = None
         self._template_id = None
         self._description = None
+        self._destination_type = None
         self._virtual_network_id = None
         self._end_point_type = None
         self._entity_scope = None
@@ -109,6 +114,7 @@ class NURedirectionTarget(NURESTObject):
         self.expose_attribute(local_name="redundancy_enabled", remote_name="redundancyEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="destination_type", remote_name="destinationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'OVERLAY_MIRROR_DESTINATION', u'REDIRECTION_TARGET'])
         self.expose_attribute(local_name="virtual_network_id", remote_name="virtualNetworkID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="end_point_type", remote_name="endPointType", attribute_type=str, is_required=True, is_unique=False, choices=[u'L3', u'NSG_VNF', u'VIRTUAL_WIRE'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -290,6 +296,33 @@ class NURedirectionTarget(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def destination_type(self):
+        """ Get destination_type value.
+
+            Notes:
+                Determines the type of destination : redirection target or overlay mirror destination
+
+                
+                This attribute is named `destinationType` in VSD API.
+                
+        """
+        return self._destination_type
+
+    @destination_type.setter
+    def destination_type(self, value):
+        """ Set destination_type value.
+
+            Notes:
+                Determines the type of destination : redirection target or overlay mirror destination
+
+                
+                This attribute is named `destinationType` in VSD API.
+                
+        """
+        self._destination_type = value
 
     
     @property

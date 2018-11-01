@@ -26,9 +26,11 @@ Attributes
 
 - ``command_information``: Informative details on what command is to be executed.  It complements the commandType attribute.  An example of a value could be a URL, a version number, a UUID of another object, ...
 
-- ``associated_param``: Parameters to be supplied for execution of this command. This could either be a string of parameters or ID of an object supplying parameters.
+- ``assoc_entity_type``: Managed Object Type of the entity on which this Command is associated.
 
-- ``associated_param_type``: Type of the object which supplies parameters for this command.
+- ``associated_param``: Parameters to be supplied for execution of this command. This should be the ID of the object supplying parameters.
+
+- ``associated_param_type``: Type of the object which supplies parameters for this command. For NSG_APPLY_PATCH command this should be NSG_PATCH_PROFILE. For NSG_DELETE_PATCH it should be PATCH
 
 - ``status``: The status of the Command from a VSD perspective.
 
@@ -48,6 +50,8 @@ Attributes
 Parents
 --------
 
+
+- :ref:`nume.NUMe<nume>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 

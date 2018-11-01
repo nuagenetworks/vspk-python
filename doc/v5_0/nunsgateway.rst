@@ -14,6 +14,10 @@ Attributes
 
 - ``mac_address``: MAC Address of the NSG
 
+- ``aar_application_release_date``: Release Date of the AAR Application
+
+- ``aar_application_version``: The AAR Application Version
+
 - ``nat_traversal_enabled``: This attribute is deprecated in version 4.0.
 
 - ``tcpmss_enabled``: Boolean flag to indicate whether MSS on TCP is enabled or not
@@ -51,8 +55,6 @@ Attributes
 - ``last_updated_by``: ID of the user who last updated the object.
 
 - ``datapath_id``: Identifier of the Gateway, based on the systemId
-
-- ``patches``: Patches that have been installed on the NSG.
 
 - ``gateway_connected``: Indicates status of this gateway
 
@@ -125,6 +127,7 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nupatch.NUPatch<nupatch>`                                                                                                                                  ``patchs`` 
 :ref:`nugatewaysecurity.NUGatewaySecurity<nugatewaysecurity>`                                                                                                    ``gateway_securities`` 
 :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`                                                                                                                   ``patnat_pools`` 
 :ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
@@ -132,12 +135,12 @@ Children
 :ref:`nuwirelessport.NUWirelessPort<nuwirelessport>`                                                                                                             ``wireless_ports`` 
 :ref:`nualarm.NUAlarm<nualarm>`                                                                                                                                  ``alarms`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+:ref:`nuvnf.NUVNF<nuvnf>`                                                                                                                                        ``vnfs`` 
 :ref:`nuinfrastructureconfig.NUInfrastructureConfig<nuinfrastructureconfig>`                                                                                     ``infrastructure_configs`` 
 :ref:`nuenterprisepermission.NUEnterprisePermission<nuenterprisepermission>`                                                                                     ``enterprise_permissions`` 
 :ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
 :ref:`nulocation.NULocation<nulocation>`                                                                                                                         ``locations`` 
 :ref:`nucommand.NUCommand<nucommand>`                                                                                                                            ``commands`` 
-:ref:`numonitorscope.NUMonitorscope<numonitorscope>`                                                                                                             ``monitorscopes`` 
 :ref:`nubootstrap.NUBootstrap<nubootstrap>`                                                                                                                      ``bootstraps`` 
 :ref:`nubootstrapactivation.NUBootstrapActivation<nubootstrapactivation>`                                                                                        ``bootstrap_activations`` 
 :ref:`nuuplinkconnection.NUUplinkConnection<nuuplinkconnection>`                                                                                                 ``uplink_connections`` 
@@ -156,13 +159,11 @@ Parents
 
 - :ref:`nuducgroup.NUDUCGroup<nuducgroup>`
 
-- :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
-
-- :ref:`nuperformancemonitor.NUPerformanceMonitor<nuperformancemonitor>`
-
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nunsggroup.NUNSGGroup<nunsggroup>`
+
+- :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 

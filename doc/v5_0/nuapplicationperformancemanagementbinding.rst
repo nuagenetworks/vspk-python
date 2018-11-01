@@ -47,3 +47,5 @@ Parents
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
+- :ref:`nuapplicationperformancemanagement.NUApplicationperformancemanagement<nuapplicationperformancemanagement>`
+

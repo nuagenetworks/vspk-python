@@ -18,6 +18,8 @@ Attributes
 
 - ``data``: encrypted data
 
+- ``seed_type``: seed type
+
 - ``sek_id``: Seed Encryption Key id that encrypted this data
 
 - ``keyserver_cert_serial_number``: Serial Number of the certificate needed to verify the encrypted data

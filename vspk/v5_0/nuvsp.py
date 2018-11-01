@@ -43,9 +43,6 @@ from .fetchers import NUHSCsFetcher
 from .fetchers import NUVSCsFetcher
 
 
-from .fetchers import NUVSDsFetcher
-
-
 from .fetchers import NUEventLogsFetcher
 
 from bambou import NURESTObject
@@ -120,9 +117,6 @@ class NUVSP(NURESTObject):
         
         
         self.vscs = NUVSCsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.vsds = NUVSDsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")

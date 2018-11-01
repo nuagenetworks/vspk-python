@@ -105,7 +105,7 @@ Parents
 
 - :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
 
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nuingressadvfwdtemplate.NUIngressAdvFwdTemplate<nuingressadvfwdtemplate>`
+
+- :ref:`nume.NUMe<nume>`
 

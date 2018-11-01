@@ -14,18 +14,30 @@ Attributes
 
 - ``name``: Name of the Policy Entry
 
+- ``last_updated_by``: ID of the user who last updated the object.
+
 - ``match_criteria``: Match criteria BLOB
-
-- ``match_overlay_address_pool_id``: ID of Overlay Address Pool for this Policy Entry.
-
-- ``match_policy_object_group_id``: ID of Policy Object Group where this Policy Entry belongs.
 
 - ``actions``: Action of Policy Entry
 
 - ``description``: Description of the Policy Entry
 
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``external_id``: External object ID. Used for integration with third party systems
 
 
+
+
+Children
+--------
+
+================================================================================================================================================               ==========================================================================================
+**class**                                                                                                                                                      **fetcher**
+
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+================================================================================================================================================               ==========================================================================================
 
 
 

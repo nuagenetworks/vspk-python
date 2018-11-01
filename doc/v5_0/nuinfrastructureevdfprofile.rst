@@ -26,6 +26,8 @@ Attributes
 
 - ``description``: A brief description of the infrastructure profile.
 
+- ``enterprise_id``: Enterprise/Organisation associated with this Profile instance.
+
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``proxy_dns_name`` (**Mandatory**): The DNS name of the proxy device acting as an entry point of eVDF instances to contact VSD.

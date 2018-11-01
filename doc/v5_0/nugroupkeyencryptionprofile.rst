@@ -24,6 +24,8 @@ Attributes
 
 - ``sek_payload_signing_algorithm``: Group Key SEK Payload Signature Algorithm.
 
+- ``dr_seed_lifetime``: DR Seed Lifetime in seconds
+
 - ``name``: Name of the Encryption Profile
 
 - ``last_updated_by``: ID of the user who last updated the object.

@@ -27,9 +27,6 @@
 
 
 
-
-from .fetchers import NUEventLogsFetcher
-
 from bambou import NURESTObject
 
 
@@ -86,12 +83,6 @@ class NUProxyARPFilter(NURESTObject):
         self.expose_attribute(local_name="min_address", remote_name="minAddress", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        
-
-        # Fetchers
-        
-        
-        self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)

@@ -18,9 +18,13 @@ Attributes
 
 - ``private_ip`` (**Mandatory**): Private IP address of the interface
 
+- ``private_port``: Private port identification
+
 - ``associated_patnat_pool_id``: Indicates which PATNATPool this entry belongs to
 
 - ``public_ip`` (**Mandatory**): Public IP address of the interface
+
+- ``public_port``: Public port identification
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

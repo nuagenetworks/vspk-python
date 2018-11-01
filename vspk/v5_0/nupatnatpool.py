@@ -71,6 +71,8 @@ class NUPATNATPool(NURESTObject):
     
     CONST_PERMITTED_ACTION_READ = "READ"
     
+    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
+    
     CONST_ASSOCIATED_GATEWAY_TYPE_GATEWAY = "GATEWAY"
     
     CONST_PERMITTED_ACTION_ALL = "ALL"
@@ -83,11 +85,15 @@ class NUPATNATPool(NURESTObject):
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
+    CONST_IP_TYPE_IPV6 = "IPV6"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_IP_TYPE_IPV4 = "IPV4"
     
     CONST_ASSOCIATED_GATEWAY_TYPE_NSGATEWAY = "NSGATEWAY"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
     
     CONST_ASSOCIATED_GATEWAY_TYPE_AUTO_DISC_GATEWAY = "AUTO_DISC_GATEWAY"
     
@@ -110,6 +116,7 @@ class NUPATNATPool(NURESTObject):
 
         # Read/Write Attributes
         
+        self._ip_type = None
         self._name = None
         self._last_updated_by = None
         self._address_range = None
@@ -128,6 +135,7 @@ class NUPATNATPool(NURESTObject):
         self._external_id = None
         self._dynamic_source_enabled = None
         
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address_range", remote_name="addressRange", attribute_type=str, is_required=False, is_unique=False)
@@ -177,6 +185,33 @@ class NUPATNATPool(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def ip_type(self):
+        """ Get ip_type value.
+
+            Notes:
+                IPv4 or IPv6
+
+                
+                This attribute is named `IPType` in VSD API.
+                
+        """
+        return self._ip_type
+
+    @ip_type.setter
+    def ip_type(self, value):
+        """ Set ip_type value.
+
+            Notes:
+                IPv4 or IPv6
+
+                
+                This attribute is named `IPType` in VSD API.
+                
+        """
+        self._ip_type = value
+
     
     @property
     def name(self):

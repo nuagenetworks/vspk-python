@@ -499,7 +499,7 @@ class NURedundancyGroup(NURESTObject):
         """ Get gateway_peer2_id value.
 
             Notes:
-                The gateway peer in this Redundant Group. when Redundant Group is deleted this gateway will not recieve vport associations
+                The gateway peer in this Redundant Group. When Redundant Group is deleted this gateway will not recieve vport associations.
 
                 
                 This attribute is named `gatewayPeer2ID` in VSD API.
@@ -512,7 +512,7 @@ class NURedundancyGroup(NURESTObject):
         """ Set gateway_peer2_id value.
 
             Notes:
-                The gateway peer in this Redundant Group. when Redundant Group is deleted this gateway will not recieve vport associations
+                The gateway peer in this Redundant Group. When Redundant Group is deleted this gateway will not recieve vport associations.
 
                 
                 This attribute is named `gatewayPeer2ID` in VSD API.

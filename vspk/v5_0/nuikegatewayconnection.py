@@ -49,7 +49,7 @@ class NUIKEGatewayConnection(NURESTObject):
     """ Represents a IKEGatewayConnection in the VSD
 
         Notes:
-            Represents an IKE Gateway Connection object
+            Set the attributes like NSG role, authentication method etc for establishing IKE security association with remote gateway.
     """
 
     __rest_name__ = "ikegatewayconnection"

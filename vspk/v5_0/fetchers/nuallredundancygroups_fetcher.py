@@ -29,11 +29,11 @@
 from bambou import NURESTFetcher
 
 
-class NUFloatingIPACLTemplateEntriesFetcher(NURESTFetcher):
-    """ Represents a NUFloatingIPACLTemplateEntries fetcher
+class NUAllRedundancyGroupsFetcher(NURESTFetcher):
+    """ Represents a NUAllRedundancyGroups fetcher
 
         Notes:
-            This fetcher enables to fetch NUFloatingIPACLTemplateEntry objects.
+            This fetcher enables to fetch NUAllRedundancyGroup objects.
 
         See:
             bambou.NURESTFetcher
@@ -41,13 +41,13 @@ class NUFloatingIPACLTemplateEntriesFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUFloatingIPACLTemplateEntry class that is managed.
+        """ Return NUAllRedundancyGroup class that is managed.
 
             Returns:
-                .NUFloatingIPACLTemplateEntry: the managed class
+                .NUAllRedundancyGroup: the managed class
         """
 
-        from .. import NUFloatingIPACLTemplateEntry
-        return NUFloatingIPACLTemplateEntry
+        from .. import NUAllRedundancyGroup
+        return NUAllRedundancyGroup
 
     

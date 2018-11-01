@@ -161,7 +161,7 @@ class NUBFDSession(NURESTObject):
         """ Get bfd_timer value.
 
             Notes:
-                Timer for Bidirectional Forwarding Detection. (min = 200, max = 100,000) Unit is milliseconds.
+                Timer for Bidirectional Forwarding Detection in milliseconds.
 
                 
                 This attribute is named `BFDTimer` in VSD API.
@@ -174,7 +174,7 @@ class NUBFDSession(NURESTObject):
         """ Set bfd_timer value.
 
             Notes:
-                Timer for Bidirectional Forwarding Detection. (min = 200, max = 100,000) Unit is milliseconds.
+                Timer for Bidirectional Forwarding Detection in milliseconds.
 
                 
                 This attribute is named `BFDTimer` in VSD API.

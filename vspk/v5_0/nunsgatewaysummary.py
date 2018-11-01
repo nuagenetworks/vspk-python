@@ -27,6 +27,12 @@
 
 
 
+
+from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
+
 from bambou import NURESTObject
 
 
@@ -43,15 +49,19 @@ class NUNSGatewaySummary(NURESTObject):
     
     ## Constants
     
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_ACK = "NOTIFICATION_APP_REQ_ACK"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_BOOTSTRAP_STATUS_CERTIFICATE_SIGNED = "CERTIFICATE_SIGNED"
+    
     CONST_BOOTSTRAP_STATUS_ACTIVE = "ACTIVE"
     
     CONST_BOOTSTRAP_STATUS_INACTIVE = "INACTIVE"
     
     CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_SENT = "NOTIFICATION_APP_REQ_SENT"
-    
-    CONST_BOOTSTRAP_STATUS_CERTIFICATE_REQUIRED = "CERTIFICATE_REQUIRED"
-    
-    CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_ACK = "NOTIFICATION_APP_REQ_ACK"
     
     
 
@@ -72,46 +82,90 @@ class NUNSGatewaySummary(NURESTObject):
 
         # Read/Write Attributes
         
+        self._nsg_version = None
         self._major_alarms_count = None
+        self._last_updated_by = None
         self._gateway_id = None
         self._gateway_name = None
+        self._gateway_type = None
         self._latitude = None
         self._address = None
-        self._time_zone_id = None
+        self._timezone_id = None
         self._minor_alarms_count = None
         self._info_alarms_count = None
         self._enterprise_id = None
+        self._entity_scope = None
         self._locality = None
         self._longitude = None
         self._bootstrap_status = None
         self._country = None
         self._critical_alarms_count = None
-        self._nsg_version = None
         self._state = None
+        self._external_id = None
         self._system_id = None
         
+        self.expose_attribute(local_name="nsg_version", remote_name="NSGVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="major_alarms_count", remote_name="majorAlarmsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_id", remote_name="gatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_name", remote_name="gatewayName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_type", remote_name="gatewayType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="latitude", remote_name="latitude", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="time_zone_id", remote_name="timeZoneID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="timezone_id", remote_name="timezoneID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="minor_alarms_count", remote_name="minorAlarmsCount", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="info_alarms_count", remote_name="infoAlarmsCount", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="info_alarms_count", remote_name="infoAlarmsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="locality", remote_name="locality", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="longitude", remote_name="longitude", attribute_type=float, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_REQUIRED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT'])
+        self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT'])
         self.expose_attribute(local_name="country", remote_name="country", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="critical_alarms_count", remote_name="criticalAlarmsCount", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="nsg_version", remote_name="nsgVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="state", remote_name="state", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="system_id", remote_name="systemID", attribute_type=str, is_required=False, is_unique=False)
+        
+
+        # Fetchers
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def nsg_version(self):
+        """ Get nsg_version value.
+
+            Notes:
+                The NSG Version (software) as reported during bootstrapping or following an upgrade.
+
+                
+                This attribute is named `NSGVersion` in VSD API.
+                
+        """
+        return self._nsg_version
+
+    @nsg_version.setter
+    def nsg_version(self, value):
+        """ Set nsg_version value.
+
+            Notes:
+                The NSG Version (software) as reported during bootstrapping or following an upgrade.
+
+                
+                This attribute is named `NSGVersion` in VSD API.
+                
+        """
+        self._nsg_version = value
+
     
     @property
     def major_alarms_count(self):
@@ -138,6 +192,33 @@ class NUNSGatewaySummary(NURESTObject):
                 
         """
         self._major_alarms_count = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
 
     
     @property
@@ -195,6 +276,33 @@ class NUNSGatewaySummary(NURESTObject):
 
     
     @property
+    def gateway_type(self):
+        """ Get gateway_type value.
+
+            Notes:
+                Details on the type of gateway for which the summary is given.  For NSGs, the value would be NSGateway.
+
+                
+                This attribute is named `gatewayType` in VSD API.
+                
+        """
+        return self._gateway_type
+
+    @gateway_type.setter
+    def gateway_type(self, value):
+        """ Set gateway_type value.
+
+            Notes:
+                Details on the type of gateway for which the summary is given.  For NSGs, the value would be NSGateway.
+
+                
+                This attribute is named `gatewayType` in VSD API.
+                
+        """
+        self._gateway_type = value
+
+    
+    @property
     def latitude(self):
         """ Get latitude value.
 
@@ -241,30 +349,30 @@ class NUNSGatewaySummary(NURESTObject):
 
     
     @property
-    def time_zone_id(self):
-        """ Get time_zone_id value.
+    def timezone_id(self):
+        """ Get timezone_id value.
 
             Notes:
                 Time zone in which the Gateway is located.  This can be in the form of a UTC/GMT offset, continent/city location, or country/region.  The available time zones can be found in /usr/share/zoneinfo on a Linux machine or retrieved with TimeZone.getAvailableIDs() in Java.  Refer to the IANA (Internet Assigned Numbers Authority) for a list of time zones.  URL :  http://www.iana.org/time-zones  Default value is UTC (translating to Etc/Zulu)
 
                 
-                This attribute is named `timeZoneID` in VSD API.
+                This attribute is named `timezoneID` in VSD API.
                 
         """
-        return self._time_zone_id
+        return self._timezone_id
 
-    @time_zone_id.setter
-    def time_zone_id(self, value):
-        """ Set time_zone_id value.
+    @timezone_id.setter
+    def timezone_id(self, value):
+        """ Set timezone_id value.
 
             Notes:
                 Time zone in which the Gateway is located.  This can be in the form of a UTC/GMT offset, continent/city location, or country/region.  The available time zones can be found in /usr/share/zoneinfo on a Linux machine or retrieved with TimeZone.getAvailableIDs() in Java.  Refer to the IANA (Internet Assigned Numbers Authority) for a list of time zones.  URL :  http://www.iana.org/time-zones  Default value is UTC (translating to Etc/Zulu)
 
                 
-                This attribute is named `timeZoneID` in VSD API.
+                This attribute is named `timezoneID` in VSD API.
                 
         """
-        self._time_zone_id = value
+        self._timezone_id = value
 
     
     @property
@@ -346,6 +454,33 @@ class NUNSGatewaySummary(NURESTObject):
                 
         """
         self._enterprise_id = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
 
     
     @property
@@ -472,33 +607,6 @@ class NUNSGatewaySummary(NURESTObject):
 
     
     @property
-    def nsg_version(self):
-        """ Get nsg_version value.
-
-            Notes:
-                The NSG Version (software) as reported during bootstrapping or following an upgrade.
-
-                
-                This attribute is named `nsgVersion` in VSD API.
-                
-        """
-        return self._nsg_version
-
-    @nsg_version.setter
-    def nsg_version(self, value):
-        """ Set nsg_version value.
-
-            Notes:
-                The NSG Version (software) as reported during bootstrapping or following an upgrade.
-
-                
-                This attribute is named `nsgVersion` in VSD API.
-                
-        """
-        self._nsg_version = value
-
-    
-    @property
     def state(self):
         """ Get state value.
 
@@ -519,6 +627,33 @@ class NUNSGatewaySummary(NURESTObject):
                 
         """
         self._state = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
     @property

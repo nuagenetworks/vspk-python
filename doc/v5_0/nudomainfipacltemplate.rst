@@ -36,6 +36,8 @@ Attributes
 
 - ``associated_live_entity_id``: ID of the associated live entity
 
+- ``auto_generate_priority``: If enabled, entries priority will be randomly generated between allowed range.
+
 - ``external_id``: External object ID. Used for integration with third party systems
 
 
@@ -58,9 +60,9 @@ Parents
 --------
 
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 

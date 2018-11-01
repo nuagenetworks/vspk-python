@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``arp_reply``: Whether ARP Reply is enabled/disabled
+
 - ``vrs_configuration_time_limit``: The maximum wait time limit in minutes to get VRS configured at cluster level
 
 - ``v_require_nuage_metadata``: Whether split-activation or not (Openstack/CloudStack)

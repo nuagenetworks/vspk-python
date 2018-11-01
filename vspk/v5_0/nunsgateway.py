@@ -28,6 +28,9 @@
 
 
 
+from .fetchers import NUPatchsFetcher
+
+
 from .fetchers import NUGatewaySecuritiesFetcher
 
 
@@ -49,6 +52,9 @@ from .fetchers import NUAlarmsFetcher
 from .fetchers import NUGlobalMetadatasFetcher
 
 
+from .fetchers import NUVNFsFetcher
+
+
 from .fetchers import NUInfrastructureConfigsFetcher
 
 
@@ -62,9 +68,6 @@ from .fetchers import NULocationsFetcher
 
 
 from .fetchers import NUCommandsFetcher
-
-
-from .fetchers import NUMonitorscopesFetcher
 
 
 from .fetchers import NUBootstrapsFetcher
@@ -252,6 +255,8 @@ class NUNSGateway(NURESTObject):
         # Read/Write Attributes
         
         self._mac_address = None
+        self._aar_application_release_date = None
+        self._aar_application_version = None
         self._nat_traversal_enabled = None
         self._tcpmss_enabled = None
         self._tcp_maximum_segment_size = None
@@ -271,7 +276,6 @@ class NUNSGateway(NURESTObject):
         self._last_configuration_reload_timestamp = None
         self._last_updated_by = None
         self._datapath_id = None
-        self._patches = None
         self._gateway_connected = None
         self._redundancy_group_id = None
         self._template_id = None
@@ -305,6 +309,8 @@ class NUNSGateway(NURESTObject):
         self._system_id = None
         
         self.expose_attribute(local_name="mac_address", remote_name="MACAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="aar_application_release_date", remote_name="AARApplicationReleaseDate", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="aar_application_version", remote_name="AARApplicationVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nat_traversal_enabled", remote_name="NATTraversalEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tcpmss_enabled", remote_name="TCPMSSEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tcp_maximum_segment_size", remote_name="TCPMaximumSegmentSize", attribute_type=int, is_required=False, is_unique=False)
@@ -324,7 +330,6 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="last_configuration_reload_timestamp", remote_name="lastConfigurationReloadTimestamp", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_id", remote_name="datapathID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="patches", remote_name="patches", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_connected", remote_name="gatewayConnected", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redundancy_group_id", remote_name="redundancyGroupID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=True, is_unique=False)
@@ -361,6 +366,9 @@ class NUNSGateway(NURESTObject):
         # Fetchers
         
         
+        self.patchs = NUPatchsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.gateway_securities = NUGatewaySecuritiesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -382,6 +390,9 @@ class NUNSGateway(NURESTObject):
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.vnfs = NUVNFsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.infrastructure_configs = NUInfrastructureConfigsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -395,9 +406,6 @@ class NUNSGateway(NURESTObject):
         
         
         self.commands = NUCommandsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.monitorscopes = NUMonitorscopesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.bootstraps = NUBootstrapsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -453,6 +461,60 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._mac_address = value
+
+    
+    @property
+    def aar_application_release_date(self):
+        """ Get aar_application_release_date value.
+
+            Notes:
+                Release Date of the AAR Application
+
+                
+                This attribute is named `AARApplicationReleaseDate` in VSD API.
+                
+        """
+        return self._aar_application_release_date
+
+    @aar_application_release_date.setter
+    def aar_application_release_date(self, value):
+        """ Set aar_application_release_date value.
+
+            Notes:
+                Release Date of the AAR Application
+
+                
+                This attribute is named `AARApplicationReleaseDate` in VSD API.
+                
+        """
+        self._aar_application_release_date = value
+
+    
+    @property
+    def aar_application_version(self):
+        """ Get aar_application_version value.
+
+            Notes:
+                The AAR Application Version
+
+                
+                This attribute is named `AARApplicationVersion` in VSD API.
+                
+        """
+        return self._aar_application_version
+
+    @aar_application_version.setter
+    def aar_application_version(self, value):
+        """ Set aar_application_version value.
+
+            Notes:
+                The AAR Application Version
+
+                
+                This attribute is named `AARApplicationVersion` in VSD API.
+                
+        """
+        self._aar_application_version = value
 
     
     @property
@@ -958,29 +1020,6 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._datapath_id = value
-
-    
-    @property
-    def patches(self):
-        """ Get patches value.
-
-            Notes:
-                Patches that have been installed on the NSG.
-
-                
-        """
-        return self._patches
-
-    @patches.setter
-    def patches(self, value):
-        """ Set patches value.
-
-            Notes:
-                Patches that have been installed on the NSG.
-
-                
-        """
-        self._patches = value
 
     
     @property

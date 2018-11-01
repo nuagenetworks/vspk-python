@@ -22,7 +22,7 @@ Attributes
 
 - ``vnf_management_enabled``: Read-only flag to display if VNF management is enabled for this enterprise
 
-- ``name`` (**Mandatory**): The unique name of the enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
+- ``name`` (**Mandatory**): The unique name of the enterprise.
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
@@ -45,6 +45,8 @@ Attributes
 - ``allow_trusted_forwarding_class``: Controls whether QoS policies and templates created under this enterprise set the trusted flag to true
 
 - ``allowed_forwarding_classes``: Allowed Forwarding Classes for this enterprise. Possible values are NONE, A, B, C, D, E, F, G, H, .
+
+- ``allowed_forwarding_mode``: Enum to set allowed controller-less mode
 
 - ``floating_ips_quota``: Quota set for the number of floating IPs to be used by an enterprise.
 
@@ -95,6 +97,7 @@ Children
 :ref:`nucaptiveportalprofile.NUCaptivePortalProfile<nucaptiveportalprofile>`                                                                                     ``captive_portal_profiles`` 
 :ref:`nuratelimiter.NURateLimiter<nuratelimiter>`                                                                                                                ``rate_limiters`` 
 :ref:`nugateway.NUGateway<nugateway>`                                                                                                                            ``gateways`` 
+:ref:`nugatewayslocation.NUGatewaysLocation<nugatewayslocation>`                                                                                                 ``gateways_locations`` 
 :ref:`nugatewaytemplate.NUGatewayTemplate<nugatewaytemplate>`                                                                                                    ``gateway_templates`` 
 :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`                                                                                                                   ``patnat_pools`` 
 :ref:`nuldapconfiguration.NULDAPConfiguration<nuldapconfiguration>`                                                                                              ``ldap_configurations`` 
@@ -143,6 +146,7 @@ Children
 :ref:`nudscpremarkingpolicytable.NUDSCPRemarkingPolicyTable<nudscpremarkingpolicytable>`                                                                         ``dscp_remarking_policy_tables`` 
 :ref:`nuuser.NUUser<nuuser>`                                                                                                                                     ``users`` 
 :ref:`nunsgateway.NUNSGateway<nunsgateway>`                                                                                                                      ``ns_gateways`` 
+:ref:`nunsgatewayscount.NUNSGatewaysCount<nunsgatewayscount>`                                                                                                    ``ns_gateways_counts`` 
 :ref:`nunsgatewaysummary.NUNSGatewaySummary<nunsgatewaysummary>`                                                                                                 ``ns_gateway_summaries`` 
 :ref:`nunsgatewaytemplate.NUNSGatewayTemplate<nunsgatewaytemplate>`                                                                                              ``ns_gateway_templates`` 
 :ref:`nunsggroup.NUNSGGroup<nunsggroup>`                                                                                                                         ``nsg_groups`` 
@@ -159,7 +163,7 @@ Parents
 --------
 
 
-- :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
-
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
 

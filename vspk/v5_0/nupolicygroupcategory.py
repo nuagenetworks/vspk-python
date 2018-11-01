@@ -77,14 +77,14 @@ class NUPolicyGroupCategory(NURESTObject):
         
         self._name = None
         self._last_updated_by = None
-        self._default_tag = None
+        self._default_category = None
         self._description = None
         self._entity_scope = None
         self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="default_tag", remote_name="defaultTag", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="default_category", remote_name="defaultCategory", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -157,30 +157,30 @@ class NUPolicyGroupCategory(NURESTObject):
 
     
     @property
-    def default_tag(self):
-        """ Get default_tag value.
+    def default_category(self):
+        """ Get default_category value.
 
             Notes:
                 Boolean which identifies if this is a default policy group category.
 
                 
-                This attribute is named `defaultTag` in VSD API.
+                This attribute is named `defaultCategory` in VSD API.
                 
         """
-        return self._default_tag
+        return self._default_category
 
-    @default_tag.setter
-    def default_tag(self, value):
-        """ Set default_tag value.
+    @default_category.setter
+    def default_category(self, value):
+        """ Set default_category value.
 
             Notes:
                 Boolean which identifies if this is a default policy group category.
 
                 
-                This attribute is named `defaultTag` in VSD API.
+                This attribute is named `defaultCategory` in VSD API.
                 
         """
-        self._default_tag = value
+        self._default_category = value
 
     
     @property

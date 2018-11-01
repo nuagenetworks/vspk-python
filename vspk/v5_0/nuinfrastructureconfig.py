@@ -82,12 +82,14 @@ class NUInfrastructureConfig(NURESTObject):
         self._entity_scope = None
         self._config = None
         self._config_status = None
+        self._associated_entity_type = None
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="config", remote_name="config", attribute_type=dict, is_required=False, is_unique=False)
         self.expose_attribute(local_name="config_status", remote_name="configStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAILURE', u'SUCCESS', u'UNKNOWN'])
+        self.expose_attribute(local_name="associated_entity_type", remote_name="associatedEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -206,6 +208,33 @@ class NUInfrastructureConfig(NURESTObject):
                 
         """
         self._config_status = value
+
+    
+    @property
+    def associated_entity_type(self):
+        """ Get associated_entity_type value.
+
+            Notes:
+                Object type of the associated entity.
+
+                
+                This attribute is named `associatedEntityType` in VSD API.
+                
+        """
+        return self._associated_entity_type
+
+    @associated_entity_type.setter
+    def associated_entity_type(self, value):
+        """ Set associated_entity_type value.
+
+            Notes:
+                Object type of the associated entity.
+
+                
+                This attribute is named `associatedEntityType` in VSD API.
+                
+        """
+        self._associated_entity_type = value
 
     
     @property

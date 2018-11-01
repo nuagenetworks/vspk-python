@@ -36,6 +36,8 @@ Attributes
 
 - ``datapath_id``: Identifier of the Gateway, based on the systemID which is generated when the instance is created in VSD.
 
+- ``patches``: Patches that have been installed on the NSG
+
 - ``gateway_connected``: A boolean flag indicating the status of the gateway.
 
 - ``gateway_version``: The Gateway Software Version as reported during bootstrapping.
@@ -74,6 +76,8 @@ Attributes
 
 - ``associated_gateway_security_id``: Read only ID of the associated gateway security object.
 
+- ``associated_gateway_security_profile_id``: Readonly Id of the associated gateway security profile object
+
 - ``associated_nsg_info_id``: Read only ID of the associated gateway information object
 
 - ``associated_netconf_profile_id``: UUID of the Netconf Profile associated to this gateway.
@@ -95,9 +99,11 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nul2domain.NUL2Domain<nul2domain>`                                                                                                                         ``l2_domains`` 
 :ref:`numacfilterprofile.NUMACFilterProfile<numacfilterprofile>`                                                                                                 ``mac_filter_profiles`` 
 :ref:`nusapegressqosprofile.NUSAPEgressQoSProfile<nusapegressqosprofile>`                                                                                        ``sap_egress_qo_s_profiles`` 
 :ref:`nusapingressqosprofile.NUSAPIngressQoSProfile<nusapingressqosprofile>`                                                                                     ``sap_ingress_qo_s_profiles`` 
+:ref:`nugatewaysecurity.NUGatewaySecurity<nugatewaysecurity>`                                                                                                    ``gateway_securities`` 
 :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`                                                                                                                   ``patnat_pools`` 
 :ref:`nudeploymentfailure.NUDeploymentFailure<nudeploymentfailure>`                                                                                              ``deployment_failures`` 
 :ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
@@ -106,15 +112,16 @@ Children
 :ref:`nuegressprofile.NUEgressProfile<nuegressprofile>`                                                                                                          ``egress_profiles`` 
 :ref:`nualarm.NUAlarm<nualarm>`                                                                                                                                  ``alarms`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+:ref:`nuinfrastructureconfig.NUInfrastructureConfig<nuinfrastructureconfig>`                                                                                     ``infrastructure_configs`` 
 :ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`                                                                                                       ``ingress_profiles`` 
 :ref:`nuenterprisepermission.NUEnterprisePermission<nuenterprisepermission>`                                                                                     ``enterprise_permissions`` 
 :ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
 :ref:`nulocation.NULocation<nulocation>`                                                                                                                         ``locations`` 
 :ref:`nubootstrap.NUBootstrap<nubootstrap>`                                                                                                                      ``bootstraps`` 
+:ref:`nubootstrapactivation.NUBootstrapActivation<nubootstrapactivation>`                                                                                        ``bootstrap_activations`` 
 :ref:`nuport.NUPort<nuport>`                                                                                                                                     ``ports`` 
 :ref:`nuipfilterprofile.NUIPFilterProfile<nuipfilterprofile>`                                                                                                    ``ip_filter_profiles`` 
 :ref:`nuipv6filterprofile.NUIPv6FilterProfile<nuipv6filterprofile>`                                                                                              ``ipv6_filter_profiles`` 
-:ref:`nunsginfo.NUNSGInfo<nunsginfo>`                                                                                                                            ``nsg_infos`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
 ================================================================================================================================================               ==========================================================================================
 
@@ -127,6 +134,8 @@ Parents
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

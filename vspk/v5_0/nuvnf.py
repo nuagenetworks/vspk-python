@@ -28,10 +28,19 @@
 
 
 
+from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
+
+
 from .fetchers import NUVNFInterfacesFetcher
 
 
 from .fetchers import NUVNFMetadatasFetcher
+
+
+from .fetchers import NUVNFThresholdPoliciesFetcher
 
 
 from .fetchers import NUJobsFetcher
@@ -54,9 +63,19 @@ class NUVNF(NURESTObject):
     
     CONST_STATUS_SHUTDOWN = "SHUTDOWN"
     
+    CONST_LAST_USER_ACTION_START = "START"
+    
+    CONST_LAST_USER_ACTION_REDEPLOY = "REDEPLOY"
+    
+    CONST_LAST_USER_ACTION_STOP = "STOP"
+    
+    CONST_LAST_USER_ACTION_RESTART = "RESTART"
+    
     CONST_TASK_STATE_STOPPING = "STOPPING"
     
     CONST_ALLOWED_ACTIONS_START = "START"
+    
+    CONST_STATUS_SHUTOFF = "SHUTOFF"
     
     CONST_STATUS_IDLE = "IDLE"
     
@@ -68,7 +87,7 @@ class NUVNF(NURESTObject):
     
     CONST_TASK_STATE_DEPLOYING = "DEPLOYING"
     
-    CONST_STATUS_DYING = "DYING"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_TYPE_WAN_OPT = "WAN_OPT"
     
@@ -88,13 +107,19 @@ class NUVNF(NURESTObject):
     
     CONST_TASK_STATE_STARTING = "STARTING"
     
-    CONST_STATUS_SHUTOFF = "SHUTOFF"
+    CONST_STATUS_DYING = "DYING"
     
     CONST_ALLOWED_ACTIONS_REDEPLOY = "REDEPLOY"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_LAST_USER_ACTION_UNDEPLOY = "UNDEPLOY"
     
     CONST_TYPE_FIREWALL = "FIREWALL"
     
     CONST_ALLOWED_ACTIONS_STOP = "STOP"
+    
+    CONST_LAST_USER_ACTION_DEPLOY = "DEPLOY"
     
     CONST_STATUS_PMSUSPENDED = "PMSUSPENDED"
     
@@ -128,17 +153,20 @@ class NUVNF(NURESTObject):
         self._name = None
         self._task_state = None
         self._last_known_error = None
+        self._last_updated_by = None
+        self._last_user_action = None
         self._memory_mb = None
         self._vendor = None
         self._description = None
-        self._metadata_id = None
         self._allowed_actions = None
         self._enterprise_id = None
+        self._entity_scope = None
         self._is_attached_to_descriptor = None
         self._associated_vnf_metadata_id = None
         self._associated_vnf_threshold_policy_id = None
         self._status = None
         self._storage_gb = None
+        self._external_id = None
         self._type = None
         
         self.expose_attribute(local_name="vnf_descriptor_id", remote_name="VNFDescriptorID", attribute_type=str, is_required=False, is_unique=False)
@@ -150,27 +178,39 @@ class NUVNF(NURESTObject):
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="task_state", remote_name="taskState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEPLOYING', u'NONE', u'STARTING', u'STOPPING', u'UNDEPLOYING'])
         self.expose_attribute(local_name="last_known_error", remote_name="lastKnownError", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_user_action", remote_name="lastUserAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEPLOY', u'REDEPLOY', u'RESTART', u'START', u'STOP', u'UNDEPLOY'])
         self.expose_attribute(local_name="memory_mb", remote_name="memoryMB", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vendor", remote_name="vendor", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="metadata_id", remote_name="metadataID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_actions", remote_name="allowedActions", attribute_type=list, is_required=False, is_unique=False, choices=[u'DEPLOY', u'REDEPLOY', u'RESTART', u'START', u'STOP', u'UNDEPLOY'])
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="is_attached_to_descriptor", remote_name="isAttachedToDescriptor", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vnf_metadata_id", remote_name="associatedVNFMetadataID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vnf_threshold_policy_id", remote_name="associatedVNFThresholdPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'BLOCKED', u'CRASHED', u'DYING', u'IDLE', u'INIT', u'LAST', u'PAUSED', u'PMSUSPENDED', u'RUNNING', u'SHUTDOWN', u'SHUTOFF'])
         self.expose_attribute(local_name="storage_gb", remote_name="storageGB", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'FIREWALL', u'WAN_OPT'])
         
 
         # Fetchers
         
         
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.vnf_interfaces = NUVNFInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.vnf_metadatas = NUVNFMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.vnf_threshold_policies = NUVNFThresholdPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -420,6 +460,60 @@ class NUVNF(NURESTObject):
 
     
     @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def last_user_action(self):
+        """ Get last_user_action value.
+
+            Notes:
+                Last action perform by user
+
+                
+                This attribute is named `lastUserAction` in VSD API.
+                
+        """
+        return self._last_user_action
+
+    @last_user_action.setter
+    def last_user_action(self, value):
+        """ Set last_user_action value.
+
+            Notes:
+                Last action perform by user
+
+                
+                This attribute is named `lastUserAction` in VSD API.
+                
+        """
+        self._last_user_action = value
+
+    
+    @property
     def memory_mb(self):
         """ Get memory_mb value.
 
@@ -493,33 +587,6 @@ class NUVNF(NURESTObject):
 
     
     @property
-    def metadata_id(self):
-        """ Get metadata_id value.
-
-            Notes:
-                Id of referenced metadata object
-
-                
-                This attribute is named `metadataID` in VSD API.
-                
-        """
-        return self._metadata_id
-
-    @metadata_id.setter
-    def metadata_id(self, value):
-        """ Set metadata_id value.
-
-            Notes:
-                Id of referenced metadata object
-
-                
-                This attribute is named `metadataID` in VSD API.
-                
-        """
-        self._metadata_id = value
-
-    
-    @property
     def allowed_actions(self):
         """ Get allowed_actions value.
 
@@ -571,6 +638,33 @@ class NUVNF(NURESTObject):
                 
         """
         self._enterprise_id = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
 
     
     @property
@@ -702,6 +796,33 @@ class NUVNF(NURESTObject):
                 
         """
         self._storage_gb = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
     @property

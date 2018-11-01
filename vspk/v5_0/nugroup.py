@@ -57,19 +57,25 @@ class NUGroup(NURESTObject):
     
     CONST_ROLE_ADMINOPERATOR = "ADMINOPERATOR"
     
+    CONST_ROLE_NETCONFMGR = "NETCONFMGR"
+    
     CONST_MANAGEMENT_MODE_CMS = "CMS"
+    
+    CONST_ROLE_ORGNETWORKDESIGNER = "ORGNETWORKDESIGNER"
     
     CONST_ROLE_CMS = "CMS"
     
     CONST_ROLE_UNKNOWN = "UNKNOWN"
     
+    CONST_ROLE_PREACTIVATION = "PREACTIVATION"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_ROLE_ORGNETWORKDESIGNER = "ORGNETWORKDESIGNER"
+    CONST_ROLE_STATS = "STATS"
     
     CONST_ROLE_CSPOPERATOR = "CSPOPERATOR"
     
-    CONST_ROLE_ORGAPPDESIGNER = "ORGAPPDESIGNER"
+    CONST_ROLE_USER = "USER"
     
     CONST_MANAGEMENT_MODE_RESERVED = "RESERVED"
     
@@ -83,9 +89,9 @@ class NUGroup(NURESTObject):
     
     CONST_ROLE_SYSTEM = "SYSTEM"
     
-    CONST_ROLE_SECURITYADMINISTRATOR = "SECURITYADMINISTRATOR"
+    CONST_ROLE_POSTACTIVATION = "POSTACTIVATION"
     
-    CONST_ROLE_USER = "USER"
+    CONST_ROLE_SECURITYADMINISTRATOR = "SECURITYADMINISTRATOR"
     
     CONST_ROLE_ORGADMIN = "ORGADMIN"
     
@@ -130,7 +136,7 @@ class NUGroup(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="restriction_date", remote_name="restrictionDate", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMINOPERATOR', u'CMS', u'CSPOPERATOR', u'CSPROOT', u'JMS', u'ORGADMIN', u'ORGAPPDESIGNER', u'ORGNETWORKDESIGNER', u'ORGUSER', u'SECURITYADMINISTRATOR', u'SYSTEM', u'UNKNOWN', u'USER'])
+        self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMINOPERATOR', u'CMS', u'CSPOPERATOR', u'CSPROOT', u'JMS', u'NETCONFMGR', u'ORGADMIN', u'ORGNETWORKDESIGNER', u'ORGUSER', u'POSTACTIVATION', u'PREACTIVATION', u'SECURITYADMINISTRATOR', u'STATS', u'SYSTEM', u'UNKNOWN', u'USER'])
         self.expose_attribute(local_name="private", remote_name="private", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         

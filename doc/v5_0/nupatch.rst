@@ -1,32 +1,36 @@
-.. _nuingressexternalservicetemplate:
+.. _nupatch:
 
-nuingressexternalservicetemplate
+nupatch
 ===========================================
 
-.. class:: nuingressexternalservicetemplate.NUIngressExternalServiceTemplate(bambou.nurest_object.NUMetaRESTObject,):
+.. class:: nupatch.NUPatch(bambou.nurest_object.NUMetaRESTObject,):
 
-Defines the template for an Ingress External Service Acls.
+This entity defines a patch installed somewhere (ie. NSG Patch)
 
 
 Attributes
 ----------
 
 
-- ``name``: The name of the entity
+- ``name``: The Patch name
 
-- ``active``: If enabled, it means that this ACL or QOS entry is active
+- ``last_updated_by``: ID of the user who last updated the object.
 
-- ``description``: A description of the entity
+- ``patch_build_number``: The Patch build number (eg. 1)
+
+- ``patch_summary``: The summary given for the Patch
+
+- ``patch_tag``: The Patch Tag. This is a unique identifier including the name, version and release of the patch
+
+- ``patch_version``: The Patch version (ie. 1.0.0)
+
+- ``description``: The Patch description
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``policy_state``: None
+- ``supports_deletion``: Whether or not this Patch supports deletion. If a patch does not support deletion, the REST DELETE method will fail
 
-- ``priority``: The priority of the ACL entry that determines the order of entries
-
-- ``priority_type``: None
-
-- ``associated_live_entity_id``: In the draft mode, the ACL entry refers to this LiveEntity. In non-drafted mode, this is null.
+- ``supports_network_acceleration``: Whether or not this patch supports Network Acceleration
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -41,7 +45,6 @@ Children
 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
-:ref:`nuingressexternalservicetemplateentry.NUIngressExternalServiceTemplateEntry<nuingressexternalservicetemplateentry>`                                        ``ingress_external_service_template_entries`` 
 ================================================================================================================================================               ==========================================================================================
 
 
@@ -50,11 +53,5 @@ Parents
 --------
 
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
-- :ref:`nul2domain.NUL2Domain<nul2domain>`
-
-- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
-
-- :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
+- :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 

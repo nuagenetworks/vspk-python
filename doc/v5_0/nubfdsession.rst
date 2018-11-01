@@ -16,7 +16,7 @@ Attributes
 
 - ``bfd_multiplier``: Multiplier used for Bidirectional Forwarding Detection Timer.
 
-- ``bfd_timer``: Timer for Bidirectional Forwarding Detection. (min = 200, max = 100,000) Unit is milliseconds.
+- ``bfd_timer``: Timer for Bidirectional Forwarding Detection in milliseconds.
 
 - ``last_updated_by``: ID of the user who last updated the object.
 

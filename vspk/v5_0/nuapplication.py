@@ -114,9 +114,11 @@ class NUApplication(NURESTObject):
         self._last_updated_by = None
         self._read_only = None
         self._performance_monitor_type = None
+        self._certificate_common_name = None
         self._description = None
         self._destination_ip = None
         self._destination_port = None
+        self._network_symmetry = None
         self._enable_pps = None
         self._one_way_delay = None
         self._one_way_jitter = None
@@ -140,9 +142,11 @@ class NUApplication(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="read_only", remote_name="readOnly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="performance_monitor_type", remote_name="performanceMonitorType", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONTINUOUS', u'FIRST_PACKET', u'FIRST_PACKET_AND_CONTINUOUS'])
+        self.expose_attribute(local_name="certificate_common_name", remote_name="certificateCommonName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_ip", remote_name="destinationIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="network_symmetry", remote_name="networkSymmetry", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enable_pps", remote_name="enablePPS", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="one_way_delay", remote_name="oneWayDelay", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="one_way_jitter", remote_name="oneWayJitter", attribute_type=int, is_required=False, is_unique=False)
@@ -335,6 +339,33 @@ class NUApplication(NURESTObject):
 
     
     @property
+    def certificate_common_name(self):
+        """ Get certificate_common_name value.
+
+            Notes:
+                Describes the certificate common name
+
+                
+                This attribute is named `certificateCommonName` in VSD API.
+                
+        """
+        return self._certificate_common_name
+
+    @certificate_common_name.setter
+    def certificate_common_name(self, value):
+        """ Set certificate_common_name value.
+
+            Notes:
+                Describes the certificate common name
+
+                
+                This attribute is named `certificateCommonName` in VSD API.
+                
+        """
+        self._certificate_common_name = value
+
+    
+    @property
     def description(self):
         """ Get description value.
 
@@ -409,6 +440,33 @@ class NUApplication(NURESTObject):
                 
         """
         self._destination_port = value
+
+    
+    @property
+    def network_symmetry(self):
+        """ Get network_symmetry value.
+
+            Notes:
+                Network symmetry flag
+
+                
+                This attribute is named `networkSymmetry` in VSD API.
+                
+        """
+        return self._network_symmetry
+
+    @network_symmetry.setter
+    def network_symmetry(self, value):
+        """ Set network_symmetry value.
+
+            Notes:
+                Network symmetry flag
+
+                
+                This attribute is named `networkSymmetry` in VSD API.
+                
+        """
+        self._network_symmetry = value
 
     
     @property

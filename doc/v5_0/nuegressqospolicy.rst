@@ -14,7 +14,7 @@ Attributes
 
 - ``name`` (**Mandatory**): A unique name of the QoS object
 
-- ``parent_queue_associated_rate_limiter_id``: ID of the parent rate limiter associated with this Egress QOS policy.
+- ``parent_queue_associated_rate_limiter_id``: ID of the parent rate limiter associated with this Egress QoS policy.
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
@@ -28,23 +28,23 @@ Attributes
 
 - ``associated_cos_remarking_policy_table_id``: ID of the associated CoS Remarking Policy table. 
 
-- ``associated_dscp_remarking_policy_table_id``: ID of the DSCP Remarking Policy Table associated with this Egress QOS policy.
+- ``associated_dscp_remarking_policy_table_id``: ID of the DSCP Remarking Policy Table associated with this Egress QoS policy.
 
-- ``queue1_associated_rate_limiter_id``: ID of the queue1 rate limiter associated with this Egress QOS policy.
+- ``queue1_associated_rate_limiter_id``: ID of the queue1 rate limiter associated with this Egress QoS policy.
 
-- ``queue1_forwarding_classes``: Queue1 Forwarding Classes for this Egress QOS Policy Possible values are NONE, A, B, C, D, E, F, G, H, .
+- ``queue1_forwarding_classes``: Queue1 Forwarding Classes for this Egress QoS Policy Possible values are NONE, A, B, C, D, E, F, G, H.
 
-- ``queue2_associated_rate_limiter_id``: ID of the queue2 rate limiter associated with this Egress QOS policy.
+- ``queue2_associated_rate_limiter_id``: ID of the queue2 rate limiter associated with this Egress QoS policy.
 
-- ``queue2_forwarding_classes``: Queue2 Forwarding Classes for this Egress QOS Policy Possible values are NONE, A, B, C, D, E, F, G, H, .
+- ``queue2_forwarding_classes``: Queue2 Forwarding Classes for this Egress QoS Policy Possible values are NONE, A, B, C, D, E, F, G, H.
 
-- ``queue3_associated_rate_limiter_id``: ID of the queue3 rate limiter associated with this Egress QOS policy.
+- ``queue3_associated_rate_limiter_id``: ID of the queue3 rate limiter associated with this Egress QoS policy.
 
-- ``queue3_forwarding_classes``: Queue3 Forwarding Classes for this Egress QOS Policy Possible values are NONE, A, B, C, D, E, F, G, H, .
+- ``queue3_forwarding_classes``: Queue3 Forwarding Classes for this Egress QoS Policy Possible values are NONE, A, B, C, D, E, F, G, H.
 
-- ``queue4_associated_rate_limiter_id``: ID of the queue4 rate limiter associated with this Egress QOS policy.
+- ``queue4_associated_rate_limiter_id``: ID of the queue4 rate limiter associated with this Egress QoS policy.
 
-- ``queue4_forwarding_classes``: Queue4 Forwarding Classes for this Egress QOS Policy Possible values are NONE, A, B, C, D, E, F, G, H, .
+- ``queue4_forwarding_classes``: Queue4 Forwarding Classes for this Egress QoS Policy Possible values are NONE, A, B, C, D, E, F, G, H.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

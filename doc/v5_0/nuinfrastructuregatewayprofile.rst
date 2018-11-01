@@ -44,6 +44,8 @@ Attributes
 
 - ``controller_less_duration``: Duration for a controller-less local operation (in ISO-duration format).
 
+- ``controller_less_enabled``: Flag to enable controller-less operations
+
 - ``controller_less_forwarding_mode``: The forwarding mode to use for controllerLess operations
 
 - ``controller_less_remote_duration``: Duration for a controller-less remote operation (in ISO-duration format).

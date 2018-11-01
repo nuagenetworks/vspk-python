@@ -27,6 +27,12 @@
 
 
 
+
+from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
+
 from bambou import NURESTObject
 
 
@@ -43,63 +49,57 @@ class NUFirewallRule(NURESTObject):
     
     ## Constants
     
+    CONST_ACTION_FORWARDING_PATH_LIST = "FORWARDING_PATH_LIST"
+    
     CONST_NETWORK_TYPE_NETWORK_MACRO_GROUP = "NETWORK_MACRO_GROUP"
     
-    CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
+    CONST_ACTION_DROP = "DROP"
     
     CONST_LOCATION_TYPE_ZONE = "ZONE"
     
     CONST_ACTION_REDIRECT = "REDIRECT"
     
-    CONST_DESTINATION_TYPE_NETWORK = "NETWORK"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_NETWORK_TYPE_PUBLIC_NETWORK = "PUBLIC_NETWORK"
     
-    CONST_NETWORK_TYPE_ENDPOINT_ZONE = "ENDPOINT_ZONE"
+    CONST_ACTION_FORWARD = "FORWARD"
     
     CONST_NETWORK_TYPE_POLICYGROUP = "POLICYGROUP"
     
     CONST_LOCATION_TYPE_ANY = "ANY"
     
-    CONST_SOURCE_TYPE_POLICYGROUP = "POLICYGROUP"
-    
     CONST_NETWORK_TYPE_ENDPOINT_DOMAIN = "ENDPOINT_DOMAIN"
+    
+    CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
     
     CONST_NETWORK_TYPE_ANY = "ANY"
     
     CONST_LOCATION_TYPE_POLICYGROUP = "POLICYGROUP"
     
-    CONST_ACTION_FORWARD  = "FORWARD "
-    
     CONST_NETWORK_TYPE_SUBNET = "SUBNET"
     
     CONST_NETWORK_TYPE_ZONE = "ZONE"
     
-    CONST_DESTINATION_TYPE_NETWORKPOLICYGROUP = "NETWORKPOLICYGROUP"
+    CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE_GROUP = "L4_SERVICE_GROUP"
     
     CONST_NETWORK_TYPE_ENDPOINT_SUBNET = "ENDPOINT_SUBNET"
     
-    CONST_SOURCE_TYPE_MACROGROUP = "MACROGROUP"
-    
-    CONST_SOURCE_TYPE_NETWORK = "NETWORK"
-    
     CONST_LOCATION_TYPE_VPORTTAG = "VPORTTAG"
-    
-    CONST_DESTINATION_TYPE_MACROGROUP = "MACROGROUP"
     
     CONST_LOCATION_TYPE_SUBNET = "SUBNET"
     
     CONST_NETWORK_TYPE_NETWORK = "NETWORK"
     
+    CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE = "L4_SERVICE"
+    
     CONST_LOCATION_TYPE_REDIRECTIONTARGET = "REDIRECTIONTARGET"
     
-    CONST_ACTION_DROP  = "DROP "
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_NETWORK_TYPE_INTERNET_POLICYGROUP = "INTERNET_POLICYGROUP"
     
-    CONST_SOURCE_TYPE_NETWORKPOLICYGROUP = "NETWORKPOLICYGROUP"
-    
-    CONST_DESTINATION_TYPE_POLICYGROUP = "POLICYGROUP"
+    CONST_NETWORK_TYPE_ENDPOINT_ZONE = "ENDPOINT_ZONE"
     
     
 
@@ -125,78 +125,73 @@ class NUFirewallRule(NURESTObject):
         self._icmp_type = None
         self._ipv6_address_override = None
         self._dscp = None
+        self._last_updated_by = None
         self._action = None
         self._address_override = None
         self._description = None
-        self._dest_network = None
-        self._dest_pg_id = None
-        self._dest_pg_type = None
-        self._destination_ipv6_value = None
         self._destination_port = None
-        self._destination_type = None
-        self._destination_value = None
         self._network_id = None
         self._network_type = None
         self._mirror_destination_id = None
         self._flow_logging_enabled = None
         self._enterprise_name = None
+        self._entity_scope = None
         self._location_id = None
         self._location_type = None
         self._domain_name = None
-        self._source_ipv6_value = None
-        self._source_network = None
-        self._source_pg_id = None
-        self._source_pg_type = None
         self._source_port = None
-        self._source_type = None
-        self._source_value = None
         self._priority = None
-        self._associated_application_id = None
-        self._associated_application_object_id = None
+        self._protocol = None
+        self._associated_live_template_id = None
+        self._associated_traffic_type = None
+        self._associated_traffic_type_id = None
         self._associatedfirewall_aclid = None
         self._stateful = None
         self._stats_id = None
         self._stats_logging_enabled = None
         self._ether_type = None
+        self._external_id = None
         
         self.expose_attribute(local_name="acl_template_name", remote_name="ACLTemplateName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="icmp_code", remote_name="ICMPCode", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="icmp_type", remote_name="ICMPType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ipv6_address_override", remote_name="IPv6AddressOverride", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=False, is_unique=False, choices=[u'DROP ', u'FORWARD ', u'REDIRECT'])
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=False, is_unique=False, choices=[u'DROP', u'FORWARD', u'FORWARDING_PATH_LIST', u'REDIRECT'])
         self.expose_attribute(local_name="address_override", remote_name="addressOverride", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dest_network", remote_name="destNetwork", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dest_pg_id", remote_name="destPgId", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dest_pg_type", remote_name="destPgType", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="destination_ipv6_value", remote_name="destinationIpv6Value", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="destination_type", remote_name="destinationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'MACROGROUP', u'NETWORK', u'NETWORKPOLICYGROUP', u'POLICYGROUP'])
-        self.expose_attribute(local_name="destination_value", remote_name="destinationValue", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'INTERNET_POLICYGROUP', u'NETWORK', u'NETWORK_MACRO_GROUP', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'ZONE'])
         self.expose_attribute(local_name="mirror_destination_id", remote_name="mirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_logging_enabled", remote_name="flowLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'POLICYGROUP', u'REDIRECTIONTARGET', u'SUBNET', u'VPORTTAG', u'ZONE'])
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="source_ipv6_value", remote_name="sourceIpv6Value", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="source_network", remote_name="sourceNetwork", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="source_pg_id", remote_name="sourcePgId", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="source_pg_type", remote_name="sourcePgType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="source_type", remote_name="sourceType", attribute_type=str, is_required=False, is_unique=False, choices=[u'MACROGROUP', u'NETWORK', u'NETWORKPOLICYGROUP', u'POLICYGROUP'])
-        self.expose_attribute(local_name="source_value", remote_name="sourceValue", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_application_id", remote_name="associatedApplicationID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_application_object_id", remote_name="associatedApplicationObjectID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_live_template_id", remote_name="associatedLiveTemplateID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_traffic_type", remote_name="associatedTrafficType", attribute_type=str, is_required=False, is_unique=False, choices=[u'L4_SERVICE', u'L4_SERVICE_GROUP'])
+        self.expose_attribute(local_name="associated_traffic_type_id", remote_name="associatedTrafficTypeID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associatedfirewall_aclid", remote_name="associatedfirewallACLID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stateful", remote_name="stateful", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_id", remote_name="statsID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_logging_enabled", remote_name="statsLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ether_type", remote_name="etherType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        
+
+        # Fetchers
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -339,6 +334,33 @@ class NUFirewallRule(NURESTObject):
 
     
     @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
     def action(self):
         """ Get action value.
 
@@ -412,114 +434,6 @@ class NUFirewallRule(NURESTObject):
 
     
     @property
-    def dest_network(self):
-        """ Get dest_network value.
-
-            Notes:
-                Destination network - available in version 1.0 api
-
-                
-                This attribute is named `destNetwork` in VSD API.
-                
-        """
-        return self._dest_network
-
-    @dest_network.setter
-    def dest_network(self, value):
-        """ Set dest_network value.
-
-            Notes:
-                Destination network - available in version 1.0 api
-
-                
-                This attribute is named `destNetwork` in VSD API.
-                
-        """
-        self._dest_network = value
-
-    
-    @property
-    def dest_pg_id(self):
-        """ Get dest_pg_id value.
-
-            Notes:
-                In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
-
-                
-                This attribute is named `destPgId` in VSD API.
-                
-        """
-        return self._dest_pg_id
-
-    @dest_pg_id.setter
-    def dest_pg_id(self, value):
-        """ Set dest_pg_id value.
-
-            Notes:
-                In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
-
-                
-                This attribute is named `destPgId` in VSD API.
-                
-        """
-        self._dest_pg_id = value
-
-    
-    @property
-    def dest_pg_type(self):
-        """ Get dest_pg_type value.
-
-            Notes:
-                In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
-
-                
-                This attribute is named `destPgType` in VSD API.
-                
-        """
-        return self._dest_pg_type
-
-    @dest_pg_type.setter
-    def dest_pg_type(self, value):
-        """ Set dest_pg_type value.
-
-            Notes:
-                In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
-
-                
-                This attribute is named `destPgType` in VSD API.
-                
-        """
-        self._dest_pg_type = value
-
-    
-    @property
-    def destination_ipv6_value(self):
-        """ Get destination_ipv6_value value.
-
-            Notes:
-                destination IPV6 address
-
-                
-                This attribute is named `destinationIpv6Value` in VSD API.
-                
-        """
-        return self._destination_ipv6_value
-
-    @destination_ipv6_value.setter
-    def destination_ipv6_value(self, value):
-        """ Set destination_ipv6_value value.
-
-            Notes:
-                destination IPV6 address
-
-                
-                This attribute is named `destinationIpv6Value` in VSD API.
-                
-        """
-        self._destination_ipv6_value = value
-
-    
-    @property
     def destination_port(self):
         """ Get destination_port value.
 
@@ -544,60 +458,6 @@ class NUFirewallRule(NURESTObject):
                 
         """
         self._destination_port = value
-
-    
-    @property
-    def destination_type(self):
-        """ Get destination_type value.
-
-            Notes:
-                Network Type - either PolicyGroup or Network
-
-                
-                This attribute is named `destinationType` in VSD API.
-                
-        """
-        return self._destination_type
-
-    @destination_type.setter
-    def destination_type(self, value):
-        """ Set destination_type value.
-
-            Notes:
-                Network Type - either PolicyGroup or Network
-
-                
-                This attribute is named `destinationType` in VSD API.
-                
-        """
-        self._destination_type = value
-
-    
-    @property
-    def destination_value(self):
-        """ Get destination_value value.
-
-            Notes:
-                In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
-
-                
-                This attribute is named `destinationValue` in VSD API.
-                
-        """
-        return self._destination_value
-
-    @destination_value.setter
-    def destination_value(self, value):
-        """ Set destination_value value.
-
-            Notes:
-                In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
-
-                
-                This attribute is named `destinationValue` in VSD API.
-                
-        """
-        self._destination_value = value
 
     
     @property
@@ -736,6 +596,33 @@ class NUFirewallRule(NURESTObject):
 
     
     @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
     def location_id(self):
         """ Get location_id value.
 
@@ -817,114 +704,6 @@ class NUFirewallRule(NURESTObject):
 
     
     @property
-    def source_ipv6_value(self):
-        """ Get source_ipv6_value value.
-
-            Notes:
-                source IPV6 address
-
-                
-                This attribute is named `sourceIpv6Value` in VSD API.
-                
-        """
-        return self._source_ipv6_value
-
-    @source_ipv6_value.setter
-    def source_ipv6_value(self, value):
-        """ Set source_ipv6_value value.
-
-            Notes:
-                source IPV6 address
-
-                
-                This attribute is named `sourceIpv6Value` in VSD API.
-                
-        """
-        self._source_ipv6_value = value
-
-    
-    @property
-    def source_network(self):
-        """ Get source_network value.
-
-            Notes:
-                Source network - available in version 1.0 api
-
-                
-                This attribute is named `sourceNetwork` in VSD API.
-                
-        """
-        return self._source_network
-
-    @source_network.setter
-    def source_network(self, value):
-        """ Set source_network value.
-
-            Notes:
-                Source network - available in version 1.0 api
-
-                
-                This attribute is named `sourceNetwork` in VSD API.
-                
-        """
-        self._source_network = value
-
-    
-    @property
-    def source_pg_id(self):
-        """ Get source_pg_id value.
-
-            Notes:
-                In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
-
-                
-                This attribute is named `sourcePgId` in VSD API.
-                
-        """
-        return self._source_pg_id
-
-    @source_pg_id.setter
-    def source_pg_id(self, value):
-        """ Set source_pg_id value.
-
-            Notes:
-                In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
-
-                
-                This attribute is named `sourcePgId` in VSD API.
-                
-        """
-        self._source_pg_id = value
-
-    
-    @property
-    def source_pg_type(self):
-        """ Get source_pg_type value.
-
-            Notes:
-                in case of PG this will be its EVPNBGPCommunity String, incase of network itdomainfip will be network cidr
-
-                
-                This attribute is named `sourcePgType` in VSD API.
-                
-        """
-        return self._source_pg_type
-
-    @source_pg_type.setter
-    def source_pg_type(self, value):
-        """ Set source_pg_type value.
-
-            Notes:
-                in case of PG this will be its EVPNBGPCommunity String, incase of network itdomainfip will be network cidr
-
-                
-                This attribute is named `sourcePgType` in VSD API.
-                
-        """
-        self._source_pg_type = value
-
-    
-    @property
     def source_port(self):
         """ Get source_port value.
 
@@ -952,60 +731,6 @@ class NUFirewallRule(NURESTObject):
 
     
     @property
-    def source_type(self):
-        """ Get source_type value.
-
-            Notes:
-                Location Type - either PolicyGroup or Network
-
-                
-                This attribute is named `sourceType` in VSD API.
-                
-        """
-        return self._source_type
-
-    @source_type.setter
-    def source_type(self, value):
-        """ Set source_type value.
-
-            Notes:
-                Location Type - either PolicyGroup or Network
-
-                
-                This attribute is named `sourceType` in VSD API.
-                
-        """
-        self._source_type = value
-
-    
-    @property
-    def source_value(self):
-        """ Get source_value value.
-
-            Notes:
-                In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
-
-                
-                This attribute is named `sourceValue` in VSD API.
-                
-        """
-        return self._source_value
-
-    @source_value.setter
-    def source_value(self, value):
-        """ Set source_value value.
-
-            Notes:
-                In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
-
-                
-                This attribute is named `sourceValue` in VSD API.
-                
-        """
-        self._source_value = value
-
-    
-    @property
     def priority(self):
         """ Get priority value.
 
@@ -1029,57 +754,107 @@ class NUFirewallRule(NURESTObject):
 
     
     @property
-    def associated_application_id(self):
-        """ Get associated_application_id value.
+    def protocol(self):
+        """ Get protocol value.
 
             Notes:
-                The associated application ID
+                Protocol number that must be matched
 
-                
-                This attribute is named `associatedApplicationID` in VSD API.
                 
         """
-        return self._associated_application_id
+        return self._protocol
 
-    @associated_application_id.setter
-    def associated_application_id(self, value):
-        """ Set associated_application_id value.
+    @protocol.setter
+    def protocol(self, value):
+        """ Set protocol value.
 
             Notes:
-                The associated application ID
+                Protocol number that must be matched
 
                 
-                This attribute is named `associatedApplicationID` in VSD API.
-                
         """
-        self._associated_application_id = value
+        self._protocol = value
 
     
     @property
-    def associated_application_object_id(self):
-        """ Get associated_application_object_id value.
+    def associated_live_template_id(self):
+        """ Get associated_live_template_id value.
 
             Notes:
-                The associated application object ID
+                In the draft mode, the ACL entity refers to this live entity parent. In non-drafted mode, this is null
 
                 
-                This attribute is named `associatedApplicationObjectID` in VSD API.
+                This attribute is named `associatedLiveTemplateID` in VSD API.
                 
         """
-        return self._associated_application_object_id
+        return self._associated_live_template_id
 
-    @associated_application_object_id.setter
-    def associated_application_object_id(self, value):
-        """ Set associated_application_object_id value.
+    @associated_live_template_id.setter
+    def associated_live_template_id(self, value):
+        """ Set associated_live_template_id value.
 
             Notes:
-                The associated application object ID
+                In the draft mode, the ACL entity refers to this live entity parent. In non-drafted mode, this is null
 
                 
-                This attribute is named `associatedApplicationObjectID` in VSD API.
+                This attribute is named `associatedLiveTemplateID` in VSD API.
                 
         """
-        self._associated_application_object_id = value
+        self._associated_live_template_id = value
+
+    
+    @property
+    def associated_traffic_type(self):
+        """ Get associated_traffic_type value.
+
+            Notes:
+                The associated Traffic type. L4 Service / L4 Service Group
+
+                
+                This attribute is named `associatedTrafficType` in VSD API.
+                
+        """
+        return self._associated_traffic_type
+
+    @associated_traffic_type.setter
+    def associated_traffic_type(self, value):
+        """ Set associated_traffic_type value.
+
+            Notes:
+                The associated Traffic type. L4 Service / L4 Service Group
+
+                
+                This attribute is named `associatedTrafficType` in VSD API.
+                
+        """
+        self._associated_traffic_type = value
+
+    
+    @property
+    def associated_traffic_type_id(self):
+        """ Get associated_traffic_type_id value.
+
+            Notes:
+                The associated Traffic Type ID
+
+                
+                This attribute is named `associatedTrafficTypeID` in VSD API.
+                
+        """
+        return self._associated_traffic_type_id
+
+    @associated_traffic_type_id.setter
+    def associated_traffic_type_id(self, value):
+        """ Set associated_traffic_type_id value.
+
+            Notes:
+                The associated Traffic Type ID
+
+                
+                This attribute is named `associatedTrafficTypeID` in VSD API.
+                
+        """
+        self._associated_traffic_type_id = value
 
     
     @property
@@ -1211,6 +986,33 @@ class NUFirewallRule(NURESTObject):
                 
         """
         self._ether_type = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

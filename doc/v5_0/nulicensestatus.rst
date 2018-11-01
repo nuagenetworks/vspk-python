@@ -14,6 +14,8 @@ Attributes
 
 - ``accumulate_licenses_enabled``: Whether the various VRS license flavours be merged in one pool
 
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
 - ``total_licensed_avrsgs_count``: Indicates total AVRSG count for all the licenses in the system
 
 - ``total_licensed_avrss_count``: Indicates total AVRS count for all the licenses in the system
@@ -52,10 +54,22 @@ Attributes
 
 - ``total_licensed_vrss_count``: Indicates total VRS count for all the licenses in the system
 
-- ``total_used_gateways_count``: Indicates total VRS+VRSG+VRSB+VDFG licenses used in the system
+- ``total_used_gateways_count``: Indicates total VRS+VRSG+VRSB+VDF+VDFG licenses used in the system
+
+- ``external_id``: External object ID. Used for integration with third party systems
 
 
 
+
+Children
+--------
+
+================================================================================================================================================               ==========================================================================================
+**class**                                                                                                                                                      **fetcher**
+
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+================================================================================================================================================               ==========================================================================================
 
 
 

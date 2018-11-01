@@ -5,7 +5,7 @@ nultestatistics
 
 .. class:: nultestatistics.NULtestatistics(bambou.nurest_object.NUMetaRESTObject,):
 
-Retrieves statistics for LTE uplink
+Retrieves statistical information for LTE uplinks.
 
 
 Attributes
@@ -18,7 +18,7 @@ Attributes
 
 - ``start_time``: Start time for the statistics to be retrieved
 
-- ``stats_data``: Map&lt;TCAMetric, Long[]&gt; TCAMetric is an Enum. Possible values are modem_status, signal_strength
+- ``stats_data``: A list of statistical data returned for a selected LTE interface.  Information returned will contain the cellular signal strength and the current technology used (LTE, HSPA+, 3G, ...).
 
 
 

@@ -78,7 +78,6 @@ class NUVPortMirror(NURESTObject):
 
         # Read/Write Attributes
         
-        self._vport_name = None
         self._last_updated_by = None
         self._network_name = None
         self._mirror_destination_id = None
@@ -88,10 +87,10 @@ class NUVPortMirror(NURESTObject):
         self._entity_scope = None
         self._domain_name = None
         self._vport_id = None
+        self._vport_name = None
         self._attached_network_type = None
         self._external_id = None
         
-        self.expose_attribute(local_name="vport_name", remote_name="VPortName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_name", remote_name="networkName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mirror_destination_id", remote_name="mirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
@@ -101,6 +100,7 @@ class NUVPortMirror(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vport_id", remote_name="vportId", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vport_name", remote_name="vportName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="attached_network_type", remote_name="attachedNetworkType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
@@ -117,33 +117,6 @@ class NUVPortMirror(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
-    
-    @property
-    def vport_name(self):
-        """ Get vport_name value.
-
-            Notes:
-                Name of the vport to which the mirror destination is associated with.
-
-                
-                This attribute is named `VPortName` in VSD API.
-                
-        """
-        return self._vport_name
-
-    @vport_name.setter
-    def vport_name(self, value):
-        """ Set vport_name value.
-
-            Notes:
-                Name of the vport to which the mirror destination is associated with.
-
-                
-                This attribute is named `VPortName` in VSD API.
-                
-        """
-        self._vport_name = value
-
     
     @property
     def last_updated_by(self):
@@ -386,6 +359,33 @@ class NUVPortMirror(NURESTObject):
                 
         """
         self._vport_id = value
+
+    
+    @property
+    def vport_name(self):
+        """ Get vport_name value.
+
+            Notes:
+                Name of the vport to which the mirror destination is associated with.
+
+                
+                This attribute is named `vportName` in VSD API.
+                
+        """
+        return self._vport_name
+
+    @vport_name.setter
+    def vport_name(self, value):
+        """ Set vport_name value.
+
+            Notes:
+                Name of the vport to which the mirror destination is associated with.
+
+                
+                This attribute is named `vportName` in VSD API.
+                
+        """
+        self._vport_name = value
 
     
     @property

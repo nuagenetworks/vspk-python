@@ -27,6 +27,12 @@
 
 
 
+
+from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
+
 from bambou import NURESTObject
 
 
@@ -99,6 +105,15 @@ class NUDiskStat(NURESTObject):
         self.expose_attribute(local_name="used", remote_name="used", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="available", remote_name="available", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        
+
+        # Fetchers
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)

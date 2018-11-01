@@ -91,6 +91,7 @@ class NUMonitoringPort(NURESTObject):
         self._resiliency_state = None
         self._resilient = None
         self._entity_scope = None
+        self._dpdk_enabled = None
         self._uplink = None
         self._state = None
         self._external_id = None
@@ -102,6 +103,7 @@ class NUMonitoringPort(NURESTObject):
         self.expose_attribute(local_name="resiliency_state", remote_name="resiliencyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'backup', u'master', u'none'])
         self.expose_attribute(local_name="resilient", remote_name="resilient", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="dpdk_enabled", remote_name="dpdkEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink", remote_name="uplink", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="state", remote_name="state", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -291,6 +293,33 @@ class NUMonitoringPort(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def dpdk_enabled(self):
+        """ Get dpdk_enabled value.
+
+            Notes:
+                Flag to indicate if an ACCESS port is DPDK Enabled or not.
+
+                
+                This attribute is named `dpdkEnabled` in VSD API.
+                
+        """
+        return self._dpdk_enabled
+
+    @dpdk_enabled.setter
+    def dpdk_enabled(self, value):
+        """ Set dpdk_enabled value.
+
+            Notes:
+                Flag to indicate if an ACCESS port is DPDK Enabled or not.
+
+                
+                This attribute is named `dpdkEnabled` in VSD API.
+                
+        """
+        self._dpdk_enabled = value
 
     
     @property

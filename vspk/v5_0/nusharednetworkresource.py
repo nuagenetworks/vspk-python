@@ -131,6 +131,7 @@ class NUSharedNetworkResource(NURESTObject):
         self._shared_resource_parent_id = None
         self._vn_id = None
         self._underlay = None
+        self._enterprise_id = None
         self._entity_scope = None
         self._domain_route_distinguisher = None
         self._domain_route_target = None
@@ -140,6 +141,8 @@ class NUSharedNetworkResource(NURESTObject):
         self._uplink_vport_name = None
         self._use_global_mac = None
         self._associated_pat_mapper_id = None
+        self._subnet_route_distinguisher = None
+        self._subnet_route_target = None
         self._external_id = None
         self._dynamic_pat_allocation_enabled = None
         self._type = None
@@ -161,6 +164,7 @@ class NUSharedNetworkResource(NURESTObject):
         self.expose_attribute(local_name="shared_resource_parent_id", remote_name="sharedResourceParentID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vn_id", remote_name="vnID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="underlay", remote_name="underlay", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="domain_route_distinguisher", remote_name="domainRouteDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="domain_route_target", remote_name="domainRouteTarget", attribute_type=str, is_required=False, is_unique=False)
@@ -170,6 +174,8 @@ class NUSharedNetworkResource(NURESTObject):
         self.expose_attribute(local_name="uplink_vport_name", remote_name="uplinkVPortName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="associated_pat_mapper_id", remote_name="associatedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="subnet_route_distinguisher", remote_name="subnetRouteDistinguisher", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="subnet_route_target", remote_name="subnetRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="dynamic_pat_allocation_enabled", remote_name="dynamicPATAllocationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'FLOATING', u'L2DOMAIN', u'PUBLIC', u'UPLINK_SUBNET'])
@@ -642,6 +648,33 @@ class NUSharedNetworkResource(NURESTObject):
 
     
     @property
+    def enterprise_id(self):
+        """ Get enterprise_id value.
+
+            Notes:
+                Enterprise that this subnet belongs to
+
+                
+                This attribute is named `enterpriseID` in VSD API.
+                
+        """
+        return self._enterprise_id
+
+    @enterprise_id.setter
+    def enterprise_id(self, value):
+        """ Set enterprise_id value.
+
+            Notes:
+                Enterprise that this subnet belongs to
+
+                
+                This attribute is named `enterpriseID` in VSD API.
+                
+        """
+        self._enterprise_id = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -882,6 +915,60 @@ class NUSharedNetworkResource(NURESTObject):
                 
         """
         self._associated_pat_mapper_id = value
+
+    
+    @property
+    def subnet_route_distinguisher(self):
+        """ Get subnet_route_distinguisher value.
+
+            Notes:
+                Route distinguisher configured on the shared resource subnetwork
+
+                
+                This attribute is named `subnetRouteDistinguisher` in VSD API.
+                
+        """
+        return self._subnet_route_distinguisher
+
+    @subnet_route_distinguisher.setter
+    def subnet_route_distinguisher(self, value):
+        """ Set subnet_route_distinguisher value.
+
+            Notes:
+                Route distinguisher configured on the shared resource subnetwork
+
+                
+                This attribute is named `subnetRouteDistinguisher` in VSD API.
+                
+        """
+        self._subnet_route_distinguisher = value
+
+    
+    @property
+    def subnet_route_target(self):
+        """ Get subnet_route_target value.
+
+            Notes:
+                Route target configured on the shared resource subnetwork
+
+                
+                This attribute is named `subnetRouteTarget` in VSD API.
+                
+        """
+        return self._subnet_route_target
+
+    @subnet_route_target.setter
+    def subnet_route_target(self, value):
+        """ Set subnet_route_target value.
+
+            Notes:
+                Route target configured on the shared resource subnetwork
+
+                
+                This attribute is named `subnetRouteTarget` in VSD API.
+                
+        """
+        self._subnet_route_target = value
 
     
     @property

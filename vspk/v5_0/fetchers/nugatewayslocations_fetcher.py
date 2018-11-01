@@ -29,11 +29,11 @@
 from bambou import NURESTFetcher
 
 
-class NUFloatingIPACLTemplatesFetcher(NURESTFetcher):
-    """ Represents a NUFloatingIPACLTemplates fetcher
+class NUGatewaysLocationsFetcher(NURESTFetcher):
+    """ Represents a NUGatewaysLocations fetcher
 
         Notes:
-            This fetcher enables to fetch NUFloatingIPACLTemplate objects.
+            This fetcher enables to fetch NUGatewaysLocation objects.
 
         See:
             bambou.NURESTFetcher
@@ -41,13 +41,13 @@ class NUFloatingIPACLTemplatesFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUFloatingIPACLTemplate class that is managed.
+        """ Return NUGatewaysLocation class that is managed.
 
             Returns:
-                .NUFloatingIPACLTemplate: the managed class
+                .NUGatewaysLocation: the managed class
         """
 
-        from .. import NUFloatingIPACLTemplate
-        return NUFloatingIPACLTemplate
+        from .. import NUGatewaysLocation
+        return NUGatewaysLocation
 
     

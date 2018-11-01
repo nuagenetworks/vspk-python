@@ -66,8 +66,6 @@ class NUStaticRoute(NURESTObject):
     
     CONST_TYPE_EXIT_DOMAIN = "EXIT_DOMAIN"
     
-    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
-    
     
 
     def __init__(self, **kwargs):
@@ -101,7 +99,7 @@ class NUStaticRoute(NURESTObject):
         self._type = None
         
         self.expose_attribute(local_name="bfd_enabled", remote_name="BFDEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=True, is_unique=False)

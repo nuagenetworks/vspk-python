@@ -123,6 +123,7 @@ class NUVCenter(NURESTObject):
 
         # Read/Write Attributes
         
+        self._arp_reply = None
         self._vrs_configuration_time_limit = None
         self._v_require_nuage_metadata = None
         self._name = None
@@ -235,6 +236,7 @@ class NUVCenter(NURESTObject):
         self._avrs_profile = None
         self._external_id = None
         
+        self.expose_attribute(local_name="arp_reply", remote_name="ARPReply", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_configuration_time_limit", remote_name="VRSConfigurationTimeLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="v_require_nuage_metadata", remote_name="vRequireNuageMetadata", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
@@ -375,6 +377,33 @@ class NUVCenter(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def arp_reply(self):
+        """ Get arp_reply value.
+
+            Notes:
+                Whether ARP Reply is enabled/disabled
+
+                
+                This attribute is named `ARPReply` in VSD API.
+                
+        """
+        return self._arp_reply
+
+    @arp_reply.setter
+    def arp_reply(self, value):
+        """ Set arp_reply value.
+
+            Notes:
+                Whether ARP Reply is enabled/disabled
+
+                
+                This attribute is named `ARPReply` in VSD API.
+                
+        """
+        self._arp_reply = value
+
     
     @property
     def vrs_configuration_time_limit(self):

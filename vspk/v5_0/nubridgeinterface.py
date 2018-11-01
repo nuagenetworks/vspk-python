@@ -34,6 +34,9 @@ from .fetchers import NUTCAsFetcher
 from .fetchers import NURedirectionTargetsFetcher
 
 
+from .fetchers import NUDeploymentFailuresFetcher
+
+
 from .fetchers import NUMetadatasFetcher
 
 
@@ -102,7 +105,6 @@ class NUBridgeInterface(NURESTObject):
         
         self._vport_id = None
         self._vport_name = None
-        self._ipv6_address = None
         self._ipv6_gateway = None
         self._name = None
         self._last_updated_by = None
@@ -123,7 +125,6 @@ class NUBridgeInterface(NURESTObject):
         
         self.expose_attribute(local_name="vport_id", remote_name="VPortID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vport_name", remote_name="VPortName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ipv6_gateway", remote_name="IPv6Gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -150,6 +151,9 @@ class NUBridgeInterface(NURESTObject):
         
         
         self.redirection_targets = NURedirectionTargetsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.deployment_failures = NUDeploymentFailuresFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -232,33 +236,6 @@ class NUBridgeInterface(NURESTObject):
                 
         """
         self._vport_name = value
-
-    
-    @property
-    def ipv6_address(self):
-        """ Get ipv6_address value.
-
-            Notes:
-                IPv6 address of the  interface
-
-                
-                This attribute is named `IPv6Address` in VSD API.
-                
-        """
-        return self._ipv6_address
-
-    @ipv6_address.setter
-    def ipv6_address(self, value):
-        """ Set ipv6_address value.
-
-            Notes:
-                IPv6 address of the  interface
-
-                
-                This attribute is named `IPv6Address` in VSD API.
-                
-        """
-        self._ipv6_address = value
 
     
     @property

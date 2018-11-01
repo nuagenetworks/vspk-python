@@ -47,33 +47,27 @@ class NUNSGInfo(NURESTObject):
     
     CONST_FAMILY_NSG_C = "NSG_C"
     
-    CONST_FAMILY_NSG_DOCKER = "NSG_DOCKER"
-    
-    CONST_FAMILY_NSG_AMI = "NSG_AMI"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_FAMILY_ANY = "ANY"
     
     CONST_FAMILY_NSG_E = "NSG_E"
     
-    CONST_TPM_STATUS_ENABLED_NOT_OPERATIONAL = "ENABLED_NOT_OPERATIONAL"
-    
-    CONST_TPM_STATUS_ENABLED_OPERATIONAL = "ENABLED_OPERATIONAL"
+    CONST_FAMILY_NSG_AMI = "NSG_AMI"
     
     CONST_FAMILY_NSG_X200 = "NSG_X200"
     
-    CONST_FAMILY_NSG_V = "NSG_V"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_TPM_STATUS_UNKNOWN = "UNKNOWN"
+    CONST_FAMILY_NSG_V = "NSG_V"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_FAMILY_NSG_E300 = "NSG_E300"
     
+    CONST_FAMILY_NSG_AZ = "NSG_AZ"
+    
+    CONST_FAMILY_NSG_DOCKER = "NSG_DOCKER"
+    
     CONST_FAMILY_NSG_X = "NSG_X"
-    
-    CONST_FAMILY_ANY = "ANY"
-    
-    CONST_TPM_STATUS_DISABLED = "DISABLED"
     
     
 
@@ -95,6 +89,8 @@ class NUNSGInfo(NURESTObject):
         # Read/Write Attributes
         
         self._mac_address = None
+        self._aar_application_release_date = None
+        self._aar_application_version = None
         self._bios_release_date = None
         self._bios_version = None
         self._sku = None
@@ -104,29 +100,33 @@ class NUNSGInfo(NURESTObject):
         self._nsg_version = None
         self._uuid = None
         self._family = None
-        self._patches = None
+        self._patches_detail = None
         self._serial_number = None
         self._libraries = None
         self._entity_scope = None
         self._product_name = None
+        self._associated_entity_type = None
         self._associated_ns_gateway_id = None
         self._external_id = None
         
         self.expose_attribute(local_name="mac_address", remote_name="MACAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="aar_application_release_date", remote_name="AARApplicationReleaseDate", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="aar_application_version", remote_name="AARApplicationVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bios_release_date", remote_name="BIOSReleaseDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bios_version", remote_name="BIOSVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sku", remote_name="SKU", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="tpm_status", remote_name="TPMStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED_NOT_OPERATIONAL', u'ENABLED_OPERATIONAL', u'UNKNOWN'])
+        self.expose_attribute(local_name="tpm_status", remote_name="TPMStatus", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tpm_version", remote_name="TPMVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cpu_type", remote_name="CPUType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_version", remote_name="NSGVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_AMI', u'NSG_C', u'NSG_DOCKER', u'NSG_E', u'NSG_E200', u'NSG_E300', u'NSG_V', u'NSG_X', u'NSG_X200'])
-        self.expose_attribute(local_name="patches", remote_name="patches", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_AMI', u'NSG_AZ', u'NSG_C', u'NSG_DOCKER', u'NSG_E', u'NSG_E200', u'NSG_E300', u'NSG_V', u'NSG_X', u'NSG_X200'])
+        self.expose_attribute(local_name="patches_detail", remote_name="patchesDetail", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="product_name", remote_name="productName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_entity_type", remote_name="associatedEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ns_gateway_id", remote_name="associatedNSGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
@@ -160,6 +160,60 @@ class NUNSGInfo(NURESTObject):
                 
         """
         self._mac_address = value
+
+    
+    @property
+    def aar_application_release_date(self):
+        """ Get aar_application_release_date value.
+
+            Notes:
+                Release Date of the AAR Application
+
+                
+                This attribute is named `AARApplicationReleaseDate` in VSD API.
+                
+        """
+        return self._aar_application_release_date
+
+    @aar_application_release_date.setter
+    def aar_application_release_date(self, value):
+        """ Set aar_application_release_date value.
+
+            Notes:
+                Release Date of the AAR Application
+
+                
+                This attribute is named `AARApplicationReleaseDate` in VSD API.
+                
+        """
+        self._aar_application_release_date = value
+
+    
+    @property
+    def aar_application_version(self):
+        """ Get aar_application_version value.
+
+            Notes:
+                The AAR Application Version
+
+                
+                This attribute is named `AARApplicationVersion` in VSD API.
+                
+        """
+        return self._aar_application_version
+
+    @aar_application_version.setter
+    def aar_application_version(self, value):
+        """ Set aar_application_version value.
+
+            Notes:
+                The AAR Application Version
+
+                
+                This attribute is named `AARApplicationVersion` in VSD API.
+                
+        """
+        self._aar_application_version = value
 
     
     @property
@@ -248,7 +302,7 @@ class NUNSGInfo(NURESTObject):
         """ Get tpm_status value.
 
             Notes:
-                TPM status as reported by the NSG during bootstrapping.  This informate indicates if TPM is being used in securing the private key/certificate of an NSG.
+                TPM status code as reported by the NSG during bootstrapping. This informate indicates if TPM is being used in securing the private key/certificate of an NSG. Possible values are 0(Unknown), 1(Enabled_Not_Operational), 2(Enabled_Operational), 3(Disabled).
 
                 
                 This attribute is named `TPMStatus` in VSD API.
@@ -261,7 +315,7 @@ class NUNSGInfo(NURESTObject):
         """ Set tpm_status value.
 
             Notes:
-                TPM status as reported by the NSG during bootstrapping.  This informate indicates if TPM is being used in securing the private key/certificate of an NSG.
+                TPM status code as reported by the NSG during bootstrapping. This informate indicates if TPM is being used in securing the private key/certificate of an NSG. Possible values are 0(Unknown), 1(Enabled_Not_Operational), 2(Enabled_Operational), 3(Disabled).
 
                 
                 This attribute is named `TPMStatus` in VSD API.
@@ -402,26 +456,30 @@ class NUNSGInfo(NURESTObject):
 
     
     @property
-    def patches(self):
-        """ Get patches value.
+    def patches_detail(self):
+        """ Get patches_detail value.
 
             Notes:
-                Patches that have been installed on the NSG.
+                Base64 Encoded JSON String of the extra details pertaining to each successfully installed patch
 
                 
+                This attribute is named `patchesDetail` in VSD API.
+                
         """
-        return self._patches
+        return self._patches_detail
 
-    @patches.setter
-    def patches(self, value):
-        """ Set patches value.
+    @patches_detail.setter
+    def patches_detail(self, value):
+        """ Set patches_detail value.
 
             Notes:
-                Patches that have been installed on the NSG.
+                Base64 Encoded JSON String of the extra details pertaining to each successfully installed patch
 
                 
+                This attribute is named `patchesDetail` in VSD API.
+                
         """
-        self._patches = value
+        self._patches_detail = value
 
     
     @property
@@ -526,6 +584,33 @@ class NUNSGInfo(NURESTObject):
                 
         """
         self._product_name = value
+
+    
+    @property
+    def associated_entity_type(self):
+        """ Get associated_entity_type value.
+
+            Notes:
+                Object type of the associated entity.
+
+                
+                This attribute is named `associatedEntityType` in VSD API.
+                
+        """
+        return self._associated_entity_type
+
+    @associated_entity_type.setter
+    def associated_entity_type(self, value):
+        """ Set associated_entity_type value.
+
+            Notes:
+                Object type of the associated entity.
+
+                
+                This attribute is named `associatedEntityType` in VSD API.
+                
+        """
+        self._associated_entity_type = value
 
     
     @property

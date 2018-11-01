@@ -123,6 +123,7 @@ class NUVCenterCluster(NURESTObject):
 
         # Read/Write Attributes
         
+        self._arp_reply = None
         self._vrs_configuration_time_limit = None
         self._v_require_nuage_metadata = None
         self._name = None
@@ -166,6 +167,7 @@ class NUVCenterCluster(NURESTObject):
         self._revertive_timer = None
         self._nfs_log_server = None
         self._nfs_mount_path = None
+        self._agency_moid = None
         self._mgmt_dns1 = None
         self._mgmt_dns2 = None
         self._mgmt_gateway = None
@@ -229,6 +231,7 @@ class NUVCenterCluster(NURESTObject):
         self._avrs_profile = None
         self._external_id = None
         
+        self.expose_attribute(local_name="arp_reply", remote_name="ARPReply", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_configuration_time_limit", remote_name="VRSConfigurationTimeLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="v_require_nuage_metadata", remote_name="vRequireNuageMetadata", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
@@ -272,6 +275,7 @@ class NUVCenterCluster(NURESTObject):
         self.expose_attribute(local_name="revertive_timer", remote_name="revertiveTimer", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="nfs_log_server", remote_name="nfsLogServer", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nfs_mount_path", remote_name="nfsMountPath", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="agency_moid", remote_name="agencyMoid", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mgmt_dns1", remote_name="mgmtDNS1", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mgmt_dns2", remote_name="mgmtDNS2", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mgmt_gateway", remote_name="mgmtGateway", attribute_type=str, is_required=False, is_unique=False)
@@ -363,6 +367,33 @@ class NUVCenterCluster(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def arp_reply(self):
+        """ Get arp_reply value.
+
+            Notes:
+                Whether ARP Reply is enabled/disabled
+
+                
+                This attribute is named `ARPReply` in VSD API.
+                
+        """
+        return self._arp_reply
+
+    @arp_reply.setter
+    def arp_reply(self, value):
+        """ Set arp_reply value.
+
+            Notes:
+                Whether ARP Reply is enabled/disabled
+
+                
+                This attribute is named `ARPReply` in VSD API.
+                
+        """
+        self._arp_reply = value
+
     
     @property
     def vrs_configuration_time_limit(self):
@@ -662,7 +693,7 @@ class NUVCenterCluster(NURESTObject):
         """ Get scope value.
 
             Notes:
-                Cluster in scope or not in scope.
+                Specifies if this cluster is in scope or not in scope.
 
                 
         """
@@ -673,7 +704,7 @@ class NUVCenterCluster(NURESTObject):
         """ Set scope value.
 
             Notes:
-                Cluster in scope or not in scope.
+                Specifies if this cluster is in scope or not in scope.
 
                 
         """
@@ -1507,6 +1538,33 @@ class NUVCenterCluster(NURESTObject):
                 
         """
         self._nfs_mount_path = value
+
+    
+    @property
+    def agency_moid(self):
+        """ Get agency_moid value.
+
+            Notes:
+                cluster in scope or not in scope
+
+                
+                This attribute is named `agencyMoid` in VSD API.
+                
+        """
+        return self._agency_moid
+
+    @agency_moid.setter
+    def agency_moid(self, value):
+        """ Set agency_moid value.
+
+            Notes:
+                cluster in scope or not in scope
+
+                
+                This attribute is named `agencyMoid` in VSD API.
+                
+        """
+        self._agency_moid = value
 
     
     @property

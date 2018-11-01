@@ -16,11 +16,15 @@ Attributes
 
 - ``name`` (**Mandatory**): Name of the Port
 
+- ``last_updated_by``: ID of the user who last updated the object.
+
 - ``permitted_action``: The permitted  action to USE/EXTEND  this port.
 
 - ``description``: A description of the Port
 
 - ``physical_name`` (**Mandatory**): Identifier of the Redundant Port. The name should be corresponding to the Physical Name of the ports belonging to this redundant instance.
+
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``port_peer1_id``: The master gateway peer port id.
 
@@ -36,6 +40,8 @@ Attributes
 
 - ``status``: Status of the port.
 
+- ``external_id``: External object ID. Used for integration with third party systems
+
 
 
 
@@ -45,7 +51,9 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuvlan.NUVLAN<nuvlan>`                                                                                                                                     ``vlans`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 ================================================================================================================================================               ==========================================================================================
 
 

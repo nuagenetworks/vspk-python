@@ -28,7 +28,13 @@
 
 
 
+from .fetchers import NUMetadatasFetcher
+
+
 from .fetchers import NUNetconfSessionsFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -46,11 +52,15 @@ class NUNetconfManager(NURESTObject):
     
     ## Constants
     
+    CONST_STATUS_CONNECTED = "CONNECTED"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
     CONST_STATUS_JMS_DISCONNECTED = "JMS_DISCONNECTED"
     
-    CONST_STATUS_DISCONNECTED = "DISCONNECTED"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_STATUS_CONNECTED = "CONNECTED"
+    CONST_STATUS_DISCONNECTED = "DISCONNECTED"
     
     CONST_STATUS_INIT = "INIT"
     
@@ -74,18 +84,32 @@ class NUNetconfManager(NURESTObject):
         # Read/Write Attributes
         
         self._name = None
+        self._last_updated_by = None
         self._release = None
+        self._entity_scope = None
+        self._assoc_entity_type = None
         self._status = None
+        self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="release", remote_name="release", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="assoc_entity_type", remote_name="assocEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONNECTED', u'DISCONNECTED', u'INIT', u'JMS_DISCONNECTED'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.netconf_sessions = NUNetconfSessionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -116,6 +140,33 @@ class NUNetconfManager(NURESTObject):
 
     
     @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
     def release(self):
         """ Get release value.
 
@@ -139,6 +190,60 @@ class NUNetconfManager(NURESTObject):
 
     
     @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def assoc_entity_type(self):
+        """ Get assoc_entity_type value.
+
+            Notes:
+                Type of parent entity
+
+                
+                This attribute is named `assocEntityType` in VSD API.
+                
+        """
+        return self._assoc_entity_type
+
+    @assoc_entity_type.setter
+    def assoc_entity_type(self, value):
+        """ Set assoc_entity_type value.
+
+            Notes:
+                Type of parent entity
+
+                
+                This attribute is named `assocEntityType` in VSD API.
+                
+        """
+        self._assoc_entity_type = value
+
+    
+    @property
     def status(self):
         """ Get status value.
 
@@ -159,6 +264,33 @@ class NUNetconfManager(NURESTObject):
                 
         """
         self._status = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

@@ -40,7 +40,7 @@ class NUSystemConfig(NURESTObject):
     """ Represents a SystemConfig in the VSD
 
         Notes:
-            The system configuration which can be dynamically managed using rest api.
+            The System Configuration which can be dynamically managed using REST Api.
     """
 
     __rest_name__ = "systemconfig"
@@ -100,8 +100,6 @@ class NUSystemConfig(NURESTObject):
     CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA512WITHRSA = "SHA512withRSA"
     
     CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA224WITHRSA = "SHA224withRSA"
-    
-    CONST_DOMAIN_TUNNEL_TYPE_DC_DEFAULT = "DC_DEFAULT"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
@@ -199,7 +197,6 @@ class NUSystemConfig(NURESTObject):
         self._accumulate_licenses_enabled = None
         self._vcin_load_balancer_ip = None
         self._per_domain_vlan_id_enabled = None
-        self._performance_path_selection_vnid = None
         self._service_id_upper_limit = None
         self._key_server_monitor_enabled = None
         self._key_server_vsd_data_synchronization_interval = None
@@ -343,7 +340,6 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="accumulate_licenses_enabled", remote_name="accumulateLicensesEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vcin_load_balancer_ip", remote_name="vcinLoadBalancerIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="per_domain_vlan_id_enabled", remote_name="perDomainVlanIdEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="performance_path_selection_vnid", remote_name="performancePathSelectionVNID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_id_upper_limit", remote_name="serviceIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="key_server_monitor_enabled", remote_name="keyServerMonitorEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="key_server_vsd_data_synchronization_interval", remote_name="keyServerVSDDataSynchronizationInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -364,7 +360,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="inactive_timeout", remote_name="inactiveTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="infrastructure_bgpas_number", remote_name="infrastructureBGPASNumber", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="domain_tunnel_type", remote_name="domainTunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VLAN', u'VXLAN'])
+        self.expose_attribute(local_name="domain_tunnel_type", remote_name="domainTunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'GRE', u'VLAN', u'VXLAN'])
         self.expose_attribute(local_name="google_maps_api_key", remote_name="googleMapsAPIKey", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="post_processor_threads_count", remote_name="postProcessorThreadsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_generation_interval", remote_name="groupKeyDefaultSEKGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -935,7 +931,7 @@ class NUSystemConfig(NURESTObject):
         """ Get vlanid_lower_limit value.
 
             Notes:
-                None
+                Offset for the Per domain vlan id for gateways of type HWVTEP
 
                 
                 This attribute is named `VLANIDLowerLimit` in VSD API.
@@ -948,7 +944,7 @@ class NUSystemConfig(NURESTObject):
         """ Set vlanid_lower_limit value.
 
             Notes:
-                None
+                Offset for the Per domain vlan id for gateways of type HWVTEP
 
                 
                 This attribute is named `VLANIDLowerLimit` in VSD API.
@@ -962,7 +958,7 @@ class NUSystemConfig(NURESTObject):
         """ Get vlanid_upper_limit value.
 
             Notes:
-                None
+                Upper limit for the Per domain vlan id for gateways of type HWVTEP
 
                 
                 This attribute is named `VLANIDUpperLimit` in VSD API.
@@ -975,7 +971,7 @@ class NUSystemConfig(NURESTObject):
         """ Set vlanid_upper_limit value.
 
             Notes:
-                None
+                Upper limit for the Per domain vlan id for gateways of type HWVTEP
 
                 
                 This attribute is named `VLANIDUpperLimit` in VSD API.
@@ -1961,7 +1957,7 @@ class NUSystemConfig(NURESTObject):
         """ Get per_domain_vlan_id_enabled value.
 
             Notes:
-                None
+                Determines whether per domain vlan id generation is required
 
                 
                 This attribute is named `perDomainVlanIdEnabled` in VSD API.
@@ -1974,40 +1970,13 @@ class NUSystemConfig(NURESTObject):
         """ Set per_domain_vlan_id_enabled value.
 
             Notes:
-                None
+                Determines whether per domain vlan id generation is required
 
                 
                 This attribute is named `perDomainVlanIdEnabled` in VSD API.
                 
         """
         self._per_domain_vlan_id_enabled = value
-
-    
-    @property
-    def performance_path_selection_vnid(self):
-        """ Get performance_path_selection_vnid value.
-
-            Notes:
-                performance Path Selection Virtual Network ID
-
-                
-                This attribute is named `performancePathSelectionVNID` in VSD API.
-                
-        """
-        return self._performance_path_selection_vnid
-
-    @performance_path_selection_vnid.setter
-    def performance_path_selection_vnid(self, value):
-        """ Set performance_path_selection_vnid value.
-
-            Notes:
-                performance Path Selection Virtual Network ID
-
-                
-                This attribute is named `performancePathSelectionVNID` in VSD API.
-                
-        """
-        self._performance_path_selection_vnid = value
 
     
     @property
@@ -2555,7 +2524,7 @@ class NUSystemConfig(NURESTObject):
         """ Get domain_tunnel_type value.
 
             Notes:
-                Default Domain Tunnel Type .Possible values are VXLAN,GRE Possible values are DC_DEFAULT, GRE, VXLAN, .
+                Default Domain Tunnel Type.
 
                 
                 This attribute is named `domainTunnelType` in VSD API.
@@ -2568,7 +2537,7 @@ class NUSystemConfig(NURESTObject):
         """ Set domain_tunnel_type value.
 
             Notes:
-                Default Domain Tunnel Type .Possible values are VXLAN,GRE Possible values are DC_DEFAULT, GRE, VXLAN, .
+                Default Domain Tunnel Type.
 
                 
                 This attribute is named `domainTunnelType` in VSD API.
@@ -4283,7 +4252,7 @@ class NUSystemConfig(NURESTObject):
         """ Get system_avatar_type value.
 
             Notes:
-                None
+                Avatar type - URL or BASE64
 
                 
                 This attribute is named `systemAvatarType` in VSD API.
@@ -4296,7 +4265,7 @@ class NUSystemConfig(NURESTObject):
         """ Set system_avatar_type value.
 
             Notes:
-                None
+                Avatar type - URL or BASE64
 
                 
                 This attribute is named `systemAvatarType` in VSD API.

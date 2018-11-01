@@ -28,6 +28,8 @@ Attributes
 
 - ``timestamp``: Indicates the time that the alarm was triggered
 
+- ``alarmed_object_id``: Alarmed Object ID
+
 - ``enterprise_id``: Enterprise that this alarm belongs to
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level

@@ -20,6 +20,8 @@ Attributes
 
 - ``description``: Description of this overlay mirror destination template
 
+- ``destination_type``: Determines the type of destination : redirection target or overlay mirror destination
+
 - ``end_point_type`` (**Mandatory**): VPortTagEndPointType is an enum. It defines the type of header rewrite and forwarding performed by VRS when the endpoint is used as a overlay mirror destination. Possible value is VIRTUAL_WIRE.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level

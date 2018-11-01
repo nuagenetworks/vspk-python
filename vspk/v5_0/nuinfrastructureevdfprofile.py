@@ -85,6 +85,7 @@ class NUInfrastructureEVDFProfile(NURESTObject):
         self._active_controller = None
         self._service_ipv4_subnet = None
         self._description = None
+        self._enterprise_id = None
         self._entity_scope = None
         self._proxy_dns_name = None
         self._use_two_factor = None
@@ -99,6 +100,7 @@ class NUInfrastructureEVDFProfile(NURESTObject):
         self.expose_attribute(local_name="active_controller", remote_name="activeController", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="service_ipv4_subnet", remote_name="serviceIPv4Subnet", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="proxy_dns_name", remote_name="proxyDNSName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="use_two_factor", remote_name="useTwoFactor", attribute_type=bool, is_required=False, is_unique=False)
@@ -299,6 +301,33 @@ class NUInfrastructureEVDFProfile(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def enterprise_id(self):
+        """ Get enterprise_id value.
+
+            Notes:
+                Enterprise/Organisation associated with this Profile instance.
+
+                
+                This attribute is named `enterpriseID` in VSD API.
+                
+        """
+        return self._enterprise_id
+
+    @enterprise_id.setter
+    def enterprise_id(self, value):
+        """ Set enterprise_id value.
+
+            Notes:
+                Enterprise/Organisation associated with this Profile instance.
+
+                
+                This attribute is named `enterpriseID` in VSD API.
+                
+        """
+        self._enterprise_id = value
 
     
     @property

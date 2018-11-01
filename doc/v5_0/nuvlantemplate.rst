@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``value`` (**Mandatory**): Value of VLAN
+- ``value`` (**Mandatory**): Value or ID of VLAN instances to be created from this template.
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
@@ -26,7 +26,11 @@ Attributes
 
 - ``associated_egress_qos_policy_id``: ID of the Egress QOS Policy associated with this Vlan.
 
+- ``associated_ingress_overlay_qo_s_policer_id``: ID of the Ingress Overlay QoS Policer associated with a VLAN.
+
 - ``associated_ingress_qos_policy_id``: ID of the Ingress QoS Policy associated with this VLAN Template.
+
+- ``associated_ingress_underlay_qo_s_policer_id``: ID of the Ingress Underlay QoS Policer associated with a VLAN.
 
 - ``associated_uplink_connection_id``: ID of the uplink connection making use of this VLAN Template instance.
 

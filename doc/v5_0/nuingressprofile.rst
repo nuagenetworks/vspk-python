@@ -14,7 +14,13 @@ Attributes
 
 - ``name``: A customer friendly name for the Ingress Profile entity.
 
+- ``last_updated_by``: ID of the user who last updated the object.
+
 - ``description``: A customer friendly description of the Ingress Profile entity.
+
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``assoc_entity_type``: Type of parent entity
 
 - ``associated_ip_filter_profile_id``: UUID of the associated IP Filter Profile entity.
 
@@ -32,6 +38,8 @@ Attributes
 
 - ``associated_sap_ingress_qo_s_profile_name``: Name of the associated SAP Ingress QoS Profile entity.
 
+- ``external_id``: External object ID. Used for integration with third party systems
+
 
 
 
@@ -41,6 +49,9 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nudeploymentfailure.NUDeploymentFailure<nudeploymentfailure>`                                                                                              ``deployment_failures`` 
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuvport.NUVPort<nuvport>`                                                                                                                                  ``vports`` 
 ================================================================================================================================================               ==========================================================================================
 

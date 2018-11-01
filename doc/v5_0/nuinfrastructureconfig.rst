@@ -20,6 +20,8 @@ Attributes
 
 - ``config_status``: Status of the configuration application
 
+- ``associated_entity_type``: Object type of the associated entity.
+
 - ``external_id``: External object ID. Used for integration with third party systems
 
 
@@ -40,6 +42,8 @@ Children
 Parents
 --------
 
+
+- :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 

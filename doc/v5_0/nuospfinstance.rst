@@ -28,7 +28,7 @@ Attributes
 
 - ``super_backbone_enabled``: Flag to determine whether SuperBackbone is enabled or not.
 
-- ``export_limit`` (**Mandatory**): This command configures the maximum number of routes (prefixes) that can be exported into OSPF from the route table.
+- ``export_limit``: This command configures the maximum number of routes (prefixes) that can be exported into OSPF from the route table.
 
 - ``export_to_overlay``: Flag which determines whether the routes learnt through BGP and OSPF will be exported to VSC or not. This flag also exists in the NSGRoutingPolicyBinding entity. The NSGRoutingPolicyBinding flag takes precedence over this one.
 

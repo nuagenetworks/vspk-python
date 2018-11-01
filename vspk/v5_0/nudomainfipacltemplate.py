@@ -97,6 +97,7 @@ class NUDomainFIPAclTemplate(NURESTObject):
         self._priority = None
         self._priority_type = None
         self._associated_live_entity_id = None
+        self._auto_generate_priority = None
         self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
@@ -111,6 +112,7 @@ class NUDomainFIPAclTemplate(NURESTObject):
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="priority_type", remote_name="priorityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BOTTOM', u'NONE', u'TOP'])
         self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="auto_generate_priority", remote_name="autoGeneratePriority", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -432,6 +434,33 @@ class NUDomainFIPAclTemplate(NURESTObject):
                 
         """
         self._associated_live_entity_id = value
+
+    
+    @property
+    def auto_generate_priority(self):
+        """ Get auto_generate_priority value.
+
+            Notes:
+                If enabled, entries priority will be randomly generated between allowed range.
+
+                
+                This attribute is named `autoGeneratePriority` in VSD API.
+                
+        """
+        return self._auto_generate_priority
+
+    @auto_generate_priority.setter
+    def auto_generate_priority(self, value):
+        """ Set auto_generate_priority value.
+
+            Notes:
+                If enabled, entries priority will be randomly generated between allowed range.
+
+                
+                This attribute is named `autoGeneratePriority` in VSD API.
+                
+        """
+        self._auto_generate_priority = value
 
     
     @property

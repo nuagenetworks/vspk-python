@@ -28,8 +28,6 @@ Attributes
 
 - ``failsafe_datapath``: Backup datapath option if VNF/VM is down
 
-- ``name``: Name of the entity.
-
 - ``last_updated_by``: ID of the user who last updated the object.
 
 - ``action`` (**Mandatory**): The action of the ACL entry DROP or FORWARD or REDIRECT or FORWARDING_PATH_LIST. Actions REDIRECT and FORWARDING_PATH_LIST are allowed only for IngressAdvancedForwardingEntry. Possible values are DROP, FORWARD, REDIRECT, FORWARDING_PATH_LIST. If FORWARDING_PATH_LIST is selected in IngressAdvancedForwardingEntry, user will have to attach a ForwardingPathList (list of forwarding action-uplink preference entries) to the ACL.  
@@ -40,7 +38,7 @@ Attributes
 
 - ``redirect_rewrite_value``: The redirect rewrite value. Currently only vlan id is supported
 
-- ``redirect_vport_tag_id`` (**Mandatory**): VPort tag to which traffic will be redirected to, when ACL entry match criteria succeeds
+- ``redirect_vport_tag_id``: VPort tag to which traffic will be redirected to, when ACL entry match criteria succeeds
 
 - ``remote_uplink_preference``: Indicates the preferencial path selection for network traffic for this ACL.
 
@@ -88,6 +86,8 @@ Attributes
 
 - ``associated_live_entity_id``: In the draft mode, the ACL entry refers to this LiveEntity. In non-drafted mode, this is null.
 
+- ``associated_live_template_id``: In the draft mode, the ACL entity refers to this live entity parent. In non-drafted mode, this is null
+
 - ``associated_traffic_type``: This property reflects the type of traffic in case an ACL entry is created using an Service or Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
 
 - ``associated_traffic_type_id``: If a traffic type is specified as Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
@@ -120,11 +120,11 @@ Parents
 --------
 
 
-- :ref:`nuvport.NUVPort<nuvport>`
+- :ref:`nume.NUMe<nume>`
 
 - :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
 
-- :ref:`nume.NUMe<nume>`
+- :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nuingressadvfwdtemplate.NUIngressAdvFwdTemplate<nuingressadvfwdtemplate>`
 

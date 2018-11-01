@@ -18,6 +18,8 @@ Attributes
 
 - ``vcenter_user``: Username for VCenter.
 
+- ``arp_reply``: Whether ARP Reply is enabled/disabled
+
 - ``vrs_agent_moid``: VRS agent MOID to uniquely identify VRS VM on the Vcenter
 
 - ``vrs_agent_name``: VRS agent name on the Vcenter
@@ -56,7 +58,7 @@ Attributes
 
 - ``datapath_sync_timeout``: Datapath Sync Timeout
 
-- ``scope``: Cluster in scope or not in scope.
+- ``scope``: Specifies if the hypervisor is part of an in scope or out of scope cliuster
 
 - ``secondary_data_uplink_dhcp_enabled``: Enable DHCP on the secondary data uplink.
 
@@ -125,6 +127,8 @@ Attributes
 - ``nfs_log_server``: IP address of NFS server to send the VRS log
 
 - ``nfs_mount_path``: Location to mount the NFS server
+
+- ``agency_moid``: cluster in scope or not in scope
 
 - ``mgmt_dns1``: DNS server 1
 
@@ -307,9 +311,9 @@ Parents
 --------
 
 
+- :ref:`nume.NUMe<nume>`
+
 - :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
-
-- :ref:`nume.NUMe<nume>`
 

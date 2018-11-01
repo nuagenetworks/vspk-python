@@ -34,6 +34,9 @@ from .fetchers import NUMetadatasFetcher
 from .fetchers import NUGlobalMetadatasFetcher
 
 
+from .fetchers import NUPolicyGroupCategoriesFetcher
+
+
 from .fetchers import NUVPortsFetcher
 
 
@@ -55,13 +58,17 @@ class NUPolicyGroup(NURESTObject):
     
     ## Constants
     
-    CONST_TYPE_SOFTWARE = "SOFTWARE"
+    CONST_TYPE_HARDWARE = "HARDWARE"
+    
+    CONST_ENTITY_STATE_UNDER_CONSTRUCTION = "UNDER_CONSTRUCTION"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_TYPE_HARDWARE = "HARDWARE"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_STATE_MARKED_FOR_DELETION = "MARKED_FOR_DELETION"
+    
+    CONST_TYPE_SOFTWARE = "SOFTWARE"
     
     
 
@@ -88,6 +95,7 @@ class NUPolicyGroup(NURESTObject):
         self._template_id = None
         self._description = None
         self._entity_scope = None
+        self._entity_state = None
         self._policy_group_id = None
         self._assoc_policy_group_category_id = None
         self._assoc_policy_group_category_name = None
@@ -101,6 +109,7 @@ class NUPolicyGroup(NURESTObject):
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_state", remote_name="entityState", attribute_type=str, is_required=False, is_unique=False, choices=[u'MARKED_FOR_DELETION', u'UNDER_CONSTRUCTION'])
         self.expose_attribute(local_name="policy_group_id", remote_name="policyGroupID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_policy_group_category_id", remote_name="assocPolicyGroupCategoryID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_policy_group_category_name", remote_name="assocPolicyGroupCategoryName", attribute_type=str, is_required=False, is_unique=False)
@@ -116,6 +125,9 @@ class NUPolicyGroup(NURESTObject):
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.policy_group_categories = NUPolicyGroupCategoriesFetcher.fetcher_with_object(parent_object=self, relationship="member")
         
         
         self.vports = NUVPortsFetcher.fetcher_with_object(parent_object=self, relationship="member")
@@ -280,6 +292,33 @@ class NUPolicyGroup(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def entity_state(self):
+        """ Get entity_state value.
+
+            Notes:
+                Intermediate State of L2 Domain.
+
+                
+                This attribute is named `entityState` in VSD API.
+                
+        """
+        return self._entity_state
+
+    @entity_state.setter
+    def entity_state(self, value):
+        """ Set entity_state value.
+
+            Notes:
+                Intermediate State of L2 Domain.
+
+                
+                This attribute is named `entityState` in VSD API.
+                
+        """
+        self._entity_state = value
 
     
     @property

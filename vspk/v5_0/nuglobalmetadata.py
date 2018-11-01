@@ -80,6 +80,7 @@ class NUGlobalMetadata(NURESTObject):
         self._blob = None
         self._global_metadata = None
         self._entity_scope = None
+        self._assoc_entity_type = None
         self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
@@ -90,6 +91,7 @@ class NUGlobalMetadata(NURESTObject):
         self.expose_attribute(local_name="blob", remote_name="blob", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="global_metadata", remote_name="global", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="assoc_entity_type", remote_name="assocEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -308,6 +310,33 @@ class NUGlobalMetadata(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def assoc_entity_type(self):
+        """ Get assoc_entity_type value.
+
+            Notes:
+                Type of the entity to which the Profile belongs to.
+
+                
+                This attribute is named `assocEntityType` in VSD API.
+                
+        """
+        return self._assoc_entity_type
+
+    @assoc_entity_type.setter
+    def assoc_entity_type(self, value):
+        """ Set assoc_entity_type value.
+
+            Notes:
+                Type of the entity to which the Profile belongs to.
+
+                
+                This attribute is named `assocEntityType` in VSD API.
+                
+        """
+        self._assoc_entity_type = value
 
     
     @property

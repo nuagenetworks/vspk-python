@@ -40,5 +40,7 @@ Parents
 --------
 
 
+- :ref:`nul4service.NUL4Service<nul4service>`
+
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

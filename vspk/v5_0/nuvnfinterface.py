@@ -27,6 +27,12 @@
 
 
 
+
+from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
+
 from bambou import NURESTObject
 
 
@@ -43,15 +49,19 @@ class NUVNFInterface(NURESTObject):
     
     ## Constants
     
-    CONST_TYPE_WAN = "WAN"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_TYPE_LAN = "LAN"
     
     CONST_TYPE_MANAGEMENT = "MANAGEMENT"
     
+    CONST_ATTACHED_NETWORK_TYPE_L2DOMAIN = "L2DOMAIN"
+    
+    CONST_TYPE_WAN = "WAN"
+    
     CONST_ATTACHED_NETWORK_TYPE_SUBNET = "SUBNET"
     
-    CONST_ATTACHED_NETWORK_TYPE_L2DOMAIN = "L2DOMAIN"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
 
@@ -80,9 +90,11 @@ class NUVNFInterface(NURESTObject):
         self._ipv6_address = None
         self._ipv6_gateway = None
         self._name = None
+        self._last_updated_by = None
         self._gateway = None
         self._netmask = None
         self._network_name = None
+        self._entity_scope = None
         self._policy_decision_id = None
         self._domain_id = None
         self._domain_name = None
@@ -90,6 +102,7 @@ class NUVNFInterface(NURESTObject):
         self._zone_name = None
         self._attached_network_id = None
         self._attached_network_type = None
+        self._external_id = None
         self._type = None
         
         self.expose_attribute(local_name="mac", remote_name="MAC", attribute_type=str, is_required=False, is_unique=False)
@@ -100,9 +113,11 @@ class NUVNFInterface(NURESTObject):
         self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ipv6_gateway", remote_name="IPv6Gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_name", remote_name="networkName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="policy_decision_id", remote_name="policyDecisionID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="domain_id", remote_name="domainID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
@@ -110,7 +125,17 @@ class NUVNFInterface(NURESTObject):
         self.expose_attribute(local_name="zone_name", remote_name="zoneName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="attached_network_id", remote_name="attachedNetworkID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="attached_network_type", remote_name="attachedNetworkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'L2DOMAIN', u'SUBNET'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'LAN', u'MANAGEMENT', u'WAN'])
+        
+
+        # Fetchers
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -330,6 +355,33 @@ class NUVNFInterface(NURESTObject):
 
     
     @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
     def gateway(self):
         """ Get gateway value.
 
@@ -400,6 +452,33 @@ class NUVNFInterface(NURESTObject):
                 
         """
         self._network_name = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
 
     
     @property
@@ -589,6 +668,33 @@ class NUVNFInterface(NURESTObject):
                 
         """
         self._attached_network_type = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
     @property

@@ -58,6 +58,9 @@ from .fetchers import NURateLimitersFetcher
 from .fetchers import NUGatewaysFetcher
 
 
+from .fetchers import NUGatewaysLocationsFetcher
+
+
 from .fetchers import NUGatewayTemplatesFetcher
 
 
@@ -202,6 +205,9 @@ from .fetchers import NUUsersFetcher
 from .fetchers import NUNSGatewaysFetcher
 
 
+from .fetchers import NUNSGatewaysCountsFetcher
+
+
 from .fetchers import NUNSGatewaySummariesFetcher
 
 
@@ -247,6 +253,10 @@ class NUEnterprise(NURESTObject):
     
     CONST_AVATAR_TYPE_COMPUTEDURL = "COMPUTEDURL"
     
+    CONST_ALLOWED_FORWARDING_MODE_LOCAL_ONLY = "LOCAL_ONLY"
+    
+    CONST_ALLOWED_FORWARDING_MODE_DISABLED = "DISABLED"
+    
     CONST_ALLOWED_FORWARDING_CLASSES_NONE = "NONE"
     
     CONST_AVATAR_TYPE_BASE64 = "BASE64"
@@ -276,6 +286,8 @@ class NUEnterprise(NURESTObject):
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ALLOWED_FORWARDING_CLASSES_H = "H"
+    
+    CONST_ALLOWED_FORWARDING_MODE_LOCAL_AND_REMOTE = "LOCAL_AND_REMOTE"
     
     
 
@@ -313,6 +325,7 @@ class NUEnterprise(NURESTObject):
         self._allow_gateway_management = None
         self._allow_trusted_forwarding_class = None
         self._allowed_forwarding_classes = None
+        self._allowed_forwarding_mode = None
         self._floating_ips_quota = None
         self._floating_ips_used = None
         self._flow_collection_enabled = None
@@ -346,6 +359,7 @@ class NUEnterprise(NURESTObject):
         self.expose_attribute(local_name="allow_gateway_management", remote_name="allowGatewayManagement", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_trusted_forwarding_class", remote_name="allowTrustedForwardingClass", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_forwarding_classes", remote_name="allowedForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
+        self.expose_attribute(local_name="allowed_forwarding_mode", remote_name="allowedForwardingMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'LOCAL_AND_REMOTE', u'LOCAL_ONLY'])
         self.expose_attribute(local_name="floating_ips_quota", remote_name="floatingIPsQuota", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="floating_ips_used", remote_name="floatingIPsUsed", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
@@ -394,6 +408,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.gateways = NUGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.gateways_locations = NUGatewaysLocationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.gateway_templates = NUGatewayTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -538,6 +555,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.ns_gateways = NUNSGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ns_gateways_counts = NUNSGatewaysCountsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ns_gateway_summaries = NUNSGatewaySummariesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -708,7 +728,7 @@ class NUEnterprise(NURESTObject):
         """ Get name value.
 
             Notes:
-                The unique name of the enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
+                The unique name of the enterprise.
 
                 
         """
@@ -719,7 +739,7 @@ class NUEnterprise(NURESTObject):
         """ Set name value.
 
             Notes:
-                The unique name of the enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
+                The unique name of the enterprise.
 
                 
         """
@@ -1017,6 +1037,33 @@ class NUEnterprise(NURESTObject):
                 
         """
         self._allowed_forwarding_classes = value
+
+    
+    @property
+    def allowed_forwarding_mode(self):
+        """ Get allowed_forwarding_mode value.
+
+            Notes:
+                Enum to set allowed controller-less mode
+
+                
+                This attribute is named `allowedForwardingMode` in VSD API.
+                
+        """
+        return self._allowed_forwarding_mode
+
+    @allowed_forwarding_mode.setter
+    def allowed_forwarding_mode(self, value):
+        """ Set allowed_forwarding_mode value.
+
+            Notes:
+                Enum to set allowed controller-less mode
+
+                
+                This attribute is named `allowedForwardingMode` in VSD API.
+                
+        """
+        self._allowed_forwarding_mode = value
 
     
     @property

@@ -5,7 +5,7 @@ nusystemconfig
 
 .. class:: nusystemconfig.NUSystemConfig(bambou.nurest_object.NUMetaRESTObject,):
 
-The system configuration which can be dynamically managed using rest api.
+The System Configuration which can be dynamically managed using REST Api.
 
 
 Attributes
@@ -48,9 +48,9 @@ Attributes
 
 - ``dhcp_option_size``: Defines total DHCP options that can be set on a domain.
 
-- ``vlanid_lower_limit``: None
+- ``vlanid_lower_limit``: Offset for the Per domain vlan id for gateways of type HWVTEP
 
-- ``vlanid_upper_limit``: None
+- ``vlanid_upper_limit``: Upper limit for the Per domain vlan id for gateways of type HWVTEP
 
 - ``vm_cache_size``: LRU Map size for vm, this value has to set based on memory given to VSD jvm not finalized.
 
@@ -124,9 +124,7 @@ Attributes
 
 - ``vcin_load_balancer_ip``: If VCIN Active/Standby is enabled, this needs to be the load-balancer IP which sits in front of the Active and Standby VCIN nodes. The VRS will make its API calls to this load-balancer
 
-- ``per_domain_vlan_id_enabled``: None
-
-- ``performance_path_selection_vnid``: performance Path Selection Virtual Network ID
+- ``per_domain_vlan_id_enabled``: Determines whether per domain vlan id generation is required
 
 - ``service_id_upper_limit``: Service id upper limit system wide value
 
@@ -168,7 +166,7 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``domain_tunnel_type``: Default Domain Tunnel Type .Possible values are VXLAN,GRE Possible values are DC_DEFAULT, GRE, VXLAN, .
+- ``domain_tunnel_type``: Default Domain Tunnel Type.
 
 - ``google_maps_api_key``: Google Maps API Key used to display maps on Nuage UI applications
 
@@ -296,7 +294,7 @@ Attributes
 
 - ``system_avatar_data``: CSP Avatar Data
 
-- ``system_avatar_type``: None
+- ``system_avatar_type``: Avatar type - URL or BASE64
 
 
 

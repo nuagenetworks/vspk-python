@@ -93,19 +93,15 @@ class NUZone(NURESTObject):
     
     CONST_MAINTENANCE_MODE_ENABLED_INHERITED = "ENABLED_INHERITED"
     
-    CONST_FLOW_COLLECTION_ENABLED_ENABLED = "ENABLED"
-    
     CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
     
     CONST_ENCRYPTION_ENABLED = "ENABLED"
     
     CONST_ENCRYPTION_DISABLED = "DISABLED"
     
-    CONST_FLOW_COLLECTION_ENABLED_DISABLED = "DISABLED"
-    
     CONST_DPI_ENABLED = "ENABLED"
     
-    CONST_FLOW_COLLECTION_ENABLED_INHERITED = "INHERITED"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_IP_TYPE_IPV6 = "IPV6"
     
@@ -124,8 +120,6 @@ class NUZone(NURESTObject):
     CONST_ENCRYPTION_INHERITED = "INHERITED"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_MULTICAST_DISABLED = "DISABLED"
     
@@ -158,7 +152,6 @@ class NUZone(NURESTObject):
         self._template_id = None
         self._description = None
         self._netmask = None
-        self._flow_collection_enabled = None
         self._encryption = None
         self._entity_scope = None
         self._policy_group_id = None
@@ -179,7 +172,6 @@ class NUZone(NURESTObject):
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="policy_group_id", remote_name="policyGroupID", attribute_type=int, is_required=False, is_unique=False)
@@ -498,33 +490,6 @@ class NUZone(NURESTObject):
                 
         """
         self._netmask = value
-
-    
-    @property
-    def flow_collection_enabled(self):
-        """ Get flow_collection_enabled value.
-
-            Notes:
-                Determines whether or not flow collection is enabled.
-
-                
-                This attribute is named `flowCollectionEnabled` in VSD API.
-                
-        """
-        return self._flow_collection_enabled
-
-    @flow_collection_enabled.setter
-    def flow_collection_enabled(self, value):
-        """ Set flow_collection_enabled value.
-
-            Notes:
-                Determines whether or not flow collection is enabled.
-
-                
-                This attribute is named `flowCollectionEnabled` in VSD API.
-                
-        """
-        self._flow_collection_enabled = value
 
     
     @property

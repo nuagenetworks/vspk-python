@@ -52,9 +52,21 @@ class NUShuntLink(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_PERMITTED_ACTION_USE = "USE"
+    
+    CONST_PERMITTED_ACTION_READ = "READ"
+    
+    CONST_PERMITTED_ACTION_ALL = "ALL"
+    
+    CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
+    
+    CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     
 
@@ -81,10 +93,7 @@ class NUShuntLink(NURESTObject):
         self._last_updated_by = None
         self._gateway_peer1_id = None
         self._gateway_peer2_id = None
-        self._peer1_ip_address = None
-        self._peer1_subnet = None
-        self._peer2_ip_address = None
-        self._peer2_subnet = None
+        self._permitted_action = None
         self._description = None
         self._entity_scope = None
         self._external_id = None
@@ -95,10 +104,7 @@ class NUShuntLink(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_id", remote_name="gatewayPeer1ID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer2_id", remote_name="gatewayPeer2ID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="peer1_ip_address", remote_name="peer1IPAddress", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="peer1_subnet", remote_name="peer1Subnet", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="peer2_ip_address", remote_name="peer2IPAddress", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="peer2_subnet", remote_name="peer2Subnet", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -279,111 +285,30 @@ class NUShuntLink(NURESTObject):
 
     
     @property
-    def peer1_ip_address(self):
-        """ Get peer1_ip_address value.
+    def permitted_action(self):
+        """ Get permitted_action value.
 
             Notes:
-                The IP address of the first peer of the Shunt Link.
+                The permitted action to USE/EXTEND this Shunt Link
 
                 
-                This attribute is named `peer1IPAddress` in VSD API.
+                This attribute is named `permittedAction` in VSD API.
                 
         """
-        return self._peer1_ip_address
+        return self._permitted_action
 
-    @peer1_ip_address.setter
-    def peer1_ip_address(self, value):
-        """ Set peer1_ip_address value.
+    @permitted_action.setter
+    def permitted_action(self, value):
+        """ Set permitted_action value.
 
             Notes:
-                The IP address of the first peer of the Shunt Link.
+                The permitted action to USE/EXTEND this Shunt Link
 
                 
-                This attribute is named `peer1IPAddress` in VSD API.
-                
-        """
-        self._peer1_ip_address = value
-
-    
-    @property
-    def peer1_subnet(self):
-        """ Get peer1_subnet value.
-
-            Notes:
-                The subnet given to the first peer of the Shunt Link.
-
-                
-                This attribute is named `peer1Subnet` in VSD API.
+                This attribute is named `permittedAction` in VSD API.
                 
         """
-        return self._peer1_subnet
-
-    @peer1_subnet.setter
-    def peer1_subnet(self, value):
-        """ Set peer1_subnet value.
-
-            Notes:
-                The subnet given to the first peer of the Shunt Link.
-
-                
-                This attribute is named `peer1Subnet` in VSD API.
-                
-        """
-        self._peer1_subnet = value
-
-    
-    @property
-    def peer2_ip_address(self):
-        """ Get peer2_ip_address value.
-
-            Notes:
-                The IP address of the second peer of the Shunt Link.
-
-                
-                This attribute is named `peer2IPAddress` in VSD API.
-                
-        """
-        return self._peer2_ip_address
-
-    @peer2_ip_address.setter
-    def peer2_ip_address(self, value):
-        """ Set peer2_ip_address value.
-
-            Notes:
-                The IP address of the second peer of the Shunt Link.
-
-                
-                This attribute is named `peer2IPAddress` in VSD API.
-                
-        """
-        self._peer2_ip_address = value
-
-    
-    @property
-    def peer2_subnet(self):
-        """ Get peer2_subnet value.
-
-            Notes:
-                The subnet on the second peer of the Shunt Link.
-
-                
-                This attribute is named `peer2Subnet` in VSD API.
-                
-        """
-        return self._peer2_subnet
-
-    @peer2_subnet.setter
-    def peer2_subnet(self, value):
-        """ Set peer2_subnet value.
-
-            Notes:
-                The subnet on the second peer of the Shunt Link.
-
-                
-                This attribute is named `peer2Subnet` in VSD API.
-                
-        """
-        self._peer2_subnet = value
+        self._permitted_action = value
 
     
     @property

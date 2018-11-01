@@ -100,6 +100,7 @@ class NUZFBRequest(NURESTObject):
         self._family = None
         self._last_connected_time = None
         self._last_updated_by = None
+        self._registration_url = None
         self._serial_number = None
         self._entity_scope = None
         self._hostname = None
@@ -126,6 +127,7 @@ class NUZFBRequest(NURESTObject):
         self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_connected_time", remote_name="lastConnectedTime", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="registration_url", remote_name="registrationURL", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="hostname", remote_name="hostname", attribute_type=str, is_required=False, is_unique=False)
@@ -269,7 +271,7 @@ class NUZFBRequest(NURESTObject):
         """ Get zfb_request_retry_timer value.
 
             Notes:
-                ZFB Request retry timer on NSG. Set from System Config
+                ZFB Request retry timer on the gateway. Set on VSD's System Config panel.
 
                 
                 This attribute is named `ZFBRequestRetryTimer` in VSD API.
@@ -282,7 +284,7 @@ class NUZFBRequest(NURESTObject):
         """ Set zfb_request_retry_timer value.
 
             Notes:
-                ZFB Request retry timer on NSG. Set from System Config
+                ZFB Request retry timer on the gateway. Set on VSD's System Config panel.
 
                 
                 This attribute is named `ZFBRequestRetryTimer` in VSD API.
@@ -296,7 +298,7 @@ class NUZFBRequest(NURESTObject):
         """ Get sku value.
 
             Notes:
-                The part number of the NSG
+                The part number of the gateway being bootstrapped through ZFB.
 
                 
                 This attribute is named `SKU` in VSD API.
@@ -309,7 +311,7 @@ class NUZFBRequest(NURESTObject):
         """ Set sku value.
 
             Notes:
-                The part number of the NSG
+                The part number of the gateway being bootstrapped through ZFB.
 
                 
                 This attribute is named `SKU` in VSD API.
@@ -323,7 +325,7 @@ class NUZFBRequest(NURESTObject):
         """ Get ip_address value.
 
             Notes:
-                IP Address of the NSG
+                IP Address of the gateway being bootstrapped using ZFB.
 
                 
                 This attribute is named `IPAddress` in VSD API.
@@ -336,7 +338,7 @@ class NUZFBRequest(NURESTObject):
         """ Set ip_address value.
 
             Notes:
-                IP Address of the NSG
+                IP Address of the gateway being bootstrapped using ZFB.
 
                 
                 This attribute is named `IPAddress` in VSD API.
@@ -431,7 +433,7 @@ class NUZFBRequest(NURESTObject):
         """ Get family value.
 
             Notes:
-                NSG Type
+                Gateway Type
 
                 
         """
@@ -442,7 +444,7 @@ class NUZFBRequest(NURESTObject):
         """ Set family value.
 
             Notes:
-                NSG Type
+                Gateway Type
 
                 
         """
@@ -454,7 +456,7 @@ class NUZFBRequest(NURESTObject):
         """ Get last_connected_time value.
 
             Notes:
-                the time in which the last GET was made from the NSG
+                The time in which the last GET was made from the gateway.
 
                 
                 This attribute is named `lastConnectedTime` in VSD API.
@@ -467,7 +469,7 @@ class NUZFBRequest(NURESTObject):
         """ Set last_connected_time value.
 
             Notes:
-                the time in which the last GET was made from the NSG
+                The time in which the last GET was made from the gateway.
 
                 
                 This attribute is named `lastConnectedTime` in VSD API.
@@ -504,11 +506,38 @@ class NUZFBRequest(NURESTObject):
 
     
     @property
+    def registration_url(self):
+        """ Get registration_url value.
+
+            Notes:
+                Registration URL to be used for a gateway to be bootstrapped using ZFB.
+
+                
+                This attribute is named `registrationURL` in VSD API.
+                
+        """
+        return self._registration_url
+
+    @registration_url.setter
+    def registration_url(self, value):
+        """ Set registration_url value.
+
+            Notes:
+                Registration URL to be used for a gateway to be bootstrapped using ZFB.
+
+                
+                This attribute is named `registrationURL` in VSD API.
+                
+        """
+        self._registration_url = value
+
+    
+    @property
     def serial_number(self):
         """ Get serial_number value.
 
             Notes:
-                The NSG's Serial Number
+                The gateway's Serial Number.
 
                 
                 This attribute is named `serialNumber` in VSD API.
@@ -521,7 +550,7 @@ class NUZFBRequest(NURESTObject):
         """ Set serial_number value.
 
             Notes:
-                The NSG's Serial Number
+                The gateway's Serial Number.
 
                 
                 This attribute is named `serialNumber` in VSD API.
@@ -562,7 +591,7 @@ class NUZFBRequest(NURESTObject):
         """ Get hostname value.
 
             Notes:
-                hostname of the NSG
+                Hostname of the gateway bootstrapped using ZFB.
 
                 
         """
@@ -573,7 +602,7 @@ class NUZFBRequest(NURESTObject):
         """ Set hostname value.
 
             Notes:
-                hostname of the NSG
+                Hostname of the gateway bootstrapped using ZFB.
 
                 
         """

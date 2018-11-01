@@ -124,7 +124,6 @@ class NUContainerInterface(NURESTObject):
         self._zone_id = None
         self._zone_name = None
         self._container_uuid = None
-        self._associated_floating_ip_address = None
         self._attached_network_id = None
         self._attached_network_type = None
         self._multi_nic_vport_name = None
@@ -151,7 +150,6 @@ class NUContainerInterface(NURESTObject):
         self.expose_attribute(local_name="zone_id", remote_name="zoneID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zone_name", remote_name="zoneName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="container_uuid", remote_name="containerUUID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_floating_ip_address", remote_name="associatedFloatingIPAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="attached_network_id", remote_name="attachedNetworkID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="attached_network_type", remote_name="attachedNetworkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'L2DOMAIN', u'SUBNET'])
         self.expose_attribute(local_name="multi_nic_vport_name", remote_name="multiNICVPortName", attribute_type=str, is_required=False, is_unique=False)
@@ -751,33 +749,6 @@ class NUContainerInterface(NURESTObject):
                 
         """
         self._container_uuid = value
-
-    
-    @property
-    def associated_floating_ip_address(self):
-        """ Get associated_floating_ip_address value.
-
-            Notes:
-                Floating Ip Address of this network interface eg: 10.1.2.1
-
-                
-                This attribute is named `associatedFloatingIPAddress` in VSD API.
-                
-        """
-        return self._associated_floating_ip_address
-
-    @associated_floating_ip_address.setter
-    def associated_floating_ip_address(self, value):
-        """ Set associated_floating_ip_address value.
-
-            Notes:
-                Floating Ip Address of this network interface eg: 10.1.2.1
-
-                
-                This attribute is named `associatedFloatingIPAddress` in VSD API.
-                
-        """
-        self._associated_floating_ip_address = value
 
     
     @property

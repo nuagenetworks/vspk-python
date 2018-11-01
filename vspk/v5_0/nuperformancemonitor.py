@@ -33,9 +33,6 @@ from .fetchers import NUTiersFetcher
 
 from .fetchers import NUApplicationperformancemanagementsFetcher
 
-
-from .fetchers import NUNSGatewaysFetcher
-
 from bambou import NURESTObject
 
 
@@ -103,8 +100,6 @@ class NUPerformanceMonitor(NURESTObject):
         self._read_only = None
         self._service_class = None
         self._description = None
-        self._destination_target_list = None
-        self._timeout = None
         self._interval = None
         self._entity_scope = None
         self._hold_down_timer = None
@@ -118,8 +113,6 @@ class NUPerformanceMonitor(NURESTObject):
         self.expose_attribute(local_name="read_only", remote_name="readOnly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_class", remote_name="serviceClass", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="destination_target_list", remote_name="destinationTargetList", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="timeout", remote_name="timeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="interval", remote_name="interval", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="hold_down_timer", remote_name="holdDownTimer", attribute_type=int, is_required=False, is_unique=False)
@@ -135,9 +128,6 @@ class NUPerformanceMonitor(NURESTObject):
         
         
         self.applicationperformancemanagements = NUApplicationperformancemanagementsFetcher.fetcher_with_object(parent_object=self, relationship="member")
-        
-        
-        self.ns_gateways = NUNSGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="member")
         
 
         self._compute_args(**kwargs)
@@ -296,56 +286,6 @@ class NUPerformanceMonitor(NURESTObject):
                 
         """
         self._description = value
-
-    
-    @property
-    def destination_target_list(self):
-        """ Get destination_target_list value.
-
-            Notes:
-                List of targets for IKE performance monitor probes
-
-                
-                This attribute is named `destinationTargetList` in VSD API.
-                
-        """
-        return self._destination_target_list
-
-    @destination_target_list.setter
-    def destination_target_list(self, value):
-        """ Set destination_target_list value.
-
-            Notes:
-                List of targets for IKE performance monitor probes
-
-                
-                This attribute is named `destinationTargetList` in VSD API.
-                
-        """
-        self._destination_target_list = value
-
-    
-    @property
-    def timeout(self):
-        """ Get timeout value.
-
-            Notes:
-                number of milliseconds to wait until the probe is timed out
-
-                
-        """
-        return self._timeout
-
-    @timeout.setter
-    def timeout(self, value):
-        """ Set timeout value.
-
-            Notes:
-                number of milliseconds to wait until the probe is timed out
-
-                
-        """
-        self._timeout = value
 
     
     @property

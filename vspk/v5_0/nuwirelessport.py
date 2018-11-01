@@ -28,13 +28,16 @@
 
 
 
+from .fetchers import NUMetadatasFetcher
+
+
 from .fetchers import NUAlarmsFetcher
 
 
+from .fetchers import NUGlobalMetadatasFetcher
+
+
 from .fetchers import NUSSIDConnectionsFetcher
-
-
-from .fetchers import NUStatisticsFetcher
 
 
 from .fetchers import NUEventLogsFetcher
@@ -46,7 +49,7 @@ class NUWirelessPort(NURESTObject):
     """ Represents a WirelessPort in the VSD
 
         Notes:
-            Represents a wireless (WiFi) interface configured on a Network Service Gateway (NSG) instance.  The WirelessPort instance may map to a physical WiFi card or a WiFi port.
+            Represents a Wireless (WiFi) interface configured on a Network Service Gateway (NSG) instance. The WirelessPort instance may map to a physical WiFi card or a WiFi port.
     """
 
     __rest_name__ = "wirelessport"
@@ -73,7 +76,7 @@ class NUWirelessPort(NURESTObject):
     
     CONST_COUNTRY_CODE_MA = "MA"
     
-    CONST_FREQUENCY_CHANNEL_CH_14 = "CH_14"
+    CONST_COUNTRY_CODE_GH = "GH"
     
     CONST_COUNTRY_CODE_MC = "MC"
     
@@ -101,7 +104,7 @@ class NUWirelessPort(NURESTObject):
     
     CONST_FREQUENCY_CHANNEL_CH_7 = "CH_7"
     
-    CONST_COUNTRY_CODE_GF = "GF"
+    CONST_COUNTRY_CODE_AL = "AL"
     
     CONST_COUNTRY_CODE_GA = "GA"
     
@@ -117,7 +120,7 @@ class NUWirelessPort(NURESTObject):
     
     CONST_COUNTRY_CODE_GI = "GI"
     
-    CONST_COUNTRY_CODE_GH = "GH"
+    CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
     
     CONST_COUNTRY_CODE_QA = "QA"
     
@@ -141,7 +144,7 @@ class NUWirelessPort(NURESTObject):
     
     CONST_COUNTRY_CODE_GY = "GY"
     
-    CONST_COUNTRY_CODE_IO = "IO"
+    CONST_COUNTRY_CODE_AW = "AW"
     
     CONST_COUNTRY_CODE_IN = "IN"
     
@@ -153,7 +156,7 @@ class NUWirelessPort(NURESTObject):
     
     CONST_COUNTRY_CODE_AR = "AR"
     
-    CONST_COUNTRY_CODE_PF = "PF"
+    CONST_COUNTRY_CODE_AQ = "AQ"
     
     CONST_COUNTRY_CODE_PG = "PG"
     
@@ -191,7 +194,7 @@ class NUWirelessPort(NURESTObject):
     
     CONST_COUNTRY_CODE_AM = "AM"
     
-    CONST_COUNTRY_CODE_AL = "AL"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_COUNTRY_CODE_IS = "IS"
     
@@ -201,7 +204,7 @@ class NUWirelessPort(NURESTObject):
     
     CONST_COUNTRY_CODE_SI = "SI"
     
-    CONST_COUNTRY_CODE_SH = "SH"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_COUNTRY_CODE_SK = "SK"
     
@@ -287,11 +290,13 @@ class NUWirelessPort(NURESTObject):
     
     CONST_COUNTRY_CODE_IQ = "IQ"
     
+    CONST_FREQUENCY_CHANNEL_CH_120 = "CH_120"
+    
     CONST_COUNTRY_CODE_OM = "OM"
     
     CONST_COUNTRY_CODE_VG = "VG"
     
-    CONST_COUNTRY_CODE_VE = "VE"
+    CONST_COUNTRY_CODE_GF = "GF"
     
     CONST_COUNTRY_CODE_AE = "AE"
     
@@ -303,9 +308,13 @@ class NUWirelessPort(NURESTObject):
     
     CONST_COUNTRY_CODE_KN = "KN"
     
+    CONST_STATUS_ORPHAN = "ORPHAN"
+    
     CONST_COUNTRY_CODE_VI = "VI"
     
     CONST_COUNTRY_CODE_FO = "FO"
+    
+    CONST_COUNTRY_CODE_SH = "SH"
     
     CONST_COUNTRY_CODE_FM = "FM"
     
@@ -315,9 +324,13 @@ class NUWirelessPort(NURESTObject):
     
     CONST_COUNTRY_CODE_FI = "FI"
     
+    CONST_COUNTRY_CODE_VE = "VE"
+    
     CONST_COUNTRY_CODE_FR = "FR"
     
     CONST_FREQUENCY_CHANNEL_CH_132 = "CH_132"
+    
+    CONST_FREQUENCY_CHANNEL_CH_14 = "CH_14"
     
     CONST_FREQUENCY_CHANNEL_CH_3 = "CH_3"
     
@@ -403,6 +416,8 @@ class NUWirelessPort(NURESTObject):
     
     CONST_COUNTRY_CODE_CX = "CX"
     
+    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
+    
     CONST_COUNTRY_CODE_CZ = "CZ"
     
     CONST_FREQUENCY_CHANNEL_CH_52 = "CH_52"
@@ -426,6 +441,8 @@ class NUWirelessPort(NURESTObject):
     CONST_COUNTRY_CODE_MX = "MX"
     
     CONST_COUNTRY_CODE_TZ = "TZ"
+    
+    CONST_PERMITTED_ACTION_READ = "READ"
     
     CONST_COUNTRY_CODE_MS = "MS"
     
@@ -499,15 +516,19 @@ class NUWirelessPort(NURESTObject):
     
     CONST_FREQUENCY_CHANNEL_CH_6 = "CH_6"
     
+    CONST_STATUS_READY = "READY"
+    
     CONST_FREQUENCY_CHANNEL_CH_48 = "CH_48"
     
-    CONST_COUNTRY_CODE_AW = "AW"
+    CONST_COUNTRY_CODE_IO = "IO"
+    
+    CONST_PERMITTED_ACTION_ALL = "ALL"
     
     CONST_COUNTRY_CODE_PS = "PS"
     
     CONST_COUNTRY_CODE_PA = "PA"
     
-    CONST_FREQUENCY_CHANNEL_CH_120 = "CH_120"
+    CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
     
     CONST_FREQUENCY_CHANNEL_CH_112 = "CH_112"
     
@@ -535,7 +556,7 @@ class NUWirelessPort(NURESTObject):
     
     CONST_FREQUENCY_CHANNEL_CH_64 = "CH_64"
     
-    CONST_COUNTRY_CODE_AQ = "AQ"
+    CONST_COUNTRY_CODE_PF = "PF"
     
     CONST_FREQUENCY_CHANNEL_CH_104 = "CH_104"
     
@@ -546,6 +567,10 @@ class NUWirelessPort(NURESTObject):
     CONST_COUNTRY_CODE_TT = "TT"
     
     CONST_COUNTRY_CODE_ZA = "ZA"
+    
+    CONST_STATUS_MISMATCH = "MISMATCH"
+    
+    CONST_STATUS_INITIALIZED = "INITIALIZED"
     
     CONST_COUNTRY_CODE_TH = "TH"
     
@@ -562,6 +587,8 @@ class NUWirelessPort(NURESTObject):
     CONST_COUNTRY_CODE_KI = "KI"
     
     CONST_COUNTRY_CODE_KH = "KH"
+    
+    CONST_PERMITTED_ACTION_USE = "USE"
     
     CONST_COUNTRY_CODE_KM = "KM"
     
@@ -650,37 +677,58 @@ class NUWirelessPort(NURESTObject):
 
         # Read/Write Attributes
         
+        self._vlan_range = None
         self._name = None
+        self._last_updated_by = None
         self._generic_config = None
+        self._permitted_action = None
         self._description = None
         self._physical_name = None
         self._wifi_frequency_band = None
         self._wifi_mode = None
+        self._entity_scope = None
         self._port_type = None
         self._country_code = None
         self._frequency_channel = None
+        self._use_user_mnemonic = None
+        self._user_mnemonic = None
+        self._associated_egress_qos_policy_id = None
+        self._status = None
+        self._external_id = None
         
+        self.expose_attribute(local_name="vlan_range", remote_name="VLANRange", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=True)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="generic_config", remote_name="genericConfig", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=True)
         self.expose_attribute(local_name="wifi_frequency_band", remote_name="wifiFrequencyBand", attribute_type=str, is_required=True, is_unique=False, choices=[u'FREQ_2_4_GHZ', u'FREQ_5_0_GHZ'])
         self.expose_attribute(local_name="wifi_mode", remote_name="wifiMode", attribute_type=str, is_required=True, is_unique=False, choices=[u'WIFI_A', u'WIFI_A_AC', u'WIFI_A_N', u'WIFI_A_N_AC', u'WIFI_B_G', u'WIFI_B_G_N'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS'])
         self.expose_attribute(local_name="country_code", remote_name="countryCode", attribute_type=str, is_required=True, is_unique=False, choices=[u'AD', u'AE', u'AF', u'AG', u'AI', u'AL', u'AM', u'AN', u'AO', u'AQ', u'AR', u'AS', u'AT', u'AU', u'AW', u'AZ', u'BA', u'BB', u'BD', u'BE', u'BF', u'BG', u'BH', u'BI', u'BJ', u'BM', u'BN', u'BO', u'BR', u'BS', u'BT', u'BV', u'BW', u'BY', u'BZ', u'CA', u'CC', u'CD', u'CF', u'CG', u'CH', u'CI', u'CK', u'CL', u'CM', u'CN', u'CO', u'CR', u'CS', u'CU', u'CV', u'CX', u'CY', u'CZ', u'DE', u'DJ', u'DK', u'DM', u'DO', u'DZ', u'EC', u'EE', u'EG', u'EH', u'ER', u'ES', u'ET', u'FI', u'FJ', u'FK', u'FM', u'FO', u'FR', u'GA', u'GB', u'GD', u'GE', u'GF', u'GH', u'GI', u'GL', u'GM', u'GN', u'GP', u'GQ', u'GR', u'GS', u'GT', u'GU', u'GW', u'GY', u'HK', u'HM', u'HN', u'HR', u'HT', u'HU', u'ID', u'IE', u'IL', u'IN', u'IO', u'IQ', u'IR', u'IS', u'IT', u'JM', u'JO', u'JP', u'KE', u'KG', u'KH', u'KI', u'KM', u'KN', u'KP', u'KR', u'KW', u'KY', u'KZ', u'LA', u'LB', u'LC', u'LI', u'LK', u'LR', u'LS', u'LT', u'LU', u'LV', u'LY', u'MA', u'MC', u'MD', u'MG', u'MH', u'MK', u'ML', u'MM', u'MN', u'MO', u'MP', u'MQ', u'MR', u'MS', u'MT', u'MU', u'MV', u'MW', u'MX', u'MY', u'MZ', u'NA', u'NC', u'NE', u'NF', u'NG', u'NI', u'NL', u'NO', u'NP', u'NR', u'NU', u'NZ', u'OM', u'PA', u'PE', u'PF', u'PG', u'PH', u'PK', u'PL', u'PM', u'PN', u'PR', u'PS', u'PT', u'PW', u'PY', u'QA', u'RE', u'RO', u'RU', u'RW', u'SA', u'SB', u'SC', u'SD', u'SE', u'SG', u'SH', u'SI', u'SJ', u'SK', u'SL', u'SM', u'SN', u'SO', u'SR', u'ST', u'SV', u'SY', u'SZ', u'TC', u'TD', u'TF', u'TG', u'TH', u'TJ', u'TK', u'TL', u'TM', u'TN', u'TO', u'TR', u'TT', u'TV', u'TW', u'TZ', u'UA', u'UG', u'UM', u'US', u'UY', u'UZ', u'VA', u'VC', u'VE', u'VG', u'VI', u'VN', u'VU', u'WF', u'WS', u'YE', u'YT', u'ZA', u'ZM', u'ZW'])
         self.expose_attribute(local_name="frequency_channel", remote_name="frequencyChannel", attribute_type=str, is_required=True, is_unique=False, choices=[u'CH_0', u'CH_1', u'CH_10', u'CH_100', u'CH_104', u'CH_108', u'CH_11', u'CH_112', u'CH_116', u'CH_12', u'CH_120', u'CH_124', u'CH_128', u'CH_13', u'CH_132', u'CH_136', u'CH_14', u'CH_140', u'CH_144', u'CH_149', u'CH_153', u'CH_157', u'CH_161', u'CH_165', u'CH_2', u'CH_3', u'CH_36', u'CH_4', u'CH_40', u'CH_44', u'CH_48', u'CH_5', u'CH_52', u'CH_56', u'CH_6', u'CH_60', u'CH_64', u'CH_7', u'CH_8', u'CH_9'])
+        self.expose_attribute(local_name="use_user_mnemonic", remote_name="useUserMnemonic", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'INITIALIZED', u'MISMATCH', u'ORPHAN', u'READY'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.ssid_connections = NUSSIDConnectionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -689,6 +737,33 @@ class NUWirelessPort(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def vlan_range(self):
+        """ Get vlan_range value.
+
+            Notes:
+                VLAN Range of the Port. Format must conform to a-b,c,d-f where a,b,c,d,f are integers between 0 and 4095.
+
+                
+                This attribute is named `VLANRange` in VSD API.
+                
+        """
+        return self._vlan_range
+
+    @vlan_range.setter
+    def vlan_range(self, value):
+        """ Set vlan_range value.
+
+            Notes:
+                VLAN Range of the Port. Format must conform to a-b,c,d-f where a,b,c,d,f are integers between 0 and 4095.
+
+                
+                This attribute is named `VLANRange` in VSD API.
+                
+        """
+        self._vlan_range = value
+
     
     @property
     def name(self):
@@ -711,6 +786,33 @@ class NUWirelessPort(NURESTObject):
                 
         """
         self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
 
     
     @property
@@ -741,6 +843,33 @@ class NUWirelessPort(NURESTObject):
 
     
     @property
+    def permitted_action(self):
+        """ Get permitted_action value.
+
+            Notes:
+                The permitted action to USE/EXTEND this Wireless Port
+
+                
+                This attribute is named `permittedAction` in VSD API.
+                
+        """
+        return self._permitted_action
+
+    @permitted_action.setter
+    def permitted_action(self, value):
+        """ Set permitted_action value.
+
+            Notes:
+                The permitted action to USE/EXTEND this Wireless Port
+
+                
+                This attribute is named `permittedAction` in VSD API.
+                
+        """
+        self._permitted_action = value
+
+    
+    @property
     def description(self):
         """ Get description value.
 
@@ -768,7 +897,7 @@ class NUWirelessPort(NURESTObject):
         """ Get physical_name value.
 
             Notes:
-                The identifier of the wireless port as identified by the OS running on the NSG.  This name can't be modified once the port is created.
+                The identifier of the wireless port as identified by the OS running on the NSG. This name can't be modified once the port is created.
 
                 
                 This attribute is named `physicalName` in VSD API.
@@ -781,7 +910,7 @@ class NUWirelessPort(NURESTObject):
         """ Set physical_name value.
 
             Notes:
-                The identifier of the wireless port as identified by the OS running on the NSG.  This name can't be modified once the port is created.
+                The identifier of the wireless port as identified by the OS running on the NSG. This name can't be modified once the port is created.
 
                 
                 This attribute is named `physicalName` in VSD API.
@@ -795,7 +924,7 @@ class NUWirelessPort(NURESTObject):
         """ Get wifi_frequency_band value.
 
             Notes:
-                Wireless frequency band set on the WiFi card installed.  The standard currently supports two frequency bands, 5 GHz and 2.4 GHz.  A future variant under name 802.11ad will support 60 GHz.
+                Wireless frequency band set on the WiFi card installed. The standard currently supports two frequency bands, 5 GHz and 2.4 GHz. A future variant under name 802.11ad will support 60 GHz.
 
                 
                 This attribute is named `wifiFrequencyBand` in VSD API.
@@ -808,7 +937,7 @@ class NUWirelessPort(NURESTObject):
         """ Set wifi_frequency_band value.
 
             Notes:
-                Wireless frequency band set on the WiFi card installed.  The standard currently supports two frequency bands, 5 GHz and 2.4 GHz.  A future variant under name 802.11ad will support 60 GHz.
+                Wireless frequency band set on the WiFi card installed. The standard currently supports two frequency bands, 5 GHz and 2.4 GHz. A future variant under name 802.11ad will support 60 GHz.
 
                 
                 This attribute is named `wifiFrequencyBand` in VSD API.
@@ -822,7 +951,7 @@ class NUWirelessPort(NURESTObject):
         """ Get wifi_mode value.
 
             Notes:
-                WirelessFidelity 802.11 norm used.  The values supported represents a combination of modes that are to be enabled at once on the WiFi Card.
+                WirelessFidelity 802.11 norm used. The values supported represents a combination of modes that are to be enabled at once on the WiFi Card.
 
                 
                 This attribute is named `wifiMode` in VSD API.
@@ -835,7 +964,7 @@ class NUWirelessPort(NURESTObject):
         """ Set wifi_mode value.
 
             Notes:
-                WirelessFidelity 802.11 norm used.  The values supported represents a combination of modes that are to be enabled at once on the WiFi Card.
+                WirelessFidelity 802.11 norm used. The values supported represents a combination of modes that are to be enabled at once on the WiFi Card.
 
                 
                 This attribute is named `wifiMode` in VSD API.
@@ -845,11 +974,38 @@ class NUWirelessPort(NURESTObject):
 
     
     @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
     def port_type(self):
         """ Get port_type value.
 
             Notes:
-                Port type for the wireless port.  This can be a port of type Access or Network.
+                Port type for the wireless port. This can be a port of type Access or Network.
 
                 
                 This attribute is named `portType` in VSD API.
@@ -862,7 +1018,7 @@ class NUWirelessPort(NURESTObject):
         """ Set port_type value.
 
             Notes:
-                Port type for the wireless port.  This can be a port of type Access or Network.
+                Port type for the wireless port. This can be a port of type Access or Network.
 
                 
                 This attribute is named `portType` in VSD API.
@@ -876,7 +1032,7 @@ class NUWirelessPort(NURESTObject):
         """ Get country_code value.
 
             Notes:
-                Country code where the NSG with a Wireless Port installed is defined.  The country code allows some WiFi features to be enabled or disabled on the Wireless card.
+                Country code where the NSG with a Wireless Port installed is defined. The country code allows some WiFi features to be enabled or disabled on the Wireless card.
 
                 
                 This attribute is named `countryCode` in VSD API.
@@ -889,7 +1045,7 @@ class NUWirelessPort(NURESTObject):
         """ Set country_code value.
 
             Notes:
-                Country code where the NSG with a Wireless Port installed is defined.  The country code allows some WiFi features to be enabled or disabled on the Wireless card.
+                Country code where the NSG with a Wireless Port installed is defined. The country code allows some WiFi features to be enabled or disabled on the Wireless card.
 
                 
                 This attribute is named `countryCode` in VSD API.
@@ -903,7 +1059,7 @@ class NUWirelessPort(NURESTObject):
         """ Get frequency_channel value.
 
             Notes:
-                The selected wireless frequency and channel used by the wireless interface.  Channels range is from 0 to 165 where 0 stands for Auto Channel Selection.
+                The selected wireless frequency and channel used by the wireless interface. Channels range is from 0 to 165 where 0 stands for Auto Channel Selection.
 
                 
                 This attribute is named `frequencyChannel` in VSD API.
@@ -916,13 +1072,144 @@ class NUWirelessPort(NURESTObject):
         """ Set frequency_channel value.
 
             Notes:
-                The selected wireless frequency and channel used by the wireless interface.  Channels range is from 0 to 165 where 0 stands for Auto Channel Selection.
+                The selected wireless frequency and channel used by the wireless interface. Channels range is from 0 to 165 where 0 stands for Auto Channel Selection.
 
                 
                 This attribute is named `frequencyChannel` in VSD API.
                 
         """
         self._frequency_channel = value
+
+    
+    @property
+    def use_user_mnemonic(self):
+        """ Get use_user_mnemonic value.
+
+            Notes:
+                Determines whether to use user mnemonic of the Wireless Port
+
+                
+                This attribute is named `useUserMnemonic` in VSD API.
+                
+        """
+        return self._use_user_mnemonic
+
+    @use_user_mnemonic.setter
+    def use_user_mnemonic(self, value):
+        """ Set use_user_mnemonic value.
+
+            Notes:
+                Determines whether to use user mnemonic of the Wireless Port
+
+                
+                This attribute is named `useUserMnemonic` in VSD API.
+                
+        """
+        self._use_user_mnemonic = value
+
+    
+    @property
+    def user_mnemonic(self):
+        """ Get user_mnemonic value.
+
+            Notes:
+                User Mnemonic of the Port
+
+                
+                This attribute is named `userMnemonic` in VSD API.
+                
+        """
+        return self._user_mnemonic
+
+    @user_mnemonic.setter
+    def user_mnemonic(self, value):
+        """ Set user_mnemonic value.
+
+            Notes:
+                User Mnemonic of the Port
+
+                
+                This attribute is named `userMnemonic` in VSD API.
+                
+        """
+        self._user_mnemonic = value
+
+    
+    @property
+    def associated_egress_qos_policy_id(self):
+        """ Get associated_egress_qos_policy_id value.
+
+            Notes:
+                ID of the Egress QoS Policy associated with this Wireless Port.
+
+                
+                This attribute is named `associatedEgressQOSPolicyID` in VSD API.
+                
+        """
+        return self._associated_egress_qos_policy_id
+
+    @associated_egress_qos_policy_id.setter
+    def associated_egress_qos_policy_id(self, value):
+        """ Set associated_egress_qos_policy_id value.
+
+            Notes:
+                ID of the Egress QoS Policy associated with this Wireless Port.
+
+                
+                This attribute is named `associatedEgressQOSPolicyID` in VSD API.
+                
+        """
+        self._associated_egress_qos_policy_id = value
+
+    
+    @property
+    def status(self):
+        """ Get status value.
+
+            Notes:
+                Status of the Wireless Port. Possible values are - INITIALIZED, ORPHAN, READY, MISMATCH
+
+                
+        """
+        return self._status
+
+    @status.setter
+    def status(self, value):
+        """ Set status value.
+
+            Notes:
+                Status of the Wireless Port. Possible values are - INITIALIZED, ORPHAN, READY, MISMATCH
+
+                
+        """
+        self._status = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

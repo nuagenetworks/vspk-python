@@ -43,7 +43,7 @@ class NUMultiCastRange(NURESTObject):
     """ Represents a MultiCastRange in the VSD
 
         Notes:
-            A multicast channel map requires at least one range defined to be of use. Ranges within the same channel map must be non-overlapping between each other. Groups not covered by a range won't be joinable from the VMs.
+            A multicast channel range defines a set of multicast groups that will be allowed to be joined. They act as a set of "white-list" addresses that a VM will be allowed to join. A multicast channel map requires at least one range defined to be of use. Ranges within the same channel map must be non-overlapping between each other. Groups not covered by a range won't be joinable from the VMs.
     """
 
     __rest_name__ = "multicastrange"
@@ -52,7 +52,13 @@ class NUMultiCastRange(NURESTObject):
     
     ## Constants
     
+    CONST_IP_TYPE_IPV6 = "IPV6"
+    
+    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_IP_TYPE_IPV4 = "IPV4"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
@@ -75,12 +81,14 @@ class NUMultiCastRange(NURESTObject):
 
         # Read/Write Attributes
         
+        self._ip_type = None
         self._last_updated_by = None
         self._max_address = None
         self._min_address = None
         self._entity_scope = None
         self._external_id = None
         
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="max_address", remote_name="maxAddress", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="min_address", remote_name="minAddress", attribute_type=str, is_required=True, is_unique=False)
@@ -103,6 +111,33 @@ class NUMultiCastRange(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def ip_type(self):
+        """ Get ip_type value.
+
+            Notes:
+                The ip type.
+
+                
+                This attribute is named `IPType` in VSD API.
+                
+        """
+        return self._ip_type
+
+    @ip_type.setter
+    def ip_type(self, value):
+        """ Set ip_type value.
+
+            Notes:
+                The ip type.
+
+                
+                This attribute is named `IPType` in VSD API.
+                
+        """
+        self._ip_type = value
+
     
     @property
     def last_updated_by(self):

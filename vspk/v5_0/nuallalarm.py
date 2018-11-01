@@ -90,6 +90,7 @@ class NUAllAlarm(NURESTObject):
         self._description = None
         self._severity = None
         self._timestamp = None
+        self._alarmed_object_id = None
         self._enterprise_id = None
         self._entity_scope = None
         self._error_condition = None
@@ -104,6 +105,7 @@ class NUAllAlarm(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="severity", remote_name="severity", attribute_type=str, is_required=False, is_unique=False, choices=[u'CRITICAL', u'INFO', u'MAJOR', u'MINOR', u'WARNING'])
         self.expose_attribute(local_name="timestamp", remote_name="timestamp", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="alarmed_object_id", remote_name="alarmedObjectID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="error_condition", remote_name="errorCondition", attribute_type=int, is_required=False, is_unique=False)
@@ -314,6 +316,33 @@ class NUAllAlarm(NURESTObject):
                 
         """
         self._timestamp = value
+
+    
+    @property
+    def alarmed_object_id(self):
+        """ Get alarmed_object_id value.
+
+            Notes:
+                Alarmed Object ID
+
+                
+                This attribute is named `alarmedObjectID` in VSD API.
+                
+        """
+        return self._alarmed_object_id
+
+    @alarmed_object_id.setter
+    def alarmed_object_id(self, value):
+        """ Set alarmed_object_id value.
+
+            Notes:
+                Alarmed Object ID
+
+                
+                This attribute is named `alarmedObjectID` in VSD API.
+                
+        """
+        self._alarmed_object_id = value
 
     
     @property

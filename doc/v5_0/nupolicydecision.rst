@@ -24,8 +24,6 @@ Attributes
 
 - ``ingress_adv_fwd``: List of actual Ingress Redirect ACLs that will be applied on the interface of this VM
 
-- ``ingress_external_service_acls``: List of actual Ingress External Service ACLs that will be applied on the interface of this VM
-
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``qos``: QoS primitive that was selected based on inheritance policies

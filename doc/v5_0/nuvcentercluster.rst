@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``arp_reply``: Whether ARP Reply is enabled/disabled
+
 - ``vrs_configuration_time_limit``: The maximum wait time limit in minutes to get VRS configured at cluster level
 
 - ``v_require_nuage_metadata``: Whether split-activation or not (Openstack/CloudStack)
@@ -34,7 +36,7 @@ Attributes
 
 - ``datapath_sync_timeout``: Datapath Sync Timeout
 
-- ``scope``: Cluster in scope or not in scope.
+- ``scope``: Specifies if this cluster is in scope or not in scope.
 
 - ``secondary_data_uplink_dhcp_enabled``: Enable DHCP on the secondary data uplink.
 
@@ -97,6 +99,8 @@ Attributes
 - ``nfs_log_server``: IP address of NFS server to send the VRS log
 
 - ``nfs_mount_path``: Location to mount the NFS server
+
+- ``agency_moid``: cluster in scope or not in scope
 
 - ``mgmt_dns1``: DNS server 1
 

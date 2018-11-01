@@ -24,13 +24,7 @@ Attributes
 
 - ``gateway_peer2_id``: The ID of the second NSG of the redundant gateway group part of this Shunt Link.
 
-- ``peer1_ip_address``: The IP address of the first peer of the Shunt Link.
-
-- ``peer1_subnet``: The subnet given to the first peer of the Shunt Link.
-
-- ``peer2_ip_address``: The IP address of the second peer of the Shunt Link.
-
-- ``peer2_subnet``: The subnet on the second peer of the Shunt Link.
+- ``permitted_action``: The permitted action to USE/EXTEND this Shunt Link
 
 - ``description``: Extra information entered by the operator to define the Shunt Link.
 

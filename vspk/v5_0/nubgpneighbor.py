@@ -40,7 +40,7 @@ class NUBGPNeighbor(NURESTObject):
     """ Represents a BGPNeighbor in the VSD
 
         Notes:
-            None
+            Virtual Cloud Services (VCS) in the data center BGP PE-CE is configured at vport level . Network Service Gateways (NSG) BGP is configured at subnet level.
     """
 
     __rest_name__ = "bgpneighbor"
@@ -82,6 +82,7 @@ class NUBGPNeighbor(NURESTObject):
         self._name = None
         self._dampening_enabled = None
         self._peer_as = None
+        self._peer_configuration = None
         self._peer_ip = None
         self._description = None
         self._session = None
@@ -96,6 +97,7 @@ class NUBGPNeighbor(NURESTObject):
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="dampening_enabled", remote_name="dampeningEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peer_as", remote_name="peerAS", attribute_type=int, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="peer_configuration", remote_name="peerConfiguration", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peer_ip", remote_name="peerIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="session", remote_name="session", attribute_type=str, is_required=False, is_unique=False)
@@ -254,7 +256,7 @@ class NUBGPNeighbor(NURESTObject):
         """ Get peer_as value.
 
             Notes:
-                Local autonomous system to be used when establishing a session with the remote peer if it is different from the global BGP router autonomous system number.
+                Autonomous System (AS) value to be used when establishing a session with the remote peer if it is different from the global BGP router autonomous system number.
 
                 
                 This attribute is named `peerAS` in VSD API.
@@ -267,13 +269,40 @@ class NUBGPNeighbor(NURESTObject):
         """ Set peer_as value.
 
             Notes:
-                Local autonomous system to be used when establishing a session with the remote peer if it is different from the global BGP router autonomous system number.
+                Autonomous System (AS) value to be used when establishing a session with the remote peer if it is different from the global BGP router autonomous system number.
 
                 
                 This attribute is named `peerAS` in VSD API.
                 
         """
         self._peer_as = value
+
+    
+    @property
+    def peer_configuration(self):
+        """ Get peer_configuration value.
+
+            Notes:
+                BGP Peer session configuration and default policies.
+
+                
+                This attribute is named `peerConfiguration` in VSD API.
+                
+        """
+        return self._peer_configuration
+
+    @peer_configuration.setter
+    def peer_configuration(self, value):
+        """ Set peer_configuration value.
+
+            Notes:
+                BGP Peer session configuration and default policies.
+
+                
+                This attribute is named `peerConfiguration` in VSD API.
+                
+        """
+        self._peer_configuration = value
 
     
     @property

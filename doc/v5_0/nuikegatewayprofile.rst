@@ -20,7 +20,7 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``service_class``: Class of service to be used.  Service classes in order of priority are A, B, C, D, E, F, G, and H.
+- ``service_class``: Class of service to be used. Service classes in order of priority are A, B, C, D, E, F, G, and H.
 
 - ``description``: Description of the IKEv2 Gateway Profile
 

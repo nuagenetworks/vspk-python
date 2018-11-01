@@ -18,6 +18,10 @@ Attributes
 
 - ``active``: If enabled, it means that this ACL or QOS entry is active
 
+- ``default_allow_ip``: If enabled a default ACL of Allow All is added as the last entry in the list of ACL entries
+
+- ``default_allow_non_ip``: If enabled, non ip traffic will be dropped
+
 - ``description``: A description of the entity
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
@@ -54,11 +58,11 @@ Parents
 --------
 
 
+- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
+
 - :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
-
-- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 

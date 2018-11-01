@@ -30,17 +30,21 @@ Attributes
 
 - ``last_known_error``: Last error reported
 
+- ``last_updated_by``: ID of the user who last updated the object.
+
+- ``last_user_action``: Last action perform by user
+
 - ``memory_mb``: Memory (in MB) to be allocated for this VNF instance.
 
 - ``vendor``: The vendor for VNF
 
 - ``description``: Description of the VNF Instance
 
-- ``metadata_id``: Id of referenced metadata object
-
 - ``allowed_actions``: Action allowed to  performed on VNF based on current status and taskState
 
 - ``enterprise_id``: ID of the enterprise that this VNF belongs to
+
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``is_attached_to_descriptor``: This specifies if VNF instance is using VNF descriptor or it is decoupled from it
 
@@ -51,6 +55,8 @@ Attributes
 - ``status``: State/Status of the VNF
 
 - ``storage_gb``: Disk storage (in GB) to be allocated for deployed VNF instance
+
+- ``external_id``: External object ID. Used for integration with third party systems
 
 - ``type``: Type of virtual network function
 
@@ -63,8 +69,11 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuvnfinterface.NUVNFInterface<nuvnfinterface>`                                                                                                             ``vnf_interfaces`` 
 :ref:`nuvnfmetadata.NUVNFMetadata<nuvnfmetadata>`                                                                                                                ``vnf_metadatas`` 
+:ref:`nuvnfthresholdpolicy.NUVNFThresholdPolicy<nuvnfthresholdpolicy>`                                                                                           ``vnf_threshold_policies`` 
 :ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
 ================================================================================================================================================               ==========================================================================================
 
@@ -73,6 +82,8 @@ Children
 Parents
 --------
 
+
+- :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

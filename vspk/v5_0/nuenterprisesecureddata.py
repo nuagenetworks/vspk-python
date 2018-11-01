@@ -49,6 +49,10 @@ class NUEnterpriseSecuredData(NURESTObject):
     
     ## Constants
     
+    CONST_SEED_TYPE_DR = "DR"
+    
+    CONST_SEED_TYPE_STANDARD = "STANDARD"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
@@ -75,6 +79,7 @@ class NUEnterpriseSecuredData(NURESTObject):
         self._hash = None
         self._last_updated_by = None
         self._data = None
+        self._seed_type = None
         self._sek_id = None
         self._keyserver_cert_serial_number = None
         self._signed_hash = None
@@ -84,6 +89,7 @@ class NUEnterpriseSecuredData(NURESTObject):
         self.expose_attribute(local_name="hash", remote_name="hash", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data", remote_name="data", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="seed_type", remote_name="seedType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DR', u'STANDARD'])
         self.expose_attribute(local_name="sek_id", remote_name="sekId", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="keyserver_cert_serial_number", remote_name="keyserverCertSerialNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="signed_hash", remote_name="signedHash", attribute_type=str, is_required=False, is_unique=False)
@@ -175,6 +181,33 @@ class NUEnterpriseSecuredData(NURESTObject):
                 
         """
         self._data = value
+
+    
+    @property
+    def seed_type(self):
+        """ Get seed_type value.
+
+            Notes:
+                seed type
+
+                
+                This attribute is named `seedType` in VSD API.
+                
+        """
+        return self._seed_type
+
+    @seed_type.setter
+    def seed_type(self, value):
+        """ Set seed_type value.
+
+            Notes:
+                seed type
+
+                
+                This attribute is named `seedType` in VSD API.
+                
+        """
+        self._seed_type = value
 
     
     @property

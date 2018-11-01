@@ -58,9 +58,6 @@ from .fetchers import NUEgressAdvFwdTemplatesFetcher
 from .fetchers import NUDomainFIPAclTemplatesFetcher
 
 
-from .fetchers import NUFloatingIPACLTemplatesFetcher
-
-
 from .fetchers import NUDHCPOptionsFetcher
 
 
@@ -71,6 +68,12 @@ from .fetchers import NUFirewallAclsFetcher
 
 
 from .fetchers import NUVirtualFirewallPoliciesFetcher
+
+
+from .fetchers import NUVirtualFirewallRulesFetcher
+
+
+from .fetchers import NUAlarmsFetcher
 
 
 from .fetchers import NUFloatingIpsFetcher
@@ -95,9 +98,6 @@ from .fetchers import NUIngressACLTemplatesFetcher
 
 
 from .fetchers import NUIngressAdvFwdTemplatesFetcher
-
-
-from .fetchers import NUIngressExternalServiceTemplatesFetcher
 
 
 from .fetchers import NUJobsFetcher
@@ -143,6 +143,9 @@ from .fetchers import NUVPNConnectionsFetcher
 
 
 from .fetchers import NUVPortsFetcher
+
+
+from .fetchers import NUApplicationsFetcher
 
 
 from .fetchers import NUApplicationperformancemanagementbindingsFetcher
@@ -273,8 +276,6 @@ class NUDomain(NURESTObject):
     
     CONST_DPI_DISABLED = "DISABLED"
     
-    CONST_MAINTENANCE_MODE_ENABLED_INHERITED = "ENABLED_INHERITED"
-    
     CONST_ENCRYPTION_ENABLED = "ENABLED"
     
     CONST_UNDERLAY_ENABLED_DISABLED = "DISABLED"
@@ -316,8 +317,6 @@ class NUDomain(NURESTObject):
         self._back_haul_route_distinguisher = None
         self._back_haul_route_target = None
         self._back_haul_service_id = None
-        self._back_haul_subnet_ip_address = None
-        self._back_haul_subnet_mask = None
         self._back_haul_vnid = None
         self._maintenance_mode = None
         self._name = None
@@ -335,6 +334,7 @@ class NUDomain(NURESTObject):
         self._import_route_target = None
         self._encryption = None
         self._underlay_enabled = None
+        self._enterprise_id = None
         self._entity_scope = None
         self._local_as = None
         self._policy_change_status = None
@@ -367,10 +367,8 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="back_haul_route_distinguisher", remote_name="backHaulRouteDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_route_target", remote_name="backHaulRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_service_id", remote_name="backHaulServiceID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="back_haul_subnet_ip_address", remote_name="backHaulSubnetIPAddress", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="back_haul_subnet_mask", remote_name="backHaulSubnetMask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_vnid", remote_name="backHaulVNID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
+        self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="advertise_criteria", remote_name="advertiseCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'HUB_ROUTES'])
@@ -386,6 +384,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="import_route_target", remote_name="importRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="underlay_enabled", remote_name="underlayEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="local_as", remote_name="localAS", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'DISCARDED', u'STARTED'])
@@ -440,9 +439,6 @@ class NUDomain(NURESTObject):
         self.domain_fip_acl_templates = NUDomainFIPAclTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.floating_ipacl_templates = NUFloatingIPACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.dhcp_options = NUDHCPOptionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -453,6 +449,12 @@ class NUDomain(NURESTObject):
         
         
         self.virtual_firewall_policies = NUVirtualFirewallPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.virtual_firewall_rules = NUVirtualFirewallRulesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.floating_ips = NUFloatingIpsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -477,9 +479,6 @@ class NUDomain(NURESTObject):
         
         
         self.ingress_adv_fwd_templates = NUIngressAdvFwdTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.ingress_external_service_templates = NUIngressExternalServiceTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -525,6 +524,9 @@ class NUDomain(NURESTObject):
         
         
         self.vports = NUVPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.applications = NUApplicationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.applicationperformancemanagementbindings = NUApplicationperformancemanagementbindingsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -889,60 +891,6 @@ class NUDomain(NURESTObject):
 
     
     @property
-    def back_haul_subnet_ip_address(self):
-        """ Get back_haul_subnet_ip_address value.
-
-            Notes:
-                IP Address of the backhaul subnet 
-
-                
-                This attribute is named `backHaulSubnetIPAddress` in VSD API.
-                
-        """
-        return self._back_haul_subnet_ip_address
-
-    @back_haul_subnet_ip_address.setter
-    def back_haul_subnet_ip_address(self, value):
-        """ Set back_haul_subnet_ip_address value.
-
-            Notes:
-                IP Address of the backhaul subnet 
-
-                
-                This attribute is named `backHaulSubnetIPAddress` in VSD API.
-                
-        """
-        self._back_haul_subnet_ip_address = value
-
-    
-    @property
-    def back_haul_subnet_mask(self):
-        """ Get back_haul_subnet_mask value.
-
-            Notes:
-                Network mask of the backhaul subnet
-
-                
-                This attribute is named `backHaulSubnetMask` in VSD API.
-                
-        """
-        return self._back_haul_subnet_mask
-
-    @back_haul_subnet_mask.setter
-    def back_haul_subnet_mask(self, value):
-        """ Set back_haul_subnet_mask value.
-
-            Notes:
-                Network mask of the backhaul subnet
-
-                
-                This attribute is named `backHaulSubnetMask` in VSD API.
-                
-        """
-        self._back_haul_subnet_mask = value
-
-    
-    @property
     def back_haul_vnid(self):
         """ Get back_haul_vnid value.
 
@@ -974,7 +922,7 @@ class NUDomain(NURESTObject):
         """ Get maintenance_mode value.
 
             Notes:
-                maintenanceMode is an enum that indicates if the Domain is accepting VM activation requests. Possible values are DISABLED, ENABLED and ENABLED_INHERITED Possible values are .
+                Enum that indicates if the Domain is accepting VM activation requests. Possible values are DISABLED, ENABLED.
 
                 
                 This attribute is named `maintenanceMode` in VSD API.
@@ -987,7 +935,7 @@ class NUDomain(NURESTObject):
         """ Set maintenance_mode value.
 
             Notes:
-                maintenanceMode is an enum that indicates if the Domain is accepting VM activation requests. Possible values are DISABLED, ENABLED and ENABLED_INHERITED Possible values are .
+                Enum that indicates if the Domain is accepting VM activation requests. Possible values are DISABLED, ENABLED.
 
                 
                 This attribute is named `maintenanceMode` in VSD API.
@@ -1387,6 +1335,33 @@ class NUDomain(NURESTObject):
                 
         """
         self._underlay_enabled = value
+
+    
+    @property
+    def enterprise_id(self):
+        """ Get enterprise_id value.
+
+            Notes:
+                Enterprise ID
+
+                
+                This attribute is named `enterpriseID` in VSD API.
+                
+        """
+        return self._enterprise_id
+
+    @enterprise_id.setter
+    def enterprise_id(self, value):
+        """ Set enterprise_id value.
+
+            Notes:
+                Enterprise ID
+
+                
+                This attribute is named `enterpriseID` in VSD API.
+                
+        """
+        self._enterprise_id = value
 
     
     @property

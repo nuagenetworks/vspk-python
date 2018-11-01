@@ -66,6 +66,7 @@ class NUAutoDiscoverHypervisorFromCluster(NURESTObject):
 
         # Read/Write Attributes
         
+        self._managed_object_id = None
         self._last_updated_by = None
         self._network_list = None
         self._entity_scope = None
@@ -73,6 +74,7 @@ class NUAutoDiscoverHypervisorFromCluster(NURESTObject):
         self._external_id = None
         self._hypervisor_ip = None
         
+        self.expose_attribute(local_name="managed_object_id", remote_name="managedObjectID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_list", remote_name="networkList", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -84,6 +86,33 @@ class NUAutoDiscoverHypervisorFromCluster(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def managed_object_id(self):
+        """ Get managed_object_id value.
+
+            Notes:
+                VCenter Managed Object ID of the Datacenter
+
+                
+                This attribute is named `managedObjectID` in VSD API.
+                
+        """
+        return self._managed_object_id
+
+    @managed_object_id.setter
+    def managed_object_id(self, value):
+        """ Set managed_object_id value.
+
+            Notes:
+                VCenter Managed Object ID of the Datacenter
+
+                
+                This attribute is named `managedObjectID` in VSD API.
+                
+        """
+        self._managed_object_id = value
+
     
     @property
     def last_updated_by(self):

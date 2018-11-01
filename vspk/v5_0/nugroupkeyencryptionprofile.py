@@ -130,6 +130,7 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
         self._sek_payload_encryption_bc_algorithm = None
         self._sek_payload_encryption_key_length = None
         self._sek_payload_signing_algorithm = None
+        self._dr_seed_lifetime = None
         self._name = None
         self._last_updated_by = None
         self._seed_generation_interval = None
@@ -155,6 +156,7 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
         self.expose_attribute(local_name="sek_payload_encryption_bc_algorithm", remote_name="SEKPayloadEncryptionBCAlgorithm", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sek_payload_encryption_key_length", remote_name="SEKPayloadEncryptionKeyLength", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sek_payload_signing_algorithm", remote_name="SEKPayloadSigningAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'SHA1withRSA', u'SHA224withRSA', u'SHA256withRSA', u'SHA384withRSA', u'SHA512withRSA'])
+        self.expose_attribute(local_name="dr_seed_lifetime", remote_name="DRSeedLifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_generation_interval", remote_name="seedGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -348,6 +350,33 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
                 
         """
         self._sek_payload_signing_algorithm = value
+
+    
+    @property
+    def dr_seed_lifetime(self):
+        """ Get dr_seed_lifetime value.
+
+            Notes:
+                DR Seed Lifetime in seconds
+
+                
+                This attribute is named `DRSeedLifetime` in VSD API.
+                
+        """
+        return self._dr_seed_lifetime
+
+    @dr_seed_lifetime.setter
+    def dr_seed_lifetime(self, value):
+        """ Set dr_seed_lifetime value.
+
+            Notes:
+                DR Seed Lifetime in seconds
+
+                
+                This attribute is named `DRSeedLifetime` in VSD API.
+                
+        """
+        self._dr_seed_lifetime = value
 
     
     @property

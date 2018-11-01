@@ -34,6 +34,9 @@ from .fetchers import NUTCAsFetcher
 from .fetchers import NURedirectionTargetsFetcher
 
 
+from .fetchers import NUDeploymentFailuresFetcher
+
+
 from .fetchers import NUMetadatasFetcher
 
 
@@ -95,9 +98,6 @@ from .fetchers import NUHostInterfacesFetcher
 
 
 from .fetchers import NUVPortMirrorsFetcher
-
-
-from .fetchers import NUApplicationperformancemanagementsFetcher
 
 
 from .fetchers import NUBridgeInterfacesFetcher
@@ -171,6 +171,8 @@ class NUVPort(NURESTObject):
     
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_VSA = "VSA"
     
+    CONST_ASSOCIATED_GATEWAY_PERSONALITY_NSGDUC = "NSGDUC"
+    
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_NSG = "NSG"
     
     CONST_TYPE_HOST = "HOST"
@@ -192,6 +194,8 @@ class NUVPort(NURESTObject):
     CONST_SEGMENTATION_TYPE_VLAN = "VLAN"
     
     CONST_OPERATIONAL_STATE_UP = "UP"
+    
+    CONST_ASSOCIATED_GATEWAY_PERSONALITY_VDF = "VDF"
     
     CONST_PEER_OPERATIONAL_STATE_UP = "UP"
     
@@ -224,6 +228,8 @@ class NUVPort(NURESTObject):
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_NETCONF_7X50 = "NETCONF_7X50"
     
     CONST_DPI_DISABLED = "DISABLED"
+    
+    CONST_ASSOCIATED_GATEWAY_PERSONALITY_NSGBR = "NSGBR"
     
     CONST_SYSTEM_TYPE_NUAGE_VRSG = "NUAGE_VRSG"
     
@@ -261,6 +267,7 @@ class NUVPort(NURESTObject):
         self._last_updated_by = None
         self._gateway_mac_move_role = None
         self._gateway_port_name = None
+        self._access_restriction_enabled = None
         self._active = None
         self._address_spoofing = None
         self._peer_operational_state = None
@@ -301,12 +308,13 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_mac_move_role", remote_name="gatewayMACMoveRole", attribute_type=str, is_required=False, is_unique=False, choices=[u'SECONDARY', u'TERTIARY'])
         self.expose_attribute(local_name="gateway_port_name", remote_name="gatewayPortName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="access_restriction_enabled", remote_name="accessRestrictionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="active", remote_name="active", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address_spoofing", remote_name="addressSpoofing", attribute_type=str, is_required=True, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="peer_operational_state", remote_name="peerOperationalState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DOWN', u'INIT', u'UP'])
         self.expose_attribute(local_name="segmentation_id", remote_name="segmentationID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="segmentation_type", remote_name="segmentationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'VLAN'])
-        self.expose_attribute(local_name="service_id", remote_name="serviceID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="service_id", remote_name="serviceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="domain_id", remote_name="domainID", attribute_type=str, is_required=False, is_unique=False)
@@ -317,7 +325,7 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="associated_egress_profile_id", remote_name="associatedEgressProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_floating_ip_id", remote_name="associatedFloatingIPID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_id", remote_name="associatedGatewayID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_gateway_personality", remote_name="associatedGatewayPersonality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NSG', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VRSB', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="associated_gateway_personality", remote_name="associatedGatewayPersonality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NSG', u'NSGBR', u'NSGDUC', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VDF', u'VRSB', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="associated_gateway_type", remote_name="associatedGatewayType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ingress_profile_id", remote_name="associatedIngressProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
@@ -340,6 +348,9 @@ class NUVPort(NURESTObject):
         
         
         self.redirection_targets = NURedirectionTargetsFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        
+        
+        self.deployment_failures = NUDeploymentFailuresFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -403,9 +414,6 @@ class NUVPort(NURESTObject):
         
         
         self.vport_mirrors = NUVPortMirrorsFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.applicationperformancemanagements = NUApplicationperformancemanagementsFetcher.fetcher_with_object(parent_object=self, relationship="member")
         
         
         self.bridge_interfaces = NUBridgeInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -667,6 +675,33 @@ class NUVPort(NURESTObject):
                 
         """
         self._gateway_port_name = value
+
+    
+    @property
+    def access_restriction_enabled(self):
+        """ Get access_restriction_enabled value.
+
+            Notes:
+                Enable Access Restriction
+
+                
+                This attribute is named `accessRestrictionEnabled` in VSD API.
+                
+        """
+        return self._access_restriction_enabled
+
+    @access_restriction_enabled.setter
+    def access_restriction_enabled(self, value):
+        """ Set access_restriction_enabled value.
+
+            Notes:
+                Enable Access Restriction
+
+                
+                This attribute is named `accessRestrictionEnabled` in VSD API.
+                
+        """
+        self._access_restriction_enabled = value
 
     
     @property

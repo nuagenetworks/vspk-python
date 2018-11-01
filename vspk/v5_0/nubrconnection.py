@@ -28,7 +28,13 @@
 
 
 
+from .fetchers import NUMetadatasFetcher
+
+
 from .fetchers import NUBFDSessionsFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
 
@@ -48,11 +54,9 @@ class NUBRConnection(NURESTObject):
     
     CONST_ADVERTISEMENT_CRITERIA_OPERATIONAL_LINK = "OPERATIONAL_LINK"
     
-    CONST_ADVERTISEMENT_CRITERIA_LINK_BASED = "LINK_BASED"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_ADVERTISEMENT_CRITERIA_BFD = "BFD"
-    
-    CONST_ADVERTISEMENT_CRITERIA_OPENFLOW = "OPENFLOW"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_MODE_STATIC = "Static"
     
@@ -81,6 +85,7 @@ class NUBRConnection(NURESTObject):
         
         self._dns_address = None
         self._dns_address_v6 = None
+        self._last_updated_by = None
         self._gateway = None
         self._gateway_v6 = None
         self._address = None
@@ -89,27 +94,38 @@ class NUBRConnection(NURESTObject):
         self._advertisement_criteria = None
         self._netmask = None
         self._inherited = None
+        self._entity_scope = None
         self._mode = None
         self._uplink_id = None
+        self._external_id = None
         
         self.expose_attribute(local_name="dns_address", remote_name="DNSAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dns_address_v6", remote_name="DNSAddressV6", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_v6", remote_name="gatewayV6", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address_family", remote_name="addressFamily", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="address_v6", remote_name="addressV6", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'BFD', u'LINK_BASED', u'OPENFLOW', u'OPERATIONAL_LINK'])
+        self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'OPERATIONAL_LINK'])
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="inherited", remote_name="inherited", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'Static'])
         self.expose_attribute(local_name="uplink_id", remote_name="uplinkID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.bfd_sessions = NUBFDSessionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -171,6 +187,33 @@ class NUBRConnection(NURESTObject):
 
     
     @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
     def gateway(self):
         """ Get gateway value.
 
@@ -225,7 +268,7 @@ class NUBRConnection(NURESTObject):
         """ Get address value.
 
             Notes:
-                Static IP address for the VLAN
+                Static IP address for the VLAN on which the BR Connection is created.
 
                 
         """
@@ -236,7 +279,7 @@ class NUBRConnection(NURESTObject):
         """ Set address value.
 
             Notes:
-                Static IP address for the VLAN
+                Static IP address for the VLAN on which the BR Connection is created.
 
                 
         """
@@ -275,7 +318,7 @@ class NUBRConnection(NURESTObject):
         """ Get address_v6 value.
 
             Notes:
-                IPv6 address for static configuration.
+                IPv6 address for static configuration on the BR Connection instance.
 
                 
                 This attribute is named `addressV6` in VSD API.
@@ -288,7 +331,7 @@ class NUBRConnection(NURESTObject):
         """ Set address_v6 value.
 
             Notes:
-                IPv6 address for static configuration.
+                IPv6 address for static configuration on the BR Connection instance.
 
                 
                 This attribute is named `addressV6` in VSD API.
@@ -302,7 +345,7 @@ class NUBRConnection(NURESTObject):
         """ Get advertisement_criteria value.
 
             Notes:
-                Advertisement Criteria for Traffic Flow
+                Advertisement Criteria for Traffic Flow on a BR Connection.
 
                 
                 This attribute is named `advertisementCriteria` in VSD API.
@@ -315,7 +358,7 @@ class NUBRConnection(NURESTObject):
         """ Set advertisement_criteria value.
 
             Notes:
-                Advertisement Criteria for Traffic Flow
+                Advertisement Criteria for Traffic Flow on a BR Connection.
 
                 
                 This attribute is named `advertisementCriteria` in VSD API.
@@ -371,11 +414,38 @@ class NUBRConnection(NURESTObject):
 
     
     @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
     def mode(self):
         """ Get mode value.
 
             Notes:
-                Connection mode: Static.
+                Connection mode: Only static is allowed on a Bridge Router Connection.
 
                 
         """
@@ -386,7 +456,7 @@ class NUBRConnection(NURESTObject):
         """ Set mode value.
 
             Notes:
-                Connection mode: Static.
+                Connection mode: Only static is allowed on a Bridge Router Connection.
 
                 
         """
@@ -398,7 +468,7 @@ class NUBRConnection(NURESTObject):
         """ Get uplink_id value.
 
             Notes:
-                Internally generated ID in the range that idenitifies the uplink within the cotext of NSG
+                Internally generated ID in the range that idenitifies the uplink within the context of NSG.
 
                 
                 This attribute is named `uplinkID` in VSD API.
@@ -411,13 +481,40 @@ class NUBRConnection(NURESTObject):
         """ Set uplink_id value.
 
             Notes:
-                Internally generated ID in the range that idenitifies the uplink within the cotext of NSG
+                Internally generated ID in the range that idenitifies the uplink within the context of NSG.
 
                 
                 This attribute is named `uplinkID` in VSD API.
                 
         """
         self._uplink_id = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

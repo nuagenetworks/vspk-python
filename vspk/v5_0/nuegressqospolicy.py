@@ -240,7 +240,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Get parent_queue_associated_rate_limiter_id value.
 
             Notes:
-                ID of the parent rate limiter associated with this Egress QOS policy.
+                ID of the parent rate limiter associated with this Egress QoS policy.
 
                 
                 This attribute is named `parentQueueAssociatedRateLimiterID` in VSD API.
@@ -253,7 +253,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Set parent_queue_associated_rate_limiter_id value.
 
             Notes:
-                ID of the parent rate limiter associated with this Egress QOS policy.
+                ID of the parent rate limiter associated with this Egress QoS policy.
 
                 
                 This attribute is named `parentQueueAssociatedRateLimiterID` in VSD API.
@@ -425,7 +425,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Get associated_dscp_remarking_policy_table_id value.
 
             Notes:
-                ID of the DSCP Remarking Policy Table associated with this Egress QOS policy.
+                ID of the DSCP Remarking Policy Table associated with this Egress QoS policy.
 
                 
                 This attribute is named `associatedDSCPRemarkingPolicyTableID` in VSD API.
@@ -438,7 +438,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Set associated_dscp_remarking_policy_table_id value.
 
             Notes:
-                ID of the DSCP Remarking Policy Table associated with this Egress QOS policy.
+                ID of the DSCP Remarking Policy Table associated with this Egress QoS policy.
 
                 
                 This attribute is named `associatedDSCPRemarkingPolicyTableID` in VSD API.
@@ -452,7 +452,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Get queue1_associated_rate_limiter_id value.
 
             Notes:
-                ID of the queue1 rate limiter associated with this Egress QOS policy.
+                ID of the queue1 rate limiter associated with this Egress QoS policy.
 
                 
                 This attribute is named `queue1AssociatedRateLimiterID` in VSD API.
@@ -465,7 +465,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Set queue1_associated_rate_limiter_id value.
 
             Notes:
-                ID of the queue1 rate limiter associated with this Egress QOS policy.
+                ID of the queue1 rate limiter associated with this Egress QoS policy.
 
                 
                 This attribute is named `queue1AssociatedRateLimiterID` in VSD API.
@@ -479,7 +479,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Get queue1_forwarding_classes value.
 
             Notes:
-                Queue1 Forwarding Classes for this Egress QOS Policy Possible values are NONE, A, B, C, D, E, F, G, H, .
+                Queue1 Forwarding Classes for this Egress QoS Policy Possible values are NONE, A, B, C, D, E, F, G, H.
 
                 
                 This attribute is named `queue1ForwardingClasses` in VSD API.
@@ -492,7 +492,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Set queue1_forwarding_classes value.
 
             Notes:
-                Queue1 Forwarding Classes for this Egress QOS Policy Possible values are NONE, A, B, C, D, E, F, G, H, .
+                Queue1 Forwarding Classes for this Egress QoS Policy Possible values are NONE, A, B, C, D, E, F, G, H.
 
                 
                 This attribute is named `queue1ForwardingClasses` in VSD API.
@@ -506,7 +506,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Get queue2_associated_rate_limiter_id value.
 
             Notes:
-                ID of the queue2 rate limiter associated with this Egress QOS policy.
+                ID of the queue2 rate limiter associated with this Egress QoS policy.
 
                 
                 This attribute is named `queue2AssociatedRateLimiterID` in VSD API.
@@ -519,7 +519,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Set queue2_associated_rate_limiter_id value.
 
             Notes:
-                ID of the queue2 rate limiter associated with this Egress QOS policy.
+                ID of the queue2 rate limiter associated with this Egress QoS policy.
 
                 
                 This attribute is named `queue2AssociatedRateLimiterID` in VSD API.
@@ -533,7 +533,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Get queue2_forwarding_classes value.
 
             Notes:
-                Queue2 Forwarding Classes for this Egress QOS Policy Possible values are NONE, A, B, C, D, E, F, G, H, .
+                Queue2 Forwarding Classes for this Egress QoS Policy Possible values are NONE, A, B, C, D, E, F, G, H.
 
                 
                 This attribute is named `queue2ForwardingClasses` in VSD API.
@@ -546,7 +546,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Set queue2_forwarding_classes value.
 
             Notes:
-                Queue2 Forwarding Classes for this Egress QOS Policy Possible values are NONE, A, B, C, D, E, F, G, H, .
+                Queue2 Forwarding Classes for this Egress QoS Policy Possible values are NONE, A, B, C, D, E, F, G, H.
 
                 
                 This attribute is named `queue2ForwardingClasses` in VSD API.
@@ -560,7 +560,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Get queue3_associated_rate_limiter_id value.
 
             Notes:
-                ID of the queue3 rate limiter associated with this Egress QOS policy.
+                ID of the queue3 rate limiter associated with this Egress QoS policy.
 
                 
                 This attribute is named `queue3AssociatedRateLimiterID` in VSD API.
@@ -573,7 +573,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Set queue3_associated_rate_limiter_id value.
 
             Notes:
-                ID of the queue3 rate limiter associated with this Egress QOS policy.
+                ID of the queue3 rate limiter associated with this Egress QoS policy.
 
                 
                 This attribute is named `queue3AssociatedRateLimiterID` in VSD API.
@@ -587,7 +587,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Get queue3_forwarding_classes value.
 
             Notes:
-                Queue3 Forwarding Classes for this Egress QOS Policy Possible values are NONE, A, B, C, D, E, F, G, H, .
+                Queue3 Forwarding Classes for this Egress QoS Policy Possible values are NONE, A, B, C, D, E, F, G, H.
 
                 
                 This attribute is named `queue3ForwardingClasses` in VSD API.
@@ -600,7 +600,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Set queue3_forwarding_classes value.
 
             Notes:
-                Queue3 Forwarding Classes for this Egress QOS Policy Possible values are NONE, A, B, C, D, E, F, G, H, .
+                Queue3 Forwarding Classes for this Egress QoS Policy Possible values are NONE, A, B, C, D, E, F, G, H.
 
                 
                 This attribute is named `queue3ForwardingClasses` in VSD API.
@@ -614,7 +614,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Get queue4_associated_rate_limiter_id value.
 
             Notes:
-                ID of the queue4 rate limiter associated with this Egress QOS policy.
+                ID of the queue4 rate limiter associated with this Egress QoS policy.
 
                 
                 This attribute is named `queue4AssociatedRateLimiterID` in VSD API.
@@ -627,7 +627,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Set queue4_associated_rate_limiter_id value.
 
             Notes:
-                ID of the queue4 rate limiter associated with this Egress QOS policy.
+                ID of the queue4 rate limiter associated with this Egress QoS policy.
 
                 
                 This attribute is named `queue4AssociatedRateLimiterID` in VSD API.
@@ -641,7 +641,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Get queue4_forwarding_classes value.
 
             Notes:
-                Queue4 Forwarding Classes for this Egress QOS Policy Possible values are NONE, A, B, C, D, E, F, G, H, .
+                Queue4 Forwarding Classes for this Egress QoS Policy Possible values are NONE, A, B, C, D, E, F, G, H.
 
                 
                 This attribute is named `queue4ForwardingClasses` in VSD API.
@@ -654,7 +654,7 @@ class NUEgressQOSPolicy(NURESTObject):
         """ Set queue4_forwarding_classes value.
 
             Notes:
-                Queue4 Forwarding Classes for this Egress QOS Policy Possible values are NONE, A, B, C, D, E, F, G, H, .
+                Queue4 Forwarding Classes for this Egress QoS Policy Possible values are NONE, A, B, C, D, E, F, G, H.
 
                 
                 This attribute is named `queue4ForwardingClasses` in VSD API.

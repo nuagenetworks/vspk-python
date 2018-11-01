@@ -28,6 +28,9 @@
 
 
 
+from .fetchers import NUPermissionsFetcher
+
+
 from .fetchers import NUMetadatasFetcher
 
 
@@ -35,6 +38,9 @@ from .fetchers import NUVLANsFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
+
+
+from .fetchers import NUEnterprisePermissionsFetcher
 
 
 from .fetchers import NUNSPortsFetcher
@@ -57,7 +63,7 @@ class NURedundantPort(NURESTObject):
     
     CONST_PERMITTED_ACTION_USE = "USE"
     
-    CONST_SPEED_BASETX100 = "BASETX100"
+    CONST_SPEED_BASET10 = "BASET10"
     
     CONST_PERMITTED_ACTION_READ = "READ"
     
@@ -75,7 +81,7 @@ class NURedundantPort(NURESTObject):
     
     CONST_SPEED_BASET1000 = "BASET1000"
     
-    CONST_SPEED_BASE10 = "BASE10"
+    CONST_SPEED_BASEX10G = "BASEX10G"
     
     CONST_STATUS_MISMATCH = "MISMATCH"
     
@@ -89,7 +95,7 @@ class NURedundantPort(NURESTObject):
     
     CONST_SPEED_AUTONEGOTIATE = "AUTONEGOTIATE"
     
-    CONST_SPEED_BASEX10G = "BASEX10G"
+    CONST_SPEED_BASETX100 = "BASETX100"
     
     
 
@@ -142,7 +148,7 @@ class NURedundantPort(NURESTObject):
         self.expose_attribute(local_name="port_peer1_id", remote_name="portPeer1ID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="port_peer2_id", remote_name="portPeer2ID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS'])
-        self.expose_attribute(local_name="speed", remote_name="speed", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTONEGOTIATE', u'BASE10', u'BASET1000', u'BASETX100', u'BASEX10G'])
+        self.expose_attribute(local_name="speed", remote_name="speed", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTONEGOTIATE', u'BASET10', u'BASET1000', u'BASETX100', u'BASEX10G'])
         self.expose_attribute(local_name="use_untagged_heartbeat_vlan", remote_name="useUntaggedHeartbeatVlan", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_user_mnemonic", remote_name="useUserMnemonic", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=False, is_unique=False)
@@ -154,6 +160,9 @@ class NURedundantPort(NURESTObject):
         # Fetchers
         
         
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -161,6 +170,9 @@ class NURedundantPort(NURESTObject):
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ns_ports = NUNSPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")

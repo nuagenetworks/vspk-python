@@ -62,9 +62,13 @@ Attributes
 
 - ``associated_live_entity_id``: In the draft mode, the ACL entry refers to this LiveEntity. In non-drafted mode, this is null.
 
+- ``associated_live_template_id``: In the draft mode, the ACL entity refers to this live entity parent. In non-drafted mode, this is null
+
 - ``associated_traffic_type``: This property reflects the type of traffic in case an ACL entry is created using an Service or Service Group. In case a protocol and port are specified for the ACL entry, this property has to be empty (null). Supported values are L4_SERVICE, L4_SERVICE_GROUP and empty.
 
 - ``associated_traffic_type_id``: If a traffic type is specified as Service or Service Group, then the associated Id of  Service / Service Group should be specifed here
+
+- ``associated_virtual_firewall_rule_id``: The ID of the Virtual Firewall Rule, if this was derived as part of the Virtual Firewall Rule creation
 
 - ``stateful``: True means that this ACL entry is stateful, so there will be a corresponding rule that will be created by OVS in the network. False means that there is no corresponding rule created by OVS in the network.
 
@@ -96,15 +100,15 @@ Parents
 --------
 
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
-- :ref:`nuvport.NUVPort<nuvport>`
+- :ref:`nume.NUMe<nume>`
 
 - :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
 
-- :ref:`nul2domain.NUL2Domain<nul2domain>`
+- :ref:`nuvport.NUVPort<nuvport>`
 
-- :ref:`nume.NUMe<nume>`
+- :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`
 

@@ -26,6 +26,8 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``dpdk_enabled``: Flag to indicate if an ACCESS port is DPDK Enabled or not.
+
 - ``uplink``: Flag to indicate that is an uplink or downlink port.
 
 - ``state``: The current state of the port.
@@ -51,9 +53,9 @@ Parents
 --------
 
 
+- :ref:`nuvsc.NUVSC<nuvsc>`
+
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
 - :ref:`nuhsc.NUHSC<nuhsc>`
-
-- :ref:`nuvsc.NUVSC<nuvsc>`
 

@@ -5,7 +5,7 @@ nupermission
 
 .. class:: nupermission.NUPermission(bambou.nurest_object.NUMetaRESTObject,):
 
-Represents  Permitted action on an  entity for a group.
+User groups that are granted permissions for objects such as domains, zones, and subnets can see and manipulate everything within the object.
 
 
 Attributes
@@ -52,17 +52,21 @@ Parents
 
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
-- :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
-
 - :ref:`nuzone.NUZone<nuzone>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuwanservice.NUWANService<nuwanservice>`
 
+- :ref:`nuredundantport.NURedundantPort<nuredundantport>`
+
 - :ref:`nuport.NUPort<nuport>`
 
+- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
+
 - :ref:`nuvlan.NUVLAN<nuvlan>`
+
+- :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
@@ -70,9 +74,9 @@ Parents
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
-- :ref:`nunsport.NUNSPort<nunsport>`
-
-- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
-
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
+
+- :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
+
+- :ref:`nunsport.NUNSPort<nunsport>`
 

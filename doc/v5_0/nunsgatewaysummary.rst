@@ -12,23 +12,31 @@ Attributes
 ----------
 
 
+- ``nsg_version``: The NSG Version (software) as reported during bootstrapping or following an upgrade.
+
 - ``major_alarms_count``: Total number of alarms with MAJOR severity
+
+- ``last_updated_by``: ID of the user who last updated the object.
 
 - ``gateway_id``: The ID of the NSG from which the infomation was collected.
 
 - ``gateway_name``: The name of the gateway
 
+- ``gateway_type``: Details on the type of gateway for which the summary is given.  For NSGs, the value would be NSGateway.
+
 - ``latitude``: The latitude of the location of the NSG
 
 - ``address``: Formatted address including property number, street name, suite or office number of the NSG
 
-- ``time_zone_id``: Time zone in which the Gateway is located.  This can be in the form of a UTC/GMT offset, continent/city location, or country/region.  The available time zones can be found in /usr/share/zoneinfo on a Linux machine or retrieved with TimeZone.getAvailableIDs() in Java.  Refer to the IANA (Internet Assigned Numbers Authority) for a list of time zones.  URL :  http://www.iana.org/time-zones  Default value is UTC (translating to Etc/Zulu)
+- ``timezone_id``: Time zone in which the Gateway is located.  This can be in the form of a UTC/GMT offset, continent/city location, or country/region.  The available time zones can be found in /usr/share/zoneinfo on a Linux machine or retrieved with TimeZone.getAvailableIDs() in Java.  Refer to the IANA (Internet Assigned Numbers Authority) for a list of time zones.  URL :  http://www.iana.org/time-zones  Default value is UTC (translating to Etc/Zulu)
 
 - ``minor_alarms_count``: Total number of alarms with MINOR severity
 
 - ``info_alarms_count``: Total number of alarms with INFO severity
 
 - ``enterprise_id``: The enterprise associated with this NSG
+
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``locality``: Locality/City/County of the NSG
 
@@ -40,14 +48,24 @@ Attributes
 
 - ``critical_alarms_count``: Total number of alarms with CRITICAL severity
 
-- ``nsg_version``: The NSG Version (software) as reported during bootstrapping or following an upgrade.
-
 - ``state``: State/Province/Region
+
+- ``external_id``: External object ID. Used for integration with third party systems
 
 - ``system_id``: Identifier of the gateway
 
 
 
+
+Children
+--------
+
+================================================================================================================================================               ==========================================================================================
+**class**                                                                                                                                                      **fetcher**
+
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+================================================================================================================================================               ==========================================================================================
 
 
 

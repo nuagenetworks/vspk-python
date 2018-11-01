@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``managed_object_id``: VCenter Managed Object ID of the Datacenter
+
 - ``last_updated_by``: ID of the user who last updated the object.
 
 - ``network_list``: The available network list

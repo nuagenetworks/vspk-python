@@ -28,6 +28,8 @@ Attributes
 
 - ``timestamp``: Indicates the time at which the alarm was triggered
 
+- ``alarmed_object_id``: Alarmed Object ID
+
 - ``enterprise_id``: Enterprise that this alarm belongs to
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
@@ -59,19 +61,21 @@ Parents
 
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
-- :ref:`nushuntlink.NUShuntLink<nushuntlink>`
-
 - :ref:`nutca.NUTCA<nutca>`
 
-- :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
+- :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
+
+- :ref:`nuvsc.NUVSC<nuvsc>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nuport.NUPort<nuport>`
+
+- :ref:`nucontainer.NUContainer<nucontainer>`
 
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
@@ -79,25 +83,27 @@ Parents
 
 - :ref:`nuvlan.NUVLAN<nuvlan>`
 
-- :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
+- :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
-- :ref:`nunsgateway.NUNSGateway<nunsgateway>`
+- :ref:`nushuntlink.NUShuntLink<nushuntlink>`
 
-- :ref:`nuvsc.NUVSC<nuvsc>`
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
+
+- :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
 - :ref:`nuvm.NUVM<nuvm>`
 
 - :ref:`nuvsd.NUVSD<nuvsd>`
 
-- :ref:`nunsport.NUNSPort<nunsport>`
-
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
-
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuwirelessport.NUWirelessPort<nuwirelessport>`
 
-- :ref:`nucontainer.NUContainer<nucontainer>`
+- :ref:`nunsport.NUNSPort<nunsport>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

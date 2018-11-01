@@ -16,10 +16,26 @@ Attributes
 
 - ``family``: The IP address family. Supported IPV4 for the time being.
 
+- ``last_updated_by``: ID of the user who last updated the object.
+
 - ``address_list``: The collection of IP addresses that will SPATed in the customer domain.
 
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``external_id``: External object ID. Used for integration with third party systems
 
 
+
+
+Children
+--------
+
+================================================================================================================================================               ==========================================================================================
+**class**                                                                                                                                                      **fetcher**
+
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+================================================================================================================================================               ==========================================================================================
 
 
 

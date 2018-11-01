@@ -78,6 +78,7 @@ class NUGatewaySecuredData(NURESTObject):
         self._keyserver_cert_serial_number = None
         self._signed_data = None
         self._entity_scope = None
+        self._associated_enterprise_id = None
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -86,6 +87,7 @@ class NUGatewaySecuredData(NURESTObject):
         self.expose_attribute(local_name="keyserver_cert_serial_number", remote_name="keyserverCertSerialNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="signed_data", remote_name="signedData", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -134,7 +136,7 @@ class NUGatewaySecuredData(NURESTObject):
         """ Get data value.
 
             Notes:
-                encrypted data
+                Encrypted data
 
                 
         """
@@ -145,7 +147,7 @@ class NUGatewaySecuredData(NURESTObject):
         """ Set data value.
 
             Notes:
-                encrypted data
+                Encrypted data
 
                 
         """
@@ -211,7 +213,7 @@ class NUGatewaySecuredData(NURESTObject):
         """ Get signed_data value.
 
             Notes:
-                private key signed data
+                Private key signed data.
 
                 
                 This attribute is named `signedData` in VSD API.
@@ -224,7 +226,7 @@ class NUGatewaySecuredData(NURESTObject):
         """ Set signed_data value.
 
             Notes:
-                private key signed data
+                Private key signed data.
 
                 
                 This attribute is named `signedData` in VSD API.
@@ -258,6 +260,33 @@ class NUGatewaySecuredData(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def associated_enterprise_id(self):
+        """ Get associated_enterprise_id value.
+
+            Notes:
+                Identification of the Enterprise instance to which the Gateway Secure Data is related.
+
+                
+                This attribute is named `associatedEnterpriseID` in VSD API.
+                
+        """
+        return self._associated_enterprise_id
+
+    @associated_enterprise_id.setter
+    def associated_enterprise_id(self, value):
+        """ Set associated_enterprise_id value.
+
+            Notes:
+                Identification of the Enterprise instance to which the Gateway Secure Data is related.
+
+                
+                This attribute is named `associatedEnterpriseID` in VSD API.
+                
+        """
+        self._associated_enterprise_id = value
 
     
     @property

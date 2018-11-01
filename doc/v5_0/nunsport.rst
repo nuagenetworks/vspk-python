@@ -12,9 +12,9 @@ Attributes
 ----------
 
 
-- ``nat_traversal``: Enum value that states the type of NAT Traversal the NSG instance will use to talk to other NSGs and the Internet.  (This field is deprecated in 5.0)
+- ``nat_traversal``: Enum value that states the type of NAT Traversal the NSG instance will use to talk to other NSGs and the Internet. (This field is deprecated in 5.0)
 
-- ``vlan_range``: VLAN Range of the Port.  Format must conform to a-b,c,d-f where a,b,c,d,f are integers between 0 and 4095.
+- ``vlan_range``: VLAN Range of the Port. Format must conform to a-b,c,d-f where a,b,c,d,f are integers between 0 and 4094.
 
 - ``name`` (**Mandatory**): Name of the Port
 
@@ -40,7 +40,7 @@ Attributes
 
 - ``traffic_through_ubr_only``: If enabled, cuts down the number of probes to just the number of provisioned UBRs.
 
-- ``use_user_mnemonic``: determines whether to use user mnemonic of the Port
+- ``use_user_mnemonic``: Determines whether to use user mnemonic of the NSG Port
 
 - ``user_mnemonic``: user mnemonic of the Port
 
@@ -81,9 +81,9 @@ Parents
 --------
 
 
-- :ref:`nuredundantport.NURedundantPort<nuredundantport>`
-
 - :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
+
+- :ref:`nuredundantport.NURedundantPort<nuredundantport>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 

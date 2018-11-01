@@ -16,7 +16,7 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``default_tag``: Boolean which identifies if this is a default policy group category.
+- ``default_category``: Boolean which identifies if this is a default policy group category.
 
 - ``description``: Describes the Policy Group Category.
 
@@ -43,6 +43,8 @@ Children
 Parents
 --------
 
+
+- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

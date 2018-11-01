@@ -28,10 +28,13 @@
 
 
 
-from .fetchers import NUCaptivePortalProfilesFetcher
+from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUAlarmsFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
 
 
 from .fetchers import NUEventLogsFetcher
@@ -43,7 +46,7 @@ class NUSSIDConnection(NURESTObject):
     """ Represents a SSIDConnection in the VSD
 
         Notes:
-            An SSID Connection instance represents an SSID defined on a WiFi interface.  One SSID Connection is required per SSID created on a WiFi Card/Port.
+            An SSID Connection instance represents an SSID defined on a WiFi interface. One SSID Connection is required per SSID created on a WiFi Card/Port.
     """
 
     __rest_name__ = "ssidconnection"
@@ -54,17 +57,41 @@ class NUSSIDConnection(NURESTObject):
     
     CONST_AUTHENTICATION_MODE_WEP = "WEP"
     
+    CONST_PERMITTED_ACTION_ALL = "ALL"
+    
+    CONST_PERMITTED_ACTION_READ = "READ"
+    
     CONST_REDIRECT_OPTION_CONFIGURED_URL = "CONFIGURED_URL"
     
     CONST_AUTHENTICATION_MODE_WPA = "WPA"
     
+    CONST_PERMITTED_ACTION_USE = "USE"
+    
+    CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
+    
+    CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
+    
     CONST_REDIRECT_OPTION_ORIGINAL_REQUEST = "ORIGINAL_REQUEST"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_AUTHENTICATION_MODE_CAPTIVE_PORTAL = "CAPTIVE_PORTAL"
     
-    CONST_AUTHENTICATION_MODE_WPA_OTP = "WPA_OTP"
+    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
+    
+    CONST_STATUS_INITIALIZED = "INITIALIZED"
     
     CONST_AUTHENTICATION_MODE_OPEN = "OPEN"
+    
+    CONST_STATUS_MISMATCH = "MISMATCH"
+    
+    CONST_STATUS_READY = "READY"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_STATUS_ORPHAN = "ORPHAN"
+    
+    CONST_AUTHENTICATION_MODE_WPA_OTP = "WPA_OTP"
     
     CONST_AUTHENTICATION_MODE_WPA_WPA2 = "WPA_WPA2"
     
@@ -91,42 +118,63 @@ class NUSSIDConnection(NURESTObject):
         
         self._name = None
         self._passphrase = None
+        self._last_updated_by = None
+        self._gateway_id = None
+        self._readonly = None
         self._redirect_option = None
         self._redirect_url = None
         self._generic_config = None
+        self._permitted_action = None
         self._description = None
+        self._restricted = None
         self._white_list = None
         self._black_list = None
+        self._vlan_id = None
         self._interface_name = None
+        self._entity_scope = None
         self._vport_id = None
         self._broadcast_ssid = None
         self._associated_captive_portal_profile_id = None
         self._associated_egress_qos_policy_id = None
+        self._status = None
         self._authentication_mode = None
+        self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=True)
         self.expose_attribute(local_name="passphrase", remote_name="passphrase", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_id", remote_name="gatewayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="readonly", remote_name="readonly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redirect_option", remote_name="redirectOption", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONFIGURED_URL', u'ORIGINAL_REQUEST'])
         self.expose_attribute(local_name="redirect_url", remote_name="redirectURL", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="generic_config", remote_name="genericConfig", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="restricted", remote_name="restricted", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="white_list", remote_name="whiteList", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="black_list", remote_name="blackList", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vlan_id", remote_name="vlanID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="interface_name", remote_name="interfaceName", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="vport_id", remote_name="vportID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="broadcast_ssid", remote_name="broadcastSSID", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_captive_portal_profile_id", remote_name="associatedCaptivePortalProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'INITIALIZED', u'MISMATCH', u'ORPHAN', u'READY'])
         self.expose_attribute(local_name="authentication_mode", remote_name="authenticationMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'CAPTIVE_PORTAL', u'OPEN', u'WEP', u'WPA', u'WPA2', u'WPA_OTP', u'WPA_WPA2'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
         
         
-        self.captive_portal_profiles = NUCaptivePortalProfilesFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -141,7 +189,7 @@ class NUSSIDConnection(NURESTObject):
         """ Get name value.
 
             Notes:
-                The name associated to the SSID instance.  Has to be unique within an NSG.
+                The name associated to the SSID instance. Has to be unique within an NSG.
 
                 
         """
@@ -152,7 +200,7 @@ class NUSSIDConnection(NURESTObject):
         """ Set name value.
 
             Notes:
-                The name associated to the SSID instance.  Has to be unique within an NSG.
+                The name associated to the SSID instance. Has to be unique within an NSG.
 
                 
         """
@@ -164,7 +212,7 @@ class NUSSIDConnection(NURESTObject):
         """ Get passphrase value.
 
             Notes:
-                Password or passphrase associated to an SSID instance.  Based on the authenticationMode selected.
+                Password or passphrase associated to an SSID instance. Based on the authenticationMode selected.
 
                 
         """
@@ -175,11 +223,88 @@ class NUSSIDConnection(NURESTObject):
         """ Set passphrase value.
 
             Notes:
-                Password or passphrase associated to an SSID instance.  Based on the authenticationMode selected.
+                Password or passphrase associated to an SSID instance. Based on the authenticationMode selected.
 
                 
         """
         self._passphrase = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def gateway_id(self):
+        """ Get gateway_id value.
+
+            Notes:
+                The Gateway (NSG) associated with this SSID. This is a read only attribute
+
+                
+                This attribute is named `gatewayID` in VSD API.
+                
+        """
+        return self._gateway_id
+
+    @gateway_id.setter
+    def gateway_id(self, value):
+        """ Set gateway_id value.
+
+            Notes:
+                The Gateway (NSG) associated with this SSID. This is a read only attribute
+
+                
+                This attribute is named `gatewayID` in VSD API.
+                
+        """
+        self._gateway_id = value
+
+    
+    @property
+    def readonly(self):
+        """ Get readonly value.
+
+            Notes:
+                Determines whether this entity is read only. Read only objects cannot be modified or deleted.
+
+                
+        """
+        return self._readonly
+
+    @readonly.setter
+    def readonly(self, value):
+        """ Set readonly value.
+
+            Notes:
+                Determines whether this entity is read only. Read only objects cannot be modified or deleted.
+
+                
+        """
+        self._readonly = value
 
     
     @property
@@ -264,6 +389,33 @@ class NUSSIDConnection(NURESTObject):
 
     
     @property
+    def permitted_action(self):
+        """ Get permitted_action value.
+
+            Notes:
+                The permitted action to USE/EXTEND this SSID Connection
+
+                
+                This attribute is named `permittedAction` in VSD API.
+                
+        """
+        return self._permitted_action
+
+    @permitted_action.setter
+    def permitted_action(self, value):
+        """ Set permitted_action value.
+
+            Notes:
+                The permitted action to USE/EXTEND this SSID Connection
+
+                
+                This attribute is named `permittedAction` in VSD API.
+                
+        """
+        self._permitted_action = value
+
+    
+    @property
     def description(self):
         """ Get description value.
 
@@ -284,6 +436,29 @@ class NUSSIDConnection(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def restricted(self):
+        """ Get restricted value.
+
+            Notes:
+                Determines whether this entity can be used in associations with other properties.
+
+                
+        """
+        return self._restricted
+
+    @restricted.setter
+    def restricted(self, value):
+        """ Set restricted value.
+
+            Notes:
+                Determines whether this entity can be used in associations with other properties.
+
+                
+        """
+        self._restricted = value
 
     
     @property
@@ -341,6 +516,33 @@ class NUSSIDConnection(NURESTObject):
 
     
     @property
+    def vlan_id(self):
+        """ Get vlan_id value.
+
+            Notes:
+                A VLAN representation of the SSID ordering on a Wireless Card/Port.
+
+                
+                This attribute is named `vlanID` in VSD API.
+                
+        """
+        return self._vlan_id
+
+    @vlan_id.setter
+    def vlan_id(self, value):
+        """ Set vlan_id value.
+
+            Notes:
+                A VLAN representation of the SSID ordering on a Wireless Card/Port.
+
+                
+                This attribute is named `vlanID` in VSD API.
+                
+        """
+        self._vlan_id = value
+
+    
+    @property
     def interface_name(self):
         """ Get interface_name value.
 
@@ -368,11 +570,38 @@ class NUSSIDConnection(NURESTObject):
 
     
     @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
     def vport_id(self):
         """ Get vport_id value.
 
             Notes:
-                The Vport associated with this SSID connection.  The attribute can't be modified directly from the SSID Connection.
+                The Vport associated with this SSID connection. The attribute can't be modified directly from the SSID Connection.
 
                 
                 This attribute is named `vportID` in VSD API.
@@ -385,7 +614,7 @@ class NUSSIDConnection(NURESTObject):
         """ Set vport_id value.
 
             Notes:
-                The Vport associated with this SSID connection.  The attribute can't be modified directly from the SSID Connection.
+                The Vport associated with this SSID connection. The attribute can't be modified directly from the SSID Connection.
 
                 
                 This attribute is named `vportID` in VSD API.
@@ -476,6 +705,29 @@ class NUSSIDConnection(NURESTObject):
 
     
     @property
+    def status(self):
+        """ Get status value.
+
+            Notes:
+                Status of the SSID/VLAN. Possible values are - INITIALIZED, ORPHAN, READY, MISMATCH
+
+                
+        """
+        return self._status
+
+    @status.setter
+    def status(self, value):
+        """ Set status value.
+
+            Notes:
+                Status of the SSID/VLAN. Possible values are - INITIALIZED, ORPHAN, READY, MISMATCH
+
+                
+        """
+        self._status = value
+
+    
+    @property
     def authentication_mode(self):
         """ Get authentication_mode value.
 
@@ -500,6 +752,33 @@ class NUSSIDConnection(NURESTObject):
                 
         """
         self._authentication_mode = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

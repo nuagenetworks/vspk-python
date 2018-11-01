@@ -96,7 +96,7 @@ class NUOSPFInstance(NURESTObject):
         self.expose_attribute(local_name="associated_export_routing_policy_id", remote_name="associatedExportRoutingPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_import_routing_policy_id", remote_name="associatedImportRoutingPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="super_backbone_enabled", remote_name="superBackboneEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="export_limit", remote_name="exportLimit", attribute_type=int, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="export_limit", remote_name="exportLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="export_to_overlay", remote_name="exportToOverlay", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="external_preference", remote_name="externalPreference", attribute_type=int, is_required=False, is_unique=False)

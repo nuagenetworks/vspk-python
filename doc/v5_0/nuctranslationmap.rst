@@ -14,12 +14,30 @@ Attributes
 
 - ``mapping_type`` (**Mandatory**): NAT for 1:1 mapping or PAT for *:1 mappings.
 
+- ``last_updated_by``: ID of the user who last updated the object.
+
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``associated_domain_id``: Domain associated to this address mapping.
+
 - ``customer_alias_ip`` (**Mandatory**): Customer public IP in the provider domain.
 
 - ``customer_ip`` (**Mandatory**): Customer private IP in the customer domain.
 
+- ``external_id``: External object ID. Used for integration with third party systems
 
 
+
+
+Children
+--------
+
+================================================================================================================================================               ==========================================================================================
+**class**                                                                                                                                                      **fetcher**
+
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+================================================================================================================================================               ==========================================================================================
 
 
 

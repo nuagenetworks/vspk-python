@@ -110,6 +110,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self._enterprise_id = None
         self._entity_scope = None
         self._controller_less_duration = None
+        self._controller_less_enabled = None
         self._controller_less_forwarding_mode = None
         self._controller_less_remote_duration = None
         self._force_immediate_system_sync = None
@@ -137,6 +138,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="controller_less_duration", remote_name="controllerLessDuration", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="controller_less_enabled", remote_name="controllerLessEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="controller_less_forwarding_mode", remote_name="controllerLessForwardingMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'LOCAL_AND_REMOTE', u'LOCAL_ONLY'])
         self.expose_attribute(local_name="controller_less_remote_duration", remote_name="controllerLessRemoteDuration", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="force_immediate_system_sync", remote_name="forceImmediateSystemSync", attribute_type=bool, is_required=False, is_unique=False)
@@ -584,6 +586,33 @@ class NUInfrastructureGatewayProfile(NURESTObject):
                 
         """
         self._controller_less_duration = value
+
+    
+    @property
+    def controller_less_enabled(self):
+        """ Get controller_less_enabled value.
+
+            Notes:
+                Flag to enable controller-less operations
+
+                
+                This attribute is named `controllerLessEnabled` in VSD API.
+                
+        """
+        return self._controller_less_enabled
+
+    @controller_less_enabled.setter
+    def controller_less_enabled(self, value):
+        """ Set controller_less_enabled value.
+
+            Notes:
+                Flag to enable controller-less operations
+
+                
+                This attribute is named `controllerLessEnabled` in VSD API.
+                
+        """
+        self._controller_less_enabled = value
 
     
     @property

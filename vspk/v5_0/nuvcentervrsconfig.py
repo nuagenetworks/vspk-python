@@ -55,9 +55,45 @@ class NUVCenterVRSConfig(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_REMOTE_SYSLOG_SERVER_TYPE_NONE = "NONE"
+    
+    CONST_MEMORY_SIZE_IN_GB_LARGE_8 = "LARGE_8"
+    
+    CONST_REMOTE_SYSLOG_SERVER_TYPE_UDP = "UDP"
+    
+    CONST_CPU_COUNT_DEFAULT_2 = "DEFAULT_2"
+    
+    CONST_MEMORY_SIZE_IN_GB_DEFAULT_4 = "DEFAULT_4"
+    
+    CONST_DESTINATION_MIRROR_PORT_ENS160 = "ens160"
+    
+    CONST_DESTINATION_MIRROR_PORT_ENS161 = "ens161"
+    
+    CONST_MEMORY_SIZE_IN_GB_MEDIUM_6 = "MEDIUM_6"
+    
+    CONST_DESTINATION_MIRROR_PORT_ENS224 = "ens224"
+    
+    CONST_REMOTE_SYSLOG_SERVER_TYPE_TCP = "TCP"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_AVRS_PROFILE_AVRS_25G = "AVRS_25G"
+    
+    CONST_CPU_COUNT_LARGE_6 = "LARGE_6"
+    
+    CONST_DESTINATION_MIRROR_PORT_NO_MIRROR = "no_mirror"
+    
+    CONST_DESTINATION_MIRROR_PORT_ENS256 = "ens256"
+    
+    CONST_CPU_COUNT_MEDIUM_4 = "MEDIUM_4"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_PERSONALITY_VDF = "VDF"
+    
+    CONST_CPU_COUNT_XLARGE_8 = "XLARGE_8"
+    
+    CONST_PERSONALITY_VRS = "VRS"
     
     
 
@@ -78,17 +114,33 @@ class NUVCenterVRSConfig(NURESTObject):
 
         # Read/Write Attributes
         
+        self._arp_reply = None
+        self._vrs_configuration_time_limit = None
         self._v_require_nuage_metadata = None
+        self._manage_vrs_availability = None
         self._last_updated_by = None
         self._data_dns1 = None
         self._data_dns2 = None
         self._data_gateway = None
         self._data_network_portgroup = None
         self._datapath_sync_timeout = None
+        self._secondary_data_uplink_dhcp_enabled = None
+        self._secondary_data_uplink_enabled = None
+        self._secondary_data_uplink_interface = None
+        self._secondary_data_uplink_mtu = None
+        self._secondary_data_uplink_primary_controller = None
+        self._secondary_data_uplink_secondary_controller = None
+        self._secondary_data_uplink_underlay_id = None
+        self._secondary_data_uplink_vdf_control_vlan = None
         self._secondary_nuage_controller = None
+        self._memory_size_in_gb = None
+        self._remote_syslog_server_ip = None
+        self._remote_syslog_server_port = None
+        self._remote_syslog_server_type = None
         self._generic_split_activation = None
         self._separate_data_network = None
         self._personality = None
+        self._destination_mirror_port = None
         self._metadata_server_ip = None
         self._metadata_server_listen_port = None
         self._metadata_server_port = None
@@ -97,6 +149,8 @@ class NUVCenterVRSConfig(NURESTObject):
         self._network_uplink_interface_gateway = None
         self._network_uplink_interface_ip = None
         self._network_uplink_interface_netmask = None
+        self._revertive_controller_enabled = None
+        self._revertive_timer = None
         self._nfs_log_server = None
         self._nfs_mount_path = None
         self._mgmt_dns1 = None
@@ -104,21 +158,38 @@ class NUVCenterVRSConfig(NURESTObject):
         self._mgmt_gateway = None
         self._mgmt_network_portgroup = None
         self._dhcp_relay_server = None
+        self._mirror_network_portgroup = None
+        self._disable_gro_on_datapath = None
+        self._disable_lro_on_datapath = None
         self._site_id = None
         self._allow_data_dhcp = None
         self._allow_mgmt_dhcp = None
         self._flow_eviction_threshold = None
         self._vm_network_portgroup = None
+        self._enable_vrs_resource_reservation = None
         self._entity_scope = None
+        self._configured_metrics_push_interval = None
         self._portgroup_metadata = None
         self._nova_client_version = None
+        self._nova_identity_url_version = None
         self._nova_metadata_service_auth_url = None
         self._nova_metadata_service_endpoint = None
         self._nova_metadata_service_password = None
         self._nova_metadata_service_tenant = None
         self._nova_metadata_service_username = None
         self._nova_metadata_shared_secret = None
+        self._nova_os_keystone_username = None
+        self._nova_project_domain_name = None
+        self._nova_project_name = None
         self._nova_region_name = None
+        self._nova_user_domain_name = None
+        self._upgrade_package_password = None
+        self._upgrade_package_url = None
+        self._upgrade_package_username = None
+        self._upgrade_script_time_limit = None
+        self._cpu_count = None
+        self._primary_data_uplink_underlay_id = None
+        self._primary_data_uplink_vdf_control_vlan = None
         self._primary_nuage_controller = None
         self._vrs_password = None
         self._vrs_user_name = None
@@ -138,19 +209,38 @@ class NUVCenterVRSConfig(NURESTObject):
         self._multicast_send_interface_netmask = None
         self._multicast_source_portgroup = None
         self._customized_script_url = None
+        self._ovf_url = None
+        self._avrs_enabled = None
+        self._avrs_profile = None
         self._external_id = None
         
+        self.expose_attribute(local_name="arp_reply", remote_name="ARPReply", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrs_configuration_time_limit", remote_name="VRSConfigurationTimeLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="v_require_nuage_metadata", remote_name="vRequireNuageMetadata", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="manage_vrs_availability", remote_name="manageVRSAvailability", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data_dns1", remote_name="dataDNS1", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data_dns2", remote_name="dataDNS2", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data_gateway", remote_name="dataGateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data_network_portgroup", remote_name="dataNetworkPortgroup", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_sync_timeout", remote_name="datapathSyncTimeout", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="secondary_data_uplink_dhcp_enabled", remote_name="secondaryDataUplinkDHCPEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="secondary_data_uplink_enabled", remote_name="secondaryDataUplinkEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="secondary_data_uplink_interface", remote_name="secondaryDataUplinkInterface", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="secondary_data_uplink_mtu", remote_name="secondaryDataUplinkMTU", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="secondary_data_uplink_primary_controller", remote_name="secondaryDataUplinkPrimaryController", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="secondary_data_uplink_secondary_controller", remote_name="secondaryDataUplinkSecondaryController", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="secondary_data_uplink_underlay_id", remote_name="secondaryDataUplinkUnderlayID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="secondary_data_uplink_vdf_control_vlan", remote_name="secondaryDataUplinkVDFControlVLAN", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_nuage_controller", remote_name="secondaryNuageController", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="memory_size_in_gb", remote_name="memorySizeInGB", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT_4', u'LARGE_8', u'MEDIUM_6'])
+        self.expose_attribute(local_name="remote_syslog_server_ip", remote_name="remoteSyslogServerIP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="remote_syslog_server_port", remote_name="remoteSyslogServerPort", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="remote_syslog_server_type", remote_name="remoteSyslogServerType", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'TCP', u'UDP'])
         self.expose_attribute(local_name="generic_split_activation", remote_name="genericSplitActivation", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="separate_data_network", remote_name="separateDataNetwork", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'VDF', u'VRS'])
+        self.expose_attribute(local_name="destination_mirror_port", remote_name="destinationMirrorPort", attribute_type=str, is_required=False, is_unique=False, choices=[u'ens160', u'ens161', u'ens224', u'ens256', u'no_mirror'])
         self.expose_attribute(local_name="metadata_server_ip", remote_name="metadataServerIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_server_listen_port", remote_name="metadataServerListenPort", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_server_port", remote_name="metadataServerPort", attribute_type=int, is_required=False, is_unique=False)
@@ -159,6 +249,8 @@ class NUVCenterVRSConfig(NURESTObject):
         self.expose_attribute(local_name="network_uplink_interface_gateway", remote_name="networkUplinkInterfaceGateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_uplink_interface_ip", remote_name="networkUplinkInterfaceIp", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_uplink_interface_netmask", remote_name="networkUplinkInterfaceNetmask", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="revertive_controller_enabled", remote_name="revertiveControllerEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="revertive_timer", remote_name="revertiveTimer", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nfs_log_server", remote_name="nfsLogServer", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nfs_mount_path", remote_name="nfsMountPath", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mgmt_dns1", remote_name="mgmtDNS1", attribute_type=str, is_required=False, is_unique=False)
@@ -166,21 +258,38 @@ class NUVCenterVRSConfig(NURESTObject):
         self.expose_attribute(local_name="mgmt_gateway", remote_name="mgmtGateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mgmt_network_portgroup", remote_name="mgmtNetworkPortgroup", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_relay_server", remote_name="dhcpRelayServer", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="mirror_network_portgroup", remote_name="mirrorNetworkPortgroup", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="disable_gro_on_datapath", remote_name="disableGROOnDatapath", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="disable_lro_on_datapath", remote_name="disableLROOnDatapath", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="site_id", remote_name="siteId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_data_dhcp", remote_name="allowDataDHCP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_mgmt_dhcp", remote_name="allowMgmtDHCP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_eviction_threshold", remote_name="flowEvictionThreshold", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vm_network_portgroup", remote_name="vmNetworkPortgroup", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enable_vrs_resource_reservation", remote_name="enableVRSResourceReservation", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="configured_metrics_push_interval", remote_name="configuredMetricsPushInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="portgroup_metadata", remote_name="portgroupMetadata", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nova_client_version", remote_name="novaClientVersion", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nova_identity_url_version", remote_name="novaIdentityURLVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nova_metadata_service_auth_url", remote_name="novaMetadataServiceAuthUrl", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nova_metadata_service_endpoint", remote_name="novaMetadataServiceEndpoint", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nova_metadata_service_password", remote_name="novaMetadataServicePassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nova_metadata_service_tenant", remote_name="novaMetadataServiceTenant", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nova_metadata_service_username", remote_name="novaMetadataServiceUsername", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nova_metadata_shared_secret", remote_name="novaMetadataSharedSecret", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nova_os_keystone_username", remote_name="novaOSKeystoneUsername", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nova_project_domain_name", remote_name="novaProjectDomainName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nova_project_name", remote_name="novaProjectName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nova_region_name", remote_name="novaRegionName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="nova_user_domain_name", remote_name="novaUserDomainName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="upgrade_package_password", remote_name="upgradePackagePassword", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="upgrade_package_url", remote_name="upgradePackageURL", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="upgrade_package_username", remote_name="upgradePackageUsername", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="upgrade_script_time_limit", remote_name="upgradeScriptTimeLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="cpu_count", remote_name="cpuCount", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT_2', u'LARGE_6', u'MEDIUM_4', u'XLARGE_8'])
+        self.expose_attribute(local_name="primary_data_uplink_underlay_id", remote_name="primaryDataUplinkUnderlayID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="primary_data_uplink_vdf_control_vlan", remote_name="primaryDataUplinkVDFControlVLAN", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="primary_nuage_controller", remote_name="primaryNuageController", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_password", remote_name="vrsPassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_user_name", remote_name="vrsUserName", attribute_type=str, is_required=False, is_unique=False)
@@ -200,6 +309,9 @@ class NUVCenterVRSConfig(NURESTObject):
         self.expose_attribute(local_name="multicast_send_interface_netmask", remote_name="multicastSendInterfaceNetmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast_source_portgroup", remote_name="multicastSourcePortgroup", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="customized_script_url", remote_name="customizedScriptURL", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ovf_url", remote_name="ovfURL", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="avrs_enabled", remote_name="avrsEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="avrs_profile", remote_name="avrsProfile", attribute_type=str, is_required=False, is_unique=False, choices=[u'AVRS_25G'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -221,6 +333,60 @@ class NUVCenterVRSConfig(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def arp_reply(self):
+        """ Get arp_reply value.
+
+            Notes:
+                Whether ARP Reply is enabled/disabled
+
+                
+                This attribute is named `ARPReply` in VSD API.
+                
+        """
+        return self._arp_reply
+
+    @arp_reply.setter
+    def arp_reply(self, value):
+        """ Set arp_reply value.
+
+            Notes:
+                Whether ARP Reply is enabled/disabled
+
+                
+                This attribute is named `ARPReply` in VSD API.
+                
+        """
+        self._arp_reply = value
+
+    
+    @property
+    def vrs_configuration_time_limit(self):
+        """ Get vrs_configuration_time_limit value.
+
+            Notes:
+                The maximum wait time limit in minutes to get VRS configured at cluster level
+
+                
+                This attribute is named `VRSConfigurationTimeLimit` in VSD API.
+                
+        """
+        return self._vrs_configuration_time_limit
+
+    @vrs_configuration_time_limit.setter
+    def vrs_configuration_time_limit(self, value):
+        """ Set vrs_configuration_time_limit value.
+
+            Notes:
+                The maximum wait time limit in minutes to get VRS configured at cluster level
+
+                
+                This attribute is named `VRSConfigurationTimeLimit` in VSD API.
+                
+        """
+        self._vrs_configuration_time_limit = value
+
     
     @property
     def v_require_nuage_metadata(self):
@@ -247,6 +413,33 @@ class NUVCenterVRSConfig(NURESTObject):
                 
         """
         self._v_require_nuage_metadata = value
+
+    
+    @property
+    def manage_vrs_availability(self):
+        """ Get manage_vrs_availability value.
+
+            Notes:
+                When this is set to true, the vCenter Integration Node will be responsible for marking a VRS Agent as available in the EAM framework. If VCIN fails to mark a VRS Agent as unavailable, vCenter will not migrate VMs to the host running the VRS Agent and will not allow VMs to be powered on that host.
+
+                
+                This attribute is named `manageVRSAvailability` in VSD API.
+                
+        """
+        return self._manage_vrs_availability
+
+    @manage_vrs_availability.setter
+    def manage_vrs_availability(self, value):
+        """ Set manage_vrs_availability value.
+
+            Notes:
+                When this is set to true, the vCenter Integration Node will be responsible for marking a VRS Agent as available in the EAM framework. If VCIN fails to mark a VRS Agent as unavailable, vCenter will not migrate VMs to the host running the VRS Agent and will not allow VMs to be powered on that host.
+
+                
+                This attribute is named `manageVRSAvailability` in VSD API.
+                
+        """
+        self._manage_vrs_availability = value
 
     
     @property
@@ -412,6 +605,222 @@ class NUVCenterVRSConfig(NURESTObject):
 
     
     @property
+    def secondary_data_uplink_dhcp_enabled(self):
+        """ Get secondary_data_uplink_dhcp_enabled value.
+
+            Notes:
+                Enable DHCP on the secondary data uplink.
+
+                
+                This attribute is named `secondaryDataUplinkDHCPEnabled` in VSD API.
+                
+        """
+        return self._secondary_data_uplink_dhcp_enabled
+
+    @secondary_data_uplink_dhcp_enabled.setter
+    def secondary_data_uplink_dhcp_enabled(self, value):
+        """ Set secondary_data_uplink_dhcp_enabled value.
+
+            Notes:
+                Enable DHCP on the secondary data uplink.
+
+                
+                This attribute is named `secondaryDataUplinkDHCPEnabled` in VSD API.
+                
+        """
+        self._secondary_data_uplink_dhcp_enabled = value
+
+    
+    @property
+    def secondary_data_uplink_enabled(self):
+        """ Get secondary_data_uplink_enabled value.
+
+            Notes:
+                Enable secondary data uplink
+
+                
+                This attribute is named `secondaryDataUplinkEnabled` in VSD API.
+                
+        """
+        return self._secondary_data_uplink_enabled
+
+    @secondary_data_uplink_enabled.setter
+    def secondary_data_uplink_enabled(self, value):
+        """ Set secondary_data_uplink_enabled value.
+
+            Notes:
+                Enable secondary data uplink
+
+                
+                This attribute is named `secondaryDataUplinkEnabled` in VSD API.
+                
+        """
+        self._secondary_data_uplink_enabled = value
+
+    
+    @property
+    def secondary_data_uplink_interface(self):
+        """ Get secondary_data_uplink_interface value.
+
+            Notes:
+                Interface to use for the secondary data uplink. This interface can be a normal interface or a VLAN on an existing interface. Please read the VMware integration guide for more details.
+
+                
+                This attribute is named `secondaryDataUplinkInterface` in VSD API.
+                
+        """
+        return self._secondary_data_uplink_interface
+
+    @secondary_data_uplink_interface.setter
+    def secondary_data_uplink_interface(self, value):
+        """ Set secondary_data_uplink_interface value.
+
+            Notes:
+                Interface to use for the secondary data uplink. This interface can be a normal interface or a VLAN on an existing interface. Please read the VMware integration guide for more details.
+
+                
+                This attribute is named `secondaryDataUplinkInterface` in VSD API.
+                
+        """
+        self._secondary_data_uplink_interface = value
+
+    
+    @property
+    def secondary_data_uplink_mtu(self):
+        """ Get secondary_data_uplink_mtu value.
+
+            Notes:
+                Secondary data uplink MTU
+
+                
+                This attribute is named `secondaryDataUplinkMTU` in VSD API.
+                
+        """
+        return self._secondary_data_uplink_mtu
+
+    @secondary_data_uplink_mtu.setter
+    def secondary_data_uplink_mtu(self, value):
+        """ Set secondary_data_uplink_mtu value.
+
+            Notes:
+                Secondary data uplink MTU
+
+                
+                This attribute is named `secondaryDataUplinkMTU` in VSD API.
+                
+        """
+        self._secondary_data_uplink_mtu = value
+
+    
+    @property
+    def secondary_data_uplink_primary_controller(self):
+        """ Get secondary_data_uplink_primary_controller value.
+
+            Notes:
+                Secondary data uplink primary controller IP
+
+                
+                This attribute is named `secondaryDataUplinkPrimaryController` in VSD API.
+                
+        """
+        return self._secondary_data_uplink_primary_controller
+
+    @secondary_data_uplink_primary_controller.setter
+    def secondary_data_uplink_primary_controller(self, value):
+        """ Set secondary_data_uplink_primary_controller value.
+
+            Notes:
+                Secondary data uplink primary controller IP
+
+                
+                This attribute is named `secondaryDataUplinkPrimaryController` in VSD API.
+                
+        """
+        self._secondary_data_uplink_primary_controller = value
+
+    
+    @property
+    def secondary_data_uplink_secondary_controller(self):
+        """ Get secondary_data_uplink_secondary_controller value.
+
+            Notes:
+                Secondary data uplink secondary controller IP
+
+                
+                This attribute is named `secondaryDataUplinkSecondaryController` in VSD API.
+                
+        """
+        return self._secondary_data_uplink_secondary_controller
+
+    @secondary_data_uplink_secondary_controller.setter
+    def secondary_data_uplink_secondary_controller(self, value):
+        """ Set secondary_data_uplink_secondary_controller value.
+
+            Notes:
+                Secondary data uplink secondary controller IP
+
+                
+                This attribute is named `secondaryDataUplinkSecondaryController` in VSD API.
+                
+        """
+        self._secondary_data_uplink_secondary_controller = value
+
+    
+    @property
+    def secondary_data_uplink_underlay_id(self):
+        """ Get secondary_data_uplink_underlay_id value.
+
+            Notes:
+                Secondary data uplink underlay ID
+
+                
+                This attribute is named `secondaryDataUplinkUnderlayID` in VSD API.
+                
+        """
+        return self._secondary_data_uplink_underlay_id
+
+    @secondary_data_uplink_underlay_id.setter
+    def secondary_data_uplink_underlay_id(self, value):
+        """ Set secondary_data_uplink_underlay_id value.
+
+            Notes:
+                Secondary data uplink underlay ID
+
+                
+                This attribute is named `secondaryDataUplinkUnderlayID` in VSD API.
+                
+        """
+        self._secondary_data_uplink_underlay_id = value
+
+    
+    @property
+    def secondary_data_uplink_vdf_control_vlan(self):
+        """ Get secondary_data_uplink_vdf_control_vlan value.
+
+            Notes:
+                The VLAN for the control communication with VSC on the secondary datapath interface, when VDF is enabled. This VLAN can not be used as a subnet VLAN in the VSD configuration.
+
+                
+                This attribute is named `secondaryDataUplinkVDFControlVLAN` in VSD API.
+                
+        """
+        return self._secondary_data_uplink_vdf_control_vlan
+
+    @secondary_data_uplink_vdf_control_vlan.setter
+    def secondary_data_uplink_vdf_control_vlan(self, value):
+        """ Set secondary_data_uplink_vdf_control_vlan value.
+
+            Notes:
+                The VLAN for the control communication with VSC on the secondary datapath interface, when VDF is enabled. This VLAN can not be used as a subnet VLAN in the VSD configuration.
+
+                
+                This attribute is named `secondaryDataUplinkVDFControlVLAN` in VSD API.
+                
+        """
+        self._secondary_data_uplink_vdf_control_vlan = value
+
+    
+    @property
     def secondary_nuage_controller(self):
         """ Get secondary_nuage_controller value.
 
@@ -436,6 +845,114 @@ class NUVCenterVRSConfig(NURESTObject):
                 
         """
         self._secondary_nuage_controller = value
+
+    
+    @property
+    def memory_size_in_gb(self):
+        """ Get memory_size_in_gb value.
+
+            Notes:
+                VRS memory size in GB
+
+                
+                This attribute is named `memorySizeInGB` in VSD API.
+                
+        """
+        return self._memory_size_in_gb
+
+    @memory_size_in_gb.setter
+    def memory_size_in_gb(self, value):
+        """ Set memory_size_in_gb value.
+
+            Notes:
+                VRS memory size in GB
+
+                
+                This attribute is named `memorySizeInGB` in VSD API.
+                
+        """
+        self._memory_size_in_gb = value
+
+    
+    @property
+    def remote_syslog_server_ip(self):
+        """ Get remote_syslog_server_ip value.
+
+            Notes:
+                Remote syslog server IP
+
+                
+                This attribute is named `remoteSyslogServerIP` in VSD API.
+                
+        """
+        return self._remote_syslog_server_ip
+
+    @remote_syslog_server_ip.setter
+    def remote_syslog_server_ip(self, value):
+        """ Set remote_syslog_server_ip value.
+
+            Notes:
+                Remote syslog server IP
+
+                
+                This attribute is named `remoteSyslogServerIP` in VSD API.
+                
+        """
+        self._remote_syslog_server_ip = value
+
+    
+    @property
+    def remote_syslog_server_port(self):
+        """ Get remote_syslog_server_port value.
+
+            Notes:
+                Remote syslog server port
+
+                
+                This attribute is named `remoteSyslogServerPort` in VSD API.
+                
+        """
+        return self._remote_syslog_server_port
+
+    @remote_syslog_server_port.setter
+    def remote_syslog_server_port(self, value):
+        """ Set remote_syslog_server_port value.
+
+            Notes:
+                Remote syslog server port
+
+                
+                This attribute is named `remoteSyslogServerPort` in VSD API.
+                
+        """
+        self._remote_syslog_server_port = value
+
+    
+    @property
+    def remote_syslog_server_type(self):
+        """ Get remote_syslog_server_type value.
+
+            Notes:
+                Remote syslog server type (UDP/TCP)
+
+                
+                This attribute is named `remoteSyslogServerType` in VSD API.
+                
+        """
+        return self._remote_syslog_server_type
+
+    @remote_syslog_server_type.setter
+    def remote_syslog_server_type(self, value):
+        """ Set remote_syslog_server_type value.
+
+            Notes:
+                Remote syslog server type (UDP/TCP)
+
+                
+                This attribute is named `remoteSyslogServerType` in VSD API.
+                
+        """
+        self._remote_syslog_server_type = value
 
     
     @property
@@ -497,7 +1014,7 @@ class NUVCenterVRSConfig(NURESTObject):
         """ Get personality value.
 
             Notes:
-                VRS/VRS-G
+                VCenter VRS Personality
 
                 
         """
@@ -508,11 +1025,38 @@ class NUVCenterVRSConfig(NURESTObject):
         """ Set personality value.
 
             Notes:
-                VRS/VRS-G
+                VCenter VRS Personality
 
                 
         """
         self._personality = value
+
+    
+    @property
+    def destination_mirror_port(self):
+        """ Get destination_mirror_port value.
+
+            Notes:
+                Extra Vnic to mirror access port
+
+                
+                This attribute is named `destinationMirrorPort` in VSD API.
+                
+        """
+        return self._destination_mirror_port
+
+    @destination_mirror_port.setter
+    def destination_mirror_port(self, value):
+        """ Set destination_mirror_port value.
+
+            Notes:
+                Extra Vnic to mirror access port
+
+                
+                This attribute is named `destinationMirrorPort` in VSD API.
+                
+        """
+        self._destination_mirror_port = value
 
     
     @property
@@ -732,6 +1276,60 @@ class NUVCenterVRSConfig(NURESTObject):
 
     
     @property
+    def revertive_controller_enabled(self):
+        """ Get revertive_controller_enabled value.
+
+            Notes:
+                Enable revertive controller behaviour. If this is enabled, OVS will make its primary VSC as its master VSC once it is back up.
+
+                
+                This attribute is named `revertiveControllerEnabled` in VSD API.
+                
+        """
+        return self._revertive_controller_enabled
+
+    @revertive_controller_enabled.setter
+    def revertive_controller_enabled(self, value):
+        """ Set revertive_controller_enabled value.
+
+            Notes:
+                Enable revertive controller behaviour. If this is enabled, OVS will make its primary VSC as its master VSC once it is back up.
+
+                
+                This attribute is named `revertiveControllerEnabled` in VSD API.
+                
+        """
+        self._revertive_controller_enabled = value
+
+    
+    @property
+    def revertive_timer(self):
+        """ Get revertive_timer value.
+
+            Notes:
+                A timer in seconds indicating after how long OVS should retry to connect to the primary VSC as its master after a failure.
+
+                
+                This attribute is named `revertiveTimer` in VSD API.
+                
+        """
+        return self._revertive_timer
+
+    @revertive_timer.setter
+    def revertive_timer(self, value):
+        """ Set revertive_timer value.
+
+            Notes:
+                A timer in seconds indicating after how long OVS should retry to connect to the primary VSC as its master after a failure.
+
+                
+                This attribute is named `revertiveTimer` in VSD API.
+                
+        """
+        self._revertive_timer = value
+
+    
+    @property
     def nfs_log_server(self):
         """ Get nfs_log_server value.
 
@@ -921,6 +1519,87 @@ class NUVCenterVRSConfig(NURESTObject):
 
     
     @property
+    def mirror_network_portgroup(self):
+        """ Get mirror_network_portgroup value.
+
+            Notes:
+                Mirror Network Port Group Name
+
+                
+                This attribute is named `mirrorNetworkPortgroup` in VSD API.
+                
+        """
+        return self._mirror_network_portgroup
+
+    @mirror_network_portgroup.setter
+    def mirror_network_portgroup(self, value):
+        """ Set mirror_network_portgroup value.
+
+            Notes:
+                Mirror Network Port Group Name
+
+                
+                This attribute is named `mirrorNetworkPortgroup` in VSD API.
+                
+        """
+        self._mirror_network_portgroup = value
+
+    
+    @property
+    def disable_gro_on_datapath(self):
+        """ Get disable_gro_on_datapath value.
+
+            Notes:
+                Disable GRO on datapath
+
+                
+                This attribute is named `disableGROOnDatapath` in VSD API.
+                
+        """
+        return self._disable_gro_on_datapath
+
+    @disable_gro_on_datapath.setter
+    def disable_gro_on_datapath(self, value):
+        """ Set disable_gro_on_datapath value.
+
+            Notes:
+                Disable GRO on datapath
+
+                
+                This attribute is named `disableGROOnDatapath` in VSD API.
+                
+        """
+        self._disable_gro_on_datapath = value
+
+    
+    @property
+    def disable_lro_on_datapath(self):
+        """ Get disable_lro_on_datapath value.
+
+            Notes:
+                Disable LRO on datapath
+
+                
+                This attribute is named `disableLROOnDatapath` in VSD API.
+                
+        """
+        return self._disable_lro_on_datapath
+
+    @disable_lro_on_datapath.setter
+    def disable_lro_on_datapath(self, value):
+        """ Set disable_lro_on_datapath value.
+
+            Notes:
+                Disable LRO on datapath
+
+                
+                This attribute is named `disableLROOnDatapath` in VSD API.
+                
+        """
+        self._disable_lro_on_datapath = value
+
+    
+    @property
     def site_id(self):
         """ Get site_id value.
 
@@ -1056,6 +1735,33 @@ class NUVCenterVRSConfig(NURESTObject):
 
     
     @property
+    def enable_vrs_resource_reservation(self):
+        """ Get enable_vrs_resource_reservation value.
+
+            Notes:
+                Enable resource reservation on the VRS. When this is enabled, all memory and 100% of CPU resources allocated to the VRS will be reserved.
+
+                
+                This attribute is named `enableVRSResourceReservation` in VSD API.
+                
+        """
+        return self._enable_vrs_resource_reservation
+
+    @enable_vrs_resource_reservation.setter
+    def enable_vrs_resource_reservation(self, value):
+        """ Set enable_vrs_resource_reservation value.
+
+            Notes:
+                Enable resource reservation on the VRS. When this is enabled, all memory and 100% of CPU resources allocated to the VRS will be reserved.
+
+                
+                This attribute is named `enableVRSResourceReservation` in VSD API.
+                
+        """
+        self._enable_vrs_resource_reservation = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -1080,6 +1786,33 @@ class NUVCenterVRSConfig(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def configured_metrics_push_interval(self):
+        """ Get configured_metrics_push_interval value.
+
+            Notes:
+                Configured VRS metrics push interval on VCIN
+
+                
+                This attribute is named `configuredMetricsPushInterval` in VSD API.
+                
+        """
+        return self._configured_metrics_push_interval
+
+    @configured_metrics_push_interval.setter
+    def configured_metrics_push_interval(self, value):
+        """ Set configured_metrics_push_interval value.
+
+            Notes:
+                Configured VRS metrics push interval on VCIN
+
+                
+                This attribute is named `configuredMetricsPushInterval` in VSD API.
+                
+        """
+        self._configured_metrics_push_interval = value
 
     
     @property
@@ -1134,6 +1867,33 @@ class NUVCenterVRSConfig(NURESTObject):
                 
         """
         self._nova_client_version = value
+
+    
+    @property
+    def nova_identity_url_version(self):
+        """ Get nova_identity_url_version value.
+
+            Notes:
+                Keystone identity version to use for the Nova metadata configuration on the VRS
+
+                
+                This attribute is named `novaIdentityURLVersion` in VSD API.
+                
+        """
+        return self._nova_identity_url_version
+
+    @nova_identity_url_version.setter
+    def nova_identity_url_version(self, value):
+        """ Set nova_identity_url_version value.
+
+            Notes:
+                Keystone identity version to use for the Nova metadata configuration on the VRS
+
+                
+                This attribute is named `novaIdentityURLVersion` in VSD API.
+                
+        """
+        self._nova_identity_url_version = value
 
     
     @property
@@ -1299,6 +2059,87 @@ class NUVCenterVRSConfig(NURESTObject):
 
     
     @property
+    def nova_os_keystone_username(self):
+        """ Get nova_os_keystone_username value.
+
+            Notes:
+                Keystone username used by nova
+
+                
+                This attribute is named `novaOSKeystoneUsername` in VSD API.
+                
+        """
+        return self._nova_os_keystone_username
+
+    @nova_os_keystone_username.setter
+    def nova_os_keystone_username(self, value):
+        """ Set nova_os_keystone_username value.
+
+            Notes:
+                Keystone username used by nova
+
+                
+                This attribute is named `novaOSKeystoneUsername` in VSD API.
+                
+        """
+        self._nova_os_keystone_username = value
+
+    
+    @property
+    def nova_project_domain_name(self):
+        """ Get nova_project_domain_name value.
+
+            Notes:
+                Name of the project that the Nova service uses, can be determined from the nova.conf on the OpenStack controller
+
+                
+                This attribute is named `novaProjectDomainName` in VSD API.
+                
+        """
+        return self._nova_project_domain_name
+
+    @nova_project_domain_name.setter
+    def nova_project_domain_name(self, value):
+        """ Set nova_project_domain_name value.
+
+            Notes:
+                Name of the project that the Nova service uses, can be determined from the nova.conf on the OpenStack controller
+
+                
+                This attribute is named `novaProjectDomainName` in VSD API.
+                
+        """
+        self._nova_project_domain_name = value
+
+    
+    @property
+    def nova_project_name(self):
+        """ Get nova_project_name value.
+
+            Notes:
+                Name of the default Nova project (example: services)
+
+                
+                This attribute is named `novaProjectName` in VSD API.
+                
+        """
+        return self._nova_project_name
+
+    @nova_project_name.setter
+    def nova_project_name(self, value):
+        """ Set nova_project_name value.
+
+            Notes:
+                Name of the default Nova project (example: services)
+
+                
+                This attribute is named `novaProjectName` in VSD API.
+                
+        """
+        self._nova_project_name = value
+
+    
+    @property
     def nova_region_name(self):
         """ Get nova_region_name value.
 
@@ -1323,6 +2164,222 @@ class NUVCenterVRSConfig(NURESTObject):
                 
         """
         self._nova_region_name = value
+
+    
+    @property
+    def nova_user_domain_name(self):
+        """ Get nova_user_domain_name value.
+
+            Notes:
+                Name of the user domain used by the Nova service, can be determined from the nova.conf on the OpenStack controller
+
+                
+                This attribute is named `novaUserDomainName` in VSD API.
+                
+        """
+        return self._nova_user_domain_name
+
+    @nova_user_domain_name.setter
+    def nova_user_domain_name(self, value):
+        """ Set nova_user_domain_name value.
+
+            Notes:
+                Name of the user domain used by the Nova service, can be determined from the nova.conf on the OpenStack controller
+
+                
+                This attribute is named `novaUserDomainName` in VSD API.
+                
+        """
+        self._nova_user_domain_name = value
+
+    
+    @property
+    def upgrade_package_password(self):
+        """ Get upgrade_package_password value.
+
+            Notes:
+                Upgrade Package Password
+
+                
+                This attribute is named `upgradePackagePassword` in VSD API.
+                
+        """
+        return self._upgrade_package_password
+
+    @upgrade_package_password.setter
+    def upgrade_package_password(self, value):
+        """ Set upgrade_package_password value.
+
+            Notes:
+                Upgrade Package Password
+
+                
+                This attribute is named `upgradePackagePassword` in VSD API.
+                
+        """
+        self._upgrade_package_password = value
+
+    
+    @property
+    def upgrade_package_url(self):
+        """ Get upgrade_package_url value.
+
+            Notes:
+                Upgrade Package URL
+
+                
+                This attribute is named `upgradePackageURL` in VSD API.
+                
+        """
+        return self._upgrade_package_url
+
+    @upgrade_package_url.setter
+    def upgrade_package_url(self, value):
+        """ Set upgrade_package_url value.
+
+            Notes:
+                Upgrade Package URL
+
+                
+                This attribute is named `upgradePackageURL` in VSD API.
+                
+        """
+        self._upgrade_package_url = value
+
+    
+    @property
+    def upgrade_package_username(self):
+        """ Get upgrade_package_username value.
+
+            Notes:
+                Upgrade Package User Name
+
+                
+                This attribute is named `upgradePackageUsername` in VSD API.
+                
+        """
+        return self._upgrade_package_username
+
+    @upgrade_package_username.setter
+    def upgrade_package_username(self, value):
+        """ Set upgrade_package_username value.
+
+            Notes:
+                Upgrade Package User Name
+
+                
+                This attribute is named `upgradePackageUsername` in VSD API.
+                
+        """
+        self._upgrade_package_username = value
+
+    
+    @property
+    def upgrade_script_time_limit(self):
+        """ Get upgrade_script_time_limit value.
+
+            Notes:
+                The maximum time limit in seconds before the vrs script based upgrade is marked as TIMED_OUT
+
+                
+                This attribute is named `upgradeScriptTimeLimit` in VSD API.
+                
+        """
+        return self._upgrade_script_time_limit
+
+    @upgrade_script_time_limit.setter
+    def upgrade_script_time_limit(self, value):
+        """ Set upgrade_script_time_limit value.
+
+            Notes:
+                The maximum time limit in seconds before the vrs script based upgrade is marked as TIMED_OUT
+
+                
+                This attribute is named `upgradeScriptTimeLimit` in VSD API.
+                
+        """
+        self._upgrade_script_time_limit = value
+
+    
+    @property
+    def cpu_count(self):
+        """ Get cpu_count value.
+
+            Notes:
+                Number of VRS vCPU's
+
+                
+                This attribute is named `cpuCount` in VSD API.
+                
+        """
+        return self._cpu_count
+
+    @cpu_count.setter
+    def cpu_count(self, value):
+        """ Set cpu_count value.
+
+            Notes:
+                Number of VRS vCPU's
+
+                
+                This attribute is named `cpuCount` in VSD API.
+                
+        """
+        self._cpu_count = value
+
+    
+    @property
+    def primary_data_uplink_underlay_id(self):
+        """ Get primary_data_uplink_underlay_id value.
+
+            Notes:
+                Primary data uplink underlay ID
+
+                
+                This attribute is named `primaryDataUplinkUnderlayID` in VSD API.
+                
+        """
+        return self._primary_data_uplink_underlay_id
+
+    @primary_data_uplink_underlay_id.setter
+    def primary_data_uplink_underlay_id(self, value):
+        """ Set primary_data_uplink_underlay_id value.
+
+            Notes:
+                Primary data uplink underlay ID
+
+                
+                This attribute is named `primaryDataUplinkUnderlayID` in VSD API.
+                
+        """
+        self._primary_data_uplink_underlay_id = value
+
+    
+    @property
+    def primary_data_uplink_vdf_control_vlan(self):
+        """ Get primary_data_uplink_vdf_control_vlan value.
+
+            Notes:
+                The VLAN for the control communication with VSC on the primary datapath interface, when VDF is enabled. This VLAN can not be used as a subnet VLAN in the VSD configuration.
+
+                
+                This attribute is named `primaryDataUplinkVDFControlVLAN` in VSD API.
+                
+        """
+        return self._primary_data_uplink_vdf_control_vlan
+
+    @primary_data_uplink_vdf_control_vlan.setter
+    def primary_data_uplink_vdf_control_vlan(self, value):
+        """ Set primary_data_uplink_vdf_control_vlan value.
+
+            Notes:
+                The VLAN for the control communication with VSC on the primary datapath interface, when VDF is enabled. This VLAN can not be used as a subnet VLAN in the VSD configuration.
+
+                
+                This attribute is named `primaryDataUplinkVDFControlVLAN` in VSD API.
+                
+        """
+        self._primary_data_uplink_vdf_control_vlan = value
 
     
     @property
@@ -1832,6 +2889,87 @@ class NUVCenterVRSConfig(NURESTObject):
                 
         """
         self._customized_script_url = value
+
+    
+    @property
+    def ovf_url(self):
+        """ Get ovf_url value.
+
+            Notes:
+                The url for the ovf
+
+                
+                This attribute is named `ovfURL` in VSD API.
+                
+        """
+        return self._ovf_url
+
+    @ovf_url.setter
+    def ovf_url(self, value):
+        """ Set ovf_url value.
+
+            Notes:
+                The url for the ovf
+
+                
+                This attribute is named `ovfURL` in VSD API.
+                
+        """
+        self._ovf_url = value
+
+    
+    @property
+    def avrs_enabled(self):
+        """ Get avrs_enabled value.
+
+            Notes:
+                AVRS enabled
+
+                
+                This attribute is named `avrsEnabled` in VSD API.
+                
+        """
+        return self._avrs_enabled
+
+    @avrs_enabled.setter
+    def avrs_enabled(self, value):
+        """ Set avrs_enabled value.
+
+            Notes:
+                AVRS enabled
+
+                
+                This attribute is named `avrsEnabled` in VSD API.
+                
+        """
+        self._avrs_enabled = value
+
+    
+    @property
+    def avrs_profile(self):
+        """ Get avrs_profile value.
+
+            Notes:
+                AVRS profile
+
+                
+                This attribute is named `avrsProfile` in VSD API.
+                
+        """
+        return self._avrs_profile
+
+    @avrs_profile.setter
+    def avrs_profile(self, value):
+        """ Set avrs_profile value.
+
+            Notes:
+                AVRS profile
+
+                
+                This attribute is named `avrsProfile` in VSD API.
+                
+        """
+        self._avrs_profile = value
 
     
     @property

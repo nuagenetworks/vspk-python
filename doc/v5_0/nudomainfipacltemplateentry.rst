@@ -26,21 +26,11 @@ Attributes
 
 - ``action``: The action of the ACL entry DROP or FORWARD or REDIRECT. Action REDIRECT is allowed only for IngressAdvancedForwardingEntry
 
-- ``action_details``: Type of action to be performed when a ACL match criteria succeeds
-
 - ``address_override``: Overrides the source IP for Ingress and destination IP for Egress, MAC entries will use this address as the match criteria.
 
 - ``description``: Description of the ACL entry
 
-- ``dest_pg_id``: In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
-
-- ``dest_pg_type``: In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
-
 - ``destination_port``: The destination port to be matched if protocol is UDP or TCP. Value should be either * or single port number or a port range
-
-- ``destination_type``: Network Type - either PolicyGroup or Network
-
-- ``destination_value``: In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
 
 - ``network_id``: The destination network entity that is referenced(subnet/zone/macro)
 
@@ -62,21 +52,19 @@ Attributes
 
 - ``domain_name``: The name of the domain/domain template for the aclTemplateNames parent
 
-- ``source_pg_id``: In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
-
-- ``source_pg_type``: In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
-
 - ``source_port``: Source port to be matched if protocol is UDP or TCP. Value can be either * or single port number or a port range
-
-- ``source_type``: Location Type - either PolicyGroup or Network
-
-- ``source_value``: In case of PG this will be its EVPNBGPCommunity String, incase of network it will be network cidr
 
 - ``priority``: The priority of the ACL entry that determines the order of entries
 
 - ``protocol``: Protocol number that must be matched
 
 - ``associated_live_entity_id``: ID of the associated live entity
+
+- ``associated_live_template_id``: In the draft mode, the ACL entity refers to this live entity parent. In non-drafted mode, this is null
+
+- ``associated_traffic_type``: The associated Traffic type. L4 Service / L4 Service Group
+
+- ``associated_traffic_type_id``: The associated Traffic Type ID
 
 - ``stateful``: True means that this ACL entry is stateful, so there will be a corresponding rule that will be created by OVS in the network. False means that there is no corresponding rule created by OVS in the network.
 

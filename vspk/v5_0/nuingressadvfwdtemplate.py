@@ -91,6 +91,8 @@ class NUIngressAdvFwdTemplate(NURESTObject):
         self._name = None
         self._last_updated_by = None
         self._active = None
+        self._default_allow_ip = None
+        self._default_allow_non_ip = None
         self._description = None
         self._entity_scope = None
         self._policy_state = None
@@ -103,6 +105,8 @@ class NUIngressAdvFwdTemplate(NURESTObject):
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="active", remote_name="active", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="default_allow_ip", remote_name="defaultAllowIP", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="default_allow_non_ip", remote_name="defaultAllowNonIP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
@@ -203,6 +207,60 @@ class NUIngressAdvFwdTemplate(NURESTObject):
                 
         """
         self._active = value
+
+    
+    @property
+    def default_allow_ip(self):
+        """ Get default_allow_ip value.
+
+            Notes:
+                If enabled a default ACL of Allow All is added as the last entry in the list of ACL entries
+
+                
+                This attribute is named `defaultAllowIP` in VSD API.
+                
+        """
+        return self._default_allow_ip
+
+    @default_allow_ip.setter
+    def default_allow_ip(self, value):
+        """ Set default_allow_ip value.
+
+            Notes:
+                If enabled a default ACL of Allow All is added as the last entry in the list of ACL entries
+
+                
+                This attribute is named `defaultAllowIP` in VSD API.
+                
+        """
+        self._default_allow_ip = value
+
+    
+    @property
+    def default_allow_non_ip(self):
+        """ Get default_allow_non_ip value.
+
+            Notes:
+                If enabled, non ip traffic will be dropped
+
+                
+                This attribute is named `defaultAllowNonIP` in VSD API.
+                
+        """
+        return self._default_allow_non_ip
+
+    @default_allow_non_ip.setter
+    def default_allow_non_ip(self, value):
+        """ Set default_allow_non_ip value.
+
+            Notes:
+                If enabled, non ip traffic will be dropped
+
+                
+                This attribute is named `defaultAllowNonIP` in VSD API.
+                
+        """
+        self._default_allow_non_ip = value
 
     
     @property

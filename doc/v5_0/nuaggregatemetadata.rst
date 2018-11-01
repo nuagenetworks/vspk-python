@@ -26,6 +26,8 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``assoc_entity_type``: Type of the entity to which the Metadata is associated to.
+
 - ``external_id``: External object ID. Used for integration with third party systems
 
 

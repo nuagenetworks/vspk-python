@@ -27,6 +27,12 @@
 
 
 
+
+from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
+
 from bambou import NURESTObject
 
 
@@ -45,9 +51,13 @@ class NUDeploymentFailure(NURESTObject):
     
     CONST_EVENT_TYPE_DELETE = "DELETE"
     
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
     CONST_EVENT_TYPE_CREATE = "CREATE"
     
     CONST_EVENT_TYPE_UPDATE = "UPDATE"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
 
@@ -70,19 +80,38 @@ class NUDeploymentFailure(NURESTObject):
         
         self._last_failure_reason = None
         self._last_known_error = None
+        self._last_updated_by = None
         self._affected_entity_id = None
         self._affected_entity_type = None
+        self._entity_scope = None
         self._error_condition = None
+        self._assoc_entity_id = None
+        self._assoc_entity_type = None
         self._number_of_occurences = None
         self._event_type = None
+        self._external_id = None
         
         self.expose_attribute(local_name="last_failure_reason", remote_name="lastFailureReason", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_known_error", remote_name="lastKnownError", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="affected_entity_id", remote_name="affectedEntityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="affected_entity_type", remote_name="affectedEntityType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="error_condition", remote_name="errorCondition", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="assoc_entity_id", remote_name="assocEntityId", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="assoc_entity_type", remote_name="assocEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="number_of_occurences", remote_name="numberOfOccurences", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="event_type", remote_name="eventType", attribute_type=str, is_required=False, is_unique=False, choices=[u'CREATE', u'DELETE', u'UPDATE'])
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        
+
+        # Fetchers
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -144,6 +173,33 @@ class NUDeploymentFailure(NURESTObject):
 
     
     @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
     def affected_entity_id(self):
         """ Get affected_entity_id value.
 
@@ -198,6 +254,33 @@ class NUDeploymentFailure(NURESTObject):
 
     
     @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
     def error_condition(self):
         """ Get error_condition value.
 
@@ -222,6 +305,60 @@ class NUDeploymentFailure(NURESTObject):
                 
         """
         self._error_condition = value
+
+    
+    @property
+    def assoc_entity_id(self):
+        """ Get assoc_entity_id value.
+
+            Notes:
+                ID of the parent entity
+
+                
+                This attribute is named `assocEntityId` in VSD API.
+                
+        """
+        return self._assoc_entity_id
+
+    @assoc_entity_id.setter
+    def assoc_entity_id(self, value):
+        """ Set assoc_entity_id value.
+
+            Notes:
+                ID of the parent entity
+
+                
+                This attribute is named `assocEntityId` in VSD API.
+                
+        """
+        self._assoc_entity_id = value
+
+    
+    @property
+    def assoc_entity_type(self):
+        """ Get assoc_entity_type value.
+
+            Notes:
+                Type of parent entity.
+
+                
+                This attribute is named `assocEntityType` in VSD API.
+                
+        """
+        return self._assoc_entity_type
+
+    @assoc_entity_type.setter
+    def assoc_entity_type(self, value):
+        """ Set assoc_entity_type value.
+
+            Notes:
+                Type of parent entity.
+
+                
+                This attribute is named `assocEntityType` in VSD API.
+                
+        """
+        self._assoc_entity_type = value
 
     
     @property
@@ -276,6 +413,33 @@ class NUDeploymentFailure(NURESTObject):
                 
         """
         self._event_type = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

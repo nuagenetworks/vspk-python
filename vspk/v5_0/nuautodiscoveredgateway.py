@@ -34,6 +34,9 @@ from .fetchers import NUWANServicesFetcher
 from .fetchers import NUMetadatasFetcher
 
 
+from .fetchers import NUWirelessPortsFetcher
+
+
 from .fetchers import NUGlobalMetadatasFetcher
 
 
@@ -108,7 +111,6 @@ class NUAutoDiscoveredGateway(NURESTObject):
         self._description = None
         self._entity_scope = None
         self._controllers = None
-        self._use_gateway_vlanvnid = None
         self._vtep = None
         self._external_id = None
         self._system_id = None
@@ -121,7 +123,6 @@ class NUAutoDiscoveredGateway(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="controllers", remote_name="controllers", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="use_gateway_vlanvnid", remote_name="useGatewayVLANVNID", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vtep", remote_name="vtep", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="system_id", remote_name="systemID", attribute_type=str, is_required=False, is_unique=False)
@@ -134,6 +135,9 @@ class NUAutoDiscoveredGateway(NURESTObject):
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.wireless_ports = NUWirelessPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -346,33 +350,6 @@ class NUAutoDiscoveredGateway(NURESTObject):
                 
         """
         self._controllers = value
-
-    
-    @property
-    def use_gateway_vlanvnid(self):
-        """ Get use_gateway_vlanvnid value.
-
-            Notes:
-                When set, VLAN-VNID mapping must be unique for all the vports of the gateway
-
-                
-                This attribute is named `useGatewayVLANVNID` in VSD API.
-                
-        """
-        return self._use_gateway_vlanvnid
-
-    @use_gateway_vlanvnid.setter
-    def use_gateway_vlanvnid(self, value):
-        """ Set use_gateway_vlanvnid value.
-
-            Notes:
-                When set, VLAN-VNID mapping must be unique for all the vports of the gateway
-
-                
-                This attribute is named `useGatewayVLANVNID` in VSD API.
-                
-        """
-        self._use_gateway_vlanvnid = value
 
     
     @property

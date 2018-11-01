@@ -36,6 +36,9 @@ from .fetchers import NUGlobalMetadatasFetcher
 
 from .fetchers import NUApplicationBindingsFetcher
 
+
+from .fetchers import NUApplicationperformancemanagementbindingsFetcher
+
 from bambou import NURESTObject
 
 
@@ -80,6 +83,7 @@ class NUApplicationperformancemanagement(NURESTObject):
         self._read_only = None
         self._description = None
         self._entity_scope = None
+        self._app_group_unique_id = None
         self._associated_performance_monitor_id = None
         self._external_id = None
         
@@ -88,6 +92,7 @@ class NUApplicationperformancemanagement(NURESTObject):
         self.expose_attribute(local_name="read_only", remote_name="readOnly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="app_group_unique_id", remote_name="appGroupUniqueId", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_performance_monitor_id", remote_name="associatedPerformanceMonitorID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
@@ -102,6 +107,9 @@ class NUApplicationperformancemanagement(NURESTObject):
         
         
         self.application_bindings = NUApplicationBindingsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.applicationperformancemanagementbindings = NUApplicationperformancemanagementbindingsFetcher.fetcher_with_object(parent_object=self, relationship="member")
         
 
         self._compute_args(**kwargs)
@@ -233,6 +241,33 @@ class NUApplicationperformancemanagement(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def app_group_unique_id(self):
+        """ Get app_group_unique_id value.
+
+            Notes:
+                2 byte Id to uniquely identify Application Group between OVS, nuage_dpi and perfd processes for proper functioning of AAR.
+
+                
+                This attribute is named `appGroupUniqueId` in VSD API.
+                
+        """
+        return self._app_group_unique_id
+
+    @app_group_unique_id.setter
+    def app_group_unique_id(self, value):
+        """ Set app_group_unique_id value.
+
+            Notes:
+                2 byte Id to uniquely identify Application Group between OVS, nuage_dpi and perfd processes for proper functioning of AAR.
+
+                
+                This attribute is named `appGroupUniqueId` in VSD API.
+                
+        """
+        self._app_group_unique_id = value
 
     
     @property

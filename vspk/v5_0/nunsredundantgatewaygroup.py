@@ -28,6 +28,9 @@
 
 
 
+from .fetchers import NUPermissionsFetcher
+
+
 from .fetchers import NUMetadatasFetcher
 
 
@@ -38,6 +41,9 @@ from .fetchers import NUAlarmsFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
+
+
+from .fetchers import NUEnterprisePermissionsFetcher
 
 
 from .fetchers import NUNSGatewaysFetcher
@@ -175,6 +181,9 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         # Fetchers
         
         
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -185,6 +194,9 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ns_gateways = NUNSGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="child")

@@ -187,7 +187,6 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self._dscp = None
         self._dscp_remarking = None
         self._failsafe_datapath = None
-        self._name = None
         self._last_updated_by = None
         self._action = None
         self._address_override = None
@@ -217,6 +216,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self._associated_application_id = None
         self._associated_forwarding_path_list_id = None
         self._associated_live_entity_id = None
+        self._associated_live_template_id = None
         self._associated_traffic_type = None
         self._associated_traffic_type_id = None
         self._stats_id = None
@@ -232,13 +232,12 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="dscp_remarking", remote_name="DSCPRemarking", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="failsafe_datapath", remote_name="failsafeDatapath", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAIL_TO_BLOCK', u'FAIL_TO_WIRE'])
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'DROP', u'FORWARD', u'FORWARDING_PATH_LIST', u'REDIRECT'])
         self.expose_attribute(local_name="address_override", remote_name="addressOverride", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redirect_rewrite_type", remote_name="redirectRewriteType", attribute_type=str, is_required=False, is_unique=True, choices=[u'VLAN'])
         self.expose_attribute(local_name="redirect_rewrite_value", remote_name="redirectRewriteValue", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="redirect_vport_tag_id", remote_name="redirectVPortTagID", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="redirect_vport_tag_id", remote_name="redirectVPortTagID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="remote_uplink_preference", remote_name="remoteUplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
@@ -262,6 +261,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="associated_application_id", remote_name="associatedApplicationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_forwarding_path_list_id", remote_name="associatedForwardingPathListID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_live_template_id", remote_name="associatedLiveTemplateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_traffic_type", remote_name="associatedTrafficType", attribute_type=str, is_required=False, is_unique=False, choices=[u'L4_SERVICE', u'L4_SERVICE_GROUP'])
         self.expose_attribute(local_name="associated_traffic_type_id", remote_name="associatedTrafficTypeID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_id", remote_name="statsID", attribute_type=str, is_required=False, is_unique=False)
@@ -500,29 +500,6 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
                 
         """
         self._failsafe_datapath = value
-
-    
-    @property
-    def name(self):
-        """ Get name value.
-
-            Notes:
-                Name of the entity.
-
-                
-        """
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        """ Set name value.
-
-            Notes:
-                Name of the entity.
-
-                
-        """
-        self._name = value
 
     
     @property
@@ -1290,6 +1267,33 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
                 
         """
         self._associated_live_entity_id = value
+
+    
+    @property
+    def associated_live_template_id(self):
+        """ Get associated_live_template_id value.
+
+            Notes:
+                In the draft mode, the ACL entity refers to this live entity parent. In non-drafted mode, this is null
+
+                
+                This attribute is named `associatedLiveTemplateID` in VSD API.
+                
+        """
+        return self._associated_live_template_id
+
+    @associated_live_template_id.setter
+    def associated_live_template_id(self, value):
+        """ Set associated_live_template_id value.
+
+            Notes:
+                In the draft mode, the ACL entity refers to this live entity parent. In non-drafted mode, this is null
+
+                
+                This attribute is named `associatedLiveTemplateID` in VSD API.
+                
+        """
+        self._associated_live_template_id = value
 
     
     @property

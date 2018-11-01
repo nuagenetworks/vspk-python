@@ -52,15 +52,21 @@ class NUOverlayMirrorDestination(NURESTObject):
     
     ## Constants
     
-    CONST_TRIGGER_TYPE_NONE = "NONE"
+    CONST_DESTINATION_TYPE_REDIRECTION_TARGET = "REDIRECTION_TARGET"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_DESTINATION_TYPE_OVERLAY_MIRROR_DESTINATION = "OVERLAY_MIRROR_DESTINATION"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_END_POINT_TYPE_NONE = "NONE"
+    
+    CONST_TRIGGER_TYPE_NONE = "NONE"
     
     CONST_END_POINT_TYPE_VIRTUAL_WIRE = "VIRTUAL_WIRE"
     
     CONST_TRIGGER_TYPE_GARP = "GARP"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
 
@@ -87,6 +93,7 @@ class NUOverlayMirrorDestination(NURESTObject):
         self._redundancy_enabled = None
         self._template_id = None
         self._description = None
+        self._destination_type = None
         self._virtual_network_id = None
         self._end_point_type = None
         self._entity_scope = None
@@ -99,8 +106,9 @@ class NUOverlayMirrorDestination(NURESTObject):
         self.expose_attribute(local_name="redundancy_enabled", remote_name="redundancyEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="destination_type", remote_name="destinationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'OVERLAY_MIRROR_DESTINATION', u'REDIRECTION_TARGET'])
         self.expose_attribute(local_name="virtual_network_id", remote_name="virtualNetworkID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="end_point_type", remote_name="endPointType", attribute_type=str, is_required=True, is_unique=False, choices=[u'VIRTUAL_WIRE'])
+        self.expose_attribute(local_name="end_point_type", remote_name="endPointType", attribute_type=str, is_required=True, is_unique=False, choices=[u'NONE', u'VIRTUAL_WIRE'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="trigger_type", remote_name="triggerType", attribute_type=str, is_required=False, is_unique=False, choices=[u'GARP', u'NONE'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -277,6 +285,33 @@ class NUOverlayMirrorDestination(NURESTObject):
 
     
     @property
+    def destination_type(self):
+        """ Get destination_type value.
+
+            Notes:
+                Determines the type of destination : redirection target or overlay mirror destination
+
+                
+                This attribute is named `destinationType` in VSD API.
+                
+        """
+        return self._destination_type
+
+    @destination_type.setter
+    def destination_type(self, value):
+        """ Set destination_type value.
+
+            Notes:
+                Determines the type of destination : redirection target or overlay mirror destination
+
+                
+                This attribute is named `destinationType` in VSD API.
+                
+        """
+        self._destination_type = value
+
+    
+    @property
     def virtual_network_id(self):
         """ Get virtual_network_id value.
 
@@ -362,7 +397,7 @@ class NUOverlayMirrorDestination(NURESTObject):
         """ Get trigger_type value.
 
             Notes:
-                Trigger type, THIS IS READ ONLY. Possible values are NONE, GARP, .
+                Trigger type, THIS IS READ ONLY. Possible values are NONE, GARP.
 
                 
                 This attribute is named `triggerType` in VSD API.
@@ -375,7 +410,7 @@ class NUOverlayMirrorDestination(NURESTObject):
         """ Set trigger_type value.
 
             Notes:
-                Trigger type, THIS IS READ ONLY. Possible values are NONE, GARP, .
+                Trigger type, THIS IS READ ONLY. Possible values are NONE, GARP.
 
                 
                 This attribute is named `triggerType` in VSD API.

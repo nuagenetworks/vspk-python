@@ -114,7 +114,6 @@ class NUIngressACLTemplate(NURESTObject):
         self._policy_state = None
         self._priority = None
         self._priority_type = None
-        self._assoc_acl_template_id = None
         self._associated_live_entity_id = None
         self._associated_virtual_firewall_policy_id = None
         self._auto_generate_priority = None
@@ -131,7 +130,6 @@ class NUIngressACLTemplate(NURESTObject):
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="priority_type", remote_name="priorityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BOTTOM', u'BOTTOM_FIREWALL', u'MIDDLE_FIREWALL', u'NONE', u'TOP', u'TOP_FIREWALL'])
-        self.expose_attribute(local_name="assoc_acl_template_id", remote_name="assocAclTemplateId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_virtual_firewall_policy_id", remote_name="associatedVirtualFirewallPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="auto_generate_priority", remote_name="autoGeneratePriority", attribute_type=bool, is_required=False, is_unique=False)
@@ -445,33 +443,6 @@ class NUIngressACLTemplate(NURESTObject):
                 
         """
         self._priority_type = value
-
-    
-    @property
-    def assoc_acl_template_id(self):
-        """ Get assoc_acl_template_id value.
-
-            Notes:
-                ID of the ACL template associated with this ACL template
-
-                
-                This attribute is named `assocAclTemplateId` in VSD API.
-                
-        """
-        return self._assoc_acl_template_id
-
-    @assoc_acl_template_id.setter
-    def assoc_acl_template_id(self, value):
-        """ Set assoc_acl_template_id value.
-
-            Notes:
-                ID of the ACL template associated with this ACL template
-
-                
-                This attribute is named `assocAclTemplateId` in VSD API.
-                
-        """
-        self._assoc_acl_template_id = value
 
     
     @property

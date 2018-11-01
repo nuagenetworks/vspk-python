@@ -28,6 +28,12 @@
 
 
 
+from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
+
+
 from .fetchers import NUVNFInterfaceDescriptorsFetcher
 
 from bambou import NURESTObject
@@ -46,9 +52,13 @@ class NUVNFDescriptor(NURESTObject):
     
     ## Constants
     
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
     CONST_TYPE_FIREWALL = "FIREWALL"
     
     CONST_TYPE_WAN_OPT = "WAN_OPT"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
 
@@ -76,8 +86,10 @@ class NUVNFDescriptor(NURESTObject):
         self._description = None
         self._metadata_id = None
         self._visible = None
+        self._entity_scope = None
         self._associated_vnf_threshold_policy_id = None
         self._storage_gb = None
+        self._external_id = None
         self._type = None
         
         self.expose_attribute(local_name="cpu_count", remote_name="CPUCount", attribute_type=int, is_required=False, is_unique=False)
@@ -87,12 +99,20 @@ class NUVNFDescriptor(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_id", remote_name="metadataID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="visible", remote_name="visible", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="associated_vnf_threshold_policy_id", remote_name="associatedVNFThresholdPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="storage_gb", remote_name="storageGB", attribute_type=int, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'FIREWALL', u'WAN_OPT'])
         
 
         # Fetchers
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.vnf_interface_descriptors = NUVNFInterfaceDescriptorsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -276,6 +296,33 @@ class NUVNFDescriptor(NURESTObject):
 
     
     @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
     def associated_vnf_threshold_policy_id(self):
         """ Get associated_vnf_threshold_policy_id value.
 
@@ -327,6 +374,33 @@ class NUVNFDescriptor(NURESTObject):
                 
         """
         self._storage_gb = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
     @property

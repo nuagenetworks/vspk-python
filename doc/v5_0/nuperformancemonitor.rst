@@ -24,10 +24,6 @@ Attributes
 
 - ``description``: Description of application group probe
 
-- ``destination_target_list``: List of targets for IKE performance monitor probes
-
-- ``timeout``: number of milliseconds to wait until the probe is timed out
-
 - ``interval`` (**Mandatory**): interval in seconds
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
@@ -51,7 +47,6 @@ Children
 
 :ref:`nutier.NUTier<nutier>`                                                                                                                                     ``tiers`` 
 :ref:`nuapplicationperformancemanagement.NUApplicationperformancemanagement<nuapplicationperformancemanagement>`                                                 ``applicationperformancemanagements`` 
-:ref:`nunsgateway.NUNSGateway<nunsgateway>`                                                                                                                      ``ns_gateways`` 
 ================================================================================================================================================               ==========================================================================================
 
 
@@ -60,9 +55,9 @@ Parents
 --------
 
 
-- :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
-
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

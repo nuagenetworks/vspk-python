@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``ip_type``: The ip type of the address range, possible values are IPV4, IPV6 and DUALSTACK.
+
 - ``last_updated_by``: ID of the user who last updated the object.
 
 - ``max_address`` (**Mandatory**): Higest address in the address range
@@ -45,9 +47,9 @@ Parents
 
 - :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 
+- :ref:`nuvcenterhypervisor.NUVCenterHypervisor<nuvcenterhypervisor>`
+
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
 
 - :ref:`nuvcenter.NUVCenter<nuvcenter>`
-
-- :ref:`nuvcenterhypervisor.NUVCenterHypervisor<nuvcenterhypervisor>`
 

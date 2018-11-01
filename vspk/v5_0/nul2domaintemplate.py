@@ -64,9 +64,6 @@ from .fetchers import NUIngressACLTemplatesFetcher
 from .fetchers import NUIngressAdvFwdTemplatesFetcher
 
 
-from .fetchers import NUIngressExternalServiceTemplatesFetcher
-
-
 from .fetchers import NUJobsFetcher
 
 
@@ -237,9 +234,6 @@ class NUL2DomainTemplate(NURESTObject):
         
         
         self.ingress_adv_fwd_templates = NUIngressAdvFwdTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.ingress_external_service_templates = NUIngressExternalServiceTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")

@@ -5,7 +5,7 @@ nubgpneighbor
 
 .. class:: nubgpneighbor.NUBGPNeighbor(bambou.nurest_object.NUMetaRESTObject,):
 
-None
+Virtual Cloud Services (VCS) in the data center BGP PE-CE is configured at vport level . Network Service Gateways (NSG) BGP is configured at subnet level.
 
 
 Attributes
@@ -22,7 +22,9 @@ Attributes
 
 - ``dampening_enabled``: Enable/disable route flap damping.
 
-- ``peer_as`` (**Mandatory**): Local autonomous system to be used when establishing a session with the remote peer if it is different from the global BGP router autonomous system number.
+- ``peer_as`` (**Mandatory**): Autonomous System (AS) value to be used when establishing a session with the remote peer if it is different from the global BGP router autonomous system number.
+
+- ``peer_configuration``: BGP Peer session configuration and default policies.
 
 - ``peer_ip``: IP Address of the neighbor. If the neighbor is attached to a host vPort this is optional or must be the same as the host's IP. For uplink or bridge vPort neighbors the IP address must be specified 
 
@@ -57,11 +59,11 @@ Parents
 --------
 
 
+- :ref:`nume.NUMe<nume>`
+
 - :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
 - :ref:`nuvlan.NUVLAN<nuvlan>`
-
-- :ref:`nume.NUMe<nume>`
 

@@ -22,8 +22,6 @@ Attributes
 
 - ``physical_name`` (**Mandatory**): Identifier of the Port
 
-- ``infrastructure_profile_id``: The ID of the infrastructure port profile this Template instance is associated with. (Deprecated in 4.0)
-
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``port_type`` (**Mandatory**): Type of the Ports that will be instantiated from this template.

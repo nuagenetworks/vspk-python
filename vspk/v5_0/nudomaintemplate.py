@@ -49,9 +49,6 @@ from .fetchers import NUEgressAdvFwdTemplatesFetcher
 from .fetchers import NUDomainFIPAclTemplatesFetcher
 
 
-from .fetchers import NUFloatingIPACLTemplatesFetcher
-
-
 from .fetchers import NUVirtualFirewallPoliciesFetcher
 
 
@@ -62,9 +59,6 @@ from .fetchers import NUIngressACLTemplatesFetcher
 
 
 from .fetchers import NUIngressAdvFwdTemplatesFetcher
-
-
-from .fetchers import NUIngressExternalServiceTemplatesFetcher
 
 
 from .fetchers import NUJobsFetcher
@@ -200,9 +194,6 @@ class NUDomainTemplate(NURESTObject):
         self.domain_fip_acl_templates = NUDomainFIPAclTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.floating_ipacl_templates = NUFloatingIPACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
         self.virtual_firewall_policies = NUVirtualFirewallPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -213,9 +204,6 @@ class NUDomainTemplate(NURESTObject):
         
         
         self.ingress_adv_fwd_templates = NUIngressAdvFwdTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.ingress_external_service_templates = NUIngressExternalServiceTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")

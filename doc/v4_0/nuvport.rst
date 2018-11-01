@@ -97,13 +97,11 @@ Parents
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
-- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
-
 - :ref:`nuvrs.NUVRS<nuvrs>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nutier.NUTier<nutier>`
 
@@ -112,4 +110,6 @@ Parents
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
+
+- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 

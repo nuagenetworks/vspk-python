@@ -44,6 +44,7 @@ Children
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuconnectionendpoint.NUConnectionendpoint<nuconnectionendpoint>`                                                                                           ``connectionendpoints`` 
+:ref:`nunsgatewaytemplate.NUNSGatewayTemplate<nunsgatewaytemplate>`                                                                                              ``ns_gateway_templates`` 
 :ref:`nusshkey.NUSSHKey<nusshkey>`                                                                                                                               ``ssh_keys`` 
 ================================================================================================================================================               ==========================================================================================
 

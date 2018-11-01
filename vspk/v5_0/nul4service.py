@@ -27,6 +27,9 @@
 
 
 
+
+from .fetchers import NUL4ServiceGroupsFetcher
+
 from bambou import NURESTObject
 
 
@@ -87,6 +90,12 @@ class NUL4Service(NURESTObject):
         self.expose_attribute(local_name="ports", remote_name="ports", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        
+
+        # Fetchers
+        
+        
+        self.l4_service_groups = NUL4ServiceGroupsFetcher.fetcher_with_object(parent_object=self, relationship="member")
         
 
         self._compute_args(**kwargs)

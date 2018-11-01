@@ -28,8 +28,6 @@ Attributes
 
 - ``controllers``: Controllers to which this gateway instance is associated with.
 
-- ``use_gateway_vlanvnid``: When set, VLAN-VNID mapping must be unique for all the vports of the gateway
-
 - ``vtep``: Represent the system ID or the Virtual IP of a service used by a Gateway (VSG for now) to establish a tunnel with a remote VSG or hypervisor.  The format of this field is consistent with an IP address.
 
 - ``external_id``: External object ID. Used for integration with third party systems
@@ -47,6 +45,7 @@ Children
 
 :ref:`nuwanservice.NUWANService<nuwanservice>`                                                                                                                   ``wan_services`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuwirelessport.NUWirelessPort<nuwirelessport>`                                                                                                             ``wireless_ports`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuport.NUPort<nuport>`                                                                                                                                     ``ports`` 
 :ref:`nunsport.NUNSPort<nunsport>`                                                                                                                               ``ns_ports`` 

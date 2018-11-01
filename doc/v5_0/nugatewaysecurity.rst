@@ -20,6 +20,8 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``associated_entity_type``: Object type of the associated entity.
+
 - ``external_id``: External object ID. Used for integration with third party systems
 
 
@@ -41,6 +43,8 @@ Children
 Parents
 --------
 
+
+- :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 

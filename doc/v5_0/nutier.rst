@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``description``: Descrtiption of the Tier
+
 - ``tier_type`` (**Mandatory**): Tier type
 
 - ``timeout``: number of milliseconds to wait until the probe is timed out. Applicable to Tier2 type.

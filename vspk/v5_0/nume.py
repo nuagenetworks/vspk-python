@@ -34,6 +34,12 @@ from .fetchers import NUL2DomainsFetcher
 from .fetchers import NUL4ServicesFetcher
 
 
+from .fetchers import NUL7applicationsignaturesFetcher
+
+
+from .fetchers import NUSaaSApplicationTypesFetcher
+
+
 from .fetchers import NUVCenterEAMConfigsFetcher
 
 
@@ -82,6 +88,9 @@ from .fetchers import NUNetconfProfilesFetcher
 from .fetchers import NUNetworkLayoutsFetcher
 
 
+from .fetchers import NUNetworkPerformanceMeasurementsFetcher
+
+
 from .fetchers import NUKeyServerMembersFetcher
 
 
@@ -103,10 +112,10 @@ from .fetchers import NUEgressACLEntryTemplatesFetcher
 from .fetchers import NUEgressACLTemplatesFetcher
 
 
+from .fetchers import NUEgressAdvFwdEntryTemplatesFetcher
+
+
 from .fetchers import NUDomainFIPAclTemplatesFetcher
-
-
-from .fetchers import NUFloatingIPACLTemplatesFetcher
 
 
 from .fetchers import NUEgressQOSPoliciesFetcher
@@ -127,7 +136,16 @@ from .fetchers import NUMirrorDestinationsFetcher
 from .fetchers import NUVirtualFirewallPoliciesFetcher
 
 
+from .fetchers import NUVirtualFirewallRulesFetcher
+
+
 from .fetchers import NUSiteInfosFetcher
+
+
+from .fetchers import NUAllGatewaysFetcher
+
+
+from .fetchers import NUAllRedundancyGroupsFetcher
 
 
 from .fetchers import NUFloatingIpsFetcher
@@ -193,7 +211,13 @@ from .fetchers import NUJobsFetcher
 from .fetchers import NUPolicyGroupsFetcher
 
 
+from .fetchers import NUPolicyObjectGroupsFetcher
+
+
 from .fetchers import NUDomainsFetcher
+
+
+from .fetchers import NUCommandsFetcher
 
 
 from .fetchers import NUZonesFetcher
@@ -218,6 +242,15 @@ from .fetchers import NURoutingPoliciesFetcher
 
 
 from .fetchers import NUUplinkRDsFetcher
+
+
+from .fetchers import NUApplicationsFetcher
+
+
+from .fetchers import NUApplicationperformancemanagementsFetcher
+
+
+from .fetchers import NUVRSsFetcher
 
 
 from .fetchers import NUVCenterVRSConfigsFetcher
@@ -269,6 +302,9 @@ from .fetchers import NUMultiCastChannelMapsFetcher
 
 
 from .fetchers import NUAutoDiscoveredGatewaysFetcher
+
+
+from .fetchers import NUOverlayMirrorDestinationsFetcher
 
 
 from .fetchers import NUSystemConfigsFetcher
@@ -372,6 +408,12 @@ class NUMe(NURESTRootObject):
         self.l4_services = NUL4ServicesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.l7applicationsignatures = NUL7applicationsignaturesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.saa_s_application_types = NUSaaSApplicationTypesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.vcenter_eam_configs = NUVCenterEAMConfigsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -411,13 +453,16 @@ class NUMe(NURESTRootObject):
         self.certificates = NUCertificatesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
-        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.netconf_profiles = NUNetconfProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.network_layouts = NUNetworkLayoutsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.network_performance_measurements = NUNetworkPerformanceMeasurementsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.key_server_members = NUKeyServerMembersFetcher.fetcher_with_object(parent_object=self, relationship="root")
@@ -441,10 +486,10 @@ class NUMe(NURESTRootObject):
         self.egress_acl_templates = NUEgressACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.egress_adv_fwd_entry_templates = NUEgressAdvFwdEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.domain_fip_acl_templates = NUDomainFIPAclTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="root")
-        
-        
-        self.floating_ipacl_templates = NUFloatingIPACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.egress_qos_policies = NUEgressQOSPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="root")
@@ -465,7 +510,16 @@ class NUMe(NURESTRootObject):
         self.virtual_firewall_policies = NUVirtualFirewallPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.virtual_firewall_rules = NUVirtualFirewallRulesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.site_infos = NUSiteInfosFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.all_gateways = NUAllGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.all_redundancy_groups = NUAllRedundancyGroupsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.floating_ips = NUFloatingIpsFetcher.fetcher_with_object(parent_object=self, relationship="root")
@@ -531,7 +585,13 @@ class NUMe(NURESTRootObject):
         self.policy_groups = NUPolicyGroupsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.policy_object_groups = NUPolicyObjectGroupsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.domains = NUDomainsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.commands = NUCommandsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.zones = NUZonesFetcher.fetcher_with_object(parent_object=self, relationship="root")
@@ -556,6 +616,15 @@ class NUMe(NURESTRootObject):
         
         
         self.uplink_rds = NUUplinkRDsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.applications = NUApplicationsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.applicationperformancemanagements = NUApplicationperformancemanagementsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.vrss = NUVRSsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.vcenter_vrs_configs = NUVCenterVRSConfigsFetcher.fetcher_with_object(parent_object=self, relationship="root")
@@ -607,6 +676,9 @@ class NUMe(NURESTRootObject):
         
         
         self.auto_discovered_gateways = NUAutoDiscoveredGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.overlay_mirror_destinations = NUOverlayMirrorDestinationsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.system_configs = NUSystemConfigsFetcher.fetcher_with_object(parent_object=self, relationship="root")

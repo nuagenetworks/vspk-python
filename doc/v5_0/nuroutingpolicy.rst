@@ -22,6 +22,8 @@ Attributes
 
 - ``policy_definition``: String blob
 
+- ``routing_protocol``: Routing protocol this policy definition is used for
+
 - ``external_id``: External object ID. Used for integration with third party systems
 
 
@@ -43,9 +45,9 @@ Parents
 --------
 
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

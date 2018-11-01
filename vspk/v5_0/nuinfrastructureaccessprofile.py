@@ -37,6 +37,9 @@ from .fetchers import NUGlobalMetadatasFetcher
 from .fetchers import NUConnectionendpointsFetcher
 
 
+from .fetchers import NUNSGatewayTemplatesFetcher
+
+
 from .fetchers import NUSSHKeysFetcher
 
 from bambou import NURESTObject
@@ -121,6 +124,9 @@ class NUInfrastructureAccessProfile(NURESTObject):
         
         
         self.connectionendpoints = NUConnectionendpointsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ns_gateway_templates = NUNSGatewayTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ssh_keys = NUSSHKeysFetcher.fetcher_with_object(parent_object=self, relationship="child")

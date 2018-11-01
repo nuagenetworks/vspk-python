@@ -28,6 +28,9 @@
 
 
 
+from .fetchers import NUGatewaysFetcher
+
+
 from .fetchers import NUTCAsFetcher
 
 
@@ -35,6 +38,12 @@ from .fetchers import NUAddressRangesFetcher
 
 
 from .fetchers import NURedirectionTargetsFetcher
+
+
+from .fetchers import NURedundancyGroupsFetcher
+
+
+from .fetchers import NUDeploymentFailuresFetcher
 
 
 from .fetchers import NUPermissionsFetcher
@@ -64,6 +73,12 @@ from .fetchers import NUDHCPOptionsFetcher
 from .fetchers import NUVirtualFirewallPoliciesFetcher
 
 
+from .fetchers import NUVirtualFirewallRulesFetcher
+
+
+from .fetchers import NUAlarmsFetcher
+
+
 from .fetchers import NUGlobalMetadatasFetcher
 
 
@@ -80,9 +95,6 @@ from .fetchers import NUIngressACLTemplatesFetcher
 
 
 from .fetchers import NUIngressAdvFwdTemplatesFetcher
-
-
-from .fetchers import NUIngressExternalServiceTemplatesFetcher
 
 
 from .fetchers import NUJobsFetcher
@@ -112,6 +124,9 @@ from .fetchers import NUVPNConnectionsFetcher
 from .fetchers import NUVPortsFetcher
 
 
+from .fetchers import NUApplicationsFetcher
+
+
 from .fetchers import NUApplicationperformancemanagementbindingsFetcher
 
 
@@ -121,7 +136,13 @@ from .fetchers import NUBridgeInterfacesFetcher
 from .fetchers import NUGroupsFetcher
 
 
+from .fetchers import NUProxyARPFiltersFetcher
+
+
 from .fetchers import NUNSGatewaySummariesFetcher
+
+
+from .fetchers import NUStaticRoutesFetcher
 
 
 from .fetchers import NUStatisticsFetcher
@@ -169,11 +190,11 @@ class NUL2Domain(NURESTObject):
     
     CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
     
-    CONST_USE_GLOBAL_MAC_DISABLED  = "DISABLED "
-    
     CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
     
     CONST_FLOW_COLLECTION_ENABLED_DISABLED = "DISABLED"
+    
+    CONST_USE_GLOBAL_MAC_DISABLED = "DISABLED"
     
     CONST_POLICY_CHANGE_STATUS_STARTED = "STARTED"
     
@@ -287,7 +308,7 @@ class NUL2Domain(NURESTObject):
         self.expose_attribute(local_name="route_target", remote_name="routeTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="routed_vpls_enabled", remote_name="routedVPLSEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
-        self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED ', u'ENABLED'])
+        self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_shared_network_resource_id", remote_name="associatedSharedNetworkResourceID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_underlay_id", remote_name="associatedUnderlayID", attribute_type=str, is_required=False, is_unique=False)
@@ -300,6 +321,9 @@ class NUL2Domain(NURESTObject):
         # Fetchers
         
         
+        self.gateways = NUGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.tcas = NUTCAsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -307,6 +331,12 @@ class NUL2Domain(NURESTObject):
         
         
         self.redirection_targets = NURedirectionTargetsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.redundancy_groups = NURedundancyGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.deployment_failures = NUDeploymentFailuresFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -336,6 +366,12 @@ class NUL2Domain(NURESTObject):
         self.virtual_firewall_policies = NUVirtualFirewallPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.virtual_firewall_rules = NUVirtualFirewallRulesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -352,9 +388,6 @@ class NUL2Domain(NURESTObject):
         
         
         self.ingress_adv_fwd_templates = NUIngressAdvFwdTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.ingress_external_service_templates = NUIngressExternalServiceTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -384,6 +417,9 @@ class NUL2Domain(NURESTObject):
         self.vports = NUVPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.applications = NUApplicationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.applicationperformancemanagementbindings = NUApplicationperformancemanagementbindingsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -393,7 +429,13 @@ class NUL2Domain(NURESTObject):
         self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.proxy_arp_filters = NUProxyARPFiltersFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.ns_gateway_summaries = NUNSGatewaySummariesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.static_routes = NUStaticRoutesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.statistics = NUStatisticsFetcher.fetcher_with_object(parent_object=self, relationship="child")

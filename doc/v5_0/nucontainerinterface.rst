@@ -54,8 +54,6 @@ Attributes
 
 - ``container_uuid``: UUID of the associated container
 
-- ``associated_floating_ip_address``: Floating Ip Address of this network interface eg: 10.1.2.1
-
 - ``attached_network_id``: ID of the l2 domain or Subnet that the container is attached to
 
 - ``attached_network_type``: l2 domain or Subnet that the interface is attached to
@@ -94,15 +92,15 @@ Parents
 
 - :ref:`nuzone.NUZone<nuzone>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`nume.NUMe<nume>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
-- :ref:`nul2domain.NUL2Domain<nul2domain>`
-
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nucontainer.NUContainer<nucontainer>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
 

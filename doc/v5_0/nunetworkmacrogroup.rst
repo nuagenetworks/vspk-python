@@ -18,8 +18,6 @@ Attributes
 
 - ``description``: Description of the macro group
 
-- ``network_macros``: None
-
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``is_saa_s_type``: Determines whether this entity is specific to SaaS Breakout Feature.

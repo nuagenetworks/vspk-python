@@ -28,6 +28,9 @@
 
 
 
+from .fetchers import NUL2DomainsFetcher
+
+
 from .fetchers import NUMACFilterProfilesFetcher
 
 
@@ -35,6 +38,9 @@ from .fetchers import NUSAPEgressQoSProfilesFetcher
 
 
 from .fetchers import NUSAPIngressQoSProfilesFetcher
+
+
+from .fetchers import NUGatewaySecuritiesFetcher
 
 
 from .fetchers import NUPATNATPoolsFetcher
@@ -61,6 +67,9 @@ from .fetchers import NUAlarmsFetcher
 from .fetchers import NUGlobalMetadatasFetcher
 
 
+from .fetchers import NUInfrastructureConfigsFetcher
+
+
 from .fetchers import NUIngressProfilesFetcher
 
 
@@ -76,6 +85,9 @@ from .fetchers import NULocationsFetcher
 from .fetchers import NUBootstrapsFetcher
 
 
+from .fetchers import NUBootstrapActivationsFetcher
+
+
 from .fetchers import NUPortsFetcher
 
 
@@ -83,9 +95,6 @@ from .fetchers import NUIPFilterProfilesFetcher
 
 
 from .fetchers import NUIPv6FilterProfilesFetcher
-
-
-from .fetchers import NUNSGInfosFetcher
 
 
 from .fetchers import NUEventLogsFetcher
@@ -225,6 +234,7 @@ class NUGateway(NURESTObject):
         self._management_id = None
         self._last_updated_by = None
         self._datapath_id = None
+        self._patches = None
         self._gateway_connected = None
         self._gateway_version = None
         self._redundancy_group_id = None
@@ -244,6 +254,7 @@ class NUGateway(NURESTObject):
         self._product_name = None
         self._use_gateway_vlanvnid = None
         self._associated_gateway_security_id = None
+        self._associated_gateway_security_profile_id = None
         self._associated_nsg_info_id = None
         self._associated_netconf_profile_id = None
         self._vtep = None
@@ -263,6 +274,7 @@ class NUGateway(NURESTObject):
         self.expose_attribute(local_name="management_id", remote_name="managementID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_id", remote_name="datapathID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="patches", remote_name="patches", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_connected", remote_name="gatewayConnected", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_version", remote_name="gatewayVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redundancy_group_id", remote_name="redundancyGroupID", attribute_type=str, is_required=False, is_unique=False)
@@ -282,6 +294,7 @@ class NUGateway(NURESTObject):
         self.expose_attribute(local_name="product_name", remote_name="productName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_gateway_vlanvnid", remote_name="useGatewayVLANVNID", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_security_id", remote_name="associatedGatewaySecurityID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_gateway_security_profile_id", remote_name="associatedGatewaySecurityProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_nsg_info_id", remote_name="associatedNSGInfoID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_netconf_profile_id", remote_name="associatedNetconfProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vtep", remote_name="vtep", attribute_type=str, is_required=False, is_unique=False)
@@ -293,6 +306,9 @@ class NUGateway(NURESTObject):
         # Fetchers
         
         
+        self.l2_domains = NUL2DomainsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.mac_filter_profiles = NUMACFilterProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -302,7 +318,10 @@ class NUGateway(NURESTObject):
         self.sap_ingress_qo_s_profiles = NUSAPIngressQoSProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
-        self.patnat_pools = NUPATNATPoolsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        self.gateway_securities = NUGatewaySecuritiesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.patnat_pools = NUPATNATPoolsFetcher.fetcher_with_object(parent_object=self, relationship="member")
         
         
         self.deployment_failures = NUDeploymentFailuresFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -326,6 +345,9 @@ class NUGateway(NURESTObject):
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.infrastructure_configs = NUInfrastructureConfigsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.ingress_profiles = NUIngressProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -341,6 +363,9 @@ class NUGateway(NURESTObject):
         self.bootstraps = NUBootstrapsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.bootstrap_activations = NUBootstrapActivationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.ports = NUPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -348,9 +373,6 @@ class NUGateway(NURESTObject):
         
         
         self.ipv6_filter_profiles = NUIPv6FilterProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.nsg_infos = NUNSGInfosFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -674,6 +696,29 @@ class NUGateway(NURESTObject):
                 
         """
         self._datapath_id = value
+
+    
+    @property
+    def patches(self):
+        """ Get patches value.
+
+            Notes:
+                Patches that have been installed on the NSG
+
+                
+        """
+        return self._patches
+
+    @patches.setter
+    def patches(self, value):
+        """ Set patches value.
+
+            Notes:
+                Patches that have been installed on the NSG
+
+                
+        """
+        self._patches = value
 
     
     @property
@@ -1167,6 +1212,33 @@ class NUGateway(NURESTObject):
                 
         """
         self._associated_gateway_security_id = value
+
+    
+    @property
+    def associated_gateway_security_profile_id(self):
+        """ Get associated_gateway_security_profile_id value.
+
+            Notes:
+                Readonly Id of the associated gateway security profile object
+
+                
+                This attribute is named `associatedGatewaySecurityProfileID` in VSD API.
+                
+        """
+        return self._associated_gateway_security_profile_id
+
+    @associated_gateway_security_profile_id.setter
+    def associated_gateway_security_profile_id(self, value):
+        """ Set associated_gateway_security_profile_id value.
+
+            Notes:
+                Readonly Id of the associated gateway security profile object
+
+                
+                This attribute is named `associatedGatewaySecurityProfileID` in VSD API.
+                
+        """
+        self._associated_gateway_security_profile_id = value
 
     
     @property

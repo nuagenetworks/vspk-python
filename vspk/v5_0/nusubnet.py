@@ -125,8 +125,6 @@ class NUSubnet(NURESTObject):
     
     CONST_RESOURCE_TYPE_NSG_VNF = "NSG_VNF"
     
-    CONST_FLOW_COLLECTION_ENABLED_INHERITED = "INHERITED"
-    
     CONST_DPI_ENABLED = "ENABLED"
     
     CONST_DHCP_RELAY_STATUS_DISABLED = "DISABLED"
@@ -141,13 +139,9 @@ class NUSubnet(NURESTObject):
     
     CONST_RESOURCE_TYPE_STANDARD = "STANDARD"
     
-    CONST_DEFAULT_ACTION_USE_UNDERLAY = "USE_UNDERLAY"
-    
     CONST_USE_GLOBAL_MAC_ENABLED = "ENABLED"
     
     CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
-    
-    CONST_FLOW_COLLECTION_ENABLED_DISABLED = "DISABLED"
     
     CONST_RESOURCE_TYPE_PUBLIC = "PUBLIC"
     
@@ -167,8 +161,6 @@ class NUSubnet(NURESTObject):
     
     CONST_DHCP_RELAY_STATUS_ENABLED = "ENABLED"
     
-    CONST_FLOW_COLLECTION_ENABLED_ENABLED = "ENABLED"
-    
     CONST_MULTICAST_DISABLED = "DISABLED"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
@@ -180,8 +172,6 @@ class NUSubnet(NURESTObject):
     CONST_MAINTENANCE_MODE_ENABLED_INHERITED = "ENABLED_INHERITED"
     
     CONST_ENCRYPTION_ENABLED = "ENABLED"
-    
-    CONST_DEFAULT_ACTION_DROP_TRAFFIC = "DROP_TRAFFIC"
     
     CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
     
@@ -222,13 +212,11 @@ class NUSubnet(NURESTObject):
         self._access_restriction_enabled = None
         self._address = None
         self._advertise = None
-        self._default_action = None
         self._template_id = None
         self._service_id = None
         self._description = None
         self._resource_type = None
         self._netmask = None
-        self._flow_collection_enabled = None
         self._vn_id = None
         self._encryption = None
         self._underlay = None
@@ -262,15 +250,13 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_mac_address", remote_name="gatewayMACAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="access_restriction_enabled", remote_name="accessRestrictionEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="advertise", remote_name="advertise", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="default_action", remote_name="defaultAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'DROP_TRAFFIC', u'USE_UNDERLAY'])
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_id", remote_name="serviceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="resource_type", remote_name="resourceType", attribute_type=str, is_required=False, is_unique=False, choices=[u'FLOATING', u'NSG_VNF', u'PUBLIC', u'STANDARD'])
-        self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vn_id", remote_name="vnId", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="underlay", remote_name="underlay", attribute_type=bool, is_required=False, is_unique=False)
@@ -735,33 +721,6 @@ class NUSubnet(NURESTObject):
 
     
     @property
-    def default_action(self):
-        """ Get default_action value.
-
-            Notes:
-                If PAT is disabled then this flag indicates what to do if routes don't exist in overlay, will default to drop | possible values USE_UNDERLAY, DROP_TRAFFIC Possible values are USE_UNDERLAY, DROP_TRAFFIC, .
-
-                
-                This attribute is named `defaultAction` in VSD API.
-                
-        """
-        return self._default_action
-
-    @default_action.setter
-    def default_action(self, value):
-        """ Set default_action value.
-
-            Notes:
-                If PAT is disabled then this flag indicates what to do if routes don't exist in overlay, will default to drop | possible values USE_UNDERLAY, DROP_TRAFFIC Possible values are USE_UNDERLAY, DROP_TRAFFIC, .
-
-                
-                This attribute is named `defaultAction` in VSD API.
-                
-        """
-        self._default_action = value
-
-    
-    @property
     def template_id(self):
         """ Get template_id value.
 
@@ -886,33 +845,6 @@ class NUSubnet(NURESTObject):
                 
         """
         self._netmask = value
-
-    
-    @property
-    def flow_collection_enabled(self):
-        """ Get flow_collection_enabled value.
-
-            Notes:
-                Determines whether or not flow collection is enabled.
-
-                
-                This attribute is named `flowCollectionEnabled` in VSD API.
-                
-        """
-        return self._flow_collection_enabled
-
-    @flow_collection_enabled.setter
-    def flow_collection_enabled(self, value):
-        """ Set flow_collection_enabled value.
-
-            Notes:
-                Determines whether or not flow collection is enabled.
-
-                
-                This attribute is named `flowCollectionEnabled` in VSD API.
-                
-        """
-        self._flow_collection_enabled = value
 
     
     @property

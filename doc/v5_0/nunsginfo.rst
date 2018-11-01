@@ -14,13 +14,17 @@ Attributes
 
 - ``mac_address``: MAC Address of the NSG.  May represent the MAC address of the first uplink that came operational during bootstrapping.
 
+- ``aar_application_release_date``: Release Date of the AAR Application
+
+- ``aar_application_version``: The AAR Application Version
+
 - ``bios_release_date``: Release Date of the NSG BiOS
 
 - ``bios_version``: NSG BIOS Version as received from the NSG during bootstrap or a reboot.  If the information exeeds 255 characters, the extra characters will be truncated.
 
 - ``sku``: The part number of the NSG
 
-- ``tpm_status``: TPM status as reported by the NSG during bootstrapping.  This informate indicates if TPM is being used in securing the private key/certificate of an NSG.
+- ``tpm_status``: TPM status code as reported by the NSG during bootstrapping. This informate indicates if TPM is being used in securing the private key/certificate of an NSG. Possible values are 0(Unknown), 1(Enabled_Not_Operational), 2(Enabled_Operational), 3(Disabled).
 
 - ``tpm_version``: TPM (Trusted Platform Module) version as reported by the NSG.
 
@@ -32,7 +36,7 @@ Attributes
 
 - ``family``: The NSG Family type as it was returned by the NSG during bootstrapping.
 
-- ``patches``: Patches that have been installed on the NSG.
+- ``patches_detail``: Base64 Encoded JSON String of the extra details pertaining to each successfully installed patch
 
 - ``serial_number``: The NSG's serial number as it is stored in the system's CMOS (Motherboard)
 
@@ -41,6 +45,8 @@ Attributes
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``product_name``: NSG Product Name as reported when the device bootstraps.
+
+- ``associated_entity_type``: Object type of the associated entity.
 
 - ``associated_ns_gateway_id``: The ID of the NSG from which the infomation was collected.
 
@@ -54,8 +60,6 @@ Attributes
 Parents
 --------
 
-
-- :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 

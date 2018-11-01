@@ -40,7 +40,6 @@ Children
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuhsc.NUHSC<nuhsc>`                                                                                                                                        ``hscs`` 
 :ref:`nuvsc.NUVSC<nuvsc>`                                                                                                                                        ``vscs`` 
-:ref:`nuvsd.NUVSD<nuvsd>`                                                                                                                                        ``vsds`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
 ================================================================================================================================================               ==========================================================================================
 

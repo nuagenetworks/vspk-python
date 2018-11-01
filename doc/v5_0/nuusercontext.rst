@@ -22,7 +22,11 @@ Attributes
 
 - ``page_size``: Result size for queries
 
+- ``last_updated_by``: ID of the user who last updated the object.
+
 - ``flow_collection_enabled``: Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires 'statisticsEnabled'.
+
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``google_maps_api_key``: Google Maps API Key used to display maps on Nuage UI applications
 
@@ -30,8 +34,20 @@ Attributes
 
 - ``stats_tsdb_server_address``: ip address(es) of the elastic machine
 
+- ``external_id``: External object ID. Used for integration with third party systems
 
 
+
+
+Children
+--------
+
+================================================================================================================================================               ==========================================================================================
+**class**                                                                                                                                                      **fetcher**
+
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+================================================================================================================================================               ==========================================================================================
 
 
 

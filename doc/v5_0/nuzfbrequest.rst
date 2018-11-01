@@ -20,11 +20,11 @@ Attributes
 
 - ``zfb_info``: The Base64 encoded JSON string of ZFB Attributes
 
-- ``zfb_request_retry_timer``: ZFB Request retry timer on NSG. Set from System Config
+- ``zfb_request_retry_timer``: ZFB Request retry timer on the gateway. Set on VSD's System Config panel.
 
-- ``sku``: The part number of the NSG
+- ``sku``: The part number of the gateway being bootstrapped through ZFB.
 
-- ``ip_address``: IP Address of the NSG
+- ``ip_address``: IP Address of the gateway being bootstrapped using ZFB.
 
 - ``cpu_type``: Processor Type
 
@@ -32,17 +32,19 @@ Attributes
 
 - ``uuid``: Redhat UUID
 
-- ``family``: NSG Type
+- ``family``: Gateway Type
 
-- ``last_connected_time``: the time in which the last GET was made from the NSG
+- ``last_connected_time``: The time in which the last GET was made from the gateway.
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``serial_number``: The NSG's Serial Number
+- ``registration_url``: Registration URL to be used for a gateway to be bootstrapped using ZFB.
+
+- ``serial_number``: The gateway's Serial Number.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``hostname``: hostname of the NSG
+- ``hostname``: Hostname of the gateway bootstrapped using ZFB.
 
 - ``associated_enterprise_id``: the ID of the associated enteprise
 

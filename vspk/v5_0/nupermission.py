@@ -43,7 +43,7 @@ class NUPermission(NURESTObject):
     """ Represents a Permission in the VSD
 
         Notes:
-            Represents  Permitted action on an  entity for a group.
+            User groups that are granted permissions for objects such as domains, zones, and subnets can see and manipulate everything within the object.
     """
 
     __rest_name__ = "permission"

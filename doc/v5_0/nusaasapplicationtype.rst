@@ -44,6 +44,8 @@ Parents
 --------
 
 
+- :ref:`nume.NUMe<nume>`
+
 - :ref:`nusaasapplicationgroup.NUSaaSApplicationGroup<nusaasapplicationgroup>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`

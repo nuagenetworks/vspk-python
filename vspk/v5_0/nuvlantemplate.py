@@ -97,7 +97,9 @@ class NUVLANTemplate(NURESTObject):
         self._is_uplink = None
         self._associated_connection_type = None
         self._associated_egress_qos_policy_id = None
+        self._associated_ingress_overlay_qo_s_policer_id = None
         self._associated_ingress_qos_policy_id = None
+        self._associated_ingress_underlay_qo_s_policer_id = None
         self._associated_uplink_connection_id = None
         self._associated_vsc_profile_id = None
         self._duc_vlan = None
@@ -111,7 +113,9 @@ class NUVLANTemplate(NURESTObject):
         self.expose_attribute(local_name="is_uplink", remote_name="isUplink", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_connection_type", remote_name="associatedConnectionType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BR_CONNECTION', u'UPLINK_CONNECTION'])
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_ingress_overlay_qo_s_policer_id", remote_name="associatedIngressOverlayQoSPolicerID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ingress_qos_policy_id", remote_name="associatedIngressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_ingress_underlay_qo_s_policer_id", remote_name="associatedIngressUnderlayQoSPolicerID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_uplink_connection_id", remote_name="associatedUplinkConnectionID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vsc_profile_id", remote_name="associatedVSCProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="duc_vlan", remote_name="ducVlan", attribute_type=bool, is_required=False, is_unique=False)
@@ -143,7 +147,7 @@ class NUVLANTemplate(NURESTObject):
         """ Get value value.
 
             Notes:
-                Value of VLAN
+                Value or ID of VLAN instances to be created from this template.
 
                 
         """
@@ -154,7 +158,7 @@ class NUVLANTemplate(NURESTObject):
         """ Set value value.
 
             Notes:
-                Value of VLAN
+                Value or ID of VLAN instances to be created from this template.
 
                 
         """
@@ -320,6 +324,33 @@ class NUVLANTemplate(NURESTObject):
 
     
     @property
+    def associated_ingress_overlay_qo_s_policer_id(self):
+        """ Get associated_ingress_overlay_qo_s_policer_id value.
+
+            Notes:
+                ID of the Ingress Overlay QoS Policer associated with a VLAN.
+
+                
+                This attribute is named `associatedIngressOverlayQoSPolicerID` in VSD API.
+                
+        """
+        return self._associated_ingress_overlay_qo_s_policer_id
+
+    @associated_ingress_overlay_qo_s_policer_id.setter
+    def associated_ingress_overlay_qo_s_policer_id(self, value):
+        """ Set associated_ingress_overlay_qo_s_policer_id value.
+
+            Notes:
+                ID of the Ingress Overlay QoS Policer associated with a VLAN.
+
+                
+                This attribute is named `associatedIngressOverlayQoSPolicerID` in VSD API.
+                
+        """
+        self._associated_ingress_overlay_qo_s_policer_id = value
+
+    
+    @property
     def associated_ingress_qos_policy_id(self):
         """ Get associated_ingress_qos_policy_id value.
 
@@ -344,6 +375,33 @@ class NUVLANTemplate(NURESTObject):
                 
         """
         self._associated_ingress_qos_policy_id = value
+
+    
+    @property
+    def associated_ingress_underlay_qo_s_policer_id(self):
+        """ Get associated_ingress_underlay_qo_s_policer_id value.
+
+            Notes:
+                ID of the Ingress Underlay QoS Policer associated with a VLAN.
+
+                
+                This attribute is named `associatedIngressUnderlayQoSPolicerID` in VSD API.
+                
+        """
+        return self._associated_ingress_underlay_qo_s_policer_id
+
+    @associated_ingress_underlay_qo_s_policer_id.setter
+    def associated_ingress_underlay_qo_s_policer_id(self, value):
+        """ Set associated_ingress_underlay_qo_s_policer_id value.
+
+            Notes:
+                ID of the Ingress Underlay QoS Policer associated with a VLAN.
+
+                
+                This attribute is named `associatedIngressUnderlayQoSPolicerID` in VSD API.
+                
+        """
+        self._associated_ingress_underlay_qo_s_policer_id = value
 
     
     @property

@@ -81,7 +81,6 @@ class NUPolicyDecision(NURESTObject):
         self._fip_acls = None
         self._ingress_acls = None
         self._ingress_adv_fwd = None
-        self._ingress_external_service_acls = None
         self._entity_scope = None
         self._qos = None
         self._stats = None
@@ -93,7 +92,6 @@ class NUPolicyDecision(NURESTObject):
         self.expose_attribute(local_name="fip_acls", remote_name="fipACLs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ingress_acls", remote_name="ingressACLs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ingress_adv_fwd", remote_name="ingressAdvFwd", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="ingress_external_service_acls", remote_name="ingressExternalServiceACLs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="qos", remote_name="qos", attribute_type=dict, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats", remote_name="stats", attribute_type=dict, is_required=False, is_unique=False)
@@ -276,33 +274,6 @@ class NUPolicyDecision(NURESTObject):
                 
         """
         self._ingress_adv_fwd = value
-
-    
-    @property
-    def ingress_external_service_acls(self):
-        """ Get ingress_external_service_acls value.
-
-            Notes:
-                List of actual Ingress External Service ACLs that will be applied on the interface of this VM
-
-                
-                This attribute is named `ingressExternalServiceACLs` in VSD API.
-                
-        """
-        return self._ingress_external_service_acls
-
-    @ingress_external_service_acls.setter
-    def ingress_external_service_acls(self, value):
-        """ Set ingress_external_service_acls value.
-
-            Notes:
-                List of actual Ingress External Service ACLs that will be applied on the interface of this VM
-
-                
-                This attribute is named `ingressExternalServiceACLs` in VSD API.
-                
-        """
-        self._ingress_external_service_acls = value
 
     
     @property

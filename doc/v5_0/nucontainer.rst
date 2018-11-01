@@ -46,6 +46,8 @@ Attributes
 
 - ``domain_ids``: Array of IDs of the domain that the container is connected to
 
+- ``compute_provisioned``: Compute Provisioned
+
 - ``zone_ids``: Array of IDs of the zone that this container is attached to
 
 - ``orchestration_id`` (**Mandatory**): Orchestration ID
@@ -90,7 +92,7 @@ Parents
 
 - :ref:`nuzone.NUZone<nuzone>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`nume.NUMe<nume>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
@@ -98,15 +100,15 @@ Parents
 
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
-- :ref:`nul2domain.NUL2Domain<nul2domain>`
+- :ref:`nuuser.NUUser<nuuser>`
 
-- :ref:`nume.NUMe<nume>`
+- :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
-- :ref:`nuuser.NUUser<nuuser>`
 
 - :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`
 

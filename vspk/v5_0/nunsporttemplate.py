@@ -94,7 +94,6 @@ class NUNSPortTemplate(NURESTObject):
         self._last_updated_by = None
         self._description = None
         self._physical_name = None
-        self._infrastructure_profile_id = None
         self._entity_scope = None
         self._port_type = None
         self._speed = None
@@ -107,7 +106,6 @@ class NUNSPortTemplate(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="infrastructure_profile_id", remote_name="infrastructureProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'NETWORK'])
         self.expose_attribute(local_name="speed", remote_name="speed", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTONEGOTIATE', u'BASET10', u'BASET1000', u'BASETX100', u'BASEX10G'])
@@ -257,33 +255,6 @@ class NUNSPortTemplate(NURESTObject):
                 
         """
         self._physical_name = value
-
-    
-    @property
-    def infrastructure_profile_id(self):
-        """ Get infrastructure_profile_id value.
-
-            Notes:
-                The ID of the infrastructure port profile this Template instance is associated with. (Deprecated in 4.0)
-
-                
-                This attribute is named `infrastructureProfileID` in VSD API.
-                
-        """
-        return self._infrastructure_profile_id
-
-    @infrastructure_profile_id.setter
-    def infrastructure_profile_id(self, value):
-        """ Set infrastructure_profile_id value.
-
-            Notes:
-                The ID of the infrastructure port profile this Template instance is associated with. (Deprecated in 4.0)
-
-                
-                This attribute is named `infrastructureProfileID` in VSD API.
-                
-        """
-        self._infrastructure_profile_id = value
 
     
     @property

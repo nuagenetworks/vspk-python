@@ -223,7 +223,7 @@ class NUNSPort(NURESTObject):
         """ Get nat_traversal value.
 
             Notes:
-                Enum value that states the type of NAT Traversal the NSG instance will use to talk to other NSGs and the Internet.  (This field is deprecated in 5.0)
+                Enum value that states the type of NAT Traversal the NSG instance will use to talk to other NSGs and the Internet. (This field is deprecated in 5.0)
 
                 
                 This attribute is named `NATTraversal` in VSD API.
@@ -236,7 +236,7 @@ class NUNSPort(NURESTObject):
         """ Set nat_traversal value.
 
             Notes:
-                Enum value that states the type of NAT Traversal the NSG instance will use to talk to other NSGs and the Internet.  (This field is deprecated in 5.0)
+                Enum value that states the type of NAT Traversal the NSG instance will use to talk to other NSGs and the Internet. (This field is deprecated in 5.0)
 
                 
                 This attribute is named `NATTraversal` in VSD API.
@@ -250,7 +250,7 @@ class NUNSPort(NURESTObject):
         """ Get vlan_range value.
 
             Notes:
-                VLAN Range of the Port.  Format must conform to a-b,c,d-f where a,b,c,d,f are integers between 0 and 4095.
+                VLAN Range of the Port. Format must conform to a-b,c,d-f where a,b,c,d,f are integers between 0 and 4094.
 
                 
                 This attribute is named `VLANRange` in VSD API.
@@ -263,7 +263,7 @@ class NUNSPort(NURESTObject):
         """ Set vlan_range value.
 
             Notes:
-                VLAN Range of the Port.  Format must conform to a-b,c,d-f where a,b,c,d,f are integers between 0 and 4095.
+                VLAN Range of the Port. Format must conform to a-b,c,d-f where a,b,c,d,f are integers between 0 and 4094.
 
                 
                 This attribute is named `VLANRange` in VSD API.
@@ -589,7 +589,7 @@ class NUNSPort(NURESTObject):
         """ Get use_user_mnemonic value.
 
             Notes:
-                determines whether to use user mnemonic of the Port
+                Determines whether to use user mnemonic of the NSG Port
 
                 
                 This attribute is named `useUserMnemonic` in VSD API.
@@ -602,7 +602,7 @@ class NUNSPort(NURESTObject):
         """ Set use_user_mnemonic value.
 
             Notes:
-                determines whether to use user mnemonic of the Port
+                Determines whether to use user mnemonic of the NSG Port
 
                 
                 This attribute is named `useUserMnemonic` in VSD API.

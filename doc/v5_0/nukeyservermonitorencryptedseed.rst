@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``seed_type``: Seed Type
+
 - ``key_server_certificate_serial_number``: KeyServer Certificate Serial Number
 
 - ``enterprise_secured_data_id``: Enterprise Secured ID record this monitor represents

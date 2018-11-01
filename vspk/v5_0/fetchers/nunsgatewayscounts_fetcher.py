@@ -29,11 +29,11 @@
 from bambou import NURESTFetcher
 
 
-class NUIngressExternalServiceTemplateEntriesFetcher(NURESTFetcher):
-    """ Represents a NUIngressExternalServiceTemplateEntries fetcher
+class NUNSGatewaysCountsFetcher(NURESTFetcher):
+    """ Represents a NUNSGatewaysCounts fetcher
 
         Notes:
-            This fetcher enables to fetch NUIngressExternalServiceTemplateEntry objects.
+            This fetcher enables to fetch NUNSGatewaysCount objects.
 
         See:
             bambou.NURESTFetcher
@@ -41,13 +41,13 @@ class NUIngressExternalServiceTemplateEntriesFetcher(NURESTFetcher):
 
     @classmethod
     def managed_class(cls):
-        """ Return NUIngressExternalServiceTemplateEntry class that is managed.
+        """ Return NUNSGatewaysCount class that is managed.
 
             Returns:
-                .NUIngressExternalServiceTemplateEntry: the managed class
+                .NUNSGatewaysCount: the managed class
         """
 
-        from .. import NUIngressExternalServiceTemplateEntry
-        return NUIngressExternalServiceTemplateEntry
+        from .. import NUNSGatewaysCount
+        return NUNSGatewaysCount
 
     

@@ -24,6 +24,8 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``entity_state``: Intermediate State of L2 Domain.
+
 - ``policy_group_id``: PG ID for the subnet. This is unique per domain and will be in the range 1-4095
 
 - ``assoc_policy_group_category_id``: UUID of the associated Policy Group Category for contextual filtering of policy groups.
@@ -47,6 +49,7 @@ Children
 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+:ref:`nupolicygroupcategory.NUPolicyGroupCategory<nupolicygroupcategory>`                                                                                        ``policy_group_categories`` 
 :ref:`nuvport.NUVPort<nuvport>`                                                                                                                                  ``vports`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
 ================================================================================================================================================               ==========================================================================================
@@ -59,7 +62,7 @@ Parents
 
 - :ref:`nucontainerinterface.NUContainerInterface<nucontainerinterface>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`nume.NUMe<nume>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
@@ -69,9 +72,9 @@ Parents
 
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
+- :ref:`nudomain.NUDomain<nudomain>`
+
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
-
-- :ref:`nume.NUMe<nume>`
 

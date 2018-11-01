@@ -40,7 +40,7 @@ class NULtestatistics(NURESTObject):
     """ Represents a Ltestatistics in the VSD
 
         Notes:
-            Retrieves statistics for LTE uplink
+            Retrieves statistical information for LTE uplinks.
     """
 
     __rest_name__ = "ltestatistics"
@@ -171,7 +171,7 @@ class NULtestatistics(NURESTObject):
         """ Get stats_data value.
 
             Notes:
-                Map&lt;TCAMetric, Long[]&gt; TCAMetric is an Enum. Possible values are modem_status, signal_strength
+                A list of statistical data returned for a selected LTE interface.  Information returned will contain the cellular signal strength and the current technology used (LTE, HSPA+, 3G, ...).
 
                 
                 This attribute is named `statsData` in VSD API.
@@ -184,7 +184,7 @@ class NULtestatistics(NURESTObject):
         """ Set stats_data value.
 
             Notes:
-                Map&lt;TCAMetric, Long[]&gt; TCAMetric is an Enum. Possible values are modem_status, signal_strength
+                A list of statistical data returned for a selected LTE interface.  Information returned will contain the cellular signal strength and the current technology used (LTE, HSPA+, 3G, ...).
 
                 
                 This attribute is named `statsData` in VSD API.

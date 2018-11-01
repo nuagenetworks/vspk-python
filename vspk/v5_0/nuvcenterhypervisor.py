@@ -133,6 +133,7 @@ class NUVCenterHypervisor(NURESTObject):
         self._vcenter_ip = None
         self._vcenter_password = None
         self._vcenter_user = None
+        self._arp_reply = None
         self._vrs_agent_moid = None
         self._vrs_agent_name = None
         self._vrs_configuration_time_limit = None
@@ -187,6 +188,7 @@ class NUVCenterHypervisor(NURESTObject):
         self._revertive_timer = None
         self._nfs_log_server = None
         self._nfs_mount_path = None
+        self._agency_moid = None
         self._mgmt_dns1 = None
         self._mgmt_dns2 = None
         self._mgmt_gateway = None
@@ -270,6 +272,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="vcenter_ip", remote_name="vCenterIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vcenter_password", remote_name="vCenterPassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vcenter_user", remote_name="vCenterUser", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="arp_reply", remote_name="ARPReply", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_agent_moid", remote_name="VRSAgentMOID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_agent_name", remote_name="VRSAgentName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_configuration_time_limit", remote_name="VRSConfigurationTimeLimit", attribute_type=int, is_required=False, is_unique=False)
@@ -324,6 +327,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="revertive_timer", remote_name="revertiveTimer", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="nfs_log_server", remote_name="nfsLogServer", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nfs_mount_path", remote_name="nfsMountPath", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="agency_moid", remote_name="agencyMoid", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mgmt_dns1", remote_name="mgmtDNS1", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mgmt_dns2", remote_name="mgmtDNS2", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mgmt_gateway", remote_name="mgmtGateway", attribute_type=str, is_required=False, is_unique=False)
@@ -509,6 +513,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._vcenter_user = value
+
+    
+    @property
+    def arp_reply(self):
+        """ Get arp_reply value.
+
+            Notes:
+                Whether ARP Reply is enabled/disabled
+
+                
+                This attribute is named `ARPReply` in VSD API.
+                
+        """
+        return self._arp_reply
+
+    @arp_reply.setter
+    def arp_reply(self, value):
+        """ Set arp_reply value.
+
+            Notes:
+                Whether ARP Reply is enabled/disabled
+
+                
+                This attribute is named `ARPReply` in VSD API.
+                
+        """
+        self._arp_reply = value
 
     
     @property
@@ -1025,7 +1056,7 @@ class NUVCenterHypervisor(NURESTObject):
         """ Get scope value.
 
             Notes:
-                Cluster in scope or not in scope.
+                Specifies if the hypervisor is part of an in scope or out of scope cliuster
 
                 
         """
@@ -1036,7 +1067,7 @@ class NUVCenterHypervisor(NURESTObject):
         """ Set scope value.
 
             Notes:
-                Cluster in scope or not in scope.
+                Specifies if the hypervisor is part of an in scope or out of scope cliuster
 
                 
         """
@@ -1951,6 +1982,33 @@ class NUVCenterHypervisor(NURESTObject):
                 
         """
         self._nfs_mount_path = value
+
+    
+    @property
+    def agency_moid(self):
+        """ Get agency_moid value.
+
+            Notes:
+                cluster in scope or not in scope
+
+                
+                This attribute is named `agencyMoid` in VSD API.
+                
+        """
+        return self._agency_moid
+
+    @agency_moid.setter
+    def agency_moid(self, value):
+        """ Set agency_moid value.
+
+            Notes:
+                cluster in scope or not in scope
+
+                
+                This attribute is named `agencyMoid` in VSD API.
+                
+        """
+        self._agency_moid = value
 
     
     @property

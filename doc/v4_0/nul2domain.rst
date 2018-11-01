@@ -110,9 +110,9 @@ Parents
 --------
 
 
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
+
+- :ref:`nume.NUMe<nume>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

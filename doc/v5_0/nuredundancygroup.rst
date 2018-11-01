@@ -28,7 +28,7 @@ Attributes
 
 - ``gateway_peer2_connected``: Indicates status of the secondary gateway of this Redundancy Group.
 
-- ``gateway_peer2_id``: The gateway peer in this Redundant Group. when Redundant Group is deleted this gateway will not recieve vport associations
+- ``gateway_peer2_id``: The gateway peer in this Redundant Group. When Redundant Group is deleted this gateway will not recieve vport associations.
 
 - ``gateway_peer2_name``: The gateway peer name in this Redundant Group
 
@@ -87,6 +87,8 @@ Parents
 
 
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
