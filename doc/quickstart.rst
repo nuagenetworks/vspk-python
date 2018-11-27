@@ -55,7 +55,6 @@ in a function that we will reuse through this document:
         set_log_level(logging.DEBUG, logging.StreamHandler())
 
     def start_csproot_session():
-        import logging
         session = vspk.NUVSDSession(
             username='csproot',
             password='csproot',
