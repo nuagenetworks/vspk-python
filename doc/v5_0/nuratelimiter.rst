@@ -16,9 +16,9 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``peak_burst_size``: Peak Burst Size :  The maximum burst size associated with the rate limiter in kilo-bits; only whole values are supported.
+- ``peak_burst_size`` (**Mandatory**): Peak Burst Size :  The maximum burst size associated with the rate limiter in kilo-bits; only whole values are supported.
 
-- ``peak_information_rate``: Peak Information Rate :  Peak bandwidth allowed in Mb/s; only whole values supported.
+- ``peak_information_rate`` (**Mandatory**): Peak Information Rate :  Peak bandwidth allowed in Mb/s; only whole values supported.
 
 - ``description``: A description of the Rate Limiter object
 

@@ -254,6 +254,7 @@ class NUL2Domain(NURESTObject):
         self._ip_type = None
         self._ipv6_address = None
         self._ipv6_gateway = None
+        self._vxlanecmp_enabled = None
         self._maintenance_mode = None
         self._name = None
         self._last_updated_by = None
@@ -267,6 +268,7 @@ class NUL2Domain(NURESTObject):
         self._flow_collection_enabled = None
         self._vn_id = None
         self._encryption = None
+        self._ingress_replication_enabled = None
         self._entity_scope = None
         self._entity_state = None
         self._policy_change_status = None
@@ -280,6 +282,7 @@ class NUL2Domain(NURESTObject):
         self._associated_underlay_id = None
         self._stretched = None
         self._multicast = None
+        self._customer_id = None
         self._external_id = None
         self._dynamic_ipv6_address = None
         
@@ -288,6 +291,7 @@ class NUL2Domain(NURESTObject):
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4'])
         self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ipv6_gateway", remote_name="IPv6Gateway", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vxlanecmp_enabled", remote_name="VXLANECMPEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -301,6 +305,7 @@ class NUL2Domain(NURESTObject):
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="vn_id", remote_name="vnId", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="ingress_replication_enabled", remote_name="ingressReplicationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="entity_state", remote_name="entityState", attribute_type=str, is_required=False, is_unique=False, choices=[u'MARKED_FOR_DELETION', u'UNDER_CONSTRUCTION'])
         self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'DISCARDED', u'STARTED'])
@@ -314,6 +319,7 @@ class NUL2Domain(NURESTObject):
         self.expose_attribute(local_name="associated_underlay_id", remote_name="associatedUnderlayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stretched", remote_name="stretched", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="dynamic_ipv6_address", remote_name="dynamicIpv6Address", attribute_type=bool, is_required=False, is_unique=False)
         
@@ -587,6 +593,33 @@ class NUL2Domain(NURESTObject):
                 
         """
         self._ipv6_gateway = value
+
+    
+    @property
+    def vxlanecmp_enabled(self):
+        """ Get vxlanecmp_enabled value.
+
+            Notes:
+                Determines whether VXLAN-ECMP are enabled on this domain.
+
+                
+                This attribute is named `VXLANECMPEnabled` in VSD API.
+                
+        """
+        return self._vxlanecmp_enabled
+
+    @vxlanecmp_enabled.setter
+    def vxlanecmp_enabled(self, value):
+        """ Set vxlanecmp_enabled value.
+
+            Notes:
+                Determines whether VXLAN-ECMP are enabled on this domain.
+
+                
+                This attribute is named `VXLANECMPEnabled` in VSD API.
+                
+        """
+        self._vxlanecmp_enabled = value
 
     
     @property
@@ -914,6 +947,33 @@ class NUL2Domain(NURESTObject):
                 
         """
         self._encryption = value
+
+    
+    @property
+    def ingress_replication_enabled(self):
+        """ Get ingress_replication_enabled value.
+
+            Notes:
+                Enables ingress replication for the VNI.
+
+                
+                This attribute is named `ingressReplicationEnabled` in VSD API.
+                
+        """
+        return self._ingress_replication_enabled
+
+    @ingress_replication_enabled.setter
+    def ingress_replication_enabled(self, value):
+        """ Set ingress_replication_enabled value.
+
+            Notes:
+                Enables ingress replication for the VNI.
+
+                
+                This attribute is named `ingressReplicationEnabled` in VSD API.
+                
+        """
+        self._ingress_replication_enabled = value
 
     
     @property
@@ -1257,6 +1317,33 @@ class NUL2Domain(NURESTObject):
                 
         """
         self._multicast = value
+
+    
+    @property
+    def customer_id(self):
+        """ Get customer_id value.
+
+            Notes:
+                CustomerID that is used by NETCONF MANAGER to identify this enterprise. This can be configured by root user.
+
+                
+                This attribute is named `customerID` in VSD API.
+                
+        """
+        return self._customer_id
+
+    @customer_id.setter
+    def customer_id(self, value):
+        """ Set customer_id value.
+
+            Notes:
+                CustomerID that is used by NETCONF MANAGER to identify this enterprise. This can be configured by root user.
+
+                
+                This attribute is named `customerID` in VSD API.
+                
+        """
+        self._customer_id = value
 
     
     @property

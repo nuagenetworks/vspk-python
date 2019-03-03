@@ -26,6 +26,8 @@ Attributes
 
 - ``command_information``: Informative details on what command is to be executed.  It complements the commandType attribute.  An example of a value could be a URL, a version number, a UUID of another object, ...
 
+- ``progress``: JSON string detailing the progress of the command execution on Gateway.
+
 - ``assoc_entity_type``: Managed Object Type of the entity on which this Command is associated.
 
 - ``associated_param``: Parameters to be supplied for execution of this command. This should be the ID of the object supplying parameters.

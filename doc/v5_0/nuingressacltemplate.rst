@@ -5,7 +5,7 @@ nuingressacltemplate
 
 .. class:: nuingressacltemplate.NUIngressACLTemplate(bambou.nurest_object.NUMetaRESTObject,):
 
-Defines the template for an Ingress ACL.
+An ingress security policy is a set of rules defining how network traffic is treated within a domain. Ingress Security Policies control traffic flowing into the network.
 
 
 Attributes

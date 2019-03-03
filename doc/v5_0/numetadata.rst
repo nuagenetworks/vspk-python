@@ -5,7 +5,7 @@ numetadata
 
 .. class:: numetadata.NUMetadata(bambou.nurest_object.NUMetaRESTObject,):
 
-Metadata associated to a entity.
+Metadata contains user-defined data that can be attached to any VSD object. The value of a metadata can be interpreted by various external systems for any needs. Local Metadata are directly created under an object.
 
 
 Attributes
@@ -68,7 +68,7 @@ Parents
 
 - :ref:`nusharednetworkresource.NUSharedNetworkResource<nusharednetworkresource>`
 
-- :ref:`nuoverlayaddresspool.NUOverlayAddressPool<nuoverlayaddresspool>`
+- :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
 
 - :ref:`nuvirtualip.NUVirtualIP<nuvirtualip>`
 
@@ -106,6 +106,8 @@ Parents
 
 - :ref:`nudiskstat.NUDiskStat<nudiskstat>`
 
+- :ref:`nuegressadvfwdtemplate.NUEgressAdvFwdTemplate<nuegressadvfwdtemplate>`
+
 - :ref:`nuvnfinterface.NUVNFInterface<nuvnfinterface>`
 
 - :ref:`nuvcentereamconfig.NUVCenterEAMConfig<nuvcentereamconfig>`
@@ -133,6 +135,8 @@ Parents
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nuipreservation.NUIPReservation<nuipreservation>`
+
+- :ref:`nuoverlayaddresspool.NUOverlayAddressPool<nuoverlayaddresspool>`
 
 - :ref:`nuratelimiter.NURateLimiter<nuratelimiter>`
 
@@ -216,6 +220,8 @@ Parents
 
 - :ref:`nuldapconfiguration.NULDAPConfiguration<nuldapconfiguration>`
 
+- :ref:`nuuser.NUUser<nuuser>`
+
 - :ref:`nukeyservermonitorencryptedseed.NUKeyServerMonitorEncryptedSeed<nukeyservermonitorencryptedseed>`
 
 - :ref:`nugatewaytemplate.NUGatewayTemplate<nugatewaytemplate>`
@@ -286,7 +292,7 @@ Parents
 
 - :ref:`nunetworkmacrogroup.NUNetworkMacroGroup<nunetworkmacrogroup>`
 
-- :ref:`nuuser.NUUser<nuuser>`
+- :ref:`nudscpremarkingpolicy.NUDSCPRemarkingPolicy<nudscpremarkingpolicy>`
 
 - :ref:`nuinfrastructureaccessprofile.NUInfrastructureAccessProfile<nuinfrastructureaccessprofile>`
 
@@ -318,6 +324,8 @@ Parents
 
 - :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
 
+- :ref:`nuwebcategory.NUWebCategory<nuwebcategory>`
+
 - :ref:`nubfdsession.NUBFDSession<nubfdsession>`
 
 - :ref:`nustatistics.NUStatistics<nustatistics>`
@@ -339,6 +347,8 @@ Parents
 - :ref:`nudscpremarkingpolicytable.NUDSCPRemarkingPolicyTable<nudscpremarkingpolicytable>`
 
 - :ref:`nuptranslationmap.NUPTranslationMap<nuptranslationmap>`
+
+- :ref:`nuwebdomainname.NUWebDomainName<nuwebdomainname>`
 
 - :ref:`nuikegatewayconfig.NUIKEGatewayConfig<nuikegatewayconfig>`
 
@@ -381,8 +391,6 @@ Parents
 - :ref:`nustatscollectorinfo.NUStatsCollectorInfo<nustatscollectorinfo>`
 
 - :ref:`nuporttemplate.NUPortTemplate<nuporttemplate>`
-
-- :ref:`nuegressadvfwdtemplate.NUEgressAdvFwdTemplate<nuegressadvfwdtemplate>`
 
 - :ref:`nugatewayslocation.NUGatewaysLocation<nugatewayslocation>`
 
@@ -452,11 +460,7 @@ Parents
 
 - :ref:`nusapingressqosprofile.NUSAPIngressQoSProfile<nusapingressqosprofile>`
 
-- :ref:`nuvpnconnection.NUVPNConnection<nuvpnconnection>`
-
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
-
-- :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
 
 - :ref:`nukeyservermonitorsek.NUKeyServerMonitorSEK<nukeyservermonitorsek>`
 
@@ -468,6 +472,8 @@ Parents
 
 - :ref:`nubgpneighbor.NUBGPNeighbor<nubgpneighbor>`
 
+- :ref:`nuvpnconnection.NUVPNConnection<nuvpnconnection>`
+
 - :ref:`nucontainerresync.NUContainerResync<nucontainerresync>`
 
 - :ref:`nuvnf.NUVNF<nuvnf>`
@@ -475,8 +481,6 @@ Parents
 - :ref:`nuallredundancygroup.NUAllRedundancyGroup<nuallredundancygroup>`
 
 - :ref:`nuallalarm.NUAllAlarm<nuallalarm>`
-
-- :ref:`nudscpremarkingpolicy.NUDSCPRemarkingPolicy<nudscpremarkingpolicy>`
 
 - :ref:`nuwirelessport.NUWirelessPort<nuwirelessport>`
 

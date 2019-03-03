@@ -28,6 +28,10 @@ Attributes
 
 - ``address_override``: Overrides the source IP for Ingress and destination IP for Egress, MAC entries will use this address as the match criteria.
 
+- ``web_filter_id``: ID of web filter
+
+- ``web_filter_type``: Indicates type of web filter being set
+
 - ``description``: Description of the ACL entry
 
 - ``destination_port``: The destination port to be matched if protocol is UDP or TCP. Value should be either * or single port number or a port range

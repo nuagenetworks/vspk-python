@@ -176,6 +176,8 @@ class NUSystemConfig(NURESTObject):
         self._vport_init_stateful_timer = None
         self._lru_cache_size_per_subnet = None
         self._vsc_on_same_version_as_vsd = None
+        self._vsdaar_application_version = None
+        self._vsdaar_application_version_publish_date = None
         self._vsd_read_only_mode = None
         self._vsd_upgrade_is_complete = None
         self._nsg_uplink_hold_down_timer = None
@@ -192,6 +194,9 @@ class NUSystemConfig(NURESTObject):
         self._page_max_size = None
         self._page_size = None
         self._last_updated_by = None
+        self._gateway_probe_interval = None
+        self._gateway_probe_window = None
+        self._gateway_rebalancing_interval = None
         self._max_failed_logins = None
         self._max_response = None
         self._accumulate_licenses_enabled = None
@@ -252,6 +257,7 @@ class NUSystemConfig(NURESTObject):
         self._stats_collector_address = None
         self._stats_collector_port = None
         self._stats_collector_proto_buf_port = None
+        self._stats_database_proxy = None
         self._stats_max_data_points = None
         self._stats_min_duration = None
         self._stats_number_of_data_points = None
@@ -319,6 +325,8 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="vport_init_stateful_timer", remote_name="VPortInitStatefulTimer", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="lru_cache_size_per_subnet", remote_name="LRUCacheSizePerSubnet", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsc_on_same_version_as_vsd", remote_name="VSCOnSameVersionAsVSD", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vsdaar_application_version", remote_name="VSDAARApplicationVersion", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vsdaar_application_version_publish_date", remote_name="VSDAARApplicationVersionPublishDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsd_read_only_mode", remote_name="VSDReadOnlyMode", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsd_upgrade_is_complete", remote_name="VSDUpgradeIsComplete", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_uplink_hold_down_timer", remote_name="NSGUplinkHoldDownTimer", attribute_type=int, is_required=False, is_unique=False)
@@ -335,6 +343,9 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="page_max_size", remote_name="pageMaxSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="page_size", remote_name="pageSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_probe_interval", remote_name="gatewayProbeInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_probe_window", remote_name="gatewayProbeWindow", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_rebalancing_interval", remote_name="gatewayRebalancingInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="max_failed_logins", remote_name="maxFailedLogins", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="max_response", remote_name="maxResponse", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="accumulate_licenses_enabled", remote_name="accumulateLicensesEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -395,6 +406,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="stats_collector_address", remote_name="statsCollectorAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_collector_port", remote_name="statsCollectorPort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_collector_proto_buf_port", remote_name="statsCollectorProtoBufPort", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="stats_database_proxy", remote_name="statsDatabaseProxy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_max_data_points", remote_name="statsMaxDataPoints", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_min_duration", remote_name="statsMinDuration", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_number_of_data_points", remote_name="statsNumberOfDataPoints", attribute_type=int, is_required=False, is_unique=False)
@@ -1363,7 +1375,7 @@ class NUSystemConfig(NURESTObject):
         """ Get lru_cache_size_per_subnet value.
 
             Notes:
-                LRU Map size per subnet (to hold the deleted vm's ip addresses).
+                LRU Map size per subnet (to hold the deleted vm's IP addresses).
 
                 
                 This attribute is named `LRUCacheSizePerSubnet` in VSD API.
@@ -1376,7 +1388,7 @@ class NUSystemConfig(NURESTObject):
         """ Set lru_cache_size_per_subnet value.
 
             Notes:
-                LRU Map size per subnet (to hold the deleted vm's ip addresses).
+                LRU Map size per subnet (to hold the deleted vm's IP addresses).
 
                 
                 This attribute is named `LRUCacheSizePerSubnet` in VSD API.
@@ -1413,11 +1425,65 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def vsdaar_application_version(self):
+        """ Get vsdaar_application_version value.
+
+            Notes:
+                Version of the current imported Application Signatures.
+
+                
+                This attribute is named `VSDAARApplicationVersion` in VSD API.
+                
+        """
+        return self._vsdaar_application_version
+
+    @vsdaar_application_version.setter
+    def vsdaar_application_version(self, value):
+        """ Set vsdaar_application_version value.
+
+            Notes:
+                Version of the current imported Application Signatures.
+
+                
+                This attribute is named `VSDAARApplicationVersion` in VSD API.
+                
+        """
+        self._vsdaar_application_version = value
+
+    
+    @property
+    def vsdaar_application_version_publish_date(self):
+        """ Get vsdaar_application_version_publish_date value.
+
+            Notes:
+                Determines the time that Application Signatures were published and added in the VSD.
+
+                
+                This attribute is named `VSDAARApplicationVersionPublishDate` in VSD API.
+                
+        """
+        return self._vsdaar_application_version_publish_date
+
+    @vsdaar_application_version_publish_date.setter
+    def vsdaar_application_version_publish_date(self, value):
+        """ Set vsdaar_application_version_publish_date value.
+
+            Notes:
+                Determines the time that Application Signatures were published and added in the VSD.
+
+                
+                This attribute is named `VSDAARApplicationVersionPublishDate` in VSD API.
+                
+        """
+        self._vsdaar_application_version_publish_date = value
+
+    
+    @property
     def vsd_read_only_mode(self):
         """ Get vsd_read_only_mode value.
 
             Notes:
-                True means VSD readonly mode enabled. False means VSD readonly mode disabled
+                True means VSD readonly mode enabled. False means VSD readonly mode disabled.
 
                 
                 This attribute is named `VSDReadOnlyMode` in VSD API.
@@ -1430,7 +1496,7 @@ class NUSystemConfig(NURESTObject):
         """ Set vsd_read_only_mode value.
 
             Notes:
-                True means VSD readonly mode enabled. False means VSD readonly mode disabled
+                True means VSD readonly mode enabled. False means VSD readonly mode disabled.
 
                 
                 This attribute is named `VSDReadOnlyMode` in VSD API.
@@ -1842,6 +1908,87 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def gateway_probe_interval(self):
+        """ Get gateway_probe_interval value.
+
+            Notes:
+                Gateway probe interval in seconds.
+
+                
+                This attribute is named `gatewayProbeInterval` in VSD API.
+                
+        """
+        return self._gateway_probe_interval
+
+    @gateway_probe_interval.setter
+    def gateway_probe_interval(self, value):
+        """ Set gateway_probe_interval value.
+
+            Notes:
+                Gateway probe interval in seconds.
+
+                
+                This attribute is named `gatewayProbeInterval` in VSD API.
+                
+        """
+        self._gateway_probe_interval = value
+
+    
+    @property
+    def gateway_probe_window(self):
+        """ Get gateway_probe_window value.
+
+            Notes:
+                Gateway probe window in seconds.
+
+                
+                This attribute is named `gatewayProbeWindow` in VSD API.
+                
+        """
+        return self._gateway_probe_window
+
+    @gateway_probe_window.setter
+    def gateway_probe_window(self, value):
+        """ Set gateway_probe_window value.
+
+            Notes:
+                Gateway probe window in seconds.
+
+                
+                This attribute is named `gatewayProbeWindow` in VSD API.
+                
+        """
+        self._gateway_probe_window = value
+
+    
+    @property
+    def gateway_rebalancing_interval(self):
+        """ Get gateway_rebalancing_interval value.
+
+            Notes:
+                Gateway rebalancing interval in seconds.
+
+                
+                This attribute is named `gatewayRebalancingInterval` in VSD API.
+                
+        """
+        return self._gateway_rebalancing_interval
+
+    @gateway_rebalancing_interval.setter
+    def gateway_rebalancing_interval(self, value):
+        """ Set gateway_rebalancing_interval value.
+
+            Notes:
+                Gateway rebalancing interval in seconds.
+
+                
+                This attribute is named `gatewayRebalancingInterval` in VSD API.
+                
+        """
+        self._gateway_rebalancing_interval = value
 
     
     @property
@@ -3388,7 +3535,7 @@ class NUSystemConfig(NURESTObject):
         """ Get stats_collector_address value.
 
             Notes:
-                Specify the ip address(es) of the stats collector.
+                Specify the IP address(es) of the stats collector.
 
                 
                 This attribute is named `statsCollectorAddress` in VSD API.
@@ -3401,7 +3548,7 @@ class NUSystemConfig(NURESTObject):
         """ Set stats_collector_address value.
 
             Notes:
-                Specify the ip address(es) of the stats collector.
+                Specify the IP address(es) of the stats collector.
 
                 
                 This attribute is named `statsCollectorAddress` in VSD API.
@@ -3462,6 +3609,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._stats_collector_proto_buf_port = value
+
+    
+    @property
+    def stats_database_proxy(self):
+        """ Get stats_database_proxy value.
+
+            Notes:
+                The location of a public proxy to statistics database server in <FQDN>:<PORT> format.
+
+                
+                This attribute is named `statsDatabaseProxy` in VSD API.
+                
+        """
+        return self._stats_database_proxy
+
+    @stats_database_proxy.setter
+    def stats_database_proxy(self, value):
+        """ Set stats_database_proxy value.
+
+            Notes:
+                The location of a public proxy to statistics database server in <FQDN>:<PORT> format.
+
+                
+                This attribute is named `statsDatabaseProxy` in VSD API.
+                
+        """
+        self._stats_database_proxy = value
 
     
     @property
@@ -3550,7 +3724,7 @@ class NUSystemConfig(NURESTObject):
         """ Get stats_tsdb_server_address value.
 
             Notes:
-                Specifies the TSDB server location.
+                Specifies the Elastic Search server location.
 
                 
                 This attribute is named `statsTSDBServerAddress` in VSD API.
@@ -3563,7 +3737,7 @@ class NUSystemConfig(NURESTObject):
         """ Set stats_tsdb_server_address value.
 
             Notes:
-                Specifies the TSDB server location.
+                Specifies the Elastic Search server location.
 
                 
                 This attribute is named `statsTSDBServerAddress` in VSD API.

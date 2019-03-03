@@ -43,31 +43,55 @@ class NUNSGInfo(NURESTObject):
     
     ## Constants
     
-    CONST_FAMILY_NSG_E200 = "NSG_E200"
-    
     CONST_FAMILY_NSG_C = "NSG_C"
-    
-    CONST_FAMILY_ANY = "ANY"
     
     CONST_FAMILY_NSG_E = "NSG_E"
     
-    CONST_FAMILY_NSG_AMI = "NSG_AMI"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_FAMILY_NSG_X200 = "NSG_X200"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_PERSONALITY_NSGDUC = "NSGDUC"
     
     CONST_FAMILY_NSG_V = "NSG_V"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_CMD_STATUS_RUNNING = "RUNNING"
     
-    CONST_FAMILY_NSG_E300 = "NSG_E300"
-    
-    CONST_FAMILY_NSG_AZ = "NSG_AZ"
+    CONST_FAMILY_NSG_X = "NSG_X"
     
     CONST_FAMILY_NSG_DOCKER = "NSG_DOCKER"
     
-    CONST_FAMILY_NSG_X = "NSG_X"
+    CONST_FAMILY_NSG_E200 = "NSG_E200"
+    
+    CONST_CMD_STATUS_COMPLETED = "COMPLETED"
+    
+    CONST_PERSONALITY_NSG = "NSG"
+    
+    CONST_CMD_STATUS_FAILED = "FAILED"
+    
+    CONST_FAMILY_NSG_AZ = "NSG_AZ"
+    
+    CONST_FAMILY_ANY = "ANY"
+    
+    CONST_CMD_STATUS_SKIPPED = "SKIPPED"
+    
+    CONST_CMD_STATUS_UNKNOWN = "UNKNOWN"
+    
+    CONST_FAMILY_NSG_X200 = "NSG_X200"
+    
+    CONST_FAMILY_NSG_E300 = "NSG_E300"
+    
+    CONST_CMD_TYPE_NSG_UPGRADE_TO_IMAGE = "NSG_UPGRADE_TO_IMAGE"
+    
+    CONST_CMD_STATUS_STARTED = "STARTED"
+    
+    CONST_FAMILY_NSG_AMI = "NSG_AMI"
+    
+    CONST_CMD_STATUS_ABANDONED = "ABANDONED"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_CMD_TYPE_NSG_DOWNLOAD_OS_IMAGE = "NSG_DOWNLOAD_OS_IMAGE"
+    
+    CONST_PERSONALITY_NSGBR = "NSGBR"
     
     
 
@@ -99,15 +123,28 @@ class NUNSGInfo(NURESTObject):
         self._cpu_type = None
         self._nsg_version = None
         self._uuid = None
+        self._name = None
         self._family = None
         self._patches_detail = None
         self._serial_number = None
+        self._personality = None
         self._libraries = None
+        self._cmd_detailed_status = None
+        self._cmd_detailed_status_code = None
+        self._cmd_download_progress = None
+        self._cmd_id = None
+        self._cmd_last_updated_date = None
+        self._cmd_status = None
+        self._cmd_type = None
+        self._enterprise_id = None
+        self._enterprise_name = None
         self._entity_scope = None
+        self._bootstrap_status = None
         self._product_name = None
         self._associated_entity_type = None
         self._associated_ns_gateway_id = None
         self._external_id = None
+        self._system_id = None
         
         self.expose_attribute(local_name="mac_address", remote_name="MACAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="aar_application_release_date", remote_name="AARApplicationReleaseDate", attribute_type=str, is_required=False, is_unique=False)
@@ -120,15 +157,28 @@ class NUNSGInfo(NURESTObject):
         self.expose_attribute(local_name="cpu_type", remote_name="CPUType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_version", remote_name="NSGVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_AMI', u'NSG_AZ', u'NSG_C', u'NSG_DOCKER', u'NSG_E', u'NSG_E200', u'NSG_E300', u'NSG_V', u'NSG_X', u'NSG_X200'])
         self.expose_attribute(local_name="patches_detail", remote_name="patchesDetail", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'NSG', u'NSGBR', u'NSGDUC'])
         self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="cmd_detailed_status", remote_name="cmdDetailedStatus", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="cmd_detailed_status_code", remote_name="cmdDetailedStatusCode", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="cmd_download_progress", remote_name="cmdDownloadProgress", attribute_type=dict, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="cmd_id", remote_name="cmdID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="cmd_last_updated_date", remote_name="cmdLastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="cmd_status", remote_name="cmdStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ABANDONED', u'COMPLETED', u'FAILED', u'RUNNING', u'SKIPPED', u'STARTED', u'UNKNOWN'])
+        self.expose_attribute(local_name="cmd_type", remote_name="cmdType", attribute_type=str, is_required=False, is_unique=False, choices=[u'NSG_DOWNLOAD_OS_IMAGE', u'NSG_UPGRADE_TO_IMAGE'])
+        self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="product_name", remote_name="productName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_entity_type", remote_name="associatedEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ns_gateway_id", remote_name="associatedNSGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="system_id", remote_name="systemID", attribute_type=str, is_required=False, is_unique=False)
         
 
         self._compute_args(**kwargs)
@@ -140,7 +190,7 @@ class NUNSGInfo(NURESTObject):
         """ Get mac_address value.
 
             Notes:
-                MAC Address of the NSG.  May represent the MAC address of the first uplink that came operational during bootstrapping.
+                A comma separated list of MAC Addresses associated to the NSG's interfaces (eg, port1, port2, port3).
 
                 
                 This attribute is named `MACAddress` in VSD API.
@@ -153,7 +203,7 @@ class NUNSGInfo(NURESTObject):
         """ Set mac_address value.
 
             Notes:
-                MAC Address of the NSG.  May represent the MAC address of the first uplink that came operational during bootstrapping.
+                A comma separated list of MAC Addresses associated to the NSG's interfaces (eg, port1, port2, port3).
 
                 
                 This attribute is named `MACAddress` in VSD API.
@@ -433,6 +483,29 @@ class NUNSGInfo(NURESTObject):
 
     
     @property
+    def name(self):
+        """ Get name value.
+
+            Notes:
+                Name of the Gateway.
+
+                
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """ Set name value.
+
+            Notes:
+                Name of the Gateway.
+
+                
+        """
+        self._name = value
+
+    
+    @property
     def family(self):
         """ Get family value.
 
@@ -510,6 +583,29 @@ class NUNSGInfo(NURESTObject):
 
     
     @property
+    def personality(self):
+        """ Get personality value.
+
+            Notes:
+                Personality of the Gateway.
+
+                
+        """
+        return self._personality
+
+    @personality.setter
+    def personality(self, value):
+        """ Set personality value.
+
+            Notes:
+                Personality of the Gateway.
+
+                
+        """
+        self._personality = value
+
+    
+    @property
     def libraries(self):
         """ Get libraries value.
 
@@ -530,6 +626,249 @@ class NUNSGInfo(NURESTObject):
                 
         """
         self._libraries = value
+
+    
+    @property
+    def cmd_detailed_status(self):
+        """ Get cmd_detailed_status value.
+
+            Notes:
+                Detailed status of the current running or last run command.
+
+                
+                This attribute is named `cmdDetailedStatus` in VSD API.
+                
+        """
+        return self._cmd_detailed_status
+
+    @cmd_detailed_status.setter
+    def cmd_detailed_status(self, value):
+        """ Set cmd_detailed_status value.
+
+            Notes:
+                Detailed status of the current running or last run command.
+
+                
+                This attribute is named `cmdDetailedStatus` in VSD API.
+                
+        """
+        self._cmd_detailed_status = value
+
+    
+    @property
+    def cmd_detailed_status_code(self):
+        """ Get cmd_detailed_status_code value.
+
+            Notes:
+                Numerical value representing the code mapping to detailed status of the current or last command operation.
+
+                
+                This attribute is named `cmdDetailedStatusCode` in VSD API.
+                
+        """
+        return self._cmd_detailed_status_code
+
+    @cmd_detailed_status_code.setter
+    def cmd_detailed_status_code(self, value):
+        """ Set cmd_detailed_status_code value.
+
+            Notes:
+                Numerical value representing the code mapping to detailed status of the current or last command operation.
+
+                
+                This attribute is named `cmdDetailedStatusCode` in VSD API.
+                
+        """
+        self._cmd_detailed_status_code = value
+
+    
+    @property
+    def cmd_download_progress(self):
+        """ Get cmd_download_progress value.
+
+            Notes:
+                DownloadProgress object representing the progress of Gateway image download.
+
+                
+                This attribute is named `cmdDownloadProgress` in VSD API.
+                
+        """
+        return self._cmd_download_progress
+
+    @cmd_download_progress.setter
+    def cmd_download_progress(self, value):
+        """ Set cmd_download_progress value.
+
+            Notes:
+                DownloadProgress object representing the progress of Gateway image download.
+
+                
+                This attribute is named `cmdDownloadProgress` in VSD API.
+                
+        """
+        self._cmd_download_progress = value
+
+    
+    @property
+    def cmd_id(self):
+        """ Get cmd_id value.
+
+            Notes:
+                Identifier of the running or last Command.
+
+                
+                This attribute is named `cmdID` in VSD API.
+                
+        """
+        return self._cmd_id
+
+    @cmd_id.setter
+    def cmd_id(self, value):
+        """ Set cmd_id value.
+
+            Notes:
+                Identifier of the running or last Command.
+
+                
+                This attribute is named `cmdID` in VSD API.
+                
+        """
+        self._cmd_id = value
+
+    
+    @property
+    def cmd_last_updated_date(self):
+        """ Get cmd_last_updated_date value.
+
+            Notes:
+                Time stamp when the command was last updated.
+
+                
+                This attribute is named `cmdLastUpdatedDate` in VSD API.
+                
+        """
+        return self._cmd_last_updated_date
+
+    @cmd_last_updated_date.setter
+    def cmd_last_updated_date(self, value):
+        """ Set cmd_last_updated_date value.
+
+            Notes:
+                Time stamp when the command was last updated.
+
+                
+                This attribute is named `cmdLastUpdatedDate` in VSD API.
+                
+        """
+        self._cmd_last_updated_date = value
+
+    
+    @property
+    def cmd_status(self):
+        """ Get cmd_status value.
+
+            Notes:
+                Status of the current or last command.
+
+                
+                This attribute is named `cmdStatus` in VSD API.
+                
+        """
+        return self._cmd_status
+
+    @cmd_status.setter
+    def cmd_status(self, value):
+        """ Set cmd_status value.
+
+            Notes:
+                Status of the current or last command.
+
+                
+                This attribute is named `cmdStatus` in VSD API.
+                
+        """
+        self._cmd_status = value
+
+    
+    @property
+    def cmd_type(self):
+        """ Get cmd_type value.
+
+            Notes:
+                Specifies the type of command that is stated for execution on the system. A request for download or a request for upgrade.
+
+                
+                This attribute is named `cmdType` in VSD API.
+                
+        """
+        return self._cmd_type
+
+    @cmd_type.setter
+    def cmd_type(self, value):
+        """ Set cmd_type value.
+
+            Notes:
+                Specifies the type of command that is stated for execution on the system. A request for download or a request for upgrade.
+
+                
+                This attribute is named `cmdType` in VSD API.
+                
+        """
+        self._cmd_type = value
+
+    
+    @property
+    def enterprise_id(self):
+        """ Get enterprise_id value.
+
+            Notes:
+                The enterprise associated with this Gateway.
+
+                
+                This attribute is named `enterpriseID` in VSD API.
+                
+        """
+        return self._enterprise_id
+
+    @enterprise_id.setter
+    def enterprise_id(self, value):
+        """ Set enterprise_id value.
+
+            Notes:
+                The enterprise associated with this Gateway.
+
+                
+                This attribute is named `enterpriseID` in VSD API.
+                
+        """
+        self._enterprise_id = value
+
+    
+    @property
+    def enterprise_name(self):
+        """ Get enterprise_name value.
+
+            Notes:
+                Name of the Enterprise associated with this Gateway.
+
+                
+                This attribute is named `enterpriseName` in VSD API.
+                
+        """
+        return self._enterprise_name
+
+    @enterprise_name.setter
+    def enterprise_name(self, value):
+        """ Set enterprise_name value.
+
+            Notes:
+                Name of the Enterprise associated with this Gateway.
+
+                
+                This attribute is named `enterpriseName` in VSD API.
+                
+        """
+        self._enterprise_name = value
 
     
     @property
@@ -557,6 +896,33 @@ class NUNSGInfo(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def bootstrap_status(self):
+        """ Get bootstrap_status value.
+
+            Notes:
+                The bootstrap status of the NSG from which the infomation was collected.
+
+                
+                This attribute is named `bootstrapStatus` in VSD API.
+                
+        """
+        return self._bootstrap_status
+
+    @bootstrap_status.setter
+    def bootstrap_status(self, value):
+        """ Set bootstrap_status value.
+
+            Notes:
+                The bootstrap status of the NSG from which the infomation was collected.
+
+                
+                This attribute is named `bootstrapStatus` in VSD API.
+                
+        """
+        self._bootstrap_status = value
 
     
     @property
@@ -665,6 +1031,33 @@ class NUNSGInfo(NURESTObject):
                 
         """
         self._external_id = value
+
+    
+    @property
+    def system_id(self):
+        """ Get system_id value.
+
+            Notes:
+                System identifier of the Gateway.
+
+                
+                This attribute is named `systemID` in VSD API.
+                
+        """
+        return self._system_id
+
+    @system_id.setter
+    def system_id(self, value):
+        """ Set system_id value.
+
+            Notes:
+                System identifier of the Gateway.
+
+                
+                This attribute is named `systemID` in VSD API.
+                
+        """
+        self._system_id = value
 
     
 

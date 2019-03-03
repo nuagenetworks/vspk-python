@@ -5,7 +5,7 @@ nuospfinterface
 
 .. class:: nuospfinterface.NUOSPFInterface(bambou.nurest_object.NUMetaRESTObject,):
 
-Represent an OSPF interface
+The OSPF interface represents the connection of a router to the OSPF network. The OSPF interface defines the protocol metrics and security parameters for OSPF traffic on a V-Port on the specified subnet. An OSPF interface can exist in only one OSPF area.
 
 
 Attributes

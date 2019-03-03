@@ -43,7 +43,7 @@ class NUAddressRange(NURESTObject):
     """ Represents a AddressRange in the VSD
 
         Notes:
-            This is the definition of a Address Range associated with a Network.
+            Address ranges are used for dynamic IP address allocation within the subnet. Multiple address ranges may be used to support non-contiuous IP address ranges. VMs and hosts without static IP addresses assigned will receive an address within the available ranges. 
     """
 
     __rest_name__ = "addressrange"
@@ -54,6 +54,8 @@ class NUAddressRange(NURESTObject):
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
+    CONST_DHCP_POOL_TYPE_HOST = "HOST"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_IP_TYPE_IPV6 = "IPV6"
@@ -62,9 +64,7 @@ class NUAddressRange(NURESTObject):
     
     CONST_DHCP_POOL_TYPE_BRIDGE = "BRIDGE"
     
-    CONST_DHCP_POOL_TYPE_HOST = "HOST"
-    
-    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
+    CONST_DHCP_POOL_TYPE_VRRP = "VRRP"
     
     
 
@@ -93,8 +93,8 @@ class NUAddressRange(NURESTObject):
         self._entity_scope = None
         self._external_id = None
         
-        self.expose_attribute(local_name="dhcp_pool_type", remote_name="DHCPPoolType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BRIDGE', u'HOST'])
-        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="dhcp_pool_type", remote_name="DHCPPoolType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BRIDGE', u'HOST', u'VRRP'])
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="max_address", remote_name="maxAddress", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="min_address", remote_name="minAddress", attribute_type=str, is_required=True, is_unique=False)
@@ -123,7 +123,7 @@ class NUAddressRange(NURESTObject):
         """ Get dhcp_pool_type value.
 
             Notes:
-                DHCPPoolType is an enum that indicates if the DHCP Pool is for HOST/BRIDGE.
+                DHCPPoolType is an enum that indicates if the DHCP Pool is for HOST/BRIDGE/VRRP.
 
                 
                 This attribute is named `DHCPPoolType` in VSD API.
@@ -136,7 +136,7 @@ class NUAddressRange(NURESTObject):
         """ Set dhcp_pool_type value.
 
             Notes:
-                DHCPPoolType is an enum that indicates if the DHCP Pool is for HOST/BRIDGE.
+                DHCPPoolType is an enum that indicates if the DHCP Pool is for HOST/BRIDGE/VRRP.
 
                 
                 This attribute is named `DHCPPoolType` in VSD API.
@@ -150,7 +150,7 @@ class NUAddressRange(NURESTObject):
         """ Get ip_type value.
 
             Notes:
-                IPv4 or IPv6(only IPv4 is supported in R1.0) Possible values are IPV4, IPV6, DUALSTACK.
+                Possible values are IPV4, IPV6.
 
                 
                 This attribute is named `IPType` in VSD API.
@@ -163,7 +163,7 @@ class NUAddressRange(NURESTObject):
         """ Set ip_type value.
 
             Notes:
-                IPv4 or IPv6(only IPv4 is supported in R1.0) Possible values are IPV4, IPV6, DUALSTACK.
+                Possible values are IPV4, IPV6.
 
                 
                 This attribute is named `IPType` in VSD API.

@@ -24,6 +24,8 @@ Attributes
 
 - ``ipv6_gateway``: The IPv6 address of the gateway of this subnet
 
+- ``evpn_enabled``: Indicates if EVPN capabilities are enabled for this subnet.
+
 - ``maintenance_mode``: maintenanceMode is an enum that indicates if the SubNetwork is accepting VM activation requests.
 
 - ``name`` (**Mandatory**): Name of the current entity(Zone or zone template or subnet etc..) Valid characters are alphabets, numbers, space and hyphen( - ).
@@ -58,11 +60,15 @@ Attributes
 
 - ``underlay_enabled``: Indicates whether UNDERLAY is enabled for the subnets in this domain
 
+- ``ingress_replication_enabled``: Enables ingress replication for the VNI.
+
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``entity_state``: Intermediate State of L2 Domain.
 
 - ``policy_group_id``: PG ID for the subnet. This is unique per domain and will be in the range 1-4095
+
+- ``domain_service_label``: Service ID or external label given to Domain
 
 - ``route_distinguisher``: Route distinguisher for this subnet that is used by the BGP-EVPN protocol in VSC. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
@@ -86,6 +92,8 @@ Attributes
 
 - ``multicast``: multicast is enum that indicates multicast policy on Subnet/Subnet Template.
 
+- ``customer_id``: CustomerID that is used by NETCONF MANAGER to identify this enterprise. This can be configured by root user.
+
 - ``external_id``: External object ID. Used for integration with third party systems
 
 - ``dynamic_ipv6_address``: Turn on or off dynamic allocation of IPV6 address
@@ -103,6 +111,7 @@ Children
 :ref:`nutca.NUTCA<nutca>`                                                                                                                                        ``tcas`` 
 :ref:`nuaddressrange.NUAddressRange<nuaddressrange>`                                                                                                             ``address_ranges`` 
 :ref:`nudefaultgateway.NUDefaultGateway<nudefaultgateway>`                                                                                                       ``default_gateways`` 
+:ref:`nudeploymentfailure.NUDeploymentFailure<nudeploymentfailure>`                                                                                              ``deployment_failures`` 
 :ref:`nuvmresync.NUVMResync<nuvmresync>`                                                                                                                         ``vm_resyncs`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nubgpneighbor.NUBGPNeighbor<nubgpneighbor>`                                                                                                                ``bgp_neighbors`` 
@@ -140,6 +149,8 @@ Parents
 - :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 

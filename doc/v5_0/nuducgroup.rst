@@ -5,7 +5,7 @@ nuducgroup
 
 .. class:: nuducgroup.NUDUCGroup(bambou.nurest_object.NUMetaRESTObject,):
 
-None
+A logical group of 1 or more NSGs of personality NSG-UBR, that are used to provide connectivity between NSGs in disjoint underlays.
 
 
 Attributes
@@ -21,6 +21,8 @@ Attributes
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``associated_performance_monitor_id``: Identification of the Performance Monitoring Probe that is associated with this instance of a UBR Group.
+
+- ``function``: The function of the group
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

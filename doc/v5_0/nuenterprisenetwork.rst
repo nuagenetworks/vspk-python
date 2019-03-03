@@ -20,9 +20,9 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``address`` (**Mandatory**): IP address of the subnet defined. In case of zone, this is an optional field for and allows users to allocate an IP address range to a zone. The VSD will auto-assign IP addresses to subnets from this range if a specific IP address is not defined for the subnet
+- ``address``: IP address of the subnet defined. In case of zone, this is an optional field for and allows users to allocate an IP address range to a zone. The VSD will auto-assign IP addresses to subnets from this range if a specific IP address is not defined for the subnet
 
-- ``netmask`` (**Mandatory**): Netmask of the subnet defined
+- ``netmask``: Netmask of the subnet defined
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 

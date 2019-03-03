@@ -5,7 +5,7 @@ nuuser
 
 .. class:: nuuser.NUUser(bambou.nurest_object.NUMetaRESTObject,):
 
-Object that identifies the user functions.
+Users represent people of your organization. A user can be placed into a group and this group can have some permissions to add VMs into a domain for instance.
 
 
 Attributes

@@ -55,6 +55,8 @@ class NUNetconfSession(NURESTObject):
     
     CONST_STATUS_CONNECTED = "CONNECTED"
     
+    CONST_GATEWAY_VENDOR_CISCO = "CISCO"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
@@ -77,6 +79,9 @@ class NUNetconfSession(NURESTObject):
         # Read/Write Attributes
         
         self._last_updated_by = None
+        self._gateway_model = None
+        self._gateway_vendor = None
+        self._gateway_version = None
         self._entity_scope = None
         self._associated_gateway_id = None
         self._associated_gateway_name = None
@@ -84,6 +89,9 @@ class NUNetconfSession(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_model", remote_name="gatewayModel", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_vendor", remote_name="gatewayVendor", attribute_type=str, is_required=False, is_unique=False, choices=[u'CISCO'])
+        self.expose_attribute(local_name="gateway_version", remote_name="gatewayVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="associated_gateway_id", remote_name="associatedGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_name", remote_name="associatedGatewayName", attribute_type=str, is_required=False, is_unique=False)
@@ -129,6 +137,87 @@ class NUNetconfSession(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def gateway_model(self):
+        """ Get gateway_model value.
+
+            Notes:
+                The model string of the gateway to which this session connected from Netconf Manager
+
+                
+                This attribute is named `gatewayModel` in VSD API.
+                
+        """
+        return self._gateway_model
+
+    @gateway_model.setter
+    def gateway_model(self, value):
+        """ Set gateway_model value.
+
+            Notes:
+                The model string of the gateway to which this session connected from Netconf Manager
+
+                
+                This attribute is named `gatewayModel` in VSD API.
+                
+        """
+        self._gateway_model = value
+
+    
+    @property
+    def gateway_vendor(self):
+        """ Get gateway_vendor value.
+
+            Notes:
+                Vendor of the gateway to which this session connected from Netconf Manager
+
+                
+                This attribute is named `gatewayVendor` in VSD API.
+                
+        """
+        return self._gateway_vendor
+
+    @gateway_vendor.setter
+    def gateway_vendor(self, value):
+        """ Set gateway_vendor value.
+
+            Notes:
+                Vendor of the gateway to which this session connected from Netconf Manager
+
+                
+                This attribute is named `gatewayVendor` in VSD API.
+                
+        """
+        self._gateway_vendor = value
+
+    
+    @property
+    def gateway_version(self):
+        """ Get gateway_version value.
+
+            Notes:
+                Boot image version of gateway to which this session connected from Netconf Manager
+
+                
+                This attribute is named `gatewayVersion` in VSD API.
+                
+        """
+        return self._gateway_version
+
+    @gateway_version.setter
+    def gateway_version(self, value):
+        """ Set gateway_version value.
+
+            Notes:
+                Boot image version of gateway to which this session connected from Netconf Manager
+
+                
+                This attribute is named `gatewayVersion` in VSD API.
+                
+        """
+        self._gateway_version = value
 
     
     @property

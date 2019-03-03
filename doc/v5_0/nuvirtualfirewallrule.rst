@@ -5,7 +5,7 @@ nuvirtualfirewallrule
 
 .. class:: nuvirtualfirewallrule.NUVirtualFirewallRule(bambou.nurest_object.NUMetaRESTObject,):
 
-Defines the Virtual Firewall rules
+Virtual firewall rules define intent based security policy entries to control traffic between source/destinations in the network. Virtual firewall rules are inherently stateful and are enforced as Ingress/Egress stateful ACLs in Nuage policy enforcement points
 
 
 Attributes
@@ -18,7 +18,7 @@ Attributes
 
 - ``icmp_type``: The ICMP Type when protocol selected is ICMP.
 
-- ``ipv6_address_override``: Overrides the source IPV6 for Ingress and destination IPV6 for Egress, macentries will use this adress as the match criteria.
+- ``ipv6_address_override``: Overrides the source IPV6 for Ingress and destination IPV6 for Egress, macentries will use this address as the match criteria.
 
 - ``dscp``: DSCP match condition to be set in the rule. It is either * or from 0-63
 
@@ -26,7 +26,11 @@ Attributes
 
 - ``action`` (**Mandatory**): The action of the rule, DROP or FORWARD. Possible values are DROP, FORWARD.
 
-- ``address_override``: Overrides the source IP for Ingress and destination IP for Egress, macentries will use this adress as the match criteria.
+- ``address_override``: Overrides the source IP for Ingress and destination IP for Egress, macentries will use this address as the match criteria.
+
+- ``web_filter_id``: ID of web filter
+
+- ``web_filter_type``: Indicates type of web filter being set
 
 - ``description``: Description of the rule entry
 

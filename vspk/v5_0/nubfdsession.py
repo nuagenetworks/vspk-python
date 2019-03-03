@@ -51,6 +51,10 @@ class NUBFDSession(NURESTObject):
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
+    CONST_BFD_DESTINATION_IP_TYPE_IPV6 = "IPV6"
+    
+    CONST_BFD_DESTINATION_IP_TYPE_IPV4 = "IPV4"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
@@ -73,6 +77,8 @@ class NUBFDSession(NURESTObject):
         # Read/Write Attributes
         
         self._bfd_destination_ip = None
+        self._bfd_destination_ip_type = None
+        self._bfd_destination_ipv6 = None
         self._bfd_multiplier = None
         self._bfd_timer = None
         self._last_updated_by = None
@@ -81,6 +87,8 @@ class NUBFDSession(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="bfd_destination_ip", remote_name="BFDDestinationIP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="bfd_destination_ip_type", remote_name="BFDDestinationIPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="bfd_destination_ipv6", remote_name="BFDDestinationIPv6", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bfd_multiplier", remote_name="BFDMultiplier", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bfd_timer", remote_name="BFDTimer", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -127,6 +135,60 @@ class NUBFDSession(NURESTObject):
                 
         """
         self._bfd_destination_ip = value
+
+    
+    @property
+    def bfd_destination_ip_type(self):
+        """ Get bfd_destination_ip_type value.
+
+            Notes:
+                Destination IP Type of Bidirectional Forwarding Detection
+
+                
+                This attribute is named `BFDDestinationIPType` in VSD API.
+                
+        """
+        return self._bfd_destination_ip_type
+
+    @bfd_destination_ip_type.setter
+    def bfd_destination_ip_type(self, value):
+        """ Set bfd_destination_ip_type value.
+
+            Notes:
+                Destination IP Type of Bidirectional Forwarding Detection
+
+                
+                This attribute is named `BFDDestinationIPType` in VSD API.
+                
+        """
+        self._bfd_destination_ip_type = value
+
+    
+    @property
+    def bfd_destination_ipv6(self):
+        """ Get bfd_destination_ipv6 value.
+
+            Notes:
+                Destination IPv6 Address used for Bidirectional Forwarding Detection. Required if BFD Destination IP Type is IPV6
+
+                
+                This attribute is named `BFDDestinationIPv6` in VSD API.
+                
+        """
+        return self._bfd_destination_ipv6
+
+    @bfd_destination_ipv6.setter
+    def bfd_destination_ipv6(self, value):
+        """ Set bfd_destination_ipv6 value.
+
+            Notes:
+                Destination IPv6 Address used for Bidirectional Forwarding Detection. Required if BFD Destination IP Type is IPV6
+
+                
+                This attribute is named `BFDDestinationIPv6` in VSD API.
+                
+        """
+        self._bfd_destination_ipv6 = value
 
     
     @property

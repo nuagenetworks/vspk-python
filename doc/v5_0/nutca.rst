@@ -26,7 +26,7 @@ Attributes
 
 - ``description``: Description of the TCA
 
-- ``metric`` (**Mandatory**): The metric associated with the TCA.
+- ``metric`` (**Mandatory**): The metric associated with the TCA. The following enum values have been deprecated and will be removed in the next major release 6.0: ADDRESS_MAP_EGRESS_BYTE_CNT, ADDRESS_MAP_EGRESS_PKT_CNT, ADDRESS_MAP_INGRESS_BYTE_CNT, ADDRESS_MAP_INGRESS_PKT_CNT, CONNECTION_TYPE, EGRESS_BYTE_COUNT, EGRESS_PACKET_COUNT, INGRESS_BYTE_COUNT, INGRESS_PACKET_COUNT, Q0_BYTES, Q0_DROPPED, Q0_PKT_COUNT, Q10_BYTES, Q10_DROPPED, Q10_PKT_COUNT, Q1_BYTES, Q1_DROPPED, Q1_PKT_COUNT, Q2_BYTES, Q2_DROPPED, Q2_PKT_COUNT, Q3_BYTES, Q3_DROPPED, Q3_PKT_COUNT, Q4_BYTES, Q4_DROPPED, Q4_PKT_COUNT, RX_BYTES, RX_DROPPED, RX_ERRORS, RX_PKT_COUNT, TCP_SYN_EVENT_COUNT, TX_BYTES, TX_DROPPED, TX_ERRORS, TX_PKT_COUNT
 
 - ``threshold`` (**Mandatory**): The threshold that must be exceeded before an alarm is issued
 

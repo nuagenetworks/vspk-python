@@ -5,7 +5,7 @@ nuospfarea
 
 .. class:: nuospfarea.NUOSPFArea(bambou.nurest_object.NUMetaRESTObject,):
 
-Represent an OSPF area
+OSPF relies on the concept of logical areas. The use of areas enables the hiding of topology information between areas whilst still providing reachability. Each router in the area shares the same routing tables, which simplifies the network topology and helps to optimize the route calculation algorithm. 
 
 
 Attributes

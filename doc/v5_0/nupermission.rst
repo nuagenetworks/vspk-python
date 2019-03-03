@@ -56,6 +56,8 @@ Parents
 
 - :ref:`nuwanservice.NUWANService<nuwanservice>`
 
+- :ref:`nugatewayredundantport.NUGatewayRedundantPort<nugatewayredundantport>`
+
 - :ref:`nuredundantport.NURedundantPort<nuredundantport>`
 
 - :ref:`nuport.NUPort<nuport>`

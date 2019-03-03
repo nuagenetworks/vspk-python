@@ -75,6 +75,8 @@ class NUTCA(NURESTObject):
     
     CONST_METRIC_Q3_PKT_COUNT = "Q3_PKT_COUNT"
     
+    CONST_METRIC_TCP_FLAG_ACK_OUT = "TCP_FLAG_ACK_OUT"
+    
     CONST_METRIC_TCP_FLAG_ACK_IN = "TCP_FLAG_ACK_IN"
     
     CONST_METRIC_EGRESS_PACKET_COUNT = "EGRESS_PACKET_COUNT"
@@ -235,7 +237,7 @@ class NUTCA(NURESTObject):
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'Alert', u'Alert_PolicyGroupChange'])
         self.expose_attribute(local_name="period", remote_name="period", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="metric", remote_name="metric", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACL_DENY_EVENT_COUNT', u'ADDRESS_MAP_EGRESS_BYTE_CNT', u'ADDRESS_MAP_EGRESS_PKT_CNT', u'ADDRESS_MAP_INGRESS_BYTE_CNT', u'ADDRESS_MAP_INGRESS_PKT_CNT', u'ANTI_SPOOF_EVENT_COUNT', u'BYTES_IN', u'BYTES_OUT', u'CONNECTION_TYPE', u'EGRESS_BYTE_COUNT', u'EGRESS_PACKET_COUNT', u'FIP_PRE_RATE_LIMIT_BYTES', u'FIP_PRE_RATE_LIMIT_PACKETS', u'FIP_RATE_LIMIT_DROPPED_BYTES', u'FIP_RATE_LIMIT_DROPPED_PACKETS', u'INGRESS_BYTE_COUNT', u'INGRESS_PACKET_COUNT', u'L7_BYTES_IN', u'L7_BYTES_OUT', u'L7_PACKETS_IN', u'L7_PACKETS_OUT', u'PACKETS_DROPPED_BY_RATE_LIMIT', u'PACKETS_IN', u'PACKETS_IN_DROPPED', u'PACKETS_IN_ERROR', u'PACKETS_OUT', u'PACKETS_OUT_DROPPED', u'PACKETS_OUT_ERROR', u'Q0_BYTES', u'Q0_DROPPED', u'Q0_PKT_COUNT', u'Q10_BYTES', u'Q10_DROPPED', u'Q10_PKT_COUNT', u'Q1_BYTES', u'Q1_DROPPED', u'Q1_PKT_COUNT', u'Q2_BYTES', u'Q2_DROPPED', u'Q2_PKT_COUNT', u'Q3_BYTES', u'Q3_DROPPED', u'Q3_PKT_COUNT', u'Q4_BYTES', u'Q4_DROPPED', u'Q4_PKT_COUNT', u'RX_BYTES', u'RX_DROPPED', u'RX_ERRORS', u'RX_PKT_COUNT', u'TCP_FLAG_ACK_IN', u'TCP_FLAG_NULL_IN', u'TCP_FLAG_NULL_OUT', u'TCP_FLAG_RST_IN', u'TCP_FLAG_RST_OUT', u'TCP_FLAG_SYN_IN', u'TCP_FLAG_SYN_OUT', u'TCP_SYN_EVENT_COUNT', u'TX_BYTES', u'TX_DROPPED', u'TX_ERRORS', u'TX_PKT_COUNT'])
+        self.expose_attribute(local_name="metric", remote_name="metric", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACL_DENY_EVENT_COUNT', u'ADDRESS_MAP_EGRESS_BYTE_CNT', u'ADDRESS_MAP_EGRESS_PKT_CNT', u'ADDRESS_MAP_INGRESS_BYTE_CNT', u'ADDRESS_MAP_INGRESS_PKT_CNT', u'ANTI_SPOOF_EVENT_COUNT', u'BYTES_IN', u'BYTES_OUT', u'CONNECTION_TYPE', u'EGRESS_BYTE_COUNT', u'EGRESS_PACKET_COUNT', u'FIP_PRE_RATE_LIMIT_BYTES', u'FIP_PRE_RATE_LIMIT_PACKETS', u'FIP_RATE_LIMIT_DROPPED_BYTES', u'FIP_RATE_LIMIT_DROPPED_PACKETS', u'INGRESS_BYTE_COUNT', u'INGRESS_PACKET_COUNT', u'L7_BYTES_IN', u'L7_BYTES_OUT', u'L7_PACKETS_IN', u'L7_PACKETS_OUT', u'PACKETS_DROPPED_BY_RATE_LIMIT', u'PACKETS_IN', u'PACKETS_IN_DROPPED', u'PACKETS_IN_ERROR', u'PACKETS_OUT', u'PACKETS_OUT_DROPPED', u'PACKETS_OUT_ERROR', u'Q0_BYTES', u'Q0_DROPPED', u'Q0_PKT_COUNT', u'Q10_BYTES', u'Q10_DROPPED', u'Q10_PKT_COUNT', u'Q1_BYTES', u'Q1_DROPPED', u'Q1_PKT_COUNT', u'Q2_BYTES', u'Q2_DROPPED', u'Q2_PKT_COUNT', u'Q3_BYTES', u'Q3_DROPPED', u'Q3_PKT_COUNT', u'Q4_BYTES', u'Q4_DROPPED', u'Q4_PKT_COUNT', u'RX_BYTES', u'RX_DROPPED', u'RX_ERRORS', u'RX_PKT_COUNT', u'TCP_FLAG_ACK_IN', u'TCP_FLAG_ACK_OUT', u'TCP_FLAG_NULL_IN', u'TCP_FLAG_NULL_OUT', u'TCP_FLAG_RST_IN', u'TCP_FLAG_RST_OUT', u'TCP_FLAG_SYN_IN', u'TCP_FLAG_SYN_OUT', u'TCP_SYN_EVENT_COUNT', u'TX_BYTES', u'TX_DROPPED', u'TX_ERRORS', u'TX_PKT_COUNT'])
         self.expose_attribute(local_name="threshold", remote_name="threshold", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="throttle_time", remote_name="throttleTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="disable", remote_name="disable", attribute_type=bool, is_required=False, is_unique=False)
@@ -444,7 +446,7 @@ class NUTCA(NURESTObject):
         """ Get metric value.
 
             Notes:
-                The metric associated with the TCA.
+                The metric associated with the TCA. The following enum values have been deprecated and will be removed in the next major release 6.0: ADDRESS_MAP_EGRESS_BYTE_CNT, ADDRESS_MAP_EGRESS_PKT_CNT, ADDRESS_MAP_INGRESS_BYTE_CNT, ADDRESS_MAP_INGRESS_PKT_CNT, CONNECTION_TYPE, EGRESS_BYTE_COUNT, EGRESS_PACKET_COUNT, INGRESS_BYTE_COUNT, INGRESS_PACKET_COUNT, Q0_BYTES, Q0_DROPPED, Q0_PKT_COUNT, Q10_BYTES, Q10_DROPPED, Q10_PKT_COUNT, Q1_BYTES, Q1_DROPPED, Q1_PKT_COUNT, Q2_BYTES, Q2_DROPPED, Q2_PKT_COUNT, Q3_BYTES, Q3_DROPPED, Q3_PKT_COUNT, Q4_BYTES, Q4_DROPPED, Q4_PKT_COUNT, RX_BYTES, RX_DROPPED, RX_ERRORS, RX_PKT_COUNT, TCP_SYN_EVENT_COUNT, TX_BYTES, TX_DROPPED, TX_ERRORS, TX_PKT_COUNT
 
                 
         """
@@ -455,7 +457,7 @@ class NUTCA(NURESTObject):
         """ Set metric value.
 
             Notes:
-                The metric associated with the TCA.
+                The metric associated with the TCA. The following enum values have been deprecated and will be removed in the next major release 6.0: ADDRESS_MAP_EGRESS_BYTE_CNT, ADDRESS_MAP_EGRESS_PKT_CNT, ADDRESS_MAP_INGRESS_BYTE_CNT, ADDRESS_MAP_INGRESS_PKT_CNT, CONNECTION_TYPE, EGRESS_BYTE_COUNT, EGRESS_PACKET_COUNT, INGRESS_BYTE_COUNT, INGRESS_PACKET_COUNT, Q0_BYTES, Q0_DROPPED, Q0_PKT_COUNT, Q10_BYTES, Q10_DROPPED, Q10_PKT_COUNT, Q1_BYTES, Q1_DROPPED, Q1_PKT_COUNT, Q2_BYTES, Q2_DROPPED, Q2_PKT_COUNT, Q3_BYTES, Q3_DROPPED, Q3_PKT_COUNT, Q4_BYTES, Q4_DROPPED, Q4_PKT_COUNT, RX_BYTES, RX_DROPPED, RX_ERRORS, RX_PKT_COUNT, TCP_SYN_EVENT_COUNT, TX_BYTES, TX_DROPPED, TX_ERRORS, TX_PKT_COUNT
 
                 
         """

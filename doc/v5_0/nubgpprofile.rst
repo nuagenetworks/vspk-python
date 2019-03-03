@@ -5,7 +5,7 @@ nubgpprofile
 
 .. class:: nubgpprofile.NUBGPProfile(bambou.nurest_object.NUMetaRESTObject,):
 
-missing documentation.
+Definitions for default import/export routing policies and dampening profiles
 
 
 Attributes

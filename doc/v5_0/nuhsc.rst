@@ -22,6 +22,8 @@ Attributes
 
 - ``address``: The IP of the VRS entity
 
+- ``addresses``: The Control IPv4 or IPv6 addresses of the HSC. Example: [10.10.18.10, 2001:10:10:18::10].
+
 - ``peak_cpuusage``: Peek CPU usage percentage.
 
 - ``peak_memory_usage``: Peek memory usage percentage.

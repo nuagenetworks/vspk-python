@@ -37,7 +37,7 @@ class NUMetadata(NURESTObject):
     """ Represents a Metadata in the VSD
 
         Notes:
-            Metadata associated to a entity.
+            Metadata contains user-defined data that can be attached to any VSD object. The value of a metadata can be interpreted by various external systems for any needs. Local Metadata are directly created under an object.
     """
 
     __rest_name__ = "metadata"

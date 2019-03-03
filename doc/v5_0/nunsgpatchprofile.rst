@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``name``: A unique name identifying this patch profile.
+- ``name`` (**Mandatory**): A unique name identifying this patch profile.
 
 - ``last_updated_by``: ID of the user who last updated the object.
 

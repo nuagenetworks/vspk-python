@@ -191,7 +191,7 @@ class NUPATNATPool(NURESTObject):
         """ Get ip_type value.
 
             Notes:
-                IPv4 or IPv6
+                The IP type of this Address Translation Pool. This can be DUALSTACK, IPV4 or IPV6
 
                 
                 This attribute is named `IPType` in VSD API.
@@ -204,7 +204,7 @@ class NUPATNATPool(NURESTObject):
         """ Set ip_type value.
 
             Notes:
-                IPv4 or IPv6
+                The IP type of this Address Translation Pool. This can be DUALSTACK, IPV4 or IPV6
 
                 
                 This attribute is named `IPType` in VSD API.

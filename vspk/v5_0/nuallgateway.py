@@ -40,7 +40,7 @@ class NUAllGateway(NURESTObject):
     """ Represents a AllGateway in the VSD
 
         Notes:
-            A read only API to get all gateway objects in the VSD environment. Use the ID field to then actually manage the gateway using the gateway API entity.
+            A read-only API to get all gateway objects in the VSD environment. Use the ID field to then actually manage the gateway using the gateway API entity.
     """
 
     __rest_name__ = "allgateway"
@@ -137,6 +137,8 @@ class NUAllGateway(NURESTObject):
     
     CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
     
+    CONST_PERSONALITY_NETCONF_THIRDPARTY_HW_VTEP = "NETCONF_THIRDPARTY_HW_VTEP"
+    
     CONST_FAMILY_NSG_AMI = "NSG_AMI"
     
     CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
@@ -225,7 +227,7 @@ class NUAllGateway(NURESTObject):
         self.expose_attribute(local_name="pending", remote_name="pending", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NSG', u'NSGBR', u'NSGDUC', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NETCONF_THIRDPARTY_HW_VTEP', u'NSG', u'NSGBR', u'NSGDUC', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)

@@ -109,6 +109,7 @@ class NUHSC(NURESTObject):
         self._last_state_change = None
         self._last_updated_by = None
         self._address = None
+        self._addresses = None
         self._peak_cpuusage = None
         self._peak_memory_usage = None
         self._description = None
@@ -134,6 +135,7 @@ class NUHSC(NURESTObject):
         self.expose_attribute(local_name="last_state_change", remote_name="lastStateChange", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="addresses", remote_name="addresses", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peak_cpuusage", remote_name="peakCPUUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peak_memory_usage", remote_name="peakMemoryUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
@@ -311,6 +313,29 @@ class NUHSC(NURESTObject):
                 
         """
         self._address = value
+
+    
+    @property
+    def addresses(self):
+        """ Get addresses value.
+
+            Notes:
+                The Control IPv4 or IPv6 addresses of the HSC. Example: [10.10.18.10, 2001:10:10:18::10].
+
+                
+        """
+        return self._addresses
+
+    @addresses.setter
+    def addresses(self, value):
+        """ Set addresses value.
+
+            Notes:
+                The Control IPv4 or IPv6 addresses of the HSC. Example: [10.10.18.10, 2001:10:10:18::10].
+
+                
+        """
+        self._addresses = value
 
     
     @property

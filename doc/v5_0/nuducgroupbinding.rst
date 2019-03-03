@@ -22,6 +22,10 @@ Attributes
 
 - ``associated_duc_group_id``: Identification of the UBR Group associated to this group binding instance.
 
+- ``associated_ubr_group_function``: NSG Function supported by the associated UBR group.
+
+- ``associated_ubr_group_name``: Name of the associated UBR Group.
+
 - ``external_id``: External object ID. Used for integration with third party systems
 
 

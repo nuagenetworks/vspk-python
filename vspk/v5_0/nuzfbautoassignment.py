@@ -34,7 +34,7 @@ class NUZFBAutoAssignment(NURESTObject):
     """ Represents a ZFBAutoAssignment in the VSD
 
         Notes:
-            ZFB Enterprise Auto Assignment 
+            Pre-created matching criteria that allows CSPRoot to auto-assign incoming auto-bootstrapping requests to an Enterprise should a match occur.
     """
 
     __rest_name__ = "zfbautoassignment"
@@ -89,14 +89,14 @@ class NUZFBAutoAssignment(NURESTObject):
         self._associated_enterprise_name = None
         self._external_id = None
         
-        self.expose_attribute(local_name="zfb_match_attribute", remote_name="ZFBMatchAttribute", attribute_type=str, is_required=False, is_unique=False, choices=[u'HOSTNAME', u'IP_ADDRESS', u'MAC_ADDRESS', u'NSGATEWAY_ID', u'SERIAL_NUMBER', u'UUID'])
-        self.expose_attribute(local_name="zfb_match_attribute_values", remote_name="ZFBMatchAttributeValues", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="zfb_match_attribute", remote_name="ZFBMatchAttribute", attribute_type=str, is_required=True, is_unique=False, choices=[u'HOSTNAME', u'IP_ADDRESS', u'MAC_ADDRESS', u'NSGATEWAY_ID', u'SERIAL_NUMBER', u'UUID'])
+        self.expose_attribute(local_name="zfb_match_attribute_values", remote_name="ZFBMatchAttributeValues", attribute_type=list, is_required=True, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="associated_enterprise_name", remote_name="associatedEnterpriseName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         

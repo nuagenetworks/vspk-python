@@ -5,7 +5,7 @@ nuingressaclentrytemplate
 
 .. class:: nuingressaclentrytemplate.NUIngressACLEntryTemplate(bambou.nurest_object.NUMetaRESTObject,):
 
-Defines the template of Ingress ACL entries
+Security Policy Entries defines what action to take for a particular type of traffic, based on its origin and its destination, its protocol, EtherType, eventual ports, DSCP value and other information.
 
 
 Attributes
@@ -27,6 +27,10 @@ Attributes
 - ``action`` (**Mandatory**): The action of the ACL entry DROP or FORWARD or REDIRECT. Action REDIRECT is allowed only for IngressAdvancedForwardingEntry Possible values are DROP, FORWARD, REDIRECT, .
 
 - ``address_override``: Overrides the source IP for Ingress and destination IP for Egress, MAC entries will use this address as the match criteria.
+
+- ``web_filter_id``: ID of web filter category or web domain name entity used
+
+- ``web_filter_type``: Indicates type of web filter being set
 
 - ``description``: Description of the ACL entry
 

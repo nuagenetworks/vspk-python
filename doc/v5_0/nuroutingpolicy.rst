@@ -5,7 +5,7 @@ nuroutingpolicy
 
 .. class:: nuroutingpolicy.NURoutingPolicy(bambou.nurest_object.NUMetaRESTObject,):
 
-None
+Pre-defined sets of attributes used in policy match conditions: prefix lists, entries, damping profiles, etc.
 
 
 Attributes
@@ -21,6 +21,8 @@ Attributes
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``policy_definition``: String blob
+
+- ``content_type``: Content type for routing policy provisioning for different mediation devices
 
 - ``routing_protocol``: Routing protocol this policy definition is used for
 

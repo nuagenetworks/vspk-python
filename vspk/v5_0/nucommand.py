@@ -53,6 +53,8 @@ class NUCommand(NURESTObject):
     
     CONST_STATUS_UNKNOWN = "UNKNOWN"
     
+    CONST_STATUS_SKIPPED = "SKIPPED"
+    
     CONST_STATUS_STARTED = "STARTED"
     
     CONST_STATUS_RUNNING = "RUNNING"
@@ -99,6 +101,7 @@ class NUCommand(NURESTObject):
         self._entity_scope = None
         self._command = None
         self._command_information = None
+        self._progress = None
         self._assoc_entity_type = None
         self._associated_param = None
         self._associated_param_type = None
@@ -115,10 +118,11 @@ class NUCommand(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="command", remote_name="command", attribute_type=str, is_required=True, is_unique=False, choices=[u'NSG_APPLY_PATCH', u'NSG_DELETE_PATCH', u'NSG_DOWNLOAD_OS_IMAGE', u'NSG_UPGRADE_TO_IMAGE', u'UNKNOWN'])
         self.expose_attribute(local_name="command_information", remote_name="commandInformation", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="progress", remote_name="progress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_entity_type", remote_name="assocEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_param", remote_name="associatedParam", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_param_type", remote_name="associatedParamType", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ABANDONED', u'COMPLETED', u'FAILED', u'RUNNING', u'STARTED', u'UNKNOWN'])
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ABANDONED', u'COMPLETED', u'FAILED', u'RUNNING', u'SKIPPED', u'STARTED', u'UNKNOWN'])
         self.expose_attribute(local_name="full_command", remote_name="fullCommand", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="summary", remote_name="summary", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="override", remote_name="override", attribute_type=str, is_required=False, is_unique=False, choices=[u'ABANDON', u'UNSPECIFIED'])
@@ -308,6 +312,29 @@ class NUCommand(NURESTObject):
                 
         """
         self._command_information = value
+
+    
+    @property
+    def progress(self):
+        """ Get progress value.
+
+            Notes:
+                JSON string detailing the progress of the command execution on Gateway.
+
+                
+        """
+        return self._progress
+
+    @progress.setter
+    def progress(self, value):
+        """ Set progress value.
+
+            Notes:
+                JSON string detailing the progress of the command execution on Gateway.
+
+                
+        """
+        self._progress = value
 
     
     @property

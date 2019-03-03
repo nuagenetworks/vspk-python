@@ -20,15 +20,15 @@ Attributes
 
 - ``gateway_peer1_connected``: Indicates status of the authoritative  gateway of this Redundancy Group.
 
-- ``gateway_peer1_id``: The gateway configuration owner in this Redundant Group. when Redundant Group is deleted this gateway will recieve vport associations 
+- ``gateway_peer1_id`` (**Mandatory**): The gateway configuration owner in this Redundant Group.  When Redundant Group is deleted this gateway will receive vPort associated to the group.
 
-- ``gateway_peer1_name``: The gateway   configuration owner name in this Redundant Group
+- ``gateway_peer1_name``: The name of the authoritative gateway of the redundant group.
 
 - ``gateway_peer2_autodiscovered_gateway_id``: The Auto Discovered Gateway  peer in this Redundant Group
 
 - ``gateway_peer2_connected``: Indicates status of the secondary gateway of this Redundancy Group.
 
-- ``gateway_peer2_id``: The gateway peer in this Redundant Group. When Redundant Group is deleted this gateway will not recieve vport associations.
+- ``gateway_peer2_id`` (**Mandatory**): The gateway peer in this Redundant Group. When Redundant Group is deleted this gateway will not recieve vport associations.
 
 - ``gateway_peer2_name``: The gateway peer name in this Redundant Group
 

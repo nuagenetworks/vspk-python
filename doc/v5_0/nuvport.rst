@@ -20,6 +20,8 @@ Attributes
 
 - ``dpi``: determines whether or not deep packet inspection is enabled
 
+- ``backhaul_subnet_vnid``: Backhaul subnet VNID of the L3Domain associated with the VPort. This is exposed for Netconf manager
+
 - ``name`` (**Mandatory**): Name of the vport. Valid characters are alphabets, numbers, space and hyphen( - ).
 
 - ``has_attached_interfaces``: Indicates that this vport has attached interfaces
@@ -50,6 +52,12 @@ Attributes
 
 - ``domain_id``: ID the Domain associated with the VPort
 
+- ``domain_name``: Name of the Domain associated with the VPort. This is exposed for Netconf manager 
+
+- ``domain_service_label``: Service ID of Domain.
+
+- ``domain_vlanid``: Backhaul vlan id the L3Domain associated with the VPort. This is exposed for Netconf manager
+
 - ``zone_id``: ID the Zone associated with the VPort
 
 - ``operational_state``: Operational State of the VPort. Possible values are INIT, UP, DOWN.
@@ -79,6 +87,8 @@ Attributes
 - ``associated_trunk_id``: The trunk uuid associated with another vport of trunkRole PARENT_PORT. Can be specified only if trunkRole of this vport is SUB_PORT.
 
 - ``sub_type``: Sub type of vport - possible values are NONE/VNF
+
+- ``subnet_vnid``: VNID of the associated subnet or L2domain with the VPort. This is exposed for Netconf manager
 
 - ``multi_nic_vport_id``: ID of the Multi NIC VPort associated with the VPort
 
@@ -139,6 +149,8 @@ Parents
 --------
 
 
+- :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
+
 - :ref:`nuzone.NUZone<nuzone>`
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
@@ -158,8 +170,6 @@ Parents
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
-
-- :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
 
 - :ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`
 

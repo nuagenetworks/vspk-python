@@ -159,7 +159,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_autodiscovered_gateway_id", remote_name="gatewayPeer1AutodiscoveredGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_connected", remote_name="gatewayPeer1Connected", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="gateway_peer1_id", remote_name="gatewayPeer1ID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_peer1_id", remote_name="gatewayPeer1ID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_name", remote_name="gatewayPeer1Name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer2_autodiscovered_gateway_id", remote_name="gatewayPeer2AutodiscoveredGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer2_connected", remote_name="gatewayPeer2Connected", attribute_type=bool, is_required=False, is_unique=False)

@@ -55,7 +55,7 @@ class NUEgressACLTemplate(NURESTObject):
     """ Represents a EgressACLTemplate in the VSD
 
         Notes:
-            Defines the template for an Egress ACL.
+            An egress security policy is a set of rules defining how network traffic is treated within a domain. Egress Security Policies control traffic flowing out of the network.
     """
 
     __rest_name__ = "egressacltemplate"

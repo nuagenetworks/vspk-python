@@ -14,6 +14,10 @@ Attributes
 
 - ``bfd_destination_ip``: Destination IP Address used for Bidirectional Forwarding Detection.
 
+- ``bfd_destination_ip_type``: Destination IP Type of Bidirectional Forwarding Detection
+
+- ``bfd_destination_ipv6``: Destination IPv6 Address used for Bidirectional Forwarding Detection. Required if BFD Destination IP Type is IPV6
+
 - ``bfd_multiplier``: Multiplier used for Bidirectional Forwarding Detection Timer.
 
 - ``bfd_timer``: Timer for Bidirectional Forwarding Detection in milliseconds.

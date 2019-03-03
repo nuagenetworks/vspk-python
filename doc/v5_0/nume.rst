@@ -145,6 +145,7 @@ Children
 :ref:`nunsgateway.NUNSGateway<nunsgateway>`                                                                                                                      ``ns_gateways`` 
 :ref:`nunsgatewaytemplate.NUNSGatewayTemplate<nunsgatewaytemplate>`                                                                                              ``ns_gateway_templates`` 
 :ref:`nunsggroup.NUNSGGroup<nunsggroup>`                                                                                                                         ``nsg_groups`` 
+:ref:`nunsginfo.NUNSGInfo<nunsginfo>`                                                                                                                            ``nsg_infos`` 
 :ref:`nunsgpatchprofile.NUNSGPatchProfile<nunsgpatchprofile>`                                                                                                    ``nsg_patch_profiles`` 
 :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`                                                                            ``ns_redundant_gateway_groups`` 
 :ref:`nunsgupgradeprofile.NUNSGUpgradeProfile<nunsgupgradeprofile>`                                                                                              ``nsg_upgrade_profiles`` 

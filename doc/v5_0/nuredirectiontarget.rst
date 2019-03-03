@@ -5,7 +5,7 @@ nuredirectiontarget
 
 .. class:: nuredirectiontarget.NURedirectionTarget(bambou.nurest_object.NUMetaRESTObject,):
 
-A group/collection of vports that belong to the same domain.
+Redirection targets are pointed to by advanced forwarding policies as the destination for redirected traffic. Targets can be of two types, L3 or virtual wire. For L3 targets a virtual IP should be provided as it allows the system to track among which of the end-points belonging to the redirection target is the active one. For this type of redirect the packet's destination MAC address is changed to match that of the Virtual IP. For virtual-wire redirection targets, the packets are untouched and forwarded directly to the end-point.
 
 
 Attributes

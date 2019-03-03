@@ -103,6 +103,8 @@ Parents
 
 - :ref:`nucontainer.NUContainer<nucontainer>`
 
+- :ref:`nuuser.NUUser<nuuser>`
+
 - :ref:`nuzonetemplate.NUZoneTemplate<nuzonetemplate>`
 
 - :ref:`nuvrs.NUVRS<nuvrs>`
@@ -126,8 +128,6 @@ Parents
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
 - :ref:`numulticastrange.NUMultiCastRange<numulticastrange>`
-
-- :ref:`nuuser.NUUser<nuuser>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
 

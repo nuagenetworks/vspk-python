@@ -40,6 +40,8 @@ Attributes
 
 - ``gateway_connected``: A boolean flag indicating the status of the gateway.
 
+- ``gateway_model``: The model string of the gateway. Applicable to netconf managed gateways
+
 - ``gateway_version``: The Gateway Software Version as reported during bootstrapping.
 
 - ``redundancy_group_id``: The Redundancy Gateway Group associated with this Gateway Instance. This is a read only attribute
@@ -49,6 +51,8 @@ Attributes
 - ``template_id``: The ID of the template that this Gateway was created from. This should be set when instantiating a Gateway
 
 - ``pending``: Indicates that this gateway is pending state or state. When in pending state it cannot be modified from REST.
+
+- ``vendor``: The vendor of the gateway. Applicable to netconf managed gateways
 
 - ``serial_number``: The device's serial number
 
@@ -117,11 +121,13 @@ Children
 :ref:`nuenterprisepermission.NUEnterprisePermission<nuenterprisepermission>`                                                                                     ``enterprise_permissions`` 
 :ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
 :ref:`nulocation.NULocation<nulocation>`                                                                                                                         ``locations`` 
+:ref:`nudomain.NUDomain<nudomain>`                                                                                                                               ``domains`` 
 :ref:`nubootstrap.NUBootstrap<nubootstrap>`                                                                                                                      ``bootstraps`` 
 :ref:`nubootstrapactivation.NUBootstrapActivation<nubootstrapactivation>`                                                                                        ``bootstrap_activations`` 
 :ref:`nuport.NUPort<nuport>`                                                                                                                                     ``ports`` 
 :ref:`nuipfilterprofile.NUIPFilterProfile<nuipfilterprofile>`                                                                                                    ``ip_filter_profiles`` 
 :ref:`nuipv6filterprofile.NUIPv6FilterProfile<nuipv6filterprofile>`                                                                                              ``ipv6_filter_profiles`` 
+:ref:`nusubnet.NUSubnet<nusubnet>`                                                                                                                               ``subnets`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
 ================================================================================================================================================               ==========================================================================================
 

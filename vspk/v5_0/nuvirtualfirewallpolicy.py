@@ -58,8 +58,6 @@ class NUVirtualFirewallPolicy(NURESTObject):
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_PRIORITY_TYPE_NONE = "NONE"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_PRIORITY_TYPE_TOP = "TOP"
@@ -114,7 +112,7 @@ class NUVirtualFirewallPolicy(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="priority_type", remote_name="priorityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BOTTOM', u'NONE', u'TOP'])
+        self.expose_attribute(local_name="priority_type", remote_name="priorityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BOTTOM', u'TOP'])
         self.expose_attribute(local_name="associated_egress_template_id", remote_name="associatedEgressTemplateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ingress_template_id", remote_name="associatedIngressTemplateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
@@ -424,7 +422,7 @@ class NUVirtualFirewallPolicy(NURESTObject):
         """ Get priority_type value.
 
             Notes:
-                Possible values: TOP, BOTTOM or NONE. TOP and BOTTOM ACL policies can only be defined and managed on the template level, NONE can be used on both the template and instantiated level. These allow for careful control of Rule priority handling.
+                Possible values: TOP or BOTTOM. TOP and BOTTOM ACL policies can only be defined and managed on the template level. These allow for careful control of Rule priority handling.
 
                 
                 This attribute is named `priorityType` in VSD API.
@@ -437,7 +435,7 @@ class NUVirtualFirewallPolicy(NURESTObject):
         """ Set priority_type value.
 
             Notes:
-                Possible values: TOP, BOTTOM or NONE. TOP and BOTTOM ACL policies can only be defined and managed on the template level, NONE can be used on both the template and instantiated level. These allow for careful control of Rule priority handling.
+                Possible values: TOP or BOTTOM. TOP and BOTTOM ACL policies can only be defined and managed on the template level. These allow for careful control of Rule priority handling.
 
                 
                 This attribute is named `priorityType` in VSD API.

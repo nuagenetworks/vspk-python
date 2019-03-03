@@ -5,7 +5,7 @@ nuproxyarpfilter
 
 .. class:: nuproxyarpfilter.NUProxyARPFilter(bambou.nurest_object.NUMetaRESTObject,):
 
-Black list of ranges for which NSG will act as ARP Proxy
+Proxy ARP filters represent black-list of address ranges for NSG acting as ARP proxy
 
 
 Attributes

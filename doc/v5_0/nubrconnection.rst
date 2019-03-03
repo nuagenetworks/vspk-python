@@ -5,7 +5,7 @@ nubrconnection
 
 .. class:: nubrconnection.NUBRConnection(bambou.nurest_object.NUMetaRESTObject,):
 
-None
+Configuration of VNS Gateway Border Router connection
 
 
 Attributes

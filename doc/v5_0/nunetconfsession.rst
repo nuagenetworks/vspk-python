@@ -14,6 +14,12 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``gateway_model``: The model string of the gateway to which this session connected from Netconf Manager
+
+- ``gateway_vendor``: Vendor of the gateway to which this session connected from Netconf Manager
+
+- ``gateway_version``: Boot image version of gateway to which this session connected from Netconf Manager
+
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``associated_gateway_id``: UUID of the gateway associated to this Netconf session.

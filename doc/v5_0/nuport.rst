@@ -5,7 +5,7 @@ nuport
 
 .. class:: nuport.NUPort(bambou.nurest_object.NUMetaRESTObject,):
 
-Represents Port under a particular gateway object or redundant group object.
+A port represents specific connection point of a gateway. It can be used for internal networking, like an uplink connection or a management network. It can also be used for domain's access.
 
 
 Attributes

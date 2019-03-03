@@ -26,9 +26,13 @@ Attributes
 
 - ``next_hop_ip`` (**Mandatory**): IP address of the next hop. This must be a VM attached to the dVRS
 
+- ``black_hole_enabled``: Indicates if this is a black hole static route. Applicable only when the static route type is 'NETCONF'.
+
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``route_distinguisher``: Route distinguisher associated with the nexthop. System generates this identifier automatically
+
+- ``associated_gateway_ids``: List of associated gateway IDs for static route, returned as a JSON list of strings
 
 - ``associated_subnet_id``: UUID of Do Not Advertise Subnet
 
@@ -45,6 +49,7 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nudeploymentfailure.NUDeploymentFailure<nudeploymentfailure>`                                                                                              ``deployment_failures`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 

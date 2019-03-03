@@ -40,6 +40,9 @@ from .fetchers import NUAddressRangesFetcher
 from .fetchers import NUDefaultGatewaysFetcher
 
 
+from .fetchers import NUDeploymentFailuresFetcher
+
+
 from .fetchers import NUVMResyncsFetcher
 
 
@@ -147,6 +150,8 @@ class NUSubnet(NURESTObject):
     
     CONST_UNDERLAY_ENABLED_INHERITED = "INHERITED"
     
+    CONST_USE_GLOBAL_MAC_ENTERPRISE_DEFAULT = "ENTERPRISE_DEFAULT"
+    
     CONST_ENCRYPTION_INHERITED = "INHERITED"
     
     CONST_ENTITY_STATE_UNDER_CONSTRUCTION = "UNDER_CONSTRUCTION"
@@ -204,6 +209,7 @@ class NUSubnet(NURESTObject):
         self._ip_type = None
         self._ipv6_address = None
         self._ipv6_gateway = None
+        self._evpn_enabled = None
         self._maintenance_mode = None
         self._name = None
         self._last_updated_by = None
@@ -221,9 +227,11 @@ class NUSubnet(NURESTObject):
         self._encryption = None
         self._underlay = None
         self._underlay_enabled = None
+        self._ingress_replication_enabled = None
         self._entity_scope = None
         self._entity_state = None
         self._policy_group_id = None
+        self._domain_service_label = None
         self._route_distinguisher = None
         self._route_target = None
         self._split_subnet = None
@@ -235,6 +243,7 @@ class NUSubnet(NURESTObject):
         self._subnet_vlanid = None
         self._multi_home_enabled = None
         self._multicast = None
+        self._customer_id = None
         self._external_id = None
         self._dynamic_ipv6_address = None
         
@@ -244,6 +253,7 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4'])
         self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ipv6_gateway", remote_name="IPv6Gateway", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="evpn_enabled", remote_name="EVPNEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -261,20 +271,23 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="underlay", remote_name="underlay", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="underlay_enabled", remote_name="underlayEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="ingress_replication_enabled", remote_name="ingressReplicationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="entity_state", remote_name="entityState", attribute_type=str, is_required=False, is_unique=False, choices=[u'MARKED_FOR_DELETION', u'UNDER_CONSTRUCTION'])
         self.expose_attribute(local_name="policy_group_id", remote_name="policyGroupID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="domain_service_label", remote_name="domainServiceLabel", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="route_target", remote_name="routeTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="split_subnet", remote_name="splitSubnet", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="proxy_arp", remote_name="proxyARP", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENTERPRISE_DEFAULT'])
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_shared_network_resource_id", remote_name="associatedSharedNetworkResourceID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="public", remote_name="public", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="subnet_vlanid", remote_name="subnetVLANID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multi_home_enabled", remote_name="multiHomeEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="dynamic_ipv6_address", remote_name="dynamicIpv6Address", attribute_type=bool, is_required=False, is_unique=False)
         
@@ -292,6 +305,9 @@ class NUSubnet(NURESTObject):
         
         
         self.default_gateways = NUDefaultGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.deployment_failures = NUDeploymentFailuresFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.vm_resyncs = NUVMResyncsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -518,6 +534,33 @@ class NUSubnet(NURESTObject):
                 
         """
         self._ipv6_gateway = value
+
+    
+    @property
+    def evpn_enabled(self):
+        """ Get evpn_enabled value.
+
+            Notes:
+                Indicates if EVPN capabilities are enabled for this subnet.
+
+                
+                This attribute is named `EVPNEnabled` in VSD API.
+                
+        """
+        return self._evpn_enabled
+
+    @evpn_enabled.setter
+    def evpn_enabled(self, value):
+        """ Set evpn_enabled value.
+
+            Notes:
+                Indicates if EVPN capabilities are enabled for this subnet.
+
+                
+                This attribute is named `EVPNEnabled` in VSD API.
+                
+        """
+        self._evpn_enabled = value
 
     
     @property
@@ -948,6 +991,33 @@ class NUSubnet(NURESTObject):
 
     
     @property
+    def ingress_replication_enabled(self):
+        """ Get ingress_replication_enabled value.
+
+            Notes:
+                Enables ingress replication for the VNI.
+
+                
+                This attribute is named `ingressReplicationEnabled` in VSD API.
+                
+        """
+        return self._ingress_replication_enabled
+
+    @ingress_replication_enabled.setter
+    def ingress_replication_enabled(self, value):
+        """ Set ingress_replication_enabled value.
+
+            Notes:
+                Enables ingress replication for the VNI.
+
+                
+                This attribute is named `ingressReplicationEnabled` in VSD API.
+                
+        """
+        self._ingress_replication_enabled = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -1026,6 +1096,33 @@ class NUSubnet(NURESTObject):
                 
         """
         self._policy_group_id = value
+
+    
+    @property
+    def domain_service_label(self):
+        """ Get domain_service_label value.
+
+            Notes:
+                Service ID or external label given to Domain
+
+                
+                This attribute is named `domainServiceLabel` in VSD API.
+                
+        """
+        return self._domain_service_label
+
+    @domain_service_label.setter
+    def domain_service_label(self, value):
+        """ Set domain_service_label value.
+
+            Notes:
+                Service ID or external label given to Domain
+
+                
+                This attribute is named `domainServiceLabel` in VSD API.
+                
+        """
+        self._domain_service_label = value
 
     
     @property
@@ -1315,6 +1412,33 @@ class NUSubnet(NURESTObject):
                 
         """
         self._multicast = value
+
+    
+    @property
+    def customer_id(self):
+        """ Get customer_id value.
+
+            Notes:
+                CustomerID that is used by NETCONF MANAGER to identify this enterprise. This can be configured by root user.
+
+                
+                This attribute is named `customerID` in VSD API.
+                
+        """
+        return self._customer_id
+
+    @customer_id.setter
+    def customer_id(self, value):
+        """ Set customer_id value.
+
+            Notes:
+                CustomerID that is used by NETCONF MANAGER to identify this enterprise. This can be configured by root user.
+
+                
+                This attribute is named `customerID` in VSD API.
+                
+        """
+        self._customer_id = value
 
     
     @property

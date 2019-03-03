@@ -106,15 +106,11 @@ class NURedundancyGroup(NURESTObject):
     
     ## Constants
     
-    CONST_PERSONALITY_NUAGE_210_WBX_32_Q = "NUAGE_210_WBX_32_Q"
-    
-    CONST_PERSONALITY_NSGDUC = "NSGDUC"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_PERSONALITY_OTHER = "OTHER"
     
     CONST_PERSONALITY_VDFG = "VDFG"
-    
-    CONST_PERSONALITY_NSG = "NSG"
     
     CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
     
@@ -144,15 +140,15 @@ class NURedundancyGroup(NURESTObject):
     
     CONST_PERSONALITY_VRSG = "VRSG"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_PERSONALITY_NUAGE_210_WBX_32_Q = "NUAGE_210_WBX_32_Q"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_PERSONALITY_NETCONF_THIRDPARTY_HW_VTEP = "NETCONF_THIRDPARTY_HW_VTEP"
     
     CONST_PERMITTED_ACTION_ALL = "ALL"
     
     CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
-    
-    CONST_PERSONALITY_NSGBR = "NSGBR"
     
     
 
@@ -196,15 +192,15 @@ class NURedundancyGroup(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_autodiscovered_gateway_id", remote_name="gatewayPeer1AutodiscoveredGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_connected", remote_name="gatewayPeer1Connected", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="gateway_peer1_id", remote_name="gatewayPeer1ID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_peer1_id", remote_name="gatewayPeer1ID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="gateway_peer1_name", remote_name="gatewayPeer1Name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer2_autodiscovered_gateway_id", remote_name="gatewayPeer2AutodiscoveredGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_peer2_connected", remote_name="gatewayPeer2Connected", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="gateway_peer2_id", remote_name="gatewayPeer2ID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_peer2_id", remote_name="gatewayPeer2ID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="gateway_peer2_name", remote_name="gatewayPeer2Name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redundant_gateway_status", remote_name="redundantGatewayStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAILED', u'SUCCESS'])
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NSG', u'NSGBR', u'NSGDUC', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NETCONF_THIRDPARTY_HW_VTEP', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -391,7 +387,7 @@ class NURedundancyGroup(NURESTObject):
         """ Get gateway_peer1_id value.
 
             Notes:
-                The gateway configuration owner in this Redundant Group. when Redundant Group is deleted this gateway will recieve vport associations 
+                The gateway configuration owner in this Redundant Group.  When Redundant Group is deleted this gateway will receive vPort associated to the group.
 
                 
                 This attribute is named `gatewayPeer1ID` in VSD API.
@@ -404,7 +400,7 @@ class NURedundancyGroup(NURESTObject):
         """ Set gateway_peer1_id value.
 
             Notes:
-                The gateway configuration owner in this Redundant Group. when Redundant Group is deleted this gateway will recieve vport associations 
+                The gateway configuration owner in this Redundant Group.  When Redundant Group is deleted this gateway will receive vPort associated to the group.
 
                 
                 This attribute is named `gatewayPeer1ID` in VSD API.
@@ -418,7 +414,7 @@ class NURedundancyGroup(NURESTObject):
         """ Get gateway_peer1_name value.
 
             Notes:
-                The gateway   configuration owner name in this Redundant Group
+                The name of the authoritative gateway of the redundant group.
 
                 
                 This attribute is named `gatewayPeer1Name` in VSD API.
@@ -431,7 +427,7 @@ class NURedundancyGroup(NURESTObject):
         """ Set gateway_peer1_name value.
 
             Notes:
-                The gateway   configuration owner name in this Redundant Group
+                The name of the authoritative gateway of the redundant group.
 
                 
                 This attribute is named `gatewayPeer1Name` in VSD API.

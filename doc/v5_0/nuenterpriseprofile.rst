@@ -22,6 +22,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``web_filter_enabled``: Enable Web Filtering for this enterprise profile
+
 - ``receive_multi_cast_list_id``: Readonly ID of the auto generated receive multicast list associated with this enterprise profile
 
 - ``send_multi_cast_list_id``: Readonly ID of the auto generated send multicast list associated with this enterprise profile

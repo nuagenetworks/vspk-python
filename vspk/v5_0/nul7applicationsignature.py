@@ -85,6 +85,7 @@ class NUL7applicationsignature(NURESTObject):
         self._description = None
         self._dictionary_version = None
         self._signature_index = None
+        self._signature_version = None
         self._risk = None
         self._plugin_name = None
         self._entity_scope = None
@@ -103,6 +104,7 @@ class NUL7applicationsignature(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dictionary_version", remote_name="dictionaryVersion", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="signature_index", remote_name="signatureIndex", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="signature_version", remote_name="signatureVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="risk", remote_name="risk", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="plugin_name", remote_name="pluginName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -372,6 +374,33 @@ class NUL7applicationsignature(NURESTObject):
                 
         """
         self._signature_index = value
+
+    
+    @property
+    def signature_version(self):
+        """ Get signature_version value.
+
+            Notes:
+                The AAR application version where this signature was last updated.
+
+                
+                This attribute is named `signatureVersion` in VSD API.
+                
+        """
+        return self._signature_version
+
+    @signature_version.setter
+    def signature_version(self, value):
+        """ Set signature_version value.
+
+            Notes:
+                The AAR application version where this signature was last updated.
+
+                
+                This attribute is named `signatureVersion` in VSD API.
+                
+        """
+        self._signature_version = value
 
     
     @property

@@ -40,7 +40,7 @@ class NURoutingPolicy(NURESTObject):
     """ Represents a RoutingPolicy in the VSD
 
         Notes:
-            None
+            Pre-defined sets of attributes used in policy match conditions: prefix lists, entries, damping profiles, etc.
     """
 
     __rest_name__ = "routingpolicy"
@@ -50,6 +50,8 @@ class NURoutingPolicy(NURESTObject):
     ## Constants
     
     CONST_DEFAULT_ACTION_REJECT = "REJECT"
+    
+    CONST_CONTENT_TYPE_NETCONF_7X50 = "NETCONF_7X50"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
@@ -62,6 +64,8 @@ class NURoutingPolicy(NURESTObject):
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_DEFAULT_ACTION_ACCEPT = "ACCEPT"
+    
+    CONST_CONTENT_TYPE_DEFAULT = "DEFAULT"
     
     CONST_ROUTING_PROTOCOL_ROUTING = "ROUTING"
     
@@ -91,6 +95,7 @@ class NURoutingPolicy(NURESTObject):
         self._description = None
         self._entity_scope = None
         self._policy_definition = None
+        self._content_type = None
         self._routing_protocol = None
         self._external_id = None
         
@@ -99,6 +104,7 @@ class NURoutingPolicy(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="policy_definition", remote_name="policyDefinition", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="content_type", remote_name="contentType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'NETCONF_7X50'])
         self.expose_attribute(local_name="routing_protocol", remote_name="routingProtocol", attribute_type=str, is_required=False, is_unique=False, choices=[u'BGP', u'ISIS', u'OSPFv2', u'OSPFv3', u'ROUTING'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
@@ -241,6 +247,33 @@ class NURoutingPolicy(NURESTObject):
                 
         """
         self._policy_definition = value
+
+    
+    @property
+    def content_type(self):
+        """ Get content_type value.
+
+            Notes:
+                Content type for routing policy provisioning for different mediation devices
+
+                
+                This attribute is named `contentType` in VSD API.
+                
+        """
+        return self._content_type
+
+    @content_type.setter
+    def content_type(self, value):
+        """ Set content_type value.
+
+            Notes:
+                Content type for routing policy provisioning for different mediation devices
+
+                
+                This attribute is named `contentType` in VSD API.
+                
+        """
+        self._content_type = value
 
     
     @property

@@ -40,7 +40,7 @@ class NUNSGRoutingPolicyBinding(NURESTObject):
     """ Represents a NSGRoutingPolicyBinding in the VSD
 
         Notes:
-            None
+            The NSG routing policy binding is used to assign routing policies to an NSG or group of NSGs as defined by the routing policy group. The local routing policies assigned to an NSG in a policy binding are preferred over global routing policies defined at the OSPF instance level.
     """
 
     __rest_name__ = "nsgroutingpolicybinding"

@@ -72,14 +72,16 @@ class NUNSGUpgradeProfile(NURESTObject):
         self._metadata_upgrade_path = None
         self._enterprise_id = None
         self._entity_scope = None
+        self._download_rate_limit = None
         self._external_id = None
         
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=True)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_upgrade_path", remote_name="metadataUpgradePath", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="download_rate_limit", remote_name="downloadRateLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -239,6 +241,33 @@ class NUNSGUpgradeProfile(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def download_rate_limit(self):
+        """ Get download_rate_limit value.
+
+            Notes:
+                Download rate limit used for download of Gateway image in kilobyte per second (KB/s).
+
+                
+                This attribute is named `downloadRateLimit` in VSD API.
+                
+        """
+        return self._download_rate_limit
+
+    @download_rate_limit.setter
+    def download_rate_limit(self, value):
+        """ Set download_rate_limit value.
+
+            Notes:
+                Download rate limit used for download of Gateway image in kilobyte per second (KB/s).
+
+                
+                This attribute is named `downloadRateLimit` in VSD API.
+                
+        """
+        self._download_rate_limit = value
 
     
     @property

@@ -40,7 +40,7 @@ class NUSSHKey(NURESTObject):
     """ Represents a SSHKey in the VSD
 
         Notes:
-            None
+            SSH (Secure Shell) is used to provide secure remote console access to NSGs deployed in branch locations. When key-based authentication is in use, the SSH keys represent the list of public keys that are authorized to open an SSH connection with the username set at the Access Profile level.
     """
 
     __rest_name__ = "sshkey"
@@ -87,7 +87,7 @@ class NUSSHKey(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="key_type", remote_name="keyType", attribute_type=str, is_required=False, is_unique=False, choices=[u'RSA'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="public_key", remote_name="publicKey", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="public_key", remote_name="publicKey", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

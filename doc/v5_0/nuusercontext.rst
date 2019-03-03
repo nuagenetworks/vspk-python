@@ -32,7 +32,9 @@ Attributes
 
 - ``statistics_enabled``: This flag is used to indicate if statistics is enabled in the system. CSProot is expected to activate this through the enable statistics script.
 
-- ``stats_tsdb_server_address``: ip address(es) of the elastic machine
+- ``stats_database_proxy``: The location of a public proxy to statistics database server in <FQDN>:<PORT> format.
+
+- ``stats_tsdb_server_address``: IP address(es) of the elastic machine
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

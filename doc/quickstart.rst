@@ -52,7 +52,7 @@ in a function that we will reuse through this document:
     def setup_logging():
         import logging
         from vspk.utils import set_log_level
-        set_log_level(logging.DEBUG, logging.StreamHandler())
+        set_log_level(logging.DEBUG, logging.Streamhandler())
 
     def start_csproot_session():
         session = vspk.NUVSDSession(

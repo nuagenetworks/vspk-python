@@ -5,7 +5,7 @@ nuallgateway
 
 .. class:: nuallgateway.NUAllGateway(bambou.nurest_object.NUMetaRESTObject,):
 
-A read only API to get all gateway objects in the VSD environment. Use the ID field to then actually manage the gateway using the gateway API entity.
+A read-only API to get all gateway objects in the VSD environment. Use the ID field to then actually manage the gateway using the gateway API entity.
 
 
 Attributes

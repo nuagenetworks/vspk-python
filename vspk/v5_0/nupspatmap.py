@@ -40,7 +40,7 @@ class NUPSPATMap(NURESTObject):
     """ Represents a PSPATMap in the VSD
 
         Notes:
-            None
+            Reserved provider SPAT IPs to be used to SPAT a collection of provider private IPs in customer domain.
     """
 
     __rest_name__ = "pspatmap"

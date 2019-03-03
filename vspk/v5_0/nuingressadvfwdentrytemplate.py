@@ -43,7 +43,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     """ Represents a IngressAdvFwdEntryTemplate in the VSD
 
         Notes:
-            Defines the template of Ingress Advanced Forwarding entries
+            Security Policy Entries defines what action to take for a particular type of traffic, based on its origin and its destination, its protocol, EtherType, eventual ports, DSCP value and other information.
     """
 
     __rest_name__ = "ingressadvfwdentrytemplate"
@@ -82,17 +82,21 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_NETWORK_TYPE_ENDPOINT_DOMAIN = "ENDPOINT_DOMAIN"
     
-    CONST_REDIRECT_REWRITE_TYPE_VLAN = "VLAN"
+    CONST_NETWORK_TYPE_ANY = "ANY"
     
     CONST_LOCATION_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
+    CONST_ADDRESS_OVERRIDE_TYPE_IPV4 = "IPV4"
+    
     CONST_APP_TYPE_APPLICATION = "APPLICATION"
+    
+    CONST_ADDRESS_OVERRIDE_TYPE_IPV6 = "IPV6"
     
     CONST_FC_OVERRIDE_NONE = "NONE"
     
     CONST_REMOTE_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
     
-    CONST_NETWORK_TYPE_ANY = "ANY"
+    CONST_REDIRECT_REWRITE_TYPE_VLAN = "VLAN"
     
     CONST_LOCATION_TYPE_POLICYGROUP = "POLICYGROUP"
     
@@ -142,15 +146,21 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_APP_TYPE_NONE = "NONE"
     
+    CONST_WEB_FILTER_TYPE_WEB_DOMAIN_NAME = "WEB_DOMAIN_NAME"
+    
     CONST_POLICY_STATE_LIVE = "LIVE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_WEB_FILTER_TYPE_WEB_CATEGORY = "WEB_CATEGORY"
     
     CONST_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
     
     CONST_NETWORK_TYPE_ENDPOINT_ZONE = "ENDPOINT_ZONE"
     
     CONST_NETWORK_TYPE_ZONE = "ZONE"
+    
+    CONST_ADDRESS_OVERRIDE_TYPE_MACRO_GROUP = "MACRO_GROUP"
     
     CONST_REMOTE_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
     
@@ -190,6 +200,9 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self._last_updated_by = None
         self._action = None
         self._address_override = None
+        self._address_override_type = None
+        self._web_filter_id = None
+        self._web_filter_type = None
         self._redirect_rewrite_type = None
         self._redirect_rewrite_value = None
         self._redirect_vport_tag_id = None
@@ -235,6 +248,9 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'DROP', u'FORWARD', u'FORWARDING_PATH_LIST', u'REDIRECT'])
         self.expose_attribute(local_name="address_override", remote_name="addressOverride", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="address_override_type", remote_name="addressOverrideType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6', u'MACRO_GROUP'])
+        self.expose_attribute(local_name="web_filter_id", remote_name="webFilterID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="web_filter_type", remote_name="webFilterType", attribute_type=str, is_required=False, is_unique=False, choices=[u'WEB_CATEGORY', u'WEB_DOMAIN_NAME'])
         self.expose_attribute(local_name="redirect_rewrite_type", remote_name="redirectRewriteType", attribute_type=str, is_required=False, is_unique=True, choices=[u'VLAN'])
         self.expose_attribute(local_name="redirect_rewrite_value", remote_name="redirectRewriteValue", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redirect_vport_tag_id", remote_name="redirectVPortTagID", attribute_type=str, is_required=False, is_unique=False)
@@ -577,6 +593,87 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
                 
         """
         self._address_override = value
+
+    
+    @property
+    def address_override_type(self):
+        """ Get address_override_type value.
+
+            Notes:
+                Address Override Type can be IPV4, IPV6 or MACRO_GROUP.
+
+                
+                This attribute is named `addressOverrideType` in VSD API.
+                
+        """
+        return self._address_override_type
+
+    @address_override_type.setter
+    def address_override_type(self, value):
+        """ Set address_override_type value.
+
+            Notes:
+                Address Override Type can be IPV4, IPV6 or MACRO_GROUP.
+
+                
+                This attribute is named `addressOverrideType` in VSD API.
+                
+        """
+        self._address_override_type = value
+
+    
+    @property
+    def web_filter_id(self):
+        """ Get web_filter_id value.
+
+            Notes:
+                ID of web filter category or web domain name entity used
+
+                
+                This attribute is named `webFilterID` in VSD API.
+                
+        """
+        return self._web_filter_id
+
+    @web_filter_id.setter
+    def web_filter_id(self, value):
+        """ Set web_filter_id value.
+
+            Notes:
+                ID of web filter category or web domain name entity used
+
+                
+                This attribute is named `webFilterID` in VSD API.
+                
+        """
+        self._web_filter_id = value
+
+    
+    @property
+    def web_filter_type(self):
+        """ Get web_filter_type value.
+
+            Notes:
+                Indicates type of web filter being set
+
+                
+                This attribute is named `webFilterType` in VSD API.
+                
+        """
+        return self._web_filter_type
+
+    @web_filter_type.setter
+    def web_filter_type(self, value):
+        """ Set web_filter_type value.
+
+            Notes:
+                Indicates type of web filter being set
+
+                
+                This attribute is named `webFilterType` in VSD API.
+                
+        """
+        self._web_filter_type = value
 
     
     @property

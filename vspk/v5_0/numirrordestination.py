@@ -91,10 +91,10 @@ class NUMirrorDestination(NURESTObject):
         self._entity_scope = None
         self._external_id = None
         
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_id", remote_name="serviceId", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="destination_ip", remote_name="destinationIp", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="destination_ip", remote_name="destinationIp", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         

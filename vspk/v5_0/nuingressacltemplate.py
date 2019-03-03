@@ -55,7 +55,7 @@ class NUIngressACLTemplate(NURESTObject):
     """ Represents a IngressACLTemplate in the VSD
 
         Notes:
-            Defines the template for an Ingress ACL.
+            An ingress security policy is a set of rules defining how network traffic is treated within a domain. Ingress Security Policies control traffic flowing into the network.
     """
 
     __rest_name__ = "ingressacltemplate"

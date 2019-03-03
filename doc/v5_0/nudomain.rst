@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``pat_enabled``: Indicates whether PAT is enabled for the subnets in this domain - ENABLED/DISABLED Possible values are INHERITED, ENABLED, DISABLED, .
+- ``pat_enabled``: Indicates whether PAT is enabled for the subnets in this domain - ENABLED/DISABLED Possible values are ENABLED, DISABLED.
 
 - ``ecmp_count``: Domain specific Equal-cost multi-path routing count, ECMPCount = 1 means no ECMP
 
@@ -27,6 +27,8 @@ Attributes
 - ``fip_underlay``: Boolean flag to indicate whether this is a Floating IP to underlay domain or not
 
 - ``dpi``: determines whether or not Deep packet inspection is enabled
+
+- ``vxlanecmp_enabled``: Determines whether VXLAN-ECMP are enabled on this domain.
 
 - ``label_id``: The label associated with the dVRS. This is a read only attribute
 
@@ -58,6 +60,8 @@ Attributes
 
 - ``description``: A description string of the domain that is provided by the user
 
+- ``aggregate_flows_enabled``: Flag to enable aggregate flows on this domain.
+
 - ``dhcp_server_addresses``: when DHCPBehaviorType is RELAY, then DHCP Server IP Address needs to be set
 
 - ``global_routing_enabled``: Indicates if this domain is a globally routable domain or not - boolean true/false
@@ -66,7 +70,7 @@ Attributes
 
 - ``import_route_target``: Route distinguisher associated with the dVRS. It is an optional parameter that can be provided by the user or auto-managed by VSD. System generates this identifier automatically, if not provided
 
-- ``encryption``: Determines whether IPSEC is enabled Possible values are ENABLED, DISABLED, .
+- ``encryption``: Determines whether IPSEC is enabled Possible values are ENABLED, DISABLED.
 
 - ``underlay_enabled``: Indicates whether UNDERLAY is enabled for the subnets in this domain
 
@@ -110,6 +114,8 @@ Attributes
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
+- ``external_label``: External label given to Domain
+
 
 
 
@@ -121,6 +127,7 @@ Children
 
 :ref:`nutca.NUTCA<nutca>`                                                                                                                                        ``tcas`` 
 :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`                                                                                              ``redirection_targets`` 
+:ref:`nudeploymentfailure.NUDeploymentFailure<nudeploymentfailure>`                                                                                              ``deployment_failures`` 
 :ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nunetworkperformancebinding.NUNetworkPerformanceBinding<nunetworkperformancebinding>`                                                                      ``network_performance_bindings`` 
@@ -183,6 +190,8 @@ Parents
 - :ref:`nufirewallacl.NUFirewallAcl<nufirewallacl>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 

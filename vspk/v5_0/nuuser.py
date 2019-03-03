@@ -55,7 +55,7 @@ class NUUser(NURESTObject):
     """ Represents a User in the VSD
 
         Notes:
-            Object that identifies the user functions.
+            Users represent people of your organization. A user can be placed into a group and this group can have some permissions to add VMs into a domain for instance.
     """
 
     __rest_name__ = "user"

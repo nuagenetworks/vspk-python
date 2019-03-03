@@ -34,6 +34,9 @@ from .fetchers import NUMetadatasFetcher
 from .fetchers import NUNetconfSessionsFetcher
 
 
+from .fetchers import NUAlarmsFetcher
+
+
 from .fetchers import NUGlobalMetadatasFetcher
 
 from bambou import NURESTObject
@@ -107,6 +110,9 @@ class NUNetconfManager(NURESTObject):
         
         
         self.netconf_sessions = NUNetconfSessionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")

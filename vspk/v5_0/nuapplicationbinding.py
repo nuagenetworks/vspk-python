@@ -40,7 +40,7 @@ class NUApplicationBinding(NURESTObject):
     """ Represents a ApplicationBinding in the VSD
 
         Notes:
-            None
+            Association of Applications in a priority order to an Application Performance Management Group. Priorities may be explicitly defined or auto-generated. Applications with higher priorities (lower numeric values) are evaluated first when classifying traffic.
     """
 
     __rest_name__ = "applicationbinding"

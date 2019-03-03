@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``name``: A unique name set by an operator identifying the NSG Upgrade Profile.
+- ``name`` (**Mandatory**): A unique name set by an operator identifying the NSG Upgrade Profile.
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
@@ -23,6 +23,8 @@ Attributes
 - ``enterprise_id``: Enterprise/Organisation associated with this Upgrade Profile instance.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``download_rate_limit``: Download rate limit used for download of Gateway image in kilobyte per second (KB/s).
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

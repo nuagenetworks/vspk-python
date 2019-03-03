@@ -82,6 +82,9 @@ from .fetchers import NUJobsFetcher
 from .fetchers import NULocationsFetcher
 
 
+from .fetchers import NUDomainsFetcher
+
+
 from .fetchers import NUBootstrapsFetcher
 
 
@@ -95,6 +98,9 @@ from .fetchers import NUIPFilterProfilesFetcher
 
 
 from .fetchers import NUIPv6FilterProfilesFetcher
+
+
+from .fetchers import NUSubnetsFetcher
 
 
 from .fetchers import NUEventLogsFetcher
@@ -129,6 +135,8 @@ class NUGateway(NURESTObject):
     
     CONST_FAMILY_NSG_V = "NSG_V"
     
+    CONST_VENDOR_CISCO = "CISCO"
+    
     CONST_BOOTSTRAP_STATUS_ACTIVE = "ACTIVE"
     
     CONST_FAMILY_NSG_X = "NSG_X"
@@ -152,8 +160,6 @@ class NUGateway(NURESTObject):
     CONST_PERSONALITY_VDFG = "VDFG"
     
     CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_ACK = "NOTIFICATION_APP_REQ_ACK"
-    
-    CONST_PERSONALITY_NSG = "NSG"
     
     CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
     
@@ -197,6 +203,8 @@ class NUGateway(NURESTObject):
     
     CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
     
+    CONST_PERSONALITY_NETCONF_THIRDPARTY_HW_VTEP = "NETCONF_THIRDPARTY_HW_VTEP"
+    
     CONST_FAMILY_NSG_AMI = "NSG_AMI"
     
     CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
@@ -236,11 +244,13 @@ class NUGateway(NURESTObject):
         self._datapath_id = None
         self._patches = None
         self._gateway_connected = None
+        self._gateway_model = None
         self._gateway_version = None
         self._redundancy_group_id = None
         self._peer = None
         self._template_id = None
         self._pending = None
+        self._vendor = None
         self._serial_number = None
         self._permitted_action = None
         self._personality = None
@@ -276,14 +286,16 @@ class NUGateway(NURESTObject):
         self.expose_attribute(local_name="datapath_id", remote_name="datapathID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="patches", remote_name="patches", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_connected", remote_name="gatewayConnected", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_model", remote_name="gatewayModel", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_version", remote_name="gatewayVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redundancy_group_id", remote_name="redundancyGroupID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peer", remote_name="peer", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="pending", remote_name="pending", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vendor", remote_name="vendor", attribute_type=str, is_required=False, is_unique=False, choices=[u'CISCO'])
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NSG', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NETCONF_THIRDPARTY_HW_VTEP', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
@@ -360,6 +372,9 @@ class NUGateway(NURESTObject):
         self.locations = NULocationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.domains = NUDomainsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.bootstraps = NUBootstrapsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -373,6 +388,9 @@ class NUGateway(NURESTObject):
         
         
         self.ipv6_filter_profiles = NUIPv6FilterProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.subnets = NUSubnetsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -749,6 +767,33 @@ class NUGateway(NURESTObject):
 
     
     @property
+    def gateway_model(self):
+        """ Get gateway_model value.
+
+            Notes:
+                The model string of the gateway. Applicable to netconf managed gateways
+
+                
+                This attribute is named `gatewayModel` in VSD API.
+                
+        """
+        return self._gateway_model
+
+    @gateway_model.setter
+    def gateway_model(self, value):
+        """ Set gateway_model value.
+
+            Notes:
+                The model string of the gateway. Applicable to netconf managed gateways
+
+                
+                This attribute is named `gatewayModel` in VSD API.
+                
+        """
+        self._gateway_model = value
+
+    
+    @property
     def gateway_version(self):
         """ Get gateway_version value.
 
@@ -873,6 +918,29 @@ class NUGateway(NURESTObject):
                 
         """
         self._pending = value
+
+    
+    @property
+    def vendor(self):
+        """ Get vendor value.
+
+            Notes:
+                The vendor of the gateway. Applicable to netconf managed gateways
+
+                
+        """
+        return self._vendor
+
+    @vendor.setter
+    def vendor(self, value):
+        """ Set vendor value.
+
+            Notes:
+                The vendor of the gateway. Applicable to netconf managed gateways
+
+                
+        """
+        self._vendor = value
 
     
     @property

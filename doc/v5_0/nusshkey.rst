@@ -5,7 +5,7 @@ nusshkey
 
 .. class:: nusshkey.NUSSHKey(bambou.nurest_object.NUMetaRESTObject,):
 
-None
+SSH (Secure Shell) is used to provide secure remote console access to NSGs deployed in branch locations. When key-based authentication is in use, the SSH keys represent the list of public keys that are authorized to open an SSH connection with the username set at the Access Profile level.
 
 
 Attributes
@@ -22,7 +22,7 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``public_key``: Public Key of a SSH Key Pair.
+- ``public_key`` (**Mandatory**): Public Key of a SSH Key Pair.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

@@ -58,8 +58,6 @@ class NUGatewayTemplate(NURESTObject):
     
     CONST_PERSONALITY_VSA = "VSA"
     
-    CONST_PERSONALITY_VRSB = "VRSB"
-    
     CONST_PERSONALITY_VSG = "VSG"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
@@ -68,7 +66,9 @@ class NUGatewayTemplate(NURESTObject):
     
     CONST_PERSONALITY_EVDF = "EVDF"
     
-    CONST_PERSONALITY_NSG = "NSG"
+    CONST_PERSONALITY_VDFG = "VDFG"
+    
+    CONST_PERSONALITY_VRSB = "VRSB"
     
     CONST_PERSONALITY_NETCONF_7X50 = "NETCONF_7X50"
     
@@ -82,7 +82,7 @@ class NUGatewayTemplate(NURESTObject):
     
     CONST_PERSONALITY_VRSG = "VRSG"
     
-    CONST_PERSONALITY_VDFG = "VDFG"
+    CONST_PERSONALITY_NETCONF_THIRDPARTY_HW_VTEP = "NETCONF_THIRDPARTY_HW_VTEP"
     
     
 
@@ -114,7 +114,7 @@ class NUGatewayTemplate(NURESTObject):
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=True, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NSG', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=True, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NETCONF_THIRDPARTY_HW_VTEP', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="infrastructure_profile_id", remote_name="infrastructureProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)

@@ -73,7 +73,7 @@ class NUVLAN(NURESTObject):
     """ Represents a VLAN in the VSD
 
         Notes:
-            Represents VLAN object under a given Port object.
+            VLANs are Virtual Local Area Networks. They allow to differentiate several traffic flows inside a single Port. A VLAN with a value set to 0 can be used to tell the system to not use any tagging.
     """
 
     __rest_name__ = "vlan"

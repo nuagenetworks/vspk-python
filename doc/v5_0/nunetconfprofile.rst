@@ -12,9 +12,9 @@ Attributes
 ----------
 
 
-- ``name``: Name of the Netconf Profile entity.
+- ``name`` (**Mandatory**): Name of the Netconf Profile entity.
 
-- ``password``: The password used to establish Netconf sessions with the gateway instances using this Netconf Profile.
+- ``password`` (**Mandatory**): The password used to establish Netconf sessions with the gateway instances using this Netconf Profile.
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
@@ -24,7 +24,7 @@ Attributes
 
 - ``port``: Netconf session port
 
-- ``user_name``: The user name used to establish Netconf sessions with the gateway instances using this Netconf Profile.
+- ``user_name`` (**Mandatory**): The user name used to establish Netconf sessions with the gateway instances using this Netconf Profile.
 
 - ``assoc_entity_type``: Type of the entity to which the Profile belongs to.
 

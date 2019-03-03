@@ -26,7 +26,7 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``ports`` (**Mandatory**): Value should be either single port number or a port range like 1,2.. or 1 - 10
+- ``ports``: Value should be either single port number or a port range like 1,2.. or 1 - 10
 
 - ``protocol`` (**Mandatory**): Protocol number that must be matched
 

@@ -108,6 +108,7 @@ class NUEnterpriseProfile(NURESTObject):
         self._vnf_management_enabled = None
         self._name = None
         self._last_updated_by = None
+        self._web_filter_enabled = None
         self._receive_multi_cast_list_id = None
         self._send_multi_cast_list_id = None
         self._description = None
@@ -126,6 +127,7 @@ class NUEnterpriseProfile(NURESTObject):
         self.expose_attribute(local_name="vnf_management_enabled", remote_name="VNFManagementEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="web_filter_enabled", remote_name="webFilterEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="receive_multi_cast_list_id", remote_name="receiveMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="send_multi_cast_list_id", remote_name="sendMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
@@ -291,6 +293,33 @@ class NUEnterpriseProfile(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def web_filter_enabled(self):
+        """ Get web_filter_enabled value.
+
+            Notes:
+                Enable Web Filtering for this enterprise profile
+
+                
+                This attribute is named `webFilterEnabled` in VSD API.
+                
+        """
+        return self._web_filter_enabled
+
+    @web_filter_enabled.setter
+    def web_filter_enabled(self, value):
+        """ Set web_filter_enabled value.
+
+            Notes:
+                Enable Web Filtering for this enterprise profile
+
+                
+                This attribute is named `webFilterEnabled` in VSD API.
+                
+        """
+        self._web_filter_enabled = value
 
     
     @property

@@ -139,6 +139,8 @@ class NUVPort(NURESTObject):
     
     CONST_SYSTEM_TYPE_HARDWARE_VTEP = "HARDWARE_VTEP"
     
+    CONST_ASSOCIATED_GATEWAY_PERSONALITY_VDFG = "VDFG"
+    
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_EVDFB = "EVDFB"
     
     CONST_DPI_ENABLED = "ENABLED"
@@ -217,11 +219,13 @@ class NUVPort(NURESTObject):
     
     CONST_SUB_TYPE_NONE = "NONE"
     
+    CONST_SYSTEM_TYPE_SOFTWARE = "SOFTWARE"
+    
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_EVDF = "EVDF"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_SYSTEM_TYPE_SOFTWARE = "SOFTWARE"
+    CONST_ASSOCIATED_GATEWAY_PERSONALITY_NETCONF_THIRDPARTY_HW_VTEP = "NETCONF_THIRDPARTY_HW_VTEP"
     
     CONST_TRUNK_ROLE_PARENT_PORT = "PARENT_PORT"
     
@@ -262,6 +266,7 @@ class NUVPort(NURESTObject):
         self._vlan = None
         self._vlanid = None
         self._dpi = None
+        self._backhaul_subnet_vnid = None
         self._name = None
         self._has_attached_interfaces = None
         self._last_updated_by = None
@@ -277,6 +282,9 @@ class NUVPort(NURESTObject):
         self._description = None
         self._entity_scope = None
         self._domain_id = None
+        self._domain_name = None
+        self._domain_service_label = None
+        self._domain_vlanid = None
         self._zone_id = None
         self._operational_state = None
         self._trunk_role = None
@@ -292,6 +300,7 @@ class NUVPort(NURESTObject):
         self._associated_send_multicast_channel_map_id = None
         self._associated_trunk_id = None
         self._sub_type = None
+        self._subnet_vnid = None
         self._multi_nic_vport_id = None
         self._multicast = None
         self._gw_eligible = None
@@ -303,6 +312,7 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="vlan", remote_name="VLAN", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vlanid", remote_name="VLANID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="backhaul_subnet_vnid", remote_name="backhaulSubnetVNID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="has_attached_interfaces", remote_name="hasAttachedInterfaces", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -318,6 +328,9 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="domain_id", remote_name="domainID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="domain_service_label", remote_name="domainServiceLabel", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="domain_vlanid", remote_name="domainVLANID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zone_id", remote_name="zoneID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="operational_state", remote_name="operationalState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DOWN', u'INIT', u'UP'])
         self.expose_attribute(local_name="trunk_role", remote_name="trunkRole", attribute_type=str, is_required=False, is_unique=False, choices=[u'PARENT_PORT', u'SUB_PORT'])
@@ -325,7 +338,7 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="associated_egress_profile_id", remote_name="associatedEgressProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_floating_ip_id", remote_name="associatedFloatingIPID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_id", remote_name="associatedGatewayID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_gateway_personality", remote_name="associatedGatewayPersonality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NSG', u'NSGBR', u'NSGDUC', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VDF', u'VRSB', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="associated_gateway_personality", remote_name="associatedGatewayPersonality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NETCONF_THIRDPARTY_HW_VTEP', u'NSG', u'NSGBR', u'NSGDUC', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VDF', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="associated_gateway_type", remote_name="associatedGatewayType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ingress_profile_id", remote_name="associatedIngressProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
@@ -333,6 +346,7 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="associated_send_multicast_channel_map_id", remote_name="associatedSendMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_trunk_id", remote_name="associatedTrunkID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sub_type", remote_name="subType", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'VNF'])
+        self.expose_attribute(local_name="subnet_vnid", remote_name="subnetVNID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multi_nic_vport_id", remote_name="multiNICVPortID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="gw_eligible", remote_name="gwEligible", attribute_type=bool, is_required=False, is_unique=False)
@@ -544,6 +558,33 @@ class NUVPort(NURESTObject):
                 
         """
         self._dpi = value
+
+    
+    @property
+    def backhaul_subnet_vnid(self):
+        """ Get backhaul_subnet_vnid value.
+
+            Notes:
+                Backhaul subnet VNID of the L3Domain associated with the VPort. This is exposed for Netconf manager
+
+                
+                This attribute is named `backhaulSubnetVNID` in VSD API.
+                
+        """
+        return self._backhaul_subnet_vnid
+
+    @backhaul_subnet_vnid.setter
+    def backhaul_subnet_vnid(self, value):
+        """ Set backhaul_subnet_vnid value.
+
+            Notes:
+                Backhaul subnet VNID of the L3Domain associated with the VPort. This is exposed for Netconf manager
+
+                
+                This attribute is named `backhaulSubnetVNID` in VSD API.
+                
+        """
+        self._backhaul_subnet_vnid = value
 
     
     @property
@@ -937,6 +978,87 @@ class NUVPort(NURESTObject):
                 
         """
         self._domain_id = value
+
+    
+    @property
+    def domain_name(self):
+        """ Get domain_name value.
+
+            Notes:
+                Name of the Domain associated with the VPort. This is exposed for Netconf manager 
+
+                
+                This attribute is named `domainName` in VSD API.
+                
+        """
+        return self._domain_name
+
+    @domain_name.setter
+    def domain_name(self, value):
+        """ Set domain_name value.
+
+            Notes:
+                Name of the Domain associated with the VPort. This is exposed for Netconf manager 
+
+                
+                This attribute is named `domainName` in VSD API.
+                
+        """
+        self._domain_name = value
+
+    
+    @property
+    def domain_service_label(self):
+        """ Get domain_service_label value.
+
+            Notes:
+                Service ID of Domain.
+
+                
+                This attribute is named `domainServiceLabel` in VSD API.
+                
+        """
+        return self._domain_service_label
+
+    @domain_service_label.setter
+    def domain_service_label(self, value):
+        """ Set domain_service_label value.
+
+            Notes:
+                Service ID of Domain.
+
+                
+                This attribute is named `domainServiceLabel` in VSD API.
+                
+        """
+        self._domain_service_label = value
+
+    
+    @property
+    def domain_vlanid(self):
+        """ Get domain_vlanid value.
+
+            Notes:
+                Backhaul vlan id the L3Domain associated with the VPort. This is exposed for Netconf manager
+
+                
+                This attribute is named `domainVLANID` in VSD API.
+                
+        """
+        return self._domain_vlanid
+
+    @domain_vlanid.setter
+    def domain_vlanid(self, value):
+        """ Set domain_vlanid value.
+
+            Notes:
+                Backhaul vlan id the L3Domain associated with the VPort. This is exposed for Netconf manager
+
+                
+                This attribute is named `domainVLANID` in VSD API.
+                
+        """
+        self._domain_vlanid = value
 
     
     @property
@@ -1342,6 +1464,33 @@ class NUVPort(NURESTObject):
                 
         """
         self._sub_type = value
+
+    
+    @property
+    def subnet_vnid(self):
+        """ Get subnet_vnid value.
+
+            Notes:
+                VNID of the associated subnet or L2domain with the VPort. This is exposed for Netconf manager
+
+                
+                This attribute is named `subnetVNID` in VSD API.
+                
+        """
+        return self._subnet_vnid
+
+    @subnet_vnid.setter
+    def subnet_vnid(self, value):
+        """ Set subnet_vnid value.
+
+            Notes:
+                VNID of the associated subnet or L2domain with the VPort. This is exposed for Netconf manager
+
+                
+                This attribute is named `subnetVNID` in VSD API.
+                
+        """
+        self._subnet_vnid = value
 
     
     @property

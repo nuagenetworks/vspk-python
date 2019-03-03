@@ -40,7 +40,7 @@ class NUPerformanceMonitor(NURESTObject):
     """ Represents a PerformanceMonitor in the VSD
 
         Notes:
-            None
+            To enable the network performance monitoring between NSGs in an NSG Group and NSG-UBRs in an NSG-UBR Group. 
     """
 
     __rest_name__ = "performancemonitor"

@@ -101,6 +101,8 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self._datapath_sync_timeout = None
         self._dead_timer = None
         self._dead_timer_enabled = None
+        self._web_filter_download_port = None
+        self._web_filter_query_port = None
         self._remote_log_mode = None
         self._remote_log_server_address = None
         self._remote_log_server_port = None
@@ -129,6 +131,8 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self.expose_attribute(local_name="datapath_sync_timeout", remote_name="datapathSyncTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dead_timer", remote_name="deadTimer", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dead_timer_enabled", remote_name="deadTimerEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="web_filter_download_port", remote_name="webFilterDownloadPort", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="web_filter_query_port", remote_name="webFilterQueryPort", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="remote_log_mode", remote_name="remoteLogMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'RSYSLOG'])
         self.expose_attribute(local_name="remote_log_server_address", remote_name="remoteLogServerAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="remote_log_server_port", remote_name="remoteLogServerPort", attribute_type=int, is_required=False, is_unique=False)
@@ -347,6 +351,60 @@ class NUInfrastructureGatewayProfile(NURESTObject):
                 
         """
         self._dead_timer_enabled = value
+
+    
+    @property
+    def web_filter_download_port(self):
+        """ Get web_filter_download_port value.
+
+            Notes:
+                The port to be opened by the proxy for webfilter update database
+
+                
+                This attribute is named `webFilterDownloadPort` in VSD API.
+                
+        """
+        return self._web_filter_download_port
+
+    @web_filter_download_port.setter
+    def web_filter_download_port(self, value):
+        """ Set web_filter_download_port value.
+
+            Notes:
+                The port to be opened by the proxy for webfilter update database
+
+                
+                This attribute is named `webFilterDownloadPort` in VSD API.
+                
+        """
+        self._web_filter_download_port = value
+
+    
+    @property
+    def web_filter_query_port(self):
+        """ Get web_filter_query_port value.
+
+            Notes:
+                The port to be opened by the proxy for webfilter category query request
+
+                
+                This attribute is named `webFilterQueryPort` in VSD API.
+                
+        """
+        return self._web_filter_query_port
+
+    @web_filter_query_port.setter
+    def web_filter_query_port(self, value):
+        """ Set web_filter_query_port value.
+
+            Notes:
+                The port to be opened by the proxy for webfilter category query request
+
+                
+                This attribute is named `webFilterQueryPort` in VSD API.
+                
+        """
+        self._web_filter_query_port = value
 
     
     @property

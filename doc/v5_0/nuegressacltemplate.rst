@@ -5,7 +5,7 @@ nuegressacltemplate
 
 .. class:: nuegressacltemplate.NUEgressACLTemplate(bambou.nurest_object.NUMetaRESTObject,):
 
-Defines the template for an Egress ACL.
+An egress security policy is a set of rules defining how network traffic is treated within a domain. Egress Security Policies control traffic flowing out of the network.
 
 
 Attributes

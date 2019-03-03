@@ -82,6 +82,7 @@ class NUUserContext(NURESTObject):
         self._entity_scope = None
         self._google_maps_api_key = None
         self._statistics_enabled = None
+        self._stats_database_proxy = None
         self._stats_tsdb_server_address = None
         self._external_id = None
         
@@ -95,6 +96,7 @@ class NUUserContext(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="google_maps_api_key", remote_name="googleMapsAPIKey", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="statistics_enabled", remote_name="statisticsEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="stats_database_proxy", remote_name="statsDatabaseProxy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_tsdb_server_address", remote_name="statsTSDBServerAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
@@ -383,11 +385,38 @@ class NUUserContext(NURESTObject):
 
     
     @property
+    def stats_database_proxy(self):
+        """ Get stats_database_proxy value.
+
+            Notes:
+                The location of a public proxy to statistics database server in <FQDN>:<PORT> format.
+
+                
+                This attribute is named `statsDatabaseProxy` in VSD API.
+                
+        """
+        return self._stats_database_proxy
+
+    @stats_database_proxy.setter
+    def stats_database_proxy(self, value):
+        """ Set stats_database_proxy value.
+
+            Notes:
+                The location of a public proxy to statistics database server in <FQDN>:<PORT> format.
+
+                
+                This attribute is named `statsDatabaseProxy` in VSD API.
+                
+        """
+        self._stats_database_proxy = value
+
+    
+    @property
     def stats_tsdb_server_address(self):
         """ Get stats_tsdb_server_address value.
 
             Notes:
-                ip address(es) of the elastic machine
+                IP address(es) of the elastic machine
 
                 
                 This attribute is named `statsTSDBServerAddress` in VSD API.
@@ -400,7 +429,7 @@ class NUUserContext(NURESTObject):
         """ Set stats_tsdb_server_address value.
 
             Notes:
-                ip address(es) of the elastic machine
+                IP address(es) of the elastic machine
 
                 
                 This attribute is named `statsTSDBServerAddress` in VSD API.

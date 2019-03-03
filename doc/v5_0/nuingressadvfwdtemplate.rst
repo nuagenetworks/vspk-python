@@ -5,7 +5,7 @@ nuingressadvfwdtemplate
 
 .. class:: nuingressadvfwdtemplate.NUIngressAdvFwdTemplate(bambou.nurest_object.NUMetaRESTObject,):
 
-Defines the template for an Ingress Advanced Forwarding.
+Create a table for ingress forwarding policy rules. These include flow redirect rules and forwarding class override rules.
 
 
 Attributes

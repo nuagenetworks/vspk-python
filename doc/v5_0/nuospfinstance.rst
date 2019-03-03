@@ -5,7 +5,7 @@ nuospfinstance
 
 .. class:: nuospfinstance.NUOSPFInstance(bambou.nurest_object.NUMetaRESTObject,):
 
-Represent an OSPF instance. There can be only one OSPF instance per domain.
+The OSPF instance is the highest hierarchical OSPF configuration object in a domain. The OSPF instance allows you to assign global import and export routing policies for OSPF traffic in the domain. 
 
 
 Attributes

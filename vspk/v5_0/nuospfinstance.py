@@ -43,7 +43,7 @@ class NUOSPFInstance(NURESTObject):
     """ Represents a OSPFInstance in the VSD
 
         Notes:
-            Represent an OSPF instance. There can be only one OSPF instance per domain.
+            The OSPF instance is the highest hierarchical OSPF configuration object in a domain. The OSPF instance allows you to assign global import and export routing policies for OSPF traffic in the domain. 
     """
 
     __rest_name__ = "ospfinstance"

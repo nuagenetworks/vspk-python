@@ -5,7 +5,7 @@ nudemarcationservice
 
 .. class:: nudemarcationservice.NUDemarcationService(bambou.nurest_object.NUMetaRESTObject,):
 
-test
+Demarcation services provide the interconnection between the datacenter networks and the Wide Area Network.
 
 
 Attributes

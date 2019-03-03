@@ -49,6 +49,10 @@ class NUDUCGroupBinding(NURESTObject):
     
     ## Constants
     
+    CONST_ASSOCIATED_UBR_GROUP_FUNCTION_GATEWAY = "GATEWAY"
+    
+    CONST_ASSOCIATED_UBR_GROUP_FUNCTION_UBR = "UBR"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
@@ -77,6 +81,8 @@ class NUDUCGroupBinding(NURESTObject):
         self._entity_scope = None
         self._priority = None
         self._associated_duc_group_id = None
+        self._associated_ubr_group_function = None
+        self._associated_ubr_group_name = None
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -84,6 +90,8 @@ class NUDUCGroupBinding(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_duc_group_id", remote_name="associatedDUCGroupID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_ubr_group_function", remote_name="associatedUBRGroupFunction", attribute_type=str, is_required=False, is_unique=False, choices=[u'GATEWAY', u'UBR'])
+        self.expose_attribute(local_name="associated_ubr_group_name", remote_name="associatedUBRGroupName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -229,6 +237,60 @@ class NUDUCGroupBinding(NURESTObject):
                 
         """
         self._associated_duc_group_id = value
+
+    
+    @property
+    def associated_ubr_group_function(self):
+        """ Get associated_ubr_group_function value.
+
+            Notes:
+                NSG Function supported by the associated UBR group.
+
+                
+                This attribute is named `associatedUBRGroupFunction` in VSD API.
+                
+        """
+        return self._associated_ubr_group_function
+
+    @associated_ubr_group_function.setter
+    def associated_ubr_group_function(self, value):
+        """ Set associated_ubr_group_function value.
+
+            Notes:
+                NSG Function supported by the associated UBR group.
+
+                
+                This attribute is named `associatedUBRGroupFunction` in VSD API.
+                
+        """
+        self._associated_ubr_group_function = value
+
+    
+    @property
+    def associated_ubr_group_name(self):
+        """ Get associated_ubr_group_name value.
+
+            Notes:
+                Name of the associated UBR Group.
+
+                
+                This attribute is named `associatedUBRGroupName` in VSD API.
+                
+        """
+        return self._associated_ubr_group_name
+
+    @associated_ubr_group_name.setter
+    def associated_ubr_group_name(self, value):
+        """ Set associated_ubr_group_name value.
+
+            Notes:
+                Name of the associated UBR Group.
+
+                
+                This attribute is named `associatedUBRGroupName` in VSD API.
+                
+        """
+        self._associated_ubr_group_name = value
 
     
     @property

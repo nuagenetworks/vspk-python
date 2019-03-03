@@ -111,6 +111,7 @@ class NUVsgRedundantPort(NURESTObject):
         self._vlan_range = None
         self._name = None
         self._last_updated_by = None
+        self._peer_link = None
         self._permitted_action = None
         self._description = None
         self._physical_name = None
@@ -127,6 +128,7 @@ class NUVsgRedundantPort(NURESTObject):
         self.expose_attribute(local_name="vlan_range", remote_name="VLANRange", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="peer_link", remote_name="peerLink", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=False)
@@ -241,6 +243,33 @@ class NUVsgRedundantPort(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def peer_link(self):
+        """ Get peer_link value.
+
+            Notes:
+                Indicates whether port is configured as peer link. Peer link used to synchronize states between the VPC peer devices.
+
+                
+                This attribute is named `peerLink` in VSD API.
+                
+        """
+        return self._peer_link
+
+    @peer_link.setter
+    def peer_link(self, value):
+        """ Set peer_link value.
+
+            Notes:
+                Indicates whether port is configured as peer link. Peer link used to synchronize states between the VPC peer devices.
+
+                
+                This attribute is named `peerLink` in VSD API.
+                
+        """
+        self._peer_link = value
 
     
     @property

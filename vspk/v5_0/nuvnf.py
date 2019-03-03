@@ -61,13 +61,15 @@ class NUVNF(NURESTObject):
     
     ## Constants
     
+    CONST_LAST_USER_ACTION_NONE = "NONE"
+    
     CONST_STATUS_SHUTDOWN = "SHUTDOWN"
     
     CONST_LAST_USER_ACTION_START = "START"
     
     CONST_LAST_USER_ACTION_REDEPLOY = "REDEPLOY"
     
-    CONST_LAST_USER_ACTION_STOP = "STOP"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_LAST_USER_ACTION_RESTART = "RESTART"
     
@@ -86,8 +88,6 @@ class NUVNF(NURESTObject):
     CONST_ALLOWED_ACTIONS_DEPLOY = "DEPLOY"
     
     CONST_TASK_STATE_DEPLOYING = "DEPLOYING"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_TYPE_WAN_OPT = "WAN_OPT"
     
@@ -122,6 +122,8 @@ class NUVNF(NURESTObject):
     CONST_LAST_USER_ACTION_DEPLOY = "DEPLOY"
     
     CONST_STATUS_PMSUSPENDED = "PMSUSPENDED"
+    
+    CONST_LAST_USER_ACTION_STOP = "STOP"
     
     CONST_TASK_STATE_UNDEPLOYING = "UNDEPLOYING"
     
@@ -179,7 +181,7 @@ class NUVNF(NURESTObject):
         self.expose_attribute(local_name="task_state", remote_name="taskState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEPLOYING', u'NONE', u'STARTING', u'STOPPING', u'UNDEPLOYING'])
         self.expose_attribute(local_name="last_known_error", remote_name="lastKnownError", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="last_user_action", remote_name="lastUserAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEPLOY', u'REDEPLOY', u'RESTART', u'START', u'STOP', u'UNDEPLOY'])
+        self.expose_attribute(local_name="last_user_action", remote_name="lastUserAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEPLOY', u'NONE', u'REDEPLOY', u'RESTART', u'START', u'STOP', u'UNDEPLOY'])
         self.expose_attribute(local_name="memory_mb", remote_name="memoryMB", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vendor", remote_name="vendor", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)

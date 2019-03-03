@@ -40,7 +40,7 @@ class NUNetworkPerformanceBinding(NURESTObject):
     """ Represents a NetworkPerformanceBinding in the VSD
 
         Notes:
-            None
+            Association of Network Performance Measurement policies enable the measurement of path SLA metrics between NSGs in the domain.
     """
 
     __rest_name__ = "networkperformancebinding"

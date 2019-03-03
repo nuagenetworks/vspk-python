@@ -43,7 +43,7 @@ class NUVirtualIP(NURESTObject):
     """ Represents a VirtualIP in the VSD
 
         Notes:
-            Virtual IP address.
+            Virtual IPs are IP addresses owned by one or more vports that can move among those vports. VSP will track the owner of a virtual IP and steer traffic accordingly. Virtual IPs can be used as next-hops for static routes and other re-direction purposes.
     """
 
     __rest_name__ = "virtualip"

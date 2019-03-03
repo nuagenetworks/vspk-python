@@ -43,7 +43,7 @@ class NUBRConnection(NURESTObject):
     """ Represents a BRConnection in the VSD
 
         Notes:
-            None
+            Configuration of VNS Gateway Border Router connection
     """
 
     __rest_name__ = "brconnection"

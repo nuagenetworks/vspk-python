@@ -34,7 +34,7 @@ class NUProxyARPFilter(NURESTObject):
     """ Represents a ProxyARPFilter in the VSD
 
         Notes:
-            Black list of ranges for which NSG will act as ARP Proxy
+            Proxy ARP filters represent black-list of address ranges for NSG acting as ARP proxy
     """
 
     __rest_name__ = "proxyarpfilter"

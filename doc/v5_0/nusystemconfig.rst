@@ -80,11 +80,15 @@ Attributes
 
 - ``vport_init_stateful_timer``: Defines the timeout in seconds for vport initialization to stateful. Default value is 300 secs and the timeout should be between 0 to 86400 seconds.
 
-- ``lru_cache_size_per_subnet``: LRU Map size per subnet (to hold the deleted vm's ip addresses).
+- ``lru_cache_size_per_subnet``: LRU Map size per subnet (to hold the deleted vm's IP addresses).
 
 - ``vsc_on_same_version_as_vsd``: This flag is used to indicate that whether VSC is on the same version as VSD or not.
 
-- ``vsd_read_only_mode``: True means VSD readonly mode enabled. False means VSD readonly mode disabled
+- ``vsdaar_application_version``: Version of the current imported Application Signatures.
+
+- ``vsdaar_application_version_publish_date``: Determines the time that Application Signatures were published and added in the VSD.
+
+- ``vsd_read_only_mode``: True means VSD readonly mode enabled. False means VSD readonly mode disabled.
 
 - ``vsd_upgrade_is_complete``: This flag is used to indicate that whether VSD upgrade is complete,it is expected that csproot will set to true,after VSD upgrade is complete and also making sure that all VSC's audits and Gateway audits with VSD are done
 
@@ -115,6 +119,12 @@ Attributes
 - ``page_size``: Defines the page size for the results returned by the REST call.
 
 - ``last_updated_by``: ID of the user who last updated the object.
+
+- ``gateway_probe_interval``: Gateway probe interval in seconds.
+
+- ``gateway_probe_window``: Gateway probe window in seconds.
+
+- ``gateway_rebalancing_interval``: Gateway rebalancing interval in seconds.
 
 - ``max_failed_logins``: Maximum failed login attempts before the account is locked (min = 5, max = 10). 0 = not enforced (unlimited attempts). This is not enforced if LDAP is used for authorization
 
@@ -230,11 +240,13 @@ Attributes
 
 - ``statistics_enabled``: This flag is used to indicate if statistics is enabled in the system. CSProot is expected to activate this through the enable statistics script.
 
-- ``stats_collector_address``: Specify the ip address(es) of the stats collector.
+- ``stats_collector_address``: Specify the IP address(es) of the stats collector.
 
 - ``stats_collector_port``: Specify the port number(s) of the stats collector.
 
 - ``stats_collector_proto_buf_port``: Specify the protobuf port number(s) of the stats collector.
+
+- ``stats_database_proxy``: The location of a public proxy to statistics database server in <FQDN>:<PORT> format.
 
 - ``stats_max_data_points``: Specifies the maximum number of data points to support.
 
@@ -242,7 +254,7 @@ Attributes
 
 - ``stats_number_of_data_points``: Specifies number of data points.
 
-- ``stats_tsdb_server_address``: Specifies the TSDB server location.
+- ``stats_tsdb_server_address``: Specifies the Elastic Search server location.
 
 - ``sticky_ecmp_idle_timeout``: sticky ECMP Idle Timeout in seconds
 

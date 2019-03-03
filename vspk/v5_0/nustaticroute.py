@@ -28,6 +28,9 @@
 
 
 
+from .fetchers import NUDeploymentFailuresFetcher
+
+
 from .fetchers import NUMetadatasFetcher
 
 
@@ -57,6 +60,8 @@ class NUStaticRoute(NURESTObject):
     CONST_TYPE_OVERLAY_ADDRESS_TRANSLATION = "OVERLAY_ADDRESS_TRANSLATION"
     
     CONST_TYPE_OVERLAY = "OVERLAY"
+    
+    CONST_TYPE_NETCONF = "NETCONF"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
@@ -92,8 +97,10 @@ class NUStaticRoute(NURESTObject):
         self._address = None
         self._netmask = None
         self._next_hop_ip = None
+        self._black_hole_enabled = None
         self._entity_scope = None
         self._route_distinguisher = None
+        self._associated_gateway_ids = None
         self._associated_subnet_id = None
         self._external_id = None
         self._type = None
@@ -105,14 +112,19 @@ class NUStaticRoute(NURESTObject):
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="next_hop_ip", remote_name="nextHopIp", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="black_hole_enabled", remote_name="blackHoleEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_gateway_ids", remote_name="associatedGatewayIDs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_subnet_id", remote_name="associatedSubnetID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'EXIT_DOMAIN', u'OVERLAY', u'OVERLAY_ADDRESS_TRANSLATION'])
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'EXIT_DOMAIN', u'NETCONF', u'OVERLAY', u'OVERLAY_ADDRESS_TRANSLATION'])
         
 
         # Fetchers
+        
+        
+        self.deployment_failures = NUDeploymentFailuresFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -310,6 +322,33 @@ class NUStaticRoute(NURESTObject):
 
     
     @property
+    def black_hole_enabled(self):
+        """ Get black_hole_enabled value.
+
+            Notes:
+                Indicates if this is a black hole static route. Applicable only when the static route type is 'NETCONF'.
+
+                
+                This attribute is named `blackHoleEnabled` in VSD API.
+                
+        """
+        return self._black_hole_enabled
+
+    @black_hole_enabled.setter
+    def black_hole_enabled(self, value):
+        """ Set black_hole_enabled value.
+
+            Notes:
+                Indicates if this is a black hole static route. Applicable only when the static route type is 'NETCONF'.
+
+                
+                This attribute is named `blackHoleEnabled` in VSD API.
+                
+        """
+        self._black_hole_enabled = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -361,6 +400,33 @@ class NUStaticRoute(NURESTObject):
                 
         """
         self._route_distinguisher = value
+
+    
+    @property
+    def associated_gateway_ids(self):
+        """ Get associated_gateway_ids value.
+
+            Notes:
+                List of associated gateway IDs for static route, returned as a JSON list of strings
+
+                
+                This attribute is named `associatedGatewayIDs` in VSD API.
+                
+        """
+        return self._associated_gateway_ids
+
+    @associated_gateway_ids.setter
+    def associated_gateway_ids(self, value):
+        """ Set associated_gateway_ids value.
+
+            Notes:
+                List of associated gateway IDs for static route, returned as a JSON list of strings
+
+                
+                This attribute is named `associatedGatewayIDs` in VSD API.
+                
+        """
+        self._associated_gateway_ids = value
 
     
     @property

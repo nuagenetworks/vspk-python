@@ -43,7 +43,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
     """ Represents a IngressACLEntryTemplate in the VSD
 
         Notes:
-            Defines the template of Ingress ACL entries
+            Security Policy Entries defines what action to take for a particular type of traffic, based on its origin and its destination, its protocol, EtherType, eventual ports, DSCP value and other information.
     """
 
     __rest_name__ = "ingressaclentrytemplate"
@@ -96,9 +96,13 @@ class NUIngressACLEntryTemplate(NURESTObject):
     
     CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE = "L4_SERVICE"
     
+    CONST_WEB_FILTER_TYPE_WEB_DOMAIN_NAME = "WEB_DOMAIN_NAME"
+    
     CONST_POLICY_STATE_LIVE = "LIVE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_WEB_FILTER_TYPE_WEB_CATEGORY = "WEB_CATEGORY"
     
     CONST_NETWORK_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
@@ -131,6 +135,8 @@ class NUIngressACLEntryTemplate(NURESTObject):
         self._last_updated_by = None
         self._action = None
         self._address_override = None
+        self._web_filter_id = None
+        self._web_filter_type = None
         self._description = None
         self._destination_port = None
         self._network_id = None
@@ -167,6 +173,8 @@ class NUIngressACLEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'DROP', u'FORWARD'])
         self.expose_attribute(local_name="address_override", remote_name="addressOverride", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="web_filter_id", remote_name="webFilterID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="web_filter_type", remote_name="webFilterType", attribute_type=str, is_required=False, is_unique=False, choices=[u'WEB_CATEGORY', u'WEB_DOMAIN_NAME'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
@@ -422,6 +430,60 @@ class NUIngressACLEntryTemplate(NURESTObject):
                 
         """
         self._address_override = value
+
+    
+    @property
+    def web_filter_id(self):
+        """ Get web_filter_id value.
+
+            Notes:
+                ID of web filter category or web domain name entity used
+
+                
+                This attribute is named `webFilterID` in VSD API.
+                
+        """
+        return self._web_filter_id
+
+    @web_filter_id.setter
+    def web_filter_id(self, value):
+        """ Set web_filter_id value.
+
+            Notes:
+                ID of web filter category or web domain name entity used
+
+                
+                This attribute is named `webFilterID` in VSD API.
+                
+        """
+        self._web_filter_id = value
+
+    
+    @property
+    def web_filter_type(self):
+        """ Get web_filter_type value.
+
+            Notes:
+                Indicates type of web filter being set
+
+                
+                This attribute is named `webFilterType` in VSD API.
+                
+        """
+        return self._web_filter_type
+
+    @web_filter_type.setter
+    def web_filter_type(self, value):
+        """ Set web_filter_type value.
+
+            Notes:
+                Indicates type of web filter being set
+
+                
+                This attribute is named `webFilterType` in VSD API.
+                
+        """
+        self._web_filter_type = value
 
     
     @property

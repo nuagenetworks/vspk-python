@@ -40,7 +40,7 @@ class NUBGPProfile(NURESTObject):
     """ Represents a BGPProfile in the VSD
 
         Notes:
-            missing documentation.
+            Definitions for default import/export routing policies and dampening profiles
     """
 
     __rest_name__ = "bgpprofile"

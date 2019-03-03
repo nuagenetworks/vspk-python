@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``peer_link``: Indicates whether port is configured as peer link. Peer link used to synchronize states between the VPC peer devices.
+
 - ``permitted_action``: The permitted  action to USE/EXTEND  this Gateway.
 
 - ``description``: A description of the Port

@@ -5,7 +5,7 @@ nuperformancemonitor
 
 .. class:: nuperformancemonitor.NUPerformanceMonitor(bambou.nurest_object.NUMetaRESTObject,):
 
-None
+To enable the network performance monitoring between NSGs in an NSG Group and NSG-UBRs in an NSG-UBR Group. 
 
 
 Attributes

@@ -67,6 +67,8 @@ Parents
 
 - :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
 
+- :ref:`nugatewayredundantport.NUGatewayRedundantPort<nugatewayredundantport>`
+
 - :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
 
 - :ref:`nuvsc.NUVSC<nuvsc>`
@@ -82,6 +84,8 @@ Parents
 - :ref:`nuhsc.NUHSC<nuhsc>`
 
 - :ref:`nuvlan.NUVLAN<nuvlan>`
+
+- :ref:`nunetconfmanager.NUNetconfManager<nunetconfmanager>`
 
 - :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
 

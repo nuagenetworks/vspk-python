@@ -5,7 +5,7 @@ nunetworkperformancebinding
 
 .. class:: nunetworkperformancebinding.NUNetworkPerformanceBinding(bambou.nurest_object.NUMetaRESTObject,):
 
-None
+Association of Network Performance Measurement policies enable the measurement of path SLA metrics between NSGs in the domain.
 
 
 Attributes

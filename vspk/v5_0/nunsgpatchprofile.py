@@ -75,7 +75,7 @@ class NUNSGPatchProfile(NURESTObject):
         self._entity_scope = None
         self._external_id = None
         
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="patch_tag", remote_name="patchTag", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="patch_url", remote_name="patchURL", attribute_type=str, is_required=True, is_unique=False)

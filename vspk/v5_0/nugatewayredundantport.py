@@ -28,13 +28,22 @@
 
 
 
+from .fetchers import NUPermissionsFetcher
+
+
 from .fetchers import NUMetadatasFetcher
 
 
 from .fetchers import NUVLANsFetcher
 
 
+from .fetchers import NUAlarmsFetcher
+
+
 from .fetchers import NUGlobalMetadatasFetcher
+
+
+from .fetchers import NUEnterprisePermissionsFetcher
 
 from bambou import NURESTObject
 
@@ -135,13 +144,22 @@ class NUGatewayRedundantPort(NURESTObject):
         # Fetchers
         
         
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.vlans = NUVLANsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)

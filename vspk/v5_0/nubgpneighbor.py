@@ -28,6 +28,9 @@
 
 
 
+from .fetchers import NUDeploymentFailuresFetcher
+
+
 from .fetchers import NUMetadatasFetcher
 
 
@@ -87,6 +90,7 @@ class NUBGPNeighbor(NURESTObject):
         self._description = None
         self._session = None
         self._entity_scope = None
+        self._domain_service_label = None
         self._associated_export_routing_policy_id = None
         self._associated_import_routing_policy_id = None
         self._external_id = None
@@ -102,12 +106,16 @@ class NUBGPNeighbor(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="session", remote_name="session", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="domain_service_label", remote_name="domainServiceLabel", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_export_routing_policy_id", remote_name="associatedExportRoutingPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_import_routing_policy_id", remote_name="associatedImportRoutingPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
+        
+        
+        self.deployment_failures = NUDeploymentFailuresFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -403,6 +411,33 @@ class NUBGPNeighbor(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def domain_service_label(self):
+        """ Get domain_service_label value.
+
+            Notes:
+                Service ID or external label given to Domain
+
+                
+                This attribute is named `domainServiceLabel` in VSD API.
+                
+        """
+        return self._domain_service_label
+
+    @domain_service_label.setter
+    def domain_service_label(self, value):
+        """ Set domain_service_label value.
+
+            Notes:
+                Service ID or external label given to Domain
+
+                
+                This attribute is named `domainServiceLabel` in VSD API.
+                
+        """
+        self._domain_service_label = value
 
     
     @property

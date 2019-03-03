@@ -94,9 +94,9 @@ Parents
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
-- :ref:`nuvrs.NUVRS<nuvrs>`
-
 - :ref:`nuuser.NUUser<nuuser>`
+
+- :ref:`nuvrs.NUVRS<nuvrs>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
 

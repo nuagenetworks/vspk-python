@@ -34,6 +34,9 @@ from .fetchers import NUTCAsFetcher
 from .fetchers import NURedirectionTargetsFetcher
 
 
+from .fetchers import NUDeploymentFailuresFetcher
+
+
 from .fetchers import NUPermissionsFetcher
 
 
@@ -234,8 +237,6 @@ class NUDomain(NURESTObject):
     
     CONST_DHCP_BEHAVIOR_OVERLAY_RELAY = "OVERLAY_RELAY"
     
-    CONST_UNDERLAY_ENABLED_INHERITED = "INHERITED"
-    
     CONST_POLICY_CHANGE_STATUS_STARTED = "STARTED"
     
     CONST_PERMITTED_ACTION_READ = "READ"
@@ -313,6 +314,7 @@ class NUDomain(NURESTObject):
         self._fip_ignore_default_route = None
         self._fip_underlay = None
         self._dpi = None
+        self._vxlanecmp_enabled = None
         self._label_id = None
         self._back_haul_route_distinguisher = None
         self._back_haul_route_target = None
@@ -328,6 +330,7 @@ class NUDomain(NURESTObject):
         self._permitted_action = None
         self._service_id = None
         self._description = None
+        self._aggregate_flows_enabled = None
         self._dhcp_server_addresses = None
         self._global_routing_enabled = None
         self._flow_collection_enabled = None
@@ -354,6 +357,7 @@ class NUDomain(NURESTObject):
         self._customer_id = None
         self._export_route_target = None
         self._external_id = None
+        self._external_label = None
         
         self.expose_attribute(local_name="pat_enabled", remote_name="PATEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="ecmp_count", remote_name="ECMPCount", attribute_type=int, is_required=False, is_unique=False)
@@ -363,6 +367,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="fip_ignore_default_route", remote_name="FIPIgnoreDefaultRoute", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="fip_underlay", remote_name="FIPUnderlay", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="vxlanecmp_enabled", remote_name="VXLANECMPEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="label_id", remote_name="labelID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_route_distinguisher", remote_name="backHaulRouteDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_route_target", remote_name="backHaulRouteTarget", attribute_type=str, is_required=False, is_unique=False)
@@ -378,12 +383,13 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="service_id", remote_name="serviceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="aggregate_flows_enabled", remote_name="aggregateFlowsEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_server_addresses", remote_name="dhcpServerAddresses", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="global_routing_enabled", remote_name="globalRoutingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="import_route_target", remote_name="importRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
-        self.expose_attribute(local_name="underlay_enabled", remote_name="underlayEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="underlay_enabled", remote_name="underlayEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="local_as", remote_name="localAS", attribute_type=int, is_required=False, is_unique=False)
@@ -404,6 +410,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="export_route_target", remote_name="exportRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="external_label", remote_name="externalLabel", attribute_type=str, is_required=False, is_unique=False)
         
 
         # Fetchers
@@ -413,6 +420,9 @@ class NUDomain(NURESTObject):
         
         
         self.redirection_targets = NURedirectionTargetsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.deployment_failures = NUDeploymentFailuresFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -571,7 +581,7 @@ class NUDomain(NURESTObject):
         """ Get pat_enabled value.
 
             Notes:
-                Indicates whether PAT is enabled for the subnets in this domain - ENABLED/DISABLED Possible values are INHERITED, ENABLED, DISABLED, .
+                Indicates whether PAT is enabled for the subnets in this domain - ENABLED/DISABLED Possible values are ENABLED, DISABLED.
 
                 
                 This attribute is named `PATEnabled` in VSD API.
@@ -584,7 +594,7 @@ class NUDomain(NURESTObject):
         """ Set pat_enabled value.
 
             Notes:
-                Indicates whether PAT is enabled for the subnets in this domain - ENABLED/DISABLED Possible values are INHERITED, ENABLED, DISABLED, .
+                Indicates whether PAT is enabled for the subnets in this domain - ENABLED/DISABLED Possible values are ENABLED, DISABLED.
 
                 
                 This attribute is named `PATEnabled` in VSD API.
@@ -780,6 +790,33 @@ class NUDomain(NURESTObject):
                 
         """
         self._dpi = value
+
+    
+    @property
+    def vxlanecmp_enabled(self):
+        """ Get vxlanecmp_enabled value.
+
+            Notes:
+                Determines whether VXLAN-ECMP are enabled on this domain.
+
+                
+                This attribute is named `VXLANECMPEnabled` in VSD API.
+                
+        """
+        return self._vxlanecmp_enabled
+
+    @vxlanecmp_enabled.setter
+    def vxlanecmp_enabled(self, value):
+        """ Set vxlanecmp_enabled value.
+
+            Notes:
+                Determines whether VXLAN-ECMP are enabled on this domain.
+
+                
+                This attribute is named `VXLANECMPEnabled` in VSD API.
+                
+        """
+        self._vxlanecmp_enabled = value
 
     
     @property
@@ -1180,6 +1217,33 @@ class NUDomain(NURESTObject):
 
     
     @property
+    def aggregate_flows_enabled(self):
+        """ Get aggregate_flows_enabled value.
+
+            Notes:
+                Flag to enable aggregate flows on this domain.
+
+                
+                This attribute is named `aggregateFlowsEnabled` in VSD API.
+                
+        """
+        return self._aggregate_flows_enabled
+
+    @aggregate_flows_enabled.setter
+    def aggregate_flows_enabled(self, value):
+        """ Set aggregate_flows_enabled value.
+
+            Notes:
+                Flag to enable aggregate flows on this domain.
+
+                
+                This attribute is named `aggregateFlowsEnabled` in VSD API.
+                
+        """
+        self._aggregate_flows_enabled = value
+
+    
+    @property
     def dhcp_server_addresses(self):
         """ Get dhcp_server_addresses value.
 
@@ -1292,7 +1356,7 @@ class NUDomain(NURESTObject):
         """ Get encryption value.
 
             Notes:
-                Determines whether IPSEC is enabled Possible values are ENABLED, DISABLED, .
+                Determines whether IPSEC is enabled Possible values are ENABLED, DISABLED.
 
                 
         """
@@ -1303,7 +1367,7 @@ class NUDomain(NURESTObject):
         """ Set encryption value.
 
             Notes:
-                Determines whether IPSEC is enabled Possible values are ENABLED, DISABLED, .
+                Determines whether IPSEC is enabled Possible values are ENABLED, DISABLED.
 
                 
         """
@@ -1867,6 +1931,33 @@ class NUDomain(NURESTObject):
                 
         """
         self._external_id = value
+
+    
+    @property
+    def external_label(self):
+        """ Get external_label value.
+
+            Notes:
+                External label given to Domain
+
+                
+                This attribute is named `externalLabel` in VSD API.
+                
+        """
+        return self._external_label
+
+    @external_label.setter
+    def external_label(self, value):
+        """ Set external_label value.
+
+            Notes:
+                External label given to Domain
+
+                
+                This attribute is named `externalLabel` in VSD API.
+                
+        """
+        self._external_label = value
 
     
 

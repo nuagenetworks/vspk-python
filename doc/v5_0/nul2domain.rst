@@ -22,6 +22,8 @@ Attributes
 
 - ``ipv6_gateway``: The IPv6 address of the gateway of this subnet
 
+- ``vxlanecmp_enabled``: Determines whether VXLAN-ECMP are enabled on this domain.
+
 - ``maintenance_mode``: maintenanceMode is an enum that indicates if the L2Domain is accepting VM activation requests. Possible values are DISABLED, ENABLED and ENABLED_INHERITED Possible values are .
 
 - ``name`` (**Mandatory**): Name of the L2Domain / L2Domain template,has to be unique within a Enterprise. Valid characters are alphabets, numbers, space and hyphen( - ).
@@ -48,6 +50,8 @@ Attributes
 
 - ``encryption``: Determines whether IPSEC is enabled Possible values are ENABLED, DISABLED, .
 
+- ``ingress_replication_enabled``: Enables ingress replication for the VNI.
+
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``entity_state``: Intermediate State of L2 Domain.
@@ -73,6 +77,8 @@ Attributes
 - ``stretched``: Indicates whether this domain is streched,if so remote VM resolutions will be allowed
 
 - ``multicast``: Indicates multicast policy on L2Domain.
+
+- ``customer_id``: CustomerID that is used by NETCONF MANAGER to identify this enterprise. This can be configured by root user.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

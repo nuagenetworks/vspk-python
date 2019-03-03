@@ -180,7 +180,7 @@ class NUEgressQOSPolicy(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="parent_queue_associated_rate_limiter_id", remote_name="parentQueueAssociatedRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="parent_queue_associated_rate_limiter_id", remote_name="parentQueueAssociatedRateLimiterID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="default_service_class", remote_name="defaultServiceClass", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
@@ -193,7 +193,7 @@ class NUEgressQOSPolicy(NURESTObject):
         self.expose_attribute(local_name="queue2_associated_rate_limiter_id", remote_name="queue2AssociatedRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="queue2_forwarding_classes", remote_name="queue2ForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="queue3_associated_rate_limiter_id", remote_name="queue3AssociatedRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="queue3_forwarding_classes", remote_name="queue3ForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
+        self.expose_attribute(local_name="queue3_forwarding_classes", remote_name="queue3ForwardingClasses", attribute_type=list, is_required=True, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="queue4_associated_rate_limiter_id", remote_name="queue4AssociatedRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="queue4_forwarding_classes", remote_name="queue4ForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)

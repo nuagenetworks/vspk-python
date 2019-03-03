@@ -32,6 +32,8 @@ Attributes
 
 - ``signature_index``: Index number received from Procera for every L7 signature.
 
+- ``signature_version``: The AAR application version where this signature was last updated.
+
 - ``risk``: Risk is determined on a scale of 1 to 5. It is received from Procera for every signature.
 
 - ``plugin_name``: Plugin name received from Procera for every signature.

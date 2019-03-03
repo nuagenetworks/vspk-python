@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``ip_type``: IPv4 or IPv6
+- ``ip_type``: The IP type of this Address Translation Pool. This can be DUALSTACK, IPV4 or IPV6
 
 - ``name`` (**Mandatory**): Name of the PATNATPool
 

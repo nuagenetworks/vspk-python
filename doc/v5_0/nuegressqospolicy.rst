@@ -14,7 +14,7 @@ Attributes
 
 - ``name`` (**Mandatory**): A unique name of the QoS object
 
-- ``parent_queue_associated_rate_limiter_id``: ID of the parent rate limiter associated with this Egress QoS policy.
+- ``parent_queue_associated_rate_limiter_id`` (**Mandatory**): ID of the parent rate limiter associated with this Egress QoS policy.
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
@@ -40,7 +40,7 @@ Attributes
 
 - ``queue3_associated_rate_limiter_id``: ID of the queue3 rate limiter associated with this Egress QoS policy.
 
-- ``queue3_forwarding_classes``: Queue3 Forwarding Classes for this Egress QoS Policy Possible values are NONE, A, B, C, D, E, F, G, H.
+- ``queue3_forwarding_classes`` (**Mandatory**): Queue3 Forwarding Classes for this Egress QoS Policy Possible values are NONE, A, B, C, D, E, F, G, H.
 
 - ``queue4_associated_rate_limiter_id``: ID of the queue4 rate limiter associated with this Egress QoS policy.
 

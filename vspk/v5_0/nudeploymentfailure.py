@@ -83,10 +83,13 @@ class NUDeploymentFailure(NURESTObject):
         self._last_updated_by = None
         self._affected_entity_id = None
         self._affected_entity_type = None
+        self._diff_map = None
         self._entity_scope = None
         self._error_condition = None
         self._assoc_entity_id = None
         self._assoc_entity_type = None
+        self._associated_network_entity_id = None
+        self._associated_network_entity_type = None
         self._number_of_occurences = None
         self._event_type = None
         self._external_id = None
@@ -96,10 +99,13 @@ class NUDeploymentFailure(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="affected_entity_id", remote_name="affectedEntityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="affected_entity_type", remote_name="affectedEntityType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="diff_map", remote_name="diffMap", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="error_condition", remote_name="errorCondition", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_entity_id", remote_name="assocEntityId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_entity_type", remote_name="assocEntityType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_network_entity_id", remote_name="associatedNetworkEntityID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_network_entity_type", remote_name="associatedNetworkEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="number_of_occurences", remote_name="numberOfOccurences", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="event_type", remote_name="eventType", attribute_type=str, is_required=False, is_unique=False, choices=[u'CREATE', u'DELETE', u'UPDATE'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -254,6 +260,33 @@ class NUDeploymentFailure(NURESTObject):
 
     
     @property
+    def diff_map(self):
+        """ Get diff_map value.
+
+            Notes:
+                Object difference in json format.
+
+                
+                This attribute is named `diffMap` in VSD API.
+                
+        """
+        return self._diff_map
+
+    @diff_map.setter
+    def diff_map(self, value):
+        """ Set diff_map value.
+
+            Notes:
+                Object difference in json format.
+
+                
+                This attribute is named `diffMap` in VSD API.
+                
+        """
+        self._diff_map = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -359,6 +392,60 @@ class NUDeploymentFailure(NURESTObject):
                 
         """
         self._assoc_entity_type = value
+
+    
+    @property
+    def associated_network_entity_id(self):
+        """ Get associated_network_entity_id value.
+
+            Notes:
+                ID of associated Network entity.
+
+                
+                This attribute is named `associatedNetworkEntityID` in VSD API.
+                
+        """
+        return self._associated_network_entity_id
+
+    @associated_network_entity_id.setter
+    def associated_network_entity_id(self, value):
+        """ Set associated_network_entity_id value.
+
+            Notes:
+                ID of associated Network entity.
+
+                
+                This attribute is named `associatedNetworkEntityID` in VSD API.
+                
+        """
+        self._associated_network_entity_id = value
+
+    
+    @property
+    def associated_network_entity_type(self):
+        """ Get associated_network_entity_type value.
+
+            Notes:
+                Type of associated Network Entity. i.e Domain, Subnet, L2domain
+
+                
+                This attribute is named `associatedNetworkEntityType` in VSD API.
+                
+        """
+        return self._associated_network_entity_type
+
+    @associated_network_entity_type.setter
+    def associated_network_entity_type(self, value):
+        """ Set associated_network_entity_type value.
+
+            Notes:
+                Type of associated Network Entity. i.e Domain, Subnet, L2domain
+
+                
+                This attribute is named `associatedNetworkEntityType` in VSD API.
+                
+        """
+        self._associated_network_entity_type = value
 
     
     @property

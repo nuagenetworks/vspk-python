@@ -70,6 +70,12 @@ from .fetchers import NUPATNATPoolsFetcher
 from .fetchers import NULDAPConfigurationsFetcher
 
 
+from .fetchers import NUWebCategoriesFetcher
+
+
+from .fetchers import NUWebDomainNamesFetcher
+
+
 from .fetchers import NURedundancyGroupsFetcher
 
 
@@ -231,6 +237,12 @@ from .fetchers import NUAvatarsFetcher
 
 from .fetchers import NUEventLogsFetcher
 
+
+from .fetchers import NUOverlayManagementProfilesFetcher
+
+
+from .fetchers import NUSyslogDestinationsFetcher
+
 from bambou import NURESTObject
 
 
@@ -253,7 +265,7 @@ class NUEnterprise(NURESTObject):
     
     CONST_AVATAR_TYPE_COMPUTEDURL = "COMPUTEDURL"
     
-    CONST_ALLOWED_FORWARDING_MODE_LOCAL_ONLY = "LOCAL_ONLY"
+    CONST_ALLOWED_FORWARDING_MODE_LOCAL_AND_REMOTE = "LOCAL_AND_REMOTE"
     
     CONST_ALLOWED_FORWARDING_MODE_DISABLED = "DISABLED"
     
@@ -287,7 +299,7 @@ class NUEnterprise(NURESTObject):
     
     CONST_ALLOWED_FORWARDING_CLASSES_H = "H"
     
-    CONST_ALLOWED_FORWARDING_MODE_LOCAL_AND_REMOTE = "LOCAL_AND_REMOTE"
+    CONST_ALLOWED_FORWARDING_MODE_LOCAL_ONLY = "LOCAL_ONLY"
     
     
 
@@ -315,6 +327,7 @@ class NUEnterprise(NURESTObject):
         self._vnf_management_enabled = None
         self._name = None
         self._last_updated_by = None
+        self._web_filter_enabled = None
         self._receive_multi_cast_list_id = None
         self._send_multi_cast_list_id = None
         self._description = None
@@ -334,6 +347,7 @@ class NUEnterprise(NURESTObject):
         self._enterprise_profile_id = None
         self._entity_scope = None
         self._local_as = None
+        self._use_global_mac = None
         self._associated_enterprise_security_id = None
         self._associated_group_key_encryption_profile_id = None
         self._associated_key_server_monitor_id = None
@@ -349,6 +363,7 @@ class NUEnterprise(NURESTObject):
         self.expose_attribute(local_name="vnf_management_enabled", remote_name="VNFManagementEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="web_filter_enabled", remote_name="webFilterEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="receive_multi_cast_list_id", remote_name="receiveMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="send_multi_cast_list_id", remote_name="sendMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
@@ -368,6 +383,7 @@ class NUEnterprise(NURESTObject):
         self.expose_attribute(local_name="enterprise_profile_id", remote_name="enterpriseProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="local_as", remote_name="localAS", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_enterprise_security_id", remote_name="associatedEnterpriseSecurityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_group_key_encryption_profile_id", remote_name="associatedGroupKeyEncryptionProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_key_server_monitor_id", remote_name="associatedKeyServerMonitorID", attribute_type=str, is_required=False, is_unique=False)
@@ -420,6 +436,12 @@ class NUEnterprise(NURESTObject):
         
         
         self.ldap_configurations = NULDAPConfigurationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.web_categories = NUWebCategoriesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.web_domain_names = NUWebDomainNamesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.redundancy_groups = NURedundancyGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -582,6 +604,12 @@ class NUEnterprise(NURESTObject):
         
         
         self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.overlay_management_profiles = NUOverlayManagementProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.syslog_destinations = NUSyslogDestinationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -771,6 +799,33 @@ class NUEnterprise(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def web_filter_enabled(self):
+        """ Get web_filter_enabled value.
+
+            Notes:
+                Read only flag to display if Web Filtering is enabled for this enterprise
+
+                
+                This attribute is named `webFilterEnabled` in VSD API.
+                
+        """
+        return self._web_filter_enabled
+
+    @web_filter_enabled.setter
+    def web_filter_enabled(self, value):
+        """ Set web_filter_enabled value.
+
+            Notes:
+                Read only flag to display if Web Filtering is enabled for this enterprise
+
+                
+                This attribute is named `webFilterEnabled` in VSD API.
+                
+        """
+        self._web_filter_enabled = value
 
     
     @property
@@ -1280,6 +1335,33 @@ class NUEnterprise(NURESTObject):
                 
         """
         self._local_as = value
+
+    
+    @property
+    def use_global_mac(self):
+        """ Get use_global_mac value.
+
+            Notes:
+                Determines whether Global Gateway MAC is enabled or not Enterprise level.
+
+                
+                This attribute is named `useGlobalMAC` in VSD API.
+                
+        """
+        return self._use_global_mac
+
+    @use_global_mac.setter
+    def use_global_mac(self, value):
+        """ Set use_global_mac value.
+
+            Notes:
+                Determines whether Global Gateway MAC is enabled or not Enterprise level.
+
+                
+                This attribute is named `useGlobalMAC` in VSD API.
+                
+        """
+        self._use_global_mac = value
 
     
     @property

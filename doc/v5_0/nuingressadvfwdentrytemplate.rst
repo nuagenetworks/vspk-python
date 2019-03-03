@@ -5,7 +5,7 @@ nuingressadvfwdentrytemplate
 
 .. class:: nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate(bambou.nurest_object.NUMetaRESTObject,):
 
-Defines the template of Ingress Advanced Forwarding entries
+Security Policy Entries defines what action to take for a particular type of traffic, based on its origin and its destination, its protocol, EtherType, eventual ports, DSCP value and other information.
 
 
 Attributes
@@ -33,6 +33,12 @@ Attributes
 - ``action`` (**Mandatory**): The action of the ACL entry DROP or FORWARD or REDIRECT or FORWARDING_PATH_LIST. Actions REDIRECT and FORWARDING_PATH_LIST are allowed only for IngressAdvancedForwardingEntry. Possible values are DROP, FORWARD, REDIRECT, FORWARDING_PATH_LIST. If FORWARDING_PATH_LIST is selected in IngressAdvancedForwardingEntry, user will have to attach a ForwardingPathList (list of forwarding action-uplink preference entries) to the ACL.  
 
 - ``address_override``: Overrides the source IP for Ingress and destination IP for Egress, MAC entries will use this address as the match criteria.
+
+- ``address_override_type``: Address Override Type can be IPV4, IPV6 or MACRO_GROUP.
+
+- ``web_filter_id``: ID of web filter category or web domain name entity used
+
+- ``web_filter_type``: Indicates type of web filter being set
 
 - ``redirect_rewrite_type``: The type of redirection rewrite. Currently only VLAN is supported
 

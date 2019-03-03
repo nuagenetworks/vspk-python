@@ -34,6 +34,8 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``domain_service_label``: Service ID or external label given to Domain
+
 - ``associated_export_routing_policy_id``: export policy ID
 
 - ``associated_import_routing_policy_id``: import routing policy ID
@@ -49,6 +51,7 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nudeploymentfailure.NUDeploymentFailure<nudeploymentfailure>`                                                                                              ``deployment_failures`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 ================================================================================================================================================               ==========================================================================================

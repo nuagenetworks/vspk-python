@@ -5,7 +5,7 @@ nuvnfinterfacedescriptor
 
 .. class:: nuvnfinterfacedescriptor.NUVNFInterfaceDescriptor(bambou.nurest_object.NUMetaRESTObject,):
 
-Represent VNF interface descriptor
+The interfaces attached to the VNF descriptor. The interfaces are used for management and datapath traffic. Atleast one interface should be designated as a management interface
 
 
 Attributes

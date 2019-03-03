@@ -274,6 +274,9 @@ from .fetchers import NUNSGatewayTemplatesFetcher
 from .fetchers import NUNSGGroupsFetcher
 
 
+from .fetchers import NUNSGInfosFetcher
+
+
 from .fetchers import NUNSGPatchProfilesFetcher
 
 
@@ -646,6 +649,9 @@ class NUMe(NURESTRootObject):
         
         
         self.nsg_groups = NUNSGGroupsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.nsg_infos = NUNSGInfosFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.nsg_patch_profiles = NUNSGPatchProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")

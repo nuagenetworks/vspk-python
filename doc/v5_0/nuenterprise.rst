@@ -26,6 +26,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``web_filter_enabled``: Read only flag to display if Web Filtering is enabled for this enterprise
+
 - ``receive_multi_cast_list_id``: Read-only Id of the auto generated receive multicast list associated with this enterprise profile
 
 - ``send_multi_cast_list_id``: Read-only Id of the auto generated send multicast list associated with this enterprise profile
@@ -64,6 +66,8 @@ Attributes
 
 - ``local_as``: Local autonomous system for the enterprise
 
+- ``use_global_mac``: Determines whether Global Gateway MAC is enabled or not Enterprise level.
+
 - ``associated_enterprise_security_id``: Read-only Id of the associated group key encryption profile
 
 - ``associated_group_key_encryption_profile_id``: Read-only Id of the associated group key encryption profile
@@ -101,6 +105,8 @@ Children
 :ref:`nugatewaytemplate.NUGatewayTemplate<nugatewaytemplate>`                                                                                                    ``gateway_templates`` 
 :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`                                                                                                                   ``patnat_pools`` 
 :ref:`nuldapconfiguration.NULDAPConfiguration<nuldapconfiguration>`                                                                                              ``ldap_configurations`` 
+:ref:`nuwebcategory.NUWebCategory<nuwebcategory>`                                                                                                                ``web_categories`` 
+:ref:`nuwebdomainname.NUWebDomainName<nuwebdomainname>`                                                                                                          ``web_domain_names`` 
 :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`                                                                                                    ``redundancy_groups`` 
 :ref:`nuperformancemonitor.NUPerformanceMonitor<nuperformancemonitor>`                                                                                           ``performance_monitors`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
@@ -155,6 +161,8 @@ Children
 :ref:`numulticastlist.NUMultiCastList<numulticastlist>`                                                                                                          ``multi_cast_lists`` 
 :ref:`nuavatar.NUAvatar<nuavatar>`                                                                                                                               ``avatars`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
+:ref:`nuoverlaymanagementprofile.NUOverlayManagementProfile<nuoverlaymanagementprofile>`                                                                         ``overlay_management_profiles`` 
+:ref:`nusyslogdestination.NUSyslogDestination<nusyslogdestination>`                                                                                              ``syslog_destinations`` 
 ================================================================================================================================================               ==========================================================================================
 
 

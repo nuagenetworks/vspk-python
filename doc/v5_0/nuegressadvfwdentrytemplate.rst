@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``acl_template_name`` (**Mandatory**): The name of the parent Template for this acl entry
+- ``acl_template_name``: The name of the parent Template for this acl entry
 
 - ``icmp_code``: The ICMP Code when protocol selected is ICMP.
 
@@ -31,6 +31,10 @@ Attributes
 - ``action`` (**Mandatory**): The action of the ACL entry. Possible values are DROP, FORWARD, REDIRECT. Action REDIRECT is allowed only for EgressAdvancedForwardingEntry.
 
 - ``address_override``: Overrides the source IP for Egress and destination IP for Ingress, mac entries will use this address as the match criteria.
+
+- ``web_filter_id``: ID of web filter category or web domain name entity used
+
+- ``web_filter_type``: Indicates type of web filter being set
 
 - ``redirect_vport_tag_id``: VPort tag to which traffic will be redirected to, when ACL entry match criteria succeeds
 
@@ -101,7 +105,7 @@ Parents
 --------
 
 
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nuegressadvfwdtemplate.NUEgressAdvFwdTemplate<nuegressadvfwdtemplate>`
+
+- :ref:`nume.NUMe<nume>`
 

@@ -40,7 +40,7 @@ class NUVirtualFirewallRule(NURESTObject):
     """ Represents a VirtualFirewallRule in the VSD
 
         Notes:
-            Defines the Virtual Firewall rules
+            Virtual firewall rules define intent based security policy entries to control traffic between source/destinations in the network. Virtual firewall rules are inherently stateful and are enforced as Ingress/Egress stateful ACLs in Nuage policy enforcement points
     """
 
     __rest_name__ = "virtualfirewallrule"
@@ -89,9 +89,13 @@ class NUVirtualFirewallRule(NURESTObject):
     
     CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE = "L4_SERVICE"
     
+    CONST_WEB_FILTER_TYPE_WEB_DOMAIN_NAME = "WEB_DOMAIN_NAME"
+    
     CONST_POLICY_STATE_LIVE = "LIVE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_WEB_FILTER_TYPE_WEB_CATEGORY = "WEB_CATEGORY"
     
     CONST_NETWORK_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
@@ -124,6 +128,8 @@ class NUVirtualFirewallRule(NURESTObject):
         self._last_updated_by = None
         self._action = None
         self._address_override = None
+        self._web_filter_id = None
+        self._web_filter_type = None
         self._description = None
         self._destination_port = None
         self._network_id = None
@@ -161,6 +167,8 @@ class NUVirtualFirewallRule(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'DROP', u'FORWARD'])
         self.expose_attribute(local_name="address_override", remote_name="addressOverride", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="web_filter_id", remote_name="webFilterID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="web_filter_type", remote_name="webFilterType", attribute_type=str, is_required=False, is_unique=False, choices=[u'WEB_CATEGORY', u'WEB_DOMAIN_NAME'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
@@ -290,7 +298,7 @@ class NUVirtualFirewallRule(NURESTObject):
         """ Get ipv6_address_override value.
 
             Notes:
-                Overrides the source IPV6 for Ingress and destination IPV6 for Egress, macentries will use this adress as the match criteria.
+                Overrides the source IPV6 for Ingress and destination IPV6 for Egress, macentries will use this address as the match criteria.
 
                 
                 This attribute is named `IPv6AddressOverride` in VSD API.
@@ -303,7 +311,7 @@ class NUVirtualFirewallRule(NURESTObject):
         """ Set ipv6_address_override value.
 
             Notes:
-                Overrides the source IPV6 for Ingress and destination IPV6 for Egress, macentries will use this adress as the match criteria.
+                Overrides the source IPV6 for Ingress and destination IPV6 for Egress, macentries will use this address as the match criteria.
 
                 
                 This attribute is named `IPv6AddressOverride` in VSD API.
@@ -394,7 +402,7 @@ class NUVirtualFirewallRule(NURESTObject):
         """ Get address_override value.
 
             Notes:
-                Overrides the source IP for Ingress and destination IP for Egress, macentries will use this adress as the match criteria.
+                Overrides the source IP for Ingress and destination IP for Egress, macentries will use this address as the match criteria.
 
                 
                 This attribute is named `addressOverride` in VSD API.
@@ -407,13 +415,67 @@ class NUVirtualFirewallRule(NURESTObject):
         """ Set address_override value.
 
             Notes:
-                Overrides the source IP for Ingress and destination IP for Egress, macentries will use this adress as the match criteria.
+                Overrides the source IP for Ingress and destination IP for Egress, macentries will use this address as the match criteria.
 
                 
                 This attribute is named `addressOverride` in VSD API.
                 
         """
         self._address_override = value
+
+    
+    @property
+    def web_filter_id(self):
+        """ Get web_filter_id value.
+
+            Notes:
+                ID of web filter
+
+                
+                This attribute is named `webFilterID` in VSD API.
+                
+        """
+        return self._web_filter_id
+
+    @web_filter_id.setter
+    def web_filter_id(self, value):
+        """ Set web_filter_id value.
+
+            Notes:
+                ID of web filter
+
+                
+                This attribute is named `webFilterID` in VSD API.
+                
+        """
+        self._web_filter_id = value
+
+    
+    @property
+    def web_filter_type(self):
+        """ Get web_filter_type value.
+
+            Notes:
+                Indicates type of web filter being set
+
+                
+                This attribute is named `webFilterType` in VSD API.
+                
+        """
+        return self._web_filter_type
+
+    @web_filter_type.setter
+    def web_filter_type(self, value):
+        """ Set web_filter_type value.
+
+            Notes:
+                Indicates type of web filter being set
+
+                
+                This attribute is named `webFilterType` in VSD API.
+                
+        """
+        self._web_filter_type = value
 
     
     @property

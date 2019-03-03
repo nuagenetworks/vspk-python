@@ -5,16 +5,16 @@ nuaddressrange
 
 .. class:: nuaddressrange.NUAddressRange(bambou.nurest_object.NUMetaRESTObject,):
 
-This is the definition of a Address Range associated with a Network.
+Address ranges are used for dynamic IP address allocation within the subnet. Multiple address ranges may be used to support non-contiuous IP address ranges. VMs and hosts without static IP addresses assigned will receive an address within the available ranges. 
 
 
 Attributes
 ----------
 
 
-- ``dhcp_pool_type``: DHCPPoolType is an enum that indicates if the DHCP Pool is for HOST/BRIDGE.
+- ``dhcp_pool_type``: DHCPPoolType is an enum that indicates if the DHCP Pool is for HOST/BRIDGE/VRRP.
 
-- ``ip_type``: IPv4 or IPv6(only IPv4 is supported in R1.0) Possible values are IPV4, IPV6, DUALSTACK.
+- ``ip_type``: Possible values are IPV4, IPV6.
 
 - ``last_updated_by``: ID of the user who last updated the object.
 

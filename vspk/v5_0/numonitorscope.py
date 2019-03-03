@@ -40,7 +40,7 @@ class NUMonitorscope(NURESTObject):
     """ Represents a Monitorscope in the VSD
 
         Notes:
-            This class tries to define the scope of probe (the NSGs between which the probe needs) to run.
+            Monitoring Scope bound Performance monitors to either ALL or a sub-set of NSGs. Scope is defined by selecting NSGs that should execute Performance Monitors. 
     """
 
     __rest_name__ = "monitorscope"

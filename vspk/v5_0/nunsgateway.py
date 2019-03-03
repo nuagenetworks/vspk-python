@@ -76,7 +76,13 @@ from .fetchers import NUBootstrapsFetcher
 from .fetchers import NUBootstrapActivationsFetcher
 
 
+from .fetchers import NUNSPortInfosFetcher
+
+
 from .fetchers import NUUplinkConnectionsFetcher
+
+
+from .fetchers import NUNSGatewayMonitorsFetcher
 
 
 from .fetchers import NUNSGatewaySummariesFetcher
@@ -135,8 +141,6 @@ class NUNSGateway(NURESTObject):
     
     CONST_BOOTSTRAP_STATUS_ACTIVE = "ACTIVE"
     
-    CONST_CONFIGURATION_RELOAD_STATE_PENDING = "PENDING"
-    
     CONST_ZFB_MATCH_ATTRIBUTE_IP_ADDRESS = "IP_ADDRESS"
     
     CONST_FAMILY_NSG_X = "NSG_X"
@@ -151,7 +155,7 @@ class NUNSGateway(NURESTObject):
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_PERSONALITY_OTHER = "OTHER"
+    CONST_NETWORK_ACCELERATION_PERFORMANCE = "PERFORMANCE"
     
     CONST_SSH_SERVICE_ENABLED = "ENABLED"
     
@@ -169,8 +173,6 @@ class NUNSGateway(NURESTObject):
     
     CONST_CONFIGURATION_RELOAD_STATE_UNKNOWN = "UNKNOWN"
     
-    CONST_PERSONALITY_DC7X50 = "DC7X50"
-    
     CONST_BOOTSTRAP_STATUS_CERTIFICATE_SIGNED = "CERTIFICATE_SIGNED"
     
     CONST_FAMILY_NSG_AZ = "NSG_AZ"
@@ -183,11 +185,7 @@ class NUNSGateway(NURESTObject):
     
     CONST_ZFB_MATCH_ATTRIBUTE_NONE = "NONE"
     
-    CONST_PERSONALITY_VSA = "VSA"
-    
-    CONST_NETWORK_ACCELERATION_PERFORMANCE = "PERFORMANCE"
-    
-    CONST_PERSONALITY_VSG = "VSG"
+    CONST_CONFIGURATION_RELOAD_STATE_PENDING = "PENDING"
     
     CONST_PERMITTED_ACTION_READ = "READ"
     
@@ -197,6 +195,8 @@ class NUNSGateway(NURESTObject):
     
     CONST_TPM_STATUS_ENABLED_NOT_OPERATIONAL = "ENABLED_NOT_OPERATIONAL"
     
+    CONST_FUNCTIONS_UBR = "UBR"
+    
     CONST_TPM_STATUS_UNKNOWN = "UNKNOWN"
     
     CONST_FAMILY_NSG_E300 = "NSG_E300"
@@ -205,19 +205,17 @@ class NUNSGateway(NURESTObject):
     
     CONST_DERIVED_SSH_SERVICE_STATE_INSTANCE_ENABLED = "INSTANCE_ENABLED"
     
-    CONST_PERSONALITY_VRSG = "VRSG"
-    
     CONST_ZFB_MATCH_ATTRIBUTE_SERIAL_NUMBER = "SERIAL_NUMBER"
     
     CONST_ZFB_MATCH_ATTRIBUTE_UUID = "UUID"
-    
-    CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
     
     CONST_FAMILY_NSG_AMI = "NSG_AMI"
     
     CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
     
     CONST_DERIVED_SSH_SERVICE_STATE_UNKNOWN = "UNKNOWN"
+    
+    CONST_FUNCTIONS_GATEWAY = "GATEWAY"
     
     CONST_INHERITED_SSH_SERVICE_STATE_DISABLED = "DISABLED"
     
@@ -268,6 +266,7 @@ class NUNSGateway(NURESTObject):
         self._tpm_status = None
         self._tpm_version = None
         self._cpu_type = None
+        self._vsdaar_application_version = None
         self._nsg_version = None
         self._ssh_service = None
         self._uuid = None
@@ -304,6 +303,8 @@ class NUNSGateway(NURESTObject):
         self._associated_gateway_security_profile_id = None
         self._associated_nsg_info_id = None
         self._associated_nsg_upgrade_profile_id = None
+        self._associated_overlay_management_profile_id = None
+        self._functions = None
         self._auto_disc_gateway_id = None
         self._external_id = None
         self._system_id = None
@@ -322,6 +323,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="tpm_status", remote_name="TPMStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED_NOT_OPERATIONAL', u'ENABLED_OPERATIONAL', u'UNKNOWN'])
         self.expose_attribute(local_name="tpm_version", remote_name="TPMVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cpu_type", remote_name="CPUType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vsdaar_application_version", remote_name="VSDAARApplicationVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_version", remote_name="NSGVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ssh_service", remote_name="SSHService", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=False, is_unique=False)
@@ -337,7 +339,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="derived_ssh_service_state", remote_name="derivedSSHServiceState", attribute_type=str, is_required=False, is_unique=False, choices=[u'INHERITED_DISABLED', u'INHERITED_ENABLED', u'INSTANCE_DISABLED', u'INSTANCE_ENABLED', u'UNKNOWN'])
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'NSGBR', u'NSGDUC', u'OTHER', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'NSG', u'NSGBR', u'NSGDUC'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_acceleration", remote_name="networkAcceleration", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'PERFORMANCE'])
         self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
@@ -358,6 +360,8 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="associated_gateway_security_profile_id", remote_name="associatedGatewaySecurityProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_nsg_info_id", remote_name="associatedNSGInfoID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_nsg_upgrade_profile_id", remote_name="associatedNSGUpgradeProfileID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_overlay_management_profile_id", remote_name="associatedOverlayManagementProfileID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="functions", remote_name="functions", attribute_type=list, is_required=False, is_unique=False, choices=[u'GATEWAY', u'UBR'])
         self.expose_attribute(local_name="auto_disc_gateway_id", remote_name="autoDiscGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="system_id", remote_name="systemID", attribute_type=str, is_required=False, is_unique=False)
@@ -414,7 +418,13 @@ class NUNSGateway(NURESTObject):
         self.bootstrap_activations = NUBootstrapActivationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.ns_port_infos = NUNSPortInfosFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.uplink_connections = NUUplinkConnectionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ns_gateway_monitors = NUNSGatewayMonitorsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ns_gateway_summaries = NUNSGatewaySummariesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -812,6 +822,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._cpu_type = value
+
+    
+    @property
+    def vsdaar_application_version(self):
+        """ Get vsdaar_application_version value.
+
+            Notes:
+                Version of the latest imported Application Signatures.
+
+                
+                This attribute is named `VSDAARApplicationVersion` in VSD API.
+                
+        """
+        return self._vsdaar_application_version
+
+    @vsdaar_application_version.setter
+    def vsdaar_application_version(self, value):
+        """ Set vsdaar_application_version value.
+
+            Notes:
+                Version of the latest imported Application Signatures.
+
+                
+                This attribute is named `VSDAARApplicationVersion` in VSD API.
+                
+        """
+        self._vsdaar_application_version = value
 
     
     @property
@@ -1760,6 +1797,56 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._associated_nsg_upgrade_profile_id = value
+
+    
+    @property
+    def associated_overlay_management_profile_id(self):
+        """ Get associated_overlay_management_profile_id value.
+
+            Notes:
+                The ID of the associated Overlay Management Profile
+
+                
+                This attribute is named `associatedOverlayManagementProfileID` in VSD API.
+                
+        """
+        return self._associated_overlay_management_profile_id
+
+    @associated_overlay_management_profile_id.setter
+    def associated_overlay_management_profile_id(self, value):
+        """ Set associated_overlay_management_profile_id value.
+
+            Notes:
+                The ID of the associated Overlay Management Profile
+
+                
+                This attribute is named `associatedOverlayManagementProfileID` in VSD API.
+                
+        """
+        self._associated_overlay_management_profile_id = value
+
+    
+    @property
+    def functions(self):
+        """ Get functions value.
+
+            Notes:
+                List of supported functions
+
+                
+        """
+        return self._functions
+
+    @functions.setter
+    def functions(self, value):
+        """ Set functions value.
+
+            Notes:
+                List of supported functions
+
+                
+        """
+        self._functions = value
 
     
     @property

@@ -51,9 +51,12 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuvlan.NUVLAN<nuvlan>`                                                                                                                                     ``vlans`` 
+:ref:`nualarm.NUAlarm<nualarm>`                                                                                                                                  ``alarms`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+:ref:`nuenterprisepermission.NUEnterprisePermission<nuenterprisepermission>`                                                                                     ``enterprise_permissions`` 
 ================================================================================================================================================               ==========================================================================================
 
 

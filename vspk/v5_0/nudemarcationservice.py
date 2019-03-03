@@ -40,7 +40,7 @@ class NUDemarcationService(NURESTObject):
     """ Represents a DemarcationService in the VSD
 
         Notes:
-            test
+            Demarcation services provide the interconnection between the datacenter networks and the Wide Area Network.
     """
 
     __rest_name__ = "demarcationservice"

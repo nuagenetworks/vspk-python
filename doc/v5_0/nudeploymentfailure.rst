@@ -22,6 +22,8 @@ Attributes
 
 - ``affected_entity_type``: Managed object type corresponding to the entity on which deployment failed.
 
+- ``diff_map``: Object difference in json format.
+
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``error_condition``: A numerical code mapping to the deployment error condition.
@@ -29,6 +31,10 @@ Attributes
 - ``assoc_entity_id``: ID of the parent entity
 
 - ``assoc_entity_type``: Type of parent entity.
+
+- ``associated_network_entity_id``: ID of associated Network entity.
+
+- ``associated_network_entity_type``: Type of associated Network Entity. i.e Domain, Subnet, L2domain
 
 - ``number_of_occurences``: A count of failed deployment attempts.
 
@@ -59,13 +65,21 @@ Parents
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
+- :ref:`nusubnet.NUSubnet<nusubnet>`
+
+- :ref:`nustaticroute.NUStaticRoute<nustaticroute>`
+
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
 - :ref:`nuegressprofile.NUEgressProfile<nuegressprofile>`
 
+- :ref:`nudomain.NUDomain<nudomain>`
+
 - :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
+
+- :ref:`nubgpneighbor.NUBGPNeighbor<nubgpneighbor>`
 
 - :ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`
 

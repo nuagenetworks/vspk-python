@@ -5,7 +5,7 @@ nupspatmap
 
 .. class:: nupspatmap.NUPSPATMap(bambou.nurest_object.NUMetaRESTObject,):
 
-None
+Reserved provider SPAT IPs to be used to SPAT a collection of provider private IPs in customer domain.
 
 
 Attributes

@@ -37,6 +37,7 @@ Children
 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nunetconfsession.NUNetconfSession<nunetconfsession>`                                                                                                       ``netconf_sessions`` 
+:ref:`nualarm.NUAlarm<nualarm>`                                                                                                                                  ``alarms`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 ================================================================================================================================================               ==========================================================================================
 

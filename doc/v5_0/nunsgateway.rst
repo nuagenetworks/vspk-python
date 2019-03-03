@@ -40,6 +40,8 @@ Attributes
 
 - ``cpu_type``: The NSG Processor Type as reported during bootstrapping.
 
+- ``vsdaar_application_version``: Version of the latest imported Application Signatures.
+
 - ``nsg_version``: The NSG Version (software) as reported during bootstrapping or following an upgrade.
 
 - ``ssh_service``: Indicates if SSH Service is enabled/disabled on a NSG. The value configured for this attribute is used only when instanceSSHOverride is allowed on the associated Gateway Template.
@@ -112,6 +114,10 @@ Attributes
 
 - ``associated_nsg_upgrade_profile_id``: The UUID of the NSG Upgrade Profile associated to this NSG instance.
 
+- ``associated_overlay_management_profile_id``: The ID of the associated Overlay Management Profile
+
+- ``functions``: List of supported functions
+
 - ``auto_disc_gateway_id``: The Auto Discovered Gateway associated with this Gateway Instance
 
 - ``external_id``: External object ID. Used for integration with third party systems
@@ -143,7 +149,9 @@ Children
 :ref:`nucommand.NUCommand<nucommand>`                                                                                                                            ``commands`` 
 :ref:`nubootstrap.NUBootstrap<nubootstrap>`                                                                                                                      ``bootstraps`` 
 :ref:`nubootstrapactivation.NUBootstrapActivation<nubootstrapactivation>`                                                                                        ``bootstrap_activations`` 
+:ref:`nunsportinfo.NUNSPortInfo<nunsportinfo>`                                                                                                                   ``ns_port_infos`` 
 :ref:`nuuplinkconnection.NUUplinkConnection<nuuplinkconnection>`                                                                                                 ``uplink_connections`` 
+:ref:`nunsgatewaymonitor.NUNSGatewayMonitor<nunsgatewaymonitor>`                                                                                                 ``ns_gateway_monitors`` 
 :ref:`nunsgatewaysummary.NUNSGatewaySummary<nunsgatewaysummary>`                                                                                                 ``ns_gateway_summaries`` 
 :ref:`nunsginfo.NUNSGInfo<nunsginfo>`                                                                                                                            ``nsg_infos`` 
 :ref:`nunsport.NUNSPort<nunsport>`                                                                                                                               ``ns_ports`` 
