@@ -5,7 +5,7 @@ nuoverlaymanagementsubnetprofile
 
 .. class:: nuoverlaymanagementsubnetprofile.NUOverlayManagementSubnetProfile(bambou.nurest_object.NUMetaRESTObject,):
 
-The Overlay Management Subnet profile that maps to a DNA subnet and contains the syslog destinations. Where DNS means Do Not Advertise (Advertise=False)
+The Overlay Management Subnet profile that maps to a DNA subnet and contains the syslog destinations. Where DNA means Do Not Advertise (Advertise=False)
 
 
 Attributes
