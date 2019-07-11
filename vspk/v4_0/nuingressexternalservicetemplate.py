@@ -55,19 +55,19 @@ class NUIngressExternalServiceTemplate(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
     CONST_POLICY_STATE_DRAFT = "DRAFT"
     
     CONST_POLICY_STATE_LIVE = "LIVE"
     
-    CONST_PRIORITY_TYPE_BOTTOM = "BOTTOM"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_PRIORITY_TYPE_NONE = "NONE"
     
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
     CONST_PRIORITY_TYPE_TOP = "TOP"
+    
+    CONST_PRIORITY_TYPE_BOTTOM = "BOTTOM"
     
     
 
@@ -101,10 +101,10 @@ class NUIngressExternalServiceTemplate(NURESTObject):
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="active", remote_name="active", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
-        self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=['DRAFT', 'LIVE'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="priority_type", remote_name="priorityType", attribute_type=str, is_required=False, is_unique=False, choices=['BOTTOM', 'NONE', 'TOP'])
+        self.expose_attribute(local_name="priority_type", remote_name="priorityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BOTTOM', u'NONE', u'TOP'])
         self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         

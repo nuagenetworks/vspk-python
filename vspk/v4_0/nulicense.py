@@ -52,17 +52,17 @@ class NULicense(NURESTObject):
     
     ## Constants
     
-    CONST_LICENSE_ENCRYPTION_ENCRYPTION_DISABLED = "ENCRYPTION_DISABLED"
-    
     CONST_LICENSE_ENCRYPTION_ENCRYPTION_ENABLED = "ENCRYPTION_ENABLED"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_LICENSE_TYPE_CLUSTERED = "CLUSTERED"
     
     CONST_LICENSE_TYPE_STANDARD = "STANDARD"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_LICENSE_ENCRYPTION_ENCRYPTION_DISABLED = "ENCRYPTION_DISABLED"
     
     
 
@@ -124,10 +124,10 @@ class NULicense(NURESTObject):
         self.expose_attribute(local_name="additional_supported_versions", remote_name="additionalSupportedVersions", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="phone", remote_name="phone", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="license", remote_name="license", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="license_encryption", remote_name="licenseEncryption", attribute_type=str, is_required=False, is_unique=False, choices=['ENCRYPTION_DISABLED', 'ENCRYPTION_ENABLED'])
+        self.expose_attribute(local_name="license_encryption", remote_name="licenseEncryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENCRYPTION_DISABLED', u'ENCRYPTION_ENABLED'])
         self.expose_attribute(local_name="license_entities", remote_name="licenseEntities", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="license_id", remote_name="licenseID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="license_type", remote_name="licenseType", attribute_type=str, is_required=False, is_unique=False, choices=['CLUSTERED', 'STANDARD'])
+        self.expose_attribute(local_name="license_type", remote_name="licenseType", attribute_type=str, is_required=False, is_unique=False, choices=[u'CLUSTERED', u'STANDARD'])
         self.expose_attribute(local_name="minor_release", remote_name="minorRelease", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zip", remote_name="zip", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="city", remote_name="city", attribute_type=str, is_required=False, is_unique=False)
@@ -141,7 +141,7 @@ class NULicense(NURESTObject):
         self.expose_attribute(local_name="email", remote_name="email", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption_mode", remote_name="encryptionMode", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="unique_license_identifier", remote_name="uniqueLicenseIdentifier", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="company", remote_name="company", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="country", remote_name="country", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="product_version", remote_name="productVersion", attribute_type=str, is_required=False, is_unique=False)

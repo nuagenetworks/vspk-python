@@ -49,9 +49,9 @@ class NULDAPConfiguration(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
 
@@ -96,7 +96,7 @@ class NULDAPConfiguration(NURESTObject):
         self.expose_attribute(local_name="certificate", remote_name="certificate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="server", remote_name="server", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="enabled", remote_name="enabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="port", remote_name="port", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="group_dn", remote_name="groupDN", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="group_name_prefix", remote_name="groupNamePrefix", attribute_type=str, is_required=False, is_unique=False)

@@ -1,0 +1,49 @@
+.. _nusshkey:
+
+nusshkey
+===========================================
+
+.. class:: nusshkey.NUSSHKey(bambou.nurest_object.NUMetaRESTObject,):
+
+SSH (Secure Shell) is used to provide secure remote console access to NSGs deployed in branch locations. When key-based authentication is in use, the SSH keys represent the list of public keys that are authorized to open an SSH connection with the username set at the Access Profile level.
+
+
+Attributes
+----------
+
+
+- ``name`` (**Mandatory**): Name of the SSH Key.
+
+- ``last_updated_by``: ID of the user who last updated the object.
+
+- ``description``: A description of the SSH Key.
+
+- ``key_type``: Type of SSH Key defined. Only RSA supported for now.
+
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``public_key`` (**Mandatory**): Public Key of a SSH Key Pair.
+
+- ``external_id``: External object ID. Used for integration with third party systems
+
+
+
+
+Children
+--------
+
+================================================================================================================================================               ==========================================================================================
+**class**                                                                                                                                                      **fetcher**
+
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+================================================================================================================================================               ==========================================================================================
+
+
+
+Parents
+--------
+
+
+- :ref:`nuinfrastructureaccessprofile.NUInfrastructureAccessProfile<nuinfrastructureaccessprofile>`
+

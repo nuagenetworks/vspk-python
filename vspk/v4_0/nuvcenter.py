@@ -64,6 +64,8 @@ class NUVCenter(NURESTObject):
     
     ## Constants
     
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
     CONST_DESTINATION_MIRROR_PORT_ENS160 = "ens160"
     
     CONST_DESTINATION_MIRROR_PORT_ENS161 = "ens161"
@@ -72,11 +74,9 @@ class NUVCenter(NURESTObject):
     
     CONST_DESTINATION_MIRROR_PORT_ENS256 = "ens256"
     
-    CONST_DESTINATION_MIRROR_PORT_NO_MIRROR = "no_mirror"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_DESTINATION_MIRROR_PORT_NO_MIRROR = "no_mirror"
     
     
 
@@ -195,7 +195,7 @@ class NUVCenter(NURESTObject):
         self.expose_attribute(local_name="separate_data_network", remote_name="separateDataNetwork", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="destination_mirror_port", remote_name="destinationMirrorPort", attribute_type=str, is_required=False, is_unique=False, choices=['ens160', 'ens161', 'ens224', 'ens256', 'no_mirror'])
+        self.expose_attribute(local_name="destination_mirror_port", remote_name="destinationMirrorPort", attribute_type=str, is_required=False, is_unique=False, choices=[u'ens160', u'ens161', u'ens224', u'ens256', u'no_mirror'])
         self.expose_attribute(local_name="metadata_server_ip", remote_name="metadataServerIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_server_listen_port", remote_name="metadataServerListenPort", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_server_port", remote_name="metadataServerPort", attribute_type=int, is_required=False, is_unique=False)
@@ -219,7 +219,7 @@ class NUVCenter(NURESTObject):
         self.expose_attribute(local_name="allow_mgmt_dhcp", remote_name="allowMgmtDHCP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_eviction_threshold", remote_name="flowEvictionThreshold", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vm_network_portgroup", remote_name="vmNetworkPortgroup", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="connection_status", remote_name="connectionStatus", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="portgroup_metadata", remote_name="portgroupMetadata", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="host_level_management", remote_name="hostLevelManagement", attribute_type=bool, is_required=False, is_unique=False)

@@ -208,11 +208,17 @@ class NUEnterprise(NURESTObject):
     
     ## Constants
     
-    CONST_ALLOWED_FORWARDING_CLASSES_A = "A"
+    CONST_ENCRYPTION_MANAGEMENT_MODE_MANAGED = "MANAGED"
     
-    CONST_ALLOWED_FORWARDING_CLASSES_B = "B"
+    CONST_AVATAR_TYPE_COMPUTEDURL = "COMPUTEDURL"
     
-    CONST_ALLOWED_FORWARDING_CLASSES_C = "C"
+    CONST_ALLOWED_FORWARDING_CLASSES_NONE = "NONE"
+    
+    CONST_AVATAR_TYPE_BASE64 = "BASE64"
+    
+    CONST_ENCRYPTION_MANAGEMENT_MODE_DISABLED = "DISABLED"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_ALLOWED_FORWARDING_CLASSES_D = "D"
     
@@ -222,23 +228,17 @@ class NUEnterprise(NURESTObject):
     
     CONST_ALLOWED_FORWARDING_CLASSES_G = "G"
     
-    CONST_ALLOWED_FORWARDING_CLASSES_H = "H"
+    CONST_AVATAR_TYPE_URL = "URL"
     
-    CONST_ALLOWED_FORWARDING_CLASSES_NONE = "NONE"
+    CONST_ALLOWED_FORWARDING_CLASSES_A = "A"
     
-    CONST_ENCRYPTION_MANAGEMENT_MODE_DISABLED = "DISABLED"
+    CONST_ALLOWED_FORWARDING_CLASSES_B = "B"
     
-    CONST_ENCRYPTION_MANAGEMENT_MODE_MANAGED = "MANAGED"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_ALLOWED_FORWARDING_CLASSES_C = "C"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_AVATAR_TYPE_BASE64 = "BASE64"
-    
-    CONST_AVATAR_TYPE_COMPUTEDURL = "COMPUTEDURL"
-    
-    CONST_AVATAR_TYPE_URL = "URL"
+    CONST_ALLOWED_FORWARDING_CLASSES_H = "H"
     
     
 
@@ -301,20 +301,20 @@ class NUEnterprise(NURESTObject):
         self.expose_attribute(local_name="allow_advanced_qos_configuration", remote_name="allowAdvancedQOSConfiguration", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_gateway_management", remote_name="allowGatewayManagement", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_trusted_forwarding_class", remote_name="allowTrustedForwardingClass", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="allowed_forwarding_classes", remote_name="allowedForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'NONE'])
+        self.expose_attribute(local_name="allowed_forwarding_classes", remote_name="allowedForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="floating_ips_quota", remote_name="floatingIPsQuota", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="floating_ips_used", remote_name="floatingIPsUsed", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enable_application_performance_management", remote_name="enableApplicationPerformanceManagement", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="encryption_management_mode", remote_name="encryptionManagementMode", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'MANAGED'])
+        self.expose_attribute(local_name="encryption_management_mode", remote_name="encryptionManagementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'MANAGED'])
         self.expose_attribute(local_name="enterprise_profile_id", remote_name="enterpriseProfileID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="local_as", remote_name="localAS", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_enterprise_security_id", remote_name="associatedEnterpriseSecurityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_group_key_encryption_profile_id", remote_name="associatedGroupKeyEncryptionProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_key_server_monitor_id", remote_name="associatedKeyServerMonitorID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="avatar_data", remote_name="avatarData", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="avatar_type", remote_name="avatarType", attribute_type=str, is_required=False, is_unique=False, choices=['BASE64', 'COMPUTEDURL', 'URL'])
+        self.expose_attribute(local_name="avatar_type", remote_name="avatarType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BASE64', u'COMPUTEDURL', u'URL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

@@ -52,41 +52,41 @@ class NUUplinkConnection(NURESTObject):
     
     ## Constants
     
+    CONST_INTERFACE_CONNECTION_TYPE_AUTOMATIC = "AUTOMATIC"
+    
     CONST_ADVERTISEMENT_CRITERIA_BFD = "BFD"
     
-    CONST_ADVERTISEMENT_CRITERIA_CONTROL_SESSION = "CONTROL_SESSION"
+    CONST_ROLE_UNKNOWN = "UNKNOWN"
     
-    CONST_ADVERTISEMENT_CRITERIA_OPERATIONAL_LINK = "OPERATIONAL_LINK"
+    CONST_ROLE_NONE = "NONE"
     
-    CONST_INTERFACE_CONNECTION_TYPE_AUTOMATIC = "AUTOMATIC"
+    CONST_ROLE_SECONDARY = "SECONDARY"
     
     CONST_INTERFACE_CONNECTION_TYPE_EMBEDDED = "EMBEDDED"
     
-    CONST_INTERFACE_CONNECTION_TYPE_PCI_EXPRESS = "PCI_EXPRESS"
-    
-    CONST_INTERFACE_CONNECTION_TYPE_USB_ETHERNET = "USB_ETHERNET"
+    CONST_ADVERTISEMENT_CRITERIA_OPERATIONAL_LINK = "OPERATIONAL_LINK"
     
     CONST_INTERFACE_CONNECTION_TYPE_USB_MODEM = "USB_MODEM"
     
-    CONST_MODE_ANY = "Any"
+    CONST_MODE_PPPOE = "PPPoE"
     
     CONST_MODE_DYNAMIC = "Dynamic"
     
     CONST_MODE_LTE = "LTE"
     
-    CONST_MODE_PPPOE = "PPPoE"
+    CONST_ROLE_TERTIARY = "TERTIARY"
+    
+    CONST_MODE_ANY = "Any"
+    
+    CONST_ADVERTISEMENT_CRITERIA_CONTROL_SESSION = "CONTROL_SESSION"
     
     CONST_MODE_STATIC = "Static"
     
-    CONST_ROLE_NONE = "NONE"
+    CONST_INTERFACE_CONNECTION_TYPE_PCI_EXPRESS = "PCI_EXPRESS"
+    
+    CONST_INTERFACE_CONNECTION_TYPE_USB_ETHERNET = "USB_ETHERNET"
     
     CONST_ROLE_PRIMARY = "PRIMARY"
-    
-    CONST_ROLE_SECONDARY = "SECONDARY"
-    
-    CONST_ROLE_TERTIARY = "TERTIARY"
-    
-    CONST_ROLE_UNKNOWN = "UNKNOWN"
     
     
 
@@ -126,11 +126,11 @@ class NUUplinkConnection(NURESTObject):
         self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=['BFD', 'CONTROL_SESSION', 'OPERATIONAL_LINK'])
+        self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'BFD', u'CONTROL_SESSION', u'OPERATIONAL_LINK'])
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="interface_connection_type", remote_name="interfaceConnectionType", attribute_type=str, is_required=False, is_unique=False, choices=['AUTOMATIC', 'EMBEDDED', 'PCI_EXPRESS', 'USB_ETHERNET', 'USB_MODEM'])
-        self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=['Any', 'Dynamic', 'LTE', 'PPPoE', 'Static'])
-        self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=['NONE', 'PRIMARY', 'SECONDARY', 'TERTIARY', 'UNKNOWN'])
+        self.expose_attribute(local_name="interface_connection_type", remote_name="interfaceConnectionType", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTOMATIC', u'EMBEDDED', u'PCI_EXPRESS', u'USB_ETHERNET', u'USB_MODEM'])
+        self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'Any', u'Dynamic', u'LTE', u'PPPoE', u'Static'])
+        self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'PRIMARY', u'SECONDARY', u'TERTIARY', u'UNKNOWN'])
         self.expose_attribute(local_name="uplink_id", remote_name="uplinkID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="username", remote_name="username", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_underlay_id", remote_name="assocUnderlayID", attribute_type=str, is_required=False, is_unique=False)

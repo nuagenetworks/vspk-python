@@ -43,63 +43,63 @@ class NUFirewallRule(NURESTObject):
     
     ## Constants
     
-    CONST_ACTION_DROP  = "DROP "
-    
-    CONST_ACTION_FORWARD  = "FORWARD "
-    
-    CONST_ACTION_REDIRECT = "REDIRECT"
-    
-    CONST_DESTINATION_TYPE_MACROGROUP = "MACROGROUP"
-    
-    CONST_DESTINATION_TYPE_NETWORK = "NETWORK"
-    
-    CONST_DESTINATION_TYPE_NETWORKPOLICYGROUP = "NETWORKPOLICYGROUP"
-    
-    CONST_DESTINATION_TYPE_POLICYGROUP = "POLICYGROUP"
-    
-    CONST_NETWORK_TYPE_ANY = "ANY"
-    
-    CONST_NETWORK_TYPE_ENDPOINT_DOMAIN = "ENDPOINT_DOMAIN"
-    
-    CONST_NETWORK_TYPE_ENDPOINT_SUBNET = "ENDPOINT_SUBNET"
-    
-    CONST_NETWORK_TYPE_ENDPOINT_ZONE = "ENDPOINT_ZONE"
+    CONST_NETWORK_TYPE_NETWORK_MACRO_GROUP = "NETWORK_MACRO_GROUP"
     
     CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
     
-    CONST_NETWORK_TYPE_INTERNET_POLICYGROUP = "INTERNET_POLICYGROUP"
+    CONST_LOCATION_TYPE_ZONE = "ZONE"
     
-    CONST_NETWORK_TYPE_NETWORK = "NETWORK"
+    CONST_ACTION_REDIRECT = "REDIRECT"
     
-    CONST_NETWORK_TYPE_NETWORK_MACRO_GROUP = "NETWORK_MACRO_GROUP"
+    CONST_DESTINATION_TYPE_NETWORK = "NETWORK"
+    
+    CONST_NETWORK_TYPE_PUBLIC_NETWORK = "PUBLIC_NETWORK"
+    
+    CONST_NETWORK_TYPE_ENDPOINT_ZONE = "ENDPOINT_ZONE"
     
     CONST_NETWORK_TYPE_POLICYGROUP = "POLICYGROUP"
     
-    CONST_NETWORK_TYPE_PUBLIC_NETWORK = "PUBLIC_NETWORK"
+    CONST_LOCATION_TYPE_ANY = "ANY"
+    
+    CONST_SOURCE_TYPE_POLICYGROUP = "POLICYGROUP"
+    
+    CONST_NETWORK_TYPE_ENDPOINT_DOMAIN = "ENDPOINT_DOMAIN"
+    
+    CONST_NETWORK_TYPE_ANY = "ANY"
+    
+    CONST_LOCATION_TYPE_POLICYGROUP = "POLICYGROUP"
+    
+    CONST_ACTION_FORWARD  = "FORWARD "
     
     CONST_NETWORK_TYPE_SUBNET = "SUBNET"
     
     CONST_NETWORK_TYPE_ZONE = "ZONE"
     
-    CONST_LOCATION_TYPE_ANY = "ANY"
+    CONST_DESTINATION_TYPE_NETWORKPOLICYGROUP = "NETWORKPOLICYGROUP"
     
-    CONST_LOCATION_TYPE_POLICYGROUP = "POLICYGROUP"
-    
-    CONST_LOCATION_TYPE_REDIRECTIONTARGET = "REDIRECTIONTARGET"
-    
-    CONST_LOCATION_TYPE_SUBNET = "SUBNET"
-    
-    CONST_LOCATION_TYPE_VPORTTAG = "VPORTTAG"
-    
-    CONST_LOCATION_TYPE_ZONE = "ZONE"
+    CONST_NETWORK_TYPE_ENDPOINT_SUBNET = "ENDPOINT_SUBNET"
     
     CONST_SOURCE_TYPE_MACROGROUP = "MACROGROUP"
     
     CONST_SOURCE_TYPE_NETWORK = "NETWORK"
     
+    CONST_LOCATION_TYPE_VPORTTAG = "VPORTTAG"
+    
+    CONST_DESTINATION_TYPE_MACROGROUP = "MACROGROUP"
+    
+    CONST_LOCATION_TYPE_SUBNET = "SUBNET"
+    
+    CONST_NETWORK_TYPE_NETWORK = "NETWORK"
+    
+    CONST_LOCATION_TYPE_REDIRECTIONTARGET = "REDIRECTIONTARGET"
+    
+    CONST_ACTION_DROP  = "DROP "
+    
+    CONST_NETWORK_TYPE_INTERNET_POLICYGROUP = "INTERNET_POLICYGROUP"
+    
     CONST_SOURCE_TYPE_NETWORKPOLICYGROUP = "NETWORKPOLICYGROUP"
     
-    CONST_SOURCE_TYPE_POLICYGROUP = "POLICYGROUP"
+    CONST_DESTINATION_TYPE_POLICYGROUP = "POLICYGROUP"
     
     
 
@@ -164,7 +164,7 @@ class NUFirewallRule(NURESTObject):
         self.expose_attribute(local_name="icmp_type", remote_name="ICMPType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ipv6_address_override", remote_name="IPv6AddressOverride", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=False, is_unique=False, choices=['DROP ', 'FORWARD ', 'REDIRECT'])
+        self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=False, is_unique=False, choices=[u'DROP ', u'FORWARD ', u'REDIRECT'])
         self.expose_attribute(local_name="address_override", remote_name="addressOverride", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dest_network", remote_name="destNetwork", attribute_type=str, is_required=False, is_unique=False)
@@ -172,22 +172,22 @@ class NUFirewallRule(NURESTObject):
         self.expose_attribute(local_name="dest_pg_type", remote_name="destPgType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_ipv6_value", remote_name="destinationIpv6Value", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="destination_type", remote_name="destinationType", attribute_type=str, is_required=False, is_unique=False, choices=['MACROGROUP', 'NETWORK', 'NETWORKPOLICYGROUP', 'POLICYGROUP'])
+        self.expose_attribute(local_name="destination_type", remote_name="destinationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'MACROGROUP', u'NETWORK', u'NETWORKPOLICYGROUP', u'POLICYGROUP'])
         self.expose_attribute(local_name="destination_value", remote_name="destinationValue", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=['ANY', 'ENDPOINT_DOMAIN', 'ENDPOINT_SUBNET', 'ENDPOINT_ZONE', 'ENTERPRISE_NETWORK', 'INTERNET_POLICYGROUP', 'NETWORK', 'NETWORK_MACRO_GROUP', 'POLICYGROUP', 'PUBLIC_NETWORK', 'SUBNET', 'ZONE'])
+        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'INTERNET_POLICYGROUP', u'NETWORK', u'NETWORK_MACRO_GROUP', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'ZONE'])
         self.expose_attribute(local_name="mirror_destination_id", remote_name="mirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_logging_enabled", remote_name="flowLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=False, is_unique=False, choices=['ANY', 'POLICYGROUP', 'REDIRECTIONTARGET', 'SUBNET', 'VPORTTAG', 'ZONE'])
+        self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'POLICYGROUP', u'REDIRECTIONTARGET', u'SUBNET', u'VPORTTAG', u'ZONE'])
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_ipv6_value", remote_name="sourceIpv6Value", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_network", remote_name="sourceNetwork", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_pg_id", remote_name="sourcePgId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_pg_type", remote_name="sourcePgType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="source_type", remote_name="sourceType", attribute_type=str, is_required=False, is_unique=False, choices=['MACROGROUP', 'NETWORK', 'NETWORKPOLICYGROUP', 'POLICYGROUP'])
+        self.expose_attribute(local_name="source_type", remote_name="sourceType", attribute_type=str, is_required=False, is_unique=False, choices=[u'MACROGROUP', u'NETWORK', u'NETWORKPOLICYGROUP', u'POLICYGROUP'])
         self.expose_attribute(local_name="source_value", remote_name="sourceValue", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_application_id", remote_name="associatedApplicationID", attribute_type=str, is_required=False, is_unique=False)

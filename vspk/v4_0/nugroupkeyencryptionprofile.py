@@ -49,61 +49,61 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
     
     ## Constants
     
-    CONST_SEK_PAYLOAD_ENCRYPTION_ALGORITHM_RSA_1024 = "RSA_1024"
-    
-    CONST_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA1WITHRSA = "SHA1withRSA"
-    
-    CONST_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA224WITHRSA = "SHA224withRSA"
+    CONST_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA512WITHRSA = "SHA512withRSA"
     
     CONST_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA256WITHRSA = "SHA256withRSA"
     
-    CONST_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA384WITHRSA = "SHA384withRSA"
-    
-    CONST_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA512WITHRSA = "SHA512withRSA"
-    
-    CONST_SEED_PAYLOAD_AUTHENTICATION_ALGORITHM_HMAC_SHA1 = "HMAC_SHA1"
-    
-    CONST_SEED_PAYLOAD_AUTHENTICATION_ALGORITHM_HMAC_SHA256 = "HMAC_SHA256"
-    
-    CONST_SEED_PAYLOAD_AUTHENTICATION_ALGORITHM_HMAC_SHA512 = "HMAC_SHA512"
-    
-    CONST_SEED_PAYLOAD_ENCRYPTION_ALGORITHM_AES_128_CBC = "AES_128_CBC"
-    
-    CONST_SEED_PAYLOAD_ENCRYPTION_ALGORITHM_AES_256_CBC = "AES_256_CBC"
-    
-    CONST_SEED_PAYLOAD_ENCRYPTION_ALGORITHM_TRIPLE_DES_CBC = "TRIPLE_DES_CBC"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA1WITHRSA = "SHA1withRSA"
     
-    CONST_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA224WITHRSA = "SHA224withRSA"
+    CONST_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA512 = "HMAC_SHA512"
     
-    CONST_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA256WITHRSA = "SHA256withRSA"
+    CONST_SEED_PAYLOAD_ENCRYPTION_ALGORITHM_TRIPLE_DES_CBC = "TRIPLE_DES_CBC"
     
-    CONST_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA384WITHRSA = "SHA384withRSA"
-    
-    CONST_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA512WITHRSA = "SHA512withRSA"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_MD5 = "HMAC_MD5"
+    CONST_SEED_PAYLOAD_AUTHENTICATION_ALGORITHM_HMAC_SHA1 = "HMAC_SHA1"
     
     CONST_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA1 = "HMAC_SHA1"
     
-    CONST_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA256 = "HMAC_SHA256"
+    CONST_SEED_PAYLOAD_AUTHENTICATION_ALGORITHM_HMAC_SHA256 = "HMAC_SHA256"
+    
+    CONST_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA512WITHRSA = "SHA512withRSA"
     
     CONST_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA384 = "HMAC_SHA384"
     
-    CONST_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA512 = "HMAC_SHA512"
+    CONST_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA1WITHRSA = "SHA1withRSA"
     
-    CONST_TRAFFIC_ENCRYPTION_ALGORITHM_AES_128_CBC = "AES_128_CBC"
+    CONST_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA384WITHRSA = "SHA384withRSA"
+    
+    CONST_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA224WITHRSA = "SHA224withRSA"
+    
+    CONST_TRAFFIC_ENCRYPTION_ALGORITHM_TRIPLE_DES_CBC = "TRIPLE_DES_CBC"
+    
+    CONST_SEED_PAYLOAD_ENCRYPTION_ALGORITHM_AES_256_CBC = "AES_256_CBC"
+    
+    CONST_SEK_PAYLOAD_ENCRYPTION_ALGORITHM_RSA_1024 = "RSA_1024"
+    
+    CONST_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA384WITHRSA = "SHA384withRSA"
+    
+    CONST_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA256 = "HMAC_SHA256"
     
     CONST_TRAFFIC_ENCRYPTION_ALGORITHM_AES_192_CBC = "AES_192_CBC"
     
     CONST_TRAFFIC_ENCRYPTION_ALGORITHM_AES_256_CBC = "AES_256_CBC"
     
-    CONST_TRAFFIC_ENCRYPTION_ALGORITHM_TRIPLE_DES_CBC = "TRIPLE_DES_CBC"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA256WITHRSA = "SHA256withRSA"
+    
+    CONST_TRAFFIC_ENCRYPTION_ALGORITHM_AES_128_CBC = "AES_128_CBC"
+    
+    CONST_SEED_PAYLOAD_AUTHENTICATION_ALGORITHM_HMAC_SHA512 = "HMAC_SHA512"
+    
+    CONST_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_MD5 = "HMAC_MD5"
+    
+    CONST_SEED_PAYLOAD_ENCRYPTION_ALGORITHM_AES_128_CBC = "AES_128_CBC"
+    
+    CONST_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA224WITHRSA = "SHA224withRSA"
     
     
 
@@ -151,25 +151,25 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
         
         self.expose_attribute(local_name="sek_generation_interval", remote_name="SEKGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sek_lifetime", remote_name="SEKLifetime", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="sek_payload_encryption_algorithm", remote_name="SEKPayloadEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=['RSA_1024'])
+        self.expose_attribute(local_name="sek_payload_encryption_algorithm", remote_name="SEKPayloadEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'RSA_1024'])
         self.expose_attribute(local_name="sek_payload_encryption_bc_algorithm", remote_name="SEKPayloadEncryptionBCAlgorithm", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sek_payload_encryption_key_length", remote_name="SEKPayloadEncryptionKeyLength", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="sek_payload_signing_algorithm", remote_name="SEKPayloadSigningAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=['SHA1withRSA', 'SHA224withRSA', 'SHA256withRSA', 'SHA384withRSA', 'SHA512withRSA'])
+        self.expose_attribute(local_name="sek_payload_signing_algorithm", remote_name="SEKPayloadSigningAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'SHA1withRSA', u'SHA224withRSA', u'SHA256withRSA', u'SHA384withRSA', u'SHA512withRSA'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_generation_interval", remote_name="seedGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_lifetime", remote_name="seedLifetime", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="seed_payload_authentication_algorithm", remote_name="seedPayloadAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=['HMAC_SHA1', 'HMAC_SHA256', 'HMAC_SHA512'])
+        self.expose_attribute(local_name="seed_payload_authentication_algorithm", remote_name="seedPayloadAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA512'])
         self.expose_attribute(local_name="seed_payload_authentication_bc_algorithm", remote_name="seedPayloadAuthenticationBCAlgorithm", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_payload_authentication_key_length", remote_name="seedPayloadAuthenticationKeyLength", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="seed_payload_encryption_algorithm", remote_name="seedPayloadEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=['AES_128_CBC', 'AES_256_CBC', 'TRIPLE_DES_CBC'])
+        self.expose_attribute(local_name="seed_payload_encryption_algorithm", remote_name="seedPayloadEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES_128_CBC', u'AES_256_CBC', u'TRIPLE_DES_CBC'])
         self.expose_attribute(local_name="seed_payload_encryption_bc_algorithm", remote_name="seedPayloadEncryptionBCAlgorithm", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_payload_encryption_key_length", remote_name="seedPayloadEncryptionKeyLength", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="seed_payload_signing_algorithm", remote_name="seedPayloadSigningAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=['SHA1withRSA', 'SHA224withRSA', 'SHA256withRSA', 'SHA384withRSA', 'SHA512withRSA'])
+        self.expose_attribute(local_name="seed_payload_signing_algorithm", remote_name="seedPayloadSigningAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'SHA1withRSA', u'SHA224withRSA', u'SHA256withRSA', u'SHA384withRSA', u'SHA512withRSA'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
-        self.expose_attribute(local_name="traffic_authentication_algorithm", remote_name="trafficAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=['HMAC_MD5', 'HMAC_SHA1', 'HMAC_SHA256', 'HMAC_SHA384', 'HMAC_SHA512'])
-        self.expose_attribute(local_name="traffic_encryption_algorithm", remote_name="trafficEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=['AES_128_CBC', 'AES_192_CBC', 'AES_256_CBC', 'TRIPLE_DES_CBC'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="traffic_authentication_algorithm", remote_name="trafficAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_MD5', u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA384', u'HMAC_SHA512'])
+        self.expose_attribute(local_name="traffic_encryption_algorithm", remote_name="trafficEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES_128_CBC', u'AES_192_CBC', u'AES_256_CBC', u'TRIPLE_DES_CBC'])
         self.expose_attribute(local_name="traffic_encryption_key_lifetime", remote_name="trafficEncryptionKeyLifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)

@@ -49,9 +49,9 @@ class NUEnterpriseSecuredData(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
 
@@ -87,7 +87,7 @@ class NUEnterpriseSecuredData(NURESTObject):
         self.expose_attribute(local_name="sek_id", remote_name="sekId", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="keyserver_cert_serial_number", remote_name="keyserverCertSerialNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="signed_hash", remote_name="signedHash", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

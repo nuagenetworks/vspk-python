@@ -57,33 +57,33 @@ class NUGroup(NURESTObject):
     
     CONST_MANAGEMENT_MODE_CMS = "CMS"
     
-    CONST_MANAGEMENT_MODE_DEFAULT = "DEFAULT"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
     CONST_ROLE_CMS = "CMS"
-    
-    CONST_ROLE_CSPOPERATOR = "CSPOPERATOR"
-    
-    CONST_ROLE_CSPROOT = "CSPROOT"
-    
-    CONST_ROLE_JMS = "JMS"
-    
-    CONST_ROLE_ORGADMIN = "ORGADMIN"
-    
-    CONST_ROLE_ORGAPPDESIGNER = "ORGAPPDESIGNER"
-    
-    CONST_ROLE_ORGNETWORKDESIGNER = "ORGNETWORKDESIGNER"
-    
-    CONST_ROLE_ORGUSER = "ORGUSER"
-    
-    CONST_ROLE_SYSTEM = "SYSTEM"
     
     CONST_ROLE_UNKNOWN = "UNKNOWN"
     
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ROLE_ORGNETWORKDESIGNER = "ORGNETWORKDESIGNER"
+    
+    CONST_ROLE_CSPOPERATOR = "CSPOPERATOR"
+    
     CONST_ROLE_USER = "USER"
+    
+    CONST_ROLE_ORGAPPDESIGNER = "ORGAPPDESIGNER"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ROLE_JMS = "JMS"
+    
+    CONST_ROLE_ORGUSER = "ORGUSER"
+    
+    CONST_ROLE_CSPROOT = "CSPROOT"
+    
+    CONST_ROLE_SYSTEM = "SYSTEM"
+    
+    CONST_ROLE_ORGADMIN = "ORGADMIN"
+    
+    CONST_MANAGEMENT_MODE_DEFAULT = "DEFAULT"
     
     
 
@@ -118,13 +118,13 @@ class NUGroup(NURESTObject):
         
         self.expose_attribute(local_name="ldap_group_dn", remote_name="LDAPGroupDN", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="management_mode", remote_name="managementMode", attribute_type=str, is_required=False, is_unique=False, choices=['CMS', 'DEFAULT'])
+        self.expose_attribute(local_name="management_mode", remote_name="managementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'CMS', u'DEFAULT'])
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="account_restrictions", remote_name="accountRestrictions", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="restriction_date", remote_name="restrictionDate", attribute_type=float, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
-        self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=['CMS', 'CSPOPERATOR', 'CSPROOT', 'JMS', 'ORGADMIN', 'ORGAPPDESIGNER', 'ORGNETWORKDESIGNER', 'ORGUSER', 'SYSTEM', 'UNKNOWN', 'USER'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=[u'CMS', u'CSPOPERATOR', u'CSPROOT', u'JMS', u'ORGADMIN', u'ORGAPPDESIGNER', u'ORGNETWORKDESIGNER', u'ORGUSER', u'SYSTEM', u'UNKNOWN', u'USER'])
         self.expose_attribute(local_name="private", remote_name="private", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         

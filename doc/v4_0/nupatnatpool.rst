@@ -71,13 +71,13 @@ Parents
 --------
 
 
-- :ref:`nunsgateway.NUNSGateway<nunsgateway>`
-
 - :ref:`nugateway.NUGateway<nugateway>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nume.NUMe<nume>`
+
+- :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
 - :ref:`nuvlan.NUVLAN<nuvlan>`
 
-- :ref:`nume.NUMe<nume>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

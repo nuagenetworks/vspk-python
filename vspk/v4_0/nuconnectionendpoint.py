@@ -73,10 +73,10 @@ class NUConnectionendpoint(NURESTObject):
         self._end_point_type = None
         
         self.expose_attribute(local_name="ip_address", remote_name="IPAddress", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=['IPV4'])
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="end_point_type", remote_name="endPointType", attribute_type=str, is_required=False, is_unique=False, choices=['SOURCE'])
+        self.expose_attribute(local_name="end_point_type", remote_name="endPointType", attribute_type=str, is_required=False, is_unique=False, choices=[u'SOURCE'])
         
 
         self._compute_args(**kwargs)

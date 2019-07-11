@@ -88,39 +88,39 @@ class NUL2DomainTemplate(NURESTObject):
     
     ## Constants
     
-    CONST_DPI_DISABLED = "DISABLED"
-    
-    CONST_DPI_ENABLED = "ENABLED"
-    
-    CONST_DPI_INHERITED = "INHERITED"
-    
-    CONST_IP_TYPE_IPV4 = "IPV4"
-    
-    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
-    
-    CONST_ENCRYPTION_DISABLED = "DISABLED"
-    
-    CONST_ENCRYPTION_ENABLED = "ENABLED"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_POLICY_CHANGE_STATUS_APPLIED = "APPLIED"
-    
-    CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
-    
-    CONST_POLICY_CHANGE_STATUS_STARTED = "STARTED"
-    
     CONST_USE_GLOBAL_MAC_DISABLED = "DISABLED"
     
     CONST_USE_GLOBAL_MAC_ENABLED = "ENABLED"
     
     CONST_MULTICAST_DISABLED = "DISABLED"
     
+    CONST_POLICY_CHANGE_STATUS_STARTED = "STARTED"
+    
+    CONST_ENCRYPTION_ENABLED = "ENABLED"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ENCRYPTION_DISABLED = "DISABLED"
+    
+    CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
+    
+    CONST_DPI_ENABLED = "ENABLED"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_DPI_INHERITED = "INHERITED"
+    
+    CONST_IP_TYPE_IPV4 = "IPV4"
+    
     CONST_MULTICAST_ENABLED = "ENABLED"
     
     CONST_MULTICAST_INHERITED = "INHERITED"
+    
+    CONST_DPI_DISABLED = "DISABLED"
+    
+    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
+    
+    CONST_POLICY_CHANGE_STATUS_APPLIED = "APPLIED"
     
     
 
@@ -160,8 +160,8 @@ class NUL2DomainTemplate(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="dhcp_managed", remote_name="DHCPManaged", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED', 'INHERITED'])
-        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=['DUALSTACK', 'IPV4'])
+        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
@@ -169,12 +169,12 @@ class NUL2DomainTemplate(NURESTObject):
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED'])
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
-        self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=['APPLIED', 'DISCARDED', 'STARTED'])
-        self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED'])
+        self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'DISCARDED', u'STARTED'])
+        self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED', 'INHERITED'])
+        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

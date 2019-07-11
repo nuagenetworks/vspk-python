@@ -54,11 +54,11 @@ Parents
 --------
 
 
-- :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
-
-- :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
+- :ref:`nucontainerinterface.NUContainerInterface<nucontainerinterface>`
 
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
 
-- :ref:`nucontainerinterface.NUContainerInterface<nucontainerinterface>`
+- :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
+
+- :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
 

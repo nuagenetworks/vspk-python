@@ -51,9 +51,9 @@ Parents
 --------
 
 
-- :ref:`nuhsc.NUHSC<nuhsc>`
-
 - :ref:`nuvsc.NUVSC<nuvsc>`
 
 - :ref:`nuvrs.NUVRS<nuvrs>`
+
+- :ref:`nuhsc.NUHSC<nuhsc>`
 

@@ -43,27 +43,27 @@ class NUDiskStat(NURESTObject):
     
     ## Constants
     
-    CONST_UNIT_BYTES = "Bytes"
-    
-    CONST_UNIT_EB = "EB"
-    
-    CONST_UNIT_GB = "GB"
-    
     CONST_UNIT_KB = "KB"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_UNIT_MB = "MB"
     
-    CONST_UNIT_PB = "PB"
-    
-    CONST_UNIT_TB = "TB"
-    
     CONST_UNIT_YB = "YB"
     
-    CONST_UNIT_ZB = "ZB"
+    CONST_UNIT_BYTES = "Bytes"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_UNIT_ZB = "ZB"
+    
+    CONST_UNIT_EB = "EB"
+    
+    CONST_UNIT_PB = "PB"
+    
+    CONST_UNIT_GB = "GB"
+    
+    CONST_UNIT_TB = "TB"
     
     
 
@@ -94,8 +94,8 @@ class NUDiskStat(NURESTObject):
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="size", remote_name="size", attribute_type=float, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="unit", remote_name="unit", attribute_type=str, is_required=False, is_unique=False, choices=['Bytes', 'EB', 'GB', 'KB', 'MB', 'PB', 'TB', 'YB', 'ZB'])
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="unit", remote_name="unit", attribute_type=str, is_required=False, is_unique=False, choices=[u'Bytes', u'EB', u'GB', u'KB', u'MB', u'PB', u'TB', u'YB', u'ZB'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="used", remote_name="used", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="available", remote_name="available", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)

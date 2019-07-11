@@ -52,27 +52,27 @@ class NUKeyServerMonitorSeed(NURESTObject):
     
     ## Constants
     
-    CONST_SEED_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_MD5 = "HMAC_MD5"
+    CONST_SEED_TRAFFIC_ENCRYPTION_ALGORITHM_TRIPLE_DES_CBC = "TRIPLE_DES_CBC"
+    
+    CONST_SEED_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA512 = "HMAC_SHA512"
     
     CONST_SEED_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA1 = "HMAC_SHA1"
     
-    CONST_SEED_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA256 = "HMAC_SHA256"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_SEED_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA384 = "HMAC_SHA384"
     
-    CONST_SEED_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA512 = "HMAC_SHA512"
+    CONST_SEED_TRAFFIC_ENCRYPTION_ALGORITHM_AES_256_CBC = "AES_256_CBC"
     
     CONST_SEED_TRAFFIC_ENCRYPTION_ALGORITHM_AES_128_CBC = "AES_128_CBC"
     
     CONST_SEED_TRAFFIC_ENCRYPTION_ALGORITHM_AES_192_CBC = "AES_192_CBC"
     
-    CONST_SEED_TRAFFIC_ENCRYPTION_ALGORITHM_AES_256_CBC = "AES_256_CBC"
-    
-    CONST_SEED_TRAFFIC_ENCRYPTION_ALGORITHM_TRIPLE_DES_CBC = "TRIPLE_DES_CBC"
+    CONST_SEED_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_MD5 = "HMAC_MD5"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_SEED_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA256 = "HMAC_SHA256"
     
     
 
@@ -104,11 +104,11 @@ class NUKeyServerMonitorSeed(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="seed_traffic_authentication_algorithm", remote_name="seedTrafficAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=['HMAC_MD5', 'HMAC_SHA1', 'HMAC_SHA256', 'HMAC_SHA384', 'HMAC_SHA512'])
-        self.expose_attribute(local_name="seed_traffic_encryption_algorithm", remote_name="seedTrafficEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=['AES_128_CBC', 'AES_192_CBC', 'AES_256_CBC', 'TRIPLE_DES_CBC'])
+        self.expose_attribute(local_name="seed_traffic_authentication_algorithm", remote_name="seedTrafficAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_MD5', u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA384', u'HMAC_SHA512'])
+        self.expose_attribute(local_name="seed_traffic_encryption_algorithm", remote_name="seedTrafficEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES_128_CBC', u'AES_192_CBC', u'AES_256_CBC', u'TRIPLE_DES_CBC'])
         self.expose_attribute(local_name="seed_traffic_encryption_key_lifetime", remote_name="seedTrafficEncryptionKeyLifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="lifetime", remote_name="lifetime", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="creation_time", remote_name="creationTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="start_time", remote_name="startTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)

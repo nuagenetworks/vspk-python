@@ -46,6 +46,10 @@ class NUPerformanceMonitor(NURESTObject):
     
     ## Constants
     
+    CONST_SERVICE_CLASS_H = "H"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
     CONST_SERVICE_CLASS_A = "A"
     
     CONST_SERVICE_CLASS_B = "B"
@@ -60,11 +64,7 @@ class NUPerformanceMonitor(NURESTObject):
     
     CONST_SERVICE_CLASS_G = "G"
     
-    CONST_SERVICE_CLASS_H = "H"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     
 
@@ -100,10 +100,10 @@ class NUPerformanceMonitor(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="payload_size", remote_name="payloadSize", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="read_only", remote_name="readOnly", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="service_class", remote_name="serviceClass", attribute_type=str, is_required=False, is_unique=False, choices=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'])
+        self.expose_attribute(local_name="service_class", remote_name="serviceClass", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="interval", remote_name="interval", attribute_type=int, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="number_of_packets", remote_name="numberOfPackets", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         

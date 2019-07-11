@@ -105,7 +105,7 @@ Parents
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
-- :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`
-
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`
 

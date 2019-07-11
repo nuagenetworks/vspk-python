@@ -51,15 +51,15 @@ class NUExternalAppService(NURESTObject):
     
     CONST_EGRESS_TYPE_REDIRECT = "REDIRECT"
     
-    CONST_EGRESS_TYPE_ROUTE = "ROUTE"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_INGRESS_TYPE_REDIRECT = "REDIRECT"
     
-    CONST_INGRESS_TYPE_ROUTE = "ROUTE"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_EGRESS_TYPE_ROUTE = "ROUTE"
+    
+    CONST_INGRESS_TYPE_ROUTE = "ROUTE"
     
     
 
@@ -107,11 +107,11 @@ class NUExternalAppService(NURESTObject):
         self.expose_attribute(local_name="destination_nat_enabled", remote_name="destinationNATEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_nat_mask", remote_name="destinationNATMask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata", remote_name="metadata", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="egress_type", remote_name="egressType", attribute_type=str, is_required=False, is_unique=False, choices=['REDIRECT', 'ROUTE'])
+        self.expose_attribute(local_name="egress_type", remote_name="egressType", attribute_type=str, is_required=False, is_unique=False, choices=[u'REDIRECT', u'ROUTE'])
         self.expose_attribute(local_name="virtual_ip", remote_name="virtualIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="virtual_ip_required", remote_name="virtualIPRequired", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="ingress_type", remote_name="ingressType", attribute_type=str, is_required=False, is_unique=False, choices=['REDIRECT', 'ROUTE'])
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="ingress_type", remote_name="ingressType", attribute_type=str, is_required=False, is_unique=False, choices=[u'REDIRECT', u'ROUTE'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="source_nat_address", remote_name="sourceNATAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_nat_enabled", remote_name="sourceNATEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_service_egress_group_id", remote_name="associatedServiceEgressGroupID", attribute_type=str, is_required=False, is_unique=False)

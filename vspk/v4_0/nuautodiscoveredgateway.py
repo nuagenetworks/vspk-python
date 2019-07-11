@@ -61,25 +61,25 @@ class NUAutoDiscoveredGateway(NURESTObject):
     
     ## Constants
     
-    CONST_PERSONALITY_DC7X50 = "DC7X50"
-    
     CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
-    
-    CONST_PERSONALITY_NSG = "NSG"
-    
-    CONST_PERSONALITY_OTHER = "OTHER"
-    
-    CONST_PERSONALITY_VRSB = "VRSB"
-    
-    CONST_PERSONALITY_VRSG = "VRSG"
     
     CONST_PERSONALITY_VSA = "VSA"
     
     CONST_PERSONALITY_VSG = "VSG"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_PERSONALITY_OTHER = "OTHER"
+    
+    CONST_PERSONALITY_VRSB = "VRSB"
+    
+    CONST_PERSONALITY_NSG = "NSG"
+    
+    CONST_PERSONALITY_VRSG = "VRSG"
+    
+    CONST_PERSONALITY_DC7X50 = "DC7X50"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
 
@@ -117,9 +117,9 @@ class NUAutoDiscoveredGateway(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_id", remote_name="gatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peer", remote_name="peer", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=True, is_unique=False, choices=['DC7X50', 'HARDWARE_VTEP', 'NSG', 'OTHER', 'VRSB', 'VRSG', 'VSA', 'VSG'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=True, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'OTHER', u'VRSB', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="controllers", remote_name="controllers", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_gateway_vlanvnid", remote_name="useGatewayVLANVNID", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vtep", remote_name="vtep", attribute_type=str, is_required=False, is_unique=False)

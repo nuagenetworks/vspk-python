@@ -67,29 +67,29 @@ class NUPATNATPool(NURESTObject):
     
     ## Constants
     
+    CONST_PERMITTED_ACTION_USE = "USE"
+    
+    CONST_PERMITTED_ACTION_READ = "READ"
+    
+    CONST_ASSOCIATED_GATEWAY_TYPE_GATEWAY = "GATEWAY"
+    
     CONST_PERMITTED_ACTION_ALL = "ALL"
     
     CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
     
     CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
     
-    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
-    
-    CONST_PERMITTED_ACTION_READ = "READ"
-    
-    CONST_PERMITTED_ACTION_USE = "USE"
+    CONST_ASSOCIATED_GATEWAY_TYPE_IKE_GATEWAY = "IKE_GATEWAY"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
+    
+    CONST_ASSOCIATED_GATEWAY_TYPE_NSGATEWAY = "NSGATEWAY"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ASSOCIATED_GATEWAY_TYPE_AUTO_DISC_GATEWAY = "AUTO_DISC_GATEWAY"
-    
-    CONST_ASSOCIATED_GATEWAY_TYPE_GATEWAY = "GATEWAY"
-    
-    CONST_ASSOCIATED_GATEWAY_TYPE_IKE_GATEWAY = "IKE_GATEWAY"
-    
-    CONST_ASSOCIATED_GATEWAY_TYPE_NSGATEWAY = "NSGATEWAY"
     
     
 
@@ -132,13 +132,13 @@ class NUPATNATPool(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address_range", remote_name="addressRange", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="default_patip", remote_name="defaultPATIP", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=['ALL', 'DEPLOY', 'EXTEND', 'INSTANTIATE', 'READ', 'USE'])
+        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="end_address_range", remote_name="endAddressRange", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="end_source_address", remote_name="endSourceAddress", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="associated_gateway_id", remote_name="associatedGatewayId", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_gateway_type", remote_name="associatedGatewayType", attribute_type=str, is_required=False, is_unique=False, choices=['AUTO_DISC_GATEWAY', 'GATEWAY', 'IKE_GATEWAY', 'NSGATEWAY'])
+        self.expose_attribute(local_name="associated_gateway_type", remote_name="associatedGatewayType", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTO_DISC_GATEWAY', u'GATEWAY', u'IKE_GATEWAY', u'NSGATEWAY'])
         self.expose_attribute(local_name="associated_subnet_id", remote_name="associatedSubnetId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vlan_id", remote_name="associatedVlanId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="start_address_range", remote_name="startAddressRange", attribute_type=str, is_required=False, is_unique=False)

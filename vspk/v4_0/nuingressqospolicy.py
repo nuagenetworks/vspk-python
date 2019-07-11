@@ -49,27 +49,7 @@ class NUIngressQOSPolicy(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_QUEUE1_FORWARDING_CLASSES_NONE = "NONE"
-    
-    CONST_QUEUE1_FORWARDING_CLASSES_A = "A"
-    
-    CONST_QUEUE1_FORWARDING_CLASSES_B = "B"
-    
-    CONST_QUEUE1_FORWARDING_CLASSES_C = "C"
-    
-    CONST_QUEUE1_FORWARDING_CLASSES_D = "D"
-    
-    CONST_QUEUE1_FORWARDING_CLASSES_E = "E"
-    
-    CONST_QUEUE1_FORWARDING_CLASSES_F = "F"
-    
-    CONST_QUEUE1_FORWARDING_CLASSES_G = "G"
-    
-    CONST_QUEUE1_FORWARDING_CLASSES_H = "H"
+    CONST_QUEUE2_FORWARDING_CLASSES_H = "H"
     
     CONST_QUEUE2_FORWARDING_CLASSES_NONE = "NONE"
     
@@ -85,45 +65,65 @@ class NUIngressQOSPolicy(NURESTObject):
     
     CONST_QUEUE2_FORWARDING_CLASSES_F = "F"
     
-    CONST_QUEUE2_FORWARDING_CLASSES_G = "G"
-    
-    CONST_QUEUE2_FORWARDING_CLASSES_H = "H"
-    
-    CONST_QUEUE3_FORWARDING_CLASSES_NONE = "NONE"
-    
-    CONST_QUEUE3_FORWARDING_CLASSES_A = "A"
-    
-    CONST_QUEUE3_FORWARDING_CLASSES_B = "B"
-    
-    CONST_QUEUE3_FORWARDING_CLASSES_C = "C"
-    
-    CONST_QUEUE3_FORWARDING_CLASSES_D = "D"
-    
-    CONST_QUEUE3_FORWARDING_CLASSES_E = "E"
-    
-    CONST_QUEUE3_FORWARDING_CLASSES_F = "F"
-    
-    CONST_QUEUE3_FORWARDING_CLASSES_G = "G"
-    
-    CONST_QUEUE3_FORWARDING_CLASSES_H = "H"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_QUEUE4_FORWARDING_CLASSES_NONE = "NONE"
     
-    CONST_QUEUE4_FORWARDING_CLASSES_A = "A"
+    CONST_QUEUE1_FORWARDING_CLASSES_NONE = "NONE"
+    
+    CONST_QUEUE3_FORWARDING_CLASSES_H = "H"
+    
+    CONST_QUEUE3_FORWARDING_CLASSES_C = "C"
+    
+    CONST_QUEUE3_FORWARDING_CLASSES_B = "B"
+    
+    CONST_QUEUE3_FORWARDING_CLASSES_A = "A"
+    
+    CONST_QUEUE3_FORWARDING_CLASSES_G = "G"
+    
+    CONST_QUEUE3_FORWARDING_CLASSES_F = "F"
+    
+    CONST_QUEUE3_FORWARDING_CLASSES_E = "E"
+    
+    CONST_QUEUE3_FORWARDING_CLASSES_D = "D"
+    
+    CONST_QUEUE1_FORWARDING_CLASSES_A = "A"
+    
+    CONST_QUEUE1_FORWARDING_CLASSES_C = "C"
+    
+    CONST_QUEUE1_FORWARDING_CLASSES_B = "B"
+    
+    CONST_QUEUE1_FORWARDING_CLASSES_E = "E"
+    
+    CONST_QUEUE1_FORWARDING_CLASSES_D = "D"
+    
+    CONST_QUEUE1_FORWARDING_CLASSES_G = "G"
+    
+    CONST_QUEUE1_FORWARDING_CLASSES_F = "F"
+    
+    CONST_QUEUE1_FORWARDING_CLASSES_H = "H"
     
     CONST_QUEUE4_FORWARDING_CLASSES_B = "B"
     
     CONST_QUEUE4_FORWARDING_CLASSES_C = "C"
     
-    CONST_QUEUE4_FORWARDING_CLASSES_D = "D"
-    
-    CONST_QUEUE4_FORWARDING_CLASSES_E = "E"
+    CONST_QUEUE4_FORWARDING_CLASSES_A = "A"
     
     CONST_QUEUE4_FORWARDING_CLASSES_F = "F"
     
     CONST_QUEUE4_FORWARDING_CLASSES_G = "G"
     
+    CONST_QUEUE4_FORWARDING_CLASSES_D = "D"
+    
+    CONST_QUEUE4_FORWARDING_CLASSES_E = "E"
+    
     CONST_QUEUE4_FORWARDING_CLASSES_H = "H"
+    
+    CONST_QUEUE2_FORWARDING_CLASSES_G = "G"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_QUEUE3_FORWARDING_CLASSES_NONE = "NONE"
     
     
 
@@ -164,16 +164,16 @@ class NUIngressQOSPolicy(NURESTObject):
         self.expose_attribute(local_name="parent_queue_associated_rate_limiter_id", remote_name="parentQueueAssociatedRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="assoc_egress_qos_id", remote_name="assocEgressQosId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="queue1_associated_rate_limiter_id", remote_name="queue1AssociatedRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="queue1_forwarding_classes", remote_name="queue1ForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'NONE'])
+        self.expose_attribute(local_name="queue1_forwarding_classes", remote_name="queue1ForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="queue2_associated_rate_limiter_id", remote_name="queue2AssociatedRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="queue2_forwarding_classes", remote_name="queue2ForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'NONE'])
+        self.expose_attribute(local_name="queue2_forwarding_classes", remote_name="queue2ForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="queue3_associated_rate_limiter_id", remote_name="queue3AssociatedRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="queue3_forwarding_classes", remote_name="queue3ForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'NONE'])
+        self.expose_attribute(local_name="queue3_forwarding_classes", remote_name="queue3ForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="queue4_associated_rate_limiter_id", remote_name="queue4AssociatedRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="queue4_forwarding_classes", remote_name="queue4ForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'NONE'])
+        self.expose_attribute(local_name="queue4_forwarding_classes", remote_name="queue4ForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

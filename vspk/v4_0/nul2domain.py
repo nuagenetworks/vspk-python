@@ -136,49 +136,49 @@ class NUL2Domain(NURESTObject):
     
     ## Constants
     
-    CONST_DPI_DISABLED = "DISABLED"
+    CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
     
     CONST_DPI_ENABLED = "ENABLED"
     
-    CONST_IP_TYPE_IPV4 = "IPV4"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
+    CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
     
     CONST_MAINTENANCE_MODE_DISABLED = "DISABLED"
     
     CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
     
-    CONST_MAINTENANCE_MODE_ENABLED_INHERITED = "ENABLED_INHERITED"
-    
-    CONST_ENCRYPTION_DISABLED = "DISABLED"
-    
-    CONST_ENCRYPTION_ENABLED = "ENABLED"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_POLICY_CHANGE_STATUS_APPLIED = "APPLIED"
-    
-    CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
+    CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
     
     CONST_POLICY_CHANGE_STATUS_STARTED = "STARTED"
     
-    CONST_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
-    
     CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
-    
-    CONST_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
-    
-    CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
-    
-    CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
-    
-    CONST_MULTICAST_DISABLED = "DISABLED"
     
     CONST_MULTICAST_ENABLED = "ENABLED"
     
     CONST_MULTICAST_INHERITED = "INHERITED"
+    
+    CONST_POLICY_CHANGE_STATUS_APPLIED = "APPLIED"
+    
+    CONST_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
+    
+    CONST_MULTICAST_DISABLED = "DISABLED"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ENCRYPTION_DISABLED = "DISABLED"
+    
+    CONST_IP_TYPE_IPV4 = "IPV4"
+    
+    CONST_DPI_DISABLED = "DISABLED"
+    
+    CONST_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
+    
+    CONST_MAINTENANCE_MODE_ENABLED_INHERITED = "ENABLED_INHERITED"
+    
+    CONST_ENCRYPTION_ENABLED = "ENABLED"
+    
+    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
     
     
 
@@ -226,9 +226,9 @@ class NUL2Domain(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="dhcp_managed", remote_name="DHCPManaged", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED'])
-        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=['DUALSTACK', 'IPV4'])
-        self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED', 'ENABLED_INHERITED'])
+        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4'])
+        self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
@@ -239,16 +239,16 @@ class NUL2Domain(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vn_id", remote_name="vnId", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED'])
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
-        self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=['APPLIED', 'DISCARDED', 'STARTED'])
+        self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'DISCARDED', u'STARTED'])
         self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="route_target", remote_name="routeTarget", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=['PRIMARY', 'PRIMARY_SECONDARY', 'SECONDARY', 'SECONDARY_PRIMARY', 'SYMMETRIC'])
+        self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_shared_network_resource_id", remote_name="associatedSharedNetworkResourceID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stretched", remote_name="stretched", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED', 'INHERITED'])
+        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

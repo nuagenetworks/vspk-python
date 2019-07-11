@@ -49,15 +49,15 @@ class NUInfrastructureConfig(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_CONFIG_STATUS_UNKNOWN = "UNKNOWN"
     
     CONST_CONFIG_STATUS_FAILURE = "FAILURE"
     
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
     CONST_CONFIG_STATUS_SUCCESS = "SUCCESS"
     
-    CONST_CONFIG_STATUS_UNKNOWN = "UNKNOWN"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
 
@@ -85,9 +85,9 @@ class NUInfrastructureConfig(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="config", remote_name="config", attribute_type=dict, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="config_status", remote_name="configStatus", attribute_type=str, is_required=False, is_unique=False, choices=['FAILURE', 'SUCCESS', 'UNKNOWN'])
+        self.expose_attribute(local_name="config_status", remote_name="configStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAILURE', u'SUCCESS', u'UNKNOWN'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

@@ -159,13 +159,13 @@ Parents
 --------
 
 
-- :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
-
 - :ref:`nufirewallacl.NUFirewallAcl<nufirewallacl>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

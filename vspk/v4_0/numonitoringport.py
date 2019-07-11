@@ -51,17 +51,17 @@ class NUMonitoringPort(NURESTObject):
     
     CONST_RESILIENCY_STATE_BACKUP = "backup"
     
-    CONST_RESILIENCY_STATE_MASTER = "master"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_RESILIENCY_STATE_NONE = "none"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_STATE_ADMIN_DOWN = "ADMIN_DOWN"
+    CONST_RESILIENCY_STATE_MASTER = "master"
     
     CONST_STATE_DOWN = "DOWN"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_STATE_ADMIN_DOWN = "ADMIN_DOWN"
     
     CONST_STATE_UP = "UP"
     
@@ -99,11 +99,11 @@ class NUMonitoringPort(NURESTObject):
         self.expose_attribute(local_name="last_state_change", remote_name="lastStateChange", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="access", remote_name="access", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="resiliency_state", remote_name="resiliencyState", attribute_type=str, is_required=False, is_unique=False, choices=['backup', 'master', 'none'])
+        self.expose_attribute(local_name="resiliency_state", remote_name="resiliencyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'backup', u'master', u'none'])
         self.expose_attribute(local_name="resilient", remote_name="resilient", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="uplink", remote_name="uplink", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="state", remote_name="state", attribute_type=str, is_required=False, is_unique=False, choices=['ADMIN_DOWN', 'DOWN', 'UP'])
+        self.expose_attribute(local_name="state", remote_name="state", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

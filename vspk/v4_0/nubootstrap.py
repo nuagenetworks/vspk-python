@@ -51,29 +51,29 @@ class NUBootstrap(NURESTObject):
     
     CONST_ZFB_MATCH_ATTRIBUTE_NONE = "NONE"
     
+    CONST_ZFB_MATCH_ATTRIBUTE_NSGATEWAY_ID = "NSGATEWAY_ID"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_STATUS_NOTIFICATION_APP_REQ_SENT = "NOTIFICATION_APP_REQ_SENT"
+    
+    CONST_ZFB_MATCH_ATTRIBUTE_HOSTNAME = "HOSTNAME"
+    
+    CONST_STATUS_INACTIVE = "INACTIVE"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
     CONST_ZFB_MATCH_ATTRIBUTE_MAC_ADDRESS = "MAC_ADDRESS"
     
     CONST_ZFB_MATCH_ATTRIBUTE_IP_ADDRESS = "IP_ADDRESS"
     
-    CONST_ZFB_MATCH_ATTRIBUTE_HOSTNAME = "HOSTNAME"
-    
-    CONST_ZFB_MATCH_ATTRIBUTE_NSGATEWAY_ID = "NSGATEWAY_ID"
-    
     CONST_ZFB_MATCH_ATTRIBUTE_SERIAL_NUMBER = "SERIAL_NUMBER"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_STATUS_ACTIVE = "ACTIVE"
     
-    CONST_STATUS_CERTIFICATE_SIGNED = "CERTIFICATE_SIGNED"
-    
-    CONST_STATUS_INACTIVE = "INACTIVE"
-    
     CONST_STATUS_NOTIFICATION_APP_REQ_ACK = "NOTIFICATION_APP_REQ_ACK"
     
-    CONST_STATUS_NOTIFICATION_APP_REQ_SENT = "NOTIFICATION_APP_REQ_SENT"
+    CONST_STATUS_CERTIFICATE_SIGNED = "CERTIFICATE_SIGNED"
     
     
 
@@ -104,12 +104,12 @@ class NUBootstrap(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="zfb_info", remote_name="ZFBInfo", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="zfb_match_attribute", remote_name="ZFBMatchAttribute", attribute_type=str, is_required=False, is_unique=False, choices=['HOSTNAME', 'IP_ADDRESS', 'MAC_ADDRESS', 'NONE', 'NSGATEWAY_ID', 'SERIAL_NUMBER'])
+        self.expose_attribute(local_name="zfb_match_attribute", remote_name="ZFBMatchAttribute", attribute_type=str, is_required=False, is_unique=False, choices=[u'HOSTNAME', u'IP_ADDRESS', u'MAC_ADDRESS', u'NONE', u'NSGATEWAY_ID', u'SERIAL_NUMBER'])
         self.expose_attribute(local_name="zfb_match_value", remote_name="ZFBMatchValue", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="installer_id", remote_name="installerID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
-        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=['ACTIVE', 'CERTIFICATE_SIGNED', 'INACTIVE', 'NOTIFICATION_APP_REQ_ACK', 'NOTIFICATION_APP_REQ_SENT'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

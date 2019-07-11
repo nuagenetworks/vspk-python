@@ -51,11 +51,11 @@ Parents
 --------
 
 
-- :ref:`nusubnet.NUSubnet<nusubnet>`
-
 - :ref:`nuvport.NUVPort<nuvport>`
 
-- :ref:`nuvlan.NUVLAN<nuvlan>`
+- :ref:`nusubnet.NUSubnet<nusubnet>`
 
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nuvlan.NUVLAN<nuvlan>`
 

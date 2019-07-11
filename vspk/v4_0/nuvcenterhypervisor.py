@@ -61,17 +61,11 @@ class NUVCenterHypervisor(NURESTObject):
     
     ## Constants
     
-    CONST_VRS_STATE_DEPLOYED = "DEPLOYED"
-    
-    CONST_VRS_STATE_DEPLOYING = "DEPLOYING"
-    
-    CONST_VRS_STATE_NOT_DEPLOYED = "NOT_DEPLOYED"
-    
-    CONST_VRS_STATE_TIMEDOUT = "TIMEDOUT"
-    
     CONST_VRS_STATE_UPGRADING = "UPGRADING"
     
-    CONST_DESTINATION_MIRROR_PORT_ENS160 = "ens160"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_VRS_STATE_NOT_DEPLOYED = "NOT_DEPLOYED"
     
     CONST_DESTINATION_MIRROR_PORT_ENS161 = "ens161"
     
@@ -79,11 +73,17 @@ class NUVCenterHypervisor(NURESTObject):
     
     CONST_DESTINATION_MIRROR_PORT_ENS256 = "ens256"
     
-    CONST_DESTINATION_MIRROR_PORT_NO_MIRROR = "no_mirror"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_DESTINATION_MIRROR_PORT_ENS160 = "ens160"
+    
+    CONST_VRS_STATE_DEPLOYED = "DEPLOYED"
+    
+    CONST_DESTINATION_MIRROR_PORT_NO_MIRROR = "no_mirror"
+    
+    CONST_VRS_STATE_TIMEDOUT = "TIMEDOUT"
+    
+    CONST_VRS_STATE_DEPLOYING = "DEPLOYING"
     
     
 
@@ -208,7 +208,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="vcenter_user", remote_name="vCenterUser", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_configuration_time_limit", remote_name="VRSConfigurationTimeLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_metrics_id", remote_name="VRSMetricsID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="vrs_state", remote_name="VRSState", attribute_type=str, is_required=False, is_unique=False, choices=['DEPLOYED', 'DEPLOYING', 'NOT_DEPLOYED', 'TIMEDOUT', 'UPGRADING'])
+        self.expose_attribute(local_name="vrs_state", remote_name="VRSState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEPLOYED', u'DEPLOYING', u'NOT_DEPLOYED', u'TIMEDOUT', u'UPGRADING'])
         self.expose_attribute(local_name="v_require_nuage_metadata", remote_name="vRequireNuageMetadata", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="managed_object_id", remote_name="managedObjectID", attribute_type=str, is_required=False, is_unique=False)
@@ -229,7 +229,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="deployment_count", remote_name="deploymentCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="destination_mirror_port", remote_name="destinationMirrorPort", attribute_type=str, is_required=False, is_unique=False, choices=['ens160', 'ens161', 'ens224', 'ens256', 'no_mirror'])
+        self.expose_attribute(local_name="destination_mirror_port", remote_name="destinationMirrorPort", attribute_type=str, is_required=False, is_unique=False, choices=[u'ens160', u'ens161', u'ens224', u'ens256', u'no_mirror'])
         self.expose_attribute(local_name="metadata_server_ip", remote_name="metadataServerIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_server_listen_port", remote_name="metadataServerListenPort", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="metadata_server_port", remote_name="metadataServerPort", attribute_type=int, is_required=False, is_unique=False)
@@ -253,7 +253,7 @@ class NUVCenterHypervisor(NURESTObject):
         self.expose_attribute(local_name="allow_mgmt_dhcp", remote_name="allowMgmtDHCP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_eviction_threshold", remote_name="flowEvictionThreshold", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vm_network_portgroup", remote_name="vmNetworkPortgroup", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="toolbox_deployment_mode", remote_name="toolboxDeploymentMode", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="toolbox_group", remote_name="toolboxGroup", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="toolbox_ip", remote_name="toolboxIP", attribute_type=str, is_required=False, is_unique=False)

@@ -41,39 +41,39 @@ Parents
 --------
 
 
-- :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
-
-- :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
-
-- :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`
-
-- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
-
-- :ref:`nuvminterface.NUVMInterface<nuvminterface>`
-
-- :ref:`nunsport.NUNSPort<nunsport>`
-
 - :ref:`nucontainerinterface.NUContainerInterface<nucontainerinterface>`
-
-- :ref:`nutier.NUTier<nutier>`
-
-- :ref:`nuzone.NUZone<nuzone>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
-
-- :ref:`nuingressexternalservicetemplateentry.NUIngressExternalServiceTemplateEntry<nuingressexternalservicetemplateentry>`
-
-- :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
-
-- :ref:`nul2domain.NUL2Domain<nul2domain>`
-
-- :ref:`nusubnet.NUSubnet<nusubnet>`
-
-- :ref:`nuvport.NUVPort<nuvport>`
-
-- :ref:`nuvlan.NUVLAN<nuvlan>`
 
 - :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`
 
+- :ref:`nuzone.NUZone<nuzone>`
+
+- :ref:`nuingressexternalservicetemplateentry.NUIngressExternalServiceTemplateEntry<nuingressexternalservicetemplateentry>`
+
+- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
+
+- :ref:`nuvport.NUVPort<nuvport>`
+
+- :ref:`nusubnet.NUSubnet<nusubnet>`
+
+- :ref:`nuvminterface.NUVMInterface<nuvminterface>`
+
+- :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
+
 - :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nutier.NUTier<nutier>`
+
+- :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
+
+- :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`
+
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
+
+- :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
+
+- :ref:`nuvlan.NUVLAN<nuvlan>`
+
+- :ref:`nunsport.NUNSPort<nunsport>`
 

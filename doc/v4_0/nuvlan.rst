@@ -88,9 +88,9 @@ Parents
 
 - :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
 
-- :ref:`nuport.NUPort<nuport>`
-
 - :ref:`nuredundantport.NURedundantPort<nuredundantport>`
+
+- :ref:`nuport.NUPort<nuport>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
 

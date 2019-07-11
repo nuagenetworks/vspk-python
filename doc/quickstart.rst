@@ -17,8 +17,8 @@ Creating a session
 
 .. code-block:: python
 
-    # we'll use the 6.x API, but to use the 5.x API, replace v6 by v5_0
-    from vspk import v6 as vsdk
+    # we'll use the 4.0 API, but to use the 3.2 API, replace v4_0 by v3_2
+    from vspk import v4_0 as vspk
 
     # enable logging. it makes debugging much easier
     import logging
@@ -26,7 +26,7 @@ Creating a session
     set_log_level(logging.DEBUG, logging.Streamhandler())
 
     # create a new session for csproot
-    session = vsdk.NUVSDSession(
+    session = vspk.NUVSDSession(
         username='csproot',
         password='csproot',
         enterprise='csp',
@@ -42,12 +42,12 @@ Creating a session
 
 
 If the session started successfully, ``session.user`` should be an instance of
-:ref:`vspk.v6.nume.NUMe<nume>` corresponding to ``csproot``. Let's wrap this
+:ref:`vspk.v4_0.nume.NUMe<nume>` corresponding to ``csproot``. Let's wrap this
 in a function that we will reuse through this document:
 
 .. code-block:: python
 
-    from vspk import v6 as vsdk
+    from vspk import v4_0 as vspk
 
     def setup_logging():
         import logging
@@ -55,7 +55,7 @@ in a function that we will reuse through this document:
         set_log_level(logging.DEBUG, logging.Streamhandler())
 
     def start_csproot_session():
-        session = vsdk.NUVSDSession(
+        session = vspk.NUVSDSession(
             username='csproot',
             password='csproot',
             enterprise='csp',
@@ -76,7 +76,7 @@ API to perform CRUD operations:
 - a ``create_child()`` method for creating children
 - a ``save()`` method to update the current entity
 - a ``delete()`` method to delete the current entity
-- a ``get()`` and a ``fetch()`` method to retrieve the current entity
+- a ``get()`` and a ``fetch()`` method to retrive the current entity
 - multiple *fetchers* to retrieve children entities.
 
 
@@ -92,24 +92,24 @@ Here is an example of where we create an enterprise and a domain under
     # we assume we have the setup_logging() and start_csproot_session() methods
     # showed in the previous example
 
-    from vspk import v6 as vsdk
+    from vspk import v4_0 as vspk
     setup_logging()
     csproot = start_csproot_session()
 
     # Create a new enterprise object. The only mandatory parameter is the name,
     # so we give it directly to the contructor
-    new_enterprise = vsdk.NUEnterprise(name="new-corp")
+    new_enterprise = vspk.NUEnterprise(name="new-corp")
 
     # Create the enterprise on VSD.
     csproot.create_child(new_enterprise)
 
-    # Create a new domaintemplate object.
-    new_domain_template = vsdk.NUDomainTemplate()
+    # Create a new domain object.
+    new_domain = vspk.NUDomain()
     # The attributes can also be set on the object directly
-    new_domain_template.name = "new-dom-template"
+    new_domain.name = "new-dom"
 
     # Create the domain on VSD.
-    new_enterprise.create_child(new_domain_template)
+    new_enterprise.create_child(new_domain)
 
 
 Updating objects
@@ -143,7 +143,7 @@ Fetching the current entity is pretty simple:
 
 .. code-block:: python
 
-    new_enterprise.fetch()
+    new_enterprise.get()
 
 There are two reasons why we would need to fetch the current entity:
 
@@ -154,8 +154,8 @@ There are two reasons why we would need to fetch the current entity:
 
 .. code-block:: python
 
-    my_subnet = vsdk.NUSubnet(id="123e4567-e89b-12d3-a456-426655440000")
-    my_subnet.fetch()
+    my_subnet = NUSubnet(id="123e4567-e89b-12d3-a456-426655440000")
+    my_subnet.get()
 
     # Now, the attributes of the object are populated with data from VSD. We
     # can for instance print the subnet's name:
@@ -180,6 +180,7 @@ subnet we just fetched, we could retrieve them like this:
         vport.host_interfaces.get()
         for interface in vport.host_interfaces:
             logging.info("host ip: %s" % interface.ip_address)
+            
 
 Since ``get`` returns itself, we can make this shorter:
 
@@ -237,13 +238,13 @@ For example, to add a user "bob" to a group "engineers":
     bob = enterprise.users.get_first(filter="userName is 'bob'")
 
     # Fetch the users already assigned to this group
-    current_users = engineers.users.get()
+    engineers.users.get()
 
     engineers.assign(
         # We assign the list of *all* the users, not only "bob"
-        current_users.append(bob),
+        [bob] + engineers.users,
         # We need to specify the class of the entities we are assigning
-        vsdk.NUUser
+        vspk.NUUser
     )
 
 
@@ -259,13 +260,13 @@ remove the user "bob" we just added, we could to this:
     new_assigned_users = [user if user.user_name != "bob" for user in assigned_users]
 
     # Assign this new list
-    engineers.assign(new_assigned_users, vsdk.NUUser)
+    engineers.assign(new_assigned_users, vspk.NUUser)
 
 To un-assign all the entities, assign an empty list:
 
 .. code-block:: python
 
-    engineers.assign([], vsdk.NUUser)
+    engineers.assign([], vspk.NUUser)
 
 
 Error handling

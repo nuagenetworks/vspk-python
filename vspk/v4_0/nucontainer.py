@@ -64,111 +64,111 @@ class NUContainer(NURESTObject):
     
     ## Constants
     
-    CONST_REASON_TYPE_BLOCKED_LAST = "BLOCKED_LAST"
-    
-    CONST_REASON_TYPE_BLOCKED_UNKNOWN = "BLOCKED_UNKNOWN"
-    
-    CONST_REASON_TYPE_CRASHED_LAST = "CRASHED_LAST"
+    CONST_REASON_TYPE_SHUTDOWN_UNKNOWN = "SHUTDOWN_UNKNOWN"
     
     CONST_REASON_TYPE_CRASHED_UNKNOWN = "CRASHED_UNKNOWN"
     
-    CONST_REASON_TYPE_NOSTATE_LAST = "NOSTATE_LAST"
-    
-    CONST_REASON_TYPE_NOSTATE_UNKNOWN = "NOSTATE_UNKNOWN"
-    
-    CONST_REASON_TYPE_PAUSED_DUMP = "PAUSED_DUMP"
-    
-    CONST_REASON_TYPE_PAUSED_FROM_SNAPSHOT = "PAUSED_FROM_SNAPSHOT"
-    
     CONST_REASON_TYPE_PAUSED_IOERROR = "PAUSED_IOERROR"
-    
-    CONST_REASON_TYPE_PAUSED_LAST = "PAUSED_LAST"
-    
-    CONST_REASON_TYPE_PAUSED_MIGRATION = "PAUSED_MIGRATION"
-    
-    CONST_REASON_TYPE_PAUSED_SAVE = "PAUSED_SAVE"
-    
-    CONST_REASON_TYPE_PAUSED_SHUTTING_DOWN = "PAUSED_SHUTTING_DOWN"
-    
-    CONST_REASON_TYPE_PAUSED_UNKNOWN = "PAUSED_UNKNOWN"
-    
-    CONST_REASON_TYPE_PAUSED_USER = "PAUSED_USER"
-    
-    CONST_REASON_TYPE_PAUSED_WATCHDOG = "PAUSED_WATCHDOG"
-    
-    CONST_REASON_TYPE_RUNNING_BOOTED = "RUNNING_BOOTED"
-    
-    CONST_REASON_TYPE_RUNNING_FROM_SNAPSHOT = "RUNNING_FROM_SNAPSHOT"
-    
-    CONST_REASON_TYPE_RUNNING_LAST = "RUNNING_LAST"
-    
-    CONST_REASON_TYPE_RUNNING_MIGRATED = "RUNNING_MIGRATED"
-    
-    CONST_REASON_TYPE_RUNNING_MIGRATION_CANCELED = "RUNNING_MIGRATION_CANCELED"
-    
-    CONST_REASON_TYPE_RUNNING_RESTORED = "RUNNING_RESTORED"
-    
-    CONST_REASON_TYPE_RUNNING_SAVE_CANCELED = "RUNNING_SAVE_CANCELED"
-    
-    CONST_REASON_TYPE_RUNNING_UNKNOWN = "RUNNING_UNKNOWN"
-    
-    CONST_REASON_TYPE_RUNNING_UNPAUSED = "RUNNING_UNPAUSED"
-    
-    CONST_REASON_TYPE_SHUTDOWN_LAST = "SHUTDOWN_LAST"
-    
-    CONST_REASON_TYPE_SHUTDOWN_UNKNOWN = "SHUTDOWN_UNKNOWN"
-    
-    CONST_REASON_TYPE_SHUTDOWN_USER = "SHUTDOWN_USER"
-    
-    CONST_REASON_TYPE_SHUTOFF_CRASHED = "SHUTOFF_CRASHED"
-    
-    CONST_REASON_TYPE_SHUTOFF_DESTROYED = "SHUTOFF_DESTROYED"
-    
-    CONST_REASON_TYPE_SHUTOFF_FAILED = "SHUTOFF_FAILED"
-    
-    CONST_REASON_TYPE_SHUTOFF_FROM_SNAPSHOT = "SHUTOFF_FROM_SNAPSHOT"
-    
-    CONST_REASON_TYPE_SHUTOFF_LAST = "SHUTOFF_LAST"
-    
-    CONST_REASON_TYPE_SHUTOFF_MIGRATED = "SHUTOFF_MIGRATED"
-    
-    CONST_REASON_TYPE_SHUTOFF_SAVED = "SHUTOFF_SAVED"
-    
-    CONST_REASON_TYPE_SHUTOFF_SHUTDOWN = "SHUTOFF_SHUTDOWN"
-    
-    CONST_REASON_TYPE_SHUTOFF_UNKNOWN = "SHUTOFF_UNKNOWN"
-    
-    CONST_REASON_TYPE_UNKNOWN = "UNKNOWN"
-    
-    CONST_DELETE_MODE_TIMER = "TIMER"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_STATUS_BLOCKED = "BLOCKED"
-    
-    CONST_STATUS_CRASHED = "CRASHED"
-    
-    CONST_STATUS_DELETE_PENDING = "DELETE_PENDING"
-    
-    CONST_STATUS_INIT = "INIT"
-    
-    CONST_STATUS_LAST = "LAST"
-    
-    CONST_STATUS_NOSTATE = "NOSTATE"
-    
-    CONST_STATUS_PAUSED = "PAUSED"
-    
-    CONST_STATUS_RUNNING = "RUNNING"
     
     CONST_STATUS_SHUTDOWN = "SHUTDOWN"
     
+    CONST_REASON_TYPE_SHUTDOWN_LAST = "SHUTDOWN_LAST"
+    
+    CONST_STATUS_DELETE_PENDING = "DELETE_PENDING"
+    
+    CONST_REASON_TYPE_RUNNING_UNKNOWN = "RUNNING_UNKNOWN"
+    
+    CONST_STATUS_RUNNING = "RUNNING"
+    
+    CONST_REASON_TYPE_RUNNING_LAST = "RUNNING_LAST"
+    
+    CONST_REASON_TYPE_RUNNING_UNPAUSED = "RUNNING_UNPAUSED"
+    
+    CONST_REASON_TYPE_PAUSED_FROM_SNAPSHOT = "PAUSED_FROM_SNAPSHOT"
+    
+    CONST_REASON_TYPE_PAUSED_MIGRATION = "PAUSED_MIGRATION"
+    
+    CONST_REASON_TYPE_RUNNING_BOOTED = "RUNNING_BOOTED"
+    
+    CONST_REASON_TYPE_UNKNOWN = "UNKNOWN"
+    
+    CONST_STATUS_UNREACHABLE = "UNREACHABLE"
+    
+    CONST_STATUS_BLOCKED = "BLOCKED"
+    
+    CONST_REASON_TYPE_SHUTOFF_DESTROYED = "SHUTOFF_DESTROYED"
+    
+    CONST_REASON_TYPE_SHUTOFF_FROM_SNAPSHOT = "SHUTOFF_FROM_SNAPSHOT"
+    
+    CONST_REASON_TYPE_SHUTOFF_UNKNOWN = "SHUTOFF_UNKNOWN"
+    
+    CONST_STATUS_NOSTATE = "NOSTATE"
+    
+    CONST_REASON_TYPE_PAUSED_DUMP = "PAUSED_DUMP"
+    
+    CONST_REASON_TYPE_CRASHED_LAST = "CRASHED_LAST"
+    
+    CONST_STATUS_CRASHED = "CRASHED"
+    
+    CONST_REASON_TYPE_PAUSED_LAST = "PAUSED_LAST"
+    
+    CONST_REASON_TYPE_BLOCKED_LAST = "BLOCKED_LAST"
+    
+    CONST_REASON_TYPE_SHUTOFF_LAST = "SHUTOFF_LAST"
+    
     CONST_STATUS_SHUTOFF = "SHUTOFF"
+    
+    CONST_REASON_TYPE_SHUTOFF_SHUTDOWN = "SHUTOFF_SHUTDOWN"
+    
+    CONST_REASON_TYPE_NOSTATE_UNKNOWN = "NOSTATE_UNKNOWN"
+    
+    CONST_REASON_TYPE_PAUSED_SAVE = "PAUSED_SAVE"
+    
+    CONST_REASON_TYPE_RUNNING_FROM_SNAPSHOT = "RUNNING_FROM_SNAPSHOT"
     
     CONST_STATUS_UNKNOWN = "UNKNOWN"
     
-    CONST_STATUS_UNREACHABLE = "UNREACHABLE"
+    CONST_REASON_TYPE_PAUSED_UNKNOWN = "PAUSED_UNKNOWN"
+    
+    CONST_REASON_TYPE_SHUTOFF_FAILED = "SHUTOFF_FAILED"
+    
+    CONST_REASON_TYPE_SHUTOFF_SAVED = "SHUTOFF_SAVED"
+    
+    CONST_REASON_TYPE_SHUTOFF_MIGRATED = "SHUTOFF_MIGRATED"
+    
+    CONST_STATUS_LAST = "LAST"
+    
+    CONST_REASON_TYPE_RUNNING_MIGRATED = "RUNNING_MIGRATED"
+    
+    CONST_REASON_TYPE_RUNNING_SAVE_CANCELED = "RUNNING_SAVE_CANCELED"
+    
+    CONST_REASON_TYPE_SHUTDOWN_USER = "SHUTDOWN_USER"
+    
+    CONST_REASON_TYPE_RUNNING_MIGRATION_CANCELED = "RUNNING_MIGRATION_CANCELED"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_STATUS_PAUSED = "PAUSED"
+    
+    CONST_STATUS_INIT = "INIT"
+    
+    CONST_REASON_TYPE_BLOCKED_UNKNOWN = "BLOCKED_UNKNOWN"
+    
+    CONST_REASON_TYPE_NOSTATE_LAST = "NOSTATE_LAST"
+    
+    CONST_REASON_TYPE_RUNNING_RESTORED = "RUNNING_RESTORED"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_REASON_TYPE_SHUTOFF_CRASHED = "SHUTOFF_CRASHED"
+    
+    CONST_REASON_TYPE_PAUSED_USER = "PAUSED_USER"
+    
+    CONST_DELETE_MODE_TIMER = "TIMER"
+    
+    CONST_REASON_TYPE_PAUSED_WATCHDOG = "PAUSED_WATCHDOG"
+    
+    CONST_REASON_TYPE_PAUSED_SHUTTING_DOWN = "PAUSED_SHUTTING_DOWN"
     
     
 
@@ -220,9 +220,9 @@ class NUContainer(NURESTObject):
         self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="reason_type", remote_name="reasonType", attribute_type=str, is_required=False, is_unique=False, choices=['BLOCKED_LAST', 'BLOCKED_UNKNOWN', 'CRASHED_LAST', 'CRASHED_UNKNOWN', 'NOSTATE_LAST', 'NOSTATE_UNKNOWN', 'PAUSED_DUMP', 'PAUSED_FROM_SNAPSHOT', 'PAUSED_IOERROR', 'PAUSED_LAST', 'PAUSED_MIGRATION', 'PAUSED_SAVE', 'PAUSED_SHUTTING_DOWN', 'PAUSED_UNKNOWN', 'PAUSED_USER', 'PAUSED_WATCHDOG', 'RUNNING_BOOTED', 'RUNNING_FROM_SNAPSHOT', 'RUNNING_LAST', 'RUNNING_MIGRATED', 'RUNNING_MIGRATION_CANCELED', 'RUNNING_RESTORED', 'RUNNING_SAVE_CANCELED', 'RUNNING_UNKNOWN', 'RUNNING_UNPAUSED', 'SHUTDOWN_LAST', 'SHUTDOWN_UNKNOWN', 'SHUTDOWN_USER', 'SHUTOFF_CRASHED', 'SHUTOFF_DESTROYED', 'SHUTOFF_FAILED', 'SHUTOFF_FROM_SNAPSHOT', 'SHUTOFF_LAST', 'SHUTOFF_MIGRATED', 'SHUTOFF_SAVED', 'SHUTOFF_SHUTDOWN', 'SHUTOFF_UNKNOWN', 'UNKNOWN'])
+        self.expose_attribute(local_name="reason_type", remote_name="reasonType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BLOCKED_LAST', u'BLOCKED_UNKNOWN', u'CRASHED_LAST', u'CRASHED_UNKNOWN', u'NOSTATE_LAST', u'NOSTATE_UNKNOWN', u'PAUSED_DUMP', u'PAUSED_FROM_SNAPSHOT', u'PAUSED_IOERROR', u'PAUSED_LAST', u'PAUSED_MIGRATION', u'PAUSED_SAVE', u'PAUSED_SHUTTING_DOWN', u'PAUSED_UNKNOWN', u'PAUSED_USER', u'PAUSED_WATCHDOG', u'RUNNING_BOOTED', u'RUNNING_FROM_SNAPSHOT', u'RUNNING_LAST', u'RUNNING_MIGRATED', u'RUNNING_MIGRATION_CANCELED', u'RUNNING_RESTORED', u'RUNNING_SAVE_CANCELED', u'RUNNING_UNKNOWN', u'RUNNING_UNPAUSED', u'SHUTDOWN_LAST', u'SHUTDOWN_UNKNOWN', u'SHUTDOWN_USER', u'SHUTOFF_CRASHED', u'SHUTOFF_DESTROYED', u'SHUTOFF_FAILED', u'SHUTOFF_FROM_SNAPSHOT', u'SHUTOFF_LAST', u'SHUTOFF_MIGRATED', u'SHUTOFF_SAVED', u'SHUTOFF_SHUTDOWN', u'SHUTOFF_UNKNOWN', u'UNKNOWN'])
         self.expose_attribute(local_name="delete_expiry", remote_name="deleteExpiry", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="delete_mode", remote_name="deleteMode", attribute_type=str, is_required=False, is_unique=False, choices=['TIMER'])
+        self.expose_attribute(local_name="delete_mode", remote_name="deleteMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'TIMER'])
         self.expose_attribute(local_name="resync_info", remote_name="resyncInfo", attribute_type=dict, is_required=False, is_unique=False)
         self.expose_attribute(local_name="site_identifier", remote_name="siteIdentifier", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="image_id", remote_name="imageID", attribute_type=str, is_required=False, is_unique=False)
@@ -230,13 +230,13 @@ class NUContainer(NURESTObject):
         self.expose_attribute(local_name="interfaces", remote_name="interfaces", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="domain_ids", remote_name="domainIDs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zone_ids", remote_name="zoneIDs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="orchestration_id", remote_name="orchestrationID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="user_id", remote_name="userID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_name", remote_name="userName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=['BLOCKED', 'CRASHED', 'DELETE_PENDING', 'INIT', 'LAST', 'NOSTATE', 'PAUSED', 'RUNNING', 'SHUTDOWN', 'SHUTOFF', 'UNKNOWN', 'UNREACHABLE'])
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'BLOCKED', u'CRASHED', u'DELETE_PENDING', u'INIT', u'LAST', u'NOSTATE', u'PAUSED', u'RUNNING', u'SHUTDOWN', u'SHUTOFF', u'UNKNOWN', u'UNREACHABLE'])
         self.expose_attribute(local_name="subnet_ids", remote_name="subnetIDs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="hypervisor_ip", remote_name="hypervisorIP", attribute_type=str, is_required=False, is_unique=False)

@@ -49,35 +49,35 @@ class NUApplication(NURESTObject):
     
     ## Constants
     
-    CONST_PERFORMANCE_MONITOR_TYPE_CONTINUOUS = "CONTINUOUS"
+    CONST_POST_CLASSIFICATION_PATH_ANY = "ANY"
+    
+    CONST_PROTOCOL_NONE = "NONE"
     
     CONST_PERFORMANCE_MONITOR_TYPE_FIRST_PACKET = "FIRST_PACKET"
     
-    CONST_PERFORMANCE_MONITOR_TYPE_FIRST_PACKET_AND_CONTINUOUS = "FIRST_PACKET_AND_CONTINUOUS"
+    CONST_PRE_CLASSIFICATION_PATH_PRIMARY = "PRIMARY"
     
-    CONST_POST_CLASSIFICATION_PATH_ANY = "ANY"
+    CONST_PERFORMANCE_MONITOR_TYPE_CONTINUOUS = "CONTINUOUS"
+    
+    CONST_PRE_CLASSIFICATION_PATH_SECONDARY = "SECONDARY"
+    
+    CONST_OPTIMIZE_PATH_SELECTION_PACKETLOSS = "PACKETLOSS"
+    
+    CONST_OPTIMIZE_PATH_SELECTION_LATENCY = "LATENCY"
+    
+    CONST_OPTIMIZE_PATH_SELECTION_JITTER = "JITTER"
+    
+    CONST_PROTOCOL_UDP = "UDP"
     
     CONST_POST_CLASSIFICATION_PATH_PRIMARY = "PRIMARY"
     
     CONST_POST_CLASSIFICATION_PATH_SECONDARY = "SECONDARY"
     
-    CONST_OPTIMIZE_PATH_SELECTION_JITTER = "JITTER"
-    
-    CONST_OPTIMIZE_PATH_SELECTION_LATENCY = "LATENCY"
-    
-    CONST_OPTIMIZE_PATH_SELECTION_PACKETLOSS = "PACKETLOSS"
-    
-    CONST_PRE_CLASSIFICATION_PATH_DEFAULT = "DEFAULT"
-    
-    CONST_PRE_CLASSIFICATION_PATH_PRIMARY = "PRIMARY"
-    
-    CONST_PRE_CLASSIFICATION_PATH_SECONDARY = "SECONDARY"
-    
-    CONST_PROTOCOL_NONE = "NONE"
+    CONST_PERFORMANCE_MONITOR_TYPE_FIRST_PACKET_AND_CONTINUOUS = "FIRST_PACKET_AND_CONTINUOUS"
     
     CONST_PROTOCOL_TCP = "TCP"
     
-    CONST_PROTOCOL_UDP = "UDP"
+    CONST_PRE_CLASSIFICATION_PATH_DEFAULT = "DEFAULT"
     
     
 
@@ -125,7 +125,7 @@ class NUApplication(NURESTObject):
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="bandwidth", remote_name="bandwidth", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="read_only", remote_name="readOnly", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="performance_monitor_type", remote_name="performanceMonitorType", attribute_type=str, is_required=False, is_unique=False, choices=['CONTINUOUS', 'FIRST_PACKET', 'FIRST_PACKET_AND_CONTINUOUS'])
+        self.expose_attribute(local_name="performance_monitor_type", remote_name="performanceMonitorType", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONTINUOUS', u'FIRST_PACKET', u'FIRST_PACKET_AND_CONTINUOUS'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_ip", remote_name="destinationIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
@@ -133,13 +133,13 @@ class NUApplication(NURESTObject):
         self.expose_attribute(local_name="one_way_delay", remote_name="oneWayDelay", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="one_way_jitter", remote_name="oneWayJitter", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="one_way_loss", remote_name="oneWayLoss", attribute_type=float, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="post_classification_path", remote_name="postClassificationPath", attribute_type=str, is_required=False, is_unique=False, choices=['ANY', 'PRIMARY', 'SECONDARY'])
+        self.expose_attribute(local_name="post_classification_path", remote_name="postClassificationPath", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'PRIMARY', u'SECONDARY'])
         self.expose_attribute(local_name="source_ip", remote_name="sourceIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="app_id", remote_name="appId", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="optimize_path_selection", remote_name="optimizePathSelection", attribute_type=str, is_required=False, is_unique=False, choices=['JITTER', 'LATENCY', 'PACKETLOSS'])
-        self.expose_attribute(local_name="pre_classification_path", remote_name="preClassificationPath", attribute_type=str, is_required=False, is_unique=False, choices=['DEFAULT', 'PRIMARY', 'SECONDARY'])
-        self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False, choices=['NONE', 'TCP', 'UDP'])
+        self.expose_attribute(local_name="optimize_path_selection", remote_name="optimizePathSelection", attribute_type=str, is_required=False, is_unique=False, choices=[u'JITTER', u'LATENCY', u'PACKETLOSS'])
+        self.expose_attribute(local_name="pre_classification_path", remote_name="preClassificationPath", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'PRIMARY', u'SECONDARY'])
+        self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'TCP', u'UDP'])
         self.expose_attribute(local_name="associated_l7_application_signature_id", remote_name="associatedL7ApplicationSignatureID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ether_type", remote_name="etherType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="symmetry", remote_name="symmetry", attribute_type=bool, is_required=False, is_unique=False)

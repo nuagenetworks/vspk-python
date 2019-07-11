@@ -82,33 +82,33 @@ class NUVLAN(NURESTObject):
     
     ## Constants
     
+    CONST_PERMITTED_ACTION_USE = "USE"
+    
+    CONST_ASSOCIATED_CONNECTION_TYPE_UPLINK_CONNECTION = "UPLINK_CONNECTION"
+    
+    CONST_PERMITTED_ACTION_READ = "READ"
+    
+    CONST_STATUS_ORPHAN = "ORPHAN"
+    
     CONST_PERMITTED_ACTION_ALL = "ALL"
     
     CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
     
     CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
     
-    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
-    
-    CONST_PERMITTED_ACTION_READ = "READ"
-    
-    CONST_PERMITTED_ACTION_USE = "USE"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_ASSOCIATED_CONNECTION_TYPE_BR_CONNECTION = "BR_CONNECTION"
-    
-    CONST_ASSOCIATED_CONNECTION_TYPE_UPLINK_CONNECTION = "UPLINK_CONNECTION"
+    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
     
     CONST_STATUS_INITIALIZED = "INITIALIZED"
     
     CONST_STATUS_MISMATCH = "MISMATCH"
     
-    CONST_STATUS_ORPHAN = "ORPHAN"
-    
     CONST_STATUS_READY = "READY"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ASSOCIATED_CONNECTION_TYPE_BR_CONNECTION = "BR_CONNECTION"
     
     
 
@@ -157,21 +157,21 @@ class NUVLAN(NURESTObject):
         self.expose_attribute(local_name="gateway_id", remote_name="gatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="readonly", remote_name="readonly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=['ALL', 'DEPLOY', 'EXTEND', 'INSTANTIATE', 'READ', 'USE'])
+        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="restricted", remote_name="restricted", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="vport_id", remote_name="vportID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="is_uplink", remote_name="isUplink", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_user_mnemonic", remote_name="useUserMnemonic", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_bgp_profile_id", remote_name="associatedBGPProfileID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_connection_type", remote_name="associatedConnectionType", attribute_type=str, is_required=False, is_unique=False, choices=['BR_CONNECTION', 'UPLINK_CONNECTION'])
+        self.expose_attribute(local_name="associated_connection_type", remote_name="associatedConnectionType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BR_CONNECTION', u'UPLINK_CONNECTION'])
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ingress_qos_policy_id", remote_name="associatedIngressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_uplink_connection_id", remote_name="associatedUplinkConnectionID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vsc_profile_id", remote_name="associatedVSCProfileID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=['INITIALIZED', 'MISMATCH', 'ORPHAN', 'READY'])
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'INITIALIZED', u'MISMATCH', u'ORPHAN', u'READY'])
         self.expose_attribute(local_name="duc_vlan", remote_name="ducVlan", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         

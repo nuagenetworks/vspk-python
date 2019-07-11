@@ -61,11 +61,13 @@ class NUEnterpriseProfile(NURESTObject):
     
     ## Constants
     
-    CONST_ALLOWED_FORWARDING_CLASSES_A = "A"
+    CONST_ENCRYPTION_MANAGEMENT_MODE_MANAGED = "MANAGED"
     
-    CONST_ALLOWED_FORWARDING_CLASSES_B = "B"
+    CONST_ALLOWED_FORWARDING_CLASSES_NONE = "NONE"
     
-    CONST_ALLOWED_FORWARDING_CLASSES_C = "C"
+    CONST_ENCRYPTION_MANAGEMENT_MODE_DISABLED = "DISABLED"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_ALLOWED_FORWARDING_CLASSES_D = "D"
     
@@ -75,17 +77,15 @@ class NUEnterpriseProfile(NURESTObject):
     
     CONST_ALLOWED_FORWARDING_CLASSES_G = "G"
     
-    CONST_ALLOWED_FORWARDING_CLASSES_H = "H"
+    CONST_ALLOWED_FORWARDING_CLASSES_A = "A"
     
-    CONST_ALLOWED_FORWARDING_CLASSES_NONE = "NONE"
+    CONST_ALLOWED_FORWARDING_CLASSES_B = "B"
     
-    CONST_ENCRYPTION_MANAGEMENT_MODE_DISABLED = "DISABLED"
-    
-    CONST_ENCRYPTION_MANAGEMENT_MODE_MANAGED = "MANAGED"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_ALLOWED_FORWARDING_CLASSES_C = "C"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ALLOWED_FORWARDING_CLASSES_H = "H"
     
     
 
@@ -133,11 +133,11 @@ class NUEnterpriseProfile(NURESTObject):
         self.expose_attribute(local_name="allow_advanced_qos_configuration", remote_name="allowAdvancedQOSConfiguration", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_gateway_management", remote_name="allowGatewayManagement", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_trusted_forwarding_class", remote_name="allowTrustedForwardingClass", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="allowed_forwarding_classes", remote_name="allowedForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'NONE'])
+        self.expose_attribute(local_name="allowed_forwarding_classes", remote_name="allowedForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="floating_ips_quota", remote_name="floatingIPsQuota", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enable_application_performance_management", remote_name="enableApplicationPerformanceManagement", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="encryption_management_mode", remote_name="encryptionManagementMode", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'MANAGED'])
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="encryption_management_mode", remote_name="encryptionManagementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'MANAGED'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

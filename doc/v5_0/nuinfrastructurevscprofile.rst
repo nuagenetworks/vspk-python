@@ -1,0 +1,59 @@
+.. _nuinfrastructurevscprofile:
+
+nuinfrastructurevscprofile
+===========================================
+
+.. class:: nuinfrastructurevscprofile.NUInfrastructureVscProfile(bambou.nurest_object.NUMetaRESTObject,):
+
+Infrastructure VSC Profiles identify a set of controllers which will be used to connect bootstrapped NSGs.
+
+
+Attributes
+----------
+
+
+- ``name`` (**Mandatory**): Name of the Infrastructure VSC Profile
+
+- ``last_updated_by``: ID of the user who last updated the object.
+
+- ``address_family``: The type of IP address used in the identification of the active and standby controllers.
+
+- ``second_controller``: Second VSC Controller :  IP Address of the secondary VSC system NSG instances associated to this profile will be reaching for.
+
+- ``second_controller_v6``: Second VSC Controller:  IPv6 address of the secondary VSC system NSG instances associated to this profile will be reaching for.
+
+- ``description``: A description of the VSC Profile instance created.
+
+- ``first_controller``: First VSC Controller :  IP Address of the first VSC system NSG instances associated to this profile will be reaching for.
+
+- ``first_controller_v6``: First VSC Controller: IPv6 address of the first VSC system NSG instances associated to this profile will be reaching for.
+
+- ``enterprise_id``: Enterprise/Organisation associated with this Profile instance.
+
+- ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``probe_interval``: Openflow echo timer in milliseconds.
+
+- ``external_id``: External object ID. Used for integration with third party systems
+
+
+
+
+Children
+--------
+
+================================================================================================================================================               ==========================================================================================
+**class**                                                                                                                                                      **fetcher**
+
+:ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+================================================================================================================================================               ==========================================================================================
+
+
+
+Parents
+--------
+
+
+- :ref:`nume.NUMe<nume>`
+

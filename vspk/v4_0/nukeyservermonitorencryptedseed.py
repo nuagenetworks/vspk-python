@@ -49,9 +49,9 @@ class NUKeyServerMonitorEncryptedSeed(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
 
@@ -87,7 +87,7 @@ class NUKeyServerMonitorEncryptedSeed(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="key_server_certificate_serial_number", remote_name="keyServerCertificateSerialNumber", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_secured_data_id", remote_name="enterpriseSecuredDataID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="associated_key_server_monitor_sek_creation_time", remote_name="associatedKeyServerMonitorSEKCreationTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_key_server_monitor_sekid", remote_name="associatedKeyServerMonitorSEKID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_key_server_monitor_seed_creation_time", remote_name="associatedKeyServerMonitorSeedCreationTime", attribute_type=int, is_required=False, is_unique=False)

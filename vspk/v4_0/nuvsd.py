@@ -61,19 +61,19 @@ class NUVSD(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_MODE_STANDALONE = "STANDALONE"
+    
+    CONST_STATUS_DOWN = "DOWN"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_MODE_CLUSTER = "CLUSTER"
     
-    CONST_MODE_STANDALONE = "STANDALONE"
+    CONST_STATUS_UP = "UP"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_STATUS_ADMIN_DOWN = "ADMIN_DOWN"
-    
-    CONST_STATUS_DOWN = "DOWN"
-    
-    CONST_STATUS_UP = "UP"
     
     
 
@@ -133,11 +133,11 @@ class NUVSD(NURESTObject):
         self.expose_attribute(local_name="disks", remote_name="disks", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="already_marked_for_unavailable", remote_name="alreadyMarkedForUnavailable", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="unavailable_timestamp", remote_name="unavailableTimestamp", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="location", remote_name="location", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=['CLUSTER', 'STANDALONE'])
+        self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'CLUSTER', u'STANDALONE'])
         self.expose_attribute(local_name="product_version", remote_name="productVersion", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=['ADMIN_DOWN', 'DOWN', 'UP'])
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
         self.expose_attribute(local_name="current_cpuusage", remote_name="currentCPUUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="current_memory_usage", remote_name="currentMemoryUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="average_cpuusage", remote_name="averageCPUUsage", attribute_type=float, is_required=False, is_unique=False)

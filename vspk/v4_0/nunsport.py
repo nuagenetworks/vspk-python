@@ -70,47 +70,47 @@ class NUNSPort(NURESTObject):
     
     ## Constants
     
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_SPEED_BASETX100 = "BASETX100"
+    
+    CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
+    
+    CONST_PORT_TYPE_ACCESS = "ACCESS"
+    
+    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
+    
+    CONST_SPEED_BASET1000 = "BASET1000"
+    
+    CONST_STATUS_INITIALIZED = "INITIALIZED"
+    
+    CONST_SPEED_BASEX10G = "BASEX10G"
+    
+    CONST_PORT_TYPE_NETWORK = "NETWORK"
+    
     CONST_NAT_TRAVERSAL_FULL_NAT = "FULL_NAT"
     
+    CONST_SPEED_BASET10 = "BASET10"
+    
+    CONST_PERMITTED_ACTION_READ = "READ"
+    
+    CONST_PERMITTED_ACTION_USE = "USE"
+    
     CONST_NAT_TRAVERSAL_NONE = "NONE"
+    
+    CONST_STATUS_MISMATCH = "MISMATCH"
+    
+    CONST_STATUS_ORPHAN = "ORPHAN"
+    
+    CONST_SPEED_AUTONEGOTIATE = "AUTONEGOTIATE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_NAT_TRAVERSAL_ONE_TO_ONE_NAT = "ONE_TO_ONE_NAT"
     
     CONST_PERMITTED_ACTION_ALL = "ALL"
     
     CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
-    
-    CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
-    
-    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
-    
-    CONST_PERMITTED_ACTION_READ = "READ"
-    
-    CONST_PERMITTED_ACTION_USE = "USE"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_PORT_TYPE_ACCESS = "ACCESS"
-    
-    CONST_PORT_TYPE_NETWORK = "NETWORK"
-    
-    CONST_SPEED_AUTONEGOTIATE = "AUTONEGOTIATE"
-    
-    CONST_SPEED_BASET10 = "BASET10"
-    
-    CONST_SPEED_BASET1000 = "BASET1000"
-    
-    CONST_SPEED_BASETX100 = "BASETX100"
-    
-    CONST_SPEED_BASEX10G = "BASEX10G"
-    
-    CONST_STATUS_INITIALIZED = "INITIALIZED"
-    
-    CONST_STATUS_MISMATCH = "MISMATCH"
-    
-    CONST_STATUS_ORPHAN = "ORPHAN"
     
     CONST_STATUS_READY = "READY"
     
@@ -152,22 +152,22 @@ class NUNSPort(NURESTObject):
         self._mtu = None
         self._external_id = None
         
-        self.expose_attribute(local_name="nat_traversal", remote_name="NATTraversal", attribute_type=str, is_required=False, is_unique=False, choices=['FULL_NAT', 'NONE', 'ONE_TO_ONE_NAT'])
+        self.expose_attribute(local_name="nat_traversal", remote_name="NATTraversal", attribute_type=str, is_required=False, is_unique=False, choices=[u'FULL_NAT', u'NONE', u'ONE_TO_ONE_NAT'])
         self.expose_attribute(local_name="vlan_range", remote_name="VLANRange", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=['ALL', 'DEPLOY', 'EXTEND', 'INSTANTIATE', 'READ', 'USE'])
+        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
-        self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=['ACCESS', 'NETWORK'])
-        self.expose_attribute(local_name="speed", remote_name="speed", attribute_type=str, is_required=False, is_unique=False, choices=['AUTONEGOTIATE', 'BASET10', 'BASET1000', 'BASETX100', 'BASEX10G'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'NETWORK'])
+        self.expose_attribute(local_name="speed", remote_name="speed", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTONEGOTIATE', u'BASET10', u'BASET1000', u'BASETX100', u'BASEX10G'])
         self.expose_attribute(local_name="use_user_mnemonic", remote_name="useUserMnemonic", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_redundant_port_id", remote_name="associatedRedundantPortID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=['INITIALIZED', 'MISMATCH', 'ORPHAN', 'READY'])
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'INITIALIZED', u'MISMATCH', u'ORPHAN', u'READY'])
         self.expose_attribute(local_name="mtu", remote_name="mtu", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         

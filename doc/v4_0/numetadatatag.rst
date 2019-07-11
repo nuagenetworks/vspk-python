@@ -46,13 +46,13 @@ Parents
 --------
 
 
-- :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`
-
 - :ref:`numetadata.NUMetadata<numetadata>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nume.NUMe<nume>`
 
 - :ref:`nuexternalservice.NUExternalService<nuexternalservice>`
 
-- :ref:`nume.NUMe<nume>`
+- :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
