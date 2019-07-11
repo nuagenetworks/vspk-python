@@ -36,7 +36,7 @@ Attributes
 
 - ``associated_ike_encryption_profile_id``: The ID of the associated IKE Encryption Profile
 
-- ``associated_ike_gateway_id``: The IKE Gateway associated with this Profile. This is a read only attribute
+- ``associated_ike_gateway_id``: The IKE Gateway associated with this Profile
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

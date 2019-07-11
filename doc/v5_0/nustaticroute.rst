@@ -20,11 +20,11 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``address`` (**Mandatory**): IP address of the route
+- ``address``: IP address of the route
 
-- ``netmask`` (**Mandatory**): Netmask associated with the route
+- ``netmask``: Netmask associated with the route
 
-- ``next_hop_ip`` (**Mandatory**): IP address of the next hop. This must be a VM attached to the dVRS
+- ``next_hop_ip``: IP address of the next hop. This must be a VM attached to the dVRS
 
 - ``black_hole_enabled``: Indicates if this is a black hole static route. Applicable only when the static route type is 'NETCONF'.
 

@@ -79,6 +79,9 @@ from .fetchers import NUWebDomainNamesFetcher
 from .fetchers import NURedundancyGroupsFetcher
 
 
+from .fetchers import NUDeploymentFailuresFetcher
+
+
 from .fetchers import NUPerformanceMonitorsFetcher
 
 
@@ -445,6 +448,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.redundancy_groups = NURedundancyGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.deployment_failures = NUDeploymentFailuresFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.performance_monitors = NUPerformanceMonitorsFetcher.fetcher_with_object(parent_object=self, relationship="child")

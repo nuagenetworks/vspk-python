@@ -4129,7 +4129,7 @@ class NUSystemConfig(NURESTObject):
         """ Get two_factor_code_expiry value.
 
             Notes:
-                Two Factor Code Expiry in Seconds
+                Two Factor Code Expiry in Seconds (min = 60, max = 604800)
 
                 
                 This attribute is named `twoFactorCodeExpiry` in VSD API.
@@ -4142,7 +4142,7 @@ class NUSystemConfig(NURESTObject):
         """ Set two_factor_code_expiry value.
 
             Notes:
-                Two Factor Code Expiry in Seconds
+                Two Factor Code Expiry in Seconds (min = 60, max = 604800)
 
                 
                 This attribute is named `twoFactorCodeExpiry` in VSD API.
@@ -4156,7 +4156,7 @@ class NUSystemConfig(NURESTObject):
         """ Get two_factor_code_length value.
 
             Notes:
-                Two Factor Code Length
+                Two Factor Code Length (min = 4, max = 10)
 
                 
                 This attribute is named `twoFactorCodeLength` in VSD API.
@@ -4169,7 +4169,7 @@ class NUSystemConfig(NURESTObject):
         """ Set two_factor_code_length value.
 
             Notes:
-                Two Factor Code Length
+                Two Factor Code Length (min = 4, max = 10)
 
                 
                 This attribute is named `twoFactorCodeLength` in VSD API.
@@ -4183,7 +4183,7 @@ class NUSystemConfig(NURESTObject):
         """ Get two_factor_code_seed_length value.
 
             Notes:
-                Two Factor Seed length in bytes
+                Two Factor Seed length in bytes (min = 0, max = 255)
 
                 
                 This attribute is named `twoFactorCodeSeedLength` in VSD API.
@@ -4196,7 +4196,7 @@ class NUSystemConfig(NURESTObject):
         """ Set two_factor_code_seed_length value.
 
             Notes:
-                Two Factor Seed length in bytes
+                Two Factor Seed length in bytes (min = 0, max = 255)
 
                 
                 This attribute is named `twoFactorCodeSeedLength` in VSD API.

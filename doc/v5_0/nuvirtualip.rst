@@ -24,7 +24,7 @@ Attributes
 
 - ``associated_floating_ip_id``: Id of Floating IP address associated to this virtual ip
 
-- ``subnet_id``: Id of subnet to which this ip address belongs
+- ``subnet_id``: ID of subnet to which this IP address belongs
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

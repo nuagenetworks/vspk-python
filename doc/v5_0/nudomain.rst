@@ -28,6 +28,8 @@ Attributes
 
 - ``dpi``: determines whether or not Deep packet inspection is enabled
 
+- ``evpnrt5_type``: Determines whether EVPN-RT5 are enabled on this domain.
+
 - ``vxlanecmp_enabled``: Determines whether VXLAN-ECMP are enabled on this domain.
 
 - ``label_id``: The label associated with the dVRS. This is a read only attribute

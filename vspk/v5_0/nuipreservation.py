@@ -43,7 +43,7 @@ class NUIPReservation(NURESTObject):
     """ Represents a IPReservation in the VSD
 
         Notes:
-            You can reserve and allocate IP addresess according to the host MAC address
+            You can reserve and allocate IP addresses according to the host MAC address
     """
 
     __rest_name__ = "ipreservation"

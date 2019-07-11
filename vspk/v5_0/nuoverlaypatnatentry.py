@@ -40,7 +40,7 @@ class NUOverlayPATNATEntry(NURESTObject):
     """ Represents a OverlayPATNATEntry in the VSD
 
         Notes:
-            None
+            Create a static NAT 1:1 IP mapping between a Pool IP and a host IP in the branch domain, to provide access to the branch resource.
     """
 
     __rest_name__ = "overlaypatnatentry"

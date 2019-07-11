@@ -32,6 +32,10 @@ Attributes
 
 - ``assoc_entity_type``: Type of parent entity.
 
+- ``associated_domain_id``: ID of the associated Domain.
+
+- ``associated_domain_type``: Type of the associated Domain
+
 - ``associated_network_entity_id``: ID of associated Network entity.
 
 - ``associated_network_entity_type``: Type of associated Network Entity. i.e Domain, Subnet, L2domain
@@ -82,4 +86,6 @@ Parents
 - :ref:`nubgpneighbor.NUBGPNeighbor<nubgpneighbor>`
 
 - :ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

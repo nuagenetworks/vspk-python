@@ -5,7 +5,7 @@ nuoverlaypatnatentry
 
 .. class:: nuoverlaypatnatentry.NUOverlayPATNATEntry(bambou.nurest_object.NUMetaRESTObject,):
 
-None
+Create a static NAT 1:1 IP mapping between a Pool IP and a host IP in the branch domain, to provide access to the branch resource.
 
 
 Attributes

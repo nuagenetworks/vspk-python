@@ -1831,7 +1831,7 @@ class NUNSGateway(NURESTObject):
         """ Get functions value.
 
             Notes:
-                List of supported functions
+                List of supported functions. This is only relevant for NSG-UBR and will be set to UBR by default in case an NSG-UBR is created. For a regular NSG, this will be set to null.
 
                 
         """
@@ -1842,7 +1842,7 @@ class NUNSGateway(NURESTObject):
         """ Set functions value.
 
             Notes:
-                List of supported functions
+                List of supported functions. This is only relevant for NSG-UBR and will be set to UBR by default in case an NSG-UBR is created. For a regular NSG, this will be set to null.
 
                 
         """

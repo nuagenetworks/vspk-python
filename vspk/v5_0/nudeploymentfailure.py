@@ -88,6 +88,8 @@ class NUDeploymentFailure(NURESTObject):
         self._error_condition = None
         self._assoc_entity_id = None
         self._assoc_entity_type = None
+        self._associated_domain_id = None
+        self._associated_domain_type = None
         self._associated_network_entity_id = None
         self._associated_network_entity_type = None
         self._number_of_occurences = None
@@ -104,6 +106,8 @@ class NUDeploymentFailure(NURESTObject):
         self.expose_attribute(local_name="error_condition", remote_name="errorCondition", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_entity_id", remote_name="assocEntityId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_entity_type", remote_name="assocEntityType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_domain_id", remote_name="associatedDomainID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_domain_type", remote_name="associatedDomainType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_network_entity_id", remote_name="associatedNetworkEntityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_network_entity_type", remote_name="associatedNetworkEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="number_of_occurences", remote_name="numberOfOccurences", attribute_type=int, is_required=False, is_unique=False)
@@ -392,6 +396,60 @@ class NUDeploymentFailure(NURESTObject):
                 
         """
         self._assoc_entity_type = value
+
+    
+    @property
+    def associated_domain_id(self):
+        """ Get associated_domain_id value.
+
+            Notes:
+                ID of the associated Domain.
+
+                
+                This attribute is named `associatedDomainID` in VSD API.
+                
+        """
+        return self._associated_domain_id
+
+    @associated_domain_id.setter
+    def associated_domain_id(self, value):
+        """ Set associated_domain_id value.
+
+            Notes:
+                ID of the associated Domain.
+
+                
+                This attribute is named `associatedDomainID` in VSD API.
+                
+        """
+        self._associated_domain_id = value
+
+    
+    @property
+    def associated_domain_type(self):
+        """ Get associated_domain_type value.
+
+            Notes:
+                Type of the associated Domain
+
+                
+                This attribute is named `associatedDomainType` in VSD API.
+                
+        """
+        return self._associated_domain_type
+
+    @associated_domain_type.setter
+    def associated_domain_type(self, value):
+        """ Set associated_domain_type value.
+
+            Notes:
+                Type of the associated Domain
+
+                
+                This attribute is named `associatedDomainType` in VSD API.
+                
+        """
+        self._associated_domain_type = value
 
     
     @property

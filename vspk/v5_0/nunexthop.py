@@ -40,7 +40,7 @@ class NUNextHop(NURESTObject):
     """ Represents a NextHop in the VSD
 
         Notes:
-            This represents a /32 IPv4 address as the next-hop. In the future can be a /128 IPv6 address.
+            Next-hop address used to leak the routes from source domain onto the destination domain.
     """
 
     __rest_name__ = "nexthop"
@@ -59,9 +59,9 @@ class NUNextHop(NURESTObject):
     
     CONST_TYPE_GATEWAY = "GATEWAY"
     
-    CONST_TYPE_BR_PORT = "BR_PORT"
-    
     CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
+    
+    CONST_TYPE_BR_PORT = "BR_PORT"
     
     CONST_TYPE_IP = "IP"
     

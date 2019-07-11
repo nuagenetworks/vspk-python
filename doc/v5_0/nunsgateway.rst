@@ -116,7 +116,7 @@ Attributes
 
 - ``associated_overlay_management_profile_id``: The ID of the associated Overlay Management Profile
 
-- ``functions``: List of supported functions
+- ``functions``: List of supported functions. This is only relevant for NSG-UBR and will be set to UBR by default in case an NSG-UBR is created. For a regular NSG, this will be set to null.
 
 - ``auto_disc_gateway_id``: The Auto Discovered Gateway associated with this Gateway Instance
 

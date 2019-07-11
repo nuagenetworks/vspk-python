@@ -5,7 +5,7 @@ nunexthop
 
 .. class:: nunexthop.NUNextHop(bambou.nurest_object.NUMetaRESTObject,):
 
-This represents a /32 IPv4 address as the next-hop. In the future can be a /128 IPv6 address.
+Next-hop address used to leak the routes from source domain onto the destination domain.
 
 
 Attributes

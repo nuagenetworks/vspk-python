@@ -229,11 +229,15 @@ class NUDomain(NURESTObject):
     
     CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
     
+    CONST_EVPNRT5_TYPE_IP = "IP"
+    
     CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
     
     CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
     
     CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
+    
+    CONST_EVPNRT5_TYPE_MAC = "MAC"
     
     CONST_DHCP_BEHAVIOR_OVERLAY_RELAY = "OVERLAY_RELAY"
     
@@ -314,6 +318,7 @@ class NUDomain(NURESTObject):
         self._fip_ignore_default_route = None
         self._fip_underlay = None
         self._dpi = None
+        self._evpnrt5_type = None
         self._vxlanecmp_enabled = None
         self._label_id = None
         self._back_haul_route_distinguisher = None
@@ -367,6 +372,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="fip_ignore_default_route", remote_name="FIPIgnoreDefaultRoute", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="fip_underlay", remote_name="FIPUnderlay", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="evpnrt5_type", remote_name="EVPNRT5Type", attribute_type=str, is_required=False, is_unique=False, choices=[u'IP', u'MAC'])
         self.expose_attribute(local_name="vxlanecmp_enabled", remote_name="VXLANECMPEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="label_id", remote_name="labelID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_route_distinguisher", remote_name="backHaulRouteDistinguisher", attribute_type=str, is_required=False, is_unique=False)
@@ -790,6 +796,33 @@ class NUDomain(NURESTObject):
                 
         """
         self._dpi = value
+
+    
+    @property
+    def evpnrt5_type(self):
+        """ Get evpnrt5_type value.
+
+            Notes:
+                Determines whether EVPN-RT5 are enabled on this domain.
+
+                
+                This attribute is named `EVPNRT5Type` in VSD API.
+                
+        """
+        return self._evpnrt5_type
+
+    @evpnrt5_type.setter
+    def evpnrt5_type(self, value):
+        """ Set evpnrt5_type value.
+
+            Notes:
+                Determines whether EVPN-RT5 are enabled on this domain.
+
+                
+                This attribute is named `EVPNRT5Type` in VSD API.
+                
+        """
+        self._evpnrt5_type = value
 
     
     @property

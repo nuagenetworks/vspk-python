@@ -284,11 +284,11 @@ Attributes
 
 - ``event_processor_timeout``: Defines the maximum time period in milliseconds for the Rest server to wait before sending the events from the system.
 
-- ``two_factor_code_expiry``: Two Factor Code Expiry in Seconds
+- ``two_factor_code_expiry``: Two Factor Code Expiry in Seconds (min = 60, max = 604800)
 
-- ``two_factor_code_length``: Two Factor Code Length
+- ``two_factor_code_length``: Two Factor Code Length (min = 4, max = 10)
 
-- ``two_factor_code_seed_length``: Two Factor Seed length in bytes
+- ``two_factor_code_seed_length``: Two Factor Seed length in bytes (min = 0, max = 255)
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

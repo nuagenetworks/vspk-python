@@ -281,7 +281,7 @@ class NUVirtualIP(NURESTObject):
         """ Get subnet_id value.
 
             Notes:
-                Id of subnet to which this ip address belongs
+                ID of subnet to which this IP address belongs
 
                 
                 This attribute is named `subnetID` in VSD API.
@@ -294,7 +294,7 @@ class NUVirtualIP(NURESTObject):
         """ Set subnet_id value.
 
             Notes:
-                Id of subnet to which this ip address belongs
+                ID of subnet to which this IP address belongs
 
                 
                 This attribute is named `subnetID` in VSD API.

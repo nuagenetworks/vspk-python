@@ -469,7 +469,7 @@ class NUIKEGatewayProfile(NURESTObject):
         """ Get associated_ike_gateway_id value.
 
             Notes:
-                The IKE Gateway associated with this Profile. This is a read only attribute
+                The IKE Gateway associated with this Profile
 
                 
                 This attribute is named `associatedIKEGatewayID` in VSD API.
@@ -482,7 +482,7 @@ class NUIKEGatewayProfile(NURESTObject):
         """ Set associated_ike_gateway_id value.
 
             Notes:
-                The IKE Gateway associated with this Profile. This is a read only attribute
+                The IKE Gateway associated with this Profile
 
                 
                 This attribute is named `associatedIKEGatewayID` in VSD API.

@@ -5,7 +5,7 @@ nuipreservation
 
 .. class:: nuipreservation.NUIPReservation(bambou.nurest_object.NUMetaRESTObject,):
 
-You can reserve and allocate IP addresess according to the host MAC address
+You can reserve and allocate IP addresses according to the host MAC address
 
 
 Attributes
