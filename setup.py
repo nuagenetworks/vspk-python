@@ -56,6 +56,7 @@ setup(
     packages=packages,
     description='SDK for the VSD API',
     long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
     license='BSD-3',
     include_package_data=True,
     install_requires=[line for line in open('requirements.txt')],
