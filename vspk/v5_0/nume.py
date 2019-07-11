@@ -1248,8 +1248,10 @@ class NUMe(NURESTRootObject):
 
     
     ## Custom methods
-    def save(self, async=False, callback=None):
+    def save(self, as_async=False, callback=None, **kwargs):
         """ """
-        super(NUMe, self).save(async=async, callback=callback, encrypted=False)
+        if 'async' in kwargs.keys() and not as_async:
+            as_async = kwargs['async']
+        super(NUMe, self).save(as_async=as_async, callback=callback, encrypted=False)
     
     

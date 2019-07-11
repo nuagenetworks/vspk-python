@@ -8,17 +8,17 @@ VSPK Documentation
 
 
 .. toctree::
+    :caption: v6 reference
+    :maxdepth: 1
+    :glob:
+
+    v6/*
+
+
+.. toctree::
     :caption: v5_0 reference
     :maxdepth: 1
     :glob:
 
     v5_0/*
-
-
-.. toctree::
-    :caption: v4_0 reference
-    :maxdepth: 1
-    :glob:
-
-    v4_0/*
 
