@@ -49,27 +49,27 @@ class NUDSCPForwardingClassMapping(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_FORWARDING_CLASS_NONE = "NONE"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_FORWARDING_CLASS_E = "E"
-    
-    CONST_FORWARDING_CLASS_D = "D"
-    
-    CONST_FORWARDING_CLASS_G = "G"
-    
-    CONST_FORWARDING_CLASS_F = "F"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_FORWARDING_CLASS_A = "A"
     
-    CONST_FORWARDING_CLASS_C = "C"
-    
     CONST_FORWARDING_CLASS_B = "B"
     
+    CONST_FORWARDING_CLASS_C = "C"
+    
+    CONST_FORWARDING_CLASS_D = "D"
+    
+    CONST_FORWARDING_CLASS_E = "E"
+    
+    CONST_FORWARDING_CLASS_F = "F"
+    
+    CONST_FORWARDING_CLASS_G = "G"
+    
     CONST_FORWARDING_CLASS_H = "H"
+    
+    CONST_FORWARDING_CLASS_NONE = "NONE"
     
     
 
@@ -98,8 +98,8 @@ class NUDSCPForwardingClassMapping(NURESTObject):
         
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="forwarding_class", remote_name="forwardingClass", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="forwarding_class", remote_name="forwardingClass", attribute_type=str, is_required=False, is_unique=False, choices=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'NONE'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

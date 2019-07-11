@@ -51,13 +51,13 @@ class NUVPortMirror(NURESTObject):
     
     CONST_MIRROR_DIRECTION_BOTH = "BOTH"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_MIRROR_DIRECTION_EGRESS = "EGRESS"
     
     CONST_MIRROR_DIRECTION_INGRESS = "INGRESS"
     
-    CONST_MIRROR_DIRECTION_EGRESS = "EGRESS"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     
 
@@ -96,9 +96,9 @@ class NUVPortMirror(NURESTObject):
         self.expose_attribute(local_name="network_name", remote_name="networkName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mirror_destination_id", remote_name="mirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mirror_destination_name", remote_name="mirrorDestinationName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="mirror_direction", remote_name="mirrorDirection", attribute_type=str, is_required=False, is_unique=False, choices=[u'BOTH', u'EGRESS', u'INGRESS'])
+        self.expose_attribute(local_name="mirror_direction", remote_name="mirrorDirection", attribute_type=str, is_required=False, is_unique=False, choices=['BOTH', 'EGRESS', 'INGRESS'])
         self.expose_attribute(local_name="enterpise_name", remote_name="enterpiseName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vport_id", remote_name="vportId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="attached_network_type", remote_name="attachedNetworkType", attribute_type=str, is_required=False, is_unique=False)

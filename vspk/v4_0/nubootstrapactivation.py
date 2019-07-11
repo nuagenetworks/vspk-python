@@ -49,35 +49,35 @@ class NUBootstrapActivation(NURESTObject):
     
     ## Constants
     
-    CONST_ACTION_ROLLBACK = "ROLLBACK"
-    
-    CONST_ACTION_INITIATE = "INITIATE"
-    
-    CONST_ACTION_NO_AUTH_REQUIRED = "NO_AUTH_REQUIRED"
-    
     CONST_ACTION_AUTHENTICATE = "AUTHENTICATE"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_ACTION_NEW_NCPE_AUTH_REQUIRED = "NEW_NCPE_AUTH_REQUIRED"
-    
-    CONST_ACTION_UNSPECIFIED = "UNSPECIFIED"
-    
-    CONST_ACTION_INITIATE_RENEW = "INITIATE_RENEW"
-    
-    CONST_ACTION_CERTIFICATE_SIGNED = "CERTIFICATE_SIGNED"
-    
-    CONST_ACTION_ROLLED_BACK = "ROLLED_BACK"
-    
-    CONST_ACTION_CERTIFICATE_REVOKE = "CERTIFICATE_REVOKE"
     
     CONST_ACTION_BOOTSTRAP_COMPLETE = "BOOTSTRAP_COMPLETE"
     
+    CONST_ACTION_CERTIFICATE_RENEW = "CERTIFICATE_RENEW"
+    
+    CONST_ACTION_CERTIFICATE_REVOKE = "CERTIFICATE_REVOKE"
+    
+    CONST_ACTION_CERTIFICATE_SIGNED = "CERTIFICATE_SIGNED"
+    
     CONST_ACTION_CONFIRM = "CONFIRM"
     
-    CONST_ACTION_CERTIFICATE_RENEW = "CERTIFICATE_RENEW"
+    CONST_ACTION_INITIATE = "INITIATE"
+    
+    CONST_ACTION_INITIATE_RENEW = "INITIATE_RENEW"
+    
+    CONST_ACTION_NEW_NCPE_AUTH_REQUIRED = "NEW_NCPE_AUTH_REQUIRED"
+    
+    CONST_ACTION_NO_AUTH_REQUIRED = "NO_AUTH_REQUIRED"
+    
+    CONST_ACTION_ROLLBACK = "ROLLBACK"
+    
+    CONST_ACTION_ROLLED_BACK = "ROLLED_BACK"
+    
+    CONST_ACTION_UNSPECIFIED = "UNSPECIFIED"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     
 
@@ -118,10 +118,10 @@ class NUBootstrapActivation(NURESTObject):
         self.expose_attribute(local_name="cacert", remote_name="cacert", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="hash", remote_name="hash", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTHENTICATE', u'BOOTSTRAP_COMPLETE', u'CERTIFICATE_RENEW', u'CERTIFICATE_REVOKE', u'CERTIFICATE_SIGNED', u'CONFIRM', u'INITIATE', u'INITIATE_RENEW', u'NEW_NCPE_AUTH_REQUIRED', u'NO_AUTH_REQUIRED', u'ROLLBACK', u'ROLLED_BACK', u'UNSPECIFIED'])
+        self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=False, is_unique=False, choices=['AUTHENTICATE', 'BOOTSTRAP_COMPLETE', 'CERTIFICATE_RENEW', 'CERTIFICATE_REVOKE', 'CERTIFICATE_SIGNED', 'CONFIRM', 'INITIATE', 'INITIATE_RENEW', 'NEW_NCPE_AUTH_REQUIRED', 'NO_AUTH_REQUIRED', 'ROLLBACK', 'ROLLED_BACK', 'UNSPECIFIED'])
         self.expose_attribute(local_name="seed", remote_name="seed", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cert", remote_name="cert", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="config_url", remote_name="configURL", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tpm_owner_password", remote_name="tpmOwnerPassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tpm_state", remote_name="tpmState", attribute_type=int, is_required=False, is_unique=False)

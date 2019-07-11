@@ -49,77 +49,77 @@ class NUSystemConfig(NURESTObject):
     
     ## Constants
     
-    CONST_GROUP_KEY_DEFAULT_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA512 = "HMAC_SHA512"
-    
-    CONST_GROUP_KEY_DEFAULT_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_MD5 = "HMAC_MD5"
-    
-    CONST_GROUP_KEY_DEFAULT_TRAFFIC_ENCRYPTION_ALGORITHM_AES_256_CBC = "AES_256_CBC"
-    
-    CONST_CSPROOT_AUTHENTICATION_METHOD_LDAP = "LDAP"
-    
-    CONST_SYSTEM_AVATAR_TYPE_URL = "URL"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA384WITHRSA = "SHA384withRSA"
-    
-    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA512WITHRSA = "SHA512withRSA"
-    
-    CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_ENCRYPTION_ALGORITHM_RSA_1024 = "RSA_1024"
-    
-    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_AUTHENTICATION_ALGORITHM_HMAC_SHA512 = "HMAC_SHA512"
-    
-    CONST_GROUP_KEY_DEFAULT_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA1 = "HMAC_SHA1"
-    
-    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_AUTHENTICATION_ALGORITHM_HMAC_SHA1 = "HMAC_SHA1"
-    
-    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_ENCRYPTION_ALGORITHM_AES_256_CBC = "AES_256_CBC"
-    
-    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA384WITHRSA = "SHA384withRSA"
-    
-    CONST_GROUP_KEY_DEFAULT_TRAFFIC_ENCRYPTION_ALGORITHM_TRIPLE_DES_CBC = "TRIPLE_DES_CBC"
-    
-    CONST_GROUP_KEY_DEFAULT_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA256 = "HMAC_SHA256"
-    
-    CONST_CSPROOT_AUTHENTICATION_METHOD_LOCAL = "LOCAL"
-    
-    CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA224WITHRSA = "SHA224withRSA"
-    
-    CONST_GROUP_KEY_DEFAULT_TRAFFIC_ENCRYPTION_ALGORITHM_AES_128_CBC = "AES_128_CBC"
-    
-    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_AUTHENTICATION_ALGORITHM_HMAC_SHA256 = "HMAC_SHA256"
-    
-    CONST_DOMAIN_TUNNEL_TYPE_VXLAN = "VXLAN"
-    
-    CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA1WITHRSA = "SHA1withRSA"
-    
-    CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA256WITHRSA = "SHA256withRSA"
-    
-    CONST_DOMAIN_TUNNEL_TYPE_GRE = "GRE"
-    
-    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA224WITHRSA = "SHA224withRSA"
-    
-    CONST_DOMAIN_TUNNEL_TYPE_DC_DEFAULT = "DC_DEFAULT"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA1WITHRSA = "SHA1withRSA"
+    CONST_DOMAIN_TUNNEL_TYPE_DC_DEFAULT = "DC_DEFAULT"
     
-    CONST_SYSTEM_AVATAR_TYPE_COMPUTEDURL = "COMPUTEDURL"
+    CONST_DOMAIN_TUNNEL_TYPE_GRE = "GRE"
     
-    CONST_GROUP_KEY_DEFAULT_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA384 = "HMAC_SHA384"
+    CONST_DOMAIN_TUNNEL_TYPE_VXLAN = "VXLAN"
     
-    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA256WITHRSA = "SHA256withRSA"
+    CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_ENCRYPTION_ALGORITHM_RSA_1024 = "RSA_1024"
     
-    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_ENCRYPTION_ALGORITHM_TRIPLE_DES_CBC = "TRIPLE_DES_CBC"
+    CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA1WITHRSA = "SHA1withRSA"
     
-    CONST_GROUP_KEY_DEFAULT_TRAFFIC_ENCRYPTION_ALGORITHM_AES_192_CBC = "AES_192_CBC"
+    CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA224WITHRSA = "SHA224withRSA"
+    
+    CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA256WITHRSA = "SHA256withRSA"
+    
+    CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA384WITHRSA = "SHA384withRSA"
+    
+    CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA512WITHRSA = "SHA512withRSA"
+    
+    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_AUTHENTICATION_ALGORITHM_HMAC_SHA1 = "HMAC_SHA1"
+    
+    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_AUTHENTICATION_ALGORITHM_HMAC_SHA256 = "HMAC_SHA256"
+    
+    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_AUTHENTICATION_ALGORITHM_HMAC_SHA512 = "HMAC_SHA512"
     
     CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_ENCRYPTION_ALGORITHM_AES_128_CBC = "AES_128_CBC"
     
+    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_ENCRYPTION_ALGORITHM_AES_256_CBC = "AES_256_CBC"
+    
+    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_ENCRYPTION_ALGORITHM_TRIPLE_DES_CBC = "TRIPLE_DES_CBC"
+    
+    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA1WITHRSA = "SHA1withRSA"
+    
+    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA224WITHRSA = "SHA224withRSA"
+    
+    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA256WITHRSA = "SHA256withRSA"
+    
+    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA384WITHRSA = "SHA384withRSA"
+    
+    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA512WITHRSA = "SHA512withRSA"
+    
+    CONST_GROUP_KEY_DEFAULT_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_MD5 = "HMAC_MD5"
+    
+    CONST_GROUP_KEY_DEFAULT_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA1 = "HMAC_SHA1"
+    
+    CONST_GROUP_KEY_DEFAULT_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA256 = "HMAC_SHA256"
+    
+    CONST_GROUP_KEY_DEFAULT_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA384 = "HMAC_SHA384"
+    
+    CONST_GROUP_KEY_DEFAULT_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA512 = "HMAC_SHA512"
+    
+    CONST_GROUP_KEY_DEFAULT_TRAFFIC_ENCRYPTION_ALGORITHM_AES_128_CBC = "AES_128_CBC"
+    
+    CONST_GROUP_KEY_DEFAULT_TRAFFIC_ENCRYPTION_ALGORITHM_AES_192_CBC = "AES_192_CBC"
+    
+    CONST_GROUP_KEY_DEFAULT_TRAFFIC_ENCRYPTION_ALGORITHM_AES_256_CBC = "AES_256_CBC"
+    
+    CONST_GROUP_KEY_DEFAULT_TRAFFIC_ENCRYPTION_ALGORITHM_TRIPLE_DES_CBC = "TRIPLE_DES_CBC"
+    
+    CONST_CSPROOT_AUTHENTICATION_METHOD_LDAP = "LDAP"
+    
+    CONST_CSPROOT_AUTHENTICATION_METHOD_LOCAL = "LOCAL"
+    
     CONST_SYSTEM_AVATAR_TYPE_BASE64 = "BASE64"
     
-    CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA512WITHRSA = "SHA512withRSA"
+    CONST_SYSTEM_AVATAR_TYPE_COMPUTEDURL = "COMPUTEDURL"
+    
+    CONST_SYSTEM_AVATAR_TYPE_URL = "URL"
     
     
 
@@ -342,20 +342,20 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="global_mac_address", remote_name="globalMACAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="inactive_timeout", remote_name="inactiveTimeout", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="domain_tunnel_type", remote_name="domainTunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VXLAN'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="domain_tunnel_type", remote_name="domainTunnelType", attribute_type=str, is_required=False, is_unique=False, choices=['DC_DEFAULT', 'GRE', 'VXLAN'])
         self.expose_attribute(local_name="post_processor_threads_count", remote_name="postProcessorThreadsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_generation_interval", remote_name="groupKeyDefaultSEKGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_lifetime", remote_name="groupKeyDefaultSEKLifetime", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="group_key_default_sek_payload_encryption_algorithm", remote_name="groupKeyDefaultSEKPayloadEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'RSA_1024'])
-        self.expose_attribute(local_name="group_key_default_sek_payload_signing_algorithm", remote_name="groupKeyDefaultSEKPayloadSigningAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'SHA1withRSA', u'SHA224withRSA', u'SHA256withRSA', u'SHA384withRSA', u'SHA512withRSA'])
+        self.expose_attribute(local_name="group_key_default_sek_payload_encryption_algorithm", remote_name="groupKeyDefaultSEKPayloadEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=['RSA_1024'])
+        self.expose_attribute(local_name="group_key_default_sek_payload_signing_algorithm", remote_name="groupKeyDefaultSEKPayloadSigningAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=['SHA1withRSA', 'SHA224withRSA', 'SHA256withRSA', 'SHA384withRSA', 'SHA512withRSA'])
         self.expose_attribute(local_name="group_key_default_seed_generation_interval", remote_name="groupKeyDefaultSeedGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_seed_lifetime", remote_name="groupKeyDefaultSeedLifetime", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="group_key_default_seed_payload_authentication_algorithm", remote_name="groupKeyDefaultSeedPayloadAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA512'])
-        self.expose_attribute(local_name="group_key_default_seed_payload_encryption_algorithm", remote_name="groupKeyDefaultSeedPayloadEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES_128_CBC', u'AES_256_CBC', u'TRIPLE_DES_CBC'])
-        self.expose_attribute(local_name="group_key_default_seed_payload_signing_algorithm", remote_name="groupKeyDefaultSeedPayloadSigningAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'SHA1withRSA', u'SHA224withRSA', u'SHA256withRSA', u'SHA384withRSA', u'SHA512withRSA'])
-        self.expose_attribute(local_name="group_key_default_traffic_authentication_algorithm", remote_name="groupKeyDefaultTrafficAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_MD5', u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA384', u'HMAC_SHA512'])
-        self.expose_attribute(local_name="group_key_default_traffic_encryption_algorithm", remote_name="groupKeyDefaultTrafficEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES_128_CBC', u'AES_192_CBC', u'AES_256_CBC', u'TRIPLE_DES_CBC'])
+        self.expose_attribute(local_name="group_key_default_seed_payload_authentication_algorithm", remote_name="groupKeyDefaultSeedPayloadAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=['HMAC_SHA1', 'HMAC_SHA256', 'HMAC_SHA512'])
+        self.expose_attribute(local_name="group_key_default_seed_payload_encryption_algorithm", remote_name="groupKeyDefaultSeedPayloadEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=['AES_128_CBC', 'AES_256_CBC', 'TRIPLE_DES_CBC'])
+        self.expose_attribute(local_name="group_key_default_seed_payload_signing_algorithm", remote_name="groupKeyDefaultSeedPayloadSigningAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=['SHA1withRSA', 'SHA224withRSA', 'SHA256withRSA', 'SHA384withRSA', 'SHA512withRSA'])
+        self.expose_attribute(local_name="group_key_default_traffic_authentication_algorithm", remote_name="groupKeyDefaultTrafficAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=['HMAC_MD5', 'HMAC_SHA1', 'HMAC_SHA256', 'HMAC_SHA384', 'HMAC_SHA512'])
+        self.expose_attribute(local_name="group_key_default_traffic_encryption_algorithm", remote_name="groupKeyDefaultTrafficEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=['AES_128_CBC', 'AES_192_CBC', 'AES_256_CBC', 'TRIPLE_DES_CBC'])
         self.expose_attribute(local_name="group_key_default_traffic_encryption_key_lifetime", remote_name="groupKeyDefaultTrafficEncryptionKeyLifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_generation_interval_on_forced_re_key", remote_name="groupKeyGenerationIntervalOnForcedReKey", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_generation_interval_on_revoke", remote_name="groupKeyGenerationIntervalOnRevoke", attribute_type=int, is_required=False, is_unique=False)
@@ -368,7 +368,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="nsg_config_endpoint", remote_name="nsgConfigEndpoint", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_local_ui_url", remote_name="nsgLocalUiUrl", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="esi_id", remote_name="esiID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="csproot_authentication_method", remote_name="csprootAuthenticationMethod", attribute_type=str, is_required=False, is_unique=False, choices=[u'LDAP', u'LOCAL'])
+        self.expose_attribute(local_name="csproot_authentication_method", remote_name="csprootAuthenticationMethod", attribute_type=str, is_required=False, is_unique=False, choices=['LDAP', 'LOCAL'])
         self.expose_attribute(local_name="stack_trace_enabled", remote_name="stackTraceEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stateful_acl_non_tcp_timeout", remote_name="statefulACLNonTCPTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stateful_acltcp_timeout", remote_name="statefulACLTCPTimeout", attribute_type=int, is_required=False, is_unique=False)
@@ -404,7 +404,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="sysmon_node_presence_timeout", remote_name="sysmonNodePresenceTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sysmon_probe_response_timeout", remote_name="sysmonProbeResponseTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="system_avatar_data", remote_name="systemAvatarData", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="system_avatar_type", remote_name="systemAvatarType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BASE64', u'COMPUTEDURL', u'URL'])
+        self.expose_attribute(local_name="system_avatar_type", remote_name="systemAvatarType", attribute_type=str, is_required=False, is_unique=False, choices=['BASE64', 'COMPUTEDURL', 'URL'])
         
 
         # Fetchers

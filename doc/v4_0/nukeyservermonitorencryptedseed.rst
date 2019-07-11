@@ -51,7 +51,7 @@ Parents
 --------
 
 
-- :ref:`nukeyservermonitorseed.NUKeyServerMonitorSeed<nukeyservermonitorseed>`
-
 - :ref:`nukeyservermonitor.NUKeyServerMonitor<nukeyservermonitor>`
+
+- :ref:`nukeyservermonitorseed.NUKeyServerMonitorSeed<nukeyservermonitorseed>`
 

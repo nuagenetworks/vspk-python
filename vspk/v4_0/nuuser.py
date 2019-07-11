@@ -66,17 +66,17 @@ class NUUser(NURESTObject):
     
     CONST_MANAGEMENT_MODE_CMS = "CMS"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_MANAGEMENT_MODE_DEFAULT = "DEFAULT"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_AVATAR_TYPE_URL = "URL"
-    
-    CONST_AVATAR_TYPE_COMPUTEDURL = "COMPUTEDURL"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_AVATAR_TYPE_BASE64 = "BASE64"
     
-    CONST_MANAGEMENT_MODE_DEFAULT = "DEFAULT"
+    CONST_AVATAR_TYPE_COMPUTEDURL = "COMPUTEDURL"
+    
+    CONST_AVATAR_TYPE_URL = "URL"
     
     
 
@@ -113,18 +113,18 @@ class NUUser(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="ldapuser_dn", remote_name="LDAPUserDN", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="management_mode", remote_name="managementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'CMS', u'DEFAULT'])
+        self.expose_attribute(local_name="management_mode", remote_name="managementMode", attribute_type=str, is_required=False, is_unique=False, choices=['CMS', 'DEFAULT'])
         self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_name", remote_name="lastName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="first_name", remote_name="firstName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="disabled", remote_name="disabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="email", remote_name="email", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="mobile_number", remote_name="mobileNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_name", remote_name="userName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="avatar_data", remote_name="avatarData", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="avatar_type", remote_name="avatarType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BASE64', u'COMPUTEDURL', u'URL'])
+        self.expose_attribute(local_name="avatar_type", remote_name="avatarType", attribute_type=str, is_required=False, is_unique=False, choices=['BASE64', 'COMPUTEDURL', 'URL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

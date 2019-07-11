@@ -27,7 +27,7 @@ Parents
 --------
 
 
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nuuplinkconnection.NUUplinkConnection<nuuplinkconnection>`
+
+- :ref:`nume.NUMe<nume>`
 

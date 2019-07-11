@@ -51,15 +51,15 @@ class NUNATMapEntry(NURESTObject):
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_TYPE_ONE_TO_MANY_PAT = "ONE_TO_MANY_PAT"
-    
-    CONST_TYPE_UNKNOWN = "UNKNOWN"
-    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_TYPE_MANY_TO_ONE_PAT = "MANY_TO_ONE_PAT"
+    
+    CONST_TYPE_ONE_TO_MANY_PAT = "ONE_TO_MANY_PAT"
     
     CONST_TYPE_ONE_TO_ONE_NAT = "ONE_TO_ONE_NAT"
     
-    CONST_TYPE_MANY_TO_ONE_PAT = "MANY_TO_ONE_PAT"
+    CONST_TYPE_UNKNOWN = "UNKNOWN"
     
     
 
@@ -89,12 +89,12 @@ class NUNATMapEntry(NURESTObject):
         self._type = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="private_ip", remote_name="privateIP", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="associated_patnat_pool_id", remote_name="associatedPATNATPoolID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="public_ip", remote_name="publicIP", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'MANY_TO_ONE_PAT', u'ONE_TO_MANY_PAT', u'ONE_TO_ONE_NAT', u'UNKNOWN'])
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=['MANY_TO_ONE_PAT', 'ONE_TO_MANY_PAT', 'ONE_TO_ONE_NAT', 'UNKNOWN'])
         
 
         # Fetchers

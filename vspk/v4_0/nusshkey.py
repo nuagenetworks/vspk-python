@@ -71,7 +71,7 @@ class NUSSHKey(NURESTObject):
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="key_type", remote_name="keyType", attribute_type=str, is_required=False, is_unique=False, choices=[u'RSA'])
+        self.expose_attribute(local_name="key_type", remote_name="keyType", attribute_type=str, is_required=False, is_unique=False, choices=['RSA'])
         self.expose_attribute(local_name="public_key", remote_name="publicKey", attribute_type=str, is_required=False, is_unique=False)
         
 

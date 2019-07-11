@@ -121,15 +121,15 @@ Parents
 --------
 
 
-- :ref:`nuzone.NUZone<nuzone>`
+- :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
+
+- :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
 - :ref:`nusubnettemplate.NUSubnetTemplate<nusubnettemplate>`
 
-- :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
+- :ref:`nuzone.NUZone<nuzone>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nume.NUMe<nume>`
-
-- :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 

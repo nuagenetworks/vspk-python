@@ -58,9 +58,9 @@ Parents
 --------
 
 
+- :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
+
 - :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nume.NUMe<nume>`
-
-- :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 

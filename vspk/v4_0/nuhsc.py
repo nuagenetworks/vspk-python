@@ -67,23 +67,23 @@ class NUHSC(NURESTObject):
     
     ## Constants
     
-    CONST_TYPE_VSG = "VSG"
-    
-    CONST_STATUS_DOWN = "DOWN"
-    
-    CONST_TYPE_VSA = "VSA"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_TYPE_NONE = "NONE"
+    CONST_STATUS_ADMIN_DOWN = "ADMIN_DOWN"
     
-    CONST_TYPE_DC7X50 = "DC7X50"
+    CONST_STATUS_DOWN = "DOWN"
     
     CONST_STATUS_UP = "UP"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_TYPE_DC7X50 = "DC7X50"
     
-    CONST_STATUS_ADMIN_DOWN = "ADMIN_DOWN"
+    CONST_TYPE_NONE = "NONE"
+    
+    CONST_TYPE_VSA = "VSA"
+    
+    CONST_TYPE_VSG = "VSG"
     
     
 
@@ -141,18 +141,18 @@ class NUHSC(NURESTObject):
         self.expose_attribute(local_name="disks", remote_name="disks", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="already_marked_for_unavailable", remote_name="alreadyMarkedForUnavailable", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="unavailable_timestamp", remote_name="unavailableTimestamp", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="location", remote_name="location", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="model", remote_name="model", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="product_version", remote_name="productVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsds", remote_name="vsds", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=['ADMIN_DOWN', 'DOWN', 'UP'])
         self.expose_attribute(local_name="current_cpuusage", remote_name="currentCPUUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="current_memory_usage", remote_name="currentMemoryUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="average_cpuusage", remote_name="averageCPUUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="average_memory_usage", remote_name="averageMemoryUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'NONE', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=['DC7X50', 'NONE', 'VSA', 'VSG'])
         
 
         # Fetchers

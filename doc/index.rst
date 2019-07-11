@@ -8,11 +8,11 @@ VSPK Documentation
 
 
 .. toctree::
-    :caption: v5_0 reference
+    :caption: v6 reference
     :maxdepth: 1
     :glob:
 
-    v5_0/*
+    v6/*
 
 
 .. toctree::

@@ -115,53 +115,53 @@ class NUVPort(NURESTObject):
     
     ## Constants
     
-    CONST_SYSTEM_TYPE_NUAGE_2 = "NUAGE_2"
-    
-    CONST_SYSTEM_TYPE_NUAGE_1 = "NUAGE_1"
+    CONST_DPI_DISABLED = "DISABLED"
     
     CONST_DPI_ENABLED = "ENABLED"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_TYPE_CONTAINER = "CONTAINER"
     
     CONST_DPI_INHERITED = "INHERITED"
     
     CONST_ADDRESS_SPOOFING_DISABLED = "DISABLED"
     
-    CONST_ADDRESS_SPOOFING_INHERITED = "INHERITED"
-    
-    CONST_TYPE_HOST = "HOST"
-    
     CONST_ADDRESS_SPOOFING_ENABLED = "ENABLED"
     
-    CONST_SYSTEM_TYPE_SOFTWARE = "SOFTWARE"
+    CONST_ADDRESS_SPOOFING_INHERITED = "INHERITED"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_OPERATIONAL_STATE_DOWN = "DOWN"
     
+    CONST_OPERATIONAL_STATE_INIT = "INIT"
+    
     CONST_OPERATIONAL_STATE_UP = "UP"
+    
+    CONST_MULTICAST_DISABLED = "DISABLED"
     
     CONST_MULTICAST_ENABLED = "ENABLED"
     
     CONST_MULTICAST_INHERITED = "INHERITED"
     
-    CONST_SYSTEM_TYPE_HARDWARE_VTEP = "HARDWARE_VTEP"
+    CONST_TYPE_BRIDGE = "BRIDGE"
+    
+    CONST_TYPE_CONTAINER = "CONTAINER"
+    
+    CONST_TYPE_HOST = "HOST"
+    
+    CONST_TYPE_VM = "VM"
     
     CONST_SYSTEM_TYPE_HARDWARE = "HARDWARE"
     
-    CONST_TYPE_BRIDGE = "BRIDGE"
+    CONST_SYSTEM_TYPE_HARDWARE_VTEP = "HARDWARE_VTEP"
     
-    CONST_MULTICAST_DISABLED = "DISABLED"
+    CONST_SYSTEM_TYPE_NUAGE_1 = "NUAGE_1"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_DPI_DISABLED = "DISABLED"
+    CONST_SYSTEM_TYPE_NUAGE_2 = "NUAGE_2"
     
     CONST_SYSTEM_TYPE_NUAGE_VRSG = "NUAGE_VRSG"
     
-    CONST_OPERATIONAL_STATE_INIT = "INIT"
-    
-    CONST_TYPE_VM = "VM"
+    CONST_SYSTEM_TYPE_SOFTWARE = "SOFTWARE"
     
     
 
@@ -204,25 +204,25 @@ class NUVPort(NURESTObject):
         self._system_type = None
         
         self.expose_attribute(local_name="vlanid", remote_name="VLANID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED', 'INHERITED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="has_attached_interfaces", remote_name="hasAttachedInterfaces", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="active", remote_name="active", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="address_spoofing", remote_name="addressSpoofing", attribute_type=str, is_required=True, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="address_spoofing", remote_name="addressSpoofing", attribute_type=str, is_required=True, is_unique=False, choices=['DISABLED', 'ENABLED', 'INHERITED'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="domain_id", remote_name="domainID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zone_id", remote_name="zoneID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="operational_state", remote_name="operationalState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DOWN', u'INIT', u'UP'])
+        self.expose_attribute(local_name="operational_state", remote_name="operationalState", attribute_type=str, is_required=False, is_unique=False, choices=['DOWN', 'INIT', 'UP'])
         self.expose_attribute(local_name="associated_floating_ip_id", remote_name="associatedFloatingIPID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_send_multicast_channel_map_id", remote_name="associatedSendMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multi_nic_vport_id", remote_name="multiNICVPortID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED', 'INHERITED'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'BRIDGE', u'CONTAINER', u'HOST', u'VM'])
-        self.expose_attribute(local_name="system_type", remote_name="systemType", attribute_type=str, is_required=False, is_unique=False, choices=[u'HARDWARE', u'HARDWARE_VTEP', u'NUAGE_1', u'NUAGE_2', u'NUAGE_VRSG', u'SOFTWARE'])
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=['BRIDGE', 'CONTAINER', 'HOST', 'VM'])
+        self.expose_attribute(local_name="system_type", remote_name="systemType", attribute_type=str, is_required=False, is_unique=False, choices=['HARDWARE', 'HARDWARE_VTEP', 'NUAGE_1', 'NUAGE_2', 'NUAGE_VRSG', 'SOFTWARE'])
         
 
         # Fetchers

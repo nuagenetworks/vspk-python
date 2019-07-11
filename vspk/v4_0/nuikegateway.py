@@ -55,19 +55,19 @@ class NUIKEGateway(NURESTObject):
     
     ## Constants
     
-    CONST_IK_EV1_MODE_NONE = "NONE"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_IK_EV1_MODE_MAIN = "MAIN"
-    
     CONST_IKE_VERSION_V1 = "V1"
+    
+    CONST_IKE_VERSION_V2 = "V2"
     
     CONST_IK_EV1_MODE_AGGRESSIVE = "AGGRESSIVE"
     
-    CONST_IKE_VERSION_V2 = "V2"
+    CONST_IK_EV1_MODE_MAIN = "MAIN"
+    
+    CONST_IK_EV1_MODE_NONE = "NONE"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     
 
@@ -98,13 +98,13 @@ class NUIKEGateway(NURESTObject):
         self._associated_enterprise_id = None
         self._external_id = None
         
-        self.expose_attribute(local_name="ike_version", remote_name="IKEVersion", attribute_type=str, is_required=False, is_unique=False, choices=[u'V1', u'V2'])
-        self.expose_attribute(local_name="ik_ev1_mode", remote_name="IKEv1Mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'AGGRESSIVE', u'MAIN', u'NONE'])
+        self.expose_attribute(local_name="ike_version", remote_name="IKEVersion", attribute_type=str, is_required=False, is_unique=False, choices=['V1', 'V2'])
+        self.expose_attribute(local_name="ik_ev1_mode", remote_name="IKEv1Mode", attribute_type=str, is_required=False, is_unique=False, choices=['AGGRESSIVE', 'MAIN', 'NONE'])
         self.expose_attribute(local_name="ip_address", remote_name="IPAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         

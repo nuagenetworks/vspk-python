@@ -49,19 +49,19 @@ class NUAlarm(NURESTObject):
     
     ## Constants
     
-    CONST_SEVERITY_WARNING = "WARNING"
-    
-    CONST_SEVERITY_MAJOR = "MAJOR"
-    
     CONST_SEVERITY_CRITICAL = "CRITICAL"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_SEVERITY_INFO = "INFO"
     
+    CONST_SEVERITY_MAJOR = "MAJOR"
+    
     CONST_SEVERITY_MINOR = "MINOR"
+    
+    CONST_SEVERITY_WARNING = "WARNING"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     
 
@@ -102,10 +102,10 @@ class NUAlarm(NURESTObject):
         self.expose_attribute(local_name="acknowledged", remote_name="acknowledged", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="reason", remote_name="reason", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="severity", remote_name="severity", attribute_type=str, is_required=False, is_unique=False, choices=[u'CRITICAL', u'INFO', u'MAJOR', u'MINOR', u'WARNING'])
+        self.expose_attribute(local_name="severity", remote_name="severity", attribute_type=str, is_required=False, is_unique=False, choices=['CRITICAL', 'INFO', 'MAJOR', 'MINOR', 'WARNING'])
         self.expose_attribute(local_name="timestamp", remote_name="timestamp", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="error_condition", remote_name="errorCondition", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="number_of_occurances", remote_name="numberOfOccurances", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)

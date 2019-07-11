@@ -55,133 +55,133 @@ class NUTCA(NURESTObject):
     
     ## Constants
     
-    CONST_METRIC_PACKETS_OUT_DROPPED = "PACKETS_OUT_DROPPED"
-    
-    CONST_METRIC_Q4_BYTES = "Q4_BYTES"
-    
-    CONST_METRIC_FIP_RATE_LIMIT_DROPPED_PACKETS = "FIP_RATE_LIMIT_DROPPED_PACKETS"
-    
-    CONST_METRIC_TX_ERRORS = "TX_ERRORS"
-    
-    CONST_METRIC_RX_BYTES = "RX_BYTES"
-    
-    CONST_TYPE_BREACH = "BREACH"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_METRIC_TCP_FLAG_RST_IN = "TCP_FLAG_RST_IN"
-    
-    CONST_METRIC_RX_DROPPED = "RX_DROPPED"
-    
-    CONST_METRIC_Q3_PKT_COUNT = "Q3_PKT_COUNT"
-    
-    CONST_METRIC_TCP_FLAG_ACK_OUT = "TCP_FLAG_ACK_OUT"
-    
-    CONST_METRIC_EGRESS_PACKET_COUNT = "EGRESS_PACKET_COUNT"
-    
-    CONST_METRIC_Q2_DROPPED = "Q2_DROPPED"
-    
-    CONST_METRIC_PACKETS_IN_DROPPED = "PACKETS_IN_DROPPED"
-    
-    CONST_METRIC_FIP_RATE_LIMIT_DROPPED_BYTES = "FIP_RATE_LIMIT_DROPPED_BYTES"
-    
-    CONST_METRIC_Q10_PKT_COUNT = "Q10_PKT_COUNT"
-    
-    CONST_METRIC_PACKETS_DROPPED_BY_RATE_LIMIT = "PACKETS_DROPPED_BY_RATE_LIMIT"
-    
-    CONST_METRIC_Q1_BYTES = "Q1_BYTES"
-    
-    CONST_METRIC_Q3_BYTES = "Q3_BYTES"
-    
-    CONST_METRIC_EGRESS_BYTE_COUNT = "EGRESS_BYTE_COUNT"
-    
-    CONST_METRIC_INGRESS_PACKET_COUNT = "INGRESS_PACKET_COUNT"
-    
-    CONST_METRIC_TX_DROPPED = "TX_DROPPED"
-    
-    CONST_METRIC_Q1_DROPPED = "Q1_DROPPED"
-    
-    CONST_METRIC_ADDRESS_MAP_INGRESS_BYTE_CNT = "ADDRESS_MAP_INGRESS_BYTE_CNT"
-    
-    CONST_METRIC_PACKETS_IN = "PACKETS_IN"
-    
-    CONST_METRIC_Q2_PKT_COUNT = "Q2_PKT_COUNT"
-    
-    CONST_METRIC_RX_PKT_COUNT = "RX_PKT_COUNT"
-    
-    CONST_METRIC_TX_BYTES = "TX_BYTES"
-    
-    CONST_METRIC_ANTI_SPOOF_EVENT_COUNT = "ANTI_SPOOF_EVENT_COUNT"
-    
-    CONST_METRIC_ACL_DENY_EVENT_COUNT = "ACL_DENY_EVENT_COUNT"
-    
-    CONST_METRIC_TCP_FLAG_NULL_IN = "TCP_FLAG_NULL_IN"
-    
-    CONST_METRIC_Q3_DROPPED = "Q3_DROPPED"
-    
-    CONST_METRIC_TCP_FLAG_NULL_OUT = "TCP_FLAG_NULL_OUT"
-    
-    CONST_METRIC_Q10_BYTES = "Q10_BYTES"
-    
-    CONST_METRIC_BYTES_IN = "BYTES_IN"
-    
-    CONST_METRIC_Q4_PKT_COUNT = "Q4_PKT_COUNT"
-    
-    CONST_METRIC_FIP_PRE_RATE_LIMIT_BYTES = "FIP_PRE_RATE_LIMIT_BYTES"
-    
-    CONST_METRIC_TCP_FLAG_RST_OUT = "TCP_FLAG_RST_OUT"
-    
-    CONST_METRIC_ADDRESS_MAP_EGRESS_BYTE_CNT = "ADDRESS_MAP_EGRESS_BYTE_CNT"
-    
-    CONST_METRIC_INGRESS_BYTE_COUNT = "INGRESS_BYTE_COUNT"
+    CONST_ACTION_ALERT = "ALERT"
     
     CONST_ACTION_ALERT_POLICYGROUPCHANGE = "ALERT_POLICYGROUPCHANGE"
     
-    CONST_METRIC_RX_ERRORS = "RX_ERRORS"
+    CONST_METRIC_ACL_DENY_EVENT_COUNT = "ACL_DENY_EVENT_COUNT"
     
-    CONST_METRIC_Q1_PKT_COUNT = "Q1_PKT_COUNT"
+    CONST_METRIC_ADDRESS_MAP_EGRESS_BYTE_CNT = "ADDRESS_MAP_EGRESS_BYTE_CNT"
     
     CONST_METRIC_ADDRESS_MAP_EGRESS_PKT_CNT = "ADDRESS_MAP_EGRESS_PKT_CNT"
     
+    CONST_METRIC_ADDRESS_MAP_INGRESS_BYTE_CNT = "ADDRESS_MAP_INGRESS_BYTE_CNT"
+    
     CONST_METRIC_ADDRESS_MAP_INGRESS_PKT_CNT = "ADDRESS_MAP_INGRESS_PKT_CNT"
     
-    CONST_METRIC_TCP_FLAG_ACK_IN = "TCP_FLAG_ACK_IN"
+    CONST_METRIC_ANTI_SPOOF_EVENT_COUNT = "ANTI_SPOOF_EVENT_COUNT"
     
-    CONST_METRIC_Q0_BYTES = "Q0_BYTES"
-    
-    CONST_METRIC_PACKETS_OUT_ERROR = "PACKETS_OUT_ERROR"
+    CONST_METRIC_BYTES_IN = "BYTES_IN"
     
     CONST_METRIC_BYTES_OUT = "BYTES_OUT"
     
-    CONST_METRIC_Q4_DROPPED = "Q4_DROPPED"
+    CONST_METRIC_EGRESS_BYTE_COUNT = "EGRESS_BYTE_COUNT"
     
-    CONST_METRIC_Q0_PKT_COUNT = "Q0_PKT_COUNT"
+    CONST_METRIC_EGRESS_PACKET_COUNT = "EGRESS_PACKET_COUNT"
     
-    CONST_METRIC_TX_PKT_COUNT = "TX_PKT_COUNT"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_METRIC_TCP_FLAG_SYN_OUT = "TCP_FLAG_SYN_OUT"
-    
-    CONST_METRIC_PACKETS_OUT = "PACKETS_OUT"
-    
-    CONST_METRIC_Q10_DROPPED = "Q10_DROPPED"
-    
-    CONST_TYPE_ROLLING_AVERAGE = "ROLLING_AVERAGE"
-    
-    CONST_METRIC_Q2_BYTES = "Q2_BYTES"
+    CONST_METRIC_FIP_PRE_RATE_LIMIT_BYTES = "FIP_PRE_RATE_LIMIT_BYTES"
     
     CONST_METRIC_FIP_PRE_RATE_LIMIT_PACKETS = "FIP_PRE_RATE_LIMIT_PACKETS"
     
-    CONST_ACTION_ALERT = "ALERT"
+    CONST_METRIC_FIP_RATE_LIMIT_DROPPED_BYTES = "FIP_RATE_LIMIT_DROPPED_BYTES"
+    
+    CONST_METRIC_FIP_RATE_LIMIT_DROPPED_PACKETS = "FIP_RATE_LIMIT_DROPPED_PACKETS"
+    
+    CONST_METRIC_INGRESS_BYTE_COUNT = "INGRESS_BYTE_COUNT"
+    
+    CONST_METRIC_INGRESS_PACKET_COUNT = "INGRESS_PACKET_COUNT"
+    
+    CONST_METRIC_PACKETS_DROPPED_BY_RATE_LIMIT = "PACKETS_DROPPED_BY_RATE_LIMIT"
+    
+    CONST_METRIC_PACKETS_IN = "PACKETS_IN"
+    
+    CONST_METRIC_PACKETS_IN_DROPPED = "PACKETS_IN_DROPPED"
+    
+    CONST_METRIC_PACKETS_IN_ERROR = "PACKETS_IN_ERROR"
+    
+    CONST_METRIC_PACKETS_OUT = "PACKETS_OUT"
+    
+    CONST_METRIC_PACKETS_OUT_DROPPED = "PACKETS_OUT_DROPPED"
+    
+    CONST_METRIC_PACKETS_OUT_ERROR = "PACKETS_OUT_ERROR"
+    
+    CONST_METRIC_TCP_FLAG_ACK_IN = "TCP_FLAG_ACK_IN"
+    
+    CONST_METRIC_TCP_FLAG_ACK_OUT = "TCP_FLAG_ACK_OUT"
+    
+    CONST_METRIC_TCP_FLAG_NULL_IN = "TCP_FLAG_NULL_IN"
+    
+    CONST_METRIC_TCP_FLAG_NULL_OUT = "TCP_FLAG_NULL_OUT"
+    
+    CONST_METRIC_TCP_FLAG_RST_IN = "TCP_FLAG_RST_IN"
+    
+    CONST_METRIC_TCP_FLAG_RST_OUT = "TCP_FLAG_RST_OUT"
     
     CONST_METRIC_TCP_FLAG_SYN_IN = "TCP_FLAG_SYN_IN"
     
-    CONST_METRIC_Q0_DROPPED = "Q0_DROPPED"
+    CONST_METRIC_TCP_FLAG_SYN_OUT = "TCP_FLAG_SYN_OUT"
     
     CONST_METRIC_TCP_SYN_EVENT_COUNT = "TCP_SYN_EVENT_COUNT"
     
-    CONST_METRIC_PACKETS_IN_ERROR = "PACKETS_IN_ERROR"
+    CONST_METRIC_TX_BYTES = "TX_BYTES"
+    
+    CONST_METRIC_RX_BYTES = "RX_BYTES"
+    
+    CONST_METRIC_Q0_BYTES = "Q0_BYTES"
+    
+    CONST_METRIC_Q1_BYTES = "Q1_BYTES"
+    
+    CONST_METRIC_Q2_BYTES = "Q2_BYTES"
+    
+    CONST_METRIC_Q3_BYTES = "Q3_BYTES"
+    
+    CONST_METRIC_Q4_BYTES = "Q4_BYTES"
+    
+    CONST_METRIC_Q10_BYTES = "Q10_BYTES"
+    
+    CONST_METRIC_TX_PKT_COUNT = "TX_PKT_COUNT"
+    
+    CONST_METRIC_TX_ERRORS = "TX_ERRORS"
+    
+    CONST_METRIC_TX_DROPPED = "TX_DROPPED"
+    
+    CONST_METRIC_RX_PKT_COUNT = "RX_PKT_COUNT"
+    
+    CONST_METRIC_RX_ERRORS = "RX_ERRORS"
+    
+    CONST_METRIC_RX_DROPPED = "RX_DROPPED"
+    
+    CONST_METRIC_Q0_PKT_COUNT = "Q0_PKT_COUNT"
+    
+    CONST_METRIC_Q0_DROPPED = "Q0_DROPPED"
+    
+    CONST_METRIC_Q1_PKT_COUNT = "Q1_PKT_COUNT"
+    
+    CONST_METRIC_Q1_DROPPED = "Q1_DROPPED"
+    
+    CONST_METRIC_Q2_PKT_COUNT = "Q2_PKT_COUNT"
+    
+    CONST_METRIC_Q2_DROPPED = "Q2_DROPPED"
+    
+    CONST_METRIC_Q3_PKT_COUNT = "Q3_PKT_COUNT"
+    
+    CONST_METRIC_Q3_DROPPED = "Q3_DROPPED"
+    
+    CONST_METRIC_Q4_PKT_COUNT = "Q4_PKT_COUNT"
+    
+    CONST_METRIC_Q4_DROPPED = "Q4_DROPPED"
+    
+    CONST_METRIC_Q10_PKT_COUNT = "Q10_PKT_COUNT"
+    
+    CONST_METRIC_Q10_DROPPED = "Q10_DROPPED"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_TYPE_BREACH = "BREACH"
+    
+    CONST_TYPE_ROLLING_AVERAGE = "ROLLING_AVERAGE"
     
     
 
@@ -224,19 +224,19 @@ class NUTCA(NURESTObject):
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="target_policy_group_id", remote_name="targetPolicyGroupID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'ALERT', u'ALERT_POLICYGROUPCHANGE'])
+        self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=['ALERT', 'ALERT_POLICYGROUPCHANGE'])
         self.expose_attribute(local_name="period", remote_name="period", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="metric", remote_name="metric", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACL_DENY_EVENT_COUNT', u'ADDRESS_MAP_EGRESS_BYTE_CNT', u'ADDRESS_MAP_EGRESS_PKT_CNT', u'ADDRESS_MAP_INGRESS_BYTE_CNT', u'ADDRESS_MAP_INGRESS_PKT_CNT', u'ANTI_SPOOF_EVENT_COUNT', u'BYTES_IN', u'BYTES_OUT', u'EGRESS_BYTE_COUNT', u'EGRESS_PACKET_COUNT', u'FIP_PRE_RATE_LIMIT_BYTES', u'FIP_PRE_RATE_LIMIT_PACKETS', u'FIP_RATE_LIMIT_DROPPED_BYTES', u'FIP_RATE_LIMIT_DROPPED_PACKETS', u'INGRESS_BYTE_COUNT', u'INGRESS_PACKET_COUNT', u'PACKETS_DROPPED_BY_RATE_LIMIT', u'PACKETS_IN', u'PACKETS_IN_DROPPED', u'PACKETS_IN_ERROR', u'PACKETS_OUT', u'PACKETS_OUT_DROPPED', u'PACKETS_OUT_ERROR', u'Q0_BYTES', u'Q0_DROPPED', u'Q0_PKT_COUNT', u'Q10_BYTES', u'Q10_DROPPED', u'Q10_PKT_COUNT', u'Q1_BYTES', u'Q1_DROPPED', u'Q1_PKT_COUNT', u'Q2_BYTES', u'Q2_DROPPED', u'Q2_PKT_COUNT', u'Q3_BYTES', u'Q3_DROPPED', u'Q3_PKT_COUNT', u'Q4_BYTES', u'Q4_DROPPED', u'Q4_PKT_COUNT', u'RX_BYTES', u'RX_DROPPED', u'RX_ERRORS', u'RX_PKT_COUNT', u'TCP_FLAG_ACK_IN', u'TCP_FLAG_ACK_OUT', u'TCP_FLAG_NULL_IN', u'TCP_FLAG_NULL_OUT', u'TCP_FLAG_RST_IN', u'TCP_FLAG_RST_OUT', u'TCP_FLAG_SYN_IN', u'TCP_FLAG_SYN_OUT', u'TCP_SYN_EVENT_COUNT', u'TX_BYTES', u'TX_DROPPED', u'TX_ERRORS', u'TX_PKT_COUNT'])
+        self.expose_attribute(local_name="metric", remote_name="metric", attribute_type=str, is_required=True, is_unique=False, choices=['ACL_DENY_EVENT_COUNT', 'ADDRESS_MAP_EGRESS_BYTE_CNT', 'ADDRESS_MAP_EGRESS_PKT_CNT', 'ADDRESS_MAP_INGRESS_BYTE_CNT', 'ADDRESS_MAP_INGRESS_PKT_CNT', 'ANTI_SPOOF_EVENT_COUNT', 'BYTES_IN', 'BYTES_OUT', 'EGRESS_BYTE_COUNT', 'EGRESS_PACKET_COUNT', 'FIP_PRE_RATE_LIMIT_BYTES', 'FIP_PRE_RATE_LIMIT_PACKETS', 'FIP_RATE_LIMIT_DROPPED_BYTES', 'FIP_RATE_LIMIT_DROPPED_PACKETS', 'INGRESS_BYTE_COUNT', 'INGRESS_PACKET_COUNT', 'PACKETS_DROPPED_BY_RATE_LIMIT', 'PACKETS_IN', 'PACKETS_IN_DROPPED', 'PACKETS_IN_ERROR', 'PACKETS_OUT', 'PACKETS_OUT_DROPPED', 'PACKETS_OUT_ERROR', 'Q0_BYTES', 'Q0_DROPPED', 'Q0_PKT_COUNT', 'Q10_BYTES', 'Q10_DROPPED', 'Q10_PKT_COUNT', 'Q1_BYTES', 'Q1_DROPPED', 'Q1_PKT_COUNT', 'Q2_BYTES', 'Q2_DROPPED', 'Q2_PKT_COUNT', 'Q3_BYTES', 'Q3_DROPPED', 'Q3_PKT_COUNT', 'Q4_BYTES', 'Q4_DROPPED', 'Q4_PKT_COUNT', 'RX_BYTES', 'RX_DROPPED', 'RX_ERRORS', 'RX_PKT_COUNT', 'TCP_FLAG_ACK_IN', 'TCP_FLAG_ACK_OUT', 'TCP_FLAG_NULL_IN', 'TCP_FLAG_NULL_OUT', 'TCP_FLAG_RST_IN', 'TCP_FLAG_RST_OUT', 'TCP_FLAG_SYN_IN', 'TCP_FLAG_SYN_OUT', 'TCP_SYN_EVENT_COUNT', 'TX_BYTES', 'TX_DROPPED', 'TX_ERRORS', 'TX_PKT_COUNT'])
         self.expose_attribute(local_name="threshold", remote_name="threshold", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="throttle_time", remote_name="throttleTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="disable", remote_name="disable", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="display_status", remote_name="displayStatus", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="count", remote_name="count", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'BREACH', u'ROLLING_AVERAGE'])
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=['BREACH', 'ROLLING_AVERAGE'])
         
 
         # Fetchers

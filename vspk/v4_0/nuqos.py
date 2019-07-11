@@ -58,10 +58,6 @@ class NUQOS(NURESTObject):
     
     ## Constants
     
-    CONST_SERVICE_CLASS_H = "H"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
     CONST_SERVICE_CLASS_A = "A"
     
     CONST_SERVICE_CLASS_B = "B"
@@ -76,9 +72,13 @@ class NUQOS(NURESTObject):
     
     CONST_SERVICE_CLASS_G = "G"
     
+    CONST_SERVICE_CLASS_H = "H"
+    
     CONST_SERVICE_CLASS_NONE = "NONE"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     
 
@@ -146,14 +146,14 @@ class NUQOS(NURESTObject):
         self.expose_attribute(local_name="rate_limiting_active", remote_name="rateLimitingActive", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="active", remote_name="active", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peak", remote_name="peak", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="service_class", remote_name="serviceClass", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
+        self.expose_attribute(local_name="service_class", remote_name="serviceClass", attribute_type=str, is_required=False, is_unique=False, choices=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'NONE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rewrite_forwarding_class", remote_name="rewriteForwardingClass", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="egress_fip_committed_burst_size", remote_name="EgressFIPCommittedBurstSize", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="egress_fip_committed_information_rate", remote_name="EgressFIPCommittedInformationRate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="egress_fip_peak_burst_size", remote_name="EgressFIPPeakBurstSize", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="egress_fip_peak_information_rate", remote_name="EgressFIPPeakInformationRate", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="committed_burst_size", remote_name="committedBurstSize", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="committed_information_rate", remote_name="committedInformationRate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="trusted_forwarding_class", remote_name="trustedForwardingClass", attribute_type=bool, is_required=False, is_unique=False)

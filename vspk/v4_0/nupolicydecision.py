@@ -52,9 +52,9 @@ class NUPolicyDecision(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     
 
@@ -94,7 +94,7 @@ class NUPolicyDecision(NURESTObject):
         self.expose_attribute(local_name="ingress_acls", remote_name="ingressACLs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ingress_adv_fwd", remote_name="ingressAdvFwd", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ingress_external_service_acls", remote_name="ingressExternalServiceACLs", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="qos", remote_name="qos", attribute_type=dict, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats", remote_name="stats", attribute_type=dict, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)

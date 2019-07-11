@@ -46,9 +46,9 @@ class NUBRConnection(NURESTObject):
     
     ## Constants
     
-    CONST_ADVERTISEMENT_CRITERIA_LINK_BASED = "LINK_BASED"
-    
     CONST_ADVERTISEMENT_CRITERIA_BFD = "BFD"
+    
+    CONST_ADVERTISEMENT_CRITERIA_LINK_BASED = "LINK_BASED"
     
     CONST_ADVERTISEMENT_CRITERIA_OPENFLOW = "OPENFLOW"
     
@@ -84,9 +84,9 @@ class NUBRConnection(NURESTObject):
         self.expose_attribute(local_name="dns_address", remote_name="DNSAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'BFD', u'LINK_BASED', u'OPENFLOW'])
+        self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=['BFD', 'LINK_BASED', 'OPENFLOW'])
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'Static'])
+        self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=['Static'])
         self.expose_attribute(local_name="uplink_id", remote_name="uplinkID", attribute_type=int, is_required=False, is_unique=False)
         
 

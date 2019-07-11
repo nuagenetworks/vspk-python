@@ -49,17 +49,17 @@ class NUUplinkRD(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_UPLINK_TYPE_RD_PRIMARY1 = "RD_PRIMARY1"
     
-    CONST_UPLINK_TYPE_RD_SECONDARY2 = "RD_SECONDARY2"
+    CONST_UPLINK_TYPE_RD_PRIMARY2 = "RD_PRIMARY2"
     
     CONST_UPLINK_TYPE_RD_SECONDARY1 = "RD_SECONDARY1"
     
-    CONST_UPLINK_TYPE_RD_PRIMARY2 = "RD_PRIMARY2"
+    CONST_UPLINK_TYPE_RD_SECONDARY2 = "RD_SECONDARY2"
     
     
 
@@ -87,9 +87,9 @@ class NUUplinkRD(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="uplink_type", remote_name="uplinkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'RD_PRIMARY1', u'RD_PRIMARY2', u'RD_SECONDARY1', u'RD_SECONDARY2'])
+        self.expose_attribute(local_name="uplink_type", remote_name="uplinkType", attribute_type=str, is_required=False, is_unique=False, choices=['RD_PRIMARY1', 'RD_PRIMARY2', 'RD_SECONDARY1', 'RD_SECONDARY2'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

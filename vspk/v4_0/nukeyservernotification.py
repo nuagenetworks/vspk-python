@@ -49,19 +49,19 @@ class NUKeyServerNotification(NURESTObject):
     
     ## Constants
     
-    CONST_NOTIFICATION_TYPE_ENCRYPTION_DISABLED = "ENCRYPTION_DISABLED"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_NOTIFICATION_TYPE_ENCRYPTION_ENABLED = "ENCRYPTION_ENABLED"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
     CONST_NOTIFICATION_TYPE_CONFIG_UPDATE = "CONFIG_UPDATE"
     
-    CONST_NOTIFICATION_TYPE_TEST = "TEST"
+    CONST_NOTIFICATION_TYPE_ENCRYPTION_DISABLED = "ENCRYPTION_DISABLED"
+    
+    CONST_NOTIFICATION_TYPE_ENCRYPTION_ENABLED = "ENCRYPTION_ENABLED"
     
     CONST_NOTIFICATION_TYPE_REKEY = "REKEY"
+    
+    CONST_NOTIFICATION_TYPE_TEST = "TEST"
     
     
 
@@ -90,8 +90,8 @@ class NUKeyServerNotification(NURESTObject):
         
         self.expose_attribute(local_name="base64_json_string", remote_name="base64JSONString", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="message", remote_name="message", attribute_type=dict, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="notification_type", remote_name="notificationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONFIG_UPDATE', u'ENCRYPTION_DISABLED', u'ENCRYPTION_ENABLED', u'REKEY', u'TEST'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="notification_type", remote_name="notificationType", attribute_type=str, is_required=False, is_unique=False, choices=['CONFIG_UPDATE', 'ENCRYPTION_DISABLED', 'ENCRYPTION_ENABLED', 'REKEY', 'TEST'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

@@ -76,13 +76,13 @@ class NUContainerInterface(NURESTObject):
     
     ## Constants
     
-    CONST_ATTACHED_NETWORK_TYPE_L2DOMAIN = "L2DOMAIN"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_ATTACHED_NETWORK_TYPE_SUBNET = "SUBNET"
+    CONST_ATTACHED_NETWORK_TYPE_L2DOMAIN = "L2DOMAIN"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_ATTACHED_NETWORK_TYPE_SUBNET = "SUBNET"
     
     
 
@@ -140,7 +140,7 @@ class NUContainerInterface(NURESTObject):
         self.expose_attribute(local_name="network_name", remote_name="networkName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tier_id", remote_name="tierID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="endpoint_id", remote_name="endpointID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="policy_decision_id", remote_name="policyDecisionID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="domain_id", remote_name="domainID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
@@ -149,7 +149,7 @@ class NUContainerInterface(NURESTObject):
         self.expose_attribute(local_name="container_uuid", remote_name="containerUUID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_floating_ip_address", remote_name="associatedFloatingIPAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="attached_network_id", remote_name="attachedNetworkID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="attached_network_type", remote_name="attachedNetworkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'L2DOMAIN', u'SUBNET'])
+        self.expose_attribute(local_name="attached_network_type", remote_name="attachedNetworkType", attribute_type=str, is_required=False, is_unique=False, choices=['L2DOMAIN', 'SUBNET'])
         self.expose_attribute(local_name="multi_nic_vport_name", remote_name="multiNICVPortName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         

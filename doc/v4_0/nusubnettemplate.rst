@@ -71,7 +71,7 @@ Parents
 --------
 
 
-- :ref:`nuzonetemplate.NUZoneTemplate<nuzonetemplate>`
-
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
+
+- :ref:`nuzonetemplate.NUZoneTemplate<nuzonetemplate>`
 

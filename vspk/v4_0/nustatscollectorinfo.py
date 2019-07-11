@@ -51,11 +51,11 @@ class NUStatsCollectorInfo(NURESTObject):
     
     CONST_ADDRESS_TYPE_FQDN = "fqdn"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
     CONST_ADDRESS_TYPE_IP = "ip"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     
 
@@ -85,8 +85,8 @@ class NUStatsCollectorInfo(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="address_type", remote_name="addressType", attribute_type=str, is_required=False, is_unique=False, choices=[u'fqdn', u'ip'])
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="address_type", remote_name="addressType", attribute_type=str, is_required=False, is_unique=False, choices=['fqdn', 'ip'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="port", remote_name="port", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ip_address", remote_name="ipAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="proto_buf_port", remote_name="protoBufPort", attribute_type=str, is_required=False, is_unique=False)

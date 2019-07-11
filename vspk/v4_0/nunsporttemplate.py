@@ -52,23 +52,23 @@ class NUNSPortTemplate(NURESTObject):
     
     ## Constants
     
-    CONST_PORT_TYPE_NETWORK = "NETWORK"
-    
-    CONST_SPEED_BASET10 = "BASET10"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_PORT_TYPE_ACCESS = "ACCESS"
     
-    CONST_SPEED_BASET1000 = "BASET1000"
-    
-    CONST_SPEED_BASEX10G = "BASEX10G"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_PORT_TYPE_NETWORK = "NETWORK"
     
     CONST_SPEED_AUTONEGOTIATE = "AUTONEGOTIATE"
     
+    CONST_SPEED_BASET10 = "BASET10"
+    
+    CONST_SPEED_BASET1000 = "BASET1000"
+    
     CONST_SPEED_BASETX100 = "BASETX100"
+    
+    CONST_SPEED_BASEX10G = "BASEX10G"
     
     
 
@@ -108,9 +108,9 @@ class NUNSPortTemplate(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="infrastructure_profile_id", remote_name="infrastructureProfileID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'NETWORK'])
-        self.expose_attribute(local_name="speed", remote_name="speed", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTONEGOTIATE', u'BASET10', u'BASET1000', u'BASETX100', u'BASEX10G'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=['ACCESS', 'NETWORK'])
+        self.expose_attribute(local_name="speed", remote_name="speed", attribute_type=str, is_required=False, is_unique=False, choices=['AUTONEGOTIATE', 'BASET10', 'BASET1000', 'BASETX100', 'BASEX10G'])
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mtu", remote_name="mtu", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)

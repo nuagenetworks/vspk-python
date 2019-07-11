@@ -54,21 +54,21 @@ class NUNSGatewayTemplate(NURESTObject):
     
     CONST_SSH_SERVICE_DISABLED = "DISABLED"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
     CONST_SSH_SERVICE_ENABLED = "ENABLED"
-    
-    CONST_INSTANCE_SSH_OVERRIDE_DISALLOWED = "DISALLOWED"
-    
-    CONST_INSTANCE_SSH_OVERRIDE_ALLOWED = "ALLOWED"
     
     CONST_PERSONALITY_NSG = "NSG"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_PERSONALITY_NSGBR = "NSGBR"
     
     CONST_PERSONALITY_NSGDUC = "NSGDUC"
     
-    CONST_PERSONALITY_NSGBR = "NSGBR"
+    CONST_INSTANCE_SSH_OVERRIDE_ALLOWED = "ALLOWED"
+    
+    CONST_INSTANCE_SSH_OVERRIDE_DISALLOWED = "DISALLOWED"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     
 
@@ -101,16 +101,16 @@ class NUNSGatewayTemplate(NURESTObject):
         self._entity_scope = None
         self._external_id = None
         
-        self.expose_attribute(local_name="ssh_service", remote_name="SSHService", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="ssh_service", remote_name="SSHService", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'NSG', u'NSGBR', u'NSGDUC'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=['NSG', 'NSGBR', 'NSGDUC'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="infrastructure_access_profile_id", remote_name="infrastructureAccessProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="infrastructure_profile_id", remote_name="infrastructureProfileID", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="instance_ssh_override", remote_name="instanceSSHOverride", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALLOWED', u'DISALLOWED'])
+        self.expose_attribute(local_name="instance_ssh_override", remote_name="instanceSSHOverride", attribute_type=str, is_required=False, is_unique=False, choices=['ALLOWED', 'DISALLOWED'])
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

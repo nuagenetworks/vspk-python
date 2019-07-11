@@ -171,87 +171,87 @@ class NUDomain(NURESTObject):
     
     CONST_PAT_ENABLED_DISABLED = "DISABLED"
     
-    CONST_ENCRYPTION_DISABLED = "DISABLED"
+    CONST_PAT_ENABLED_ENABLED = "ENABLED"
     
     CONST_PAT_ENABLED_INHERITED = "INHERITED"
     
-    CONST_APPLICATION_DEPLOYMENT_POLICY_NONE = "NONE"
-    
-    CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
-    
     CONST_DHCP_BEHAVIOR_CONSUME = "CONSUME"
-    
-    CONST_DPI_ENABLED = "ENABLED"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
-    
-    CONST_DHCP_BEHAVIOR_UNDERLAY_RELAY = "UNDERLAY_RELAY"
-    
-    CONST_UNDERLAY_ENABLED_ENABLED = "ENABLED"
-    
-    CONST_MAINTENANCE_MODE_DISABLED = "DISABLED"
-    
-    CONST_TUNNEL_TYPE_DC_DEFAULT = "DC_DEFAULT"
-    
-    CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
-    
-    CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
-    
-    CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
-    
-    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
-    
-    CONST_DHCP_BEHAVIOR_OVERLAY_RELAY = "OVERLAY_RELAY"
-    
-    CONST_UNDERLAY_ENABLED_INHERITED = "INHERITED"
-    
-    CONST_POLICY_CHANGE_STATUS_STARTED = "STARTED"
-    
-    CONST_PERMITTED_ACTION_READ = "READ"
-    
-    CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
-    
-    CONST_APPLICATION_DEPLOYMENT_POLICY_ZONE = "ZONE"
-    
-    CONST_PERMITTED_ACTION_USE = "USE"
-    
-    CONST_PAT_ENABLED_ENABLED = "ENABLED"
-    
-    CONST_MULTICAST_ENABLED = "ENABLED"
-    
-    CONST_MULTICAST_INHERITED = "INHERITED"
-    
-    CONST_ADVERTISE_CRITERIA_HUB_ROUTES = "HUB_ROUTES"
-    
-    CONST_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
     
     CONST_DHCP_BEHAVIOR_FLOOD = "FLOOD"
     
-    CONST_MULTICAST_DISABLED = "DISABLED"
+    CONST_DHCP_BEHAVIOR_OVERLAY_RELAY = "OVERLAY_RELAY"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_DHCP_BEHAVIOR_UNDERLAY_RELAY = "UNDERLAY_RELAY"
     
-    CONST_TUNNEL_TYPE_VXLAN = "VXLAN"
+    CONST_DPI_DISABLED = "DISABLED"
+    
+    CONST_DPI_ENABLED = "ENABLED"
+    
+    CONST_MAINTENANCE_MODE_DISABLED = "DISABLED"
+    
+    CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
+    
+    CONST_MAINTENANCE_MODE_ENABLED_INHERITED = "ENABLED_INHERITED"
+    
+    CONST_ADVERTISE_CRITERIA_HUB_ROUTES = "HUB_ROUTES"
     
     CONST_PERMITTED_ACTION_ALL = "ALL"
     
     CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
     
-    CONST_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
+    CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
     
-    CONST_DPI_DISABLED = "DISABLED"
+    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
     
-    CONST_MAINTENANCE_MODE_ENABLED_INHERITED = "ENABLED_INHERITED"
+    CONST_PERMITTED_ACTION_READ = "READ"
+    
+    CONST_PERMITTED_ACTION_USE = "USE"
+    
+    CONST_ENCRYPTION_DISABLED = "DISABLED"
     
     CONST_ENCRYPTION_ENABLED = "ENABLED"
     
-    CONST_TUNNEL_TYPE_GRE = "GRE"
+    CONST_UNDERLAY_ENABLED_DISABLED = "DISABLED"
+    
+    CONST_UNDERLAY_ENABLED_ENABLED = "ENABLED"
+    
+    CONST_UNDERLAY_ENABLED_INHERITED = "INHERITED"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_POLICY_CHANGE_STATUS_APPLIED = "APPLIED"
     
-    CONST_UNDERLAY_ENABLED_DISABLED = "DISABLED"
+    CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
+    
+    CONST_POLICY_CHANGE_STATUS_STARTED = "STARTED"
+    
+    CONST_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
+    
+    CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
+    
+    CONST_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
+    
+    CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
+    
+    CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
+    
+    CONST_APPLICATION_DEPLOYMENT_POLICY_NONE = "NONE"
+    
+    CONST_APPLICATION_DEPLOYMENT_POLICY_ZONE = "ZONE"
+    
+    CONST_MULTICAST_DISABLED = "DISABLED"
+    
+    CONST_MULTICAST_ENABLED = "ENABLED"
+    
+    CONST_MULTICAST_INHERITED = "INHERITED"
+    
+    CONST_TUNNEL_TYPE_DC_DEFAULT = "DC_DEFAULT"
+    
+    CONST_TUNNEL_TYPE_GRE = "GRE"
+    
+    CONST_TUNNEL_TYPE_VXLAN = "VXLAN"
     
     
 
@@ -317,47 +317,47 @@ class NUDomain(NURESTObject):
         self._export_route_target = None
         self._external_id = None
         
-        self.expose_attribute(local_name="pat_enabled", remote_name="PATEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="pat_enabled", remote_name="PATEnabled", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED', 'INHERITED'])
         self.expose_attribute(local_name="ecmp_count", remote_name="ECMPCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bgp_enabled", remote_name="BGPEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dhcp_behavior", remote_name="DHCPBehavior", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONSUME', u'FLOOD', u'OVERLAY_RELAY', u'UNDERLAY_RELAY'])
+        self.expose_attribute(local_name="dhcp_behavior", remote_name="DHCPBehavior", attribute_type=str, is_required=False, is_unique=False, choices=['CONSUME', 'FLOOD', 'OVERLAY_RELAY', 'UNDERLAY_RELAY'])
         self.expose_attribute(local_name="dhcp_server_address", remote_name="DHCPServerAddress", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED'])
         self.expose_attribute(local_name="label_id", remote_name="labelID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_route_distinguisher", remote_name="backHaulRouteDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_route_target", remote_name="backHaulRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_subnet_ip_address", remote_name="backHaulSubnetIPAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_subnet_mask", remote_name="backHaulSubnetMask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="back_haul_vnid", remote_name="backHaulVNID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
+        self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED', 'ENABLED_INHERITED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="advertise_criteria", remote_name="advertiseCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'HUB_ROUTES'])
+        self.expose_attribute(local_name="advertise_criteria", remote_name="advertiseCriteria", attribute_type=str, is_required=False, is_unique=False, choices=['HUB_ROUTES'])
         self.expose_attribute(local_name="leaking_enabled", remote_name="leakingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_dhcp_server_address", remote_name="secondaryDHCPServerAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
+        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=['ALL', 'DEPLOY', 'EXTEND', 'INSTANTIATE', 'READ', 'USE'])
         self.expose_attribute(local_name="service_id", remote_name="serviceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dhcp_server_addresses", remote_name="dhcpServerAddresses", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="global_routing_enabled", remote_name="globalRoutingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="import_route_target", remote_name="importRouteTarget", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
-        self.expose_attribute(local_name="underlay_enabled", remote_name="underlayEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'DISCARDED', u'STARTED'])
+        self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED'])
+        self.expose_attribute(local_name="underlay_enabled", remote_name="underlayEnabled", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED', 'INHERITED'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=['APPLIED', 'DISCARDED', 'STARTED'])
         self.expose_attribute(local_name="domain_id", remote_name="domainID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="domain_vlanid", remote_name="domainVLANID", attribute_type=int, is_required=False, is_unique=True)
         self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="route_target", remote_name="routeTarget", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
-        self.expose_attribute(local_name="application_deployment_policy", remote_name="applicationDeploymentPolicy", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'ZONE'])
+        self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=['PRIMARY', 'PRIMARY_SECONDARY', 'SECONDARY', 'SECONDARY_PRIMARY', 'SYMMETRIC'])
+        self.expose_attribute(local_name="application_deployment_policy", remote_name="applicationDeploymentPolicy", attribute_type=str, is_required=False, is_unique=False, choices=['NONE', 'ZONE'])
         self.expose_attribute(local_name="associated_bgp_profile_id", remote_name="associatedBGPProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_pat_mapper_id", remote_name="associatedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stretched", remote_name="stretched", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="tunnel_type", remote_name="tunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VXLAN'])
+        self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED', 'INHERITED'])
+        self.expose_attribute(local_name="tunnel_type", remote_name="tunnelType", attribute_type=str, is_required=False, is_unique=False, choices=['DC_DEFAULT', 'GRE', 'VXLAN'])
         self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="export_route_target", remote_name="exportRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)

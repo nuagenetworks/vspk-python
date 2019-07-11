@@ -43,7 +43,7 @@ Parents
 --------
 
 
-- :ref:`nusubnet.NUSubnet<nusubnet>`
-
 - :ref:`nucontainer.NUContainer<nucontainer>`
+
+- :ref:`nusubnet.NUSubnet<nusubnet>`
 

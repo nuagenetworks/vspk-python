@@ -53,15 +53,15 @@ class NUInfrastructureAccessProfile(NURESTObject):
     
     CONST_SSH_AUTH_MODE_PASSWORD_AND_KEY_BASED = "PASSWORD_AND_KEY_BASED"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_SSH_AUTH_MODE_PASSWORD_BASED = "PASSWORD_BASED"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_SOURCE_IP_FILTER_ENABLED = "ENABLED"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_SOURCE_IP_FILTER_DISABLED = "DISABLED"
     
-    CONST_SSH_AUTH_MODE_PASSWORD_BASED = "PASSWORD_BASED"
+    CONST_SOURCE_IP_FILTER_ENABLED = "ENABLED"
     
     
 
@@ -93,14 +93,14 @@ class NUInfrastructureAccessProfile(NURESTObject):
         self._user_name = None
         self._external_id = None
         
-        self.expose_attribute(local_name="ssh_auth_mode", remote_name="SSHAuthMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'KEY_BASED', u'PASSWORD_AND_KEY_BASED', u'PASSWORD_BASED'])
+        self.expose_attribute(local_name="ssh_auth_mode", remote_name="SSHAuthMode", attribute_type=str, is_required=False, is_unique=False, choices=['KEY_BASED', 'PASSWORD_AND_KEY_BASED', 'PASSWORD_BASED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="source_ip_filter", remote_name="sourceIPFilter", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="source_ip_filter", remote_name="sourceIPFilter", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED'])
         self.expose_attribute(local_name="user_name", remote_name="userName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         

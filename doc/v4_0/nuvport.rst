@@ -93,23 +93,23 @@ Parents
 --------
 
 
-- :ref:`nuzone.NUZone<nuzone>`
-
-- :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
-
-- :ref:`nusubnet.NUSubnet<nusubnet>`
-
-- :ref:`nuvrs.NUVRS<nuvrs>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
-
-- :ref:`nutier.NUTier<nutier>`
-
 - :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
-
-- :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
 
 - :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
+
+- :ref:`nutier.NUTier<nutier>`
+
+- :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
+
+- :ref:`nuzone.NUZone<nuzone>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
+
+- :ref:`nusubnet.NUSubnet<nusubnet>`
+
+- :ref:`nuvrs.NUVRS<nuvrs>`
 

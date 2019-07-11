@@ -128,11 +128,11 @@ Parents
 
 - :ref:`nuducgroup.NUDUCGroup<nuducgroup>`
 
-- :ref:`nunsggroup.NUNSGGroup<nunsggroup>`
-
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
+- :ref:`nunsggroup.NUNSGGroup<nunsggroup>`
+
+- :ref:`nume.NUMe<nume>`
 

@@ -79,67 +79,67 @@ class NUVRS(NURESTObject):
     
     ## Constants
     
-    CONST_VSC_CONFIG_STATE_PRIMARY = "PRIMARY"
-    
-    CONST_STATUS_DOWN = "DOWN"
-    
-    CONST_HYPERVISOR_CONNECTION_STATE_UP = "UP"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_PERSONALITY_NSGDUC = "NSGDUC"
-    
-    CONST_PERSONALITY_NONE = "NONE"
-    
-    CONST_CLUSTER_NODE_ROLE_NONE = "NONE"
-    
-    CONST_CLUSTER_NODE_ROLE_SECONDARY = "SECONDARY"
-    
-    CONST_PERSONALITY_VRS = "VRS"
-    
-    CONST_PERSONALITY_NSG = "NSG"
-    
-    CONST_ROLE_MASTER = "MASTER"
-    
-    CONST_STATUS_ADMIN_DOWN = "ADMIN_DOWN"
-    
-    CONST_HYPERVISOR_CONNECTION_STATE_DOWN = "DOWN"
-    
-    CONST_ROLE_SLAVE = "SLAVE"
-    
-    CONST_LICENSED_STATE_LICENSED = "LICENSED"
-    
-    CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
-    
-    CONST_JSONRPC_CONNECTION_STATE_UP = "UP"
-    
     CONST_JSONRPC_CONNECTION_STATE_ADMIN_DOWN = "ADMIN_DOWN"
-    
-    CONST_PERSONALITY_VRSB = "VRSB"
-    
-    CONST_STATUS_UP = "UP"
-    
-    CONST_PERSONALITY_VRSG = "VRSG"
-    
-    CONST_CLUSTER_NODE_ROLE_PRIMARY = "PRIMARY"
-    
-    CONST_VSC_CONFIG_STATE_SECONDARY = "SECONDARY"
-    
-    CONST_HYPERVISOR_CONNECTION_STATE_ADMIN_DOWN = "ADMIN_DOWN"
     
     CONST_JSONRPC_CONNECTION_STATE_DOWN = "DOWN"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_JSONRPC_CONNECTION_STATE_UP = "UP"
     
-    CONST_ROLE_NONE = "NONE"
+    CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
     
-    CONST_VSC_CURRENT_STATE_SECONDARY = "SECONDARY"
+    CONST_PERSONALITY_NONE = "NONE"
     
-    CONST_VSC_CURRENT_STATE_PRIMARY = "PRIMARY"
+    CONST_PERSONALITY_NSG = "NSG"
+    
+    CONST_PERSONALITY_NSGBR = "NSGBR"
+    
+    CONST_PERSONALITY_NSGDUC = "NSGDUC"
+    
+    CONST_PERSONALITY_VRS = "VRS"
+    
+    CONST_PERSONALITY_VRSB = "VRSB"
+    
+    CONST_PERSONALITY_VRSG = "VRSG"
+    
+    CONST_LICENSED_STATE_LICENSED = "LICENSED"
     
     CONST_LICENSED_STATE_UNLICENSED = "UNLICENSED"
     
-    CONST_PERSONALITY_NSGBR = "NSGBR"
+    CONST_CLUSTER_NODE_ROLE_NONE = "NONE"
+    
+    CONST_CLUSTER_NODE_ROLE_PRIMARY = "PRIMARY"
+    
+    CONST_CLUSTER_NODE_ROLE_SECONDARY = "SECONDARY"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ROLE_MASTER = "MASTER"
+    
+    CONST_ROLE_NONE = "NONE"
+    
+    CONST_ROLE_SLAVE = "SLAVE"
+    
+    CONST_VSC_CONFIG_STATE_PRIMARY = "PRIMARY"
+    
+    CONST_VSC_CONFIG_STATE_SECONDARY = "SECONDARY"
+    
+    CONST_VSC_CURRENT_STATE_PRIMARY = "PRIMARY"
+    
+    CONST_VSC_CURRENT_STATE_SECONDARY = "SECONDARY"
+    
+    CONST_STATUS_ADMIN_DOWN = "ADMIN_DOWN"
+    
+    CONST_STATUS_DOWN = "DOWN"
+    
+    CONST_STATUS_UP = "UP"
+    
+    CONST_HYPERVISOR_CONNECTION_STATE_ADMIN_DOWN = "ADMIN_DOWN"
+    
+    CONST_HYPERVISOR_CONNECTION_STATE_DOWN = "DOWN"
+    
+    CONST_HYPERVISOR_CONNECTION_STATE_UP = "UP"
     
     
 
@@ -210,7 +210,7 @@ class NUVRS(NURESTObject):
         self._hypervisor_name = None
         self._hypervisor_type = None
         
-        self.expose_attribute(local_name="jsonrpc_connection_state", remote_name="JSONRPCConnectionState", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
+        self.expose_attribute(local_name="jsonrpc_connection_state", remote_name="JSONRPCConnectionState", attribute_type=str, is_required=False, is_unique=False, choices=['ADMIN_DOWN', 'DOWN', 'UP'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="management_ip", remote_name="managementIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="parent_ids", remote_name="parentIDs", attribute_type=list, is_required=False, is_unique=False)
@@ -224,26 +224,26 @@ class NUVRS(NURESTObject):
         self.expose_attribute(local_name="peak_cpuusage", remote_name="peakCPUUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peak_memory_usage", remote_name="peakMemoryUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peer", remote_name="peer", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'HARDWARE_VTEP', u'NONE', u'NSG', u'NSGBR', u'NSGDUC', u'VRS', u'VRSB', u'VRSG'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=['HARDWARE_VTEP', 'NONE', 'NSG', 'NSGBR', 'NSGDUC', 'VRS', 'VRSB', 'VRSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="messages", remote_name="messages", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="revert_behavior_enabled", remote_name="revertBehaviorEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="revert_completed", remote_name="revertCompleted", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="revert_count", remote_name="revertCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="revert_failed_count", remote_name="revertFailedCount", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="licensed_state", remote_name="licensedState", attribute_type=str, is_required=False, is_unique=False, choices=[u'LICENSED', u'UNLICENSED'])
+        self.expose_attribute(local_name="licensed_state", remote_name="licensedState", attribute_type=str, is_required=False, is_unique=False, choices=['LICENSED', 'UNLICENSED'])
         self.expose_attribute(local_name="disks", remote_name="disks", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="cluster_node_role", remote_name="clusterNodeRole", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'PRIMARY', u'SECONDARY'])
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="cluster_node_role", remote_name="clusterNodeRole", attribute_type=str, is_required=False, is_unique=False, choices=['NONE', 'PRIMARY', 'SECONDARY'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="location", remote_name="location", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=[u'MASTER', u'NONE', u'SLAVE'])
+        self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=['MASTER', 'NONE', 'SLAVE'])
         self.expose_attribute(local_name="uptime", remote_name="uptime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="primary_vsc_connection_lost", remote_name="primaryVSCConnectionLost", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="product_version", remote_name="productVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="is_resilient", remote_name="isResilient", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="vsc_config_state", remote_name="vscConfigState", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'SECONDARY'])
-        self.expose_attribute(local_name="vsc_current_state", remote_name="vscCurrentState", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'SECONDARY'])
-        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
+        self.expose_attribute(local_name="vsc_config_state", remote_name="vscConfigState", attribute_type=str, is_required=False, is_unique=False, choices=['PRIMARY', 'SECONDARY'])
+        self.expose_attribute(local_name="vsc_current_state", remote_name="vscCurrentState", attribute_type=str, is_required=False, is_unique=False, choices=['PRIMARY', 'SECONDARY'])
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=['ADMIN_DOWN', 'DOWN', 'UP'])
         self.expose_attribute(local_name="multi_nic_vport_enabled", remote_name="multiNICVPortEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="number_of_bridge_interfaces", remote_name="numberOfBridgeInterfaces", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="number_of_containers", remote_name="numberOfContainers", attribute_type=int, is_required=False, is_unique=False)
@@ -255,7 +255,7 @@ class NUVRS(NURESTObject):
         self.expose_attribute(local_name="average_memory_usage", remote_name="averageMemoryUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="dynamic", remote_name="dynamic", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="hypervisor_connection_state", remote_name="hypervisorConnectionState", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
+        self.expose_attribute(local_name="hypervisor_connection_state", remote_name="hypervisorConnectionState", attribute_type=str, is_required=False, is_unique=False, choices=['ADMIN_DOWN', 'DOWN', 'UP'])
         self.expose_attribute(local_name="hypervisor_identifier", remote_name="hypervisorIdentifier", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="hypervisor_name", remote_name="hypervisorName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="hypervisor_type", remote_name="hypervisorType", attribute_type=str, is_required=False, is_unique=False)

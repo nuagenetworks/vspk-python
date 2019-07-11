@@ -67,33 +67,33 @@ class NUSharedNetworkResource(NURESTObject):
     
     ## Constants
     
-    CONST_PERMITTED_ACTION_TYPE_EXTEND = "EXTEND"
-    
     CONST_PERMITTED_ACTION_TYPE_ALL = "ALL"
     
-    CONST_TYPE_FLOATING = "FLOATING"
+    CONST_PERMITTED_ACTION_TYPE_DEPLOY = "DEPLOY"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_PERMITTED_ACTION_TYPE_EXTEND = "EXTEND"
     
-    CONST_TYPE_UPLINK_SUBNET = "UPLINK_SUBNET"
-    
-    CONST_USE_GLOBAL_MAC_ENABLED = "ENABLED"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_USE_GLOBAL_MAC_DISABLED = "DISABLED"
-    
-    CONST_PERMITTED_ACTION_TYPE_USE = "USE"
+    CONST_PERMITTED_ACTION_TYPE_INSTANTIATE = "INSTANTIATE"
     
     CONST_PERMITTED_ACTION_TYPE_READ = "READ"
     
-    CONST_PERMITTED_ACTION_TYPE_DEPLOY = "DEPLOY"
+    CONST_PERMITTED_ACTION_TYPE_USE = "USE"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_USE_GLOBAL_MAC_DISABLED = "DISABLED"
+    
+    CONST_USE_GLOBAL_MAC_ENABLED = "ENABLED"
+    
+    CONST_TYPE_FLOATING = "FLOATING"
     
     CONST_TYPE_L2DOMAIN = "L2DOMAIN"
     
     CONST_TYPE_PUBLIC = "PUBLIC"
     
-    CONST_PERMITTED_ACTION_TYPE_INSTANTIATE = "INSTANTIATE"
+    CONST_TYPE_UPLINK_SUBNET = "UPLINK_SUBNET"
     
     
 
@@ -157,26 +157,26 @@ class NUSharedNetworkResource(NURESTObject):
         self.expose_attribute(local_name="gateway_mac_address", remote_name="gatewayMACAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="access_restriction_enabled", remote_name="accessRestrictionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="permitted_action_type", remote_name="permittedActionType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
+        self.expose_attribute(local_name="permitted_action_type", remote_name="permittedActionType", attribute_type=str, is_required=False, is_unique=False, choices=['ALL', 'DEPLOY', 'EXTEND', 'INSTANTIATE', 'READ', 'USE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="shared_resource_parent_id", remote_name="sharedResourceParentID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vn_id", remote_name="vnID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="underlay", remote_name="underlay", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="domain_route_distinguisher", remote_name="domainRouteDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="domain_route_target", remote_name="domainRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_gw_vlan_attachment_id", remote_name="uplinkGWVlanAttachmentID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_interface_ip", remote_name="uplinkInterfaceIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_interface_mac", remote_name="uplinkInterfaceMAC", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_vport_name", remote_name="uplinkVPortName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED'])
         self.expose_attribute(local_name="associated_pat_mapper_id", remote_name="associatedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="subnet_route_distinguisher", remote_name="subnetRouteDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="subnet_route_target", remote_name="subnetRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="dynamic_pat_allocation_enabled", remote_name="dynamicPATAllocationEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'FLOATING', u'L2DOMAIN', u'PUBLIC', u'UPLINK_SUBNET'])
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=['FLOATING', 'L2DOMAIN', 'PUBLIC', 'UPLINK_SUBNET'])
         
 
         # Fetchers

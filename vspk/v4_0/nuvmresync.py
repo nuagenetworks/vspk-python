@@ -49,13 +49,13 @@ class NUVMResync(NURESTObject):
     
     ## Constants
     
-    CONST_STATUS_IN_PROGRESS = "IN_PROGRESS"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_STATUS_SUCCESS = "SUCCESS"
+    CONST_STATUS_IN_PROGRESS = "IN_PROGRESS"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_STATUS_SUCCESS = "SUCCESS"
     
     
 
@@ -86,8 +86,8 @@ class NUVMResync(NURESTObject):
         self.expose_attribute(local_name="last_request_timestamp", remote_name="lastRequestTimestamp", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_time_resync_initiated", remote_name="lastTimeResyncInitiated", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'IN_PROGRESS', u'SUCCESS'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=['IN_PROGRESS', 'SUCCESS'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

@@ -50,29 +50,29 @@ Parents
 --------
 
 
-- :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
-
 - :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
 
-- :ref:`nuzone.NUZone<nuzone>`
-
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
+- :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nuport.NUPort<nuport>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 
-- :ref:`nugateway.NUGateway<nugateway>`
-
-- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
-
-- :ref:`nul2domain.NUL2Domain<nul2domain>`
+- :ref:`nunsport.NUNSPort<nunsport>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
-- :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
+- :ref:`nugateway.NUGateway<nugateway>`
+
+- :ref:`nuzone.NUZone<nuzone>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuvlan.NUVLAN<nuvlan>`
 
-- :ref:`nunsport.NUNSPort<nunsport>`
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
+
+- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
 

@@ -51,21 +51,21 @@ Parents
 
 - :ref:`nusharednetworkresource.NUSharedNetworkResource<nusharednetworkresource>`
 
-- :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
-
 - :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
-
-- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
+- :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nuport.NUPort<nuport>`
 
-- :ref:`nugateway.NUGateway<nugateway>`
+- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
+
+- :ref:`nunsport.NUNSPort<nunsport>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
+- :ref:`nugateway.NUGateway<nugateway>`
+
 - :ref:`nuvlan.NUVLAN<nuvlan>`
 
-- :ref:`nunsport.NUNSPort<nunsport>`
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
 

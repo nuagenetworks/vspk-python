@@ -49,15 +49,15 @@ class NUNetworkLayout(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_SERVICE_TYPE_SUBNET_ONLY = "SUBNET_ONLY"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_SERVICE_TYPE_ROUTER_ONLY = "ROUTER_ONLY"
     
     CONST_SERVICE_TYPE_ROUTER_SWITCH = "ROUTER_SWITCH"
     
-    CONST_SERVICE_TYPE_ROUTER_ONLY = "ROUTER_ONLY"
+    CONST_SERVICE_TYPE_SUBNET_ONLY = "SUBNET_ONLY"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     
 
@@ -86,8 +86,8 @@ class NUNetworkLayout(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="service_type", remote_name="serviceType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ROUTER_ONLY', u'ROUTER_SWITCH', u'SUBNET_ONLY'])
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="service_type", remote_name="serviceType", attribute_type=str, is_required=False, is_unique=False, choices=['ROUTER_ONLY', 'ROUTER_SWITCH', 'SUBNET_ONLY'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="route_reflector_ip", remote_name="routeReflectorIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="autonomous_system_num", remote_name="autonomousSystemNum", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)

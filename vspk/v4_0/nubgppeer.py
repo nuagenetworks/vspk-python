@@ -49,15 +49,15 @@ class NUBGPPeer(NURESTObject):
     
     ## Constants
     
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_STATUS_ADMIN_DOWN = "ADMIN_DOWN"
     
     CONST_STATUS_DOWN = "DOWN"
     
     CONST_STATUS_UP = "UP"
-    
-    CONST_STATUS_ADMIN_DOWN = "ADMIN_DOWN"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
 
@@ -86,8 +86,8 @@ class NUBGPPeer(NURESTObject):
         
         self.expose_attribute(local_name="last_state_change", remote_name="lastStateChange", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=['ADMIN_DOWN', 'DOWN', 'UP'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

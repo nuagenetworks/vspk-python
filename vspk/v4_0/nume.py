@@ -262,7 +262,7 @@ class NUMe(NURESTRootObject):
     
     ## Constants
     
-    CONST_AVATAR_TYPE_URL = "URL"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
@@ -270,7 +270,7 @@ class NUMe(NURESTRootObject):
     
     CONST_AVATAR_TYPE_COMPUTEDURL = "COMPUTEDURL"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_AVATAR_TYPE_URL = "URL"
     
     
 
@@ -320,13 +320,13 @@ class NUMe(NURESTRootObject):
         self.expose_attribute(local_name="email", remote_name="email", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="mobile_number", remote_name="mobileNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_name", remote_name="userName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="statistics_enabled", remote_name="statisticsEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="avatar_data", remote_name="avatarData", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="avatar_type", remote_name="avatarType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BASE64', u'COMPUTEDURL', u'URL'])
+        self.expose_attribute(local_name="avatar_type", remote_name="avatarType", attribute_type=str, is_required=False, is_unique=False, choices=['BASE64', 'COMPUTEDURL', 'URL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -1029,8 +1029,10 @@ class NUMe(NURESTRootObject):
 
     
     ## Custom methods
-    def save(self, async=False, callback=None):
+    def save(self, as_async=False, callback=None, **kwargs):
         """ """
-        super(NUMe, self).save(async=async, callback=callback, encrypted=False)
+        if 'async' in kwargs.keys() and not as_async:
+            as_async = kwargs['async']
+        super(NUMe, self).save(as_async=as_async, callback=callback, encrypted=False)
     
     

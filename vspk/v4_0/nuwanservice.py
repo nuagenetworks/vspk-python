@@ -61,7 +61,15 @@ class NUWANService(NURESTObject):
     
     ## Constants
     
-    CONST_TUNNEL_TYPE_DC_DEFAULT = "DC_DEFAULT"
+    CONST_PERMITTED_ACTION_ALL = "ALL"
+    
+    CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
+    
+    CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
+    
+    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
+    
+    CONST_PERMITTED_ACTION_READ = "READ"
     
     CONST_PERMITTED_ACTION_USE = "USE"
     
@@ -69,27 +77,19 @@ class NUWANService(NURESTObject):
     
     CONST_SERVICE_TYPE_L3 = "L3"
     
-    CONST_PERMITTED_ACTION_READ = "READ"
-    
-    CONST_TUNNEL_TYPE_VXLAN = "VXLAN"
-    
-    CONST_CONFIG_TYPE_STATIC = "STATIC"
-    
-    CONST_PERMITTED_ACTION_ALL = "ALL"
-    
-    CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
-    
-    CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_CONFIG_TYPE_DYNAMIC = "DYNAMIC"
     
+    CONST_CONFIG_TYPE_STATIC = "STATIC"
+    
+    CONST_TUNNEL_TYPE_DC_DEFAULT = "DC_DEFAULT"
+    
     CONST_TUNNEL_TYPE_GRE = "GRE"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_TUNNEL_TYPE_VXLAN = "VXLAN"
     
     
 
@@ -136,21 +136,21 @@ class NUWANService(NURESTObject):
         self.expose_attribute(local_name="irb_enabled", remote_name="IRBEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
+        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=['ALL', 'DEPLOY', 'EXTEND', 'INSTANTIATE', 'READ', 'USE'])
         self.expose_attribute(local_name="service_policy", remote_name="servicePolicy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="service_type", remote_name="serviceType", attribute_type=str, is_required=True, is_unique=False, choices=[u'L2', u'L3'])
+        self.expose_attribute(local_name="service_type", remote_name="serviceType", attribute_type=str, is_required=True, is_unique=False, choices=['L2', 'L3'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vn_id", remote_name="vnId", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="config_type", remote_name="configType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DYNAMIC', u'STATIC'])
+        self.expose_attribute(local_name="config_type", remote_name="configType", attribute_type=str, is_required=False, is_unique=False, choices=['DYNAMIC', 'STATIC'])
         self.expose_attribute(local_name="orphan", remote_name="orphan", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_user_mnemonic", remote_name="useUserMnemonic", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_domain_id", remote_name="associatedDomainID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vpn_connect_id", remote_name="associatedVPNConnectID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="tunnel_type", remote_name="tunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VXLAN'])
+        self.expose_attribute(local_name="tunnel_type", remote_name="tunnelType", attribute_type=str, is_required=False, is_unique=False, choices=['DC_DEFAULT', 'GRE', 'VXLAN'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="external_route_target", remote_name="externalRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         

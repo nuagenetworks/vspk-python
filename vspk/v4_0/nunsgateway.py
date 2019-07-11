@@ -94,103 +94,103 @@ class NUNSGateway(NURESTObject):
     
     ## Constants
     
-    CONST_FAMILY_NSG_C = "NSG_C"
-    
-    CONST_FAMILY_NSG_E = "NSG_E"
-    
-    CONST_INHERITED_SSH_SERVICE_STATE_ENABLED = "ENABLED"
-    
-    CONST_CONFIGURATION_STATUS_FAILURE = "FAILURE"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_PERSONALITY_NSGDUC = "NSGDUC"
-    
-    CONST_FAMILY_NSG_V = "NSG_V"
-    
-    CONST_DERIVED_SSH_SERVICE_STATE_INSTANCE_DISABLED = "INSTANCE_DISABLED"
-    
-    CONST_BOOTSTRAP_STATUS_ACTIVE = "ACTIVE"
-    
-    CONST_CONFIGURATION_RELOAD_STATE_PENDING = "PENDING"
-    
-    CONST_FAMILY_NSG_X = "NSG_X"
-    
-    CONST_SSH_SERVICE_DISABLED = "DISABLED"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_PERSONALITY_OTHER = "OTHER"
-    
-    CONST_SSH_SERVICE_ENABLED = "ENABLED"
-    
-    CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_ACK = "NOTIFICATION_APP_REQ_ACK"
-    
-    CONST_PERSONALITY_NSG = "NSG"
-    
-    CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
-    
-    CONST_DERIVED_SSH_SERVICE_STATE_INHERITED_ENABLED = "INHERITED_ENABLED"
-    
-    CONST_CONFIGURATION_STATUS_SUCCESS = "SUCCESS"
-    
-    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
-    
-    CONST_CONFIGURATION_RELOAD_STATE_UNKNOWN = "UNKNOWN"
-    
-    CONST_PERSONALITY_DC7X50 = "DC7X50"
-    
-    CONST_BOOTSTRAP_STATUS_CERTIFICATE_SIGNED = "CERTIFICATE_SIGNED"
-    
-    CONST_DERIVED_SSH_SERVICE_STATE_INSTANCE_ENABLED = "INSTANCE_ENABLED"
-    
-    CONST_FAMILY_ANY = "ANY"
-    
     CONST_TPM_STATUS_DISABLED = "DISABLED"
-    
-    CONST_CONFIGURATION_RELOAD_STATE_APPLIED = "APPLIED"
-    
-    CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
-    
-    CONST_PERSONALITY_VSA = "VSA"
-    
-    CONST_PERSONALITY_VSG = "VSG"
-    
-    CONST_PERMITTED_ACTION_READ = "READ"
-    
-    CONST_PERMITTED_ACTION_USE = "USE"
-    
-    CONST_DERIVED_SSH_SERVICE_STATE_INHERITED_DISABLED = "INHERITED_DISABLED"
     
     CONST_TPM_STATUS_ENABLED_NOT_OPERATIONAL = "ENABLED_NOT_OPERATIONAL"
     
+    CONST_TPM_STATUS_ENABLED_OPERATIONAL = "ENABLED_OPERATIONAL"
+    
     CONST_TPM_STATUS_UNKNOWN = "UNKNOWN"
     
-    CONST_PERSONALITY_VRSG = "VRSG"
+    CONST_SSH_SERVICE_DISABLED = "DISABLED"
     
-    CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_SENT = "NOTIFICATION_APP_REQ_SENT"
+    CONST_SSH_SERVICE_ENABLED = "ENABLED"
+    
+    CONST_SSH_SERVICE_INHERITED = "INHERITED"
+    
+    CONST_FAMILY_ANY = "ANY"
+    
+    CONST_FAMILY_NSG_E = "NSG_E"
+    
+    CONST_FAMILY_NSG_V = "NSG_V"
     
     CONST_FAMILY_NSG_AMI = "NSG_AMI"
+    
+    CONST_FAMILY_NSG_X = "NSG_X"
+    
+    CONST_FAMILY_NSG_C = "NSG_C"
+    
+    CONST_DERIVED_SSH_SERVICE_STATE_INHERITED_DISABLED = "INHERITED_DISABLED"
+    
+    CONST_DERIVED_SSH_SERVICE_STATE_INHERITED_ENABLED = "INHERITED_ENABLED"
+    
+    CONST_DERIVED_SSH_SERVICE_STATE_INSTANCE_DISABLED = "INSTANCE_DISABLED"
+    
+    CONST_DERIVED_SSH_SERVICE_STATE_INSTANCE_ENABLED = "INSTANCE_ENABLED"
+    
+    CONST_DERIVED_SSH_SERVICE_STATE_UNKNOWN = "UNKNOWN"
     
     CONST_PERMITTED_ACTION_ALL = "ALL"
     
     CONST_PERMITTED_ACTION_DEPLOY = "DEPLOY"
     
-    CONST_DERIVED_SSH_SERVICE_STATE_UNKNOWN = "UNKNOWN"
+    CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
+    
+    CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
+    
+    CONST_PERMITTED_ACTION_READ = "READ"
+    
+    CONST_PERMITTED_ACTION_USE = "USE"
+    
+    CONST_PERSONALITY_DC7X50 = "DC7X50"
+    
+    CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
+    
+    CONST_PERSONALITY_NSG = "NSG"
+    
+    CONST_PERSONALITY_NSGBR = "NSGBR"
+    
+    CONST_PERSONALITY_NSGDUC = "NSGDUC"
+    
+    CONST_PERSONALITY_OTHER = "OTHER"
+    
+    CONST_PERSONALITY_VRSG = "VRSG"
+    
+    CONST_PERSONALITY_VSA = "VSA"
+    
+    CONST_PERSONALITY_VSG = "VSG"
     
     CONST_INHERITED_SSH_SERVICE_STATE_DISABLED = "DISABLED"
     
-    CONST_TPM_STATUS_ENABLED_OPERATIONAL = "ENABLED_OPERATIONAL"
+    CONST_INHERITED_SSH_SERVICE_STATE_ENABLED = "ENABLED"
     
-    CONST_SSH_SERVICE_INHERITED = "INHERITED"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_CONFIGURATION_STATUS_UNKNOWN = "UNKNOWN"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_CONFIGURATION_RELOAD_STATE_APPLIED = "APPLIED"
+    
+    CONST_CONFIGURATION_RELOAD_STATE_PENDING = "PENDING"
     
     CONST_CONFIGURATION_RELOAD_STATE_SENT = "SENT"
     
+    CONST_CONFIGURATION_RELOAD_STATE_UNKNOWN = "UNKNOWN"
+    
+    CONST_CONFIGURATION_STATUS_FAILURE = "FAILURE"
+    
+    CONST_CONFIGURATION_STATUS_SUCCESS = "SUCCESS"
+    
+    CONST_CONFIGURATION_STATUS_UNKNOWN = "UNKNOWN"
+    
+    CONST_BOOTSTRAP_STATUS_ACTIVE = "ACTIVE"
+    
+    CONST_BOOTSTRAP_STATUS_CERTIFICATE_SIGNED = "CERTIFICATE_SIGNED"
+    
     CONST_BOOTSTRAP_STATUS_INACTIVE = "INACTIVE"
     
-    CONST_PERSONALITY_NSGBR = "NSGBR"
+    CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_ACK = "NOTIFICATION_APP_REQ_ACK"
+    
+    CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_SENT = "NOTIFICATION_APP_REQ_SENT"
     
     
 
@@ -257,13 +257,13 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="tcpmss_enabled", remote_name="TCPMSSEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tcp_maximum_segment_size", remote_name="TCPMaximumSegmentSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sku", remote_name="SKU", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="tpm_status", remote_name="TPMStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED_NOT_OPERATIONAL', u'ENABLED_OPERATIONAL', u'UNKNOWN'])
+        self.expose_attribute(local_name="tpm_status", remote_name="TPMStatus", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED_NOT_OPERATIONAL', 'ENABLED_OPERATIONAL', 'UNKNOWN'])
         self.expose_attribute(local_name="cpu_type", remote_name="CPUType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_version", remote_name="NSGVersion", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="ssh_service", remote_name="SSHService", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="ssh_service", remote_name="SSHService", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED', 'INHERITED'])
         self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_AMI', u'NSG_C', u'NSG_E', u'NSG_V', u'NSG_X'])
+        self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=['ANY', 'NSG_AMI', 'NSG_C', 'NSG_E', 'NSG_V', 'NSG_X'])
         self.expose_attribute(local_name="last_configuration_reload_timestamp", remote_name="lastConfigurationReloadTimestamp", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_id", remote_name="datapathID", attribute_type=str, is_required=False, is_unique=False)
@@ -271,19 +271,19 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="pending", remote_name="pending", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="derived_ssh_service_state", remote_name="derivedSSHServiceState", attribute_type=str, is_required=False, is_unique=False, choices=[u'INHERITED_DISABLED', u'INHERITED_ENABLED', u'INSTANCE_DISABLED', u'INSTANCE_ENABLED', u'UNKNOWN'])
-        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'NSGBR', u'NSGDUC', u'OTHER', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="derived_ssh_service_state", remote_name="derivedSSHServiceState", attribute_type=str, is_required=False, is_unique=False, choices=['INHERITED_DISABLED', 'INHERITED_ENABLED', 'INSTANCE_DISABLED', 'INSTANCE_ENABLED', 'UNKNOWN'])
+        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=['ALL', 'DEPLOY', 'EXTEND', 'INSTANTIATE', 'READ', 'USE'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=['DC7X50', 'HARDWARE_VTEP', 'NSG', 'NSGBR', 'NSGDUC', 'OTHER', 'VRSG', 'VSA', 'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="inherited_ssh_service_state", remote_name="inheritedSSHServiceState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="inherited_ssh_service_state", remote_name="inheritedSSHServiceState", attribute_type=str, is_required=False, is_unique=False, choices=['DISABLED', 'ENABLED'])
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="configuration_reload_state", remote_name="configurationReloadState", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'PENDING', u'SENT', u'UNKNOWN'])
-        self.expose_attribute(local_name="configuration_status", remote_name="configurationStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAILURE', u'SUCCESS', u'UNKNOWN'])
+        self.expose_attribute(local_name="configuration_reload_state", remote_name="configurationReloadState", attribute_type=str, is_required=False, is_unique=False, choices=['APPLIED', 'PENDING', 'SENT', 'UNKNOWN'])
+        self.expose_attribute(local_name="configuration_status", remote_name="configurationStatus", attribute_type=str, is_required=False, is_unique=False, choices=['FAILURE', 'SUCCESS', 'UNKNOWN'])
         self.expose_attribute(local_name="bootstrap_id", remote_name="bootstrapID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT'])
+        self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=['ACTIVE', 'CERTIFICATE_SIGNED', 'INACTIVE', 'NOTIFICATION_APP_REQ_ACK', 'NOTIFICATION_APP_REQ_SENT'])
         self.expose_attribute(local_name="operation_mode", remote_name="operationMode", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="operation_status", remote_name="operationStatus", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_security_id", remote_name="associatedGatewaySecurityID", attribute_type=str, is_required=False, is_unique=False)

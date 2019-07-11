@@ -55,17 +55,17 @@ Parents
 --------
 
 
+- :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
+
 - :ref:`nuzone.NUZone<nuzone>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
 
-- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
-- :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
-
 - :ref:`nuuser.NUUser<nuuser>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
 

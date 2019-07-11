@@ -52,9 +52,9 @@ class NUDHCPOption(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     
 
@@ -89,7 +89,7 @@ class NUDHCPOption(NURESTObject):
         self.expose_attribute(local_name="actual_type", remote_name="actualType", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="actual_values", remote_name="actualValues", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="length", remote_name="length", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False)
         

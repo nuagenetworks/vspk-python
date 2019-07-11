@@ -52,19 +52,19 @@ class NUAddressRange(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_IP_TYPE_IPV6 = "IPV6"
-    
-    CONST_IP_TYPE_IPV4 = "IPV4"
-    
     CONST_DHCP_POOL_TYPE_BRIDGE = "BRIDGE"
     
     CONST_DHCP_POOL_TYPE_HOST = "HOST"
     
     CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
+    
+    CONST_IP_TYPE_IPV4 = "IPV4"
+    
+    CONST_IP_TYPE_IPV6 = "IPV6"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     
 
@@ -93,12 +93,12 @@ class NUAddressRange(NURESTObject):
         self._entity_scope = None
         self._external_id = None
         
-        self.expose_attribute(local_name="dhcp_pool_type", remote_name="DHCPPoolType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BRIDGE', u'HOST'])
-        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
+        self.expose_attribute(local_name="dhcp_pool_type", remote_name="DHCPPoolType", attribute_type=str, is_required=False, is_unique=False, choices=['BRIDGE', 'HOST'])
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=['DUALSTACK', 'IPV4', 'IPV6'])
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="max_address", remote_name="maxAddress", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="min_address", remote_name="minAddress", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

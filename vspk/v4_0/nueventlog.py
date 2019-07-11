@@ -49,9 +49,9 @@ class NUEventLog(NURESTObject):
     
     ## Constants
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     
 
@@ -91,7 +91,7 @@ class NUEventLog(NURESTObject):
         self.expose_attribute(local_name="entity_id", remote_name="entityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_parent_id", remote_name="entityParentID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_parent_type", remote_name="entityParentType", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="entity_type", remote_name="entityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user", remote_name="user", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="event_received_time", remote_name="eventReceivedTime", attribute_type=float, is_required=False, is_unique=False)

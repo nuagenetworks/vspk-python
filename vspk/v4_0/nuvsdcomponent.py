@@ -49,29 +49,29 @@ class NUVSDComponent(NURESTObject):
     
     ## Constants
     
-    CONST_STATUS_DOWN = "DOWN"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_TYPE_JBOSS = "JBOSS"
+    CONST_STATUS_ADMIN_DOWN = "ADMIN_DOWN"
     
-    CONST_TYPE_EJABBERD = "EJABBERD"
+    CONST_STATUS_DOWN = "DOWN"
     
     CONST_STATUS_UP = "UP"
     
+    CONST_TYPE_EJABBERD = "EJABBERD"
+    
+    CONST_TYPE_JBOSS = "JBOSS"
+    
     CONST_TYPE_MEDIATOR = "MEDIATOR"
     
-    CONST_TYPE_TCA = "TCA"
-    
-    CONST_STATUS_ADMIN_DOWN = "ADMIN_DOWN"
-    
-    CONST_TYPE_STATSSERVER = "STATSSERVER"
+    CONST_TYPE_PERCONA = "PERCONA"
     
     CONST_TYPE_STATSCOLLECTOR = "STATSCOLLECTOR"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_TYPE_STATSSERVER = "STATSSERVER"
     
-    CONST_TYPE_PERCONA = "PERCONA"
+    CONST_TYPE_TCA = "TCA"
     
     
 
@@ -107,12 +107,12 @@ class NUVSDComponent(NURESTObject):
         self.expose_attribute(local_name="management_ip", remote_name="managementIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="location", remote_name="location", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="product_version", remote_name="productVersion", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=['ADMIN_DOWN', 'DOWN', 'UP'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'EJABBERD', u'JBOSS', u'MEDIATOR', u'PERCONA', u'STATSCOLLECTOR', u'STATSSERVER', u'TCA'])
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=['EJABBERD', 'JBOSS', 'MEDIATOR', 'PERCONA', 'STATSCOLLECTOR', 'STATSSERVER', 'TCA'])
         
 
         # Fetchers

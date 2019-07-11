@@ -52,17 +52,17 @@ class NUZFBRequest(NURESTObject):
     
     ## Constants
     
-    CONST_ZFB_APPROVAL_STATUS_DENIED = "DENIED"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_ZFB_APPROVAL_STATUS_UNASSIGNED = "UNASSIGNED"
-    
     CONST_ZFB_APPROVAL_STATUS_APPROVED = "APPROVED"
     
     CONST_ZFB_APPROVAL_STATUS_ASSIGNED = "ASSIGNED"
+    
+    CONST_ZFB_APPROVAL_STATUS_DENIED = "DENIED"
+    
+    CONST_ZFB_APPROVAL_STATUS_UNASSIGNED = "UNASSIGNED"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     
 
@@ -107,7 +107,7 @@ class NUZFBRequest(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="mac_address", remote_name="MACAddress", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="zfb_approval_status", remote_name="ZFBApprovalStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPROVED', u'ASSIGNED', u'DENIED', u'UNASSIGNED'])
+        self.expose_attribute(local_name="zfb_approval_status", remote_name="ZFBApprovalStatus", attribute_type=str, is_required=False, is_unique=False, choices=['APPROVED', 'ASSIGNED', 'DENIED', 'UNASSIGNED'])
         self.expose_attribute(local_name="zfb_bootstrap_enabled", remote_name="ZFBBootstrapEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zfb_info", remote_name="ZFBInfo", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zfb_request_retry_timer", remote_name="ZFBRequestRetryTimer", attribute_type=int, is_required=False, is_unique=False)
@@ -120,7 +120,7 @@ class NUZFBRequest(NURESTObject):
         self.expose_attribute(local_name="last_connected_time", remote_name="lastConnectedTime", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=['ENTERPRISE', 'GLOBAL'])
         self.expose_attribute(local_name="hostname", remote_name="hostname", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_enterprise_name", remote_name="associatedEnterpriseName", attribute_type=str, is_required=False, is_unique=False)

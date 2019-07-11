@@ -48,7 +48,7 @@ Parents
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
-- :ref:`nuvport.NUVPort<nuvport>`
-
 - :ref:`nusubnet.NUSubnet<nusubnet>`
+
+- :ref:`nuvport.NUVPort<nuvport>`
 

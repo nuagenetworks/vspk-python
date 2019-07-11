@@ -101,11 +101,11 @@ Parents
 
 - :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
 
+- :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`
+
 - :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nume.NUMe<nume>`
-
-- :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`
 

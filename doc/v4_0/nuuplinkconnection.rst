@@ -60,7 +60,7 @@ Parents
 --------
 
 
-- :ref:`nuvlan.NUVLAN<nuvlan>`
-
 - :ref:`nuvlantemplate.NUVLANTemplate<nuvlantemplate>`
+
+- :ref:`nuvlan.NUVLAN<nuvlan>`
 
