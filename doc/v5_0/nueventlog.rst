@@ -67,7 +67,7 @@ Parents
 
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
-- :ref:`nutca.NUTCA<nutca>`
+- :ref:`nugroup.NUGroup<nugroup>`
 
 - :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
 
@@ -85,41 +85,29 @@ Parents
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
-
-- :ref:`numetadata.NUMetadata<numetadata>`
-
 - :ref:`nuvsp.NUVSP<nuvsp>`
 
-- :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuvsc.NUVSC<nuvsc>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
-- :ref:`nuport.NUPort<nuport>`
-
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
 - :ref:`nucontainer.NUContainer<nucontainer>`
 
-- :ref:`nuuser.NUUser<nuuser>`
+- :ref:`numetadata.NUMetadata<numetadata>`
 
-- :ref:`nuzonetemplate.NUZoneTemplate<nuzonetemplate>`
+- :ref:`nutca.NUTCA<nutca>`
 
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
 - :ref:`nuhsc.NUHSC<nuhsc>`
 
-- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
-
-- :ref:`nuvlan.NUVLAN<nuvlan>`
-
 - :ref:`nustaticroute.NUStaticRoute<nustaticroute>`
 
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
-
-- :ref:`nugroup.NUGroup<nugroup>`
 
 - :ref:`nulicense.NULicense<nulicense>`
 
@@ -129,11 +117,15 @@ Parents
 
 - :ref:`numulticastrange.NUMultiCastRange<numulticastrange>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nugateway.NUGateway<nugateway>`
 
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
+
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
+
+- :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
+
+- :ref:`nuvlan.NUVLAN<nuvlan>`
 
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
 
@@ -141,31 +133,39 @@ Parents
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
-- :ref:`nuvm.NUVM<nuvm>`
+- :ref:`nuzonetemplate.NUZoneTemplate<nuzonetemplate>`
 
 - :ref:`nuvsd.NUVSD<nuvsd>`
 
 - :ref:`nupublicnetworkmacro.NUPublicNetworkMacro<nupublicnetworkmacro>`
 
+- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
+
 - :ref:`nuaddressrange.NUAddressRange<nuaddressrange>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
+
+- :ref:`nuvm.NUVM<nuvm>`
 
 - :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
 
 - :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`
 
+- :ref:`nuport.NUPort<nuport>`
+
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuwirelessport.NUWirelessPort<nuwirelessport>`
 
 - :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
 
+- :ref:`nuuser.NUUser<nuuser>`
+
 - :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
-
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`
 

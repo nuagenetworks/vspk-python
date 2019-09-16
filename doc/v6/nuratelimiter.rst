@@ -26,7 +26,7 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``committed_information_rate``: Committed Information Rate :  Committed bandwidth that is allowed in Mb/s; only whole values supported.
+- ``committed_information_rate`` (**Mandatory**): Committed Information Rate :  Committed bandwidth that is allowed in Mb/s; only whole values supported.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

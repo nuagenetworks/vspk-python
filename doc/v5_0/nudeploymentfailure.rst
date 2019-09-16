@@ -67,6 +67,8 @@ Parents
 
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
+- :ref:`nudomain.NUDomain<nudomain>`
+
 - :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
@@ -77,15 +79,13 @@ Parents
 
 - :ref:`nuegressprofile.NUEgressProfile<nuegressprofile>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
-- :ref:`nubgpneighbor.NUBGPNeighbor<nubgpneighbor>`
-
 - :ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`
+
+- :ref:`nubgpneighbor.NUBGPNeighbor<nubgpneighbor>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

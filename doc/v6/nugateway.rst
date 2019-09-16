@@ -143,6 +143,8 @@ Parents
 --------
 
 
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nume.NUMe<nume>`
@@ -150,8 +152,6 @@ Parents
 - :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
-
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

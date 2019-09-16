@@ -62,19 +62,19 @@ Parents
 
 - :ref:`nucontainerinterface.NUContainerInterface<nucontainerinterface>`
 
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
 
-- :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
 
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+- :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 

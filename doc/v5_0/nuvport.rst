@@ -149,11 +149,11 @@ Parents
 --------
 
 
-- :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
-
 - :ref:`nuzone.NUZone<nuzone>`
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
@@ -163,15 +163,15 @@ Parents
 
 - :ref:`nuegressprofile.NUEgressProfile<nuegressprofile>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
+- :ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`
+
 - :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
 
-- :ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`
+- :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
 
 - :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 

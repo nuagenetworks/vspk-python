@@ -89,6 +89,8 @@ Parents
 --------
 
 
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
@@ -96,8 +98,6 @@ Parents
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nul7applicationsignature.NUL7applicationsignature<nul7applicationsignature>`
-
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

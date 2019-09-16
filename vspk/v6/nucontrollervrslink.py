@@ -96,6 +96,8 @@ class NUControllerVRSLink(NURESTObject):
     
     CONST_VSC_CONFIG_STATE_SECONDARY = "SECONDARY"
     
+    CONST_CONTROLLER_TYPE_VSC = "VSC"
+    
     CONST_VRS_PERSONALITY_NSG = "NSG"
     
     CONST_JSONRPC_CONNECTION_STATE_DOWN = "DOWN"
@@ -115,6 +117,8 @@ class NUControllerVRSLink(NURESTObject):
     CONST_VRS_PERSONALITY_VRSG = "VRSG"
     
     CONST_VRS_PERSONALITY_VRSB = "VRSB"
+    
+    CONST_CONTROLLER_TYPE_HSC = "HSC"
     
     
 
@@ -168,7 +172,7 @@ class NUControllerVRSLink(NURESTObject):
         self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=True, choices=[u'MASTER', u'NONE', u'SLAVE'])
         self.expose_attribute(local_name="connections", remote_name="connections", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="controller_id", remote_name="controllerID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="controller_type", remote_name="controllerType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="controller_type", remote_name="controllerType", attribute_type=str, is_required=False, is_unique=False, choices=[u'HSC', u'VSC'])
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="dynamic", remote_name="dynamic", attribute_type=bool, is_required=False, is_unique=False)

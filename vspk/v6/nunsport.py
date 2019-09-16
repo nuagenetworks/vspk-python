@@ -591,7 +591,7 @@ class NUNSPort(NURESTObject):
         """ Get traffic_through_ubr_only value.
 
             Notes:
-                If enabled, cuts down the number of probes to just the number of provisioned UBRs.
+                If enabled, cuts down the number of probes to just the number of provisioned DUCs.
 
                 
                 This attribute is named `TrafficThroughUBROnly` in VSD API.
@@ -604,7 +604,7 @@ class NUNSPort(NURESTObject):
         """ Set traffic_through_ubr_only value.
 
             Notes:
-                If enabled, cuts down the number of probes to just the number of provisioned UBRs.
+                If enabled, cuts down the number of probes to just the number of provisioned DUCs.
 
                 
                 This attribute is named `TrafficThroughUBROnly` in VSD API.

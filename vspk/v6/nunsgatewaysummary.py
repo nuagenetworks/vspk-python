@@ -90,6 +90,7 @@ class NUNSGatewaySummary(NURESTObject):
         self._gateway_type = None
         self._latitude = None
         self._address = None
+        self._redundant_group_id = None
         self._timezone_id = None
         self._minor_alarms_count = None
         self._embedded_metadata = None
@@ -113,6 +114,7 @@ class NUNSGatewaySummary(NURESTObject):
         self.expose_attribute(local_name="gateway_type", remote_name="gatewayType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="latitude", remote_name="latitude", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="redundant_group_id", remote_name="redundantGroupID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="timezone_id", remote_name="timezoneID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="minor_alarms_count", remote_name="minorAlarmsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
@@ -348,6 +350,33 @@ class NUNSGatewaySummary(NURESTObject):
                 
         """
         self._address = value
+
+    
+    @property
+    def redundant_group_id(self):
+        """ Get redundant_group_id value.
+
+            Notes:
+                The ID of the Redundant Group which has this gateway
+
+                
+                This attribute is named `redundantGroupID` in VSD API.
+                
+        """
+        return self._redundant_group_id
+
+    @redundant_group_id.setter
+    def redundant_group_id(self, value):
+        """ Set redundant_group_id value.
+
+            Notes:
+                The ID of the Redundant Group which has this gateway
+
+                
+                This attribute is named `redundantGroupID` in VSD API.
+                
+        """
+        self._redundant_group_id = value
 
     
     @property

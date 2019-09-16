@@ -45,13 +45,15 @@ Parents
 
 - :ref:`nucontainerinterface.NUContainerInterface<nucontainerinterface>`
 
-- :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 
-- :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`
+- :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`
 
 - :ref:`nuzone.NUZone<nuzone>`
 
 - :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
 
@@ -67,9 +69,7 @@ Parents
 
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
 
-- :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`
 
 - :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`
 
@@ -77,7 +77,7 @@ Parents
 
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
 
-- :ref:`nunsport.NUNSPort<nunsport>`
+- :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+- :ref:`nunsport.NUNSPort<nunsport>`
 

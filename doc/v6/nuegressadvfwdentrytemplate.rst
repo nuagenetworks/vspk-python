@@ -111,7 +111,7 @@ Parents
 --------
 
 
-- :ref:`nuegressadvfwdtemplate.NUEgressAdvFwdTemplate<nuegressadvfwdtemplate>`
-
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nuegressadvfwdtemplate.NUEgressAdvFwdTemplate<nuegressadvfwdtemplate>`
 

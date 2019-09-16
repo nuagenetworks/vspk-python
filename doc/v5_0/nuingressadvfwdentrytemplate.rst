@@ -128,9 +128,9 @@ Parents
 
 - :ref:`nume.NUMe<nume>`
 
-- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
-
 - :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nuingressadvfwdtemplate.NUIngressAdvFwdTemplate<nuingressadvfwdtemplate>`
+
+- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
 

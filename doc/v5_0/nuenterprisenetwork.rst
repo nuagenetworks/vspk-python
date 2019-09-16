@@ -49,9 +49,9 @@ Parents
 --------
 
 
-- :ref:`nusaasapplicationtype.NUSaaSApplicationType<nusaasapplicationtype>`
-
 - :ref:`nunetworkmacrogroup.NUNetworkMacroGroup<nunetworkmacrogroup>`
+
+- :ref:`nusaasapplicationtype.NUSaaSApplicationType<nusaasapplicationtype>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

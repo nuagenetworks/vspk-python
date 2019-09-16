@@ -426,8 +426,6 @@ class NUWirelessPort(NURESTObject):
     
     CONST_COUNTRY_CODE_GQ = "GQ"
     
-    CONST_COUNTRY_CODE_CS = "CS"
-    
     CONST_COUNTRY_CODE_CR = "CR"
     
     CONST_COUNTRY_CODE_CU = "CU"
@@ -492,6 +490,8 @@ class NUWirelessPort(NURESTObject):
     
     CONST_WIFI_MODE_WIFI_B_G_N = "WIFI_B_G_N"
     
+    CONST_COUNTRY_CODE_ME = "ME"
+    
     CONST_COUNTRY_CODE_MD = "MD"
     
     CONST_COUNTRY_CODE_DM = "DM"
@@ -519,6 +519,8 @@ class NUWirelessPort(NURESTObject):
     CONST_COUNTRY_CODE_DZ = "DZ"
     
     CONST_FREQUENCY_CHANNEL_CH_6 = "CH_6"
+    
+    CONST_COUNTRY_CODE_RS = "RS"
     
     CONST_STATUS_READY = "READY"
     
@@ -719,7 +721,7 @@ class NUWirelessPort(NURESTObject):
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS'])
-        self.expose_attribute(local_name="country_code", remote_name="countryCode", attribute_type=str, is_required=True, is_unique=False, choices=[u'AD', u'AE', u'AF', u'AG', u'AI', u'AL', u'AM', u'AN', u'AO', u'AQ', u'AR', u'AS', u'AT', u'AU', u'AW', u'AZ', u'BA', u'BB', u'BD', u'BE', u'BF', u'BG', u'BH', u'BI', u'BJ', u'BM', u'BN', u'BO', u'BR', u'BS', u'BT', u'BV', u'BW', u'BY', u'BZ', u'CA', u'CC', u'CD', u'CF', u'CG', u'CH', u'CI', u'CK', u'CL', u'CM', u'CN', u'CO', u'CR', u'CS', u'CU', u'CV', u'CX', u'CY', u'CZ', u'DE', u'DJ', u'DK', u'DM', u'DO', u'DZ', u'EC', u'EE', u'EG', u'EH', u'ER', u'ES', u'ET', u'FI', u'FJ', u'FK', u'FM', u'FO', u'FR', u'GA', u'GB', u'GD', u'GE', u'GF', u'GH', u'GI', u'GL', u'GM', u'GN', u'GP', u'GQ', u'GR', u'GS', u'GT', u'GU', u'GW', u'GY', u'HK', u'HM', u'HN', u'HR', u'HT', u'HU', u'ID', u'IE', u'IL', u'IN', u'IO', u'IQ', u'IR', u'IS', u'IT', u'JM', u'JO', u'JP', u'KE', u'KG', u'KH', u'KI', u'KM', u'KN', u'KP', u'KR', u'KW', u'KY', u'KZ', u'LA', u'LB', u'LC', u'LI', u'LK', u'LR', u'LS', u'LT', u'LU', u'LV', u'LY', u'MA', u'MC', u'MD', u'MG', u'MH', u'MK', u'ML', u'MM', u'MN', u'MO', u'MP', u'MQ', u'MR', u'MS', u'MT', u'MU', u'MV', u'MW', u'MX', u'MY', u'MZ', u'NA', u'NC', u'NE', u'NF', u'NG', u'NI', u'NL', u'NO', u'NP', u'NR', u'NU', u'NZ', u'OM', u'PA', u'PE', u'PF', u'PG', u'PH', u'PK', u'PL', u'PM', u'PN', u'PR', u'PS', u'PT', u'PW', u'PY', u'QA', u'RE', u'RO', u'RU', u'RW', u'SA', u'SB', u'SC', u'SD', u'SE', u'SG', u'SH', u'SI', u'SJ', u'SK', u'SL', u'SM', u'SN', u'SO', u'SR', u'ST', u'SV', u'SY', u'SZ', u'TC', u'TD', u'TF', u'TG', u'TH', u'TJ', u'TK', u'TL', u'TM', u'TN', u'TO', u'TR', u'TT', u'TV', u'TW', u'TZ', u'UA', u'UG', u'UM', u'US', u'UY', u'UZ', u'VA', u'VC', u'VE', u'VG', u'VI', u'VN', u'VU', u'WF', u'WS', u'YE', u'YT', u'ZA', u'ZM', u'ZW'])
+        self.expose_attribute(local_name="country_code", remote_name="countryCode", attribute_type=str, is_required=True, is_unique=False, choices=[u'AD', u'AE', u'AF', u'AG', u'AI', u'AL', u'AM', u'AN', u'AO', u'AQ', u'AR', u'AS', u'AT', u'AU', u'AW', u'AZ', u'BA', u'BB', u'BD', u'BE', u'BF', u'BG', u'BH', u'BI', u'BJ', u'BM', u'BN', u'BO', u'BR', u'BS', u'BT', u'BV', u'BW', u'BY', u'BZ', u'CA', u'CC', u'CD', u'CF', u'CG', u'CH', u'CI', u'CK', u'CL', u'CM', u'CN', u'CO', u'CR', u'CU', u'CV', u'CX', u'CY', u'CZ', u'DE', u'DJ', u'DK', u'DM', u'DO', u'DZ', u'EC', u'EE', u'EG', u'EH', u'ER', u'ES', u'ET', u'FI', u'FJ', u'FK', u'FM', u'FO', u'FR', u'GA', u'GB', u'GD', u'GE', u'GF', u'GH', u'GI', u'GL', u'GM', u'GN', u'GP', u'GQ', u'GR', u'GS', u'GT', u'GU', u'GW', u'GY', u'HK', u'HM', u'HN', u'HR', u'HT', u'HU', u'ID', u'IE', u'IL', u'IN', u'IO', u'IQ', u'IR', u'IS', u'IT', u'JM', u'JO', u'JP', u'KE', u'KG', u'KH', u'KI', u'KM', u'KN', u'KP', u'KR', u'KW', u'KY', u'KZ', u'LA', u'LB', u'LC', u'LI', u'LK', u'LR', u'LS', u'LT', u'LU', u'LV', u'LY', u'MA', u'MC', u'MD', u'ME', u'MG', u'MH', u'MK', u'ML', u'MM', u'MN', u'MO', u'MP', u'MQ', u'MR', u'MS', u'MT', u'MU', u'MV', u'MW', u'MX', u'MY', u'MZ', u'NA', u'NC', u'NE', u'NF', u'NG', u'NI', u'NL', u'NO', u'NP', u'NR', u'NU', u'NZ', u'OM', u'PA', u'PE', u'PF', u'PG', u'PH', u'PK', u'PL', u'PM', u'PN', u'PR', u'PS', u'PT', u'PW', u'PY', u'QA', u'RE', u'RO', u'RS', u'RU', u'RW', u'SA', u'SB', u'SC', u'SD', u'SE', u'SG', u'SH', u'SI', u'SJ', u'SK', u'SL', u'SM', u'SN', u'SO', u'SR', u'ST', u'SV', u'SY', u'SZ', u'TC', u'TD', u'TF', u'TG', u'TH', u'TJ', u'TK', u'TL', u'TM', u'TN', u'TO', u'TR', u'TT', u'TV', u'TW', u'TZ', u'UA', u'UG', u'UM', u'US', u'UY', u'UZ', u'VA', u'VC', u'VE', u'VG', u'VI', u'VN', u'VU', u'WF', u'WS', u'YE', u'YT', u'ZA', u'ZM', u'ZW'])
         self.expose_attribute(local_name="frequency_channel", remote_name="frequencyChannel", attribute_type=str, is_required=True, is_unique=False, choices=[u'CH_0', u'CH_1', u'CH_10', u'CH_100', u'CH_104', u'CH_108', u'CH_11', u'CH_112', u'CH_116', u'CH_12', u'CH_120', u'CH_124', u'CH_128', u'CH_13', u'CH_132', u'CH_136', u'CH_14', u'CH_140', u'CH_144', u'CH_149', u'CH_153', u'CH_157', u'CH_161', u'CH_165', u'CH_2', u'CH_3', u'CH_36', u'CH_4', u'CH_40', u'CH_44', u'CH_48', u'CH_5', u'CH_52', u'CH_56', u'CH_6', u'CH_60', u'CH_64', u'CH_7', u'CH_8', u'CH_9'])
         self.expose_attribute(local_name="use_user_mnemonic", remote_name="useUserMnemonic", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=False, is_unique=False)

@@ -114,6 +114,7 @@ Children
 :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`                                                                                                    ``redundancy_groups`` 
 :ref:`nudeploymentfailure.NUDeploymentFailure<nudeploymentfailure>`                                                                                              ``deployment_failures`` 
 :ref:`nuperformancemonitor.NUPerformanceMonitor<nuperformancemonitor>`                                                                                           ``performance_monitors`` 
+:ref:`nutestdefinition.NUTestDefinition<nutestdefinition>`                                                                                                       ``test_definitions`` 
 :ref:`nutestsuite.NUTestSuite<nutestsuite>`                                                                                                                      ``test_suites`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nunetconfprofile.NUNetconfProfile<nunetconfprofile>`                                                                                                       ``netconf_profiles`` 

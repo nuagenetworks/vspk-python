@@ -45,9 +45,13 @@ Parents
 --------
 
 
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+
 - :ref:`nuzone.NUZone<nuzone>`
 
 - :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
 
@@ -55,11 +59,7 @@ Parents
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
-
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 

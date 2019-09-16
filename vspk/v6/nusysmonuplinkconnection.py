@@ -43,29 +43,37 @@ class NUSysmonUplinkConnection(NURESTObject):
     
     ## Constants
     
-    CONST_OPENFLOW_STATE_DOWN = "DOWN"
-    
-    CONST_OPENFLOW_STATE_UP = "UP"
-    
     CONST_JSON_STATE_NONE = "NONE"
-    
-    CONST_OPENFLOW_STATE_NONE = "NONE"
-    
-    CONST_DTLS_STATE_UP = "UP"
     
     CONST_JSON_STATE_DOWN = "DOWN"
     
+    CONST_IPSEC_DTLS_STATE_DOWN = "DOWN"
+    
+    CONST_VXLAN_DTLS_STATE_NONE = "NONE"
+    
+    CONST_IPSEC_DTLS_STATE_UP = "UP"
+    
+    CONST_IPSEC_DTLS_STATE_NONE = "NONE"
+    
+    CONST_OPENFLOW_STATE_DOWN = "DOWN"
+    
+    CONST_OPENFLOW_STATE_NONE = "NONE"
+    
+    CONST_IPSEC_DTLS_STATE_ADMIN_DOWN = "ADMIN_DOWN"
+    
     CONST_JSON_STATE_UP = "UP"
     
-    CONST_DTLS_STATE_DOWN = "DOWN"
+    CONST_VXLAN_DTLS_STATE_UP = "UP"
+    
+    CONST_OPENFLOW_STATE_UP = "UP"
     
     CONST_OPENFLOW_STATE_ADMIN_DOWN = "ADMIN_DOWN"
     
-    CONST_DTLS_STATE_NONE = "NONE"
+    CONST_VXLAN_DTLS_STATE_ADMIN_DOWN = "ADMIN_DOWN"
     
     CONST_JSON_STATE_ADMIN_DOWN = "ADMIN_DOWN"
     
-    CONST_DTLS_STATE_ADMIN_DOWN = "ADMIN_DOWN"
+    CONST_VXLAN_DTLS_STATE_DOWN = "DOWN"
     
     
 
@@ -86,78 +94,26 @@ class NUSysmonUplinkConnection(NURESTObject):
 
         # Read/Write Attributes
         
-        self._json_state = None
-        self._dtls_state = None
         self._datapath_uplink_id = None
         self._openflow_state = None
+        self._ipsec_dtls_state = None
         self._private_ip = None
+        self._json_state = None
         self._public_ip = None
+        self._vxlan_dtls_state = None
         
-        self.expose_attribute(local_name="json_state", remote_name="JSONState", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'NONE', u'UP'])
-        self.expose_attribute(local_name="dtls_state", remote_name="DTLSState", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'NONE', u'UP'])
         self.expose_attribute(local_name="datapath_uplink_id", remote_name="datapathUplinkId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="openflow_state", remote_name="openflowState", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'NONE', u'UP'])
+        self.expose_attribute(local_name="ipsec_dtls_state", remote_name="ipsecDtlsState", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'NONE', u'UP'])
         self.expose_attribute(local_name="private_ip", remote_name="privateIP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="json_state", remote_name="jsonState", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'NONE', u'UP'])
         self.expose_attribute(local_name="public_ip", remote_name="publicIP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vxlan_dtls_state", remote_name="vxlanDtlsState", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'NONE', u'UP'])
         
 
         self._compute_args(**kwargs)
 
     # Properties
-    
-    @property
-    def json_state(self):
-        """ Get json_state value.
-
-            Notes:
-                JSON Connection Status
-
-                
-                This attribute is named `JSONState` in VSD API.
-                
-        """
-        return self._json_state
-
-    @json_state.setter
-    def json_state(self, value):
-        """ Set json_state value.
-
-            Notes:
-                JSON Connection Status
-
-                
-                This attribute is named `JSONState` in VSD API.
-                
-        """
-        self._json_state = value
-
-    
-    @property
-    def dtls_state(self):
-        """ Get dtls_state value.
-
-            Notes:
-                DTLS Connection State
-
-                
-                This attribute is named `DTLSState` in VSD API.
-                
-        """
-        return self._dtls_state
-
-    @dtls_state.setter
-    def dtls_state(self, value):
-        """ Set dtls_state value.
-
-            Notes:
-                DTLS Connection State
-
-                
-                This attribute is named `DTLSState` in VSD API.
-                
-        """
-        self._dtls_state = value
-
     
     @property
     def datapath_uplink_id(self):
@@ -214,6 +170,33 @@ class NUSysmonUplinkConnection(NURESTObject):
 
     
     @property
+    def ipsec_dtls_state(self):
+        """ Get ipsec_dtls_state value.
+
+            Notes:
+                IPSec DTLS Connection State
+
+                
+                This attribute is named `ipsecDtlsState` in VSD API.
+                
+        """
+        return self._ipsec_dtls_state
+
+    @ipsec_dtls_state.setter
+    def ipsec_dtls_state(self, value):
+        """ Set ipsec_dtls_state value.
+
+            Notes:
+                IPSec DTLS Connection State
+
+                
+                This attribute is named `ipsecDtlsState` in VSD API.
+                
+        """
+        self._ipsec_dtls_state = value
+
+    
+    @property
     def private_ip(self):
         """ Get private_ip value.
 
@@ -241,6 +224,33 @@ class NUSysmonUplinkConnection(NURESTObject):
 
     
     @property
+    def json_state(self):
+        """ Get json_state value.
+
+            Notes:
+                JSON Connection Status
+
+                
+                This attribute is named `jsonState` in VSD API.
+                
+        """
+        return self._json_state
+
+    @json_state.setter
+    def json_state(self, value):
+        """ Set json_state value.
+
+            Notes:
+                JSON Connection Status
+
+                
+                This attribute is named `jsonState` in VSD API.
+                
+        """
+        self._json_state = value
+
+    
+    @property
     def public_ip(self):
         """ Get public_ip value.
 
@@ -265,6 +275,33 @@ class NUSysmonUplinkConnection(NURESTObject):
                 
         """
         self._public_ip = value
+
+    
+    @property
+    def vxlan_dtls_state(self):
+        """ Get vxlan_dtls_state value.
+
+            Notes:
+                VXLAN DTLS Connection State
+
+                
+                This attribute is named `vxlanDtlsState` in VSD API.
+                
+        """
+        return self._vxlan_dtls_state
+
+    @vxlan_dtls_state.setter
+    def vxlan_dtls_state(self, value):
+        """ Set vxlan_dtls_state value.
+
+            Notes:
+                VXLAN DTLS Connection State
+
+                
+                This attribute is named `vxlanDtlsState` in VSD API.
+                
+        """
+        self._vxlan_dtls_state = value
 
     
 

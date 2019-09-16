@@ -93,9 +93,13 @@ Parents
 --------
 
 
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+
 - :ref:`nuzone.NUZone<nuzone>`
 
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
@@ -103,9 +107,5 @@ Parents
 
 - :ref:`nucontainer.NUContainer<nucontainer>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
-
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 

@@ -169,9 +169,9 @@ Parents
 
 - :ref:`nume.NUMe<nume>`
 
-- :ref:`nunsggroup.NUNSGGroup<nunsggroup>`
-
 - :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
+
+- :ref:`nunsggroup.NUNSGGroup<nunsggroup>`
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 

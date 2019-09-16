@@ -58,7 +58,7 @@ Parents
 
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
 
-- :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
-
 - :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
+
+- :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 

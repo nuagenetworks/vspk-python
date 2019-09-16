@@ -40,7 +40,7 @@ Attributes
 
 - ``speed``: Port Speed in Mb/s :  Supported Ethernet speeds are 10 (10Base-T), 100 (Fast-ethernet 100Base-TX), 1000 (Gigabit Ethernet 1000Base-T), 10 000 (10 Gigabit Ethernet 10GBase-X), and Auto-Negotiate.
 
-- ``traffic_through_ubr_only``: If enabled, cuts down the number of probes to just the number of provisioned UBRs.
+- ``traffic_through_ubr_only``: If enabled, cuts down the number of probes to just the number of provisioned DUCs.
 
 - ``use_user_mnemonic``: Determines whether to use user mnemonic of the NSG Port
 

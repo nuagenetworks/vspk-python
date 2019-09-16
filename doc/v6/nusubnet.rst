@@ -153,6 +153,8 @@ Parents
 --------
 
 
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+
 - :ref:`nuzone.NUZone<nuzone>`
 
 - :ref:`nume.NUMe<nume>`
@@ -161,15 +163,13 @@ Parents
 
 - :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
 
-- :ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`
-
 - :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
 - :ref:`nupatmapper.NUPATMapper<nupatmapper>`
-
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 

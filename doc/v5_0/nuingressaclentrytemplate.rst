@@ -108,11 +108,11 @@ Parents
 
 - :ref:`nume.NUMe<nume>`
 
-- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 

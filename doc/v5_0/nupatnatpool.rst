@@ -75,9 +75,9 @@ Parents
 
 - :ref:`nume.NUMe<nume>`
 
-- :ref:`nuvlan.NUVLAN<nuvlan>`
-
 - :ref:`nugateway.NUGateway<nugateway>`
+
+- :ref:`nuvlan.NUVLAN<nuvlan>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 

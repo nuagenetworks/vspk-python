@@ -207,19 +207,19 @@ Parents
 --------
 
 
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nufirewallacl.NUFirewallAcl<nufirewallacl>`
 
-- :ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`
-
 - :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
-
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

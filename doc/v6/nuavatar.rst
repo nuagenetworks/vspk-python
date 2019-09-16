@@ -41,7 +41,7 @@ Parents
 --------
 
 
-- :ref:`nuuser.NUUser<nuuser>`
-
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
+- :ref:`nuuser.NUUser<nuuser>`
 

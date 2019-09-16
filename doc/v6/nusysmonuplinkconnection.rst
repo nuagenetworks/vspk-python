@@ -12,17 +12,19 @@ Attributes
 ----------
 
 
-- ``json_state``: JSON Connection Status
-
-- ``dtls_state``: DTLS Connection State
-
 - ``datapath_uplink_id``: Datapath Uplink ID
 
 - ``openflow_state``: Openflow Connection Status
 
+- ``ipsec_dtls_state``: IPSec DTLS Connection State
+
 - ``private_ip``: Private IP of connection
 
+- ``json_state``: JSON Connection Status
+
 - ``public_ip``: Public IP of connection
+
+- ``vxlan_dtls_state``: VXLAN DTLS Connection State
 
 
 

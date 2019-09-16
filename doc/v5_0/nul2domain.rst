@@ -148,9 +148,9 @@ Parents
 
 - :ref:`nume.NUMe<nume>`
 
-- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
-
 - :ref:`nugateway.NUGateway<nugateway>`
+
+- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

@@ -49,7 +49,7 @@ Parents
 
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
 
-- :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
-
 - :ref:`numulticastlist.NUMultiCastList<numulticastlist>`
+
+- :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
 

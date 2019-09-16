@@ -51,3 +51,5 @@ Parents
 
 - :ref:`nume.NUMe<nume>`
 
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+

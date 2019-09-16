@@ -70,9 +70,9 @@ Parents
 --------
 
 
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nugroup.NUGroup<nugroup>`
+
+- :ref:`nume.NUMe<nume>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

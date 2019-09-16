@@ -122,24 +122,24 @@ class NUForwardingPathListEntry(NURESTObject):
         self._dscp_remarking = None
         self._last_updated_by = None
         self._remote_uplink_preference = None
+        self._sla_aware = None
         self._embedded_metadata = None
         self._entity_scope = None
         self._forwarding_action = None
         self._uplink_preference = None
         self._priority = None
-        self._is_sla_aware = None
         self._external_id = None
         
         self.expose_attribute(local_name="fc_override", remote_name="FCOverride", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="dscp_remarking", remote_name="DSCPRemarking", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="remote_uplink_preference", remote_name="remoteUplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY'])
+        self.expose_attribute(local_name="sla_aware", remote_name="slaAware", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="forwarding_action", remote_name="forwardingAction", attribute_type=str, is_required=True, is_unique=False, choices=[u'IKE', u'OVERLAY', u'UNDERLAY_PAT', u'UNDERLAY_ROUTE'])
         self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY'])
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="is_sla_aware", remote_name="isSLAAware", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -262,6 +262,33 @@ class NUForwardingPathListEntry(NURESTObject):
                 
         """
         self._remote_uplink_preference = value
+
+    
+    @property
+    def sla_aware(self):
+        """ Get sla_aware value.
+
+            Notes:
+                This flag denotes whether the Uplink Preference configured by the user will work with AAR or will over-ride AAR.
+
+                
+                This attribute is named `slaAware` in VSD API.
+                
+        """
+        return self._sla_aware
+
+    @sla_aware.setter
+    def sla_aware(self, value):
+        """ Set sla_aware value.
+
+            Notes:
+                This flag denotes whether the Uplink Preference configured by the user will work with AAR or will over-ride AAR.
+
+                
+                This attribute is named `slaAware` in VSD API.
+                
+        """
+        self._sla_aware = value
 
     
     @property
@@ -393,33 +420,6 @@ class NUForwardingPathListEntry(NURESTObject):
                 
         """
         self._priority = value
-
-    
-    @property
-    def is_sla_aware(self):
-        """ Get is_sla_aware value.
-
-            Notes:
-                This flag denotes whether the Uplink Preference configured by the user will work with AAR or will over-ride AAR.
-
-                
-                This attribute is named `isSLAAware` in VSD API.
-                
-        """
-        return self._is_sla_aware
-
-    @is_sla_aware.setter
-    def is_sla_aware(self, value):
-        """ Set is_sla_aware value.
-
-            Notes:
-                This flag denotes whether the Uplink Preference configured by the user will work with AAR or will over-ride AAR.
-
-                
-                This attribute is named `isSLAAware` in VSD API.
-                
-        """
-        self._is_sla_aware = value
 
     
     @property

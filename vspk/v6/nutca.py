@@ -67,9 +67,13 @@ class NUTCA(NURESTObject):
     
     CONST_METRIC_TCP_FLAG_ACK_OUT = "TCP_FLAG_ACK_OUT"
     
+    CONST_METRIC_PORT_SWEEP_IP_COUNT = "PORT_SWEEP_IP_COUNT"
+    
     CONST_METRIC_PACKETS_IN_DROPPED = "PACKETS_IN_DROPPED"
     
     CONST_METRIC_L7_BYTES_OUT = "L7_BYTES_OUT"
+    
+    CONST_TYPE_UNIQUE_COUNT = "UNIQUE_COUNT"
     
     CONST_METRIC_FIP_RATE_LIMIT_DROPPED_BYTES = "FIP_RATE_LIMIT_DROPPED_BYTES"
     
@@ -82,6 +86,8 @@ class NUTCA(NURESTObject):
     CONST_METRIC_ANTI_SPOOF_EVENT_COUNT = "ANTI_SPOOF_EVENT_COUNT"
     
     CONST_METRIC_ACL_DENY_EVENT_COUNT = "ACL_DENY_EVENT_COUNT"
+    
+    CONST_METRIC_PORT_SCAN_PORT_COUNT = "PORT_SCAN_PORT_COUNT"
     
     CONST_METRIC_TCP_FLAG_NULL_IN = "TCP_FLAG_NULL_IN"
     
@@ -166,7 +172,7 @@ class NUTCA(NURESTObject):
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'Alert', u'Alert_PolicyGroupChange'])
         self.expose_attribute(local_name="period", remote_name="period", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="metric", remote_name="metric", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACL_DENY_EVENT_COUNT', u'ANTI_SPOOF_EVENT_COUNT', u'BYTES_IN', u'BYTES_OUT', u'FIP_PRE_RATE_LIMIT_BYTES', u'FIP_PRE_RATE_LIMIT_PACKETS', u'FIP_RATE_LIMIT_DROPPED_BYTES', u'FIP_RATE_LIMIT_DROPPED_PACKETS', u'L7_BYTES_IN', u'L7_BYTES_OUT', u'L7_PACKETS_IN', u'L7_PACKETS_OUT', u'PACKETS_DROPPED_BY_RATE_LIMIT', u'PACKETS_IN', u'PACKETS_IN_DROPPED', u'PACKETS_IN_ERROR', u'PACKETS_OUT', u'PACKETS_OUT_DROPPED', u'PACKETS_OUT_ERROR', u'TCP_FLAG_ACK_IN', u'TCP_FLAG_ACK_OUT', u'TCP_FLAG_NULL_IN', u'TCP_FLAG_NULL_OUT', u'TCP_FLAG_RST_IN', u'TCP_FLAG_RST_OUT', u'TCP_FLAG_SYN_IN', u'TCP_FLAG_SYN_OUT'])
+        self.expose_attribute(local_name="metric", remote_name="metric", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACL_DENY_EVENT_COUNT', u'ANTI_SPOOF_EVENT_COUNT', u'BYTES_IN', u'BYTES_OUT', u'FIP_PRE_RATE_LIMIT_BYTES', u'FIP_PRE_RATE_LIMIT_PACKETS', u'FIP_RATE_LIMIT_DROPPED_BYTES', u'FIP_RATE_LIMIT_DROPPED_PACKETS', u'L7_BYTES_IN', u'L7_BYTES_OUT', u'L7_PACKETS_IN', u'L7_PACKETS_OUT', u'PACKETS_DROPPED_BY_RATE_LIMIT', u'PACKETS_IN', u'PACKETS_IN_DROPPED', u'PACKETS_IN_ERROR', u'PACKETS_OUT', u'PACKETS_OUT_DROPPED', u'PACKETS_OUT_ERROR', u'PORT_SCAN_PORT_COUNT', u'PORT_SWEEP_IP_COUNT', u'TCP_FLAG_ACK_IN', u'TCP_FLAG_ACK_OUT', u'TCP_FLAG_NULL_IN', u'TCP_FLAG_NULL_OUT', u'TCP_FLAG_RST_IN', u'TCP_FLAG_RST_OUT', u'TCP_FLAG_SYN_IN', u'TCP_FLAG_SYN_OUT'])
         self.expose_attribute(local_name="threshold", remote_name="threshold", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="throttle_time", remote_name="throttleTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="disable", remote_name="disable", attribute_type=bool, is_required=False, is_unique=False)
@@ -176,7 +182,7 @@ class NUTCA(NURESTObject):
         self.expose_attribute(local_name="count", remote_name="count", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'BREACH', u'ROLLING_AVERAGE'])
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'BREACH', u'ROLLING_AVERAGE', u'UNIQUE_COUNT'])
         
 
         # Fetchers
@@ -626,7 +632,7 @@ class NUTCA(NURESTObject):
         """ Get type value.
 
             Notes:
-                Rolling average or sequence of samples over the averaging period.
+                The aggregation type for the metric over the selected period - Sum, Average or Unique Count
 
                 
         """
@@ -637,7 +643,7 @@ class NUTCA(NURESTObject):
         """ Set type value.
 
             Notes:
-                Rolling average or sequence of samples over the averaging period.
+                The aggregation type for the metric over the selected period - Sum, Average or Unique Count
 
                 
         """
