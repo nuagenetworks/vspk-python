@@ -49,9 +49,13 @@ class NUNSGInfo(NURESTObject):
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
+    CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_SENT = "NOTIFICATION_APP_REQ_SENT"
+    
     CONST_PERSONALITY_NSGDUC = "NSGDUC"
     
     CONST_FAMILY_NSG_V = "NSG_V"
+    
+    CONST_BOOTSTRAP_STATUS_ACTIVE = "ACTIVE"
     
     CONST_CMD_STATUS_RUNNING = "RUNNING"
     
@@ -67,11 +71,15 @@ class NUNSGInfo(NURESTObject):
     
     CONST_CMD_STATUS_FAILED = "FAILED"
     
+    CONST_BOOTSTRAP_STATUS_CERTIFICATE_SIGNED = "CERTIFICATE_SIGNED"
+    
     CONST_FAMILY_NSG_AZ = "NSG_AZ"
     
     CONST_FAMILY_ANY = "ANY"
     
     CONST_CMD_STATUS_SKIPPED = "SKIPPED"
+    
+    CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_ACK = "NOTIFICATION_APP_REQ_ACK"
     
     CONST_CMD_STATUS_UNKNOWN = "UNKNOWN"
     
@@ -90,6 +98,8 @@ class NUNSGInfo(NURESTObject):
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_CMD_TYPE_NSG_DOWNLOAD_OS_IMAGE = "NSG_DOWNLOAD_OS_IMAGE"
+    
+    CONST_BOOTSTRAP_STATUS_INACTIVE = "INACTIVE"
     
     CONST_PERSONALITY_NSGBR = "NSGBR"
     
@@ -167,13 +177,13 @@ class NUNSGInfo(NURESTObject):
         self.expose_attribute(local_name="cmd_detailed_status_code", remote_name="cmdDetailedStatusCode", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cmd_download_progress", remote_name="cmdDownloadProgress", attribute_type=dict, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cmd_id", remote_name="cmdID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="cmd_last_updated_date", remote_name="cmdLastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="cmd_last_updated_date", remote_name="cmdLastUpdatedDate", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cmd_status", remote_name="cmdStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ABANDONED', u'COMPLETED', u'FAILED', u'RUNNING', u'SKIPPED', u'STARTED', u'UNKNOWN'])
         self.expose_attribute(local_name="cmd_type", remote_name="cmdType", attribute_type=str, is_required=False, is_unique=False, choices=[u'NSG_DOWNLOAD_OS_IMAGE', u'NSG_UPGRADE_TO_IMAGE'])
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT'])
         self.expose_attribute(local_name="product_name", remote_name="productName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_entity_type", remote_name="associatedEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ns_gateway_id", remote_name="associatedNSGatewayID", attribute_type=str, is_required=False, is_unique=False)

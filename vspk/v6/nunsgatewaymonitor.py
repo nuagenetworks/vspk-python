@@ -59,12 +59,14 @@ class NUNSGatewayMonitor(NURESTObject):
 
         # Read/Write Attributes
         
+        self._controllervrslinks = None
         self._vrsinfo = None
         self._vscs = None
         self._nsginfo = None
         self._nsgstate = None
         self._nsgsummary = None
         
+        self.expose_attribute(local_name="controllervrslinks", remote_name="controllervrslinks", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrsinfo", remote_name="vrsinfo", attribute_type=dict, is_required=False, is_unique=True)
         self.expose_attribute(local_name="vscs", remote_name="vscs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsginfo", remote_name="nsginfo", attribute_type=dict, is_required=False, is_unique=False)
@@ -75,6 +77,29 @@ class NUNSGatewayMonitor(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def controllervrslinks(self):
+        """ Get controllervrslinks value.
+
+            Notes:
+                List of Controller-VRS links associated with the nsg
+
+                
+        """
+        return self._controllervrslinks
+
+    @controllervrslinks.setter
+    def controllervrslinks(self, value):
+        """ Set controllervrslinks value.
+
+            Notes:
+                List of Controller-VRS links associated with the nsg
+
+                
+        """
+        self._controllervrslinks = value
+
     
     @property
     def vrsinfo(self):

@@ -254,6 +254,8 @@ class NUWirelessPort(NURESTObject):
     
     CONST_COUNTRY_CODE_NG = "NG"
     
+    CONST_CHANNEL_WIDTH_WIDTH_40_MHZ = "WIDTH_40_MHZ"
+    
     CONST_COUNTRY_CODE_NE = "NE"
     
     CONST_COUNTRY_CODE_NC = "NC"
@@ -714,7 +716,7 @@ class NUWirelessPort(NURESTObject):
         self.expose_attribute(local_name="generic_config", remote_name="genericConfig", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="channel_width", remote_name="channelWidth", attribute_type=str, is_required=False, is_unique=False, choices=[u'WIDTH_20_MHZ', u'WIDTH_80_MHZ', u'WIDTH_LESS_40_MHZ', u'WIDTH_PLUS_40_MHZ'])
+        self.expose_attribute(local_name="channel_width", remote_name="channelWidth", attribute_type=str, is_required=False, is_unique=False, choices=[u'WIDTH_20_MHZ', u'WIDTH_40_MHZ', u'WIDTH_80_MHZ', u'WIDTH_LESS_40_MHZ', u'WIDTH_PLUS_40_MHZ'])
         self.expose_attribute(local_name="physical_name", remote_name="physicalName", attribute_type=str, is_required=True, is_unique=True)
         self.expose_attribute(local_name="wifi_frequency_band", remote_name="wifiFrequencyBand", attribute_type=str, is_required=True, is_unique=False, choices=[u'FREQ_2_4_GHZ', u'FREQ_5_0_GHZ'])
         self.expose_attribute(local_name="wifi_mode", remote_name="wifiMode", attribute_type=str, is_required=True, is_unique=False, choices=[u'WIFI_A', u'WIFI_A_AC', u'WIFI_A_N', u'WIFI_A_N_AC', u'WIFI_B_G', u'WIFI_B_G_N'])
@@ -911,7 +913,7 @@ class NUWirelessPort(NURESTObject):
         """ Get channel_width value.
 
             Notes:
-                The frequency width of the selected channel for an instance of a Wireless Port.  Generally, the default width is 20 MHz, but based on the WiFi mode and the frequency band, this could be changed to 40 or 80 MHz.
+                The frequency width of the selected channel for an instance of a Wireless Port.  Generally, the default width is 20 MHz, but based on the WiFi mode and the frequency band, this could be changed to 40 or 80 MHz.  The values for specifying -40 MHz and +40 MHz have been replaced with a global "WIDTH_40_MHZ" value.  Options for WIDTH_LESS_40_MHZ and WIDTH_PLUS_40_MHZ should be avoided.
 
                 
                 This attribute is named `channelWidth` in VSD API.
@@ -924,7 +926,7 @@ class NUWirelessPort(NURESTObject):
         """ Set channel_width value.
 
             Notes:
-                The frequency width of the selected channel for an instance of a Wireless Port.  Generally, the default width is 20 MHz, but based on the WiFi mode and the frequency band, this could be changed to 40 or 80 MHz.
+                The frequency width of the selected channel for an instance of a Wireless Port.  Generally, the default width is 20 MHz, but based on the WiFi mode and the frequency band, this could be changed to 40 or 80 MHz.  The values for specifying -40 MHz and +40 MHz have been replaced with a global "WIDTH_40_MHZ" value.  Options for WIDTH_LESS_40_MHZ and WIDTH_PLUS_40_MHZ should be avoided.
 
                 
                 This attribute is named `channelWidth` in VSD API.

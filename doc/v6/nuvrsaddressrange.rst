@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``ip_type``: The ip type of the address range, possible values are IPV4, IPV6 and DUALSTACK.
+- ``ip_type``: The IP type of the address range, possible values are IPV4, IPV6 and DUALSTACK.
 
 - ``last_updated_by``: ID of the user who last updated the object.
 

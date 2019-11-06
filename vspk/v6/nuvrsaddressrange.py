@@ -51,11 +51,11 @@ class NUVRSAddressRange(NURESTObject):
     
     CONST_IP_TYPE_IPV6 = "IPV6"
     
-    CONST_IP_TYPE_IPV4 = "IPV4"
+    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
+    CONST_IP_TYPE_IPV4 = "IPV4"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
@@ -113,7 +113,7 @@ class NUVRSAddressRange(NURESTObject):
         """ Get ip_type value.
 
             Notes:
-                The ip type of the address range, possible values are IPV4, IPV6 and DUALSTACK.
+                The IP type of the address range, possible values are IPV4, IPV6 and DUALSTACK.
 
                 
                 This attribute is named `IPType` in VSD API.
@@ -126,7 +126,7 @@ class NUVRSAddressRange(NURESTObject):
         """ Set ip_type value.
 
             Notes:
-                The ip type of the address range, possible values are IPV4, IPV6 and DUALSTACK.
+                The IP type of the address range, possible values are IPV4, IPV6 and DUALSTACK.
 
                 
                 This attribute is named `IPType` in VSD API.

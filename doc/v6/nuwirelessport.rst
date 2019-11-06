@@ -24,7 +24,7 @@ Attributes
 
 - ``description``: A customer friendly description to be given to the Wireless Port instance.
 
-- ``channel_width``: The frequency width of the selected channel for an instance of a Wireless Port.  Generally, the default width is 20 MHz, but based on the WiFi mode and the frequency band, this could be changed to 40 or 80 MHz.
+- ``channel_width``: The frequency width of the selected channel for an instance of a Wireless Port.  Generally, the default width is 20 MHz, but based on the WiFi mode and the frequency band, this could be changed to 40 or 80 MHz.  The values for specifying -40 MHz and +40 MHz have been replaced with a global "WIDTH_40_MHZ" value.  Options for WIDTH_LESS_40_MHZ and WIDTH_PLUS_40_MHZ should be avoided.
 
 - ``physical_name`` (**Mandatory**): The identifier of the wireless port as identified by the OS running on the NSG. This name can't be modified once the port is created.
 

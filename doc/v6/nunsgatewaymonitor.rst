@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``controllervrslinks``: List of Controller-VRS links associated with the nsg
+
 - ``vrsinfo``: information about VRS reported from sysmon in JSON format. Has info about cpu usage, memory usage, physical interfaces etc.
 
 - ``vscs``: List of controllers associated with the nsg

@@ -78,11 +78,11 @@ class CLICommand(object):
         else: 
             page = 0
             (fetcher, parent, objects) = fetcher.fetch(filter=args.filter, query_parameters=query_parameters, page=page)
-            if objects is not None:
+            if objects is not None and len(objects) > 0:
                 while True:
                     page += 1
                     (fetcher, parent, tmp_objects) = fetcher.fetch(filter=args.filter, query_parameters=query_parameters, page=page)
-                    if tmp_objects is None:
+                    if tmp_objects is None or len(tmp_objects) == 0:
                         break
                     objects += tmp_objects
 
