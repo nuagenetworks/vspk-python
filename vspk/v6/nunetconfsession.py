@@ -49,15 +49,17 @@ class NUNetconfSession(NURESTObject):
     
     ## Constants
     
-    CONST_STATUS_DISCONNECTED = "DISCONNECTED"
+    CONST_STATUS_CONNECTED = "CONNECTED"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_STATUS_CONNECTED = "CONNECTED"
+    CONST_GATEWAY_VENDOR_NOKIA = "NOKIA"
     
     CONST_GATEWAY_VENDOR_CISCO = "CISCO"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_STATUS_DISCONNECTED = "DISCONNECTED"
     
     
 
@@ -91,7 +93,7 @@ class NUNetconfSession(NURESTObject):
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_model", remote_name="gatewayModel", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="gateway_vendor", remote_name="gatewayVendor", attribute_type=str, is_required=False, is_unique=False, choices=[u'CISCO'])
+        self.expose_attribute(local_name="gateway_vendor", remote_name="gatewayVendor", attribute_type=str, is_required=False, is_unique=False, choices=[u'CISCO', u'NOKIA'])
         self.expose_attribute(local_name="gateway_version", remote_name="gatewayVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])

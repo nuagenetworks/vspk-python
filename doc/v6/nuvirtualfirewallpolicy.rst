@@ -36,7 +36,7 @@ Attributes
 
 - ``priority``: The priority of the rule entry that determines the order of entries
 
-- ``priority_type``: Possible values: TOP or BOTTOM. TOP and BOTTOM ACL policies can only be defined and managed on the template level. These allow for careful control of Rule priority handling.
+- ``priority_type``: Possible values: TOP or BOTTOM or NONE. TOP and BOTTOM ACL policies can only be defined and managed on the template level. These allow for careful control of Rule priority handling.
 
 - ``associated_egress_template_id``: The read only id of the auto generated Egress Template
 
