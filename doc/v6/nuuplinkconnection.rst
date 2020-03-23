@@ -66,6 +66,8 @@ Attributes
 
 - ``uplink_id``: ID that unqiuely identifies the uplink.
 
+- ``primary_data_path_id``: System generated identifier of an uplink on NSG.
+
 - ``username``: PPPoE username if uplink mode is set to PPPoE.
 
 - ``assoc_underlay_id``: UUID of the underlay associated to the uplink.

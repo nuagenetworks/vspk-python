@@ -43,7 +43,7 @@ class NUZFBRequest(NURESTObject):
     """ Represents a ZFBRequest in the VSD
 
         Notes:
-            Pending requests reflect Network Services Gateways that have initiated request for bootstrapping. Requests can be assigned or matched to continue the bootstrapping process
+            Pending requests reflect Network Services Gateways that have initiated request for bootstrapping. Requests can be assigned, or matched, to continue the bootstrapping process.  If a request is rejected, the NSG will terminate the auto-bootstrapping attempts.
     """
 
     __rest_name__ = "zfbrequest"
@@ -54,7 +54,11 @@ class NUZFBRequest(NURESTObject):
     
     CONST_ZFB_APPROVAL_STATUS_DENIED = "DENIED"
     
+    CONST_REQUEST_TYPE_SELF_REBOOTSTRAP = "SELF_REBOOTSTRAP"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_REQUEST_TYPE_ZFB = "ZFB"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
@@ -101,10 +105,15 @@ class NUZFBRequest(NURESTObject):
         self._last_connected_time = None
         self._last_updated_by = None
         self._registration_url = None
+        self._request_type = None
         self._serial_number = None
         self._embedded_metadata = None
         self._entity_scope = None
         self._hostname = None
+        self._original_enterprise_name = None
+        self._original_gateway_datapath_id = None
+        self._original_gateway_name = None
+        self._original_uplink_connection_info = None
         self._associated_enterprise_id = None
         self._associated_enterprise_name = None
         self._associated_entity_type = None
@@ -129,10 +138,15 @@ class NUZFBRequest(NURESTObject):
         self.expose_attribute(local_name="last_connected_time", remote_name="lastConnectedTime", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="registration_url", remote_name="registrationURL", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="request_type", remote_name="requestType", attribute_type=str, is_required=False, is_unique=False, choices=[u'SELF_REBOOTSTRAP', u'ZFB'])
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="hostname", remote_name="hostname", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="original_enterprise_name", remote_name="originalEnterpriseName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="original_gateway_datapath_id", remote_name="originalGatewayDatapathID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="original_gateway_name", remote_name="originalGatewayName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="original_uplink_connection_info", remote_name="originalUplinkConnectionInfo", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_enterprise_name", remote_name="associatedEnterpriseName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_entity_type", remote_name="associatedEntityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'GATEWAY', u'NSGATEWAY'])
@@ -535,6 +549,33 @@ class NUZFBRequest(NURESTObject):
 
     
     @property
+    def request_type(self):
+        """ Get request_type value.
+
+            Notes:
+                Value that serves in indicating if the Auto-Bootstrapping request is made in the context of a new NSG instance being bootstrapped or an NSG going through a self-rebootstrapping phase following a revocation triggered by entering quarantine.
+
+                
+                This attribute is named `requestType` in VSD API.
+                
+        """
+        return self._request_type
+
+    @request_type.setter
+    def request_type(self, value):
+        """ Set request_type value.
+
+            Notes:
+                Value that serves in indicating if the Auto-Bootstrapping request is made in the context of a new NSG instance being bootstrapped or an NSG going through a self-rebootstrapping phase following a revocation triggered by entering quarantine.
+
+                
+                This attribute is named `requestType` in VSD API.
+                
+        """
+        self._request_type = value
+
+    
+    @property
     def serial_number(self):
         """ Get serial_number value.
 
@@ -636,6 +677,114 @@ class NUZFBRequest(NURESTObject):
                 
         """
         self._hostname = value
+
+    
+    @property
+    def original_enterprise_name(self):
+        """ Get original_enterprise_name value.
+
+            Notes:
+                For an NSG that is self-rebootstrapping following a quarantine action, this field represents the original name of the enterprise/organisation to which the NSG belonged.
+
+                
+                This attribute is named `originalEnterpriseName` in VSD API.
+                
+        """
+        return self._original_enterprise_name
+
+    @original_enterprise_name.setter
+    def original_enterprise_name(self, value):
+        """ Set original_enterprise_name value.
+
+            Notes:
+                For an NSG that is self-rebootstrapping following a quarantine action, this field represents the original name of the enterprise/organisation to which the NSG belonged.
+
+                
+                This attribute is named `originalEnterpriseName` in VSD API.
+                
+        """
+        self._original_enterprise_name = value
+
+    
+    @property
+    def original_gateway_datapath_id(self):
+        """ Get original_gateway_datapath_id value.
+
+            Notes:
+                For an NSG that is self-rebootstrapping following a quarantine action, this field represents the original datapath ID that it had before revoking.
+
+                
+                This attribute is named `originalGatewayDatapathID` in VSD API.
+                
+        """
+        return self._original_gateway_datapath_id
+
+    @original_gateway_datapath_id.setter
+    def original_gateway_datapath_id(self, value):
+        """ Set original_gateway_datapath_id value.
+
+            Notes:
+                For an NSG that is self-rebootstrapping following a quarantine action, this field represents the original datapath ID that it had before revoking.
+
+                
+                This attribute is named `originalGatewayDatapathID` in VSD API.
+                
+        """
+        self._original_gateway_datapath_id = value
+
+    
+    @property
+    def original_gateway_name(self):
+        """ Get original_gateway_name value.
+
+            Notes:
+                For an NSG that is self-rebootstrapping following a quarantine action, this field represents the original name the gateway had before revoking.
+
+                
+                This attribute is named `originalGatewayName` in VSD API.
+                
+        """
+        return self._original_gateway_name
+
+    @original_gateway_name.setter
+    def original_gateway_name(self, value):
+        """ Set original_gateway_name value.
+
+            Notes:
+                For an NSG that is self-rebootstrapping following a quarantine action, this field represents the original name the gateway had before revoking.
+
+                
+                This attribute is named `originalGatewayName` in VSD API.
+                
+        """
+        self._original_gateway_name = value
+
+    
+    @property
+    def original_uplink_connection_info(self):
+        """ Get original_uplink_connection_info value.
+
+            Notes:
+                For an NSG that is self-rebootstrapping following a quarantine action, this field represents an information blob of the original uplink connection information that applied to this NSG.
+
+                
+                This attribute is named `originalUplinkConnectionInfo` in VSD API.
+                
+        """
+        return self._original_uplink_connection_info
+
+    @original_uplink_connection_info.setter
+    def original_uplink_connection_info(self, value):
+        """ Set original_uplink_connection_info value.
+
+            Notes:
+                For an NSG that is self-rebootstrapping following a quarantine action, this field represents an information blob of the original uplink connection information that applied to this NSG.
+
+                
+                This attribute is named `originalUplinkConnectionInfo` in VSD API.
+                
+        """
+        self._original_uplink_connection_info = value
 
     
     @property

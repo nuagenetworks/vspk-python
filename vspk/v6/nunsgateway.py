@@ -129,6 +129,8 @@ class NUNSGateway(NURESTObject):
     
     CONST_FUNCTIONS_HUB = "HUB"
     
+    CONST_BOOTSTRAP_STATUS_REVOKED = "REVOKED"
+    
     CONST_CONFIGURATION_STATUS_FAILURE = "FAILURE"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
@@ -150,6 +152,8 @@ class NUNSGateway(NURESTObject):
     CONST_SYSLOG_LEVEL_NOTICE = "NOTICE"
     
     CONST_FAMILY_NSG_E200 = "NSG_E200"
+    
+    CONST_SYSLOG_LEVEL_INFO = "INFO"
     
     CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_SENT = "NOTIFICATION_APP_REQ_SENT"
     
@@ -173,7 +177,7 @@ class NUNSGateway(NURESTObject):
     
     CONST_SYSLOG_LEVEL_EMERGENCY = "EMERGENCY"
     
-    CONST_SYSLOG_LEVEL_INFO = "INFO"
+    CONST_BOOTSTRAP_STATUS_QUARANTINED = "QUARANTINED"
     
     CONST_CONFIGURATION_STATUS_SUCCESS = "SUCCESS"
     
@@ -390,7 +394,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="control_traffic_cos_value", remote_name="controlTrafficCOSValue", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="control_traffic_dscp_value", remote_name="controlTrafficDSCPValue", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bootstrap_id", remote_name="bootstrapID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT'])
+        self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT', u'QUARANTINED', u'REVOKED'])
         self.expose_attribute(local_name="operation_mode", remote_name="operationMode", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="operation_status", remote_name="operationStatus", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="product_name", remote_name="productName", attribute_type=str, is_required=False, is_unique=False)

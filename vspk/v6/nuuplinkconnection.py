@@ -151,6 +151,7 @@ class NUUplinkConnection(NURESTObject):
         self._port_name = None
         self._download_rate_limit = None
         self._uplink_id = None
+        self._primary_data_path_id = None
         self._username = None
         self._assoc_underlay_id = None
         self._associated_bgp_neighbor_id = None
@@ -186,6 +187,7 @@ class NUUplinkConnection(NURESTObject):
         self.expose_attribute(local_name="port_name", remote_name="portName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="download_rate_limit", remote_name="downloadRateLimit", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_id", remote_name="uplinkID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="primary_data_path_id", remote_name="primaryDataPathID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="username", remote_name="username", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_underlay_id", remote_name="assocUnderlayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_bgp_neighbor_id", remote_name="associatedBGPNeighborID", attribute_type=str, is_required=False, is_unique=False)
@@ -909,6 +911,33 @@ class NUUplinkConnection(NURESTObject):
                 
         """
         self._uplink_id = value
+
+    
+    @property
+    def primary_data_path_id(self):
+        """ Get primary_data_path_id value.
+
+            Notes:
+                System generated identifier of an uplink on NSG.
+
+                
+                This attribute is named `primaryDataPathID` in VSD API.
+                
+        """
+        return self._primary_data_path_id
+
+    @primary_data_path_id.setter
+    def primary_data_path_id(self, value):
+        """ Set primary_data_path_id value.
+
+            Notes:
+                System generated identifier of an uplink on NSG.
+
+                
+                This attribute is named `primaryDataPathID` in VSD API.
+                
+        """
+        self._primary_data_path_id = value
 
     
     @property

@@ -24,7 +24,7 @@ Attributes
 
 - ``dead_timer``: ISO 8601 format duration: **PnYnMnD T nHnMnS**. **P** represents the period field and **T** the time field. Period field: **Y** = year, **M** = month, **D** = day. Time field: **H** = hours, **M** = minutes, **S** = seconds. **n** is the value of each field. Because the years and month are units that vary in length, for the time being those are not supported yet.
 
-- ``dead_timer_enabled``: Flag to enable automatic deactivation.
+- ``dead_timer_enabled``: Flag to enable the functionlity where VSD will automatically place an NSG into a quarantine state if it is no longer being reported by VSC nodes for a specified period.
 
 - ``web_filter_download_port``: The port to be opened by the proxy for webfilter update database
 

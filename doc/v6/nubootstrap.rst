@@ -30,7 +30,7 @@ Attributes
 
 - ``associated_entity_type``: Object type of the associated entity.
 
-- ``status``: Bootstrap status.
+- ``status``: Value showing the bootstrapping or activation status of an NSG or eVDF instance.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

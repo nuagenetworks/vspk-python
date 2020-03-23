@@ -67,6 +67,10 @@ class NUBootstrap(NURESTObject):
     
     CONST_ZFB_MATCH_ATTRIBUTE_MAC_ADDRESS = "MAC_ADDRESS"
     
+    CONST_STATUS_QUARANTINED = "QUARANTINED"
+    
+    CONST_STATUS_REVOKED = "REVOKED"
+    
     CONST_ZFB_MATCH_ATTRIBUTE_IP_ADDRESS = "IP_ADDRESS"
     
     CONST_ZFB_MATCH_ATTRIBUTE_SERIAL_NUMBER = "SERIAL_NUMBER"
@@ -117,7 +121,7 @@ class NUBootstrap(NURESTObject):
         self.expose_attribute(local_name="installer_id", remote_name="installerID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="associated_entity_type", remote_name="associatedEntityType", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT'])
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT', u'QUARANTINED', u'REVOKED'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -382,7 +386,7 @@ class NUBootstrap(NURESTObject):
         """ Get status value.
 
             Notes:
-                Bootstrap status.
+                Value showing the bootstrapping or activation status of an NSG or eVDF instance.
 
                 
         """
@@ -393,7 +397,7 @@ class NUBootstrap(NURESTObject):
         """ Set status value.
 
             Notes:
-                Bootstrap status.
+                Value showing the bootstrapping or activation status of an NSG or eVDF instance.
 
                 
         """

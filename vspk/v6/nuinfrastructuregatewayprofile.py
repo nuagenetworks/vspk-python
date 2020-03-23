@@ -333,7 +333,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Get dead_timer_enabled value.
 
             Notes:
-                Flag to enable automatic deactivation.
+                Flag to enable the functionlity where VSD will automatically place an NSG into a quarantine state if it is no longer being reported by VSC nodes for a specified period.
 
                 
                 This attribute is named `deadTimerEnabled` in VSD API.
@@ -346,7 +346,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         """ Set dead_timer_enabled value.
 
             Notes:
-                Flag to enable automatic deactivation.
+                Flag to enable the functionlity where VSD will automatically place an NSG into a quarantine state if it is no longer being reported by VSC nodes for a specified period.
 
                 
                 This attribute is named `deadTimerEnabled` in VSD API.

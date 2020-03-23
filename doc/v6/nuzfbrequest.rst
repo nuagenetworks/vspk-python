@@ -5,7 +5,7 @@ nuzfbrequest
 
 .. class:: nuzfbrequest.NUZFBRequest(bambou.nurest_object.NUMetaRESTObject,):
 
-Pending requests reflect Network Services Gateways that have initiated request for bootstrapping. Requests can be assigned or matched to continue the bootstrapping process
+Pending requests reflect Network Services Gateways that have initiated request for bootstrapping. Requests can be assigned, or matched, to continue the bootstrapping process.  If a request is rejected, the NSG will terminate the auto-bootstrapping attempts.
 
 
 Attributes
@@ -40,6 +40,8 @@ Attributes
 
 - ``registration_url``: Registration URL to be used for a gateway to be bootstrapped using ZFB.
 
+- ``request_type``: Value that serves in indicating if the Auto-Bootstrapping request is made in the context of a new NSG instance being bootstrapped or an NSG going through a self-rebootstrapping phase following a revocation triggered by entering quarantine.
+
 - ``serial_number``: The gateway's Serial Number.
 
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
@@ -47,6 +49,14 @@ Attributes
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``hostname``: Hostname of the gateway bootstrapped using ZFB.
+
+- ``original_enterprise_name``: For an NSG that is self-rebootstrapping following a quarantine action, this field represents the original name of the enterprise/organisation to which the NSG belonged.
+
+- ``original_gateway_datapath_id``: For an NSG that is self-rebootstrapping following a quarantine action, this field represents the original datapath ID that it had before revoking.
+
+- ``original_gateway_name``: For an NSG that is self-rebootstrapping following a quarantine action, this field represents the original name the gateway had before revoking.
+
+- ``original_uplink_connection_info``: For an NSG that is self-rebootstrapping following a quarantine action, this field represents an information blob of the original uplink connection information that applied to this NSG.
 
 - ``associated_enterprise_id``: the ID of the associated enteprise
 

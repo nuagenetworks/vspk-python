@@ -87,7 +87,7 @@ class NUPTranslationMap(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="spat_source_list", remote_name="SPATSourceList", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="mapping_type", remote_name="mappingType", attribute_type=str, is_required=True, is_unique=False, choices=[u'NAT', u'PAT'])
+        self.expose_attribute(local_name="mapping_type", remote_name="mappingType", attribute_type=str, is_required=False, is_unique=False, choices=[u'NAT', u'PAT'])
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])

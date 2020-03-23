@@ -14,7 +14,7 @@ Attributes
 
 - ``spat_source_list``: The list of provider source IPs to be SPAT'd.
 
-- ``mapping_type`` (**Mandatory**): 1:1 NATmapping, or *:1 PAT mappings
+- ``mapping_type``: 1:1 NATmapping, or *:1 PAT mappings
 
 - ``last_updated_by``: ID of the user who last updated the object.
 

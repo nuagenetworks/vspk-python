@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``mapping_type`` (**Mandatory**): NAT for 1:1 mapping or PAT for *:1 mappings.
+- ``mapping_type``: NAT for 1:1 mapping or PAT for *:1 mappings.
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
