@@ -130,7 +130,7 @@ class NUIKEGateway(NURESTObject):
         
         self.expose_attribute(local_name="ike_version", remote_name="IKEVersion", attribute_type=str, is_required=False, is_unique=False, choices=[u'V1', u'V2'])
         self.expose_attribute(local_name="ik_ev1_mode", remote_name="IKEv1Mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'AGGRESSIVE', u'MAIN', u'NONE'])
-        self.expose_attribute(local_name="ip_address", remote_name="IPAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ip_address", remote_name="IPAddress", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)

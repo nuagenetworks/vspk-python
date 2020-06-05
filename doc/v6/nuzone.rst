@@ -38,7 +38,7 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``policy_group_id``: PG ID for the subnet. This is unique per domain and will be in the range 1-4095
+- ``policy_group_id``: PG ID for the subnet. This is unique per domain.
 
 - ``associated_multicast_channel_map_id``: The ID of the Multi Cast Channel Map  this zone/zone template is associated with. This has to be set when  enableMultiCast is set to ENABLED
 

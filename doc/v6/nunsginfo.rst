@@ -5,7 +5,7 @@ nunsginfo
 
 .. class:: nunsginfo.NUNSGInfo(bambou.nurest_object.NUMetaRESTObject,):
 
-Device information coming from the NSG
+Device information coming from the NSG.  That includes the hardware type of the NSG (CPU, memory, family), the version of BIOS, build information, and software application packages installed.
 
 
 Attributes
@@ -13,6 +13,8 @@ Attributes
 
 
 - ``mac_address``: A comma separated list of MAC Addresses associated to the NSG's interfaces (eg, port1, port2, port3).
+
+- ``ca_certificate``: The certficate metadata of NSG's certificate authority.
 
 - ``aar_application_release_date``: Release Date of the AAR Application
 
@@ -27,6 +29,8 @@ Attributes
 - ``tpm_status``: TPM status code as reported by the NSG during bootstrapping. This informate indicates if TPM is being used in securing the private key/certificate of an NSG. Possible values are 0(Unknown), 1(Enabled_Not_Operational), 2(Enabled_Operational), 3(Disabled).
 
 - ``tpm_version``: TPM (Trusted Platform Module) version as reported by the NSG.
+
+- ``cpu_core_allocation``: Current CPU allocation for network accelerated gateways.  Displays total number of cores and those isolated.
 
 - ``cpu_type``: The NSG Processor Type based on information extracted during bootstrapping.  This may refer to a type of processor manufactured by Intel, ARM, AMD, Cyrix, VIA, or others.
 
@@ -43,6 +47,8 @@ Attributes
 - ``serial_number``: The NSG's serial number as it is stored in the system's CMOS (Motherboard)
 
 - ``personality``: Personality of the Gateway.
+
+- ``certificate``: The certificate metadata of NSG's current certficate.
 
 - ``libraries``: Tracks RPM package installed for some libraries installed on the NSG.
 
@@ -73,6 +79,8 @@ Attributes
 - ``associated_entity_type``: Object type of the associated entity.
 
 - ``associated_ns_gateway_id``: The ID of the NSG from which the infomation was collected.
+
+- ``huge_page_setting``: The size and number of huge pages for an NSG that is running in network accelerated mode.  Hugepage values states the portion of memory reserved for network accelerated services.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

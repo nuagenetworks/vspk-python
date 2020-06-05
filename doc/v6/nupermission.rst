@@ -16,9 +16,11 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``permitted_action`` (**Mandatory**): The permitted  action to USE/EXTEND/READ/INSTANTIATE  an entity.
+- ``permitted_action``: The permitted  action to USE/EXTEND/READ/INSTANTIATE  an entity.
 
-- ``permitted_entity_description``: Description for the permittedEntity
+- ``permitted_enterprise_description``: Name of the permitted Enterprise
+
+- ``permitted_enterprise_name``: Name of the associated Enterprise
 
 - ``permitted_entity_id`` (**Mandatory**): The  entity ID for which this permission action is associated against.
 
@@ -29,6 +31,18 @@ Attributes
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``associated_group_description``: Description of the Group
+
+- ``associated_group_id``: The Group ID associated with this permission.
+
+- ``associated_group_name``: Name of the group for which we have given permission.
+
+- ``associated_role_description``: Description of the role asssociated with the permission
+
+- ``associated_role_id``: ID of the associated Role
+
+- ``associated_role_name``: Associated Role Name
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -82,9 +96,13 @@ Parents
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 
+- :ref:`nuethernetsegmentgroup.NUEthernetSegmentGroup<nuethernetsegmentgroup>`
+
 - :ref:`nuport.NUPort<nuport>`
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
+
+- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
 

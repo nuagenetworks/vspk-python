@@ -133,7 +133,7 @@ class NUWANService(NURESTObject):
         self._external_id = None
         self._external_route_target = None
         
-        self.expose_attribute(local_name="wan_service_identifier", remote_name="WANServiceIdentifier", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="wan_service_identifier", remote_name="WANServiceIdentifier", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="irb_enabled", remote_name="IRBEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)

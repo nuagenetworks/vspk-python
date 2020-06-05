@@ -102,6 +102,8 @@ Parents
 
 - :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
 
+- :ref:`nuethernetsegmentgroup.NUEthernetSegmentGroup<nuethernetsegmentgroup>`
+
 - :ref:`nuport.NUPort<nuport>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`

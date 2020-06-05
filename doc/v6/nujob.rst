@@ -97,6 +97,8 @@ Parents
 
 - :ref:`nuvnf.NUVNF<nuvnf>`
 
+- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
+
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`

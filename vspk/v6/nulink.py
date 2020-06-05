@@ -495,7 +495,7 @@ class NULink(NURESTObject):
         """ Get type value.
 
             Notes:
-                This is used to distinguish between different type of links: hub and spoke, ip address, VNS border router links.
+                This is used to distinguish between different type of links: hub and spoke, IP address, VNS border router links.
 
                 
         """
@@ -506,7 +506,7 @@ class NULink(NURESTObject):
         """ Set type value.
 
             Notes:
-                This is used to distinguish between different type of links: hub and spoke, ip address, VNS border router links.
+                This is used to distinguish between different type of links: hub and spoke, IP address, VNS border router links.
 
                 
         """

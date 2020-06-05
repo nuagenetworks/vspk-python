@@ -98,7 +98,9 @@ class NUVirtualFirewallPolicy(NURESTObject):
         self._policy_state = None
         self._priority = None
         self._priority_type = None
+        self._associated_egress_adv_fwd_rule_template_id = None
         self._associated_egress_template_id = None
+        self._associated_ingress_adv_fwd_rule_template_id = None
         self._associated_ingress_template_id = None
         self._associated_live_entity_id = None
         self._auto_generate_priority = None
@@ -117,7 +119,9 @@ class NUVirtualFirewallPolicy(NURESTObject):
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="priority_type", remote_name="priorityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BOTTOM', u'NONE', u'TOP'])
+        self.expose_attribute(local_name="associated_egress_adv_fwd_rule_template_id", remote_name="associatedEgressAdvFwdRuleTemplateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_egress_template_id", remote_name="associatedEgressTemplateID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_ingress_adv_fwd_rule_template_id", remote_name="associatedIngressAdvFwdRuleTemplateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ingress_template_id", remote_name="associatedIngressTemplateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="auto_generate_priority", remote_name="autoGeneratePriority", attribute_type=bool, is_required=False, is_unique=False)
@@ -476,6 +480,33 @@ class NUVirtualFirewallPolicy(NURESTObject):
 
     
     @property
+    def associated_egress_adv_fwd_rule_template_id(self):
+        """ Get associated_egress_adv_fwd_rule_template_id value.
+
+            Notes:
+                The read only id of the auto generated Egress Advance Forwarding Rule Template ID
+
+                
+                This attribute is named `associatedEgressAdvFwdRuleTemplateID` in VSD API.
+                
+        """
+        return self._associated_egress_adv_fwd_rule_template_id
+
+    @associated_egress_adv_fwd_rule_template_id.setter
+    def associated_egress_adv_fwd_rule_template_id(self, value):
+        """ Set associated_egress_adv_fwd_rule_template_id value.
+
+            Notes:
+                The read only id of the auto generated Egress Advance Forwarding Rule Template ID
+
+                
+                This attribute is named `associatedEgressAdvFwdRuleTemplateID` in VSD API.
+                
+        """
+        self._associated_egress_adv_fwd_rule_template_id = value
+
+    
+    @property
     def associated_egress_template_id(self):
         """ Get associated_egress_template_id value.
 
@@ -500,6 +531,33 @@ class NUVirtualFirewallPolicy(NURESTObject):
                 
         """
         self._associated_egress_template_id = value
+
+    
+    @property
+    def associated_ingress_adv_fwd_rule_template_id(self):
+        """ Get associated_ingress_adv_fwd_rule_template_id value.
+
+            Notes:
+                The read only id of the auto generated Ingress Advance Forwarding Rule Template ID
+
+                
+                This attribute is named `associatedIngressAdvFwdRuleTemplateID` in VSD API.
+                
+        """
+        return self._associated_ingress_adv_fwd_rule_template_id
+
+    @associated_ingress_adv_fwd_rule_template_id.setter
+    def associated_ingress_adv_fwd_rule_template_id(self, value):
+        """ Set associated_ingress_adv_fwd_rule_template_id value.
+
+            Notes:
+                The read only id of the auto generated Ingress Advance Forwarding Rule Template ID
+
+                
+                This attribute is named `associatedIngressAdvFwdRuleTemplateID` in VSD API.
+                
+        """
+        self._associated_ingress_adv_fwd_rule_template_id = value
 
     
     @property

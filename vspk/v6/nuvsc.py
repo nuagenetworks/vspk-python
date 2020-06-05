@@ -103,7 +103,6 @@ class NUVSC(NURESTObject):
         self._management_ip = None
         self._last_state_change = None
         self._last_updated_by = None
-        self._address = None
         self._addresses = None
         self._peak_cpuusage = None
         self._peak_memory_usage = None
@@ -115,6 +114,7 @@ class NUVSC(NURESTObject):
         self._unavailable_timestamp = None
         self._entity_scope = None
         self._location = None
+        self._communication_id = None
         self._product_version = None
         self._vsds = None
         self._status = None
@@ -128,7 +128,6 @@ class NUVSC(NURESTObject):
         self.expose_attribute(local_name="management_ip", remote_name="managementIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_state_change", remote_name="lastStateChange", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="addresses", remote_name="addresses", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peak_cpuusage", remote_name="peakCPUUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peak_memory_usage", remote_name="peakMemoryUsage", attribute_type=float, is_required=False, is_unique=False)
@@ -140,6 +139,7 @@ class NUVSC(NURESTObject):
         self.expose_attribute(local_name="unavailable_timestamp", remote_name="unavailableTimestamp", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="location", remote_name="location", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="communication_id", remote_name="communicationId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="product_version", remote_name="productVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsds", remote_name="vsds", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
@@ -286,29 +286,6 @@ class NUVSC(NURESTObject):
                 
         """
         self._last_updated_by = value
-
-    
-    @property
-    def address(self):
-        """ Get address value.
-
-            Notes:
-                The IP of the VRS entity
-
-                
-        """
-        return self._address
-
-    @address.setter
-    def address(self, value):
-        """ Set address value.
-
-            Notes:
-                The IP of the VRS entity
-
-                
-        """
-        self._address = value
 
     
     @property
@@ -586,6 +563,33 @@ class NUVSC(NURESTObject):
                 
         """
         self._location = value
+
+    
+    @property
+    def communication_id(self):
+        """ Get communication_id value.
+
+            Notes:
+                Communication identifier used to uniquely identify the VSC connected to VSD
+
+                
+                This attribute is named `communicationId` in VSD API.
+                
+        """
+        return self._communication_id
+
+    @communication_id.setter
+    def communication_id(self, value):
+        """ Set communication_id value.
+
+            Notes:
+                Communication identifier used to uniquely identify the VSC connected to VSD
+
+                
+                This attribute is named `communicationId` in VSD API.
+                
+        """
+        self._communication_id = value
 
     
     @property

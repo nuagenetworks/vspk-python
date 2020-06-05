@@ -20,6 +20,8 @@ Attributes
 
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
+- ``underlay_test``: Flag to define if this Test Suite is the internal 'Underlay Tests' Test Suite
+
 - ``enterprise_id``: The ID of the Enterprise to which this Test Suite belongs to.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level

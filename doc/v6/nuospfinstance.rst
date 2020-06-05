@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``ip_type``: The IP Type of the OSPF Instance, currently only IPv4 is supported.
+
 - ``name`` (**Mandatory**): Name of OSPF Instance
 
 - ``last_updated_by``: ID of the user who last updated the object.

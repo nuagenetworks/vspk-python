@@ -44,6 +44,10 @@ Attributes
 
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
+- ``enable_underlay_tests_during_activation``: Enables underlay tests during gateway activation. Underlay tests will cause the bootstrapping operation to be about two minutes longer.
+
+- ``underlay_test_server``: Underlay Test Server (FQDN or IP Address). Required when the Underlay test at bootstrap feature is enabled or to allow On-Demand tests to be run.
+
 - ``enterprise_id``: Enterprise/Organisation associated with this Profile instance.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
@@ -67,6 +71,12 @@ Attributes
 - ``use_two_factor``: Use Two Factor :  When set to true, the use of two independent authentication factors will be used to secure the installed NSG.  When set to false, there is an assumption that the NSG is being installed in a secure environment and the installer is also trusted.  The defaut value is true, using 2-factor.
 
 - ``stats_collector_port``: The port to open by the proxy for the statistics collector to use.
+
+- ``run_underlay_bandwidth_test``: Run the underlay bandwidth test during activation. Will only have an effect if the Underlay tests at bootstrap are enabled.
+
+- ``run_underlay_connectivity_test``: Run the underlay connectivity test during activation. Will only have an effect if the Underlay tests at bootstrap are enabled.
+
+- ``run_underlay_mtu_discovery_test``: Run the underlay MTU discovery test during activation. Will only have an effect if the Underlay tests at bootstrap are enabled.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

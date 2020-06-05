@@ -154,6 +154,9 @@ from .fetchers import NUHostInterfacesFetcher
 from .fetchers import NURoutingPoliciesFetcher
 
 
+from .fetchers import NURoutingPolicyBindingsFetcher
+
+
 from .fetchers import NUSPATSourcesPoolsFetcher
 
 
@@ -233,7 +236,7 @@ class NUDomain(NURESTObject):
     
     CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
     
-    CONST_FLOW_COLLECTION_ENABLED_DISABLED = "DISABLED"
+    CONST_THREAT_INTELLIGENCE_ENABLED_ENABLED = "ENABLED"
     
     CONST_DHCP_BEHAVIOR_UNDERLAY_RELAY = "UNDERLAY_RELAY"
     
@@ -242,6 +245,8 @@ class NUDomain(NURESTObject):
     CONST_MAINTENANCE_MODE_DISABLED = "DISABLED"
     
     CONST_TUNNEL_TYPE_VLAN = "VLAN"
+    
+    CONST_THREAT_INTELLIGENCE_ENABLED_INHERITED = "INHERITED"
     
     CONST_TUNNEL_TYPE_DC_DEFAULT = "DC_DEFAULT"
     
@@ -254,6 +259,8 @@ class NUDomain(NURESTObject):
     CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
     
     CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
+    
+    CONST_FLOW_COLLECTION_ENABLED_DISABLED = "DISABLED"
     
     CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
     
@@ -311,6 +318,8 @@ class NUDomain(NURESTObject):
     
     CONST_POLICY_CHANGE_STATUS_APPLIED = "APPLIED"
     
+    CONST_THREAT_INTELLIGENCE_ENABLED_DISABLED = "DISABLED"
+    
     CONST_FIP_IGNORE_DEFAULT_ROUTE_ENABLED = "ENABLED"
     
     
@@ -362,6 +371,7 @@ class NUDomain(NURESTObject):
         self._aggregate_flows_enabled = None
         self._aggregation_flow_type = None
         self._dhcp_server_addresses = None
+        self._threat_intelligence_enabled = None
         self._global_routing_enabled = None
         self._flow_collection_enabled = None
         self._embedded_metadata = None
@@ -381,6 +391,7 @@ class NUDomain(NURESTObject):
         self._uplink_preference = None
         self._create_back_haul_subnet = None
         self._associated_bgp_profile_id = None
+        self._associated_idp_profile_id = None
         self._associated_multicast_channel_map_id = None
         self._associated_pat_mapper_id = None
         self._associated_shared_pat_mapper_id = None
@@ -423,6 +434,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="aggregate_flows_enabled", remote_name="aggregateFlowsEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="aggregation_flow_type", remote_name="aggregationFlowType", attribute_type=str, is_required=False, is_unique=False, choices=[u'PBR_BASED', u'ROUTE_BASED'])
         self.expose_attribute(local_name="dhcp_server_addresses", remote_name="dhcpServerAddresses", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="threat_intelligence_enabled", remote_name="threatIntelligenceEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="global_routing_enabled", remote_name="globalRoutingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
@@ -442,6 +454,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
         self.expose_attribute(local_name="create_back_haul_subnet", remote_name="createBackHaulSubnet", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_bgp_profile_id", remote_name="associatedBGPProfileID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_idp_profile_id", remote_name="associatedIDPProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_pat_mapper_id", remote_name="associatedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_shared_pat_mapper_id", remote_name="associatedSharedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
@@ -582,6 +595,9 @@ class NUDomain(NURESTObject):
         
         
         self.routing_policies = NURoutingPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.routing_policy_bindings = NURoutingPolicyBindingsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.spat_sources_pools = NUSPATSourcesPoolsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -1439,6 +1455,33 @@ class NUDomain(NURESTObject):
 
     
     @property
+    def threat_intelligence_enabled(self):
+        """ Get threat_intelligence_enabled value.
+
+            Notes:
+                Determines whether or not threat intelligence is enabled
+
+                
+                This attribute is named `threatIntelligenceEnabled` in VSD API.
+                
+        """
+        return self._threat_intelligence_enabled
+
+    @threat_intelligence_enabled.setter
+    def threat_intelligence_enabled(self, value):
+        """ Set threat_intelligence_enabled value.
+
+            Notes:
+                Determines whether or not threat intelligence is enabled
+
+                
+                This attribute is named `threatIntelligenceEnabled` in VSD API.
+                
+        """
+        self._threat_intelligence_enabled = value
+
+    
+    @property
     def global_routing_enabled(self):
         """ Get global_routing_enabled value.
 
@@ -1941,6 +1984,33 @@ class NUDomain(NURESTObject):
                 
         """
         self._associated_bgp_profile_id = value
+
+    
+    @property
+    def associated_idp_profile_id(self):
+        """ Get associated_idp_profile_id value.
+
+            Notes:
+                The associated IDP Profile ID
+
+                
+                This attribute is named `associatedIDPProfileID` in VSD API.
+                
+        """
+        return self._associated_idp_profile_id
+
+    @associated_idp_profile_id.setter
+    def associated_idp_profile_id(self, value):
+        """ Set associated_idp_profile_id value.
+
+            Notes:
+                The associated IDP Profile ID
+
+                
+                This attribute is named `associatedIDPProfileID` in VSD API.
+                
+        """
+        self._associated_idp_profile_id = value
 
     
     @property

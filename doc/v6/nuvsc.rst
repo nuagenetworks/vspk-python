@@ -20,8 +20,6 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``address``: The IP of the VRS entity
-
 - ``addresses``: The Control IPv4 or IPv6 addresses of the VSC. Example: [10.10.18.10, 2001:10:10:18::10].
 
 - ``peak_cpuusage``: Peek CPU usage percentage.
@@ -43,6 +41,8 @@ Attributes
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``location``: Identifies the entity to be associated with a location.
+
+- ``communication_id``: Communication identifier used to uniquely identify the VSC connected to VSD
 
 - ``product_version``: Product version supported by this entity.
 

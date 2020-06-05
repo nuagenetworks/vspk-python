@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``bfd_enabled``: Enable or disable Bidirectional Forwarding Detection for this OSPF Interface.
+
 - ``name`` (**Mandatory**): Name of the OSPF Interface. The name has to be unique within the OSPFArea.
 
 - ``passive_enabled``: Enable the passive property of the interface.

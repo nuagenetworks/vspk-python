@@ -42,6 +42,8 @@ Attributes
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
+- ``system_id``: System ID of the Gateway.
+
 
 
 
@@ -107,9 +109,13 @@ Parents
 
 - :ref:`nuvm.NUVM<nuvm>`
 
+- :ref:`nuethernetsegmentgroup.NUEthernetSegmentGroup<nuethernetsegmentgroup>`
+
 - :ref:`nuport.NUPort<nuport>`
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
+
+- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

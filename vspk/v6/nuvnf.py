@@ -89,6 +89,8 @@ class NUVNF(NURESTObject):
     
     CONST_TASK_STATE_DEPLOYING = "DEPLOYING"
     
+    CONST_TYPE_THREAT_PREVENTION = "THREAT_PREVENTION"
+    
     CONST_TYPE_WAN_OPT = "WAN_OPT"
     
     CONST_ALLOWED_ACTIONS_RESTART = "RESTART"
@@ -196,7 +198,7 @@ class NUVNF(NURESTObject):
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'BLOCKED', u'CRASHED', u'DYING', u'IDLE', u'INIT', u'LAST', u'PAUSED', u'PMSUSPENDED', u'RUNNING', u'SHUTDOWN', u'SHUTOFF'])
         self.expose_attribute(local_name="storage_gb", remote_name="storageGB", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'FIREWALL', u'WAN_OPT'])
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'FIREWALL', u'THREAT_PREVENTION', u'WAN_OPT'])
         
 
         # Fetchers

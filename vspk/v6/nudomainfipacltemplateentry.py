@@ -49,11 +49,19 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     ## Constants
     
+    CONST_LOCATION_ENTITY_TYPE_ZONETEMPLATE = "ZONETEMPLATE"
+    
     CONST_NETWORK_TYPE_NETWORK_MACRO_GROUP = "NETWORK_MACRO_GROUP"
+    
+    CONST_LOCATION_ENTITY_TYPE_NETWORKMACROGROUP = "NETWORKMACROGROUP"
+    
+    CONST_LOCATION_TYPE_VPORTTAG = "VPORTTAG"
     
     CONST_ACTION_DROP = "DROP"
     
     CONST_LOCATION_TYPE_ZONE = "ZONE"
+    
+    CONST_LOCATION_ENTITY_TYPE_PUBLICNETWORK = "PUBLICNETWORK"
     
     CONST_ACTION_REDIRECT = "REDIRECT"
     
@@ -61,15 +69,23 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_NETWORK_TYPE_PUBLIC_NETWORK = "PUBLIC_NETWORK"
     
-    CONST_ACTION_FORWARD = "FORWARD"
+    CONST_NETWORK_ENTITY_TYPE_PGEXPRESSIONTEMPLATE = "PGEXPRESSIONTEMPLATE"
+    
+    CONST_NETWORK_TYPE_ENDPOINT_ZONE = "ENDPOINT_ZONE"
+    
+    CONST_LOCATION_ENTITY_TYPE_REDIRECTIONTARGETTEMPLATE = "REDIRECTIONTARGETTEMPLATE"
     
     CONST_NETWORK_TYPE_POLICYGROUP = "POLICYGROUP"
     
     CONST_LOCATION_TYPE_ANY = "ANY"
     
-    CONST_NETWORK_TYPE_ENDPOINT_DOMAIN = "ENDPOINT_DOMAIN"
+    CONST_NETWORK_ENTITY_TYPE_ZONETEMPLATE = "ZONETEMPLATE"
+    
+    CONST_NETWORK_ENTITY_TYPE_NETWORKMACROGROUP = "NETWORKMACROGROUP"
     
     CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
+    
+    CONST_NETWORK_ENTITY_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
     CONST_NETWORK_TYPE_ANY = "ANY"
     
@@ -77,15 +93,35 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_NETWORK_TYPE_SUBNET = "SUBNET"
     
+    CONST_NETWORK_ENTITY_TYPE_POLICYGROUP = "POLICYGROUP"
+    
     CONST_NETWORK_TYPE_ZONE = "ZONE"
     
     CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE_GROUP = "L4_SERVICE_GROUP"
     
+    CONST_NETWORK_TYPE_ENDPOINT_DOMAIN = "ENDPOINT_DOMAIN"
+    
+    CONST_LOCATION_ENTITY_TYPE_POLICYGROUPTEMPLATE = "POLICYGROUPTEMPLATE"
+    
+    CONST_NETWORK_ENTITY_TYPE_ENTERPRISENETWORK = "ENTERPRISENETWORK"
+    
+    CONST_LOCATION_ENTITY_TYPE_SUBNET = "SUBNET"
+    
     CONST_NETWORK_TYPE_ENDPOINT_SUBNET = "ENDPOINT_SUBNET"
     
-    CONST_LOCATION_TYPE_VPORTTAG = "VPORTTAG"
+    CONST_LOCATION_ENTITY_TYPE_REDIRECTIONTARGET = "REDIRECTIONTARGET"
+    
+    CONST_NETWORK_ENTITY_TYPE_ZONE = "ZONE"
+    
+    CONST_NETWORK_ENTITY_TYPE_SUBNETTEMPLATE = "SUBNETTEMPLATE"
+    
+    CONST_LOCATION_ENTITY_TYPE_PGEXPRESSIONTEMPLATE = "PGEXPRESSIONTEMPLATE"
+    
+    CONST_LOCATION_ENTITY_TYPE_ENTERPRISENETWORK = "ENTERPRISENETWORK"
     
     CONST_LOCATION_TYPE_SUBNET = "SUBNET"
+    
+    CONST_LOCATION_TYPE_REDIRECTIONTARGET = "REDIRECTIONTARGET"
     
     CONST_POLICY_STATE_DRAFT = "DRAFT"
     
@@ -93,17 +129,31 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
     
     CONST_WEB_FILTER_TYPE_WEB_DOMAIN_NAME = "WEB_DOMAIN_NAME"
     
-    CONST_LOCATION_TYPE_REDIRECTIONTARGET = "REDIRECTIONTARGET"
+    CONST_LOCATION_ENTITY_TYPE_POLICYGROUP = "POLICYGROUP"
+    
+    CONST_NETWORK_ENTITY_TYPE_SUBNET = "SUBNET"
     
     CONST_POLICY_STATE_LIVE = "LIVE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
+    CONST_LOCATION_ENTITY_TYPE_SUBNETTEMPLATE = "SUBNETTEMPLATE"
+    
+    CONST_LOCATION_ENTITY_TYPE_PGEXPRESSION = "PGEXPRESSION"
+    
     CONST_WEB_FILTER_TYPE_WEB_CATEGORY = "WEB_CATEGORY"
+    
+    CONST_NETWORK_ENTITY_TYPE_POLICYGROUPTEMPLATE = "POLICYGROUPTEMPLATE"
+    
+    CONST_LOCATION_ENTITY_TYPE_ZONE = "ZONE"
     
     CONST_NETWORK_TYPE_INTERNET_POLICYGROUP = "INTERNET_POLICYGROUP"
     
-    CONST_NETWORK_TYPE_ENDPOINT_ZONE = "ENDPOINT_ZONE"
+    CONST_ACTION_FORWARD = "FORWARD"
+    
+    CONST_NETWORK_ENTITY_TYPE_SAASAPPLICATIONGROUP = "SAASAPPLICATIONGROUP"
+    
+    CONST_NETWORK_ENTITY_TYPE_PUBLICNETWORK = "PUBLICNETWORK"
     
     
 
@@ -137,6 +187,7 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
         self._web_filter_type = None
         self._description = None
         self._destination_port = None
+        self._network_entity_type = None
         self._network_id = None
         self._network_type = None
         self._mirror_destination_id = None
@@ -144,6 +195,7 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
         self._embedded_metadata = None
         self._enterprise_name = None
         self._entity_scope = None
+        self._location_entity_type = None
         self._location_id = None
         self._location_type = None
         self._policy_state = None
@@ -174,6 +226,7 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
         self.expose_attribute(local_name="web_filter_type", remote_name="webFilterType", attribute_type=str, is_required=False, is_unique=False, choices=[u'WEB_CATEGORY', u'WEB_DOMAIN_NAME'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="network_entity_type", remote_name="networkEntityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISENETWORK', u'NETWORKMACROGROUP', u'PGEXPRESSION', u'PGEXPRESSIONTEMPLATE', u'POLICYGROUP', u'POLICYGROUPTEMPLATE', u'PUBLICNETWORK', u'SAASAPPLICATIONGROUP', u'SUBNET', u'SUBNETTEMPLATE', u'ZONE', u'ZONETEMPLATE'])
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'INTERNET_POLICYGROUP', u'NETWORK_MACRO_GROUP', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'ZONE'])
         self.expose_attribute(local_name="mirror_destination_id", remote_name="mirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
@@ -181,6 +234,7 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="location_entity_type", remote_name="locationEntityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISENETWORK', u'NETWORKMACROGROUP', u'PGEXPRESSION', u'PGEXPRESSIONTEMPLATE', u'POLICYGROUP', u'POLICYGROUPTEMPLATE', u'PUBLICNETWORK', u'REDIRECTIONTARGET', u'REDIRECTIONTARGETTEMPLATE', u'SUBNET', u'SUBNETTEMPLATE', u'ZONE', u'ZONETEMPLATE'])
         self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'POLICYGROUP', u'REDIRECTIONTARGET', u'SUBNET', u'VPORTTAG', u'ZONE'])
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
@@ -556,6 +610,33 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
 
     
     @property
+    def network_entity_type(self):
+        """ Get network_entity_type value.
+
+            Notes:
+                Indicates whether the Network Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: ENTERPRISENETWORK, NETWORKMACROGROUP, PGEXPRESSION, PGEXPRESSIONTEMPLATE, POLICYGROUP, POLICYGROUPTEMPLATE, PUBLICNETWORK, SAASAPPLICATIONGROUP, SUBNET, SUBNETTEMPLATE, ZONE, ZONETEMPLATE.
+
+                
+                This attribute is named `networkEntityType` in VSD API.
+                
+        """
+        return self._network_entity_type
+
+    @network_entity_type.setter
+    def network_entity_type(self, value):
+        """ Set network_entity_type value.
+
+            Notes:
+                Indicates whether the Network Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: ENTERPRISENETWORK, NETWORKMACROGROUP, PGEXPRESSION, PGEXPRESSIONTEMPLATE, POLICYGROUP, POLICYGROUPTEMPLATE, PUBLICNETWORK, SAASAPPLICATIONGROUP, SUBNET, SUBNETTEMPLATE, ZONE, ZONETEMPLATE.
+
+                
+                This attribute is named `networkEntityType` in VSD API.
+                
+        """
+        self._network_entity_type = value
+
+    
+    @property
     def network_id(self):
         """ Get network_id value.
 
@@ -742,6 +823,33 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def location_entity_type(self):
+        """ Get location_entity_type value.
+
+            Notes:
+                Indicates whether the Location Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: ENTERPRISENETWORK, NETWORKMACROGROUP, PGEXPRESSION, PGEXPRESSIONTEMPLATE, POLICYGROUP, POLICYGROUPTEMPLATE, PUBLICNETWORK, REDIRECTIONTARGET, REDIRECTIONTARGETTEMPLATE, SUBNET, SUBNETTEMPLATE, ZONE, ZONETEMPLATE.
+
+                
+                This attribute is named `locationEntityType` in VSD API.
+                
+        """
+        return self._location_entity_type
+
+    @location_entity_type.setter
+    def location_entity_type(self, value):
+        """ Set location_entity_type value.
+
+            Notes:
+                Indicates whether the Location Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: ENTERPRISENETWORK, NETWORKMACROGROUP, PGEXPRESSION, PGEXPRESSIONTEMPLATE, POLICYGROUP, POLICYGROUPTEMPLATE, PUBLICNETWORK, REDIRECTIONTARGET, REDIRECTIONTARGETTEMPLATE, SUBNET, SUBNETTEMPLATE, ZONE, ZONETEMPLATE.
+
+                
+                This attribute is named `locationEntityType` in VSD API.
+                
+        """
+        self._location_entity_type = value
 
     
     @property

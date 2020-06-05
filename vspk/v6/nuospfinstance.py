@@ -52,6 +52,8 @@ class NUOSPFInstance(NURESTObject):
     
     ## Constants
     
+    CONST_IP_TYPE_IPV4 = "IPV4"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
@@ -75,6 +77,7 @@ class NUOSPFInstance(NURESTObject):
 
         # Read/Write Attributes
         
+        self._ip_type = None
         self._name = None
         self._last_updated_by = None
         self._description = None
@@ -89,6 +92,7 @@ class NUOSPFInstance(NURESTObject):
         self._external_id = None
         self._external_preference = None
         
+        self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
@@ -119,6 +123,33 @@ class NUOSPFInstance(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def ip_type(self):
+        """ Get ip_type value.
+
+            Notes:
+                The IP Type of the OSPF Instance, currently only IPv4 is supported.
+
+                
+                This attribute is named `IPType` in VSD API.
+                
+        """
+        return self._ip_type
+
+    @ip_type.setter
+    def ip_type(self, value):
+        """ Set ip_type value.
+
+            Notes:
+                The IP Type of the OSPF Instance, currently only IPv4 is supported.
+
+                
+                This attribute is named `IPType` in VSD API.
+                
+        """
+        self._ip_type = value
+
     
     @property
     def name(self):

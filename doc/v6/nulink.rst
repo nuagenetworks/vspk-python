@@ -36,7 +36,7 @@ Attributes
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
-- ``type``: This is used to distinguish between different type of links: hub and spoke, ip address, VNS border router links.
+- ``type``: This is used to distinguish between different type of links: hub and spoke, IP address, VNS border router links.
 
 
 

@@ -127,6 +127,10 @@ class NUPort(NURESTObject):
         self._use_user_mnemonic = None
         self._user_mnemonic = None
         self._associated_egress_qos_policy_id = None
+        self._associated_ethernet_segment_group_id = None
+        self._associated_ethernet_segment_id = None
+        self._associated_ethernet_segment_vlan_range = None
+        self._associated_ethernet_segment_virtual = None
         self._associated_redundant_port_id = None
         self._status = None
         self._external_id = None
@@ -145,6 +149,10 @@ class NUPort(NURESTObject):
         self.expose_attribute(local_name="use_user_mnemonic", remote_name="useUserMnemonic", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_egress_qos_policy_id", remote_name="associatedEgressQOSPolicyID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_ethernet_segment_group_id", remote_name="associatedEthernetSegmentGroupID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_ethernet_segment_id", remote_name="associatedEthernetSegmentID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_ethernet_segment_vlan_range", remote_name="associatedEthernetSegmentVLANRange", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_ethernet_segment_virtual", remote_name="associatedEthernetSegmentVirtual", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_redundant_port_id", remote_name="associatedRedundantPortID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'INITIALIZED', u'MISMATCH', u'ORPHAN', u'READY'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -546,6 +554,114 @@ class NUPort(NURESTObject):
                 
         """
         self._associated_egress_qos_policy_id = value
+
+    
+    @property
+    def associated_ethernet_segment_group_id(self):
+        """ Get associated_ethernet_segment_group_id value.
+
+            Notes:
+                ID of the Ethernet Segment Group to which this Port instance may be associated to.
+
+                
+                This attribute is named `associatedEthernetSegmentGroupID` in VSD API.
+                
+        """
+        return self._associated_ethernet_segment_group_id
+
+    @associated_ethernet_segment_group_id.setter
+    def associated_ethernet_segment_group_id(self, value):
+        """ Set associated_ethernet_segment_group_id value.
+
+            Notes:
+                ID of the Ethernet Segment Group to which this Port instance may be associated to.
+
+                
+                This attribute is named `associatedEthernetSegmentGroupID` in VSD API.
+                
+        """
+        self._associated_ethernet_segment_group_id = value
+
+    
+    @property
+    def associated_ethernet_segment_id(self):
+        """ Get associated_ethernet_segment_id value.
+
+            Notes:
+                Identifier of the Ethernet Segment to which this Port is associated to.
+
+                
+                This attribute is named `associatedEthernetSegmentID` in VSD API.
+                
+        """
+        return self._associated_ethernet_segment_id
+
+    @associated_ethernet_segment_id.setter
+    def associated_ethernet_segment_id(self, value):
+        """ Set associated_ethernet_segment_id value.
+
+            Notes:
+                Identifier of the Ethernet Segment to which this Port is associated to.
+
+                
+                This attribute is named `associatedEthernetSegmentID` in VSD API.
+                
+        """
+        self._associated_ethernet_segment_id = value
+
+    
+    @property
+    def associated_ethernet_segment_vlan_range(self):
+        """ Get associated_ethernet_segment_vlan_range value.
+
+            Notes:
+                VLAN Range of the associated Ethernet Segment. Format must conform to a-b,c,d-f where a,b,c,d,f are integers between 0 and 4095.
+
+                
+                This attribute is named `associatedEthernetSegmentVLANRange` in VSD API.
+                
+        """
+        return self._associated_ethernet_segment_vlan_range
+
+    @associated_ethernet_segment_vlan_range.setter
+    def associated_ethernet_segment_vlan_range(self, value):
+        """ Set associated_ethernet_segment_vlan_range value.
+
+            Notes:
+                VLAN Range of the associated Ethernet Segment. Format must conform to a-b,c,d-f where a,b,c,d,f are integers between 0 and 4095.
+
+                
+                This attribute is named `associatedEthernetSegmentVLANRange` in VSD API.
+                
+        """
+        self._associated_ethernet_segment_vlan_range = value
+
+    
+    @property
+    def associated_ethernet_segment_virtual(self):
+        """ Get associated_ethernet_segment_virtual value.
+
+            Notes:
+                Indicates if associated Ethernet Segment is virtual.
+
+                
+                This attribute is named `associatedEthernetSegmentVirtual` in VSD API.
+                
+        """
+        return self._associated_ethernet_segment_virtual
+
+    @associated_ethernet_segment_virtual.setter
+    def associated_ethernet_segment_virtual(self, value):
+        """ Set associated_ethernet_segment_virtual value.
+
+            Notes:
+                Indicates if associated Ethernet Segment is virtual.
+
+                
+                This attribute is named `associatedEthernetSegmentVirtual` in VSD API.
+                
+        """
+        self._associated_ethernet_segment_virtual = value
 
     
     @property

@@ -16,7 +16,9 @@ Attributes
 
 - ``name`` (**Mandatory**): The name of the TCA
 
-- ``target_policy_group_id``: Target policygroup when TCA is triggered
+- ``target_entity_id``: ID of the target VSD entity used by the TCA action
+
+- ``target_policy_group_id``: Target policygroup used by the TCA action
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
@@ -30,7 +32,7 @@ Attributes
 
 - ``threshold`` (**Mandatory**): The threshold that must be exceeded before an alarm is issued
 
-- ``throttle_time``: Throttle time in secs
+- ``throttle_time``: Throttle time in seconds
 
 - ``disable``: This flag is used to indicate whether the watch(TCA) is enabled/disabled
 
@@ -41,6 +43,8 @@ Attributes
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``count``: Count of the attempts by maintenanace thread to create/update watcher
+
+- ``trigger_interval``: The trigger interval of the ES watch corresponding to this TCA, in seconds
 
 - ``status``: This flag is used to indicate the status of TCA
 

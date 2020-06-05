@@ -34,7 +34,7 @@ class NUNSGInfo(NURESTObject):
     """ Represents a NSGInfo in the VSD
 
         Notes:
-            Device information coming from the NSG
+            Device information coming from the NSG.  That includes the hardware type of the NSG (CPU, memory, family), the version of BIOS, build information, and software application packages installed.
     """
 
     __rest_name__ = "nsginfo"
@@ -123,6 +123,7 @@ class NUNSGInfo(NURESTObject):
         # Read/Write Attributes
         
         self._mac_address = None
+        self._ca_certificate = None
         self._aar_application_release_date = None
         self._aar_application_version = None
         self._bios_release_date = None
@@ -130,6 +131,7 @@ class NUNSGInfo(NURESTObject):
         self._sku = None
         self._tpm_status = None
         self._tpm_version = None
+        self._cpu_core_allocation = None
         self._cpu_type = None
         self._nsg_version = None
         self._uuid = None
@@ -138,6 +140,7 @@ class NUNSGInfo(NURESTObject):
         self._patches_detail = None
         self._serial_number = None
         self._personality = None
+        self._certificate = None
         self._libraries = None
         self._cmd_detailed_status = None
         self._cmd_detailed_status_code = None
@@ -153,10 +156,12 @@ class NUNSGInfo(NURESTObject):
         self._product_name = None
         self._associated_entity_type = None
         self._associated_ns_gateway_id = None
+        self._huge_page_setting = None
         self._external_id = None
         self._system_id = None
         
         self.expose_attribute(local_name="mac_address", remote_name="MACAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ca_certificate", remote_name="CACertificate", attribute_type=dict, is_required=False, is_unique=False)
         self.expose_attribute(local_name="aar_application_release_date", remote_name="AARApplicationReleaseDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="aar_application_version", remote_name="AARApplicationVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bios_release_date", remote_name="BIOSReleaseDate", attribute_type=str, is_required=False, is_unique=False)
@@ -164,6 +169,7 @@ class NUNSGInfo(NURESTObject):
         self.expose_attribute(local_name="sku", remote_name="SKU", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tpm_status", remote_name="TPMStatus", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tpm_version", remote_name="TPMVersion", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="cpu_core_allocation", remote_name="CPUCoreAllocation", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cpu_type", remote_name="CPUType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_version", remote_name="NSGVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=False, is_unique=False)
@@ -172,6 +178,7 @@ class NUNSGInfo(NURESTObject):
         self.expose_attribute(local_name="patches_detail", remote_name="patchesDetail", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'NSG', u'NSGBR', u'NSGDUC'])
+        self.expose_attribute(local_name="certificate", remote_name="certificate", attribute_type=dict, is_required=False, is_unique=False)
         self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cmd_detailed_status", remote_name="cmdDetailedStatus", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cmd_detailed_status_code", remote_name="cmdDetailedStatusCode", attribute_type=int, is_required=False, is_unique=False)
@@ -187,6 +194,7 @@ class NUNSGInfo(NURESTObject):
         self.expose_attribute(local_name="product_name", remote_name="productName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_entity_type", remote_name="associatedEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ns_gateway_id", remote_name="associatedNSGatewayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="huge_page_setting", remote_name="hugePageSetting", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="system_id", remote_name="systemID", attribute_type=str, is_required=False, is_unique=False)
         
@@ -220,6 +228,33 @@ class NUNSGInfo(NURESTObject):
                 
         """
         self._mac_address = value
+
+    
+    @property
+    def ca_certificate(self):
+        """ Get ca_certificate value.
+
+            Notes:
+                The certficate metadata of NSG's certificate authority.
+
+                
+                This attribute is named `CACertificate` in VSD API.
+                
+        """
+        return self._ca_certificate
+
+    @ca_certificate.setter
+    def ca_certificate(self, value):
+        """ Set ca_certificate value.
+
+            Notes:
+                The certficate metadata of NSG's certificate authority.
+
+                
+                This attribute is named `CACertificate` in VSD API.
+                
+        """
+        self._ca_certificate = value
 
     
     @property
@@ -409,6 +444,33 @@ class NUNSGInfo(NURESTObject):
                 
         """
         self._tpm_version = value
+
+    
+    @property
+    def cpu_core_allocation(self):
+        """ Get cpu_core_allocation value.
+
+            Notes:
+                Current CPU allocation for network accelerated gateways.  Displays total number of cores and those isolated.
+
+                
+                This attribute is named `CPUCoreAllocation` in VSD API.
+                
+        """
+        return self._cpu_core_allocation
+
+    @cpu_core_allocation.setter
+    def cpu_core_allocation(self, value):
+        """ Set cpu_core_allocation value.
+
+            Notes:
+                Current CPU allocation for network accelerated gateways.  Displays total number of cores and those isolated.
+
+                
+                This attribute is named `CPUCoreAllocation` in VSD API.
+                
+        """
+        self._cpu_core_allocation = value
 
     
     @property
@@ -613,6 +675,29 @@ class NUNSGInfo(NURESTObject):
                 
         """
         self._personality = value
+
+    
+    @property
+    def certificate(self):
+        """ Get certificate value.
+
+            Notes:
+                The certificate metadata of NSG's current certficate.
+
+                
+        """
+        return self._certificate
+
+    @certificate.setter
+    def certificate(self, value):
+        """ Set certificate value.
+
+            Notes:
+                The certificate metadata of NSG's current certficate.
+
+                
+        """
+        self._certificate = value
 
     
     @property
@@ -1014,6 +1099,33 @@ class NUNSGInfo(NURESTObject):
                 
         """
         self._associated_ns_gateway_id = value
+
+    
+    @property
+    def huge_page_setting(self):
+        """ Get huge_page_setting value.
+
+            Notes:
+                The size and number of huge pages for an NSG that is running in network accelerated mode.  Hugepage values states the portion of memory reserved for network accelerated services.
+
+                
+                This attribute is named `hugePageSetting` in VSD API.
+                
+        """
+        return self._huge_page_setting
+
+    @huge_page_setting.setter
+    def huge_page_setting(self, value):
+        """ Set huge_page_setting value.
+
+            Notes:
+                The size and number of huge pages for an NSG that is running in network accelerated mode.  Hugepage values states the portion of memory reserved for network accelerated services.
+
+                
+                This attribute is named `hugePageSetting` in VSD API.
+                
+        """
+        self._huge_page_setting = value
 
     
     @property

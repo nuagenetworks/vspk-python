@@ -78,6 +78,8 @@ class NUUserContext(NURESTObject):
         self._vss_stats_interval = None
         self._page_size = None
         self._last_updated_by = None
+        self._denied_flow_collection_enabled = None
+        self._threat_intelligence_enabled = None
         self._flow_collection_enabled = None
         self._embedded_metadata = None
         self._entity_scope = None
@@ -85,6 +87,7 @@ class NUUserContext(NURESTObject):
         self._statistics_enabled = None
         self._stats_database_proxy = None
         self._stats_tsdb_server_address = None
+        self._explicit_acl_matching_enabled = None
         self._external_id = None
         
         self.expose_attribute(local_name="aar_flow_stats_interval", remote_name="AARFlowStatsInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -93,6 +96,8 @@ class NUUserContext(NURESTObject):
         self.expose_attribute(local_name="vss_stats_interval", remote_name="VSSStatsInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="page_size", remote_name="pageSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="denied_flow_collection_enabled", remote_name="deniedFlowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="threat_intelligence_enabled", remote_name="threatIntelligenceEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -100,6 +105,7 @@ class NUUserContext(NURESTObject):
         self.expose_attribute(local_name="statistics_enabled", remote_name="statisticsEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_database_proxy", remote_name="statsDatabaseProxy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_tsdb_server_address", remote_name="statsTSDBServerAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="explicit_acl_matching_enabled", remote_name="explicitACLMatchingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -276,6 +282,60 @@ class NUUserContext(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def denied_flow_collection_enabled(self):
+        """ Get denied_flow_collection_enabled value.
+
+            Notes:
+                When this option is selected, VSS will only store flows that are denied by security policy (implicit or explicit ACLs). This requires a valid VSS license and Flow Collection enabled.
+
+                
+                This attribute is named `deniedFlowCollectionEnabled` in VSD API.
+                
+        """
+        return self._denied_flow_collection_enabled
+
+    @denied_flow_collection_enabled.setter
+    def denied_flow_collection_enabled(self, value):
+        """ Set denied_flow_collection_enabled value.
+
+            Notes:
+                When this option is selected, VSS will only store flows that are denied by security policy (implicit or explicit ACLs). This requires a valid VSS license and Flow Collection enabled.
+
+                
+                This attribute is named `deniedFlowCollectionEnabled` in VSD API.
+                
+        """
+        self._denied_flow_collection_enabled = value
+
+    
+    @property
+    def threat_intelligence_enabled(self):
+        """ Get threat_intelligence_enabled value.
+
+            Notes:
+                Enables IP based threat intelligence. This requires Flow Collection to be enabled
+
+                
+                This attribute is named `threatIntelligenceEnabled` in VSD API.
+                
+        """
+        return self._threat_intelligence_enabled
+
+    @threat_intelligence_enabled.setter
+    def threat_intelligence_enabled(self, value):
+        """ Set threat_intelligence_enabled value.
+
+            Notes:
+                Enables IP based threat intelligence. This requires Flow Collection to be enabled
+
+                
+                This attribute is named `threatIntelligenceEnabled` in VSD API.
+                
+        """
+        self._threat_intelligence_enabled = value
 
     
     @property
@@ -465,6 +525,33 @@ class NUUserContext(NURESTObject):
                 
         """
         self._stats_tsdb_server_address = value
+
+    
+    @property
+    def explicit_acl_matching_enabled(self):
+        """ Get explicit_acl_matching_enabled value.
+
+            Notes:
+                When this option is selected, VSS will only store allow/denied flows that matches explicit ingress/egress security ACL. This requires a valid VSS license and Flow Collection enabled.
+
+                
+                This attribute is named `explicitACLMatchingEnabled` in VSD API.
+                
+        """
+        return self._explicit_acl_matching_enabled
+
+    @explicit_acl_matching_enabled.setter
+    def explicit_acl_matching_enabled(self, value):
+        """ Set explicit_acl_matching_enabled value.
+
+            Notes:
+                When this option is selected, VSS will only store allow/denied flows that matches explicit ingress/egress security ACL. This requires a valid VSS license and Flow Collection enabled.
+
+                
+                This attribute is named `explicitACLMatchingEnabled` in VSD API.
+                
+        """
+        self._explicit_acl_matching_enabled = value
 
     
     @property

@@ -22,6 +22,8 @@ Attributes
 
 - ``dscp``: DSCP match condition to be set in the rule. It is either * or from 0-63
 
+- ``failsafe_datapath``: Backup datapath option if VNF/VM is down
+
 - ``last_updated_by``: ID of the user who last updated the object.
 
 - ``action`` (**Mandatory**): The action of the rule, DROP or FORWARD. Possible values are DROP, FORWARD.
@@ -36,9 +38,13 @@ Attributes
 
 - ``destination_port``: The destination port to be matched if protocol is UDP or TCP. Value should be either * or a single port number or a port range like 1,2.. or 1 - 10
 
+- ``network_entity_type``: Indicates whether the Network Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: ENTERPRISENETWORK, NETWORKMACROGROUP, PGEXPRESSION, PGEXPRESSIONTEMPLATE, POLICYGROUP, POLICYGROUPTEMPLATE, PUBLICNETWORK, SAASAPPLICATIONGROUP, SUBNET, SUBNETTEMPLATE, ZONE, ZONETEMPLATE.
+
 - ``network_id``: The ID of the destination endpoint (Subnet/Zone/PortGroup/PolicyGroupExpression/NetworkMacro/Internet Policy Group/Enterprise Network)
 
 - ``network_type``: Type of the destination endpoint (Subnet/Zone/PortGroup/PolicyGroupExpression/NetworkMacro/Internet Policy Group/Enterprise Network)
+
+- ``mirror_destination_group_id``: ID of the associated Mirror Destination Group.
 
 - ``mirror_destination_id``: Destination ID of the mirror destination object.
 
@@ -49,6 +55,8 @@ Attributes
 - ``enterprise_name``: The name of the enterprise for the domain's parent
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``location_entity_type``: Indicates whether the Location Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: ENTERPRISENETWORK, NETWORKMACROGROUP, PGEXPRESSION, PGEXPRESSIONTEMPLATE, POLICYGROUP, POLICYGROUPTEMPLATE, PUBLICNETWORK, REDIRECTIONTARGET, REDIRECTIONTARGETTEMPLATE, SUBNET, SUBNETTEMPLATE, ZONE, ZONETEMPLATE.
 
 - ``location_id``: The ID of the source endpoint (Subnet/Zone/PortGroup/PolicyGroupExpression/NetworkMacro/Internet Policy Group/Enterprise Network)
 
@@ -89,6 +97,8 @@ Attributes
 - ``overlay_mirror_destination_id``: ID of the overlay mirror destination
 
 - ``external_id``: External object ID. Used for integration with third party systems
+
+- ``type``: Virtual Firewall Rule Type
 
 
 

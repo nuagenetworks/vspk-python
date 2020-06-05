@@ -43,6 +43,9 @@ from .fetchers import NUPermissionsFetcher
 from .fetchers import NUMetadatasFetcher
 
 
+from .fetchers import NUThreatPreventionInfosFetcher
+
+
 from .fetchers import NUWirelessPortsFetcher
 
 
@@ -50,6 +53,9 @@ from .fetchers import NUAlarmsFetcher
 
 
 from .fetchers import NUGlobalMetadatasFetcher
+
+
+from .fetchers import NUUnderlayTestsFetcher
 
 
 from .fetchers import NUVNFsFetcher
@@ -297,6 +303,7 @@ class NUNSGateway(NURESTObject):
         self._sku = None
         self._tpm_status = None
         self._tpm_version = None
+        self._cpu_core_allocation = None
         self._cpu_type = None
         self._vsdaar_application_version = None
         self._nsg_version = None
@@ -317,8 +324,10 @@ class NUNSGateway(NURESTObject):
         self._derived_ssh_service_state = None
         self._permitted_action = None
         self._personality = None
+        self._cert_validity_days = None
         self._description = None
         self._network_acceleration = None
+        self._threat_prevention_enabled = None
         self._libraries = None
         self._embedded_metadata = None
         self._inherited_ssh_service_state = None
@@ -340,6 +349,7 @@ class NUNSGateway(NURESTObject):
         self._associated_nsg_info_id = None
         self._associated_nsg_upgrade_profile_id = None
         self._associated_overlay_management_profile_id = None
+        self._huge_page_setting = None
         self._functions = None
         self._tunnel_shaping = None
         self._auto_disc_gateway_id = None
@@ -360,6 +370,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="sku", remote_name="SKU", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tpm_status", remote_name="TPMStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED_NOT_OPERATIONAL', u'ENABLED_OPERATIONAL', u'UNKNOWN'])
         self.expose_attribute(local_name="tpm_version", remote_name="TPMVersion", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="cpu_core_allocation", remote_name="CPUCoreAllocation", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cpu_type", remote_name="CPUType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsdaar_application_version", remote_name="VSDAARApplicationVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_version", remote_name="NSGVersion", attribute_type=str, is_required=False, is_unique=False)
@@ -380,8 +391,10 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="derived_ssh_service_state", remote_name="derivedSSHServiceState", attribute_type=str, is_required=False, is_unique=False, choices=[u'INHERITED_DISABLED', u'INHERITED_ENABLED', u'INSTANCE_DISABLED', u'INSTANCE_ENABLED', u'UNKNOWN'])
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'NSG', u'NSGBR', u'NSGDUC'])
+        self.expose_attribute(local_name="cert_validity_days", remote_name="certValidityDays", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_acceleration", remote_name="networkAcceleration", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'PERFORMANCE', u'SESSION_OPTIMIZED', u'VNF_AWARE'])
+        self.expose_attribute(local_name="threat_prevention_enabled", remote_name="threatPreventionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="inherited_ssh_service_state", remote_name="inheritedSSHServiceState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
@@ -403,6 +416,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="associated_nsg_info_id", remote_name="associatedNSGInfoID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_nsg_upgrade_profile_id", remote_name="associatedNSGUpgradeProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_overlay_management_profile_id", remote_name="associatedOverlayManagementProfileID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="huge_page_setting", remote_name="hugePageSetting", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="functions", remote_name="functions", attribute_type=list, is_required=False, is_unique=False, choices=[u'GATEWAY', u'HUB', u'UBR'])
         self.expose_attribute(local_name="tunnel_shaping", remote_name="tunnelShaping", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="auto_disc_gateway_id", remote_name="autoDiscGatewayID", attribute_type=str, is_required=False, is_unique=False)
@@ -429,6 +443,9 @@ class NUNSGateway(NURESTObject):
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.threat_prevention_infos = NUThreatPreventionInfosFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.wireless_ports = NUWirelessPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -436,6 +453,9 @@ class NUNSGateway(NURESTObject):
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.underlay_tests = NUUnderlayTestsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.vnfs = NUVNFsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -839,6 +859,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._tpm_version = value
+
+    
+    @property
+    def cpu_core_allocation(self):
+        """ Get cpu_core_allocation value.
+
+            Notes:
+                Current CPU allocation for network accelerated gateways.  Displays total number of cores and those isolated.
+
+                
+                This attribute is named `CPUCoreAllocation` in VSD API.
+                
+        """
+        return self._cpu_core_allocation
+
+    @cpu_core_allocation.setter
+    def cpu_core_allocation(self, value):
+        """ Set cpu_core_allocation value.
+
+            Notes:
+                Current CPU allocation for network accelerated gateways.  Displays total number of cores and those isolated.
+
+                
+                This attribute is named `CPUCoreAllocation` in VSD API.
+                
+        """
+        self._cpu_core_allocation = value
 
     
     @property
@@ -1366,6 +1413,33 @@ class NUNSGateway(NURESTObject):
 
     
     @property
+    def cert_validity_days(self):
+        """ Get cert_validity_days value.
+
+            Notes:
+                The number of days for which the NSG's certificate is valid.
+
+                
+                This attribute is named `certValidityDays` in VSD API.
+                
+        """
+        return self._cert_validity_days
+
+    @cert_validity_days.setter
+    def cert_validity_days(self, value):
+        """ Set cert_validity_days value.
+
+            Notes:
+                The number of days for which the NSG's certificate is valid.
+
+                
+                This attribute is named `certValidityDays` in VSD API.
+                
+        """
+        self._cert_validity_days = value
+
+    
+    @property
     def description(self):
         """ Get description value.
 
@@ -1413,6 +1487,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._network_acceleration = value
+
+    
+    @property
+    def threat_prevention_enabled(self):
+        """ Get threat_prevention_enabled value.
+
+            Notes:
+                Indicates if Threat Prevention capability enabled on NSG.
+
+                
+                This attribute is named `threatPreventionEnabled` in VSD API.
+                
+        """
+        return self._threat_prevention_enabled
+
+    @threat_prevention_enabled.setter
+    def threat_prevention_enabled(self, value):
+        """ Set threat_prevention_enabled value.
+
+            Notes:
+                Indicates if Threat Prevention capability enabled on NSG.
+
+                
+                This attribute is named `threatPreventionEnabled` in VSD API.
+                
+        """
+        self._threat_prevention_enabled = value
 
     
     @property
@@ -1976,6 +2077,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._associated_overlay_management_profile_id = value
+
+    
+    @property
+    def huge_page_setting(self):
+        """ Get huge_page_setting value.
+
+            Notes:
+                The size and number of huge pages for an NSG that is running in network accelerated mode.  Hugepage values states the portion of memory reserved for network accelerated services.
+
+                
+                This attribute is named `hugePageSetting` in VSD API.
+                
+        """
+        return self._huge_page_setting
+
+    @huge_page_setting.setter
+    def huge_page_setting(self, value):
+        """ Set huge_page_setting value.
+
+            Notes:
+                The size and number of huge pages for an NSG that is running in network accelerated mode.  Hugepage values states the portion of memory reserved for network accelerated services.
+
+                
+                This attribute is named `hugePageSetting` in VSD API.
+                
+        """
+        self._huge_page_setting = value
 
     
     @property

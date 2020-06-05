@@ -46,6 +46,8 @@ Attributes
 
 - ``netmask``: Netmask of the L2Domain / L2Domain template defined
 
+- ``threat_intelligence_enabled``: Determines whether or not threat intelligence is enabled
+
 - ``flow_collection_enabled``: Determines whether or not flow collection is enabled.
 
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
@@ -125,6 +127,7 @@ Children
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuvm.NUVM<nuvm>`                                                                                                                                           ``vms`` 
 :ref:`nuvminterface.NUVMInterface<nuvminterface>`                                                                                                                ``vm_interfaces`` 
+:ref:`nuvmipreservation.NUVMIPReservation<nuvmipreservation>`                                                                                                    ``vmip_reservations`` 
 :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`                                                                            ``ingress_acl_entry_templates`` 
 :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`                                                                                           ``ingress_acl_templates`` 
 :ref:`nuingressadvfwdtemplate.NUIngressAdvFwdTemplate<nuingressadvfwdtemplate>`                                                                                  ``ingress_adv_fwd_templates`` 
@@ -165,6 +168,8 @@ Parents
 - :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
+
+- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

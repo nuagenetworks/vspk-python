@@ -1,0 +1,147 @@
+# -*- coding: utf-8 -*-
+#
+# Copyright (c) 2015, Alcatel-Lucent Inc, 2017 Nokia
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of the copyright holder nor the names of its contributors
+#       may be used to endorse or promote products derived from this software without
+#       specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY
+# DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+
+from bambou import NURESTObject
+
+
+class NURoleentry(NURESTObject):
+    """ Represents a Roleentry in the VSD
+
+        Notes:
+            Entry for each end point with assoicatiated permissions.
+    """
+
+    __rest_name__ = "roleentry"
+    __resource_name__ = "roleentries"
+
+    
+    ## Constants
+    
+    CONST_ROLE_ACCESS_TYPE_LIST_NO_ACCESS = "NO_ACCESS"
+    
+    CONST_ROLE_ACCESS_TYPE_LIST_CUD_CHILDREN = "CUD_CHILDREN"
+    
+    CONST_ROLE_ACCESS_TYPE_LIST_NO_ACCESS_CHILDREN = "NO_ACCESS_CHILDREN"
+    
+    CONST_ROLE_ACCESS_TYPE_LIST_DELETE = "DELETE"
+    
+    CONST_ROLE_ACCESS_TYPE_LIST_CREATE = "CREATE"
+    
+    CONST_ROLE_ACCESS_TYPE_LIST_READ_CHILDREN = "READ_CHILDREN"
+    
+    CONST_ROLE_ACCESS_TYPE_LIST_MODIFY = "MODIFY"
+    
+    CONST_ROLE_ACCESS_TYPE_LIST_READ = "READ"
+    
+    
+
+    def __init__(self, **kwargs):
+        """ Initializes a Roleentry instance
+
+            Notes:
+                You can specify all parameters while calling this methods.
+                A special argument named `data` will enable you to load the
+                object from a Python dictionary
+
+            Examples:
+                >>> roleentry = NURoleentry(id=u'xxxx-xxx-xxx-xxx', name=u'Roleentry')
+                >>> roleentry = NURoleentry(data=my_dict)
+        """
+
+        super(NURoleentry, self).__init__()
+
+        # Read/Write Attributes
+        
+        self._role_access_type_list = None
+        self._associated_entity_type = None
+        
+        self.expose_attribute(local_name="role_access_type_list", remote_name="roleAccessTypeList", attribute_type=list, is_required=True, is_unique=False, choices=[u'CREATE', u'CUD_CHILDREN', u'DELETE', u'MODIFY', u'NO_ACCESS', u'NO_ACCESS_CHILDREN', u'READ', u'READ_CHILDREN'])
+        self.expose_attribute(local_name="associated_entity_type", remote_name="associatedEntityType", attribute_type=str, is_required=True, is_unique=False)
+        
+
+        self._compute_args(**kwargs)
+
+    # Properties
+    
+    @property
+    def role_access_type_list(self):
+        """ Get role_access_type_list value.
+
+            Notes:
+                List of Access like READ, READ_CHILDREN, CREATE, MODIFY, DELETE, CUD_CHILDREN, NO_ACCESS, NO_ACCESS_CHILDREN
+
+                
+                This attribute is named `roleAccessTypeList` in VSD API.
+                
+        """
+        return self._role_access_type_list
+
+    @role_access_type_list.setter
+    def role_access_type_list(self, value):
+        """ Set role_access_type_list value.
+
+            Notes:
+                List of Access like READ, READ_CHILDREN, CREATE, MODIFY, DELETE, CUD_CHILDREN, NO_ACCESS, NO_ACCESS_CHILDREN
+
+                
+                This attribute is named `roleAccessTypeList` in VSD API.
+                
+        """
+        self._role_access_type_list = value
+
+    
+    @property
+    def associated_entity_type(self):
+        """ Get associated_entity_type value.
+
+            Notes:
+                Managed Object Type or end point
+
+                
+                This attribute is named `associatedEntityType` in VSD API.
+                
+        """
+        return self._associated_entity_type
+
+    @associated_entity_type.setter
+    def associated_entity_type(self, value):
+        """ Set associated_entity_type value.
+
+            Notes:
+                Managed Object Type or end point
+
+                
+                This attribute is named `associatedEntityType` in VSD API.
+                
+        """
+        self._associated_entity_type = value
+
+    
+
+    

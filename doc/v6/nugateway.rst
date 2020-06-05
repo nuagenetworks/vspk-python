@@ -151,6 +151,8 @@ Parents
 
 - :ref:`nudomain.NUDomain<nudomain>`
 
+- :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
+
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`

@@ -127,6 +127,7 @@ Children
 :ref:`nuenterprise.NUEnterprise<nuenterprise>`                                                                                                                   ``enterprises`` 
 :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`                                                                                              ``enterprise_profiles`` 
 :ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
+:ref:`nurole.NURole<nurole>`                                                                                                                                     ``roles`` 
 :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`                                                                                                                ``policy_groups`` 
 :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`                                                                                              ``policy_object_groups`` 
 :ref:`nudomain.NUDomain<nudomain>`                                                                                                                               ``domains`` 
@@ -145,6 +146,7 @@ Children
 :ref:`nuvcentervrsconfig.NUVCenterVRSConfig<nuvcentervrsconfig>`                                                                                                 ``vcenter_vrs_configs`` 
 :ref:`nuvrsinfo.NUvrsInfo<nuvrsinfo>`                                                                                                                            ``vrs_infos`` 
 :ref:`nudscpremarkingpolicytable.NUDSCPRemarkingPolicyTable<nudscpremarkingpolicytable>`                                                                         ``dscp_remarking_policy_tables`` 
+:ref:`nuvsdconfig.NUVSDConfig<nuvsdconfig>`                                                                                                                      ``vsd_configs`` 
 :ref:`nuuser.NUUser<nuuser>`                                                                                                                                     ``users`` 
 :ref:`nuusercontext.NUUserContext<nuusercontext>`                                                                                                                ``user_contexts`` 
 :ref:`nunsgateway.NUNSGateway<nunsgateway>`                                                                                                                      ``ns_gateways`` 
@@ -157,6 +159,7 @@ Children
 :ref:`nuvsp.NUVSP<nuvsp>`                                                                                                                                        ``vsps`` 
 :ref:`nustaticroute.NUStaticRoute<nustaticroute>`                                                                                                                ``static_routes`` 
 :ref:`nustatscollectorinfo.NUStatsCollectorInfo<nustatscollectorinfo>`                                                                                           ``stats_collector_infos`` 
+:ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`                                                                               ``ethernet_segment_gw_groups`` 
 :ref:`nusubnet.NUSubnet<nusubnet>`                                                                                                                               ``subnets`` 
 :ref:`nuducgroup.NUDUCGroup<nuducgroup>`                                                                                                                         ``duc_groups`` 
 :ref:`numulticastchannelmap.NUMultiCastChannelMap<numulticastchannelmap>`                                                                                        ``multi_cast_channel_maps`` 

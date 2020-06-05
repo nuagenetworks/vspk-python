@@ -59,9 +59,9 @@ Parents
 
 - :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
 
-- :ref:`nuredundantport.NURedundantPort<nuredundantport>`
-
 - :ref:`nusubnet.NUSubnet<nusubnet>`
+
+- :ref:`nuredundantport.NURedundantPort<nuredundantport>`
 
 - :ref:`nuvlan.NUVLAN<nuvlan>`
 
@@ -75,9 +75,13 @@ Parents
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
+- :ref:`nuethernetsegmentgroup.NUEthernetSegmentGroup<nuethernetsegmentgroup>`
+
 - :ref:`nuport.NUPort<nuport>`
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
+
+- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
 

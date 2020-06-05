@@ -38,6 +38,8 @@ Attributes
 
 - ``tpm_version``: TPM (Trusted Platform Module) version as reported by the NSG.
 
+- ``cpu_core_allocation``: Current CPU allocation for network accelerated gateways.  Displays total number of cores and those isolated.
+
 - ``cpu_type``: The NSG Processor Type as reported during bootstrapping.
 
 - ``vsdaar_application_version``: Version of the latest imported Application Signatures.
@@ -78,9 +80,13 @@ Attributes
 
 - ``personality``: Personality of the Gateway - NSG, cannot be changed after creation.
 
+- ``cert_validity_days``: The number of days for which the NSG's certificate is valid.
+
 - ``description``: A description of the Gateway
 
 - ``network_acceleration``: Attribute that enables or disables Network Acceleration (DPDK) on the NSGateway instance.  Changing the value of this field will cause the device to restart at the next configuration reload.
+
+- ``threat_prevention_enabled``: Indicates if Threat Prevention capability enabled on NSG.
 
 - ``libraries``: Transient representation of the same property on NSGInfo.
 
@@ -124,6 +130,8 @@ Attributes
 
 - ``associated_overlay_management_profile_id``: The ID of the associated Overlay Management Profile
 
+- ``huge_page_setting``: The size and number of huge pages for an NSG that is running in network accelerated mode.  Hugepage values states the portion of memory reserved for network accelerated services.
+
 - ``functions``: List of supported functions. This is only relevant for NSG-UBR and will be set to UBR by default in case an NSG-UBR is created. For a regular NSG, this will be set to null.
 
 - ``tunnel_shaping``: Indicates if the UBR will perform tunnel shaping to the NSG when a tunnel shaper is associated to the NSG.
@@ -150,9 +158,11 @@ Children
 :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`                                                                                                                   ``patnat_pools`` 
 :ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nuthreatpreventioninfo.NUThreatPreventionInfo<nuthreatpreventioninfo>`                                                                                     ``threat_prevention_infos`` 
 :ref:`nuwirelessport.NUWirelessPort<nuwirelessport>`                                                                                                             ``wireless_ports`` 
 :ref:`nualarm.NUAlarm<nualarm>`                                                                                                                                  ``alarms`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+:ref:`nuunderlaytest.NUUnderlayTest<nuunderlaytest>`                                                                                                             ``underlay_tests`` 
 :ref:`nuvnf.NUVNF<nuvnf>`                                                                                                                                        ``vnfs`` 
 :ref:`nuinfrastructureconfig.NUInfrastructureConfig<nuinfrastructureconfig>`                                                                                     ``infrastructure_configs`` 
 :ref:`nuenterprisepermission.NUEnterprisePermission<nuenterprisepermission>`                                                                                     ``enterprise_permissions`` 

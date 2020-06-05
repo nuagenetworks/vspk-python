@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``l2_encap_type``: Subnet Tunnel Type, possible values are MPLS, MPLSoUDP, VLAN and VXLAN.
+
 - ``pat_enabled``: None
 
 - ``dhcp_relay_status``: None
@@ -134,6 +136,7 @@ Children
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuvm.NUVM<nuvm>`                                                                                                                                           ``vms`` 
 :ref:`nuvminterface.NUVMInterface<nuvminterface>`                                                                                                                ``vm_interfaces`` 
+:ref:`nuvmipreservation.NUVMIPReservation<nuvmipreservation>`                                                                                                    ``vmip_reservations`` 
 :ref:`nuenterprisepermission.NUEnterprisePermission<nuenterprisepermission>`                                                                                     ``enterprise_permissions`` 
 :ref:`nucontainer.NUContainer<nucontainer>`                                                                                                                      ``containers`` 
 :ref:`nucontainerinterface.NUContainerInterface<nucontainerinterface>`                                                                                           ``container_interfaces`` 

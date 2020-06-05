@@ -49,19 +49,43 @@ class NUTestRun(NURESTObject):
     
     ## Constants
     
+    CONST_TEST_RESULT_DATA_TYPE_MTUDISCOVERYTESTRESULT = "MTUDiscoveryTestResult"
+    
     CONST_OPERATION_STATUS_STARTED = "STARTED"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
+    CONST_OPERATION_STATUS_FAILED = "FAILED"
+    
+    CONST_TEST_RESULT_DATA_TYPE_TCPCONNECTTESTRESULT = "TCPConnectTestResult"
+    
+    CONST_TEST_RESULT_DATA_TYPE_BANDWIDTHTESTRESULT = "BandwidthTestResult"
+    
+    CONST_TEST_RESULT_NOT_APPLICABLE = "NOT_APPLICABLE"
+    
+    CONST_UNDERLAY_TEST_CATEGORY_BANDWIDTH = "BANDWIDTH"
+    
+    CONST_TEST_RESULT_FAIL = "FAIL"
+    
     CONST_OPERATION_STATUS_UNKNOWN = "UNKNOWN"
     
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_UNDERLAY_TEST_CATEGORY_CONNECTIVITY = "CONNECTIVITY"
     
-    CONST_OPERATION_STATUS_FAILED = "FAILED"
+    CONST_TEST_RESULT_PASS = "PASS"
+    
+    CONST_TEST_RESULT_DATA_TYPE_NONE = "None"
+    
+    CONST_TEST_RESULT_DATA_TYPE_UDPPROBETESTRESULT = "UDPProbeTestResult"
     
     CONST_OPERATION_STATUS_COMPLETED = "COMPLETED"
     
+    CONST_TEST_RESULT_DEGRADED = "DEGRADED"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
     CONST_OPERATION_STATUS_TIMED_OUT = "TIMED_OUT"
+    
+    CONST_UNDERLAY_TEST_CATEGORY_MTU_DISCOVERY = "MTU_DISCOVERY"
     
     
 
@@ -83,7 +107,14 @@ class NUTestRun(NURESTObject):
         # Read/Write Attributes
         
         self._last_updated_by = None
+        self._test_result = None
+        self._test_result_data = None
+        self._test_result_data_type = None
+        self._test_result_specification_entity_name = None
         self._embedded_metadata = None
+        self._underlay_test_category = None
+        self._underlay_test_description = None
+        self._underlay_test_name = None
         self._entity_scope = None
         self._command = None
         self._command_exit_code = None
@@ -98,7 +129,14 @@ class NUTestRun(NURESTObject):
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="test_result", remote_name="testResult", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEGRADED', u'FAIL', u'NOT_APPLICABLE', u'PASS'])
+        self.expose_attribute(local_name="test_result_data", remote_name="testResultData", attribute_type=dict, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="test_result_data_type", remote_name="testResultDataType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BandwidthTestResult', u'MTUDiscoveryTestResult', u'None', u'TCPConnectTestResult', u'UDPProbeTestResult'])
+        self.expose_attribute(local_name="test_result_specification_entity_name", remote_name="testResultSpecificationEntityName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="underlay_test_category", remote_name="underlayTestCategory", attribute_type=str, is_required=False, is_unique=False, choices=[u'BANDWIDTH', u'CONNECTIVITY', u'MTU_DISCOVERY'])
+        self.expose_attribute(local_name="underlay_test_description", remote_name="underlayTestDescription", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="underlay_test_name", remote_name="underlayTestName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="command", remote_name="command", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="command_exit_code", remote_name="commandExitCode", attribute_type=int, is_required=False, is_unique=False)
@@ -154,6 +192,114 @@ class NUTestRun(NURESTObject):
 
     
     @property
+    def test_result(self):
+        """ Get test_result value.
+
+            Notes:
+                The result of the test
+
+                
+                This attribute is named `testResult` in VSD API.
+                
+        """
+        return self._test_result
+
+    @test_result.setter
+    def test_result(self, value):
+        """ Set test_result value.
+
+            Notes:
+                The result of the test
+
+                
+                This attribute is named `testResult` in VSD API.
+                
+        """
+        self._test_result = value
+
+    
+    @property
+    def test_result_data(self):
+        """ Get test_result_data value.
+
+            Notes:
+                The test result data
+
+                
+                This attribute is named `testResultData` in VSD API.
+                
+        """
+        return self._test_result_data
+
+    @test_result_data.setter
+    def test_result_data(self, value):
+        """ Set test_result_data value.
+
+            Notes:
+                The test result data
+
+                
+                This attribute is named `testResultData` in VSD API.
+                
+        """
+        self._test_result_data = value
+
+    
+    @property
+    def test_result_data_type(self):
+        """ Get test_result_data_type value.
+
+            Notes:
+                The type of the data embedded in the testResultData attribute
+
+                
+                This attribute is named `testResultDataType` in VSD API.
+                
+        """
+        return self._test_result_data_type
+
+    @test_result_data_type.setter
+    def test_result_data_type(self, value):
+        """ Set test_result_data_type value.
+
+            Notes:
+                The type of the data embedded in the testResultData attribute
+
+                
+                This attribute is named `testResultDataType` in VSD API.
+                
+        """
+        self._test_result_data_type = value
+
+    
+    @property
+    def test_result_specification_entity_name(self):
+        """ Get test_result_specification_entity_name value.
+
+            Notes:
+                The spefication entity name of the data embedded in the testResultData attribute
+
+                
+                This attribute is named `testResultSpecificationEntityName` in VSD API.
+                
+        """
+        return self._test_result_specification_entity_name
+
+    @test_result_specification_entity_name.setter
+    def test_result_specification_entity_name(self, value):
+        """ Set test_result_specification_entity_name value.
+
+            Notes:
+                The spefication entity name of the data embedded in the testResultData attribute
+
+                
+                This attribute is named `testResultSpecificationEntityName` in VSD API.
+                
+        """
+        self._test_result_specification_entity_name = value
+
+    
+    @property
     def embedded_metadata(self):
         """ Get embedded_metadata value.
 
@@ -178,6 +324,87 @@ class NUTestRun(NURESTObject):
                 
         """
         self._embedded_metadata = value
+
+    
+    @property
+    def underlay_test_category(self):
+        """ Get underlay_test_category value.
+
+            Notes:
+                The underlay test category
+
+                
+                This attribute is named `underlayTestCategory` in VSD API.
+                
+        """
+        return self._underlay_test_category
+
+    @underlay_test_category.setter
+    def underlay_test_category(self, value):
+        """ Set underlay_test_category value.
+
+            Notes:
+                The underlay test category
+
+                
+                This attribute is named `underlayTestCategory` in VSD API.
+                
+        """
+        self._underlay_test_category = value
+
+    
+    @property
+    def underlay_test_description(self):
+        """ Get underlay_test_description value.
+
+            Notes:
+                The underlay test description
+
+                
+                This attribute is named `underlayTestDescription` in VSD API.
+                
+        """
+        return self._underlay_test_description
+
+    @underlay_test_description.setter
+    def underlay_test_description(self, value):
+        """ Set underlay_test_description value.
+
+            Notes:
+                The underlay test description
+
+                
+                This attribute is named `underlayTestDescription` in VSD API.
+                
+        """
+        self._underlay_test_description = value
+
+    
+    @property
+    def underlay_test_name(self):
+        """ Get underlay_test_name value.
+
+            Notes:
+                The underlay test name
+
+                
+                This attribute is named `underlayTestName` in VSD API.
+                
+        """
+        return self._underlay_test_name
+
+    @underlay_test_name.setter
+    def underlay_test_name(self, value):
+        """ Set underlay_test_name value.
+
+            Notes:
+                The underlay test name
+
+                
+                This attribute is named `underlayTestName` in VSD API.
+                
+        """
+        self._underlay_test_name = value
 
     
     @property

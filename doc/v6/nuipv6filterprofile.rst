@@ -51,3 +51,5 @@ Parents
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
+- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
+

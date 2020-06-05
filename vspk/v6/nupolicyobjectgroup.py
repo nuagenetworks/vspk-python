@@ -28,6 +28,9 @@
 
 
 
+from .fetchers import NUGatewaysFetcher
+
+
 from .fetchers import NUMetadatasFetcher
 
 
@@ -55,6 +58,8 @@ class NUPolicyObjectGroup(NURESTObject):
     CONST_TYPE_NSGATEWAY = "NSGateway"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_TYPE_GATEWAY = "Gateway"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
@@ -91,10 +96,13 @@ class NUPolicyObjectGroup(NURESTObject):
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'NSGateway'])
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'Gateway', u'NSGateway'])
         
 
         # Fetchers
+        
+        
+        self.gateways = NUGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="member")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")

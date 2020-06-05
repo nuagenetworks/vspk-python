@@ -14,7 +14,21 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``test_result``: The result of the test
+
+- ``test_result_data``: The test result data
+
+- ``test_result_data_type``: The type of the data embedded in the testResultData attribute
+
+- ``test_result_specification_entity_name``: The spefication entity name of the data embedded in the testResultData attribute
+
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
+
+- ``underlay_test_category``: The underlay test category
+
+- ``underlay_test_description``: The underlay test description
+
+- ``underlay_test_name``: The underlay test name
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 

@@ -20,8 +20,6 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``address``: The IP of the VRS entity
-
 - ``addresses``: The Control IPv4 or IPv6 addresses of the HSC. Example: [10.10.18.10, 2001:10:10:18::10].
 
 - ``peak_cpuusage``: Peek CPU usage percentage.
@@ -45,6 +43,8 @@ Attributes
 - ``location``: Identifies the entity to be associated with a location.
 
 - ``model``: The model of the hardware service controller
+
+- ``communication_id``: Communication identifier used to uniquely identify the HSC connected to VSD
 
 - ``product_version``: Product version supported by this entity.
 

@@ -82,6 +82,7 @@ class NUTestSuite(NURESTObject):
         self._last_updated_by = None
         self._description = None
         self._embedded_metadata = None
+        self._underlay_test = None
         self._enterprise_id = None
         self._entity_scope = None
         self._external_id = None
@@ -90,6 +91,7 @@ class NUTestSuite(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="underlay_test", remote_name="underlayTest", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -212,6 +214,33 @@ class NUTestSuite(NURESTObject):
                 
         """
         self._embedded_metadata = value
+
+    
+    @property
+    def underlay_test(self):
+        """ Get underlay_test value.
+
+            Notes:
+                Flag to define if this Test Suite is the internal 'Underlay Tests' Test Suite
+
+                
+                This attribute is named `underlayTest` in VSD API.
+                
+        """
+        return self._underlay_test
+
+    @underlay_test.setter
+    def underlay_test(self, value):
+        """ Set underlay_test value.
+
+            Notes:
+                Flag to define if this Test Suite is the internal 'Underlay Tests' Test Suite
+
+                
+                This attribute is named `underlayTest` in VSD API.
+                
+        """
+        self._underlay_test = value
 
     
     @property

@@ -112,7 +112,7 @@ Attributes
 
 - ``metadata_service_enabled``: Metadata Service Enabled
 
-- ``network_uplink_interface``: Network Upling Interface to support PAT/NAT with no tunnels on VRS-VM
+- ``network_uplink_interface``: Network Uplink Interface to support PAT/NAT with no tunnels on VRS-VM
 
 - ``network_uplink_interface_gateway``: Network Uplink Interface Gateway
 

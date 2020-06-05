@@ -174,6 +174,7 @@ Children
 :ref:`nuqos.NUQOS<nuqos>`                                                                                                                                        ``qoss`` 
 :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`                                                                                                          ``host_interfaces`` 
 :ref:`nuroutingpolicy.NURoutingPolicy<nuroutingpolicy>`                                                                                                          ``routing_policies`` 
+:ref:`nuroutingpolicybinding.NURoutingPolicyBinding<nuroutingpolicybinding>`                                                                                     ``routing_policy_bindings`` 
 :ref:`nuspatsourcespool.NUSPATSourcesPool<nuspatsourcespool>`                                                                                                    ``spat_sources_pools`` 
 :ref:`nuuplinkrd.NUUplinkRD<nuuplinkrd>`                                                                                                                         ``uplink_rds`` 
 :ref:`nuvpnconnection.NUVPNConnection<nuvpnconnection>`                                                                                                          ``vpn_connections`` 

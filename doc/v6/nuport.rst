@@ -40,6 +40,14 @@ Attributes
 
 - ``associated_egress_qos_policy_id``: ID of the Egress QOS Policy associated with this Vlan.
 
+- ``associated_ethernet_segment_group_id``: ID of the Ethernet Segment Group to which this Port instance may be associated to.
+
+- ``associated_ethernet_segment_id``: Identifier of the Ethernet Segment to which this Port is associated to.
+
+- ``associated_ethernet_segment_vlan_range``: VLAN Range of the associated Ethernet Segment. Format must conform to a-b,c,d-f where a,b,c,d,f are integers between 0 and 4095.
+
+- ``associated_ethernet_segment_virtual``: Indicates if associated Ethernet Segment is virtual.
+
 - ``associated_redundant_port_id``: ID of the redundant port to which this Port instance may be associated to.
 
 - ``status``: Status of the port.

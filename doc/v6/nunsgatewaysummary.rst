@@ -30,6 +30,12 @@ Attributes
 
 - ``redundant_group_id``: The ID of the Redundant Group which has this gateway
 
+- ``redundant_group_name``: The Name of the Redundant Group which has this gateway
+
+- ``personality``: Personality of the corresponding Network Services Gateway
+
+- ``description``: A description of the NSG
+
 - ``timezone_id``: Time zone in which the Gateway is located.  This can be in the form of a UTC/GMT offset, continent/city location, or country/region.  The available time zones can be found in /usr/share/zoneinfo on a Linux machine or retrieved with TimeZone.getAvailableIDs() in Java.  Refer to the IANA (Internet Assigned Numbers Authority) for a list of time zones.  URL :  http://www.iana.org/time-zones  Default value is UTC (translating to Etc/Zulu)
 
 - ``minor_alarms_count``: Total number of alarms with MINOR severity

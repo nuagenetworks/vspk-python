@@ -90,23 +90,37 @@ class NUPermission(NURESTObject):
         self._name = None
         self._last_updated_by = None
         self._permitted_action = None
-        self._permitted_entity_description = None
+        self._permitted_enterprise_description = None
+        self._permitted_enterprise_name = None
         self._permitted_entity_id = None
         self._permitted_entity_name = None
         self._permitted_entity_type = None
         self._embedded_metadata = None
         self._entity_scope = None
+        self._associated_group_description = None
+        self._associated_group_id = None
+        self._associated_group_name = None
+        self._associated_role_description = None
+        self._associated_role_id = None
+        self._associated_role_name = None
         self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=True, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
-        self.expose_attribute(local_name="permitted_entity_description", remote_name="permittedEntityDescription", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
+        self.expose_attribute(local_name="permitted_enterprise_description", remote_name="permittedEnterpriseDescription", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="permitted_enterprise_name", remote_name="permittedEnterpriseName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_entity_id", remote_name="permittedEntityID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="permitted_entity_name", remote_name="permittedEntityName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_entity_type", remote_name="permittedEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="associated_group_description", remote_name="associatedGroupDescription", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_group_id", remote_name="associatedGroupID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_group_name", remote_name="associatedGroupName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_role_description", remote_name="associatedRoleDescription", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_role_id", remote_name="associatedRoleID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_role_name", remote_name="associatedRoleName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -204,30 +218,57 @@ class NUPermission(NURESTObject):
 
     
     @property
-    def permitted_entity_description(self):
-        """ Get permitted_entity_description value.
+    def permitted_enterprise_description(self):
+        """ Get permitted_enterprise_description value.
 
             Notes:
-                Description for the permittedEntity
+                Name of the permitted Enterprise
 
                 
-                This attribute is named `permittedEntityDescription` in VSD API.
+                This attribute is named `permittedEnterpriseDescription` in VSD API.
                 
         """
-        return self._permitted_entity_description
+        return self._permitted_enterprise_description
 
-    @permitted_entity_description.setter
-    def permitted_entity_description(self, value):
-        """ Set permitted_entity_description value.
+    @permitted_enterprise_description.setter
+    def permitted_enterprise_description(self, value):
+        """ Set permitted_enterprise_description value.
 
             Notes:
-                Description for the permittedEntity
+                Name of the permitted Enterprise
 
                 
-                This attribute is named `permittedEntityDescription` in VSD API.
+                This attribute is named `permittedEnterpriseDescription` in VSD API.
                 
         """
-        self._permitted_entity_description = value
+        self._permitted_enterprise_description = value
+
+    
+    @property
+    def permitted_enterprise_name(self):
+        """ Get permitted_enterprise_name value.
+
+            Notes:
+                Name of the associated Enterprise
+
+                
+                This attribute is named `permittedEnterpriseName` in VSD API.
+                
+        """
+        return self._permitted_enterprise_name
+
+    @permitted_enterprise_name.setter
+    def permitted_enterprise_name(self, value):
+        """ Set permitted_enterprise_name value.
+
+            Notes:
+                Name of the associated Enterprise
+
+                
+                This attribute is named `permittedEnterpriseName` in VSD API.
+                
+        """
+        self._permitted_enterprise_name = value
 
     
     @property
@@ -363,6 +404,168 @@ class NUPermission(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def associated_group_description(self):
+        """ Get associated_group_description value.
+
+            Notes:
+                Description of the Group
+
+                
+                This attribute is named `associatedGroupDescription` in VSD API.
+                
+        """
+        return self._associated_group_description
+
+    @associated_group_description.setter
+    def associated_group_description(self, value):
+        """ Set associated_group_description value.
+
+            Notes:
+                Description of the Group
+
+                
+                This attribute is named `associatedGroupDescription` in VSD API.
+                
+        """
+        self._associated_group_description = value
+
+    
+    @property
+    def associated_group_id(self):
+        """ Get associated_group_id value.
+
+            Notes:
+                The Group ID associated with this permission.
+
+                
+                This attribute is named `associatedGroupID` in VSD API.
+                
+        """
+        return self._associated_group_id
+
+    @associated_group_id.setter
+    def associated_group_id(self, value):
+        """ Set associated_group_id value.
+
+            Notes:
+                The Group ID associated with this permission.
+
+                
+                This attribute is named `associatedGroupID` in VSD API.
+                
+        """
+        self._associated_group_id = value
+
+    
+    @property
+    def associated_group_name(self):
+        """ Get associated_group_name value.
+
+            Notes:
+                Name of the group for which we have given permission.
+
+                
+                This attribute is named `associatedGroupName` in VSD API.
+                
+        """
+        return self._associated_group_name
+
+    @associated_group_name.setter
+    def associated_group_name(self, value):
+        """ Set associated_group_name value.
+
+            Notes:
+                Name of the group for which we have given permission.
+
+                
+                This attribute is named `associatedGroupName` in VSD API.
+                
+        """
+        self._associated_group_name = value
+
+    
+    @property
+    def associated_role_description(self):
+        """ Get associated_role_description value.
+
+            Notes:
+                Description of the role asssociated with the permission
+
+                
+                This attribute is named `associatedRoleDescription` in VSD API.
+                
+        """
+        return self._associated_role_description
+
+    @associated_role_description.setter
+    def associated_role_description(self, value):
+        """ Set associated_role_description value.
+
+            Notes:
+                Description of the role asssociated with the permission
+
+                
+                This attribute is named `associatedRoleDescription` in VSD API.
+                
+        """
+        self._associated_role_description = value
+
+    
+    @property
+    def associated_role_id(self):
+        """ Get associated_role_id value.
+
+            Notes:
+                ID of the associated Role
+
+                
+                This attribute is named `associatedRoleID` in VSD API.
+                
+        """
+        return self._associated_role_id
+
+    @associated_role_id.setter
+    def associated_role_id(self, value):
+        """ Set associated_role_id value.
+
+            Notes:
+                ID of the associated Role
+
+                
+                This attribute is named `associatedRoleID` in VSD API.
+                
+        """
+        self._associated_role_id = value
+
+    
+    @property
+    def associated_role_name(self):
+        """ Get associated_role_name value.
+
+            Notes:
+                Associated Role Name
+
+                
+                This attribute is named `associatedRoleName` in VSD API.
+                
+        """
+        return self._associated_role_name
+
+    @associated_role_name.setter
+    def associated_role_name(self, value):
+        """ Set associated_role_name value.
+
+            Notes:
+                Associated Role Name
+
+                
+                This attribute is named `associatedRoleName` in VSD API.
+                
+        """
+        self._associated_role_name = value
 
     
     @property

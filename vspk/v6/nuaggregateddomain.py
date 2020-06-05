@@ -139,6 +139,9 @@ from .fetchers import NUHostInterfacesFetcher
 from .fetchers import NURoutingPoliciesFetcher
 
 
+from .fetchers import NURoutingPolicyBindingsFetcher
+
+
 from .fetchers import NUSPATSourcesPoolsFetcher
 
 
@@ -540,6 +543,9 @@ class NUAggregatedDomain(NURESTObject):
         
         
         self.routing_policies = NURoutingPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.routing_policy_bindings = NURoutingPolicyBindingsFetcher.fetcher_with_object(parent_object=self, relationship="member")
         
         
         self.spat_sources_pools = NUSPATSourcesPoolsFetcher.fetcher_with_object(parent_object=self, relationship="child")

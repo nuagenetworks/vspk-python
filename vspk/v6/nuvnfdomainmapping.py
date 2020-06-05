@@ -77,19 +77,31 @@ class NUVNFDomainMapping(NURESTObject):
         self._last_updated_by = None
         self._segmentation_id = None
         self._segmentation_type = None
+        self._service_id = None
         self._embedded_metadata = None
+        self._enterprise_name = None
         self._entity_scope = None
+        self._associated_domain_id = None
+        self._associated_domain_name = None
+        self._associated_enterprise_id = None
         self._associated_ns_gateway_id = None
         self._associated_ns_gateway_name = None
+        self._auto_created = None
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="segmentation_id", remote_name="segmentationID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="segmentation_type", remote_name="segmentationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'VLAN'])
+        self.expose_attribute(local_name="service_id", remote_name="serviceId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="associated_domain_id", remote_name="associatedDomainID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_domain_name", remote_name="associatedDomainName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ns_gateway_id", remote_name="associatedNSGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ns_gateway_name", remote_name="associatedNSGatewayName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="auto_created", remote_name="autoCreated", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -188,6 +200,33 @@ class NUVNFDomainMapping(NURESTObject):
 
     
     @property
+    def service_id(self):
+        """ Get service_id value.
+
+            Notes:
+                Service ID of the associated Domain
+
+                
+                This attribute is named `serviceId` in VSD API.
+                
+        """
+        return self._service_id
+
+    @service_id.setter
+    def service_id(self, value):
+        """ Set service_id value.
+
+            Notes:
+                Service ID of the associated Domain
+
+                
+                This attribute is named `serviceId` in VSD API.
+                
+        """
+        self._service_id = value
+
+    
+    @property
     def embedded_metadata(self):
         """ Get embedded_metadata value.
 
@@ -215,6 +254,33 @@ class NUVNFDomainMapping(NURESTObject):
 
     
     @property
+    def enterprise_name(self):
+        """ Get enterprise_name value.
+
+            Notes:
+                Name of the associated Enterprise
+
+                
+                This attribute is named `enterpriseName` in VSD API.
+                
+        """
+        return self._enterprise_name
+
+    @enterprise_name.setter
+    def enterprise_name(self, value):
+        """ Set enterprise_name value.
+
+            Notes:
+                Name of the associated Enterprise
+
+                
+                This attribute is named `enterpriseName` in VSD API.
+                
+        """
+        self._enterprise_name = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -239,6 +305,87 @@ class NUVNFDomainMapping(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def associated_domain_id(self):
+        """ Get associated_domain_id value.
+
+            Notes:
+                ID of the associated Domain
+
+                
+                This attribute is named `associatedDomainID` in VSD API.
+                
+        """
+        return self._associated_domain_id
+
+    @associated_domain_id.setter
+    def associated_domain_id(self, value):
+        """ Set associated_domain_id value.
+
+            Notes:
+                ID of the associated Domain
+
+                
+                This attribute is named `associatedDomainID` in VSD API.
+                
+        """
+        self._associated_domain_id = value
+
+    
+    @property
+    def associated_domain_name(self):
+        """ Get associated_domain_name value.
+
+            Notes:
+                Name of the associated Domain
+
+                
+                This attribute is named `associatedDomainName` in VSD API.
+                
+        """
+        return self._associated_domain_name
+
+    @associated_domain_name.setter
+    def associated_domain_name(self, value):
+        """ Set associated_domain_name value.
+
+            Notes:
+                Name of the associated Domain
+
+                
+                This attribute is named `associatedDomainName` in VSD API.
+                
+        """
+        self._associated_domain_name = value
+
+    
+    @property
+    def associated_enterprise_id(self):
+        """ Get associated_enterprise_id value.
+
+            Notes:
+                ID of the associated Enterprise
+
+                
+                This attribute is named `associatedEnterpriseID` in VSD API.
+                
+        """
+        return self._associated_enterprise_id
+
+    @associated_enterprise_id.setter
+    def associated_enterprise_id(self, value):
+        """ Set associated_enterprise_id value.
+
+            Notes:
+                ID of the associated Enterprise
+
+                
+                This attribute is named `associatedEnterpriseID` in VSD API.
+                
+        """
+        self._associated_enterprise_id = value
 
     
     @property
@@ -293,6 +440,33 @@ class NUVNFDomainMapping(NURESTObject):
                 
         """
         self._associated_ns_gateway_name = value
+
+    
+    @property
+    def auto_created(self):
+        """ Get auto_created value.
+
+            Notes:
+                Indicates that this domain mapping was auto created by the system
+
+                
+                This attribute is named `autoCreated` in VSD API.
+                
+        """
+        return self._auto_created
+
+    @auto_created.setter
+    def auto_created(self, value):
+        """ Set auto_created value.
+
+            Notes:
+                Indicates that this domain mapping was auto created by the system
+
+                
+                This attribute is named `autoCreated` in VSD API.
+                
+        """
+        self._auto_created = value
 
     
     @property

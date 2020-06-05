@@ -71,7 +71,7 @@ class NUVCenterVRSConfig(NURESTObject):
     
     CONST_MEMORY_SIZE_IN_GB_MEDIUM_6 = "MEDIUM_6"
     
-    CONST_DESTINATION_MIRROR_PORT_ENS224 = "ens224"
+    CONST_DESTINATION_MIRROR_PORT_NO_MIRROR = "no_mirror"
     
     CONST_REMOTE_SYSLOG_SERVER_TYPE_TCP = "TCP"
     
@@ -81,7 +81,7 @@ class NUVCenterVRSConfig(NURESTObject):
     
     CONST_CPU_COUNT_LARGE_6 = "LARGE_6"
     
-    CONST_DESTINATION_MIRROR_PORT_NO_MIRROR = "no_mirror"
+    CONST_DESTINATION_MIRROR_PORT_ENS224 = "ens224"
     
     CONST_DESTINATION_MIRROR_PORT_ENS256 = "ens256"
     
@@ -1174,7 +1174,7 @@ class NUVCenterVRSConfig(NURESTObject):
         """ Get network_uplink_interface value.
 
             Notes:
-                Network Upling Interface to support PAT/NAT with no tunnels on VRS-VM
+                Network Uplink Interface to support PAT/NAT with no tunnels on VRS-VM
 
                 
                 This attribute is named `networkUplinkInterface` in VSD API.
@@ -1187,7 +1187,7 @@ class NUVCenterVRSConfig(NURESTObject):
         """ Set network_uplink_interface value.
 
             Notes:
-                Network Upling Interface to support PAT/NAT with no tunnels on VRS-VM
+                Network Uplink Interface to support PAT/NAT with no tunnels on VRS-VM
 
                 
                 This attribute is named `networkUplinkInterface` in VSD API.

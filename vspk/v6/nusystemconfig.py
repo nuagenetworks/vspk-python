@@ -178,6 +178,7 @@ class NUSystemConfig(NURESTObject):
         self._api_key_renewal_interval = None
         self._api_key_validity = None
         self._vport_init_stateful_timer = None
+        self._ipv6_extended_prefixes_enabled = None
         self._lru_cache_size_per_subnet = None
         self._vsc_on_same_version_as_vsd = None
         self._vsdaar_application_version = None
@@ -204,17 +205,25 @@ class NUSystemConfig(NURESTObject):
         self._gateway_rebalancing_interval = None
         self._max_failed_logins = None
         self._max_response = None
+        self._rbac_enabled = None
         self._accumulate_licenses_enabled = None
         self._vcin_load_balancer_ip = None
         self._secondary_as_number = None
         self._secondary_rt_lower_limit = None
         self._secondary_rt_upper_limit = None
+        self._denied_flow_collection_enabled = None
         self._per_domain_vlan_id_enabled = None
         self._service_id_upper_limit = None
         self._key_server_monitor_enabled = None
         self._key_server_vsd_data_synchronization_interval = None
         self._offset_customer_id = None
         self._offset_service_id = None
+        self._threat_intelligence_enabled = None
+        self._threat_prevention_server = None
+        self._threat_prevention_server_password = None
+        self._threat_prevention_server_proxy_port = None
+        self._threat_prevention_server_username = None
+        self._threat_prevention_syslog_proxy_port = None
         self._virtual_firewall_rules_enabled = None
         self._ejbca_nsg_certificate_profile = None
         self._ejbca_nsg_end_entity_profile = None
@@ -289,6 +298,7 @@ class NUSystemConfig(NURESTObject):
         self._two_factor_code_expiry = None
         self._two_factor_code_length = None
         self._two_factor_code_seed_length = None
+        self._explicit_acl_matching_enabled = None
         self._external_id = None
         self._dynamic_wan_service_diff_time = None
         self._syslog_destination_host = None
@@ -334,6 +344,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="api_key_renewal_interval", remote_name="APIKeyRenewalInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="api_key_validity", remote_name="APIKeyValidity", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vport_init_stateful_timer", remote_name="VPortInitStatefulTimer", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ipv6_extended_prefixes_enabled", remote_name="IPv6ExtendedPrefixesEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="lru_cache_size_per_subnet", remote_name="LRUCacheSizePerSubnet", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsc_on_same_version_as_vsd", remote_name="VSCOnSameVersionAsVSD", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsdaar_application_version", remote_name="VSDAARApplicationVersion", attribute_type=str, is_required=False, is_unique=False)
@@ -360,17 +371,25 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="gateway_rebalancing_interval", remote_name="gatewayRebalancingInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="max_failed_logins", remote_name="maxFailedLogins", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="max_response", remote_name="maxResponse", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="rbac_enabled", remote_name="rbacEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="accumulate_licenses_enabled", remote_name="accumulateLicensesEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vcin_load_balancer_ip", remote_name="vcinLoadBalancerIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_as_number", remote_name="secondaryASNumber", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_rt_lower_limit", remote_name="secondaryRTLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_rt_upper_limit", remote_name="secondaryRTUpperLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="denied_flow_collection_enabled", remote_name="deniedFlowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="per_domain_vlan_id_enabled", remote_name="perDomainVlanIdEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_id_upper_limit", remote_name="serviceIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="key_server_monitor_enabled", remote_name="keyServerMonitorEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="key_server_vsd_data_synchronization_interval", remote_name="keyServerVSDDataSynchronizationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="offset_customer_id", remote_name="offsetCustomerID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="offset_service_id", remote_name="offsetServiceID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="threat_intelligence_enabled", remote_name="threatIntelligenceEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="threat_prevention_server", remote_name="threatPreventionServer", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="threat_prevention_server_password", remote_name="threatPreventionServerPassword", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="threat_prevention_server_proxy_port", remote_name="threatPreventionServerProxyPort", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="threat_prevention_server_username", remote_name="threatPreventionServerUsername", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="threat_prevention_syslog_proxy_port", remote_name="threatPreventionSyslogProxyPort", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="virtual_firewall_rules_enabled", remote_name="virtualFirewallRulesEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ejbca_nsg_certificate_profile", remote_name="ejbcaNSGCertificateProfile", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ejbca_nsg_end_entity_profile", remote_name="ejbcaNSGEndEntityProfile", attribute_type=str, is_required=False, is_unique=False)
@@ -445,6 +464,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="two_factor_code_expiry", remote_name="twoFactorCodeExpiry", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="two_factor_code_length", remote_name="twoFactorCodeLength", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="two_factor_code_seed_length", remote_name="twoFactorCodeSeedLength", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="explicit_acl_matching_enabled", remote_name="explicitACLMatchingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="dynamic_wan_service_diff_time", remote_name="dynamicWANServiceDiffTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="syslog_destination_host", remote_name="syslogDestinationHost", attribute_type=str, is_required=False, is_unique=False)
@@ -1389,6 +1409,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def ipv6_extended_prefixes_enabled(self):
+        """ Get ipv6_extended_prefixes_enabled value.
+
+            Notes:
+                Allows the creation of IPv6 subnets and routes with masks longer than /64.
+
+                
+                This attribute is named `IPv6ExtendedPrefixesEnabled` in VSD API.
+                
+        """
+        return self._ipv6_extended_prefixes_enabled
+
+    @ipv6_extended_prefixes_enabled.setter
+    def ipv6_extended_prefixes_enabled(self, value):
+        """ Set ipv6_extended_prefixes_enabled value.
+
+            Notes:
+                Allows the creation of IPv6 subnets and routes with masks longer than /64.
+
+                
+                This attribute is named `IPv6ExtendedPrefixesEnabled` in VSD API.
+                
+        """
+        self._ipv6_extended_prefixes_enabled = value
+
+    
+    @property
     def lru_cache_size_per_subnet(self):
         """ Get lru_cache_size_per_subnet value.
 
@@ -2091,6 +2138,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def rbac_enabled(self):
+        """ Get rbac_enabled value.
+
+            Notes:
+                Enables the advanced granular permissions feature. This should not be enabled without prior discussion and agreement with the Nuage Product team, as this feature is only qualified for a limited set of use cases.
+
+                
+                This attribute is named `rbacEnabled` in VSD API.
+                
+        """
+        return self._rbac_enabled
+
+    @rbac_enabled.setter
+    def rbac_enabled(self, value):
+        """ Set rbac_enabled value.
+
+            Notes:
+                Enables the advanced granular permissions feature. This should not be enabled without prior discussion and agreement with the Nuage Product team, as this feature is only qualified for a limited set of use cases.
+
+                
+                This attribute is named `rbacEnabled` in VSD API.
+                
+        """
+        self._rbac_enabled = value
+
+    
+    @property
     def accumulate_licenses_enabled(self):
         """ Get accumulate_licenses_enabled value.
 
@@ -2223,6 +2297,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._secondary_rt_upper_limit = value
+
+    
+    @property
+    def denied_flow_collection_enabled(self):
+        """ Get denied_flow_collection_enabled value.
+
+            Notes:
+                When this option is selected, VSS will only store flows that are denied by security policy (implicit or explicit ACLs). This requires a valid VSS license and Flow Collection enabled.
+
+                
+                This attribute is named `deniedFlowCollectionEnabled` in VSD API.
+                
+        """
+        return self._denied_flow_collection_enabled
+
+    @denied_flow_collection_enabled.setter
+    def denied_flow_collection_enabled(self, value):
+        """ Set denied_flow_collection_enabled value.
+
+            Notes:
+                When this option is selected, VSS will only store flows that are denied by security policy (implicit or explicit ACLs). This requires a valid VSS license and Flow Collection enabled.
+
+                
+                This attribute is named `deniedFlowCollectionEnabled` in VSD API.
+                
+        """
+        self._denied_flow_collection_enabled = value
 
     
     @property
@@ -2385,6 +2486,168 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._offset_service_id = value
+
+    
+    @property
+    def threat_intelligence_enabled(self):
+        """ Get threat_intelligence_enabled value.
+
+            Notes:
+                Enables IP based threat intelligence. This requires Flow Collection to be enabled.
+
+                
+                This attribute is named `threatIntelligenceEnabled` in VSD API.
+                
+        """
+        return self._threat_intelligence_enabled
+
+    @threat_intelligence_enabled.setter
+    def threat_intelligence_enabled(self, value):
+        """ Set threat_intelligence_enabled value.
+
+            Notes:
+                Enables IP based threat intelligence. This requires Flow Collection to be enabled.
+
+                
+                This attribute is named `threatIntelligenceEnabled` in VSD API.
+                
+        """
+        self._threat_intelligence_enabled = value
+
+    
+    @property
+    def threat_prevention_server(self):
+        """ Get threat_prevention_server value.
+
+            Notes:
+                Specifies the Threat Prevention Management server location.
+
+                
+                This attribute is named `threatPreventionServer` in VSD API.
+                
+        """
+        return self._threat_prevention_server
+
+    @threat_prevention_server.setter
+    def threat_prevention_server(self, value):
+        """ Set threat_prevention_server value.
+
+            Notes:
+                Specifies the Threat Prevention Management server location.
+
+                
+                This attribute is named `threatPreventionServer` in VSD API.
+                
+        """
+        self._threat_prevention_server = value
+
+    
+    @property
+    def threat_prevention_server_password(self):
+        """ Get threat_prevention_server_password value.
+
+            Notes:
+                Password to access Threat Prevention Server Password
+
+                
+                This attribute is named `threatPreventionServerPassword` in VSD API.
+                
+        """
+        return self._threat_prevention_server_password
+
+    @threat_prevention_server_password.setter
+    def threat_prevention_server_password(self, value):
+        """ Set threat_prevention_server_password value.
+
+            Notes:
+                Password to access Threat Prevention Server Password
+
+                
+                This attribute is named `threatPreventionServerPassword` in VSD API.
+                
+        """
+        self._threat_prevention_server_password = value
+
+    
+    @property
+    def threat_prevention_server_proxy_port(self):
+        """ Get threat_prevention_server_proxy_port value.
+
+            Notes:
+                Destination TCP Port on the Proxy to connect to the Threat Prevention Management Server
+
+                
+                This attribute is named `threatPreventionServerProxyPort` in VSD API.
+                
+        """
+        return self._threat_prevention_server_proxy_port
+
+    @threat_prevention_server_proxy_port.setter
+    def threat_prevention_server_proxy_port(self, value):
+        """ Set threat_prevention_server_proxy_port value.
+
+            Notes:
+                Destination TCP Port on the Proxy to connect to the Threat Prevention Management Server
+
+                
+                This attribute is named `threatPreventionServerProxyPort` in VSD API.
+                
+        """
+        self._threat_prevention_server_proxy_port = value
+
+    
+    @property
+    def threat_prevention_server_username(self):
+        """ Get threat_prevention_server_username value.
+
+            Notes:
+                Username to accessThreat Prevention management Server.
+
+                
+                This attribute is named `threatPreventionServerUsername` in VSD API.
+                
+        """
+        return self._threat_prevention_server_username
+
+    @threat_prevention_server_username.setter
+    def threat_prevention_server_username(self, value):
+        """ Set threat_prevention_server_username value.
+
+            Notes:
+                Username to accessThreat Prevention management Server.
+
+                
+                This attribute is named `threatPreventionServerUsername` in VSD API.
+                
+        """
+        self._threat_prevention_server_username = value
+
+    
+    @property
+    def threat_prevention_syslog_proxy_port(self):
+        """ Get threat_prevention_syslog_proxy_port value.
+
+            Notes:
+                Syslog server port for Threat Prevention Service
+
+                
+                This attribute is named `threatPreventionSyslogProxyPort` in VSD API.
+                
+        """
+        return self._threat_prevention_syslog_proxy_port
+
+    @threat_prevention_syslog_proxy_port.setter
+    def threat_prevention_syslog_proxy_port(self, value):
+        """ Set threat_prevention_syslog_proxy_port value.
+
+            Notes:
+                Syslog server port for Threat Prevention Service
+
+                
+                This attribute is named `threatPreventionSyslogProxyPort` in VSD API.
+                
+        """
+        self._threat_prevention_syslog_proxy_port = value
 
     
     @property
@@ -4383,6 +4646,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._two_factor_code_seed_length = value
+
+    
+    @property
+    def explicit_acl_matching_enabled(self):
+        """ Get explicit_acl_matching_enabled value.
+
+            Notes:
+                When this option is selected, VSS will only store allow/denied flows that matches explicit ingress/egress security ACL. This requires a valid VSS license and Flow Collection enabled.
+
+                
+                This attribute is named `explicitACLMatchingEnabled` in VSD API.
+                
+        """
+        return self._explicit_acl_matching_enabled
+
+    @explicit_acl_matching_enabled.setter
+    def explicit_acl_matching_enabled(self, value):
+        """ Set explicit_acl_matching_enabled value.
+
+            Notes:
+                When this option is selected, VSS will only store allow/denied flows that matches explicit ingress/egress security ACL. This requires a valid VSS license and Flow Collection enabled.
+
+                
+                This attribute is named `explicitACLMatchingEnabled` in VSD API.
+                
+        """
+        self._explicit_acl_matching_enabled = value
 
     
     @property

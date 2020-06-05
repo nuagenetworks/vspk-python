@@ -42,6 +42,8 @@ Attributes
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
+- ``system_id``: System ID of the Gateway.
+
 
 
 

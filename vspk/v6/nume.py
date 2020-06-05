@@ -214,6 +214,9 @@ from .fetchers import NUEnterpriseProfilesFetcher
 from .fetchers import NUJobsFetcher
 
 
+from .fetchers import NURolesFetcher
+
+
 from .fetchers import NUPolicyGroupsFetcher
 
 
@@ -268,6 +271,9 @@ from .fetchers import NUvrsInfosFetcher
 from .fetchers import NUDSCPRemarkingPolicyTablesFetcher
 
 
+from .fetchers import NUVSDConfigsFetcher
+
+
 from .fetchers import NUUsersFetcher
 
 
@@ -302,6 +308,9 @@ from .fetchers import NUStaticRoutesFetcher
 
 
 from .fetchers import NUStatsCollectorInfosFetcher
+
+
+from .fetchers import NUEthernetSegmentGWGroupsFetcher
 
 
 from .fetchers import NUSubnetsFetcher
@@ -602,6 +611,9 @@ class NUMe(NURESTRootObject):
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.roles = NURolesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.policy_groups = NUPolicyGroupsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -656,6 +668,9 @@ class NUMe(NURESTRootObject):
         self.dscp_remarking_policy_tables = NUDSCPRemarkingPolicyTablesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.vsd_configs = NUVSDConfigsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.users = NUUsersFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -690,6 +705,9 @@ class NUMe(NURESTRootObject):
         
         
         self.stats_collector_infos = NUStatsCollectorInfosFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.ethernet_segment_gw_groups = NUEthernetSegmentGWGroupsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.subnets = NUSubnetsFetcher.fetcher_with_object(parent_object=self, relationship="root")

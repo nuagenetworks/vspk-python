@@ -107,6 +107,7 @@ class NURedirectionTarget(NURESTObject):
         self._end_point_type = None
         self._entity_scope = None
         self._trigger_type = None
+        self._auto_created = None
         self._external_id = None
         
         self.expose_attribute(local_name="esi", remote_name="ESI", attribute_type=str, is_required=False, is_unique=False)
@@ -121,6 +122,7 @@ class NURedirectionTarget(NURESTObject):
         self.expose_attribute(local_name="end_point_type", remote_name="endPointType", attribute_type=str, is_required=True, is_unique=False, choices=[u'L3', u'NSG_VNF', u'VIRTUAL_WIRE'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="trigger_type", remote_name="triggerType", attribute_type=str, is_required=False, is_unique=False, choices=[u'GARP', u'NONE'])
+        self.expose_attribute(local_name="auto_created", remote_name="autoCreated", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -460,6 +462,33 @@ class NURedirectionTarget(NURESTObject):
                 
         """
         self._trigger_type = value
+
+    
+    @property
+    def auto_created(self):
+        """ Get auto_created value.
+
+            Notes:
+                Indicates if redirection target was auto created by the system
+
+                
+                This attribute is named `autoCreated` in VSD API.
+                
+        """
+        return self._auto_created
+
+    @auto_created.setter
+    def auto_created(self, value):
+        """ Set auto_created value.
+
+            Notes:
+                Indicates if redirection target was auto created by the system
+
+                
+                This attribute is named `autoCreated` in VSD API.
+                
+        """
+        self._auto_created = value
 
     
     @property

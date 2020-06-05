@@ -94,6 +94,9 @@ from .fetchers import NUVMsFetcher
 from .fetchers import NUVMInterfacesFetcher
 
 
+from .fetchers import NUVMIPReservationsFetcher
+
+
 from .fetchers import NUIngressACLEntryTemplatesFetcher
 
 
@@ -192,7 +195,11 @@ class NUL2Domain(NURESTObject):
     
     CONST_IP_TYPE_IPV4 = "IPV4"
     
+    CONST_THREAT_INTELLIGENCE_ENABLED_ENABLED = "ENABLED"
+    
     CONST_MAINTENANCE_MODE_DISABLED = "DISABLED"
+    
+    CONST_THREAT_INTELLIGENCE_ENABLED_INHERITED = "INHERITED"
     
     CONST_USE_GLOBAL_MAC_ENABLED = "ENABLED"
     
@@ -228,6 +235,8 @@ class NUL2Domain(NURESTObject):
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
+    CONST_L2_ENCAP_TYPE_MPLS = "MPLS"
+    
     CONST_ENCRYPTION_DISABLED = "DISABLED"
     
     CONST_POLICY_CHANGE_STATUS_DISCARDED = "DISCARDED"
@@ -241,6 +250,8 @@ class NUL2Domain(NURESTObject):
     CONST_ENCRYPTION_ENABLED = "ENABLED"
     
     CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
+    
+    CONST_THREAT_INTELLIGENCE_ENABLED_DISABLED = "DISABLED"
     
     
 
@@ -278,6 +289,7 @@ class NUL2Domain(NURESTObject):
         self._service_id = None
         self._description = None
         self._netmask = None
+        self._threat_intelligence_enabled = None
         self._flow_collection_enabled = None
         self._embedded_metadata = None
         self._vn_id = None
@@ -303,7 +315,7 @@ class NUL2Domain(NURESTObject):
         self._customer_id = None
         self._external_id = None
         
-        self.expose_attribute(local_name="l2_encap_type", remote_name="l2EncapType", attribute_type=str, is_required=False, is_unique=False, choices=[u'MPLSoUDP', u'VXLAN'])
+        self.expose_attribute(local_name="l2_encap_type", remote_name="l2EncapType", attribute_type=str, is_required=False, is_unique=False, choices=[u'MPLS', u'MPLSoUDP', u'VXLAN'])
         self.expose_attribute(local_name="dhcp_managed", remote_name="DHCPManaged", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
@@ -320,6 +332,7 @@ class NUL2Domain(NURESTObject):
         self.expose_attribute(local_name="service_id", remote_name="serviceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="threat_intelligence_enabled", remote_name="threatIntelligenceEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vn_id", remote_name="vnId", attribute_type=int, is_required=False, is_unique=False)
@@ -413,6 +426,9 @@ class NUL2Domain(NURESTObject):
         
         
         self.vm_interfaces = NUVMInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.vmip_reservations = NUVMIPReservationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ingress_acl_entry_templates = NUIngressACLEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -925,6 +941,33 @@ class NUL2Domain(NURESTObject):
                 
         """
         self._netmask = value
+
+    
+    @property
+    def threat_intelligence_enabled(self):
+        """ Get threat_intelligence_enabled value.
+
+            Notes:
+                Determines whether or not threat intelligence is enabled
+
+                
+                This attribute is named `threatIntelligenceEnabled` in VSD API.
+                
+        """
+        return self._threat_intelligence_enabled
+
+    @threat_intelligence_enabled.setter
+    def threat_intelligence_enabled(self, value):
+        """ Set threat_intelligence_enabled value.
+
+            Notes:
+                Determines whether or not threat intelligence is enabled
+
+                
+                This attribute is named `threatIntelligenceEnabled` in VSD API.
+                
+        """
+        self._threat_intelligence_enabled = value
 
     
     @property

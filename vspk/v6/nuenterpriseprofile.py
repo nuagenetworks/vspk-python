@@ -112,6 +112,7 @@ class NUEnterpriseProfile(NURESTObject):
         self._receive_multi_cast_list_id = None
         self._send_multi_cast_list_id = None
         self._description = None
+        self._threat_prevention_management_enabled = None
         self._allow_advanced_qos_configuration = None
         self._allow_gateway_management = None
         self._allow_trusted_forwarding_class = None
@@ -133,6 +134,7 @@ class NUEnterpriseProfile(NURESTObject):
         self.expose_attribute(local_name="receive_multi_cast_list_id", remote_name="receiveMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="send_multi_cast_list_id", remote_name="sendMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="threat_prevention_management_enabled", remote_name="threatPreventionManagementEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_advanced_qos_configuration", remote_name="allowAdvancedQOSConfiguration", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_gateway_management", remote_name="allowGatewayManagement", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_trusted_forwarding_class", remote_name="allowTrustedForwardingClass", attribute_type=bool, is_required=False, is_unique=False)
@@ -401,6 +403,33 @@ class NUEnterpriseProfile(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def threat_prevention_management_enabled(self):
+        """ Get threat_prevention_management_enabled value.
+
+            Notes:
+                Enable Threat Prevention Management for enterprise
+
+                
+                This attribute is named `threatPreventionManagementEnabled` in VSD API.
+                
+        """
+        return self._threat_prevention_management_enabled
+
+    @threat_prevention_management_enabled.setter
+    def threat_prevention_management_enabled(self, value):
+        """ Set threat_prevention_management_enabled value.
+
+            Notes:
+                Enable Threat Prevention Management for enterprise
+
+                
+                This attribute is named `threatPreventionManagementEnabled` in VSD API.
+                
+        """
+        self._threat_prevention_management_enabled = value
 
     
     @property

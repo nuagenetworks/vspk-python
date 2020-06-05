@@ -86,6 +86,7 @@ class NUOSPFInterface(NURESTObject):
 
         # Read/Write Attributes
         
+        self._bfd_enabled = None
         self._name = None
         self._passive_enabled = None
         self._last_updated_by = None
@@ -105,6 +106,7 @@ class NUOSPFInterface(NURESTObject):
         self._authentication_type = None
         self._external_id = None
         
+        self.expose_attribute(local_name="bfd_enabled", remote_name="BFDEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="passive_enabled", remote_name="passiveEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -137,6 +139,33 @@ class NUOSPFInterface(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def bfd_enabled(self):
+        """ Get bfd_enabled value.
+
+            Notes:
+                Enable or disable Bidirectional Forwarding Detection for this OSPF Interface.
+
+                
+                This attribute is named `BFDEnabled` in VSD API.
+                
+        """
+        return self._bfd_enabled
+
+    @bfd_enabled.setter
+    def bfd_enabled(self, value):
+        """ Set bfd_enabled value.
+
+            Notes:
+                Enable or disable Bidirectional Forwarding Detection for this OSPF Interface.
+
+                
+                This attribute is named `BFDEnabled` in VSD API.
+                
+        """
+        self._bfd_enabled = value
+
     
     @property
     def name(self):

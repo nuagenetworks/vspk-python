@@ -188,7 +188,7 @@ class NURateLimiter(NURESTObject):
         """ Get peak_information_rate value.
 
             Notes:
-                Peak Information Rate :  Peak bandwidth allowed in Mb/s; only whole values supported.
+                Peak Information Rate :  Peak bandwidth allowed in Mb/s.
 
                 
                 This attribute is named `peakInformationRate` in VSD API.
@@ -201,7 +201,7 @@ class NURateLimiter(NURESTObject):
         """ Set peak_information_rate value.
 
             Notes:
-                Peak Information Rate :  Peak bandwidth allowed in Mb/s; only whole values supported.
+                Peak Information Rate :  Peak bandwidth allowed in Mb/s.
 
                 
                 This attribute is named `peakInformationRate` in VSD API.
@@ -292,7 +292,7 @@ class NURateLimiter(NURESTObject):
         """ Get committed_information_rate value.
 
             Notes:
-                Committed Information Rate :  Committed bandwidth that is allowed in Mb/s; only whole values supported.
+                Committed Information Rate :  Committed bandwidth that is allowed in Mb/s.
 
                 
                 This attribute is named `committedInformationRate` in VSD API.
@@ -305,7 +305,7 @@ class NURateLimiter(NURESTObject):
         """ Set committed_information_rate value.
 
             Notes:
-                Committed Information Rate :  Committed bandwidth that is allowed in Mb/s; only whole values supported.
+                Committed Information Rate :  Committed bandwidth that is allowed in Mb/s.
 
                 
                 This attribute is named `committedInformationRate` in VSD API.

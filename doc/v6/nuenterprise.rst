@@ -36,6 +36,10 @@ Attributes
 
 - ``shared_enterprise``: This flag indicates whether this is a Shared Infrastructure Enterprise or not. Its a read-only attribute and it cannot be set by anybody.
 
+- ``threat_intelligence_enabled``: Determines whether or not threat intelligence is enabled
+
+- ``threat_prevention_management_enabled``: Threat Prevention Management enabled for enterprise
+
 - ``dictionary_version``: L7 Application Type version
 
 - ``virtual_firewall_rules_enabled``: Read-only flag that indicates if virtual firewall rules are allowed.
@@ -109,6 +113,7 @@ Children
 :ref:`nugatewaytemplate.NUGatewayTemplate<nugatewaytemplate>`                                                                                                    ``gateway_templates`` 
 :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`                                                                                                                   ``patnat_pools`` 
 :ref:`nuldapconfiguration.NULDAPConfiguration<nuldapconfiguration>`                                                                                              ``ldap_configurations`` 
+:ref:`nuidpprofile.NUIDPProfile<nuidpprofile>`                                                                                                                   ``idp_profiles`` 
 :ref:`nuwebcategory.NUWebCategory<nuwebcategory>`                                                                                                                ``web_categories`` 
 :ref:`nuwebdomainname.NUWebDomainName<nuwebdomainname>`                                                                                                          ``web_domain_names`` 
 :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`                                                                                                    ``redundancy_groups`` 
@@ -143,6 +148,7 @@ Children
 :ref:`nuenterprisenetwork.NUEnterpriseNetwork<nuenterprisenetwork>`                                                                                              ``enterprise_networks`` 
 :ref:`nuenterprisesecurity.NUEnterpriseSecurity<nuenterprisesecurity>`                                                                                           ``enterprise_securities`` 
 :ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
+:ref:`nurole.NURole<nurole>`                                                                                                                                     ``roles`` 
 :ref:`nupolicygroupcategory.NUPolicyGroupCategory<nupolicygroupcategory>`                                                                                        ``policy_group_categories`` 
 :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`                                                                                              ``policy_object_groups`` 
 :ref:`nudomain.NUDomain<nudomain>`                                                                                                                               ``domains`` 

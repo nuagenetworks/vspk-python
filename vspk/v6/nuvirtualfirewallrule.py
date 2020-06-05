@@ -49,25 +49,45 @@ class NUVirtualFirewallRule(NURESTObject):
     
     ## Constants
     
+    CONST_LOCATION_ENTITY_TYPE_REDIRECTIONTARGETTEMPLATE = "REDIRECTIONTARGETTEMPLATE"
+    
     CONST_NETWORK_TYPE_NETWORK_MACRO_GROUP = "NETWORK_MACRO_GROUP"
     
-    CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
+    CONST_LOCATION_ENTITY_TYPE_NETWORKMACROGROUP = "NETWORKMACROGROUP"
+    
+    CONST_ACTION_DROP = "DROP"
     
     CONST_LOCATION_TYPE_ZONE = "ZONE"
     
+    CONST_LOCATION_ENTITY_TYPE_PUBLICNETWORK = "PUBLICNETWORK"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
+    CONST_NETWORK_ENTITY_TYPE_PGEXPRESSIONTEMPLATE = "PGEXPRESSIONTEMPLATE"
+    
     CONST_ACTION_FORWARD = "FORWARD"
+    
+    CONST_NETWORK_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
     CONST_NETWORK_TYPE_POLICYGROUP = "POLICYGROUP"
     
     CONST_LOCATION_TYPE_UNDERLAY_INTERNET_POLICYGROUP = "UNDERLAY_INTERNET_POLICYGROUP"
     
-    CONST_LOCATION_TYPE_ANY = "ANY"
+    CONST_LOCATION_ENTITY_TYPE_POLICYGROUPTEMPLATE = "POLICYGROUPTEMPLATE"
+    
+    CONST_NETWORK_ENTITY_TYPE_ZONETEMPLATE = "ZONETEMPLATE"
     
     CONST_LOCATION_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
-    CONST_ACTION_DROP = "DROP"
+    CONST_LOCATION_ENTITY_TYPE_ZONETEMPLATE = "ZONETEMPLATE"
+    
+    CONST_LOCATION_TYPE_ANY = "ANY"
+    
+    CONST_NETWORK_ENTITY_TYPE_NETWORKMACROGROUP = "NETWORKMACROGROUP"
+    
+    CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
+    
+    CONST_NETWORK_ENTITY_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
     CONST_LOCATION_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
     
@@ -75,13 +95,35 @@ class NUVirtualFirewallRule(NURESTObject):
     
     CONST_LOCATION_TYPE_POLICYGROUP = "POLICYGROUP"
     
-    CONST_NETWORK_TYPE_SUBNET = "SUBNET"
+    CONST_FAILSAFE_DATAPATH_FAIL_TO_WIRE = "FAIL_TO_WIRE"
     
     CONST_LOCATION_TYPE_NETWORK_MACRO_GROUP = "NETWORK_MACRO_GROUP"
+    
+    CONST_NETWORK_ENTITY_TYPE_POLICYGROUP = "POLICYGROUP"
     
     CONST_NETWORK_TYPE_ZONE = "ZONE"
     
     CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE_GROUP = "L4_SERVICE_GROUP"
+    
+    CONST_NETWORK_TYPE_UNDERLAY_INTERNET_POLICYGROUP = "UNDERLAY_INTERNET_POLICYGROUP"
+    
+    CONST_NETWORK_TYPE_SUBNET = "SUBNET"
+    
+    CONST_TYPE_THREAT_PREVENTION = "THREAT_PREVENTION"
+    
+    CONST_LOCATION_ENTITY_TYPE_SUBNET = "SUBNET"
+    
+    CONST_LOCATION_ENTITY_TYPE_REDIRECTIONTARGET = "REDIRECTIONTARGET"
+    
+    CONST_FAILSAFE_DATAPATH_FAIL_TO_BLOCK = "FAIL_TO_BLOCK"
+    
+    CONST_NETWORK_ENTITY_TYPE_ZONE = "ZONE"
+    
+    CONST_NETWORK_ENTITY_TYPE_SUBNETTEMPLATE = "SUBNETTEMPLATE"
+    
+    CONST_LOCATION_ENTITY_TYPE_PGEXPRESSIONTEMPLATE = "PGEXPRESSIONTEMPLATE"
+    
+    CONST_LOCATION_ENTITY_TYPE_ENTERPRISENETWORK = "ENTERPRISENETWORK"
     
     CONST_LOCATION_TYPE_SUBNET = "SUBNET"
     
@@ -91,15 +133,29 @@ class NUVirtualFirewallRule(NURESTObject):
     
     CONST_WEB_FILTER_TYPE_WEB_DOMAIN_NAME = "WEB_DOMAIN_NAME"
     
+    CONST_LOCATION_ENTITY_TYPE_POLICYGROUP = "POLICYGROUP"
+    
+    CONST_NETWORK_ENTITY_TYPE_SUBNET = "SUBNET"
+    
     CONST_POLICY_STATE_LIVE = "LIVE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
+    CONST_LOCATION_ENTITY_TYPE_SUBNETTEMPLATE = "SUBNETTEMPLATE"
+    
+    CONST_LOCATION_ENTITY_TYPE_PGEXPRESSION = "PGEXPRESSION"
+    
     CONST_WEB_FILTER_TYPE_WEB_CATEGORY = "WEB_CATEGORY"
     
-    CONST_NETWORK_TYPE_PGEXPRESSION = "PGEXPRESSION"
+    CONST_NETWORK_ENTITY_TYPE_POLICYGROUPTEMPLATE = "POLICYGROUPTEMPLATE"
     
-    CONST_NETWORK_TYPE_INTERNET_POLICYGROUP = "INTERNET_POLICYGROUP"
+    CONST_LOCATION_ENTITY_TYPE_ZONE = "ZONE"
+    
+    CONST_NETWORK_ENTITY_TYPE_ENTERPRISENETWORK = "ENTERPRISENETWORK"
+    
+    CONST_NETWORK_ENTITY_TYPE_SAASAPPLICATIONGROUP = "SAASAPPLICATIONGROUP"
+    
+    CONST_NETWORK_ENTITY_TYPE_PUBLICNETWORK = "PUBLICNETWORK"
     
     
 
@@ -125,6 +181,7 @@ class NUVirtualFirewallRule(NURESTObject):
         self._icmp_type = None
         self._ipv6_address_override = None
         self._dscp = None
+        self._failsafe_datapath = None
         self._last_updated_by = None
         self._action = None
         self._address_override = None
@@ -132,13 +189,16 @@ class NUVirtualFirewallRule(NURESTObject):
         self._web_filter_type = None
         self._description = None
         self._destination_port = None
+        self._network_entity_type = None
         self._network_id = None
         self._network_type = None
+        self._mirror_destination_group_id = None
         self._mirror_destination_id = None
         self._flow_logging_enabled = None
         self._embedded_metadata = None
         self._enterprise_name = None
         self._entity_scope = None
+        self._location_entity_type = None
         self._location_id = None
         self._location_type = None
         self._policy_state = None
@@ -159,12 +219,14 @@ class NUVirtualFirewallRule(NURESTObject):
         self._ether_type = None
         self._overlay_mirror_destination_id = None
         self._external_id = None
+        self._type = None
         
         self.expose_attribute(local_name="acl_template_name", remote_name="ACLTemplateName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="icmp_code", remote_name="ICMPCode", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="icmp_type", remote_name="ICMPType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ipv6_address_override", remote_name="IPv6AddressOverride", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="failsafe_datapath", remote_name="failsafeDatapath", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAIL_TO_BLOCK', u'FAIL_TO_WIRE'])
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'DROP', u'FORWARD'])
         self.expose_attribute(local_name="address_override", remote_name="addressOverride", attribute_type=str, is_required=False, is_unique=False)
@@ -172,13 +234,16 @@ class NUVirtualFirewallRule(NURESTObject):
         self.expose_attribute(local_name="web_filter_type", remote_name="webFilterType", attribute_type=str, is_required=False, is_unique=False, choices=[u'WEB_CATEGORY', u'WEB_DOMAIN_NAME'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="network_entity_type", remote_name="networkEntityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISENETWORK', u'NETWORKMACROGROUP', u'PGEXPRESSION', u'PGEXPRESSIONTEMPLATE', u'POLICYGROUP', u'POLICYGROUPTEMPLATE', u'PUBLICNETWORK', u'SAASAPPLICATIONGROUP', u'SUBNET', u'SUBNETTEMPLATE', u'ZONE', u'ZONETEMPLATE'])
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENTERPRISE_NETWORK', u'INTERNET_POLICYGROUP', u'NETWORK_MACRO_GROUP', u'PGEXPRESSION', u'POLICYGROUP', u'SUBNET', u'ZONE'])
+        self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENTERPRISE_NETWORK', u'NETWORK_MACRO_GROUP', u'PGEXPRESSION', u'POLICYGROUP', u'SUBNET', u'UNDERLAY_INTERNET_POLICYGROUP', u'ZONE'])
+        self.expose_attribute(local_name="mirror_destination_group_id", remote_name="mirrorDestinationGroupID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mirror_destination_id", remote_name="mirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_logging_enabled", remote_name="flowLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="location_entity_type", remote_name="locationEntityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISENETWORK', u'NETWORKMACROGROUP', u'PGEXPRESSION', u'PGEXPRESSIONTEMPLATE', u'POLICYGROUP', u'POLICYGROUPTEMPLATE', u'PUBLICNETWORK', u'REDIRECTIONTARGET', u'REDIRECTIONTARGETTEMPLATE', u'SUBNET', u'SUBNETTEMPLATE', u'ZONE', u'ZONETEMPLATE'])
         self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'ENTERPRISE_NETWORK', u'NETWORK_MACRO_GROUP', u'PGEXPRESSION', u'POLICYGROUP', u'SUBNET', u'UNDERLAY_INTERNET_POLICYGROUP', u'ZONE'])
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
@@ -199,6 +264,7 @@ class NUVirtualFirewallRule(NURESTObject):
         self.expose_attribute(local_name="ether_type", remote_name="etherType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="overlay_mirror_destination_id", remote_name="overlayMirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'THREAT_PREVENTION'])
         
 
         # Fetchers
@@ -347,6 +413,33 @@ class NUVirtualFirewallRule(NURESTObject):
                 
         """
         self._dscp = value
+
+    
+    @property
+    def failsafe_datapath(self):
+        """ Get failsafe_datapath value.
+
+            Notes:
+                Backup datapath option if VNF/VM is down
+
+                
+                This attribute is named `failsafeDatapath` in VSD API.
+                
+        """
+        return self._failsafe_datapath
+
+    @failsafe_datapath.setter
+    def failsafe_datapath(self, value):
+        """ Set failsafe_datapath value.
+
+            Notes:
+                Backup datapath option if VNF/VM is down
+
+                
+                This attribute is named `failsafeDatapath` in VSD API.
+                
+        """
+        self._failsafe_datapath = value
 
     
     @property
@@ -531,6 +624,33 @@ class NUVirtualFirewallRule(NURESTObject):
 
     
     @property
+    def network_entity_type(self):
+        """ Get network_entity_type value.
+
+            Notes:
+                Indicates whether the Network Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: ENTERPRISENETWORK, NETWORKMACROGROUP, PGEXPRESSION, PGEXPRESSIONTEMPLATE, POLICYGROUP, POLICYGROUPTEMPLATE, PUBLICNETWORK, SAASAPPLICATIONGROUP, SUBNET, SUBNETTEMPLATE, ZONE, ZONETEMPLATE.
+
+                
+                This attribute is named `networkEntityType` in VSD API.
+                
+        """
+        return self._network_entity_type
+
+    @network_entity_type.setter
+    def network_entity_type(self, value):
+        """ Set network_entity_type value.
+
+            Notes:
+                Indicates whether the Network Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: ENTERPRISENETWORK, NETWORKMACROGROUP, PGEXPRESSION, PGEXPRESSIONTEMPLATE, POLICYGROUP, POLICYGROUPTEMPLATE, PUBLICNETWORK, SAASAPPLICATIONGROUP, SUBNET, SUBNETTEMPLATE, ZONE, ZONETEMPLATE.
+
+                
+                This attribute is named `networkEntityType` in VSD API.
+                
+        """
+        self._network_entity_type = value
+
+    
+    @property
     def network_id(self):
         """ Get network_id value.
 
@@ -582,6 +702,33 @@ class NUVirtualFirewallRule(NURESTObject):
                 
         """
         self._network_type = value
+
+    
+    @property
+    def mirror_destination_group_id(self):
+        """ Get mirror_destination_group_id value.
+
+            Notes:
+                ID of the associated Mirror Destination Group.
+
+                
+                This attribute is named `mirrorDestinationGroupID` in VSD API.
+                
+        """
+        return self._mirror_destination_group_id
+
+    @mirror_destination_group_id.setter
+    def mirror_destination_group_id(self, value):
+        """ Set mirror_destination_group_id value.
+
+            Notes:
+                ID of the associated Mirror Destination Group.
+
+                
+                This attribute is named `mirrorDestinationGroupID` in VSD API.
+                
+        """
+        self._mirror_destination_group_id = value
 
     
     @property
@@ -717,6 +864,33 @@ class NUVirtualFirewallRule(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def location_entity_type(self):
+        """ Get location_entity_type value.
+
+            Notes:
+                Indicates whether the Location Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: ENTERPRISENETWORK, NETWORKMACROGROUP, PGEXPRESSION, PGEXPRESSIONTEMPLATE, POLICYGROUP, POLICYGROUPTEMPLATE, PUBLICNETWORK, REDIRECTIONTARGET, REDIRECTIONTARGETTEMPLATE, SUBNET, SUBNETTEMPLATE, ZONE, ZONETEMPLATE.
+
+                
+                This attribute is named `locationEntityType` in VSD API.
+                
+        """
+        return self._location_entity_type
+
+    @location_entity_type.setter
+    def location_entity_type(self, value):
+        """ Set location_entity_type value.
+
+            Notes:
+                Indicates whether the Location Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: ENTERPRISENETWORK, NETWORKMACROGROUP, PGEXPRESSION, PGEXPRESSIONTEMPLATE, POLICYGROUP, POLICYGROUPTEMPLATE, PUBLICNETWORK, REDIRECTIONTARGET, REDIRECTIONTARGETTEMPLATE, SUBNET, SUBNETTEMPLATE, ZONE, ZONETEMPLATE.
+
+                
+                This attribute is named `locationEntityType` in VSD API.
+                
+        """
+        self._location_entity_type = value
 
     
     @property
@@ -1245,6 +1419,29 @@ class NUVirtualFirewallRule(NURESTObject):
                 
         """
         self._external_id = value
+
+    
+    @property
+    def type(self):
+        """ Get type value.
+
+            Notes:
+                Virtual Firewall Rule Type
+
+                
+        """
+        return self._type
+
+    @type.setter
+    def type(self, value):
+        """ Set type value.
+
+            Notes:
+                Virtual Firewall Rule Type
+
+                
+        """
+        self._type = value
 
     
 

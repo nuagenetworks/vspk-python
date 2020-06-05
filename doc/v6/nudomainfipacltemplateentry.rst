@@ -38,6 +38,8 @@ Attributes
 
 - ``destination_port``: The destination port to be matched if protocol is UDP or TCP. Value should be either * or single port number or a port range
 
+- ``network_entity_type``: Indicates whether the Network Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: ENTERPRISENETWORK, NETWORKMACROGROUP, PGEXPRESSION, PGEXPRESSIONTEMPLATE, POLICYGROUP, POLICYGROUPTEMPLATE, PUBLICNETWORK, SAASAPPLICATIONGROUP, SUBNET, SUBNETTEMPLATE, ZONE, ZONETEMPLATE.
+
 - ``network_id``: The destination network entity that is referenced(subnet/zone/macro)
 
 - ``network_type``: Type of the source network -    VM_SUBNET or VM_ZONE or VM_DOMAIN or SUBNET or ZONE or ENTERPRISE_NETWORK or PUBLIC_NETWORK or ANY
@@ -51,6 +53,8 @@ Attributes
 - ``enterprise_name`` (**Mandatory**): The name of the enterprise for the domains parent
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``location_entity_type``: Indicates whether the Location Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: ENTERPRISENETWORK, NETWORKMACROGROUP, PGEXPRESSION, PGEXPRESSIONTEMPLATE, POLICYGROUP, POLICYGROUPTEMPLATE, PUBLICNETWORK, REDIRECTIONTARGET, REDIRECTIONTARGETTEMPLATE, SUBNET, SUBNETTEMPLATE, ZONE, ZONETEMPLATE.
 
 - ``location_id``: The ID of the location entity (Subnet/Zone/VportTag)
 

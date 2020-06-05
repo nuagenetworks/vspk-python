@@ -97,6 +97,7 @@ class NUAllAlarm(NURESTObject):
         self._error_condition = None
         self._number_of_occurances = None
         self._external_id = None
+        self._system_id = None
         
         self.expose_attribute(local_name="target_object", remote_name="targetObject", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -113,6 +114,7 @@ class NUAllAlarm(NURESTObject):
         self.expose_attribute(local_name="error_condition", remote_name="errorCondition", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="number_of_occurances", remote_name="numberOfOccurances", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="system_id", remote_name="systemID", attribute_type=str, is_required=False, is_unique=False)
         
 
         # Fetchers
@@ -507,6 +509,33 @@ class NUAllAlarm(NURESTObject):
                 
         """
         self._external_id = value
+
+    
+    @property
+    def system_id(self):
+        """ Get system_id value.
+
+            Notes:
+                System ID of the Gateway.
+
+                
+                This attribute is named `systemID` in VSD API.
+                
+        """
+        return self._system_id
+
+    @system_id.setter
+    def system_id(self, value):
+        """ Set system_id value.
+
+            Notes:
+                System ID of the Gateway.
+
+                
+                This attribute is named `systemID` in VSD API.
+                
+        """
+        self._system_id = value
 
     
 

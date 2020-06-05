@@ -18,7 +18,7 @@ Attributes
 
 - ``peak_burst_size`` (**Mandatory**): Peak Burst Size :  The maximum burst size associated with the rate limiter in kilo-bits; only whole values are supported.
 
-- ``peak_information_rate`` (**Mandatory**): Peak Information Rate :  Peak bandwidth allowed in Mb/s; only whole values supported.
+- ``peak_information_rate`` (**Mandatory**): Peak Information Rate :  Peak bandwidth allowed in Mb/s.
 
 - ``description``: A description of the Rate Limiter object
 
@@ -26,7 +26,7 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``committed_information_rate`` (**Mandatory**): Committed Information Rate :  Committed bandwidth that is allowed in Mb/s; only whole values supported.
+- ``committed_information_rate`` (**Mandatory**): Committed Information Rate :  Committed bandwidth that is allowed in Mb/s.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

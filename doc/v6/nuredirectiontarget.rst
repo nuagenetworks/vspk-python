@@ -36,6 +36,8 @@ Attributes
 
 - ``trigger_type``: Trigger type, THIS IS READ ONLY. Possible values are NONE, GARP, .
 
+- ``auto_created``: Indicates if redirection target was auto created by the system
+
 - ``external_id``: External object ID. Used for integration with third party systems
 
 

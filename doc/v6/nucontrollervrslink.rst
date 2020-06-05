@@ -16,6 +16,8 @@ Attributes
 
 - ``vrs_personality``: Personality of associated VRS.
 
+- ``vrs_system_id``: System ID of associated VRS
+
 - ``vsc_config_state``: Indicates the configured state of the VSC.
 
 - ``vsc_current_state``: Indicates the current state of the VSC, which may or maybe not be same as the configured state.

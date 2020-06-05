@@ -70,6 +70,9 @@ from .fetchers import NUPATNATPoolsFetcher
 from .fetchers import NULDAPConfigurationsFetcher
 
 
+from .fetchers import NUIDPProfilesFetcher
+
+
 from .fetchers import NUWebCategoriesFetcher
 
 
@@ -170,6 +173,9 @@ from .fetchers import NUEnterpriseSecuritiesFetcher
 
 
 from .fetchers import NUJobsFetcher
+
+
+from .fetchers import NURolesFetcher
 
 
 from .fetchers import NUPolicyGroupCategoriesFetcher
@@ -276,33 +282,25 @@ class NUEnterprise(NURESTObject):
     
     CONST_ENCRYPTION_MANAGEMENT_MODE_MANAGED = "MANAGED"
     
-    CONST_FLOW_COLLECTION_ENABLED_ENABLED = "ENABLED"
+    CONST_ENCRYPTION_MANAGEMENT_MODE_DISABLED = "DISABLED"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_AVATAR_TYPE_URL = "URL"
+    
+    CONST_THREAT_INTELLIGENCE_ENABLED_ENABLED = "ENABLED"
     
     CONST_AVATAR_TYPE_COMPUTEDURL = "COMPUTEDURL"
     
-    CONST_ALLOWED_FORWARDING_MODE_LOCAL_AND_REMOTE = "LOCAL_AND_REMOTE"
-    
-    CONST_ALLOWED_FORWARDING_MODE_DISABLED = "DISABLED"
-    
-    CONST_ALLOWED_FORWARDING_CLASSES_NONE = "NONE"
-    
-    CONST_AVATAR_TYPE_BASE64 = "BASE64"
-    
-    CONST_ENCRYPTION_MANAGEMENT_MODE_DISABLED = "DISABLED"
-    
-    CONST_FLOW_COLLECTION_ENABLED_DISABLED = "DISABLED"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    CONST_ALLOWED_FORWARDING_CLASSES_F = "F"
     
     CONST_ALLOWED_FORWARDING_CLASSES_D = "D"
     
     CONST_ALLOWED_FORWARDING_CLASSES_E = "E"
     
-    CONST_ALLOWED_FORWARDING_CLASSES_F = "F"
+    CONST_FLOW_COLLECTION_ENABLED_DISABLED = "DISABLED"
     
     CONST_ALLOWED_FORWARDING_CLASSES_G = "G"
-    
-    CONST_AVATAR_TYPE_URL = "URL"
     
     CONST_ALLOWED_FORWARDING_CLASSES_A = "A"
     
@@ -310,11 +308,23 @@ class NUEnterprise(NURESTObject):
     
     CONST_ALLOWED_FORWARDING_CLASSES_C = "C"
     
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
     CONST_ALLOWED_FORWARDING_CLASSES_H = "H"
     
+    CONST_ALLOWED_FORWARDING_MODE_DISABLED = "DISABLED"
+    
     CONST_ALLOWED_FORWARDING_MODE_LOCAL_ONLY = "LOCAL_ONLY"
+    
+    CONST_FLOW_COLLECTION_ENABLED_ENABLED = "ENABLED"
+    
+    CONST_ALLOWED_FORWARDING_MODE_LOCAL_AND_REMOTE = "LOCAL_AND_REMOTE"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_ALLOWED_FORWARDING_CLASSES_NONE = "NONE"
+    
+    CONST_AVATAR_TYPE_BASE64 = "BASE64"
+    
+    CONST_THREAT_INTELLIGENCE_ENABLED_DISABLED = "DISABLED"
     
     
 
@@ -347,6 +357,8 @@ class NUEnterprise(NURESTObject):
         self._send_multi_cast_list_id = None
         self._description = None
         self._shared_enterprise = None
+        self._threat_intelligence_enabled = None
+        self._threat_prevention_management_enabled = None
         self._dictionary_version = None
         self._virtual_firewall_rules_enabled = None
         self._allow_advanced_qos_configuration = None
@@ -385,6 +397,8 @@ class NUEnterprise(NURESTObject):
         self.expose_attribute(local_name="send_multi_cast_list_id", remote_name="sendMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="shared_enterprise", remote_name="sharedEnterprise", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="threat_intelligence_enabled", remote_name="threatIntelligenceEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="threat_prevention_management_enabled", remote_name="threatPreventionManagementEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dictionary_version", remote_name="dictionaryVersion", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="virtual_firewall_rules_enabled", remote_name="virtualFirewallRulesEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_advanced_qos_configuration", remote_name="allowAdvancedQOSConfiguration", attribute_type=bool, is_required=False, is_unique=False)
@@ -455,6 +469,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.ldap_configurations = NULDAPConfigurationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.idp_profiles = NUIDPProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.web_categories = NUWebCategoriesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -557,6 +574,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.roles = NURolesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.policy_group_categories = NUPolicyGroupCategoriesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -964,6 +984,60 @@ class NUEnterprise(NURESTObject):
                 
         """
         self._shared_enterprise = value
+
+    
+    @property
+    def threat_intelligence_enabled(self):
+        """ Get threat_intelligence_enabled value.
+
+            Notes:
+                Determines whether or not threat intelligence is enabled
+
+                
+                This attribute is named `threatIntelligenceEnabled` in VSD API.
+                
+        """
+        return self._threat_intelligence_enabled
+
+    @threat_intelligence_enabled.setter
+    def threat_intelligence_enabled(self, value):
+        """ Set threat_intelligence_enabled value.
+
+            Notes:
+                Determines whether or not threat intelligence is enabled
+
+                
+                This attribute is named `threatIntelligenceEnabled` in VSD API.
+                
+        """
+        self._threat_intelligence_enabled = value
+
+    
+    @property
+    def threat_prevention_management_enabled(self):
+        """ Get threat_prevention_management_enabled value.
+
+            Notes:
+                Threat Prevention Management enabled for enterprise
+
+                
+                This attribute is named `threatPreventionManagementEnabled` in VSD API.
+                
+        """
+        return self._threat_prevention_management_enabled
+
+    @threat_prevention_management_enabled.setter
+    def threat_prevention_management_enabled(self, value):
+        """ Set threat_prevention_management_enabled value.
+
+            Notes:
+                Threat Prevention Management enabled for enterprise
+
+                
+                This attribute is named `threatPreventionManagementEnabled` in VSD API.
+                
+        """
+        self._threat_prevention_management_enabled = value
 
     
     @property

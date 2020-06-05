@@ -77,8 +77,6 @@ Parents
 
 - :ref:`nuzone.NUZone<nuzone>`
 
-- :ref:`nuenterprisenetwork.NUEnterpriseNetwork<nuenterprisenetwork>`
-
 - :ref:`nupermission.NUPermission<nupermission>`
 
 - :ref:`nuipreservation.NUIPReservation<nuipreservation>`
@@ -92,6 +90,8 @@ Parents
 - :ref:`nuvsp.NUVSP<nuvsp>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
 
 - :ref:`nuvsc.NUVSC<nuvsc>`
 
@@ -119,11 +119,15 @@ Parents
 
 - :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
 
+- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
+
 - :ref:`numulticastrange.NUMultiCastRange<numulticastrange>`
 
 - :ref:`nudhcpv6option.NUDHCPv6Option<nudhcpv6option>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
+
+- :ref:`nupublicnetworkmacro.NUPublicNetworkMacro<nupublicnetworkmacro>`
 
 - :ref:`nuwanservice.NUWANService<nuwanservice>`
 
@@ -141,8 +145,6 @@ Parents
 
 - :ref:`nuvsd.NUVSD<nuvsd>`
 
-- :ref:`nupublicnetworkmacro.NUPublicNetworkMacro<nupublicnetworkmacro>`
-
 - :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
 
 - :ref:`nuaddressrange.NUAddressRange<nuaddressrange>`
@@ -151,9 +153,9 @@ Parents
 
 - :ref:`nuvm.NUVM<nuvm>`
 
-- :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
+- :ref:`nuenterprisenetwork.NUEnterpriseNetwork<nuenterprisenetwork>`
 
-- :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
+- :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
 - :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`
 
@@ -161,15 +163,13 @@ Parents
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
+- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
+
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuwirelessport.NUWirelessPort<nuwirelessport>`
 
-- :ref:`nupolicygrouptemplate.NUPolicyGroupTemplate<nupolicygrouptemplate>`
-
 - :ref:`nuuser.NUUser<nuuser>`
-
-- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 
 - :ref:`numetadata.NUMetadata<numetadata>`
 

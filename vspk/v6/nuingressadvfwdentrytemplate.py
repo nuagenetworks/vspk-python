@@ -56,6 +56,8 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_NETWORK_TYPE_NETWORK_MACRO_GROUP = "NETWORK_MACRO_GROUP"
     
+    CONST_LOCATION_ENTITY_TYPE_POLICYGROUPTEMPLATE = "POLICYGROUPTEMPLATE"
+    
     CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE_GROUP = "L4_SERVICE_GROUP"
     
     CONST_ACTION_DROP = "DROP"
@@ -64,7 +66,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
     
-    CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
+    CONST_NETWORK_ENTITY_TYPE_SUBNETTEMPLATE = "SUBNETTEMPLATE"
     
     CONST_ACTION_REDIRECT = "REDIRECT"
     
@@ -72,19 +74,27 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_NETWORK_TYPE_PUBLIC_NETWORK = "PUBLIC_NETWORK"
     
+    CONST_NETWORK_ENTITY_TYPE_PGEXPRESSIONTEMPLATE = "PGEXPRESSIONTEMPLATE"
+    
     CONST_ACTION_FORWARD = "FORWARD"
     
     CONST_NETWORK_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
     CONST_REMOTE_UPLINK_PREFERENCE_DEFAULT = "DEFAULT"
     
+    CONST_NETWORK_TYPE_ANY = "ANY"
+    
     CONST_NETWORK_TYPE_POLICYGROUP = "POLICYGROUP"
     
     CONST_LOCATION_TYPE_ANY = "ANY"
     
-    CONST_NETWORK_TYPE_ENDPOINT_DOMAIN = "ENDPOINT_DOMAIN"
+    CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
     
-    CONST_NETWORK_TYPE_ANY = "ANY"
+    CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
+    
+    CONST_NETWORK_ENTITY_TYPE_ZONETEMPLATE = "ZONETEMPLATE"
+    
+    CONST_REDIRECTION_TARGET_ENTITY_TYPE_REDIRECTIONTARGET = "REDIRECTIONTARGET"
     
     CONST_LOCATION_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
@@ -96,7 +106,11 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_FC_OVERRIDE_NONE = "NONE"
     
+    CONST_LOCATION_ENTITY_TYPE_ZONETEMPLATE = "ZONETEMPLATE"
+    
     CONST_REMOTE_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
+    
+    CONST_NETWORK_ENTITY_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
     CONST_REDIRECT_REWRITE_TYPE_VLAN = "VLAN"
     
@@ -120,6 +134,8 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_APP_TYPE_APPLICATION = "APPLICATION"
     
+    CONST_NETWORK_TYPE_ENDPOINT_DOMAIN = "ENDPOINT_DOMAIN"
+    
     CONST_NETWORK_TYPE_UNDERLAY_INTERNET_POLICYGROUP = "UNDERLAY_INTERNET_POLICYGROUP"
     
     CONST_FC_OVERRIDE_H = "H"
@@ -128,17 +144,27 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_UPLINK_PREFERENCE_DEFAULT = "DEFAULT"
     
-    CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
+    CONST_LOCATION_ENTITY_TYPE_SUBNET = "SUBNET"
     
     CONST_NETWORK_TYPE_SAAS_APPLICATION_GROUP = "SAAS_APPLICATION_GROUP"
     
     CONST_NETWORK_TYPE_ENDPOINT_SUBNET = "ENDPOINT_SUBNET"
     
+    CONST_NETWORK_TYPE_ENDPOINT_ZONE = "ENDPOINT_ZONE"
+    
     CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE = "L4_SERVICE"
+    
+    CONST_LOCATION_ENTITY_TYPE_REDIRECTIONTARGET = "REDIRECTIONTARGET"
     
     CONST_FAILSAFE_DATAPATH_FAIL_TO_BLOCK = "FAIL_TO_BLOCK"
     
     CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
+    
+    CONST_NETWORK_ENTITY_TYPE_ZONE = "ZONE"
+    
+    CONST_REDIRECTION_TARGET_ENTITY_TYPE_REDIRECTIONTARGETTEMPLATE = "REDIRECTIONTARGETTEMPLATE"
+    
+    CONST_LOCATION_ENTITY_TYPE_PGEXPRESSIONTEMPLATE = "PGEXPRESSIONTEMPLATE"
     
     CONST_LOCATION_TYPE_SUBNET = "SUBNET"
     
@@ -150,21 +176,35 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
     
     CONST_WEB_FILTER_TYPE_WEB_DOMAIN_NAME = "WEB_DOMAIN_NAME"
     
+    CONST_LOCATION_ENTITY_TYPE_POLICYGROUP = "POLICYGROUP"
+    
+    CONST_NETWORK_ENTITY_TYPE_SUBNET = "SUBNET"
+    
     CONST_POLICY_STATE_LIVE = "LIVE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_LOCATION_ENTITY_TYPE_SUBNETTEMPLATE = "SUBNETTEMPLATE"
+    
+    CONST_NETWORK_ENTITY_TYPE_POLICYGROUP = "POLICYGROUP"
     
     CONST_WEB_FILTER_TYPE_WEB_CATEGORY = "WEB_CATEGORY"
     
     CONST_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
     
-    CONST_NETWORK_TYPE_ENDPOINT_ZONE = "ENDPOINT_ZONE"
+    CONST_NETWORK_ENTITY_TYPE_POLICYGROUPTEMPLATE = "POLICYGROUPTEMPLATE"
     
     CONST_NETWORK_TYPE_ZONE = "ZONE"
+    
+    CONST_LOCATION_ENTITY_TYPE_ZONE = "ZONE"
+    
+    CONST_LOCATION_ENTITY_TYPE_REDIRECTIONTARGETTEMPLATE = "REDIRECTIONTARGETTEMPLATE"
     
     CONST_ADDRESS_OVERRIDE_TYPE_MACRO_GROUP = "MACRO_GROUP"
     
     CONST_REMOTE_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
+    
+    CONST_LOCATION_ENTITY_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
     CONST_REMOTE_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
     
@@ -209,9 +249,11 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self._redirect_rewrite_type = None
         self._redirect_rewrite_value = None
         self._redirect_vport_tag_id = None
+        self._redirection_target_entity_type = None
         self._remote_uplink_preference = None
         self._description = None
         self._destination_port = None
+        self._network_entity_type = None
         self._network_id = None
         self._network_type = None
         self._mirror_destination_group_id = None
@@ -221,6 +263,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self._embedded_metadata = None
         self._enterprise_name = None
         self._entity_scope = None
+        self._location_entity_type = None
         self._location_id = None
         self._location_type = None
         self._policy_state = None
@@ -237,6 +280,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self._associated_live_template_id = None
         self._associated_traffic_type = None
         self._associated_traffic_type_id = None
+        self._associated_virtual_firewall_rule_id = None
         self._stats_id = None
         self._stats_logging_enabled = None
         self._ether_type = None
@@ -260,9 +304,11 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="redirect_rewrite_type", remote_name="redirectRewriteType", attribute_type=str, is_required=False, is_unique=True, choices=[u'VLAN'])
         self.expose_attribute(local_name="redirect_rewrite_value", remote_name="redirectRewriteValue", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redirect_vport_tag_id", remote_name="redirectVPortTagID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="redirection_target_entity_type", remote_name="redirectionTargetEntityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'REDIRECTIONTARGET', u'REDIRECTIONTARGETTEMPLATE'])
         self.expose_attribute(local_name="remote_uplink_preference", remote_name="remoteUplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="network_entity_type", remote_name="networkEntityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'PGEXPRESSION', u'PGEXPRESSIONTEMPLATE', u'POLICYGROUP', u'POLICYGROUPTEMPLATE', u'SUBNET', u'SUBNETTEMPLATE', u'ZONE', u'ZONETEMPLATE'])
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'NETWORK_MACRO_GROUP', u'PGEXPRESSION', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SAAS_APPLICATION_GROUP', u'SUBNET', u'UNDERLAY_INTERNET_POLICYGROUP', u'ZONE'])
         self.expose_attribute(local_name="mirror_destination_group_id", remote_name="mirrorDestinationGroupID", attribute_type=str, is_required=False, is_unique=False)
@@ -272,6 +318,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_name", remote_name="enterpriseName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="location_entity_type", remote_name="locationEntityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'PGEXPRESSION', u'PGEXPRESSIONTEMPLATE', u'POLICYGROUP', u'POLICYGROUPTEMPLATE', u'REDIRECTIONTARGET', u'REDIRECTIONTARGETTEMPLATE', u'SUBNET', u'SUBNETTEMPLATE', u'ZONE', u'ZONETEMPLATE'])
         self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="location_type", remote_name="locationType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ANY', u'PGEXPRESSION', u'POLICYGROUP', u'SUBNET', u'ZONE'])
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
@@ -288,6 +335,7 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="associated_live_template_id", remote_name="associatedLiveTemplateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_traffic_type", remote_name="associatedTrafficType", attribute_type=str, is_required=False, is_unique=False, choices=[u'L4_SERVICE', u'L4_SERVICE_GROUP'])
         self.expose_attribute(local_name="associated_traffic_type_id", remote_name="associatedTrafficTypeID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_virtual_firewall_rule_id", remote_name="associatedVirtualFirewallRuleID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_id", remote_name="statsID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_logging_enabled", remote_name="statsLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ether_type", remote_name="etherType", attribute_type=str, is_required=True, is_unique=False)
@@ -793,6 +841,33 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
 
     
     @property
+    def redirection_target_entity_type(self):
+        """ Get redirection_target_entity_type value.
+
+            Notes:
+                Indicates whether the Redirection Target of ACL Entry was derived from a L3 Domain template or instance. Possible Values: REDIRECTIONTARGET, REDIRECTIONTARGETTEMPLATE.
+
+                
+                This attribute is named `redirectionTargetEntityType` in VSD API.
+                
+        """
+        return self._redirection_target_entity_type
+
+    @redirection_target_entity_type.setter
+    def redirection_target_entity_type(self, value):
+        """ Set redirection_target_entity_type value.
+
+            Notes:
+                Indicates whether the Redirection Target of ACL Entry was derived from a L3 Domain template or instance. Possible Values: REDIRECTIONTARGET, REDIRECTIONTARGETTEMPLATE.
+
+                
+                This attribute is named `redirectionTargetEntityType` in VSD API.
+                
+        """
+        self._redirection_target_entity_type = value
+
+    
+    @property
     def remote_uplink_preference(self):
         """ Get remote_uplink_preference value.
 
@@ -867,6 +942,33 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
                 
         """
         self._destination_port = value
+
+    
+    @property
+    def network_entity_type(self):
+        """ Get network_entity_type value.
+
+            Notes:
+                Indicates whether the Network Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: SUBNETTEMPLATE, ZONETEMPLATE, POLICYGROUPTEMPLATE, PGEXPRESSIONTEMPLATE, SUBNET, ZONE, POLICYGROUP, PGEXPRESSION.
+
+                
+                This attribute is named `networkEntityType` in VSD API.
+                
+        """
+        return self._network_entity_type
+
+    @network_entity_type.setter
+    def network_entity_type(self, value):
+        """ Set network_entity_type value.
+
+            Notes:
+                Indicates whether the Network Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: SUBNETTEMPLATE, ZONETEMPLATE, POLICYGROUPTEMPLATE, PGEXPRESSIONTEMPLATE, SUBNET, ZONE, POLICYGROUP, PGEXPRESSION.
+
+                
+                This attribute is named `networkEntityType` in VSD API.
+                
+        """
+        self._network_entity_type = value
 
     
     @property
@@ -1110,6 +1212,33 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def location_entity_type(self):
+        """ Get location_entity_type value.
+
+            Notes:
+                Indicates whether the Location Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: SUBNETTEMPLATE, ZONETEMPLATE, POLICYGROUPTEMPLATE, PGEXPRESSIONTEMPLATE, REDIRECTIONTARGETTEMPLATE, SUBNET, ZONE, POLICYGROUP, PGEXPRESSION, REDIRECTIONTARGET.
+
+                
+                This attribute is named `locationEntityType` in VSD API.
+                
+        """
+        return self._location_entity_type
+
+    @location_entity_type.setter
+    def location_entity_type(self, value):
+        """ Set location_entity_type value.
+
+            Notes:
+                Indicates whether the Location Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: SUBNETTEMPLATE, ZONETEMPLATE, POLICYGROUPTEMPLATE, PGEXPRESSIONTEMPLATE, REDIRECTIONTARGETTEMPLATE, SUBNET, ZONE, POLICYGROUP, PGEXPRESSION, REDIRECTIONTARGET.
+
+                
+                This attribute is named `locationEntityType` in VSD API.
+                
+        """
+        self._location_entity_type = value
 
     
     @property
@@ -1534,6 +1663,33 @@ class NUIngressAdvFwdEntryTemplate(NURESTObject):
                 
         """
         self._associated_traffic_type_id = value
+
+    
+    @property
+    def associated_virtual_firewall_rule_id(self):
+        """ Get associated_virtual_firewall_rule_id value.
+
+            Notes:
+                The ID of the Virtual Firewall Rule, if this was derived as part of the Virtual Firewall Rule creation
+
+                
+                This attribute is named `associatedVirtualFirewallRuleID` in VSD API.
+                
+        """
+        return self._associated_virtual_firewall_rule_id
+
+    @associated_virtual_firewall_rule_id.setter
+    def associated_virtual_firewall_rule_id(self, value):
+        """ Set associated_virtual_firewall_rule_id value.
+
+            Notes:
+                The ID of the Virtual Firewall Rule, if this was derived as part of the Virtual Firewall Rule creation
+
+                
+                This attribute is named `associatedVirtualFirewallRuleID` in VSD API.
+                
+        """
+        self._associated_virtual_firewall_rule_id = value
 
     
     @property

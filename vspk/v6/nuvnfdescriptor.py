@@ -52,11 +52,13 @@ class NUVNFDescriptor(NURESTObject):
     
     ## Constants
     
+    CONST_TYPE_WAN_OPT = "WAN_OPT"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_TYPE_FIREWALL = "FIREWALL"
     
-    CONST_TYPE_WAN_OPT = "WAN_OPT"
+    CONST_TYPE_THREAT_PREVENTION = "THREAT_PREVENTION"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
@@ -105,7 +107,7 @@ class NUVNFDescriptor(NURESTObject):
         self.expose_attribute(local_name="associated_vnf_threshold_policy_id", remote_name="associatedVNFThresholdPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="storage_gb", remote_name="storageGB", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'FIREWALL', u'WAN_OPT'])
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'FIREWALL', u'THREAT_PREVENTION', u'WAN_OPT'])
         
 
         # Fetchers

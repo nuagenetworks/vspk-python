@@ -1331,7 +1331,7 @@ class NUVCenterCluster(NURESTObject):
         """ Get network_uplink_interface value.
 
             Notes:
-                Network Upling Interface to support PAT/NAT with no tunnels on VRS-VM
+                Network Uplink Interface to support PAT/NAT with no tunnels on VRS-VM
 
                 
                 This attribute is named `networkUplinkInterface` in VSD API.
@@ -1344,7 +1344,7 @@ class NUVCenterCluster(NURESTObject):
         """ Set network_uplink_interface value.
 
             Notes:
-                Network Upling Interface to support PAT/NAT with no tunnels on VRS-VM
+                Network Uplink Interface to support PAT/NAT with no tunnels on VRS-VM
 
                 
                 This attribute is named `networkUplinkInterface` in VSD API.

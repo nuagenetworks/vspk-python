@@ -110,6 +110,8 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self._metadata_upgrade_path = None
         self._flow_eviction_threshold = None
         self._embedded_metadata = None
+        self._enable_underlay_tests_during_activation = None
+        self._underlay_test_server = None
         self._enterprise_id = None
         self._entity_scope = None
         self._controller_less_duration = None
@@ -122,6 +124,9 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self._proxy_dns_name = None
         self._use_two_factor = None
         self._stats_collector_port = None
+        self._run_underlay_bandwidth_test = None
+        self._run_underlay_connectivity_test = None
+        self._run_underlay_mtu_discovery_test = None
         self._external_id = None
         self._system_sync_scheduler = None
         
@@ -141,6 +146,8 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self.expose_attribute(local_name="metadata_upgrade_path", remote_name="metadataUpgradePath", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_eviction_threshold", remote_name="flowEvictionThreshold", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enable_underlay_tests_during_activation", remote_name="enableUnderlayTestsDuringActivation", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="underlay_test_server", remote_name="underlayTestServer", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="controller_less_duration", remote_name="controllerLessDuration", attribute_type=str, is_required=False, is_unique=False)
@@ -153,6 +160,9 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self.expose_attribute(local_name="proxy_dns_name", remote_name="proxyDNSName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="use_two_factor", remote_name="useTwoFactor", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_collector_port", remote_name="statsCollectorPort", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="run_underlay_bandwidth_test", remote_name="runUnderlayBandwidthTest", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="run_underlay_connectivity_test", remote_name="runUnderlayConnectivityTest", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="run_underlay_mtu_discovery_test", remote_name="runUnderlayMTUDiscoveryTest", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="system_sync_scheduler", remote_name="systemSyncScheduler", attribute_type=str, is_required=False, is_unique=False)
         
@@ -595,6 +605,60 @@ class NUInfrastructureGatewayProfile(NURESTObject):
 
     
     @property
+    def enable_underlay_tests_during_activation(self):
+        """ Get enable_underlay_tests_during_activation value.
+
+            Notes:
+                Enables underlay tests during gateway activation. Underlay tests will cause the bootstrapping operation to be about two minutes longer.
+
+                
+                This attribute is named `enableUnderlayTestsDuringActivation` in VSD API.
+                
+        """
+        return self._enable_underlay_tests_during_activation
+
+    @enable_underlay_tests_during_activation.setter
+    def enable_underlay_tests_during_activation(self, value):
+        """ Set enable_underlay_tests_during_activation value.
+
+            Notes:
+                Enables underlay tests during gateway activation. Underlay tests will cause the bootstrapping operation to be about two minutes longer.
+
+                
+                This attribute is named `enableUnderlayTestsDuringActivation` in VSD API.
+                
+        """
+        self._enable_underlay_tests_during_activation = value
+
+    
+    @property
+    def underlay_test_server(self):
+        """ Get underlay_test_server value.
+
+            Notes:
+                Underlay Test Server (FQDN or IP Address). Required when the Underlay test at bootstrap feature is enabled or to allow On-Demand tests to be run.
+
+                
+                This attribute is named `underlayTestServer` in VSD API.
+                
+        """
+        return self._underlay_test_server
+
+    @underlay_test_server.setter
+    def underlay_test_server(self, value):
+        """ Set underlay_test_server value.
+
+            Notes:
+                Underlay Test Server (FQDN or IP Address). Required when the Underlay test at bootstrap feature is enabled or to allow On-Demand tests to be run.
+
+                
+                This attribute is named `underlayTestServer` in VSD API.
+                
+        """
+        self._underlay_test_server = value
+
+    
+    @property
     def enterprise_id(self):
         """ Get enterprise_id value.
 
@@ -916,6 +980,87 @@ class NUInfrastructureGatewayProfile(NURESTObject):
                 
         """
         self._stats_collector_port = value
+
+    
+    @property
+    def run_underlay_bandwidth_test(self):
+        """ Get run_underlay_bandwidth_test value.
+
+            Notes:
+                Run the underlay bandwidth test during activation. Will only have an effect if the Underlay tests at bootstrap are enabled.
+
+                
+                This attribute is named `runUnderlayBandwidthTest` in VSD API.
+                
+        """
+        return self._run_underlay_bandwidth_test
+
+    @run_underlay_bandwidth_test.setter
+    def run_underlay_bandwidth_test(self, value):
+        """ Set run_underlay_bandwidth_test value.
+
+            Notes:
+                Run the underlay bandwidth test during activation. Will only have an effect if the Underlay tests at bootstrap are enabled.
+
+                
+                This attribute is named `runUnderlayBandwidthTest` in VSD API.
+                
+        """
+        self._run_underlay_bandwidth_test = value
+
+    
+    @property
+    def run_underlay_connectivity_test(self):
+        """ Get run_underlay_connectivity_test value.
+
+            Notes:
+                Run the underlay connectivity test during activation. Will only have an effect if the Underlay tests at bootstrap are enabled.
+
+                
+                This attribute is named `runUnderlayConnectivityTest` in VSD API.
+                
+        """
+        return self._run_underlay_connectivity_test
+
+    @run_underlay_connectivity_test.setter
+    def run_underlay_connectivity_test(self, value):
+        """ Set run_underlay_connectivity_test value.
+
+            Notes:
+                Run the underlay connectivity test during activation. Will only have an effect if the Underlay tests at bootstrap are enabled.
+
+                
+                This attribute is named `runUnderlayConnectivityTest` in VSD API.
+                
+        """
+        self._run_underlay_connectivity_test = value
+
+    
+    @property
+    def run_underlay_mtu_discovery_test(self):
+        """ Get run_underlay_mtu_discovery_test value.
+
+            Notes:
+                Run the underlay MTU discovery test during activation. Will only have an effect if the Underlay tests at bootstrap are enabled.
+
+                
+                This attribute is named `runUnderlayMTUDiscoveryTest` in VSD API.
+                
+        """
+        return self._run_underlay_mtu_discovery_test
+
+    @run_underlay_mtu_discovery_test.setter
+    def run_underlay_mtu_discovery_test(self, value):
+        """ Set run_underlay_mtu_discovery_test value.
+
+            Notes:
+                Run the underlay MTU discovery test during activation. Will only have an effect if the Underlay tests at bootstrap are enabled.
+
+                
+                This attribute is named `runUnderlayMTUDiscoveryTest` in VSD API.
+                
+        """
+        self._run_underlay_mtu_discovery_test = value
 
     
     @property

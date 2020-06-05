@@ -88,6 +88,7 @@ class NUTestSuiteRun(NURESTObject):
         self._last_updated_by = None
         self._datapath_id = None
         self._destination = None
+        self._birth_certificate = None
         self._embedded_metadata = None
         self._entity_scope = None
         self._domain_name = None
@@ -96,6 +97,7 @@ class NUTestSuiteRun(NURESTObject):
         self._associated_entity_type = None
         self._associated_test_suite_id = None
         self._associated_test_suite_name = None
+        self._associated_underlay_test_id = None
         self._subnet_name = None
         self._external_id = None
         
@@ -104,6 +106,7 @@ class NUTestSuiteRun(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_id", remote_name="datapathID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination", remote_name="destination", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="birth_certificate", remote_name="birthCertificate", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
@@ -112,6 +115,7 @@ class NUTestSuiteRun(NURESTObject):
         self.expose_attribute(local_name="associated_entity_type", remote_name="associatedEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_test_suite_id", remote_name="associatedTestSuiteID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="associated_test_suite_name", remote_name="associatedTestSuiteName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_underlay_test_id", remote_name="associatedUnderlayTestID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="subnet_name", remote_name="subnetName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
@@ -261,6 +265,33 @@ class NUTestSuiteRun(NURESTObject):
                 
         """
         self._destination = value
+
+    
+    @property
+    def birth_certificate(self):
+        """ Get birth_certificate value.
+
+            Notes:
+                Flag to mark this test as the Birth Certificate (i.e. it was run during activation)
+
+                
+                This attribute is named `birthCertificate` in VSD API.
+                
+        """
+        return self._birth_certificate
+
+    @birth_certificate.setter
+    def birth_certificate(self, value):
+        """ Set birth_certificate value.
+
+            Notes:
+                Flag to mark this test as the Birth Certificate (i.e. it was run during activation)
+
+                
+                This attribute is named `birthCertificate` in VSD API.
+                
+        """
+        self._birth_certificate = value
 
     
     @property
@@ -477,6 +508,33 @@ class NUTestSuiteRun(NURESTObject):
                 
         """
         self._associated_test_suite_name = value
+
+    
+    @property
+    def associated_underlay_test_id(self):
+        """ Get associated_underlay_test_id value.
+
+            Notes:
+                The associated underlay test (if applicable)
+
+                
+                This attribute is named `associatedUnderlayTestID` in VSD API.
+                
+        """
+        return self._associated_underlay_test_id
+
+    @associated_underlay_test_id.setter
+    def associated_underlay_test_id(self, value):
+        """ Set associated_underlay_test_id value.
+
+            Notes:
+                The associated underlay test (if applicable)
+
+                
+                This attribute is named `associatedUnderlayTestID` in VSD API.
+                
+        """
+        self._associated_underlay_test_id = value
 
     
     @property

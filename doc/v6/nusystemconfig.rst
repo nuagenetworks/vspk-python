@@ -80,6 +80,8 @@ Attributes
 
 - ``vport_init_stateful_timer``: Defines the timeout in seconds for vport initialization to stateful. Default value is 300 seconds and the timeout should be within a range going from 0 to 86400 seconds.
 
+- ``ipv6_extended_prefixes_enabled``: Allows the creation of IPv6 subnets and routes with masks longer than /64.
+
 - ``lru_cache_size_per_subnet``: Least Recently Used (LRU) Cache map size per subnet.  Serves to hold the deleted VM instances' IP addresses.
 
 - ``vsc_on_same_version_as_vsd``: This flag is used to indicate that whether VSC is on the same version as VSD or not.
@@ -132,6 +134,8 @@ Attributes
 
 - ``max_response``: Defines maximum results returned by the REST call (allowed maximum value is 5000).
 
+- ``rbac_enabled``: Enables the advanced granular permissions feature. This should not be enabled without prior discussion and agreement with the Nuage Product team, as this feature is only qualified for a limited set of use cases.
+
 - ``accumulate_licenses_enabled``: Whether the various VRS license flavours be merged in one pool.
 
 - ``vcin_load_balancer_ip``: If VCIN Active/Standby is enabled, this needs to be the load-balancer IP which sits in front of the Active and Standby VCIN nodes. The VRS will make its API calls to this load-balancer
@@ -141,6 +145,8 @@ Attributes
 - ``secondary_rt_lower_limit``: Secondary route target lower limit.
 
 - ``secondary_rt_upper_limit``: Secondary route target upper limit.
+
+- ``denied_flow_collection_enabled``: When this option is selected, VSS will only store flows that are denied by security policy (implicit or explicit ACLs). This requires a valid VSS license and Flow Collection enabled.
 
 - ``per_domain_vlan_id_enabled``: Determines whether per domain VLAN ID generation is required.
 
@@ -153,6 +159,18 @@ Attributes
 - ``offset_customer_id``: Customer ID offset, this value has to be set before JBoss starts, following its starting, any change of value will be ignored. This is a system wide value.
 
 - ``offset_service_id``: Service ID offset, this value has to be set before JBoss starts during the time of VSD installation, from thereon, any change of value will be ignored. This is a system wide value.
+
+- ``threat_intelligence_enabled``: Enables IP based threat intelligence. This requires Flow Collection to be enabled.
+
+- ``threat_prevention_server``: Specifies the Threat Prevention Management server location.
+
+- ``threat_prevention_server_password``: Password to access Threat Prevention Server Password
+
+- ``threat_prevention_server_proxy_port``: Destination TCP Port on the Proxy to connect to the Threat Prevention Management Server
+
+- ``threat_prevention_server_username``: Username to accessThreat Prevention management Server.
+
+- ``threat_prevention_syslog_proxy_port``: Syslog server port for Threat Prevention Service
 
 - ``virtual_firewall_rules_enabled``: Enable Virtual Firewall Rule creation and management. This will be available only with VSS license
 
@@ -301,6 +319,8 @@ Attributes
 - ``two_factor_code_length``: The number of characters in the generated Two Factor Code for bootstrapping gateways. (min = 4, max = 10)
 
 - ``two_factor_code_seed_length``: Two Factor Seed length in bytes for generating the bootstrapping code. (min = 0, max = 255)
+
+- ``explicit_acl_matching_enabled``: When this option is selected, VSS will only store allow/denied flows that matches explicit ingress/egress security ACL. This requires a valid VSS license and Flow Collection enabled.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

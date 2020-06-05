@@ -16,7 +16,7 @@ Attributes
 
 - ``ik_ev1_mode``: Mode for IKEv1
 
-- ``ip_address``: IP Address of the IKEv2 Gateway
+- ``ip_address`` (**Mandatory**): IP Address of the IKEv2 Gateway
 
 - ``name``: Name of the IKEv2 Gateway
 

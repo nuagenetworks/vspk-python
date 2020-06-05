@@ -53,11 +53,15 @@ class NUNSGatewaySummary(NURESTObject):
     
     CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_ACK = "NOTIFICATION_APP_REQ_ACK"
     
+    CONST_PERSONALITY_NSG = "NSG"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_BOOTSTRAP_STATUS_QUARANTINED = "QUARANTINED"
     
     CONST_BOOTSTRAP_STATUS_REVOKED = "REVOKED"
+    
+    CONST_PERSONALITY_NSGDUC = "NSGDUC"
     
     CONST_BOOTSTRAP_STATUS_CERTIFICATE_SIGNED = "CERTIFICATE_SIGNED"
     
@@ -66,6 +70,8 @@ class NUNSGatewaySummary(NURESTObject):
     CONST_BOOTSTRAP_STATUS_INACTIVE = "INACTIVE"
     
     CONST_BOOTSTRAP_STATUS_NOTIFICATION_APP_REQ_SENT = "NOTIFICATION_APP_REQ_SENT"
+    
+    CONST_PERSONALITY_NSGBR = "NSGBR"
     
     
 
@@ -95,6 +101,9 @@ class NUNSGatewaySummary(NURESTObject):
         self._latitude = None
         self._address = None
         self._redundant_group_id = None
+        self._redundant_group_name = None
+        self._personality = None
+        self._description = None
         self._timezone_id = None
         self._minor_alarms_count = None
         self._embedded_metadata = None
@@ -119,6 +128,9 @@ class NUNSGatewaySummary(NURESTObject):
         self.expose_attribute(local_name="latitude", remote_name="latitude", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redundant_group_id", remote_name="redundantGroupID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="redundant_group_name", remote_name="redundantGroupName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'NSG', u'NSGBR', u'NSGDUC'])
+        self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="timezone_id", remote_name="timezoneID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="minor_alarms_count", remote_name="minorAlarmsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
@@ -381,6 +393,79 @@ class NUNSGatewaySummary(NURESTObject):
                 
         """
         self._redundant_group_id = value
+
+    
+    @property
+    def redundant_group_name(self):
+        """ Get redundant_group_name value.
+
+            Notes:
+                The Name of the Redundant Group which has this gateway
+
+                
+                This attribute is named `redundantGroupName` in VSD API.
+                
+        """
+        return self._redundant_group_name
+
+    @redundant_group_name.setter
+    def redundant_group_name(self, value):
+        """ Set redundant_group_name value.
+
+            Notes:
+                The Name of the Redundant Group which has this gateway
+
+                
+                This attribute is named `redundantGroupName` in VSD API.
+                
+        """
+        self._redundant_group_name = value
+
+    
+    @property
+    def personality(self):
+        """ Get personality value.
+
+            Notes:
+                Personality of the corresponding Network Services Gateway
+
+                
+        """
+        return self._personality
+
+    @personality.setter
+    def personality(self, value):
+        """ Set personality value.
+
+            Notes:
+                Personality of the corresponding Network Services Gateway
+
+                
+        """
+        self._personality = value
+
+    
+    @property
+    def description(self):
+        """ Get description value.
+
+            Notes:
+                A description of the NSG
+
+                
+        """
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        """ Set description value.
+
+            Notes:
+                A description of the NSG
+
+                
+        """
+        self._description = value
 
     
     @property

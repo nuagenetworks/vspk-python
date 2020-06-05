@@ -98,6 +98,8 @@ Attributes
 
 - ``multicast``: Indicates multicast policy on Vport.
 
+- ``auto_created``: Indicates if vport was auto created by the system
+
 - ``gw_eligible``: Indicates that this vport is eligible to be given in gateway vport config request. It becomes eligible when it has properly attached host or bridge interfaces.
 
 - ``external_id``: External object ID. Used for integration with third party systems
@@ -163,6 +165,8 @@ Parents
 
 - :ref:`nudomain.NUDomain<nudomain>`
 
+- :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
+
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
 - :ref:`nuvrs.NUVRS<nuvrs>`
@@ -176,8 +180,6 @@ Parents
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`
-
-- :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
 
 - :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
 

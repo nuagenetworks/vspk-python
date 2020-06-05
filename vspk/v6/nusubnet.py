@@ -73,6 +73,9 @@ from .fetchers import NUVMsFetcher
 from .fetchers import NUVMInterfacesFetcher
 
 
+from .fetchers import NUVMIPReservationsFetcher
+
+
 from .fetchers import NUEnterprisePermissionsFetcher
 
 
@@ -151,9 +154,13 @@ class NUSubnet(NURESTObject):
     
     CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
     
+    CONST_L2_ENCAP_TYPE_VLAN = "VLAN"
+    
     CONST_RESOURCE_TYPE_PUBLIC = "PUBLIC"
     
     CONST_UNDERLAY_ENABLED_INHERITED = "INHERITED"
+    
+    CONST_L2_ENCAP_TYPE_VXLAN = "VXLAN"
     
     CONST_USE_GLOBAL_MAC_ENTERPRISE_DEFAULT = "ENTERPRISE_DEFAULT"
     
@@ -167,6 +174,8 @@ class NUSubnet(NURESTObject):
     
     CONST_MULTICAST_INHERITED = "INHERITED"
     
+    CONST_L2_ENCAP_TYPE_MPLSOUDP = "MPLSoUDP"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_DHCP_RELAY_STATUS_ENABLED = "ENABLED"
@@ -174,6 +183,8 @@ class NUSubnet(NURESTObject):
     CONST_MULTICAST_DISABLED = "DISABLED"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_L2_ENCAP_TYPE_MPLS = "MPLS"
     
     CONST_ENCRYPTION_DISABLED = "DISABLED"
     
@@ -208,6 +219,7 @@ class NUSubnet(NURESTObject):
 
         # Read/Write Attributes
         
+        self._l2_encap_type = None
         self._pat_enabled = None
         self._dhcp_relay_status = None
         self._dpi = None
@@ -258,6 +270,7 @@ class NUSubnet(NURESTObject):
         self._customer_id = None
         self._external_id = None
         
+        self.expose_attribute(local_name="l2_encap_type", remote_name="l2EncapType", attribute_type=str, is_required=False, is_unique=False, choices=[u'MPLS', u'MPLSoUDP', u'VLAN', u'VXLAN'])
         self.expose_attribute(local_name="pat_enabled", remote_name="PATEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="dhcp_relay_status", remote_name="DHCPRelayStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
@@ -357,6 +370,9 @@ class NUSubnet(NURESTObject):
         self.vm_interfaces = NUVMInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.vmip_reservations = NUVMIPReservationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.enterprise_permissions = NUEnterprisePermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -393,6 +409,33 @@ class NUSubnet(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def l2_encap_type(self):
+        """ Get l2_encap_type value.
+
+            Notes:
+                Subnet Tunnel Type, possible values are MPLS, MPLSoUDP, VLAN and VXLAN.
+
+                
+                This attribute is named `l2EncapType` in VSD API.
+                
+        """
+        return self._l2_encap_type
+
+    @l2_encap_type.setter
+    def l2_encap_type(self, value):
+        """ Set l2_encap_type value.
+
+            Notes:
+                Subnet Tunnel Type, possible values are MPLS, MPLSoUDP, VLAN and VXLAN.
+
+                
+                This attribute is named `l2EncapType` in VSD API.
+                
+        """
+        self._l2_encap_type = value
+
     
     @property
     def pat_enabled(self):

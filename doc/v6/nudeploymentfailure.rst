@@ -93,5 +93,7 @@ Parents
 
 - :ref:`nubgpneighbor.NUBGPNeighbor<nubgpneighbor>`
 
+- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
+
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

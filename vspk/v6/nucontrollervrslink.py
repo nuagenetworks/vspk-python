@@ -141,6 +141,7 @@ class NUControllerVRSLink(NURESTObject):
         
         self._vrsid = None
         self._vrs_personality = None
+        self._vrs_system_id = None
         self._vsc_config_state = None
         self._vsc_current_state = None
         self._jsonrpc_connection_state = None
@@ -160,6 +161,7 @@ class NUControllerVRSLink(NURESTObject):
         
         self.expose_attribute(local_name="vrsid", remote_name="VRSID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_personality", remote_name="VRSPersonality", attribute_type=str, is_required=False, is_unique=False, choices=[u'HARDWARE_VTEP', u'NONE', u'NSG', u'NSGBR', u'NSGDUC', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'VRS', u'VRSB', u'VRSG'])
+        self.expose_attribute(local_name="vrs_system_id", remote_name="VRSSystemId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsc_config_state", remote_name="VSCConfigState", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'SECONDARY'])
         self.expose_attribute(local_name="vsc_current_state", remote_name="VSCCurrentState", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'SECONDARY'])
         self.expose_attribute(local_name="jsonrpc_connection_state", remote_name="JSONRPCConnectionState", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'NONE', u'UP'])
@@ -252,6 +254,33 @@ class NUControllerVRSLink(NURESTObject):
                 
         """
         self._vrs_personality = value
+
+    
+    @property
+    def vrs_system_id(self):
+        """ Get vrs_system_id value.
+
+            Notes:
+                System ID of associated VRS
+
+                
+                This attribute is named `VRSSystemId` in VSD API.
+                
+        """
+        return self._vrs_system_id
+
+    @vrs_system_id.setter
+    def vrs_system_id(self, value):
+        """ Set vrs_system_id value.
+
+            Notes:
+                System ID of associated VRS
+
+                
+                This attribute is named `VRSSystemId` in VSD API.
+                
+        """
+        self._vrs_system_id = value
 
     
     @property

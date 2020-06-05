@@ -72,6 +72,8 @@ Attributes
 
 - ``dhcp_server_addresses``: when DHCPBehaviorType is RELAY, then DHCP Server IP Address needs to be set
 
+- ``threat_intelligence_enabled``: Determines whether or not threat intelligence is enabled
+
 - ``global_routing_enabled``: Indicates if this domain is a globally routable domain or not - boolean true/false
 
 - ``flow_collection_enabled``: Determines whether or not flow collection is enabled.
@@ -109,6 +111,8 @@ Attributes
 - ``create_back_haul_subnet``: Determines if BackHaul Subnet should be created or not.
 
 - ``associated_bgp_profile_id``: None
+
+- ``associated_idp_profile_id``: The associated IDP Profile ID
 
 - ``associated_multicast_channel_map_id``: The ID of the Multi Cast Channel Map  this domain is associated with. This has to be set when  enableMultiCast is set to ENABLED
 
@@ -183,6 +187,7 @@ Children
 :ref:`nuqos.NUQOS<nuqos>`                                                                                                                                        ``qoss`` 
 :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`                                                                                                          ``host_interfaces`` 
 :ref:`nuroutingpolicy.NURoutingPolicy<nuroutingpolicy>`                                                                                                          ``routing_policies`` 
+:ref:`nuroutingpolicybinding.NURoutingPolicyBinding<nuroutingpolicybinding>`                                                                                     ``routing_policy_bindings`` 
 :ref:`nuspatsourcespool.NUSPATSourcesPool<nuspatsourcespool>`                                                                                                    ``spat_sources_pools`` 
 :ref:`nuuplinkrd.NUUplinkRD<nuuplinkrd>`                                                                                                                         ``uplink_rds`` 
 :ref:`nuvpnconnection.NUVPNConnection<nuvpnconnection>`                                                                                                          ``vpn_connections`` 
@@ -220,6 +225,8 @@ Parents
 - :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
+
+- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

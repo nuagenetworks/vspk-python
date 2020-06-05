@@ -30,6 +30,8 @@ Attributes
 
 - ``description``: A description of the enterprise/organisation profile.
 
+- ``threat_prevention_management_enabled``: Enable Threat Prevention Management for enterprise
+
 - ``allow_advanced_qos_configuration``: Controls whether this enterprise has access to advanced QoS settings.
 
 - ``allow_gateway_management``: If set to true lets the enterprise admin create gateway templates and instances.

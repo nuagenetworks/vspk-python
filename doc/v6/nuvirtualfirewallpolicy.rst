@@ -38,7 +38,11 @@ Attributes
 
 - ``priority_type``: Possible values: TOP or BOTTOM or NONE. TOP and BOTTOM ACL policies can only be defined and managed on the template level. These allow for careful control of Rule priority handling.
 
+- ``associated_egress_adv_fwd_rule_template_id``: The read only id of the auto generated Egress Advance Forwarding Rule Template ID
+
 - ``associated_egress_template_id``: The read only id of the auto generated Egress Template
+
+- ``associated_ingress_adv_fwd_rule_template_id``: The read only id of the auto generated Ingress Advance Forwarding Rule Template ID
 
 - ``associated_ingress_template_id``: The read only id of the auto generated Ingress Template
 

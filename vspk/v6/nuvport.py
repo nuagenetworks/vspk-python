@@ -197,6 +197,8 @@ class NUVPort(NURESTObject):
     
     CONST_PEER_OPERATIONAL_STATE_DOWN = "DOWN"
     
+    CONST_ASSOCIATED_GATEWAY_PERSONALITY_UNMANAGED_GATEWAY = "UNMANAGED_GATEWAY"
+    
     CONST_TRUNK_ROLE_SUB_PORT = "SUB_PORT"
     
     CONST_SEGMENTATION_TYPE_VLAN = "VLAN"
@@ -311,6 +313,7 @@ class NUVPort(NURESTObject):
         self._subnet_vnid = None
         self._multi_nic_vport_id = None
         self._multicast = None
+        self._auto_created = None
         self._gw_eligible = None
         self._external_id = None
         self._type = None
@@ -348,7 +351,7 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="associated_egress_profile_id", remote_name="associatedEgressProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_floating_ip_id", remote_name="associatedFloatingIPID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_id", remote_name="associatedGatewayID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_gateway_personality", remote_name="associatedGatewayPersonality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NETCONF_THIRDPARTY_HW_VTEP', u'NSG', u'NSGBR', u'NSGDUC', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VDF', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="associated_gateway_personality", remote_name="associatedGatewayPersonality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NETCONF_THIRDPARTY_HW_VTEP', u'NSG', u'NSGBR', u'NSGDUC', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'UNMANAGED_GATEWAY', u'VDF', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="associated_gateway_type", remote_name="associatedGatewayType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ingress_profile_id", remote_name="associatedIngressProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
@@ -359,6 +362,7 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="subnet_vnid", remote_name="subnetVNID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multi_nic_vport_id", remote_name="multiNICVPortID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="auto_created", remote_name="autoCreated", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gw_eligible", remote_name="gwEligible", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'BRIDGE', u'CONTAINER', u'HOST', u'VM'])
@@ -1607,6 +1611,33 @@ class NUVPort(NURESTObject):
                 
         """
         self._multicast = value
+
+    
+    @property
+    def auto_created(self):
+        """ Get auto_created value.
+
+            Notes:
+                Indicates if vport was auto created by the system
+
+                
+                This attribute is named `autoCreated` in VSD API.
+                
+        """
+        return self._auto_created
+
+    @auto_created.setter
+    def auto_created(self, value):
+        """ Set auto_created value.
+
+            Notes:
+                Indicates if vport was auto created by the system
+
+                
+                This attribute is named `autoCreated` in VSD API.
+                
+        """
+        self._auto_created = value
 
     
     @property

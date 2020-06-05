@@ -22,6 +22,8 @@ Attributes
 
 - ``destination``: Destination to be used in conjunction with tests part of the Test Suite. Could be an IPv4 address or FQDN.
 
+- ``birth_certificate``: Flag to mark this test as the Birth Certificate (i.e. it was run during activation)
+
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
@@ -37,6 +39,8 @@ Attributes
 - ``associated_test_suite_id`` (**Mandatory**): The ID of the Test Suite from which this instance of the Test Suite Run was created.
 
 - ``associated_test_suite_name``: The name of the Test Suite instance from which this Test Suite Run was created.
+
+- ``associated_underlay_test_id``: The associated underlay test (if applicable)
 
 - ``subnet_name``: The name of the Subnet within which the source vPort being tested resides.
 
