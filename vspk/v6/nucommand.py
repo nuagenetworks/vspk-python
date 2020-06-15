@@ -51,6 +51,8 @@ class NUCommand(NURESTObject):
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
+    CONST_COMMAND_NSG_UPDATE_INFO = "NSG_UPDATE_INFO"
+    
     CONST_STATUS_UNKNOWN = "UNKNOWN"
     
     CONST_STATUS_SKIPPED = "SKIPPED"
@@ -69,9 +71,13 @@ class NUCommand(NURESTObject):
     
     CONST_STATUS_FAILED = "FAILED"
     
+    CONST_COMMAND_NSG_REBOOT = "NSG_REBOOT"
+    
     CONST_COMMAND_NSG_UPGRADE_TO_IMAGE = "NSG_UPGRADE_TO_IMAGE"
     
     CONST_COMMAND_NSG_DELETE_PATCH = "NSG_DELETE_PATCH"
+    
+    CONST_COMMAND_NSG_RENEW_CERT = "NSG_RENEW_CERT"
     
     CONST_STATUS_ABANDONED = "ABANDONED"
     
@@ -116,7 +122,7 @@ class NUCommand(NURESTObject):
         self.expose_attribute(local_name="detailed_status", remote_name="detailedStatus", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="detailed_status_code", remote_name="detailedStatusCode", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="command", remote_name="command", attribute_type=str, is_required=True, is_unique=False, choices=[u'NSG_APPLY_PATCH', u'NSG_DELETE_PATCH', u'NSG_DOWNLOAD_OS_IMAGE', u'NSG_UPGRADE_TO_IMAGE', u'UNKNOWN'])
+        self.expose_attribute(local_name="command", remote_name="command", attribute_type=str, is_required=True, is_unique=False, choices=[u'NSG_APPLY_PATCH', u'NSG_DELETE_PATCH', u'NSG_DOWNLOAD_OS_IMAGE', u'NSG_REBOOT', u'NSG_RENEW_CERT', u'NSG_UPDATE_INFO', u'NSG_UPGRADE_TO_IMAGE', u'UNKNOWN'])
         self.expose_attribute(local_name="command_information", remote_name="commandInformation", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="progress", remote_name="progress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_entity_type", remote_name="assocEntityType", attribute_type=str, is_required=False, is_unique=False)

@@ -40,6 +40,8 @@ Attributes
 
 - ``network_type``: Type of the destination endpoint (Subnet/Zone/PortGroup/PolicyGroupExpression/NetworkMacro/Internet Policy Group/Enterprise Network)
 
+- ``mirror_destination_group_id``: ID of the associated Mirror Destination Group.
+
 - ``mirror_destination_id``: Destination ID of the mirror destination object.
 
 - ``flow_logging_enabled``: Is flow logging enabled for this particular template

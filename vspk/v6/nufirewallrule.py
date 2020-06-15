@@ -139,6 +139,7 @@ class NUFirewallRule(NURESTObject):
         self._destination_port = None
         self._network_id = None
         self._network_type = None
+        self._mirror_destination_group_id = None
         self._mirror_destination_id = None
         self._flow_logging_enabled = None
         self._embedded_metadata = None
@@ -175,6 +176,7 @@ class NUFirewallRule(NURESTObject):
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_id", remote_name="networkID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_type", remote_name="networkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'ENDPOINT_DOMAIN', u'ENDPOINT_SUBNET', u'ENDPOINT_ZONE', u'ENTERPRISE_NETWORK', u'INTERNET_POLICYGROUP', u'NETWORK', u'NETWORK_MACRO_GROUP', u'POLICYGROUP', u'PUBLIC_NETWORK', u'SUBNET', u'ZONE'])
+        self.expose_attribute(local_name="mirror_destination_group_id", remote_name="mirrorDestinationGroupID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mirror_destination_id", remote_name="mirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_logging_enabled", remote_name="flowLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
@@ -605,6 +607,33 @@ class NUFirewallRule(NURESTObject):
                 
         """
         self._network_type = value
+
+    
+    @property
+    def mirror_destination_group_id(self):
+        """ Get mirror_destination_group_id value.
+
+            Notes:
+                ID of the associated Mirror Destination Group.
+
+                
+                This attribute is named `mirrorDestinationGroupID` in VSD API.
+                
+        """
+        return self._mirror_destination_group_id
+
+    @mirror_destination_group_id.setter
+    def mirror_destination_group_id(self, value):
+        """ Set mirror_destination_group_id value.
+
+            Notes:
+                ID of the associated Mirror Destination Group.
+
+                
+                This attribute is named `mirrorDestinationGroupID` in VSD API.
+                
+        """
+        self._mirror_destination_group_id = value
 
     
     @property

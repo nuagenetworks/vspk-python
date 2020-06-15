@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``wan_service_identifier``: Identifier of the WAN Service
+- ``wan_service_identifier`` (**Mandatory**): Identifier of the WAN Service
 
 - ``irb_enabled``: Determines whether Integrated Routing and Bridging is enabled on the WAN Service
 

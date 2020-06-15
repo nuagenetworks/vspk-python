@@ -582,7 +582,7 @@ class NUZone(NURESTObject):
         """ Get policy_group_id value.
 
             Notes:
-                PG ID for the subnet. This is unique per domain and will be in the range 1-4095
+                PG ID for the subnet. This is unique per domain.
 
                 
                 This attribute is named `policyGroupID` in VSD API.
@@ -595,7 +595,7 @@ class NUZone(NURESTObject):
         """ Set policy_group_id value.
 
             Notes:
-                PG ID for the subnet. This is unique per domain and will be in the range 1-4095
+                PG ID for the subnet. This is unique per domain.
 
                 
                 This attribute is named `policyGroupID` in VSD API.

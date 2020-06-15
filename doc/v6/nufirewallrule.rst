@@ -42,6 +42,8 @@ Attributes
 
 - ``network_type``: Type of the source network -  VM_SUBNET or VM_ZONE or VM_DOMAIN or SUBNET or ZONE or ENTERPRISE_NETWORK or PUBLIC_NETWORK or ANY
 
+- ``mirror_destination_group_id``: ID of the associated Mirror Destination Group.
+
 - ``mirror_destination_id``: This is the ID of the mirrorDestrination entity associated with this entity
 
 - ``flow_logging_enabled``: Is flow logging enabled for this particular template

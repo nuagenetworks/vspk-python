@@ -28,7 +28,7 @@ Attributes
 
 - ``ports``: The port ranges for the l4 service. Must be matched if protocol is UDP or TCP. Value can be either * or single port number (1, 2 etc.) or a port range (1-10)
 
-- ``protocol`` (**Mandatory**): Protocol number that must be matched
+- ``protocol``: Protocol number that must be matched
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
