@@ -95,11 +95,11 @@ class NUCOSRemarkingPolicy(NURESTObject):
         self._forwarding_class = None
         self._external_id = None
         
-        self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="forwarding_class", remote_name="forwardingClass", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H'])
+        self.expose_attribute(local_name="forwarding_class", remote_name="forwardingClass", attribute_type=str, is_required=True, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 

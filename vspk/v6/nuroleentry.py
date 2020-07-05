@@ -78,16 +78,43 @@ class NURoleentry(NURESTObject):
 
         # Read/Write Attributes
         
+        self._end_point_type = None
         self._role_access_type_list = None
-        self._associated_entity_type = None
         
+        self.expose_attribute(local_name="end_point_type", remote_name="endPointType", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="role_access_type_list", remote_name="roleAccessTypeList", attribute_type=list, is_required=True, is_unique=False, choices=[u'CREATE', u'CUD_CHILDREN', u'DELETE', u'MODIFY', u'NO_ACCESS', u'NO_ACCESS_CHILDREN', u'READ', u'READ_CHILDREN'])
-        self.expose_attribute(local_name="associated_entity_type", remote_name="associatedEntityType", attribute_type=str, is_required=True, is_unique=False)
         
 
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def end_point_type(self):
+        """ Get end_point_type value.
+
+            Notes:
+                Managed Object Type or end point
+
+                
+                This attribute is named `endPointType` in VSD API.
+                
+        """
+        return self._end_point_type
+
+    @end_point_type.setter
+    def end_point_type(self, value):
+        """ Set end_point_type value.
+
+            Notes:
+                Managed Object Type or end point
+
+                
+                This attribute is named `endPointType` in VSD API.
+                
+        """
+        self._end_point_type = value
+
     
     @property
     def role_access_type_list(self):
@@ -114,33 +141,6 @@ class NURoleentry(NURESTObject):
                 
         """
         self._role_access_type_list = value
-
-    
-    @property
-    def associated_entity_type(self):
-        """ Get associated_entity_type value.
-
-            Notes:
-                Managed Object Type or end point
-
-                
-                This attribute is named `associatedEntityType` in VSD API.
-                
-        """
-        return self._associated_entity_type
-
-    @associated_entity_type.setter
-    def associated_entity_type(self, value):
-        """ Set associated_entity_type value.
-
-            Notes:
-                Managed Object Type or end point
-
-                
-                This attribute is named `associatedEntityType` in VSD API.
-                
-        """
-        self._associated_entity_type = value
 
     
 

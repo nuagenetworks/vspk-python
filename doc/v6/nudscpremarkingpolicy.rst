@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``dscp``: DSCP value range from enumeration of 65 values: 0, 1, ..., 63
+- ``dscp`` (**Mandatory**): DSCP value range from enumeration of 65 values: 0, 1, ..., 63
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
@@ -20,7 +20,7 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``forwarding_class``: Class of service to be used.Service classes in order of priority are A, B, C, D, E, F, G, and H.
+- ``forwarding_class`` (**Mandatory**): Class of service to be used.Service classes in order of priority are A, B, C, D, E, F, G, and H.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

@@ -12,9 +12,9 @@ Attributes
 ----------
 
 
-- ``role_access_type_list`` (**Mandatory**): List of Access like READ, READ_CHILDREN, CREATE, MODIFY, DELETE, CUD_CHILDREN, NO_ACCESS, NO_ACCESS_CHILDREN
+- ``end_point_type`` (**Mandatory**): Managed Object Type or end point
 
-- ``associated_entity_type`` (**Mandatory**): Managed Object Type or end point
+- ``role_access_type_list`` (**Mandatory**): List of Access like READ, READ_CHILDREN, CREATE, MODIFY, DELETE, CUD_CHILDREN, NO_ACCESS, NO_ACCESS_CHILDREN
 
 
 
