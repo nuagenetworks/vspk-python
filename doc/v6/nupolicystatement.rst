@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``name``: name of the policy statement
+- ``name`` (**Mandatory**): name of the policy statement
 
 - ``last_updated_by``: ID of the user who last updated the object.
 

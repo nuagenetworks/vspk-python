@@ -12,11 +12,11 @@ Attributes
 ----------
 
 
-- ``name``: Name of the Policy Entry
+- ``name`` (**Mandatory**): Name of the Policy Entry
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``match_criteria``: Match criteria BLOB
+- ``match_criteria`` (**Mandatory**): Match criteria BLOB
 
 - ``actions``: Action of Policy Entry
 

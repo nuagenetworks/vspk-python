@@ -5,7 +5,7 @@ nupatipentry
 
 .. class:: nupatipentry.NUPATIPEntry(bambou.nurest_object.NUMetaRESTObject,):
 
-missing documentation.
+PATIPEntry is auto-generated (southbound case, decentralized for containers) or through REST (for centralized case, user can choose a IP).
 
 
 Attributes

@@ -34,7 +34,7 @@ class NUPATIPEntry(NURESTObject):
     """ Represents a PATIPEntry in the VSD
 
         Notes:
-            missing documentation.
+            PATIPEntry is auto-generated (southbound case, decentralized for containers) or through REST (for centralized case, user can choose a IP).
     """
 
     __rest_name__ = "patipentry"
