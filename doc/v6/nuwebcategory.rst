@@ -40,6 +40,7 @@ Children
 **class**                                                                                                                                                      **fetcher**
 
 :ref:`nuwebdomainname.NUWebDomainName<nuwebdomainname>`                                                                                                          ``web_domain_names`` 
+:ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 ================================================================================================================================================               ==========================================================================================

@@ -28,6 +28,9 @@
 
 
 
+from .fetchers import NUPermissionsFetcher
+
+
 from .fetchers import NUTestsFetcher
 
 
@@ -98,6 +101,9 @@ class NUTestSuite(NURESTObject):
         
 
         # Fetchers
+        
+        
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.tests = NUTestsFetcher.fetcher_with_object(parent_object=self, relationship="child")

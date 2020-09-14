@@ -45,6 +45,7 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`nuwanservice.NUWANService<nuwanservice>`                                                                                                                   ``wan_services`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuwirelessport.NUWirelessPort<nuwirelessport>`                                                                                                             ``wireless_ports`` 

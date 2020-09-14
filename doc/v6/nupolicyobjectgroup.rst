@@ -36,6 +36,7 @@ Children
 **class**                                                                                                                                                      **fetcher**
 
 :ref:`nugateway.NUGateway<nugateway>`                                                                                                                            ``gateways`` 
+:ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nunsgateway.NUNSGateway<nunsgateway>`                                                                                                                      ``ns_gateways`` 

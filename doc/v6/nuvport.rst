@@ -120,6 +120,7 @@ Children
 :ref:`nutca.NUTCA<nutca>`                                                                                                                                        ``tcas`` 
 :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`                                                                                              ``redirection_targets`` 
 :ref:`nudeploymentfailure.NUDeploymentFailure<nudeploymentfailure>`                                                                                              ``deployment_failures`` 
+:ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`nutestsuiterun.NUTestSuiteRun<nutestsuiterun>`                                                                                                             ``test_suite_runs`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuaggregatemetadata.NUAggregateMetadata<nuaggregatemetadata>`                                                                                              ``aggregate_metadatas`` 

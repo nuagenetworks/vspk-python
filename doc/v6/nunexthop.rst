@@ -22,7 +22,7 @@ Attributes
 
 - ``route_distinguisher``: The next-hop's route distinguisher. A unique 8 byte long. If not provided one will be generated.
 
-- ``ip``: This is the /32 or /128 next-hop IP address. Currently we support only IPv4 address family.
+- ``ip`` (**Mandatory**): This is the /32 or /128 next-hop IP address. Currently we support only IPv4 address family.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -37,6 +37,7 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 ================================================================================================================================================               ==========================================================================================

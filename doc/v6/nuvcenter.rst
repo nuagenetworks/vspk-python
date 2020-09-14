@@ -250,6 +250,7 @@ Children
 **class**                                                                                                                                                      **fetcher**
 
 :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`                                                                                              ``vcenter_data_centers`` 
+:ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 

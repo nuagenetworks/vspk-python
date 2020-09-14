@@ -48,6 +48,7 @@ Children
 **class**                                                                                                                                                      **fetcher**
 
 :ref:`nudemarcationservice.NUDemarcationService<nudemarcationservice>`                                                                                           ``demarcation_services`` 
+:ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nunexthop.NUNextHop<nunexthop>`                                                                                                                            ``next_hops`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 

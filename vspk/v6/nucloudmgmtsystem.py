@@ -28,6 +28,9 @@
 
 
 
+from .fetchers import NUPermissionsFetcher
+
+
 from .fetchers import NUMetadatasFetcher
 
 
@@ -86,6 +89,9 @@ class NUCloudMgmtSystem(NURESTObject):
         
 
         # Fetchers
+        
+        
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")

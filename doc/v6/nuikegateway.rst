@@ -47,6 +47,7 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuikegatewayconfig.NUIKEGatewayConfig<nuikegatewayconfig>`                                                                                                 ``ike_gateway_configs`` 
 :ref:`nuikesubnet.NUIKESubnet<nuikesubnet>`                                                                                                                      ``ike_subnets`` 

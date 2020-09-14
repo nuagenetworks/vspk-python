@@ -28,6 +28,9 @@
 
 
 
+from .fetchers import NUPermissionsFetcher
+
+
 from .fetchers import NUVMResyncsFetcher
 
 
@@ -247,6 +250,9 @@ class NUVM(NURESTObject):
         
 
         # Fetchers
+        
+        
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.vm_resyncs = NUVMResyncsFetcher.fetcher_with_object(parent_object=self, relationship="child")

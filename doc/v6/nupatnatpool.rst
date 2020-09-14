@@ -61,6 +61,7 @@ Children
 
 :ref:`nunatmapentry.NUNATMapEntry<nunatmapentry>`                                                                                                                ``nat_map_entries`` 
 :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`                                                                                                                   ``address_maps`` 
+:ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuenterprisepermission.NUEnterprisePermission<nuenterprisepermission>`                                                                                     ``enterprise_permissions`` 

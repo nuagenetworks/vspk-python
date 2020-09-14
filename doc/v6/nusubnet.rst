@@ -126,6 +126,7 @@ Children
 :ref:`nuaddressrange.NUAddressRange<nuaddressrange>`                                                                                                             ``address_ranges`` 
 :ref:`nudefaultgateway.NUDefaultGateway<nudefaultgateway>`                                                                                                       ``default_gateways`` 
 :ref:`nudeploymentfailure.NUDeploymentFailure<nudeploymentfailure>`                                                                                              ``deployment_failures`` 
+:ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`nuvmresync.NUVMResync<nuvmresync>`                                                                                                                         ``vm_resyncs`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nubgpneighbor.NUBGPNeighbor<nubgpneighbor>`                                                                                                                ``bgp_neighbors`` 

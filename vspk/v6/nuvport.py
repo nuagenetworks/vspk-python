@@ -37,6 +37,9 @@ from .fetchers import NURedirectionTargetsFetcher
 from .fetchers import NUDeploymentFailuresFetcher
 
 
+from .fetchers import NUPermissionsFetcher
+
+
 from .fetchers import NUTestSuiteRunsFetcher
 
 
@@ -379,6 +382,9 @@ class NUVPort(NURESTObject):
         
         
         self.deployment_failures = NUDeploymentFailuresFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.test_suite_runs = NUTestSuiteRunsFetcher.fetcher_with_object(parent_object=self, relationship="child")

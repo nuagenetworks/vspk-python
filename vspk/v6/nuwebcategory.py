@@ -31,6 +31,9 @@
 from .fetchers import NUWebDomainNamesFetcher
 
 
+from .fetchers import NUPermissionsFetcher
+
+
 from .fetchers import NUMetadatasFetcher
 
 
@@ -102,6 +105,9 @@ class NUWebCategory(NURESTObject):
         
         
         self.web_domain_names = NUWebDomainNamesFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        
+        
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")

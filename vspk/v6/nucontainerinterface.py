@@ -34,6 +34,9 @@ from .fetchers import NUTCAsFetcher
 from .fetchers import NURedirectionTargetsFetcher
 
 
+from .fetchers import NUPermissionsFetcher
+
+
 from .fetchers import NUMetadatasFetcher
 
 
@@ -168,6 +171,9 @@ class NUContainerInterface(NURESTObject):
         
         
         self.redirection_targets = NURedirectionTargetsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")

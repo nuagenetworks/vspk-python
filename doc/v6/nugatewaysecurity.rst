@@ -36,6 +36,7 @@ Children
 **class**                                                                                                                                                      **fetcher**
 
 :ref:`nugatewaysecureddata.NUGatewaySecuredData<nugatewaysecureddata>`                                                                                           ``gateway_secured_datas`` 
+:ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 ================================================================================================================================================               ==========================================================================================

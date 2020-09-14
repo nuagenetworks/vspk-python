@@ -31,6 +31,9 @@
 from .fetchers import NUVCenterHypervisorsFetcher
 
 
+from .fetchers import NUPermissionsFetcher
+
+
 from .fetchers import NUMetadatasFetcher
 
 
@@ -346,6 +349,9 @@ class NUVCenterCluster(NURESTObject):
         
         
         self.vcenter_hypervisors = NUVCenterHypervisorsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")

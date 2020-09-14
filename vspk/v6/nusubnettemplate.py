@@ -31,6 +31,9 @@
 from .fetchers import NUAddressRangesFetcher
 
 
+from .fetchers import NUPermissionsFetcher
+
+
 from .fetchers import NUMetadatasFetcher
 
 
@@ -165,6 +168,9 @@ class NUSubnetTemplate(NURESTObject):
         
         
         self.address_ranges = NUAddressRangesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")

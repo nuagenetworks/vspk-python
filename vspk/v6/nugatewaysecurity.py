@@ -31,6 +31,9 @@
 from .fetchers import NUGatewaySecuredDatasFetcher
 
 
+from .fetchers import NUPermissionsFetcher
+
+
 from .fetchers import NUMetadatasFetcher
 
 
@@ -96,6 +99,9 @@ class NUGatewaySecurity(NURESTObject):
         
         
         self.gateway_secured_datas = NUGatewaySecuredDatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")

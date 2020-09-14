@@ -88,6 +88,9 @@ from .fetchers import NUDeploymentFailuresFetcher
 from .fetchers import NUPerformanceMonitorsFetcher
 
 
+from .fetchers import NUPermissionsFetcher
+
+
 from .fetchers import NUTestDefinitionsFetcher
 
 
@@ -487,6 +490,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.performance_monitors = NUPerformanceMonitorsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.test_definitions = NUTestDefinitionsFetcher.fetcher_with_object(parent_object=self, relationship="child")

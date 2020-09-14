@@ -28,6 +28,9 @@
 
 
 
+from .fetchers import NUPermissionsFetcher
+
+
 from .fetchers import NUWANServicesFetcher
 
 
@@ -131,6 +134,9 @@ class NUAutoDiscoveredGateway(NURESTObject):
         
 
         # Fetchers
+        
+        
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.wan_services = NUWANServicesFetcher.fetcher_with_object(parent_object=self, relationship="child")

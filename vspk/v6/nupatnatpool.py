@@ -34,6 +34,9 @@ from .fetchers import NUNATMapEntriesFetcher
 from .fetchers import NUAddressMapsFetcher
 
 
+from .fetchers import NUPermissionsFetcher
+
+
 from .fetchers import NUMetadatasFetcher
 
 
@@ -164,6 +167,9 @@ class NUPATNATPool(NURESTObject):
         
         
         self.address_maps = NUAddressMapsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")

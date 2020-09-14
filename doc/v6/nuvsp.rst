@@ -37,6 +37,7 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nunetconfmanager.NUNetconfManager<nunetconfmanager>`                                                                                                       ``netconf_managers`` 
 :ref:`nuthreatpreventionserverconnection.NUThreatPreventionServerConnection<nuthreatpreventionserverconnection>`                                                 ``threat_prevention_server_connections`` 

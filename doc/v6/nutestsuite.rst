@@ -37,6 +37,7 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`nutest.NUTest<nutest>`                                                                                                                                     ``tests`` 
 :ref:`nutestsuiterun.NUTestSuiteRun<nutestsuiterun>`                                                                                                             ``test_suite_runs`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
