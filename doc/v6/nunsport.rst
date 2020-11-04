@@ -20,6 +20,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``template_id``: The ID of the template that this Port was created from
 
 - ``permitted_action``: The permitted action to USE/EXTEND this NSG Port.
@@ -42,6 +44,8 @@ Attributes
 
 - ``traffic_through_ubr_only``: If enabled, cuts down the number of probes to just the number of provisioned DUCs.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``use_user_mnemonic``: Determines whether to use user mnemonic of the NSG Port
 
 - ``user_mnemonic``: user mnemonic of the Port
@@ -53,6 +57,8 @@ Attributes
 - ``status``: Status of the port.
 
 - ``mtu``: Port MTU (Maximum Transmission Unit) :  The size in octets of the largest protocol data unit (PDU) that the layer can pass on.  The default value is normally 1500 octets for Ethernet v2 and can go up to 9198 for Jumbo Frames.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

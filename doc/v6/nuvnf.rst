@@ -32,6 +32,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``last_user_action``: Last action perform by user
 
 - ``memory_mb``: Memory (in MB) to be allocated for this VNF instance.
@@ -48,6 +50,8 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``is_attached_to_descriptor``: This specifies if VNF instance is using VNF descriptor or it is decoupled from it
 
 - ``associated_vnf_metadata_id``: VNF metadata associated to VNF instance. 
@@ -57,6 +61,8 @@ Attributes
 - ``status``: State/Status of the VNF
 
 - ``storage_gb``: Disk storage (in GB) to be allocated for deployed VNF instance
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

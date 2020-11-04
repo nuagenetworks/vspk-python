@@ -139,6 +139,7 @@ class NUVLAN(NURESTObject):
         
         self._value = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._gateway_id = None
         self._readonly = None
         self._template_id = None
@@ -147,8 +148,12 @@ class NUVLAN(NURESTObject):
         self._restricted = None
         self._shunt_vlan = None
         self._embedded_metadata = None
+        self._enable_nat_probes = None
+        self._inherited_port_properties_diverged = None
         self._entity_scope = None
         self._vport_id = None
+        self._traffic_through_ubr_only = None
+        self._creation_date = None
         self._is_uplink = None
         self._use_user_mnemonic = None
         self._user_mnemonic = None
@@ -161,12 +166,15 @@ class NUVLAN(NURESTObject):
         self._associated_uplink_connection_id = None
         self._associated_vsc_profile_id = None
         self._status = None
+        self._mtu = None
         self._duc_vlan = None
+        self._owner = None
         self._external_id = None
         self._type = None
         
         self.expose_attribute(local_name="value", remote_name="value", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_id", remote_name="gatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="readonly", remote_name="readonly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
@@ -175,8 +183,12 @@ class NUVLAN(NURESTObject):
         self.expose_attribute(local_name="restricted", remote_name="restricted", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="shunt_vlan", remote_name="shuntVLAN", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enable_nat_probes", remote_name="enableNATProbes", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="inherited_port_properties_diverged", remote_name="inheritedPortPropertiesDiverged", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="vport_id", remote_name="vportID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="traffic_through_ubr_only", remote_name="TrafficThroughUBROnly", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="is_uplink", remote_name="isUplink", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_user_mnemonic", remote_name="useUserMnemonic", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=False, is_unique=False)
@@ -189,7 +201,9 @@ class NUVLAN(NURESTObject):
         self.expose_attribute(local_name="associated_uplink_connection_id", remote_name="associatedUplinkConnectionID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vsc_profile_id", remote_name="associatedVSCProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'INITIALIZED', u'MISMATCH', u'ORPHAN', u'READY'])
+        self.expose_attribute(local_name="mtu", remote_name="mtu", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="duc_vlan", remote_name="ducVlan", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACCESS', u'BR', u'DUC', u'UPLINK'])
         
@@ -288,6 +302,33 @@ class NUVLAN(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -495,6 +536,60 @@ class NUVLAN(NURESTObject):
 
     
     @property
+    def enable_nat_probes(self):
+        """ Get enable_nat_probes value.
+
+            Notes:
+                If enabled, probes will be sent to other NSGs and DTLS sessions for IPSEC and VXLAN will be set up to the VSCs. If disabled, no NAT probes are sent on that uplink and no DTLS sessions are set up to the VSCs.
+
+                
+                This attribute is named `enableNATProbes` in VSD API.
+                
+        """
+        return self._enable_nat_probes
+
+    @enable_nat_probes.setter
+    def enable_nat_probes(self, value):
+        """ Set enable_nat_probes value.
+
+            Notes:
+                If enabled, probes will be sent to other NSGs and DTLS sessions for IPSEC and VXLAN will be set up to the VSCs. If disabled, no NAT probes are sent on that uplink and no DTLS sessions are set up to the VSCs.
+
+                
+                This attribute is named `enableNATProbes` in VSD API.
+                
+        """
+        self._enable_nat_probes = value
+
+    
+    @property
+    def inherited_port_properties_diverged(self):
+        """ Get inherited_port_properties_diverged value.
+
+            Notes:
+                Indicates if the value of any of the properties - MTU, NAT Probes Enabled or Traffic Through DUC Only Enabled, on this instance is different from the values of these properties at NSPort. True if they were different at any point. False if no attempt was made to change them from the values at NSPort.
+
+                
+                This attribute is named `inheritedPortPropertiesDiverged` in VSD API.
+                
+        """
+        return self._inherited_port_properties_diverged
+
+    @inherited_port_properties_diverged.setter
+    def inherited_port_properties_diverged(self, value):
+        """ Set inherited_port_properties_diverged value.
+
+            Notes:
+                Indicates if the value of any of the properties - MTU, NAT Probes Enabled or Traffic Through DUC Only Enabled, on this instance is different from the values of these properties at NSPort. True if they were different at any point. False if no attempt was made to change them from the values at NSPort.
+
+                
+                This attribute is named `inheritedPortPropertiesDiverged` in VSD API.
+                
+        """
+        self._inherited_port_properties_diverged = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -546,6 +641,60 @@ class NUVLAN(NURESTObject):
                 
         """
         self._vport_id = value
+
+    
+    @property
+    def traffic_through_ubr_only(self):
+        """ Get traffic_through_ubr_only value.
+
+            Notes:
+                If enabled, cuts down the number of probes to just the number of provisioned DUCs.
+
+                
+                This attribute is named `TrafficThroughUBROnly` in VSD API.
+                
+        """
+        return self._traffic_through_ubr_only
+
+    @traffic_through_ubr_only.setter
+    def traffic_through_ubr_only(self, value):
+        """ Set traffic_through_ubr_only value.
+
+            Notes:
+                If enabled, cuts down the number of probes to just the number of provisioned DUCs.
+
+                
+                This attribute is named `TrafficThroughUBROnly` in VSD API.
+                
+        """
+        self._traffic_through_ubr_only = value
+
+    
+    @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
 
     
     @property
@@ -869,6 +1018,29 @@ class NUVLAN(NURESTObject):
 
     
     @property
+    def mtu(self):
+        """ Get mtu value.
+
+            Notes:
+                Port MTU (Maximum Transmission Unit) :  The size in octets of the largest protocol data unit (PDU) that the layer can pass on.  The default value is normally 1500 octets for Ethernet v2 and can go up to 9198 for Jumbo Frames.
+
+                
+        """
+        return self._mtu
+
+    @mtu.setter
+    def mtu(self, value):
+        """ Set mtu value.
+
+            Notes:
+                Port MTU (Maximum Transmission Unit) :  The size in octets of the largest protocol data unit (PDU) that the layer can pass on.  The default value is normally 1500 octets for Ethernet v2 and can go up to 9198 for Jumbo Frames.
+
+                
+        """
+        self._mtu = value
+
+    
+    @property
     def duc_vlan(self):
         """ Get duc_vlan value.
 
@@ -893,6 +1065,29 @@ class NUVLAN(NURESTObject):
                 
         """
         self._duc_vlan = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

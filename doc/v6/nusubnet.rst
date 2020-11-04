@@ -14,7 +14,7 @@ Attributes
 
 - ``l2_encap_type``: Subnet Tunnel Type, possible values are MPLS, MPLSoUDP, VLAN and VXLAN.
 
-- ``pat_enabled``: None
+- ``pat_enabled``: Indicates whether PAT is enabled for the subnets in this domain - ENABLED/DISABLED. Possible values are ENABLED, DISABLED. OR INHERITED
 
 - ``dhcp_relay_status``: None
 
@@ -33,6 +33,8 @@ Attributes
 - ``name`` (**Mandatory**): Name of the current entity(Zone or zone template or subnet etc..) Valid characters are alphabets, numbers, space and hyphen( - ).
 
 - ``last_updated_by``: ID of the user who last updated the object.
+
+- ``last_updated_date``: Time stamp when this object was last updated.
 
 - ``gateway``: The IP address of the gateway of this subnet
 
@@ -72,6 +74,8 @@ Attributes
 
 - ``ingress_replication_enabled``: Enables ingress replication for the VNI.
 
+- ``interface_id``: SRLinux Interface ID for Subnet configuration
+
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``entity_state``: Intermediate State of L2 Domain.
@@ -87,6 +91,10 @@ Attributes
 - ``route_target``: Route target for this subnet that is used by the BGP-EVPN protocol in VSC. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
 - ``split_subnet``: Block subnet routes
+
+- ``irb_sub_interface_id``: The IRB sub interface identifies subnet on SRLinux devices.
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``proxy_arp``:  When set, VRS will act as  ARP Proxy
 
@@ -109,6 +117,8 @@ Attributes
 - ``multicast``: multicast is enum that indicates multicast policy on Subnet/Subnet Template.
 
 - ``customer_id``: CustomerID that is used by NETCONF MANAGER to identify this enterprise. This can be configured by root user.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -161,11 +171,11 @@ Parents
 
 - :ref:`nuzone.NUZone<nuzone>`
 
+- :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
+
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nusubnettemplate.NUSubnetTemplate<nusubnettemplate>`
-
-- :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
 

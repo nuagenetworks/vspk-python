@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``read_only``: Determines whether this entity is read only. Read only objects cannot be modified or deleted.
 
 - ``destination_nsgs``: List of destination NSGs to which the probe needs to run
@@ -29,6 +31,10 @@ Attributes
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``source_nsgs``: List of source NSGs from which the probe needs to be started.
+
+- ``creation_date``: Time stamp when this object was created.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

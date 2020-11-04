@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``active``: If enabled, it means that this ACL or QOS entry is active
 
 - ``default_allow_ip``: If enabled a default ACL of Allow All is added as the last entry in the list of ACL entries
@@ -32,6 +34,8 @@ Attributes
 
 - ``policy_state``: State of the policy
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``priority``: The priority of the ACL entry that determines the order of entries
 
 - ``priority_type``: None
@@ -39,6 +43,8 @@ Attributes
 - ``associated_live_entity_id``: ID of the associated live entity
 
 - ``auto_generate_priority``: If enabled, entries priority will be randomly generated between allowed range.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

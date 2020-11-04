@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``address_family``: The type of IP address used in the identification of the active and standby controllers.
 
 - ``second_controller``: Second VSC Controller :  IP Address of the secondary VSC system NSG instances associated to this profile will be reaching for.
@@ -34,7 +36,11 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``probe_interval``: Openflow echo timer in milliseconds.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

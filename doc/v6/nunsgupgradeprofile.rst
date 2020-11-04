@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``description``: A concise description of the NSG Upgrade Profile that gives a small preview of its use.
 
 - ``metadata_upgrade_path`` (**Mandatory**): Path/URL to retrieve the NSG Upgrade information meta data files.  From that meta data, the NSG will be able to retrieve the upgrade package files and perform some validations.
@@ -25,6 +27,10 @@ Attributes
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``download_rate_limit``: Download rate limit used for download of Gateway image in kilobyte per second (KB/s).
+
+- ``creation_date``: Time stamp when this object was created.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

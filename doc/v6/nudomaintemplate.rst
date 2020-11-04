@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``description``: Domain template description provided by the user
 
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
@@ -28,6 +30,8 @@ Attributes
 
 - ``policy_change_status``: None
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_bgp_profile_id``: The ID of the associated BGP profile
 
 - ``associated_multicast_channel_map_id``: The ID of the Multi Cast Channel Map  this domain template is associated with. This has to be set when enableMultiCast is set to ENABLED
@@ -35,6 +39,8 @@ Attributes
 - ``associated_pat_mapper_id``: The ID of the PatMapper entity to which this domain-template is associated to.
 
 - ``multicast``: Indicates multicast policy on domain.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

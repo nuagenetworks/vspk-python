@@ -24,6 +24,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway``: The IP address of the gateway of this subnet
 
 - ``address``: IP address of the subnet defined. In case of zone, this is an optional field for and allows users to allocate an IP address range to a zone. The VSD will auto-assign IP addresses to subnets from this range if a specific IP address is not defined for the subnet
@@ -44,6 +46,8 @@ Attributes
 
 - ``split_subnet``: Block subnet routes
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``proxy_arp``:  When set, VRS will act as  ARP Proxy
 
 - ``use_global_mac``: if this flag is enabled, the system configured globalMACAddress will be used as the gateway mac address
@@ -53,6 +57,8 @@ Attributes
 - ``dual_stack_dynamic_ip_allocation``: This value indicates whether dynamic address allocation is enabled or not. This will be applicable when subnet template is in dual stack mode
 
 - ``multicast``: Indicates multicast policy on Subnet/Subnet Template.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

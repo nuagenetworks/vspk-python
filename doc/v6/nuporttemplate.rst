@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``description``: A description of the Port
 
 - ``physical_name`` (**Mandatory**): Identifier of the Port
@@ -28,7 +30,11 @@ Attributes
 
 - ``port_type`` (**Mandatory**): Type of the Port. Possible values are ACCESS, NETWORK, MANAGEMENT.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_egress_qos_policy_id``: ID of the Egress QOS Policy associated with this Vlan.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

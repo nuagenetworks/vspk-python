@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``accept_all_certificates``: Accept all certificates from the LDAP server
 
 - ``certificate``: The certificate to authenticate with the LDAP server
@@ -32,6 +34,8 @@ Attributes
 
 - ``port`` (**Mandatory**): Port to be used for the LDAP server
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``group_dn``: This attribute is a mandatory field for LDAP authorization. When LDAP is used for authorization for an enterprise, the group DN will be used to get the list of VSD specific groups in LDAP server for the enterprise. For example, OU=VSDGroups,DC=company,DC=com
 
 - ``group_name_prefix``: If this is specified, Prefix+Pre-definedGroupName will be used to look for users.
@@ -45,6 +49,8 @@ Attributes
 - ``authorization_enabled``: To enable LDAP authorization for an enterprise, both authorizationEnabled and enabled attributes must be set to true. If enabled attribute is not set, this attribute is ignored. The relationship between enabled and authorizationEnabled attributes is as follows, enabled = true, authorizationEnabled = false, LDAP is used only for Authentication. enabled = true, authorizationEnabled = true, LDAP is used for both authentication and authorization. enabled = false, authorizationEnabled = true, LDAP is not used. enabled = false, authorizationEnabled = false, LDAP is not used.
 
 - ``authorizing_user_dn``: This attribute is a mandatory field for LDAP authorization. When LDAP is used for authorization for an enterprise, the user DN that will be used to verify the integrity of groups and users in LDAP server for the enterprise. For example, CN=groupAdmin,OU=VSD_USERS,OU=Personal,OU=Domain Users,DC=company,DC=com
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

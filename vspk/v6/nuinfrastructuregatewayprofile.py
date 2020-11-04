@@ -56,19 +56,23 @@ class NUInfrastructureGatewayProfile(NURESTObject):
     
     CONST_CONTROLLER_LESS_FORWARDING_MODE_LOCAL_AND_REMOTE = "LOCAL_AND_REMOTE"
     
-    CONST_UPGRADE_ACTION_UPGRADE_AT_BOOTSTRAPPING = "UPGRADE_AT_BOOTSTRAPPING"
+    CONST_UPGRADE_ACTION_NONE = "NONE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_REMOTE_LOG_MODE_RSYSLOG = "RSYSLOG"
     
+    CONST_UPGRADE_ACTION_UPGRADE_AT_BOOTSTRAPPING = "UPGRADE_AT_BOOTSTRAPPING"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_CONTROLLER_LESS_FORWARDING_MODE_DISABLED = "DISABLED"
+    CONST_UNDERLAY_TEST_UPLINK_MODE_ALL_UPLINKS = "ALL_UPLINKS"
     
     CONST_REMOTE_LOG_MODE_DISABLED = "DISABLED"
     
-    CONST_UPGRADE_ACTION_NONE = "NONE"
+    CONST_CONTROLLER_LESS_FORWARDING_MODE_DISABLED = "DISABLED"
+    
+    CONST_UNDERLAY_TEST_UPLINK_MODE_BOOTSTRAP_UPLINK = "BOOTSTRAP_UPLINK"
     
     CONST_UPGRADE_ACTION_DOWNLOAD_ONLY = "DOWNLOAD_ONLY"
     
@@ -101,6 +105,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self._ntp_server_key_id = None
         self._name = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._datapath_sync_timeout = None
         self._dead_timer = None
         self._dead_timer_enabled = None
@@ -115,6 +120,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self._embedded_metadata = None
         self._enable_underlay_tests_during_activation = None
         self._underlay_test_server = None
+        self._underlay_test_uplink_mode = None
         self._enterprise_id = None
         self._entity_scope = None
         self._controller_less_duration = None
@@ -124,12 +130,14 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self._force_immediate_system_sync = None
         self._open_flow_audit_timer = None
         self._upgrade_action = None
+        self._creation_date = None
         self._proxy_dns_name = None
         self._use_two_factor = None
         self._stats_collector_port = None
         self._run_underlay_bandwidth_test = None
         self._run_underlay_connectivity_test = None
         self._run_underlay_mtu_discovery_test = None
+        self._owner = None
         self._external_id = None
         self._system_sync_scheduler = None
         
@@ -137,6 +145,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self.expose_attribute(local_name="ntp_server_key_id", remote_name="NTPServerKeyID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=True)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_sync_timeout", remote_name="datapathSyncTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dead_timer", remote_name="deadTimer", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dead_timer_enabled", remote_name="deadTimerEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -151,6 +160,7 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enable_underlay_tests_during_activation", remote_name="enableUnderlayTestsDuringActivation", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="underlay_test_server", remote_name="underlayTestServer", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="underlay_test_uplink_mode", remote_name="underlayTestUplinkMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL_UPLINKS', u'BOOTSTRAP_UPLINK'])
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="controller_less_duration", remote_name="controllerLessDuration", attribute_type=str, is_required=False, is_unique=False)
@@ -160,12 +170,14 @@ class NUInfrastructureGatewayProfile(NURESTObject):
         self.expose_attribute(local_name="force_immediate_system_sync", remote_name="forceImmediateSystemSync", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="open_flow_audit_timer", remote_name="openFlowAuditTimer", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="upgrade_action", remote_name="upgradeAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'DOWNLOAD_AND_UPGRADE_AT_WINDOW', u'DOWNLOAD_AND_UPGRADE_NOW', u'DOWNLOAD_ONLY', u'NONE', u'UPGRADE_AT_BOOTSTRAPPING', u'UPGRADE_NOW'])
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="proxy_dns_name", remote_name="proxyDNSName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="use_two_factor", remote_name="useTwoFactor", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_collector_port", remote_name="statsCollectorPort", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="run_underlay_bandwidth_test", remote_name="runUnderlayBandwidthTest", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="run_underlay_connectivity_test", remote_name="runUnderlayConnectivityTest", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="run_underlay_mtu_discovery_test", remote_name="runUnderlayMTUDiscoveryTest", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="system_sync_scheduler", remote_name="systemSyncScheduler", attribute_type=str, is_required=False, is_unique=False)
         
@@ -288,6 +300,33 @@ class NUInfrastructureGatewayProfile(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -665,6 +704,33 @@ class NUInfrastructureGatewayProfile(NURESTObject):
 
     
     @property
+    def underlay_test_uplink_mode(self):
+        """ Get underlay_test_uplink_mode value.
+
+            Notes:
+                Enumerator to describe which uplinks to run underlay tests on during bootstrap
+
+                
+                This attribute is named `underlayTestUplinkMode` in VSD API.
+                
+        """
+        return self._underlay_test_uplink_mode
+
+    @underlay_test_uplink_mode.setter
+    def underlay_test_uplink_mode(self, value):
+        """ Set underlay_test_uplink_mode value.
+
+            Notes:
+                Enumerator to describe which uplinks to run underlay tests on during bootstrap
+
+                
+                This attribute is named `underlayTestUplinkMode` in VSD API.
+                
+        """
+        self._underlay_test_uplink_mode = value
+
+    
+    @property
     def enterprise_id(self):
         """ Get enterprise_id value.
 
@@ -908,6 +974,33 @@ class NUInfrastructureGatewayProfile(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def proxy_dns_name(self):
         """ Get proxy_dns_name value.
 
@@ -1067,6 +1160,29 @@ class NUInfrastructureGatewayProfile(NURESTObject):
                 
         """
         self._run_underlay_mtu_discovery_test = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

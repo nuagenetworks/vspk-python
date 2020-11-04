@@ -32,6 +32,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway``: The IP address of the gateway of this l2 domain
 
 - ``gateway_mac_address``: The MAC address of the Gateway.
@@ -50,6 +52,10 @@ Attributes
 
 - ``flow_collection_enabled``: Determines whether or not flow collection is enabled.
 
+- ``flow_count``: Maximum number of data flows allowed for a VPort.
+
+- ``flow_limit_enabled``: Indicates if flow limit is enabled on this Domain. Possible values are ENABLED or DISABLED.
+
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
 - ``vn_id``: Current network's globally unique VXLAN network identifier
@@ -61,6 +67,8 @@ Attributes
 - ``encryption``: Determines whether IPSEC is enabled Possible values are ENABLED, DISABLED, .
 
 - ``ingress_replication_enabled``: Enables ingress replication for the VNI.
+
+- ``interface_id``: SRLinux Interface ID for L2Domain configuration
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
@@ -78,6 +86,8 @@ Attributes
 
 - ``uplink_preference``: Indicates the preferencial path selection for network traffic in this domain - Default is Primary 1 and Secondary 2. Possible values are PRIMARY_SECONDARY, SECONDARY_PRIMARY, PRIMARY, SECONDARY, SYMMETRIC, .
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``use_global_mac``: Enable this flag to use system configured globalMACAddress as the gateway mac address for managed l2 domains
 
 - ``associated_multicast_channel_map_id``: The ID of the Multi Cast Channel Map this L2Domain / L2Domain template template is associated with. This has to be set when  enableMultiCast is set to ENABLED
@@ -93,6 +103,8 @@ Attributes
 - ``multicast``: Indicates multicast policy on L2Domain.
 
 - ``customer_id``: CustomerID that is used by NETCONF MANAGER to identify this enterprise. This can be configured by root user.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -118,6 +130,7 @@ Children
 :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`                                                                               ``egress_acl_entry_templates`` 
 :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`                                                                                              ``egress_acl_templates`` 
 :ref:`nuegressadvfwdtemplate.NUEgressAdvFwdTemplate<nuegressadvfwdtemplate>`                                                                                     ``egress_adv_fwd_templates`` 
+:ref:`nuegressauditacltemplate.NUEgressAuditACLTemplate<nuegressauditacltemplate>`                                                                               ``egress_audit_acl_templates`` 
 :ref:`nudhcpoption.NUDHCPOption<nudhcpoption>`                                                                                                                   ``dhcp_options`` 
 :ref:`nudhcpv6option.NUDHCPv6Option<nudhcpv6option>`                                                                                                             ``dhcpv6_options`` 
 :ref:`numirrordestinationgroup.NUMirrorDestinationGroup<numirrordestinationgroup>`                                                                               ``mirror_destination_groups`` 
@@ -131,6 +144,8 @@ Children
 :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`                                                                            ``ingress_acl_entry_templates`` 
 :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`                                                                                           ``ingress_acl_templates`` 
 :ref:`nuingressadvfwdtemplate.NUIngressAdvFwdTemplate<nuingressadvfwdtemplate>`                                                                                  ``ingress_adv_fwd_templates`` 
+:ref:`nuingressauditaclentrytemplate.NUIngressAuditACLEntryTemplate<nuingressauditaclentrytemplate>`                                                             ``ingress_audit_acl_entry_templates`` 
+:ref:`nuingressauditacltemplate.NUIngressAuditACLTemplate<nuingressauditacltemplate>`                                                                            ``ingress_audit_acl_templates`` 
 :ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
 :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`                                                                                                                ``policy_groups`` 
 :ref:`nucontainer.NUContainer<nucontainer>`                                                                                                                      ``containers`` 

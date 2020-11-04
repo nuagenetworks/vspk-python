@@ -58,6 +58,8 @@ class NUVirtualFirewallRule(NURESTObject):
     
     CONST_LOCATION_ENTITY_TYPE_NETWORKMACROGROUP = "NETWORKMACROGROUP"
     
+    CONST_TYPE_L4 = "L4"
+    
     CONST_ACTION_DROP = "DROP"
     
     CONST_LOCATION_TYPE_ZONE = "ZONE"
@@ -77,6 +79,8 @@ class NUVirtualFirewallRule(NURESTObject):
     CONST_LOCATION_TYPE_UNDERLAY_INTERNET_POLICYGROUP = "UNDERLAY_INTERNET_POLICYGROUP"
     
     CONST_LOCATION_ENTITY_TYPE_POLICYGROUPTEMPLATE = "POLICYGROUPTEMPLATE"
+    
+    CONST_TYPE_WEB_FILTER = "WEB_FILTER"
     
     CONST_NETWORK_ENTITY_TYPE_ZONETEMPLATE = "ZONETEMPLATE"
     
@@ -119,6 +123,8 @@ class NUVirtualFirewallRule(NURESTObject):
     CONST_LOCATION_ENTITY_TYPE_REDIRECTIONTARGET = "REDIRECTIONTARGET"
     
     CONST_FAILSAFE_DATAPATH_FAIL_TO_BLOCK = "FAIL_TO_BLOCK"
+    
+    CONST_TYPE_L7 = "L7"
     
     CONST_NETWORK_ENTITY_TYPE_ZONE = "ZONE"
     
@@ -186,9 +192,11 @@ class NUVirtualFirewallRule(NURESTObject):
         self._dscp = None
         self._failsafe_datapath = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._action = None
         self._address_override = None
         self._web_filter_id = None
+        self._web_filter_stats_logging_enabled = None
         self._web_filter_type = None
         self._description = None
         self._destination_port = None
@@ -207,6 +215,7 @@ class NUVirtualFirewallRule(NURESTObject):
         self._policy_state = None
         self._domain_name = None
         self._source_port = None
+        self._creation_date = None
         self._priority = None
         self._protocol = None
         self._associated_egress_entry_id = None
@@ -221,6 +230,7 @@ class NUVirtualFirewallRule(NURESTObject):
         self._stats_logging_enabled = None
         self._ether_type = None
         self._overlay_mirror_destination_id = None
+        self._owner = None
         self._external_id = None
         self._type = None
         
@@ -231,9 +241,11 @@ class NUVirtualFirewallRule(NURESTObject):
         self.expose_attribute(local_name="dscp", remote_name="DSCP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="failsafe_datapath", remote_name="failsafeDatapath", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAIL_TO_BLOCK', u'FAIL_TO_WIRE'])
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'DROP', u'FORWARD'])
         self.expose_attribute(local_name="address_override", remote_name="addressOverride", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="web_filter_id", remote_name="webFilterID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="web_filter_stats_logging_enabled", remote_name="webFilterStatsLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="web_filter_type", remote_name="webFilterType", attribute_type=str, is_required=False, is_unique=False, choices=[u'WEB_CATEGORY', u'WEB_DOMAIN_NAME'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
@@ -252,6 +264,7 @@ class NUVirtualFirewallRule(NURESTObject):
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_egress_entry_id", remote_name="associatedEgressEntryID", attribute_type=str, is_required=False, is_unique=False)
@@ -266,8 +279,9 @@ class NUVirtualFirewallRule(NURESTObject):
         self.expose_attribute(local_name="stats_logging_enabled", remote_name="statsLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ether_type", remote_name="etherType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="overlay_mirror_destination_id", remote_name="overlayMirrorDestinationID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'THREAT_PREVENTION'])
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'L4', u'L7', u'THREAT_PREVENTION', u'WEB_FILTER'])
         
 
         # Fetchers
@@ -476,6 +490,33 @@ class NUVirtualFirewallRule(NURESTObject):
 
     
     @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
+
+    
+    @property
     def action(self):
         """ Get action value.
 
@@ -550,6 +591,33 @@ class NUVirtualFirewallRule(NURESTObject):
                 
         """
         self._web_filter_id = value
+
+    
+    @property
+    def web_filter_stats_logging_enabled(self):
+        """ Get web_filter_stats_logging_enabled value.
+
+            Notes:
+                Indicates if web filter statistics logging is enabled for this particular template
+
+                
+                This attribute is named `webFilterStatsLoggingEnabled` in VSD API.
+                
+        """
+        return self._web_filter_stats_logging_enabled
+
+    @web_filter_stats_logging_enabled.setter
+    def web_filter_stats_logging_enabled(self, value):
+        """ Set web_filter_stats_logging_enabled value.
+
+            Notes:
+                Indicates if web filter statistics logging is enabled for this particular template
+
+                
+                This attribute is named `webFilterStatsLoggingEnabled` in VSD API.
+                
+        """
+        self._web_filter_stats_logging_enabled = value
 
     
     @property
@@ -1035,6 +1103,33 @@ class NUVirtualFirewallRule(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def priority(self):
         """ Get priority value.
 
@@ -1398,6 +1493,29 @@ class NUVirtualFirewallRule(NURESTObject):
                 
         """
         self._overlay_mirror_destination_id = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

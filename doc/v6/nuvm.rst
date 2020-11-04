@@ -22,6 +22,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``reason_type``: Reason of the event associated with the VM.
 
 - ``delete_expiry``: Reflects the VM Deletion expiry timer in seconds, deleteMode needs to be non-null value for deleteExpiry to be taken in to effect. CMS created VMs will always have deleteMode set to TIMER.
@@ -50,6 +52,8 @@ Attributes
 
 - ``orchestration_id``: Orchestration ID
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``vrs_raw_version``: Release version of VRS, which is used to determine the feature capabilties of VRS.
 
 - ``vrs_version``: Interpreted version of VRS, which is used to determine the feature capabilities of VRS.
@@ -61,6 +65,8 @@ Attributes
 - ``status``: Status of the VM.
 
 - ``subnet_ids``: Array of IDs of the subnets that the VM is connected to
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

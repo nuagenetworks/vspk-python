@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``affected_entity_id``: UUID of the entity on which deployment failed.
 
 - ``affected_entity_type``: Managed object type corresponding to the entity on which deployment failed.
@@ -27,6 +29,8 @@ Attributes
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``error_condition``: A numerical code mapping to the deployment error condition.
 
@@ -45,6 +49,8 @@ Attributes
 - ``number_of_occurences``: A count of failed deployment attempts.
 
 - ``event_type``: Event type corresponding to the deployment failure
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

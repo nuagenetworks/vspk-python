@@ -78,9 +78,11 @@ class NUForwardingClass(NURESTObject):
 
         # Read/Write Attributes
         
+        self._fec_enabled = None
         self._load_balancing = None
         self._forwarding_class = None
         
+        self.expose_attribute(local_name="fec_enabled", remote_name="fecEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="load_balancing", remote_name="loadBalancing", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="forwarding_class", remote_name="forwardingClass", attribute_type=str, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H'])
         
@@ -88,6 +90,33 @@ class NUForwardingClass(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def fec_enabled(self):
+        """ Get fec_enabled value.
+
+            Notes:
+                Indicates if FEC (Forward Error Correction) is enabled for the Service Class.
+
+                
+                This attribute is named `fecEnabled` in VSD API.
+                
+        """
+        return self._fec_enabled
+
+    @fec_enabled.setter
+    def fec_enabled(self, value):
+        """ Set fec_enabled value.
+
+            Notes:
+                Indicates if FEC (Forward Error Correction) is enabled for the Service Class.
+
+                
+                This attribute is named `fecEnabled` in VSD API.
+                
+        """
+        self._fec_enabled = value
+
     
     @property
     def load_balancing(self):

@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``payload_size``: Payload size (This is a mandatory field if the networkProbeType = ONEWAY, and optional for probeType = HTTP,IPSEC_AND_VXLAN)
 
 - ``read_only``: Determines whether this entity is read only.  Read only objects cannot be modified or deleted.
@@ -30,9 +32,13 @@ Attributes
 
 - ``hold_down_timer``: Probe Timeout in milliseconds
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``probe_type``: Type to be assigned to this probe
 
 - ``number_of_packets`` (**Mandatory**): number of packets
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -55,9 +61,9 @@ Parents
 --------
 
 
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
+
+- :ref:`nume.NUMe<nume>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

@@ -14,9 +14,11 @@ Attributes
 
 - ``ip_type``: The IP Type of this Overlay Address Pool, possible values are IPV4, IPV6 or DUALSTACK.
 
-- ``name``: Name for the PAT NAT pool
+- ``name`` (**Mandatory**): Name for the PAT NAT pool
 
 - ``last_updated_by``: ID of the user who last updated the object.
+
+- ``last_updated_date``: Time stamp when this object was last updated.
 
 - ``description``: addresspool description
 
@@ -26,9 +28,13 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_domain_id``: The ID of the associated l3-domain.
 
 - ``start_address_range``: Start address for the pool range
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

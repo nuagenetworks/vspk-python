@@ -14,6 +14,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``detail``: Details about the command execution as reported directly from the NSG independent of status codes.
 
 - ``detailed_status``: A string representing the detailed status of the operation that was triggered by the execution of the Command instance.
@@ -25,6 +27,8 @@ Attributes
 - ``command`` (**Mandatory**): Specifies the type of command that is stated for execution on the system receiving the operation request.  A request for download, a request for upgrade, a request for revocation, ...
 
 - ``command_information``: Informative details on what command is to be executed.  It complements the commandType attribute.  An example of a value could be a URL, a version number, a UUID of another object, ...
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``progress``: JSON string detailing the progress of the command execution on Gateway.
 
@@ -41,6 +45,8 @@ Attributes
 - ``summary``: A generated summary for the action giving some general context on the command executed.
 
 - ``override``: Operator specified action which overrides the normal life cycle of a command.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

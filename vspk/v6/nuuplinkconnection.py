@@ -40,6 +40,9 @@ from .fetchers import NUBFDSessionsFetcher
 from .fetchers import NUGlobalMetadatasFetcher
 
 
+from .fetchers import NUUnderlayTestsFetcher
+
+
 from .fetchers import NUCustomPropertiesFetcher
 
 from bambou import NURESTObject
@@ -58,6 +61,8 @@ class NUUplinkConnection(NURESTObject):
     
     ## Constants
     
+    CONST_UPLINK_TYPE_UPLINK = "UPLINK"
+    
     CONST_INTERFACE_CONNECTION_TYPE_USB_MODEM = "USB_MODEM"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
@@ -66,11 +71,19 @@ class NUUplinkConnection(NURESTObject):
     
     CONST_ADVERTISEMENT_CRITERIA_CONTROL_SESSION = "CONTROL_SESSION"
     
+    CONST_FEC_ENABLED_ENABLED = "ENABLED"
+    
     CONST_ADVERTISEMENT_CRITERIA_BFD = "BFD"
     
     CONST_ROLE_UNKNOWN = "UNKNOWN"
     
+    CONST_UPLINK_TYPE_DATA = "DATA"
+    
+    CONST_UPLINK_TYPE_CONTROL = "CONTROL"
+    
     CONST_AUX_MODE_COLD = "COLD"
+    
+    CONST_FEC_ENABLED_DISABLED = "DISABLED"
     
     CONST_MODE_DYNAMIC = "Dynamic"
     
@@ -90,7 +103,11 @@ class NUUplinkConnection(NURESTObject):
     
     CONST_MODE_PPPOE = "PPPoE"
     
+    CONST_FEC_ENABLED_SUPPORTED = "SUPPORTED"
+    
     CONST_INTERFACE_CONNECTION_TYPE_USB_ETHERNET = "USB_ETHERNET"
+    
+    CONST_UPLINK_TYPE_SHUNT = "SHUNT"
     
     CONST_INTERFACE_CONNECTION_TYPE_AUTOMATIC = "AUTOMATIC"
     
@@ -132,15 +149,19 @@ class NUUplinkConnection(NURESTObject):
         self._dns_address_v6 = None
         self._password = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._gateway = None
+        self._gateway_id = None
         self._gateway_v6 = None
         self._address = None
         self._address_family = None
         self._address_v6 = None
         self._advertisement_criteria = None
+        self._fec_enabled = None
         self._secondary_address = None
         self._netmask = None
         self._vlan = None
+        self._vlan_id = None
         self._embedded_metadata = None
         self._underlay_enabled = None
         self._underlay_id = None
@@ -151,9 +172,13 @@ class NUUplinkConnection(NURESTObject):
         self._mode = None
         self._role = None
         self._role_order = None
+        self._port_id = None
         self._port_name = None
         self._download_rate_limit = None
         self._uplink_id = None
+        self._uplink_name = None
+        self._uplink_type = None
+        self._creation_date = None
         self._primary_data_path_id = None
         self._username = None
         self._assoc_underlay_id = None
@@ -161,6 +186,7 @@ class NUUplinkConnection(NURESTObject):
         self._associated_underlay_name = None
         self._aux_mode = None
         self._auxiliary_link = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="pat_enabled", remote_name="PATEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -168,15 +194,19 @@ class NUUplinkConnection(NURESTObject):
         self.expose_attribute(local_name="dns_address_v6", remote_name="DNSAddressV6", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="gateway_id", remote_name="gatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_v6", remote_name="gatewayV6", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address_family", remote_name="addressFamily", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="address_v6", remote_name="addressV6", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'BFD', u'CONTROL_SESSION', u'OPERATIONAL_LINK'])
+        self.expose_attribute(local_name="fec_enabled", remote_name="fecEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'SUPPORTED'])
         self.expose_attribute(local_name="secondary_address", remote_name="secondaryAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vlan", remote_name="vlan", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vlan_id", remote_name="vlanID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="underlay_enabled", remote_name="underlayEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="underlay_id", remote_name="underlayID", attribute_type=int, is_required=False, is_unique=False)
@@ -187,9 +217,13 @@ class NUUplinkConnection(NURESTObject):
         self.expose_attribute(local_name="mode", remote_name="mode", attribute_type=str, is_required=False, is_unique=False, choices=[u'Any', u'Dynamic', u'LTE', u'PPPoE', u'Static'])
         self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'PRIMARY', u'SECONDARY', u'TERTIARY', u'UNKNOWN'])
         self.expose_attribute(local_name="role_order", remote_name="roleOrder", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="port_id", remote_name="portID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="port_name", remote_name="portName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="download_rate_limit", remote_name="downloadRateLimit", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_id", remote_name="uplinkID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="uplink_name", remote_name="uplinkName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="uplink_type", remote_name="uplinkType", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONTROL', u'DATA', u'SHUNT', u'UPLINK'])
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="primary_data_path_id", remote_name="primaryDataPathID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="username", remote_name="username", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_underlay_id", remote_name="assocUnderlayID", attribute_type=str, is_required=False, is_unique=False)
@@ -197,6 +231,7 @@ class NUUplinkConnection(NURESTObject):
         self.expose_attribute(local_name="associated_underlay_name", remote_name="associatedUnderlayName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="aux_mode", remote_name="auxMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'COLD', u'HOT', u'NONE'])
         self.expose_attribute(local_name="auxiliary_link", remote_name="auxiliaryLink", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -213,6 +248,9 @@ class NUUplinkConnection(NURESTObject):
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.underlay_tests = NUUnderlayTestsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.custom_properties = NUCustomPropertiesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -354,6 +392,33 @@ class NUUplinkConnection(NURESTObject):
 
     
     @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
+
+    
+    @property
     def gateway(self):
         """ Get gateway value.
 
@@ -374,6 +439,33 @@ class NUUplinkConnection(NURESTObject):
                 
         """
         self._gateway = value
+
+    
+    @property
+    def gateway_id(self):
+        """ Get gateway_id value.
+
+            Notes:
+                The UUID of the NSG on which this uplink connection resides.
+
+                
+                This attribute is named `gatewayID` in VSD API.
+                
+        """
+        return self._gateway_id
+
+    @gateway_id.setter
+    def gateway_id(self, value):
+        """ Set gateway_id value.
+
+            Notes:
+                The UUID of the NSG on which this uplink connection resides.
+
+                
+                This attribute is named `gatewayID` in VSD API.
+                
+        """
+        self._gateway_id = value
 
     
     @property
@@ -508,6 +600,33 @@ class NUUplinkConnection(NURESTObject):
 
     
     @property
+    def fec_enabled(self):
+        """ Get fec_enabled value.
+
+            Notes:
+                Indicates the FEC (Forward Error Correction) setting on this Uplink Connection. Possible values are Enabled (Encode & Decode on all paths over this uplink), Disabled (Encode & Decode only to uplinks with FEC Enabled) and Supported (do not Encode or Decode, do not detect or report loss).
+
+                
+                This attribute is named `fecEnabled` in VSD API.
+                
+        """
+        return self._fec_enabled
+
+    @fec_enabled.setter
+    def fec_enabled(self, value):
+        """ Set fec_enabled value.
+
+            Notes:
+                Indicates the FEC (Forward Error Correction) setting on this Uplink Connection. Possible values are Enabled (Encode & Decode on all paths over this uplink), Disabled (Encode & Decode only to uplinks with FEC Enabled) and Supported (do not Encode or Decode, do not detect or report loss).
+
+                
+                This attribute is named `fecEnabled` in VSD API.
+                
+        """
+        self._fec_enabled = value
+
+    
+    @property
     def secondary_address(self):
         """ Get secondary_address value.
 
@@ -578,6 +697,33 @@ class NUUplinkConnection(NURESTObject):
                 
         """
         self._vlan = value
+
+    
+    @property
+    def vlan_id(self):
+        """ Get vlan_id value.
+
+            Notes:
+                The UUID of the VLAN on which this uplink connection resides.
+
+                
+                This attribute is named `vlanID` in VSD API.
+                
+        """
+        return self._vlan_id
+
+    @vlan_id.setter
+    def vlan_id(self, value):
+        """ Set vlan_id value.
+
+            Notes:
+                The UUID of the VLAN on which this uplink connection resides.
+
+                
+                This attribute is named `vlanID` in VSD API.
+                
+        """
+        self._vlan_id = value
 
     
     @property
@@ -839,6 +985,33 @@ class NUUplinkConnection(NURESTObject):
 
     
     @property
+    def port_id(self):
+        """ Get port_id value.
+
+            Notes:
+                The UUID of the NSPort on which this uplink connection resides.
+
+                
+                This attribute is named `portID` in VSD API.
+                
+        """
+        return self._port_id
+
+    @port_id.setter
+    def port_id(self, value):
+        """ Set port_id value.
+
+            Notes:
+                The UUID of the NSPort on which this uplink connection resides.
+
+                
+                This attribute is named `portID` in VSD API.
+                
+        """
+        self._port_id = value
+
+    
+    @property
     def port_name(self):
         """ Get port_name value.
 
@@ -917,6 +1090,87 @@ class NUUplinkConnection(NURESTObject):
                 
         """
         self._uplink_id = value
+
+    
+    @property
+    def uplink_name(self):
+        """ Get uplink_name value.
+
+            Notes:
+                The name of the uplink defined by the port name and vlan id (eg. port1.100)
+
+                
+                This attribute is named `uplinkName` in VSD API.
+                
+        """
+        return self._uplink_name
+
+    @uplink_name.setter
+    def uplink_name(self, value):
+        """ Set uplink_name value.
+
+            Notes:
+                The name of the uplink defined by the port name and vlan id (eg. port1.100)
+
+                
+                This attribute is named `uplinkName` in VSD API.
+                
+        """
+        self._uplink_name = value
+
+    
+    @property
+    def uplink_type(self):
+        """ Get uplink_type value.
+
+            Notes:
+                Denotes the Uplink Connection Type on the NSG. Possible values are UPLINK, CONTROL, DATA, SHUNT.
+
+                
+                This attribute is named `uplinkType` in VSD API.
+                
+        """
+        return self._uplink_type
+
+    @uplink_type.setter
+    def uplink_type(self, value):
+        """ Set uplink_type value.
+
+            Notes:
+                Denotes the Uplink Connection Type on the NSG. Possible values are UPLINK, CONTROL, DATA, SHUNT.
+
+                
+                This attribute is named `uplinkType` in VSD API.
+                
+        """
+        self._uplink_type = value
+
+    
+    @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
 
     
     @property
@@ -1102,6 +1356,29 @@ class NUUplinkConnection(NURESTObject):
                 
         """
         self._auxiliary_link = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

@@ -70,6 +70,9 @@ from .fetchers import NUEgressACLTemplatesFetcher
 from .fetchers import NUEgressAdvFwdTemplatesFetcher
 
 
+from .fetchers import NUEgressAuditACLTemplatesFetcher
+
+
 from .fetchers import NUDomainFIPAclTemplatesFetcher
 
 
@@ -119,6 +122,12 @@ from .fetchers import NUIngressACLTemplatesFetcher
 
 
 from .fetchers import NUIngressAdvFwdTemplatesFetcher
+
+
+from .fetchers import NUIngressAuditACLEntryTemplatesFetcher
+
+
+from .fetchers import NUIngressAuditACLTemplatesFetcher
 
 
 from .fetchers import NUJobsFetcher
@@ -282,6 +291,8 @@ class NUDomain(NURESTObject):
     
     CONST_FLOW_COLLECTION_ENABLED_INHERITED = "INHERITED"
     
+    CONST_FLOW_LIMIT_ENABLED_DISABLED = "DISABLED"
+    
     CONST_PAT_ENABLED_ENABLED = "ENABLED"
     
     CONST_MULTICAST_ENABLED = "ENABLED"
@@ -313,6 +324,8 @@ class NUDomain(NURESTObject):
     CONST_ENCRYPTION_ENABLED = "ENABLED"
     
     CONST_UNDERLAY_ENABLED_DISABLED = "DISABLED"
+    
+    CONST_FLOW_LIMIT_ENABLED_ENABLED = "ENABLED"
     
     CONST_TUNNEL_TYPE_GRE = "GRE"
     
@@ -360,8 +373,10 @@ class NUDomain(NURESTObject):
         self._maintenance_mode = None
         self._name = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._advertise_criteria = None
         self._leaking_enabled = None
+        self._fec_enabled = None
         self._secondary_dhcp_server_address = None
         self._secondary_route_target = None
         self._template_id = None
@@ -374,6 +389,8 @@ class NUDomain(NURESTObject):
         self._threat_intelligence_enabled = None
         self._global_routing_enabled = None
         self._flow_collection_enabled = None
+        self._flow_count = None
+        self._flow_limit_enabled = None
         self._embedded_metadata = None
         self._import_route_target = None
         self._encryption = None
@@ -390,6 +407,7 @@ class NUDomain(NURESTObject):
         self._route_target = None
         self._uplink_preference = None
         self._create_back_haul_subnet = None
+        self._creation_date = None
         self._associated_bgp_profile_id = None
         self._associated_idp_profile_id = None
         self._associated_multicast_channel_map_id = None
@@ -400,6 +418,7 @@ class NUDomain(NURESTObject):
         self._multicast = None
         self._tunnel_type = None
         self._customer_id = None
+        self._owner = None
         self._export_route_target = None
         self._external_id = None
         self._external_label = None
@@ -423,8 +442,10 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="advertise_criteria", remote_name="advertiseCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'HUB_ROUTES'])
         self.expose_attribute(local_name="leaking_enabled", remote_name="leakingEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="fec_enabled", remote_name="fecEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_dhcp_server_address", remote_name="secondaryDHCPServerAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_route_target", remote_name="secondaryRouteTarget", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=True, is_unique=False)
@@ -437,6 +458,8 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="threat_intelligence_enabled", remote_name="threatIntelligenceEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="global_routing_enabled", remote_name="globalRoutingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="flow_count", remote_name="flowCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_limit_enabled", remote_name="flowLimitEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="import_route_target", remote_name="importRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
@@ -453,6 +476,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="route_target", remote_name="routeTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
         self.expose_attribute(local_name="create_back_haul_subnet", remote_name="createBackHaulSubnet", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_bgp_profile_id", remote_name="associatedBGPProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_idp_profile_id", remote_name="associatedIDPProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
@@ -463,6 +487,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="tunnel_type", remote_name="tunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'MPLSoUDP', u'VLAN', u'VXLAN'])
         self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="export_route_target", remote_name="exportRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="external_label", remote_name="externalLabel", attribute_type=str, is_required=False, is_unique=False)
@@ -511,6 +536,9 @@ class NUDomain(NURESTObject):
         
         
         self.egress_adv_fwd_templates = NUEgressAdvFwdTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.egress_audit_acl_templates = NUEgressAuditACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.domain_fip_acl_templates = NUDomainFIPAclTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -562,6 +590,12 @@ class NUDomain(NURESTObject):
         
         
         self.ingress_adv_fwd_templates = NUIngressAdvFwdTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ingress_audit_acl_entry_templates = NUIngressAuditACLEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ingress_audit_acl_templates = NUIngressAuditACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -1162,6 +1196,33 @@ class NUDomain(NURESTObject):
 
     
     @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
+
+    
+    @property
     def advertise_criteria(self):
         """ Get advertise_criteria value.
 
@@ -1213,6 +1274,33 @@ class NUDomain(NURESTObject):
                 
         """
         self._leaking_enabled = value
+
+    
+    @property
+    def fec_enabled(self):
+        """ Get fec_enabled value.
+
+            Notes:
+                Indicates if FEC (Forward Error Correction) is enabled on this Domain.
+
+                
+                This attribute is named `fecEnabled` in VSD API.
+                
+        """
+        return self._fec_enabled
+
+    @fec_enabled.setter
+    def fec_enabled(self, value):
+        """ Set fec_enabled value.
+
+            Notes:
+                Indicates if FEC (Forward Error Correction) is enabled on this Domain.
+
+                
+                This attribute is named `fecEnabled` in VSD API.
+                
+        """
+        self._fec_enabled = value
 
     
     @property
@@ -1533,6 +1621,60 @@ class NUDomain(NURESTObject):
                 
         """
         self._flow_collection_enabled = value
+
+    
+    @property
+    def flow_count(self):
+        """ Get flow_count value.
+
+            Notes:
+                Maximum number of data flows allowed for a VPort.
+
+                
+                This attribute is named `flowCount` in VSD API.
+                
+        """
+        return self._flow_count
+
+    @flow_count.setter
+    def flow_count(self, value):
+        """ Set flow_count value.
+
+            Notes:
+                Maximum number of data flows allowed for a VPort.
+
+                
+                This attribute is named `flowCount` in VSD API.
+                
+        """
+        self._flow_count = value
+
+    
+    @property
+    def flow_limit_enabled(self):
+        """ Get flow_limit_enabled value.
+
+            Notes:
+                Indicates if flow limit is enabled on this Domain. Possible values are ENABLED or DISABLED.
+
+                
+                This attribute is named `flowLimitEnabled` in VSD API.
+                
+        """
+        return self._flow_limit_enabled
+
+    @flow_limit_enabled.setter
+    def flow_limit_enabled(self, value):
+        """ Set flow_limit_enabled value.
+
+            Notes:
+                Indicates if flow limit is enabled on this Domain. Possible values are ENABLED or DISABLED.
+
+                
+                This attribute is named `flowLimitEnabled` in VSD API.
+                
+        """
+        self._flow_limit_enabled = value
 
     
     @property
@@ -1960,6 +2102,33 @@ class NUDomain(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def associated_bgp_profile_id(self):
         """ Get associated_bgp_profile_id value.
 
@@ -2219,6 +2388,29 @@ class NUDomain(NURESTObject):
                 
         """
         self._customer_id = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

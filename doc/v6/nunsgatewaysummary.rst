@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway_id``: The ID of the NSG from which the infomation was collected.
 
 - ``gateway_name``: The name of the gateway
@@ -56,9 +58,13 @@ Attributes
 
 - ``country``: Country in which the NSG is located
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``critical_alarms_count``: Total number of alarms with CRITICAL severity
 
 - ``state``: State/Province/Region
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

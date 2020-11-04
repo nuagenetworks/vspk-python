@@ -20,6 +20,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``service_class``: Class of service to be used. Service classes in order of priority are A, B, C, D, E, F, G, and H.
 
 - ``description``: Description of the IKEv2 Gateway Profile
@@ -31,6 +33,8 @@ Attributes
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``configuration_status``: Status of configuration on third-party cloud instance
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``associated_cloud_id``: ID of the associated third-party cloud instance
 
@@ -44,7 +48,9 @@ Attributes
 
 - ``associated_ike_encryption_profile_id``: The ID of the associated IKE Encryption Profile
 
-- ``associated_ike_gateway_id``: The IKE Gateway associated with this Profile
+- ``associated_ike_gateway_id`` (**Mandatory**): The IKE Gateway associated with this Profile
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

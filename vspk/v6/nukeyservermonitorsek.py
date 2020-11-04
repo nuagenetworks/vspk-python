@@ -88,23 +88,29 @@ class NUKeyServerMonitorSEK(NURESTObject):
         # Read/Write Attributes
         
         self._last_updated_by = None
+        self._last_updated_date = None
         self._seed_payload_authentication_algorithm = None
         self._seed_payload_encryption_algorithm = None
         self._lifetime = None
         self._embedded_metadata = None
         self._entity_scope = None
+        self._creation_date = None
         self._creation_time = None
         self._start_time = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_payload_authentication_algorithm", remote_name="seedPayloadAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA512'])
         self.expose_attribute(local_name="seed_payload_encryption_algorithm", remote_name="seedPayloadEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES_128_CBC', u'AES_256_CBC', u'TRIPLE_DES_CBC'])
         self.expose_attribute(local_name="lifetime", remote_name="lifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="creation_time", remote_name="creationTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="start_time", remote_name="startTime", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -149,6 +155,33 @@ class NUKeyServerMonitorSEK(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -283,6 +316,33 @@ class NUKeyServerMonitorSEK(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def creation_time(self):
         """ Get creation_time value.
 
@@ -334,6 +394,29 @@ class NUKeyServerMonitorSEK(NURESTObject):
                 
         """
         self._start_time = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

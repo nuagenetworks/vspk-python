@@ -94,6 +94,9 @@ from .fetchers import NUBootstrapActivationsFetcher
 from .fetchers import NUPortsFetcher
 
 
+from .fetchers import NURoutingPoliciesFetcher
+
+
 from .fetchers import NUIPFilterProfilesFetcher
 
 
@@ -199,6 +202,8 @@ class NUGateway(NURESTObject):
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
+    CONST_PERSONALITY_SR_LINUX = "SR_LINUX"
+    
     CONST_FAMILY_NSG_E300 = "NSG_E300"
     
     CONST_PERSONALITY_VRSG = "VRSG"
@@ -249,6 +254,7 @@ class NUGateway(NURESTObject):
         self._family = None
         self._management_id = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._datapath_id = None
         self._patches = None
         self._gateway_config_raw_version = None
@@ -256,6 +262,7 @@ class NUGateway(NURESTObject):
         self._gateway_connected = None
         self._gateway_model = None
         self._gateway_version = None
+        self._native_vlan = None
         self._redundancy_group_id = None
         self._peer = None
         self._template_id = None
@@ -272,14 +279,17 @@ class NUGateway(NURESTObject):
         self._location_id = None
         self._bootstrap_id = None
         self._bootstrap_status = None
+        self._creation_date = None
         self._product_name = None
         self._use_gateway_vlanvnid = None
+        self._associated_gnmi_profile_id = None
         self._associated_gateway_security_id = None
         self._associated_gateway_security_profile_id = None
         self._associated_nsg_info_id = None
         self._associated_netconf_profile_id = None
         self._vtep = None
         self._auto_disc_gateway_id = None
+        self._owner = None
         self._external_id = None
         self._system_id = None
         
@@ -294,6 +304,7 @@ class NUGateway(NURESTObject):
         self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_AMI', u'NSG_AZ', u'NSG_C', u'NSG_E', u'NSG_E200', u'NSG_E300', u'NSG_V', u'NSG_X', u'NSG_X200', u'VRS'])
         self.expose_attribute(local_name="management_id", remote_name="managementID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_id", remote_name="datapathID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="patches", remote_name="patches", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_config_raw_version", remote_name="gatewayConfigRawVersion", attribute_type=str, is_required=False, is_unique=False)
@@ -301,6 +312,7 @@ class NUGateway(NURESTObject):
         self.expose_attribute(local_name="gateway_connected", remote_name="gatewayConnected", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_model", remote_name="gatewayModel", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_version", remote_name="gatewayVersion", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="native_vlan", remote_name="nativeVLAN", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redundancy_group_id", remote_name="redundancyGroupID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peer", remote_name="peer", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
@@ -308,7 +320,7 @@ class NUGateway(NURESTObject):
         self.expose_attribute(local_name="vendor", remote_name="vendor", attribute_type=str, is_required=False, is_unique=False, choices=[u'CISCO', u'NOKIA'])
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NETCONF_THIRDPARTY_HW_VTEP', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'UNMANAGED_GATEWAY', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NETCONF_THIRDPARTY_HW_VTEP', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'SR_LINUX', u'UNMANAGED_GATEWAY', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
@@ -317,14 +329,17 @@ class NUGateway(NURESTObject):
         self.expose_attribute(local_name="location_id", remote_name="locationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bootstrap_id", remote_name="bootstrapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT', u'QUARANTINED', u'REVOKED'])
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="product_name", remote_name="productName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_gateway_vlanvnid", remote_name="useGatewayVLANVNID", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_gnmi_profile_id", remote_name="associatedGNMIProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_security_id", remote_name="associatedGatewaySecurityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_security_profile_id", remote_name="associatedGatewaySecurityProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_nsg_info_id", remote_name="associatedNSGInfoID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_netconf_profile_id", remote_name="associatedNetconfProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vtep", remote_name="vtep", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="auto_disc_gateway_id", remote_name="autoDiscGatewayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="system_id", remote_name="systemID", attribute_type=str, is_required=False, is_unique=False)
         
@@ -396,6 +411,9 @@ class NUGateway(NURESTObject):
         
         
         self.ports = NUPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.routing_policies = NURoutingPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ip_filter_profiles = NUIPFilterProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -704,6 +722,33 @@ class NUGateway(NURESTObject):
 
     
     @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
+
+    
+    @property
     def datapath_id(self):
         """ Get datapath_id value.
 
@@ -886,6 +931,33 @@ class NUGateway(NURESTObject):
                 
         """
         self._gateway_version = value
+
+    
+    @property
+    def native_vlan(self):
+        """ Get native_vlan value.
+
+            Notes:
+                Default Native VLAN to carry untagged traffic on the ports of this gateway. Applicable for Cisco 9K only. Possible values are 1-3967.
+
+                
+                This attribute is named `nativeVLAN` in VSD API.
+                
+        """
+        return self._native_vlan
+
+    @native_vlan.setter
+    def native_vlan(self, value):
+        """ Set native_vlan value.
+
+            Notes:
+                Default Native VLAN to carry untagged traffic on the ports of this gateway. Applicable for Cisco 9K only. Possible values are 1-3967.
+
+                
+                This attribute is named `nativeVLAN` in VSD API.
+                
+        """
+        self._native_vlan = value
 
     
     @property
@@ -1297,6 +1369,33 @@ class NUGateway(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def product_name(self):
         """ Get product_name value.
 
@@ -1348,6 +1447,33 @@ class NUGateway(NURESTObject):
                 
         """
         self._use_gateway_vlanvnid = value
+
+    
+    @property
+    def associated_gnmi_profile_id(self):
+        """ Get associated_gnmi_profile_id value.
+
+            Notes:
+                UUID of the GNMI Profile associated to this gateway.
+
+                
+                This attribute is named `associatedGNMIProfileID` in VSD API.
+                
+        """
+        return self._associated_gnmi_profile_id
+
+    @associated_gnmi_profile_id.setter
+    def associated_gnmi_profile_id(self, value):
+        """ Set associated_gnmi_profile_id value.
+
+            Notes:
+                UUID of the GNMI Profile associated to this gateway.
+
+                
+                This attribute is named `associatedGNMIProfileID` in VSD API.
+                
+        """
+        self._associated_gnmi_profile_id = value
 
     
     @property
@@ -1506,6 +1632,29 @@ class NUGateway(NURESTObject):
                 
         """
         self._auto_disc_gateway_id = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

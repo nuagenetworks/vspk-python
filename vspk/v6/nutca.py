@@ -84,9 +84,11 @@ class NUTCA(NURESTObject):
     
     CONST_METRIC_PACKETS_DROPPED_BY_RATE_LIMIT = "PACKETS_DROPPED_BY_RATE_LIMIT"
     
-    CONST_METRIC_FIP_PRE_RATE_LIMIT_PACKETS = "FIP_PRE_RATE_LIMIT_PACKETS"
-    
     CONST_METRIC_PACKETS_IN = "PACKETS_IN"
+    
+    CONST_METRIC_IDP_EVENT_COUNT = "IDP_EVENT_COUNT"
+    
+    CONST_METRIC_TCP_FLAG_ACK_IN = "TCP_FLAG_ACK_IN"
     
     CONST_METRIC_ANTI_SPOOF_EVENT_COUNT = "ANTI_SPOOF_EVENT_COUNT"
     
@@ -108,7 +110,9 @@ class NUTCA(NURESTObject):
     
     CONST_ACTION_ALERT_POLICYGROUPCHANGE = "Alert_PolicyGroupChange"
     
-    CONST_METRIC_TCP_FLAG_ACK_IN = "TCP_FLAG_ACK_IN"
+    CONST_METRIC_PACKETS_IN_ERROR = "PACKETS_IN_ERROR"
+    
+    CONST_METRIC_HIGH_RISK_IP_ACCESS_EVENT_COUNT = "HIGH_RISK_IP_ACCESS_EVENT_COUNT"
     
     CONST_METRIC_PACKETS_OUT_ERROR = "PACKETS_OUT_ERROR"
     
@@ -126,7 +130,9 @@ class NUTCA(NURESTObject):
     
     CONST_TYPE_ROLLING_AVERAGE = "ROLLING_AVERAGE"
     
-    CONST_METRIC_PACKETS_IN_ERROR = "PACKETS_IN_ERROR"
+    CONST_METRIC_FIP_PRE_RATE_LIMIT_PACKETS = "FIP_PRE_RATE_LIMIT_PACKETS"
+    
+    CONST_METRIC_MEDIUM_RISK_IP_ACCESS_EVENT_COUNT = "MEDIUM_RISK_IP_ACCESS_EVENT_COUNT"
     
     CONST_ACTION_ALERT = "Alert"
     
@@ -158,6 +164,7 @@ class NUTCA(NURESTObject):
         self._target_entity_id = None
         self._target_policy_group_id = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._action = None
         self._period = None
         self._description = None
@@ -169,8 +176,10 @@ class NUTCA(NURESTObject):
         self._embedded_metadata = None
         self._entity_scope = None
         self._count = None
+        self._creation_date = None
         self._trigger_interval = None
         self._status = None
+        self._owner = None
         self._external_id = None
         self._type = None
         
@@ -179,10 +188,11 @@ class NUTCA(NURESTObject):
         self.expose_attribute(local_name="target_entity_id", remote_name="targetEntityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="target_policy_group_id", remote_name="targetPolicyGroupID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'Alert', u'Alert_Add_Network_Macro', u'Alert_Add_Policy_Group', u'Alert_PolicyGroupChange'])
         self.expose_attribute(local_name="period", remote_name="period", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="metric", remote_name="metric", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACL_DENY_EVENT_COUNT', u'ANTI_SPOOF_EVENT_COUNT', u'BYTES_IN', u'BYTES_OUT', u'FIP_PRE_RATE_LIMIT_BYTES', u'FIP_PRE_RATE_LIMIT_PACKETS', u'FIP_RATE_LIMIT_DROPPED_BYTES', u'FIP_RATE_LIMIT_DROPPED_PACKETS', u'L7_BYTES_IN', u'L7_BYTES_OUT', u'L7_PACKETS_IN', u'L7_PACKETS_OUT', u'PACKETS_DROPPED_BY_RATE_LIMIT', u'PACKETS_IN', u'PACKETS_IN_DROPPED', u'PACKETS_IN_ERROR', u'PACKETS_OUT', u'PACKETS_OUT_DROPPED', u'PACKETS_OUT_ERROR', u'PORT_SCAN_PORT_COUNT', u'PORT_SWEEP_IP_COUNT', u'TCP_FLAG_ACK_IN', u'TCP_FLAG_ACK_OUT', u'TCP_FLAG_NULL_IN', u'TCP_FLAG_NULL_OUT', u'TCP_FLAG_RST_IN', u'TCP_FLAG_RST_OUT', u'TCP_FLAG_SYN_IN', u'TCP_FLAG_SYN_OUT'])
+        self.expose_attribute(local_name="metric", remote_name="metric", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACL_DENY_EVENT_COUNT', u'ANTI_SPOOF_EVENT_COUNT', u'BYTES_IN', u'BYTES_OUT', u'FIP_PRE_RATE_LIMIT_BYTES', u'FIP_PRE_RATE_LIMIT_PACKETS', u'FIP_RATE_LIMIT_DROPPED_BYTES', u'FIP_RATE_LIMIT_DROPPED_PACKETS', u'HIGH_RISK_IP_ACCESS_EVENT_COUNT', u'IDP_EVENT_COUNT', u'L7_BYTES_IN', u'L7_BYTES_OUT', u'L7_PACKETS_IN', u'L7_PACKETS_OUT', u'MEDIUM_RISK_IP_ACCESS_EVENT_COUNT', u'PACKETS_DROPPED_BY_RATE_LIMIT', u'PACKETS_IN', u'PACKETS_IN_DROPPED', u'PACKETS_IN_ERROR', u'PACKETS_OUT', u'PACKETS_OUT_DROPPED', u'PACKETS_OUT_ERROR', u'PORT_SCAN_PORT_COUNT', u'PORT_SWEEP_IP_COUNT', u'TCP_FLAG_ACK_IN', u'TCP_FLAG_ACK_OUT', u'TCP_FLAG_NULL_IN', u'TCP_FLAG_NULL_OUT', u'TCP_FLAG_RST_IN', u'TCP_FLAG_RST_OUT', u'TCP_FLAG_SYN_IN', u'TCP_FLAG_SYN_OUT'])
         self.expose_attribute(local_name="threshold", remote_name="threshold", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="throttle_time", remote_name="throttleTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="disable", remote_name="disable", attribute_type=bool, is_required=False, is_unique=False)
@@ -190,8 +200,10 @@ class NUTCA(NURESTObject):
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="count", remote_name="count", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="trigger_interval", remote_name="triggerInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'BREACH', u'ROLLING_AVERAGE', u'UNIQUE_COUNT'])
         
@@ -347,6 +359,33 @@ class NUTCA(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -619,6 +658,33 @@ class NUTCA(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def trigger_interval(self):
         """ Get trigger_interval value.
 
@@ -666,6 +732,29 @@ class NUTCA(NURESTObject):
                 
         """
         self._status = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

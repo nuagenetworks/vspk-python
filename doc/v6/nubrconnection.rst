@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway``: IP address of the gateway bound to the VLAN.
 
 - ``gateway_v6``: IPv6 address of the gateway bound to the port.
@@ -41,6 +43,10 @@ Attributes
 - ``mode``: Connection mode: Only static is allowed on a Bridge Router Connection.
 
 - ``uplink_id``: Internally generated ID in the range that idenitifies the uplink within the context of NSG.
+
+- ``creation_date``: Time stamp when this object was created.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

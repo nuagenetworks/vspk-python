@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``action``: Action to be taken on threshold crossover
 
 - ``memory_threshold``: Threshold for memory usage
@@ -32,9 +34,13 @@ Attributes
 
 - ``monit_interval``: Monitoring interval (minutes) for threshold crossover occurrences to be considered
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``assoc_entity_type``: Type of the entity to which the Metadata is associated to.
 
 - ``storage_threshold``: Threshold for storage usage
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

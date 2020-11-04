@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``acknowledged``: Flag to indicate if the alarm has been acknowledged already.
 
 - ``remedy``: Remedial Actions for the alarm.
@@ -36,13 +38,17 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``error_condition``: Identifies the error condition
 
 - ``number_of_occurances``: Number of times that the alarm was triggered
 
+- ``owner``: Identifies the user that has created this object.
+
 - ``external_id``: External object ID. Used for integration with third party systems
 
-- ``system_id``: System ID of the Gateway.
+- ``system_id``: System ID of the Gateway
 
 
 
@@ -66,17 +72,19 @@ Parents
 
 - :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 
+- :ref:`nuazurecloud.NUAzureCloud<nuazurecloud>`
+
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nushuntlink.NUShuntLink<nushuntlink>`
+
+- :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
 - :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
 
 - :ref:`nugatewayredundantport.NUGatewayRedundantPort<nugatewayredundantport>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
-
-- :ref:`nuvsc.NUVSC<nuvsc>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
@@ -106,6 +114,8 @@ Parents
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
+- :ref:`nuvsc.NUVSC<nuvsc>`
+
 - :ref:`nuvsd.NUVSD<nuvsd>`
 
 - :ref:`nuvm.NUVM<nuvm>`
@@ -113,8 +123,6 @@ Parents
 - :ref:`nuethernetsegmentgroup.NUEthernetSegmentGroup<nuethernetsegmentgroup>`
 
 - :ref:`nuport.NUPort<nuport>`
-
-- :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
 - :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
 

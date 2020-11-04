@@ -26,6 +26,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway``: The IP address of the gateway of this l2 domain
 
 - ``address``: Network address of the L2Domain / L2Domain template defined. 
@@ -48,6 +50,8 @@ Attributes
 
 - ``policy_change_status``: None
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``use_global_mac``: Enable this flag to use system configured globalMACAddress as the gateway mac address for managed l2 domains
 
 - ``associated_multicast_channel_map_id``: The ID of the Multi Cast Channel Map this L2Domain / L2Domain template template is associated with. This has to be set when  enableMultiCast is set to ENABLED
@@ -55,6 +59,8 @@ Attributes
 - ``dual_stack_dynamic_ip_allocation``: This value indicates whether dynamic address allocation is enabled or not. This will be applicable when L2 Domain is managed and in dual stack mode
 
 - ``multicast``: Indicates multicast policy on L2Domain template.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

@@ -49,6 +49,10 @@ class NUThreatPreventionServerConnection(NURESTObject):
     
     CONST_STATUS_AUTHENTICATION_FAILED = "AUTHENTICATION_FAILED"
     
+    CONST_STATUS_DEGRADED = "DEGRADED"
+    
+    CONST_STATUS_UNREACHABLE = "UNREACHABLE"
+    
     
 
     def __init__(self, **kwargs):
@@ -69,12 +73,12 @@ class NUThreatPreventionServerConnection(NURESTObject):
         # Read/Write Attributes
         
         self._fqdn = None
-        self._vsd_name = None
+        self._node_info = None
         self._status = None
         
         self.expose_attribute(local_name="fqdn", remote_name="FQDN", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="vsd_name", remote_name="VSDName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTHENTICATION_FAILED', u'CONNECTED', u'DISCONNECTED'])
+        self.expose_attribute(local_name="node_info", remote_name="nodeInfo", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTHENTICATION_FAILED', u'CONNECTED', u'DEGRADED', u'DISCONNECTED', u'UNREACHABLE'])
         
 
         self._compute_args(**kwargs)
@@ -109,30 +113,30 @@ class NUThreatPreventionServerConnection(NURESTObject):
 
     
     @property
-    def vsd_name(self):
-        """ Get vsd_name value.
+    def node_info(self):
+        """ Get node_info value.
 
             Notes:
-                VSD instanace Name
+                Array of the embedded resource Threat Prevention Node Info for each Threat Prevention node.
 
                 
-                This attribute is named `VSDName` in VSD API.
+                This attribute is named `nodeInfo` in VSD API.
                 
         """
-        return self._vsd_name
+        return self._node_info
 
-    @vsd_name.setter
-    def vsd_name(self, value):
-        """ Set vsd_name value.
+    @node_info.setter
+    def node_info(self, value):
+        """ Set node_info value.
 
             Notes:
-                VSD instanace Name
+                Array of the embedded resource Threat Prevention Node Info for each Threat Prevention node.
 
                 
-                This attribute is named `VSDName` in VSD API.
+                This attribute is named `nodeInfo` in VSD API.
                 
         """
-        self._vsd_name = value
+        self._node_info = value
 
     
     @property

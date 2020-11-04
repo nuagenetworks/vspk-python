@@ -20,6 +20,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``percentage_weight``: Weight of the URL in %. Applicable only when parent is Tier1
 
 - ``timeout``: number of milliseconds to wait until the probe is timed out. Applicable only if this URL's parent is Tier1
@@ -30,7 +32,11 @@ Attributes
 
 - ``down_threshold_count``: Successive Probe threshold. Applicable only if this URL's parent is Tier1
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``probe_interval``: probe interval (part of rate along with packetCount). Applicable only if this URL's parent is Tier1
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

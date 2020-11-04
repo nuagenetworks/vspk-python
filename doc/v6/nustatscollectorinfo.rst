@@ -14,6 +14,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``address_type``: Type for stats collector address Possible values are ip, fqdn, .
 
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
@@ -24,7 +26,11 @@ Attributes
 
 - ``ip_address``: IP address(es) of the stats collector process
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``proto_buf_port``: Protobuf Port(s) of the stats collector process
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

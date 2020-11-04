@@ -136,6 +136,7 @@ class NUVCenterDataCenter(NURESTObject):
         self._manage_vrs_availability = None
         self._managed_object_id = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._data_dns1 = None
         self._data_dns2 = None
         self._data_gateway = None
@@ -208,6 +209,7 @@ class NUVCenterDataCenter(NURESTObject):
         self._upgrade_package_username = None
         self._upgrade_script_time_limit = None
         self._cpu_count = None
+        self._creation_date = None
         self._primary_data_uplink_underlay_id = None
         self._primary_data_uplink_vdf_control_vlan = None
         self._primary_nuage_controller = None
@@ -233,6 +235,7 @@ class NUVCenterDataCenter(NURESTObject):
         self._ovf_url = None
         self._avrs_enabled = None
         self._avrs_profile = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="arp_reply", remote_name="ARPReply", attribute_type=bool, is_required=False, is_unique=False)
@@ -242,6 +245,7 @@ class NUVCenterDataCenter(NURESTObject):
         self.expose_attribute(local_name="manage_vrs_availability", remote_name="manageVRSAvailability", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="managed_object_id", remote_name="managedObjectID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data_dns1", remote_name="dataDNS1", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data_dns2", remote_name="dataDNS2", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="data_gateway", remote_name="dataGateway", attribute_type=str, is_required=False, is_unique=False)
@@ -314,6 +318,7 @@ class NUVCenterDataCenter(NURESTObject):
         self.expose_attribute(local_name="upgrade_package_username", remote_name="upgradePackageUsername", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="upgrade_script_time_limit", remote_name="upgradeScriptTimeLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cpu_count", remote_name="cpuCount", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT_2', u'LARGE_6', u'MEDIUM_4', u'XLARGE_8'])
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="primary_data_uplink_underlay_id", remote_name="primaryDataUplinkUnderlayID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="primary_data_uplink_vdf_control_vlan", remote_name="primaryDataUplinkVDFControlVLAN", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="primary_nuage_controller", remote_name="primaryNuageController", attribute_type=str, is_required=False, is_unique=False)
@@ -339,6 +344,7 @@ class NUVCenterDataCenter(NURESTObject):
         self.expose_attribute(local_name="ovf_url", remote_name="ovfURL", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="avrs_enabled", remote_name="avrsEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="avrs_profile", remote_name="avrsProfile", attribute_type=str, is_required=False, is_unique=False, choices=[u'AVRS_25G'])
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -559,6 +565,33 @@ class NUVCenterDataCenter(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -2498,6 +2531,33 @@ class NUVCenterDataCenter(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def primary_data_uplink_underlay_id(self):
         """ Get primary_data_uplink_underlay_id value.
 
@@ -3166,6 +3226,29 @@ class NUVCenterDataCenter(NURESTObject):
                 
         """
         self._avrs_profile = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

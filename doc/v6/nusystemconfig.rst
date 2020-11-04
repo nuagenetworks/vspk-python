@@ -124,6 +124,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway_probe_interval``: Gateway probe interval in seconds.
 
 - ``gateway_probe_window``: Gateway probe window in seconds.
@@ -139,6 +141,8 @@ Attributes
 - ``accumulate_licenses_enabled``: Whether the various VRS license flavours be merged in one pool.
 
 - ``vcin_load_balancer_ip``: If VCIN Active/Standby is enabled, this needs to be the load-balancer IP which sits in front of the Active and Standby VCIN nodes. The VRS will make its API calls to this load-balancer
+
+- ``fec_feedback_timer``: Forward Error Correction feedback timer in seconds. Possible values are 1, 2, 3, 4 or 5.
 
 - ``secondary_as_number``: Autonomous System Number, used for secondary RT auto-generation.
 
@@ -161,6 +165,8 @@ Attributes
 - ``offset_service_id``: Service ID offset, this value has to be set before JBoss starts during the time of VSD installation, from thereon, any change of value will be ignored. This is a system wide value.
 
 - ``threat_intelligence_enabled``: Enables IP based threat intelligence. This requires Flow Collection to be enabled.
+
+- ``threat_prevention_feed_server_proxy_port``: Feed server download port for Threat Prevention VNF
 
 - ``threat_prevention_server``: Specifies the Threat Prevention Management server location.
 
@@ -188,11 +194,13 @@ Attributes
 
 - ``elastic_cluster_name``: Specifies the name of the Elastic Search Cluster.
 
-- ``allow_enterprise_avatar_on_nsg``: When enabled, it allows Enterprise Avatar (image) to be populated on the NSGateway bootstrapping portal.
+- ``allow_enterprise_avatar_on_nsg``: When enabled, it allows Enterprise Avatar (image) to be populated on the NSGateway bootstrapping portal and blocked page notification.
 
 - ``global_mac_address``: the MAC Address to use for those subnets that have the useGlobalMAC flag enabled.
 
 - ``flow_collection_enabled``: Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires 'statisticsEnabled'.
+
+- ``flow_drop_timeout``: Timeout in seconds after which the traffic will be dropped, if the flow limit exceeds.
 
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
@@ -204,6 +212,10 @@ Attributes
 
 - ``infrastructure_bgpas_number``: Autonomous System Number, Used for Infrastructure BGP PE_CE.
 
+- ``interface_id_lower_limit``: Lower limit for interface Id configured on SRLinux device.
+
+- ``interface_id_upper_limit``: Upper limit for interface Id configured on SRLinux device.
+
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``domain_tunnel_type``: Default Domain Tunnel Type.
@@ -211,6 +223,8 @@ Attributes
 - ``google_maps_api_key``: Google Maps API Key used to display maps on Nuage UI applications
 
 - ``post_processor_threads_count``: Post processor thread count.
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``group_key_default_sek_generation_interval``: Group Key Encryption Profile Default SEK Generation Interval in seconds.
 
@@ -314,6 +328,8 @@ Attributes
 
 - ``event_processor_timeout``: Defines the maximum time period in milliseconds for the ReST server to wait before sending the events from the system.
 
+- ``owner``: Identifies the user that has created this object.
+
 - ``two_factor_code_expiry``: Two Factor Code Expiration time in seconds for bootstrapping gateways. (min = 60, max = 604800)
 
 - ``two_factor_code_length``: The number of characters in the generated Two Factor Code for bootstrapping gateways. (min = 4, max = 10)
@@ -341,6 +357,8 @@ Attributes
 - ``system_avatar_data``: CSP Avatar Data
 
 - ``system_avatar_type``: Avatar type - URL or BASE64
+
+- ``system_blocked_page_text``: The text for blocked page html which gets displayed to the end-users when they reach a website that is blocked by Web Filtering ACL. User can possibly include very basic html tags like <p>, <ul> etc. in order to fomat the text displayed to the end-users.
 
 
 

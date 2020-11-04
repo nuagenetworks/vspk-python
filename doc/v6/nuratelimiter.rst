@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``peak_burst_size`` (**Mandatory**): Peak Burst Size :  The maximum burst size associated with the rate limiter in kilo-bits; only whole values are supported.
 
 - ``peak_information_rate`` (**Mandatory**): Peak Information Rate :  Peak bandwidth allowed in Mb/s.
@@ -27,6 +29,10 @@ Attributes
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``committed_information_rate`` (**Mandatory**): Committed Information Rate :  Committed bandwidth that is allowed in Mb/s.
+
+- ``creation_date``: Time stamp when this object was created.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

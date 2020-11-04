@@ -34,6 +34,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``datapath_id``: Identifier of the Gateway, based on the systemID which is generated when the instance is created in VSD.
 
 - ``patches``: Patches that have been installed on the NSG
@@ -47,6 +49,8 @@ Attributes
 - ``gateway_model``: The model string of the gateway. Applicable to netconf managed gateways
 
 - ``gateway_version``: The Gateway Software Version as reported during bootstrapping.
+
+- ``native_vlan``: Default Native VLAN to carry untagged traffic on the ports of this gateway. Applicable for Cisco 9K only. Possible values are 1-3967.
 
 - ``redundancy_group_id``: The Redundancy Gateway Group associated with this Gateway Instance. This is a read only attribute
 
@@ -80,9 +84,13 @@ Attributes
 
 - ``bootstrap_status``: The bootstrap status of this Gateway. NOTE: This is a read only property.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``product_name``: Product Name as reported during bootstrapping.
 
 - ``use_gateway_vlanvnid``: When set, VLAN-VNID mapping must be unique for all the vports of the gateway
+
+- ``associated_gnmi_profile_id``: UUID of the GNMI Profile associated to this gateway.
 
 - ``associated_gateway_security_id``: Read only ID of the associated gateway security object.
 
@@ -95,6 +103,8 @@ Attributes
 - ``vtep``: Represent the system ID or the Virtual IP of a service used by a Gateway (VSG for now) to establish a tunnel with a remote VSG or hypervisor.  The format of this field is consistent with an IP address.
 
 - ``auto_disc_gateway_id``: The Auto Discovered Gateway associated with this Gateway Instance
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -131,6 +141,7 @@ Children
 :ref:`nubootstrap.NUBootstrap<nubootstrap>`                                                                                                                      ``bootstraps`` 
 :ref:`nubootstrapactivation.NUBootstrapActivation<nubootstrapactivation>`                                                                                        ``bootstrap_activations`` 
 :ref:`nuport.NUPort<nuport>`                                                                                                                                     ``ports`` 
+:ref:`nuroutingpolicy.NURoutingPolicy<nuroutingpolicy>`                                                                                                          ``routing_policies`` 
 :ref:`nuipfilterprofile.NUIPFilterProfile<nuipfilterprofile>`                                                                                                    ``ip_filter_profiles`` 
 :ref:`nuipv6filterprofile.NUIPv6FilterProfile<nuipv6filterprofile>`                                                                                              ``ipv6_filter_profiles`` 
 :ref:`nusubnet.NUSubnet<nusubnet>`                                                                                                                               ``subnets`` 

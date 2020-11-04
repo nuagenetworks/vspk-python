@@ -151,11 +151,14 @@ class NUIKEEncryptionprofile(NURESTObject):
         self._isakmp_hash_algorithm = None
         self._name = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._sequence = None
         self._description = None
         self._embedded_metadata = None
         self._entity_scope = None
+        self._creation_date = None
         self._associated_enterprise_id = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="dpd_interval", remote_name="DPDInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -176,11 +179,14 @@ class NUIKEEncryptionprofile(NURESTObject):
         self.expose_attribute(local_name="isakmp_hash_algorithm", remote_name="ISAKMPHashAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'SHA1', u'SHA256'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sequence", remote_name="sequence", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -683,6 +689,33 @@ class NUIKEEncryptionprofile(NURESTObject):
 
     
     @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
+
+    
+    @property
     def sequence(self):
         """ Get sequence value.
 
@@ -783,6 +816,33 @@ class NUIKEEncryptionprofile(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def associated_enterprise_id(self):
         """ Get associated_enterprise_id value.
 
@@ -807,6 +867,29 @@ class NUIKEEncryptionprofile(NURESTObject):
                 
         """
         self._associated_enterprise_id = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

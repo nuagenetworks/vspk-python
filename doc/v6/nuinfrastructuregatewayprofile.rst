@@ -20,6 +20,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``datapath_sync_timeout``: Datapath flows sync-time-interval specified in milliseconds
 
 - ``dead_timer``: ISO 8601 format duration: **PnYnMnD T nHnMnS**. **P** represents the period field and **T** the time field. Period field: **Y** = year, **M** = month, **D** = day. Time field: **H** = hours, **M** = minutes, **S** = seconds. **n** is the value of each field. Because the years and month are units that vary in length, for the time being those are not supported yet.
@@ -48,6 +50,8 @@ Attributes
 
 - ``underlay_test_server``: Underlay Test Server (FQDN or IP Address). Required when the Underlay test at bootstrap feature is enabled or to allow On-Demand tests to be run.
 
+- ``underlay_test_uplink_mode``: Enumerator to describe which uplinks to run underlay tests on during bootstrap
+
 - ``enterprise_id``: Enterprise/Organisation associated with this Profile instance.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
@@ -66,6 +70,8 @@ Attributes
 
 - ``upgrade_action``: Upgrade action for NSG associated with this Infrastructure Gateway Profile instance.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``proxy_dns_name`` (**Mandatory**): Proxy DNS Name :  DNS Name of the system acting as a proxy between the NSG instances and the VSD.
 
 - ``use_two_factor``: Use Two Factor :  When set to true, the use of two independent authentication factors will be used to secure the installed NSG.  When set to false, there is an assumption that the NSG is being installed in a secure environment and the installer is also trusted.  The defaut value is true, using 2-factor.
@@ -77,6 +83,8 @@ Attributes
 - ``run_underlay_connectivity_test``: Run the underlay connectivity test during activation. Will only have an effect if the Underlay tests at bootstrap are enabled.
 
 - ``run_underlay_mtu_discovery_test``: Run the underlay MTU discovery test during activation. Will only have an effect if the Underlay tests at bootstrap are enabled.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

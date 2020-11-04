@@ -52,7 +52,13 @@ class NUUserContext(NURESTObject):
     
     ## Constants
     
+    CONST_SYSTEM_AVATAR_TYPE_BASE64 = "BASE64"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_SYSTEM_AVATAR_TYPE_COMPUTEDURL = "COMPUTEDURL"
+    
+    CONST_SYSTEM_AVATAR_TYPE_URL = "URL"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
@@ -81,17 +87,24 @@ class NUUserContext(NURESTObject):
         self._vss_stats_interval = None
         self._page_size = None
         self._last_updated_by = None
+        self._last_updated_date = None
+        self._rbac_enabled = None
         self._denied_flow_collection_enabled = None
         self._threat_intelligence_enabled = None
+        self._allow_enterprise_avatar_on_nsg = None
         self._flow_collection_enabled = None
         self._embedded_metadata = None
         self._entity_scope = None
         self._google_maps_api_key = None
+        self._creation_date = None
         self._statistics_enabled = None
         self._stats_database_proxy = None
         self._stats_tsdb_server_address = None
+        self._owner = None
         self._explicit_acl_matching_enabled = None
         self._external_id = None
+        self._system_avatar_data = None
+        self._system_avatar_type = None
         
         self.expose_attribute(local_name="aar_flow_stats_interval", remote_name="AARFlowStatsInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="aar_probe_stats_interval", remote_name="AARProbeStatsInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -99,17 +112,24 @@ class NUUserContext(NURESTObject):
         self.expose_attribute(local_name="vss_stats_interval", remote_name="VSSStatsInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="page_size", remote_name="pageSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="rbac_enabled", remote_name="rbacEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="denied_flow_collection_enabled", remote_name="deniedFlowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="threat_intelligence_enabled", remote_name="threatIntelligenceEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="allow_enterprise_avatar_on_nsg", remote_name="allowEnterpriseAvatarOnNSG", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="google_maps_api_key", remote_name="googleMapsAPIKey", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="statistics_enabled", remote_name="statisticsEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_database_proxy", remote_name="statsDatabaseProxy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stats_tsdb_server_address", remote_name="statsTSDBServerAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="explicit_acl_matching_enabled", remote_name="explicitACLMatchingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="system_avatar_data", remote_name="systemAvatarData", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="system_avatar_type", remote_name="systemAvatarType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BASE64', u'COMPUTEDURL', u'URL'])
         
 
         # Fetchers
@@ -291,6 +311,60 @@ class NUUserContext(NURESTObject):
 
     
     @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
+
+    
+    @property
+    def rbac_enabled(self):
+        """ Get rbac_enabled value.
+
+            Notes:
+                Indicates wether the new RBAC feature is enabled
+
+                
+                This attribute is named `rbacEnabled` in VSD API.
+                
+        """
+        return self._rbac_enabled
+
+    @rbac_enabled.setter
+    def rbac_enabled(self, value):
+        """ Set rbac_enabled value.
+
+            Notes:
+                Indicates wether the new RBAC feature is enabled
+
+                
+                This attribute is named `rbacEnabled` in VSD API.
+                
+        """
+        self._rbac_enabled = value
+
+    
+    @property
     def denied_flow_collection_enabled(self):
         """ Get denied_flow_collection_enabled value.
 
@@ -342,6 +416,33 @@ class NUUserContext(NURESTObject):
                 
         """
         self._threat_intelligence_enabled = value
+
+    
+    @property
+    def allow_enterprise_avatar_on_nsg(self):
+        """ Get allow_enterprise_avatar_on_nsg value.
+
+            Notes:
+                When enabled, it allows Enterprise Avatar (image) to be populated on the NSGateway bootstrapping portal and blocked page notification.
+
+                
+                This attribute is named `allowEnterpriseAvatarOnNSG` in VSD API.
+                
+        """
+        return self._allow_enterprise_avatar_on_nsg
+
+    @allow_enterprise_avatar_on_nsg.setter
+    def allow_enterprise_avatar_on_nsg(self, value):
+        """ Set allow_enterprise_avatar_on_nsg value.
+
+            Notes:
+                When enabled, it allows Enterprise Avatar (image) to be populated on the NSGateway bootstrapping portal and blocked page notification.
+
+                
+                This attribute is named `allowEnterpriseAvatarOnNSG` in VSD API.
+                
+        """
+        self._allow_enterprise_avatar_on_nsg = value
 
     
     @property
@@ -453,6 +554,33 @@ class NUUserContext(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def statistics_enabled(self):
         """ Get statistics_enabled value.
 
@@ -534,6 +662,29 @@ class NUUserContext(NURESTObject):
 
     
     @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
+
+    
+    @property
     def explicit_acl_matching_enabled(self):
         """ Get explicit_acl_matching_enabled value.
 
@@ -585,6 +736,60 @@ class NUUserContext(NURESTObject):
                 
         """
         self._external_id = value
+
+    
+    @property
+    def system_avatar_data(self):
+        """ Get system_avatar_data value.
+
+            Notes:
+                URL to the avatar data configured at System Configuration. If the avatarType is URL then value of avatarData should be URL of the image. If the avatarType BASE64 then avatarData should be BASE64 encoded value of the image.
+
+                
+                This attribute is named `systemAvatarData` in VSD API.
+                
+        """
+        return self._system_avatar_data
+
+    @system_avatar_data.setter
+    def system_avatar_data(self, value):
+        """ Set system_avatar_data value.
+
+            Notes:
+                URL to the avatar data configured at System Configuration. If the avatarType is URL then value of avatarData should be URL of the image. If the avatarType BASE64 then avatarData should be BASE64 encoded value of the image.
+
+                
+                This attribute is named `systemAvatarData` in VSD API.
+                
+        """
+        self._system_avatar_data = value
+
+    
+    @property
+    def system_avatar_type(self):
+        """ Get system_avatar_type value.
+
+            Notes:
+                The type of avatar data.
+
+                
+                This attribute is named `systemAvatarType` in VSD API.
+                
+        """
+        return self._system_avatar_type
+
+    @system_avatar_type.setter
+    def system_avatar_type(self, value):
+        """ Set system_avatar_type value.
+
+            Notes:
+                The type of avatar data.
+
+                
+                This attribute is named `systemAvatarType` in VSD API.
+                
+        """
+        self._system_avatar_type = value
 
     
 

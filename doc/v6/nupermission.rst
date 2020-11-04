@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``permitted_action``: The permitted  action to USE/EXTEND/READ/INSTANTIATE  an entity.
 
 - ``permitted_enterprise_description``: Name of the permitted Enterprise
@@ -32,6 +34,8 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_group_description``: Description of the Group
 
 - ``associated_group_id``: The Group ID associated with this permission.
@@ -43,6 +47,8 @@ Attributes
 - ``associated_role_id``: ID of the associated Role
 
 - ``associated_role_name``: Associated Role Name
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -77,7 +83,7 @@ Parents
 
 - :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 
-- :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`
+- :ref:`nuegressauditaclentrytemplate.NUEgressAuditACLEntryTemplate<nuegressauditaclentrytemplate>`
 
 - :ref:`nubgppeer.NUBGPPeer<nubgppeer>`
 
@@ -105,7 +111,7 @@ Parents
 
 - :ref:`nusapegressqosprofile.NUSAPEgressQoSProfile<nusapegressqosprofile>`
 
-- :ref:`nuikesubnet.NUIKESubnet<nuikesubnet>`
+- :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
 - :ref:`numacfilterprofile.NUMACFilterProfile<numacfilterprofile>`
 
@@ -128,6 +134,8 @@ Parents
 - :ref:`nuvnfinterface.NUVNFInterface<nuvnfinterface>`
 
 - :ref:`nuroutingpolicy.NURoutingPolicy<nuroutingpolicy>`
+
+- :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
 
 - :ref:`nuenterprisesecurity.NUEnterpriseSecurity<nuenterprisesecurity>`
 
@@ -155,7 +163,7 @@ Parents
 
 - :ref:`nutestrun.NUTestRun<nutestrun>`
 
-- :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
+- :ref:`nudemarcationservice.NUDemarcationService<nudemarcationservice>`
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
@@ -213,8 +221,6 @@ Parents
 
 - :ref:`nuoverlaypatnatentry.NUOverlayPATNATEntry<nuoverlaypatnatentry>`
 
-- :ref:`nuvsc.NUVSC<nuvsc>`
-
 - :ref:`nudeploymentfailure.NUDeploymentFailure<nudeploymentfailure>`
 
 - :ref:`nucontrollervrslink.NUControllerVRSLink<nucontrollervrslink>`
@@ -244,6 +250,8 @@ Parents
 - :ref:`nuredundantport.NURedundantPort<nuredundantport>`
 
 - :ref:`nusaasapplicationtype.NUSaaSApplicationType<nusaasapplicationtype>`
+
+- :ref:`nuingressauditacltemplate.NUIngressAuditACLTemplate<nuingressauditacltemplate>`
 
 - :ref:`nutca.NUTCA<nutca>`
 
@@ -287,8 +295,6 @@ Parents
 
 - :ref:`nuptranslationmap.NUPTranslationMap<nuptranslationmap>`
 
-- :ref:`nutestsuite.NUTestSuite<nutestsuite>`
-
 - :ref:`nuqospolicer.NUQosPolicer<nuqospolicer>`
 
 - :ref:`nucertificate.NUCertificate<nucertificate>`
@@ -315,7 +321,7 @@ Parents
 
 - :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`
 
-- :ref:`nuinfrastructureaccessprofile.NUInfrastructureAccessProfile<nuinfrastructureaccessprofile>`
+- :ref:`nuesilmpolicy.NUEsIlmPolicy<nuesilmpolicy>`
 
 - :ref:`numulticastlist.NUMultiCastList<numulticastlist>`
 
@@ -326,6 +332,8 @@ Parents
 - :ref:`nuforwardingpathlistentry.NUForwardingPathListEntry<nuforwardingpathlistentry>`
 
 - :ref:`nunexthop.NUNextHop<nunexthop>`
+
+- :ref:`nuinfrastructureaccessprofile.NUInfrastructureAccessProfile<nuinfrastructureaccessprofile>`
 
 - :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
 
@@ -385,6 +393,8 @@ Parents
 
 - :ref:`nuingressaclentrytemplate.NUIngressACLEntryTemplate<nuingressaclentrytemplate>`
 
+- :ref:`nuikesubnet.NUIKESubnet<nuikesubnet>`
+
 - :ref:`nulocation.NULocation<nulocation>`
 
 - :ref:`nunetworkperformancebinding.NUNetworkPerformanceBinding<nunetworkperformancebinding>`
@@ -394,6 +404,8 @@ Parents
 - :ref:`nudefaultgateway.NUDefaultGateway<nudefaultgateway>`
 
 - :ref:`nusaasapplicationgroup.NUSaaSApplicationGroup<nusaasapplicationgroup>`
+
+- :ref:`nusystemconfig.NUSystemConfig<nusystemconfig>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
@@ -416,6 +428,8 @@ Parents
 - :ref:`nudscpremarkingpolicy.NUDSCPRemarkingPolicy<nudscpremarkingpolicy>`
 
 - :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
+
+- :ref:`nuegressauditacltemplate.NUEgressAuditACLTemplate<nuegressauditacltemplate>`
 
 - :ref:`nuegressadvfwdtemplate.NUEgressAdvFwdTemplate<nuegressadvfwdtemplate>`
 
@@ -441,9 +455,13 @@ Parents
 
 - :ref:`nunsgatewaytemplate.NUNSGatewayTemplate<nunsgatewaytemplate>`
 
+- :ref:`nuvsc.NUVSC<nuvsc>`
+
 - :ref:`nuzonetemplate.NUZoneTemplate<nuzonetemplate>`
 
 - :ref:`nuvsd.NUVSD<nuvsd>`
+
+- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 
 - :ref:`nunsgroutingpolicybinding.NUNSGRoutingPolicyBinding<nunsgroutingpolicybinding>`
 
@@ -499,7 +517,7 @@ Parents
 
 - :ref:`nuport.NUPort<nuport>`
 
-- :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
+- :ref:`nuingressauditaclentrytemplate.NUIngressAuditACLEntryTemplate<nuingressauditaclentrytemplate>`
 
 - :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
 
@@ -525,13 +543,13 @@ Parents
 
 - :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
 
-- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
+- :ref:`nutestsuite.NUTestSuite<nutestsuite>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuwirelessport.NUWirelessPort<nuwirelessport>`
 
-- :ref:`nusystemconfig.NUSystemConfig<nusystemconfig>`
+- :ref:`nuesindexconfig.NUEsIndexConfig<nuesindexconfig>`
 
 - :ref:`nuikeencryptionprofile.NUIKEEncryptionprofile<nuikeencryptionprofile>`
 
@@ -545,7 +563,7 @@ Parents
 
 - :ref:`nuenterprisesecureddata.NUEnterpriseSecuredData<nuenterprisesecureddata>`
 
-- :ref:`nudemarcationservice.NUDemarcationService<nudemarcationservice>`
+- :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`
 
 - :ref:`nufirewallrule.NUFirewallRule<nufirewallrule>`
 

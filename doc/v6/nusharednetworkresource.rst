@@ -26,6 +26,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway``: Gatemask configured on the shared resource
 
 - ``gateway_mac_address``: MAC address for a public subnet or managed l2 domain
@@ -64,6 +66,8 @@ Attributes
 
 - ``uplink_vport_name``: Name of the uplink vport
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``use_global_mac``: if this flag is enabled, the system configured globalMACAddress will be used as the gateway mac address
 
 - ``associated_pat_mapper_id``: The ID of the PatMapper entity to which this pool is associated to.
@@ -71,6 +75,8 @@ Attributes
 - ``subnet_route_distinguisher``: Route distinguisher configured on the shared resource subnetwork
 
 - ``subnet_route_target``: Route target configured on the shared resource subnetwork
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

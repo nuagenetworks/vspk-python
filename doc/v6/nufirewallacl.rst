@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``active``: If enabled, it means that this ACL or QOS entry is active
 
 - ``default_allow_ip``: If enabled a default ACL of Allow All is added as the last entry in thelist of ACL entries 
@@ -28,9 +30,13 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``rule_ids``: Firewall rules associated with this firewall acl.
 
 - ``auto_generate_priority``: If enabled, entries priority will be randomly generated between allowed range.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

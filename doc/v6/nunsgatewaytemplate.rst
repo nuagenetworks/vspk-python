@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``personality``: Personality of the Gateway template - NSG, NSGBR, cannot be changed after creation.
 
 - ``description``: A description of the Gateway template.
@@ -33,6 +35,10 @@ Attributes
 - ``enterprise_id``: The enterprise associated with this Gateway template. This is a read only attribute
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``creation_date``: Time stamp when this object was created.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

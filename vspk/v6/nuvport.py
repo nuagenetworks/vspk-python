@@ -150,6 +150,8 @@ class NUVPort(NURESTObject):
     
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_VDFG = "VDFG"
     
+    CONST_SYSTEM_TYPE_NUAGE_VRSG = "NUAGE_VRSG"
+    
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_EVDFB = "EVDFB"
     
     CONST_DPI_ENABLED = "ENABLED"
@@ -159,6 +161,8 @@ class NUVPort(NURESTObject):
     CONST_TYPE_CONTAINER = "CONTAINER"
     
     CONST_DPI_INHERITED = "INHERITED"
+    
+    CONST_ASSOCIATED_GATEWAY_PERSONALITY_SR_LINUX = "SR_LINUX"
     
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_DC7X50 = "DC7X50"
     
@@ -188,6 +192,8 @@ class NUVPort(NURESTObject):
     
     CONST_TYPE_HOST = "HOST"
     
+    CONST_SUB_TYPE_NONE = "NONE"
+    
     CONST_GATEWAY_MAC_MOVE_ROLE_TERTIARY = "TERTIARY"
     
     CONST_GATEWAY_MAC_MOVE_ROLE_SECONDARY = "SECONDARY"
@@ -200,19 +206,21 @@ class NUVPort(NURESTObject):
     
     CONST_PEER_OPERATIONAL_STATE_DOWN = "DOWN"
     
+    CONST_OPERATIONAL_STATE_DEGRADED = "DEGRADED"
+    
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_UNMANAGED_GATEWAY = "UNMANAGED_GATEWAY"
     
     CONST_TRUNK_ROLE_SUB_PORT = "SUB_PORT"
     
     CONST_SEGMENTATION_TYPE_VLAN = "VLAN"
     
-    CONST_OPERATIONAL_STATE_UP = "UP"
+    CONST_FLOW_LIMIT_ENABLED_DISABLED = "DISABLED"
     
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_VDF = "VDF"
     
     CONST_PEER_OPERATIONAL_STATE_UP = "UP"
     
-    CONST_MULTICAST_ENABLED = "ENABLED"
+    CONST_FLOW_LIMIT_ENABLED_INHERITED = "INHERITED"
     
     CONST_MULTICAST_INHERITED = "INHERITED"
     
@@ -228,11 +236,13 @@ class NUVPort(NURESTObject):
     
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_VRSG = "VRSG"
     
-    CONST_SUB_TYPE_NONE = "NONE"
+    CONST_OPERATIONAL_STATE_UP = "UP"
     
     CONST_SYSTEM_TYPE_SOFTWARE = "SOFTWARE"
     
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_EVDF = "EVDF"
+    
+    CONST_MULTICAST_ENABLED = "ENABLED"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
@@ -246,7 +256,7 @@ class NUVPort(NURESTObject):
     
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_NSGBR = "NSGBR"
     
-    CONST_SYSTEM_TYPE_NUAGE_VRSG = "NUAGE_VRSG"
+    CONST_FLOW_LIMIT_ENABLED_ENABLED = "ENABLED"
     
     CONST_OPERATIONAL_STATE_INIT = "INIT"
     
@@ -281,6 +291,7 @@ class NUVPort(NURESTObject):
         self._name = None
         self._has_attached_interfaces = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._gateway_mac_move_role = None
         self._gateway_port_name = None
         self._access_restriction_enabled = None
@@ -291,6 +302,8 @@ class NUVPort(NURESTObject):
         self._segmentation_type = None
         self._service_id = None
         self._description = None
+        self._flow_count = None
+        self._flow_limit_enabled = None
         self._embedded_metadata = None
         self._entity_scope = None
         self._color = None
@@ -300,7 +313,9 @@ class NUVPort(NURESTObject):
         self._domain_vlanid = None
         self._zone_id = None
         self._operational_state = None
+        self._creation_date = None
         self._trunk_role = None
+        self._es_group_vport_infos = None
         self._assoc_entity_id = None
         self._associated_egress_profile_id = None
         self._associated_floating_ip_id = None
@@ -318,6 +333,7 @@ class NUVPort(NURESTObject):
         self._multicast = None
         self._auto_created = None
         self._gw_eligible = None
+        self._owner = None
         self._external_id = None
         self._type = None
         self._system_type = None
@@ -330,6 +346,7 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="has_attached_interfaces", remote_name="hasAttachedInterfaces", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_mac_move_role", remote_name="gatewayMACMoveRole", attribute_type=str, is_required=False, is_unique=False, choices=[u'SECONDARY', u'TERTIARY'])
         self.expose_attribute(local_name="gateway_port_name", remote_name="gatewayPortName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="access_restriction_enabled", remote_name="accessRestrictionEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -340,6 +357,8 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="segmentation_type", remote_name="segmentationType", attribute_type=str, is_required=False, is_unique=False, choices=[u'VLAN'])
         self.expose_attribute(local_name="service_id", remote_name="serviceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_count", remote_name="flowCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_limit_enabled", remote_name="flowLimitEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="color", remote_name="color", attribute_type=int, is_required=False, is_unique=False)
@@ -348,13 +367,15 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="domain_service_label", remote_name="domainServiceLabel", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="domain_vlanid", remote_name="domainVLANID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zone_id", remote_name="zoneID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="operational_state", remote_name="operationalState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DOWN', u'INIT', u'UP'])
+        self.expose_attribute(local_name="operational_state", remote_name="operationalState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEGRADED', u'DOWN', u'INIT', u'UP'])
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="trunk_role", remote_name="trunkRole", attribute_type=str, is_required=False, is_unique=False, choices=[u'PARENT_PORT', u'SUB_PORT'])
+        self.expose_attribute(local_name="es_group_vport_infos", remote_name="esGroupVPortInfos", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_entity_id", remote_name="assocEntityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_egress_profile_id", remote_name="associatedEgressProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_floating_ip_id", remote_name="associatedFloatingIPID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_id", remote_name="associatedGatewayID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_gateway_personality", remote_name="associatedGatewayPersonality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NETCONF_THIRDPARTY_HW_VTEP', u'NSG', u'NSGBR', u'NSGDUC', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'UNMANAGED_GATEWAY', u'VDF', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="associated_gateway_personality", remote_name="associatedGatewayPersonality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NETCONF_THIRDPARTY_HW_VTEP', u'NSG', u'NSGBR', u'NSGDUC', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'SR_LINUX', u'UNMANAGED_GATEWAY', u'VDF', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="associated_gateway_type", remote_name="associatedGatewayType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ingress_profile_id", remote_name="associatedIngressProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
@@ -367,6 +388,7 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="auto_created", remote_name="autoCreated", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gw_eligible", remote_name="gwEligible", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=True, is_unique=False, choices=[u'BRIDGE', u'CONTAINER', u'HOST', u'VM'])
         self.expose_attribute(local_name="system_type", remote_name="systemType", attribute_type=str, is_required=False, is_unique=False, choices=[u'HARDWARE', u'HARDWARE_VTEP', u'NUAGE_1', u'NUAGE_2', u'NUAGE_VRSG', u'SOFTWARE'])
@@ -691,6 +713,33 @@ class NUVPort(NURESTObject):
 
     
     @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
+
+    
+    @property
     def gateway_mac_move_role(self):
         """ Get gateway_mac_move_role value.
 
@@ -953,6 +1002,60 @@ class NUVPort(NURESTObject):
 
     
     @property
+    def flow_count(self):
+        """ Get flow_count value.
+
+            Notes:
+                Maximum number of data flows allowed for a VPort. If "Flow Limit Enabled" parameter is ENABLED/DISABLED/INHERITED, Flow Count parameter is configured/ignored/derived from parent domain respectively.
+
+                
+                This attribute is named `flowCount` in VSD API.
+                
+        """
+        return self._flow_count
+
+    @flow_count.setter
+    def flow_count(self, value):
+        """ Set flow_count value.
+
+            Notes:
+                Maximum number of data flows allowed for a VPort. If "Flow Limit Enabled" parameter is ENABLED/DISABLED/INHERITED, Flow Count parameter is configured/ignored/derived from parent domain respectively.
+
+                
+                This attribute is named `flowCount` in VSD API.
+                
+        """
+        self._flow_count = value
+
+    
+    @property
+    def flow_limit_enabled(self):
+        """ Get flow_limit_enabled value.
+
+            Notes:
+                Indicates if flow limit is enabled or disabled or "Flow Count" attribute is derived from the parent Domain on this VPort . Possible values are ENABLED, DISABLED or INHERITED.
+
+                
+                This attribute is named `flowLimitEnabled` in VSD API.
+                
+        """
+        return self._flow_limit_enabled
+
+    @flow_limit_enabled.setter
+    def flow_limit_enabled(self, value):
+        """ Set flow_limit_enabled value.
+
+            Notes:
+                Indicates if flow limit is enabled or disabled or "Flow Count" attribute is derived from the parent Domain on this VPort . Possible values are ENABLED, DISABLED or INHERITED.
+
+                
+                This attribute is named `flowLimitEnabled` in VSD API.
+                
+        """
+        self._flow_limit_enabled = value
+
+    
+    @property
     def embedded_metadata(self):
         """ Get embedded_metadata value.
 
@@ -1169,7 +1272,7 @@ class NUVPort(NURESTObject):
         """ Get operational_state value.
 
             Notes:
-                Operational State of the VPort. Possible values are INIT, UP, DOWN.
+                Operational State of the VPort. Possible values are INIT, UP, DOWN, DEGRADED
 
                 
                 This attribute is named `operationalState` in VSD API.
@@ -1182,13 +1285,40 @@ class NUVPort(NURESTObject):
         """ Set operational_state value.
 
             Notes:
-                Operational State of the VPort. Possible values are INIT, UP, DOWN.
+                Operational State of the VPort. Possible values are INIT, UP, DOWN, DEGRADED
 
                 
                 This attribute is named `operationalState` in VSD API.
                 
         """
         self._operational_state = value
+
+    
+    @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
 
     
     @property
@@ -1216,6 +1346,33 @@ class NUVPort(NURESTObject):
                 
         """
         self._trunk_role = value
+
+    
+    @property
+    def es_group_vport_infos(self):
+        """ Get es_group_vport_infos value.
+
+            Notes:
+                Array of the embedded resource VPortInfo for each gateway member of ethernet segment group
+
+                
+                This attribute is named `esGroupVPortInfos` in VSD API.
+                
+        """
+        return self._es_group_vport_infos
+
+    @es_group_vport_infos.setter
+    def es_group_vport_infos(self, value):
+        """ Set es_group_vport_infos value.
+
+            Notes:
+                Array of the embedded resource VPortInfo for each gateway member of ethernet segment group
+
+                
+                This attribute is named `esGroupVPortInfos` in VSD API.
+                
+        """
+        self._es_group_vport_infos = value
 
     
     @property
@@ -1277,7 +1434,7 @@ class NUVPort(NURESTObject):
         """ Get associated_floating_ip_id value.
 
             Notes:
-                Id of Floating IP address associated to this vport
+                Id of Floating IP address associated to this VPort
 
                 
                 This attribute is named `associatedFloatingIPID` in VSD API.
@@ -1290,7 +1447,7 @@ class NUVPort(NURESTObject):
         """ Set associated_floating_ip_id value.
 
             Notes:
-                Id of Floating IP address associated to this vport
+                Id of Floating IP address associated to this VPort
 
                 
                 This attribute is named `associatedFloatingIPID` in VSD API.
@@ -1671,6 +1828,29 @@ class NUVPort(NURESTObject):
                 
         """
         self._gw_eligible = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

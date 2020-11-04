@@ -20,6 +20,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``default_service``: Flag to identify default service
 
 - ``description``: Description of the service
@@ -28,7 +30,11 @@ Attributes
 
 - ``ports``: The port ranges for the l4 service. Must be matched if protocol is UDP or TCP. Value can be either * or single port number (1, 2 etc.) or a port range (1-10)
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``protocol``: Protocol number that must be matched
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

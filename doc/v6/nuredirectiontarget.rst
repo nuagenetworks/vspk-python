@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``redundancy_enabled``: Allow/Disallow redundant appliances and VIP
 
 - ``template_id``: Template to which this redirection target belongs to
@@ -34,9 +36,13 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``trigger_type``: Trigger type, THIS IS READ ONLY. Possible values are NONE, GARP, .
 
 - ``auto_created``: Indicates if redirection target was auto created by the system
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

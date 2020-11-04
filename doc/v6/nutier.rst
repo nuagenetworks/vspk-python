@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``description``: Descrtiption of the Tier
 
 - ``tier_type`` (**Mandatory**): Tier type
@@ -28,7 +30,11 @@ Attributes
 
 - ``down_threshold_count``: Number of times the probe is allowed to retry on successive timeouts. Applicable only for TIER2
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``probe_interval``: probe interval (part of rate along with packetCount). Applicable to Tier2 type.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

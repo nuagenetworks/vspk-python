@@ -20,6 +20,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``permitted_action``: The permitted action to USE/EXTEND this Redundant Port.
 
 - ``description``: A description of the Redundant Port instance.
@@ -40,6 +42,8 @@ Attributes
 
 - ``speed``: Port Speed in Mb/s :  Supported Ethernet speeds are 10 (10Base-T), 100 (Fast-ethernet 100Base-TX), 1000 (Gigabit Ethernet 1000Base-T), 10 000 (10 Gigabit Ethernet 10GBase-X), and Auto-Negotiate.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``use_untagged_heartbeat_vlan``: A flag to indicate if for this redundant port an untagged heartbeat VLAN is to be used. If this is not set then will use the heartbeat VLAN set by the NS redundant group
 
 - ``use_user_mnemonic``: Determines whether to use user mnemonic of the Port
@@ -49,6 +53,8 @@ Attributes
 - ``associated_egress_qos_policy_id``: ID of the Egress QoS Policy associated with this Redundant Port.
 
 - ``status``: Status of the redundant port.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

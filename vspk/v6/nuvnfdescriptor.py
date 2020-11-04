@@ -98,7 +98,7 @@ class NUVNFDescriptor(NURESTObject):
         self._external_id = None
         self._type = None
         
-        self.expose_attribute(local_name="cpu_count", remote_name="CPUCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="cpu_count", remote_name="CPUCount", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="memory_mb", remote_name="memoryMB", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="vendor", remote_name="vendor", attribute_type=str, is_required=False, is_unique=False)

@@ -77,6 +77,7 @@ class NUDomainKindSummary(NURESTObject):
         
         self._major_alarms_count = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._gateway_count = None
         self._mesh_group_count = None
         self._minor_alarms_count = None
@@ -87,13 +88,16 @@ class NUDomainKindSummary(NURESTObject):
         self._domain_kind_name = None
         self._zone_count = None
         self._traffic_volume = None
+        self._creation_date = None
         self._critical_alarms_count = None
         self._nsg_count = None
         self._sub_network_count = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="major_alarms_count", remote_name="majorAlarmsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_count", remote_name="gatewayCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mesh_group_count", remote_name="meshGroupCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="minor_alarms_count", remote_name="minorAlarmsCount", attribute_type=int, is_required=False, is_unique=False)
@@ -104,9 +108,11 @@ class NUDomainKindSummary(NURESTObject):
         self.expose_attribute(local_name="domain_kind_name", remote_name="domainKindName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zone_count", remote_name="zoneCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="traffic_volume", remote_name="trafficVolume", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="critical_alarms_count", remote_name="criticalAlarmsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_count", remote_name="nsgCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sub_network_count", remote_name="subNetworkCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -178,6 +184,33 @@ class NUDomainKindSummary(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -451,6 +484,33 @@ class NUDomainKindSummary(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def critical_alarms_count(self):
         """ Get critical_alarms_count value.
 
@@ -529,6 +589,29 @@ class NUDomainKindSummary(NURESTObject):
                 
         """
         self._sub_network_count = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

@@ -14,9 +14,11 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``network_name``: Name of the network to which the vport belongs to
 
-- ``mirror_destination_id``: Destination ID of the mirror destination object.
+- ``mirror_destination_id`` (**Mandatory**): Destination ID of the mirror destination object.
 
 - ``mirror_destination_name``: Name of the mirror destination
 
@@ -34,7 +36,11 @@ Attributes
 
 - ``vport_name``: Name of the vport to which the mirror destination is associated with.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``attached_network_type``: Type of the network attached - L2/L3
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

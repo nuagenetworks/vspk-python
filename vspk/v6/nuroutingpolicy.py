@@ -56,6 +56,8 @@ class NURoutingPolicy(NURESTObject):
     
     CONST_CONTENT_TYPE_NETCONF_7X50 = "NETCONF_7X50"
     
+    CONST_CONTENT_TYPE_SR_LINUX = "SR_LINUX"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ROUTING_PROTOCOL_OSPFV3 = "OSPFv3"
@@ -101,6 +103,7 @@ class NURoutingPolicy(NURESTObject):
         self._policy_definition = None
         self._content_type = None
         self._routing_protocol = None
+        self._customer_id = None
         self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
@@ -109,8 +112,9 @@ class NURoutingPolicy(NURESTObject):
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="policy_definition", remote_name="policyDefinition", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="content_type", remote_name="contentType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'NETCONF_7X50'])
+        self.expose_attribute(local_name="content_type", remote_name="contentType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'NETCONF_7X50', u'SR_LINUX'])
         self.expose_attribute(local_name="routing_protocol", remote_name="routingProtocol", attribute_type=str, is_required=False, is_unique=False, choices=[u'BGP', u'ISIS', u'OSPFv2', u'OSPFv3', u'ROUTING'])
+        self.expose_attribute(local_name="customer_id", remote_name="CustomerID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -336,6 +340,33 @@ class NURoutingPolicy(NURESTObject):
                 
         """
         self._routing_protocol = value
+
+    
+    @property
+    def customer_id(self):
+        """ Get customer_id value.
+
+            Notes:
+                The customer ID given to parent enterprise. This is used by Netconf/Config manager.
+
+                
+                This attribute is named `CustomerID` in VSD API.
+                
+        """
+        return self._customer_id
+
+    @customer_id.setter
+    def customer_id(self, value):
+        """ Set customer_id value.
+
+            Notes:
+                The customer ID given to parent enterprise. This is used by Netconf/Config manager.
+
+                
+                This attribute is named `CustomerID` in VSD API.
+                
+        """
+        self._customer_id = value
 
     
     @property

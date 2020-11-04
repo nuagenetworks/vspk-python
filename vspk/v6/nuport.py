@@ -66,6 +66,8 @@ class NUPort(NURESTObject):
     
     CONST_PORT_TYPE_NETWORK = "NETWORK"
     
+    CONST_OPERATIONAL_STATE_DOWN = "DOWN"
+    
     CONST_PERMITTED_ACTION_USE = "USE"
     
     CONST_PERMITTED_ACTION_READ = "READ"
@@ -80,11 +82,13 @@ class NUPort(NURESTObject):
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
+    CONST_OPERATIONAL_STATE_UP = "UP"
+    
     CONST_STATUS_MISMATCH = "MISMATCH"
     
     CONST_PERMITTED_ACTION_INSTANTIATE = "INSTANTIATE"
     
-    CONST_STATUS_INITIALIZED = "INITIALIZED"
+    CONST_OPERATIONAL_STATE_INIT = "INIT"
     
     CONST_PORT_TYPE_MANAGEMENT = "MANAGEMENT"
     
@@ -93,6 +97,8 @@ class NUPort(NURESTObject):
     CONST_PORT_TYPE_ACCESS = "ACCESS"
     
     CONST_STATUS_ORPHAN = "ORPHAN"
+    
+    CONST_STATUS_INITIALIZED = "INITIALIZED"
     
     
 
@@ -116,6 +122,8 @@ class NUPort(NURESTObject):
         self._vlan_range = None
         self._name = None
         self._last_updated_by = None
+        self._last_updated_date = None
+        self._native_vlan = None
         self._template_id = None
         self._permitted_action = None
         self._description = None
@@ -123,6 +131,8 @@ class NUPort(NURESTObject):
         self._embedded_metadata = None
         self._entity_scope = None
         self._port_type = None
+        self._operational_state = None
+        self._creation_date = None
         self._is_resilient = None
         self._use_user_mnemonic = None
         self._user_mnemonic = None
@@ -133,11 +143,14 @@ class NUPort(NURESTObject):
         self._associated_ethernet_segment_virtual = None
         self._associated_redundant_port_id = None
         self._status = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="vlan_range", remote_name="VLANRange", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="native_vlan", remote_name="nativeVLAN", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
@@ -145,6 +158,8 @@ class NUPort(NURESTObject):
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'MANAGEMENT', u'NETWORK'])
+        self.expose_attribute(local_name="operational_state", remote_name="operationalState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DOWN', u'INIT', u'UP'])
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="is_resilient", remote_name="isResilient", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_user_mnemonic", remote_name="useUserMnemonic", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_mnemonic", remote_name="userMnemonic", attribute_type=str, is_required=False, is_unique=False)
@@ -155,6 +170,7 @@ class NUPort(NURESTObject):
         self.expose_attribute(local_name="associated_ethernet_segment_virtual", remote_name="associatedEthernetSegmentVirtual", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_redundant_port_id", remote_name="associatedRedundantPortID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'INITIALIZED', u'MISMATCH', u'ORPHAN', u'READY'])
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -261,6 +277,60 @@ class NUPort(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
+
+    
+    @property
+    def native_vlan(self):
+        """ Get native_vlan value.
+
+            Notes:
+                Native VLAN to carry untagged traffic on this port. Applicable for Access Ports on Cisco 9K only. Possible values are 1-3967.
+
+                
+                This attribute is named `nativeVLAN` in VSD API.
+                
+        """
+        return self._native_vlan
+
+    @native_vlan.setter
+    def native_vlan(self, value):
+        """ Set native_vlan value.
+
+            Notes:
+                Native VLAN to carry untagged traffic on this port. Applicable for Access Ports on Cisco 9K only. Possible values are 1-3967.
+
+                
+                This attribute is named `nativeVLAN` in VSD API.
+                
+        """
+        self._native_vlan = value
 
     
     @property
@@ -446,6 +516,60 @@ class NUPort(NURESTObject):
                 
         """
         self._port_type = value
+
+    
+    @property
+    def operational_state(self):
+        """ Get operational_state value.
+
+            Notes:
+                Represents Operational State of the Port. Possible values are INIT, UP, DOWN.
+
+                
+                This attribute is named `operationalState` in VSD API.
+                
+        """
+        return self._operational_state
+
+    @operational_state.setter
+    def operational_state(self, value):
+        """ Set operational_state value.
+
+            Notes:
+                Represents Operational State of the Port. Possible values are INIT, UP, DOWN.
+
+                
+                This attribute is named `operationalState` in VSD API.
+                
+        """
+        self._operational_state = value
+
+    
+    @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
 
     
     @property
@@ -712,6 +836,29 @@ class NUPort(NURESTObject):
                 
         """
         self._status = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

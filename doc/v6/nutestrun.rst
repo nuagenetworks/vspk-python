@@ -14,6 +14,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``test_result``: The result of the test
 
 - ``test_result_data``: The test result data
@@ -42,6 +44,8 @@ Attributes
 
 - ``operation_status``: The status of the test operation request as received by the NSG Agent. This field is set by the NSG.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_test_id``: The ID of the Test instance to which this Test Run is bound.
 
 - ``associated_test_suite_run_id``: Test Run instances are part of a Test Suite Run.  This is the ID of the Test Suite Run object to which this Test Run belongs.
@@ -51,6 +55,8 @@ Attributes
 - ``stop_date_time``: The stop date and time of the test in milliseconds since Epoch.
 
 - ``duration``: The duration of execution of the Test in milliseconds.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

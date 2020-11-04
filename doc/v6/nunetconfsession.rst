@@ -14,6 +14,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway_model``: The model string of the gateway to which this session connected from Netconf Manager
 
 - ``gateway_vendor``: Vendor of the gateway to which this session connected from Netconf Manager
@@ -24,11 +26,15 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_gateway_id``: UUID of the gateway associated to this Netconf session.
 
 - ``associated_gateway_name``: Name of the gateway associated to this Netconf session.
 
 - ``status``: The status of the NetConf session to a gateway.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

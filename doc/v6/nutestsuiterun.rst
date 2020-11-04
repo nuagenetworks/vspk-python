@@ -18,7 +18,9 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
-- ``datapath_id``: The datapath ID (System ID) of the NSG instance against which the tests are to be executed.
+- ``last_updated_date``: Time stamp when this object was last updated.
+
+- ``datapath_id``: The Datapath ID of the NSG instance against which the tests are to be executed.
 
 - ``destination``: Destination to be used in conjunction with tests part of the Test Suite. Could be an IPv4 address or FQDN.
 
@@ -34,6 +36,8 @@ Attributes
 
 - ``operation_status``: The status of the test operation request as received by the NSG Agent. This field is set by the NSG.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_entity_type``: Type of the entity that is hosting the Test Suite Run.  This can be a vPort or an NSG.
 
 - ``associated_test_suite_id`` (**Mandatory**): The ID of the Test Suite from which this instance of the Test Suite Run was created.
@@ -44,7 +48,11 @@ Attributes
 
 - ``subnet_name``: The name of the Subnet within which the source vPort being tested resides.
 
+- ``owner``: Identifies the user that has created this object.
+
 - ``external_id``: External object ID. Used for integration with third party systems
+
+- ``system_id``: The System ID of the NSG instance against which the tests are to be executed.
 
 
 

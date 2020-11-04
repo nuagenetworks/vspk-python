@@ -26,6 +26,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``web_filter_enabled``: Read only flag to display if Web Filtering is enabled for this enterprise
 
 - ``receive_multi_cast_list_id``: Read-only Id of the auto generated receive multicast list associated with this enterprise profile
@@ -58,6 +60,8 @@ Attributes
 
 - ``floating_ips_used``: Number of floating IPs used by the enterprise from the assigned floatingIPsQuota
 
+- ``blocked_page_text``: The text for blocked page html which gets displayed to the end-users when they reach a website that is blocked by Web Filtering ACL. User can possibly include very basic html tags like <p>, <ul> etc. in order to fomat the text displayed to the end-users.
+
 - ``flow_collection_enabled``: Determines whether or not flow collection is enabled.
 
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
@@ -68,11 +72,15 @@ Attributes
 
 - ``enterprise_profile_id``: Enterprise profile id for this enterprise
 
+- ``enterprise_type``: Type of Enterprise. SHARED, AUDIT, NORMAL, CSP, SYSTEM
+
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``local_as``: Local autonomous system for the enterprise
 
 - ``forwarding_class``: Represents the List of forwarding classes and their load balancing capability.
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``use_global_mac``: Determines whether Global Gateway MAC is enabled or not Enterprise level.
 
@@ -87,6 +95,8 @@ Attributes
 - ``avatar_data``: URL to the avatar data associated with the enterprise. If the avatarType is URL then value of avatarData should an URL of the image. If the avatarType BASE64 then avatarData should be BASE64 encoded value of the image
 
 - ``avatar_type``: Avatar type - URL or BASE64 Possible values are URL, BASE64, COMPUTEDURL, .
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -106,6 +116,8 @@ Children
 :ref:`nul7applicationsignature.NUL7applicationsignature<nul7applicationsignature>`                                                                               ``l7applicationsignatures`` 
 :ref:`nusaasapplicationgroup.NUSaaSApplicationGroup<nusaasapplicationgroup>`                                                                                     ``saa_s_application_groups`` 
 :ref:`nusaasapplicationtype.NUSaaSApplicationType<nusaasapplicationtype>`                                                                                        ``saa_s_application_types`` 
+:ref:`nusapegressqosprofile.NUSAPEgressQoSProfile<nusapegressqosprofile>`                                                                                        ``sap_egress_qo_s_profiles`` 
+:ref:`nusapingressqosprofile.NUSAPIngressQoSProfile<nusapingressqosprofile>`                                                                                     ``sap_ingress_qo_s_profiles`` 
 :ref:`nucaptiveportalprofile.NUCaptivePortalProfile<nucaptiveportalprofile>`                                                                                     ``captive_portal_profiles`` 
 :ref:`nuratelimiter.NURateLimiter<nuratelimiter>`                                                                                                                ``rate_limiters`` 
 :ref:`nugateway.NUGateway<nugateway>`                                                                                                                            ``gateways`` 
@@ -129,6 +141,7 @@ Children
 :ref:`nukeyservermonitor.NUKeyServerMonitor<nukeyservermonitor>`                                                                                                 ``key_server_monitors`` 
 :ref:`nuzfbrequest.NUZFBRequest<nuzfbrequest>`                                                                                                                   ``zfb_requests`` 
 :ref:`nubgpprofile.NUBGPProfile<nubgpprofile>`                                                                                                                   ``bgp_profiles`` 
+:ref:`nuegressprofile.NUEgressProfile<nuegressprofile>`                                                                                                          ``egress_profiles`` 
 :ref:`nuegressqospolicy.NUEgressQOSPolicy<nuegressqospolicy>`                                                                                                    ``egress_qos_policies`` 
 :ref:`nusharednetworkresource.NUSharedNetworkResource<nusharednetworkresource>`                                                                                  ``shared_network_resources`` 
 :ref:`nufirewallacl.NUFirewallAcl<nufirewallacl>`                                                                                                                ``firewall_acls`` 
@@ -145,7 +158,9 @@ Children
 :ref:`nuvnf.NUVNF<nuvnf>`                                                                                                                                        ``vnfs`` 
 :ref:`nuvnfmetadata.NUVNFMetadata<nuvnfmetadata>`                                                                                                                ``vnf_metadatas`` 
 :ref:`nuvnfthresholdpolicy.NUVNFThresholdPolicy<nuvnfthresholdpolicy>`                                                                                           ``vnf_threshold_policies`` 
+:ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`                                                                                                       ``ingress_profiles`` 
 :ref:`nuingressqospolicy.NUIngressQOSPolicy<nuingressqospolicy>`                                                                                                 ``ingress_qos_policies`` 
+:ref:`nugnmiprofile.NUGNMIProfile<nugnmiprofile>`                                                                                                                ``gnmi_profiles`` 
 :ref:`nuenterprisenetwork.NUEnterpriseNetwork<nuenterprisenetwork>`                                                                                              ``enterprise_networks`` 
 :ref:`nuenterprisesecurity.NUEnterpriseSecurity<nuenterprisesecurity>`                                                                                           ``enterprise_securities`` 
 :ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
@@ -158,8 +173,10 @@ Children
 :ref:`nucontainer.NUContainer<nucontainer>`                                                                                                                      ``containers`` 
 :ref:`nucosremarkingpolicytable.NUCOSRemarkingPolicyTable<nucosremarkingpolicytable>`                                                                            ``cos_remarking_policy_tables`` 
 :ref:`nuroutingpolicy.NURoutingPolicy<nuroutingpolicy>`                                                                                                          ``routing_policies`` 
+:ref:`nuipfilterprofile.NUIPFilterProfile<nuipfilterprofile>`                                                                                                    ``ip_filter_profiles`` 
 :ref:`nuapplication.NUApplication<nuapplication>`                                                                                                                ``applications`` 
 :ref:`nuapplicationperformancemanagement.NUApplicationperformancemanagement<nuapplicationperformancemanagement>`                                                 ``applicationperformancemanagements`` 
+:ref:`nuipv6filterprofile.NUIPv6FilterProfile<nuipv6filterprofile>`                                                                                              ``ipv6_filter_profiles`` 
 :ref:`nugroup.NUGroup<nugroup>`                                                                                                                                  ``groups`` 
 :ref:`nugroupkeyencryptionprofile.NUGroupKeyEncryptionProfile<nugroupkeyencryptionprofile>`                                                                      ``group_key_encryption_profiles`` 
 :ref:`nutrunk.NUTrunk<nutrunk>`                                                                                                                                  ``trunks`` 

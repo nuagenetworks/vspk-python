@@ -331,6 +331,7 @@ class NUAggregatedDomain(NURESTObject):
         self._maintenance_mode = None
         self._name = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._advertise_criteria = None
         self._leaking_enabled = None
         self._secondary_dhcp_server_address = None
@@ -358,6 +359,7 @@ class NUAggregatedDomain(NURESTObject):
         self._uplink_preference = None
         self._ipv6_aggregation_enabled = None
         self._create_back_haul_subnet = None
+        self._creation_date = None
         self._associated_bgp_profile_id = None
         self._associated_multicast_channel_map_id = None
         self._associated_pat_mapper_id = None
@@ -367,6 +369,7 @@ class NUAggregatedDomain(NURESTObject):
         self._multicast = None
         self._tunnel_type = None
         self._customer_id = None
+        self._owner = None
         self._export_route_target = None
         self._external_id = None
         self._external_label = None
@@ -390,6 +393,7 @@ class NUAggregatedDomain(NURESTObject):
         self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="advertise_criteria", remote_name="advertiseCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'HUB_ROUTES'])
         self.expose_attribute(local_name="leaking_enabled", remote_name="leakingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_dhcp_server_address", remote_name="secondaryDHCPServerAddress", attribute_type=str, is_required=False, is_unique=False)
@@ -417,6 +421,7 @@ class NUAggregatedDomain(NURESTObject):
         self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
         self.expose_attribute(local_name="ipv6_aggregation_enabled", remote_name="ipv6AggregationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="create_back_haul_subnet", remote_name="createBackHaulSubnet", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_bgp_profile_id", remote_name="associatedBGPProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_pat_mapper_id", remote_name="associatedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
@@ -426,6 +431,7 @@ class NUAggregatedDomain(NURESTObject):
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="tunnel_type", remote_name="tunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'VLAN', u'VXLAN'])
         self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="export_route_target", remote_name="exportRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="external_label", remote_name="externalLabel", attribute_type=str, is_required=False, is_unique=False)
@@ -1107,6 +1113,33 @@ class NUAggregatedDomain(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -1831,6 +1864,33 @@ class NUAggregatedDomain(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def associated_bgp_profile_id(self):
         """ Get associated_bgp_profile_id value.
 
@@ -2063,6 +2123,29 @@ class NUAggregatedDomain(NURESTObject):
                 
         """
         self._customer_id = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

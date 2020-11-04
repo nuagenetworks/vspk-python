@@ -22,7 +22,11 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway``: IP address of the gateway bound to the port
+
+- ``gateway_id``: The UUID of the NSG on which this uplink connection resides.
 
 - ``gateway_v6``: IPv6 address of the gateway bound to the port.
 
@@ -34,11 +38,15 @@ Attributes
 
 - ``advertisement_criteria``: Advertisement Criteria for Traffic Flow
 
+- ``fec_enabled``: Indicates the FEC (Forward Error Correction) setting on this Uplink Connection. Possible values are Enabled (Encode & Decode on all paths over this uplink), Disabled (Encode & Decode only to uplinks with FEC Enabled) and Supported (do not Encode or Decode, do not detect or report loss).
+
 - ``secondary_address``: Secondary IP Address (Control IP Address) for Loopback. 
 
 - ``netmask``: Subnet mask of the uplink connection if mode is set to Static.
 
 - ``vlan``: VLAN Id of this uplink
+
+- ``vlan_id``: The UUID of the VLAN on which this uplink connection resides.
 
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
@@ -60,11 +68,19 @@ Attributes
 
 - ``role_order``: Determines the order in which uplinks are configured on NSG. It also determines the priority for an Uplink for management traffic. This value will be auto-generated when not provided by user.
 
+- ``port_id``: The UUID of the NSPort on which this uplink connection resides.
+
 - ``port_name``: Physical port name this uplink belongs to.
 
 - ``download_rate_limit``: Download rate limit for this uplink in Mb/s.
 
 - ``uplink_id``: ID that unqiuely identifies the uplink.
+
+- ``uplink_name``: The name of the uplink defined by the port name and vlan id (eg. port1.100)
+
+- ``uplink_type``: Denotes the Uplink Connection Type on the NSG. Possible values are UPLINK, CONTROL, DATA, SHUNT.
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``primary_data_path_id``: System generated identifier of an uplink on NSG.
 
@@ -79,6 +95,8 @@ Attributes
 - ``aux_mode``: The type of redundancy this Uplink offers when marked as auxiliary link.
 
 - ``auxiliary_link``: Make this uplink an auxiliary one that will only come up when all other uplinks are disconnected or can't perform their role.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -95,6 +113,7 @@ Children
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nubfdsession.NUBFDSession<nubfdsession>`                                                                                                                   ``bfd_sessions`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
+:ref:`nuunderlaytest.NUUnderlayTest<nuunderlaytest>`                                                                                                             ``underlay_tests`` 
 :ref:`nucustomproperty.NUCustomProperty<nucustomproperty>`                                                                                                       ``custom_properties`` 
 ================================================================================================================================================               ==========================================================================================
 

@@ -14,9 +14,11 @@ Attributes
 
 - ``esi``: ESI id, globally unique
 
-- ``name``: Name of this overlay mirror destination
+- ``name`` (**Mandatory**): Name of this overlay mirror destination
 
 - ``last_updated_by``: ID of the user who last updated the object.
+
+- ``last_updated_date``: Time stamp when this object was last updated.
 
 - ``redundancy_enabled``: Allow/Disallow redundant appliances and VIP
 
@@ -34,7 +36,11 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``trigger_type``: Trigger type, THIS IS READ ONLY. Possible values are NONE, GARP.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

@@ -28,6 +28,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``action`` (**Mandatory**): The action of the ACL entry. Possible values are DROP, FORWARD, REDIRECT. Action REDIRECT is allowed only for EgressAdvancedForwardingEntry.
 
 - ``address_override``: Overrides the source IP for Egress and destination IP for Ingress, mac entries will use this address as the match criteria.
@@ -46,7 +48,7 @@ Attributes
 
 - ``destination_port``: The destination port to be matched if protocol is UDP or TCP. Value should be either * or single port number or a port range
 
-- ``network_entity_type``: Indicates whether the Network Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: SUBNETTEMPLATE, ZONETEMPLATE, POLICYGROUPTEMPLATE, PGEXPRESSIONTEMPLATE, SUBNET, ZONE, POLICYGROUP, PGEXPRESSION.
+- ``network_entity_type``: Indicates whether the Network Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: ENTERPRISENETWORK, NETWORKMACROGROUP, PGEXPRESSION, PGEXPRESSIONTEMPLATE, POLICYGROUP, POLICYGROUPTEMPLATE, PUBLICNETWORK, SAASAPPLICATIONGROUP, SUBNET, SUBNETTEMPLATE, ZONE, ZONETEMPLATE.
 
 - ``network_id``: The source network entity id that is referenced(subnet/zone/macro/PolicyGroupExpression)
 
@@ -64,7 +66,7 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
-- ``location_entity_type``: Indicates whether the Location Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: SUBNETTEMPLATE, ZONETEMPLATE, POLICYGROUPTEMPLATE, PGEXPRESSIONTEMPLATE, REDIRECTIONTARGETTEMPLATE, SUBNET, ZONE, POLICYGROUP, PGEXPRESSION, REDIRECTIONTARGET.
+- ``location_entity_type``: Indicates whether the Location Entity of ACL Entry was derived from a L2/L3 Domain template or instance. Possible Values: ENTERPRISENETWORK, NETWORKMACROGROUP, PGEXPRESSION, PGEXPRESSIONTEMPLATE, POLICYGROUP, POLICYGROUPTEMPLATE, PUBLICNETWORK, REDIRECTIONTARGET, REDIRECTIONTARGETTEMPLATE, SUBNET, SUBNETTEMPLATE, ZONE, ZONETEMPLATE.
 
 - ``location_id``: The ID of the destination location entity (Subnet/Zone/VportTag/PolicyGroupExpression)
 
@@ -77,6 +79,8 @@ Attributes
 - ``source_port``: Source port to be matched if protocol is UDP or TCP. Value can be either * or single port number or a port range
 
 - ``uplink_preference``: Indicates the preferencial path selection for network traffic for this ACL - default is DEFAULT when the attribute is applicable.
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``priority``: The priority of the ACL entry that determines the order of entries
 
@@ -97,6 +101,8 @@ Attributes
 - ``stats_logging_enabled``: Indicates if stats logging is enabled for this particular template
 
 - ``ether_type`` (**Mandatory**): Ether type of the packet to be matched. etherType can be * or a valid hexadecimal value
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

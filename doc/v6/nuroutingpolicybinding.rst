@@ -12,9 +12,13 @@ Attributes
 ----------
 
 
+- ``ospf_type``: Type of the OSPF protocol, possible values are OSPFv2 and OSPFv3.
+
 - ``name`` (**Mandatory**): Name of the RoutingPolicyBinding is unique within the Domain
 
 - ``last_updated_by``: ID of the user who last updated the object.
+
+- ``last_updated_date``: Time stamp when this object was last updated.
 
 - ``description``: Description for this Routing Policy Binding Object.
 
@@ -22,11 +26,15 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_export_routing_policy_id``: ID of the Export Routing Policy which is associated to the current RoutingPolicyBinding object.
 
 - ``associated_import_routing_policy_id``: ID of the Import Routing Policy which is associated to the current RoutingPolicyBinding object.
 
 - ``associated_policy_object_group_id`` (**Mandatory**): ID of the Policy Object Group which is associated to the current RoutingPolicyBinding object.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``export_to_overlay``: Flag to determine whether the BGP and OSPF learnt routes will be exported to VSC or not. This flags also exists at the domain level. If this attribute is set to 'INHERITED' (the default), the behavior is whatever is set at the domain level. Otherwise, this attribute takes precedence over the domain level one.
 

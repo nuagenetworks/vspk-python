@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``read_only``: Determines whether this entity is read only.  Read only objects cannot be modified or deleted.
 
 - ``description``: description of network performance measurement
@@ -26,7 +28,11 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_performance_monitor_id``: associated Performance Monitor ID 
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

@@ -203,6 +203,7 @@ class NUSystemConfig(NURESTObject):
         self._page_size = None
         self._last_executed_migration_phase = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._gateway_probe_interval = None
         self._gateway_probe_window = None
         self._gateway_rebalancing_interval = None
@@ -211,6 +212,7 @@ class NUSystemConfig(NURESTObject):
         self._rbac_enabled = None
         self._accumulate_licenses_enabled = None
         self._vcin_load_balancer_ip = None
+        self._fec_feedback_timer = None
         self._secondary_as_number = None
         self._secondary_rt_lower_limit = None
         self._secondary_rt_upper_limit = None
@@ -222,6 +224,7 @@ class NUSystemConfig(NURESTObject):
         self._offset_customer_id = None
         self._offset_service_id = None
         self._threat_intelligence_enabled = None
+        self._threat_prevention_feed_server_proxy_port = None
         self._threat_prevention_server = None
         self._threat_prevention_server_password = None
         self._threat_prevention_server_proxy_port = None
@@ -238,15 +241,19 @@ class NUSystemConfig(NURESTObject):
         self._allow_enterprise_avatar_on_nsg = None
         self._global_mac_address = None
         self._flow_collection_enabled = None
+        self._flow_drop_timeout = None
         self._embedded_metadata = None
         self._embedded_metadata_size = None
         self._imported_saa_s_applications_version = None
         self._inactive_timeout = None
         self._infrastructure_bgpas_number = None
+        self._interface_id_lower_limit = None
+        self._interface_id_upper_limit = None
         self._entity_scope = None
         self._domain_tunnel_type = None
         self._google_maps_api_key = None
         self._post_processor_threads_count = None
+        self._creation_date = None
         self._group_key_default_sek_generation_interval = None
         self._group_key_default_sek_lifetime = None
         self._group_key_default_sek_payload_encryption_algorithm = None
@@ -298,6 +305,7 @@ class NUSystemConfig(NURESTObject):
         self._event_processor_interval = None
         self._event_processor_max_events_count = None
         self._event_processor_timeout = None
+        self._owner = None
         self._two_factor_code_expiry = None
         self._two_factor_code_length = None
         self._two_factor_code_seed_length = None
@@ -312,6 +320,7 @@ class NUSystemConfig(NURESTObject):
         self._sysmon_purge_interval = None
         self._system_avatar_data = None
         self._system_avatar_type = None
+        self._system_blocked_page_text = None
         
         self.expose_attribute(local_name="aar_flow_stats_interval", remote_name="AARFlowStatsInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="aar_probe_stats_interval", remote_name="AARProbeStatsInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -369,6 +378,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="page_size", remote_name="pageSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_executed_migration_phase", remote_name="lastExecutedMigrationPhase", attribute_type=str, is_required=False, is_unique=False, choices=[u'EXPAND', u'REDUCE'])
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_probe_interval", remote_name="gatewayProbeInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_probe_window", remote_name="gatewayProbeWindow", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_rebalancing_interval", remote_name="gatewayRebalancingInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -377,6 +387,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="rbac_enabled", remote_name="rbacEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="accumulate_licenses_enabled", remote_name="accumulateLicensesEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vcin_load_balancer_ip", remote_name="vcinLoadBalancerIP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="fec_feedback_timer", remote_name="fecFeedbackTimer", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_as_number", remote_name="secondaryASNumber", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_rt_lower_limit", remote_name="secondaryRTLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_rt_upper_limit", remote_name="secondaryRTUpperLimit", attribute_type=int, is_required=False, is_unique=False)
@@ -388,6 +399,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="offset_customer_id", remote_name="offsetCustomerID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="offset_service_id", remote_name="offsetServiceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="threat_intelligence_enabled", remote_name="threatIntelligenceEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="threat_prevention_feed_server_proxy_port", remote_name="threatPreventionFeedServerProxyPort", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="threat_prevention_server", remote_name="threatPreventionServer", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="threat_prevention_server_password", remote_name="threatPreventionServerPassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="threat_prevention_server_proxy_port", remote_name="threatPreventionServerProxyPort", attribute_type=int, is_required=False, is_unique=False)
@@ -404,15 +416,19 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="allow_enterprise_avatar_on_nsg", remote_name="allowEnterpriseAvatarOnNSG", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="global_mac_address", remote_name="globalMACAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_drop_timeout", remote_name="flowDropTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata_size", remote_name="embeddedMetadataSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="imported_saa_s_applications_version", remote_name="importedSaaSApplicationsVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="inactive_timeout", remote_name="inactiveTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="infrastructure_bgpas_number", remote_name="infrastructureBGPASNumber", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="interface_id_lower_limit", remote_name="interfaceIdLowerLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="interface_id_upper_limit", remote_name="interfaceIdUpperLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="domain_tunnel_type", remote_name="domainTunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'GRE', u'VLAN', u'VXLAN'])
         self.expose_attribute(local_name="google_maps_api_key", remote_name="googleMapsAPIKey", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="post_processor_threads_count", remote_name="postProcessorThreadsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_generation_interval", remote_name="groupKeyDefaultSEKGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_lifetime", remote_name="groupKeyDefaultSEKLifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_payload_encryption_algorithm", remote_name="groupKeyDefaultSEKPayloadEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'RSA_1024'])
@@ -464,6 +480,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="event_processor_interval", remote_name="eventProcessorInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="event_processor_max_events_count", remote_name="eventProcessorMaxEventsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="event_processor_timeout", remote_name="eventProcessorTimeout", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="two_factor_code_expiry", remote_name="twoFactorCodeExpiry", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="two_factor_code_length", remote_name="twoFactorCodeLength", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="two_factor_code_seed_length", remote_name="twoFactorCodeSeedLength", attribute_type=int, is_required=False, is_unique=False)
@@ -478,6 +495,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="sysmon_purge_interval", remote_name="sysmonPurgeInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="system_avatar_data", remote_name="systemAvatarData", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="system_avatar_type", remote_name="systemAvatarType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BASE64', u'COMPUTEDURL', u'URL'])
+        self.expose_attribute(local_name="system_blocked_page_text", remote_name="systemBlockedPageText", attribute_type=str, is_required=False, is_unique=False)
         
 
         # Fetchers
@@ -2009,6 +2027,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
+
+    
+    @property
     def gateway_probe_interval(self):
         """ Get gateway_probe_interval value.
 
@@ -2222,6 +2267,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._vcin_load_balancer_ip = value
+
+    
+    @property
+    def fec_feedback_timer(self):
+        """ Get fec_feedback_timer value.
+
+            Notes:
+                Forward Error Correction feedback timer in seconds. Possible values are 1, 2, 3, 4 or 5.
+
+                
+                This attribute is named `fecFeedbackTimer` in VSD API.
+                
+        """
+        return self._fec_feedback_timer
+
+    @fec_feedback_timer.setter
+    def fec_feedback_timer(self, value):
+        """ Set fec_feedback_timer value.
+
+            Notes:
+                Forward Error Correction feedback timer in seconds. Possible values are 1, 2, 3, 4 or 5.
+
+                
+                This attribute is named `fecFeedbackTimer` in VSD API.
+                
+        """
+        self._fec_feedback_timer = value
 
     
     @property
@@ -2519,6 +2591,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._threat_intelligence_enabled = value
+
+    
+    @property
+    def threat_prevention_feed_server_proxy_port(self):
+        """ Get threat_prevention_feed_server_proxy_port value.
+
+            Notes:
+                Feed server download port for Threat Prevention VNF
+
+                
+                This attribute is named `threatPreventionFeedServerProxyPort` in VSD API.
+                
+        """
+        return self._threat_prevention_feed_server_proxy_port
+
+    @threat_prevention_feed_server_proxy_port.setter
+    def threat_prevention_feed_server_proxy_port(self, value):
+        """ Set threat_prevention_feed_server_proxy_port value.
+
+            Notes:
+                Feed server download port for Threat Prevention VNF
+
+                
+                This attribute is named `threatPreventionFeedServerProxyPort` in VSD API.
+                
+        """
+        self._threat_prevention_feed_server_proxy_port = value
 
     
     @property
@@ -2877,7 +2976,7 @@ class NUSystemConfig(NURESTObject):
         """ Get allow_enterprise_avatar_on_nsg value.
 
             Notes:
-                When enabled, it allows Enterprise Avatar (image) to be populated on the NSGateway bootstrapping portal.
+                When enabled, it allows Enterprise Avatar (image) to be populated on the NSGateway bootstrapping portal and blocked page notification.
 
                 
                 This attribute is named `allowEnterpriseAvatarOnNSG` in VSD API.
@@ -2890,7 +2989,7 @@ class NUSystemConfig(NURESTObject):
         """ Set allow_enterprise_avatar_on_nsg value.
 
             Notes:
-                When enabled, it allows Enterprise Avatar (image) to be populated on the NSGateway bootstrapping portal.
+                When enabled, it allows Enterprise Avatar (image) to be populated on the NSGateway bootstrapping portal and blocked page notification.
 
                 
                 This attribute is named `allowEnterpriseAvatarOnNSG` in VSD API.
@@ -2951,6 +3050,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._flow_collection_enabled = value
+
+    
+    @property
+    def flow_drop_timeout(self):
+        """ Get flow_drop_timeout value.
+
+            Notes:
+                Timeout in seconds after which the traffic will be dropped, if the flow limit exceeds.
+
+                
+                This attribute is named `flowDropTimeout` in VSD API.
+                
+        """
+        return self._flow_drop_timeout
+
+    @flow_drop_timeout.setter
+    def flow_drop_timeout(self, value):
+        """ Set flow_drop_timeout value.
+
+            Notes:
+                Timeout in seconds after which the traffic will be dropped, if the flow limit exceeds.
+
+                
+                This attribute is named `flowDropTimeout` in VSD API.
+                
+        """
+        self._flow_drop_timeout = value
 
     
     @property
@@ -3089,6 +3215,60 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def interface_id_lower_limit(self):
+        """ Get interface_id_lower_limit value.
+
+            Notes:
+                Lower limit for interface Id configured on SRLinux device.
+
+                
+                This attribute is named `interfaceIdLowerLimit` in VSD API.
+                
+        """
+        return self._interface_id_lower_limit
+
+    @interface_id_lower_limit.setter
+    def interface_id_lower_limit(self, value):
+        """ Set interface_id_lower_limit value.
+
+            Notes:
+                Lower limit for interface Id configured on SRLinux device.
+
+                
+                This attribute is named `interfaceIdLowerLimit` in VSD API.
+                
+        """
+        self._interface_id_lower_limit = value
+
+    
+    @property
+    def interface_id_upper_limit(self):
+        """ Get interface_id_upper_limit value.
+
+            Notes:
+                Upper limit for interface Id configured on SRLinux device.
+
+                
+                This attribute is named `interfaceIdUpperLimit` in VSD API.
+                
+        """
+        return self._interface_id_upper_limit
+
+    @interface_id_upper_limit.setter
+    def interface_id_upper_limit(self, value):
+        """ Set interface_id_upper_limit value.
+
+            Notes:
+                Upper limit for interface Id configured on SRLinux device.
+
+                
+                This attribute is named `interfaceIdUpperLimit` in VSD API.
+                
+        """
+        self._interface_id_upper_limit = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -3194,6 +3374,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._post_processor_threads_count = value
+
+    
+    @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
 
     
     @property
@@ -4574,6 +4781,29 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
+
+    
+    @property
     def two_factor_code_expiry(self):
         """ Get two_factor_code_expiry value.
 
@@ -4949,6 +5179,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._system_avatar_type = value
+
+    
+    @property
+    def system_blocked_page_text(self):
+        """ Get system_blocked_page_text value.
+
+            Notes:
+                The text for blocked page html which gets displayed to the end-users when they reach a website that is blocked by Web Filtering ACL. User can possibly include very basic html tags like <p>, <ul> etc. in order to fomat the text displayed to the end-users.
+
+                
+                This attribute is named `systemBlockedPageText` in VSD API.
+                
+        """
+        return self._system_blocked_page_text
+
+    @system_blocked_page_text.setter
+    def system_blocked_page_text(self, value):
+        """ Set system_blocked_page_text value.
+
+            Notes:
+                The text for blocked page html which gets displayed to the end-users when they reach a website that is blocked by Web Filtering ACL. User can possibly include very basic html tags like <p>, <ul> etc. in order to fomat the text displayed to the end-users.
+
+                
+                This attribute is named `systemBlockedPageText` in VSD API.
+                
+        """
+        self._system_blocked_page_text = value
 
     
 

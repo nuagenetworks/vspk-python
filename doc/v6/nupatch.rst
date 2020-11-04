@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``patch_build_number``: The Patch build number (eg. 1)
 
 - ``patch_summary``: The summary given for the Patch
@@ -30,9 +32,13 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``supports_deletion``: Whether or not this Patch supports deletion. If a patch does not support deletion, the REST DELETE method will fail
 
 - ``supports_network_acceleration``: Whether or not this patch supports Network Acceleration
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

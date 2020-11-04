@@ -56,6 +56,8 @@ class NUIPFilterProfile(NURESTObject):
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
+    CONST_BLOB_TYPE_SR_LINUX = "SR_LINUX"
+    
     
 
     def __init__(self, **kwargs):
@@ -77,18 +79,30 @@ class NUIPFilterProfile(NURESTObject):
         
         self._name = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._description = None
+        self._blob_text = None
+        self._blob_type = None
         self._embedded_metadata = None
         self._entity_scope = None
+        self._creation_date = None
         self._assoc_entity_type = None
+        self._customer_id = None
+        self._owner = None
         self._external_id = None
         
-        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="blob_text", remote_name="blobText", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="blob_type", remote_name="blobType", attribute_type=str, is_required=False, is_unique=False, choices=[u'SR_LINUX'])
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_entity_type", remote_name="assocEntityType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -159,6 +173,33 @@ class NUIPFilterProfile(NURESTObject):
 
     
     @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
+
+    
+    @property
     def description(self):
         """ Get description value.
 
@@ -179,6 +220,60 @@ class NUIPFilterProfile(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def blob_text(self):
+        """ Get blob_text value.
+
+            Notes:
+                Data definitions for pre-defined sets of attributes defined by blobType.
+
+                
+                This attribute is named `blobText` in VSD API.
+                
+        """
+        return self._blob_text
+
+    @blob_text.setter
+    def blob_text(self, value):
+        """ Set blob_text value.
+
+            Notes:
+                Data definitions for pre-defined sets of attributes defined by blobType.
+
+                
+                This attribute is named `blobText` in VSD API.
+                
+        """
+        self._blob_text = value
+
+    
+    @property
+    def blob_type(self):
+        """ Get blob_type value.
+
+            Notes:
+                Content type for blob text.
+
+                
+                This attribute is named `blobType` in VSD API.
+                
+        """
+        return self._blob_type
+
+    @blob_type.setter
+    def blob_type(self, value):
+        """ Set blob_type value.
+
+            Notes:
+                Content type for blob text.
+
+                
+                This attribute is named `blobType` in VSD API.
+                
+        """
+        self._blob_type = value
 
     
     @property
@@ -236,6 +331,33 @@ class NUIPFilterProfile(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def assoc_entity_type(self):
         """ Get assoc_entity_type value.
 
@@ -260,6 +382,56 @@ class NUIPFilterProfile(NURESTObject):
                 
         """
         self._assoc_entity_type = value
+
+    
+    @property
+    def customer_id(self):
+        """ Get customer_id value.
+
+            Notes:
+                The customer ID given to parent enterprise. This is used by Netconf/Config manager.
+
+                
+                This attribute is named `customerID` in VSD API.
+                
+        """
+        return self._customer_id
+
+    @customer_id.setter
+    def customer_id(self, value):
+        """ Set customer_id value.
+
+            Notes:
+                The customer ID given to parent enterprise. This is used by Netconf/Config manager.
+
+                
+                This attribute is named `customerID` in VSD API.
+                
+        """
+        self._customer_id = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

@@ -49,6 +49,9 @@ from .fetchers import NUThreatPreventionInfosFetcher
 from .fetchers import NUWirelessPortsFetcher
 
 
+from .fetchers import NUVirtualUplinksFetcher
+
+
 from .fetchers import NUAlarmsFetcher
 
 
@@ -101,6 +104,9 @@ from .fetchers import NUNSPortsFetcher
 
 
 from .fetchers import NUSubnetsFetcher
+
+
+from .fetchers import NUSupplementalInfraConfigsFetcher
 
 
 from .fetchers import NUEventLogsFetcher
@@ -313,6 +319,7 @@ class NUNSGateway(NURESTObject):
         self._family = None
         self._last_configuration_reload_timestamp = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._datapath_id = None
         self._gateway_config_raw_version = None
         self._gateway_config_version = None
@@ -343,6 +350,7 @@ class NUNSGateway(NURESTObject):
         self._bootstrap_status = None
         self._operation_mode = None
         self._operation_status = None
+        self._creation_date = None
         self._product_name = None
         self._associated_gateway_security_id = None
         self._associated_gateway_security_profile_id = None
@@ -353,6 +361,7 @@ class NUNSGateway(NURESTObject):
         self._functions = None
         self._tunnel_shaping = None
         self._auto_disc_gateway_id = None
+        self._owner = None
         self._external_id = None
         self._syslog_level = None
         self._system_id = None
@@ -380,6 +389,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_AMI', u'NSG_AZ', u'NSG_C', u'NSG_E', u'NSG_E200', u'NSG_E300', u'NSG_V', u'NSG_X', u'NSG_X200'])
         self.expose_attribute(local_name="last_configuration_reload_timestamp", remote_name="lastConfigurationReloadTimestamp", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_id", remote_name="datapathID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_config_raw_version", remote_name="gatewayConfigRawVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_config_version", remote_name="gatewayConfigVersion", attribute_type=str, is_required=False, is_unique=False)
@@ -410,6 +420,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT', u'QUARANTINED', u'REVOKED'])
         self.expose_attribute(local_name="operation_mode", remote_name="operationMode", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="operation_status", remote_name="operationStatus", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="product_name", remote_name="productName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_security_id", remote_name="associatedGatewaySecurityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_security_profile_id", remote_name="associatedGatewaySecurityProfileID", attribute_type=str, is_required=False, is_unique=False)
@@ -420,6 +431,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="functions", remote_name="functions", attribute_type=list, is_required=False, is_unique=False, choices=[u'GATEWAY', u'HUB', u'UBR'])
         self.expose_attribute(local_name="tunnel_shaping", remote_name="tunnelShaping", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="auto_disc_gateway_id", remote_name="autoDiscGatewayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="syslog_level", remote_name="syslogLevel", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALERT', u'CRITICAL', u'EMERGENCY', u'ERROR', u'INFO', u'NOTICE', u'WARNING'])
         self.expose_attribute(local_name="system_id", remote_name="systemID", attribute_type=str, is_required=False, is_unique=False)
@@ -447,6 +459,9 @@ class NUNSGateway(NURESTObject):
         
         
         self.wireless_ports = NUWirelessPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.virtual_uplinks = NUVirtualUplinksFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.alarms = NUAlarmsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -501,6 +516,9 @@ class NUNSGateway(NURESTObject):
         
         
         self.subnets = NUSubnetsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.supplemental_infra_configs = NUSupplementalInfraConfigsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.event_logs = NUEventLogsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -1121,6 +1139,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -1918,6 +1963,33 @@ class NUNSGateway(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def product_name(self):
         """ Get product_name value.
 
@@ -2181,6 +2253,29 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._auto_disc_gateway_id = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

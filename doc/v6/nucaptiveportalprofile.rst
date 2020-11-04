@@ -18,11 +18,17 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``description``: Description for the captive portal profile.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``portal_type`` (**Mandatory**): Type of the portal page.  Will decide if the NSG rendering the page will have a strict rendering of the welcoming page based on what is given by VSD, or if the information can be made customisable by an operator to include animations, videos, images, and other types of more complex scripts.
+
+- ``creation_date``: Time stamp when this object was created.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

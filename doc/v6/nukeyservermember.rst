@@ -14,6 +14,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``pem_encoded``: PEM Encoded Certificate
 
 - ``certificate_serial_number``: Certificate serial number associated to the keyserver private key which it is currently signing with
@@ -24,11 +26,15 @@ Attributes
 
 - ``fqdn``: FQDN of the keyserver member
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``issuer_dn``: Issuer DN
 
 - ``subject_dn``: Subject DN
 
 - ``public_key``: Public Key
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

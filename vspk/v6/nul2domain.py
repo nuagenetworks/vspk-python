@@ -67,6 +67,9 @@ from .fetchers import NUEgressACLTemplatesFetcher
 from .fetchers import NUEgressAdvFwdTemplatesFetcher
 
 
+from .fetchers import NUEgressAuditACLTemplatesFetcher
+
+
 from .fetchers import NUDHCPOptionsFetcher
 
 
@@ -104,6 +107,12 @@ from .fetchers import NUIngressACLTemplatesFetcher
 
 
 from .fetchers import NUIngressAdvFwdTemplatesFetcher
+
+
+from .fetchers import NUIngressAuditACLEntryTemplatesFetcher
+
+
+from .fetchers import NUIngressAuditACLTemplatesFetcher
 
 
 from .fetchers import NUJobsFetcher
@@ -217,6 +226,8 @@ class NUL2Domain(NURESTObject):
     
     CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
     
+    CONST_FLOW_LIMIT_ENABLED_DISABLED = "DISABLED"
+    
     CONST_ENTITY_STATE_UNDER_CONSTRUCTION = "UNDER_CONSTRUCTION"
     
     CONST_MULTICAST_ENABLED = "ENABLED"
@@ -248,6 +259,8 @@ class NUL2Domain(NURESTObject):
     CONST_MAINTENANCE_MODE_ENABLED_INHERITED = "ENABLED_INHERITED"
     
     CONST_ENCRYPTION_ENABLED = "ENABLED"
+    
+    CONST_FLOW_LIMIT_ENABLED_ENABLED = "ENABLED"
     
     CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
     
@@ -282,6 +295,7 @@ class NUL2Domain(NURESTObject):
         self._maintenance_mode = None
         self._name = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._gateway = None
         self._gateway_mac_address = None
         self._address = None
@@ -291,12 +305,15 @@ class NUL2Domain(NURESTObject):
         self._netmask = None
         self._threat_intelligence_enabled = None
         self._flow_collection_enabled = None
+        self._flow_count = None
+        self._flow_limit_enabled = None
         self._embedded_metadata = None
         self._vn_id = None
         self._enable_dhcpv4 = None
         self._enable_dhcpv6 = None
         self._encryption = None
         self._ingress_replication_enabled = None
+        self._interface_id = None
         self._entity_scope = None
         self._entity_state = None
         self._policy_change_status = None
@@ -305,6 +322,7 @@ class NUL2Domain(NURESTObject):
         self._route_target = None
         self._routed_vpls_enabled = None
         self._uplink_preference = None
+        self._creation_date = None
         self._use_global_mac = None
         self._associated_multicast_channel_map_id = None
         self._associated_shared_network_resource_id = None
@@ -313,6 +331,7 @@ class NUL2Domain(NURESTObject):
         self._dual_stack_dynamic_ip_allocation = None
         self._multicast = None
         self._customer_id = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="l2_encap_type", remote_name="l2EncapType", attribute_type=str, is_required=False, is_unique=False, choices=[u'MPLS', u'MPLSoUDP', u'VXLAN'])
@@ -325,6 +344,7 @@ class NUL2Domain(NURESTObject):
         self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_mac_address", remote_name="gatewayMACAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
@@ -334,12 +354,15 @@ class NUL2Domain(NURESTObject):
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="threat_intelligence_enabled", remote_name="threatIntelligenceEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="flow_count", remote_name="flowCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_limit_enabled", remote_name="flowLimitEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vn_id", remote_name="vnId", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enable_dhcpv4", remote_name="enableDHCPv4", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enable_dhcpv6", remote_name="enableDHCPv6", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="ingress_replication_enabled", remote_name="ingressReplicationEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="interface_id", remote_name="interfaceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="entity_state", remote_name="entityState", attribute_type=str, is_required=False, is_unique=False, choices=[u'MARKED_FOR_DELETION', u'UNDER_CONSTRUCTION'])
         self.expose_attribute(local_name="policy_change_status", remote_name="policyChangeStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'APPLIED', u'DISCARDED', u'STARTED'])
@@ -348,6 +371,7 @@ class NUL2Domain(NURESTObject):
         self.expose_attribute(local_name="route_target", remote_name="routeTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="routed_vpls_enabled", remote_name="routedVPLSEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_shared_network_resource_id", remote_name="associatedSharedNetworkResourceID", attribute_type=str, is_required=False, is_unique=False)
@@ -356,6 +380,7 @@ class NUL2Domain(NURESTObject):
         self.expose_attribute(local_name="dual_stack_dynamic_ip_allocation", remote_name="dualStackDynamicIPAllocation", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -401,6 +426,9 @@ class NUL2Domain(NURESTObject):
         self.egress_adv_fwd_templates = NUEgressAdvFwdTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.egress_audit_acl_templates = NUEgressAuditACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.dhcp_options = NUDHCPOptionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -438,6 +466,12 @@ class NUL2Domain(NURESTObject):
         
         
         self.ingress_adv_fwd_templates = NUIngressAdvFwdTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ingress_audit_acl_entry_templates = NUIngressAuditACLEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ingress_audit_acl_templates = NUIngressAuditACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.jobs = NUJobsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -771,6 +805,33 @@ class NUL2Domain(NURESTObject):
 
     
     @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
+
+    
+    @property
     def gateway(self):
         """ Get gateway value.
 
@@ -998,6 +1059,60 @@ class NUL2Domain(NURESTObject):
 
     
     @property
+    def flow_count(self):
+        """ Get flow_count value.
+
+            Notes:
+                Maximum number of data flows allowed for a VPort.
+
+                
+                This attribute is named `flowCount` in VSD API.
+                
+        """
+        return self._flow_count
+
+    @flow_count.setter
+    def flow_count(self, value):
+        """ Set flow_count value.
+
+            Notes:
+                Maximum number of data flows allowed for a VPort.
+
+                
+                This attribute is named `flowCount` in VSD API.
+                
+        """
+        self._flow_count = value
+
+    
+    @property
+    def flow_limit_enabled(self):
+        """ Get flow_limit_enabled value.
+
+            Notes:
+                Indicates if flow limit is enabled on this Domain. Possible values are ENABLED or DISABLED.
+
+                
+                This attribute is named `flowLimitEnabled` in VSD API.
+                
+        """
+        return self._flow_limit_enabled
+
+    @flow_limit_enabled.setter
+    def flow_limit_enabled(self, value):
+        """ Set flow_limit_enabled value.
+
+            Notes:
+                Indicates if flow limit is enabled on this Domain. Possible values are ENABLED or DISABLED.
+
+                
+                This attribute is named `flowLimitEnabled` in VSD API.
+                
+        """
+        self._flow_limit_enabled = value
+
+    
+    @property
     def embedded_metadata(self):
         """ Get embedded_metadata value.
 
@@ -1153,6 +1268,33 @@ class NUL2Domain(NURESTObject):
                 
         """
         self._ingress_replication_enabled = value
+
+    
+    @property
+    def interface_id(self):
+        """ Get interface_id value.
+
+            Notes:
+                SRLinux Interface ID for L2Domain configuration
+
+                
+                This attribute is named `interfaceID` in VSD API.
+                
+        """
+        return self._interface_id
+
+    @interface_id.setter
+    def interface_id(self, value):
+        """ Set interface_id value.
+
+            Notes:
+                SRLinux Interface ID for L2Domain configuration
+
+                
+                This attribute is named `interfaceID` in VSD API.
+                
+        """
+        self._interface_id = value
 
     
     @property
@@ -1368,6 +1510,33 @@ class NUL2Domain(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def use_global_mac(self):
         """ Get use_global_mac value.
 
@@ -1573,6 +1742,29 @@ class NUL2Domain(NURESTObject):
                 
         """
         self._customer_id = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

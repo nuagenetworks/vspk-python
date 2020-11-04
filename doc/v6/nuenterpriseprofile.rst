@@ -22,6 +22,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``web_filter_enabled``: Enable Web Filtering for this enterprise profile
 
 - ``receive_multi_cast_list_id``: Readonly ID of the auto generated receive multicast list associated with this enterprise profile
@@ -51,6 +53,10 @@ Attributes
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``forwarding_class``: Represents the List of forwarding classes and their load balancing capability.
+
+- ``creation_date``: Time stamp when this object was created.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

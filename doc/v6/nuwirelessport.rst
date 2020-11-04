@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``generic_config``: This field is used to contain the 'blob' parameters for the WiFi Card (physical module) on the NSG.
 
 - ``permitted_action``: The permitted action to USE/EXTEND this Wireless Port
@@ -40,6 +42,8 @@ Attributes
 
 - ``country_code`` (**Mandatory**): Country code where the NSG with a Wireless Port installed is defined. The country code allows some WiFi features to be enabled or disabled on the Wireless card.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``frequency_channel`` (**Mandatory**): The selected wireless frequency and channel used by the wireless interface. Channels range is from 0 to 165 where 0 stands for Auto Channel Selection.
 
 - ``use_user_mnemonic``: Determines whether to use user mnemonic of the Wireless Port
@@ -49,6 +53,8 @@ Attributes
 - ``associated_egress_qos_policy_id``: ID of the Egress QoS Policy associated with this Wireless Port.
 
 - ``status``: Status of the Wireless Port. Possible values are - INITIALIZED, ORPHAN, READY, MISMATCH
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

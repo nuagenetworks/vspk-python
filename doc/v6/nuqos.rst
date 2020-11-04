@@ -36,6 +36,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``rate_limiting_active``: Identifies if rate limiting must be implemented
 
 - ``active``: If enabled, it means that this ACL or QOS entry is active
@@ -64,6 +66,8 @@ Attributes
 
 - ``committed_information_rate``: Committed Information Rate :  Committed bandwidth that is allowed from each VM in Mb/s; only whole values supported.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``trusted_forwarding_class``: Specifies if the trusted flag is set for the QoS policy / template
 
 - ``assoc_qos_id``: ID of object associated with this QoS object
@@ -73,6 +77,8 @@ Attributes
 - ``associated_dscp_forwarding_class_table_name``: Name of the DSCP->Forwarding Class used by this Qos Policy
 
 - ``burst``: Peak Burst Size :  The maximum burst size associated with the rate limiter in kilo-bytes (kilo-octets); only whole values allowed and 'INFINITY' if rate limiting is disabled.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -102,6 +108,8 @@ Parents
 - :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 
 - :ref:`nuzone.NUZone<nuzone>`
+
+- :ref:`nume.NUMe<nume>`
 
 - :ref:`nusubnettemplate.NUSubnetTemplate<nusubnettemplate>`
 

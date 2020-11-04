@@ -28,6 +28,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``peer``: The redundant peer id for the current VRS.
 
 - ``cluster_node_role``: Indicate that the controller associated is primary, secondary or unknown.
@@ -44,7 +46,11 @@ Attributes
 
 - ``controller_type``: Type of associated Controller
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``status``: Computed status of the entity.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -73,9 +79,9 @@ Parents
 --------
 
 
-- :ref:`nuvsc.NUVSC<nuvsc>`
-
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
 - :ref:`nuhsc.NUHSC<nuhsc>`
+
+- :ref:`nuvsc.NUVSC<nuvsc>`
 

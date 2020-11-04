@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``address_range``: Default PAT IP Address, must belong to the pool above
 
 - ``default_patip``: Default PAT IP Address, must belong to the pool above
@@ -34,6 +36,8 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_gateway_id``: UUID of the NSG instance this Pool is assocated with. This attribute may be auto-populated when the pool is assigned to a Network VLAN instance.
 
 - ``associated_gateway_type``: None
@@ -45,6 +49,8 @@ Attributes
 - ``start_address_range``: Starting IP Address for the pool of available addresses for use
 
 - ``start_source_address``: Starting Source IP Address for the pool. (Dynamic Source NAT)
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

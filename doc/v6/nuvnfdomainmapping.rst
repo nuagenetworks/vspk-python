@@ -14,6 +14,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``segmentation_id``: The segmentation ID (1-4095).
 
 - ``segmentation_type``: The type of segmentation that is used.
@@ -26,6 +28,8 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_domain_id``: ID of the associated Domain
 
 - ``associated_domain_name``: Name of the associated Domain
@@ -37,6 +41,8 @@ Attributes
 - ``associated_ns_gateway_name``: Name of associated NSGateway
 
 - ``auto_created``: Indicates that this domain mapping was auto created by the system
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

@@ -20,6 +20,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``admin_state``: Admin state of this OSPF interface
 
 - ``dead_interval``: Time OSPF waits without receiving hello packets before declaring a neighbor down. If specified, it must be at least twice as long as 'helloInterval'.
@@ -38,6 +40,8 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``priority``: Determines which routers are selected as the designated router and backup designated router of the area.
 
 - ``associated_subnet_id`` (**Mandatory**): ID of the Subnet which is associated to the current OSPFInterface. Once the OSPF interface is created, the associated subnet ID cannot be updated. The interface must be deleted and re-created with a different subnet ID.
@@ -47,6 +51,8 @@ Attributes
 - ``authentication_key``: The authentication key that is used on the interface.
 
 - ``authentication_type``: Authentication Type used for this OSPFInterface
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

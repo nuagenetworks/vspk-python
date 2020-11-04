@@ -24,6 +24,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``first_name`` (**Mandatory**): First name of the user
 
 - ``disabled``: Status of the user account; true=disabled, false=not disabled; default value = false
@@ -46,6 +48,8 @@ Attributes
 
 - ``role``: Role of the user.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``user_name`` (**Mandatory**): Unique Username of the user. Valid characters are alphabets, numbers and hyphen( - ).
 
 - ``statistics_enabled``: This flag is used to indicate if statistics is enabled in the system. CSProot is expected to activate this through the enable statistics script.
@@ -53,6 +57,8 @@ Attributes
 - ``avatar_data``: URL to the avatar data associated with the enterprise. If the avatarType is URL then value of avatarData should an URL of the image. If the avatarType BASE64 then avatarData should be BASE64 encoded value of the image
 
 - ``avatar_type``: Avatar type.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -135,6 +141,7 @@ Children
 :ref:`nuzone.NUZone<nuzone>`                                                                                                                                     ``zones`` 
 :ref:`nucontainer.NUContainer<nucontainer>`                                                                                                                      ``containers`` 
 :ref:`nucontainerinterface.NUContainerInterface<nucontainerinterface>`                                                                                           ``container_interfaces`` 
+:ref:`nuqos.NUQOS<nuqos>`                                                                                                                                        ``qoss`` 
 :ref:`nuqospolicer.NUQosPolicer<nuqospolicer>`                                                                                                                   ``qos_policers`` 
 :ref:`nucosremarkingpolicytable.NUCOSRemarkingPolicyTable<nucosremarkingpolicytable>`                                                                            ``cos_remarking_policy_tables`` 
 :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`                                                                                                          ``host_interfaces`` 
@@ -156,6 +163,8 @@ Children
 :ref:`nunsgpatchprofile.NUNSGPatchProfile<nunsgpatchprofile>`                                                                                                    ``nsg_patch_profiles`` 
 :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`                                                                            ``ns_redundant_gateway_groups`` 
 :ref:`nunsgupgradeprofile.NUNSGUpgradeProfile<nunsgupgradeprofile>`                                                                                              ``nsg_upgrade_profiles`` 
+:ref:`nuesilmpolicy.NUEsIlmPolicy<nuesilmpolicy>`                                                                                                                ``es_ilm_policies`` 
+:ref:`nuesindexconfig.NUEsIndexConfig<nuesindexconfig>`                                                                                                          ``es_index_configs`` 
 :ref:`nuvsp.NUVSP<nuvsp>`                                                                                                                                        ``vsps`` 
 :ref:`nustaticroute.NUStaticRoute<nustaticroute>`                                                                                                                ``static_routes`` 
 :ref:`nustatscollectorinfo.NUStatsCollectorInfo<nustatscollectorinfo>`                                                                                           ``stats_collector_infos`` 

@@ -57,6 +57,10 @@ class NUEgressAdvFwdTemplate(NURESTObject):
     
     CONST_POLICY_STATE_DRAFT = "DRAFT"
     
+    CONST_PRIORITY_TYPE_MIDDLE_FIREWALL = "MIDDLE_FIREWALL"
+    
+    CONST_PRIORITY_TYPE_TOP_FIREWALL = "TOP_FIREWALL"
+    
     CONST_POLICY_STATE_LIVE = "LIVE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
@@ -64,6 +68,8 @@ class NUEgressAdvFwdTemplate(NURESTObject):
     CONST_PRIORITY_TYPE_NONE = "NONE"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_PRIORITY_TYPE_BOTTOM_FIREWALL = "BOTTOM_FIREWALL"
     
     CONST_PRIORITY_TYPE_TOP = "TOP"
     
@@ -90,6 +96,7 @@ class NUEgressAdvFwdTemplate(NURESTObject):
         
         self._name = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._active = None
         self._default_allow_ip = None
         self._default_allow_non_ip = None
@@ -97,15 +104,18 @@ class NUEgressAdvFwdTemplate(NURESTObject):
         self._embedded_metadata = None
         self._entity_scope = None
         self._policy_state = None
+        self._creation_date = None
         self._priority = None
         self._priority_type = None
         self._associated_live_entity_id = None
         self._associated_virtual_firewall_policy_id = None
         self._auto_generate_priority = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="active", remote_name="active", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="default_allow_ip", remote_name="defaultAllowIP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="default_allow_non_ip", remote_name="defaultAllowNonIP", attribute_type=bool, is_required=False, is_unique=False)
@@ -113,11 +123,13 @@ class NUEgressAdvFwdTemplate(NURESTObject):
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="priority_type", remote_name="priorityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BOTTOM', u'NONE', u'TOP'])
+        self.expose_attribute(local_name="priority_type", remote_name="priorityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BOTTOM', u'BOTTOM_FIREWALL', u'MIDDLE_FIREWALL', u'NONE', u'TOP', u'TOP_FIREWALL'])
         self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_virtual_firewall_policy_id", remote_name="associatedVirtualFirewallPolicyID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="auto_generate_priority", remote_name="autoGeneratePriority", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -188,6 +200,33 @@ class NUEgressAdvFwdTemplate(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -372,6 +411,33 @@ class NUEgressAdvFwdTemplate(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def priority(self):
         """ Get priority value.
 
@@ -399,7 +465,7 @@ class NUEgressAdvFwdTemplate(NURESTObject):
         """ Get priority_type value.
 
             Notes:
-                Possible values: TOP, BOTTOM or NONE. TOP and BOTTOM ACL policies can only be defined and managed on the template level, NONE can be used on both the template and instantiated level. These allow for careful control of ACL priority handling.
+                Possible values: TOP, BOTTOM, TOP_FIREWALL, BOTTOM_FIREWALL, MIDDLE_FIREWALL or NONE. TOP and BOTTOM ACL policies can only be defined and managed on the template level, NONE can be used on both the template and instantiated level. TOP_FIREWALL, BOTTOM_FIREWALL, MIDDLE_FIREWALL are used to represent acls dirived from Virtual Firewall Policies. These allow for careful control of ACL priority handling.
 
                 
                 This attribute is named `priorityType` in VSD API.
@@ -412,7 +478,7 @@ class NUEgressAdvFwdTemplate(NURESTObject):
         """ Set priority_type value.
 
             Notes:
-                Possible values: TOP, BOTTOM or NONE. TOP and BOTTOM ACL policies can only be defined and managed on the template level, NONE can be used on both the template and instantiated level. These allow for careful control of ACL priority handling.
+                Possible values: TOP, BOTTOM, TOP_FIREWALL, BOTTOM_FIREWALL, MIDDLE_FIREWALL or NONE. TOP and BOTTOM ACL policies can only be defined and managed on the template level, NONE can be used on both the template and instantiated level. TOP_FIREWALL, BOTTOM_FIREWALL, MIDDLE_FIREWALL are used to represent acls dirived from Virtual Firewall Policies. These allow for careful control of ACL priority handling.
 
                 
                 This attribute is named `priorityType` in VSD API.
@@ -500,6 +566,29 @@ class NUEgressAdvFwdTemplate(NURESTObject):
                 
         """
         self._auto_generate_priority = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

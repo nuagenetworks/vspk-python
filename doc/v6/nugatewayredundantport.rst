@@ -18,6 +18,10 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
+- ``native_vlan``: Default Native VLAN to carry untagged traffic on the redundant ports of this redundant gateway group. Applicable for Cisco 9K only. Possible values are 1-3967.
+
 - ``permitted_action``: The permitted  action to USE/EXTEND  this port.
 
 - ``description``: A description of the Port
@@ -34,6 +38,8 @@ Attributes
 
 - ``port_type`` (**Mandatory**): Type of the Port.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``use_user_mnemonic``: determines whether to use user mnemonic of the Port
 
 - ``user_mnemonic``: user mnemonic of the Port
@@ -41,6 +47,8 @@ Attributes
 - ``associated_egress_qos_policy_id``: UUID of the Egress QOS Policy associated with this Vlan.
 
 - ``status``: Status of the port.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

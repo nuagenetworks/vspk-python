@@ -28,6 +28,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway_mac_move_role``: Role of the gateway vport when handling MAC move errors
 
 - ``gateway_port_name``: Gateway portname eg: eth1 - applicable for type host/bridge
@@ -48,6 +50,10 @@ Attributes
 
 - ``description``: Description for this vport
 
+- ``flow_count``: Maximum number of data flows allowed for a VPort. If "Flow Limit Enabled" parameter is ENABLED/DISABLED/INHERITED, Flow Count parameter is configured/ignored/derived from parent domain respectively.
+
+- ``flow_limit_enabled``: Indicates if flow limit is enabled or disabled or "Flow Count" attribute is derived from the parent Domain on this VPort . Possible values are ENABLED, DISABLED or INHERITED.
+
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
@@ -64,15 +70,19 @@ Attributes
 
 - ``zone_id``: ID the Zone associated with the VPort
 
-- ``operational_state``: Operational State of the VPort. Possible values are INIT, UP, DOWN.
+- ``operational_state``: Operational State of the VPort. Possible values are INIT, UP, DOWN, DEGRADED
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``trunk_role``: Indicates the role of the vport in trunking operations
+
+- ``es_group_vport_infos``: Array of the embedded resource VPortInfo for each gateway member of ethernet segment group
 
 - ``assoc_entity_id``: UUID of the entity to which the vport is associated to. This could be UUID of a SUBNET or a L2DOMAIN
 
 - ``associated_egress_profile_id``: UUID of the Egress Profile associated with this Vport entity.
 
-- ``associated_floating_ip_id``: Id of Floating IP address associated to this vport
+- ``associated_floating_ip_id``: Id of Floating IP address associated to this VPort
 
 - ``associated_gateway_id``: Associated gateway ID of VPort
 
@@ -101,6 +111,8 @@ Attributes
 - ``auto_created``: Indicates if vport was auto created by the system
 
 - ``gw_eligible``: Indicates that this vport is eligible to be given in gateway vport config request. It becomes eligible when it has properly attached host or bridge interfaces.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -182,7 +194,7 @@ Parents
 
 - :ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`
 
-- :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
-
 - :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
+
+- :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
 

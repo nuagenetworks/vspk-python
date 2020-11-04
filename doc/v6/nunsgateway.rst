@@ -58,6 +58,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``datapath_id``: Identifier of the Gateway, based on the systemId
 
 - ``gateway_config_raw_version``: Release version of NSG, which is used to determine the feature capabilties of NSG.
@@ -118,6 +120,8 @@ Attributes
 
 - ``operation_status``: Operation Status of NSGateway
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``product_name``: NSG Product Name as reported during bootstrapping.
 
 - ``associated_gateway_security_id``: Read only ID of the associated gateway security object.
@@ -137,6 +141,8 @@ Attributes
 - ``tunnel_shaping``: Indicates if the UBR will perform tunnel shaping to the NSG when a tunnel shaper is associated to the NSG.
 
 - ``auto_disc_gateway_id``: The Auto Discovered Gateway associated with this Gateway Instance
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -160,6 +166,7 @@ Children
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuthreatpreventioninfo.NUThreatPreventionInfo<nuthreatpreventioninfo>`                                                                                     ``threat_prevention_infos`` 
 :ref:`nuwirelessport.NUWirelessPort<nuwirelessport>`                                                                                                             ``wireless_ports`` 
+:ref:`nuvirtualuplink.NUVirtualUplink<nuvirtualuplink>`                                                                                                          ``virtual_uplinks`` 
 :ref:`nualarm.NUAlarm<nualarm>`                                                                                                                                  ``alarms`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nuunderlaytest.NUUnderlayTest<nuunderlaytest>`                                                                                                             ``underlay_tests`` 
@@ -178,6 +185,7 @@ Children
 :ref:`nunsginfo.NUNSGInfo<nunsginfo>`                                                                                                                            ``nsg_infos`` 
 :ref:`nunsport.NUNSPort<nunsport>`                                                                                                                               ``ns_ports`` 
 :ref:`nusubnet.NUSubnet<nusubnet>`                                                                                                                               ``subnets`` 
+:ref:`nusupplementalinfraconfig.NUSupplementalInfraConfig<nusupplementalinfraconfig>`                                                                            ``supplemental_infra_configs`` 
 :ref:`nueventlog.NUEventLog<nueventlog>`                                                                                                                         ``event_logs`` 
 ================================================================================================================================================               ==========================================================================================
 
@@ -187,6 +195,8 @@ Parents
 --------
 
 
+- :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
+
 - :ref:`nuducgroup.NUDUCGroup<nuducgroup>`
 
 - :ref:`nume.NUMe<nume>`
@@ -194,8 +204,6 @@ Parents
 - :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
 
 - :ref:`nunsggroup.NUNSGGroup<nunsggroup>`
-
-- :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

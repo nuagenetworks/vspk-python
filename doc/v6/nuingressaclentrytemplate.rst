@@ -24,6 +24,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``action`` (**Mandatory**): The action of the ACL entry DROP or FORWARD or REDIRECT. Action REDIRECT is allowed only for IngressAdvancedForwardingEntry Possible values are DROP, FORWARD, REDIRECT, .
 
 - ``address_override``: Overrides the source IP for Ingress and destination IP for Egress, MAC entries will use this address as the match criteria.
@@ -68,6 +70,8 @@ Attributes
 
 - ``source_port``: Source port to be matched if protocol is UDP or TCP. Value can be either * or single port number or a port range
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``priority``: The priority of the ACL entry that determines the order of entries
 
 - ``protocol``: Protocol number that must be matched
@@ -93,6 +97,8 @@ Attributes
 - ``ether_type`` (**Mandatory**): Ether type of the packet to be matched. etherType can be * or a valid hexadecimal value
 
 - ``overlay_mirror_destination_id``: ID of the overlay mirror destination
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

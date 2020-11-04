@@ -92,10 +92,13 @@ class NUVMIPReservation(NURESTObject):
         self._ipv6_address = None
         self._ipv6_allocation_pools = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._allocation_pools = None
         self._embedded_metadata = None
         self._entity_scope = None
+        self._creation_date = None
         self._state = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
@@ -103,10 +106,13 @@ class NUVMIPReservation(NURESTObject):
         self.expose_attribute(local_name="ipv6_address", remote_name="IPV6Address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ipv6_allocation_pools", remote_name="IPV6AllocationPools", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allocation_pools", remote_name="allocationPools", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="state", remote_name="state", attribute_type=str, is_required=False, is_unique=False, choices=[u'ASSIGNED', u'ASSIGNED_DELETE_PENDING', u'UNASSIGNED'])
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -262,6 +268,33 @@ class NUVMIPReservation(NURESTObject):
 
     
     @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
+
+    
+    @property
     def allocation_pools(self):
         """ Get allocation_pools value.
 
@@ -343,6 +376,33 @@ class NUVMIPReservation(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def state(self):
         """ Get state value.
 
@@ -363,6 +423,29 @@ class NUVMIPReservation(NURESTObject):
                 
         """
         self._state = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

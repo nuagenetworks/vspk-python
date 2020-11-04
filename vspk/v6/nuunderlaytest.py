@@ -34,7 +34,7 @@ class NUUnderlayTest(NURESTObject):
     """ Represents a UnderlayTest in the VSD
 
         Notes:
-            Underlay Test is a wrapper object for a Test Suite Run from the built in Underlay Tests Test Suite
+            Underlay Test is a wrapper object for a Test Suite Run from the built in Underlay Tests Test Suite.
     """
 
     __rest_name__ = "underlaytest"
@@ -84,7 +84,10 @@ class NUUnderlayTest(NURESTObject):
         self._associated_data_path_id = None
         self._associated_ns_gateway_id = None
         self._associated_ns_gateway_name = None
+        self._associated_system_id = None
         self._associated_test_suite_run_id = None
+        self._associated_uplink_connection_id = None
+        self._associated_uplink_interface = None
         self._start_date_time = None
         self._stop_date_time = None
         self._run_bandwidth_test = None
@@ -100,7 +103,10 @@ class NUUnderlayTest(NURESTObject):
         self.expose_attribute(local_name="associated_data_path_id", remote_name="associatedDataPathID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ns_gateway_id", remote_name="associatedNSGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ns_gateway_name", remote_name="associatedNSGatewayName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_system_id", remote_name="associatedSystemID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_test_suite_run_id", remote_name="associatedTestSuiteRunID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_uplink_connection_id", remote_name="associatedUplinkConnectionID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_uplink_interface", remote_name="associatedUplinkInterface", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="start_date_time", remote_name="startDateTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stop_date_time", remote_name="stopDateTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="run_bandwidth_test", remote_name="runBandwidthTest", attribute_type=bool, is_required=False, is_unique=False)
@@ -326,6 +332,33 @@ class NUUnderlayTest(NURESTObject):
 
     
     @property
+    def associated_system_id(self):
+        """ Get associated_system_id value.
+
+            Notes:
+                The associated System ID
+
+                
+                This attribute is named `associatedSystemID` in VSD API.
+                
+        """
+        return self._associated_system_id
+
+    @associated_system_id.setter
+    def associated_system_id(self, value):
+        """ Set associated_system_id value.
+
+            Notes:
+                The associated System ID
+
+                
+                This attribute is named `associatedSystemID` in VSD API.
+                
+        """
+        self._associated_system_id = value
+
+    
+    @property
     def associated_test_suite_run_id(self):
         """ Get associated_test_suite_run_id value.
 
@@ -350,6 +383,60 @@ class NUUnderlayTest(NURESTObject):
                 
         """
         self._associated_test_suite_run_id = value
+
+    
+    @property
+    def associated_uplink_connection_id(self):
+        """ Get associated_uplink_connection_id value.
+
+            Notes:
+                The uplink connection ID that this underlay test will be triggered on. This can be null in order to use any uplink
+
+                
+                This attribute is named `associatedUplinkConnectionID` in VSD API.
+                
+        """
+        return self._associated_uplink_connection_id
+
+    @associated_uplink_connection_id.setter
+    def associated_uplink_connection_id(self, value):
+        """ Set associated_uplink_connection_id value.
+
+            Notes:
+                The uplink connection ID that this underlay test will be triggered on. This can be null in order to use any uplink
+
+                
+                This attribute is named `associatedUplinkConnectionID` in VSD API.
+                
+        """
+        self._associated_uplink_connection_id = value
+
+    
+    @property
+    def associated_uplink_interface(self):
+        """ Get associated_uplink_interface value.
+
+            Notes:
+                The interface name of the associated uplink in port.vlan format
+
+                
+                This attribute is named `associatedUplinkInterface` in VSD API.
+                
+        """
+        return self._associated_uplink_interface
+
+    @associated_uplink_interface.setter
+    def associated_uplink_interface(self, value):
+        """ Set associated_uplink_interface value.
+
+            Notes:
+                The interface name of the associated uplink in port.vlan format
+
+                
+                This attribute is named `associatedUplinkInterface` in VSD API.
+                
+        """
+        self._associated_uplink_interface = value
 
     
     @property
@@ -411,7 +498,7 @@ class NUUnderlayTest(NURESTObject):
         """ Get run_bandwidth_test value.
 
             Notes:
-                Flag to run the Bandwidth test
+                Bandwidth test results enable verification of minimal requirements for NSG operations and is not indicative of the maximum throughput possible on an uplink.
 
                 
                 This attribute is named `runBandwidthTest` in VSD API.
@@ -424,7 +511,7 @@ class NUUnderlayTest(NURESTObject):
         """ Set run_bandwidth_test value.
 
             Notes:
-                Flag to run the Bandwidth test
+                Bandwidth test results enable verification of minimal requirements for NSG operations and is not indicative of the maximum throughput possible on an uplink.
 
                 
                 This attribute is named `runBandwidthTest` in VSD API.

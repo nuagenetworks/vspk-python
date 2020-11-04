@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``tenant_id`` (**Mandatory**): The tenant Id of Azure Cloud account.
 
 - ``client_id`` (**Mandatory**): The client Id of Azure Cloud account.
@@ -26,11 +28,15 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_ike_encryption_profile_id``: Associated IKE Encryption Profile.
 
 - ``associated_ikepskid`` (**Mandatory**): Associated IKE PSK
 
 - ``subscription_id`` (**Mandatory**): The subscription Id of Azure Cloud account.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -46,6 +52,7 @@ Children
 :ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuikegatewayprofile.NUIKEGatewayProfile<nuikegatewayprofile>`                                                                                              ``ike_gateway_profiles`` 
+:ref:`nualarm.NUAlarm<nualarm>`                                                                                                                                  ``alarms`` 
 :ref:`nuglobalmetadata.NUGlobalMetadata<nuglobalmetadata>`                                                                                                       ``global_metadatas`` 
 :ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
 ================================================================================================================================================               ==========================================================================================

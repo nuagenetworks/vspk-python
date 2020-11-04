@@ -107,12 +107,14 @@ class NUZFBRequest(NURESTObject):
         self._family = None
         self._last_connected_time = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._registration_url = None
         self._request_type = None
         self._serial_number = None
         self._embedded_metadata = None
         self._entity_scope = None
         self._hostname = None
+        self._creation_date = None
         self._original_enterprise_name = None
         self._original_gateway_datapath_id = None
         self._original_gateway_name = None
@@ -125,6 +127,7 @@ class NUZFBRequest(NURESTObject):
         self._associated_ns_gateway_id = None
         self._associated_ns_gateway_name = None
         self._status_string = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="mac_address", remote_name="MACAddress", attribute_type=str, is_required=False, is_unique=False)
@@ -140,12 +143,14 @@ class NUZFBRequest(NURESTObject):
         self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_connected_time", remote_name="lastConnectedTime", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="registration_url", remote_name="registrationURL", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="request_type", remote_name="requestType", attribute_type=str, is_required=False, is_unique=False, choices=[u'SELF_REBOOTSTRAP', u'ZFB'])
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="hostname", remote_name="hostname", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="original_enterprise_name", remote_name="originalEnterpriseName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="original_gateway_datapath_id", remote_name="originalGatewayDatapathID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="original_gateway_name", remote_name="originalGatewayName", attribute_type=str, is_required=False, is_unique=False)
@@ -158,6 +163,7 @@ class NUZFBRequest(NURESTObject):
         self.expose_attribute(local_name="associated_ns_gateway_id", remote_name="associatedNSGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ns_gateway_name", remote_name="associatedNSGatewayName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status_string", remote_name="statusString", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -528,6 +534,33 @@ class NUZFBRequest(NURESTObject):
 
     
     @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
+
+    
+    @property
     def registration_url(self):
         """ Get registration_url value.
 
@@ -683,6 +716,33 @@ class NUZFBRequest(NURESTObject):
                 
         """
         self._hostname = value
+
+    
+    @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
 
     
     @property
@@ -1007,6 +1067,29 @@ class NUZFBRequest(NURESTObject):
                 
         """
         self._status_string = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

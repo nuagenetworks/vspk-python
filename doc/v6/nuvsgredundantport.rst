@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``peer_link``: Indicates whether port is configured as peer link. Peer link used to synchronize states between the VPC peer devices.
 
 - ``permitted_action``: The permitted  action to USE/EXTEND  this Gateway.
@@ -36,6 +38,10 @@ Attributes
 
 - ``port_type`` (**Mandatory**): Type of the Port.
 
+- ``operational_state``: Represents Operational State of the Port. Possible values are INIT, UP, DOWN.
+
+- ``creation_date``: Time stamp when this object was created.
+
 - ``use_user_mnemonic``: determines whether to use user mnemonic of the Port
 
 - ``user_mnemonic``: user mnemonic of the Port
@@ -43,6 +49,8 @@ Attributes
 - ``associated_egress_qos_policy_id``: ID of the Egress QOS Policy associated with this Vlan.
 
 - ``status``: Status of the port.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

@@ -20,6 +20,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``addresses``: The Control IPv4 or IPv6 addresses of the VSC. Example: [10.10.18.10, 2001:10:10:18::10].
 
 - ``peak_cpuusage``: Peek CPU usage percentage.
@@ -44,6 +46,8 @@ Attributes
 
 - ``communication_id``: Communication identifier used to uniquely identify the VSC connected to VSD
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``product_version``: Product version supported by this entity.
 
 - ``vsds``: A collection of VSD id(s) which are identified by this controller.
@@ -57,6 +61,8 @@ Attributes
 - ``average_cpuusage``: Average CPU usage percentage.
 
 - ``average_memory_usage``: Average memory usage percentage.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

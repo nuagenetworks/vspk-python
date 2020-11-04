@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway_id``: The Gateway associated with this  VLAN. This is a read only attribute
 
 - ``readonly``: Determines whether this entity is read only.  Read only objects cannot be modified or deleted.
@@ -32,9 +34,17 @@ Attributes
 
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
+- ``enable_nat_probes``: If enabled, probes will be sent to other NSGs and DTLS sessions for IPSEC and VXLAN will be set up to the VSCs. If disabled, no NAT probes are sent on that uplink and no DTLS sessions are set up to the VSCs.
+
+- ``inherited_port_properties_diverged``: Indicates if the value of any of the properties - MTU, NAT Probes Enabled or Traffic Through DUC Only Enabled, on this instance is different from the values of these properties at NSPort. True if they were different at any point. False if no attempt was made to change them from the values at NSPort.
+
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``vport_id``: The Vport associated with this VLAN. This is a read only attribute
+
+- ``traffic_through_ubr_only``: If enabled, cuts down the number of probes to just the number of provisioned DUCs.
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``is_uplink``: Indicates if the VLAN is used as an uplink.
 
@@ -60,7 +70,11 @@ Attributes
 
 - ``status``: Status of the VLAN.
 
+- ``mtu``: Port MTU (Maximum Transmission Unit) :  The size in octets of the largest protocol data unit (PDU) that the layer can pass on.  The default value is normally 1500 octets for Ethernet v2 and can go up to 9198 for Jumbo Frames.
+
 - ``duc_vlan``: When set to true, this specifies that this VLAN instance serves as an underlay connection endpoint on an NSG-UBR gateway.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

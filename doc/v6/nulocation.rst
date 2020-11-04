@@ -14,6 +14,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``latitude``: Latitude in decimal format.
 
 - ``address``: Formatted address including property number, street name, suite or office number, ...
@@ -32,11 +34,15 @@ Attributes
 
 - ``country``: Country
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_entity_name``: Name of the associated entity.
 
 - ``associated_entity_type``: Object type of the associated entity.
 
 - ``state``: State/Province/Region
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

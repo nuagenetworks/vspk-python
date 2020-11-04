@@ -238,6 +238,9 @@ from .fetchers import NUContainersFetcher
 from .fetchers import NUContainerInterfacesFetcher
 
 
+from .fetchers import NUQOSsFetcher
+
+
 from .fetchers import NUQosPolicersFetcher
 
 
@@ -299,6 +302,12 @@ from .fetchers import NUNSRedundantGatewayGroupsFetcher
 
 
 from .fetchers import NUNSGUpgradeProfilesFetcher
+
+
+from .fetchers import NUEsIlmPoliciesFetcher
+
+
+from .fetchers import NUEsIndexConfigsFetcher
 
 
 from .fetchers import NUVSPsFetcher
@@ -381,6 +390,7 @@ class NUMe(NURESTRootObject):
         self._password = None
         self._last_name = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._first_name = None
         self._disabled = None
         self._elastic_search_address = None
@@ -392,10 +402,12 @@ class NUMe(NURESTRootObject):
         self._entity_scope = None
         self._mobile_number = None
         self._role = None
+        self._creation_date = None
         self._user_name = None
         self._statistics_enabled = None
         self._avatar_data = None
         self._avatar_type = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="aar_flow_stats_interval", remote_name="AARFlowStatsInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -404,6 +416,7 @@ class NUMe(NURESTRootObject):
         self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_name", remote_name="lastName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="first_name", remote_name="firstName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="disabled", remote_name="disabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="elastic_search_address", remote_name="elasticSearchAddress", attribute_type=str, is_required=False, is_unique=False)
@@ -415,10 +428,12 @@ class NUMe(NURESTRootObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="mobile_number", remote_name="mobileNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_name", remote_name="userName", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="statistics_enabled", remote_name="statisticsEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="avatar_data", remote_name="avatarData", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="avatar_type", remote_name="avatarType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BASE64', u'COMPUTEDURL', u'URL'])
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -635,6 +650,9 @@ class NUMe(NURESTRootObject):
         self.container_interfaces = NUContainerInterfacesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.qoss = NUQOSsFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.qos_policers = NUQosPolicersFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -696,6 +714,12 @@ class NUMe(NURESTRootObject):
         
         
         self.nsg_upgrade_profiles = NUNSGUpgradeProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.es_ilm_policies = NUEsIlmPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.es_index_configs = NUEsIndexConfigsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.vsps = NUVSPsFetcher.fetcher_with_object(parent_object=self, relationship="root")
@@ -888,6 +912,33 @@ class NUMe(NURESTRootObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -1176,6 +1227,33 @@ class NUMe(NURESTRootObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def user_name(self):
         """ Get user_name value.
 
@@ -1281,6 +1359,29 @@ class NUMe(NURESTRootObject):
                 
         """
         self._avatar_type = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

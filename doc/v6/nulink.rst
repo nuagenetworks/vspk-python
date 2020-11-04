@@ -14,6 +14,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``acceptance_criteria``: A route filtering criteria enum. Defaults to ALL.
 
 - ``read_only``: This is set to true if a link has been created in the opposite direction
@@ -21,6 +23,8 @@ Attributes
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``associated_destination_id``: This is the  ID of the domain receiving the routes from the source. This can only be set for links of type OVERLAY_ADDRESS_TRANSLATION.
 
@@ -33,6 +37,8 @@ Attributes
 - ``associated_source_name``: None
 
 - ``associated_source_type``: This is the source object type for the associatedSourceID
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

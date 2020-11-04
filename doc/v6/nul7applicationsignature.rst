@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``category``: Category of this application
 
 - ``readonly``: Determines whether this entity is read only.  Read only objects cannot be modified or deleted.
@@ -44,9 +46,13 @@ Attributes
 
 - ``software_flags``: Software flags received from Procera for every signature.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``productivity``: Productivity Index is scored relative to a work environment for every L7 signature on a scale of 1-5.
 
 - ``guidstring``: GUID of the Application
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

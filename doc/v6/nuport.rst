@@ -18,6 +18,10 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
+- ``native_vlan``: Native VLAN to carry untagged traffic on this port. Applicable for Access Ports on Cisco 9K only. Possible values are 1-3967.
+
 - ``template_id``: The ID of the template that this Port was created from
 
 - ``permitted_action``: The permitted  action to USE/EXTEND  this Gateway.
@@ -31,6 +35,10 @@ Attributes
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``port_type`` (**Mandatory**): Type of the Port. Possible values are ACCESS, NETWORK, MANAGEMENT.
+
+- ``operational_state``: Represents Operational State of the Port. Possible values are INIT, UP, DOWN.
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``is_resilient``: States if this port instance is resilient (redundant).  An example would be a Multi-Chassis LAG port.
 
@@ -51,6 +59,8 @@ Attributes
 - ``associated_redundant_port_id``: ID of the redundant port to which this Port instance may be associated to.
 
 - ``status``: Status of the port.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

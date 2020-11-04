@@ -233,6 +233,7 @@ class NUSubnet(NURESTObject):
         self._maintenance_mode = None
         self._name = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._gateway = None
         self._gateway_mac_address = None
         self._access_restriction_enabled = None
@@ -252,6 +253,7 @@ class NUSubnet(NURESTObject):
         self._underlay = None
         self._underlay_enabled = None
         self._ingress_replication_enabled = None
+        self._interface_id = None
         self._entity_scope = None
         self._entity_state = None
         self._policy_group_id = None
@@ -260,6 +262,8 @@ class NUSubnet(NURESTObject):
         self._route_distinguisher = None
         self._route_target = None
         self._split_subnet = None
+        self._irb_sub_interface_id = None
+        self._creation_date = None
         self._proxy_arp = None
         self._vrrp_ipv6_backup_address = None
         self._use_global_mac = None
@@ -271,6 +275,7 @@ class NUSubnet(NURESTObject):
         self._multi_home_enabled = None
         self._multicast = None
         self._customer_id = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="l2_encap_type", remote_name="l2EncapType", attribute_type=str, is_required=False, is_unique=False, choices=[u'MPLS', u'MPLSoUDP', u'VLAN', u'VXLAN'])
@@ -284,6 +289,7 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="maintenance_mode", remote_name="maintenanceMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENABLED_INHERITED'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_mac_address", remote_name="gatewayMACAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="access_restriction_enabled", remote_name="accessRestrictionEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -303,6 +309,7 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="underlay", remote_name="underlay", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="underlay_enabled", remote_name="underlayEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="ingress_replication_enabled", remote_name="ingressReplicationEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="interface_id", remote_name="interfaceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="entity_state", remote_name="entityState", attribute_type=str, is_required=False, is_unique=False, choices=[u'MARKED_FOR_DELETION', u'UNDER_CONSTRUCTION'])
         self.expose_attribute(local_name="policy_group_id", remote_name="policyGroupID", attribute_type=int, is_required=False, is_unique=False)
@@ -311,6 +318,8 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="route_target", remote_name="routeTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="split_subnet", remote_name="splitSubnet", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="irb_sub_interface_id", remote_name="irbSubInterfaceID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="proxy_arp", remote_name="proxyARP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrrp_ipv6_backup_address", remote_name="vrrpIPv6BackupAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENTERPRISE_DEFAULT'])
@@ -322,6 +331,7 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="multi_home_enabled", remote_name="multiHomeEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -448,7 +458,7 @@ class NUSubnet(NURESTObject):
         """ Get pat_enabled value.
 
             Notes:
-                None
+                Indicates whether PAT is enabled for the subnets in this domain - ENABLED/DISABLED. Possible values are ENABLED, DISABLED. OR INHERITED
 
                 
                 This attribute is named `PATEnabled` in VSD API.
@@ -461,7 +471,7 @@ class NUSubnet(NURESTObject):
         """ Set pat_enabled value.
 
             Notes:
-                None
+                Indicates whether PAT is enabled for the subnets in this domain - ENABLED/DISABLED. Possible values are ENABLED, DISABLED. OR INHERITED
 
                 
                 This attribute is named `PATEnabled` in VSD API.
@@ -707,6 +717,33 @@ class NUSubnet(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -1195,6 +1232,33 @@ class NUSubnet(NURESTObject):
 
     
     @property
+    def interface_id(self):
+        """ Get interface_id value.
+
+            Notes:
+                SRLinux Interface ID for Subnet configuration
+
+                
+                This attribute is named `interfaceID` in VSD API.
+                
+        """
+        return self._interface_id
+
+    @interface_id.setter
+    def interface_id(self, value):
+        """ Set interface_id value.
+
+            Notes:
+                SRLinux Interface ID for Subnet configuration
+
+                
+                This attribute is named `interfaceID` in VSD API.
+                
+        """
+        self._interface_id = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -1404,6 +1468,60 @@ class NUSubnet(NURESTObject):
                 
         """
         self._split_subnet = value
+
+    
+    @property
+    def irb_sub_interface_id(self):
+        """ Get irb_sub_interface_id value.
+
+            Notes:
+                The IRB sub interface identifies subnet on SRLinux devices.
+
+                
+                This attribute is named `irbSubInterfaceID` in VSD API.
+                
+        """
+        return self._irb_sub_interface_id
+
+    @irb_sub_interface_id.setter
+    def irb_sub_interface_id(self, value):
+        """ Set irb_sub_interface_id value.
+
+            Notes:
+                The IRB sub interface identifies subnet on SRLinux devices.
+
+                
+                This attribute is named `irbSubInterfaceID` in VSD API.
+                
+        """
+        self._irb_sub_interface_id = value
+
+    
+    @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
 
     
     @property
@@ -1693,6 +1811,29 @@ class NUSubnet(NURESTObject):
                 
         """
         self._customer_id = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

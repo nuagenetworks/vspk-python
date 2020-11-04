@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway_secured_data_record_count``: Total number of Gateway Secured Data records
 
 - ``keyserver_monitor_encrypted_sek_count``: Total number of Keyserver Monitor Encrypted SEK records
@@ -31,6 +33,10 @@ Attributes
 - ``enterprise_secured_data_record_count``: Total number of Enterprise Secured Data records
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``creation_date``: Time stamp when this object was created.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

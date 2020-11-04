@@ -90,6 +90,8 @@ class NUEthernetSegmentGWGroup(NURESTObject):
     
     CONST_PERSONALITY_NETCONF_7X50 = "NETCONF_7X50"
     
+    CONST_PERSONALITY_SR_LINUX = "SR_LINUX"
+    
     
 
     def __init__(self, **kwargs):
@@ -117,7 +119,7 @@ class NUEthernetSegmentGWGroup(NURESTObject):
         self._associated_gateway_ids = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'NETCONF_7X50'])
+        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'NETCONF_7X50', u'SR_LINUX'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_gateways_names", remote_name="assocGatewaysNames", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_gateways_status", remote_name="assocGatewaysStatus", attribute_type=list, is_required=False, is_unique=False)

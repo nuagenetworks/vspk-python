@@ -49,6 +49,12 @@ from .fetchers import NUSaaSApplicationGroupsFetcher
 from .fetchers import NUSaaSApplicationTypesFetcher
 
 
+from .fetchers import NUSAPEgressQoSProfilesFetcher
+
+
+from .fetchers import NUSAPIngressQoSProfilesFetcher
+
+
 from .fetchers import NUCaptivePortalProfilesFetcher
 
 
@@ -118,6 +124,9 @@ from .fetchers import NUZFBRequestsFetcher
 from .fetchers import NUBGPProfilesFetcher
 
 
+from .fetchers import NUEgressProfilesFetcher
+
+
 from .fetchers import NUEgressQOSPoliciesFetcher
 
 
@@ -166,7 +175,13 @@ from .fetchers import NUVNFMetadatasFetcher
 from .fetchers import NUVNFThresholdPoliciesFetcher
 
 
+from .fetchers import NUIngressProfilesFetcher
+
+
 from .fetchers import NUIngressQOSPoliciesFetcher
+
+
+from .fetchers import NUGNMIProfilesFetcher
 
 
 from .fetchers import NUEnterpriseNetworksFetcher
@@ -205,10 +220,16 @@ from .fetchers import NUCOSRemarkingPolicyTablesFetcher
 from .fetchers import NURoutingPoliciesFetcher
 
 
+from .fetchers import NUIPFilterProfilesFetcher
+
+
 from .fetchers import NUApplicationsFetcher
 
 
 from .fetchers import NUApplicationperformancemanagementsFetcher
+
+
+from .fetchers import NUIPv6FilterProfilesFetcher
 
 
 from .fetchers import NUGroupsFetcher
@@ -295,6 +316,10 @@ class NUEnterprise(NURESTObject):
     
     CONST_AVATAR_TYPE_COMPUTEDURL = "COMPUTEDURL"
     
+    CONST_ENTERPRISE_TYPE_CSP = "CSP"
+    
+    CONST_ENTERPRISE_TYPE_SHARED = "SHARED"
+    
     CONST_ALLOWED_FORWARDING_CLASSES_F = "F"
     
     CONST_ALLOWED_FORWARDING_CLASSES_D = "D"
@@ -313,9 +338,15 @@ class NUEnterprise(NURESTObject):
     
     CONST_ALLOWED_FORWARDING_CLASSES_H = "H"
     
-    CONST_ALLOWED_FORWARDING_MODE_DISABLED = "DISABLED"
+    CONST_ENTERPRISE_TYPE_NORMAL = "NORMAL"
     
     CONST_ALLOWED_FORWARDING_MODE_LOCAL_ONLY = "LOCAL_ONLY"
+    
+    CONST_ALLOWED_FORWARDING_MODE_DISABLED = "DISABLED"
+    
+    CONST_ENTERPRISE_TYPE_SYSTEM = "SYSTEM"
+    
+    CONST_ENTERPRISE_TYPE_AUDIT = "AUDIT"
     
     CONST_FLOW_COLLECTION_ENABLED_ENABLED = "ENABLED"
     
@@ -355,6 +386,7 @@ class NUEnterprise(NURESTObject):
         self._vnf_management_enabled = None
         self._name = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._web_filter_enabled = None
         self._receive_multi_cast_list_id = None
         self._send_multi_cast_list_id = None
@@ -371,14 +403,17 @@ class NUEnterprise(NURESTObject):
         self._allowed_forwarding_mode = None
         self._floating_ips_quota = None
         self._floating_ips_used = None
+        self._blocked_page_text = None
         self._flow_collection_enabled = None
         self._embedded_metadata = None
         self._enable_application_performance_management = None
         self._encryption_management_mode = None
         self._enterprise_profile_id = None
+        self._enterprise_type = None
         self._entity_scope = None
         self._local_as = None
         self._forwarding_class = None
+        self._creation_date = None
         self._use_global_mac = None
         self._associated_enterprise_security_id = None
         self._associated_group_key_encryption_profile_id = None
@@ -386,6 +421,7 @@ class NUEnterprise(NURESTObject):
         self._customer_id = None
         self._avatar_data = None
         self._avatar_type = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="ldap_authorization_enabled", remote_name="LDAPAuthorizationEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -395,6 +431,7 @@ class NUEnterprise(NURESTObject):
         self.expose_attribute(local_name="vnf_management_enabled", remote_name="VNFManagementEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="web_filter_enabled", remote_name="webFilterEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="receive_multi_cast_list_id", remote_name="receiveMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="send_multi_cast_list_id", remote_name="sendMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
@@ -411,14 +448,17 @@ class NUEnterprise(NURESTObject):
         self.expose_attribute(local_name="allowed_forwarding_mode", remote_name="allowedForwardingMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'LOCAL_AND_REMOTE', u'LOCAL_ONLY'])
         self.expose_attribute(local_name="floating_ips_quota", remote_name="floatingIPsQuota", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="floating_ips_used", remote_name="floatingIPsUsed", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="blocked_page_text", remote_name="blockedPageText", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enable_application_performance_management", remote_name="enableApplicationPerformanceManagement", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption_management_mode", remote_name="encryptionManagementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'MANAGED'])
         self.expose_attribute(local_name="enterprise_profile_id", remote_name="enterpriseProfileID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enterprise_type", remote_name="enterpriseType", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUDIT', u'CSP', u'NORMAL', u'SHARED', u'SYSTEM'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="local_as", remote_name="localAS", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="forwarding_class", remote_name="forwardingClass", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_enterprise_security_id", remote_name="associatedEnterpriseSecurityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_group_key_encryption_profile_id", remote_name="associatedGroupKeyEncryptionProfileID", attribute_type=str, is_required=False, is_unique=False)
@@ -426,6 +466,7 @@ class NUEnterprise(NURESTObject):
         self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="avatar_data", remote_name="avatarData", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="avatar_type", remote_name="avatarType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BASE64', u'COMPUTEDURL', u'URL'])
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -451,6 +492,12 @@ class NUEnterprise(NURESTObject):
         
         
         self.saa_s_application_types = NUSaaSApplicationTypesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.sap_egress_qo_s_profiles = NUSAPEgressQoSProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.sap_ingress_qo_s_profiles = NUSAPIngressQoSProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.captive_portal_profiles = NUCaptivePortalProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -522,6 +569,9 @@ class NUEnterprise(NURESTObject):
         self.bgp_profiles = NUBGPProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.egress_profiles = NUEgressProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.egress_qos_policies = NUEgressQOSPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -570,7 +620,13 @@ class NUEnterprise(NURESTObject):
         self.vnf_threshold_policies = NUVNFThresholdPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.ingress_profiles = NUIngressProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.ingress_qos_policies = NUIngressQOSPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.gnmi_profiles = NUGNMIProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.enterprise_networks = NUEnterpriseNetworksFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -609,10 +665,16 @@ class NUEnterprise(NURESTObject):
         self.routing_policies = NURoutingPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.ip_filter_profiles = NUIPFilterProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.applications = NUApplicationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.applicationperformancemanagements = NUApplicationperformancemanagementsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ipv6_filter_profiles = NUIPv6FilterProfilesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.groups = NUGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -859,6 +921,33 @@ class NUEnterprise(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -1290,6 +1379,33 @@ class NUEnterprise(NURESTObject):
 
     
     @property
+    def blocked_page_text(self):
+        """ Get blocked_page_text value.
+
+            Notes:
+                The text for blocked page html which gets displayed to the end-users when they reach a website that is blocked by Web Filtering ACL. User can possibly include very basic html tags like <p>, <ul> etc. in order to fomat the text displayed to the end-users.
+
+                
+                This attribute is named `blockedPageText` in VSD API.
+                
+        """
+        return self._blocked_page_text
+
+    @blocked_page_text.setter
+    def blocked_page_text(self, value):
+        """ Set blocked_page_text value.
+
+            Notes:
+                The text for blocked page html which gets displayed to the end-users when they reach a website that is blocked by Web Filtering ACL. User can possibly include very basic html tags like <p>, <ul> etc. in order to fomat the text displayed to the end-users.
+
+                
+                This attribute is named `blockedPageText` in VSD API.
+                
+        """
+        self._blocked_page_text = value
+
+    
+    @property
     def flow_collection_enabled(self):
         """ Get flow_collection_enabled value.
 
@@ -1425,6 +1541,33 @@ class NUEnterprise(NURESTObject):
 
     
     @property
+    def enterprise_type(self):
+        """ Get enterprise_type value.
+
+            Notes:
+                Type of Enterprise. SHARED, AUDIT, NORMAL, CSP, SYSTEM
+
+                
+                This attribute is named `enterpriseType` in VSD API.
+                
+        """
+        return self._enterprise_type
+
+    @enterprise_type.setter
+    def enterprise_type(self, value):
+        """ Set enterprise_type value.
+
+            Notes:
+                Type of Enterprise. SHARED, AUDIT, NORMAL, CSP, SYSTEM
+
+                
+                This attribute is named `enterpriseType` in VSD API.
+                
+        """
+        self._enterprise_type = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -1503,6 +1646,33 @@ class NUEnterprise(NURESTObject):
                 
         """
         self._forwarding_class = value
+
+    
+    @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
 
     
     @property
@@ -1692,6 +1862,29 @@ class NUEnterprise(NURESTObject):
                 
         """
         self._avatar_type = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

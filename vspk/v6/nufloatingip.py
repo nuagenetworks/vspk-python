@@ -82,23 +82,33 @@ class NUFloatingIp(NURESTObject):
         # Read/Write Attributes
         
         self._last_updated_by = None
+        self._last_updated_date = None
         self._access_control = None
         self._address = None
+        self._egress_rate_limiter_id = None
         self._embedded_metadata = None
+        self._ingress_rate_limiter_id = None
         self._entity_scope = None
+        self._creation_date = None
         self._assigned = None
         self._assigned_to_object_type = None
         self._associated_shared_network_resource_id = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="access_control", remote_name="accessControl", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="egress_rate_limiter_id", remote_name="egressRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ingress_rate_limiter_id", remote_name="ingressRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assigned", remote_name="assigned", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assigned_to_object_type", remote_name="assignedToObjectType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_shared_network_resource_id", remote_name="associatedSharedNetworkResourceID", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -152,6 +162,33 @@ class NUFloatingIp(NURESTObject):
 
     
     @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
+
+    
+    @property
     def access_control(self):
         """ Get access_control value.
 
@@ -202,6 +239,33 @@ class NUFloatingIp(NURESTObject):
 
     
     @property
+    def egress_rate_limiter_id(self):
+        """ Get egress_rate_limiter_id value.
+
+            Notes:
+                ID of the Egress Rate Limiter for this FloatingIP.
+
+                
+                This attribute is named `egressRateLimiterID` in VSD API.
+                
+        """
+        return self._egress_rate_limiter_id
+
+    @egress_rate_limiter_id.setter
+    def egress_rate_limiter_id(self, value):
+        """ Set egress_rate_limiter_id value.
+
+            Notes:
+                ID of the Egress Rate Limiter for this FloatingIP.
+
+                
+                This attribute is named `egressRateLimiterID` in VSD API.
+                
+        """
+        self._egress_rate_limiter_id = value
+
+    
+    @property
     def embedded_metadata(self):
         """ Get embedded_metadata value.
 
@@ -229,6 +293,33 @@ class NUFloatingIp(NURESTObject):
 
     
     @property
+    def ingress_rate_limiter_id(self):
+        """ Get ingress_rate_limiter_id value.
+
+            Notes:
+                ID of the Ingress Rate Limiter for this FloatingIP.
+
+                
+                This attribute is named `ingressRateLimiterID` in VSD API.
+                
+        """
+        return self._ingress_rate_limiter_id
+
+    @ingress_rate_limiter_id.setter
+    def ingress_rate_limiter_id(self, value):
+        """ Set ingress_rate_limiter_id value.
+
+            Notes:
+                ID of the Ingress Rate Limiter for this FloatingIP.
+
+                
+                This attribute is named `ingressRateLimiterID` in VSD API.
+                
+        """
+        self._ingress_rate_limiter_id = value
+
+    
+    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -253,6 +344,33 @@ class NUFloatingIp(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
 
     
     @property
@@ -330,6 +448,29 @@ class NUFloatingIp(NURESTObject):
                 
         """
         self._associated_shared_network_resource_id = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

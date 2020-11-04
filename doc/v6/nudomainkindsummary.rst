@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway_count``: Total count of gateways in this domain
 
 - ``mesh_group_count``: Total count of mesh groups in this domain
@@ -36,11 +38,15 @@ Attributes
 
 - ``traffic_volume``: Traffic volume within the domain in GB indicating whether the network is running ZERO, light, medium or heavy traffic based on last 24 hours traffic stats
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``critical_alarms_count``: Total count of alarms with CRITICAL severity
 
 - ``nsg_count``: Total count of nsg in this domain
 
 - ``sub_network_count``: Total count of sub networks in this domain
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

@@ -28,6 +28,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``data_dns1``: Data DNS 1
 
 - ``data_dns2``: Data DNS 2
@@ -180,6 +182,8 @@ Attributes
 
 - ``cpu_count``: The number of vCPUs that will be assigned to the VRS.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``primary_data_uplink_underlay_id``: Primary data uplink underlay ID
 
 - ``primary_data_uplink_vdf_control_vlan``: The VLAN for the control communication with VSC on the primary datapath interface, when VDF is enabled. This VLAN can not be used as a subnet VLAN in the VSD configuration.
@@ -237,6 +241,8 @@ Attributes
 - ``avrs_enabled``: When enabled, the AVRS functionality will be enabled on the VRS during bootstrapping. This feature requires special AVRS licenses and specific configuration which is described in the product documentation.
 
 - ``avrs_profile``: The AVRS configuration profile that needs to be set up. This profile will configure the AVRS services so that it can support a certain type of performance.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

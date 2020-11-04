@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``result``: Results from the execution of the job
 
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
@@ -24,11 +26,15 @@ Attributes
 
 - ``command`` (**Mandatory**): Name of the command.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``progress``: Indicates the progress of the job as a faction. eg : 0.5 means 50% done.
 
 - ``assoc_entity_type``: Entity with which this job is associated Refer to API section for supported types.
 
 - ``status``: Current status of the job. Possible values are RUNNING, FAILED, SUCCESS, .
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
@@ -58,13 +64,11 @@ Parents
 
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`nume.NUMe<nume>`
 
-- :ref:`nuvsc.NUVSC<nuvsc>`
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
@@ -87,6 +91,8 @@ Parents
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
+
+- :ref:`nuvsc.NUVSC<nuvsc>`
 
 - :ref:`nuvsd.NUVSD<nuvsd>`
 

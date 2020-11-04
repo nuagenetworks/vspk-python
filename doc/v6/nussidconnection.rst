@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway_id``: The Gateway (NSG) associated with this SSID. This is a read only attribute
 
 - ``readonly``: Determines whether this entity is read only. Read only objects cannot be modified or deleted.
@@ -48,6 +50,8 @@ Attributes
 
 - ``vport_id``: The Vport associated with this SSID connection. The attribute can't be modified directly from the SSID Connection.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``broadcast_ssid``: Boolean that defines if the SSID name is to be broadcasted or not.
 
 - ``associated_captive_portal_profile_id``: Identification of the Captive Portal Profile that is associated with this instance of SSID connection.
@@ -57,6 +61,8 @@ Attributes
 - ``status``: Status of the SSID/VLAN. Possible values are - INITIALIZED, ORPHAN, READY, MISMATCH
 
 - ``authentication_mode``: Which mode of authentication is defined for a particular SSID Connection instance.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

@@ -28,6 +28,8 @@ Attributes
 
 - ``routing_protocol``: Routing protocol this policy definition is used for
 
+- ``customer_id``: The customer ID given to parent enterprise. This is used by Netconf/Config manager.
+
 - ``external_id``: External object ID. Used for integration with third party systems
 
 
@@ -55,6 +57,8 @@ Parents
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
