@@ -142,10 +142,10 @@ class Printer(object):
 
         """
         if isinstance(data, str):
-            print(tabulate([[data]], tablefmt=Printer.TABULATE_FORMAT))
+            print((tabulate([[data]], tablefmt=Printer.TABULATE_FORMAT)))
 
         elif isinstance(data, dict):
-            print(tabulate([data], headers=headers, tablefmt=Printer.TABULATE_FORMAT))
+            print((tabulate([data], headers=headers, tablefmt=Printer.TABULATE_FORMAT)))
 
         elif isinstance(data, list):
             results = []
@@ -156,12 +156,12 @@ class Printer(object):
                 else:
                     results.append([obj])
 
-            print(tabulate(results, headers=headers, tablefmt=Printer.TABULATE_FORMAT))
+            print((tabulate(results, headers=headers, tablefmt=Printer.TABULATE_FORMAT)))
 
         else:
             dictionary = cls._object_to_dict(data, fields)
-            result = [(key, value) for key, value in dictionary.items()]
-            print(tabulate(result, headers=headers, tablefmt=Printer.TABULATE_FORMAT))
+            result = [(key, value) for key, value in list(dictionary.items())]
+            print((tabulate(result, headers=headers, tablefmt=Printer.TABULATE_FORMAT)))
 
     @classmethod
     def _object_to_dict(cls, obj, fields=None):

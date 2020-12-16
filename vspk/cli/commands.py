@@ -39,7 +39,6 @@ class CLICommand(object):
     @classmethod
     def execute(cls, args):
         """ Execute CLI command """
-
         func = getattr(cls, args.command)
         cls._check_arguments(args)
         func(args)
@@ -437,7 +436,7 @@ class CLICommand(object):
                 The instance filled or throw an exception
 
         """
-        for attribute_name, attribute_value in attributes.items():
+        for attribute_name, attribute_value in list(attributes.items()):
 
             attribute = instance.get_attribute_infos(attribute_name)
             if attribute is None:

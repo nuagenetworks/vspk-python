@@ -59,7 +59,7 @@ class Utils(object):
             "IPID": "IpID"
         }
 
-        rep = dict((re.escape(k), v) for k, v in rep.items())
+        rep = dict((re.escape(k), v) for k, v in list(rep.items()))
         pattern = re.compile("|".join(list(rep.keys())))
         return pattern.sub(lambda m: rep[re.escape(m.group(0))], string)
 

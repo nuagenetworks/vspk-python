@@ -132,6 +132,9 @@ def main(argv=sys.argv):
     objects_parser.add_argument("-c", "--child", dest="child", help="Filter by children (ex: -c domain)")
 
     args = parser.parse_args()
+    if args.command == None:
+        parser.print_help()
+        exit(0)
 
     from .commands import CLICommand
     CLICommand.execute(args)
