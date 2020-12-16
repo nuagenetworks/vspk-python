@@ -72,7 +72,7 @@ class CLICommand(object):
 
             Printer.raise_error(error_message)
 
-        if hasattr(args, 'page_size') and args.page_size > 0:
+        if hasattr(args, 'page_size') and args.page_size != None and args.page_size > 0:
             (fetcher, parent, objects) = fetcher.fetch(filter=args.filter, query_parameters=query_parameters, page=args.page, page_size=args.page_size)
         else: 
             page = 0
