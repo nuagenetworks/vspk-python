@@ -70,6 +70,9 @@ from .fetchers import NUEgressACLTemplatesFetcher
 from .fetchers import NUEgressAdvFwdTemplatesFetcher
 
 
+from .fetchers import NUEgressAuditACLEntryTemplatesFetcher
+
+
 from .fetchers import NUEgressAuditACLTemplatesFetcher
 
 
@@ -536,6 +539,9 @@ class NUDomain(NURESTObject):
         
         
         self.egress_adv_fwd_templates = NUEgressAdvFwdTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.egress_audit_acl_entry_templates = NUEgressAuditACLEntryTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.egress_audit_acl_templates = NUEgressAuditACLTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")

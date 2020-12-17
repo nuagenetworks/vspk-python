@@ -129,8 +129,6 @@ class NUSubnetTemplate(NURESTObject):
         self._description = None
         self._netmask = None
         self._embedded_metadata = None
-        self._enable_dhcpv4 = None
-        self._enable_dhcpv6 = None
         self._encryption = None
         self._entity_scope = None
         self._split_subnet = None
@@ -155,8 +153,6 @@ class NUSubnetTemplate(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="enable_dhcpv4", remote_name="enableDHCPv4", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="enable_dhcpv6", remote_name="enableDHCPv6", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="split_subnet", remote_name="splitSubnet", attribute_type=bool, is_required=False, is_unique=False)
@@ -500,60 +496,6 @@ class NUSubnetTemplate(NURESTObject):
                 
         """
         self._embedded_metadata = value
-
-    
-    @property
-    def enable_dhcpv4(self):
-        """ Get enable_dhcpv4 value.
-
-            Notes:
-                This value indicates whether IPv4 DHCP is enabled or not. This is applicable in case the subnet is DUALSTACK or IPv4
-
-                
-                This attribute is named `enableDHCPv4` in VSD API.
-                
-        """
-        return self._enable_dhcpv4
-
-    @enable_dhcpv4.setter
-    def enable_dhcpv4(self, value):
-        """ Set enable_dhcpv4 value.
-
-            Notes:
-                This value indicates whether IPv4 DHCP is enabled or not. This is applicable in case the subnet is DUALSTACK or IPv4
-
-                
-                This attribute is named `enableDHCPv4` in VSD API.
-                
-        """
-        self._enable_dhcpv4 = value
-
-    
-    @property
-    def enable_dhcpv6(self):
-        """ Get enable_dhcpv6 value.
-
-            Notes:
-                This value indicates whether IPv6 DHCP is enabled or not. This is applicable in case the subnet is DUALSTACK or IPv6
-
-                
-                This attribute is named `enableDHCPv6` in VSD API.
-                
-        """
-        return self._enable_dhcpv6
-
-    @enable_dhcpv6.setter
-    def enable_dhcpv6(self, value):
-        """ Set enable_dhcpv6 value.
-
-            Notes:
-                This value indicates whether IPv6 DHCP is enabled or not. This is applicable in case the subnet is DUALSTACK or IPv6
-
-                
-                This attribute is named `enableDHCPv6` in VSD API.
-                
-        """
-        self._enable_dhcpv6 = value
 
     
     @property

@@ -36,10 +36,6 @@ Attributes
 
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
-- ``enable_dhcpv4``: This value indicates whether IPv4 DHCP is enabled or not. This is applicable in case the subnet is DUALSTACK or IPv4
-
-- ``enable_dhcpv6``: This value indicates whether IPv6 DHCP is enabled or not. This is applicable in case the subnet is DUALSTACK or IPv6
-
 - ``encryption``: Determines whether or not IPSEC is enabled. Possible values are INHERITED, ENABLED, DISABLED, .
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level

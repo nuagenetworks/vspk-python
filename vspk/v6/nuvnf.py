@@ -180,7 +180,7 @@ class NUVNF(NURESTObject):
         self._external_id = None
         self._type = None
         
-        self.expose_attribute(local_name="vnf_descriptor_id", remote_name="VNFDescriptorID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vnf_descriptor_id", remote_name="VNFDescriptorID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="vnf_descriptor_name", remote_name="VNFDescriptorName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cpu_count", remote_name="CPUCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_name", remote_name="NSGName", attribute_type=str, is_required=False, is_unique=False)

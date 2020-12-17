@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``vnf_descriptor_id``: The ID of VNF Descriptor from which VNF to be created. This is required on creation and can be removed on moidification of VNF instance.
+- ``vnf_descriptor_id`` (**Mandatory**): The ID of VNF Descriptor from which VNF to be created. This is required on creation and can be removed on moidification of VNF instance.
 
 - ``vnf_descriptor_name``: The Name of VNF Descriptor from which this VNF instance is created.
 
