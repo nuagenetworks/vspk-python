@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``pat_enabled``: None
+- ``pat_enabled``: Indicates whether PAT is enabled for the subnets in this domain - ENABLED/DISABLED. Possible values are ENABLED, DISABLED. OR INHERITED
 
 - ``dhcp_relay_status``: None
 

@@ -30,7 +30,7 @@ Attributes
 
 - ``destination_ip``: destination IP in CIDR format
 
-- ``destination_port``: value should be either * or single port number 
+- ``destination_port``: value should be either * or single port number or maximum 5 ranges comma separated. 
 
 - ``network_symmetry``: Network symmetry flag
 
@@ -50,7 +50,7 @@ Attributes
 
 - ``source_ip``: source IP address
 
-- ``source_port``: source Port ,value should be either * or single port number 
+- ``source_port``: source Port ,value should be either * or single port number or maximum 5 ranges comma separated. 
 
 - ``app_id``: a unique 2 byte id generated when a application is created and used by VRS  for probing.
 

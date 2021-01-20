@@ -67,7 +67,7 @@ class NUHSC(NURESTObject):
     
     ## Constants
     
-    CONST_TYPE_VSG = "VSG"
+    CONST_TYPE_NUAGE_210_WBX_48_S = "NUAGE_210_WBX_48_S"
     
     CONST_STATUS_DOWN = "DOWN"
     
@@ -83,7 +83,11 @@ class NUHSC(NURESTObject):
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
+    CONST_TYPE_VSG = "VSG"
+    
     CONST_STATUS_ADMIN_DOWN = "ADMIN_DOWN"
+    
+    CONST_TYPE_NUAGE_210_WBX_32_Q = "NUAGE_210_WBX_32_Q"
     
     
 
@@ -156,7 +160,7 @@ class NUHSC(NURESTObject):
         self.expose_attribute(local_name="average_cpuusage", remote_name="averageCPUUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="average_memory_usage", remote_name="averageMemoryUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'NONE', u'VSA', u'VSG'])
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'NONE', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'VSA', u'VSG'])
         
 
         # Fetchers

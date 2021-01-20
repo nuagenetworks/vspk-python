@@ -57,6 +57,10 @@ class NUIngressAdvFwdTemplate(NURESTObject):
     
     CONST_POLICY_STATE_DRAFT = "DRAFT"
     
+    CONST_PRIORITY_TYPE_MIDDLE_FIREWALL = "MIDDLE_FIREWALL"
+    
+    CONST_PRIORITY_TYPE_TOP_FIREWALL = "TOP_FIREWALL"
+    
     CONST_POLICY_STATE_LIVE = "LIVE"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
@@ -64,6 +68,8 @@ class NUIngressAdvFwdTemplate(NURESTObject):
     CONST_PRIORITY_TYPE_NONE = "NONE"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_PRIORITY_TYPE_BOTTOM_FIREWALL = "BOTTOM_FIREWALL"
     
     CONST_PRIORITY_TYPE_TOP = "TOP"
     
@@ -113,7 +119,7 @@ class NUIngressAdvFwdTemplate(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="priority_type", remote_name="priorityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BOTTOM', u'NONE', u'TOP'])
+        self.expose_attribute(local_name="priority_type", remote_name="priorityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BOTTOM', u'BOTTOM_FIREWALL', u'MIDDLE_FIREWALL', u'NONE', u'TOP', u'TOP_FIREWALL'])
         self.expose_attribute(local_name="associated_live_entity_id", remote_name="associatedLiveEntityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="auto_generate_priority", remote_name="autoGeneratePriority", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -397,7 +403,7 @@ class NUIngressAdvFwdTemplate(NURESTObject):
         """ Get priority_type value.
 
             Notes:
-                Possible values: TOP, BOTTOM or NONE. TOP and BOTTOM ACL policies can only be defined and managed on the template level, NONE can be used on both the template and instantiated level. These allow for careful control of ACL priority handling.
+                Possible values: TOP, BOTTOM, TOP_FIREWALL, BOTTOM_FIREWALL, MIDDLE_FIREWALL or NONE. TOP and BOTTOM ACL policies can only be defined and managed on the template level, NONE can be used on both the template and instantiated level. TOP_FIREWALL, BOTTOM_FIREWALL, MIDDLE_FIREWALL are used to represent acls dirived from Virtual Firewall Policies. These allow for careful control of ACL priority handling.
 
                 
                 This attribute is named `priorityType` in VSD API.
@@ -410,7 +416,7 @@ class NUIngressAdvFwdTemplate(NURESTObject):
         """ Set priority_type value.
 
             Notes:
-                Possible values: TOP, BOTTOM or NONE. TOP and BOTTOM ACL policies can only be defined and managed on the template level, NONE can be used on both the template and instantiated level. These allow for careful control of ACL priority handling.
+                Possible values: TOP, BOTTOM, TOP_FIREWALL, BOTTOM_FIREWALL, MIDDLE_FIREWALL or NONE. TOP and BOTTOM ACL policies can only be defined and managed on the template level, NONE can be used on both the template and instantiated level. TOP_FIREWALL, BOTTOM_FIREWALL, MIDDLE_FIREWALL are used to represent acls dirived from Virtual Firewall Policies. These allow for careful control of ACL priority handling.
 
                 
                 This attribute is named `priorityType` in VSD API.

@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``cpu_count``: Number of CPUs to be allocated VNF instance when deployed
+- ``cpu_count`` (**Mandatory**): Number of CPUs to be allocated VNF instance when deployed
 
 - ``name`` (**Mandatory**): Name of the VNF Descriptor
 

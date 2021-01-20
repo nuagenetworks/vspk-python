@@ -43,43 +43,51 @@ class NUCommand(NURESTObject):
     
     ## Constants
     
-    CONST_OVERRIDE_ABANDON = "ABANDON"
-    
-    CONST_OVERRIDE_UNSPECIFIED = "UNSPECIFIED"
-    
-    CONST_COMMAND_NSG_APPLY_PATCH = "NSG_APPLY_PATCH"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    CONST_COMMAND_NSG_OVERLAY_SYSLOG_CONTAINER_STOP = "NSG_OVERLAY_SYSLOG_CONTAINER_STOP"
     
     CONST_COMMAND_NSG_UPDATE_INFO = "NSG_UPDATE_INFO"
     
-    CONST_STATUS_UNKNOWN = "UNKNOWN"
-    
-    CONST_STATUS_SKIPPED = "SKIPPED"
-    
     CONST_STATUS_STARTED = "STARTED"
-    
-    CONST_STATUS_RUNNING = "RUNNING"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
-    CONST_COMMAND_UNKNOWN = "UNKNOWN"
-    
-    CONST_STATUS_COMPLETED = "COMPLETED"
-    
     CONST_COMMAND_NSG_DOWNLOAD_OS_IMAGE = "NSG_DOWNLOAD_OS_IMAGE"
-    
-    CONST_STATUS_FAILED = "FAILED"
     
     CONST_COMMAND_NSG_REBOOT = "NSG_REBOOT"
     
+    CONST_COMMAND_NSG_DELETE_PATCH = "NSG_DELETE_PATCH"
+    
+    CONST_STATUS_UNKNOWN = "UNKNOWN"
+    
+    CONST_STATUS_ABANDONED = "ABANDONED"
+    
+    CONST_COMMAND_UNKNOWN = "UNKNOWN"
+    
+    CONST_STATUS_FAILED = "FAILED"
+    
+    CONST_OVERRIDE_ABANDON = "ABANDON"
+    
+    CONST_COMMAND_NSG_APPLY_PATCH = "NSG_APPLY_PATCH"
+    
+    CONST_STATUS_RUNNING = "RUNNING"
+    
     CONST_COMMAND_NSG_UPGRADE_TO_IMAGE = "NSG_UPGRADE_TO_IMAGE"
     
-    CONST_COMMAND_NSG_DELETE_PATCH = "NSG_DELETE_PATCH"
+    CONST_COMMAND_NSG_OVERLAY_SYSLOG_CONTAINER_RESTART = "NSG_OVERLAY_SYSLOG_CONTAINER_RESTART"
     
     CONST_COMMAND_NSG_RENEW_CERT = "NSG_RENEW_CERT"
     
-    CONST_STATUS_ABANDONED = "ABANDONED"
+    CONST_COMMAND_NSG_CONTAINER_TEST_SUITE_RUN = "NSG_CONTAINER_TEST_SUITE_RUN"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_STATUS_SKIPPED = "SKIPPED"
+    
+    CONST_OVERRIDE_UNSPECIFIED = "UNSPECIFIED"
+    
+    CONST_COMMAND_NSG_OVERLAY_SYSLOG_CONTAINER_START = "NSG_OVERLAY_SYSLOG_CONTAINER_START"
+    
+    CONST_STATUS_COMPLETED = "COMPLETED"
     
     
 
@@ -122,7 +130,7 @@ class NUCommand(NURESTObject):
         self.expose_attribute(local_name="detailed_status", remote_name="detailedStatus", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="detailed_status_code", remote_name="detailedStatusCode", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="command", remote_name="command", attribute_type=str, is_required=True, is_unique=False, choices=[u'NSG_APPLY_PATCH', u'NSG_DELETE_PATCH', u'NSG_DOWNLOAD_OS_IMAGE', u'NSG_REBOOT', u'NSG_RENEW_CERT', u'NSG_UPDATE_INFO', u'NSG_UPGRADE_TO_IMAGE', u'UNKNOWN'])
+        self.expose_attribute(local_name="command", remote_name="command", attribute_type=str, is_required=True, is_unique=False, choices=[u'NSG_APPLY_PATCH', u'NSG_CONTAINER_TEST_SUITE_RUN', u'NSG_DELETE_PATCH', u'NSG_DOWNLOAD_OS_IMAGE', u'NSG_OVERLAY_SYSLOG_CONTAINER_RESTART', u'NSG_OVERLAY_SYSLOG_CONTAINER_START', u'NSG_OVERLAY_SYSLOG_CONTAINER_STOP', u'NSG_REBOOT', u'NSG_RENEW_CERT', u'NSG_UPDATE_INFO', u'NSG_UPGRADE_TO_IMAGE', u'UNKNOWN'])
         self.expose_attribute(local_name="command_information", remote_name="commandInformation", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="progress", remote_name="progress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_entity_type", remote_name="assocEntityType", attribute_type=str, is_required=False, is_unique=False)

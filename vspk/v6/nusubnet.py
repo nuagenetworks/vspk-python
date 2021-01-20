@@ -399,7 +399,7 @@ class NUSubnet(NURESTObject):
         """ Get pat_enabled value.
 
             Notes:
-                None
+                Indicates whether PAT is enabled for the subnets in this domain - ENABLED/DISABLED. Possible values are ENABLED, DISABLED. OR INHERITED
 
                 
                 This attribute is named `PATEnabled` in VSD API.
@@ -412,7 +412,7 @@ class NUSubnet(NURESTObject):
         """ Set pat_enabled value.
 
             Notes:
-                None
+                Indicates whether PAT is enabled for the subnets in this domain - ENABLED/DISABLED. Possible values are ENABLED, DISABLED. OR INHERITED
 
                 
                 This attribute is named `PATEnabled` in VSD API.

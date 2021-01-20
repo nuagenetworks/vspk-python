@@ -422,7 +422,7 @@ class NUApplication(NURESTObject):
         """ Get destination_port value.
 
             Notes:
-                value should be either * or single port number 
+                value should be either * or single port number or maximum 5 ranges comma separated. 
 
                 
                 This attribute is named `destinationPort` in VSD API.
@@ -435,7 +435,7 @@ class NUApplication(NURESTObject):
         """ Set destination_port value.
 
             Notes:
-                value should be either * or single port number 
+                value should be either * or single port number or maximum 5 ranges comma separated. 
 
                 
                 This attribute is named `destinationPort` in VSD API.
@@ -692,7 +692,7 @@ class NUApplication(NURESTObject):
         """ Get source_port value.
 
             Notes:
-                source Port ,value should be either * or single port number 
+                source Port ,value should be either * or single port number or maximum 5 ranges comma separated. 
 
                 
                 This attribute is named `sourcePort` in VSD API.
@@ -705,7 +705,7 @@ class NUApplication(NURESTObject):
         """ Set source_port value.
 
             Notes:
-                source Port ,value should be either * or single port number 
+                source Port ,value should be either * or single port number or maximum 5 ranges comma separated. 
 
                 
                 This attribute is named `sourcePort` in VSD API.
