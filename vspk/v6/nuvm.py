@@ -97,6 +97,8 @@ class NUVM(NURESTObject):
     
     CONST_STATUS_UNREACHABLE = "UNREACHABLE"
     
+    CONST_STATUS_IDLE = "IDLE"
+    
     CONST_STATUS_BLOCKED = "BLOCKED"
     
     CONST_REASON_TYPE_SHUTOFF_DESTROYED = "SHUTOFF_DESTROYED"
@@ -248,7 +250,7 @@ class NUVM(NURESTObject):
         self.expose_attribute(local_name="vrs_version", remote_name="vrsVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_id", remote_name="userID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_name", remote_name="userName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'BLOCKED', u'CRASHED', u'DELETE_PENDING', u'INIT', u'LAST', u'NOSTATE', u'PAUSED', u'RUNNING', u'SHUTDOWN', u'SHUTOFF', u'UNKNOWN', u'UNREACHABLE'])
+        self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'BLOCKED', u'CRASHED', u'DELETE_PENDING', u'IDLE', u'INIT', u'LAST', u'NOSTATE', u'PAUSED', u'RUNNING', u'SHUTDOWN', u'SHUTOFF', u'UNKNOWN', u'UNREACHABLE'])
         self.expose_attribute(local_name="subnet_ids", remote_name="subnetIDs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)

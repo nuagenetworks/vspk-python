@@ -61,6 +61,8 @@ class NUUplinkConnection(NURESTObject):
     
     ## Constants
     
+    CONST_FEC_ENABLED_PASSIVE = "PASSIVE"
+    
     CONST_UPLINK_TYPE_UPLINK = "UPLINK"
     
     CONST_INTERFACE_CONNECTION_TYPE_USB_MODEM = "USB_MODEM"
@@ -71,7 +73,7 @@ class NUUplinkConnection(NURESTObject):
     
     CONST_ADVERTISEMENT_CRITERIA_CONTROL_SESSION = "CONTROL_SESSION"
     
-    CONST_FEC_ENABLED_ENABLED = "ENABLED"
+    CONST_FEC_ENABLED_DISABLED = "DISABLED"
     
     CONST_ADVERTISEMENT_CRITERIA_BFD = "BFD"
     
@@ -82,8 +84,6 @@ class NUUplinkConnection(NURESTObject):
     CONST_UPLINK_TYPE_CONTROL = "CONTROL"
     
     CONST_AUX_MODE_COLD = "COLD"
-    
-    CONST_FEC_ENABLED_DISABLED = "DISABLED"
     
     CONST_MODE_DYNAMIC = "Dynamic"
     
@@ -103,9 +103,9 @@ class NUUplinkConnection(NURESTObject):
     
     CONST_MODE_PPPOE = "PPPoE"
     
-    CONST_FEC_ENABLED_SUPPORTED = "SUPPORTED"
-    
     CONST_INTERFACE_CONNECTION_TYPE_USB_ETHERNET = "USB_ETHERNET"
+    
+    CONST_FEC_ENABLED_ACTIVE = "ACTIVE"
     
     CONST_UPLINK_TYPE_SHUNT = "SHUNT"
     
@@ -202,7 +202,7 @@ class NUUplinkConnection(NURESTObject):
         self.expose_attribute(local_name="address_family", remote_name="addressFamily", attribute_type=str, is_required=False, is_unique=False, choices=[u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="address_v6", remote_name="addressV6", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="advertisement_criteria", remote_name="advertisementCriteria", attribute_type=str, is_required=False, is_unique=False, choices=[u'BFD', u'CONTROL_SESSION', u'OPERATIONAL_LINK'])
-        self.expose_attribute(local_name="fec_enabled", remote_name="fecEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'SUPPORTED'])
+        self.expose_attribute(local_name="fec_enabled", remote_name="fecEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'DISABLED', u'PASSIVE'])
         self.expose_attribute(local_name="secondary_address", remote_name="secondaryAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vlan", remote_name="vlan", attribute_type=int, is_required=False, is_unique=False)
@@ -604,7 +604,7 @@ class NUUplinkConnection(NURESTObject):
         """ Get fec_enabled value.
 
             Notes:
-                Indicates the FEC (Forward Error Correction) setting on this Uplink Connection. Possible values are Enabled (Encode & Decode on all paths over this uplink), Disabled (Encode & Decode only to uplinks with FEC Enabled) and Supported (do not Encode or Decode, do not detect or report loss).
+                Indicates the FEC (Forward Error Correction) setting on this Uplink Connection. Possible values are Active (Encode & Decode on all paths over this uplink), Passive (Encode & Decode only to uplinks with FEC Active) and Disabled (do not Encode or Decode, do not detect or report loss).
 
                 
                 This attribute is named `fecEnabled` in VSD API.
@@ -617,7 +617,7 @@ class NUUplinkConnection(NURESTObject):
         """ Set fec_enabled value.
 
             Notes:
-                Indicates the FEC (Forward Error Correction) setting on this Uplink Connection. Possible values are Enabled (Encode & Decode on all paths over this uplink), Disabled (Encode & Decode only to uplinks with FEC Enabled) and Supported (do not Encode or Decode, do not detect or report loss).
+                Indicates the FEC (Forward Error Correction) setting on this Uplink Connection. Possible values are Active (Encode & Decode on all paths over this uplink), Passive (Encode & Decode only to uplinks with FEC Active) and Disabled (do not Encode or Decode, do not detect or report loss).
 
                 
                 This attribute is named `fecEnabled` in VSD API.

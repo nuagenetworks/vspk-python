@@ -286,6 +286,8 @@ Parents
 
 - :ref:`nuptranslationmap.NUPTranslationMap<nuptranslationmap>`
 
+- :ref:`nuroleentry.NURoleentry<nuroleentry>`
+
 - :ref:`nuqospolicer.NUQosPolicer<nuqospolicer>`
 
 - :ref:`nucertificate.NUCertificate<nucertificate>`
@@ -511,6 +513,8 @@ Parents
 - :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
 
 - :ref:`nukeyservermonitorsek.NUKeyServerMonitorSEK<nukeyservermonitorsek>`
+
+- :ref:`nurole.NURole<nurole>`
 
 - :ref:`nuvportmirror.NUVPortMirror<nuvportmirror>`
 

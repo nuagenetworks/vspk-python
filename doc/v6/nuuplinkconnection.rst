@@ -38,7 +38,7 @@ Attributes
 
 - ``advertisement_criteria``: Advertisement Criteria for Traffic Flow
 
-- ``fec_enabled``: Indicates the FEC (Forward Error Correction) setting on this Uplink Connection. Possible values are Enabled (Encode & Decode on all paths over this uplink), Disabled (Encode & Decode only to uplinks with FEC Enabled) and Supported (do not Encode or Decode, do not detect or report loss).
+- ``fec_enabled``: Indicates the FEC (Forward Error Correction) setting on this Uplink Connection. Possible values are Active (Encode & Decode on all paths over this uplink), Passive (Encode & Decode only to uplinks with FEC Active) and Disabled (do not Encode or Decode, do not detect or report loss).
 
 - ``secondary_address``: Secondary IP Address (Control IP Address) for Loopback. 
 

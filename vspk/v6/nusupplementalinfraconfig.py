@@ -38,7 +38,7 @@ class NUSupplementalInfraConfig(NURESTObject):
     """
 
     __rest_name__ = "supplementalinfraconfig"
-    __resource_name__ = "supplementalinfraconfigs"
+    __resource_name__ = "supplementalinfraconfig"
 
     
 
