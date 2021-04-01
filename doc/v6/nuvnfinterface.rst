@@ -30,6 +30,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway``: Gateway of the subnet that the interface is connected to
 
 - ``netmask``: Netmask of the subnet that the interface is attached to
@@ -50,9 +52,13 @@ Attributes
 
 - ``zone_name``: Name of the zone that the VM is attached to
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``attached_network_id``: ID of the Subnet that the interface is attached to
 
 - ``attached_network_type``: network type that the interface is attached to
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

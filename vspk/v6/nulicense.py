@@ -85,6 +85,7 @@ class NULicense(NURESTObject):
         
         self._major_release = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._additional_supported_versions = None
         self._request_id = None
         self._phone = None
@@ -113,6 +114,7 @@ class NULicense(NURESTObject):
         self._entity_scope = None
         self._company = None
         self._country = None
+        self._creation_date = None
         self._product_version = None
         self._provider = None
         self._is_cluster_license = None
@@ -120,6 +122,7 @@ class NULicense(NURESTObject):
         self._state = None
         self._street = None
         self._customer_key = None
+        self._owner = None
         self._expiration_date = None
         self._expiry_timestamp = None
         self._external_id = None
@@ -127,6 +130,7 @@ class NULicense(NURESTObject):
         
         self.expose_attribute(local_name="major_release", remote_name="majorRelease", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="additional_supported_versions", remote_name="additionalSupportedVersions", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="request_id", remote_name="requestID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="phone", remote_name="phone", attribute_type=str, is_required=False, is_unique=False)
@@ -155,6 +159,7 @@ class NULicense(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="company", remote_name="company", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="country", remote_name="country", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="product_version", remote_name="productVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="provider", remote_name="provider", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="is_cluster_license", remote_name="isClusterLicense", attribute_type=bool, is_required=False, is_unique=False)
@@ -162,6 +167,7 @@ class NULicense(NURESTObject):
         self.expose_attribute(local_name="state", remote_name="state", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="street", remote_name="street", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="customer_key", remote_name="customerKey", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="expiration_date", remote_name="expirationDate", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="expiry_timestamp", remote_name="expiryTimestamp", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -236,6 +242,33 @@ class NULicense(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -967,6 +1000,33 @@ class NULicense(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def product_version(self):
         """ Get product_version value.
 
@@ -1141,6 +1201,29 @@ class NULicense(NURESTObject):
                 
         """
         self._customer_key = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

@@ -112,6 +112,7 @@ class NUApplication(NURESTObject):
         self._name = None
         self._bandwidth = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._read_only = None
         self._performance_monitor_type = None
         self._certificate_common_name = None
@@ -131,9 +132,11 @@ class NUApplication(NURESTObject):
         self._app_id = None
         self._optimize_path_selection = None
         self._pre_classification_path = None
+        self._creation_date = None
         self._protocol = None
         self._associated_l7_application_signature_id = None
         self._ether_type = None
+        self._owner = None
         self._external_id = None
         self._symmetry = None
         
@@ -141,6 +144,7 @@ class NUApplication(NURESTObject):
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="bandwidth", remote_name="bandwidth", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="read_only", remote_name="readOnly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="performance_monitor_type", remote_name="performanceMonitorType", attribute_type=str, is_required=False, is_unique=False, choices=[u'CONTINUOUS', u'FIRST_PACKET', u'FIRST_PACKET_AND_CONTINUOUS'])
         self.expose_attribute(local_name="certificate_common_name", remote_name="certificateCommonName", attribute_type=str, is_required=False, is_unique=False)
@@ -160,9 +164,11 @@ class NUApplication(NURESTObject):
         self.expose_attribute(local_name="app_id", remote_name="appId", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="optimize_path_selection", remote_name="optimizePathSelection", attribute_type=str, is_required=False, is_unique=False, choices=[u'JITTER', u'LATENCY', u'PACKETLOSS'])
         self.expose_attribute(local_name="pre_classification_path", remote_name="preClassificationPath", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'PRIMARY', u'SECONDARY'])
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'TCP', u'UDP'])
         self.expose_attribute(local_name="associated_l7_application_signature_id", remote_name="associatedL7ApplicationSignatureID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ether_type", remote_name="etherType", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="symmetry", remote_name="symmetry", attribute_type=bool, is_required=False, is_unique=False)
         
@@ -284,6 +290,33 @@ class NUApplication(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -796,6 +829,33 @@ class NUApplication(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def protocol(self):
         """ Get protocol value.
 
@@ -870,6 +930,29 @@ class NUApplication(NURESTObject):
                 
         """
         self._ether_type = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

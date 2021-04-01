@@ -22,6 +22,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``address``: IPv4 address range of the zone. This is an optional field that allows users to allocate an address range to a zone. The VSD will auto-assign IP ranges to subnets from this range if an IP range is not defined for a subnet.
 
 - ``description``: A description of the Zone template
@@ -34,6 +36,8 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_multicast_channel_map_id``: The ID of the Multi Cast Channel Map  this zone/zone template is associated with. This has to be set when  enableMultiCast is set to ENABLED
 
 - ``public_zone``: Identifies if the zone is a public zone, in which case any subnets associated with this zone are actually connected to the public subnet of the data center
@@ -41,6 +45,8 @@ Attributes
 - ``multicast``: Indicates multicast policy on zone template.
 
 - ``number_of_hosts_in_subnets``: Number of hosts in the subnets where IP addresses are automatically assigned from the zone IP pool
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

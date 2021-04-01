@@ -56,6 +56,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``datapath_id``: Identifier of the Gateway, based on the systemId
 
 - ``gateway_config_raw_version``: Release version of NSG, which is used to determine the feature capabilties of NSG.
@@ -112,6 +114,8 @@ Attributes
 
 - ``operation_status``: Operation Status of NSGateway
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``product_name``: NSG Product Name as reported during bootstrapping.
 
 - ``associated_gateway_security_id``: Read only ID of the associated gateway security object.
@@ -129,6 +133,8 @@ Attributes
 - ``tunnel_shaping``: Indicates if the UBR will perform tunnel shaping to the NSG when a tunnel shaper is associated to the NSG.
 
 - ``auto_disc_gateway_id``: The Auto Discovered Gateway associated with this Gateway Instance
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

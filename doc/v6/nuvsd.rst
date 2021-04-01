@@ -22,6 +22,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``address``: An optional IP to access this component.
 
 - ``peak_cpuusage``: Peek CPU usage percentage.
@@ -48,6 +50,8 @@ Attributes
 
 - ``mode``: Standalone or cluster mode.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``product_version``: Product version supported by this entity.
 
 - ``status``: Computed status of the entity.
@@ -59,6 +63,8 @@ Attributes
 - ``average_cpuusage``: Average CPU usage percentage.
 
 - ``average_memory_usage``: Average memory usage percentage.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

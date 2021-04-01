@@ -342,6 +342,7 @@ class NUEnterprise(NURESTObject):
         self._vnf_management_enabled = None
         self._name = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._web_filter_enabled = None
         self._receive_multi_cast_list_id = None
         self._send_multi_cast_list_id = None
@@ -364,6 +365,7 @@ class NUEnterprise(NURESTObject):
         self._entity_scope = None
         self._local_as = None
         self._forwarding_class = None
+        self._creation_date = None
         self._use_global_mac = None
         self._associated_enterprise_security_id = None
         self._associated_group_key_encryption_profile_id = None
@@ -371,6 +373,7 @@ class NUEnterprise(NURESTObject):
         self._customer_id = None
         self._avatar_data = None
         self._avatar_type = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="ldap_authorization_enabled", remote_name="LDAPAuthorizationEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -380,6 +383,7 @@ class NUEnterprise(NURESTObject):
         self.expose_attribute(local_name="vnf_management_enabled", remote_name="VNFManagementEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="web_filter_enabled", remote_name="webFilterEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="receive_multi_cast_list_id", remote_name="receiveMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="send_multi_cast_list_id", remote_name="sendMultiCastListID", attribute_type=str, is_required=False, is_unique=False)
@@ -402,6 +406,7 @@ class NUEnterprise(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="local_as", remote_name="localAS", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="forwarding_class", remote_name="forwardingClass", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_enterprise_security_id", remote_name="associatedEnterpriseSecurityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_group_key_encryption_profile_id", remote_name="associatedGroupKeyEncryptionProfileID", attribute_type=str, is_required=False, is_unique=False)
@@ -409,6 +414,7 @@ class NUEnterprise(NURESTObject):
         self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="avatar_data", remote_name="avatarData", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="avatar_type", remote_name="avatarType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BASE64', u'COMPUTEDURL', u'URL'])
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -833,6 +839,33 @@ class NUEnterprise(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -1426,6 +1459,33 @@ class NUEnterprise(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def use_global_mac(self):
         """ Get use_global_mac value.
 
@@ -1612,6 +1672,29 @@ class NUEnterprise(NURESTObject):
                 
         """
         self._avatar_type = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

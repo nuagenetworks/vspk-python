@@ -103,6 +103,7 @@ class NUVSC(NURESTObject):
         self._management_ip = None
         self._last_state_change = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._address = None
         self._addresses = None
         self._peak_cpuusage = None
@@ -115,6 +116,7 @@ class NUVSC(NURESTObject):
         self._unavailable_timestamp = None
         self._entity_scope = None
         self._location = None
+        self._creation_date = None
         self._product_version = None
         self._vsds = None
         self._status = None
@@ -122,12 +124,14 @@ class NUVSC(NURESTObject):
         self._current_memory_usage = None
         self._average_cpuusage = None
         self._average_memory_usage = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="management_ip", remote_name="managementIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_state_change", remote_name="lastStateChange", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="addresses", remote_name="addresses", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peak_cpuusage", remote_name="peakCPUUsage", attribute_type=float, is_required=False, is_unique=False)
@@ -140,6 +144,7 @@ class NUVSC(NURESTObject):
         self.expose_attribute(local_name="unavailable_timestamp", remote_name="unavailableTimestamp", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="location", remote_name="location", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="product_version", remote_name="productVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsds", remote_name="vsds", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
@@ -147,6 +152,7 @@ class NUVSC(NURESTObject):
         self.expose_attribute(local_name="current_memory_usage", remote_name="currentMemoryUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="average_cpuusage", remote_name="averageCPUUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="average_memory_usage", remote_name="averageMemoryUsage", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -286,6 +292,33 @@ class NUVSC(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -589,6 +622,33 @@ class NUVSC(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def product_version(self):
         """ Get product_version value.
 
@@ -767,6 +827,29 @@ class NUVSC(NURESTObject):
                 
         """
         self._average_memory_usage = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

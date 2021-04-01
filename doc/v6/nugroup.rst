@@ -20,6 +20,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``account_restrictions``: Determines whether group is disabled or not.
 
 - ``description``: Description of the group
@@ -32,7 +34,11 @@ Attributes
 
 - ``role``: The role associated with this group.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``private``: A private group is visible only by the owner of the group. Public groups are visible by all users in the enterprise
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

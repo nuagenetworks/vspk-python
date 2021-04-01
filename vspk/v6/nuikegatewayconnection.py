@@ -134,6 +134,7 @@ class NUIKEGatewayConnection(NURESTObject):
         self._name = None
         self._mark = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._sequence = None
         self._allow_any_subnet = None
         self._embedded_metadata = None
@@ -141,6 +142,7 @@ class NUIKEGatewayConnection(NURESTObject):
         self._entity_scope = None
         self._configuration_status = None
         self._port_vlan_name = None
+        self._creation_date = None
         self._priority = None
         self._associated_cloud_id = None
         self._associated_cloud_type = None
@@ -149,6 +151,7 @@ class NUIKEGatewayConnection(NURESTObject):
         self._associated_ike_encryption_profile_id = None
         self._associated_ike_gateway_profile_id = None
         self._associated_vlanid = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="nsg_identifier", remote_name="NSGIdentifier", attribute_type=str, is_required=False, is_unique=False)
@@ -157,6 +160,7 @@ class NUIKEGatewayConnection(NURESTObject):
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mark", remote_name="mark", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sequence", remote_name="sequence", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_any_subnet", remote_name="allowAnySubnet", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
@@ -164,6 +168,7 @@ class NUIKEGatewayConnection(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="configuration_status", remote_name="configurationStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'CANCELING', u'CANCELLED', u'CLOUD_CONFIGURATION_REMOVED', u'FAILED', u'IN_PROGRESS', u'NOT_APPLICABLE', u'PAUSING', u'SUCCESS', u'SYNCED_FROM_CLOUD', u'UNKNOWN', u'WAITING', u'WAITING_FOR_RESOURCES'])
         self.expose_attribute(local_name="port_vlan_name", remote_name="portVLANName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_cloud_id", remote_name="associatedCloudID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_cloud_type", remote_name="associatedCloudType", attribute_type=str, is_required=False, is_unique=False, choices=[u'AZURECLOUD'])
@@ -172,6 +177,7 @@ class NUIKEGatewayConnection(NURESTObject):
         self.expose_attribute(local_name="associated_ike_encryption_profile_id", remote_name="associatedIKEEncryptionProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ike_gateway_profile_id", remote_name="associatedIKEGatewayProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_vlanid", remote_name="associatedVLANID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -352,6 +358,33 @@ class NUIKEGatewayConnection(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -537,6 +570,33 @@ class NUIKEGatewayConnection(NURESTObject):
                 
         """
         self._port_vlan_name = value
+
+    
+    @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
 
     
     @property
@@ -749,6 +809,29 @@ class NUIKEGatewayConnection(NURESTObject):
                 
         """
         self._associated_vlanid = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

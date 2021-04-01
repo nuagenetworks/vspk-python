@@ -22,6 +22,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway``: IP address of the gateway bound to the port
 
 - ``gateway_v6``: IPv6 address of the gateway bound to the port.
@@ -66,6 +68,8 @@ Attributes
 
 - ``uplink_id``: ID that unqiuely identifies the uplink.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``primary_data_path_id``: System generated identifier of an uplink on NSG.
 
 - ``username``: PPPoE username if uplink mode is set to PPPoE.
@@ -79,6 +83,8 @@ Attributes
 - ``aux_mode``: The type of redundancy this Uplink offers when marked as auxiliary link.
 
 - ``auxiliary_link``: Make this uplink an auxiliary one that will only come up when all other uplinks are disconnected or can't perform their role.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

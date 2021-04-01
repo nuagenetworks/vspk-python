@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``seed_type``: Seed Type
 
 - ``key_server_certificate_serial_number``: KeyServer Certificate Serial Number
@@ -26,6 +28,8 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_key_server_monitor_sek_creation_time``: The creation time of the associated KeyServer Monitor Seed ID
 
 - ``associated_key_server_monitor_sekid``: The ID of the associated KeyServer Monitor SEK ID
@@ -33,6 +37,8 @@ Attributes
 - ``associated_key_server_monitor_seed_creation_time``: The creation time of the associated KeyServer Monitor Seed ID
 
 - ``associated_key_server_monitor_seed_id``: The ID of the associated KeyServer Monitor Seed ID
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

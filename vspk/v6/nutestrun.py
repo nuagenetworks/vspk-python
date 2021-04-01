@@ -83,6 +83,7 @@ class NUTestRun(NURESTObject):
         # Read/Write Attributes
         
         self._last_updated_by = None
+        self._last_updated_date = None
         self._embedded_metadata = None
         self._entity_scope = None
         self._command = None
@@ -90,14 +91,17 @@ class NUTestRun(NURESTObject):
         self._command_output = None
         self._command_output_summary = None
         self._operation_status = None
+        self._creation_date = None
         self._associated_test_id = None
         self._associated_test_suite_run_id = None
         self._start_date_time = None
         self._stop_date_time = None
         self._duration = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="command", remote_name="command", attribute_type=str, is_required=False, is_unique=False)
@@ -105,11 +109,13 @@ class NUTestRun(NURESTObject):
         self.expose_attribute(local_name="command_output", remote_name="commandOutput", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="command_output_summary", remote_name="commandOutputSummary", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="operation_status", remote_name="operationStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'COMPLETED', u'FAILED', u'STARTED', u'TIMED_OUT', u'UNKNOWN'])
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_test_id", remote_name="associatedTestID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_test_suite_run_id", remote_name="associatedTestSuiteRunID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="start_date_time", remote_name="startDateTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stop_date_time", remote_name="stopDateTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="duration", remote_name="duration", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -151,6 +157,33 @@ class NUTestRun(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -339,6 +372,33 @@ class NUTestRun(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def associated_test_id(self):
         """ Get associated_test_id value.
 
@@ -467,6 +527,29 @@ class NUTestRun(NURESTObject):
                 
         """
         self._duration = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

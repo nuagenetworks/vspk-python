@@ -122,6 +122,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway_probe_interval``: Gateway probe interval in seconds.
 
 - ``gateway_probe_window``: Gateway probe window in seconds.
@@ -193,6 +195,8 @@ Attributes
 - ``google_maps_api_key``: Google Maps API Key used to display maps on Nuage UI applications
 
 - ``post_processor_threads_count``: Post processor thread count.
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``group_key_default_sek_generation_interval``: Group Key Encryption Profile Default SEK Generation Interval in seconds.
 
@@ -295,6 +299,8 @@ Attributes
 - ``event_processor_max_events_count``: Defines the maximum number of events to be collected in case of events burst.
 
 - ``event_processor_timeout``: Defines the maximum time period in milliseconds for the ReST server to wait before sending the events from the system.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``two_factor_code_expiry``: Two Factor Code Expiration time in seconds for bootstrapping gateways. (min = 60, max = 604800)
 

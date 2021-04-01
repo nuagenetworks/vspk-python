@@ -158,6 +158,7 @@ class NUVRS(NURESTObject):
         self._last_event_timestamp = None
         self._last_state_change = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._gateway_uuid = None
         self._db_synced = None
         self._address = None
@@ -177,6 +178,7 @@ class NUVRS(NURESTObject):
         self._location = None
         self._role = None
         self._uptime = None
+        self._creation_date = None
         self._primary_vsc_connection_lost = None
         self._product_version = None
         self._is_resilient = None
@@ -190,6 +192,7 @@ class NUVRS(NURESTObject):
         self._current_memory_usage = None
         self._average_cpuusage = None
         self._average_memory_usage = None
+        self._owner = None
         self._external_id = None
         self._hypervisor_connection_state = None
         self._hypervisor_identifier = None
@@ -204,6 +207,7 @@ class NUVRS(NURESTObject):
         self.expose_attribute(local_name="last_event_timestamp", remote_name="lastEventTimestamp", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_state_change", remote_name="lastStateChange", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_uuid", remote_name="gatewayUUID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="db_synced", remote_name="dbSynced", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
@@ -223,6 +227,7 @@ class NUVRS(NURESTObject):
         self.expose_attribute(local_name="location", remote_name="location", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="role", remote_name="role", attribute_type=str, is_required=False, is_unique=False, choices=[u'MASTER', u'NONE', u'SLAVE'])
         self.expose_attribute(local_name="uptime", remote_name="uptime", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="primary_vsc_connection_lost", remote_name="primaryVSCConnectionLost", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="product_version", remote_name="productVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="is_resilient", remote_name="isResilient", attribute_type=bool, is_required=False, is_unique=False)
@@ -236,6 +241,7 @@ class NUVRS(NURESTObject):
         self.expose_attribute(local_name="current_memory_usage", remote_name="currentMemoryUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="average_cpuusage", remote_name="averageCPUUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="average_memory_usage", remote_name="averageMemoryUsage", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="hypervisor_connection_state", remote_name="hypervisorConnectionState", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
         self.expose_attribute(local_name="hypervisor_identifier", remote_name="hypervisorIdentifier", attribute_type=str, is_required=False, is_unique=False)
@@ -502,6 +508,33 @@ class NUVRS(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -986,6 +1019,33 @@ class NUVRS(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def primary_vsc_connection_lost(self):
         """ Get primary_vsc_connection_lost value.
 
@@ -1330,6 +1390,29 @@ class NUVRS(NURESTObject):
                 
         """
         self._average_memory_usage = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

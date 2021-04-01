@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``action``: The bootstrap action to perform.
 
 - ``seed``: The random seed for this request
@@ -34,6 +36,8 @@ Attributes
 
 - ``tpm_state``: Gateway TPM Status reported by the device when generating CSR.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``srk_password``: TPM SRK passphrase
 
 - ``vsd_time``: VSD Server time when an NSG is initiating a Bootstrapping request
@@ -45,6 +49,8 @@ Attributes
 - ``status``: The agent status for the request
 
 - ``auto_bootstrap``: Indicates whether auto bootstrap is being used to bootstrap this NSG
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

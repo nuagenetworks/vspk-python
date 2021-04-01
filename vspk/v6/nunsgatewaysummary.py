@@ -95,6 +95,7 @@ class NUNSGatewaySummary(NURESTObject):
         self._nsg_version = None
         self._major_alarms_count = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._gateway_id = None
         self._gateway_name = None
         self._gateway_type = None
@@ -113,14 +114,17 @@ class NUNSGatewaySummary(NURESTObject):
         self._longitude = None
         self._bootstrap_status = None
         self._country = None
+        self._creation_date = None
         self._critical_alarms_count = None
         self._state = None
+        self._owner = None
         self._external_id = None
         self._system_id = None
         
         self.expose_attribute(local_name="nsg_version", remote_name="NSGVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="major_alarms_count", remote_name="majorAlarmsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_id", remote_name="gatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_name", remote_name="gatewayName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_type", remote_name="gatewayType", attribute_type=str, is_required=False, is_unique=False)
@@ -139,8 +143,10 @@ class NUNSGatewaySummary(NURESTObject):
         self.expose_attribute(local_name="longitude", remote_name="longitude", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT', u'QUARANTINED', u'REVOKED'])
         self.expose_attribute(local_name="country", remote_name="country", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="critical_alarms_count", remote_name="criticalAlarmsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="state", remote_name="state", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="system_id", remote_name="systemID", attribute_type=str, is_required=False, is_unique=False)
         
@@ -237,6 +243,33 @@ class NUNSGatewaySummary(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -702,6 +735,33 @@ class NUNSGatewaySummary(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def critical_alarms_count(self):
         """ Get critical_alarms_count value.
 
@@ -749,6 +809,29 @@ class NUNSGatewaySummary(NURESTObject):
                 
         """
         self._state = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

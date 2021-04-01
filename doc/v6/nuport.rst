@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``template_id``: The ID of the template that this Port was created from
 
 - ``permitted_action``: The permitted  action to USE/EXTEND  this Gateway.
@@ -32,6 +34,8 @@ Attributes
 
 - ``port_type`` (**Mandatory**): Type of the Port. Possible values are ACCESS, NETWORK, MANAGEMENT.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``is_resilient``: States if this port instance is resilient (redundant).  An example would be a Multi-Chassis LAG port.
 
 - ``use_user_mnemonic``: determines whether to use user mnemonic of the Port
@@ -43,6 +47,8 @@ Attributes
 - ``associated_redundant_port_id``: ID of the redundant port to which this Port instance may be associated to.
 
 - ``status``: Status of the port.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

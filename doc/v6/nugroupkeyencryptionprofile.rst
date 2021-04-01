@@ -30,6 +30,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``seed_generation_interval``: Group Key SEED Generation Interval in Seconds.
 
 - ``seed_lifetime``: Group Key SEED Lifetime in Seconds. Min=1, Max=604800
@@ -60,7 +62,11 @@ Attributes
 
 - ``traffic_encryption_key_lifetime``: Group Key Traffic Encryption Key Lifetime in Seconds. Min=1, Max=86400
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_enterprise_id``: The ID of the associated Enterprise
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

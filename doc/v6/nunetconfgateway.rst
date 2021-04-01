@@ -34,6 +34,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``datapath_id``: Identifier of the Gateway, based on the systemID which is generated when the instance is created in VSD.
 
 - ``patches``: Patches that have been installed on the NSG
@@ -76,6 +78,8 @@ Attributes
 
 - ``bootstrap_status``: The bootstrap status of this Gateway. NOTE: This is a read only property.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``product_name``: Product Name as reported during bootstrapping.
 
 - ``use_gateway_vlanvnid``: When set, VLAN-VNID mapping must be unique for all the vports of the gateway
@@ -91,6 +95,8 @@ Attributes
 - ``vtep``: Represent the system ID or the Virtual IP of a service used by a Gateway (VSG for now) to establish a tunnel with a remote VSG or hypervisor.  The format of this field is consistent with an IP address.
 
 - ``auto_disc_gateway_id``: The Auto Discovered Gateway associated with this Gateway Instance
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

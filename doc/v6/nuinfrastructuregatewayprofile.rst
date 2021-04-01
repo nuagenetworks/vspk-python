@@ -20,6 +20,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``datapath_sync_timeout``: Datapath flows sync-time-interval specified in milliseconds
 
 - ``dead_timer``: ISO 8601 format duration: **PnYnMnD T nHnMnS**. **P** represents the period field and **T** the time field. Period field: **Y** = year, **M** = month, **D** = day. Time field: **H** = hours, **M** = minutes, **S** = seconds. **n** is the value of each field. Because the years and month are units that vary in length, for the time being those are not supported yet.
@@ -62,11 +64,15 @@ Attributes
 
 - ``upgrade_action``: Upgrade action for NSG associated with this Infrastructure Gateway Profile instance.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``proxy_dns_name`` (**Mandatory**): Proxy DNS Name :  DNS Name of the system acting as a proxy between the NSG instances and the VSD.
 
 - ``use_two_factor``: Use Two Factor :  When set to true, the use of two independent authentication factors will be used to secure the installed NSG.  When set to false, there is an assumption that the NSG is being installed in a secure environment and the installer is also trusted.  The defaut value is true, using 2-factor.
 
 - ``stats_collector_port``: The port to open by the proxy for the statistics collector to use.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

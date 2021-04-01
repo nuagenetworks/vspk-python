@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway_id``: The Gateway associated with this Auto Discovered Gateway. This is a read only attribute
 
 - ``peer``: The System ID of the peer gateway associated with this Gateway instance when it is discovered by the network manager (VSD) as being redundant.
@@ -30,7 +32,11 @@ Attributes
 
 - ``controllers``: Controllers to which this gateway instance is associated with.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``vtep``: Represent the system ID or the Virtual IP of a service used by a Gateway (VSG for now) to establish a tunnel with a remote VSG or hypervisor.  The format of this field is consistent with an IP address.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

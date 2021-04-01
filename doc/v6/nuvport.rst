@@ -28,6 +28,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway_mac_move_role``: Role of the gateway vport when handling MAC move errors
 
 - ``gateway_port_name``: Gateway portname eg: eth1 - applicable for type host/bridge
@@ -66,6 +68,8 @@ Attributes
 
 - ``operational_state``: Operational State of the VPort. Possible values are INIT, UP, DOWN.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``trunk_role``: Indicates the role of the vport in trunking operations
 
 - ``assoc_entity_id``: UUID of the entity to which the vport is associated to. This could be UUID of a SUBNET or a L2DOMAIN
@@ -99,6 +103,8 @@ Attributes
 - ``multicast``: Indicates multicast policy on Vport.
 
 - ``gw_eligible``: Indicates that this vport is eligible to be given in gateway vport config request. It becomes eligible when it has properly attached host or bridge interfaces.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

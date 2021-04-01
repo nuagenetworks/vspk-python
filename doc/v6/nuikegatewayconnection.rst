@@ -24,6 +24,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``sequence``: The sequence of the IKE Gateway Connection
 
 - ``allow_any_subnet``: Allow any local subnets to be used
@@ -37,6 +39,8 @@ Attributes
 - ``configuration_status``: Status of configuration on third-party cloud instance
 
 - ``port_vlan_name``: The Name of the Port and Vlan the IKEv2 Connection is on
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``priority``: Priority of the IKEv2 Gateway Connection
 
@@ -53,6 +57,8 @@ Attributes
 - ``associated_ike_gateway_profile_id``: The ID of the associated IKEGatewayProfile
 
 - ``associated_vlanid``: The ID of the associated Vlan
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

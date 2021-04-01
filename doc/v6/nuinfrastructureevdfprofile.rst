@@ -20,6 +20,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``active_controller`` (**Mandatory**): The IP address of the active Controller (VSC)
 
 - ``service_ipv4_subnet``: K8 Service IPv4 Subnet
@@ -32,6 +34,8 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``proxy_dns_name`` (**Mandatory**): The DNS name of the proxy device acting as an entry point of eVDF instances to contact VSD.
 
 - ``use_two_factor``: A flag that indicates if two-factor is enabled or not when gateway instances inheriting from this profile are bootstrapped.
@@ -39,6 +43,8 @@ Attributes
 - ``standby_controller``: The IP address of the standby Controller (VSC)
 
 - ``nuage_platform``: The Hypervisor Platform
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

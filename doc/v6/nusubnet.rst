@@ -32,6 +32,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway``: The IP address of the gateway of this subnet
 
 - ``gateway_mac_address``: None
@@ -86,6 +88,8 @@ Attributes
 
 - ``split_subnet``: Block subnet routes
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``proxy_arp``:  When set, VRS will act as  ARP Proxy
 
 - ``vrrp_ipv6_backup_address``: 7x50 VRRP IPv6 Backup Address. Valid range is fe80::/64.
@@ -107,6 +111,8 @@ Attributes
 - ``multicast``: multicast is enum that indicates multicast policy on Subnet/Subnet Template.
 
 - ``customer_id``: CustomerID that is used by NETCONF MANAGER to identify this enterprise. This can be configured by root user.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

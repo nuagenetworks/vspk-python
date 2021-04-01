@@ -109,12 +109,14 @@ class NUCommand(NURESTObject):
         # Read/Write Attributes
         
         self._last_updated_by = None
+        self._last_updated_date = None
         self._detail = None
         self._detailed_status = None
         self._detailed_status_code = None
         self._entity_scope = None
         self._command = None
         self._command_information = None
+        self._creation_date = None
         self._progress = None
         self._assoc_entity_type = None
         self._associated_param = None
@@ -123,15 +125,18 @@ class NUCommand(NURESTObject):
         self._full_command = None
         self._summary = None
         self._override = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="detail", remote_name="detail", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="detailed_status", remote_name="detailedStatus", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="detailed_status_code", remote_name="detailedStatusCode", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="command", remote_name="command", attribute_type=str, is_required=True, is_unique=False, choices=[u'NSG_APPLY_PATCH', u'NSG_CONTAINER_TEST_SUITE_RUN', u'NSG_DELETE_PATCH', u'NSG_DOWNLOAD_OS_IMAGE', u'NSG_OVERLAY_SYSLOG_CONTAINER_RESTART', u'NSG_OVERLAY_SYSLOG_CONTAINER_START', u'NSG_OVERLAY_SYSLOG_CONTAINER_STOP', u'NSG_REBOOT', u'NSG_RENEW_CERT', u'NSG_UPDATE_INFO', u'NSG_UPGRADE_TO_IMAGE', u'UNKNOWN'])
         self.expose_attribute(local_name="command_information", remote_name="commandInformation", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="progress", remote_name="progress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_entity_type", remote_name="assocEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_param", remote_name="associatedParam", attribute_type=str, is_required=False, is_unique=False)
@@ -140,6 +145,7 @@ class NUCommand(NURESTObject):
         self.expose_attribute(local_name="full_command", remote_name="fullCommand", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="summary", remote_name="summary", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="override", remote_name="override", attribute_type=str, is_required=False, is_unique=False, choices=[u'ABANDON', u'UNSPECIFIED'])
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -172,6 +178,33 @@ class NUCommand(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -326,6 +359,33 @@ class NUCommand(NURESTObject):
                 
         """
         self._command_information = value
+
+    
+    @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
 
     
     @property
@@ -526,6 +586,29 @@ class NUCommand(NURESTObject):
                 
         """
         self._override = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

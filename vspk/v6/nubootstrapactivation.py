@@ -101,6 +101,7 @@ class NUBootstrapActivation(NURESTObject):
         self._cacert = None
         self._hash = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._action = None
         self._seed = None
         self._cert = None
@@ -109,17 +110,20 @@ class NUBootstrapActivation(NURESTObject):
         self._config_url = None
         self._tpm_owner_password = None
         self._tpm_state = None
+        self._creation_date = None
         self._srk_password = None
         self._vsd_time = None
         self._csr = None
         self._associated_entity_type = None
         self._status = None
         self._auto_bootstrap = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="cacert", remote_name="cacert", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="hash", remote_name="hash", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTHENTICATE', u'BOOTSTRAP_COMPLETE', u'CERTIFICATE_RENEW', u'CERTIFICATE_REVOKE', u'CERTIFICATE_SIGNED', u'CONFIRM', u'INITIATE', u'INITIATE_RENEW', u'NEW_NCPE_AUTH_REQUIRED', u'NO_AUTH_REQUIRED', u'ROLLBACK', u'ROLLED_BACK', u'UNSPECIFIED'])
         self.expose_attribute(local_name="seed", remote_name="seed", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="cert", remote_name="cert", attribute_type=str, is_required=False, is_unique=False)
@@ -128,12 +132,14 @@ class NUBootstrapActivation(NURESTObject):
         self.expose_attribute(local_name="config_url", remote_name="configURL", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tpm_owner_password", remote_name="tpmOwnerPassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="tpm_state", remote_name="tpmState", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="srk_password", remote_name="srkPassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsd_time", remote_name="vsdTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="csr", remote_name="csr", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_entity_type", remote_name="associatedEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="auto_bootstrap", remote_name="autoBootstrap", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -221,6 +227,33 @@ class NUBootstrapActivation(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -428,6 +461,33 @@ class NUBootstrapActivation(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def srk_password(self):
         """ Get srk_password value.
 
@@ -579,6 +639,29 @@ class NUBootstrapActivation(NURESTObject):
                 
         """
         self._auto_bootstrap = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

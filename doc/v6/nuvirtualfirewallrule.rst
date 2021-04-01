@@ -24,6 +24,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``action`` (**Mandatory**): The action of the rule, DROP or FORWARD. Possible values are DROP, FORWARD.
 
 - ``address_override``: Overrides the source IP for Ingress and destination IP for Egress, macentries will use this address as the match criteria.
@@ -62,6 +64,8 @@ Attributes
 
 - ``source_port``: Source port to be matched if protocol is UDP or TCP. Value should be either * or a single port number or a port range like 1,2.. or 1 - 10
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``priority``: The priority of the rule entry that determines the order of entries
 
 - ``protocol``: Protocol number that must be matched
@@ -89,6 +93,8 @@ Attributes
 - ``ether_type``: Ether type of the packet to be matched. etherType can be * or a valid hexadecimal value
 
 - ``overlay_mirror_destination_id``: ID of the overlay mirror destination
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

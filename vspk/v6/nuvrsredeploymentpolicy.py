@@ -73,6 +73,7 @@ class NUVRSRedeploymentpolicy(NURESTObject):
         self._vrs_process_redeployment_enabled = None
         self._vrsvsc_status_redeployment_enabled = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._redeployment_delay = None
         self._memory_utilization_redeployment_enabled = None
         self._memory_utilization_threshold = None
@@ -83,6 +84,8 @@ class NUVRSRedeploymentpolicy(NURESTObject):
         self._log_disk_utilization_threshold = None
         self._root_disk_utilization_redeployment_enabled = None
         self._root_disk_utilization_threshold = None
+        self._creation_date = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="al_ubr0_status_redeployment_enabled", remote_name="ALUbr0StatusRedeploymentEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -92,6 +95,7 @@ class NUVRSRedeploymentpolicy(NURESTObject):
         self.expose_attribute(local_name="vrs_process_redeployment_enabled", remote_name="VRSProcessRedeploymentEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrsvsc_status_redeployment_enabled", remote_name="VRSVSCStatusRedeploymentEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redeployment_delay", remote_name="redeploymentDelay", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="memory_utilization_redeployment_enabled", remote_name="memoryUtilizationRedeploymentEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="memory_utilization_threshold", remote_name="memoryUtilizationThreshold", attribute_type=float, is_required=False, is_unique=False)
@@ -102,6 +106,8 @@ class NUVRSRedeploymentpolicy(NURESTObject):
         self.expose_attribute(local_name="log_disk_utilization_threshold", remote_name="logDiskUtilizationThreshold", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="root_disk_utilization_redeployment_enabled", remote_name="rootDiskUtilizationRedeploymentEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="root_disk_utilization_threshold", remote_name="rootDiskUtilizationThreshold", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -296,6 +302,33 @@ class NUVRSRedeploymentpolicy(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -566,6 +599,56 @@ class NUVRSRedeploymentpolicy(NURESTObject):
                 
         """
         self._root_disk_utilization_threshold = value
+
+    
+    @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

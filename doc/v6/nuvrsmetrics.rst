@@ -22,6 +22,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``re_deploy``: re-Deploy
 
 - ``receiving_metrics``: Is the VRS VM Sending Metrics to the hypervisor on VCIN
@@ -38,9 +40,13 @@ Attributes
 
 - ``applied_metrics_push_interval``: The currently applied interval with which metrics are being send to VCIN from the VRS. The value can be configured through VCIN
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_vcenter_hypervisor_id``: None
 
 - ``current_version``: Current version of the VRS VM
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

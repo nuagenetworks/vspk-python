@@ -20,6 +20,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``read_only``: determines whether this entity is read only.  Read only objects cannot be modified or deleted.
 
 - ``performance_monitor_type``: Describes the trigger for the application.
@@ -58,11 +60,15 @@ Attributes
 
 - ``pre_classification_path``: default set to primary , possible values primary/secondary
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``protocol``: Protocol number that must be matched
 
 - ``associated_l7_application_signature_id``: associated Layer7 Application Type ID
 
 - ``ether_type``: Ether type of the packet to be matched. etherType can be * or a valid hexadecimal value
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

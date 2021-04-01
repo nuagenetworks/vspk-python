@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``description``: A concise description of the Test Definition object.
 
 - ``timeout``: Optional timeout value, in seconds, for the test until the system considers it as failed. Default is 60 s.
@@ -26,7 +28,11 @@ Attributes
 
 - ``command`` (**Mandatory**): The Linux command that this test definition will use.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``arguments``: The arguments that will be appended to the test command field.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

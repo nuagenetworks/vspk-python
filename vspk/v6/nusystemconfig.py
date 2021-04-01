@@ -199,6 +199,7 @@ class NUSystemConfig(NURESTObject):
         self._page_size = None
         self._last_executed_migration_phase = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._gateway_probe_interval = None
         self._gateway_probe_window = None
         self._gateway_rebalancing_interval = None
@@ -235,6 +236,7 @@ class NUSystemConfig(NURESTObject):
         self._domain_tunnel_type = None
         self._google_maps_api_key = None
         self._post_processor_threads_count = None
+        self._creation_date = None
         self._group_key_default_sek_generation_interval = None
         self._group_key_default_sek_lifetime = None
         self._group_key_default_sek_payload_encryption_algorithm = None
@@ -286,6 +288,7 @@ class NUSystemConfig(NURESTObject):
         self._event_processor_interval = None
         self._event_processor_max_events_count = None
         self._event_processor_timeout = None
+        self._owner = None
         self._two_factor_code_expiry = None
         self._two_factor_code_length = None
         self._two_factor_code_seed_length = None
@@ -355,6 +358,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="page_size", remote_name="pageSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_executed_migration_phase", remote_name="lastExecutedMigrationPhase", attribute_type=str, is_required=False, is_unique=False, choices=[u'EXPAND', u'REDUCE'])
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_probe_interval", remote_name="gatewayProbeInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_probe_window", remote_name="gatewayProbeWindow", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_rebalancing_interval", remote_name="gatewayRebalancingInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -391,6 +395,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="domain_tunnel_type", remote_name="domainTunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'GRE', u'VLAN', u'VXLAN'])
         self.expose_attribute(local_name="google_maps_api_key", remote_name="googleMapsAPIKey", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="post_processor_threads_count", remote_name="postProcessorThreadsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_generation_interval", remote_name="groupKeyDefaultSEKGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_lifetime", remote_name="groupKeyDefaultSEKLifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_payload_encryption_algorithm", remote_name="groupKeyDefaultSEKPayloadEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'RSA_1024'])
@@ -442,6 +447,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="event_processor_interval", remote_name="eventProcessorInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="event_processor_max_events_count", remote_name="eventProcessorMaxEventsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="event_processor_timeout", remote_name="eventProcessorTimeout", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="two_factor_code_expiry", remote_name="twoFactorCodeExpiry", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="two_factor_code_length", remote_name="twoFactorCodeLength", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="two_factor_code_seed_length", remote_name="twoFactorCodeSeedLength", attribute_type=int, is_required=False, is_unique=False)
@@ -1956,6 +1962,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
+
+    
+    @property
     def gateway_probe_interval(self):
         """ Get gateway_probe_interval value.
 
@@ -2925,6 +2958,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._post_processor_threads_count = value
+
+    
+    @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
 
     
     @property
@@ -4302,6 +4362,29 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._event_processor_timeout = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

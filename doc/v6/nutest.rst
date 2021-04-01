@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``description``: A brief description of the Test Definition referred to by this Test object.
 
 - ``destination``: Destination to be used in conjunction with this Test. Could be an IPv4 address or FQDN
@@ -30,9 +32,13 @@ Attributes
 
 - ``order``: Test order used to run tests. Lower order tests will run before higher order ones.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_test_definition_id`` (**Mandatory**): The associated Test Definition instance used as an information base for the Test object.
 
 - ``associated_test_suite_id``: The ID of the Test Suite this Test instance is part of.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

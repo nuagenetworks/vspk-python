@@ -16,11 +16,15 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``description``: A description of the Port
 
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``is_uplink``: Indicates that this VLAN Template should be considered as being used for uplink connection.
 
@@ -39,6 +43,8 @@ Attributes
 - ``associated_vsc_profile_id``: The ID of the infrastructure VSC profile this is associated with this instance of a vlan or vlan template.
 
 - ``duc_vlan``: When set to true, this specifies that this VLAN template instance serves as an underlay connection endpoint on an NSG-UBR gateway.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

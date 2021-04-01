@@ -22,6 +22,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``reason_type``: Reason of the event associated with the container.
 
 - ``delete_expiry``: reflects the  container Deletion expiry timer in secs , deleteMode needs to be non-null value for deleteExpiry to be taken in to effect. CMS created containers will always have deleteMode set to TIMER
@@ -54,6 +56,8 @@ Attributes
 
 - ``orchestration_id`` (**Mandatory**): Orchestration ID
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``vrs_raw_version``: Release version of VRS, which is used to determine the feature capabilties of VRS.
 
 - ``vrs_version``: Interpreted version of VRS, which is used to determine the feature capabilities of VRS.
@@ -65,6 +69,8 @@ Attributes
 - ``status``: Status of the container.
 
 - ``subnet_ids``: Array of IDs of the subnets that the container is connected to
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

@@ -194,6 +194,7 @@ class NUContainer(NURESTObject):
         self._uuid = None
         self._name = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._reason_type = None
         self._delete_expiry = None
         self._delete_mode = None
@@ -210,12 +211,14 @@ class NUContainer(NURESTObject):
         self._compute_provisioned = None
         self._zone_ids = None
         self._orchestration_id = None
+        self._creation_date = None
         self._vrs_raw_version = None
         self._vrs_version = None
         self._user_id = None
         self._user_name = None
         self._status = None
         self._subnet_ids = None
+        self._owner = None
         self._external_id = None
         self._hypervisor_ip = None
         
@@ -224,6 +227,7 @@ class NUContainer(NURESTObject):
         self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="reason_type", remote_name="reasonType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BLOCKED_LAST', u'BLOCKED_UNKNOWN', u'CRASHED_LAST', u'CRASHED_UNKNOWN', u'NOSTATE_LAST', u'NOSTATE_UNKNOWN', u'PAUSED_DUMP', u'PAUSED_FROM_SNAPSHOT', u'PAUSED_IOERROR', u'PAUSED_LAST', u'PAUSED_MIGRATION', u'PAUSED_SAVE', u'PAUSED_SHUTTING_DOWN', u'PAUSED_UNKNOWN', u'PAUSED_USER', u'PAUSED_WATCHDOG', u'RUNNING_BOOTED', u'RUNNING_FROM_SNAPSHOT', u'RUNNING_LAST', u'RUNNING_MIGRATED', u'RUNNING_MIGRATION_CANCELED', u'RUNNING_RESTORED', u'RUNNING_SAVE_CANCELED', u'RUNNING_UNKNOWN', u'RUNNING_UNPAUSED', u'SHUTDOWN_LAST', u'SHUTDOWN_UNKNOWN', u'SHUTDOWN_USER', u'SHUTOFF_CRASHED', u'SHUTOFF_DESTROYED', u'SHUTOFF_FAILED', u'SHUTOFF_FROM_SNAPSHOT', u'SHUTOFF_LAST', u'SHUTOFF_MIGRATED', u'SHUTOFF_SAVED', u'SHUTOFF_SHUTDOWN', u'SHUTOFF_UNKNOWN', u'UNKNOWN'])
         self.expose_attribute(local_name="delete_expiry", remote_name="deleteExpiry", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="delete_mode", remote_name="deleteMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'TIMER'])
@@ -240,12 +244,14 @@ class NUContainer(NURESTObject):
         self.expose_attribute(local_name="compute_provisioned", remote_name="computeProvisioned", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zone_ids", remote_name="zoneIDs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="orchestration_id", remote_name="orchestrationID", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_raw_version", remote_name="vrsRawVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_version", remote_name="vrsVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_id", remote_name="userID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="user_name", remote_name="userName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'BLOCKED', u'CRASHED', u'DELETE_PENDING', u'INIT', u'LAST', u'NOSTATE', u'PAUSED', u'RUNNING', u'SHUTDOWN', u'SHUTOFF', u'UNKNOWN', u'UNREACHABLE'])
         self.expose_attribute(local_name="subnet_ids", remote_name="subnetIDs", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="hypervisor_ip", remote_name="hypervisorIP", attribute_type=str, is_required=False, is_unique=False)
         
@@ -407,6 +413,33 @@ class NUContainer(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -838,6 +871,33 @@ class NUContainer(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def vrs_raw_version(self):
         """ Get vrs_raw_version value.
 
@@ -993,6 +1053,29 @@ class NUContainer(NURESTObject):
                 
         """
         self._subnet_ids = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

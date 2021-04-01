@@ -88,6 +88,7 @@ class NUOSPFArea(NURESTObject):
         # Read/Write Attributes
         
         self._last_updated_by = None
+        self._last_updated_date = None
         self._redistribute_external_enabled = None
         self._default_metric = None
         self._default_originate_option = None
@@ -98,12 +99,15 @@ class NUOSPFArea(NURESTObject):
         self._entity_scope = None
         self._area_id = None
         self._area_type = None
+        self._creation_date = None
         self._summaries_enabled = None
         self._suppress_area_range = None
         self._suppress_area_range_nssa = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redistribute_external_enabled", remote_name="redistributeExternalEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="default_metric", remote_name="defaultMetric", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="default_originate_option", remote_name="defaultOriginateOption", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'TYPE3', u'TYPE7'])
@@ -114,9 +118,11 @@ class NUOSPFArea(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="area_id", remote_name="areaID", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="area_type", remote_name="areaType", attribute_type=str, is_required=False, is_unique=False, choices=[u'NORMAL', u'NSSA', u'STUB'])
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="summaries_enabled", remote_name="summariesEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="suppress_area_range", remote_name="suppressAreaRange", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="suppress_area_range_nssa", remote_name="suppressAreaRangeNSSA", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -161,6 +167,33 @@ class NUOSPFArea(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -430,6 +463,33 @@ class NUOSPFArea(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def summaries_enabled(self):
         """ Get summaries_enabled value.
 
@@ -508,6 +568,29 @@ class NUOSPFArea(NURESTObject):
                 
         """
         self._suppress_area_range_nssa = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

@@ -18,6 +18,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``template_id``: Determines which template ID this policy group belongs to.
 
 - ``description``: Describes this policy group
@@ -30,9 +32,13 @@ Attributes
 
 - ``policy_group_id``: PG ID for the subnet. This is unique per domain and will be in the range 1-4095
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``assoc_policy_group_category_id``: UUID of the associated Policy Group Category for contextual filtering of policy groups.
 
 - ``assoc_policy_group_category_name``: Name of the Policy Group Category used for contextual filtering of policy groups.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external``: Indicates whether this PG is internal to VSP or not.
 

@@ -16,11 +16,15 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``description``: Description of OSPF Instance
 
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``preference``: Preference for OSPF Internal Routes.
 
@@ -29,6 +33,8 @@ Attributes
 - ``associated_import_routing_policy_id``: Import OSPF Routing Policy ID
 
 - ``super_backbone_enabled``: Flag to determine whether SuperBackbone is enabled or not.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``export_limit``: This command configures the maximum number of routes (prefixes) that can be exported into OSPF from the route table.
 

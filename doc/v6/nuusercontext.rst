@@ -24,6 +24,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``flow_collection_enabled``: Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires 'statisticsEnabled'.
 
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
@@ -32,11 +34,15 @@ Attributes
 
 - ``google_maps_api_key``: Google Maps API Key used to display maps on Nuage UI applications
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``statistics_enabled``: This flag is used to indicate if statistics is enabled in the system. CSProot is expected to activate this through the enable statistics script.
 
 - ``stats_database_proxy``: The location of a public proxy to statistics database server in <FQDN>:<PORT> format.
 
 - ``stats_tsdb_server_address``: IP address(es) of the elastic machine
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

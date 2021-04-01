@@ -20,6 +20,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``address``: IP address of the route
 
 - ``netmask``: Netmask associated with the route
@@ -34,9 +36,13 @@ Attributes
 
 - ``route_distinguisher``: Route distinguisher associated with the nexthop. System generates this identifier automatically
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_gateway_ids``: List of associated gateway IDs for static route, returned as a JSON list of strings
 
 - ``associated_subnet_id``: UUID of Do Not Advertise Subnet
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

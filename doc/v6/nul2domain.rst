@@ -32,6 +32,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway``: The IP address of the gateway of this l2 domain
 
 - ``gateway_mac_address``: The MAC address of the Gateway.
@@ -76,6 +78,8 @@ Attributes
 
 - ``uplink_preference``: Indicates the preferencial path selection for network traffic in this domain - Default is Primary 1 and Secondary 2. Possible values are PRIMARY_SECONDARY, SECONDARY_PRIMARY, PRIMARY, SECONDARY, SYMMETRIC, .
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``use_global_mac``: Enable this flag to use system configured globalMACAddress as the gateway mac address for managed l2 domains
 
 - ``associated_multicast_channel_map_id``: The ID of the Multi Cast Channel Map this L2Domain / L2Domain template template is associated with. This has to be set when  enableMultiCast is set to ENABLED
@@ -91,6 +95,8 @@ Attributes
 - ``multicast``: Indicates multicast policy on L2Domain.
 
 - ``customer_id``: CustomerID that is used by NETCONF MANAGER to identify this enterprise. This can be configured by root user.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

@@ -38,6 +38,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``registration_url``: Registration URL to be used for a gateway to be bootstrapped using ZFB.
 
 - ``request_type``: Value that serves in indicating if the Auto-Bootstrapping request is made in the context of a new NSG instance being bootstrapped or an NSG going through a self-rebootstrapping phase following a revocation triggered by entering quarantine.
@@ -49,6 +51,8 @@ Attributes
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``hostname``: Hostname of the gateway bootstrapped using ZFB.
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``original_enterprise_name``: For an NSG that is self-rebootstrapping following a quarantine action, this field represents the original name of the enterprise/organisation to which the NSG belonged.
 
@@ -73,6 +77,8 @@ Attributes
 - ``associated_ns_gateway_name``: Name of the associated NSG
 
 - ``status_string``: Extra status info
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

@@ -20,6 +20,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``action`` (**Mandatory**): Action to be taken when TCA is fired - Alert or PolicyGroupChange
 
 - ``period`` (**Mandatory**): The averaging period
@@ -42,7 +44,11 @@ Attributes
 
 - ``count``: Count of the attempts by maintenanace thread to create/update watcher
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``status``: This flag is used to indicate the status of TCA
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

@@ -111,6 +111,7 @@ class NUQOS(NURESTObject):
         self._bum_rate_limiting_active = None
         self._name = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._rate_limiting_active = None
         self._active = None
         self._peak = None
@@ -125,11 +126,13 @@ class NUQOS(NURESTObject):
         self._entity_scope = None
         self._committed_burst_size = None
         self._committed_information_rate = None
+        self._creation_date = None
         self._trusted_forwarding_class = None
         self._assoc_qos_id = None
         self._associated_dscp_forwarding_class_table_id = None
         self._associated_dscp_forwarding_class_table_name = None
         self._burst = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="fip_committed_burst_size", remote_name="FIPCommittedBurstSize", attribute_type=str, is_required=False, is_unique=False)
@@ -144,6 +147,7 @@ class NUQOS(NURESTObject):
         self.expose_attribute(local_name="bum_rate_limiting_active", remote_name="BUMRateLimitingActive", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rate_limiting_active", remote_name="rateLimitingActive", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="active", remote_name="active", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peak", remote_name="peak", attribute_type=str, is_required=False, is_unique=False)
@@ -158,11 +162,13 @@ class NUQOS(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="committed_burst_size", remote_name="committedBurstSize", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="committed_information_rate", remote_name="committedInformationRate", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="trusted_forwarding_class", remote_name="trustedForwardingClass", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_qos_id", remote_name="assocQosId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_dscp_forwarding_class_table_id", remote_name="associatedDSCPForwardingClassTableID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_dscp_forwarding_class_table_name", remote_name="associatedDSCPForwardingClassTableName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="burst", remote_name="burst", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -506,6 +512,33 @@ class NUQOS(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -875,6 +908,33 @@ class NUQOS(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def trusted_forwarding_class(self):
         """ Get trusted_forwarding_class value.
 
@@ -1003,6 +1063,29 @@ class NUQOS(NURESTObject):
                 
         """
         self._burst = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

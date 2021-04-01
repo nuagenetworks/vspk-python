@@ -22,6 +22,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``data_dns1``: Data DNS 1
 
 - ``data_dns2``: Data DNS 2
@@ -162,6 +164,8 @@ Attributes
 
 - ``cpu_count``: Number of VRS vCPU's
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``primary_data_uplink_underlay_id``: Primary data uplink underlay ID
 
 - ``primary_data_uplink_vdf_control_vlan``: The VLAN for the control communication with VSC on the primary datapath interface, when VDF is enabled. This VLAN can not be used as a subnet VLAN in the VSD configuration.
@@ -209,6 +213,8 @@ Attributes
 - ``avrs_enabled``: AVRS enabled
 
 - ``avrs_profile``: AVRS profile
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

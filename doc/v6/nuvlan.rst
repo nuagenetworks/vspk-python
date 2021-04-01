@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway_id``: The Gateway associated with this  VLAN. This is a read only attribute
 
 - ``readonly``: Determines whether this entity is read only.  Read only objects cannot be modified or deleted.
@@ -35,6 +37,8 @@ Attributes
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``vport_id``: The Vport associated with this VLAN. This is a read only attribute
+
+- ``creation_date``: Time stamp when this object was created.
 
 - ``is_uplink``: Indicates if the VLAN is used as an uplink.
 
@@ -61,6 +65,8 @@ Attributes
 - ``status``: Status of the VLAN.
 
 - ``duc_vlan``: When set to true, this specifies that this VLAN instance serves as an underlay connection endpoint on an NSG-UBR gateway.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

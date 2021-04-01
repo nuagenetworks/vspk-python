@@ -14,6 +14,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``latitude``: Latitude in decimal format.
 
 - ``address``: Formatted address including property number, street name, suite or office number, ...
@@ -32,11 +34,15 @@ Attributes
 
 - ``country``: Country in which the gateway is instantiated (VM) or installed (Physical).
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``associated_entity_name``: The name of the Entity to which a Location instance is tied to.
 
 - ``associated_entity_type``: Type of the gateway entity to which the Location instance is attached.
 
 - ``state``: State, Province, or Region to which the locality in which the gateway is installed belongs.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

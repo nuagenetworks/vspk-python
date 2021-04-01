@@ -28,6 +28,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``gateway_uuid``: UUID of the gateway instance
 
 - ``db_synced``: Flag to indicate if the ovs database is synced between the NSG pair part of a redundant group
@@ -66,6 +68,8 @@ Attributes
 
 - ``uptime``: How long the VRS was up.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``primary_vsc_connection_lost``: Flag indicates whether the connection with the primary is lost, which will help trigger alarms.
 
 - ``product_version``: Product version supported by this entity.
@@ -91,6 +95,8 @@ Attributes
 - ``average_cpuusage``: Average CPU usage percentage.
 
 - ``average_memory_usage``: Average memory usage percentage.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

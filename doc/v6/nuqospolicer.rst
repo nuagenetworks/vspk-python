@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``rate``: Rate: Bandwidth that is allowed in Mb/s; only whole values supported.
 
 - ``description``: Description of the QoS Policer
@@ -24,7 +26,11 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``burst``: Burst Size: The maximum burst size associated with the QoS Policer in kilo-bits; only whole values are supported.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

@@ -133,6 +133,7 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
         self._dr_seed_lifetime = None
         self._name = None
         self._last_updated_by = None
+        self._last_updated_date = None
         self._seed_generation_interval = None
         self._seed_lifetime = None
         self._seed_payload_authentication_algorithm = None
@@ -148,7 +149,9 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
         self._traffic_authentication_algorithm = None
         self._traffic_encryption_algorithm = None
         self._traffic_encryption_key_lifetime = None
+        self._creation_date = None
         self._associated_enterprise_id = None
+        self._owner = None
         self._external_id = None
         
         self.expose_attribute(local_name="sek_generation_interval", remote_name="SEKGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -160,6 +163,7 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
         self.expose_attribute(local_name="dr_seed_lifetime", remote_name="DRSeedLifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_generation_interval", remote_name="seedGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_lifetime", remote_name="seedLifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_payload_authentication_algorithm", remote_name="seedPayloadAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA512'])
@@ -175,7 +179,9 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
         self.expose_attribute(local_name="traffic_authentication_algorithm", remote_name="trafficAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_MD5', u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA384', u'HMAC_SHA512'])
         self.expose_attribute(local_name="traffic_encryption_algorithm", remote_name="trafficEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES_128_CBC', u'AES_192_CBC', u'AES_256_CBC', u'TRIPLE_DES_CBC'])
         self.expose_attribute(local_name="traffic_encryption_key_lifetime", remote_name="trafficEncryptionKeyLifetime", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_enterprise_id", remote_name="associatedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -429,6 +435,33 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
                 
         """
         self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -833,6 +866,33 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def associated_enterprise_id(self):
         """ Get associated_enterprise_id value.
 
@@ -857,6 +917,29 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
                 
         """
         self._associated_enterprise_id = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
 
     
     @property

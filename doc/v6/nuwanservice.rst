@@ -20,6 +20,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``permitted_action``: The permitted  action to USE/EXTEND  this Gateway.
 
 - ``service_policy``: Name of 7X50 Policy associated with the service
@@ -40,6 +42,8 @@ Attributes
 
 - ``config_type``: Type of the CONFIG.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``orphan``: Indicates if this WAN Service is orphan or not.
 
 - ``use_user_mnemonic``: Determines whether to use user mnemonic of the WAN Service
@@ -51,6 +55,8 @@ Attributes
 - ``associated_vpn_connect_id``: The associated vpn connect ID.
 
 - ``tunnel_type``: Type of the tunnel.
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 

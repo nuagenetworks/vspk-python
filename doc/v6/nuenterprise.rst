@@ -26,6 +26,8 @@ Attributes
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
+- ``last_updated_date``: Time stamp when this object was last updated.
+
 - ``web_filter_enabled``: Read only flag to display if Web Filtering is enabled for this enterprise
 
 - ``receive_multi_cast_list_id``: Read-only Id of the auto generated receive multicast list associated with this enterprise profile
@@ -70,6 +72,8 @@ Attributes
 
 - ``forwarding_class``: Represents the List of forwarding classes and their load balancing capability.
 
+- ``creation_date``: Time stamp when this object was created.
+
 - ``use_global_mac``: Determines whether Global Gateway MAC is enabled or not Enterprise level.
 
 - ``associated_enterprise_security_id``: Read-only Id of the associated group key encryption profile
@@ -83,6 +87,8 @@ Attributes
 - ``avatar_data``: URL to the avatar data associated with the enterprise. If the avatarType is URL then value of avatarData should an URL of the image. If the avatarType BASE64 then avatarData should be BASE64 encoded value of the image
 
 - ``avatar_type``: Avatar type - URL or BASE64 Possible values are URL, BASE64, COMPUTEDURL, .
+
+- ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
 
