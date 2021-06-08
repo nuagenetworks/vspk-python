@@ -86,6 +86,7 @@ class NUUserContext(NURESTObject):
         self._vss_feature_enabled = None
         self._vss_stats_interval = None
         self._page_size = None
+        self._maintenance_mode_enabled = None
         self._last_updated_by = None
         self._last_updated_date = None
         self._rbac_enabled = None
@@ -111,6 +112,7 @@ class NUUserContext(NURESTObject):
         self.expose_attribute(local_name="vss_feature_enabled", remote_name="VSSFeatureEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vss_stats_interval", remote_name="VSSStatsInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="page_size", remote_name="pageSize", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="maintenance_mode_enabled", remote_name="maintenanceModeEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rbac_enabled", remote_name="rbacEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -281,6 +283,33 @@ class NUUserContext(NURESTObject):
                 
         """
         self._page_size = value
+
+    
+    @property
+    def maintenance_mode_enabled(self):
+        """ Get maintenance_mode_enabled value.
+
+            Notes:
+                Indicates if this VSD is configured in maintenance mode. This is typically enabled during the VSD upgrade window and when enabled VSD supports only a subset of functionality.
+
+                
+                This attribute is named `maintenanceModeEnabled` in VSD API.
+                
+        """
+        return self._maintenance_mode_enabled
+
+    @maintenance_mode_enabled.setter
+    def maintenance_mode_enabled(self, value):
+        """ Set maintenance_mode_enabled value.
+
+            Notes:
+                Indicates if this VSD is configured in maintenance mode. This is typically enabled during the VSD upgrade window and when enabled VSD supports only a subset of functionality.
+
+                
+                This attribute is named `maintenanceModeEnabled` in VSD API.
+                
+        """
+        self._maintenance_mode_enabled = value
 
     
     @property

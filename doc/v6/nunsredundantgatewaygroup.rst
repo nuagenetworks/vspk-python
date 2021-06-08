@@ -48,6 +48,8 @@ Attributes
 
 - ``description``: Description of the Redundancy Group
 
+- ``threat_prevention_enabled``: Indicates if Threat Prevention is enabled on this Redundancy Group.
+
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
 - ``enterprise_id``: The enterprise associated with this Redundant Group. This is a read only attribute

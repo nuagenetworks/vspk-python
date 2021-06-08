@@ -120,6 +120,8 @@ Attributes
 
 - ``page_size``: Defines the page size for the results returned by the ReST call. This value can not exceed what has been defined in 'pageMaxSize'.
 
+- ``maintenance_mode_enabled``: Indicates if the VSD is configured in maintenance mode. This is typically enabled during the VSD upgrade window and when enabled the VSD would support only a subset of functionality.
+
 - ``last_executed_migration_phase``: Indicates the last successfully executed phase of online schema migration. This value is set automatically upon execution of online schema migration scripts.
 
 - ``last_updated_by``: ID of the user who last updated the object.
@@ -141,6 +143,10 @@ Attributes
 - ``accumulate_licenses_enabled``: Whether the various VRS license flavours be merged in one pool.
 
 - ``vcin_load_balancer_ip``: If VCIN Active/Standby is enabled, this needs to be the load-balancer IP which sits in front of the Active and Standby VCIN nodes. The VRS will make its API calls to this load-balancer
+
+- ``web_cat_srv_url``: Indicates web categorization service url. Applicable only for web filtering type CLOUD_SERVICE
+
+- ``web_filtering_type``: Indicates the type of web filtering. Possible values are CLOUD_SERVICE, VM
 
 - ``fec_feedback_timer``: Forward Error Correction feedback timer in seconds. Possible values are 1, 2, 3, 4 or 5.
 

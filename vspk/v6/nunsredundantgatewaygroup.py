@@ -151,6 +151,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         self._permitted_action = None
         self._personality = None
         self._description = None
+        self._threat_prevention_enabled = None
         self._embedded_metadata = None
         self._enterprise_id = None
         self._entity_scope = None
@@ -177,6 +178,7 @@ class NUNSRedundantGatewayGroup(NURESTObject):
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC7X50', u'HARDWARE_VTEP', u'NSG', u'NSGBR', u'NSGDUC', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'VRSB', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="threat_prevention_enabled", remote_name="threatPreventionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -692,6 +694,33 @@ class NUNSRedundantGatewayGroup(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def threat_prevention_enabled(self):
+        """ Get threat_prevention_enabled value.
+
+            Notes:
+                Indicates if Threat Prevention is enabled on this Redundancy Group.
+
+                
+                This attribute is named `threatPreventionEnabled` in VSD API.
+                
+        """
+        return self._threat_prevention_enabled
+
+    @threat_prevention_enabled.setter
+    def threat_prevention_enabled(self, value):
+        """ Set threat_prevention_enabled value.
+
+            Notes:
+                Indicates if Threat Prevention is enabled on this Redundancy Group.
+
+                
+                This attribute is named `threatPreventionEnabled` in VSD API.
+                
+        """
+        self._threat_prevention_enabled = value
 
     
     @property

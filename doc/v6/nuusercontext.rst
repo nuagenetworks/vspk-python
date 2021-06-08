@@ -22,6 +22,8 @@ Attributes
 
 - ``page_size``: Result size for queries
 
+- ``maintenance_mode_enabled``: Indicates if this VSD is configured in maintenance mode. This is typically enabled during the VSD upgrade window and when enabled VSD supports only a subset of functionality.
+
 - ``last_updated_by``: ID of the user who last updated the object.
 
 - ``last_updated_date``: Time stamp when this object was last updated.

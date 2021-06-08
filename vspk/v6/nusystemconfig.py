@@ -98,11 +98,15 @@ class NUSystemConfig(NURESTObject):
     
     CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA256WITHRSA = "SHA256withRSA"
     
+    CONST_WEB_FILTERING_TYPE_CLOUD_SERVICE = "CLOUD_SERVICE"
+    
     CONST_DOMAIN_TUNNEL_TYPE_GRE = "GRE"
     
     CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA512WITHRSA = "SHA512withRSA"
     
     CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_SIGNING_ALGORITHM_SHA224WITHRSA = "SHA224withRSA"
+    
+    CONST_WEB_FILTERING_TYPE_VM = "VM"
     
     CONST_LAST_EXECUTED_MIGRATION_PHASE_EXPAND = "EXPAND"
     
@@ -201,6 +205,7 @@ class NUSystemConfig(NURESTObject):
         self._saa_s_applications_publish_date = None
         self._page_max_size = None
         self._page_size = None
+        self._maintenance_mode_enabled = None
         self._last_executed_migration_phase = None
         self._last_updated_by = None
         self._last_updated_date = None
@@ -212,6 +217,8 @@ class NUSystemConfig(NURESTObject):
         self._rbac_enabled = None
         self._accumulate_licenses_enabled = None
         self._vcin_load_balancer_ip = None
+        self._web_cat_srv_url = None
+        self._web_filtering_type = None
         self._fec_feedback_timer = None
         self._secondary_as_number = None
         self._secondary_rt_lower_limit = None
@@ -376,6 +383,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="saa_s_applications_publish_date", remote_name="SaaSApplicationsPublishDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="page_max_size", remote_name="pageMaxSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="page_size", remote_name="pageSize", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="maintenance_mode_enabled", remote_name="maintenanceModeEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_executed_migration_phase", remote_name="lastExecutedMigrationPhase", attribute_type=str, is_required=False, is_unique=False, choices=[u'EXPAND', u'REDUCE'])
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
@@ -387,6 +395,8 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="rbac_enabled", remote_name="rbacEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="accumulate_licenses_enabled", remote_name="accumulateLicensesEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vcin_load_balancer_ip", remote_name="vcinLoadBalancerIP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="web_cat_srv_url", remote_name="webCatSrvUrl", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="web_filtering_type", remote_name="webFilteringType", attribute_type=str, is_required=False, is_unique=False, choices=[u'CLOUD_SERVICE', u'VM'])
         self.expose_attribute(local_name="fec_feedback_timer", remote_name="fecFeedbackTimer", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_as_number", remote_name="secondaryASNumber", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_rt_lower_limit", remote_name="secondaryRTLowerLimit", attribute_type=int, is_required=False, is_unique=False)
@@ -1973,6 +1983,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def maintenance_mode_enabled(self):
+        """ Get maintenance_mode_enabled value.
+
+            Notes:
+                Indicates if the VSD is configured in maintenance mode. This is typically enabled during the VSD upgrade window and when enabled the VSD would support only a subset of functionality.
+
+                
+                This attribute is named `maintenanceModeEnabled` in VSD API.
+                
+        """
+        return self._maintenance_mode_enabled
+
+    @maintenance_mode_enabled.setter
+    def maintenance_mode_enabled(self, value):
+        """ Set maintenance_mode_enabled value.
+
+            Notes:
+                Indicates if the VSD is configured in maintenance mode. This is typically enabled during the VSD upgrade window and when enabled the VSD would support only a subset of functionality.
+
+                
+                This attribute is named `maintenanceModeEnabled` in VSD API.
+                
+        """
+        self._maintenance_mode_enabled = value
+
+    
+    @property
     def last_executed_migration_phase(self):
         """ Get last_executed_migration_phase value.
 
@@ -2267,6 +2304,60 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._vcin_load_balancer_ip = value
+
+    
+    @property
+    def web_cat_srv_url(self):
+        """ Get web_cat_srv_url value.
+
+            Notes:
+                Indicates web categorization service url. Applicable only for web filtering type CLOUD_SERVICE
+
+                
+                This attribute is named `webCatSrvUrl` in VSD API.
+                
+        """
+        return self._web_cat_srv_url
+
+    @web_cat_srv_url.setter
+    def web_cat_srv_url(self, value):
+        """ Set web_cat_srv_url value.
+
+            Notes:
+                Indicates web categorization service url. Applicable only for web filtering type CLOUD_SERVICE
+
+                
+                This attribute is named `webCatSrvUrl` in VSD API.
+                
+        """
+        self._web_cat_srv_url = value
+
+    
+    @property
+    def web_filtering_type(self):
+        """ Get web_filtering_type value.
+
+            Notes:
+                Indicates the type of web filtering. Possible values are CLOUD_SERVICE, VM
+
+                
+                This attribute is named `webFilteringType` in VSD API.
+                
+        """
+        return self._web_filtering_type
+
+    @web_filtering_type.setter
+    def web_filtering_type(self, value):
+        """ Set web_filtering_type value.
+
+            Notes:
+                Indicates the type of web filtering. Possible values are CLOUD_SERVICE, VM
+
+                
+                This attribute is named `webFilteringType` in VSD API.
+                
+        """
+        self._web_filtering_type = value
 
     
     @property
