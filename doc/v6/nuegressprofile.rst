@@ -72,6 +72,8 @@ Parents
 --------
 
 
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`
@@ -79,6 +81,4 @@ Parents
 - :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
-
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

@@ -68,6 +68,8 @@ class NURoleentry(NURESTObject):
     
     CONST_ROLE_ACCESS_TYPE_LIST_READ_CHILDREN = "READ_CHILDREN"
     
+    CONST_ROLE_ACCESS_TYPE_LIST_USE = "USE"
+    
     CONST_ROLE_ACCESS_TYPE_LIST_MODIFY = "MODIFY"
     
     CONST_ROLE_ACCESS_TYPE_LIST_READ = "READ"
@@ -92,15 +94,17 @@ class NURoleentry(NURESTObject):
         # Read/Write Attributes
         
         self._embedded_metadata = None
+        self._end_point_rest_name = None
         self._end_point_type = None
         self._entity_scope = None
         self._role_access_type_list = None
         self._external_id = None
         
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="end_point_type", remote_name="endPointType", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="end_point_rest_name", remote_name="endPointRestName", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="end_point_type", remote_name="endPointType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
-        self.expose_attribute(local_name="role_access_type_list", remote_name="roleAccessTypeList", attribute_type=list, is_required=True, is_unique=False, choices=[u'CREATE', u'CUD_CHILDREN', u'DELETE', u'MODIFY', u'NO_ACCESS', u'NO_ACCESS_CHILDREN', u'READ', u'READ_CHILDREN'])
+        self.expose_attribute(local_name="role_access_type_list", remote_name="roleAccessTypeList", attribute_type=list, is_required=True, is_unique=False, choices=[u'CREATE', u'CUD_CHILDREN', u'DELETE', u'MODIFY', u'NO_ACCESS', u'NO_ACCESS_CHILDREN', u'READ', u'READ_CHILDREN', u'USE'])
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
@@ -145,6 +149,33 @@ class NURoleentry(NURESTObject):
                 
         """
         self._embedded_metadata = value
+
+    
+    @property
+    def end_point_rest_name(self):
+        """ Get end_point_rest_name value.
+
+            Notes:
+                Rest name of the end point
+
+                
+                This attribute is named `endPointRestName` in VSD API.
+                
+        """
+        return self._end_point_rest_name
+
+    @end_point_rest_name.setter
+    def end_point_rest_name(self, value):
+        """ Set end_point_rest_name value.
+
+            Notes:
+                Rest name of the end point
+
+                
+                This attribute is named `endPointRestName` in VSD API.
+                
+        """
+        self._end_point_rest_name = value
 
     
     @property
@@ -206,7 +237,7 @@ class NURoleentry(NURESTObject):
         """ Get role_access_type_list value.
 
             Notes:
-                List of Access like READ, READ_CHILDREN, CREATE, MODIFY, DELETE, CUD_CHILDREN, NO_ACCESS, NO_ACCESS_CHILDREN
+                List of Access like READ, READ_CHILDREN, CREATE, MODIFY, DELETE, CUD_CHILDREN, NO_ACCESS, NO_ACCESS_CHILDREN, USE
 
                 
                 This attribute is named `roleAccessTypeList` in VSD API.
@@ -219,7 +250,7 @@ class NURoleentry(NURESTObject):
         """ Set role_access_type_list value.
 
             Notes:
-                List of Access like READ, READ_CHILDREN, CREATE, MODIFY, DELETE, CUD_CHILDREN, NO_ACCESS, NO_ACCESS_CHILDREN
+                List of Access like READ, READ_CHILDREN, CREATE, MODIFY, DELETE, CUD_CHILDREN, NO_ACCESS, NO_ACCESS_CHILDREN, USE
 
                 
                 This attribute is named `roleAccessTypeList` in VSD API.

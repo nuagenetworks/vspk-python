@@ -164,6 +164,7 @@ class NUIngressQOSPolicy(NURESTObject):
         self._queue3_forwarding_classes = None
         self._queue4_associated_rate_limiter_id = None
         self._queue4_forwarding_classes = None
+        self._custom_spq_depth = None
         self._owner = None
         self._external_id = None
         
@@ -184,6 +185,7 @@ class NUIngressQOSPolicy(NURESTObject):
         self.expose_attribute(local_name="queue3_forwarding_classes", remote_name="queue3ForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
         self.expose_attribute(local_name="queue4_associated_rate_limiter_id", remote_name="queue4AssociatedRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="queue4_forwarding_classes", remote_name="queue4ForwardingClasses", attribute_type=list, is_required=False, is_unique=False, choices=[u'A', u'B', u'C', u'D', u'E', u'F', u'G', u'H', u'NONE'])
+        self.expose_attribute(local_name="custom_spq_depth", remote_name="customSpqDepth", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
@@ -653,6 +655,33 @@ class NUIngressQOSPolicy(NURESTObject):
                 
         """
         self._queue4_forwarding_classes = value
+
+    
+    @property
+    def custom_spq_depth(self):
+        """ Get custom_spq_depth value.
+
+            Notes:
+                Custom Depth of the Strict Priority Queue (Queue1). Measured as 'Number of Packets'. A value of zero indicates it is 'not set'. Valid values are in range 32 to 512.
+
+                
+                This attribute is named `customSpqDepth` in VSD API.
+                
+        """
+        return self._custom_spq_depth
+
+    @custom_spq_depth.setter
+    def custom_spq_depth(self, value):
+        """ Set custom_spq_depth value.
+
+            Notes:
+                Custom Depth of the Strict Priority Queue (Queue1). Measured as 'Number of Packets'. A value of zero indicates it is 'not set'. Valid values are in range 32 to 512.
+
+                
+                This attribute is named `customSpqDepth` in VSD API.
+                
+        """
+        self._custom_spq_depth = value
 
     
     @property

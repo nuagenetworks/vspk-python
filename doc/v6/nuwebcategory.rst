@@ -57,7 +57,7 @@ Parents
 --------
 
 
-- :ref:`nuwebdomainname.NUWebDomainName<nuwebdomainname>`
-
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
+- :ref:`nuwebdomainname.NUWebDomainName<nuwebdomainname>`
 

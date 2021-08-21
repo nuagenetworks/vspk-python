@@ -95,6 +95,7 @@ class NUPermission(NURESTObject):
         self._last_updated_date = None
         self._permitted_action = None
         self._permitted_enterprise_description = None
+        self._permitted_enterprise_id = None
         self._permitted_enterprise_name = None
         self._permitted_entity_id = None
         self._permitted_entity_name = None
@@ -116,8 +117,9 @@ class NUPermission(NURESTObject):
         self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_action", remote_name="permittedAction", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'DEPLOY', u'EXTEND', u'INSTANTIATE', u'READ', u'USE'])
         self.expose_attribute(local_name="permitted_enterprise_description", remote_name="permittedEnterpriseDescription", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="permitted_enterprise_id", remote_name="permittedEnterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_enterprise_name", remote_name="permittedEnterpriseName", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="permitted_entity_id", remote_name="permittedEntityID", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="permitted_entity_id", remote_name="permittedEntityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_entity_name", remote_name="permittedEntityName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="permitted_entity_type", remote_name="permittedEntityType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
@@ -281,6 +283,33 @@ class NUPermission(NURESTObject):
                 
         """
         self._permitted_enterprise_description = value
+
+    
+    @property
+    def permitted_enterprise_id(self):
+        """ Get permitted_enterprise_id value.
+
+            Notes:
+                The enterprise permitted to use/extend  this Gateway
+
+                
+                This attribute is named `permittedEnterpriseID` in VSD API.
+                
+        """
+        return self._permitted_enterprise_id
+
+    @permitted_enterprise_id.setter
+    def permitted_enterprise_id(self, value):
+        """ Set permitted_enterprise_id value.
+
+            Notes:
+                The enterprise permitted to use/extend  this Gateway
+
+                
+                This attribute is named `permittedEnterpriseID` in VSD API.
+                
+        """
+        self._permitted_enterprise_id = value
 
     
     @property

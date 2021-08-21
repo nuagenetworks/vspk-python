@@ -195,15 +195,15 @@ Parents
 --------
 
 
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
 - :ref:`nuducgroup.NUDUCGroup<nuducgroup>`
 
-- :ref:`nume.NUMe<nume>`
+- :ref:`nunsggroup.NUNSGGroup<nunsggroup>`
 
 - :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
 
-- :ref:`nunsggroup.NUNSGGroup<nunsggroup>`
-
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nume.NUMe<nume>`
 

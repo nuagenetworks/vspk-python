@@ -40,7 +40,7 @@ Parents
 --------
 
 
-- :ref:`nuwebcategory.NUWebCategory<nuwebcategory>`
-
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
+- :ref:`nuwebcategory.NUWebCategory<nuwebcategory>`
 

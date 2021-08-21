@@ -58,9 +58,9 @@ Parents
 --------
 
 
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nuperformancemonitor.NUPerformanceMonitor<nuperformancemonitor>`
-
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

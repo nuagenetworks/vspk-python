@@ -52,11 +52,11 @@ Parents
 --------
 
 
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
-
 - :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
+
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 
 - :ref:`nunetworkperformancemeasurement.NUNetworkPerformanceMeasurement<nunetworkperformancemeasurement>`
 

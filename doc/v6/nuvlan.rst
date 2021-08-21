@@ -110,15 +110,15 @@ Parents
 --------
 
 
+- :ref:`nuport.NUPort<nuport>`
+
+- :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
+
 - :ref:`nugatewayredundantport.NUGatewayRedundantPort<nugatewayredundantport>`
 
 - :ref:`nuredundantport.NURedundantPort<nuredundantport>`
 
-- :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
+- :ref:`nunsport.NUNSPort<nunsport>`
 
 - :ref:`nuethernetsegmentgroup.NUEthernetSegmentGroup<nuethernetsegmentgroup>`
-
-- :ref:`nuport.NUPort<nuport>`
-
-- :ref:`nunsport.NUNSPort<nunsport>`
 

@@ -46,6 +46,8 @@ Attributes
 
 - ``queue4_forwarding_classes``: Queue4 Forwarding Classes for this Ingress QOS Policy Possible values are NONE, A, B, C, D, E, F, G, H, .
 
+- ``custom_spq_depth``: Custom Depth of the Strict Priority Queue (Queue1). Measured as 'Number of Packets'. A value of zero indicates it is 'not set'. Valid values are in range 32 to 512.
+
 - ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems
@@ -70,7 +72,7 @@ Parents
 --------
 
 
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
+- :ref:`nume.NUMe<nume>`
 

@@ -36,6 +36,8 @@ Attributes
 
 - ``web_filter_type``: Indicates type of web filter being set
 
+- ``reputation_score``: Web Domain Reputation Score. Valid values are LOW_RISK, MEDIUM_RISK and HIGH_RISK.  Applicable when webFilterType is WEB_DOMAIN_REPUTATION.
+
 - ``description``: Description of the ACL entry
 
 - ``destination_port``: The destination port to be matched if protocol is UDP or TCP. Value should be either * or single port number or a port range
@@ -123,17 +125,17 @@ Parents
 --------
 
 
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
-
-- :ref:`nume.NUMe<nume>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
-- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
+
+- :ref:`nume.NUMe<nume>`
+
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 
 - :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`
 

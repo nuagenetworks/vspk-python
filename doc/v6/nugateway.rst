@@ -154,17 +154,17 @@ Parents
 --------
 
 
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
-- :ref:`nume.NUMe<nume>`
+- :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
 
-- :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
-
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nume.NUMe<nume>`
+
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 

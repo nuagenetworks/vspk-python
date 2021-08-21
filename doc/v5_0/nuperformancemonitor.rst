@@ -55,9 +55,9 @@ Parents
 --------
 
 
-- :ref:`nume.NUMe<nume>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nume.NUMe<nume>`
 

@@ -52,13 +52,13 @@ Parents
 --------
 
 
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
-
-- :ref:`nume.NUMe<nume>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nume.NUMe<nume>`
+
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 

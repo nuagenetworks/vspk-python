@@ -67,21 +67,25 @@ class NUIngressACLEntryTemplate(NURESTObject):
     
     CONST_LOCATION_ENTITY_TYPE_PUBLICNETWORK = "PUBLICNETWORK"
     
+    CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_NETWORK_TYPE_PUBLIC_NETWORK = "PUBLIC_NETWORK"
     
     CONST_NETWORK_ENTITY_TYPE_PGEXPRESSIONTEMPLATE = "PGEXPRESSIONTEMPLATE"
     
-    CONST_NETWORK_TYPE_ENDPOINT_ZONE = "ENDPOINT_ZONE"
+    CONST_ACTION_FORWARD = "FORWARD"
     
     CONST_NETWORK_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
     CONST_NETWORK_TYPE_POLICYGROUP = "POLICYGROUP"
     
-    CONST_LOCATION_TYPE_ANY = "ANY"
+    CONST_LOCATION_ENTITY_TYPE_POLICYGROUPTEMPLATE = "POLICYGROUPTEMPLATE"
     
     CONST_NETWORK_ENTITY_TYPE_ZONETEMPLATE = "ZONETEMPLATE"
+    
+    CONST_WEB_FILTER_TYPE_WEB_DOMAIN_REPUTATION = "WEB_DOMAIN_REPUTATION"
     
     CONST_LOCATION_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
@@ -89,9 +93,11 @@ class NUIngressACLEntryTemplate(NURESTObject):
     
     CONST_LOCATION_ENTITY_TYPE_ZONETEMPLATE = "ZONETEMPLATE"
     
-    CONST_ACTION_FORWARD = "FORWARD"
+    CONST_LOCATION_TYPE_ANY = "ANY"
     
-    CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
+    CONST_NETWORK_ENTITY_TYPE_NETWORKMACROGROUP = "NETWORKMACROGROUP"
+    
+    CONST_NETWORK_TYPE_ENDPOINT_ZONE = "ENDPOINT_ZONE"
     
     CONST_NETWORK_ENTITY_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
@@ -99,7 +105,9 @@ class NUIngressACLEntryTemplate(NURESTObject):
     
     CONST_LOCATION_TYPE_POLICYGROUP = "POLICYGROUP"
     
-    CONST_NETWORK_TYPE_SUBNET = "SUBNET"
+    CONST_REPUTATION_SCORE_HIGH_RISK = "HIGH_RISK"
+    
+    CONST_REPUTATION_SCORE_LOW_RISK = "LOW_RISK"
     
     CONST_NETWORK_ENTITY_TYPE_POLICYGROUP = "POLICYGROUP"
     
@@ -111,7 +119,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
     
     CONST_NETWORK_TYPE_UNDERLAY_INTERNET_POLICYGROUP = "UNDERLAY_INTERNET_POLICYGROUP"
     
-    CONST_LOCATION_ENTITY_TYPE_POLICYGROUPTEMPLATE = "POLICYGROUPTEMPLATE"
+    CONST_NETWORK_TYPE_SUBNET = "SUBNET"
     
     CONST_LOCATION_ENTITY_TYPE_SUBNET = "SUBNET"
     
@@ -131,8 +139,6 @@ class NUIngressACLEntryTemplate(NURESTObject):
     
     CONST_LOCATION_TYPE_SUBNET = "SUBNET"
     
-    CONST_NETWORK_ENTITY_TYPE_NETWORKMACROGROUP = "NETWORKMACROGROUP"
-    
     CONST_POLICY_STATE_DRAFT = "DRAFT"
     
     CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE = "L4_SERVICE"
@@ -149,19 +155,21 @@ class NUIngressACLEntryTemplate(NURESTObject):
     
     CONST_LOCATION_ENTITY_TYPE_SUBNETTEMPLATE = "SUBNETTEMPLATE"
     
-    CONST_LOCATION_ENTITY_TYPE_PGEXPRESSION = "PGEXPRESSION"
+    CONST_REPUTATION_SCORE_MEDIUM_RISK = "MEDIUM_RISK"
     
-    CONST_WEB_FILTER_TYPE_WEB_CATEGORY = "WEB_CATEGORY"
+    CONST_NETWORK_ENTITY_TYPE_PUBLICNETWORK = "PUBLICNETWORK"
     
     CONST_NETWORK_ENTITY_TYPE_POLICYGROUPTEMPLATE = "POLICYGROUPTEMPLATE"
     
     CONST_LOCATION_ENTITY_TYPE_ZONE = "ZONE"
     
+    CONST_LOCATION_ENTITY_TYPE_PGEXPRESSION = "PGEXPRESSION"
+    
     CONST_NETWORK_ENTITY_TYPE_ENTERPRISENETWORK = "ENTERPRISENETWORK"
     
     CONST_NETWORK_ENTITY_TYPE_SAASAPPLICATIONGROUP = "SAASAPPLICATIONGROUP"
     
-    CONST_NETWORK_ENTITY_TYPE_PUBLICNETWORK = "PUBLICNETWORK"
+    CONST_WEB_FILTER_TYPE_WEB_CATEGORY = "WEB_CATEGORY"
     
     
 
@@ -194,6 +202,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         self._web_filter_id = None
         self._web_filter_stats_logging_enabled = None
         self._web_filter_type = None
+        self._reputation_score = None
         self._description = None
         self._destination_port = None
         self._network_entity_type = None
@@ -239,7 +248,8 @@ class NUIngressACLEntryTemplate(NURESTObject):
         self.expose_attribute(local_name="address_override", remote_name="addressOverride", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="web_filter_id", remote_name="webFilterID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="web_filter_stats_logging_enabled", remote_name="webFilterStatsLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="web_filter_type", remote_name="webFilterType", attribute_type=str, is_required=False, is_unique=False, choices=[u'WEB_CATEGORY', u'WEB_DOMAIN_NAME'])
+        self.expose_attribute(local_name="web_filter_type", remote_name="webFilterType", attribute_type=str, is_required=False, is_unique=False, choices=[u'WEB_CATEGORY', u'WEB_DOMAIN_NAME', u'WEB_DOMAIN_REPUTATION'])
+        self.expose_attribute(local_name="reputation_score", remote_name="reputationScore", attribute_type=str, is_required=False, is_unique=False, choices=[u'HIGH_RISK', u'LOW_RISK', u'MEDIUM_RISK'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="network_entity_type", remote_name="networkEntityType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISENETWORK', u'NETWORKMACROGROUP', u'PGEXPRESSION', u'PGEXPRESSIONTEMPLATE', u'POLICYGROUP', u'POLICYGROUPTEMPLATE', u'PUBLICNETWORK', u'SAASAPPLICATIONGROUP', u'SUBNET', u'SUBNETTEMPLATE', u'ZONE', u'ZONETEMPLATE'])
@@ -612,6 +622,33 @@ class NUIngressACLEntryTemplate(NURESTObject):
                 
         """
         self._web_filter_type = value
+
+    
+    @property
+    def reputation_score(self):
+        """ Get reputation_score value.
+
+            Notes:
+                Web Domain Reputation Score. Valid values are LOW_RISK, MEDIUM_RISK and HIGH_RISK.  Applicable when webFilterType is WEB_DOMAIN_REPUTATION.
+
+                
+                This attribute is named `reputationScore` in VSD API.
+                
+        """
+        return self._reputation_score
+
+    @reputation_score.setter
+    def reputation_score(self, value):
+        """ Set reputation_score value.
+
+            Notes:
+                Web Domain Reputation Score. Valid values are LOW_RISK, MEDIUM_RISK and HIGH_RISK.  Applicable when webFilterType is WEB_DOMAIN_REPUTATION.
+
+                
+                This attribute is named `reputationScore` in VSD API.
+                
+        """
+        self._reputation_score = value
 
     
     @property

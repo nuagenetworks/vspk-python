@@ -131,6 +131,7 @@ class NUPort(NURESTObject):
         self._embedded_metadata = None
         self._entity_scope = None
         self._port_type = None
+        self._routed = None
         self._operational_state = None
         self._creation_date = None
         self._is_resilient = None
@@ -158,6 +159,7 @@ class NUPort(NURESTObject):
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="port_type", remote_name="portType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACCESS', u'MANAGEMENT', u'NETWORK'])
+        self.expose_attribute(local_name="routed", remote_name="routed", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="operational_state", remote_name="operationalState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DOWN', u'INIT', u'UP'])
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="is_resilient", remote_name="isResilient", attribute_type=bool, is_required=False, is_unique=False)
@@ -516,6 +518,29 @@ class NUPort(NURESTObject):
                 
         """
         self._port_type = value
+
+    
+    @property
+    def routed(self):
+        """ Get routed value.
+
+            Notes:
+                Indicates if this Port is a routed interface. Applicable for Access Ports on Cisco 9K only.
+
+                
+        """
+        return self._routed
+
+    @routed.setter
+    def routed(self, value):
+        """ Set routed value.
+
+            Notes:
+                Indicates if this Port is a routed interface. Applicable for Access Ports on Cisco 9K only.
+
+                
+        """
+        self._routed = value
 
     
     @property

@@ -59,11 +59,11 @@ Parents
 
 - :ref:`nuvcentervrsconfig.NUVCenterVRSConfig<nuvcentervrsconfig>`
 
-- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
-
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
 
 - :ref:`nuvcenter.NUVCenter<nuvcenter>`
+
+- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 
 - :ref:`nuvcenterhypervisor.NUVCenterHypervisor<nuvcenterhypervisor>`
 

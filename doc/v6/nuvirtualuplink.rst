@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``fec_enabled``: Indicates the FEC (Forward Error Correction) setting on this Virtual Uplink. Possible values are Active(Encode & Decode on all paths over this uplink), Passive(Encode & Decode only to uplinks with FEC Active) and Disabled(do not Encode or Decode, do not detect or report loss).
+
 - ``peer_endpoint``: The physical port and VLAN endpoint hosting the peer control uplink that this virtual uplink mirrors. This is derived from the peer NSG of the Shunt Link in a redundant gateway group.
 
 - ``peer_gateway_id``: The UUID of the peer NSG in the redundant gateway group part of the Shunt Link.

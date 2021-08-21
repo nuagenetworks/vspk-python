@@ -70,6 +70,8 @@ Attributes
 
 - ``zone_id``: ID the Zone associated with the VPort
 
+- ``routed``: Indicates if this VPort is in routed mode. Applicable for Cisco 9K only.
+
 - ``operational_state``: Operational State of the VPort. Possible values are INIT, UP, DOWN, DEGRADED
 
 - ``creation_date``: Time stamp when this object was created.
@@ -170,23 +172,23 @@ Parents
 --------
 
 
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
-
 - :ref:`nuzone.NUZone<nuzone>`
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
-- :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
-
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
+- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
+
 - :ref:`nuvrs.NUVRS<nuvrs>`
+
+- :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
 
 - :ref:`nutrunk.NUTrunk<nutrunk>`
 
 - :ref:`nuegressprofile.NUEgressProfile<nuegressprofile>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
 
@@ -194,7 +196,7 @@ Parents
 
 - :ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`
 
-- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 
-- :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
+- :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
 

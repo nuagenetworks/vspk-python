@@ -57,7 +57,7 @@ Parents
 --------
 
 
-- :ref:`nuuplinkconnection.NUUplinkConnection<nuuplinkconnection>`
-
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
+
+- :ref:`nuuplinkconnection.NUUplinkConnection<nuuplinkconnection>`
 

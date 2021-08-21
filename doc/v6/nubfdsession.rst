@@ -58,7 +58,7 @@ Parents
 --------
 
 
-- :ref:`nuuplinkconnection.NUUplinkConnection<nuuplinkconnection>`
-
 - :ref:`nubrconnection.NUBRConnection<nubrconnection>`
+
+- :ref:`nuuplinkconnection.NUUplinkConnection<nuuplinkconnection>`
 

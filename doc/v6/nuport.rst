@@ -36,6 +36,8 @@ Attributes
 
 - ``port_type`` (**Mandatory**): Type of the Port. Possible values are ACCESS, NETWORK, MANAGEMENT.
 
+- ``routed``: Indicates if this Port is a routed interface. Applicable for Access Ports on Cisco 9K only.
+
 - ``operational_state``: Represents Operational State of the Port. Possible values are INIT, UP, DOWN.
 
 - ``creation_date``: Time stamp when this object was created.
@@ -90,9 +92,9 @@ Parents
 
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
-- :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
-
 - :ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`
+
+- :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 

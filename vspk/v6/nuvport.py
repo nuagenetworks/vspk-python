@@ -312,6 +312,7 @@ class NUVPort(NURESTObject):
         self._domain_service_label = None
         self._domain_vlanid = None
         self._zone_id = None
+        self._routed = None
         self._operational_state = None
         self._creation_date = None
         self._trunk_role = None
@@ -367,6 +368,7 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="domain_service_label", remote_name="domainServiceLabel", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="domain_vlanid", remote_name="domainVLANID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zone_id", remote_name="zoneID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="routed", remote_name="routed", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="operational_state", remote_name="operationalState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEGRADED', u'DOWN', u'INIT', u'UP'])
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="trunk_role", remote_name="trunkRole", attribute_type=str, is_required=False, is_unique=False, choices=[u'PARENT_PORT', u'SUB_PORT'])
@@ -1265,6 +1267,29 @@ class NUVPort(NURESTObject):
                 
         """
         self._zone_id = value
+
+    
+    @property
+    def routed(self):
+        """ Get routed value.
+
+            Notes:
+                Indicates if this VPort is in routed mode. Applicable for Cisco 9K only.
+
+                
+        """
+        return self._routed
+
+    @routed.setter
+    def routed(self, value):
+        """ Set routed value.
+
+            Notes:
+                Indicates if this VPort is in routed mode. Applicable for Cisco 9K only.
+
+                
+        """
+        self._routed = value
 
     
     @property

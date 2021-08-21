@@ -74,21 +74,23 @@ Parents
 --------
 
 
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
-- :ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`
-
 - :ref:`nustaticroute.NUStaticRoute<nustaticroute>`
 
+- :ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`
+
 - :ref:`nuegressprofile.NUEgressProfile<nuegressprofile>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
@@ -96,11 +98,9 @@ Parents
 
 - :ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`
 
-- :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 
 - :ref:`nubgpneighbor.NUBGPNeighbor<nubgpneighbor>`
 
 - :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
-
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

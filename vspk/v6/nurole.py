@@ -85,7 +85,6 @@ class NURole(NURESTObject):
         self._embedded_metadata = None
         self._entity_scope = None
         self._creation_date = None
-        self._csp_only = None
         self._owner = None
         self._external_id = None
         
@@ -96,7 +95,6 @@ class NURole(NURESTObject):
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="csp_only", remote_name="cspOnly", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
@@ -125,7 +123,7 @@ class NURole(NURESTObject):
         """ Get name value.
 
             Notes:
-                Name of the role
+                Name of the role.
 
                 
         """
@@ -136,7 +134,7 @@ class NURole(NURESTObject):
         """ Set name value.
 
             Notes:
-                Name of the role
+                Name of the role.
 
                 
         """
@@ -299,33 +297,6 @@ class NURole(NURESTObject):
                 
         """
         self._creation_date = value
-
-    
-    @property
-    def csp_only(self):
-        """ Get csp_only value.
-
-            Notes:
-                Flag to state if a role is applicable only at the csp level
-
-                
-                This attribute is named `cspOnly` in VSD API.
-                
-        """
-        return self._csp_only
-
-    @csp_only.setter
-    def csp_only(self, value):
-        """ Set csp_only value.
-
-            Notes:
-                Flag to state if a role is applicable only at the csp level
-
-                
-                This attribute is named `cspOnly` in VSD API.
-                
-        """
-        self._csp_only = value
 
     
     @property

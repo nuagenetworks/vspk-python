@@ -54,9 +54,9 @@ Parents
 --------
 
 
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nuinfrastructureaccessprofile.NUInfrastructureAccessProfile<nuinfrastructureaccessprofile>`
 
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
+- :ref:`nume.NUMe<nume>`
 

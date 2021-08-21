@@ -58,17 +58,17 @@ Parents
 --------
 
 
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
-
 - :ref:`nuazurecloud.NUAzureCloud<nuazurecloud>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
 
-- :ref:`nume.NUMe<nume>`
+- :ref:`nuvsc.NUVSC<nuvsc>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`nuvsd.NUVSD<nuvsd>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
@@ -76,13 +76,15 @@ Parents
 
 - :ref:`nuhsc.NUHSC<nuhsc>`
 
+- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
+
 - :ref:`nuingressadvfwdtemplate.NUIngressAdvFwdTemplate<nuingressadvfwdtemplate>`
 
 - :ref:`nuzfbrequest.NUZFBRequest<nuzfbrequest>`
 
 - :ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`
 
-- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
@@ -90,25 +92,23 @@ Parents
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
+- :ref:`nume.NUMe<nume>`
+
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
-- :ref:`nuvsc.NUVSC<nuvsc>`
-
-- :ref:`nuvsd.NUVSD<nuvsd>`
-
-- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 
 - :ref:`nuegressacltemplate.NUEgressACLTemplate<nuegressacltemplate>`
 
-- :ref:`nuvnf.NUVNF<nuvnf>`
-
 - :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 
 - :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`
 
 - :ref:`nuvcenterhypervisor.NUVCenterHypervisor<nuvcenterhypervisor>`
+
+- :ref:`nuvnf.NUVNF<nuvnf>`
 

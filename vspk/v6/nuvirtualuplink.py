@@ -46,6 +46,8 @@ class NUVirtualUplink(NURESTObject):
     
     ## Constants
     
+    CONST_FEC_ENABLED_PASSIVE = "PASSIVE"
+    
     CONST_ROLE_UNKNOWN = "UNKNOWN"
     
     CONST_ROLE_NONE = "NONE"
@@ -54,9 +56,13 @@ class NUVirtualUplink(NURESTObject):
     
     CONST_AUX_MODE_COLD = "COLD"
     
+    CONST_FEC_ENABLED_ACTIVE = "ACTIVE"
+    
     CONST_AUX_MODE_NONE = "NONE"
     
     CONST_ROLE_TERTIARY = "TERTIARY"
+    
+    CONST_FEC_ENABLED_DISABLED = "DISABLED"
     
     CONST_ROLE_PRIMARY = "PRIMARY"
     
@@ -81,6 +87,7 @@ class NUVirtualUplink(NURESTObject):
 
         # Read/Write Attributes
         
+        self._fec_enabled = None
         self._peer_endpoint = None
         self._peer_gateway_id = None
         self._peer_gateway_name = None
@@ -108,6 +115,7 @@ class NUVirtualUplink(NURESTObject):
         self._associated_vsc_profile_id = None
         self._aux_mode = None
         
+        self.expose_attribute(local_name="fec_enabled", remote_name="fecEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'DISABLED', u'PASSIVE'])
         self.expose_attribute(local_name="peer_endpoint", remote_name="peerEndpoint", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peer_gateway_id", remote_name="peerGatewayID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peer_gateway_name", remote_name="peerGatewayName", attribute_type=str, is_required=False, is_unique=False)
@@ -145,6 +153,33 @@ class NUVirtualUplink(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def fec_enabled(self):
+        """ Get fec_enabled value.
+
+            Notes:
+                Indicates the FEC (Forward Error Correction) setting on this Virtual Uplink. Possible values are Active(Encode & Decode on all paths over this uplink), Passive(Encode & Decode only to uplinks with FEC Active) and Disabled(do not Encode or Decode, do not detect or report loss).
+
+                
+                This attribute is named `fecEnabled` in VSD API.
+                
+        """
+        return self._fec_enabled
+
+    @fec_enabled.setter
+    def fec_enabled(self, value):
+        """ Set fec_enabled value.
+
+            Notes:
+                Indicates the FEC (Forward Error Correction) setting on this Virtual Uplink. Possible values are Active(Encode & Decode on all paths over this uplink), Passive(Encode & Decode only to uplinks with FEC Active) and Disabled(do not Encode or Decode, do not detect or report loss).
+
+                
+                This attribute is named `fecEnabled` in VSD API.
+                
+        """
+        self._fec_enabled = value
+
     
     @property
     def peer_endpoint(self):

@@ -49,7 +49,7 @@ Parents
 --------
 
 
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nume.NUMe<nume>`
 

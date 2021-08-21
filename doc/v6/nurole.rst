@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``name`` (**Mandatory**): Name of the role
+- ``name`` (**Mandatory**): Name of the role.
 
 - ``last_updated_by``: ID of the user who last updated the object.
 
@@ -25,8 +25,6 @@ Attributes
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
 - ``creation_date``: Time stamp when this object was created.
-
-- ``csp_only``: Flag to state if a role is applicable only at the csp level
 
 - ``owner``: Identifies the user that has created this object.
 
@@ -53,7 +51,7 @@ Parents
 --------
 
 
-- :ref:`nume.NUMe<nume>`
-
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
+- :ref:`nume.NUMe<nume>`
 
