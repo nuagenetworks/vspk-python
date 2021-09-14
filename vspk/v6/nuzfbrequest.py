@@ -69,6 +69,8 @@ class NUZFBRequest(NURESTObject):
     
     CONST_ZFB_APPROVAL_STATUS_APPROVED = "APPROVED"
     
+    CONST_REQUEST_TYPE_MIGRATING = "MIGRATING"
+    
     CONST_ZFB_APPROVAL_STATUS_ASSIGNED = "ASSIGNED"
     
     CONST_ASSOCIATED_ENTITY_TYPE_GATEWAY = "GATEWAY"
@@ -145,7 +147,7 @@ class NUZFBRequest(NURESTObject):
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="registration_url", remote_name="registrationURL", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="request_type", remote_name="requestType", attribute_type=str, is_required=False, is_unique=False, choices=[u'SELF_REBOOTSTRAP', u'ZFB'])
+        self.expose_attribute(local_name="request_type", remote_name="requestType", attribute_type=str, is_required=False, is_unique=False, choices=[u'MIGRATING', u'SELF_REBOOTSTRAP', u'ZFB'])
         self.expose_attribute(local_name="serial_number", remote_name="serialNumber", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])

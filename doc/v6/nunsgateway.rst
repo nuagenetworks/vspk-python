@@ -130,6 +130,8 @@ Attributes
 
 - ``associated_nsg_info_id``: Read only ID of the associated NSG info object
 
+- ``associated_nsg_migration_profile_id``: The ID of the migration profile associated to this NSG.
+
 - ``associated_nsg_upgrade_profile_id``: The UUID of the NSG Upgrade Profile associated to this NSG instance.
 
 - ``associated_overlay_management_profile_id``: The ID of the associated Overlay Management Profile

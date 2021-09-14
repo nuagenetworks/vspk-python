@@ -28,8 +28,6 @@ Attributes
 
 - ``peak_memory_usage``: Peek memory usage percentage.
 
-- ``secondary_role_count``: Number of uplinks as secondary role.
-
 - ``description``: Description of the entity.
 
 - ``messages``: An array of degraded messages.
@@ -50,15 +48,13 @@ Attributes
 
 - ``creation_date``: Time stamp when this object was created.
 
-- ``primary_role_count``: Number of uplinks as primary role.
-
 - ``product_version``: Product version supported by this entity.
 
 - ``vsds``: A collection of VSD id(s) which are identified by this controller.
 
 - ``status``: Computed status of the entity.
 
-- ``number_of_inactive_gateways``: Number of inactive Gateways.
+- ``number_of_connections``: Number of Connections.
 
 - ``current_cpuusage``: Current CPU usage percentage.
 

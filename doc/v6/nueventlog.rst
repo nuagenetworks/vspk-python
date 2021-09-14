@@ -88,8 +88,6 @@ Parents
 
 - :ref:`nusubnettemplate.NUSubnetTemplate<nusubnettemplate>`
 
-- :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
-
 - :ref:`nugroup.NUGroup<nugroup>`
 
 - :ref:`nuwanservice.NUWANService<nuwanservice>`
@@ -155,6 +153,8 @@ Parents
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
 - :ref:`nuzonetemplate.NUZoneTemplate<nuzonetemplate>`
+
+- :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
 - :ref:`nupublicnetworkmacro.NUPublicNetworkMacro<nupublicnetworkmacro>`
 

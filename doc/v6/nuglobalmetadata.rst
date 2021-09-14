@@ -146,8 +146,6 @@ Parents
 
 - :ref:`nuapplicationbinding.NUApplicationBinding<nuapplicationbinding>`
 
-- :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
-
 - :ref:`nutestrun.NUTestRun<nutestrun>`
 
 - :ref:`nugroup.NUGroup<nugroup>`
@@ -459,6 +457,8 @@ Parents
 - :ref:`nudeploymentfailure.NUDeploymentFailure<nudeploymentfailure>`
 
 - :ref:`nunsgroutingpolicybinding.NUNSGRoutingPolicyBinding<nunsgroutingpolicybinding>`
+
+- :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
 - :ref:`nunsgatewayscount.NUNSGatewaysCount<nunsgatewayscount>`
 

@@ -150,6 +150,8 @@ class NUVPort(NURESTObject):
     
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_VDFG = "VDFG"
     
+    CONST_ASSOCIATED_GATEWAY_PERSONALITY_NUAGE_210_WBX_32_Q = "NUAGE_210_WBX_32_Q"
+    
     CONST_SYSTEM_TYPE_NUAGE_VRSG = "NUAGE_VRSG"
     
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_EVDFB = "EVDFB"
@@ -182,7 +184,9 @@ class NUVPort(NURESTObject):
     
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_VSG = "VSG"
     
-    CONST_ASSOCIATED_GATEWAY_PERSONALITY_NUAGE_210_WBX_32_Q = "NUAGE_210_WBX_32_Q"
+    CONST_FLOW_SETUP_RATE_LIMIT_ENABLED_INHERITED = "INHERITED"
+    
+    CONST_FLOW_SETUP_RATE_LIMIT_ENABLED_ENABLED = "ENABLED"
     
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_VSA = "VSA"
     
@@ -216,7 +220,7 @@ class NUVPort(NURESTObject):
     
     CONST_FLOW_LIMIT_ENABLED_DISABLED = "DISABLED"
     
-    CONST_ASSOCIATED_GATEWAY_PERSONALITY_VDF = "VDF"
+    CONST_FLOW_LIMIT_ENABLED_ENABLED = "ENABLED"
     
     CONST_PEER_OPERATIONAL_STATE_UP = "UP"
     
@@ -256,7 +260,9 @@ class NUVPort(NURESTObject):
     
     CONST_ASSOCIATED_GATEWAY_PERSONALITY_NSGBR = "NSGBR"
     
-    CONST_FLOW_LIMIT_ENABLED_ENABLED = "ENABLED"
+    CONST_FLOW_SETUP_RATE_LIMIT_ENABLED_DISABLED = "DISABLED"
+    
+    CONST_ASSOCIATED_GATEWAY_PERSONALITY_VDF = "VDF"
     
     CONST_OPERATIONAL_STATE_INIT = "INIT"
     
@@ -304,6 +310,8 @@ class NUVPort(NURESTObject):
         self._description = None
         self._flow_count = None
         self._flow_limit_enabled = None
+        self._flow_setup_rate = None
+        self._flow_setup_rate_limit_enabled = None
         self._embedded_metadata = None
         self._entity_scope = None
         self._color = None
@@ -360,6 +368,8 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_count", remote_name="flowCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_limit_enabled", remote_name="flowLimitEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
+        self.expose_attribute(local_name="flow_setup_rate", remote_name="flowSetupRate", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_setup_rate_limit_enabled", remote_name="flowSetupRateLimitEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="color", remote_name="color", attribute_type=int, is_required=False, is_unique=False)
@@ -1055,6 +1065,60 @@ class NUVPort(NURESTObject):
                 
         """
         self._flow_limit_enabled = value
+
+    
+    @property
+    def flow_setup_rate(self):
+        """ Get flow_setup_rate value.
+
+            Notes:
+                Committed flow setup rate in pps for this VPort. If Flow Setup Rate Limit parameter is ENABLED/DISABLED/INHERITED, flow setup rate parameter is configured/ignored/derived from parent domain respectively.
+
+                
+                This attribute is named `flowSetupRate` in VSD API.
+                
+        """
+        return self._flow_setup_rate
+
+    @flow_setup_rate.setter
+    def flow_setup_rate(self, value):
+        """ Set flow_setup_rate value.
+
+            Notes:
+                Committed flow setup rate in pps for this VPort. If Flow Setup Rate Limit parameter is ENABLED/DISABLED/INHERITED, flow setup rate parameter is configured/ignored/derived from parent domain respectively.
+
+                
+                This attribute is named `flowSetupRate` in VSD API.
+                
+        """
+        self._flow_setup_rate = value
+
+    
+    @property
+    def flow_setup_rate_limit_enabled(self):
+        """ Get flow_setup_rate_limit_enabled value.
+
+            Notes:
+                Indicates if flow setup rate limit is enabled or disabled or derived from parent Domain. Possible values are ENABLED, DISABLED or INHERITED.
+
+                
+                This attribute is named `flowSetupRateLimitEnabled` in VSD API.
+                
+        """
+        return self._flow_setup_rate_limit_enabled
+
+    @flow_setup_rate_limit_enabled.setter
+    def flow_setup_rate_limit_enabled(self, value):
+        """ Set flow_setup_rate_limit_enabled value.
+
+            Notes:
+                Indicates if flow setup rate limit is enabled or disabled or derived from parent Domain. Possible values are ENABLED, DISABLED or INHERITED.
+
+                
+                This attribute is named `flowSetupRateLimitEnabled` in VSD API.
+                
+        """
+        self._flow_setup_rate_limit_enabled = value
 
     
     @property

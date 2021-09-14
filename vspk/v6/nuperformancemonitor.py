@@ -303,7 +303,7 @@ class NUPerformanceMonitor(NURESTObject):
         """ Get description value.
 
             Notes:
-                Description of application group probe
+                Application Group Probe to be used between NSGs/NSG-UBRs OR between NSGs/non-NSG devices such as an IKE gateway in their respective groups
 
                 
         """
@@ -314,7 +314,7 @@ class NUPerformanceMonitor(NURESTObject):
         """ Set description value.
 
             Notes:
-                Description of application group probe
+                Application Group Probe to be used between NSGs/NSG-UBRs OR between NSGs/non-NSG devices such as an IKE gateway in their respective groups
 
                 
         """

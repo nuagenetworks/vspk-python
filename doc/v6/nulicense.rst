@@ -50,6 +50,8 @@ Attributes
 
 - ``allowed_nics_count``: Maximum number of NICs allowed. A value of -1 indicates unlimited number of NICs
 
+- ``allowed_ovrss_count``: Maximum number of OVRSs enabled with this license. A value of -1 indicates an unlimited number of OVRSs.
+
 - ``allowed_vdfgs_count``: Maximum number of VDFGs enabled with this license. A value of -1 indicates an unlimited number of VDFGs.
 
 - ``allowed_vdfs_count``: Maximum number of VDFs enabled with this license. A value of -1 indicates an unlimited number of VDFs

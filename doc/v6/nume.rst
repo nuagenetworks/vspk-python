@@ -16,6 +16,8 @@ Attributes
 
 - ``aar_probe_stats_interval``: AAR Probe stats frequency
 
+- ``api_key_expiry``: The time in epoch milliseconds when the API key will expire.
+
 - ``vss_stats_interval``: VSS flow stats frequency
 
 - ``password`` (**Mandatory**): User password in clear text. Password cannot be a single character asterisk (*)
@@ -160,6 +162,7 @@ Children
 :ref:`nunsgatewaytemplate.NUNSGatewayTemplate<nunsgatewaytemplate>`                                                                                              ``ns_gateway_templates`` 
 :ref:`nunsggroup.NUNSGGroup<nunsggroup>`                                                                                                                         ``nsg_groups`` 
 :ref:`nunsginfo.NUNSGInfo<nunsginfo>`                                                                                                                            ``nsg_infos`` 
+:ref:`nunsgmigrationprofile.NUNSGMigrationProfile<nunsgmigrationprofile>`                                                                                        ``nsg_migration_profiles`` 
 :ref:`nunsgpatchprofile.NUNSGPatchProfile<nunsgpatchprofile>`                                                                                                    ``nsg_patch_profiles`` 
 :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`                                                                            ``ns_redundant_gateway_groups`` 
 :ref:`nunsgupgradeprofile.NUNSGUpgradeProfile<nunsgupgradeprofile>`                                                                                              ``nsg_upgrade_profiles`` 

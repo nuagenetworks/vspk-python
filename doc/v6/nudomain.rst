@@ -86,6 +86,10 @@ Attributes
 
 - ``flow_limit_enabled``: Indicates if flow limit is enabled on this Domain. Possible values are ENABLED or DISABLED.
 
+- ``flow_setup_rate``: Committed flow setup rate in pps for a VPort. Applicable when flow setup rate limit is ENABLED.
+
+- ``flow_setup_rate_limit_enabled``: Indicates if flow setup rate limit is enabled on this Domain. Possible values are ENABLED or DISABLED.
+
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
 - ``import_route_target``: Route distinguisher associated with the dVRS. It is an optional parameter that can be provided by the user or auto-managed by VSD. System generates this identifier automatically, if not provided

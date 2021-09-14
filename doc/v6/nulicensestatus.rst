@@ -28,6 +28,8 @@ Attributes
 
 - ``total_licensed_nsgs_count``: Indicates total NSG count for all the licenses in the system
 
+- ``total_licensed_ovrss_count``: Indicates total OVRSs count for all the licenses in the system.
+
 - ``total_licensed_used_avrsgs_count``: Indicates total used AVRSG count for all the licenses in the system
 
 - ``total_licensed_used_avrss_count``: Indicates total used AVRS count for all the licenses in the system
@@ -35,6 +37,8 @@ Attributes
 - ``total_licensed_used_nics_count``: Indicates total used NIC count for all the licenses in the system
 
 - ``total_licensed_used_nsgs_count``: Indicates total used NSG count for all the licenses in the system
+
+- ``total_licensed_used_ovrss_count``: Indicates total used OVRSs count for all the licenses in the system.
 
 - ``total_licensed_used_vdfgs_count``: Indicates total used VDFG count for all the licenses in the system.
 

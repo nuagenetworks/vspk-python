@@ -24,7 +24,7 @@ Attributes
 
 - ``service_class``: Class of service to be used.  Service classes in order of priority are A, B, C, D, E, F, G, and H.
 
-- ``description``: Description of application group probe
+- ``description``: Application Group Probe to be used between NSGs/NSG-UBRs OR between NSGs/non-NSG devices such as an IKE gateway in their respective groups
 
 - ``interval`` (**Mandatory**): interval in seconds
 

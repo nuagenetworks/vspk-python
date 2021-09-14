@@ -268,6 +268,8 @@ class NUDomain(NURESTObject):
     
     CONST_EVPNRT5_TYPE_IP = "IP"
     
+    CONST_FLOW_SETUP_RATE_LIMIT_ENABLED_ENABLED = "ENABLED"
+    
     CONST_PERMITTED_ACTION_EXTEND = "EXTEND"
     
     CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
@@ -295,6 +297,8 @@ class NUDomain(NURESTObject):
     CONST_FLOW_COLLECTION_ENABLED_INHERITED = "INHERITED"
     
     CONST_FLOW_LIMIT_ENABLED_DISABLED = "DISABLED"
+    
+    CONST_FLOW_SETUP_RATE_LIMIT_ENABLED_DISABLED = "DISABLED"
     
     CONST_PAT_ENABLED_ENABLED = "ENABLED"
     
@@ -394,6 +398,8 @@ class NUDomain(NURESTObject):
         self._flow_collection_enabled = None
         self._flow_count = None
         self._flow_limit_enabled = None
+        self._flow_setup_rate = None
+        self._flow_setup_rate_limit_enabled = None
         self._embedded_metadata = None
         self._import_route_target = None
         self._encryption = None
@@ -463,6 +469,8 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="flow_count", remote_name="flowCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_limit_enabled", remote_name="flowLimitEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="flow_setup_rate", remote_name="flowSetupRate", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="flow_setup_rate_limit_enabled", remote_name="flowSetupRateLimitEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="import_route_target", remote_name="importRouteTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption", remote_name="encryption", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
@@ -1681,6 +1689,60 @@ class NUDomain(NURESTObject):
                 
         """
         self._flow_limit_enabled = value
+
+    
+    @property
+    def flow_setup_rate(self):
+        """ Get flow_setup_rate value.
+
+            Notes:
+                Committed flow setup rate in pps for a VPort. Applicable when flow setup rate limit is ENABLED.
+
+                
+                This attribute is named `flowSetupRate` in VSD API.
+                
+        """
+        return self._flow_setup_rate
+
+    @flow_setup_rate.setter
+    def flow_setup_rate(self, value):
+        """ Set flow_setup_rate value.
+
+            Notes:
+                Committed flow setup rate in pps for a VPort. Applicable when flow setup rate limit is ENABLED.
+
+                
+                This attribute is named `flowSetupRate` in VSD API.
+                
+        """
+        self._flow_setup_rate = value
+
+    
+    @property
+    def flow_setup_rate_limit_enabled(self):
+        """ Get flow_setup_rate_limit_enabled value.
+
+            Notes:
+                Indicates if flow setup rate limit is enabled on this Domain. Possible values are ENABLED or DISABLED.
+
+                
+                This attribute is named `flowSetupRateLimitEnabled` in VSD API.
+                
+        """
+        return self._flow_setup_rate_limit_enabled
+
+    @flow_setup_rate_limit_enabled.setter
+    def flow_setup_rate_limit_enabled(self, value):
+        """ Set flow_setup_rate_limit_enabled value.
+
+            Notes:
+                Indicates if flow setup rate limit is enabled on this Domain. Possible values are ENABLED or DISABLED.
+
+                
+                This attribute is named `flowSetupRateLimitEnabled` in VSD API.
+                
+        """
+        self._flow_setup_rate_limit_enabled = value
 
     
     @property

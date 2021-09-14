@@ -54,6 +54,10 @@ Attributes
 
 - ``flow_limit_enabled``: Indicates if flow limit is enabled or disabled or "Flow Count" attribute is derived from the parent Domain on this VPort . Possible values are ENABLED, DISABLED or INHERITED.
 
+- ``flow_setup_rate``: Committed flow setup rate in pps for this VPort. If Flow Setup Rate Limit parameter is ENABLED/DISABLED/INHERITED, flow setup rate parameter is configured/ignored/derived from parent domain respectively.
+
+- ``flow_setup_rate_limit_enabled``: Indicates if flow setup rate limit is enabled or disabled or derived from parent Domain. Possible values are ENABLED, DISABLED or INHERITED.
+
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
@@ -174,8 +178,6 @@ Parents
 
 - :ref:`nuzone.NUZone<nuzone>`
 
-- :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
-
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
 - :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
@@ -195,6 +197,8 @@ Parents
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`
+
+- :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
 - :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 

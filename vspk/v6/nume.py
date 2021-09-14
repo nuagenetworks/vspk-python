@@ -295,6 +295,9 @@ from .fetchers import NUNSGGroupsFetcher
 from .fetchers import NUNSGInfosFetcher
 
 
+from .fetchers import NUNSGMigrationProfilesFetcher
+
+
 from .fetchers import NUNSGPatchProfilesFetcher
 
 
@@ -386,6 +389,7 @@ class NUMe(NURESTRootObject):
         
         self._aar_flow_stats_interval = None
         self._aar_probe_stats_interval = None
+        self._api_key_expiry = None
         self._vss_stats_interval = None
         self._password = None
         self._last_name = None
@@ -412,6 +416,7 @@ class NUMe(NURESTRootObject):
         
         self.expose_attribute(local_name="aar_flow_stats_interval", remote_name="AARFlowStatsInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="aar_probe_stats_interval", remote_name="AARProbeStatsInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="api_key_expiry", remote_name="APIKeyExpiry", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vss_stats_interval", remote_name="VSSStatsInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_name", remote_name="lastName", attribute_type=str, is_required=True, is_unique=False)
@@ -707,6 +712,9 @@ class NUMe(NURESTRootObject):
         self.nsg_infos = NUNSGInfosFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.nsg_migration_profiles = NUNSGMigrationProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.nsg_patch_profiles = NUNSGPatchProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -808,6 +816,33 @@ class NUMe(NURESTRootObject):
                 
         """
         self._aar_probe_stats_interval = value
+
+    
+    @property
+    def api_key_expiry(self):
+        """ Get api_key_expiry value.
+
+            Notes:
+                The time in epoch milliseconds when the API key will expire.
+
+                
+                This attribute is named `APIKeyExpiry` in VSD API.
+                
+        """
+        return self._api_key_expiry
+
+    @api_key_expiry.setter
+    def api_key_expiry(self, value):
+        """ Set api_key_expiry value.
+
+            Notes:
+                The time in epoch milliseconds when the API key will expire.
+
+                
+                This attribute is named `APIKeyExpiry` in VSD API.
+                
+        """
+        self._api_key_expiry = value
 
     
     @property

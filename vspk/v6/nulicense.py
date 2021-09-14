@@ -105,6 +105,7 @@ class NULicense(NURESTObject):
         self._allowed_avrss_count = None
         self._allowed_cpes_count = None
         self._allowed_nics_count = None
+        self._allowed_ovrss_count = None
         self._allowed_vdfgs_count = None
         self._allowed_vdfs_count = None
         self._allowed_vms_count = None
@@ -150,6 +151,7 @@ class NULicense(NURESTObject):
         self.expose_attribute(local_name="allowed_avrss_count", remote_name="allowedAVRSsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_cpes_count", remote_name="allowedCPEsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_nics_count", remote_name="allowedNICsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="allowed_ovrss_count", remote_name="allowedOVRSsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_vdfgs_count", remote_name="allowedVDFGsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_vdfs_count", remote_name="allowedVDFsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allowed_vms_count", remote_name="allowedVMsCount", attribute_type=int, is_required=False, is_unique=False)
@@ -691,6 +693,33 @@ class NULicense(NURESTObject):
                 
         """
         self._allowed_nics_count = value
+
+    
+    @property
+    def allowed_ovrss_count(self):
+        """ Get allowed_ovrss_count value.
+
+            Notes:
+                Maximum number of OVRSs enabled with this license. A value of -1 indicates an unlimited number of OVRSs.
+
+                
+                This attribute is named `allowedOVRSsCount` in VSD API.
+                
+        """
+        return self._allowed_ovrss_count
+
+    @allowed_ovrss_count.setter
+    def allowed_ovrss_count(self, value):
+        """ Set allowed_ovrss_count value.
+
+            Notes:
+                Maximum number of OVRSs enabled with this license. A value of -1 indicates an unlimited number of OVRSs.
+
+                
+                This attribute is named `allowedOVRSsCount` in VSD API.
+                
+        """
+        self._allowed_ovrss_count = value
 
     
     @property

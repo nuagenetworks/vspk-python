@@ -85,6 +85,8 @@ Parents
 
 - :ref:`nubgppeer.NUBGPPeer<nubgppeer>`
 
+- :ref:`nunsgmigrationprofile.NUNSGMigrationProfile<nunsgmigrationprofile>`
+
 - :ref:`nusharednetworkresource.NUSharedNetworkResource<nusharednetworkresource>`
 
 - :ref:`nuport.NUPort<nuport>`
@@ -160,8 +162,6 @@ Parents
 - :ref:`nusubnettemplate.NUSubnetTemplate<nusubnettemplate>`
 
 - :ref:`nuapplicationbinding.NUApplicationBinding<nuapplicationbinding>`
-
-- :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
 - :ref:`nutestrun.NUTestRun<nutestrun>`
 
@@ -468,6 +468,8 @@ Parents
 - :ref:`nudeploymentfailure.NUDeploymentFailure<nudeploymentfailure>`
 
 - :ref:`nunsgroutingpolicybinding.NUNSGRoutingPolicyBinding<nunsgroutingpolicybinding>`
+
+- :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
 - :ref:`nunsgatewayscount.NUNSGatewaysCount<nunsgatewayscount>`
 

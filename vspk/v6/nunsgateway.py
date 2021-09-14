@@ -267,6 +267,8 @@ class NUNSGateway(NURESTObject):
     
     CONST_SYSLOG_LEVEL_CRITICAL = "CRITICAL"
     
+    CONST_BOOTSTRAP_STATUS_MIGRATING = "MIGRATING"
+    
     CONST_CONFIGURATION_STATUS_UNKNOWN = "UNKNOWN"
     
     CONST_ZFB_MATCH_ATTRIBUTE_HOSTNAME = "HOSTNAME"
@@ -357,6 +359,7 @@ class NUNSGateway(NURESTObject):
         self._associated_gateway_security_id = None
         self._associated_gateway_security_profile_id = None
         self._associated_nsg_info_id = None
+        self._associated_nsg_migration_profile_id = None
         self._associated_nsg_upgrade_profile_id = None
         self._associated_overlay_management_profile_id = None
         self._huge_page_setting = None
@@ -419,7 +422,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="control_traffic_cos_value", remote_name="controlTrafficCOSValue", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="control_traffic_dscp_value", remote_name="controlTrafficDSCPValue", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bootstrap_id", remote_name="bootstrapID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT', u'QUARANTINED', u'REVOKED'])
+        self.expose_attribute(local_name="bootstrap_status", remote_name="bootstrapStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'ACTIVE', u'CERTIFICATE_SIGNED', u'INACTIVE', u'MIGRATING', u'NOTIFICATION_APP_REQ_ACK', u'NOTIFICATION_APP_REQ_SENT', u'QUARANTINED', u'REVOKED'])
         self.expose_attribute(local_name="operation_mode", remote_name="operationMode", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="operation_status", remote_name="operationStatus", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
@@ -427,6 +430,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="associated_gateway_security_id", remote_name="associatedGatewaySecurityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_security_profile_id", remote_name="associatedGatewaySecurityProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_nsg_info_id", remote_name="associatedNSGInfoID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_nsg_migration_profile_id", remote_name="associatedNSGMigrationProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_nsg_upgrade_profile_id", remote_name="associatedNSGUpgradeProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_overlay_management_profile_id", remote_name="associatedOverlayManagementProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="huge_page_setting", remote_name="hugePageSetting", attribute_type=str, is_required=False, is_unique=False)
@@ -2097,6 +2101,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._associated_nsg_info_id = value
+
+    
+    @property
+    def associated_nsg_migration_profile_id(self):
+        """ Get associated_nsg_migration_profile_id value.
+
+            Notes:
+                The ID of the migration profile associated to this NSG.
+
+                
+                This attribute is named `associatedNSGMigrationProfileID` in VSD API.
+                
+        """
+        return self._associated_nsg_migration_profile_id
+
+    @associated_nsg_migration_profile_id.setter
+    def associated_nsg_migration_profile_id(self, value):
+        """ Set associated_nsg_migration_profile_id value.
+
+            Notes:
+                The ID of the migration profile associated to this NSG.
+
+                
+                This attribute is named `associatedNSGMigrationProfileID` in VSD API.
+                
+        """
+        self._associated_nsg_migration_profile_id = value
 
     
     @property

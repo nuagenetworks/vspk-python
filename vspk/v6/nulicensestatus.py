@@ -83,10 +83,12 @@ class NULicenseStatus(NURESTObject):
         self._total_licensed_gateways_count = None
         self._total_licensed_nics_count = None
         self._total_licensed_nsgs_count = None
+        self._total_licensed_ovrss_count = None
         self._total_licensed_used_avrsgs_count = None
         self._total_licensed_used_avrss_count = None
         self._total_licensed_used_nics_count = None
         self._total_licensed_used_nsgs_count = None
+        self._total_licensed_used_ovrss_count = None
         self._total_licensed_used_vdfgs_count = None
         self._total_licensed_used_vdfs_count = None
         self._total_licensed_used_vms_count = None
@@ -108,10 +110,12 @@ class NULicenseStatus(NURESTObject):
         self.expose_attribute(local_name="total_licensed_gateways_count", remote_name="totalLicensedGatewaysCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_nics_count", remote_name="totalLicensedNICsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_nsgs_count", remote_name="totalLicensedNSGsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_ovrss_count", remote_name="totalLicensedOVRSsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_used_avrsgs_count", remote_name="totalLicensedUsedAVRSGsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_used_avrss_count", remote_name="totalLicensedUsedAVRSsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_used_nics_count", remote_name="totalLicensedUsedNICsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_used_nsgs_count", remote_name="totalLicensedUsedNSGsCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="total_licensed_used_ovrss_count", remote_name="totalLicensedUsedOVRSsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_used_vdfgs_count", remote_name="totalLicensedUsedVDFGsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_used_vdfs_count", remote_name="totalLicensedUsedVDFsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="total_licensed_used_vms_count", remote_name="totalLicensedUsedVMsCount", attribute_type=int, is_required=False, is_unique=False)
@@ -359,6 +363,33 @@ class NULicenseStatus(NURESTObject):
 
     
     @property
+    def total_licensed_ovrss_count(self):
+        """ Get total_licensed_ovrss_count value.
+
+            Notes:
+                Indicates total OVRSs count for all the licenses in the system.
+
+                
+                This attribute is named `totalLicensedOVRSsCount` in VSD API.
+                
+        """
+        return self._total_licensed_ovrss_count
+
+    @total_licensed_ovrss_count.setter
+    def total_licensed_ovrss_count(self, value):
+        """ Set total_licensed_ovrss_count value.
+
+            Notes:
+                Indicates total OVRSs count for all the licenses in the system.
+
+                
+                This attribute is named `totalLicensedOVRSsCount` in VSD API.
+                
+        """
+        self._total_licensed_ovrss_count = value
+
+    
+    @property
     def total_licensed_used_avrsgs_count(self):
         """ Get total_licensed_used_avrsgs_count value.
 
@@ -464,6 +495,33 @@ class NULicenseStatus(NURESTObject):
                 
         """
         self._total_licensed_used_nsgs_count = value
+
+    
+    @property
+    def total_licensed_used_ovrss_count(self):
+        """ Get total_licensed_used_ovrss_count value.
+
+            Notes:
+                Indicates total used OVRSs count for all the licenses in the system.
+
+                
+                This attribute is named `totalLicensedUsedOVRSsCount` in VSD API.
+                
+        """
+        return self._total_licensed_used_ovrss_count
+
+    @total_licensed_used_ovrss_count.setter
+    def total_licensed_used_ovrss_count(self, value):
+        """ Set total_licensed_used_ovrss_count value.
+
+            Notes:
+                Indicates total used OVRSs count for all the licenses in the system.
+
+                
+                This attribute is named `totalLicensedUsedOVRSsCount` in VSD API.
+                
+        """
+        self._total_licensed_used_ovrss_count = value
 
     
     @property

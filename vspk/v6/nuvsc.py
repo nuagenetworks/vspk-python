@@ -110,7 +110,6 @@ class NUVSC(NURESTObject):
         self._addresses = None
         self._peak_cpuusage = None
         self._peak_memory_usage = None
-        self._secondary_role_count = None
         self._description = None
         self._messages = None
         self._disks = None
@@ -121,11 +120,10 @@ class NUVSC(NURESTObject):
         self._location = None
         self._communication_id = None
         self._creation_date = None
-        self._primary_role_count = None
         self._product_version = None
         self._vsds = None
         self._status = None
-        self._number_of_inactive_gateways = None
+        self._number_of_connections = None
         self._current_cpuusage = None
         self._current_memory_usage = None
         self._average_cpuusage = None
@@ -141,7 +139,6 @@ class NUVSC(NURESTObject):
         self.expose_attribute(local_name="addresses", remote_name="addresses", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peak_cpuusage", remote_name="peakCPUUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="peak_memory_usage", remote_name="peakMemoryUsage", attribute_type=float, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="secondary_role_count", remote_name="secondaryRoleCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="messages", remote_name="messages", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="disks", remote_name="disks", attribute_type=list, is_required=False, is_unique=False)
@@ -152,11 +149,10 @@ class NUVSC(NURESTObject):
         self.expose_attribute(local_name="location", remote_name="location", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="communication_id", remote_name="communicationId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="primary_role_count", remote_name="primaryRoleCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="product_version", remote_name="productVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsds", remote_name="vsds", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=str, is_required=False, is_unique=False, choices=[u'ADMIN_DOWN', u'DOWN', u'UP'])
-        self.expose_attribute(local_name="number_of_inactive_gateways", remote_name="numberOfInactiveGateways", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="number_of_connections", remote_name="numberOfConnections", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="current_cpuusage", remote_name="currentCPUUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="current_memory_usage", remote_name="currentMemoryUsage", attribute_type=float, is_required=False, is_unique=False)
         self.expose_attribute(local_name="average_cpuusage", remote_name="averageCPUUsage", attribute_type=float, is_required=False, is_unique=False)
@@ -408,33 +404,6 @@ class NUVSC(NURESTObject):
                 
         """
         self._peak_memory_usage = value
-
-    
-    @property
-    def secondary_role_count(self):
-        """ Get secondary_role_count value.
-
-            Notes:
-                Number of uplinks as secondary role.
-
-                
-                This attribute is named `secondaryRoleCount` in VSD API.
-                
-        """
-        return self._secondary_role_count
-
-    @secondary_role_count.setter
-    def secondary_role_count(self, value):
-        """ Set secondary_role_count value.
-
-            Notes:
-                Number of uplinks as secondary role.
-
-                
-                This attribute is named `secondaryRoleCount` in VSD API.
-                
-        """
-        self._secondary_role_count = value
 
     
     @property
@@ -692,33 +661,6 @@ class NUVSC(NURESTObject):
 
     
     @property
-    def primary_role_count(self):
-        """ Get primary_role_count value.
-
-            Notes:
-                Number of uplinks as primary role.
-
-                
-                This attribute is named `primaryRoleCount` in VSD API.
-                
-        """
-        return self._primary_role_count
-
-    @primary_role_count.setter
-    def primary_role_count(self, value):
-        """ Set primary_role_count value.
-
-            Notes:
-                Number of uplinks as primary role.
-
-                
-                This attribute is named `primaryRoleCount` in VSD API.
-                
-        """
-        self._primary_role_count = value
-
-    
-    @property
     def product_version(self):
         """ Get product_version value.
 
@@ -792,30 +734,30 @@ class NUVSC(NURESTObject):
 
     
     @property
-    def number_of_inactive_gateways(self):
-        """ Get number_of_inactive_gateways value.
+    def number_of_connections(self):
+        """ Get number_of_connections value.
 
             Notes:
-                Number of inactive Gateways.
+                Number of Connections.
 
                 
-                This attribute is named `numberOfInactiveGateways` in VSD API.
+                This attribute is named `numberOfConnections` in VSD API.
                 
         """
-        return self._number_of_inactive_gateways
+        return self._number_of_connections
 
-    @number_of_inactive_gateways.setter
-    def number_of_inactive_gateways(self, value):
-        """ Set number_of_inactive_gateways value.
+    @number_of_connections.setter
+    def number_of_connections(self, value):
+        """ Set number_of_connections value.
 
             Notes:
-                Number of inactive Gateways.
+                Number of Connections.
 
                 
-                This attribute is named `numberOfInactiveGateways` in VSD API.
+                This attribute is named `numberOfConnections` in VSD API.
                 
         """
-        self._number_of_inactive_gateways = value
+        self._number_of_connections = value
 
     
     @property
