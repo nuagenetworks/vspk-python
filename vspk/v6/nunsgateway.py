@@ -118,7 +118,7 @@ class NUNSGateway(NURESTObject):
     """ Represents a NSGateway in the VSD
 
         Notes:
-            Network Services Gateways are a policy enforcement end-points responsible for the delivery of networking services. NSG access ports/VLANs may be attached to existing host or bridge VPorts.
+            Network Services Gateways are a policy enforcement end-points responsible for the delivery of networking services. NSG access ports/VLANs may be attached to existing host or bridge vPorts.
     """
 
     __rest_name__ = "nsgateway"
@@ -139,7 +139,7 @@ class NUNSGateway(NURESTObject):
     
     CONST_CONFIGURATION_RELOAD_STATE_FAILED_TO_APPLY = "FAILED_TO_APPLY"
     
-    CONST_FUNCTIONS_HUB = "HUB"
+    CONST_NETWORK_ACCELERATION_WIFI_OPTIMIZED = "WIFI_OPTIMIZED"
     
     CONST_BOOTSTRAP_STATUS_REVOKED = "REVOKED"
     
@@ -245,11 +245,17 @@ class NUNSGateway(NURESTObject):
     
     CONST_NETWORK_ACCELERATION_TP_AWARE = "TP_AWARE"
     
+    CONST_NETWORK_ACCELERATION_WIFI_VNF_AWARE = "WIFI_VNF_AWARE"
+    
     CONST_ZFB_MATCH_ATTRIBUTE_SERIAL_NUMBER = "SERIAL_NUMBER"
+    
+    CONST_FUNCTIONS_HUB = "HUB"
     
     CONST_NETWORK_ACCELERATION_SESSION_OPTIMIZED = "SESSION_OPTIMIZED"
     
     CONST_ZFB_MATCH_ATTRIBUTE_UUID = "UUID"
+    
+    CONST_NETWORK_ACCELERATION_WIFI_TP_AWARE = "WIFI_TP_AWARE"
     
     CONST_FAMILY_NSG_AMI = "NSG_AMI"
     
@@ -408,7 +414,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=False, is_unique=False, choices=[u'NSG', u'NSGBR', u'NSGDUC'])
         self.expose_attribute(local_name="cert_validity_days", remote_name="certValidityDays", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="network_acceleration", remote_name="networkAcceleration", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'PERFORMANCE', u'SESSION_OPTIMIZED', u'TP_AWARE', u'VNF_AWARE'])
+        self.expose_attribute(local_name="network_acceleration", remote_name="networkAcceleration", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'PERFORMANCE', u'SESSION_OPTIMIZED', u'TP_AWARE', u'VNF_AWARE', u'WIFI_OPTIMIZED', u'WIFI_TP_AWARE', u'WIFI_VNF_AWARE'])
         self.expose_attribute(local_name="threat_prevention_enabled", remote_name="threatPreventionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="libraries", remote_name="libraries", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)

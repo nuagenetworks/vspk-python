@@ -114,6 +114,8 @@ Attributes
 
 - ``evpnbgp_community_tag_upper_limit``: EVPNBGPCommunityTag upper limit
 
+- ``ca_certificates_expiry_time``: CA Certificates expiry date with time
+
 - ``saa_s_applications_publish_date``: Determines the time that SaaS applications were imported in VSD or if they are the ones that came with this version of VSD (built-in).
 
 - ``page_max_size``: Defines upper bound for the page size. Configured or input page size should be less than this max page size.
@@ -162,6 +164,8 @@ Attributes
 
 - ``service_id_upper_limit``: Service ID upper limit system wide value.
 
+- ``netconf7x50_routing_policy_validation_enabled``: Indicates if Routing Policy Definition validation is enabled for Netconf 7x50.
+
 - ``key_server_monitor_enabled``: Enable the keyserver debug monitor (ie. ksmon command)
 
 - ``key_server_vsd_data_synchronization_interval``: KeyServer time in seconds between full resyncs of VSD data (just in case of missed events)
@@ -184,7 +188,11 @@ Attributes
 
 - ``threat_prevention_syslog_proxy_port``: Syslog server port for Threat Prevention Service
 
+- ``signature_update_through_cloud_enabled``: Indicates if Threat Prevention Signature updates are enabled through Cloud.
+
 - ``virtual_firewall_rules_enabled``: Enable Virtual Firewall Rule creation and management. This will be available only with VSS license
+
+- ``ejabberd_license_expiry_time``: Ejabberd License expiry date with time
 
 - ``ejbca_nsg_certificate_profile``: EJBCA NSG Certificate Profile
 
@@ -199,6 +207,8 @@ Attributes
 - ``alarms_max_per_object``: Maximum alarms per object for example max distinct alarms for specific VM (min = 5, max =20)
 
 - ``elastic_cluster_name``: Specifies the name of the Elastic Search Cluster.
+
+- ``elastic_search_license_expiry_time``: Elastic Search License expiry date with time
 
 - ``allow_enterprise_avatar_on_nsg``: When enabled, it allows Enterprise Avatar (image) to be populated on the NSGateway bootstrapping portal and blocked page notification.
 
@@ -281,6 +291,8 @@ Attributes
 - ``csproot_authentication_method``: Authentication method for csproot when local authentication is not used for CSP organization
 
 - ``stack_trace_enabled``: Set value to TRUE to enable stacktraces in the ReST calls.
+
+- ``stateful_aclicmp_timeout``: Defines the timeout in seconds for stateful ACLs that are of type ICMP. Supported in Virtual Cloud Services (VCS) only.
 
 - ``stateful_acl_non_tcp_timeout``: Defines the timeout in seconds for stateful ACLs that are not of type TCP.
 

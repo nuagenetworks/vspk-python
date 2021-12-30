@@ -136,6 +136,7 @@ Children
 **class**                                                                                                                                                      **fetcher**
 
 :ref:`nutca.NUTCA<nutca>`                                                                                                                                        ``tcas`` 
+:ref:`nuscheduledtestsuiterun.NUScheduledtestsuiterun<nuscheduledtestsuiterun>`                                                                                  ``scheduledtestsuiteruns`` 
 :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`                                                                                              ``redirection_targets`` 
 :ref:`nudeploymentfailure.NUDeploymentFailure<nudeploymentfailure>`                                                                                              ``deployment_failures`` 
 :ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 

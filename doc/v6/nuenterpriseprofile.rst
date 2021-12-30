@@ -48,6 +48,8 @@ Attributes
 
 - ``enable_application_performance_management``: Enable DPI for this enterprise
 
+- ``enable_oam_connectivity_statistics_collection``: Enables the collection of OAM Connectivity Statistics in the Elastic DB.
+
 - ``encryption_management_mode``: encryption management mode for this enterprise Possible values are DISABLED, MANAGED, .
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level

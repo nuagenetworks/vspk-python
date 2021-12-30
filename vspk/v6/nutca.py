@@ -60,6 +60,8 @@ class NUTCA(NURESTObject):
     
     CONST_METRIC_PACKETS_OUT_DROPPED = "PACKETS_OUT_DROPPED"
     
+    CONST_PROTOCOL_NONE = "NONE"
+    
     CONST_METRIC_FIP_RATE_LIMIT_DROPPED_PACKETS = "FIP_RATE_LIMIT_DROPPED_PACKETS"
     
     CONST_TYPE_BREACH = "BREACH"
@@ -80,7 +82,11 @@ class NUTCA(NURESTObject):
     
     CONST_TYPE_UNIQUE_COUNT = "UNIQUE_COUNT"
     
+    CONST_PROTOCOL_UDP = "UDP"
+    
     CONST_METRIC_FIP_RATE_LIMIT_DROPPED_BYTES = "FIP_RATE_LIMIT_DROPPED_BYTES"
+    
+    CONST_METRIC_DESTINATION_PORT_PROTOCOL_COUNT = "DESTINATION_PORT_PROTOCOL_COUNT"
     
     CONST_METRIC_PACKETS_DROPPED_BY_RATE_LIMIT = "PACKETS_DROPPED_BY_RATE_LIMIT"
     
@@ -111,6 +117,8 @@ class NUTCA(NURESTObject):
     CONST_ACTION_ALERT_POLICYGROUPCHANGE = "Alert_PolicyGroupChange"
     
     CONST_METRIC_PACKETS_IN_ERROR = "PACKETS_IN_ERROR"
+    
+    CONST_PROTOCOL_TCP = "TCP"
     
     CONST_METRIC_HIGH_RISK_IP_ACCESS_EVENT_COUNT = "HIGH_RISK_IP_ACCESS_EVENT_COUNT"
     
@@ -168,6 +176,7 @@ class NUTCA(NURESTObject):
         self._action = None
         self._period = None
         self._description = None
+        self._destination_port = None
         self._metric = None
         self._threshold = None
         self._throttle_time = None
@@ -178,6 +187,7 @@ class NUTCA(NURESTObject):
         self._count = None
         self._creation_date = None
         self._trigger_interval = None
+        self._protocol = None
         self._status = None
         self._owner = None
         self._external_id = None
@@ -192,7 +202,8 @@ class NUTCA(NURESTObject):
         self.expose_attribute(local_name="action", remote_name="action", attribute_type=str, is_required=True, is_unique=False, choices=[u'Alert', u'Alert_Add_Network_Macro', u'Alert_Add_Policy_Group', u'Alert_PolicyGroupChange'])
         self.expose_attribute(local_name="period", remote_name="period", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="metric", remote_name="metric", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACL_DENY_EVENT_COUNT', u'ANTI_SPOOF_EVENT_COUNT', u'BYTES_IN', u'BYTES_OUT', u'FIP_PRE_RATE_LIMIT_BYTES', u'FIP_PRE_RATE_LIMIT_PACKETS', u'FIP_RATE_LIMIT_DROPPED_BYTES', u'FIP_RATE_LIMIT_DROPPED_PACKETS', u'HIGH_RISK_IP_ACCESS_EVENT_COUNT', u'IDP_EVENT_COUNT', u'L7_BYTES_IN', u'L7_BYTES_OUT', u'L7_PACKETS_IN', u'L7_PACKETS_OUT', u'MEDIUM_RISK_IP_ACCESS_EVENT_COUNT', u'PACKETS_DROPPED_BY_RATE_LIMIT', u'PACKETS_IN', u'PACKETS_IN_DROPPED', u'PACKETS_IN_ERROR', u'PACKETS_OUT', u'PACKETS_OUT_DROPPED', u'PACKETS_OUT_ERROR', u'PORT_SCAN_PORT_COUNT', u'PORT_SWEEP_IP_COUNT', u'TCP_FLAG_ACK_IN', u'TCP_FLAG_ACK_OUT', u'TCP_FLAG_NULL_IN', u'TCP_FLAG_NULL_OUT', u'TCP_FLAG_RST_IN', u'TCP_FLAG_RST_OUT', u'TCP_FLAG_SYN_IN', u'TCP_FLAG_SYN_OUT'])
+        self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="metric", remote_name="metric", attribute_type=str, is_required=True, is_unique=False, choices=[u'ACL_DENY_EVENT_COUNT', u'ANTI_SPOOF_EVENT_COUNT', u'BYTES_IN', u'BYTES_OUT', u'DESTINATION_PORT_PROTOCOL_COUNT', u'FIP_PRE_RATE_LIMIT_BYTES', u'FIP_PRE_RATE_LIMIT_PACKETS', u'FIP_RATE_LIMIT_DROPPED_BYTES', u'FIP_RATE_LIMIT_DROPPED_PACKETS', u'HIGH_RISK_IP_ACCESS_EVENT_COUNT', u'IDP_EVENT_COUNT', u'L7_BYTES_IN', u'L7_BYTES_OUT', u'L7_PACKETS_IN', u'L7_PACKETS_OUT', u'MEDIUM_RISK_IP_ACCESS_EVENT_COUNT', u'PACKETS_DROPPED_BY_RATE_LIMIT', u'PACKETS_IN', u'PACKETS_IN_DROPPED', u'PACKETS_IN_ERROR', u'PACKETS_OUT', u'PACKETS_OUT_DROPPED', u'PACKETS_OUT_ERROR', u'PORT_SCAN_PORT_COUNT', u'PORT_SWEEP_IP_COUNT', u'TCP_FLAG_ACK_IN', u'TCP_FLAG_ACK_OUT', u'TCP_FLAG_NULL_IN', u'TCP_FLAG_NULL_OUT', u'TCP_FLAG_RST_IN', u'TCP_FLAG_RST_OUT', u'TCP_FLAG_SYN_IN', u'TCP_FLAG_SYN_OUT'])
         self.expose_attribute(local_name="threshold", remote_name="threshold", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="throttle_time", remote_name="throttleTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="disable", remote_name="disable", attribute_type=bool, is_required=False, is_unique=False)
@@ -202,6 +213,7 @@ class NUTCA(NURESTObject):
         self.expose_attribute(local_name="count", remote_name="count", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="trigger_interval", remote_name="triggerInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'TCP', u'UDP'])
         self.expose_attribute(local_name="status", remote_name="status", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -458,6 +470,33 @@ class NUTCA(NURESTObject):
 
     
     @property
+    def destination_port(self):
+        """ Get destination_port value.
+
+            Notes:
+                Destination Port Number. Valid range is 1-65535 for the metric DESTINATION_PORT_PROTOCOL_COUNT, 0 for rest of the metrics.
+
+                
+                This attribute is named `destinationPort` in VSD API.
+                
+        """
+        return self._destination_port
+
+    @destination_port.setter
+    def destination_port(self, value):
+        """ Set destination_port value.
+
+            Notes:
+                Destination Port Number. Valid range is 1-65535 for the metric DESTINATION_PORT_PROTOCOL_COUNT, 0 for rest of the metrics.
+
+                
+                This attribute is named `destinationPort` in VSD API.
+                
+        """
+        self._destination_port = value
+
+    
+    @property
     def metric(self):
         """ Get metric value.
 
@@ -709,6 +748,29 @@ class NUTCA(NURESTObject):
                 
         """
         self._trigger_interval = value
+
+    
+    @property
+    def protocol(self):
+        """ Get protocol value.
+
+            Notes:
+                L4 service protocol - Possible values TCP, UDP for the metric DESTINATION_PORT_PROTOCOL_COUNT, NONE for rest of the metrics.
+
+                
+        """
+        return self._protocol
+
+    @protocol.setter
+    def protocol(self, value):
+        """ Set protocol value.
+
+            Notes:
+                L4 service protocol - Possible values TCP, UDP for the metric DESTINATION_PORT_PROTOCOL_COUNT, NONE for rest of the metrics.
+
+                
+        """
+        self._protocol = value
 
     
     @property

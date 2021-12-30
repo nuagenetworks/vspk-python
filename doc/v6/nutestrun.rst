@@ -16,6 +16,8 @@ Attributes
 
 - ``last_updated_date``: Time stamp when this object was last updated.
 
+- ``additional_test_run_details``: Additional details for this Test Run.
+
 - ``test_result``: The result of the test
 
 - ``test_result_data``: The test result data
@@ -50,6 +52,8 @@ Attributes
 
 - ``associated_test_suite_run_id``: Test Run instances are part of a Test Suite Run.  This is the ID of the Test Suite Run object to which this Test Run belongs.
 
+- ``associated_test_suite_run_type``: The type of Test Suite Run to which this Test Run belongs.
+
 - ``start_date_time``: The start date and time of the test in milliseconds since Epoch.
 
 - ``stop_date_time``: The stop date and time of the test in milliseconds since Epoch.
@@ -81,4 +85,6 @@ Parents
 
 
 - :ref:`nutestsuiterun.NUTestSuiteRun<nutestsuiterun>`
+
+- :ref:`nuscheduledtestsuiterun.NUScheduledtestsuiterun<nuscheduledtestsuiterun>`
 

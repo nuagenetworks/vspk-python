@@ -60,19 +60,29 @@ class NUVirtualFirewallRule(NURESTObject):
     
     CONST_TYPE_L4 = "L4"
     
+    CONST_TYPE_THREAT_PREVENTION = "THREAT_PREVENTION"
+    
     CONST_ACTION_DROP = "DROP"
     
     CONST_LOCATION_TYPE_ZONE = "ZONE"
     
     CONST_LOCATION_ENTITY_TYPE_PUBLICNETWORK = "PUBLICNETWORK"
     
+    CONST_NETWORK_ENTITY_TYPE_SUBNETTEMPLATE = "SUBNETTEMPLATE"
+    
+    CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_TYPE_WEB_FILTER = "WEB_FILTER"
     
     CONST_NETWORK_ENTITY_TYPE_PGEXPRESSIONTEMPLATE = "PGEXPRESSIONTEMPLATE"
     
-    CONST_ACTION_FORWARD = "FORWARD"
+    CONST_NETWORK_ENTITY_TYPE_ENTERPRISENETWORK = "ENTERPRISENETWORK"
     
     CONST_NETWORK_TYPE_PGEXPRESSION = "PGEXPRESSION"
+    
+    CONST_REMOTE_UPLINK_PREFERENCE_DEFAULT = "DEFAULT"
     
     CONST_NETWORK_TYPE_POLICYGROUP = "POLICYGROUP"
     
@@ -80,7 +90,9 @@ class NUVirtualFirewallRule(NURESTObject):
     
     CONST_LOCATION_ENTITY_TYPE_POLICYGROUPTEMPLATE = "POLICYGROUPTEMPLATE"
     
-    CONST_TYPE_WEB_FILTER = "WEB_FILTER"
+    CONST_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
+    
+    CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
     
     CONST_NETWORK_ENTITY_TYPE_ZONETEMPLATE = "ZONETEMPLATE"
     
@@ -88,13 +100,15 @@ class NUVirtualFirewallRule(NURESTObject):
     
     CONST_LOCATION_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
+    CONST_APP_TYPE_APPLICATION = "APPLICATION"
+    
     CONST_LOCATION_ENTITY_TYPE_ZONETEMPLATE = "ZONETEMPLATE"
     
     CONST_LOCATION_TYPE_ANY = "ANY"
     
     CONST_NETWORK_ENTITY_TYPE_NETWORKMACROGROUP = "NETWORKMACROGROUP"
     
-    CONST_NETWORK_TYPE_ENTERPRISE_NETWORK = "ENTERPRISE_NETWORK"
+    CONST_REMOTE_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
     
     CONST_NETWORK_ENTITY_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
@@ -104,9 +118,11 @@ class NUVirtualFirewallRule(NURESTObject):
     
     CONST_LOCATION_TYPE_POLICYGROUP = "POLICYGROUP"
     
+    CONST_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
+    
     CONST_REPUTATION_SCORE_HIGH_RISK = "HIGH_RISK"
     
-    CONST_REPUTATION_SCORE_LOW_RISK = "LOW_RISK"
+    CONST_FAILSAFE_DATAPATH_FAIL_TO_WIRE = "FAIL_TO_WIRE"
     
     CONST_LOCATION_TYPE_NETWORK_MACRO_GROUP = "NETWORK_MACRO_GROUP"
     
@@ -118,11 +134,15 @@ class NUVirtualFirewallRule(NURESTObject):
     
     CONST_NETWORK_TYPE_UNDERLAY_INTERNET_POLICYGROUP = "UNDERLAY_INTERNET_POLICYGROUP"
     
-    CONST_FAILSAFE_DATAPATH_FAIL_TO_WIRE = "FAIL_TO_WIRE"
+    CONST_REPUTATION_SCORE_LOW_RISK = "LOW_RISK"
     
-    CONST_TYPE_THREAT_PREVENTION = "THREAT_PREVENTION"
+    CONST_APP_TYPE_ALL = "ALL"
+    
+    CONST_UPLINK_PREFERENCE_DEFAULT = "DEFAULT"
     
     CONST_LOCATION_ENTITY_TYPE_SUBNET = "SUBNET"
+    
+    CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE = "L4_SERVICE"
     
     CONST_LOCATION_ENTITY_TYPE_REDIRECTIONTARGET = "REDIRECTIONTARGET"
     
@@ -132,7 +152,7 @@ class NUVirtualFirewallRule(NURESTObject):
     
     CONST_NETWORK_ENTITY_TYPE_ZONE = "ZONE"
     
-    CONST_NETWORK_ENTITY_TYPE_SUBNETTEMPLATE = "SUBNETTEMPLATE"
+    CONST_REMOTE_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
     
     CONST_LOCATION_ENTITY_TYPE_PGEXPRESSIONTEMPLATE = "PGEXPRESSIONTEMPLATE"
     
@@ -140,9 +160,11 @@ class NUVirtualFirewallRule(NURESTObject):
     
     CONST_LOCATION_TYPE_SUBNET = "SUBNET"
     
+    CONST_UPLINK_PREFERENCE_SECONDARY = "SECONDARY"
+    
     CONST_POLICY_STATE_DRAFT = "DRAFT"
     
-    CONST_ASSOCIATED_TRAFFIC_TYPE_L4_SERVICE = "L4_SERVICE"
+    CONST_APP_TYPE_NONE = "NONE"
     
     CONST_WEB_FILTER_TYPE_WEB_DOMAIN_NAME = "WEB_DOMAIN_NAME"
     
@@ -160,17 +182,23 @@ class NUVirtualFirewallRule(NURESTObject):
     
     CONST_NETWORK_ENTITY_TYPE_PUBLICNETWORK = "PUBLICNETWORK"
     
+    CONST_UPLINK_PREFERENCE_PRIMARY = "PRIMARY"
+    
     CONST_NETWORK_ENTITY_TYPE_POLICYGROUPTEMPLATE = "POLICYGROUPTEMPLATE"
     
     CONST_LOCATION_ENTITY_TYPE_ZONE = "ZONE"
     
+    CONST_REMOTE_UPLINK_PREFERENCE_SECONDARY_PRIMARY = "SECONDARY_PRIMARY"
+    
     CONST_LOCATION_ENTITY_TYPE_PGEXPRESSION = "PGEXPRESSION"
     
-    CONST_NETWORK_ENTITY_TYPE_ENTERPRISENETWORK = "ENTERPRISENETWORK"
+    CONST_ACTION_FORWARD = "FORWARD"
     
     CONST_NETWORK_ENTITY_TYPE_SAASAPPLICATIONGROUP = "SAASAPPLICATIONGROUP"
     
     CONST_WEB_FILTER_TYPE_WEB_CATEGORY = "WEB_CATEGORY"
+    
+    CONST_REMOTE_UPLINK_PREFERENCE_PRIMARY_SECONDARY = "PRIMARY_SECONDARY"
     
     CONST_NETWORK_TYPE_SUBNET = "SUBNET"
     
@@ -206,6 +234,7 @@ class NUVirtualFirewallRule(NURESTObject):
         self._web_filter_id = None
         self._web_filter_stats_logging_enabled = None
         self._web_filter_type = None
+        self._remote_uplink_preference = None
         self._reputation_score = None
         self._description = None
         self._destination_port = None
@@ -224,9 +253,13 @@ class NUVirtualFirewallRule(NURESTObject):
         self._policy_state = None
         self._domain_name = None
         self._source_port = None
+        self._uplink_preference = None
+        self._app_type = None
         self._creation_date = None
         self._priority = None
         self._protocol = None
+        self._is_sla_aware = None
+        self._associated_application_id = None
         self._associated_egress_entry_id = None
         self._associated_ingress_entry_id = None
         self._associated_l7_application_signature_id = None
@@ -256,6 +289,7 @@ class NUVirtualFirewallRule(NURESTObject):
         self.expose_attribute(local_name="web_filter_id", remote_name="webFilterID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="web_filter_stats_logging_enabled", remote_name="webFilterStatsLoggingEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="web_filter_type", remote_name="webFilterType", attribute_type=str, is_required=False, is_unique=False, choices=[u'WEB_CATEGORY', u'WEB_DOMAIN_NAME', u'WEB_DOMAIN_REPUTATION'])
+        self.expose_attribute(local_name="remote_uplink_preference", remote_name="remoteUplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY'])
         self.expose_attribute(local_name="reputation_score", remote_name="reputationScore", attribute_type=str, is_required=False, is_unique=False, choices=[u'HIGH_RISK', u'LOW_RISK', u'MEDIUM_RISK'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination_port", remote_name="destinationPort", attribute_type=str, is_required=False, is_unique=False)
@@ -274,9 +308,13 @@ class NUVirtualFirewallRule(NURESTObject):
         self.expose_attribute(local_name="policy_state", remote_name="policyState", attribute_type=str, is_required=False, is_unique=False, choices=[u'DRAFT', u'LIVE'])
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_port", remote_name="sourcePort", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
+        self.expose_attribute(local_name="app_type", remote_name="appType", attribute_type=str, is_required=False, is_unique=False, choices=[u'ALL', u'APPLICATION', u'NONE'])
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="protocol", remote_name="protocol", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="is_sla_aware", remote_name="isSLAAware", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_application_id", remote_name="associatedApplicationID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_egress_entry_id", remote_name="associatedEgressEntryID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ingress_entry_id", remote_name="associatedIngressEntryID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_l7_application_signature_id", remote_name="associatedL7ApplicationSignatureID", attribute_type=str, is_required=False, is_unique=False)
@@ -655,6 +693,33 @@ class NUVirtualFirewallRule(NURESTObject):
                 
         """
         self._web_filter_type = value
+
+    
+    @property
+    def remote_uplink_preference(self):
+        """ Get remote_uplink_preference value.
+
+            Notes:
+                Indicates the preferencial path selection for network traffic for this ACL.
+
+                
+                This attribute is named `remoteUplinkPreference` in VSD API.
+                
+        """
+        return self._remote_uplink_preference
+
+    @remote_uplink_preference.setter
+    def remote_uplink_preference(self, value):
+        """ Set remote_uplink_preference value.
+
+            Notes:
+                Indicates the preferencial path selection for network traffic for this ACL.
+
+                
+                This attribute is named `remoteUplinkPreference` in VSD API.
+                
+        """
+        self._remote_uplink_preference = value
 
     
     @property
@@ -1140,6 +1205,60 @@ class NUVirtualFirewallRule(NURESTObject):
 
     
     @property
+    def uplink_preference(self):
+        """ Get uplink_preference value.
+
+            Notes:
+                Indicates the preferencial path selection for network traffic for this ACL - default is DEFAULT when the attribute is applicable.
+
+                
+                This attribute is named `uplinkPreference` in VSD API.
+                
+        """
+        return self._uplink_preference
+
+    @uplink_preference.setter
+    def uplink_preference(self, value):
+        """ Set uplink_preference value.
+
+            Notes:
+                Indicates the preferencial path selection for network traffic for this ACL - default is DEFAULT when the attribute is applicable.
+
+                
+                This attribute is named `uplinkPreference` in VSD API.
+                
+        """
+        self._uplink_preference = value
+
+    
+    @property
+    def app_type(self):
+        """ Get app_type value.
+
+            Notes:
+                Type of application selected, ALL (all applications in match criteria), NONE (no application in match criteria), APPLICATION (specific application in match criteria).
+
+                
+                This attribute is named `appType` in VSD API.
+                
+        """
+        return self._app_type
+
+    @app_type.setter
+    def app_type(self, value):
+        """ Set app_type value.
+
+            Notes:
+                Type of application selected, ALL (all applications in match criteria), NONE (no application in match criteria), APPLICATION (specific application in match criteria).
+
+                
+                This attribute is named `appType` in VSD API.
+                
+        """
+        self._app_type = value
+
+    
+    @property
     def creation_date(self):
         """ Get creation_date value.
 
@@ -1210,6 +1329,60 @@ class NUVirtualFirewallRule(NURESTObject):
                 
         """
         self._protocol = value
+
+    
+    @property
+    def is_sla_aware(self):
+        """ Get is_sla_aware value.
+
+            Notes:
+                This flag denotes whether the Uplink Preference configured by the user will work with AAR or will over-ride AAR.
+
+                
+                This attribute is named `isSLAAware` in VSD API.
+                
+        """
+        return self._is_sla_aware
+
+    @is_sla_aware.setter
+    def is_sla_aware(self, value):
+        """ Set is_sla_aware value.
+
+            Notes:
+                This flag denotes whether the Uplink Preference configured by the user will work with AAR or will over-ride AAR.
+
+                
+                This attribute is named `isSLAAware` in VSD API.
+                
+        """
+        self._is_sla_aware = value
+
+    
+    @property
+    def associated_application_id(self):
+        """ Get associated_application_id value.
+
+            Notes:
+                Associated application UUID.
+
+                
+                This attribute is named `associatedApplicationID` in VSD API.
+                
+        """
+        return self._associated_application_id
+
+    @associated_application_id.setter
+    def associated_application_id(self, value):
+        """ Set associated_application_id value.
+
+            Notes:
+                Associated application UUID.
+
+                
+                This attribute is named `associatedApplicationID` in VSD API.
+                
+        """
+        self._associated_application_id = value
 
     
     @property

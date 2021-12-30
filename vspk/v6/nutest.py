@@ -52,6 +52,10 @@ class NUTest(NURESTObject):
     
     ## Constants
     
+    CONST_ASSOCIATED_TEST_DEFINITION_TYPE_ICMP_ECHO_TEST_DEFINITION = "ICMP_ECHO_TEST_DEFINITION"
+    
+    CONST_ASSOCIATED_TEST_DEFINITION_TYPE_TEST_DEFINITION = "TEST_DEFINITION"
+    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
@@ -87,6 +91,7 @@ class NUTest(NURESTObject):
         self._order = None
         self._creation_date = None
         self._associated_test_definition_id = None
+        self._associated_test_definition_type = None
         self._associated_test_suite_id = None
         self._owner = None
         self._external_id = None
@@ -103,6 +108,7 @@ class NUTest(NURESTObject):
         self.expose_attribute(local_name="order", remote_name="order", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_test_definition_id", remote_name="associatedTestDefinitionID", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="associated_test_definition_type", remote_name="associatedTestDefinitionType", attribute_type=str, is_required=True, is_unique=False, choices=[u'ICMP_ECHO_TEST_DEFINITION', u'TEST_DEFINITION'])
         self.expose_attribute(local_name="associated_test_suite_id", remote_name="associatedTestSuiteID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -422,6 +428,33 @@ class NUTest(NURESTObject):
                 
         """
         self._associated_test_definition_id = value
+
+    
+    @property
+    def associated_test_definition_type(self):
+        """ Get associated_test_definition_type value.
+
+            Notes:
+                The type of associated Test Definition instance.
+
+                
+                This attribute is named `associatedTestDefinitionType` in VSD API.
+                
+        """
+        return self._associated_test_definition_type
+
+    @associated_test_definition_type.setter
+    def associated_test_definition_type(self, value):
+        """ Set associated_test_definition_type value.
+
+            Notes:
+                The type of associated Test Definition instance.
+
+                
+                This attribute is named `associatedTestDefinitionType` in VSD API.
+                
+        """
+        self._associated_test_definition_type = value
 
     
     @property

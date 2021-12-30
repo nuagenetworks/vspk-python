@@ -30,6 +30,8 @@ Attributes
 
 - ``description``: Description of the TCA
 
+- ``destination_port``: Destination Port Number. Valid range is 1-65535 for the metric DESTINATION_PORT_PROTOCOL_COUNT, 0 for rest of the metrics.
+
 - ``metric`` (**Mandatory**): The metric associated with the TCA.
 
 - ``threshold`` (**Mandatory**): The threshold that must be exceeded before an alarm is issued
@@ -49,6 +51,8 @@ Attributes
 - ``creation_date``: Time stamp when this object was created.
 
 - ``trigger_interval``: The trigger interval of the ES watch corresponding to this TCA, in seconds
+
+- ``protocol``: L4 service protocol - Possible values TCP, UDP for the metric DESTINATION_PORT_PROTOCOL_COUNT, NONE for rest of the metrics.
 
 - ``status``: This flag is used to indicate the status of TCA
 

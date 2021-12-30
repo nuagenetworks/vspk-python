@@ -31,6 +31,9 @@
 from .fetchers import NUTCAsFetcher
 
 
+from .fetchers import NUScheduledtestsuiterunsFetcher
+
+
 from .fetchers import NURedirectionTargetsFetcher
 
 
@@ -410,6 +413,9 @@ class NUVPort(NURESTObject):
         
         
         self.tcas = NUTCAsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.scheduledtestsuiteruns = NUScheduledtestsuiterunsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.redirection_targets = NURedirectionTargetsFetcher.fetcher_with_object(parent_object=self, relationship="member")

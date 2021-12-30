@@ -36,6 +36,8 @@ Attributes
 
 - ``associated_test_definition_id`` (**Mandatory**): The associated Test Definition instance used as an information base for the Test object.
 
+- ``associated_test_definition_type`` (**Mandatory**): The type of associated Test Definition instance.
+
 - ``associated_test_suite_id``: The ID of the Test Suite this Test instance is part of.
 
 - ``owner``: Identifies the user that has created this object.
@@ -61,6 +63,8 @@ Children
 Parents
 --------
 
+
+- :ref:`nuscheduledtestsuite.NUScheduledTestSuite<nuscheduledtestsuite>`
 
 - :ref:`nutestsuite.NUTestSuite<nutestsuite>`
 

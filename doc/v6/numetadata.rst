@@ -90,7 +90,7 @@ Parents
 
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
-- :ref:`nuconnectionendpoint.NUConnectionendpoint<nuconnectionendpoint>`
+- :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`
 
 - :ref:`nutca.NUTCA<nutca>`
 
@@ -137,6 +137,8 @@ Parents
 - :ref:`nucosremarkingpolicy.NUCOSRemarkingPolicy<nucosremarkingpolicy>`
 
 - :ref:`nuipreservation.NUIPReservation<nuipreservation>`
+
+- :ref:`nuconnectionendpoint.NUConnectionendpoint<nuconnectionendpoint>`
 
 - :ref:`nuredirectiontargettemplate.NURedirectionTargetTemplate<nuredirectiontargettemplate>`
 
@@ -310,8 +312,6 @@ Parents
 
 - :ref:`nunetworkmacrogroup.NUNetworkMacroGroup<nunetworkmacrogroup>`
 
-- :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`
-
 - :ref:`nugnmisession.NUGNMISession<nugnmisession>`
 
 - :ref:`nudestinationurl.NUDestinationurl<nudestinationurl>`
@@ -339,8 +339,6 @@ Parents
 - :ref:`nudomainfipacltemplate.NUDomainFIPAclTemplate<nudomainfipacltemplate>`
 
 - :ref:`nuospfinterface.NUOSPFInterface<nuospfinterface>`
-
-- :ref:`nuvmipreservation.NUVMIPReservation<nuvmipreservation>`
 
 - :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
 
@@ -453,6 +451,8 @@ Parents
 - :ref:`nusiteinfo.NUSiteInfo<nusiteinfo>`
 
 - :ref:`nudeploymentfailure.NUDeploymentFailure<nudeploymentfailure>`
+
+- :ref:`nuvmipreservation.NUVMIPReservation<nuvmipreservation>`
 
 - :ref:`nunsgroutingpolicybinding.NUNSGRoutingPolicyBinding<nunsgroutingpolicybinding>`
 

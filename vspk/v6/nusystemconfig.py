@@ -202,6 +202,7 @@ class NUSystemConfig(NURESTObject):
         self._evpnbgp_community_tag_as_number = None
         self._evpnbgp_community_tag_lower_limit = None
         self._evpnbgp_community_tag_upper_limit = None
+        self._ca_certificates_expiry_time = None
         self._saa_s_applications_publish_date = None
         self._page_max_size = None
         self._page_size = None
@@ -226,6 +227,7 @@ class NUSystemConfig(NURESTObject):
         self._denied_flow_collection_enabled = None
         self._per_domain_vlan_id_enabled = None
         self._service_id_upper_limit = None
+        self._netconf7x50_routing_policy_validation_enabled = None
         self._key_server_monitor_enabled = None
         self._key_server_vsd_data_synchronization_interval = None
         self._offset_customer_id = None
@@ -237,7 +239,9 @@ class NUSystemConfig(NURESTObject):
         self._threat_prevention_server_proxy_port = None
         self._threat_prevention_server_username = None
         self._threat_prevention_syslog_proxy_port = None
+        self._signature_update_through_cloud_enabled = None
         self._virtual_firewall_rules_enabled = None
+        self._ejabberd_license_expiry_time = None
         self._ejbca_nsg_certificate_profile = None
         self._ejbca_nsg_end_entity_profile = None
         self._ejbca_ocsp_responder_cn = None
@@ -245,6 +249,7 @@ class NUSystemConfig(NURESTObject):
         self._ejbca_vsp_root_ca = None
         self._alarms_max_per_object = None
         self._elastic_cluster_name = None
+        self._elastic_search_license_expiry_time = None
         self._allow_enterprise_avatar_on_nsg = None
         self._global_mac_address = None
         self._flow_collection_enabled = None
@@ -286,6 +291,7 @@ class NUSystemConfig(NURESTObject):
         self._esi_id = None
         self._csproot_authentication_method = None
         self._stack_trace_enabled = None
+        self._stateful_aclicmp_timeout = None
         self._stateful_acl_non_tcp_timeout = None
         self._stateful_acltcp_timeout = None
         self._static_wan_service_purge_time = None
@@ -380,6 +386,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="evpnbgp_community_tag_as_number", remote_name="EVPNBGPCommunityTagASNumber", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="evpnbgp_community_tag_lower_limit", remote_name="EVPNBGPCommunityTagLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="evpnbgp_community_tag_upper_limit", remote_name="EVPNBGPCommunityTagUpperLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ca_certificates_expiry_time", remote_name="caCertificatesExpiryTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="saa_s_applications_publish_date", remote_name="SaaSApplicationsPublishDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="page_max_size", remote_name="pageMaxSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="page_size", remote_name="pageSize", attribute_type=int, is_required=False, is_unique=False)
@@ -404,6 +411,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="denied_flow_collection_enabled", remote_name="deniedFlowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="per_domain_vlan_id_enabled", remote_name="perDomainVlanIdEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_id_upper_limit", remote_name="serviceIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="netconf7x50_routing_policy_validation_enabled", remote_name="netconf7x50RoutingPolicyValidationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="key_server_monitor_enabled", remote_name="keyServerMonitorEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="key_server_vsd_data_synchronization_interval", remote_name="keyServerVSDDataSynchronizationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="offset_customer_id", remote_name="offsetCustomerID", attribute_type=int, is_required=False, is_unique=False)
@@ -415,7 +423,9 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="threat_prevention_server_proxy_port", remote_name="threatPreventionServerProxyPort", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="threat_prevention_server_username", remote_name="threatPreventionServerUsername", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="threat_prevention_syslog_proxy_port", remote_name="threatPreventionSyslogProxyPort", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="signature_update_through_cloud_enabled", remote_name="signatureUpdateThroughCloudEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="virtual_firewall_rules_enabled", remote_name="virtualFirewallRulesEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ejabberd_license_expiry_time", remote_name="ejabberdLicenseExpiryTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ejbca_nsg_certificate_profile", remote_name="ejbcaNSGCertificateProfile", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ejbca_nsg_end_entity_profile", remote_name="ejbcaNSGEndEntityProfile", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ejbca_ocsp_responder_cn", remote_name="ejbcaOCSPResponderCN", attribute_type=str, is_required=False, is_unique=False)
@@ -423,6 +433,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="ejbca_vsp_root_ca", remote_name="ejbcaVspRootCa", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="alarms_max_per_object", remote_name="alarmsMaxPerObject", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="elastic_cluster_name", remote_name="elasticClusterName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="elastic_search_license_expiry_time", remote_name="elasticSearchLicenseExpiryTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_enterprise_avatar_on_nsg", remote_name="allowEnterpriseAvatarOnNSG", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="global_mac_address", remote_name="globalMACAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -464,6 +475,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="esi_id", remote_name="esiID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="csproot_authentication_method", remote_name="csprootAuthenticationMethod", attribute_type=str, is_required=False, is_unique=False, choices=[u'LDAP', u'LOCAL'])
         self.expose_attribute(local_name="stack_trace_enabled", remote_name="stackTraceEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="stateful_aclicmp_timeout", remote_name="statefulACLICMPTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stateful_acl_non_tcp_timeout", remote_name="statefulACLNonTCPTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stateful_acltcp_timeout", remote_name="statefulACLTCPTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="static_wan_service_purge_time", remote_name="staticWANServicePurgeTime", attribute_type=int, is_required=False, is_unique=False)
@@ -1902,6 +1914,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def ca_certificates_expiry_time(self):
+        """ Get ca_certificates_expiry_time value.
+
+            Notes:
+                CA Certificates expiry date with time
+
+                
+                This attribute is named `caCertificatesExpiryTime` in VSD API.
+                
+        """
+        return self._ca_certificates_expiry_time
+
+    @ca_certificates_expiry_time.setter
+    def ca_certificates_expiry_time(self, value):
+        """ Set ca_certificates_expiry_time value.
+
+            Notes:
+                CA Certificates expiry date with time
+
+                
+                This attribute is named `caCertificatesExpiryTime` in VSD API.
+                
+        """
+        self._ca_certificates_expiry_time = value
+
+    
+    @property
     def saa_s_applications_publish_date(self):
         """ Get saa_s_applications_publish_date value.
 
@@ -2550,6 +2589,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def netconf7x50_routing_policy_validation_enabled(self):
+        """ Get netconf7x50_routing_policy_validation_enabled value.
+
+            Notes:
+                Indicates if Routing Policy Definition validation is enabled for Netconf 7x50.
+
+                
+                This attribute is named `netconf7x50RoutingPolicyValidationEnabled` in VSD API.
+                
+        """
+        return self._netconf7x50_routing_policy_validation_enabled
+
+    @netconf7x50_routing_policy_validation_enabled.setter
+    def netconf7x50_routing_policy_validation_enabled(self, value):
+        """ Set netconf7x50_routing_policy_validation_enabled value.
+
+            Notes:
+                Indicates if Routing Policy Definition validation is enabled for Netconf 7x50.
+
+                
+                This attribute is named `netconf7x50RoutingPolicyValidationEnabled` in VSD API.
+                
+        """
+        self._netconf7x50_routing_policy_validation_enabled = value
+
+    
+    @property
     def key_server_monitor_enabled(self):
         """ Get key_server_monitor_enabled value.
 
@@ -2847,6 +2913,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def signature_update_through_cloud_enabled(self):
+        """ Get signature_update_through_cloud_enabled value.
+
+            Notes:
+                Indicates if Threat Prevention Signature updates are enabled through Cloud.
+
+                
+                This attribute is named `signatureUpdateThroughCloudEnabled` in VSD API.
+                
+        """
+        return self._signature_update_through_cloud_enabled
+
+    @signature_update_through_cloud_enabled.setter
+    def signature_update_through_cloud_enabled(self, value):
+        """ Set signature_update_through_cloud_enabled value.
+
+            Notes:
+                Indicates if Threat Prevention Signature updates are enabled through Cloud.
+
+                
+                This attribute is named `signatureUpdateThroughCloudEnabled` in VSD API.
+                
+        """
+        self._signature_update_through_cloud_enabled = value
+
+    
+    @property
     def virtual_firewall_rules_enabled(self):
         """ Get virtual_firewall_rules_enabled value.
 
@@ -2871,6 +2964,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._virtual_firewall_rules_enabled = value
+
+    
+    @property
+    def ejabberd_license_expiry_time(self):
+        """ Get ejabberd_license_expiry_time value.
+
+            Notes:
+                Ejabberd License expiry date with time
+
+                
+                This attribute is named `ejabberdLicenseExpiryTime` in VSD API.
+                
+        """
+        return self._ejabberd_license_expiry_time
+
+    @ejabberd_license_expiry_time.setter
+    def ejabberd_license_expiry_time(self, value):
+        """ Set ejabberd_license_expiry_time value.
+
+            Notes:
+                Ejabberd License expiry date with time
+
+                
+                This attribute is named `ejabberdLicenseExpiryTime` in VSD API.
+                
+        """
+        self._ejabberd_license_expiry_time = value
 
     
     @property
@@ -3060,6 +3180,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._elastic_cluster_name = value
+
+    
+    @property
+    def elastic_search_license_expiry_time(self):
+        """ Get elastic_search_license_expiry_time value.
+
+            Notes:
+                Elastic Search License expiry date with time
+
+                
+                This attribute is named `elasticSearchLicenseExpiryTime` in VSD API.
+                
+        """
+        return self._elastic_search_license_expiry_time
+
+    @elastic_search_license_expiry_time.setter
+    def elastic_search_license_expiry_time(self, value):
+        """ Set elastic_search_license_expiry_time value.
+
+            Notes:
+                Elastic Search License expiry date with time
+
+                
+                This attribute is named `elasticSearchLicenseExpiryTime` in VSD API.
+                
+        """
+        self._elastic_search_license_expiry_time = value
 
     
     @property
@@ -4167,6 +4314,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._stack_trace_enabled = value
+
+    
+    @property
+    def stateful_aclicmp_timeout(self):
+        """ Get stateful_aclicmp_timeout value.
+
+            Notes:
+                Defines the timeout in seconds for stateful ACLs that are of type ICMP. Supported in Virtual Cloud Services (VCS) only.
+
+                
+                This attribute is named `statefulACLICMPTimeout` in VSD API.
+                
+        """
+        return self._stateful_aclicmp_timeout
+
+    @stateful_aclicmp_timeout.setter
+    def stateful_aclicmp_timeout(self, value):
+        """ Set stateful_aclicmp_timeout value.
+
+            Notes:
+                Defines the timeout in seconds for stateful ACLs that are of type ICMP. Supported in Virtual Cloud Services (VCS) only.
+
+                
+                This attribute is named `statefulACLICMPTimeout` in VSD API.
+                
+        """
+        self._stateful_aclicmp_timeout = value
 
     
     @property

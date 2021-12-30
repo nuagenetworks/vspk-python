@@ -52,43 +52,49 @@ class NUTestRun(NURESTObject):
     
     ## Constants
     
-    CONST_TEST_RESULT_DATA_TYPE_MTUDISCOVERYTESTRESULT = "MTUDiscoveryTestResult"
-    
-    CONST_OPERATION_STATUS_STARTED = "STARTED"
-    
-    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
-    
-    CONST_OPERATION_STATUS_FAILED = "FAILED"
-    
-    CONST_TEST_RESULT_DATA_TYPE_TCPCONNECTTESTRESULT = "TCPConnectTestResult"
-    
-    CONST_TEST_RESULT_DATA_TYPE_BANDWIDTHTESTRESULT = "BandwidthTestResult"
-    
-    CONST_TEST_RESULT_NOT_APPLICABLE = "NOT_APPLICABLE"
-    
     CONST_UNDERLAY_TEST_CATEGORY_BANDWIDTH = "BANDWIDTH"
     
-    CONST_TEST_RESULT_FAIL = "FAIL"
-    
-    CONST_OPERATION_STATUS_UNKNOWN = "UNKNOWN"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_UNDERLAY_TEST_CATEGORY_CONNECTIVITY = "CONNECTIVITY"
-    
-    CONST_TEST_RESULT_PASS = "PASS"
-    
-    CONST_TEST_RESULT_DATA_TYPE_NONE = "None"
     
     CONST_TEST_RESULT_DATA_TYPE_UDPPROBETESTRESULT = "UDPProbeTestResult"
     
     CONST_OPERATION_STATUS_COMPLETED = "COMPLETED"
     
-    CONST_TEST_RESULT_DEGRADED = "DEGRADED"
-    
-    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_OPERATION_STATUS_TIMED_OUT = "TIMED_OUT"
+    CONST_OPERATION_STATUS_UNKNOWN = "UNKNOWN"
     
     CONST_UNDERLAY_TEST_CATEGORY_MTU_DISCOVERY = "MTU_DISCOVERY"
+    
+    CONST_TEST_RESULT_PASS = "PASS"
+    
+    CONST_TEST_RESULT_DATA_TYPE_NONE = "None"
+    
+    CONST_TEST_RESULT_DATA_TYPE_TCPCONNECTTESTRESULT = "TCPConnectTestResult"
+    
+    CONST_TEST_RESULT_RUNNING = "RUNNING"
+    
+    CONST_ASSOCIATED_TEST_SUITE_RUN_TYPE_SCHEDULED_TEST_SUITE_RUN = "SCHEDULED_TEST_SUITE_RUN"
+    
+    CONST_TEST_RESULT_DATA_TYPE_MTUDISCOVERYTESTRESULT = "MTUDiscoveryTestResult"
+    
+    CONST_OPERATION_STATUS_FAILED = "FAILED"
+    
+    CONST_TEST_RESULT_NOT_APPLICABLE = "NOT_APPLICABLE"
+    
+    CONST_OPERATION_STATUS_STARTED = "STARTED"
+    
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
+    CONST_TEST_RESULT_DATA_TYPE_BANDWIDTHTESTRESULT = "BandwidthTestResult"
+    
+    CONST_TEST_RESULT_FAIL = "FAIL"
+    
+    CONST_TEST_RESULT_DEGRADED = "DEGRADED"
+    
+    CONST_ASSOCIATED_TEST_SUITE_RUN_TYPE_TEST_SUITE_RUN = "TEST_SUITE_RUN"
+    
+    CONST_OPERATION_STATUS_TIMED_OUT = "TIMED_OUT"
     
     
 
@@ -111,6 +117,7 @@ class NUTestRun(NURESTObject):
         
         self._last_updated_by = None
         self._last_updated_date = None
+        self._additional_test_run_details = None
         self._test_result = None
         self._test_result_data = None
         self._test_result_data_type = None
@@ -128,6 +135,7 @@ class NUTestRun(NURESTObject):
         self._creation_date = None
         self._associated_test_id = None
         self._associated_test_suite_run_id = None
+        self._associated_test_suite_run_type = None
         self._start_date_time = None
         self._stop_date_time = None
         self._duration = None
@@ -136,7 +144,8 @@ class NUTestRun(NURESTObject):
         
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="test_result", remote_name="testResult", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEGRADED', u'FAIL', u'NOT_APPLICABLE', u'PASS'])
+        self.expose_attribute(local_name="additional_test_run_details", remote_name="additionalTestRunDetails", attribute_type=dict, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="test_result", remote_name="testResult", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEGRADED', u'FAIL', u'NOT_APPLICABLE', u'PASS', u'RUNNING'])
         self.expose_attribute(local_name="test_result_data", remote_name="testResultData", attribute_type=dict, is_required=False, is_unique=False)
         self.expose_attribute(local_name="test_result_data_type", remote_name="testResultDataType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BandwidthTestResult', u'MTUDiscoveryTestResult', u'None', u'TCPConnectTestResult', u'UDPProbeTestResult'])
         self.expose_attribute(local_name="test_result_specification_entity_name", remote_name="testResultSpecificationEntityName", attribute_type=str, is_required=False, is_unique=False)
@@ -153,6 +162,7 @@ class NUTestRun(NURESTObject):
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_test_id", remote_name="associatedTestID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_test_suite_run_id", remote_name="associatedTestSuiteRunID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_test_suite_run_type", remote_name="associatedTestSuiteRunType", attribute_type=str, is_required=False, is_unique=False, choices=[u'SCHEDULED_TEST_SUITE_RUN', u'TEST_SUITE_RUN'])
         self.expose_attribute(local_name="start_date_time", remote_name="startDateTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="stop_date_time", remote_name="stopDateTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="duration", remote_name="duration", attribute_type=int, is_required=False, is_unique=False)
@@ -228,6 +238,33 @@ class NUTestRun(NURESTObject):
                 
         """
         self._last_updated_date = value
+
+    
+    @property
+    def additional_test_run_details(self):
+        """ Get additional_test_run_details value.
+
+            Notes:
+                Additional details for this Test Run.
+
+                
+                This attribute is named `additionalTestRunDetails` in VSD API.
+                
+        """
+        return self._additional_test_run_details
+
+    @additional_test_run_details.setter
+    def additional_test_run_details(self, value):
+        """ Set additional_test_run_details value.
+
+            Notes:
+                Additional details for this Test Run.
+
+                
+                This attribute is named `additionalTestRunDetails` in VSD API.
+                
+        """
+        self._additional_test_run_details = value
 
     
     @property
@@ -683,6 +720,33 @@ class NUTestRun(NURESTObject):
                 
         """
         self._associated_test_suite_run_id = value
+
+    
+    @property
+    def associated_test_suite_run_type(self):
+        """ Get associated_test_suite_run_type value.
+
+            Notes:
+                The type of Test Suite Run to which this Test Run belongs.
+
+                
+                This attribute is named `associatedTestSuiteRunType` in VSD API.
+                
+        """
+        return self._associated_test_suite_run_type
+
+    @associated_test_suite_run_type.setter
+    def associated_test_suite_run_type(self, value):
+        """ Set associated_test_suite_run_type value.
+
+            Notes:
+                The type of Test Suite Run to which this Test Run belongs.
+
+                
+                This attribute is named `associatedTestSuiteRunType` in VSD API.
+                
+        """
+        self._associated_test_suite_run_type = value
 
     
     @property

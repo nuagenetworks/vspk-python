@@ -5,7 +5,7 @@ nunsgateway
 
 .. class:: nunsgateway.NUNSGateway(bambou.nurest_object.NUMetaRESTObject,):
 
-Network Services Gateways are a policy enforcement end-points responsible for the delivery of networking services. NSG access ports/VLANs may be attached to existing host or bridge VPorts.
+Network Services Gateways are a policy enforcement end-points responsible for the delivery of networking services. NSG access ports/VLANs may be attached to existing host or bridge vPorts.
 
 
 Attributes

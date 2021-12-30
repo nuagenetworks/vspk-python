@@ -101,6 +101,7 @@ class NURoutingPolicy(NURESTObject):
         self._embedded_metadata = None
         self._entity_scope = None
         self._policy_definition = None
+        self._policy_unique_id = None
         self._content_type = None
         self._routing_protocol = None
         self._customer_id = None
@@ -112,6 +113,7 @@ class NURoutingPolicy(NURESTObject):
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="policy_definition", remote_name="policyDefinition", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="policy_unique_id", remote_name="policyUniqueID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="content_type", remote_name="contentType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'NETCONF_7X50', u'SR_LINUX'])
         self.expose_attribute(local_name="routing_protocol", remote_name="routingProtocol", attribute_type=str, is_required=False, is_unique=False, choices=[u'BGP', u'ISIS', u'OSPFv2', u'OSPFv3', u'ROUTING'])
         self.expose_attribute(local_name="customer_id", remote_name="CustomerID", attribute_type=int, is_required=False, is_unique=False)
@@ -286,6 +288,33 @@ class NURoutingPolicy(NURESTObject):
                 
         """
         self._policy_definition = value
+
+    
+    @property
+    def policy_unique_id(self):
+        """ Get policy_unique_id value.
+
+            Notes:
+                15-digit ID to uniquely identify Routing Policies.
+
+                
+                This attribute is named `policyUniqueID` in VSD API.
+                
+        """
+        return self._policy_unique_id
+
+    @policy_unique_id.setter
+    def policy_unique_id(self, value):
+        """ Set policy_unique_id value.
+
+            Notes:
+                15-digit ID to uniquely identify Routing Policies.
+
+                
+                This attribute is named `policyUniqueID` in VSD API.
+                
+        """
+        self._policy_unique_id = value
 
     
     @property

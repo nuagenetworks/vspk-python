@@ -38,6 +38,8 @@ Attributes
 
 - ``web_filter_type``: Indicates type of web filter being set
 
+- ``remote_uplink_preference``: Indicates the preferencial path selection for network traffic for this ACL.
+
 - ``reputation_score``: Web Domain Reputation Score. Valid values are LOW_RISK, MEDIUM_RISK and HIGH_RISK.  Applicable when webFilterType is WEB_DOMAIN_REPUTATION.
 
 - ``description``: Description of the rule entry
@@ -74,11 +76,19 @@ Attributes
 
 - ``source_port``: Source port to be matched if protocol is UDP or TCP. Value should be either * or a single port number or a port range like 1,2.. or 1 - 10
 
+- ``uplink_preference``: Indicates the preferencial path selection for network traffic for this ACL - default is DEFAULT when the attribute is applicable.
+
+- ``app_type``: Type of application selected, ALL (all applications in match criteria), NONE (no application in match criteria), APPLICATION (specific application in match criteria).
+
 - ``creation_date``: Time stamp when this object was created.
 
 - ``priority``: The priority of the rule entry that determines the order of entries
 
 - ``protocol``: Protocol number that must be matched
+
+- ``is_sla_aware``: This flag denotes whether the Uplink Preference configured by the user will work with AAR or will over-ride AAR.
+
+- ``associated_application_id``: Associated application UUID.
 
 - ``associated_egress_entry_id``: In the draft mode, the ACL entry refers to this LiveEntity. In non-drafted mode, this is null.
 

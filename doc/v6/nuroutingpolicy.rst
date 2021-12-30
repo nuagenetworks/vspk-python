@@ -24,6 +24,8 @@ Attributes
 
 - ``policy_definition``: String blob
 
+- ``policy_unique_id``: 15-digit ID to uniquely identify Routing Policies.
+
 - ``content_type``: Content type for routing policy provisioning for different mediation devices
 
 - ``routing_protocol``: Routing protocol this policy definition is used for

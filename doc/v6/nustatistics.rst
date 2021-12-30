@@ -48,6 +48,8 @@ Parents
 
 - :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`
 
+- :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`
+
 - :ref:`nuzone.NUZone<nuzone>`
 
 - :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
@@ -65,8 +67,6 @@ Parents
 - :ref:`nuvminterface.NUVMInterface<nuvminterface>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
-
-- :ref:`nuegressaclentrytemplate.NUEgressACLEntryTemplate<nuegressaclentrytemplate>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
 

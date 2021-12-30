@@ -73,6 +73,12 @@ from .fetchers import NUGatewayTemplatesFetcher
 from .fetchers import NUPATNATPoolsFetcher
 
 
+from .fetchers import NUScheduledTestSuitesFetcher
+
+
+from .fetchers import NUICMPEchoTestDefinitionsFetcher
+
+
 from .fetchers import NULDAPConfigurationsFetcher
 
 
@@ -516,6 +522,12 @@ class NUEnterprise(NURESTObject):
         
         
         self.patnat_pools = NUPATNATPoolsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.scheduled_test_suites = NUScheduledTestSuitesFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.icmp_echo_test_definitions = NUICMPEchoTestDefinitionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.ldap_configurations = NULDAPConfigurationsFetcher.fetcher_with_object(parent_object=self, relationship="child")

@@ -124,6 +124,7 @@ class NUEnterpriseProfile(NURESTObject):
         self._floating_ips_quota = None
         self._embedded_metadata = None
         self._enable_application_performance_management = None
+        self._enable_oam_connectivity_statistics_collection = None
         self._encryption_management_mode = None
         self._entity_scope = None
         self._forwarding_class = None
@@ -149,6 +150,7 @@ class NUEnterpriseProfile(NURESTObject):
         self.expose_attribute(local_name="floating_ips_quota", remote_name="floatingIPsQuota", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enable_application_performance_management", remote_name="enableApplicationPerformanceManagement", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enable_oam_connectivity_statistics_collection", remote_name="enableOAMConnectivityStatisticsCollection", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="encryption_management_mode", remote_name="encryptionManagementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'MANAGED'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="forwarding_class", remote_name="forwardingClass", attribute_type=list, is_required=False, is_unique=False)
@@ -658,6 +660,33 @@ class NUEnterpriseProfile(NURESTObject):
                 
         """
         self._enable_application_performance_management = value
+
+    
+    @property
+    def enable_oam_connectivity_statistics_collection(self):
+        """ Get enable_oam_connectivity_statistics_collection value.
+
+            Notes:
+                Enables the collection of OAM Connectivity Statistics in the Elastic DB.
+
+                
+                This attribute is named `enableOAMConnectivityStatisticsCollection` in VSD API.
+                
+        """
+        return self._enable_oam_connectivity_statistics_collection
+
+    @enable_oam_connectivity_statistics_collection.setter
+    def enable_oam_connectivity_statistics_collection(self, value):
+        """ Set enable_oam_connectivity_statistics_collection value.
+
+            Notes:
+                Enables the collection of OAM Connectivity Statistics in the Elastic DB.
+
+                
+                This attribute is named `enableOAMConnectivityStatisticsCollection` in VSD API.
+                
+        """
+        self._enable_oam_connectivity_statistics_collection = value
 
     
     @property

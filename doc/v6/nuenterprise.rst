@@ -124,6 +124,8 @@ Children
 :ref:`nugatewayslocation.NUGatewaysLocation<nugatewayslocation>`                                                                                                 ``gateways_locations`` 
 :ref:`nugatewaytemplate.NUGatewayTemplate<nugatewaytemplate>`                                                                                                    ``gateway_templates`` 
 :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`                                                                                                                   ``patnat_pools`` 
+:ref:`nuscheduledtestsuite.NUScheduledTestSuite<nuscheduledtestsuite>`                                                                                           ``scheduled_test_suites`` 
+:ref:`nuicmpechotestdefinition.NUICMPEchoTestDefinition<nuicmpechotestdefinition>`                                                                               ``icmp_echo_test_definitions`` 
 :ref:`nuldapconfiguration.NULDAPConfiguration<nuldapconfiguration>`                                                                                              ``ldap_configurations`` 
 :ref:`nuidpprofile.NUIDPProfile<nuidpprofile>`                                                                                                                   ``idp_profiles`` 
 :ref:`nuwebcategory.NUWebCategory<nuwebcategory>`                                                                                                                ``web_categories`` 
