@@ -82,6 +82,7 @@ class NUScheduledtestsuiterun(NURESTObject):
         self._vlan_id = None
         self._domain_name = None
         self._zone_name = None
+        self._source_ip = None
         self._operation_status = None
         self._vport_port_name = None
         self._vport_vlan_id = None
@@ -101,10 +102,11 @@ class NUScheduledtestsuiterun(NURESTObject):
         self.expose_attribute(local_name="vlan_id", remote_name="vlanID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zone_name", remote_name="zoneName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="source_ip", remote_name="sourceIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="operation_status", remote_name="operationStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'RUNNING', u'STARTED', u'UNKNOWN'])
         self.expose_attribute(local_name="vport_port_name", remote_name="vportPortName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vport_vlan_id", remote_name="vportVlanID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_scheduled_test_suite_id", remote_name="associatedScheduledTestSuiteID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_scheduled_test_suite_id", remote_name="associatedScheduledTestSuiteID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="associated_scheduled_test_suite_name", remote_name="associatedScheduledTestSuiteName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="subnet_name", remote_name="subnetName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="system_id", remote_name="systemID", attribute_type=str, is_required=False, is_unique=False)
@@ -411,6 +413,33 @@ class NUScheduledtestsuiterun(NURESTObject):
                 
         """
         self._zone_name = value
+
+    
+    @property
+    def source_ip(self):
+        """ Get source_ip value.
+
+            Notes:
+                The IP address that will be assigned to the interface in namespace on NSG and used by the ICMP Echo test as the source IP. This is an optional field, if not provided the interface in namespace is assigned an IP from the DHCP pool.
+
+                
+                This attribute is named `sourceIP` in VSD API.
+                
+        """
+        return self._source_ip
+
+    @source_ip.setter
+    def source_ip(self, value):
+        """ Set source_ip value.
+
+            Notes:
+                The IP address that will be assigned to the interface in namespace on NSG and used by the ICMP Echo test as the source IP. This is an optional field, if not provided the interface in namespace is assigned an IP from the DHCP pool.
+
+                
+                This attribute is named `sourceIP` in VSD API.
+                
+        """
+        self._source_ip = value
 
     
     @property

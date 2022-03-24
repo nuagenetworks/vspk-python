@@ -313,7 +313,7 @@ class NUPort(NURESTObject):
         """ Get native_vlan value.
 
             Notes:
-                Native VLAN to carry untagged traffic on this port. Applicable for Access Ports on Cisco 9K only. Possible values are 1-3967.
+                Native VLAN to carry untagged traffic on this port. Applicable for Access Ports on third-party Netconf Gateways only. Possible values are 1-3967.
 
                 
                 This attribute is named `nativeVLAN` in VSD API.
@@ -326,7 +326,7 @@ class NUPort(NURESTObject):
         """ Set native_vlan value.
 
             Notes:
-                Native VLAN to carry untagged traffic on this port. Applicable for Access Ports on Cisco 9K only. Possible values are 1-3967.
+                Native VLAN to carry untagged traffic on this port. Applicable for Access Ports on third-party Netconf Gateways only. Possible values are 1-3967.
 
                 
                 This attribute is named `nativeVLAN` in VSD API.
@@ -525,7 +525,7 @@ class NUPort(NURESTObject):
         """ Get routed value.
 
             Notes:
-                Indicates if this Port is a routed interface. Applicable for Access Ports on Cisco 9K only.
+                Indicates if this Port is a routed interface. Applicable for Access Ports on third-party Netconf Gateways only.
 
                 
         """
@@ -536,7 +536,7 @@ class NUPort(NURESTObject):
         """ Set routed value.
 
             Notes:
-                Indicates if this Port is a routed interface. Applicable for Access Ports on Cisco 9K only.
+                Indicates if this Port is a routed interface. Applicable for Access Ports on third-party Netconf Gateways only.
 
                 
         """

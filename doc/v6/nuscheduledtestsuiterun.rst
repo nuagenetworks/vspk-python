@@ -34,13 +34,15 @@ Attributes
 
 - ``zone_name``: Zone name within which the source vPort being tested resides.
 
+- ``source_ip``: The IP address that will be assigned to the interface in namespace on NSG and used by the ICMP Echo test as the source IP. This is an optional field, if not provided the interface in namespace is assigned an IP from the DHCP pool.
+
 - ``operation_status``: The status of the test operation request received by the NSG agent.
 
 - ``vport_port_name``: The access port of the VPort against which the test suite is executed.
 
 - ``vport_vlan_id``: The VLAN ID of the VPort against which the test suite is executed.
 
-- ``associated_scheduled_test_suite_id``: The ID of the Scheduled Test Suite from which this instance of run was created.
+- ``associated_scheduled_test_suite_id`` (**Mandatory**): The ID of the Scheduled Test Suite from which this instance of run was created.
 
 - ``associated_scheduled_test_suite_name``: Name of the Scheduled Test Suite from which this run was created.
 

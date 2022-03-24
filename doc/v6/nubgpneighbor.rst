@@ -12,7 +12,7 @@ Attributes
 ----------
 
 
-- ``bfd_enabled``: Enable or disable Bidirectional Forwarding Detection for this BGP neighbor
+- ``bfd_enabled``: Enable or disable Bidirectional Forwarding Detection for this BGP neighbor. Not Applicable for third-party Netconf Gateways.
 
 - ``ip_type``: It can be either IPv4 or IPv6
 

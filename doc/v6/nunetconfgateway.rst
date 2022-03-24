@@ -145,5 +145,7 @@ Parents
 --------
 
 
+- :ref:`nusubnet.NUSubnet<nusubnet>`
+
 - :ref:`nudomain.NUDomain<nudomain>`
 

@@ -46,6 +46,8 @@ Attributes
 
 - ``advertise``: Subnet will be advertised in Overlay and WAN BGP
 
+- ``secondary_dhcp_server_address``: Secondary DHCP Server address when the Domain DHCP Behaviour is OVERLAY Relay and status is OVERRIDE
+
 - ``template_id``: The ID of the subnet template that this subnet object was derived from
 
 - ``service_id``: The service ID used by the VSCs to identify this subnet
@@ -55,6 +57,14 @@ Attributes
 - ``resource_type``: Defines the type of the subnet, PUBLIC,FLOATING,STANDARD OR NSG_VNF
 
 - ``netmask``: Netmask of the subnet defined
+
+- ``aggregated_l2_domain_id``: ID of the Aggregated L2 Domain
+
+- ``aggregated_l2_domain_name``: Name of the Aggregated L2 Domain
+
+- ``aggregated_l2_domain_rt``: Route Target of the Aggregated L2 Domain
+
+- ``aggregated_l2_domain_vnid``: VNID of the Aggregated L2 Domain
 
 - ``link_local_address``: IPv6 unicast address. Valid range is fe80::/64.
 
@@ -96,11 +106,17 @@ Attributes
 
 - ``creation_date``: Time stamp when this object was created.
 
+- ``primary_dhcp_server_address``: Primary DHCP Server address when the Domain DHCP Behaviour is OVERLAY Relay and status is OVERRIDE
+
 - ``proxy_arp``:  When set, VRS will act as  ARP Proxy
 
 - ``vrrp_ipv6_backup_address``: 7x50 VRRP IPv6 Backup Address. Valid range is fe80::/64.
 
+- ``vrrp_priority``: VRRP Priority of Master Netconf Gateway.
+
 - ``use_global_mac``: if this flag is enabled, the system configured globalMACAddress will be used as the gateway mac address
+
+- ``associated_master_netconf_gateway_id``: The ID of associated master Netconf gateway
 
 - ``associated_multicast_channel_map_id``: The ID of the Multi Cast Channel Map  this Subnet/Subnet Template is associated with. This has to be set when enableMultiCast is set to ENABLED
 
@@ -131,6 +147,7 @@ Children
 ================================================================================================================================================               ==========================================================================================
 **class**                                                                                                                                                      **fetcher**
 
+:ref:`nugateway.NUGateway<nugateway>`                                                                                                                            ``gateways`` 
 :ref:`nupatipentry.NUPATIPEntry<nupatipentry>`                                                                                                                   ``patip_entries`` 
 :ref:`nutca.NUTCA<nutca>`                                                                                                                                        ``tcas`` 
 :ref:`nuaddressrange.NUAddressRange<nuaddressrange>`                                                                                                             ``address_ranges`` 
@@ -139,6 +156,7 @@ Children
 :ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`nuvmresync.NUVMResync<nuvmresync>`                                                                                                                         ``vm_resyncs`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`                                                                                                       ``netconf_gateways`` 
 :ref:`nubgpneighbor.NUBGPNeighbor<nubgpneighbor>`                                                                                                                ``bgp_neighbors`` 
 :ref:`nudhcpoption.NUDHCPOption<nudhcpoption>`                                                                                                                   ``dhcp_options`` 
 :ref:`nudhcpv6option.NUDHCPv6Option<nudhcpv6option>`                                                                                                             ``dhcpv6_options`` 
@@ -153,6 +171,7 @@ Children
 :ref:`nucontainerinterface.NUContainerInterface<nucontainerinterface>`                                                                                           ``container_interfaces`` 
 :ref:`nucontainerresync.NUContainerResync<nucontainerresync>`                                                                                                    ``container_resyncs`` 
 :ref:`nuqos.NUQOS<nuqos>`                                                                                                                                        ``qoss`` 
+:ref:`nuroutingpolicyassociation.NURoutingPolicyAssociation<nuroutingpolicyassociation>`                                                                         ``routing_policy_associations`` 
 :ref:`nuvport.NUVPort<nuvport>`                                                                                                                                  ``vports`` 
 :ref:`nuipreservation.NUIPReservation<nuipreservation>`                                                                                                          ``ip_reservations`` 
 :ref:`nuproxyarpfilter.NUProxyARPFilter<nuproxyarpfilter>`                                                                                                       ``proxy_arp_filters`` 

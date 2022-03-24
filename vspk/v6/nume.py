@@ -88,6 +88,9 @@ from .fetchers import NUTestDefinitionsFetcher
 from .fetchers import NUMetadatasFetcher
 
 
+from .fetchers import NUNetconfGlobalConfigurationsFetcher
+
+
 from .fetchers import NUNetconfProfilesFetcher
 
 
@@ -503,6 +506,9 @@ class NUMe(NURESTRootObject):
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.netconf_global_configurations = NUNetconfGlobalConfigurationsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.netconf_profiles = NUNetconfProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")

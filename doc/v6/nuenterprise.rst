@@ -191,6 +191,7 @@ Children
 :ref:`nunsgatewaytemplate.NUNSGatewayTemplate<nunsgatewaytemplate>`                                                                                              ``ns_gateway_templates`` 
 :ref:`nunsggroup.NUNSGGroup<nunsggroup>`                                                                                                                         ``nsg_groups`` 
 :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`                                                                            ``ns_redundant_gateway_groups`` 
+:ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`                                                                               ``ethernet_segment_gw_groups`` 
 :ref:`nupublicnetworkmacro.NUPublicNetworkMacro<nupublicnetworkmacro>`                                                                                           ``public_network_macros`` 
 :ref:`numulticastlist.NUMultiCastList<numulticastlist>`                                                                                                          ``multi_cast_lists`` 
 :ref:`nuavatar.NUAvatar<nuavatar>`                                                                                                                               ``avatars`` 

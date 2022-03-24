@@ -28,6 +28,9 @@
 
 
 
+from .fetchers import NUGatewaysFetcher
+
+
 from .fetchers import NUPATIPEntriesFetcher
 
 
@@ -50,6 +53,9 @@ from .fetchers import NUVMResyncsFetcher
 
 
 from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUNetconfGatewaysFetcher
 
 
 from .fetchers import NUBGPNeighborsFetcher
@@ -92,6 +98,9 @@ from .fetchers import NUContainerResyncsFetcher
 
 
 from .fetchers import NUQOSsFetcher
+
+
+from .fetchers import NURoutingPolicyAssociationsFetcher
 
 
 from .fetchers import NUVPortsFetcher
@@ -158,6 +167,8 @@ class NUSubnet(NURESTObject):
     CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
     
     CONST_L2_ENCAP_TYPE_VLAN = "VLAN"
+    
+    CONST_DHCP_RELAY_STATUS_OVERRIDE = "OVERRIDE"
     
     CONST_RESOURCE_TYPE_PUBLIC = "PUBLIC"
     
@@ -239,11 +250,16 @@ class NUSubnet(NURESTObject):
         self._access_restriction_enabled = None
         self._address = None
         self._advertise = None
+        self._secondary_dhcp_server_address = None
         self._template_id = None
         self._service_id = None
         self._description = None
         self._resource_type = None
         self._netmask = None
+        self._aggregated_l2_domain_id = None
+        self._aggregated_l2_domain_name = None
+        self._aggregated_l2_domain_rt = None
+        self._aggregated_l2_domain_vnid = None
         self._link_local_address = None
         self._embedded_metadata = None
         self._vn_id = None
@@ -264,9 +280,12 @@ class NUSubnet(NURESTObject):
         self._split_subnet = None
         self._irb_sub_interface_id = None
         self._creation_date = None
+        self._primary_dhcp_server_address = None
         self._proxy_arp = None
         self._vrrp_ipv6_backup_address = None
+        self._vrrp_priority = None
         self._use_global_mac = None
+        self._associated_master_netconf_gateway_id = None
         self._associated_multicast_channel_map_id = None
         self._associated_shared_network_resource_id = None
         self._dual_stack_dynamic_ip_allocation = None
@@ -280,7 +299,7 @@ class NUSubnet(NURESTObject):
         
         self.expose_attribute(local_name="l2_encap_type", remote_name="l2EncapType", attribute_type=str, is_required=False, is_unique=False, choices=[u'MPLS', u'MPLSoUDP', u'VLAN', u'VXLAN'])
         self.expose_attribute(local_name="pat_enabled", remote_name="PATEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
-        self.expose_attribute(local_name="dhcp_relay_status", remote_name="DHCPRelayStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="dhcp_relay_status", remote_name="DHCPRelayStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'OVERRIDE'])
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="ip_type", remote_name="IPType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DUALSTACK', u'IPV4', u'IPV6'])
         self.expose_attribute(local_name="ipv6_address", remote_name="IPv6Address", attribute_type=str, is_required=False, is_unique=False)
@@ -295,11 +314,16 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="access_restriction_enabled", remote_name="accessRestrictionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="advertise", remote_name="advertise", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="secondary_dhcp_server_address", remote_name="secondaryDHCPServerAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_id", remote_name="serviceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="resource_type", remote_name="resourceType", attribute_type=str, is_required=False, is_unique=False, choices=[u'FLOATING', u'NSG_VNF', u'PUBLIC', u'STANDARD'])
         self.expose_attribute(local_name="netmask", remote_name="netmask", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="aggregated_l2_domain_id", remote_name="aggregatedL2DomainID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="aggregated_l2_domain_name", remote_name="aggregatedL2DomainName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="aggregated_l2_domain_rt", remote_name="aggregatedL2DomainRT", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="aggregated_l2_domain_vnid", remote_name="aggregatedL2DomainVNID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="link_local_address", remote_name="linkLocalAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vn_id", remote_name="vnId", attribute_type=int, is_required=False, is_unique=False)
@@ -320,9 +344,12 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="split_subnet", remote_name="splitSubnet", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="irb_sub_interface_id", remote_name="irbSubInterfaceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="primary_dhcp_server_address", remote_name="primaryDHCPServerAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="proxy_arp", remote_name="proxyARP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrrp_ipv6_backup_address", remote_name="vrrpIPv6BackupAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrrp_priority", remote_name="vrrpPriority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="use_global_mac", remote_name="useGlobalMAC", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'ENTERPRISE_DEFAULT'])
+        self.expose_attribute(local_name="associated_master_netconf_gateway_id", remote_name="associatedMasterNetconfGatewayId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_shared_network_resource_id", remote_name="associatedSharedNetworkResourceID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dual_stack_dynamic_ip_allocation", remote_name="dualStackDynamicIPAllocation", attribute_type=bool, is_required=False, is_unique=False)
@@ -336,6 +363,9 @@ class NUSubnet(NURESTObject):
         
 
         # Fetchers
+        
+        
+        self.gateways = NUGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.patip_entries = NUPATIPEntriesFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -360,6 +390,9 @@ class NUSubnet(NURESTObject):
         
         
         self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.netconf_gateways = NUNetconfGatewaysFetcher.fetcher_with_object(parent_object=self, relationship="member")
         
         
         self.bgp_neighbors = NUBGPNeighborsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -402,6 +435,9 @@ class NUSubnet(NURESTObject):
         
         
         self.qoss = NUQOSsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.routing_policy_associations = NURoutingPolicyAssociationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.vports = NUVPortsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -870,6 +906,33 @@ class NUSubnet(NURESTObject):
 
     
     @property
+    def secondary_dhcp_server_address(self):
+        """ Get secondary_dhcp_server_address value.
+
+            Notes:
+                Secondary DHCP Server address when the Domain DHCP Behaviour is OVERLAY Relay and status is OVERRIDE
+
+                
+                This attribute is named `secondaryDHCPServerAddress` in VSD API.
+                
+        """
+        return self._secondary_dhcp_server_address
+
+    @secondary_dhcp_server_address.setter
+    def secondary_dhcp_server_address(self, value):
+        """ Set secondary_dhcp_server_address value.
+
+            Notes:
+                Secondary DHCP Server address when the Domain DHCP Behaviour is OVERLAY Relay and status is OVERRIDE
+
+                
+                This attribute is named `secondaryDHCPServerAddress` in VSD API.
+                
+        """
+        self._secondary_dhcp_server_address = value
+
+    
+    @property
     def template_id(self):
         """ Get template_id value.
 
@@ -994,6 +1057,114 @@ class NUSubnet(NURESTObject):
                 
         """
         self._netmask = value
+
+    
+    @property
+    def aggregated_l2_domain_id(self):
+        """ Get aggregated_l2_domain_id value.
+
+            Notes:
+                ID of the Aggregated L2 Domain
+
+                
+                This attribute is named `aggregatedL2DomainID` in VSD API.
+                
+        """
+        return self._aggregated_l2_domain_id
+
+    @aggregated_l2_domain_id.setter
+    def aggregated_l2_domain_id(self, value):
+        """ Set aggregated_l2_domain_id value.
+
+            Notes:
+                ID of the Aggregated L2 Domain
+
+                
+                This attribute is named `aggregatedL2DomainID` in VSD API.
+                
+        """
+        self._aggregated_l2_domain_id = value
+
+    
+    @property
+    def aggregated_l2_domain_name(self):
+        """ Get aggregated_l2_domain_name value.
+
+            Notes:
+                Name of the Aggregated L2 Domain
+
+                
+                This attribute is named `aggregatedL2DomainName` in VSD API.
+                
+        """
+        return self._aggregated_l2_domain_name
+
+    @aggregated_l2_domain_name.setter
+    def aggregated_l2_domain_name(self, value):
+        """ Set aggregated_l2_domain_name value.
+
+            Notes:
+                Name of the Aggregated L2 Domain
+
+                
+                This attribute is named `aggregatedL2DomainName` in VSD API.
+                
+        """
+        self._aggregated_l2_domain_name = value
+
+    
+    @property
+    def aggregated_l2_domain_rt(self):
+        """ Get aggregated_l2_domain_rt value.
+
+            Notes:
+                Route Target of the Aggregated L2 Domain
+
+                
+                This attribute is named `aggregatedL2DomainRT` in VSD API.
+                
+        """
+        return self._aggregated_l2_domain_rt
+
+    @aggregated_l2_domain_rt.setter
+    def aggregated_l2_domain_rt(self, value):
+        """ Set aggregated_l2_domain_rt value.
+
+            Notes:
+                Route Target of the Aggregated L2 Domain
+
+                
+                This attribute is named `aggregatedL2DomainRT` in VSD API.
+                
+        """
+        self._aggregated_l2_domain_rt = value
+
+    
+    @property
+    def aggregated_l2_domain_vnid(self):
+        """ Get aggregated_l2_domain_vnid value.
+
+            Notes:
+                VNID of the Aggregated L2 Domain
+
+                
+                This attribute is named `aggregatedL2DomainVNID` in VSD API.
+                
+        """
+        return self._aggregated_l2_domain_vnid
+
+    @aggregated_l2_domain_vnid.setter
+    def aggregated_l2_domain_vnid(self, value):
+        """ Set aggregated_l2_domain_vnid value.
+
+            Notes:
+                VNID of the Aggregated L2 Domain
+
+                
+                This attribute is named `aggregatedL2DomainVNID` in VSD API.
+                
+        """
+        self._aggregated_l2_domain_vnid = value
 
     
     @property
@@ -1525,6 +1696,33 @@ class NUSubnet(NURESTObject):
 
     
     @property
+    def primary_dhcp_server_address(self):
+        """ Get primary_dhcp_server_address value.
+
+            Notes:
+                Primary DHCP Server address when the Domain DHCP Behaviour is OVERLAY Relay and status is OVERRIDE
+
+                
+                This attribute is named `primaryDHCPServerAddress` in VSD API.
+                
+        """
+        return self._primary_dhcp_server_address
+
+    @primary_dhcp_server_address.setter
+    def primary_dhcp_server_address(self, value):
+        """ Set primary_dhcp_server_address value.
+
+            Notes:
+                Primary DHCP Server address when the Domain DHCP Behaviour is OVERLAY Relay and status is OVERRIDE
+
+                
+                This attribute is named `primaryDHCPServerAddress` in VSD API.
+                
+        """
+        self._primary_dhcp_server_address = value
+
+    
+    @property
     def proxy_arp(self):
         """ Get proxy_arp value.
 
@@ -1579,6 +1777,33 @@ class NUSubnet(NURESTObject):
 
     
     @property
+    def vrrp_priority(self):
+        """ Get vrrp_priority value.
+
+            Notes:
+                VRRP Priority of Master Netconf Gateway.
+
+                
+                This attribute is named `vrrpPriority` in VSD API.
+                
+        """
+        return self._vrrp_priority
+
+    @vrrp_priority.setter
+    def vrrp_priority(self, value):
+        """ Set vrrp_priority value.
+
+            Notes:
+                VRRP Priority of Master Netconf Gateway.
+
+                
+                This attribute is named `vrrpPriority` in VSD API.
+                
+        """
+        self._vrrp_priority = value
+
+    
+    @property
     def use_global_mac(self):
         """ Get use_global_mac value.
 
@@ -1603,6 +1828,33 @@ class NUSubnet(NURESTObject):
                 
         """
         self._use_global_mac = value
+
+    
+    @property
+    def associated_master_netconf_gateway_id(self):
+        """ Get associated_master_netconf_gateway_id value.
+
+            Notes:
+                The ID of associated master Netconf gateway
+
+                
+                This attribute is named `associatedMasterNetconfGatewayId` in VSD API.
+                
+        """
+        return self._associated_master_netconf_gateway_id
+
+    @associated_master_netconf_gateway_id.setter
+    def associated_master_netconf_gateway_id(self, value):
+        """ Set associated_master_netconf_gateway_id value.
+
+            Notes:
+                The ID of associated master Netconf gateway
+
+                
+                This attribute is named `associatedMasterNetconfGatewayId` in VSD API.
+                
+        """
+        self._associated_master_netconf_gateway_id = value
 
     
     @property

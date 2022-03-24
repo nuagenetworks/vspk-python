@@ -38,6 +38,8 @@ Attributes
 
 - ``creation_date``: Time stamp when this object was created.
 
+- ``use_uplink_ip``: Specifying if the IP address of the uplink will be used as the public IP for a defined PAT/NAT pool.
+
 - ``associated_gateway_id``: UUID of the NSG instance this Pool is assocated with. This attribute may be auto-populated when the pool is assigned to a Network VLAN instance.
 
 - ``associated_gateway_type``: None

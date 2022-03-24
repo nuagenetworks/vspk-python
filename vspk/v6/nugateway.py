@@ -940,7 +940,7 @@ class NUGateway(NURESTObject):
         """ Get native_vlan value.
 
             Notes:
-                Default Native VLAN to carry untagged traffic on the ports of this gateway. Applicable for Cisco 9K only. Possible values are 1-3967.
+                Default Native VLAN to carry untagged traffic on the ports of this gateway. Applicable for third-party Netconf Gateways only. Possible values are 1-3967.
 
                 
                 This attribute is named `nativeVLAN` in VSD API.
@@ -953,7 +953,7 @@ class NUGateway(NURESTObject):
         """ Set native_vlan value.
 
             Notes:
-                Default Native VLAN to carry untagged traffic on the ports of this gateway. Applicable for Cisco 9K only. Possible values are 1-3967.
+                Default Native VLAN to carry untagged traffic on the ports of this gateway. Applicable for third-party Netconf Gateways only. Possible values are 1-3967.
 
                 
                 This attribute is named `nativeVLAN` in VSD API.

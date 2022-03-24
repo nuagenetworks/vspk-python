@@ -28,6 +28,9 @@
 
 
 
+from .fetchers import NUDeploymentFailuresFetcher
+
+
 from .fetchers import NUPermissionsFetcher
 
 
@@ -36,65 +39,30 @@ from .fetchers import NUMetadatasFetcher
 
 from .fetchers import NUGlobalMetadatasFetcher
 
-
-from .fetchers import NUPortTemplatesFetcher
-
 from bambou import NURESTObject
 
 
-class NUGatewayTemplate(NURESTObject):
-    """ Represents a GatewayTemplate in the VSD
+class NUNetconfGlobalConfiguration(NURESTObject):
+    """ Represents a NetconfGlobalConfiguration in the VSD
 
         Notes:
-            A gateway is your point of exit to an external network. It can be a physical or a virtual device. Gateways are templatable. You can attach gateway's VLANs to any existing host or bridge VPorts.
+            This Entity defines Global Configurations such as Prefix-list, Mac-list etc., to be configured on a Third-party Gateway (Netconf - VTEP).
     """
 
-    __rest_name__ = "gatewaytemplate"
-    __resource_name__ = "gatewaytemplates"
+    __rest_name__ = "netconfglobalconfiguration"
+    __resource_name__ = "netconfglobalconfigurations"
 
     
     ## Constants
     
-    CONST_PERSONALITY_HARDWARE_VTEP = "HARDWARE_VTEP"
-    
-    CONST_PERSONALITY_EVDFB = "EVDFB"
-    
-    CONST_PERSONALITY_VSA = "VSA"
-    
-    CONST_PERSONALITY_VSG = "VSG"
-    
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
-    CONST_PERSONALITY_OTHER = "OTHER"
-    
-    CONST_PERSONALITY_UNMANAGED_GATEWAY = "UNMANAGED_GATEWAY"
-    
-    CONST_PERSONALITY_EVDF = "EVDF"
-    
-    CONST_PERSONALITY_VDFG = "VDFG"
-    
-    CONST_PERSONALITY_VRSB = "VRSB"
-    
-    CONST_PERSONALITY_NETCONF_7X50 = "NETCONF_7X50"
-    
-    CONST_PERSONALITY_NUAGE_210_WBX_48_S = "NUAGE_210_WBX_48_S"
-    
-    CONST_PERSONALITY_NUAGE_210_WBX_32_Q = "NUAGE_210_WBX_32_Q"
-    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
-    
-    CONST_PERSONALITY_SR_LINUX = "SR_LINUX"
-    
-    CONST_PERSONALITY_DC7X50 = "DC7X50"
-    
-    CONST_PERSONALITY_VRSG = "VRSG"
-    
-    CONST_PERSONALITY_NETCONF_THIRDPARTY_HW_VTEP = "NETCONF_THIRDPARTY_HW_VTEP"
     
     
 
     def __init__(self, **kwargs):
-        """ Initializes a GatewayTemplate instance
+        """ Initializes a NetconfGlobalConfiguration instance
 
             Notes:
                 You can specify all parameters while calling this methods.
@@ -102,24 +70,22 @@ class NUGatewayTemplate(NURESTObject):
                 object from a Python dictionary
 
             Examples:
-                >>> gatewaytemplate = NUGatewayTemplate(id=u'xxxx-xxx-xxx-xxx', name=u'GatewayTemplate')
-                >>> gatewaytemplate = NUGatewayTemplate(data=my_dict)
+                >>> netconfglobalconfiguration = NUNetconfGlobalConfiguration(id=u'xxxx-xxx-xxx-xxx', name=u'NetconfGlobalConfiguration')
+                >>> netconfglobalconfiguration = NUNetconfGlobalConfiguration(data=my_dict)
         """
 
-        super(NUGatewayTemplate, self).__init__()
+        super(NUNetconfGlobalConfiguration, self).__init__()
 
         # Read/Write Attributes
         
         self._name = None
         self._last_updated_by = None
         self._last_updated_date = None
-        self._native_vlan = None
-        self._personality = None
         self._description = None
+        self._netconf_gateway_ids = None
         self._embedded_metadata = None
-        self._infrastructure_profile_id = None
-        self._enterprise_id = None
         self._entity_scope = None
+        self._config_definition = None
         self._creation_date = None
         self._owner = None
         self._external_id = None
@@ -127,19 +93,20 @@ class NUGatewayTemplate(NURESTObject):
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="native_vlan", remote_name="nativeVLAN", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="personality", remote_name="personality", attribute_type=str, is_required=True, is_unique=False, choices=[u'DC7X50', u'EVDF', u'EVDFB', u'HARDWARE_VTEP', u'NETCONF_7X50', u'NETCONF_THIRDPARTY_HW_VTEP', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'OTHER', u'SR_LINUX', u'UNMANAGED_GATEWAY', u'VDFG', u'VRSB', u'VRSG', u'VSA', u'VSG'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="netconf_gateway_ids", remote_name="netconfGatewayIDs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="infrastructure_profile_id", remote_name="infrastructureProfileID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="enterprise_id", remote_name="enterpriseID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="config_definition", remote_name="configDefinition", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
+        
+        
+        self.deployment_failures = NUDeploymentFailuresFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")
@@ -149,9 +116,6 @@ class NUGatewayTemplate(NURESTObject):
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
-        
-        
-        self.port_templates = NUPortTemplatesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -163,7 +127,7 @@ class NUGatewayTemplate(NURESTObject):
         """ Get name value.
 
             Notes:
-                Name of the Gateway
+                The unique name of the Global Configuration.
 
                 
         """
@@ -174,7 +138,7 @@ class NUGatewayTemplate(NURESTObject):
         """ Set name value.
 
             Notes:
-                Name of the Gateway
+                The unique name of the Global Configuration.
 
                 
         """
@@ -236,61 +200,11 @@ class NUGatewayTemplate(NURESTObject):
 
     
     @property
-    def native_vlan(self):
-        """ Get native_vlan value.
-
-            Notes:
-                Default Native VLAN to carry untagged traffic on the ports of the gateways using this template. Applicable for third-party Netconf Gateways only. Possible values are 1-3967.
-
-                
-                This attribute is named `nativeVLAN` in VSD API.
-                
-        """
-        return self._native_vlan
-
-    @native_vlan.setter
-    def native_vlan(self, value):
-        """ Set native_vlan value.
-
-            Notes:
-                Default Native VLAN to carry untagged traffic on the ports of the gateways using this template. Applicable for third-party Netconf Gateways only. Possible values are 1-3967.
-
-                
-                This attribute is named `nativeVLAN` in VSD API.
-                
-        """
-        self._native_vlan = value
-
-    
-    @property
-    def personality(self):
-        """ Get personality value.
-
-            Notes:
-                Personality of the Gateway, cannot be changed after creation.
-
-                
-        """
-        return self._personality
-
-    @personality.setter
-    def personality(self, value):
-        """ Set personality value.
-
-            Notes:
-                Personality of the Gateway, cannot be changed after creation.
-
-                
-        """
-        self._personality = value
-
-    
-    @property
     def description(self):
         """ Get description value.
 
             Notes:
-                A description of the Gateway
+                A description of the GlobalConfiguration.
 
                 
         """
@@ -301,11 +215,38 @@ class NUGatewayTemplate(NURESTObject):
         """ Set description value.
 
             Notes:
-                A description of the Gateway
+                A description of the GlobalConfiguration.
 
                 
         """
         self._description = value
+
+    
+    @property
+    def netconf_gateway_ids(self):
+        """ Get netconf_gateway_ids value.
+
+            Notes:
+                List of third-party Netconf Gateways on which Global Configuration will be deployed.
+
+                
+                This attribute is named `netconfGatewayIDs` in VSD API.
+                
+        """
+        return self._netconf_gateway_ids
+
+    @netconf_gateway_ids.setter
+    def netconf_gateway_ids(self, value):
+        """ Set netconf_gateway_ids value.
+
+            Notes:
+                List of third-party Netconf Gateways on which Global Configuration will be deployed.
+
+                
+                This attribute is named `netconfGatewayIDs` in VSD API.
+                
+        """
+        self._netconf_gateway_ids = value
 
     
     @property
@@ -336,60 +277,6 @@ class NUGatewayTemplate(NURESTObject):
 
     
     @property
-    def infrastructure_profile_id(self):
-        """ Get infrastructure_profile_id value.
-
-            Notes:
-                The ID of the associated Infrastructure Gateway Profile tied to this instance of a Gateway Template.
-
-                
-                This attribute is named `infrastructureProfileID` in VSD API.
-                
-        """
-        return self._infrastructure_profile_id
-
-    @infrastructure_profile_id.setter
-    def infrastructure_profile_id(self, value):
-        """ Set infrastructure_profile_id value.
-
-            Notes:
-                The ID of the associated Infrastructure Gateway Profile tied to this instance of a Gateway Template.
-
-                
-                This attribute is named `infrastructureProfileID` in VSD API.
-                
-        """
-        self._infrastructure_profile_id = value
-
-    
-    @property
-    def enterprise_id(self):
-        """ Get enterprise_id value.
-
-            Notes:
-                The enterprise associated with this Gateway. This is a read only attribute
-
-                
-                This attribute is named `enterpriseID` in VSD API.
-                
-        """
-        return self._enterprise_id
-
-    @enterprise_id.setter
-    def enterprise_id(self, value):
-        """ Set enterprise_id value.
-
-            Notes:
-                The enterprise associated with this Gateway. This is a read only attribute
-
-                
-                This attribute is named `enterpriseID` in VSD API.
-                
-        """
-        self._enterprise_id = value
-
-    
-    @property
     def entity_scope(self):
         """ Get entity_scope value.
 
@@ -414,6 +301,33 @@ class NUGatewayTemplate(NURESTObject):
                 
         """
         self._entity_scope = value
+
+    
+    @property
+    def config_definition(self):
+        """ Get config_definition value.
+
+            Notes:
+                Global configurations like prefix lists, community, mac-list etc.. to be configured on a Netconf Gateway.
+
+                
+                This attribute is named `configDefinition` in VSD API.
+                
+        """
+        return self._config_definition
+
+    @config_definition.setter
+    def config_definition(self, value):
+        """ Set config_definition value.
+
+            Notes:
+                Global configurations like prefix lists, community, mac-list etc.. to be configured on a Netconf Gateway.
+
+                
+                This attribute is named `configDefinition` in VSD API.
+                
+        """
+        self._config_definition = value
 
     
     @property
@@ -494,25 +408,4 @@ class NUGatewayTemplate(NURESTObject):
 
     
 
-    
-    ## Custom methods
-    def is_template(self):
-        """ Verify that the object is a template
-    
-            Returns:
-                (bool): True if the object is a template
-        """
-        return True
-    
-    def is_from_template(self):
-        """ Verify if the object has been instantiated from a template
-    
-            Note:
-                The object has to be fetched. Otherwise, it does not
-                have information from its parent
-    
-            Returns:
-                (bool): True if the object is a template
-        """
-        return False
     

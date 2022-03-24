@@ -28,7 +28,7 @@ Attributes
 
 - ``associated_patnat_pool_id``: Indicates which PATNATPool this entry belongs to
 
-- ``public_ip`` (**Mandatory**): Public IP address of the interface
+- ``public_ip``: Public IP address of the interface
 
 - ``public_port``: Public port identification
 

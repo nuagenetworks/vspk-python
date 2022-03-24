@@ -132,6 +132,7 @@ class NUPATNATPool(NURESTObject):
         self._end_source_address = None
         self._entity_scope = None
         self._creation_date = None
+        self._use_uplink_ip = None
         self._associated_gateway_id = None
         self._associated_gateway_type = None
         self._associated_subnet_id = None
@@ -155,6 +156,7 @@ class NUPATNATPool(NURESTObject):
         self.expose_attribute(local_name="end_source_address", remote_name="endSourceAddress", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="use_uplink_ip", remote_name="useUplinkIP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_id", remote_name="associatedGatewayId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_type", remote_name="associatedGatewayType", attribute_type=str, is_required=False, is_unique=False, choices=[u'AUTO_DISC_GATEWAY', u'GATEWAY', u'IKE_GATEWAY', u'NSGATEWAY'])
         self.expose_attribute(local_name="associated_subnet_id", remote_name="associatedSubnetId", attribute_type=str, is_required=False, is_unique=False)
@@ -541,6 +543,33 @@ class NUPATNATPool(NURESTObject):
                 
         """
         self._creation_date = value
+
+    
+    @property
+    def use_uplink_ip(self):
+        """ Get use_uplink_ip value.
+
+            Notes:
+                Specifying if the IP address of the uplink will be used as the public IP for a defined PAT/NAT pool.
+
+                
+                This attribute is named `useUplinkIP` in VSD API.
+                
+        """
+        return self._use_uplink_ip
+
+    @use_uplink_ip.setter
+    def use_uplink_ip(self, value):
+        """ Set use_uplink_ip value.
+
+            Notes:
+                Specifying if the IP address of the uplink will be used as the public IP for a defined PAT/NAT pool.
+
+                
+                This attribute is named `useUplinkIP` in VSD API.
+                
+        """
+        self._use_uplink_ip = value
 
     
     @property

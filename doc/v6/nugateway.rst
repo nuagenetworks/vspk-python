@@ -50,7 +50,7 @@ Attributes
 
 - ``gateway_version``: The Gateway Software Version as reported during bootstrapping.
 
-- ``native_vlan``: Default Native VLAN to carry untagged traffic on the ports of this gateway. Applicable for Cisco 9K only. Possible values are 1-3967.
+- ``native_vlan``: Default Native VLAN to carry untagged traffic on the ports of this gateway. Applicable for third-party Netconf Gateways only. Possible values are 1-3967.
 
 - ``redundancy_group_id``: The Redundancy Gateway Group associated with this Gateway Instance. This is a read only attribute
 
@@ -159,6 +159,8 @@ Parents
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
+
+- :ref:`nusubnet.NUSubnet<nusubnet>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
 

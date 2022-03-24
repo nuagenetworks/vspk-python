@@ -342,6 +342,8 @@ Parents
 
 - :ref:`nuospfinterface.NUOSPFInterface<nuospfinterface>`
 
+- :ref:`nunetconfglobalconfiguration.NUNetconfGlobalConfiguration<nunetconfglobalconfiguration>`
+
 - :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
 
 - :ref:`nuunderlay.NUUnderlay<nuunderlay>`
@@ -455,6 +457,8 @@ Parents
 - :ref:`nudeploymentfailure.NUDeploymentFailure<nudeploymentfailure>`
 
 - :ref:`nuvmipreservation.NUVMIPReservation<nuvmipreservation>`
+
+- :ref:`nuroutingpolicyassociation.NURoutingPolicyAssociation<nuroutingpolicyassociation>`
 
 - :ref:`nunsgroutingpolicybinding.NUNSGRoutingPolicyBinding<nunsgroutingpolicybinding>`
 

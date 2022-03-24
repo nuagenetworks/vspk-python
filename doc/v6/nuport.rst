@@ -20,7 +20,7 @@ Attributes
 
 - ``last_updated_date``: Time stamp when this object was last updated.
 
-- ``native_vlan``: Native VLAN to carry untagged traffic on this port. Applicable for Access Ports on Cisco 9K only. Possible values are 1-3967.
+- ``native_vlan``: Native VLAN to carry untagged traffic on this port. Applicable for Access Ports on third-party Netconf Gateways only. Possible values are 1-3967.
 
 - ``template_id``: The ID of the template that this Port was created from
 
@@ -36,7 +36,7 @@ Attributes
 
 - ``port_type`` (**Mandatory**): Type of the Port. Possible values are ACCESS, NETWORK, MANAGEMENT.
 
-- ``routed``: Indicates if this Port is a routed interface. Applicable for Access Ports on Cisco 9K only.
+- ``routed``: Indicates if this Port is a routed interface. Applicable for Access Ports on third-party Netconf Gateways only.
 
 - ``operational_state``: Represents Operational State of the Port. Possible values are INIT, UP, DOWN.
 

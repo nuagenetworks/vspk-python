@@ -62,7 +62,7 @@ class NURoutingPolicy(NURESTObject):
     
     CONST_ROUTING_PROTOCOL_OSPFV3 = "OSPFv3"
     
-    CONST_ROUTING_PROTOCOL_OSPFV2 = "OSPFv2"
+    CONST_CONTENT_TYPE_NETCONF_THIRDPARTY_HW_VTEP = "NETCONF_THIRDPARTY_HW_VTEP"
     
     CONST_ROUTING_PROTOCOL_BGP = "BGP"
     
@@ -71,6 +71,8 @@ class NURoutingPolicy(NURESTObject):
     CONST_DEFAULT_ACTION_ACCEPT = "ACCEPT"
     
     CONST_CONTENT_TYPE_DEFAULT = "DEFAULT"
+    
+    CONST_ROUTING_PROTOCOL_OSPFV2 = "OSPFv2"
     
     CONST_ROUTING_PROTOCOL_ROUTING = "ROUTING"
     
@@ -114,7 +116,7 @@ class NURoutingPolicy(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="policy_definition", remote_name="policyDefinition", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="policy_unique_id", remote_name="policyUniqueID", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="content_type", remote_name="contentType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'NETCONF_7X50', u'SR_LINUX'])
+        self.expose_attribute(local_name="content_type", remote_name="contentType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DEFAULT', u'NETCONF_7X50', u'NETCONF_THIRDPARTY_HW_VTEP', u'SR_LINUX'])
         self.expose_attribute(local_name="routing_protocol", remote_name="routingProtocol", attribute_type=str, is_required=False, is_unique=False, choices=[u'BGP', u'ISIS', u'OSPFv2', u'OSPFv3', u'ROUTING'])
         self.expose_attribute(local_name="customer_id", remote_name="CustomerID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)

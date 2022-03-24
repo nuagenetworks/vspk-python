@@ -92,6 +92,8 @@ Parents
 
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
+- :ref:`nunetconfglobalconfiguration.NUNetconfGlobalConfiguration<nunetconfglobalconfiguration>`
+
 - :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`

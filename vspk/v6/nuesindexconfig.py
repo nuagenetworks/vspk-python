@@ -70,7 +70,7 @@ class NUEsIndexConfig(NURESTObject):
     
     CONST_INDEX_TYPE_NUAGE_EVENT = "NUAGE_EVENT"
     
-    CONST_INDEX_TYPE_NUAGE_WIFI = "NUAGE_WIFI"
+    CONST_INDEX_TYPE_NUAGE_DPI_SLASTATS = "NUAGE_DPI_SLASTATS"
     
     CONST_INDEX_TYPE_NUAGE_IKE_PROBESTATS = "NUAGE_IKE_PROBESTATS"
     
@@ -78,13 +78,15 @@ class NUEsIndexConfig(NURESTObject):
     
     CONST_INDEX_TYPE_NUAGE_FLOW = "NUAGE_FLOW"
     
+    CONST_INDEX_TYPE_NUAGE_OAM = "NUAGE_OAM"
+    
     CONST_ILM_STATUS_FAILED = "FAILED"
     
     CONST_INDEX_TYPE_NUAGE_GW_SEL_STATS = "NUAGE_GW_SEL_STATS"
     
     CONST_INDEX_TYPE_NUAGE_ACL = "NUAGE_ACL"
     
-    CONST_INDEX_TYPE_NUAGE_DPI_SLASTATS = "NUAGE_DPI_SLASTATS"
+    CONST_INDEX_TYPE_NUAGE_WIFI = "NUAGE_WIFI"
     
     CONST_CONFIG_STATUS_FAILED = "FAILED"
     
@@ -144,7 +146,7 @@ class NUEsIndexConfig(NURESTObject):
         self.expose_attribute(local_name="ilm_status", remote_name="ilmStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'FAILED', u'SUCCESS'])
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="index_pattern", remote_name="indexPattern", attribute_type=str, is_required=True, is_unique=False)
-        self.expose_attribute(local_name="index_type", remote_name="indexType", attribute_type=str, is_required=True, is_unique=False, choices=[u'NUAGE_ACL', u'NUAGE_ADDRESSMAP', u'NUAGE_DPI_FLOWSTATS', u'NUAGE_DPI_PROBESTATS', u'NUAGE_DPI_SLASTATS', u'NUAGE_EVENT', u'NUAGE_FEC', u'NUAGE_FLOW', u'NUAGE_GW_SEL_STATS', u'NUAGE_IKE_PROBE_STATUS', u'NUAGE_IKE_PROBESTATS', u'NUAGE_IKE_STATS', u'NUAGE_LTE', u'NUAGE_NATT', u'NUAGE_SYSMON', u'NUAGE_VLAN', u'NUAGE_VNF', u'NUAGE_VPORT', u'NUAGE_VPORT_QOS', u'NUAGE_WIFI'])
+        self.expose_attribute(local_name="index_type", remote_name="indexType", attribute_type=str, is_required=True, is_unique=False, choices=[u'NUAGE_ACL', u'NUAGE_ADDRESSMAP', u'NUAGE_DPI_FLOWSTATS', u'NUAGE_DPI_PROBESTATS', u'NUAGE_DPI_SLASTATS', u'NUAGE_EVENT', u'NUAGE_FEC', u'NUAGE_FLOW', u'NUAGE_GW_SEL_STATS', u'NUAGE_IKE_PROBE_STATUS', u'NUAGE_IKE_PROBESTATS', u'NUAGE_IKE_STATS', u'NUAGE_LTE', u'NUAGE_NATT', u'NUAGE_OAM', u'NUAGE_SYSMON', u'NUAGE_VLAN', u'NUAGE_VNF', u'NUAGE_VPORT', u'NUAGE_VPORT_QOS', u'NUAGE_WIFI'])
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="policy_name", remote_name="policyName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="rollover_alias", remote_name="rolloverAlias", attribute_type=str, is_required=True, is_unique=False)

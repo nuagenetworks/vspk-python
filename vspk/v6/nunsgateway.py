@@ -314,6 +314,7 @@ class NUNSGateway(NURESTObject):
         self._tcp_maximum_segment_size = None
         self._zfb_match_attribute = None
         self._zfb_match_value = None
+        self._sgt_propagation_enabled = None
         self._bios_release_date = None
         self._bios_version = None
         self._sku = None
@@ -385,6 +386,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="tcp_maximum_segment_size", remote_name="TCPMaximumSegmentSize", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zfb_match_attribute", remote_name="ZFBMatchAttribute", attribute_type=str, is_required=False, is_unique=False, choices=[u'HOSTNAME', u'IP_ADDRESS', u'MAC_ADDRESS', u'NONE', u'NSGATEWAY_ID', u'SERIAL_NUMBER', u'UUID'])
         self.expose_attribute(local_name="zfb_match_value", remote_name="ZFBMatchValue", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="sgt_propagation_enabled", remote_name="SGTPropagationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bios_release_date", remote_name="BIOSReleaseDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bios_version", remote_name="BIOSVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sku", remote_name="SKU", attribute_type=str, is_required=False, is_unique=False)
@@ -754,6 +756,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._zfb_match_value = value
+
+    
+    @property
+    def sgt_propagation_enabled(self):
+        """ Get sgt_propagation_enabled value.
+
+            Notes:
+                Indicates if Security Group Tag Propagation is enabled on Network Accelerated NSG and Network Accelerated UBR with HUB or HUB and DUC function(s).
+
+                
+                This attribute is named `SGTPropagationEnabled` in VSD API.
+                
+        """
+        return self._sgt_propagation_enabled
+
+    @sgt_propagation_enabled.setter
+    def sgt_propagation_enabled(self, value):
+        """ Set sgt_propagation_enabled value.
+
+            Notes:
+                Indicates if Security Group Tag Propagation is enabled on Network Accelerated NSG and Network Accelerated UBR with HUB or HUB and DUC function(s).
+
+                
+                This attribute is named `SGTPropagationEnabled` in VSD API.
+                
+        """
+        self._sgt_propagation_enabled = value
 
     
     @property

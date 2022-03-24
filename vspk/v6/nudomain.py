@@ -166,6 +166,9 @@ from .fetchers import NUHostInterfacesFetcher
 from .fetchers import NURoutingPoliciesFetcher
 
 
+from .fetchers import NURoutingPolicyAssociationsFetcher
+
+
 from .fetchers import NURoutingPolicyBindingsFetcher
 
 
@@ -361,6 +364,7 @@ class NUDomain(NURESTObject):
 
         # Read/Write Attributes
         
+        self._l2_domain_aggregation_enabled = None
         self._pat_enabled = None
         self._ecmp_count = None
         self._bgp_enabled = None
@@ -369,6 +373,8 @@ class NUDomain(NURESTObject):
         self._fip_ignore_default_route = None
         self._fip_underlay = None
         self._dpi = None
+        self._ipv4_ibgp_max_paths = None
+        self._ipv6_ibgp_max_paths = None
         self._grt_enabled = None
         self._evpnrt5_type = None
         self._vxlanecmp_enabled = None
@@ -412,6 +418,11 @@ class NUDomain(NURESTObject):
         self._domain_aggregation_enabled = None
         self._domain_id = None
         self._domain_vlanid = None
+        self._loopback_intf_description = None
+        self._loopback_intf_enabled = None
+        self._loopback_intf_ipv4_address = None
+        self._loopback_intf_ipv6_address = None
+        self._loopback_intf_id = None
         self._route_distinguisher = None
         self._route_target = None
         self._uplink_preference = None
@@ -432,6 +443,7 @@ class NUDomain(NURESTObject):
         self._external_id = None
         self._external_label = None
         
+        self.expose_attribute(local_name="l2_domain_aggregation_enabled", remote_name="l2DomainAggregationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="pat_enabled", remote_name="PATEnabled", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="ecmp_count", remote_name="ECMPCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="bgp_enabled", remote_name="BGPEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -440,6 +452,8 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="fip_ignore_default_route", remote_name="FIPIgnoreDefaultRoute", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
         self.expose_attribute(local_name="fip_underlay", remote_name="FIPUnderlay", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dpi", remote_name="DPI", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
+        self.expose_attribute(local_name="ipv4_ibgp_max_paths", remote_name="IPv4IBGPMaxPaths", attribute_type=int, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="ipv6_ibgp_max_paths", remote_name="IPv6IBGPMaxPaths", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="grt_enabled", remote_name="GRTEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="evpnrt5_type", remote_name="EVPNRT5Type", attribute_type=str, is_required=False, is_unique=False, choices=[u'IP', u'MAC'])
         self.expose_attribute(local_name="vxlanecmp_enabled", remote_name="VXLANECMPEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -483,6 +497,11 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="domain_aggregation_enabled", remote_name="domainAggregationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="domain_id", remote_name="domainID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="domain_vlanid", remote_name="domainVLANID", attribute_type=int, is_required=False, is_unique=True)
+        self.expose_attribute(local_name="loopback_intf_description", remote_name="loopbackIntfDescription", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="loopback_intf_enabled", remote_name="loopbackIntfEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="loopback_intf_ipv4_address", remote_name="loopbackIntfIPv4Address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="loopback_intf_ipv6_address", remote_name="loopbackIntfIPv6Address", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="loopback_intf_id", remote_name="loopbackIntfId", attribute_type=int, is_required=False, is_unique=True)
         self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="route_target", remote_name="routeTarget", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
@@ -645,6 +664,9 @@ class NUDomain(NURESTObject):
         self.routing_policies = NURoutingPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
+        self.routing_policy_associations = NURoutingPolicyAssociationsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.routing_policy_bindings = NURoutingPolicyBindingsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
@@ -699,6 +721,33 @@ class NUDomain(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def l2_domain_aggregation_enabled(self):
+        """ Get l2_domain_aggregation_enabled value.
+
+            Notes:
+                Indicates if L2 Domain Aggregation is enabled on this Domain.
+
+                
+                This attribute is named `l2DomainAggregationEnabled` in VSD API.
+                
+        """
+        return self._l2_domain_aggregation_enabled
+
+    @l2_domain_aggregation_enabled.setter
+    def l2_domain_aggregation_enabled(self, value):
+        """ Set l2_domain_aggregation_enabled value.
+
+            Notes:
+                Indicates if L2 Domain Aggregation is enabled on this Domain.
+
+                
+                This attribute is named `l2DomainAggregationEnabled` in VSD API.
+                
+        """
+        self._l2_domain_aggregation_enabled = value
+
     
     @property
     def pat_enabled(self):
@@ -914,6 +963,60 @@ class NUDomain(NURESTObject):
                 
         """
         self._dpi = value
+
+    
+    @property
+    def ipv4_ibgp_max_paths(self):
+        """ Get ipv4_ibgp_max_paths value.
+
+            Notes:
+                IPv4 IBGP Max Paths. Applicable for third-party Netconf Gateways only
+
+                
+                This attribute is named `IPv4IBGPMaxPaths` in VSD API.
+                
+        """
+        return self._ipv4_ibgp_max_paths
+
+    @ipv4_ibgp_max_paths.setter
+    def ipv4_ibgp_max_paths(self, value):
+        """ Set ipv4_ibgp_max_paths value.
+
+            Notes:
+                IPv4 IBGP Max Paths. Applicable for third-party Netconf Gateways only
+
+                
+                This attribute is named `IPv4IBGPMaxPaths` in VSD API.
+                
+        """
+        self._ipv4_ibgp_max_paths = value
+
+    
+    @property
+    def ipv6_ibgp_max_paths(self):
+        """ Get ipv6_ibgp_max_paths value.
+
+            Notes:
+                IPv6 IBGP Max Paths. Applicable for third-party Netconf Gateways only
+
+                
+                This attribute is named `IPv6IBGPMaxPaths` in VSD API.
+                
+        """
+        return self._ipv6_ibgp_max_paths
+
+    @ipv6_ibgp_max_paths.setter
+    def ipv6_ibgp_max_paths(self, value):
+        """ Set ipv6_ibgp_max_paths value.
+
+            Notes:
+                IPv6 IBGP Max Paths. Applicable for third-party Netconf Gateways only
+
+                
+                This attribute is named `IPv6IBGPMaxPaths` in VSD API.
+                
+        """
+        self._ipv6_ibgp_max_paths = value
 
     
     @property
@@ -2062,6 +2165,141 @@ class NUDomain(NURESTObject):
 
     
     @property
+    def loopback_intf_description(self):
+        """ Get loopback_intf_description value.
+
+            Notes:
+                Loopback Interface description.
+
+                
+                This attribute is named `loopbackIntfDescription` in VSD API.
+                
+        """
+        return self._loopback_intf_description
+
+    @loopback_intf_description.setter
+    def loopback_intf_description(self, value):
+        """ Set loopback_intf_description value.
+
+            Notes:
+                Loopback Interface description.
+
+                
+                This attribute is named `loopbackIntfDescription` in VSD API.
+                
+        """
+        self._loopback_intf_description = value
+
+    
+    @property
+    def loopback_intf_enabled(self):
+        """ Get loopback_intf_enabled value.
+
+            Notes:
+                Indicates if Loopback interface is enabled or not. Applicable for third-party Netconf Gateways only.
+
+                
+                This attribute is named `loopbackIntfEnabled` in VSD API.
+                
+        """
+        return self._loopback_intf_enabled
+
+    @loopback_intf_enabled.setter
+    def loopback_intf_enabled(self, value):
+        """ Set loopback_intf_enabled value.
+
+            Notes:
+                Indicates if Loopback interface is enabled or not. Applicable for third-party Netconf Gateways only.
+
+                
+                This attribute is named `loopbackIntfEnabled` in VSD API.
+                
+        """
+        self._loopback_intf_enabled = value
+
+    
+    @property
+    def loopback_intf_ipv4_address(self):
+        """ Get loopback_intf_ipv4_address value.
+
+            Notes:
+                Loopback interface IPv4 Host Address.
+
+                
+                This attribute is named `loopbackIntfIPv4Address` in VSD API.
+                
+        """
+        return self._loopback_intf_ipv4_address
+
+    @loopback_intf_ipv4_address.setter
+    def loopback_intf_ipv4_address(self, value):
+        """ Set loopback_intf_ipv4_address value.
+
+            Notes:
+                Loopback interface IPv4 Host Address.
+
+                
+                This attribute is named `loopbackIntfIPv4Address` in VSD API.
+                
+        """
+        self._loopback_intf_ipv4_address = value
+
+    
+    @property
+    def loopback_intf_ipv6_address(self):
+        """ Get loopback_intf_ipv6_address value.
+
+            Notes:
+                Loopback interface IPv6 Host Address.
+
+                
+                This attribute is named `loopbackIntfIPv6Address` in VSD API.
+                
+        """
+        return self._loopback_intf_ipv6_address
+
+    @loopback_intf_ipv6_address.setter
+    def loopback_intf_ipv6_address(self, value):
+        """ Set loopback_intf_ipv6_address value.
+
+            Notes:
+                Loopback interface IPv6 Host Address.
+
+                
+                This attribute is named `loopbackIntfIPv6Address` in VSD API.
+                
+        """
+        self._loopback_intf_ipv6_address = value
+
+    
+    @property
+    def loopback_intf_id(self):
+        """ Get loopback_intf_id value.
+
+            Notes:
+                Loopback interface ID of domain.
+
+                
+                This attribute is named `loopbackIntfId` in VSD API.
+                
+        """
+        return self._loopback_intf_id
+
+    @loopback_intf_id.setter
+    def loopback_intf_id(self, value):
+        """ Set loopback_intf_id value.
+
+            Notes:
+                Loopback interface ID of domain.
+
+                
+                This attribute is named `loopbackIntfId` in VSD API.
+                
+        """
+        self._loopback_intf_id = value
+
+    
+    @property
     def route_distinguisher(self):
         """ Get route_distinguisher value.
 
@@ -2363,7 +2601,7 @@ class NUDomain(NURESTObject):
         """ Get stretched value.
 
             Notes:
-                Indicates whether this domain is streched,if so remote VM resolutions will be allowed
+                Indicates whether this domain is stretched, if so, remote VM resolutions will be allowed
 
                 
         """
@@ -2374,7 +2612,7 @@ class NUDomain(NURESTObject):
         """ Set stretched value.
 
             Notes:
-                Indicates whether this domain is streched,if so remote VM resolutions will be allowed
+                Indicates whether this domain is stretched, if so, remote VM resolutions will be allowed
 
                 
         """

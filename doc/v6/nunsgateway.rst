@@ -28,6 +28,8 @@ Attributes
 
 - ``zfb_match_value``: The Zero Factor Bootstrapping (ZFB) value that needs to match with the gateway during the bootstrap attempt. This value needs to match with the ZFB Match Attribute.
 
+- ``sgt_propagation_enabled``: Indicates if Security Group Tag Propagation is enabled on Network Accelerated NSG and Network Accelerated UBR with HUB or HUB and DUC function(s).
+
 - ``bios_release_date``: Release Date of the NSG BiOS
 
 - ``bios_version``: NSG BIOS Version

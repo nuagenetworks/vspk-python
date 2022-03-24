@@ -141,7 +141,7 @@ class NUBGPNeighbor(NURESTObject):
         """ Get bfd_enabled value.
 
             Notes:
-                Enable or disable Bidirectional Forwarding Detection for this BGP neighbor
+                Enable or disable Bidirectional Forwarding Detection for this BGP neighbor. Not Applicable for third-party Netconf Gateways.
 
                 
                 This attribute is named `BFDEnabled` in VSD API.
@@ -154,7 +154,7 @@ class NUBGPNeighbor(NURESTObject):
         """ Set bfd_enabled value.
 
             Notes:
-                Enable or disable Bidirectional Forwarding Detection for this BGP neighbor
+                Enable or disable Bidirectional Forwarding Detection for this BGP neighbor. Not Applicable for third-party Netconf Gateways.
 
                 
                 This attribute is named `BFDEnabled` in VSD API.

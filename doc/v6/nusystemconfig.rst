@@ -170,6 +170,8 @@ Attributes
 
 - ``key_server_vsd_data_synchronization_interval``: KeyServer time in seconds between full resyncs of VSD data (just in case of missed events)
 
+- ``keystore_password``: Password to access vsd key store for enabling es security.
+
 - ``offset_customer_id``: Customer ID offset, this value has to be set before JBoss starts, following its starting, any change of value will be ignored. This is a system wide value.
 
 - ``offset_service_id``: Service ID offset, this value has to be set before JBoss starts during the time of VSD installation, from thereon, any change of value will be ignored. This is a system wide value.
@@ -238,6 +240,10 @@ Attributes
 
 - ``google_maps_api_key``: Google Maps API Key used to display maps on Nuage UI applications
 
+- ``loopback_intf_lower_limit`` (**Mandatory**): Lower limit of the domain Loopback Interface for gateways of type HWVTEP.
+
+- ``loopback_intf_upper_limit`` (**Mandatory**): Upper limit of the domain Loopback Interface for gateways of type HWVTEP.
+
 - ``post_processor_threads_count``: Post processor thread count.
 
 - ``creation_date``: Time stamp when this object was created.
@@ -279,6 +285,8 @@ Attributes
 - ``group_key_minimum_seed_lifetime``: Group Key Encryption Profile Default Seed Lifetime in seconds.
 
 - ``group_key_minimum_traffic_encryption_key_lifetime``: Group Key Encryption Profile Minimum TEK Lifetime in seconds.
+
+- ``es_security_enabled``: Indicates if VSD is communicating with elasticsearch over a secure channel using https.
 
 - ``nsg_bootstrap_endpoint``: NSG Bootstrap Endpoint
 

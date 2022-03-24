@@ -12,6 +12,8 @@ Attributes
 ----------
 
 
+- ``l2_domain_aggregation_enabled``: Indicates if L2 Domain Aggregation is enabled on this Domain.
+
 - ``pat_enabled``: Indicates whether PAT is enabled for the subnets in this domain - ENABLED/DISABLED Possible values are ENABLED, DISABLED.
 
 - ``ecmp_count``: Domain specific Equal-cost multi-path routing count, ECMPCount = 1 means no ECMP
@@ -27,6 +29,10 @@ Attributes
 - ``fip_underlay``: Boolean flag to indicate whether this is a Floating IP to underlay domain or not
 
 - ``dpi``: determines whether or not Deep packet inspection is enabled
+
+- ``ipv4_ibgp_max_paths`` (**Mandatory**): IPv4 IBGP Max Paths. Applicable for third-party Netconf Gateways only
+
+- ``ipv6_ibgp_max_paths`` (**Mandatory**): IPv6 IBGP Max Paths. Applicable for third-party Netconf Gateways only
 
 - ``grt_enabled``: Determines if GRT is enabled on this domain.
 
@@ -114,6 +120,16 @@ Attributes
 
 - ``domain_vlanid``: None
 
+- ``loopback_intf_description``: Loopback Interface description.
+
+- ``loopback_intf_enabled``: Indicates if Loopback interface is enabled or not. Applicable for third-party Netconf Gateways only.
+
+- ``loopback_intf_ipv4_address``: Loopback interface IPv4 Host Address.
+
+- ``loopback_intf_ipv6_address``: Loopback interface IPv6 Host Address.
+
+- ``loopback_intf_id``: Loopback interface ID of domain.
+
 - ``route_distinguisher``: Route distinguisher associated with the dVRS. If not provided, system generates this identifier automatically. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
 
 - ``route_target``: Route target associated with the dVRS. If not provided, system generates this identifier automatically. Supported formats are: [2-byte ASN]:[4-byte value] or [4-byte ASN]:[2-byte value]
@@ -136,7 +152,7 @@ Attributes
 
 - ``associated_underlay_id``: The ID of the Underlay entity to which this L3 Domain is associated.
 
-- ``stretched``: Indicates whether this domain is streched,if so remote VM resolutions will be allowed
+- ``stretched``: Indicates whether this domain is stretched, if so, remote VM resolutions will be allowed
 
 - ``multicast``: multicast is enum that indicates multicast policy on domain. Possible values are ENABLED ,DISABLED  and INHERITED Possible values are INHERITED, ENABLED, DISABLED, .
 
@@ -207,6 +223,7 @@ Children
 :ref:`nuqos.NUQOS<nuqos>`                                                                                                                                        ``qoss`` 
 :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`                                                                                                          ``host_interfaces`` 
 :ref:`nuroutingpolicy.NURoutingPolicy<nuroutingpolicy>`                                                                                                          ``routing_policies`` 
+:ref:`nuroutingpolicyassociation.NURoutingPolicyAssociation<nuroutingpolicyassociation>`                                                                         ``routing_policy_associations`` 
 :ref:`nuroutingpolicybinding.NURoutingPolicyBinding<nuroutingpolicybinding>`                                                                                     ``routing_policy_bindings`` 
 :ref:`nuspatsourcespool.NUSPATSourcesPool<nuspatsourcespool>`                                                                                                    ``spat_sources_pools`` 
 :ref:`nuuplinkrd.NUUplinkRD<nuuplinkrd>`                                                                                                                         ``uplink_rds`` 

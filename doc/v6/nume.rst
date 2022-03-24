@@ -93,6 +93,7 @@ Children
 :ref:`nucertificate.NUCertificate<nucertificate>`                                                                                                                ``certificates`` 
 :ref:`nutestdefinition.NUTestDefinition<nutestdefinition>`                                                                                                       ``test_definitions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
+:ref:`nunetconfglobalconfiguration.NUNetconfGlobalConfiguration<nunetconfglobalconfiguration>`                                                                   ``netconf_global_configurations`` 
 :ref:`nunetconfprofile.NUNetconfProfile<nunetconfprofile>`                                                                                                       ``netconf_profiles`` 
 :ref:`nunetworklayout.NUNetworkLayout<nunetworklayout>`                                                                                                          ``network_layouts`` 
 :ref:`nunetworkperformancemeasurement.NUNetworkPerformanceMeasurement<nunetworkperformancemeasurement>`                                                          ``network_performance_measurements`` 

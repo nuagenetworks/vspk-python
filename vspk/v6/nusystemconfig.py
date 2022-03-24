@@ -230,6 +230,7 @@ class NUSystemConfig(NURESTObject):
         self._netconf7x50_routing_policy_validation_enabled = None
         self._key_server_monitor_enabled = None
         self._key_server_vsd_data_synchronization_interval = None
+        self._keystore_password = None
         self._offset_customer_id = None
         self._offset_service_id = None
         self._threat_intelligence_enabled = None
@@ -264,6 +265,8 @@ class NUSystemConfig(NURESTObject):
         self._entity_scope = None
         self._domain_tunnel_type = None
         self._google_maps_api_key = None
+        self._loopback_intf_lower_limit = None
+        self._loopback_intf_upper_limit = None
         self._post_processor_threads_count = None
         self._creation_date = None
         self._group_key_default_sek_generation_interval = None
@@ -285,6 +288,7 @@ class NUSystemConfig(NURESTObject):
         self._group_key_minimum_seed_generation_interval = None
         self._group_key_minimum_seed_lifetime = None
         self._group_key_minimum_traffic_encryption_key_lifetime = None
+        self._es_security_enabled = None
         self._nsg_bootstrap_endpoint = None
         self._nsg_config_endpoint = None
         self._nsg_local_ui_url = None
@@ -414,6 +418,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="netconf7x50_routing_policy_validation_enabled", remote_name="netconf7x50RoutingPolicyValidationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="key_server_monitor_enabled", remote_name="keyServerMonitorEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="key_server_vsd_data_synchronization_interval", remote_name="keyServerVSDDataSynchronizationInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="keystore_password", remote_name="keystorePassword", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="offset_customer_id", remote_name="offsetCustomerID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="offset_service_id", remote_name="offsetServiceID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="threat_intelligence_enabled", remote_name="threatIntelligenceEnabled", attribute_type=bool, is_required=False, is_unique=False)
@@ -448,6 +453,8 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="domain_tunnel_type", remote_name="domainTunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'GRE', u'VLAN', u'VXLAN'])
         self.expose_attribute(local_name="google_maps_api_key", remote_name="googleMapsAPIKey", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="loopback_intf_lower_limit", remote_name="loopbackIntfLowerLimit", attribute_type=int, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="loopback_intf_upper_limit", remote_name="loopbackIntfUpperLimit", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="post_processor_threads_count", remote_name="postProcessorThreadsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_generation_interval", remote_name="groupKeyDefaultSEKGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
@@ -469,6 +476,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="group_key_minimum_seed_generation_interval", remote_name="groupKeyMinimumSeedGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_minimum_seed_lifetime", remote_name="groupKeyMinimumSeedLifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_minimum_traffic_encryption_key_lifetime", remote_name="groupKeyMinimumTrafficEncryptionKeyLifetime", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="es_security_enabled", remote_name="esSecurityEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_bootstrap_endpoint", remote_name="nsgBootstrapEndpoint", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_config_endpoint", remote_name="nsgConfigEndpoint", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="nsg_local_ui_url", remote_name="nsgLocalUiUrl", attribute_type=str, is_required=False, is_unique=False)
@@ -2670,6 +2678,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def keystore_password(self):
+        """ Get keystore_password value.
+
+            Notes:
+                Password to access vsd key store for enabling es security.
+
+                
+                This attribute is named `keystorePassword` in VSD API.
+                
+        """
+        return self._keystore_password
+
+    @keystore_password.setter
+    def keystore_password(self, value):
+        """ Set keystore_password value.
+
+            Notes:
+                Password to access vsd key store for enabling es security.
+
+                
+                This attribute is named `keystorePassword` in VSD API.
+                
+        """
+        self._keystore_password = value
+
+    
+    @property
     def offset_customer_id(self):
         """ Get offset_customer_id value.
 
@@ -3588,6 +3623,60 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def loopback_intf_lower_limit(self):
+        """ Get loopback_intf_lower_limit value.
+
+            Notes:
+                Lower limit of the domain Loopback Interface for gateways of type HWVTEP.
+
+                
+                This attribute is named `loopbackIntfLowerLimit` in VSD API.
+                
+        """
+        return self._loopback_intf_lower_limit
+
+    @loopback_intf_lower_limit.setter
+    def loopback_intf_lower_limit(self, value):
+        """ Set loopback_intf_lower_limit value.
+
+            Notes:
+                Lower limit of the domain Loopback Interface for gateways of type HWVTEP.
+
+                
+                This attribute is named `loopbackIntfLowerLimit` in VSD API.
+                
+        """
+        self._loopback_intf_lower_limit = value
+
+    
+    @property
+    def loopback_intf_upper_limit(self):
+        """ Get loopback_intf_upper_limit value.
+
+            Notes:
+                Upper limit of the domain Loopback Interface for gateways of type HWVTEP.
+
+                
+                This attribute is named `loopbackIntfUpperLimit` in VSD API.
+                
+        """
+        return self._loopback_intf_upper_limit
+
+    @loopback_intf_upper_limit.setter
+    def loopback_intf_upper_limit(self, value):
+        """ Set loopback_intf_upper_limit value.
+
+            Notes:
+                Upper limit of the domain Loopback Interface for gateways of type HWVTEP.
+
+                
+                This attribute is named `loopbackIntfUpperLimit` in VSD API.
+                
+        """
+        self._loopback_intf_upper_limit = value
+
+    
+    @property
     def post_processor_threads_count(self):
         """ Get post_processor_threads_count value.
 
@@ -4152,6 +4241,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._group_key_minimum_traffic_encryption_key_lifetime = value
+
+    
+    @property
+    def es_security_enabled(self):
+        """ Get es_security_enabled value.
+
+            Notes:
+                Indicates if VSD is communicating with elasticsearch over a secure channel using https.
+
+                
+                This attribute is named `esSecurityEnabled` in VSD API.
+                
+        """
+        return self._es_security_enabled
+
+    @es_security_enabled.setter
+    def es_security_enabled(self, value):
+        """ Set es_security_enabled value.
+
+            Notes:
+                Indicates if VSD is communicating with elasticsearch over a secure channel using https.
+
+                
+                This attribute is named `esSecurityEnabled` in VSD API.
+                
+        """
+        self._es_security_enabled = value
 
     
     @property

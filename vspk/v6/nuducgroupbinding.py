@@ -58,6 +58,8 @@ class NUDUCGroupBinding(NURESTObject):
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
+    CONST_ASSOCIATED_UBR_GROUP_FUNCTION_HUB = "HUB"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
@@ -100,7 +102,7 @@ class NUDUCGroupBinding(NURESTObject):
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="priority", remote_name="priority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_duc_group_id", remote_name="associatedDUCGroupID", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_ubr_group_function", remote_name="associatedUBRGroupFunction", attribute_type=str, is_required=False, is_unique=False, choices=[u'GATEWAY', u'UBR'])
+        self.expose_attribute(local_name="associated_ubr_group_function", remote_name="associatedUBRGroupFunction", attribute_type=str, is_required=False, is_unique=False, choices=[u'GATEWAY', u'HUB', u'UBR'])
         self.expose_attribute(local_name="associated_ubr_group_name", remote_name="associatedUBRGroupName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)

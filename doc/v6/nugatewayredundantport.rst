@@ -20,7 +20,7 @@ Attributes
 
 - ``last_updated_date``: Time stamp when this object was last updated.
 
-- ``native_vlan``: Default Native VLAN to carry untagged traffic on the redundant ports of this redundant gateway group. Applicable for Cisco 9K only. Possible values are 1-3967.
+- ``native_vlan``: Default Native VLAN to carry untagged traffic on the redundant ports of this redundant gateway group. Applicable for third-party Netconf Gateways only. Possible values are 1-3967.
 
 - ``permitted_action``: The permitted  action to USE/EXTEND  this port.
 

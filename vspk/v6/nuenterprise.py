@@ -274,6 +274,9 @@ from .fetchers import NUNSGGroupsFetcher
 from .fetchers import NUNSRedundantGatewayGroupsFetcher
 
 
+from .fetchers import NUEthernetSegmentGWGroupsFetcher
+
+
 from .fetchers import NUPublicNetworkMacrosFetcher
 
 
@@ -723,6 +726,9 @@ class NUEnterprise(NURESTObject):
         
         
         self.ns_redundant_gateway_groups = NUNSRedundantGatewayGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.ethernet_segment_gw_groups = NUEthernetSegmentGWGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.public_network_macros = NUPublicNetworkMacrosFetcher.fetcher_with_object(parent_object=self, relationship="child")
