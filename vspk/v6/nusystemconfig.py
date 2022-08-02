@@ -218,6 +218,7 @@ class NUSystemConfig(NURESTObject):
         self._rbac_enabled = None
         self._accumulate_licenses_enabled = None
         self._vcin_load_balancer_ip = None
+        self._ddns_user_agent_email = None
         self._web_cat_srv_url = None
         self._web_filtering_type = None
         self._fec_feedback_timer = None
@@ -406,6 +407,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="rbac_enabled", remote_name="rbacEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="accumulate_licenses_enabled", remote_name="accumulateLicensesEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vcin_load_balancer_ip", remote_name="vcinLoadBalancerIP", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ddns_user_agent_email", remote_name="ddnsUserAgentEmail", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="web_cat_srv_url", remote_name="webCatSrvUrl", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="web_filtering_type", remote_name="webFilteringType", attribute_type=str, is_required=False, is_unique=False, choices=[u'CLOUD_SERVICE', u'VM'])
         self.expose_attribute(local_name="fec_feedback_timer", remote_name="fecFeedbackTimer", attribute_type=int, is_required=False, is_unique=False)
@@ -2351,6 +2353,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._vcin_load_balancer_ip = value
+
+    
+    @property
+    def ddns_user_agent_email(self):
+        """ Get ddns_user_agent_email value.
+
+            Notes:
+                The email address to be used in the provider API as part of the IP Address update.
+
+                
+                This attribute is named `ddnsUserAgentEmail` in VSD API.
+                
+        """
+        return self._ddns_user_agent_email
+
+    @ddns_user_agent_email.setter
+    def ddns_user_agent_email(self, value):
+        """ Set ddns_user_agent_email value.
+
+            Notes:
+                The email address to be used in the provider API as part of the IP Address update.
+
+                
+                This attribute is named `ddnsUserAgentEmail` in VSD API.
+                
+        """
+        self._ddns_user_agent_email = value
 
     
     @property

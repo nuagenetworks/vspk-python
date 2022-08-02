@@ -236,6 +236,8 @@ Parents
 
 - :ref:`nuingressauditacltemplate.NUIngressAuditACLTemplate<nuingressauditacltemplate>`
 
+- :ref:`nuscheduledtestsuiterun.NUScheduledtestsuiterun<nuscheduledtestsuiterun>`
+
 - :ref:`nukeyservermonitorseed.NUKeyServerMonitorSeed<nukeyservermonitorseed>`
 
 - :ref:`nugatewaytemplate.NUGatewayTemplate<nugatewaytemplate>`
@@ -341,6 +343,8 @@ Parents
 - :ref:`nuospfinterface.NUOSPFInterface<nuospfinterface>`
 
 - :ref:`nunetconfglobalconfiguration.NUNetconfGlobalConfiguration<nunetconfglobalconfiguration>`
+
+- :ref:`nuscheduledtestsuite.NUScheduledTestSuite<nuscheduledtestsuite>`
 
 - :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
 

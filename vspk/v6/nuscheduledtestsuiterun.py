@@ -30,6 +30,12 @@
 
 from .fetchers import NUTestRunsFetcher
 
+
+from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
+
 from bambou import NURESTObject
 
 
@@ -48,9 +54,13 @@ class NUScheduledtestsuiterun(NURESTObject):
     
     CONST_OPERATION_STATUS_RUNNING = "RUNNING"
     
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
+    
     CONST_OPERATION_STATUS_STARTED = "STARTED"
     
     CONST_OPERATION_STATUS_UNKNOWN = "UNKNOWN"
+    
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     
 
@@ -74,41 +84,55 @@ class NUScheduledtestsuiterun(NURESTObject):
         self._vport_name = None
         self._ns_gateway_name = None
         self._mac_address = None
+        self._last_updated_by = None
+        self._last_updated_date = None
         self._datapath_id = None
         self._secondary_datapath_id = None
         self._secondary_ns_gateway_name = None
         self._secondary_system_id = None
         self._destination = None
         self._vlan_id = None
+        self._embedded_metadata = None
+        self._entity_scope = None
         self._domain_name = None
         self._zone_name = None
         self._source_ip = None
         self._operation_status = None
         self._vport_port_name = None
         self._vport_vlan_id = None
+        self._creation_date = None
         self._associated_scheduled_test_suite_id = None
         self._associated_scheduled_test_suite_name = None
         self._subnet_name = None
+        self._owner = None
+        self._external_id = None
         self._system_id = None
         
         self.expose_attribute(local_name="vport_name", remote_name="VPortName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ns_gateway_name", remote_name="NSGatewayName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="mac_address", remote_name="macAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="datapath_id", remote_name="datapathID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_datapath_id", remote_name="secondaryDatapathID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_ns_gateway_name", remote_name="secondaryNSGatewayName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_system_id", remote_name="secondarySystemID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="destination", remote_name="destination", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vlan_id", remote_name="vlanID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="domain_name", remote_name="domainName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="zone_name", remote_name="zoneName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="source_ip", remote_name="sourceIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="operation_status", remote_name="operationStatus", attribute_type=str, is_required=False, is_unique=False, choices=[u'RUNNING', u'STARTED', u'UNKNOWN'])
         self.expose_attribute(local_name="vport_port_name", remote_name="vportPortName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vport_vlan_id", remote_name="vportVlanID", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_scheduled_test_suite_id", remote_name="associatedScheduledTestSuiteID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="associated_scheduled_test_suite_name", remote_name="associatedScheduledTestSuiteName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="subnet_name", remote_name="subnetName", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="system_id", remote_name="systemID", attribute_type=str, is_required=False, is_unique=False)
         
 
@@ -116,6 +140,12 @@ class NUScheduledtestsuiterun(NURESTObject):
         
         
         self.test_runs = NUTestRunsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -201,6 +231,60 @@ class NUScheduledtestsuiterun(NURESTObject):
                 
         """
         self._mac_address = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -359,6 +443,60 @@ class NUScheduledtestsuiterun(NURESTObject):
                 
         """
         self._vlan_id = value
+
+    
+    @property
+    def embedded_metadata(self):
+        """ Get embedded_metadata value.
+
+            Notes:
+                Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
+
+                
+                This attribute is named `embeddedMetadata` in VSD API.
+                
+        """
+        return self._embedded_metadata
+
+    @embedded_metadata.setter
+    def embedded_metadata(self, value):
+        """ Set embedded_metadata value.
+
+            Notes:
+                Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
+
+                
+                This attribute is named `embeddedMetadata` in VSD API.
+                
+        """
+        self._embedded_metadata = value
+
+    
+    @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
 
     
     @property
@@ -524,6 +662,33 @@ class NUScheduledtestsuiterun(NURESTObject):
 
     
     @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def associated_scheduled_test_suite_id(self):
         """ Get associated_scheduled_test_suite_id value.
 
@@ -602,6 +767,56 @@ class NUScheduledtestsuiterun(NURESTObject):
                 
         """
         self._subnet_name = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
     @property

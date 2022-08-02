@@ -37,6 +37,9 @@ from .fetchers import NUGatewaySecuritiesFetcher
 from .fetchers import NUPATNATPoolsFetcher
 
 
+from .fetchers import NUDdnsconfigsFetcher
+
+
 from .fetchers import NUPermissionsFetcher
 
 
@@ -461,6 +464,9 @@ class NUNSGateway(NURESTObject):
         
         
         self.patnat_pools = NUPATNATPoolsFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        
+        
+        self.ddnsconfigs = NUDdnsconfigsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.permissions = NUPermissionsFetcher.fetcher_with_object(parent_object=self, relationship="child")

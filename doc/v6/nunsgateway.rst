@@ -166,6 +166,7 @@ Children
 :ref:`nupatch.NUPatch<nupatch>`                                                                                                                                  ``patchs`` 
 :ref:`nugatewaysecurity.NUGatewaySecurity<nugatewaysecurity>`                                                                                                    ``gateway_securities`` 
 :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`                                                                                                                   ``patnat_pools`` 
+:ref:`nuddnsconfig.NUDdnsconfig<nuddnsconfig>`                                                                                                                   ``ddnsconfigs`` 
 :ref:`nupermission.NUPermission<nupermission>`                                                                                                                   ``permissions`` 
 :ref:`numetadata.NUMetadata<numetadata>`                                                                                                                         ``metadatas`` 
 :ref:`nuthreatpreventioninfo.NUThreatPreventionInfo<nuthreatpreventioninfo>`                                                                                     ``threat_prevention_infos`` 

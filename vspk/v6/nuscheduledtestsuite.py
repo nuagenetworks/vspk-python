@@ -33,6 +33,12 @@ from .fetchers import NUScheduledtestsuiterunsFetcher
 
 from .fetchers import NUTestsFetcher
 
+
+from .fetchers import NUMetadatasFetcher
+
+
+from .fetchers import NUGlobalMetadatasFetcher
+
 from bambou import NURESTObject
 
 
@@ -49,13 +55,17 @@ class NUScheduledTestSuite(NURESTObject):
     
     ## Constants
     
-    CONST_SCHEDULE_INTERVAL_UNITS_MONTHS = "MONTHS"
+    CONST_SCHEDULE_INTERVAL_UNITS_HOURS = "HOURS"
     
-    CONST_SCHEDULE_INTERVAL_UNITS_DAYS = "DAYS"
+    CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
     
     CONST_SCHEDULE_INTERVAL_UNITS_MINUTES = "MINUTES"
     
-    CONST_SCHEDULE_INTERVAL_UNITS_HOURS = "HOURS"
+    CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
+    
+    CONST_SCHEDULE_INTERVAL_UNITS_MONTHS = "MONTHS"
+    
+    CONST_SCHEDULE_INTERVAL_UNITS_DAYS = "DAYS"
     
     
 
@@ -77,18 +87,32 @@ class NUScheduledTestSuite(NURESTObject):
         # Read/Write Attributes
         
         self._name = None
+        self._last_updated_by = None
+        self._last_updated_date = None
         self._schedule_interval = None
         self._schedule_interval_units = None
         self._description = None
+        self._embedded_metadata = None
         self._end_date_time = None
+        self._entity_scope = None
+        self._creation_date = None
         self._start_date_time = None
+        self._owner = None
+        self._external_id = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
+        self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="schedule_interval", remote_name="scheduleInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="schedule_interval_units", remote_name="scheduleIntervalUnits", attribute_type=str, is_required=False, is_unique=False, choices=[u'DAYS', u'HOURS', u'MINUTES', u'MONTHS'])
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="end_date_time", remote_name="endDateTime", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="start_date_time", remote_name="startDateTime", attribute_type=float, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
 
         # Fetchers
@@ -98,6 +122,12 @@ class NUScheduledTestSuite(NURESTObject):
         
         
         self.tests = NUTestsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.metadatas = NUMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
+        self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)
@@ -125,6 +155,60 @@ class NUScheduledTestSuite(NURESTObject):
                 
         """
         self._name = value
+
+    
+    @property
+    def last_updated_by(self):
+        """ Get last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, value):
+        """ Set last_updated_by value.
+
+            Notes:
+                ID of the user who last updated the object.
+
+                
+                This attribute is named `lastUpdatedBy` in VSD API.
+                
+        """
+        self._last_updated_by = value
+
+    
+    @property
+    def last_updated_date(self):
+        """ Get last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        return self._last_updated_date
+
+    @last_updated_date.setter
+    def last_updated_date(self, value):
+        """ Set last_updated_date value.
+
+            Notes:
+                Time stamp when this object was last updated.
+
+                
+                This attribute is named `lastUpdatedDate` in VSD API.
+                
+        """
+        self._last_updated_date = value
 
     
     @property
@@ -205,6 +289,33 @@ class NUScheduledTestSuite(NURESTObject):
 
     
     @property
+    def embedded_metadata(self):
+        """ Get embedded_metadata value.
+
+            Notes:
+                Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
+
+                
+                This attribute is named `embeddedMetadata` in VSD API.
+                
+        """
+        return self._embedded_metadata
+
+    @embedded_metadata.setter
+    def embedded_metadata(self, value):
+        """ Set embedded_metadata value.
+
+            Notes:
+                Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
+
+                
+                This attribute is named `embeddedMetadata` in VSD API.
+                
+        """
+        self._embedded_metadata = value
+
+    
+    @property
     def end_date_time(self):
         """ Get end_date_time value.
 
@@ -232,6 +343,60 @@ class NUScheduledTestSuite(NURESTObject):
 
     
     @property
+    def entity_scope(self):
+        """ Get entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        return self._entity_scope
+
+    @entity_scope.setter
+    def entity_scope(self, value):
+        """ Set entity_scope value.
+
+            Notes:
+                Specify if scope of entity is Data center or Enterprise level
+
+                
+                This attribute is named `entityScope` in VSD API.
+                
+        """
+        self._entity_scope = value
+
+    
+    @property
+    def creation_date(self):
+        """ Get creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        return self._creation_date
+
+    @creation_date.setter
+    def creation_date(self, value):
+        """ Set creation_date value.
+
+            Notes:
+                Time stamp when this object was created.
+
+                
+                This attribute is named `creationDate` in VSD API.
+                
+        """
+        self._creation_date = value
+
+    
+    @property
     def start_date_time(self):
         """ Get start_date_time value.
 
@@ -256,6 +421,56 @@ class NUScheduledTestSuite(NURESTObject):
                 
         """
         self._start_date_time = value
+
+    
+    @property
+    def owner(self):
+        """ Get owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, value):
+        """ Set owner value.
+
+            Notes:
+                Identifies the user that has created this object.
+
+                
+        """
+        self._owner = value
+
+    
+    @property
+    def external_id(self):
+        """ Get external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, value):
+        """ Set external_id value.
+
+            Notes:
+                External object ID. Used for integration with third party systems
+
+                
+                This attribute is named `externalID` in VSD API.
+                
+        """
+        self._external_id = value
 
     
 

@@ -146,6 +146,8 @@ Attributes
 
 - ``vcin_load_balancer_ip``: If VCIN Active/Standby is enabled, this needs to be the load-balancer IP which sits in front of the Active and Standby VCIN nodes. The VRS will make its API calls to this load-balancer
 
+- ``ddns_user_agent_email``: The email address to be used in the provider API as part of the IP Address update.
+
 - ``web_cat_srv_url``: Indicates web categorization service url. Applicable only for web filtering type CLOUD_SERVICE
 
 - ``web_filtering_type``: Indicates the type of web filtering. Possible values are CLOUD_SERVICE, VM
