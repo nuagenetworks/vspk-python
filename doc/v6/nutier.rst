@@ -34,6 +34,8 @@ Attributes
 
 - ``probe_interval``: probe interval (part of rate along with packetCount). Applicable to Tier2 type.
 
+- ``probe_performance_stats``: Indicates if Probe Performance Statistics is enabled or disabled for the HTTP Tier.
+
 - ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems

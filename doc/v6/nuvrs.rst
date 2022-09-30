@@ -12,6 +12,10 @@ Attributes
 ----------
 
 
+- ``issu_failure_reason``: ISSU (In-Service Software Upgrade) failure reason.
+
+- ``issu_state``: ISSU (In-Service Software Upgrade) state of this VRS.
+
 - ``name``: Identifies the entity with a name.
 
 - ``management_ip``: The management IP of the VRS entity
@@ -23,6 +27,8 @@ Attributes
 - ``last_event_object``: The last event object (including metadata) from the hypervisor.
 
 - ``last_event_timestamp``: The last event timestamp from the hypervisor.
+
+- ``last_issu_state``: Last ISSU (In-Service Software Upgrade) state of this VRS.
 
 - ``last_state_change``: Last state change timestamp (in millis).
 

@@ -93,6 +93,7 @@ class NUTier(NURESTObject):
         self._down_threshold_count = None
         self._creation_date = None
         self._probe_interval = None
+        self._probe_performance_stats = None
         self._owner = None
         self._external_id = None
         
@@ -107,6 +108,7 @@ class NUTier(NURESTObject):
         self.expose_attribute(local_name="down_threshold_count", remote_name="downThresholdCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="probe_interval", remote_name="probeInterval", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="probe_performance_stats", remote_name="probePerformanceStats", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
@@ -417,6 +419,33 @@ class NUTier(NURESTObject):
                 
         """
         self._probe_interval = value
+
+    
+    @property
+    def probe_performance_stats(self):
+        """ Get probe_performance_stats value.
+
+            Notes:
+                Indicates if Probe Performance Statistics is enabled or disabled for the HTTP Tier.
+
+                
+                This attribute is named `probePerformanceStats` in VSD API.
+                
+        """
+        return self._probe_performance_stats
+
+    @probe_performance_stats.setter
+    def probe_performance_stats(self, value):
+        """ Set probe_performance_stats value.
+
+            Notes:
+                Indicates if Probe Performance Statistics is enabled or disabled for the HTTP Tier.
+
+                
+                This attribute is named `probePerformanceStats` in VSD API.
+                
+        """
+        self._probe_performance_stats = value
 
     
     @property

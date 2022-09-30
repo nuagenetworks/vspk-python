@@ -14,6 +14,12 @@ Attributes
 
 - ``vrsid``: ID of associated VRS
 
+- ``vrsissu_failure_reason``: ISSU (In-Service Software Upgrade) failure reason of the associated VRS.
+
+- ``vrsissu_state``: ISSU (In-Service Software Upgrade) state of the associated VRS.
+
+- ``vrs_last_issu_state``: Last ISSU (In-Service Software Upgrade) state of the associated VRS.
+
 - ``vrs_personality``: Personality of associated VRS.
 
 - ``vrs_system_id``: System ID of associated VRS

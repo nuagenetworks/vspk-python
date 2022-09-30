@@ -143,6 +143,9 @@ class NUControllerVRSLink(NURESTObject):
         # Read/Write Attributes
         
         self._vrsid = None
+        self._vrsissu_failure_reason = None
+        self._vrsissu_state = None
+        self._vrs_last_issu_state = None
         self._vrs_personality = None
         self._vrs_system_id = None
         self._vsc_config_state = None
@@ -166,6 +169,9 @@ class NUControllerVRSLink(NURESTObject):
         self._dynamic = None
         
         self.expose_attribute(local_name="vrsid", remote_name="VRSID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrsissu_failure_reason", remote_name="VRSISSUFailureReason", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrsissu_state", remote_name="VRSISSUState", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="vrs_last_issu_state", remote_name="VRSLastISSUState", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vrs_personality", remote_name="VRSPersonality", attribute_type=str, is_required=False, is_unique=False, choices=[u'HARDWARE_VTEP', u'NONE', u'NSG', u'NSGBR', u'NSGDUC', u'NUAGE_210_WBX_32_Q', u'NUAGE_210_WBX_48_S', u'VRS', u'VRSB', u'VRSG'])
         self.expose_attribute(local_name="vrs_system_id", remote_name="VRSSystemId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="vsc_config_state", remote_name="VSCConfigState", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'SECONDARY'])
@@ -239,6 +245,87 @@ class NUControllerVRSLink(NURESTObject):
                 
         """
         self._vrsid = value
+
+    
+    @property
+    def vrsissu_failure_reason(self):
+        """ Get vrsissu_failure_reason value.
+
+            Notes:
+                ISSU (In-Service Software Upgrade) failure reason of the associated VRS.
+
+                
+                This attribute is named `VRSISSUFailureReason` in VSD API.
+                
+        """
+        return self._vrsissu_failure_reason
+
+    @vrsissu_failure_reason.setter
+    def vrsissu_failure_reason(self, value):
+        """ Set vrsissu_failure_reason value.
+
+            Notes:
+                ISSU (In-Service Software Upgrade) failure reason of the associated VRS.
+
+                
+                This attribute is named `VRSISSUFailureReason` in VSD API.
+                
+        """
+        self._vrsissu_failure_reason = value
+
+    
+    @property
+    def vrsissu_state(self):
+        """ Get vrsissu_state value.
+
+            Notes:
+                ISSU (In-Service Software Upgrade) state of the associated VRS.
+
+                
+                This attribute is named `VRSISSUState` in VSD API.
+                
+        """
+        return self._vrsissu_state
+
+    @vrsissu_state.setter
+    def vrsissu_state(self, value):
+        """ Set vrsissu_state value.
+
+            Notes:
+                ISSU (In-Service Software Upgrade) state of the associated VRS.
+
+                
+                This attribute is named `VRSISSUState` in VSD API.
+                
+        """
+        self._vrsissu_state = value
+
+    
+    @property
+    def vrs_last_issu_state(self):
+        """ Get vrs_last_issu_state value.
+
+            Notes:
+                Last ISSU (In-Service Software Upgrade) state of the associated VRS.
+
+                
+                This attribute is named `VRSLastISSUState` in VSD API.
+                
+        """
+        return self._vrs_last_issu_state
+
+    @vrs_last_issu_state.setter
+    def vrs_last_issu_state(self, value):
+        """ Set vrs_last_issu_state value.
+
+            Notes:
+                Last ISSU (In-Service Software Upgrade) state of the associated VRS.
+
+                
+                This attribute is named `VRSLastISSUState` in VSD API.
+                
+        """
+        self._vrs_last_issu_state = value
 
     
     @property

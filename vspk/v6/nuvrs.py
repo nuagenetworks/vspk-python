@@ -153,12 +153,15 @@ class NUVRS(NURESTObject):
 
         # Read/Write Attributes
         
+        self._issu_failure_reason = None
+        self._issu_state = None
         self._name = None
         self._management_ip = None
         self._parent_ids = None
         self._last_event_name = None
         self._last_event_object = None
         self._last_event_timestamp = None
+        self._last_issu_state = None
         self._last_state_change = None
         self._last_updated_by = None
         self._last_updated_date = None
@@ -202,12 +205,15 @@ class NUVRS(NURESTObject):
         self._hypervisor_name = None
         self._hypervisor_type = None
         
+        self.expose_attribute(local_name="issu_failure_reason", remote_name="ISSUFailureReason", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="issu_state", remote_name="ISSUState", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="management_ip", remote_name="managementIP", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="parent_ids", remote_name="parentIDs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_event_name", remote_name="lastEventName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_event_object", remote_name="lastEventObject", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_event_timestamp", remote_name="lastEventTimestamp", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="last_issu_state", remote_name="lastISSUState", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_state_change", remote_name="lastStateChange", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
@@ -303,6 +309,60 @@ class NUVRS(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def issu_failure_reason(self):
+        """ Get issu_failure_reason value.
+
+            Notes:
+                ISSU (In-Service Software Upgrade) failure reason.
+
+                
+                This attribute is named `ISSUFailureReason` in VSD API.
+                
+        """
+        return self._issu_failure_reason
+
+    @issu_failure_reason.setter
+    def issu_failure_reason(self, value):
+        """ Set issu_failure_reason value.
+
+            Notes:
+                ISSU (In-Service Software Upgrade) failure reason.
+
+                
+                This attribute is named `ISSUFailureReason` in VSD API.
+                
+        """
+        self._issu_failure_reason = value
+
+    
+    @property
+    def issu_state(self):
+        """ Get issu_state value.
+
+            Notes:
+                ISSU (In-Service Software Upgrade) state of this VRS.
+
+                
+                This attribute is named `ISSUState` in VSD API.
+                
+        """
+        return self._issu_state
+
+    @issu_state.setter
+    def issu_state(self, value):
+        """ Set issu_state value.
+
+            Notes:
+                ISSU (In-Service Software Upgrade) state of this VRS.
+
+                
+                This attribute is named `ISSUState` in VSD API.
+                
+        """
+        self._issu_state = value
+
     
     @property
     def name(self):
@@ -460,6 +520,33 @@ class NUVRS(NURESTObject):
                 
         """
         self._last_event_timestamp = value
+
+    
+    @property
+    def last_issu_state(self):
+        """ Get last_issu_state value.
+
+            Notes:
+                Last ISSU (In-Service Software Upgrade) state of this VRS.
+
+                
+                This attribute is named `lastISSUState` in VSD API.
+                
+        """
+        return self._last_issu_state
+
+    @last_issu_state.setter
+    def last_issu_state(self, value):
+        """ Set last_issu_state value.
+
+            Notes:
+                Last ISSU (In-Service Software Upgrade) state of this VRS.
+
+                
+                This attribute is named `lastISSUState` in VSD API.
+                
+        """
+        self._last_issu_state = value
 
     
     @property
