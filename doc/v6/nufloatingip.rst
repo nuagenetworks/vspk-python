@@ -30,6 +30,8 @@ Attributes
 
 - ``creation_date``: Time stamp when this object was created.
 
+- ``is_secondary_fip``: Flag to indicate if this FIP is created from secondary FIP domain.
+
 - ``assigned``: True if this floating IP is assigned to a network interface else the value is false
 
 - ``assigned_to_object_type``: The object type to which this floating ip is assigned. Eg. vport or virtualip
@@ -62,9 +64,9 @@ Parents
 --------
 
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 
 - :ref:`nume.NUMe<nume>`
 
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+- :ref:`nudomain.NUDomain<nudomain>`
 

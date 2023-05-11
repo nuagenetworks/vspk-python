@@ -392,7 +392,7 @@ class NUOSPFInterface(NURESTObject):
         """ Get message_digest_keys value.
 
             Notes:
-                This attribute applies only when 'authenticationType' is 'MESSAGE_DIGEST'. In that case, this attribute is a list of pairs of key ID/password used for MD5 authentication. The key ID must by an integer between 1 and 255, and the value is a password (of 16 charachters maximum) used to generate an MD5 hash. The MD5 has is then used as authentication data in the OSPF packets. No duplicate key IDs are allowed. The format for each pair is 'keyID:password' (e.g. '1:foobar')
+                This attribute applies only when 'authenticationType' is 'MESSAGE_DIGEST'. In that case, this attribute is a list of pairs of key ID/password used for MD5 authentication. The key ID must by an integer between 1 and 255, and the value is a password (of 16 charachters maximum) used to generate an MD5 hash. The MD5 has is then used as authentication data in the OSPF packets. No duplicate key IDs are allowed. The format for each pair is 'keyID:password' (e.g. '1:foobar'). When Enhanced Security for Routing Protocols is enabled, only keyID part of the keyID:password pair is visible, the password part is hidden.
 
                 
                 This attribute is named `messageDigestKeys` in VSD API.
@@ -405,7 +405,7 @@ class NUOSPFInterface(NURESTObject):
         """ Set message_digest_keys value.
 
             Notes:
-                This attribute applies only when 'authenticationType' is 'MESSAGE_DIGEST'. In that case, this attribute is a list of pairs of key ID/password used for MD5 authentication. The key ID must by an integer between 1 and 255, and the value is a password (of 16 charachters maximum) used to generate an MD5 hash. The MD5 has is then used as authentication data in the OSPF packets. No duplicate key IDs are allowed. The format for each pair is 'keyID:password' (e.g. '1:foobar')
+                This attribute applies only when 'authenticationType' is 'MESSAGE_DIGEST'. In that case, this attribute is a list of pairs of key ID/password used for MD5 authentication. The key ID must by an integer between 1 and 255, and the value is a password (of 16 charachters maximum) used to generate an MD5 hash. The MD5 has is then used as authentication data in the OSPF packets. No duplicate key IDs are allowed. The format for each pair is 'keyID:password' (e.g. '1:foobar'). When Enhanced Security for Routing Protocols is enabled, only keyID part of the keyID:password pair is visible, the password part is hidden.
 
                 
                 This attribute is named `messageDigestKeys` in VSD API.
@@ -623,7 +623,7 @@ class NUOSPFInterface(NURESTObject):
         """ Get authentication_key value.
 
             Notes:
-                The authentication key that is used on the interface.
+                The authentication key that is used on the interface. When Enhanced Security for Routing Protocols is enabled, the authentication key is hidden.
 
                 
                 This attribute is named `authenticationKey` in VSD API.
@@ -636,7 +636,7 @@ class NUOSPFInterface(NURESTObject):
         """ Set authentication_key value.
 
             Notes:
-                The authentication key that is used on the interface.
+                The authentication key that is used on the interface. When Enhanced Security for Routing Protocols is enabled, the authentication key is hidden.
 
                 
                 This attribute is named `authenticationKey` in VSD API.

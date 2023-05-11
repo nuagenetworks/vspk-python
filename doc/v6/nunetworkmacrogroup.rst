@@ -55,9 +55,9 @@ Parents
 --------
 
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuenterprisenetwork.NUEnterpriseNetwork<nuenterprisenetwork>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

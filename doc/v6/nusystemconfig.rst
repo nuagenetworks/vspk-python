@@ -20,6 +20,8 @@ Attributes
 
 - ``ecmp_count``: System Default Equal-cost multi-path routing count. Every Domain derives ECMP count from this value unless specifically set for the domain.
 
+- ``ldap_max_config``: Maximum number of LDAP configurations.
+
 - ``ldap_sync_interval``: LDAP Sync-Up task interval in seconds.
 
 - ``ldap_trust_store_certifcate``: Location of the truststore which is need to store LDAP server certificates. Default is cacerts located in java.home/lib/security/cacerts. Uncomment below setting if you need to use a different file
@@ -218,6 +220,8 @@ Attributes
 
 - ``global_mac_address``: the MAC Address to use for those subnets that have the useGlobalMAC flag enabled.
 
+- ``global_network_macro_groups_enabled``: Indicates if global network macro groups is enabled.  When enabled, all network macro groups created in Platform Configuration will be available to all enterprises.
+
 - ``flow_collection_enabled``: Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires 'statisticsEnabled'.
 
 - ``flow_drop_timeout``: Timeout in seconds after which the traffic will be dropped, if the flow limit exceeds.
@@ -231,6 +235,8 @@ Attributes
 - ``inactive_timeout``: Defines the inactive timeout for the client. If the client is inactive for more than the timeout value, server clears off all the cached information regarding the client. This value should be greater than the maximum timeout for the event processor. Value is in milliseconds.
 
 - ``infrastructure_bgpas_number``: Autonomous System Number, Used for Infrastructure BGP PE_CE.
+
+- ``enhanced_security_enabled``: Indicates if Enhanced Security is enabled for Routing Protocols.
 
 - ``interface_id_lower_limit``: Lower limit for interface Id configured on SRLinux device.
 

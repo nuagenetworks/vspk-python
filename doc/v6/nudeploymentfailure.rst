@@ -74,35 +74,35 @@ Parents
 --------
 
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
+- :ref:`nudomain.NUDomain<nudomain>`
+
 - :ref:`nuvport.NUVPort<nuvport>`
 
-- :ref:`nusubnet.NUSubnet<nusubnet>`
-
-- :ref:`nustaticroute.NUStaticRoute<nustaticroute>`
+- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
 
 - :ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`
 
+- :ref:`nustaticroute.NUStaticRoute<nustaticroute>`
+
 - :ref:`nuegressprofile.NUEgressProfile<nuegressprofile>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
-
-- :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
 - :ref:`nunetconfglobalconfiguration.NUNetconfGlobalConfiguration<nunetconfglobalconfiguration>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
+- :ref:`nusubnet.NUSubnet<nusubnet>`
+
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`
 
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+- :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
 - :ref:`nubgpneighbor.NUBGPNeighbor<nubgpneighbor>`
 
-- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

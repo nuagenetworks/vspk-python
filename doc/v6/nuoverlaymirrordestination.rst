@@ -65,9 +65,9 @@ Parents
 --------
 
 
-- :ref:`nul2domain.NUL2Domain<nul2domain>`
-
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`numirrordestinationgroup.NUMirrorDestinationGroup<numirrordestinationgroup>`
 

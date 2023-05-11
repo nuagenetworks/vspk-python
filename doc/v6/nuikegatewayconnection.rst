@@ -88,9 +88,9 @@ Parents
 --------
 
 
-- :ref:`nusubnet.NUSubnet<nusubnet>`
+- :ref:`nuvirtualuplink.NUVirtualUplink<nuvirtualuplink>`
 
 - :ref:`nuvlan.NUVLAN<nuvlan>`
 
-- :ref:`nuvirtualuplink.NUVirtualUplink<nuvirtualuplink>`
+- :ref:`nusubnet.NUSubnet<nusubnet>`
 

@@ -100,6 +100,9 @@ class NUUser(NURESTObject):
 
         # Read/Write Attributes
         
+        self._ldap_domain = None
+        self._ldap_enabled = None
+        self._ldap_id = None
         self._ldapuser_dn = None
         self._management_mode = None
         self._password = None
@@ -121,6 +124,9 @@ class NUUser(NURESTObject):
         self._owner = None
         self._external_id = None
         
+        self.expose_attribute(local_name="ldap_domain", remote_name="LDAPDomain", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ldap_enabled", remote_name="LDAPEnabled", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ldap_id", remote_name="LDAPId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ldapuser_dn", remote_name="LDAPUserDN", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="management_mode", remote_name="managementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'CMS', u'DEFAULT'])
         self.expose_attribute(local_name="password", remote_name="password", attribute_type=str, is_required=True, is_unique=False)
@@ -173,6 +179,87 @@ class NUUser(NURESTObject):
         self._compute_args(**kwargs)
 
     # Properties
+    
+    @property
+    def ldap_domain(self):
+        """ Get ldap_domain value.
+
+            Notes:
+                The Domain name of the LDAP instance from which the user was synchronized.
+
+                
+                This attribute is named `LDAPDomain` in VSD API.
+                
+        """
+        return self._ldap_domain
+
+    @ldap_domain.setter
+    def ldap_domain(self, value):
+        """ Set ldap_domain value.
+
+            Notes:
+                The Domain name of the LDAP instance from which the user was synchronized.
+
+                
+                This attribute is named `LDAPDomain` in VSD API.
+                
+        """
+        self._ldap_domain = value
+
+    
+    @property
+    def ldap_enabled(self):
+        """ Get ldap_enabled value.
+
+            Notes:
+                True if the user is synchronized from an LDAP instance which is currently enabled. False otherwise.
+
+                
+                This attribute is named `LDAPEnabled` in VSD API.
+                
+        """
+        return self._ldap_enabled
+
+    @ldap_enabled.setter
+    def ldap_enabled(self, value):
+        """ Set ldap_enabled value.
+
+            Notes:
+                True if the user is synchronized from an LDAP instance which is currently enabled. False otherwise.
+
+                
+                This attribute is named `LDAPEnabled` in VSD API.
+                
+        """
+        self._ldap_enabled = value
+
+    
+    @property
+    def ldap_id(self):
+        """ Get ldap_id value.
+
+            Notes:
+                The ID of the LDAP instance from which the user was synchronized.
+
+                
+                This attribute is named `LDAPId` in VSD API.
+                
+        """
+        return self._ldap_id
+
+    @ldap_id.setter
+    def ldap_id(self, value):
+        """ Set ldap_id value.
+
+            Notes:
+                The ID of the LDAP instance from which the user was synchronized.
+
+                
+                This attribute is named `LDAPId` in VSD API.
+                
+        """
+        self._ldap_id = value
+
     
     @property
     def ldapuser_dn(self):

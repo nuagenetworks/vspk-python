@@ -36,9 +36,13 @@ Attributes
 
 - ``allow_enterprise_avatar_on_nsg``: When enabled, it allows Enterprise Avatar (image) to be populated on the NSGateway bootstrapping portal and blocked page notification.
 
+- ``global_network_macro_groups_enabled``: Enables the global network macro groups feature.
+
 - ``flow_collection_enabled``: Enables flow statistics collection. It is needed for the VSS feature, and requires a valid VSS license. This option requires 'statisticsEnabled'.
 
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
+
+- ``enhanced_security_enabled``: Indicates if Enhanced Security is enabled for Routing Protocols.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 

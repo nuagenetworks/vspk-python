@@ -100,19 +100,19 @@ Parents
 --------
 
 
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+
 - :ref:`nuzone.NUZone<nuzone>`
-
-- :ref:`nuvport.NUVPort<nuvport>`
-
-- :ref:`nusubnet.NUSubnet<nusubnet>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
-
-- :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nume.NUMe<nume>`
 
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+- :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nucontainer.NUContainer<nucontainer>`
+
+- :ref:`nusubnet.NUSubnet<nusubnet>`
+
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
 

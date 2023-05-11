@@ -337,6 +337,7 @@ class NUVPort(NURESTObject):
         self._associated_ingress_profile_id = None
         self._associated_multicast_channel_map_id = None
         self._associated_ssid = None
+        self._associated_secondary_f_ip_id = None
         self._associated_send_multicast_channel_map_id = None
         self._associated_trunk_id = None
         self._sub_type = None
@@ -395,6 +396,7 @@ class NUVPort(NURESTObject):
         self.expose_attribute(local_name="associated_ingress_profile_id", remote_name="associatedIngressProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_ssid", remote_name="associatedSSID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_secondary_f_ip_id", remote_name="associatedSecondaryFIPID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_send_multicast_channel_map_id", remote_name="associatedSendMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_trunk_id", remote_name="associatedTrunkID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="sub_type", remote_name="subType", attribute_type=str, is_required=False, is_unique=False, choices=[u'NONE', u'VNF'])
@@ -1711,6 +1713,33 @@ class NUVPort(NURESTObject):
                 
         """
         self._associated_ssid = value
+
+    
+    @property
+    def associated_secondary_f_ip_id(self):
+        """ Get associated_secondary_f_ip_id value.
+
+            Notes:
+                ID of Secondary Floating IP address associated to this vport.
+
+                
+                This attribute is named `associatedSecondaryFIPID` in VSD API.
+                
+        """
+        return self._associated_secondary_f_ip_id
+
+    @associated_secondary_f_ip_id.setter
+    def associated_secondary_f_ip_id(self, value):
+        """ Set associated_secondary_f_ip_id value.
+
+            Notes:
+                ID of Secondary Floating IP address associated to this vport.
+
+                
+                This attribute is named `associatedSecondaryFIPID` in VSD API.
+                
+        """
+        self._associated_secondary_f_ip_id = value
 
     
     @property

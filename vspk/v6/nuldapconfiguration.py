@@ -85,6 +85,7 @@ class NULDAPConfiguration(NURESTObject):
         self._embedded_metadata = None
         self._enabled = None
         self._entity_scope = None
+        self._domain = None
         self._port = None
         self._creation_date = None
         self._group_dn = None
@@ -94,6 +95,7 @@ class NULDAPConfiguration(NURESTObject):
         self._user_name_attribute = None
         self._authorization_enabled = None
         self._authorizing_user_dn = None
+        self._everybody_group_enabled = None
         self._owner = None
         self._external_id = None
         
@@ -107,6 +109,7 @@ class NULDAPConfiguration(NURESTObject):
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="enabled", remote_name="enabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
+        self.expose_attribute(local_name="domain", remote_name="domain", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="port", remote_name="port", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_dn", remote_name="groupDN", attribute_type=str, is_required=False, is_unique=False)
@@ -116,6 +119,7 @@ class NULDAPConfiguration(NURESTObject):
         self.expose_attribute(local_name="user_name_attribute", remote_name="userNameAttribute", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="authorization_enabled", remote_name="authorizationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="authorizing_user_dn", remote_name="authorizingUserDN", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="everybody_group_enabled", remote_name="everybodyGroupEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         
@@ -391,6 +395,29 @@ class NULDAPConfiguration(NURESTObject):
 
     
     @property
+    def domain(self):
+        """ Get domain value.
+
+            Notes:
+                This attribute is optional but must be unique per enterprise. Setting this value allows the enterprise to uniquely identify the LDAP instance using FQDN notation, which can then be used during authentication. For example "user1@example.net"
+
+                
+        """
+        return self._domain
+
+    @domain.setter
+    def domain(self, value):
+        """ Set domain value.
+
+            Notes:
+                This attribute is optional but must be unique per enterprise. Setting this value allows the enterprise to uniquely identify the LDAP instance using FQDN notation, which can then be used during authentication. For example "user1@example.net"
+
+                
+        """
+        self._domain = value
+
+    
+    @property
     def port(self):
         """ Get port value.
 
@@ -627,6 +654,33 @@ class NULDAPConfiguration(NURESTObject):
                 
         """
         self._authorizing_user_dn = value
+
+    
+    @property
+    def everybody_group_enabled(self):
+        """ Get everybody_group_enabled value.
+
+            Notes:
+                An optional field indicating whether to use the LDAP Everybody group for mapping membership to the Everybody group in VSD. Value defaults to true if not specified. Please set to false to igrnore the Everybody group in LDAP.
+
+                
+                This attribute is named `everybodyGroupEnabled` in VSD API.
+                
+        """
+        return self._everybody_group_enabled
+
+    @everybody_group_enabled.setter
+    def everybody_group_enabled(self, value):
+        """ Set everybody_group_enabled value.
+
+            Notes:
+                An optional field indicating whether to use the LDAP Everybody group for mapping membership to the Everybody group in VSD. Value defaults to true if not specified. Please set to false to igrnore the Everybody group in LDAP.
+
+                
+                This attribute is named `everybodyGroupEnabled` in VSD API.
+                
+        """
+        self._everybody_group_enabled = value
 
     
     @property

@@ -18,7 +18,7 @@ Attributes
 
 - ``assoc_ddns_config_id``: The associated DDNS Configuration UUID to the Dynamic DNS Config Binding
 
-- ``associated_uplink_id``: UUID of the associated NSG Uplink to the parent DDNS Configuration 
+- ``associated_uplink_id`` (**Mandatory**): UUID of the associated NSG Uplink to the parent DDNS Configuration 
 
 
 

@@ -32,6 +32,8 @@ Attributes
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level
 
+- ``domain``: This attribute is optional but must be unique per enterprise. Setting this value allows the enterprise to uniquely identify the LDAP instance using FQDN notation, which can then be used during authentication. For example "user1@example.net"
+
 - ``port`` (**Mandatory**): Port to be used for the LDAP server
 
 - ``creation_date``: Time stamp when this object was created.
@@ -49,6 +51,8 @@ Attributes
 - ``authorization_enabled``: To enable LDAP authorization for an enterprise, both authorizationEnabled and enabled attributes must be set to true. If enabled attribute is not set, this attribute is ignored. The relationship between enabled and authorizationEnabled attributes is as follows, enabled = true, authorizationEnabled = false, LDAP is used only for Authentication. enabled = true, authorizationEnabled = true, LDAP is used for both authentication and authorization. enabled = false, authorizationEnabled = true, LDAP is not used. enabled = false, authorizationEnabled = false, LDAP is not used.
 
 - ``authorizing_user_dn``: This attribute is a mandatory field for LDAP authorization. When LDAP is used for authorization for an enterprise, the user DN that will be used to verify the integrity of groups and users in LDAP server for the enterprise. For example, CN=groupAdmin,OU=VSD_USERS,OU=Personal,OU=Domain Users,DC=company,DC=com
+
+- ``everybody_group_enabled``: An optional field indicating whether to use the LDAP Everybody group for mapping membership to the Everybody group in VSD. Value defaults to true if not specified. Please set to false to igrnore the Everybody group in LDAP.
 
 - ``owner``: Identifies the user that has created this object.
 

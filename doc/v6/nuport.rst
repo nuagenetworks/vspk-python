@@ -92,9 +92,9 @@ Parents
 
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
-- :ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`
-
 - :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
+
+- :ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 

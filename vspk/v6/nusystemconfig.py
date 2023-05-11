@@ -155,6 +155,7 @@ class NUSystemConfig(NURESTObject):
         self._aar_probe_stats_interval = None
         self._acl_allow_origin = None
         self._ecmp_count = None
+        self._ldap_max_config = None
         self._ldap_sync_interval = None
         self._ldap_trust_store_certifcate = None
         self._ldap_trust_store_password = None
@@ -254,6 +255,7 @@ class NUSystemConfig(NURESTObject):
         self._elastic_search_license_expiry_time = None
         self._allow_enterprise_avatar_on_nsg = None
         self._global_mac_address = None
+        self._global_network_macro_groups_enabled = None
         self._flow_collection_enabled = None
         self._flow_drop_timeout = None
         self._embedded_metadata = None
@@ -261,6 +263,7 @@ class NUSystemConfig(NURESTObject):
         self._imported_saa_s_applications_version = None
         self._inactive_timeout = None
         self._infrastructure_bgpas_number = None
+        self._enhanced_security_enabled = None
         self._interface_id_lower_limit = None
         self._interface_id_upper_limit = None
         self._entity_scope = None
@@ -344,6 +347,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="aar_probe_stats_interval", remote_name="AARProbeStatsInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="acl_allow_origin", remote_name="ACLAllowOrigin", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ecmp_count", remote_name="ECMPCount", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ldap_max_config", remote_name="LDAPMaxConfig", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ldap_sync_interval", remote_name="LDAPSyncInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ldap_trust_store_certifcate", remote_name="LDAPTrustStoreCertifcate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ldap_trust_store_password", remote_name="LDAPTrustStorePassword", attribute_type=str, is_required=False, is_unique=False)
@@ -443,6 +447,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="elastic_search_license_expiry_time", remote_name="elasticSearchLicenseExpiryTime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_enterprise_avatar_on_nsg", remote_name="allowEnterpriseAvatarOnNSG", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="global_mac_address", remote_name="globalMACAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="global_network_macro_groups_enabled", remote_name="globalNetworkMacroGroupsEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_drop_timeout", remote_name="flowDropTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
@@ -450,6 +455,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="imported_saa_s_applications_version", remote_name="importedSaaSApplicationsVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="inactive_timeout", remote_name="inactiveTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="infrastructure_bgpas_number", remote_name="infrastructureBGPASNumber", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enhanced_security_enabled", remote_name="enhancedSecurityEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="interface_id_lower_limit", remote_name="interfaceIdLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="interface_id_upper_limit", remote_name="interfaceIdUpperLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -652,6 +658,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._ecmp_count = value
+
+    
+    @property
+    def ldap_max_config(self):
+        """ Get ldap_max_config value.
+
+            Notes:
+                Maximum number of LDAP configurations.
+
+                
+                This attribute is named `LDAPMaxConfig` in VSD API.
+                
+        """
+        return self._ldap_max_config
+
+    @ldap_max_config.setter
+    def ldap_max_config(self, value):
+        """ Set ldap_max_config value.
+
+            Notes:
+                Maximum number of LDAP configurations.
+
+                
+                This attribute is named `LDAPMaxConfig` in VSD API.
+                
+        """
+        self._ldap_max_config = value
 
     
     @property
@@ -3328,6 +3361,33 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def global_network_macro_groups_enabled(self):
+        """ Get global_network_macro_groups_enabled value.
+
+            Notes:
+                Indicates if global network macro groups is enabled.  When enabled, all network macro groups created in Platform Configuration will be available to all enterprises.
+
+                
+                This attribute is named `globalNetworkMacroGroupsEnabled` in VSD API.
+                
+        """
+        return self._global_network_macro_groups_enabled
+
+    @global_network_macro_groups_enabled.setter
+    def global_network_macro_groups_enabled(self, value):
+        """ Set global_network_macro_groups_enabled value.
+
+            Notes:
+                Indicates if global network macro groups is enabled.  When enabled, all network macro groups created in Platform Configuration will be available to all enterprises.
+
+                
+                This attribute is named `globalNetworkMacroGroupsEnabled` in VSD API.
+                
+        """
+        self._global_network_macro_groups_enabled = value
+
+    
+    @property
     def flow_collection_enabled(self):
         """ Get flow_collection_enabled value.
 
@@ -3514,6 +3574,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._infrastructure_bgpas_number = value
+
+    
+    @property
+    def enhanced_security_enabled(self):
+        """ Get enhanced_security_enabled value.
+
+            Notes:
+                Indicates if Enhanced Security is enabled for Routing Protocols.
+
+                
+                This attribute is named `enhancedSecurityEnabled` in VSD API.
+                
+        """
+        return self._enhanced_security_enabled
+
+    @enhanced_security_enabled.setter
+    def enhanced_security_enabled(self, value):
+        """ Set enhanced_security_enabled value.
+
+            Notes:
+                Indicates if Enhanced Security is enabled for Routing Protocols.
+
+                
+                This attribute is named `enhancedSecurityEnabled` in VSD API.
+                
+        """
+        self._enhanced_security_enabled = value
 
     
     @property

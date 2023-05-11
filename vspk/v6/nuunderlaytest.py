@@ -27,6 +27,9 @@
 
 
 
+
+from .fetchers import NUTestRunsFetcher
+
 from bambou import NURESTObject
 
 
@@ -113,6 +116,12 @@ class NUUnderlayTest(NURESTObject):
         self.expose_attribute(local_name="run_connectivity_test", remote_name="runConnectivityTest", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="run_mtu_discovery_test", remote_name="runMTUDiscoveryTest", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="duration", remote_name="duration", attribute_type=int, is_required=False, is_unique=False)
+        
+
+        # Fetchers
+        
+        
+        self.test_runs = NUTestRunsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
 
         self._compute_args(**kwargs)

@@ -90,6 +90,7 @@ class NUFloatingIp(NURESTObject):
         self._ingress_rate_limiter_id = None
         self._entity_scope = None
         self._creation_date = None
+        self._is_secondary_fip = None
         self._assigned = None
         self._assigned_to_object_type = None
         self._associated_shared_network_resource_id = None
@@ -105,6 +106,7 @@ class NUFloatingIp(NURESTObject):
         self.expose_attribute(local_name="ingress_rate_limiter_id", remote_name="ingressRateLimiterID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="is_secondary_fip", remote_name="isSecondaryFIP", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assigned", remote_name="assigned", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assigned_to_object_type", remote_name="assignedToObjectType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_shared_network_resource_id", remote_name="associatedSharedNetworkResourceID", attribute_type=str, is_required=True, is_unique=False)
@@ -371,6 +373,33 @@ class NUFloatingIp(NURESTObject):
                 
         """
         self._creation_date = value
+
+    
+    @property
+    def is_secondary_fip(self):
+        """ Get is_secondary_fip value.
+
+            Notes:
+                Flag to indicate if this FIP is created from secondary FIP domain.
+
+                
+                This attribute is named `isSecondaryFIP` in VSD API.
+                
+        """
+        return self._is_secondary_fip
+
+    @is_secondary_fip.setter
+    def is_secondary_fip(self, value):
+        """ Set is_secondary_fip value.
+
+            Notes:
+                Flag to indicate if this FIP is created from secondary FIP domain.
+
+                
+                This attribute is named `isSecondaryFIP` in VSD API.
+                
+        """
+        self._is_secondary_fip = value
 
     
     @property

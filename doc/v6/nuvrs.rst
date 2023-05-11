@@ -146,13 +146,13 @@ Parents
 --------
 
 
+- :ref:`nume.NUMe<nume>`
+
 - :ref:`nucontrollervrslink.NUControllerVRSLink<nucontrollervrslink>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
-- :ref:`nume.NUMe<nume>`
+- :ref:`nucontainer.NUContainer<nucontainer>`
 
 - :ref:`nuvm.NUVM<nuvm>`
-
-- :ref:`nucontainer.NUContainer<nucontainer>`
 

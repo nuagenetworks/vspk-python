@@ -106,15 +106,15 @@ Parents
 --------
 
 
-- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
-
-- :ref:`nuvport.NUVPort<nuvport>`
+- :ref:`nume.NUMe<nume>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
 
-- :ref:`nul2domain.NUL2Domain<nul2domain>`
+- :ref:`nuvport.NUVPort<nuvport>`
 
-- :ref:`nume.NUMe<nume>`
+- :ref:`numirrordestination.NUMirrorDestination<numirrordestination>`
+
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`
 

@@ -67,7 +67,7 @@ class NUDdnsconfigbinding(NURESTObject):
         self.expose_attribute(local_name="uplink_name", remote_name="uplinkName", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="uplink_priority", remote_name="uplinkPriority", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="assoc_ddns_config_id", remote_name="assocDDNSConfigId", attribute_type=str, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="associated_uplink_id", remote_name="associatedUplinkID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_uplink_id", remote_name="associatedUplinkID", attribute_type=str, is_required=True, is_unique=False)
         
 
         self._compute_args(**kwargs)

@@ -47,15 +47,15 @@ Parents
 
 - :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
 
+- :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
+
 - :ref:`nunsport.NUNSPort<nunsport>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
-
-- :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 

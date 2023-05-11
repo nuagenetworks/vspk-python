@@ -121,7 +121,9 @@ class NUGroup(NURESTObject):
 
         # Read/Write Attributes
         
+        self._ldap_domain = None
         self._ldap_group_dn = None
+        self._ldap_id = None
         self._name = None
         self._management_mode = None
         self._last_updated_by = None
@@ -137,7 +139,9 @@ class NUGroup(NURESTObject):
         self._owner = None
         self._external_id = None
         
+        self.expose_attribute(local_name="ldap_domain", remote_name="LDAPDomain", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ldap_group_dn", remote_name="LDAPGroupDN", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="ldap_id", remote_name="LDAPId", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="management_mode", remote_name="managementMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'CMS', u'DEFAULT', u'RESERVED'])
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
@@ -177,6 +181,33 @@ class NUGroup(NURESTObject):
     # Properties
     
     @property
+    def ldap_domain(self):
+        """ Get ldap_domain value.
+
+            Notes:
+                The domain name of the LDAP instance from which the group was synchronized.
+
+                
+                This attribute is named `LDAPDomain` in VSD API.
+                
+        """
+        return self._ldap_domain
+
+    @ldap_domain.setter
+    def ldap_domain(self, value):
+        """ Set ldap_domain value.
+
+            Notes:
+                The domain name of the LDAP instance from which the group was synchronized.
+
+                
+                This attribute is named `LDAPDomain` in VSD API.
+                
+        """
+        self._ldap_domain = value
+
+    
+    @property
     def ldap_group_dn(self):
         """ Get ldap_group_dn value.
 
@@ -201,6 +232,33 @@ class NUGroup(NURESTObject):
                 
         """
         self._ldap_group_dn = value
+
+    
+    @property
+    def ldap_id(self):
+        """ Get ldap_id value.
+
+            Notes:
+                The ID of the LDAP instance from which the group was synchronized.
+
+                
+                This attribute is named `LDAPId` in VSD API.
+                
+        """
+        return self._ldap_id
+
+    @ldap_id.setter
+    def ldap_id(self, value):
+        """ Set ldap_id value.
+
+            Notes:
+                The ID of the LDAP instance from which the group was synchronized.
+
+                
+                This attribute is named `LDAPId` in VSD API.
+                
+        """
+        self._ldap_id = value
 
     
     @property

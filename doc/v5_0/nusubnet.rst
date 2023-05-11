@@ -142,6 +142,8 @@ Parents
 
 - :ref:`nuzone.NUZone<nuzone>`
 
+- :ref:`nume.NUMe<nume>`
+
 - :ref:`nusubnettemplate.NUSubnetTemplate<nusubnettemplate>`
 
 - :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
@@ -149,8 +151,6 @@ Parents
 - :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
-
-- :ref:`nume.NUMe<nume>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 

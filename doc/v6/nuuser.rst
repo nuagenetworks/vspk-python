@@ -12,6 +12,12 @@ Attributes
 ----------
 
 
+- ``ldap_domain``: The Domain name of the LDAP instance from which the user was synchronized.
+
+- ``ldap_enabled``: True if the user is synchronized from an LDAP instance which is currently enabled. False otherwise.
+
+- ``ldap_id``: The ID of the LDAP instance from which the user was synchronized.
+
 - ``ldapuser_dn``: The LDAP distinguished name (DN) for the user.
 
 - ``management_mode``: Management mode of the user object - allows for override of external authorization and syncup
@@ -77,9 +83,9 @@ Parents
 --------
 
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nume.NUMe<nume>`
 
 - :ref:`nugroup.NUGroup<nugroup>`
 
-- :ref:`nume.NUMe<nume>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

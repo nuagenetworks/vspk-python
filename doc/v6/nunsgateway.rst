@@ -138,6 +138,8 @@ Attributes
 
 - ``associated_overlay_management_profile_id``: The ID of the associated Overlay Management Profile
 
+- ``stats_profile_id``: Statistics Profile to which this NSGateway is associated to.
+
 - ``huge_page_setting``: The size and number of huge pages for an NSG that is running in network accelerated mode.  Hugepage values states the portion of memory reserved for network accelerated services.
 
 - ``functions``: List of supported functions. This is only relevant for NSG-UBR and will be set to UBR by default in case an NSG-UBR is created. For a regular NSG, this will be set to null.
@@ -200,15 +202,17 @@ Parents
 --------
 
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
 - :ref:`nuducgroup.NUDUCGroup<nuducgroup>`
 
+- :ref:`nume.NUMe<nume>`
+
+- :ref:`nustatisticsprofile.NUStatisticsprofile<nustatisticsprofile>`
+
 - :ref:`nunsggroup.NUNSGGroup<nunsggroup>`
 
-- :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
-
-- :ref:`nume.NUMe<nume>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

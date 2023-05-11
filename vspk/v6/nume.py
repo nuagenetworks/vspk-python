@@ -34,6 +34,9 @@ from .fetchers import NUL2DomainsFetcher
 from .fetchers import NUL4ServicesFetcher
 
 
+from .fetchers import NUL4ServiceGroupsFetcher
+
+
 from .fetchers import NUL7applicationsignaturesFetcher
 
 
@@ -208,6 +211,9 @@ from .fetchers import NUIngressAdvFwdEntryTemplatesFetcher
 from .fetchers import NUIngressQOSPoliciesFetcher
 
 
+from .fetchers import NUGNMIProfilesFetcher
+
+
 from .fetchers import NUEnterprisesFetcher
 
 
@@ -323,6 +329,9 @@ from .fetchers import NUStaticRoutesFetcher
 
 
 from .fetchers import NUStatsCollectorInfosFetcher
+
+
+from .fetchers import NUStatisticsprofilesFetcher
 
 
 from .fetchers import NUEthernetSegmentGWGroupsFetcher
@@ -452,6 +461,9 @@ class NUMe(NURESTRootObject):
         
         
         self.l4_services = NUL4ServicesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.l4_service_groups = NUL4ServiceGroupsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.l7applicationsignatures = NUL7applicationsignaturesFetcher.fetcher_with_object(parent_object=self, relationship="root")
@@ -628,6 +640,9 @@ class NUMe(NURESTRootObject):
         self.ingress_qos_policies = NUIngressQOSPoliciesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.gnmi_profiles = NUGNMIProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
         self.enterprises = NUEnterprisesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -743,6 +758,9 @@ class NUMe(NURESTRootObject):
         
         
         self.stats_collector_infos = NUStatsCollectorInfosFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.statisticsprofiles = NUStatisticsprofilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
         self.ethernet_segment_gw_groups = NUEthernetSegmentGWGroupsFetcher.fetcher_with_object(parent_object=self, relationship="root")

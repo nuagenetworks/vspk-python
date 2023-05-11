@@ -52,21 +52,21 @@ Parents
 --------
 
 
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+
 - :ref:`nuzone.NUZone<nuzone>`
-
-- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
-
-- :ref:`nuvport.NUVPort<nuvport>`
-
-- :ref:`nusubnet.NUSubnet<nusubnet>`
-
-- :ref:`nunsport.NUNSPort<nunsport>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuaddressmap.NUAddressMap<nuaddressmap>`
 
-- :ref:`nul2domain.NUL2Domain<nul2domain>`
+- :ref:`nuvport.NUVPort<nuvport>`
 
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+- :ref:`nunsport.NUNSPort<nunsport>`
+
+- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
+
+- :ref:`nusubnet.NUSubnet<nusubnet>`
+
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
 

@@ -49,7 +49,7 @@ Parents
 --------
 
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

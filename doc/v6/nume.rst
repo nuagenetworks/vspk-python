@@ -75,6 +75,7 @@ Children
 
 :ref:`nul2domain.NUL2Domain<nul2domain>`                                                                                                                         ``l2_domains`` 
 :ref:`nul4service.NUL4Service<nul4service>`                                                                                                                      ``l4_services`` 
+:ref:`nul4servicegroup.NUL4ServiceGroup<nul4servicegroup>`                                                                                                       ``l4_service_groups`` 
 :ref:`nul7applicationsignature.NUL7applicationsignature<nul7applicationsignature>`                                                                               ``l7applicationsignatures`` 
 :ref:`nusaasapplicationtype.NUSaaSApplicationType<nusaasapplicationtype>`                                                                                        ``saa_s_application_types`` 
 :ref:`nuvcentereamconfig.NUVCenterEAMConfig<nuvcentereamconfig>`                                                                                                 ``vcenter_eam_configs`` 
@@ -133,6 +134,7 @@ Children
 :ref:`nuingressacltemplate.NUIngressACLTemplate<nuingressacltemplate>`                                                                                           ``ingress_acl_templates`` 
 :ref:`nuingressadvfwdentrytemplate.NUIngressAdvFwdEntryTemplate<nuingressadvfwdentrytemplate>`                                                                   ``ingress_adv_fwd_entry_templates`` 
 :ref:`nuingressqospolicy.NUIngressQOSPolicy<nuingressqospolicy>`                                                                                                 ``ingress_qos_policies`` 
+:ref:`nugnmiprofile.NUGNMIProfile<nugnmiprofile>`                                                                                                                ``gnmi_profiles`` 
 :ref:`nuenterprise.NUEnterprise<nuenterprise>`                                                                                                                   ``enterprises`` 
 :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`                                                                                              ``enterprise_profiles`` 
 :ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
@@ -172,6 +174,7 @@ Children
 :ref:`nuvsp.NUVSP<nuvsp>`                                                                                                                                        ``vsps`` 
 :ref:`nustaticroute.NUStaticRoute<nustaticroute>`                                                                                                                ``static_routes`` 
 :ref:`nustatscollectorinfo.NUStatsCollectorInfo<nustatscollectorinfo>`                                                                                           ``stats_collector_infos`` 
+:ref:`nustatisticsprofile.NUStatisticsprofile<nustatisticsprofile>`                                                                                              ``statisticsprofiles`` 
 :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`                                                                               ``ethernet_segment_gw_groups`` 
 :ref:`nusubnet.NUSubnet<nusubnet>`                                                                                                                               ``subnets`` 
 :ref:`nuducgroup.NUDUCGroup<nuducgroup>`                                                                                                                         ``duc_groups`` 

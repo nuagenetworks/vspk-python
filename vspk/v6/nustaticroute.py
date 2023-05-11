@@ -66,6 +66,8 @@ class NUStaticRoute(NURESTObject):
     
     CONST_TYPE_NETCONF = "NETCONF"
     
+    CONST_TYPE_FIP = "FIP"
+    
     CONST_ENTITY_SCOPE_ENTERPRISE = "ENTERPRISE"
     
     CONST_IP_TYPE_IPV6 = "IPV6"
@@ -106,6 +108,7 @@ class NUStaticRoute(NURESTObject):
         self._entity_scope = None
         self._route_distinguisher = None
         self._creation_date = None
+        self._associated_fip_domain_id = None
         self._associated_gateway_ids = None
         self._associated_subnet_id = None
         self._owner = None
@@ -125,11 +128,12 @@ class NUStaticRoute(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="route_distinguisher", remote_name="routeDistinguisher", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_fip_domain_id", remote_name="associatedFIPDomainID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_gateway_ids", remote_name="associatedGatewayIDs", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_subnet_id", remote_name="associatedSubnetID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
-        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'EXIT_DOMAIN', u'NETCONF', u'OVERLAY', u'OVERLAY_ADDRESS_TRANSLATION'])
+        self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False, choices=[u'EXIT_DOMAIN', u'FIP', u'NETCONF', u'OVERLAY', u'OVERLAY_ADDRESS_TRANSLATION'])
         
 
         # Fetchers
@@ -495,6 +499,33 @@ class NUStaticRoute(NURESTObject):
                 
         """
         self._creation_date = value
+
+    
+    @property
+    def associated_fip_domain_id(self):
+        """ Get associated_fip_domain_id value.
+
+            Notes:
+                ID of the associated Secondary FIP Domain. Valid for static route of type FIP.
+
+                
+                This attribute is named `associatedFIPDomainID` in VSD API.
+                
+        """
+        return self._associated_fip_domain_id
+
+    @associated_fip_domain_id.setter
+    def associated_fip_domain_id(self, value):
+        """ Set associated_fip_domain_id value.
+
+            Notes:
+                ID of the associated Secondary FIP Domain. Valid for static route of type FIP.
+
+                
+                This attribute is named `associatedFIPDomainID` in VSD API.
+                
+        """
+        self._associated_fip_domain_id = value
 
     
     @property

@@ -54,11 +54,11 @@ Parents
 
 - :ref:`nucontainerinterface.NUContainerInterface<nucontainerinterface>`
 
-- :ref:`nuvminterface.NUVMInterface<nuvminterface>`
-
-- :ref:`numulticastlist.NUMultiCastList<numulticastlist>`
+- :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
 
 - :ref:`nume.NUMe<nume>`
 
-- :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
+- :ref:`nuvminterface.NUVMInterface<nuvminterface>`
+
+- :ref:`numulticastlist.NUMultiCastList<numulticastlist>`
 

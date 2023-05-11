@@ -427,6 +427,7 @@ class NUEnterprise(NURESTObject):
         self._associated_enterprise_security_id = None
         self._associated_group_key_encryption_profile_id = None
         self._associated_key_server_monitor_id = None
+        self._stats_profile_id = None
         self._customer_id = None
         self._avatar_data = None
         self._avatar_type = None
@@ -472,6 +473,7 @@ class NUEnterprise(NURESTObject):
         self.expose_attribute(local_name="associated_enterprise_security_id", remote_name="associatedEnterpriseSecurityID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_group_key_encryption_profile_id", remote_name="associatedGroupKeyEncryptionProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_key_server_monitor_id", remote_name="associatedKeyServerMonitorID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="stats_profile_id", remote_name="statsProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="customer_id", remote_name="customerID", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="avatar_data", remote_name="avatarData", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="avatar_type", remote_name="avatarType", attribute_type=str, is_required=False, is_unique=False, choices=[u'BASE64', u'COMPUTEDURL', u'URL'])
@@ -1799,6 +1801,33 @@ class NUEnterprise(NURESTObject):
                 
         """
         self._associated_key_server_monitor_id = value
+
+    
+    @property
+    def stats_profile_id(self):
+        """ Get stats_profile_id value.
+
+            Notes:
+                Statistics Profile to which this enterprise is associated to.
+
+                
+                This attribute is named `statsProfileID` in VSD API.
+                
+        """
+        return self._stats_profile_id
+
+    @stats_profile_id.setter
+    def stats_profile_id(self, value):
+        """ Set stats_profile_id value.
+
+            Notes:
+                Statistics Profile to which this enterprise is associated to.
+
+                
+                This attribute is named `statsProfileID` in VSD API.
+                
+        """
+        self._stats_profile_id = value
 
     
     @property

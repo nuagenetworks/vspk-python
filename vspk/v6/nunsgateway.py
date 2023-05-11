@@ -372,6 +372,7 @@ class NUNSGateway(NURESTObject):
         self._associated_nsg_migration_profile_id = None
         self._associated_nsg_upgrade_profile_id = None
         self._associated_overlay_management_profile_id = None
+        self._stats_profile_id = None
         self._huge_page_setting = None
         self._functions = None
         self._tunnel_shaping = None
@@ -444,6 +445,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="associated_nsg_migration_profile_id", remote_name="associatedNSGMigrationProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_nsg_upgrade_profile_id", remote_name="associatedNSGUpgradeProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_overlay_management_profile_id", remote_name="associatedOverlayManagementProfileID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="stats_profile_id", remote_name="statsProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="huge_page_setting", remote_name="hugePageSetting", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="functions", remote_name="functions", attribute_type=list, is_required=False, is_unique=False, choices=[u'GATEWAY', u'HUB', u'UBR'])
         self.expose_attribute(local_name="tunnel_shaping", remote_name="tunnelShaping", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED'])
@@ -2223,6 +2225,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._associated_overlay_management_profile_id = value
+
+    
+    @property
+    def stats_profile_id(self):
+        """ Get stats_profile_id value.
+
+            Notes:
+                Statistics Profile to which this NSGateway is associated to.
+
+                
+                This attribute is named `statsProfileID` in VSD API.
+                
+        """
+        return self._stats_profile_id
+
+    @stats_profile_id.setter
+    def stats_profile_id(self, value):
+        """ Set stats_profile_id value.
+
+            Notes:
+                Statistics Profile to which this NSGateway is associated to.
+
+                
+                This attribute is named `statsProfileID` in VSD API.
+                
+        """
+        self._stats_profile_id = value
 
     
     @property

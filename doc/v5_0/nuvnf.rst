@@ -83,7 +83,7 @@ Parents
 --------
 
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

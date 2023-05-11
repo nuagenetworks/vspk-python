@@ -69,11 +69,11 @@ Parents
 --------
 
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 
 - :ref:`nume.NUMe<nume>`
 
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 

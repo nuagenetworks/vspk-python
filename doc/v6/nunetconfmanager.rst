@@ -20,6 +20,8 @@ Attributes
 
 - ``release``: Netconf Manager RPM release version
 
+- ``description``: A description of the Netconf Manager.
+
 - ``embedded_metadata``: Metadata objects associated with this entity. This will contain a list of Metadata objects if the API request is made using the special flag to enable the embedded Metadata feature. Only a maximum of Metadata objects is returned based on the value set in the system configuration.
 
 - ``entity_scope``: Specify if scope of entity is Data center or Enterprise level

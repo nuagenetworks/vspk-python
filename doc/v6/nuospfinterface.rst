@@ -30,7 +30,7 @@ Attributes
 
 - ``description``: Description of this OSPF Interface.
 
-- ``message_digest_keys``: This attribute applies only when 'authenticationType' is 'MESSAGE_DIGEST'. In that case, this attribute is a list of pairs of key ID/password used for MD5 authentication. The key ID must by an integer between 1 and 255, and the value is a password (of 16 charachters maximum) used to generate an MD5 hash. The MD5 has is then used as authentication data in the OSPF packets. No duplicate key IDs are allowed. The format for each pair is 'keyID:password' (e.g. '1:foobar')
+- ``message_digest_keys``: This attribute applies only when 'authenticationType' is 'MESSAGE_DIGEST'. In that case, this attribute is a list of pairs of key ID/password used for MD5 authentication. The key ID must by an integer between 1 and 255, and the value is a password (of 16 charachters maximum) used to generate an MD5 hash. The MD5 has is then used as authentication data in the OSPF packets. No duplicate key IDs are allowed. The format for each pair is 'keyID:password' (e.g. '1:foobar'). When Enhanced Security for Routing Protocols is enabled, only keyID part of the keyID:password pair is visible, the password part is hidden.
 
 - ``metric``: Configure an explicit route cost metric for the interface.
 
@@ -48,7 +48,7 @@ Attributes
 
 - ``mtu``: MTU to be used by OSPF for this logical interface
 
-- ``authentication_key``: The authentication key that is used on the interface.
+- ``authentication_key``: The authentication key that is used on the interface. When Enhanced Security for Routing Protocols is enabled, the authentication key is hidden.
 
 - ``authentication_type``: Authentication Type used for this OSPFInterface
 

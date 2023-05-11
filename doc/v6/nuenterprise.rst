@@ -90,6 +90,8 @@ Attributes
 
 - ``associated_key_server_monitor_id``: Read-only Id of the associated keyserver monitor
 
+- ``stats_profile_id``: Statistics Profile to which this enterprise is associated to.
+
 - ``customer_id``: CustomerID that is used by VSC to identify this enterprise. This can be configured by root user.
 
 - ``avatar_data``: URL to the avatar data associated with the enterprise. If the avatarType is URL then value of avatarData should an URL of the image. If the avatarType BASE64 then avatarData should be BASE64 encoded value of the image
@@ -207,7 +209,9 @@ Parents
 --------
 
 
-- :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
-
 - :ref:`nume.NUMe<nume>`
+
+- :ref:`nustatisticsprofile.NUStatisticsprofile<nustatisticsprofile>`
+
+- :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`
 

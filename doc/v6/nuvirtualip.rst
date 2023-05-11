@@ -28,7 +28,9 @@ Attributes
 
 - ``creation_date``: Time stamp when this object was created.
 
-- ``associated_floating_ip_id``: Id of Floating IP address associated to this virtual ip
+- ``associated_floating_ip_id``: ID of Floating IP address associated to this virtual IP
+
+- ``associated_secondary_floating_ip_id``: ID of Secondary Floating IP address associated to this virtual IP
 
 - ``subnet_id``: ID of subnet to which this IP address belongs
 
@@ -57,9 +59,9 @@ Parents
 --------
 
 
+- :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
+
 - :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
-
-- :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 

@@ -140,6 +140,8 @@ Attributes
 
 - ``creation_date``: Time stamp when this object was created.
 
+- ``is_secondary_fip_domain``: Flag to indicate whether this is a secondary FIP domain.
+
 - ``associated_bgp_profile_id``: None
 
 - ``associated_idp_profile_id``: The associated IDP Profile ID
@@ -249,21 +251,21 @@ Parents
 --------
 
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
-- :ref:`nufirewallacl.NUFirewallAcl<nufirewallacl>`
-
-- :ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
-
-- :ref:`nugateway.NUGateway<nugateway>`
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 
 - :ref:`nume.NUMe<nume>`
 
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+- :ref:`nufirewallacl.NUFirewallAcl<nufirewallacl>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
+
+- :ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`
+
+- :ref:`nugateway.NUGateway<nugateway>`
 
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 
-- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

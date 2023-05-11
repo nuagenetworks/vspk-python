@@ -53,7 +53,7 @@ Parents
 --------
 
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
-
 - :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
+
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

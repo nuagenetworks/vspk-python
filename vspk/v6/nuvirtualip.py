@@ -91,6 +91,7 @@ class NUVirtualIP(NURESTObject):
         self._entity_scope = None
         self._creation_date = None
         self._associated_floating_ip_id = None
+        self._associated_secondary_floating_ip_id = None
         self._subnet_id = None
         self._owner = None
         self._external_id = None
@@ -104,6 +105,7 @@ class NUVirtualIP(NURESTObject):
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_floating_ip_id", remote_name="associatedFloatingIPID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="associated_secondary_floating_ip_id", remote_name="associatedSecondaryFloatingIPID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="subnet_id", remote_name="subnetID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
@@ -349,7 +351,7 @@ class NUVirtualIP(NURESTObject):
         """ Get associated_floating_ip_id value.
 
             Notes:
-                Id of Floating IP address associated to this virtual ip
+                ID of Floating IP address associated to this virtual IP
 
                 
                 This attribute is named `associatedFloatingIPID` in VSD API.
@@ -362,13 +364,40 @@ class NUVirtualIP(NURESTObject):
         """ Set associated_floating_ip_id value.
 
             Notes:
-                Id of Floating IP address associated to this virtual ip
+                ID of Floating IP address associated to this virtual IP
 
                 
                 This attribute is named `associatedFloatingIPID` in VSD API.
                 
         """
         self._associated_floating_ip_id = value
+
+    
+    @property
+    def associated_secondary_floating_ip_id(self):
+        """ Get associated_secondary_floating_ip_id value.
+
+            Notes:
+                ID of Secondary Floating IP address associated to this virtual IP
+
+                
+                This attribute is named `associatedSecondaryFloatingIPID` in VSD API.
+                
+        """
+        return self._associated_secondary_floating_ip_id
+
+    @associated_secondary_floating_ip_id.setter
+    def associated_secondary_floating_ip_id(self, value):
+        """ Set associated_secondary_floating_ip_id value.
+
+            Notes:
+                ID of Secondary Floating IP address associated to this virtual IP
+
+                
+                This attribute is named `associatedSecondaryFloatingIPID` in VSD API.
+                
+        """
+        self._associated_secondary_floating_ip_id = value
 
     
     @property

@@ -93,8 +93,10 @@ class NUUserContext(NURESTObject):
         self._denied_flow_collection_enabled = None
         self._threat_intelligence_enabled = None
         self._allow_enterprise_avatar_on_nsg = None
+        self._global_network_macro_groups_enabled = None
         self._flow_collection_enabled = None
         self._embedded_metadata = None
+        self._enhanced_security_enabled = None
         self._entity_scope = None
         self._google_maps_api_key = None
         self._creation_date = None
@@ -119,8 +121,10 @@ class NUUserContext(NURESTObject):
         self.expose_attribute(local_name="denied_flow_collection_enabled", remote_name="deniedFlowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="threat_intelligence_enabled", remote_name="threatIntelligenceEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="allow_enterprise_avatar_on_nsg", remote_name="allowEnterpriseAvatarOnNSG", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="global_network_macro_groups_enabled", remote_name="globalNetworkMacroGroupsEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_collection_enabled", remote_name="flowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="enhanced_security_enabled", remote_name="enhancedSecurityEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="google_maps_api_key", remote_name="googleMapsAPIKey", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
@@ -475,6 +479,33 @@ class NUUserContext(NURESTObject):
 
     
     @property
+    def global_network_macro_groups_enabled(self):
+        """ Get global_network_macro_groups_enabled value.
+
+            Notes:
+                Enables the global network macro groups feature.
+
+                
+                This attribute is named `globalNetworkMacroGroupsEnabled` in VSD API.
+                
+        """
+        return self._global_network_macro_groups_enabled
+
+    @global_network_macro_groups_enabled.setter
+    def global_network_macro_groups_enabled(self, value):
+        """ Set global_network_macro_groups_enabled value.
+
+            Notes:
+                Enables the global network macro groups feature.
+
+                
+                This attribute is named `globalNetworkMacroGroupsEnabled` in VSD API.
+                
+        """
+        self._global_network_macro_groups_enabled = value
+
+    
+    @property
     def flow_collection_enabled(self):
         """ Get flow_collection_enabled value.
 
@@ -526,6 +557,33 @@ class NUUserContext(NURESTObject):
                 
         """
         self._embedded_metadata = value
+
+    
+    @property
+    def enhanced_security_enabled(self):
+        """ Get enhanced_security_enabled value.
+
+            Notes:
+                Indicates if Enhanced Security is enabled for Routing Protocols.
+
+                
+                This attribute is named `enhancedSecurityEnabled` in VSD API.
+                
+        """
+        return self._enhanced_security_enabled
+
+    @enhanced_security_enabled.setter
+    def enhanced_security_enabled(self, value):
+        """ Set enhanced_security_enabled value.
+
+            Notes:
+                Indicates if Enhanced Security is enabled for Routing Protocols.
+
+                
+                This attribute is named `enhancedSecurityEnabled` in VSD API.
+                
+        """
+        self._enhanced_security_enabled = value
 
     
     @property

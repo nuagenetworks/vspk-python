@@ -89,9 +89,9 @@ Parents
 --------
 
 
-- :ref:`nuredundantport.NURedundantPort<nuredundantport>`
-
 - :ref:`nuautodiscoveredgateway.NUAutoDiscoveredGateway<nuautodiscoveredgateway>`
+
+- :ref:`nuredundantport.NURedundantPort<nuredundantport>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 

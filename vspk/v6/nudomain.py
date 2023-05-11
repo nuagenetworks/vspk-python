@@ -428,6 +428,7 @@ class NUDomain(NURESTObject):
         self._uplink_preference = None
         self._create_back_haul_subnet = None
         self._creation_date = None
+        self._is_secondary_fip_domain = None
         self._associated_bgp_profile_id = None
         self._associated_idp_profile_id = None
         self._associated_multicast_channel_map_id = None
@@ -507,6 +508,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="uplink_preference", remote_name="uplinkPreference", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRIMARY', u'PRIMARY_SECONDARY', u'SECONDARY', u'SECONDARY_PRIMARY', u'SYMMETRIC'])
         self.expose_attribute(local_name="create_back_haul_subnet", remote_name="createBackHaulSubnet", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="is_secondary_fip_domain", remote_name="isSecondaryFIPDomain", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_bgp_profile_id", remote_name="associatedBGPProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_idp_profile_id", remote_name="associatedIDPProfileID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
@@ -2432,6 +2434,33 @@ class NUDomain(NURESTObject):
                 
         """
         self._creation_date = value
+
+    
+    @property
+    def is_secondary_fip_domain(self):
+        """ Get is_secondary_fip_domain value.
+
+            Notes:
+                Flag to indicate whether this is a secondary FIP domain.
+
+                
+                This attribute is named `isSecondaryFIPDomain` in VSD API.
+                
+        """
+        return self._is_secondary_fip_domain
+
+    @is_secondary_fip_domain.setter
+    def is_secondary_fip_domain(self, value):
+        """ Set is_secondary_fip_domain value.
+
+            Notes:
+                Flag to indicate whether this is a secondary FIP domain.
+
+                
+                This attribute is named `isSecondaryFIPDomain` in VSD API.
+                
+        """
+        self._is_secondary_fip_domain = value
 
     
     @property

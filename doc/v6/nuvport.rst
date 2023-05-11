@@ -102,6 +102,8 @@ Attributes
 
 - ``associated_ssid``: The UUID of the SSID Connection tied to this instance of a vPort.
 
+- ``associated_secondary_f_ip_id``: ID of Secondary Floating IP address associated to this vport.
+
 - ``associated_send_multicast_channel_map_id``: The ID of the send Multicast Channel Map this Vport is associated with. This has to be set when enableMultiCast is set to ENABLED
 
 - ``associated_trunk_id``: The trunk uuid associated with another vport of trunkRole PARENT_PORT. Can be specified only if trunkRole of this vport is SUB_PORT.
@@ -177,31 +179,31 @@ Parents
 --------
 
 
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+
 - :ref:`nuzone.NUZone<nuzone>`
 
-- :ref:`nusubnet.NUSubnet<nusubnet>`
-
-- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
-
-- :ref:`nuvrs.NUVRS<nuvrs>`
-
-- :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
-
-- :ref:`nutrunk.NUTrunk<nutrunk>`
-
-- :ref:`nuegressprofile.NUEgressProfile<nuegressprofile>`
+- :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
 
+- :ref:`nuvrs.NUVRS<nuvrs>`
+
+- :ref:`nutrunk.NUTrunk<nutrunk>`
+
+- :ref:`nuegressprofile.NUEgressProfile<nuegressprofile>`
+
+- :ref:`nuoverlaymirrordestination.NUOverlayMirrorDestination<nuoverlaymirrordestination>`
+
+- :ref:`nusubnet.NUSubnet<nusubnet>`
+
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`
 
-- :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
-
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
-
 - :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
+
+- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 

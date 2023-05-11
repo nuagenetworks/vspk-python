@@ -12,7 +12,11 @@ Attributes
 ----------
 
 
+- ``ldap_domain``: The domain name of the LDAP instance from which the group was synchronized.
+
 - ``ldap_group_dn``: The LDAP distinguished name (DN) for the group.
+
+- ``ldap_id``: The ID of the LDAP instance from which the group was synchronized.
 
 - ``name`` (**Mandatory**): A unique name of the group
 
@@ -64,19 +68,19 @@ Parents
 --------
 
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
 
 - :ref:`nuzone.NUZone<nuzone>`
 
-- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
-
 - :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nuuser.NUUser<nuuser>`
+
+- :ref:`nul2domaintemplate.NUL2DomainTemplate<nul2domaintemplate>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
-
 - :ref:`nudomaintemplate.NUDomainTemplate<nudomaintemplate>`
 
-- :ref:`nuuser.NUUser<nuuser>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

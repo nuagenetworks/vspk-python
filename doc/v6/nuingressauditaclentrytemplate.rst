@@ -125,9 +125,9 @@ Parents
 --------
 
 
-- :ref:`nuingressauditacltemplate.NUIngressAuditACLTemplate<nuingressauditacltemplate>`
-
 - :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nuingressauditacltemplate.NUIngressAuditACLTemplate<nuingressauditacltemplate>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
 
