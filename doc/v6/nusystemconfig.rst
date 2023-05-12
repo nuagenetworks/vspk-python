@@ -162,6 +162,12 @@ Attributes
 
 - ``secondary_rt_upper_limit``: Secondary route target upper limit.
 
+- ``reflexive_aclicmp_timeout``: Defines the timeout in seconds for reflexive ACLs that are of type ICMP. Supported in Virtual Cloud Services (VCS) only.
+
+- ``reflexive_acl_non_tcp_timeout``: Defines the timeout in seconds for reflexive ACLs that are not of type TCP.
+
+- ``reflexive_acltcp_timeout``: Defines the timeout in seconds for reflexive ACLs that are of type TCP.
+
 - ``denied_flow_collection_enabled``: When this option is selected, VSS will only store flows that are denied by security policy (implicit or explicit ACLs). This requires a valid VSS license and Flow Collection enabled.
 
 - ``per_domain_vlan_id_enabled``: Determines whether per domain VLAN ID generation is required.
@@ -255,6 +261,8 @@ Attributes
 - ``post_processor_threads_count``: Post processor thread count.
 
 - ``creation_date``: Time stamp when this object was created.
+
+- ``srl_yang_validation_enabled``: Indicates if IPv4 Filter, IPv6 Filter, QoS Profile, BGP Neighbor Session and Routing Policy Blob validation is enabled for SRL.
 
 - ``group_key_default_sek_generation_interval``: Group Key Encryption Profile Default SEK Generation Interval in seconds.
 

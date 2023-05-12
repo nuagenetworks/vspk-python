@@ -87,6 +87,7 @@ class NUDHCPv6Option(NURESTObject):
         self._embedded_metadata = None
         self._entity_scope = None
         self._creation_date = None
+        self._sub_option_type = None
         self._owner = None
         self._external_id = None
         self._type = None
@@ -100,6 +101,7 @@ class NUDHCPv6Option(NURESTObject):
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="sub_option_type", remote_name="subOptionType", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="owner", remote_name="owner", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="external_id", remote_name="externalID", attribute_type=str, is_required=False, is_unique=True)
         self.expose_attribute(local_name="type", remote_name="type", attribute_type=str, is_required=False, is_unique=False)
@@ -357,6 +359,33 @@ class NUDHCPv6Option(NURESTObject):
                 
         """
         self._creation_date = value
+
+    
+    @property
+    def sub_option_type(self):
+        """ Get sub_option_type value.
+
+            Notes:
+                Sub option type of the actual DHCP option type.
+
+                
+                This attribute is named `subOptionType` in VSD API.
+                
+        """
+        return self._sub_option_type
+
+    @sub_option_type.setter
+    def sub_option_type(self, value):
+        """ Set sub_option_type value.
+
+            Notes:
+                Sub option type of the actual DHCP option type.
+
+                
+                This attribute is named `subOptionType` in VSD API.
+                
+        """
+        self._sub_option_type = value
 
     
     @property

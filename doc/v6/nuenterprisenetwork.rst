@@ -58,6 +58,8 @@ Parents
 --------
 
 
+- :ref:`nume.NUMe<nume>`
+
 - :ref:`nusaasapplicationtype.NUSaaSApplicationType<nusaasapplicationtype>`
 
 - :ref:`nunetworkmacrogroup.NUNetworkMacroGroup<nunetworkmacrogroup>`

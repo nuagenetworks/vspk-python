@@ -40,6 +40,8 @@ Attributes
 
 - ``gateway_mac_address``: None
 
+- ``wbx_disable_mac_move``: Disable MAC Move on WBX nodes.
+
 - ``access_restriction_enabled``: This attribute specifies whether subnet is enabled with access restrictions. Note: Applicable to shared infrastructure enterprise subnets.
 
 - ``address``: IP address of the subnet defined. In case of zone, this is an optional field for and allows users to allocate an IP address range to a zone. The VSD will auto-assign IP addresses to subnets from this range if a specific IP address is not defined for the subnet

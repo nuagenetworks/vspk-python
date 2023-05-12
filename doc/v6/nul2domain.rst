@@ -38,6 +38,8 @@ Attributes
 
 - ``gateway_mac_address``: The MAC address of the Gateway.
 
+- ``wbx_disable_mac_move``: Disable MAC Move on WBX nodes.
+
 - ``address``: Network address of the L2Domain / L2Domain template defined. 
 
 - ``template_id``: The ID of the L2 Domain template that this L2 Domain object was derived from
@@ -95,6 +97,8 @@ Attributes
 - ``associated_shared_network_resource_id``: The ID of the L2 Domain  that this L2 Domain object is pointing to
 
 - ``associated_underlay_id``: The ID of the Underlay entity to which this L2 Domain is associated.
+
+- ``stateful_mode``: This value indicates whether reflexive ACL is enabled or not for the L2Domain. It is 'REFLEXIVE' if enabled, or 'STATEFUL' if reflexive is disabled.
 
 - ``stretched``: Indicates whether this domain is streched,if so remote VM resolutions will be allowed
 

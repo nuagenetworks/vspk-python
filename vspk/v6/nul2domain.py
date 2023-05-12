@@ -217,6 +217,8 @@ class NUL2Domain(NURESTObject):
     
     CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
     
+    CONST_STATEFUL_MODE_STATEFUL = "STATEFUL"
+    
     CONST_UPLINK_PREFERENCE_SYMMETRIC = "SYMMETRIC"
     
     CONST_FLOW_COLLECTION_ENABLED_DISABLED = "DISABLED"
@@ -263,6 +265,8 @@ class NUL2Domain(NURESTObject):
     
     CONST_ENCRYPTION_ENABLED = "ENABLED"
     
+    CONST_STATEFUL_MODE_REFLEXIVE = "REFLEXIVE"
+    
     CONST_FLOW_LIMIT_ENABLED_ENABLED = "ENABLED"
     
     CONST_IP_TYPE_DUALSTACK = "DUALSTACK"
@@ -301,6 +305,7 @@ class NUL2Domain(NURESTObject):
         self._last_updated_date = None
         self._gateway = None
         self._gateway_mac_address = None
+        self._wbx_disable_mac_move = None
         self._address = None
         self._template_id = None
         self._service_id = None
@@ -330,6 +335,7 @@ class NUL2Domain(NURESTObject):
         self._associated_multicast_channel_map_id = None
         self._associated_shared_network_resource_id = None
         self._associated_underlay_id = None
+        self._stateful_mode = None
         self._stretched = None
         self._dual_stack_dynamic_ip_allocation = None
         self._multicast = None
@@ -350,6 +356,7 @@ class NUL2Domain(NURESTObject):
         self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_mac_address", remote_name="gatewayMACAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="wbx_disable_mac_move", remote_name="wbxDisableMacMove", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_id", remote_name="serviceID", attribute_type=int, is_required=False, is_unique=False)
@@ -379,6 +386,7 @@ class NUL2Domain(NURESTObject):
         self.expose_attribute(local_name="associated_multicast_channel_map_id", remote_name="associatedMulticastChannelMapID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_shared_network_resource_id", remote_name="associatedSharedNetworkResourceID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_underlay_id", remote_name="associatedUnderlayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="stateful_mode", remote_name="statefulMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'REFLEXIVE', u'STATEFUL'])
         self.expose_attribute(local_name="stretched", remote_name="stretched", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dual_stack_dynamic_ip_allocation", remote_name="dualStackDynamicIPAllocation", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
@@ -885,6 +893,33 @@ class NUL2Domain(NURESTObject):
                 
         """
         self._gateway_mac_address = value
+
+    
+    @property
+    def wbx_disable_mac_move(self):
+        """ Get wbx_disable_mac_move value.
+
+            Notes:
+                Disable MAC Move on WBX nodes.
+
+                
+                This attribute is named `wbxDisableMacMove` in VSD API.
+                
+        """
+        return self._wbx_disable_mac_move
+
+    @wbx_disable_mac_move.setter
+    def wbx_disable_mac_move(self, value):
+        """ Set wbx_disable_mac_move value.
+
+            Notes:
+                Disable MAC Move on WBX nodes.
+
+                
+                This attribute is named `wbxDisableMacMove` in VSD API.
+                
+        """
+        self._wbx_disable_mac_move = value
 
     
     @property
@@ -1648,6 +1683,33 @@ class NUL2Domain(NURESTObject):
                 
         """
         self._associated_underlay_id = value
+
+    
+    @property
+    def stateful_mode(self):
+        """ Get stateful_mode value.
+
+            Notes:
+                This value indicates whether reflexive ACL is enabled or not for the L2Domain. It is 'REFLEXIVE' if enabled, or 'STATEFUL' if reflexive is disabled.
+
+                
+                This attribute is named `statefulMode` in VSD API.
+                
+        """
+        return self._stateful_mode
+
+    @stateful_mode.setter
+    def stateful_mode(self, value):
+        """ Set stateful_mode value.
+
+            Notes:
+                This value indicates whether reflexive ACL is enabled or not for the L2Domain. It is 'REFLEXIVE' if enabled, or 'STATEFUL' if reflexive is disabled.
+
+                
+                This attribute is named `statefulMode` in VSD API.
+                
+        """
+        self._stateful_mode = value
 
     
     @property

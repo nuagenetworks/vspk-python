@@ -154,6 +154,8 @@ Attributes
 
 - ``associated_underlay_id``: The ID of the Underlay entity to which this L3 Domain is associated.
 
+- ``stateful_mode``: This value indicates whether reflexive ACL is enabled or not for the Domain. It is 'REFLEXIVE' if enabled, or 'STATEFUL' if reflexive is disabled.
+
 - ``stretched``: Indicates whether this domain is stretched, if so, remote VM resolutions will be allowed
 
 - ``multicast``: multicast is enum that indicates multicast policy on domain. Possible values are ENABLED ,DISABLED  and INHERITED Possible values are INHERITED, ENABLED, DISABLED, .

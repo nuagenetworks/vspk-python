@@ -269,6 +269,8 @@ class NUDomain(NURESTObject):
     
     CONST_MAINTENANCE_MODE_ENABLED = "ENABLED"
     
+    CONST_STATEFUL_MODE_STATEFUL = "STATEFUL"
+    
     CONST_EVPNRT5_TYPE_IP = "IP"
     
     CONST_FLOW_SETUP_RATE_LIMIT_ENABLED_ENABLED = "ENABLED"
@@ -334,6 +336,8 @@ class NUDomain(NURESTObject):
     CONST_ENCRYPTION_ENABLED = "ENABLED"
     
     CONST_UNDERLAY_ENABLED_DISABLED = "DISABLED"
+    
+    CONST_STATEFUL_MODE_REFLEXIVE = "REFLEXIVE"
     
     CONST_FLOW_LIMIT_ENABLED_ENABLED = "ENABLED"
     
@@ -435,6 +439,7 @@ class NUDomain(NURESTObject):
         self._associated_pat_mapper_id = None
         self._associated_shared_pat_mapper_id = None
         self._associated_underlay_id = None
+        self._stateful_mode = None
         self._stretched = None
         self._multicast = None
         self._tunnel_type = None
@@ -515,6 +520,7 @@ class NUDomain(NURESTObject):
         self.expose_attribute(local_name="associated_pat_mapper_id", remote_name="associatedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_shared_pat_mapper_id", remote_name="associatedSharedPATMapperID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="associated_underlay_id", remote_name="associatedUnderlayID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="stateful_mode", remote_name="statefulMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'REFLEXIVE', u'STATEFUL'])
         self.expose_attribute(local_name="stretched", remote_name="stretched", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="multicast", remote_name="multicast", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="tunnel_type", remote_name="tunnelType", attribute_type=str, is_required=False, is_unique=False, choices=[u'DC_DEFAULT', u'GRE', u'MPLSoUDP', u'VLAN', u'VXLAN'])
@@ -2623,6 +2629,33 @@ class NUDomain(NURESTObject):
                 
         """
         self._associated_underlay_id = value
+
+    
+    @property
+    def stateful_mode(self):
+        """ Get stateful_mode value.
+
+            Notes:
+                This value indicates whether reflexive ACL is enabled or not for the Domain. It is 'REFLEXIVE' if enabled, or 'STATEFUL' if reflexive is disabled.
+
+                
+                This attribute is named `statefulMode` in VSD API.
+                
+        """
+        return self._stateful_mode
+
+    @stateful_mode.setter
+    def stateful_mode(self, value):
+        """ Set stateful_mode value.
+
+            Notes:
+                This value indicates whether reflexive ACL is enabled or not for the Domain. It is 'REFLEXIVE' if enabled, or 'STATEFUL' if reflexive is disabled.
+
+                
+                This attribute is named `statefulMode` in VSD API.
+                
+        """
+        self._stateful_mode = value
 
     
     @property

@@ -226,6 +226,9 @@ class NUSystemConfig(NURESTObject):
         self._secondary_as_number = None
         self._secondary_rt_lower_limit = None
         self._secondary_rt_upper_limit = None
+        self._reflexive_aclicmp_timeout = None
+        self._reflexive_acl_non_tcp_timeout = None
+        self._reflexive_acltcp_timeout = None
         self._denied_flow_collection_enabled = None
         self._per_domain_vlan_id_enabled = None
         self._service_id_upper_limit = None
@@ -273,6 +276,7 @@ class NUSystemConfig(NURESTObject):
         self._loopback_intf_upper_limit = None
         self._post_processor_threads_count = None
         self._creation_date = None
+        self._srl_yang_validation_enabled = None
         self._group_key_default_sek_generation_interval = None
         self._group_key_default_sek_lifetime = None
         self._group_key_default_sek_payload_encryption_algorithm = None
@@ -418,6 +422,9 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="secondary_as_number", remote_name="secondaryASNumber", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_rt_lower_limit", remote_name="secondaryRTLowerLimit", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="secondary_rt_upper_limit", remote_name="secondaryRTUpperLimit", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="reflexive_aclicmp_timeout", remote_name="reflexiveACLICMPTimeout", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="reflexive_acl_non_tcp_timeout", remote_name="reflexiveACLNonTCPTimeout", attribute_type=int, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="reflexive_acltcp_timeout", remote_name="reflexiveACLTCPTimeout", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="denied_flow_collection_enabled", remote_name="deniedFlowCollectionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="per_domain_vlan_id_enabled", remote_name="perDomainVlanIdEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="service_id_upper_limit", remote_name="serviceIDUpperLimit", attribute_type=int, is_required=False, is_unique=False)
@@ -465,6 +472,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="loopback_intf_upper_limit", remote_name="loopbackIntfUpperLimit", attribute_type=int, is_required=True, is_unique=False)
         self.expose_attribute(local_name="post_processor_threads_count", remote_name="postProcessorThreadsCount", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="creation_date", remote_name="creationDate", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="srl_yang_validation_enabled", remote_name="srlYangValidationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_generation_interval", remote_name="groupKeyDefaultSEKGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_lifetime", remote_name="groupKeyDefaultSEKLifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_sek_payload_encryption_algorithm", remote_name="groupKeyDefaultSEKPayloadEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'RSA_1024'])
@@ -2578,6 +2586,87 @@ class NUSystemConfig(NURESTObject):
 
     
     @property
+    def reflexive_aclicmp_timeout(self):
+        """ Get reflexive_aclicmp_timeout value.
+
+            Notes:
+                Defines the timeout in seconds for reflexive ACLs that are of type ICMP. Supported in Virtual Cloud Services (VCS) only.
+
+                
+                This attribute is named `reflexiveACLICMPTimeout` in VSD API.
+                
+        """
+        return self._reflexive_aclicmp_timeout
+
+    @reflexive_aclicmp_timeout.setter
+    def reflexive_aclicmp_timeout(self, value):
+        """ Set reflexive_aclicmp_timeout value.
+
+            Notes:
+                Defines the timeout in seconds for reflexive ACLs that are of type ICMP. Supported in Virtual Cloud Services (VCS) only.
+
+                
+                This attribute is named `reflexiveACLICMPTimeout` in VSD API.
+                
+        """
+        self._reflexive_aclicmp_timeout = value
+
+    
+    @property
+    def reflexive_acl_non_tcp_timeout(self):
+        """ Get reflexive_acl_non_tcp_timeout value.
+
+            Notes:
+                Defines the timeout in seconds for reflexive ACLs that are not of type TCP.
+
+                
+                This attribute is named `reflexiveACLNonTCPTimeout` in VSD API.
+                
+        """
+        return self._reflexive_acl_non_tcp_timeout
+
+    @reflexive_acl_non_tcp_timeout.setter
+    def reflexive_acl_non_tcp_timeout(self, value):
+        """ Set reflexive_acl_non_tcp_timeout value.
+
+            Notes:
+                Defines the timeout in seconds for reflexive ACLs that are not of type TCP.
+
+                
+                This attribute is named `reflexiveACLNonTCPTimeout` in VSD API.
+                
+        """
+        self._reflexive_acl_non_tcp_timeout = value
+
+    
+    @property
+    def reflexive_acltcp_timeout(self):
+        """ Get reflexive_acltcp_timeout value.
+
+            Notes:
+                Defines the timeout in seconds for reflexive ACLs that are of type TCP.
+
+                
+                This attribute is named `reflexiveACLTCPTimeout` in VSD API.
+                
+        """
+        return self._reflexive_acltcp_timeout
+
+    @reflexive_acltcp_timeout.setter
+    def reflexive_acltcp_timeout(self, value):
+        """ Set reflexive_acltcp_timeout value.
+
+            Notes:
+                Defines the timeout in seconds for reflexive ACLs that are of type TCP.
+
+                
+                This attribute is named `reflexiveACLTCPTimeout` in VSD API.
+                
+        """
+        self._reflexive_acltcp_timeout = value
+
+    
+    @property
     def denied_flow_collection_enabled(self):
         """ Get denied_flow_collection_enabled value.
 
@@ -3844,6 +3933,33 @@ class NUSystemConfig(NURESTObject):
                 
         """
         self._creation_date = value
+
+    
+    @property
+    def srl_yang_validation_enabled(self):
+        """ Get srl_yang_validation_enabled value.
+
+            Notes:
+                Indicates if IPv4 Filter, IPv6 Filter, QoS Profile, BGP Neighbor Session and Routing Policy Blob validation is enabled for SRL.
+
+                
+                This attribute is named `srlYangValidationEnabled` in VSD API.
+                
+        """
+        return self._srl_yang_validation_enabled
+
+    @srl_yang_validation_enabled.setter
+    def srl_yang_validation_enabled(self, value):
+        """ Set srl_yang_validation_enabled value.
+
+            Notes:
+                Indicates if IPv4 Filter, IPv6 Filter, QoS Profile, BGP Neighbor Session and Routing Policy Blob validation is enabled for SRL.
+
+                
+                This attribute is named `srlYangValidationEnabled` in VSD API.
+                
+        """
+        self._srl_yang_validation_enabled = value
 
     
     @property

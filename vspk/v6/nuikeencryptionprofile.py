@@ -82,6 +82,10 @@ class NUIKEEncryptionprofile(NURESTObject):
     
     CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_1_768_BIT_DH = "GROUP_1_768_BIT_DH"
     
+    CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_18_8192_BIT_DH = "GROUP_18_8192_BIT_DH"
+    
+    CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_20_384_BIT_DH = "GROUP_20_384_BIT_DH"
+    
     CONST_IPSEC_AUTHENTICATION_ALGORITHM_HMAC_SHA1 = "HMAC_SHA1"
     
     CONST_ISAKMP_AUTHENTICATION_MODE_PRE_SHARED_KEY = "PRE_SHARED_KEY"
@@ -92,7 +96,11 @@ class NUIKEEncryptionprofile(NURESTObject):
     
     CONST_IPSEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_256 = "WINDOW_SIZE_256"
     
+    CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_19_256_BIT_DH = "GROUP_19_256_BIT_DH"
+    
     CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_14_2048_BIT_DH = "GROUP_14_2048_BIT_DH"
+    
+    CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_21_521_BIT_DH = "GROUP_21_521_BIT_DH"
     
     CONST_IPSEC_ENCRYPTION_ALGORITHM_TRIPLE_DES = "TRIPLE_DES"
     
@@ -173,7 +181,7 @@ class NUIKEEncryptionprofile(NURESTObject):
         self.expose_attribute(local_name="ipsec_sa_replay_window_size", remote_name="IPsecSAReplayWindowSize", attribute_type=str, is_required=False, is_unique=False, choices=[u'WINDOW_SIZE_1024', u'WINDOW_SIZE_128', u'WINDOW_SIZE_256', u'WINDOW_SIZE_32', u'WINDOW_SIZE_512', u'WINDOW_SIZE_64'])
         self.expose_attribute(local_name="ipsec_sa_replay_window_size_value", remote_name="IPsecSAReplayWindowSizeValue", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="isakmp_authentication_mode", remote_name="ISAKMPAuthenticationMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'PRE_SHARED_KEY'])
-        self.expose_attribute(local_name="isakmp_diffie_helman_group_identifier", remote_name="ISAKMPDiffieHelmanGroupIdentifier", attribute_type=str, is_required=False, is_unique=False, choices=[u'GROUP_14_2048_BIT_DH', u'GROUP_15_3072_BIT_DH', u'GROUP_1_768_BIT_DH', u'GROUP_2_1024_BIT_DH', u'GROUP_5_1536_BIT_DH'])
+        self.expose_attribute(local_name="isakmp_diffie_helman_group_identifier", remote_name="ISAKMPDiffieHelmanGroupIdentifier", attribute_type=str, is_required=False, is_unique=False, choices=[u'GROUP_14_2048_BIT_DH', u'GROUP_15_3072_BIT_DH', u'GROUP_18_8192_BIT_DH', u'GROUP_19_256_BIT_DH', u'GROUP_1_768_BIT_DH', u'GROUP_20_384_BIT_DH', u'GROUP_21_521_BIT_DH', u'GROUP_2_1024_BIT_DH', u'GROUP_5_1536_BIT_DH'])
         self.expose_attribute(local_name="isakmp_encryption_algorithm", remote_name="ISAKMPEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES128', u'AES192', u'AES256', u'TRIPLE_DES'])
         self.expose_attribute(local_name="isakmp_encryption_key_lifetime", remote_name="ISAKMPEncryptionKeyLifetime", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="isakmp_hash_algorithm", remote_name="ISAKMPHashAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'SHA1', u'SHA256'])

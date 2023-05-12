@@ -70,10 +70,12 @@ class NUStatisticsprofile(NURESTObject):
         
         self._name = None
         self._description = None
+        self._clone_from = None
         self._flow_stats_aggregation_enabled = None
         
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=True)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="clone_from", remote_name="cloneFrom", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="flow_stats_aggregation_enabled", remote_name="flowStatsAggregationEnabled", attribute_type=bool, is_required=False, is_unique=False)
         
 
@@ -137,6 +139,33 @@ class NUStatisticsprofile(NURESTObject):
                 
         """
         self._description = value
+
+    
+    @property
+    def clone_from(self):
+        """ Get clone_from value.
+
+            Notes:
+                UUID of the Statistics Profile from which this profile is being cloned.
+
+                
+                This attribute is named `cloneFrom` in VSD API.
+                
+        """
+        return self._clone_from
+
+    @clone_from.setter
+    def clone_from(self, value):
+        """ Set clone_from value.
+
+            Notes:
+                UUID of the Statistics Profile from which this profile is being cloned.
+
+                
+                This attribute is named `cloneFrom` in VSD API.
+                
+        """
+        self._clone_from = value
 
     
     @property

@@ -16,6 +16,8 @@ Attributes
 
 - ``description``: Desription of the Statistics Profile.
 
+- ``clone_from``: UUID of the Statistics Profile from which this profile is being cloned.
+
 - ``flow_stats_aggregation_enabled``: Indicates if flow statistics aggregation is enabled.
 
 

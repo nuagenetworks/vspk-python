@@ -97,6 +97,7 @@ Children
 :ref:`nunetconfglobalconfiguration.NUNetconfGlobalConfiguration<nunetconfglobalconfiguration>`                                                                   ``netconf_global_configurations`` 
 :ref:`nunetconfprofile.NUNetconfProfile<nunetconfprofile>`                                                                                                       ``netconf_profiles`` 
 :ref:`nunetworklayout.NUNetworkLayout<nunetworklayout>`                                                                                                          ``network_layouts`` 
+:ref:`nunetworkmacrogroup.NUNetworkMacroGroup<nunetworkmacrogroup>`                                                                                              ``network_macro_groups`` 
 :ref:`nunetworkperformancemeasurement.NUNetworkPerformanceMeasurement<nunetworkperformancemeasurement>`                                                          ``network_performance_measurements`` 
 :ref:`nukeyservermember.NUKeyServerMember<nukeyservermember>`                                                                                                    ``key_server_members`` 
 :ref:`nuzfbautoassignment.NUZFBAutoAssignment<nuzfbautoassignment>`                                                                                              ``zfb_auto_assignments`` 
@@ -136,6 +137,7 @@ Children
 :ref:`nuingressqospolicy.NUIngressQOSPolicy<nuingressqospolicy>`                                                                                                 ``ingress_qos_policies`` 
 :ref:`nugnmiprofile.NUGNMIProfile<nugnmiprofile>`                                                                                                                ``gnmi_profiles`` 
 :ref:`nuenterprise.NUEnterprise<nuenterprise>`                                                                                                                   ``enterprises`` 
+:ref:`nuenterprisenetwork.NUEnterpriseNetwork<nuenterprisenetwork>`                                                                                              ``enterprise_networks`` 
 :ref:`nuenterpriseprofile.NUEnterpriseProfile<nuenterpriseprofile>`                                                                                              ``enterprise_profiles`` 
 :ref:`nujob.NUJob<nujob>`                                                                                                                                        ``jobs`` 
 :ref:`nurole.NURole<nurole>`                                                                                                                                     ``roles`` 

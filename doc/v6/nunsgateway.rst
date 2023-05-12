@@ -22,7 +22,7 @@ Attributes
 
 - ``tcpmss_enabled``: Boolean flag to indicate whether MSS on TCP is enabled or not
 
-- ``tcp_maximum_segment_size``: Maximum Segment Size for TCP(min = 576, max = 7812).
+- ``tcp_maximum_segment_size``: Maximum TCP segment size (min = 576, max = 7812); value 0 indicates the use of dynamically computed MSS.
 
 - ``zfb_match_attribute``: The Zero Factor Bootstrapping (ZFB) Attribute that should be used to match the gateway on when it tries to bootstrap.
 
@@ -69,6 +69,8 @@ Attributes
 - ``gateway_config_version``: Interpreted version of NSG, which is used to determine the feature capabilities of NSG.
 
 - ``gateway_connected``: Indicates status of this gateway
+
+- ``path_mtu_discovery``: Boolean flag to indicate whether Path MTU Discovery is enabled or not.
 
 - ``redundancy_group_id``: The Redundancy Gateway Group associated with this Gateway Instance. This is a read only attribute
 

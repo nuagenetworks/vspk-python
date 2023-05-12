@@ -247,6 +247,7 @@ class NUSubnet(NURESTObject):
         self._last_updated_date = None
         self._gateway = None
         self._gateway_mac_address = None
+        self._wbx_disable_mac_move = None
         self._access_restriction_enabled = None
         self._address = None
         self._advertise = None
@@ -311,6 +312,7 @@ class NUSubnet(NURESTObject):
         self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway", remote_name="gateway", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_mac_address", remote_name="gatewayMACAddress", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="wbx_disable_mac_move", remote_name="wbxDisableMacMove", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="access_restriction_enabled", remote_name="accessRestrictionEnabled", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="address", remote_name="address", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="advertise", remote_name="advertise", attribute_type=bool, is_required=False, is_unique=False)
@@ -830,6 +832,33 @@ class NUSubnet(NURESTObject):
                 
         """
         self._gateway_mac_address = value
+
+    
+    @property
+    def wbx_disable_mac_move(self):
+        """ Get wbx_disable_mac_move value.
+
+            Notes:
+                Disable MAC Move on WBX nodes.
+
+                
+                This attribute is named `wbxDisableMacMove` in VSD API.
+                
+        """
+        return self._wbx_disable_mac_move
+
+    @wbx_disable_mac_move.setter
+    def wbx_disable_mac_move(self, value):
+        """ Set wbx_disable_mac_move value.
+
+            Notes:
+                Disable MAC Move on WBX nodes.
+
+                
+                This attribute is named `wbxDisableMacMove` in VSD API.
+                
+        """
+        self._wbx_disable_mac_move = value
 
     
     @property

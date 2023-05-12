@@ -30,6 +30,8 @@ Attributes
 
 - ``creation_date``: Time stamp when this object was created.
 
+- ``sub_option_type``: Sub option type of the actual DHCP option type.
+
 - ``owner``: Identifies the user that has created this object.
 
 - ``external_id``: External object ID. Used for integration with third party systems

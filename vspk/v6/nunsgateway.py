@@ -338,6 +338,7 @@ class NUNSGateway(NURESTObject):
         self._gateway_config_raw_version = None
         self._gateway_config_version = None
         self._gateway_connected = None
+        self._path_mtu_discovery = None
         self._redundancy_group_id = None
         self._template_id = None
         self._pending = None
@@ -411,6 +412,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="gateway_config_raw_version", remote_name="gatewayConfigRawVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_config_version", remote_name="gatewayConfigVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="gateway_connected", remote_name="gatewayConnected", attribute_type=bool, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="path_mtu_discovery", remote_name="pathMTUDiscovery", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="redundancy_group_id", remote_name="redundancyGroupID", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="template_id", remote_name="templateID", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="pending", remote_name="pending", attribute_type=bool, is_required=False, is_unique=False)
@@ -690,7 +692,7 @@ class NUNSGateway(NURESTObject):
         """ Get tcp_maximum_segment_size value.
 
             Notes:
-                Maximum Segment Size for TCP(min = 576, max = 7812).
+                Maximum TCP segment size (min = 576, max = 7812); value 0 indicates the use of dynamically computed MSS.
 
                 
                 This attribute is named `TCPMaximumSegmentSize` in VSD API.
@@ -703,7 +705,7 @@ class NUNSGateway(NURESTObject):
         """ Set tcp_maximum_segment_size value.
 
             Notes:
-                Maximum Segment Size for TCP(min = 576, max = 7812).
+                Maximum TCP segment size (min = 576, max = 7812); value 0 indicates the use of dynamically computed MSS.
 
                 
                 This attribute is named `TCPMaximumSegmentSize` in VSD API.
@@ -1323,6 +1325,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._gateway_connected = value
+
+    
+    @property
+    def path_mtu_discovery(self):
+        """ Get path_mtu_discovery value.
+
+            Notes:
+                Boolean flag to indicate whether Path MTU Discovery is enabled or not.
+
+                
+                This attribute is named `pathMTUDiscovery` in VSD API.
+                
+        """
+        return self._path_mtu_discovery
+
+    @path_mtu_discovery.setter
+    def path_mtu_discovery(self, value):
+        """ Set path_mtu_discovery value.
+
+            Notes:
+                Boolean flag to indicate whether Path MTU Discovery is enabled or not.
+
+                
+                This attribute is named `pathMTUDiscovery` in VSD API.
+                
+        """
+        self._path_mtu_discovery = value
 
     
     @property

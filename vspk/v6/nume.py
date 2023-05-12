@@ -100,6 +100,9 @@ from .fetchers import NUNetconfProfilesFetcher
 from .fetchers import NUNetworkLayoutsFetcher
 
 
+from .fetchers import NUNetworkMacroGroupsFetcher
+
+
 from .fetchers import NUNetworkPerformanceMeasurementsFetcher
 
 
@@ -215,6 +218,9 @@ from .fetchers import NUGNMIProfilesFetcher
 
 
 from .fetchers import NUEnterprisesFetcher
+
+
+from .fetchers import NUEnterpriseNetworksFetcher
 
 
 from .fetchers import NUEnterpriseProfilesFetcher
@@ -529,6 +535,9 @@ class NUMe(NURESTRootObject):
         self.network_layouts = NUNetworkLayoutsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
+        self.network_macro_groups = NUNetworkMacroGroupsFetcher.fetcher_with_object(parent_object=self, relationship="child")
+        
+        
         self.network_performance_measurements = NUNetworkPerformanceMeasurementsFetcher.fetcher_with_object(parent_object=self, relationship="root")
         
         
@@ -644,6 +653,9 @@ class NUMe(NURESTRootObject):
         
         
         self.enterprises = NUEnterprisesFetcher.fetcher_with_object(parent_object=self, relationship="root")
+        
+        
+        self.enterprise_networks = NUEnterpriseNetworksFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.enterprise_profiles = NUEnterpriseProfilesFetcher.fetcher_with_object(parent_object=self, relationship="root")
