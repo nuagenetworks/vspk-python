@@ -114,7 +114,7 @@ Parents
 --------
 
 
-- :ref:`nufirewallacl.NUFirewallAcl<nufirewallacl>`
-
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
+- :ref:`nufirewallacl.NUFirewallAcl<nufirewallacl>`
 

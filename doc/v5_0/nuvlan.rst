@@ -96,11 +96,11 @@ Parents
 
 - :ref:`nuport.NUPort<nuport>`
 
+- :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
+
 - :ref:`nugatewayredundantport.NUGatewayRedundantPort<nugatewayredundantport>`
 
 - :ref:`nuredundantport.NURedundantPort<nuredundantport>`
 
 - :ref:`nunsport.NUNSPort<nunsport>`
-
-- :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
 

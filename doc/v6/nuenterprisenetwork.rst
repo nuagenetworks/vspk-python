@@ -58,11 +58,11 @@ Parents
 --------
 
 
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nusaasapplicationtype.NUSaaSApplicationType<nusaasapplicationtype>`
 
 - :ref:`nunetworkmacrogroup.NUNetworkMacroGroup<nunetworkmacrogroup>`
-
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

@@ -70,6 +70,8 @@ class NUSystemConfig(NURESTObject):
     
     CONST_GROUP_KEY_DEFAULT_SEK_PAYLOAD_ENCRYPTION_ALGORITHM_RSA_1024 = "RSA_1024"
     
+    CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_AUTHENTICATION_ALGORITHM_HMAC_SHA384 = "HMAC_SHA384"
+    
     CONST_GROUP_KEY_DEFAULT_SEED_PAYLOAD_AUTHENTICATION_ALGORITHM_HMAC_SHA512 = "HMAC_SHA512"
     
     CONST_GROUP_KEY_DEFAULT_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA1 = "HMAC_SHA1"
@@ -479,7 +481,7 @@ class NUSystemConfig(NURESTObject):
         self.expose_attribute(local_name="group_key_default_sek_payload_signing_algorithm", remote_name="groupKeyDefaultSEKPayloadSigningAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'SHA1withRSA', u'SHA224withRSA', u'SHA256withRSA', u'SHA384withRSA', u'SHA512withRSA'])
         self.expose_attribute(local_name="group_key_default_seed_generation_interval", remote_name="groupKeyDefaultSeedGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="group_key_default_seed_lifetime", remote_name="groupKeyDefaultSeedLifetime", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="group_key_default_seed_payload_authentication_algorithm", remote_name="groupKeyDefaultSeedPayloadAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA512'])
+        self.expose_attribute(local_name="group_key_default_seed_payload_authentication_algorithm", remote_name="groupKeyDefaultSeedPayloadAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA384', u'HMAC_SHA512'])
         self.expose_attribute(local_name="group_key_default_seed_payload_encryption_algorithm", remote_name="groupKeyDefaultSeedPayloadEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES_128_CBC', u'AES_256_CBC', u'TRIPLE_DES_CBC'])
         self.expose_attribute(local_name="group_key_default_seed_payload_signing_algorithm", remote_name="groupKeyDefaultSeedPayloadSigningAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'SHA1withRSA', u'SHA224withRSA', u'SHA256withRSA', u'SHA384withRSA', u'SHA512withRSA'])
         self.expose_attribute(local_name="group_key_default_traffic_authentication_algorithm", remote_name="groupKeyDefaultTrafficAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_MD5', u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA384', u'HMAC_SHA512'])

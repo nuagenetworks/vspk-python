@@ -155,23 +155,23 @@ Parents
 
 - :ref:`nuredirectiontarget.NURedirectionTarget<nuredirectiontarget>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
 
-- :ref:`nuvrs.NUVRS<nuvrs>`
+- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
 
 - :ref:`nutrunk.NUTrunk<nutrunk>`
 
-- :ref:`nuegressprofile.NUEgressProfile<nuegressprofile>`
-
-- :ref:`numultinicvport.NUMultiNICVPort<numultinicvport>`
-
-- :ref:`nul2domain.NUL2Domain<nul2domain>`
+- :ref:`nuvrs.NUVRS<nuvrs>`
 
 - :ref:`nuingressprofile.NUIngressProfile<nuingressprofile>`
 
-- :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
+- :ref:`nuegressprofile.NUEgressProfile<nuegressprofile>`
 
-- :ref:`nupolicygroup.NUPolicyGroup<nupolicygroup>`
+- :ref:`nudomain.NUDomain<nudomain>`
+
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
+
+- :ref:`nufloatingip.NUFloatingIp<nufloatingip>`
 

@@ -86,6 +86,8 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
     
     CONST_SEK_PAYLOAD_ENCRYPTION_ALGORITHM_RSA_1024 = "RSA_1024"
     
+    CONST_SEED_PAYLOAD_AUTHENTICATION_ALGORITHM_HMAC_SHA384 = "HMAC_SHA384"
+    
     CONST_SEK_PAYLOAD_SIGNING_ALGORITHM_SHA384WITHRSA = "SHA384withRSA"
     
     CONST_TRAFFIC_AUTHENTICATION_ALGORITHM_HMAC_SHA256 = "HMAC_SHA256"
@@ -169,7 +171,7 @@ class NUGroupKeyEncryptionProfile(NURESTObject):
         self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_generation_interval", remote_name="seedGenerationInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_lifetime", remote_name="seedLifetime", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="seed_payload_authentication_algorithm", remote_name="seedPayloadAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA512'])
+        self.expose_attribute(local_name="seed_payload_authentication_algorithm", remote_name="seedPayloadAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA384', u'HMAC_SHA512'])
         self.expose_attribute(local_name="seed_payload_authentication_bc_algorithm", remote_name="seedPayloadAuthenticationBCAlgorithm", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_payload_authentication_key_length", remote_name="seedPayloadAuthenticationKeyLength", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="seed_payload_encryption_algorithm", remote_name="seedPayloadEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES_128_CBC', u'AES_256_CBC', u'TRIPLE_DES_CBC'])

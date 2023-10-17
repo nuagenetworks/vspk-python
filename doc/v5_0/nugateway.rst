@@ -137,11 +137,11 @@ Parents
 --------
 
 
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
 - :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
-
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

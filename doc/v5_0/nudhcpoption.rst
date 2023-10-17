@@ -54,10 +54,6 @@ Parents
 
 - :ref:`nuzone.NUZone<nuzone>`
 
-- :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nuvport.NUVPort<nuvport>`
 
 - :ref:`nusubnet.NUSubnet<nusubnet>`
@@ -66,5 +62,9 @@ Parents
 
 - :ref:`nubridgeinterface.NUBridgeInterface<nubridgeinterface>`
 
+- :ref:`nudomain.NUDomain<nudomain>`
+
 - :ref:`nul2domain.NUL2Domain<nul2domain>`
+
+- :ref:`nuhostinterface.NUHostInterface<nuhostinterface>`
 

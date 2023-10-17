@@ -66,29 +66,29 @@ Parents
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
+- :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
 
 - :ref:`nugatewayredundantport.NUGatewayRedundantPort<nugatewayredundantport>`
 
+- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
+
 - :ref:`nuredundantport.NURedundantPort<nuredundantport>`
 
-- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
+- :ref:`nusubnet.NUSubnet<nusubnet>`
 
 - :ref:`nuvlan.NUVLAN<nuvlan>`
 
 - :ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`
 
-- :ref:`nunsport.NUNSPort<nunsport>`
-
-- :ref:`nupatnatpool.NUPATNATPool<nupatnatpool>`
-
-- :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
+- :ref:`nuethernetsegmentgroup.NUEthernetSegmentGroup<nuethernetsegmentgroup>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
-- :ref:`nusubnet.NUSubnet<nusubnet>`
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
-- :ref:`nuethernetsegmentgroup.NUEthernetSegmentGroup<nuethernetsegmentgroup>`
+- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
+
+- :ref:`nunsport.NUNSPort<nunsport>`
 

@@ -329,6 +329,7 @@ class NUNSGateway(NURESTObject):
         self._nsg_version = None
         self._ssh_service = None
         self._uuid = None
+        self._saa_s_optimisation = None
         self._name = None
         self._family = None
         self._last_configuration_reload_timestamp = None
@@ -403,6 +404,7 @@ class NUNSGateway(NURESTObject):
         self.expose_attribute(local_name="nsg_version", remote_name="NSGVersion", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ssh_service", remote_name="SSHService", attribute_type=str, is_required=False, is_unique=False, choices=[u'DISABLED', u'ENABLED', u'INHERITED'])
         self.expose_attribute(local_name="uuid", remote_name="UUID", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="saa_s_optimisation", remote_name="saaSOptimisation", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=True, is_unique=False)
         self.expose_attribute(local_name="family", remote_name="family", attribute_type=str, is_required=False, is_unique=False, choices=[u'ANY', u'NSG_AMI', u'NSG_AZ', u'NSG_C', u'NSG_E', u'NSG_E200', u'NSG_E300', u'NSG_V', u'NSG_X', u'NSG_X200'])
         self.expose_attribute(local_name="last_configuration_reload_timestamp", remote_name="lastConfigurationReloadTimestamp", attribute_type=int, is_required=False, is_unique=False)
@@ -1090,6 +1092,33 @@ class NUNSGateway(NURESTObject):
                 
         """
         self._uuid = value
+
+    
+    @property
+    def saa_s_optimisation(self):
+        """ Get saa_s_optimisation value.
+
+            Notes:
+                Boolean flag to indicate whether SaaS Optimisation is enabled or not.
+
+                
+                This attribute is named `saaSOptimisation` in VSD API.
+                
+        """
+        return self._saa_s_optimisation
+
+    @saa_s_optimisation.setter
+    def saa_s_optimisation(self, value):
+        """ Set saa_s_optimisation value.
+
+            Notes:
+                Boolean flag to indicate whether SaaS Optimisation is enabled or not.
+
+                
+                This attribute is named `saaSOptimisation` in VSD API.
+                
+        """
+        self._saa_s_optimisation = value
 
     
     @property

@@ -69,7 +69,7 @@ Parents
 
 - :ref:`nuvport.NUVPort<nuvport>`
 
-- :ref:`nuvlan.NUVLAN<nuvlan>`
-
 - :ref:`nusubnet.NUSubnet<nusubnet>`
+
+- :ref:`nuvlan.NUVLAN<nuvlan>`
 

@@ -47,9 +47,9 @@ Parents
 --------
 
 
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
 - :ref:`nume.NUMe<nume>`
 
 - :ref:`nudomain.NUDomain<nudomain>`
-
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 

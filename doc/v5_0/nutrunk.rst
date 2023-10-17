@@ -42,7 +42,7 @@ Parents
 --------
 
 
-- :ref:`nuvport.NUVPort<nuvport>`
-
 - :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+
+- :ref:`nuvport.NUVPort<nuvport>`
 

@@ -52,6 +52,8 @@ Attributes
 
 - ``uuid``: The Redhat UUID of the NSG
 
+- ``saa_s_optimisation``: Boolean flag to indicate whether SaaS Optimisation is enabled or not.
+
 - ``name`` (**Mandatory**): Name of the Gateway
 
 - ``family``: The NSG Family type.
@@ -204,7 +206,7 @@ Parents
 --------
 
 
-- :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
@@ -214,7 +216,7 @@ Parents
 
 - :ref:`nustatisticsprofile.NUStatisticsprofile<nustatisticsprofile>`
 
-- :ref:`nunsggroup.NUNSGGroup<nunsggroup>`
+- :ref:`nupolicyobjectgroup.NUPolicyObjectGroup<nupolicyobjectgroup>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nunsggroup.NUNSGGroup<nunsggroup>`
 

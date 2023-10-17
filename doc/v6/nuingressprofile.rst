@@ -72,13 +72,13 @@ Parents
 --------
 
 
-- :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
-- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
+- :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
 

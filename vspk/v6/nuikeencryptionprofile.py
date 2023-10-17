@@ -74,6 +74,8 @@ class NUIKEEncryptionprofile(NURESTObject):
     
     CONST_IPSEC_SA_REPLAY_WINDOW_SIZE_WINDOW_SIZE_128 = "WINDOW_SIZE_128"
     
+    CONST_IPSEC_ENCRYPTION_ALGORITHM_AES192 = "AES192"
+    
     CONST_IPSEC_AUTHENTICATION_ALGORITHM_HMAC_SHA512 = "HMAC_SHA512"
     
     CONST_ENTITY_SCOPE_GLOBAL = "GLOBAL"
@@ -87,6 +89,8 @@ class NUIKEEncryptionprofile(NURESTObject):
     CONST_ISAKMP_DIFFIE_HELMAN_GROUP_IDENTIFIER_GROUP_20_384_BIT_DH = "GROUP_20_384_BIT_DH"
     
     CONST_IPSEC_AUTHENTICATION_ALGORITHM_HMAC_SHA1 = "HMAC_SHA1"
+    
+    CONST_ISAKMP_HASH_ALGORITHM_SHA384 = "SHA384"
     
     CONST_ISAKMP_AUTHENTICATION_MODE_PRE_SHARED_KEY = "PRE_SHARED_KEY"
     
@@ -112,7 +116,7 @@ class NUIKEEncryptionprofile(NURESTObject):
     
     CONST_IPSEC_ENCRYPTION_ALGORITHM_AES256 = "AES256"
     
-    CONST_IPSEC_ENCRYPTION_ALGORITHM_AES192 = "AES192"
+    CONST_IPSEC_AUTHENTICATION_ALGORITHM_HMAC_SHA384 = "HMAC_SHA384"
     
     CONST_ISAKMP_ENCRYPTION_ALGORITHM_AES192 = "AES192"
     
@@ -172,7 +176,7 @@ class NUIKEEncryptionprofile(NURESTObject):
         self.expose_attribute(local_name="dpd_interval", remote_name="DPDInterval", attribute_type=int, is_required=False, is_unique=False)
         self.expose_attribute(local_name="dpd_mode", remote_name="DPDMode", attribute_type=str, is_required=False, is_unique=False, choices=[u'ON_DEMAND', u'REPLY_ONLY'])
         self.expose_attribute(local_name="dpd_timeout", remote_name="DPDTimeout", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="ipsec_authentication_algorithm", remote_name="IPsecAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_MD5', u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA512'])
+        self.expose_attribute(local_name="ipsec_authentication_algorithm", remote_name="IPsecAuthenticationAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'HMAC_MD5', u'HMAC_SHA1', u'HMAC_SHA256', u'HMAC_SHA384', u'HMAC_SHA512'])
         self.expose_attribute(local_name="ipsec_dont_fragment", remote_name="IPsecDontFragment", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ipsec_enable_pfs", remote_name="IPsecEnablePFS", attribute_type=bool, is_required=False, is_unique=False)
         self.expose_attribute(local_name="ipsec_encryption_algorithm", remote_name="IPsecEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES128', u'AES192', u'AES256', u'NULL', u'TRIPLE_DES'])
@@ -184,7 +188,7 @@ class NUIKEEncryptionprofile(NURESTObject):
         self.expose_attribute(local_name="isakmp_diffie_helman_group_identifier", remote_name="ISAKMPDiffieHelmanGroupIdentifier", attribute_type=str, is_required=False, is_unique=False, choices=[u'GROUP_14_2048_BIT_DH', u'GROUP_15_3072_BIT_DH', u'GROUP_18_8192_BIT_DH', u'GROUP_19_256_BIT_DH', u'GROUP_1_768_BIT_DH', u'GROUP_20_384_BIT_DH', u'GROUP_21_521_BIT_DH', u'GROUP_2_1024_BIT_DH', u'GROUP_5_1536_BIT_DH'])
         self.expose_attribute(local_name="isakmp_encryption_algorithm", remote_name="ISAKMPEncryptionAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'AES128', u'AES192', u'AES256', u'TRIPLE_DES'])
         self.expose_attribute(local_name="isakmp_encryption_key_lifetime", remote_name="ISAKMPEncryptionKeyLifetime", attribute_type=int, is_required=False, is_unique=False)
-        self.expose_attribute(local_name="isakmp_hash_algorithm", remote_name="ISAKMPHashAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'SHA1', u'SHA256'])
+        self.expose_attribute(local_name="isakmp_hash_algorithm", remote_name="ISAKMPHashAlgorithm", attribute_type=str, is_required=False, is_unique=False, choices=[u'SHA1', u'SHA256', u'SHA384'])
         self.expose_attribute(local_name="name", remote_name="name", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_by", remote_name="lastUpdatedBy", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)

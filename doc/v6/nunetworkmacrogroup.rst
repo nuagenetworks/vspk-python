@@ -55,11 +55,11 @@ Parents
 --------
 
 
-- :ref:`nume.NUMe<nume>`
-
-- :ref:`nudomain.NUDomain<nudomain>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
 - :ref:`nuenterprisenetwork.NUEnterpriseNetwork<nuenterprisenetwork>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nume.NUMe<nume>`
+
+- :ref:`nudomain.NUDomain<nudomain>`
 

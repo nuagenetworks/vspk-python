@@ -70,35 +70,27 @@ Parents
 --------
 
 
-- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
-
 - :ref:`nuport.NUPort<nuport>`
 
 - :ref:`nuazurecloud.NUAzureCloud<nuazurecloud>`
 
-- :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
+- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
 
-- :ref:`nutca.NUTCA<nutca>`
+- :ref:`nuredundancygroup.NURedundancyGroup<nuredundancygroup>`
 
 - :ref:`nunsredundantgatewaygroup.NUNSRedundantGatewayGroup<nunsredundantgatewaygroup>`
 
-- :ref:`nuwanservice.NUWANService<nuwanservice>`
+- :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
 
 - :ref:`nuikegatewayconnection.NUIKEGatewayConnection<nuikegatewayconnection>`
 
 - :ref:`nugatewayredundantport.NUGatewayRedundantPort<nugatewayredundantport>`
 
-- :ref:`nudomain.NUDomain<nudomain>`
-
 - :ref:`nunetconfsession.NUNetconfSession<nunetconfsession>`
 
-- :ref:`nuvsd.NUVSD<nuvsd>`
+- :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
 
 - :ref:`nuvport.NUVPort<nuvport>`
-
-- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
-
-- :ref:`nucontainer.NUContainer<nucontainer>`
 
 - :ref:`nuvrs.NUVRS<nuvrs>`
 
@@ -108,21 +100,17 @@ Parents
 
 - :ref:`nunetconfgateway.NUNetconfGateway<nunetconfgateway>`
 
-- :ref:`nunsport.NUNSPort<nunsport>`
+- :ref:`nuethernetsegmentgroup.NUEthernetSegmentGroup<nuethernetsegmentgroup>`
 
-- :ref:`nunetconfmanager.NUNetconfManager<nunetconfmanager>`
-
-- :ref:`nugnmisession.NUGNMISession<nugnmisession>`
-
-- :ref:`nuvsgredundantport.NUVsgRedundantPort<nuvsgredundantport>`
+- :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nugateway.NUGateway<nugateway>`
 
-- :ref:`nul2domain.NUL2Domain<nul2domain>`
+- :ref:`nuwanservice.NUWANService<nuwanservice>`
 
 - :ref:`nushuntlink.NUShuntLink<nushuntlink>`
 
-- :ref:`nussidconnection.NUSSIDConnection<nussidconnection>`
+- :ref:`nul2domain.NUL2Domain<nul2domain>`
 
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
 
@@ -130,9 +118,21 @@ Parents
 
 - :ref:`nuvm.NUVM<nuvm>`
 
-- :ref:`nuethernetsegmentgroup.NUEthernetSegmentGroup<nuethernetsegmentgroup>`
+- :ref:`nuvsd.NUVSD<nuvsd>`
+
+- :ref:`nunetconfmanager.NUNetconfManager<nunetconfmanager>`
+
+- :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`
+
+- :ref:`nucontainer.NUContainer<nucontainer>`
+
+- :ref:`nutca.NUTCA<nutca>`
+
+- :ref:`nuethernetsegmentgwgroup.NUEthernetSegmentGWGroup<nuethernetsegmentgwgroup>`
 
 - :ref:`nuwirelessport.NUWirelessPort<nuwirelessport>`
 
-- :ref:`nuenterprise.NUEnterprise<nuenterprise>`
+- :ref:`nugnmisession.NUGNMISession<nugnmisession>`
+
+- :ref:`nunsport.NUNSPort<nunsport>`
 

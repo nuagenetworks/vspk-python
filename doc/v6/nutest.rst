@@ -64,7 +64,7 @@ Parents
 --------
 
 
-- :ref:`nutestsuite.NUTestSuite<nutestsuite>`
-
 - :ref:`nuscheduledtestsuite.NUScheduledTestSuite<nuscheduledtestsuite>`
+
+- :ref:`nutestsuite.NUTestSuite<nutestsuite>`
 

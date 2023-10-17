@@ -313,7 +313,7 @@ Parents
 
 - :ref:`nume.NUMe<nume>`
 
-- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
-
 - :ref:`nuvcenterdatacenter.NUVCenterDataCenter<nuvcenterdatacenter>`
+
+- :ref:`nuvcentercluster.NUVCenterCluster<nuvcentercluster>`
 

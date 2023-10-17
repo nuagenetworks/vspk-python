@@ -97,9 +97,9 @@ Parents
 --------
 
 
-- :ref:`nuvlan.NUVLAN<nuvlan>`
-
 - :ref:`nunsgateway.NUNSGateway<nunsgateway>`
+
+- :ref:`nuvlan.NUVLAN<nuvlan>`
 
 - :ref:`nuvlantemplate.NUVLANTemplate<nuvlantemplate>`
 
