@@ -390,7 +390,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         """ Get ipv6_address_override value.
 
             Notes:
-                Overrides the source IPv6 for Ingress and destination IPv6 for Egress, MAC entries will use this address as the match criteria.
+                Overrides source IPv6 for Ingress.
 
                 
                 This attribute is named `IPv6AddressOverride` in VSD API.
@@ -403,7 +403,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         """ Set ipv6_address_override value.
 
             Notes:
-                Overrides the source IPv6 for Ingress and destination IPv6 for Egress, MAC entries will use this address as the match criteria.
+                Overrides source IPv6 for Ingress.
 
                 
                 This attribute is named `IPv6AddressOverride` in VSD API.
@@ -521,7 +521,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         """ Get address_override value.
 
             Notes:
-                Overrides the source IP for Ingress and destination IP for Egress, MAC entries will use this address as the match criteria.
+                Overrides source IP for Ingress.
 
                 
                 This attribute is named `addressOverride` in VSD API.
@@ -534,7 +534,7 @@ class NUIngressACLEntryTemplate(NURESTObject):
         """ Set address_override value.
 
             Notes:
-                Overrides the source IP for Ingress and destination IP for Egress, MAC entries will use this address as the match criteria.
+                Overrides source IP for Ingress.
 
                 
                 This attribute is named `addressOverride` in VSD API.

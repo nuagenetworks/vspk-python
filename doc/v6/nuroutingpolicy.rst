@@ -24,6 +24,8 @@ Attributes
 
 - ``policy_definition``: String blob
 
+- ``policy_definition_srl_23_10``: SRL Version 23.10 String blob
+
 - ``policy_unique_id``: 15-digit ID to uniquely identify Routing Policies.
 
 - ``content_type``: Content type for routing policy provisioning for different mediation devices

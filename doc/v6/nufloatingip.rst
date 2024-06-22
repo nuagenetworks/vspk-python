@@ -66,6 +66,8 @@ Parents
 
 - :ref:`nume.NUMe<nume>`
 
+- :ref:`nusubnet.NUSubnet<nusubnet>`
+
 - :ref:`nudomain.NUDomain<nudomain>`
 
 - :ref:`nuaggregateddomain.NUAggregatedDomain<nuaggregateddomain>`

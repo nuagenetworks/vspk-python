@@ -20,7 +20,9 @@ Attributes
 
 - ``description``: A detailed description of the IP Profile entity.
 
-- ``blob_text``: Data definitions for pre-defined sets of attributes defined by blobType.
+- ``blob_text``: SRL v22.6 data definitions for pre-defined sets of attributes defined by blobType.
+
+- ``blob_text_srl_23_10``: SRL v23.10 data definitions for pre-defined sets of attributes defined by blobType.
 
 - ``blob_type``: Content type for blob text.
 

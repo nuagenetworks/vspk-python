@@ -20,7 +20,7 @@ Attributes
 
 - ``fc_override``: Value of the Service Class to be overridden in the packet when the match conditions are satisfied Possible values are NONE, A, B, C, D, E, F, G, H, .
 
-- ``ipv6_address_override``: Overrides the source IPv6 for Ingress and destination IPv6 for Egress, MAC entries will use this address as the match criteria.
+- ``ipv6_address_override``: Overrides source IPv6 for Ingress.
 
 - ``dscp`` (**Mandatory**): DSCP match condition to be set in the rule. It is either * or from 0-63
 
@@ -34,7 +34,7 @@ Attributes
 
 - ``action`` (**Mandatory**): The action of the ACL entry DROP or FORWARD or REDIRECT or FORWARDING_PATH_LIST. Actions REDIRECT and FORWARDING_PATH_LIST are allowed only for IngressAdvancedForwardingEntry. Possible values are DROP, FORWARD, REDIRECT, FORWARDING_PATH_LIST. If FORWARDING_PATH_LIST is selected in IngressAdvancedForwardingEntry, user will have to attach a ForwardingPathList (list of forwarding action-uplink preference entries) to the ACL.  
 
-- ``address_override``: Overrides the source IP for Ingress and destination IP for Egress, MAC entries will use this address as the match criteria.
+- ``address_override``: Overrides source IP for Ingress.
 
 - ``address_override_type``: Address Override Type can be IPV4, IPV6 or MACRO_GROUP.
 

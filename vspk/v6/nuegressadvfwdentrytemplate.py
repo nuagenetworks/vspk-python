@@ -447,7 +447,7 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
         """ Get ipv6_address_override value.
 
             Notes:
-                Overrides the source IPv6 for Egress and destination IPv6 for Egress, mac entries will use this address as the match criteria.
+                Overrides destination IPv6 match for Egress.
 
                 
                 This attribute is named `IPv6AddressOverride` in VSD API.
@@ -460,7 +460,7 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
         """ Set ipv6_address_override value.
 
             Notes:
-                Overrides the source IPv6 for Egress and destination IPv6 for Egress, mac entries will use this address as the match criteria.
+                Overrides destination IPv6 match for Egress.
 
                 
                 This attribute is named `IPv6AddressOverride` in VSD API.
@@ -605,7 +605,7 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
         """ Get address_override value.
 
             Notes:
-                Overrides the source IP for Egress and destination IP for Ingress, mac entries will use this address as the match criteria.
+                Overrides destination IP match for Egress.
 
                 
                 This attribute is named `addressOverride` in VSD API.
@@ -618,7 +618,7 @@ class NUEgressAdvFwdEntryTemplate(NURESTObject):
         """ Set address_override value.
 
             Notes:
-                Overrides the source IP for Egress and destination IP for Ingress, mac entries will use this address as the match criteria.
+                Overrides destination IP match for Egress.
 
                 
                 This attribute is named `addressOverride` in VSD API.

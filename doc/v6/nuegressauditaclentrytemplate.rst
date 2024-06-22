@@ -18,7 +18,7 @@ Attributes
 
 - ``icmp_type``: The ICMP Type when selected protocol is ICMP
 
-- ``ipv6_address_override``: Overrides the source IPv6 for Ingress and destination IP for Egress, MAC entries will use this address as the match criteria.
+- ``ipv6_address_override``: Overrides destination IPv6 match for Egress.
 
 - ``dscp`` (**Mandatory**): DSCP match condition to be set in the rule. It is either * or from 0-63
 
@@ -28,7 +28,7 @@ Attributes
 
 - ``action``: The action of the ACL entry.
 
-- ``address_override``: Overrides the source IP for Ingress and destination IP for Egress, MAC entries will use this address as the match criteria.
+- ``address_override``: Overrides destination IP match for Egress.
 
 - ``web_filter_id``: ID of web filter category or web domain name entity used
 

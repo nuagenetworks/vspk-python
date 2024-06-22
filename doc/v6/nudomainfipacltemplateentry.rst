@@ -28,7 +28,7 @@ Attributes
 
 - ``action``: The action of the ACL entry DROP or FORWARD or REDIRECT. Action REDIRECT is allowed only for IngressAdvancedForwardingEntry
 
-- ``address_override``: Overrides the source IP for Ingress and destination IP for Egress, MAC entries will use this address as the match criteria.
+- ``address_override``: Overrides destination IP match for Egress.
 
 - ``web_filter_id``: ID of web filter category or web domain name entity used
 

@@ -73,6 +73,9 @@ from .fetchers import NUVirtualIPsFetcher
 from .fetchers import NUIKEGatewayConnectionsFetcher
 
 
+from .fetchers import NUFloatingIpsFetcher
+
+
 from .fetchers import NUGlobalMetadatasFetcher
 
 
@@ -410,6 +413,9 @@ class NUSubnet(NURESTObject):
         
         
         self.ike_gateway_connections = NUIKEGatewayConnectionsFetcher.fetcher_with_object(parent_object=self, relationship="member")
+        
+        
+        self.floating_ips = NUFloatingIpsFetcher.fetcher_with_object(parent_object=self, relationship="child")
         
         
         self.global_metadatas = NUGlobalMetadatasFetcher.fetcher_with_object(parent_object=self, relationship="child")

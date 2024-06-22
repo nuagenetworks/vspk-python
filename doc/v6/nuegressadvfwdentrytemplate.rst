@@ -20,7 +20,7 @@ Attributes
 
 - ``fc_override``: Value of the Service Class to be overridden in the packet when the match conditions are satisfied Possible values are NONE, A, B, C, D, E, F, G, H, .
 
-- ``ipv6_address_override``: Overrides the source IPv6 for Egress and destination IPv6 for Egress, mac entries will use this address as the match criteria.
+- ``ipv6_address_override``: Overrides destination IPv6 match for Egress.
 
 - ``dscp`` (**Mandatory**): DSCP match condition to be set in the rule. It is either * or from 0-63
 
@@ -32,7 +32,7 @@ Attributes
 
 - ``action`` (**Mandatory**): The action of the ACL entry. Possible values are DROP, FORWARD, REDIRECT. Action REDIRECT is allowed only for EgressAdvancedForwardingEntry.
 
-- ``address_override``: Overrides the source IP for Egress and destination IP for Ingress, mac entries will use this address as the match criteria.
+- ``address_override``: Overrides destination IP match for Egress.
 
 - ``web_filter_id``: ID of web filter category or web domain name entity used
 

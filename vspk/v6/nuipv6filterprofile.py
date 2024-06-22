@@ -82,6 +82,7 @@ class NUIPv6FilterProfile(NURESTObject):
         self._last_updated_date = None
         self._description = None
         self._blob_text = None
+        self._blob_text_srl_23_10 = None
         self._blob_type = None
         self._embedded_metadata = None
         self._entity_scope = None
@@ -96,6 +97,7 @@ class NUIPv6FilterProfile(NURESTObject):
         self.expose_attribute(local_name="last_updated_date", remote_name="lastUpdatedDate", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="description", remote_name="description", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="blob_text", remote_name="blobText", attribute_type=str, is_required=False, is_unique=False)
+        self.expose_attribute(local_name="blob_text_srl_23_10", remote_name="blobText_SRL_23_10", attribute_type=str, is_required=False, is_unique=False)
         self.expose_attribute(local_name="blob_type", remote_name="blobType", attribute_type=str, is_required=False, is_unique=False, choices=[u'SR_LINUX'])
         self.expose_attribute(local_name="embedded_metadata", remote_name="embeddedMetadata", attribute_type=list, is_required=False, is_unique=False)
         self.expose_attribute(local_name="entity_scope", remote_name="entityScope", attribute_type=str, is_required=False, is_unique=False, choices=[u'ENTERPRISE', u'GLOBAL'])
@@ -227,7 +229,7 @@ class NUIPv6FilterProfile(NURESTObject):
         """ Get blob_text value.
 
             Notes:
-                Data definitions for pre-defined sets of attributes defined by blobType.
+                SRL v22.6 data definitions for pre-defined sets of attributes defined by blobType.
 
                 
                 This attribute is named `blobText` in VSD API.
@@ -240,13 +242,40 @@ class NUIPv6FilterProfile(NURESTObject):
         """ Set blob_text value.
 
             Notes:
-                Data definitions for pre-defined sets of attributes defined by blobType.
+                SRL v22.6 data definitions for pre-defined sets of attributes defined by blobType.
 
                 
                 This attribute is named `blobText` in VSD API.
                 
         """
         self._blob_text = value
+
+    
+    @property
+    def blob_text_srl_23_10(self):
+        """ Get blob_text_srl_23_10 value.
+
+            Notes:
+                SRL v23.10 data definitions for pre-defined sets of attributes defined by blobType.
+
+                
+                This attribute is named `blobText_SRL_23_10` in VSD API.
+                
+        """
+        return self._blob_text_srl_23_10
+
+    @blob_text_srl_23_10.setter
+    def blob_text_srl_23_10(self, value):
+        """ Set blob_text_srl_23_10 value.
+
+            Notes:
+                SRL v23.10 data definitions for pre-defined sets of attributes defined by blobType.
+
+                
+                This attribute is named `blobText_SRL_23_10` in VSD API.
+                
+        """
+        self._blob_text_srl_23_10 = value
 
     
     @property

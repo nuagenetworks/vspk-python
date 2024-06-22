@@ -495,7 +495,7 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
         """ Get address_override value.
 
             Notes:
-                Overrides the source IP for Ingress and destination IP for Egress, MAC entries will use this address as the match criteria.
+                Overrides destination IP match for Egress.
 
                 
                 This attribute is named `addressOverride` in VSD API.
@@ -508,7 +508,7 @@ class NUDomainFIPAclTemplateEntry(NURESTObject):
         """ Set address_override value.
 
             Notes:
-                Overrides the source IP for Ingress and destination IP for Egress, MAC entries will use this address as the match criteria.
+                Overrides destination IP match for Egress.
 
                 
                 This attribute is named `addressOverride` in VSD API.
