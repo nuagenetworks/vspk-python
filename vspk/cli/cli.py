@@ -42,9 +42,9 @@ class _HelpAction(argparse._HelpAction):
 
         for subparsers_action in subparsers_actions:
 
-            for choice, subparser in subparsers_action.choices.items():
-                print("\n{}:\n{}".format(choice.upper(), "-" * (len(choice) + 1)))
-                print(subparser.format_help())
+            for choice, subparser in list(subparsers_action.choices.items()):
+                print(("\n{}:\n{}".format(choice.upper(), "-" * (len(choice) + 1))))
+                print((subparser.format_help()))
 
         parser.exit()
 
@@ -132,8 +132,11 @@ def main(argv=sys.argv):
     objects_parser.add_argument("-c", "--child", dest="child", help="Filter by children (ex: -c domain)")
 
     args = parser.parse_args()
+    if args.command == None:
+        parser.print_help()
+        exit(0)
 
-    from commands import CLICommand
+    from .commands import CLICommand
     CLICommand.execute(args)
 
 
